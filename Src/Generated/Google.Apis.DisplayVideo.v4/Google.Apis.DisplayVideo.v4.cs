@@ -23958,6 +23958,10 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// audience has no expiration, set the value of this field to 10000. Otherwise, the set value must be greater
         /// than 0 and less than or equal to 540. Only applicable to first party audiences. This field is required if
         /// one of the following audience_type is used: * `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+        /// *Warning*: Starting on **April 7, 2025**, audiences will no longer be able to have infinite membership
+        /// duration. This field will no longer accept the value 10000 and all audiences with membership durations
+        /// greater than 540 days will be updated to a membership duration of 540 days. [Read more about this announced
+        /// change](/display-video/api/deprecations#features.audience_duration).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipDurationDays")]
         public virtual System.Nullable<long> MembershipDurationDays { get; set; }
@@ -24157,23 +24161,16 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual System.Nullable<int> MaxViews { get; set; }
 
         /// <summary>
-        /// The time unit in which the frequency cap will be applied. Required when unlimited is `false`. *Warning*: On
-        /// **February 28, 2025**, frequency cap time periods greater than 30 days will no longer be accepted. This
-        /// field will no longer accept the value `TIME_UNIT_LIFETIME`. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap).
+        /// The time unit in which the frequency cap will be applied. Required when unlimited is `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnit")]
         public virtual string TimeUnit { get; set; }
 
         /// <summary>
         /// The number of time_unit the frequency cap will last. Required when unlimited is `false`. The following
-        /// restrictions apply based on the value of time_unit: * `TIME_UNIT_LIFETIME` - this field is output only and
-        /// will default to 1 * `TIME_UNIT_MONTHS` - must be between 1 and 2 * `TIME_UNIT_WEEKS` - must be between 1 and
-        /// 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23 *
-        /// `TIME_UNIT_MINUTES` - must be between 1 and 59 *Warning*: On **February 28, 2025**, frequency cap time
-        /// periods greater than 30 days will no longer be accepted. This field will no longer accept the value 2 if the
-        /// value of time_unit is `TIME_UNIT_MONTHS`. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap).
+        /// restrictions apply based on the value of time_unit: * `TIME_UNIT_MONTHS` - must be 1 * `TIME_UNIT_WEEKS` -
+        /// must be between 1 and 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1
+        /// and 23 * `TIME_UNIT_MINUTES` - must be between 1 and 59
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnitCount")]
         public virtual System.Nullable<int> TimeUnitCount { get; set; }
@@ -24688,11 +24685,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; }
 
-        /// <summary>
-        /// Required. The frequency capping setting of the insertion order. *Warning*: On **February 28, 2025**,
-        /// frequency cap time periods greater than 30 days will no longer be accepted. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap)
-        /// </summary>
+        /// <summary>Required. The frequency capping setting of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
         public virtual FrequencyCap FrequencyCap { get; set; }
 
@@ -25553,9 +25546,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
 
         /// <summary>
         /// Required. The impression frequency cap settings of the line item. The max_impressions field in this settings
-        /// object must be used if assigning a limited cap. *Warning*: On **February 28, 2025**, frequency cap time
-        /// periods greater than 30 days will no longer be accepted. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap)
+        /// object must be used if assigning a limited cap.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
         public virtual FrequencyCap FrequencyCap { get; set; }
@@ -27971,13 +27962,12 @@ namespace Google.Apis.DisplayVideo.v4.Data
 
         /// <summary>
         /// Required. Whether to enable Optimized Targeting for the line item. Optimized targeting is not compatible
-        /// with all bid strategies. Attempting to set this field to `true` for a line item using one of the following
-        /// combinations of BiddingStrategy fields and BiddingStrategyPerformanceGoalType will result in an error:
-        /// maximize_auto_spend_bid: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` *
-        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED`
-        /// performance_goal_auto_bid: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` *Warning*: Starting
-        /// **March 6, 2025**, this field will stop being compatible when using the BiddingStrategy field fixed_bid.
-        /// [Read more about this announced change](/display-video/api/deprecations#features.ot_fixed_bid)
+        /// with all bid strategies. Attempting to set this field to `true` for a line item using the BiddingStrategy
+        /// field fixed_bid or one of the following combinations of BiddingStrategy fields and
+        /// BiddingStrategyPerformanceGoalType will result in an error: maximize_auto_spend_bid: *
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` *
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` performance_goal_auto_bid: *
+        /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableOptimizedTargeting")]
         public virtual System.Nullable<bool> EnableOptimizedTargeting { get; set; }
@@ -28849,9 +28839,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
 
         /// <summary>
         /// The view frequency cap settings of the line item. The max_views field in this settings object must be used
-        /// if assigning a limited cap. *Warning*: On **February 28, 2025**, frequency cap time periods greater than 30
-        /// days will no longer be accepted. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap)
+        /// if assigning a limited cap.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewFrequencyCap")]
         public virtual FrequencyCap ViewFrequencyCap { get; set; }
