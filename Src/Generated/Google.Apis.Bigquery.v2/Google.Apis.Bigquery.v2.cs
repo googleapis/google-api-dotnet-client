@@ -7826,6 +7826,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual JobConfigurationQuery Query { get; set; }
 
+        /// <summary>
+        /// Optional. The reservation that job would use. User can specify a reservation to execute the job. If
+        /// reservation is not set, reservation is determined based on the rules defined by the reservation assignments.
+        /// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservation")]
+        public virtual string Reservation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10378,6 +10386,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Optional. The reservation that jobs.query request would use. User can specify a reservation to execute the
+        /// job.query. The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservation")]
+        public virtual string Reservation { get; set; }
 
         /// <summary>
         /// Optional. Optional: Specifies the maximum amount of time, in milliseconds, that the client is willing to
