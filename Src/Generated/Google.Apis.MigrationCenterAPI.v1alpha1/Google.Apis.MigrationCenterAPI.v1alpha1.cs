@@ -3723,7 +3723,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
 
                 /// <summary>Updates the parameters of a preference set.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. Name of the preference set.</param>
+                /// <param name="name">Output only. Name of the PreferenceSet.</param>
                 public virtual PatchRequest Patch(Google.Apis.MigrationCenterAPI.v1alpha1.Data.PreferenceSet body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -3740,7 +3740,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                         InitParameters();
                     }
 
-                    /// <summary>Output only. Name of the preference set.</summary>
+                    /// <summary>Output only. Name of the PreferenceSet.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -10107,7 +10107,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Output only. Name of the preference set.</summary>
+        /// <summary>Output only. Name of the PreferenceSet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
