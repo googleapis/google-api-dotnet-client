@@ -2180,6 +2180,13 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValues")]
         public virtual DefaultValues DefaultValues { get; set; }
 
+        /// <summary>
+        /// Output only. Flag to disable the creation of legacy Workbench notebooks (User-managed notebooks and
+        /// Google-managed notebooks).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableWorkbenchLegacyCreation")]
+        public virtual System.Nullable<bool> DisableWorkbenchLegacyCreation { get; set; }
+
         /// <summary>Output only. The supported values for configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedValues")]
         public virtual SupportedValues SupportedValues { get; set; }
