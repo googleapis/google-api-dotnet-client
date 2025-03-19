@@ -922,6 +922,65 @@ namespace Google.Apis.OracleDatabase.v1
                     }
                 }
 
+                /// <summary>Restarts an Autonomous Database.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Autonomous Database in the following format:
+                /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}.
+                /// </param>
+                public virtual RestartRequest Restart(Google.Apis.OracleDatabase.v1.Data.RestartAutonomousDatabaseRequest body, string name)
+                {
+                    return new RestartRequest(this.service, body, name);
+                }
+
+                /// <summary>Restarts an Autonomous Database.</summary>
+                public class RestartRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Restart request.</summary>
+                    public RestartRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.RestartAutonomousDatabaseRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Autonomous Database in the following format:
+                    /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.RestartAutonomousDatabaseRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "restart";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:restart";
+
+                    /// <summary>Initializes Restart parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autonomousDatabases/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Restores a single Autonomous Database.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -967,6 +1026,124 @@ namespace Google.Apis.OracleDatabase.v1
                     public override string RestPath => "v1/{+name}:restore";
 
                     /// <summary>Initializes Restore parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autonomousDatabases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Starts an Autonomous Database.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Autonomous Database in the following format:
+                /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}.
+                /// </param>
+                public virtual StartRequest Start(Google.Apis.OracleDatabase.v1.Data.StartAutonomousDatabaseRequest body, string name)
+                {
+                    return new StartRequest(this.service, body, name);
+                }
+
+                /// <summary>Starts an Autonomous Database.</summary>
+                public class StartRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Start request.</summary>
+                    public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.StartAutonomousDatabaseRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Autonomous Database in the following format:
+                    /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.StartAutonomousDatabaseRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "start";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:start";
+
+                    /// <summary>Initializes Start parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autonomousDatabases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Stops an Autonomous Database.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Autonomous Database in the following format:
+                /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}.
+                /// </param>
+                public virtual StopRequest Stop(Google.Apis.OracleDatabase.v1.Data.StopAutonomousDatabaseRequest body, string name)
+                {
+                    return new StopRequest(this.service, body, name);
+                }
+
+                /// <summary>Stops an Autonomous Database.</summary>
+                public class StopRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Stop request.</summary>
+                    public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.StopAutonomousDatabaseRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Autonomous Database in the following format:
+                    /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.StopAutonomousDatabaseRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "stop";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:stop";
+
+                    /// <summary>Initializes Stop parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -5048,6 +5225,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for `AutonomousDatabase.Restart`.</summary>
+    public class RestartAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for `AutonomousDatabase.Restore`.</summary>
     public class RestoreAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5114,6 +5298,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for `AutonomousDatabase.Start`.</summary>
+    public class StartAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -5139,6 +5330,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for `AutonomousDatabase.Stop`.</summary>
+    public class StopAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
