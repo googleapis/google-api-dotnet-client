@@ -4700,7 +4700,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The return policy.</summary>
+        /// <summary>Optional. The return policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
 
@@ -4711,8 +4711,8 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual System.Nullable<int> ProcessRefundDays { get; set; }
 
         /// <summary>
-        /// The restocking fee that applies to all return reason categories. This would be treated as a free restocking
-        /// fee if the value is not set.
+        /// Optional. The restocking fee that applies to all return reason categories. This would be treated as a free
+        /// restocking fee if the value is not set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restockingFee")]
         public virtual RestockingFee RestockingFee { get; set; }
