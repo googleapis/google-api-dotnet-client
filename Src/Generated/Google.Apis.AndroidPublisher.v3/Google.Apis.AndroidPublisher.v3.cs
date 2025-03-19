@@ -4869,9 +4869,9 @@ namespace Google.Apis.AndroidPublisher.v3
             public virtual string EditId { get; private set; }
 
             /// <summary>
-            /// Indicates that the changes in this edit will not be reviewed until they are explicitly sent for review
-            /// from the Google Play Console UI. These changes will be added to any other changes that are not yet sent
-            /// for review.
+            /// When a rejection happens, the parameter will make sure that the changes in this edit won't be reviewed
+            /// until they are explicitly sent for review from within the Google Play Console UI. These changes will be
+            /// added to any other changes that are not yet sent for review.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("changesNotSentForReview", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ChangesNotSentForReview { get; set; }
