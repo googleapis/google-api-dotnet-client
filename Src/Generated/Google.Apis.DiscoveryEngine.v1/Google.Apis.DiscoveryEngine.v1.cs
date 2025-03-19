@@ -298,6 +298,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                 GroundingConfigs = new GroundingConfigsResource(service);
                 IdentityMappingStores = new IdentityMappingStoresResource(service);
                 Operations = new OperationsResource(service);
+                Podcasts = new PodcastsResource(service);
                 RankingConfigs = new RankingConfigsResource(service);
                 UserEvents = new UserEventsResource(service);
             }
@@ -15348,6 +15349,94 @@ namespace Google.Apis.DiscoveryEngine.v1
                 }
             }
 
+            /// <summary>Gets the Podcasts resource.</summary>
+            public virtual PodcastsResource Podcasts { get; }
+
+            /// <summary>The "podcasts" collection of methods.</summary>
+            public class PodcastsResource
+            {
+                private const string Resource = "podcasts";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PodcastsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/podcasts/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+                }
+            }
+
             /// <summary>Gets the RankingConfigs resource.</summary>
             public virtual RankingConfigsResource RankingConfigs { get; }
 
@@ -18475,6 +18564,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Whether the NotebookLM Corpus is ready to be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebooklmState")]
+        public virtual string NotebooklmState { get; set; }
 
         /// <summary>Optional. Single-regional CMEKs that are required for some VAIS features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleRegionKeys")]
@@ -26676,6 +26769,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("answerText")]
         public virtual string AnswerText { get; set; }
 
+        /// <summary>List of blob attachments in the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobAttachments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment> BlobAttachments { get; set; }
+
         /// <summary>Citations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citations")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerCitation> Citations { get; set; }
@@ -26799,6 +26896,36 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Stores binarydata attached to text answer, e.g. image, video, audio, etc.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The attribution type of the blob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributionType")]
+        public virtual string AttributionType { get; set; }
+
+        /// <summary>Output only. The mime type and data of the blob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachmentBlob Data { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The media type and data of the blob.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachmentBlob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Raw bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>Output only. The media type (MIME type) of the generated or retrieved data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Citation info for a segment.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAnswerCitation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26917,6 +27044,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Chunk information.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Stores indexes of blobattachments linked to this chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobAttachmentIndexes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> BlobAttachmentIndexes { get; set; }
+
         /// <summary>Chunk resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chunk")]
         public virtual string Chunk { get; set; }
@@ -27027,6 +27158,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Chunk content.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfoChunkContent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Stores indexes of blobattachments linked to this chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobAttachmentIndexes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> BlobAttachmentIndexes { get; set; }
+
         /// <summary>Chunk textual content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -27317,6 +27452,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Whether the NotebookLM Corpus is ready to be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebooklmState")]
+        public virtual string NotebooklmState { get; set; }
 
         /// <summary>Optional. Single-regional CMEKs that are required for some VAIS features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleRegionKeys")]
@@ -33651,6 +33790,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelSpec ModelSpec { get; set; }
 
+        /// <summary>Optional. Multimodal specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multimodalSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecMultiModalSpec MultimodalSpec { get; set; }
+
         /// <summary>
         /// The number of top results to generate the summary from. If the number of results returned is less than
         /// `summaryResultCount`, the summary is generated from all of the results. At most 10 results for documents
@@ -33699,6 +33842,20 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Multimodal specification: Will return an image from specified source. If multiple sources are specified, the
+    /// pick is a quality based decision.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecMultiModalSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Source of image returned in the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageSource")]
+        public virtual string ImageSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35284,6 +35441,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Whether the NotebookLM Corpus is ready to be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebooklmState")]
+        public virtual string NotebooklmState { get; set; }
 
         /// <summary>Optional. Single-regional CMEKs that are required for some VAIS features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleRegionKeys")]
@@ -39679,6 +39840,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec ModelSpec { get; set; }
 
+        /// <summary>Optional. Multimodal specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multimodalSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec MultimodalSpec { get; set; }
+
         /// <summary>
         /// The number of top results to generate the summary from. If the number of results returned is less than
         /// `summaryResultCount`, the summary is generated from all of the results. At most 10 results for documents
@@ -39727,6 +39892,20 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Multimodal specification: Will return an image from specified source. If multiple sources are specified, the
+    /// pick is a quality based decision.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Source of image returned in the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageSource")]
+        public virtual string ImageSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
