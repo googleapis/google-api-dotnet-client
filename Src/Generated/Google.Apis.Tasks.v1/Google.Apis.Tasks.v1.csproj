@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Tasks.v1 Client Library</Title>
-    <Version>1.69.0.3713</Version>
+    <Version>1.69.0.3727</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Tasks v1.
 
       Product documentation is available at:
-      https://developers.google.com/tasks/
+      https://developers.google.com/workspace/tasks/
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.Tasks.v1/latest/api/Google.Apis.Tasks.v1.html

@@ -1512,7 +1512,7 @@ namespace Google.Apis.Tasks.v1.Data
         /// <summary>Output only. Collection of links. This collection is read-only.</summary>
         public class LinksData
         {
-            /// <summary>The description. In HTML speak: Everything between &lt;a&gt; and &lt;/a&gt;.</summary>
+            /// <summary>The description (might be empty).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("description")]
             public virtual string Description { get; set; }
 
@@ -1520,7 +1520,7 @@ namespace Google.Apis.Tasks.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("link")]
             public virtual string Link { get; set; }
 
-            /// <summary>Type of the link, e.g. "email".</summary>
+            /// <summary>Type of the link, e.g. "email", "generic", "chat_message", "keep_note".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; }
         }
