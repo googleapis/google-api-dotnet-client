@@ -3417,9 +3417,12 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     public class MessageTransform : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. If set to true, the transform is enabled. If false, the transform is disabled and will not be
-        /// applied to messages. Defaults to `true`.
+        /// Optional. If true, the transform is disabled and will not be applied to messages. Defaults to `false`.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>Optional. This field is deprecated, use the `disabled` field to disable transforms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
