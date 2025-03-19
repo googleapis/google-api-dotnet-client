@@ -2666,13 +2666,12 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual System.Nullable<bool> CheckServiceNetworkingUsePermission { get; set; }
 
         /// <summary>
-        /// Optional. Specifies a custom time bucket for Arcus subnetwork request idempotency. If two equivalent
-        /// concurrent requests are made, Arcus will know to ignore the request if it has already been completed or is
-        /// in progress. Only requests with matching compute_idempotency_window have guaranteed idempotency. Changing
-        /// this time window between requests results in undefined behavior. Zero (or empty) value with
-        /// custom_compute_idempotency_window=true specifies no idempotency (i.e. no request ID is provided to Arcus).
-        /// Maximum value of 14 days (enforced by Arcus limit). For more information on how to use, see:
-        /// go/revisit-sn-idempotency-window
+        /// Optional. Specifies a custom time bucket for GCE subnetwork request idempotency. If two equivalent
+        /// concurrent requests are made, GCE will know to ignore the request if it has already been completed or is in
+        /// progress. Only requests with matching compute_idempotency_window have guaranteed idempotency. Changing this
+        /// time window between requests results in undefined behavior. Zero (or empty) value with
+        /// custom_compute_idempotency_window=true specifies no idempotency (i.e. no request ID is provided to GCE).
+        /// Maximum value of 14 days (enforced by GCE limit).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeIdempotencyWindow")]
         public virtual object ComputeIdempotencyWindow { get; set; }
@@ -2799,10 +2798,9 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual System.Collections.Generic.IList<string> SubnetworkUsers { get; set; }
 
         /// <summary>
-        /// Optional. Specifies if Service Networking should use a custom time bucket for Arcus idempotency. If false,
-        /// Service Networking uses a 300 second (5 minute) Arcus idempotency window. If true, Service Networking uses a
-        /// custom idempotency window provided by the user in field compute_idempotency_window. For more information on
-        /// how to use, see: go/revisit-sn-idempotency-window
+        /// Optional. Specifies if Service Networking should use a custom time bucket for GCE idempotency. If false,
+        /// Service Networking uses a 300 second (5 minute) GCE idempotency window. If true, Service Networking uses a
+        /// custom idempotency window provided by the user in field compute_idempotency_window.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useCustomComputeIdempotencyWindow")]
         public virtual System.Nullable<bool> UseCustomComputeIdempotencyWindow { get; set; }
