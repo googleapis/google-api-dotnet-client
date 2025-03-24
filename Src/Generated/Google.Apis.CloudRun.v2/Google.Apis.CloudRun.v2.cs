@@ -5863,6 +5863,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; }
 
+        /// <summary>Optional. Output only. True if GPU zonal redundancy is disabled on this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuZonalRedundancyDisabled")]
+        public virtual System.Nullable<bool> GpuZonalRedundancyDisabled { get; set; }
+
         /// <summary>
         /// Output only. Unstructured key value map that can be used to organize and categorize objects. User-provided
         /// labels are shared with Google's billing system, so they can be used to filter, or break down billing charges
@@ -6072,6 +6076,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Optional. The sandbox environment to host this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionEnvironment")]
         public virtual string ExecutionEnvironment { get; set; }
+
+        /// <summary>Optional. True if GPU zonal redundancy is disabled on this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuZonalRedundancyDisabled")]
+        public virtual System.Nullable<bool> GpuZonalRedundancyDisabled { get; set; }
 
         /// <summary>Optional. Disables health checking containers during deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheckDisabled")]
@@ -9936,7 +9944,6 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>This is proto2's version of MessageSet.</summary>
     public class Proto2BridgeMessageSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
