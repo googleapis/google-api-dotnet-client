@@ -7882,6 +7882,12 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ProducerNetwork { get; set; }
 
         /// <summary>
+        /// Output only. The proposed exclude export IP ranges waiting for hub administration's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedExcludeExportRanges { get; set; }
+
+        /// <summary>
         /// Optional. The proposed include export IP ranges waiting for hub administration's approval.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeExportRanges")]
@@ -7949,6 +7955,12 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerVpcSpokes")]
         public virtual System.Collections.Generic.IList<string> ProducerVpcSpokes { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed exclude export IP ranges waiting for hub administration's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedExcludeExportRanges { get; set; }
 
         /// <summary>
         /// Optional. The proposed include export IP ranges waiting for hub administration's approval.
