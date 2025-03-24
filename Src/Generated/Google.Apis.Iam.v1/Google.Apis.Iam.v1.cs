@@ -7366,13 +7366,7 @@ namespace Google.Apis.Iam.v1
                 }
             }
 
-            /// <summary>
-            /// **Note:** This method is deprecated. Use the
-            /// [signBlob](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signBlob)
-            /// method in the IAM Service Account Credentials API instead. If you currently use this method, see the
-            /// [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions. Signs a
-            /// blob using the system-managed private key for a ServiceAccount.
-            /// </summary>
+            /// <summary> Signs a blob using the system-managed private key for a ServiceAccount.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. Deprecated. [Migrate to Service Account Credentials
@@ -7390,13 +7384,7 @@ namespace Google.Apis.Iam.v1
                 return new SignBlobRequest(this.service, body, name);
             }
 
-            /// <summary>
-            /// **Note:** This method is deprecated. Use the
-            /// [signBlob](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signBlob)
-            /// method in the IAM Service Account Credentials API instead. If you currently use this method, see the
-            /// [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions. Signs a
-            /// blob using the system-managed private key for a ServiceAccount.
-            /// </summary>
+            /// <summary> Signs a blob using the system-managed private key for a ServiceAccount.</summary>
             public class SignBlobRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.SignBlobResponse>
             {
                 /// <summary>Constructs a new SignBlob request.</summary>
@@ -7452,11 +7440,7 @@ namespace Google.Apis.Iam.v1
             }
 
             /// <summary>
-            /// **Note:** This method is deprecated. Use the
-            /// [signJwt](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signJwt) method
-            /// in the IAM Service Account Credentials API instead. If you currently use this method, see the [migration
-            /// guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions. Signs a JSON Web
-            /// Token (JWT) using the system-managed private key for a ServiceAccount.
+            ///  Signs a JSON Web Token (JWT) using the system-managed private key for a ServiceAccount.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -7476,11 +7460,7 @@ namespace Google.Apis.Iam.v1
             }
 
             /// <summary>
-            /// **Note:** This method is deprecated. Use the
-            /// [signJwt](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signJwt) method
-            /// in the IAM Service Account Credentials API instead. If you currently use this method, see the [migration
-            /// guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions. Signs a JSON Web
-            /// Token (JWT) using the system-managed private key for a ServiceAccount.
+            ///  Signs a JSON Web Token (JWT) using the system-managed private key for a ServiceAccount.
             /// </summary>
             public class SignJwtRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.SignJwtResponse>
             {
