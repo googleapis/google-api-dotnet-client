@@ -4116,6 +4116,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// LINT.ThenChange( //depot/google3/third_party/protobuf/github/src/google/protobuf/bridge/message_set.proto ) This
+    /// is proto2's version of MessageSet.
+    /// </summary>
     public class MessageSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
