@@ -4603,6 +4603,86 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for Managed Connection Pool (MCP).</summary>
+    public class ConnectionPoolConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Deprecated. Use 'flags' instead. The default pool size. Defaults to 20.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultPoolSize")]
+        public virtual string DefaultPoolSize { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated; Prefer 'enabled' as this will be removed soon. TODO(b/394996708) move to reserved once
+        /// the field is removed from the gcloud client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
+        public virtual System.Nullable<bool> Enable { get; set; }
+
+        /// <summary>Optional. Whether to enable Managed Connection Pool (MCP).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Optional. Connection Pool flags, as a list of "key": "value" pairs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Flags { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated. Use 'flags' instead. The list of startup parameters to ignore. Defaults to
+        /// ["extra_float_digits"]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreStartupParameters")]
+        public virtual System.Collections.Generic.IList<string> IgnoreStartupParameters { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated. Use 'flags' instead. The maximum number of client connections allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxClientConn")]
+        public virtual string MaxClientConn { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated. Use 'flags' instead. The maximum number of prepared statements allowed. MCP makes sure
+        /// that any statement prepared by a client, up to this limit, is available on the backing server connection in
+        /// transaction and statement pooling mode. Even if the statement was originally prepared on another server
+        /// connection. Defaults to 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxPreparedStatements")]
+        public virtual string MaxPreparedStatements { get; set; }
+
+        /// <summary>Optional. Deprecated. Use 'flags' instead. The minimum pool size. Defaults to 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minPoolSize")]
+        public virtual string MinPoolSize { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated. Use 'flags' instead. The pool mode. Defaults to `POOL_MODE_TRANSACTION`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("poolMode")]
+        public virtual string PoolMode { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated. Use 'flags' instead. The maximum number of seconds queries are allowed to spend
+        /// waiting for execution. If the query is not assigned to a server during that time, the client is
+        /// disconnected. 0 disables.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryWaitTimeout")]
+        public virtual string QueryWaitTimeout { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated. Use 'flags' instead. The maximum number of seconds a server is allowed to be idle
+        /// before it is disconnected. 0 disables.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverIdleTimeout")]
+        public virtual string ServerIdleTimeout { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated. Use 'flags' instead. The list of users that are allowed to connect to the MCP stats
+        /// console. The users must exist in the database.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statsUsers")]
+        public virtual System.Collections.Generic.IList<string> StatsUsers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ContinuousBackupConfig describes the continuous backups recovery configurations of a cluster.</summary>
     public class ContinuousBackupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5234,6 +5314,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>Optional. Client connection specific configurations</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientConnectionConfig")]
         public virtual ClientConnectionConfig ClientConnectionConfig { get; set; }
+
+        /// <summary>Optional. The configuration for Managed Connection Pool (MCP).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionPoolConfig")]
+        public virtual ConnectionPoolConfig ConnectionPoolConfig { get; set; }
 
         private string _createTimeRaw;
 
