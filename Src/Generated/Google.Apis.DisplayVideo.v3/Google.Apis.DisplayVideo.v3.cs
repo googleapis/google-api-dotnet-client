@@ -931,6 +931,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
+
+                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                            TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
 
                         /// <summary>
@@ -1299,6 +1303,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
+
+                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                            TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
 
                         /// <summary>
@@ -2329,6 +2337,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
+
+                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                            TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
 
                         /// <summary>
@@ -2707,6 +2719,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
+
+                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                            TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
 
                         /// <summary>
@@ -5004,6 +5020,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
+
+                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                            TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
 
                         /// <summary>Gets or sets the body of this request.</summary>
@@ -5389,6 +5409,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
+
+                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                            TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
 
                         /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -5804,6 +5828,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
+
+                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                            TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
 
                         /// <summary>
@@ -6219,6 +6247,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
+
+                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                            TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
 
                         /// <summary>
@@ -7499,6 +7531,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
+
+                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                            TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
 
                         /// <summary>Gets or sets the body of this request.</summary>
@@ -7917,6 +7953,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
+
+                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                            TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
 
                         /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -8339,6 +8379,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
+
+                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                            TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
 
                         /// <summary>
@@ -8759,6 +8803,10 @@ namespace Google.Apis.DisplayVideo.v3
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
+
+                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                            TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
 
                         /// <summary>
@@ -11589,6 +11637,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
+
+                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                        TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -11916,6 +11968,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
+
+                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                        TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
 
                     /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -12253,6 +12309,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
+
+                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                        TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
 
                     /// <summary>
@@ -12588,6 +12648,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
+
+                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                        TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
 
                     /// <summary>
@@ -19080,6 +19144,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
+
+                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                        TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -19404,6 +19472,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
+
+                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                        TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
 
                     /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -19735,6 +19807,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
+
+                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                        TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
 
                     /// <summary>
@@ -20064,6 +20140,10 @@ namespace Google.Apis.DisplayVideo.v3
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
+
+                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                        TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
 
                     /// <summary>
@@ -20926,6 +21006,10 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                     TARGETINGTYPESESSIONPOSITION = 48,
+
+                    /// <summary>Filter website content by content themes (for example, religion).</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                    TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                 }
 
                 /// <summary>Required. The ID of the of targeting option to retrieve.</summary>
@@ -21270,6 +21354,10 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                     TARGETINGTYPESESSIONPOSITION = 48,
+
+                    /// <summary>Filter website content by content themes (for example, religion).</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                    TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                 }
 
                 /// <summary>Required. The Advertiser this request is being made in the context of.</summary>
@@ -21646,6 +21734,10 @@ namespace Google.Apis.DisplayVideo.v3
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                     TARGETINGTYPESESSIONPOSITION = 48,
+
+                    /// <summary>Filter website content by content themes (for example, religion).</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
+                    TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -23191,6 +23283,15 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentStreamTypeDetails")]
         public virtual ContentStreamTypeAssignedTargetingOptionDetails ContentStreamTypeDetails { get; set; }
+
+        /// <summary>
+        /// Content theme details. This field will be populated when the targeting_type is
+        /// `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`. Content theme are targeting exclusions. Advertiser level content
+        /// theme exclusions, if set, are always applied in serving (even though they aren't visible in resource
+        /// settings). Resource settings can exclude content theme in addition to advertiser exclusions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentThemeExclusionDetails")]
+        public virtual ContentThemeAssignedTargetingOptionDetails ContentThemeExclusionDetails { get; set; }
 
         /// <summary>
         /// Day and time details. This field will be populated when the targeting_type is `TARGETING_TYPE_DAY_AND_TIME`.
@@ -25125,6 +25226,42 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>Output only. The content stream type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentStreamType")]
         public virtual string ContentStreamType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Targeting details for content theme. This will be populated in the details field of an AssignedTargetingOption
+    /// when targeting_type is `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`.
+    /// </summary>
+    public class ContentThemeAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. An enum for the DV360 content theme classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentTheme")]
+        public virtual string ContentTheme { get; set; }
+
+        /// <summary>Required. An enum for the DV360 content theme classified to be EXCLUDED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedContentTheme")]
+        public virtual string ExcludedContentTheme { get; set; }
+
+        /// <summary>Required. ID of the content theme to be EXCLUDED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedTargetingOptionId")]
+        public virtual string ExcludedTargetingOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a targetable content theme. This will be populated in the content_theme_details field of the
+    /// TargetingOption when targeting_type is `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`.
+    /// </summary>
+    public class ContentThemeTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. An enum for the DV360 content theme content classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentTheme")]
+        public virtual string ContentTheme { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30930,6 +31067,10 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>Content stream type resource details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentStreamTypeDetails")]
         public virtual ContentStreamTypeTargetingOptionDetails ContentStreamTypeDetails { get; set; }
+
+        /// <summary>Content theme details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentThemeDetails")]
+        public virtual ContentThemeTargetingOptionDetails ContentThemeDetails { get; set; }
 
         /// <summary>Device make and model resource details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMakeModelDetails")]
