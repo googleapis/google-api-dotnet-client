@@ -1679,6 +1679,13 @@ namespace Google.Apis.NetworkServices.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. If true, allow partial responses for multi-regional Aggregated List requests.
+                    /// Otherwise if one of the locations is down or unreachable, the Aggregated List request will fail.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -1711,6 +1718,14 @@ namespace Google.Apis.NetworkServices.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2512,6 +2527,13 @@ namespace Google.Apis.NetworkServices.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. If true, allow partial responses for multi-regional Aggregated List requests.
+                    /// Otherwise if one of the locations is down or unreachable, the Aggregated List request will fail.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -2544,6 +2566,14 @@ namespace Google.Apis.NetworkServices.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2856,6 +2886,13 @@ namespace Google.Apis.NetworkServices.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. If true, allow partial responses for multi-regional Aggregated List requests.
+                    /// Otherwise if one of the locations is down or unreachable, the Aggregated List request will fail.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -2888,6 +2925,14 @@ namespace Google.Apis.NetworkServices.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5459,6 +5504,13 @@ namespace Google.Apis.NetworkServices.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. If true, allow partial responses for multi-regional Aggregated List requests.
+                    /// Otherwise if one of the locations is down or unreachable, the Aggregated List request will fail.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -5491,6 +5543,14 @@ namespace Google.Apis.NetworkServices.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5803,6 +5863,13 @@ namespace Google.Apis.NetworkServices.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. If true, allow partial responses for multi-regional Aggregated List requests.
+                    /// Otherwise if one of the locations is down or unreachable, the Aggregated List request will fail.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -5835,6 +5902,14 @@ namespace Google.Apis.NetworkServices.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7350,7 +7425,10 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// available under the namespace `com.google....`. For example:
         /// `com.google.lb_traffic_extension.lbtrafficextension1.chain1.ext1`. The following variables are supported in
         /// the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
-        /// This field is not supported for plugin extensions. Setting it results in a validation error.
+        /// This field is subject to following limitations: * The total size of the metadata must be less than 1KiB. *
+        /// The total number of keys in the metadata must be less than 20. * The length of each key must be less than 64
+        /// characters. * The length of each value must be less than 1024 characters. * All values must be strings. This
+        /// field is not supported for plugin extensions. Setting it results in a validation error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
@@ -9091,6 +9169,13 @@ namespace Google.Apis.NetworkServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        /// <summary>
+        /// Unreachable resources. Populated when the request opts into return_partial_success and reading across
+        /// collections e.g. when attempting to list all resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9156,6 +9241,13 @@ namespace Google.Apis.NetworkServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        /// <summary>
+        /// Unreachable resources. Populated when the request opts into return_partial_success and reading across
+        /// collections e.g. when attempting to list all resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9173,6 +9265,13 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Unreachable resources. Populated when the request opts into return_partial_success and reading across
+        /// collections e.g. when attempting to list all resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9360,6 +9459,13 @@ namespace Google.Apis.NetworkServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tcpRoutes")]
         public virtual System.Collections.Generic.IList<TcpRoute> TcpRoutes { get; set; }
 
+        /// <summary>
+        /// Unreachable resources. Populated when the request opts into return_partial_success and reading across
+        /// collections e.g. when attempting to list all resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9378,6 +9484,13 @@ namespace Google.Apis.NetworkServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tlsRoutes")]
         public virtual System.Collections.Generic.IList<TlsRoute> TlsRoutes { get; set; }
 
+        /// <summary>
+        /// Unreachable resources. Populated when the request opts into return_partial_success and reading across
+        /// collections e.g. when attempting to list all resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9391,6 +9504,13 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Unreachable resources. Populated when the request attempts to list all resources across all supported
+        /// locations, while some locations are temporarily unavailable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>List of `WasmPluginVersion` resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wasmPluginVersions")]
@@ -9409,6 +9529,13 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Unreachable resources. Populated when the request attempts to list all resources across all supported
+        /// locations, while some locations are temporarily unavailable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>List of `WasmPlugin` resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wasmPlugins")]
@@ -9848,9 +9975,9 @@ namespace Google.Apis.NetworkServices.v1.Data
     }
 
     /// <summary>
-    /// ServiceBinding can be used to: - Bind a Service Directory Service to be used in a BackendService resource. -
-    /// Bind a Private Service Connect producer service to be used in consumer Cloud Service Mesh or Application Load
-    /// Balancers.
+    /// ServiceBinding can be used to: - Bind a Service Directory Service to be used in a BackendService resource. This
+    /// feature will be deprecated soon. - Bind a Private Service Connect producer service to be used in consumer Cloud
+    /// Service Mesh or Application Load Balancers.
     /// </summary>
     public class ServiceBinding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9908,7 +10035,8 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Optional. The full Service Directory Service name of the format
-        /// `projects/*/locations/*/namespaces/*/services/*`. This field must be set.
+        /// `projects/*/locations/*/namespaces/*/services/*`. This field is for Service Directory integration which will
+        /// be deprecated soon.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
@@ -9916,7 +10044,8 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>
         /// Output only. The unique identifier of the Service Directory Service against which the ServiceBinding
         /// resource is validated. This is populated when the Service Binding resource is used in another resource (like
-        /// Backend Service). This is of the UUID4 format.
+        /// Backend Service). This is of the UUID4 format. This field is for Service Directory integration which will be
+        /// deprecated soon.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceId")]
         public virtual string ServiceId { get; set; }
@@ -10563,7 +10692,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual string ServiceName { get; set; }
 
         /// <summary>
-        /// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name
+        /// Optional. Specifies the proportion of requests forwarded to the backend referenced by the service_name
         /// field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need
         /// to sum up to 100.
         /// </summary>
