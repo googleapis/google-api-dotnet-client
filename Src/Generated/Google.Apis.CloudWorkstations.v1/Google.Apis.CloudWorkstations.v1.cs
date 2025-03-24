@@ -3250,6 +3250,7 @@ namespace Google.Apis.CloudWorkstations.v1.Data
 
         /// <summary>
         /// Optional. Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+        /// Must be formatted as ext4 file system with no partitions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
         public virtual string SourceSnapshot { get; set; }
@@ -4307,7 +4308,8 @@ namespace Google.Apis.CloudWorkstations.v1.Data
 
         /// <summary>
         /// Output only. Whether this workstation cluster is in degraded mode, in which case it may require user action
-        /// to restore full functionality. Details can be found in conditions.
+        /// to restore full functionality. The conditions field contains detailed information about the status of the
+        /// cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("degraded")]
         public virtual System.Nullable<bool> Degraded { get; set; }
@@ -4401,8 +4403,8 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         public virtual string Subnetwork { get; set; }
 
         /// <summary>
-        /// Optional. Tag keys/values directly bound to this resource. For example: "123/environment": "production",
-        /// "123/costCenter": "marketing"
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// "123/environment": "production", "123/costCenter": "marketing"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
@@ -4470,7 +4472,7 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
-        /// <summary>Output only. Status conditions describing the current resource state.</summary>
+        /// <summary>Output only. Status conditions describing the workstation configuration's current state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<Status> Conditions { get; set; }
 
@@ -4518,8 +4520,9 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         }
 
         /// <summary>
-        /// Output only. Whether this resource is degraded, in which case it may require user action to restore full
-        /// functionality. See also the conditions field.
+        /// Output only. Whether this workstation configuration is in degraded mode, in which case it may require user
+        /// action to restore full functionality. The conditions field contains detailed information about the status of
+        /// the configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("degraded")]
         public virtual System.Nullable<bool> Degraded { get; set; }
