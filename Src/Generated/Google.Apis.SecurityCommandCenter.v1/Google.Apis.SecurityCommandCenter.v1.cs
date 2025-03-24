@@ -16109,6 +16109,24 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Contains details about a chokepoint, which is a resource or resource group where high-risk attack paths
+    /// converge, based on [attack path simulations]
+    /// (https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_path_simulations).
+    /// </summary>
+    public class Chokepoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of resource names of findings associated with this chokepoint. For example,
+        /// organizations/123/sources/456/findings/789. This list will have at most 100 findings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedFindings")]
+        public virtual System.Collections.Generic.IList<string> RelatedFindings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Fields related to Google Cloud Armor findings.</summary>
     public class CloudArmor : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17459,6 +17477,15 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
+
+        /// <summary>
+        /// Contains details about a chokepoint, which is a resource or resource group where high-risk attack paths
+        /// converge, based on [attack path simulations]
+        /// (https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_path_simulations). This
+        /// field cannot be updated. Its value is ignored in all update requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chokepoint")]
+        public virtual Chokepoint Chokepoint { get; set; }
 
         /// <summary>Fields related to Cloud Armor findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudArmor")]
@@ -20038,6 +20065,24 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Contains details about a chokepoint, which is a resource or resource group where high-risk attack paths
+    /// converge, based on [attack path simulations]
+    /// (https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_path_simulations).
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2Chokepoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of resource names of findings associated with this chokepoint. For example,
+        /// organizations/123/sources/456/findings/789. This list will have at most 100 findings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedFindings")]
+        public virtual System.Collections.Generic.IList<string> RelatedFindings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Fields related to Google Cloud Armor findings.</summary>
     public class GoogleCloudSecuritycenterV2CloudArmor : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21257,6 +21302,15 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
+
+        /// <summary>
+        /// Contains details about a chokepoint, which is a resource or resource group where high-risk attack paths
+        /// converge, based on [attack path simulations]
+        /// (https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_path_simulations). This
+        /// field cannot be updated. Its value is ignored in all update requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chokepoint")]
+        public virtual GoogleCloudSecuritycenterV2Chokepoint Chokepoint { get; set; }
 
         /// <summary>Fields related to Cloud Armor findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudArmor")]
