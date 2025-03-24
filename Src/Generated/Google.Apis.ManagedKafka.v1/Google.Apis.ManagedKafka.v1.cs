@@ -295,6 +295,7 @@ namespace Google.Apis.ManagedKafka.v1
             {
                 this.service = service;
                 Clusters = new ClustersResource(service);
+                ConnectClusters = new ConnectClustersResource(service);
                 Operations = new OperationsResource(service);
             }
 
@@ -1363,6 +1364,1038 @@ namespace Google.Apis.ManagedKafka.v1
                 }
             }
 
+            /// <summary>Gets the ConnectClusters resource.</summary>
+            public virtual ConnectClustersResource ConnectClusters { get; }
+
+            /// <summary>The "connectClusters" collection of methods.</summary>
+            public class ConnectClustersResource
+            {
+                private const string Resource = "connectClusters";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ConnectClustersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Connectors = new ConnectorsResource(service);
+                }
+
+                /// <summary>Gets the Connectors resource.</summary>
+                public virtual ConnectorsResource Connectors { get; }
+
+                /// <summary>The "connectors" collection of methods.</summary>
+                public class ConnectorsResource
+                {
+                    private const string Resource = "connectors";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ConnectorsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a new connector in a given Connect cluster.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent Connect cluster in which to create the connector. Structured like
+                    /// `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.ManagedKafka.v1.Data.Connector body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a new connector in a given Connect cluster.</summary>
+                    public class CreateRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.Connector>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.Connector body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent Connect cluster in which to create the connector. Structured like
+                        /// `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the connector, which will become the final component of the
+                        /// connector's name. The ID must be 1-63 characters long, and match the regular expression
+                        /// `[a-z]([-a-z0-9]*[a-z0-9])?` to comply with RFC 1035. This value is structured like:
+                        /// `my-connector-id`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("connectorId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ConnectorId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedKafka.v1.Data.Connector Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/connectors";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connectClusters/[^/]+$",
+                            });
+                            RequestParameters.Add("connectorId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "connectorId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a connector.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the connector to delete. Structured like:
+                    /// projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a connector.</summary>
+                    public class DeleteRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the connector to delete. Structured like:
+                        /// projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connectClusters/[^/]+/connectors/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns the properties of a single connector.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the connector whose configuration to return. Structured like:
+                    /// projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Returns the properties of a single connector.</summary>
+                    public class GetRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.Connector>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the connector whose configuration to return. Structured like:
+                        /// projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connectClusters/[^/]+/connectors/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists the connectors in a given Connect cluster.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent Connect cluster whose connectors are to be listed. Structured like
+                    /// `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists the connectors in a given Connect cluster.</summary>
+                    public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.ListConnectorsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent Connect cluster whose connectors are to be listed. Structured like
+                        /// `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of connectors to return. The service may return fewer than this
+                        /// value. If unspecified, server will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListConnectors` call. Provide this to
+                        /// retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListConnectors` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/connectors";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connectClusters/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the properties of a connector.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Identifier. The name of the connector. Structured like:
+                    /// projects/{project}/locations/{location}/connectClusters/{connect_cluster}/connectors/{connector}
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.ManagedKafka.v1.Data.Connector body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates the properties of a connector.</summary>
+                    public class PatchRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.Connector>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.Connector body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Identifier. The name of the connector. Structured like:
+                        /// projects/{project}/locations/{location}/connectClusters/{connect_cluster}/connectors/{connector}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Required. Field mask is used to specify the fields to be overwritten in the cluster resource
+                        /// by the update. The fields specified in the update_mask are relative to the resource, not the
+                        /// full request. A field will be overwritten if it is in the mask. The mask is required and a
+                        /// value of * will update all fields.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedKafka.v1.Data.Connector Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connectClusters/[^/]+/connectors/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Pauses the connector and its tasks.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the connector to pause. Structured like:
+                    /// projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector}
+                    /// </param>
+                    public virtual PauseRequest Pause(Google.Apis.ManagedKafka.v1.Data.PauseConnectorRequest body, string name)
+                    {
+                        return new PauseRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Pauses the connector and its tasks.</summary>
+                    public class PauseRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.PauseConnectorResponse>
+                    {
+                        /// <summary>Constructs a new Pause request.</summary>
+                        public PauseRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.PauseConnectorRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the connector to pause. Structured like:
+                        /// projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedKafka.v1.Data.PauseConnectorRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "pause";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:pause";
+
+                        /// <summary>Initializes Pause parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connectClusters/[^/]+/connectors/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Restarts the connector.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the connector to restart. Structured like:
+                    /// projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector}
+                    /// </param>
+                    public virtual RestartRequest Restart(Google.Apis.ManagedKafka.v1.Data.RestartConnectorRequest body, string name)
+                    {
+                        return new RestartRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Restarts the connector.</summary>
+                    public class RestartRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.RestartConnectorResponse>
+                    {
+                        /// <summary>Constructs a new Restart request.</summary>
+                        public RestartRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.RestartConnectorRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the connector to restart. Structured like:
+                        /// projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedKafka.v1.Data.RestartConnectorRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "restart";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:restart";
+
+                        /// <summary>Initializes Restart parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connectClusters/[^/]+/connectors/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Resumes the connector and its tasks.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the connector to pause. Structured like:
+                    /// projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector}
+                    /// </param>
+                    public virtual ResumeRequest Resume(Google.Apis.ManagedKafka.v1.Data.ResumeConnectorRequest body, string name)
+                    {
+                        return new ResumeRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Resumes the connector and its tasks.</summary>
+                    public class ResumeRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.ResumeConnectorResponse>
+                    {
+                        /// <summary>Constructs a new Resume request.</summary>
+                        public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.ResumeConnectorRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the connector to pause. Structured like:
+                        /// projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedKafka.v1.Data.ResumeConnectorRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "resume";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:resume";
+
+                        /// <summary>Initializes Resume parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connectClusters/[^/]+/connectors/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Stops the connector.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the connector to stop. Structured like:
+                    /// projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector}
+                    /// </param>
+                    public virtual StopRequest Stop(Google.Apis.ManagedKafka.v1.Data.StopConnectorRequest body, string name)
+                    {
+                        return new StopRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Stops the connector.</summary>
+                    public class StopRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.StopConnectorResponse>
+                    {
+                        /// <summary>Constructs a new Stop request.</summary>
+                        public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.StopConnectorRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the connector to stop. Structured like:
+                        /// projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedKafka.v1.Data.StopConnectorRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "stop";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:stop";
+
+                        /// <summary>Initializes Stop parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connectClusters/[^/]+/connectors/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a new Kafka Connect cluster in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent project/location in which to create the Kafka Connect cluster. Structured like
+                /// `projects/{project}/locations/{location}/`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.ManagedKafka.v1.Data.ConnectCluster body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new Kafka Connect cluster in a given project and location.</summary>
+                public class CreateRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.ConnectCluster body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent project/location in which to create the Kafka Connect cluster. Structured
+                    /// like `projects/{project}/locations/{location}/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for the Connect cluster, which will become the final component of the
+                    /// cluster's name. The ID must be 1-63 characters long, and match the regular expression
+                    /// `[a-z]([-a-z0-9]*[a-z0-9])?` to comply with RFC 1035. This value is structured like:
+                    /// `my-cluster-id`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("connectClusterId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ConnectClusterId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID to avoid
+                    /// duplication of requests. If a request times out or fails, retrying with the same ID allows the
+                    /// server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate
+                    /// requests bearing the same ID. For example, consider a situation where you make an initial
+                    /// request and the request times out. If you make the request again with the same request ID within
+                    /// 60 minutes of the last request, the server checks if an original operation with the same request
+                    /// ID was received. If so, the server ignores the second request. The request ID must be a valid
+                    /// UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ManagedKafka.v1.Data.ConnectCluster Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/connectClusters";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("connectClusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "connectClusterId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single Connect cluster.</summary>
+                /// <param name="name">
+                /// Required. The name of the Kafka Connect cluster to delete. Structured like
+                /// `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single Connect cluster.</summary>
+                public class DeleteRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Kafka Connect cluster to delete. Structured like
+                    /// `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID to avoid
+                    /// duplication of requests. If a request times out or fails, retrying with the same ID allows the
+                    /// server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate
+                    /// requests bearing the same ID. For example, consider a situation where you make an initial
+                    /// request and the request times out. If you make the request again with the same request ID within
+                    /// 60 minutes of the last request, the server checks if an original operation with the same request
+                    /// ID was received. If so, the server ignores the second request. The request ID must be a valid
+                    /// UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connectClusters/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Returns the properties of a single Kafka Connect cluster.</summary>
+                /// <param name="name">
+                /// Required. The name of the Kafka Connect cluster whose configuration to return. Structured like
+                /// `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Returns the properties of a single Kafka Connect cluster.</summary>
+                public class GetRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.ConnectCluster>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Kafka Connect cluster whose configuration to return. Structured like
+                    /// `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connectClusters/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists the Kafka Connect clusters in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent project/location whose Connect clusters are to be listed. Structured like
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists the Kafka Connect clusters in a given project and location.</summary>
+                public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.ListConnectClustersResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent project/location whose Connect clusters are to be listed. Structured like
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filter expression for the result.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Order by fields for the result.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of Connect clusters to return. The service may return fewer than
+                    /// this value. If unspecified, server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListConnectClusters` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListConnectClusters` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/connectClusters";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the properties of a single Kafka Connect cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The name of the Kafka Connect cluster. Structured like:
+                /// projects/{project_number}/locations/{location}/connectClusters/{connect_cluster_id}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.ManagedKafka.v1.Data.ConnectCluster body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the properties of a single Kafka Connect cluster.</summary>
+                public class PatchRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.ConnectCluster body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The name of the Kafka Connect cluster. Structured like:
+                    /// projects/{project_number}/locations/{location}/connectClusters/{connect_cluster_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID to avoid
+                    /// duplication of requests. If a request times out or fails, retrying with the same ID allows the
+                    /// server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate
+                    /// requests bearing the same ID. For example, consider a situation where you make an initial
+                    /// request and the request times out. If you make the request again with the same request ID within
+                    /// 60 minutes of the last request, the server checks if an original operation with the same request
+                    /// ID was received. If so, the server ignores the second request. The request ID must be a valid
+                    /// UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten in the cluster resource by
+                    /// the update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. The mask is required and a value of *
+                    /// will update all fields.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ManagedKafka.v1.Data.ConnectCluster Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connectClusters/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -1932,6 +2965,223 @@ namespace Google.Apis.ManagedKafka.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The configuration of access to the Kafka Connect cluster.</summary>
+    public class ConnectAccessConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka Connect
+        /// cluster. Minimum of 1 network is required. Maximum 10 networks can be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkConfigs")]
+        public virtual System.Collections.Generic.IList<ConnectNetworkConfig> NetworkConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An Apache Kafka Connect cluster deployed in a location.</summary>
+    public class ConnectCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Capacity configuration for the Kafka Connect cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityConfig")]
+        public virtual CapacityConfig CapacityConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Configurations for the worker that are overridden from the defaults. The key of the map is a Kafka
+        /// Connect worker property name, for example: `exactly.once.source.support`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Config { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the cluster was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpConfig")]
+        public virtual ConnectGcpConfig GcpConfig { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured
+        /// like: projects/{project}/locations/{location}/clusters/{cluster}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kafkaCluster")]
+        public virtual string KafkaCluster { get; set; }
+
+        /// <summary>Optional. Labels as key value pairs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the Kafka Connect cluster. Structured like:
+        /// projects/{project_number}/locations/{location}/connectClusters/{connect_cluster_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The current state of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when the cluster was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform.</summary>
+    public class ConnectGcpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Access configuration for the Kafka Connect cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessConfig")]
+        public virtual ConnectAccessConfig AccessConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Secrets to load into workers. Exact SecretVersions from Secret Manager must be provided -- aliases
+        /// are not supported. Up to 32 secrets may be loaded into one cluster. Format: projects//secrets//versions/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretPaths")]
+        public virtual System.Collections.Generic.IList<string> SecretPaths { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The configuration of a Virtual Private Cloud (VPC) network that can access the Kafka Connect cluster.
+    /// </summary>
+    public class ConnectNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Additional subnets may be specified. They may be in another region, but must be in the same VPC
+        /// network. The Connect workers can communicate with network endpoints in either the primary or additional
+        /// subnets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalSubnets")]
+        public virtual System.Collections.Generic.IList<string> AdditionalSubnets { get; set; }
+
+        /// <summary>
+        /// Optional. Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster.
+        /// When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster
+        /// to make it visible to the connector. For example:
+        /// my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsDomainNames")]
+        public virtual System.Collections.Generic.IList<string> DnsDomainNames { get; set; }
+
+        /// <summary>
+        /// Required. VPC subnet to make available to the Kafka Connect cluster. Structured like:
+        /// projects/{project}/regions/{region}/subnetworks/{subnet_id} It is used to create a Private Service Connect
+        /// (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect
+        /// cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as
+        /// specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primarySubnet")]
+        public virtual string PrimarySubnet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Kafka Connect connector in a given ConnectCluster.</summary>
+    public class Connector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Connector config as keys/values. The keys of the map are connector property names, for example:
+        /// `connector.class`, `tasks.max`, `key.converter`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Configs { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the connector. Structured like:
+        /// projects/{project}/locations/{location}/connectClusters/{connect_cluster}/connectors/{connector}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The current state of the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Optional. Restarts the individual tasks of a Connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskRestartPolicy")]
+        public virtual TaskRetryPolicy TaskRestartPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Kafka consumer group in a given cluster.</summary>
     public class ConsumerGroup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2029,6 +3279,46 @@ namespace Google.Apis.ManagedKafka.v1.Data
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ListConnectClusters.</summary>
+    public class ListConnectClustersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Connect clusters in the requested parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectClusters")]
+        public virtual System.Collections.Generic.IList<ConnectCluster> ConnectClusters { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted,
+        /// there are no more results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ListConnectors.</summary>
+    public class ListConnectorsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of connectors in the requested parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectors")]
+        public virtual System.Collections.Generic.IList<Connector> Connectors { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted,
+        /// there are no more results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2298,6 +3588,20 @@ namespace Google.Apis.ManagedKafka.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for PauseConnector.</summary>
+    public class PauseConnectorRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for PauseConnector.</summary>
+    public class PauseConnectorResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines rebalancing behavior of a Kafka cluster.</summary>
     public class RebalanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2307,6 +3611,34 @@ namespace Google.Apis.ManagedKafka.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for RestartConnector.</summary>
+    public class RestartConnectorRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for RestartConnector.</summary>
+    public class RestartConnectorResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for ResumeConnector.</summary>
+    public class ResumeConnectorRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ResumeConnector.</summary>
+    public class ResumeConnectorResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2335,6 +3667,46 @@ namespace Google.Apis.ManagedKafka.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for StopConnector.</summary>
+    public class StopConnectorRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for StopConnector.</summary>
+    public class StopConnectorResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Task Retry Policy is implemented on a best-effort basis. Retry delay will be exponential based on provided
+    /// minimum and maximum backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. Note that the delay between
+    /// consecutive task restarts may not always precisely match the configured settings. This can happen when the
+    /// ConnectCluster is in rebalancing state or if the ConnectCluster is unresponsive etc.
+    /// </summary>
+    public class TaskRetryPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the
+        /// backoff delay.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumBackoff")]
+        public virtual object MaximumBackoff { get; set; }
+
+        /// <summary>
+        /// Optional. The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the
+        /// backoff delay.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumBackoff")]
+        public virtual object MinimumBackoff { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
