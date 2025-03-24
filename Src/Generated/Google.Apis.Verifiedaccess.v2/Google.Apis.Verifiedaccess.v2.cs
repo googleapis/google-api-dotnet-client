@@ -576,8 +576,8 @@ namespace Google.Apis.Verifiedaccess.v2.Data
         public virtual System.Collections.Generic.IList<string> SystemDnsServers { get; set; }
 
         /// <summary>
-        /// Output only. Whether Chrome is blocking third-party software injection or not. This setting may be
-        /// controlled by an enterprise policy:
+        /// Output only. Deprecated. The corresponding policy is now deprecated. Whether Chrome is blocking third-party
+        /// software injection or not. This setting may be controlled by an enterprise policy:
         /// https://chromeenterprise.google/policies/?policy=ThirdPartyBlockingEnabled. Available on Windows only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyBlockingEnabled")]
