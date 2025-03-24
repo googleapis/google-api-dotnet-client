@@ -419,7 +419,7 @@ namespace Google.Apis.DataCatalog.v1
             /// `pubsub.topic.{PROJECT_ID}.`\``{TOPIC.ID.SEPARATED.WITH.DOTS}`\` *
             /// `bigquery.table.{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}` * `bigquery.dataset.{PROJECT_ID}.{DATASET_ID}` *
             /// `datacatalog.entry.{PROJECT_ID}.{LOCATION_ID}.{ENTRY_GROUP_ID}.{ENTRY_ID}` Identifiers (`*_ID`) should
-            /// comply with the [Lexical structure in Standard SQL]
+            /// comply with the [Lexical structure in GoogleSQL]
             /// (https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("sqlResource", Google.Apis.Util.RequestParameterType.Query)]
