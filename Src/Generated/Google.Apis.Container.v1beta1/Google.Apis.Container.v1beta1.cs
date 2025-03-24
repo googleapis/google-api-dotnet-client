@@ -6954,7 +6954,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
 
-        /// <summary>Enable or disable Kubelet read only port.</summary>
+        /// <summary>DEPRECATED. Use NodePoolAutoConfig.NodeKubeletConfig instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insecureKubeletReadonlyPortEnabled")]
         public virtual System.Nullable<bool> InsecureKubeletReadonlyPortEnabled { get; set; }
 
@@ -7527,7 +7527,7 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// The monitoring service the cluster should use to write metrics. Currently available options: *
-        /// "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource
+        /// `monitoring.googleapis.com/kubernetes` - The Cloud Monitoring service with a Kubernetes-native resource
         /// model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE
         /// 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty
         /// string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for
@@ -8021,7 +8021,7 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// The monitoring service the cluster should use to write metrics. Currently available options: *
-        /// "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource
+        /// `monitoring.googleapis.com/kubernetes` - The Cloud Monitoring service with a Kubernetes-native resource
         /// model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE
         /// 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty
         /// string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for
@@ -10034,8 +10034,9 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual ContainerdConfig ContainerdConfig { get; set; }
 
         /// <summary>
-        /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If
-        /// unspecified, the default disk size is 100GB.
+        /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        /// TODO(b/395671893) - Deprecate disk_size_gb and disk_type fields. If unspecified, the default disk size is
+        /// 100GB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<int> DiskSizeGb { get; set; }
@@ -11718,6 +11719,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("manualStepsRequired")]
         public virtual System.Nullable<bool> ManualStepsRequired { get; set; }
 
+        /// <summary>The GKE versions where this vulnerability is mitigated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mitigatedVersions")]
+        public virtual System.Collections.Generic.IList<string> MitigatedVersions { get; set; }
+
         /// <summary>The GKE versions where this vulnerability is patched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patchedVersions")]
         public virtual System.Collections.Generic.IList<string> PatchedVersions { get; set; }
@@ -12136,7 +12141,7 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Required. The monitoring service the cluster should use to write metrics. Currently available options: *
-        /// "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource
+        /// `monitoring.googleapis.com/kubernetes` - The Cloud Monitoring service with a Kubernetes-native resource
         /// model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE
         /// 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty
         /// string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for
@@ -13056,6 +13061,10 @@ namespace Google.Apis.Container.v1beta1.Data
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>The start type of the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startType")]
+        public virtual string StartType { get; set; }
+
         /// <summary>Output only. The state of the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -13520,11 +13529,11 @@ namespace Google.Apis.Container.v1beta1.Data
 
     /// <summary>
     /// Parameters that can be configured on Windows nodes. Windows Node Config that define the parameters that will be
-    /// used to configure the Windows node pool settings
+    /// used to configure the Windows node pool settings.
     /// </summary>
     public class WindowsNodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>OSVersion specifies the Windows node config to be used on the node</summary>
+        /// <summary>OSVersion specifies the Windows node config to be used on the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
         public virtual string OsVersion { get; set; }
 
