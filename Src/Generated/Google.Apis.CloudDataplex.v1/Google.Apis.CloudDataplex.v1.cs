@@ -16499,8 +16499,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1DataQualityDimension : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The dimension name a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY",
-        /// "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
+        /// Optional. The dimension name a rule belongs to. Custom dimension name is supported with all uppercase
+        /// letters and maximum length of 30 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -16516,7 +16516,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
         public virtual GoogleCloudDataplexV1DataQualityDimension Dimension { get; set; }
 
-        /// <summary>Whether the dimension passed or failed.</summary>
+        /// <summary>Output only. Whether the dimension passed or failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passed")]
         public virtual System.Nullable<bool> Passed { get; set; }
 
@@ -16542,13 +16542,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityColumnResult> Columns { get; set; }
 
         /// <summary>
-        /// A list of results at the dimension level.A dimension will have a corresponding DataQualityDimensionResult if
-        /// and only if there is at least one rule with the 'dimension' field set to it.
+        /// Output only. A list of results at the dimension level.A dimension will have a corresponding
+        /// DataQualityDimensionResult if and only if there is at least one rule with the 'dimension' field set to it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityDimensionResult> Dimensions { get; set; }
 
-        /// <summary>Overall data quality result -- true if all rules passed.</summary>
+        /// <summary>Output only. Overall data quality result -- true if all rules passed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passed")]
         public virtual System.Nullable<bool> Passed { get; set; }
 
@@ -16556,15 +16556,15 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postScanActionsResult")]
         public virtual GoogleCloudDataplexV1DataQualityResultPostScanActionsResult PostScanActionsResult { get; set; }
 
-        /// <summary>The count of rows processed.</summary>
+        /// <summary>Output only. The count of rows processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<long> RowCount { get; set; }
 
-        /// <summary>A list of all the rules in a job, and their results.</summary>
+        /// <summary>Output only. A list of all the rules in a job, and their results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityRuleResult> Rules { get; set; }
 
-        /// <summary>The data scanned for this result.</summary>
+        /// <summary>Output only. The data scanned for this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scannedData")]
         public virtual GoogleCloudDataplexV1ScannedData ScannedData { get; set; }
 
@@ -16760,39 +16760,43 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Nullable<long> AssertionRowCount { get; set; }
 
         /// <summary>
-        /// The number of rows a rule was evaluated against.This field is only valid for row-level type rules.Evaluated
-        /// count can be configured to either include all rows (default) - with null rows automatically failing rule
-        /// evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.This field is not
-        /// set for rule SqlAssertion.
+        /// Output only. The number of rows a rule was evaluated against.This field is only valid for row-level type
+        /// rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically
+        /// failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.This
+        /// field is not set for rule SqlAssertion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluatedCount")]
         public virtual System.Nullable<long> EvaluatedCount { get; set; }
 
         /// <summary>
-        /// The query to find rows that did not pass this rule.This field is only valid for row-level type rules.
+        /// Output only. The query to find rows that did not pass this rule.This field is only valid for row-level type
+        /// rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failingRowsQuery")]
         public virtual string FailingRowsQuery { get; set; }
 
-        /// <summary>The number of rows with null values in the specified column.</summary>
+        /// <summary>Output only. The number of rows with null values in the specified column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullCount")]
         public virtual System.Nullable<long> NullCount { get; set; }
 
         /// <summary>
-        /// The ratio of passed_count / evaluated_count.This field is only valid for row-level type rules.
+        /// Output only. The ratio of passed_count / evaluated_count.This field is only valid for row-level type rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passRatio")]
         public virtual System.Nullable<double> PassRatio { get; set; }
 
-        /// <summary>Whether the rule passed or failed.</summary>
+        /// <summary>Output only. Whether the rule passed or failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passed")]
         public virtual System.Nullable<bool> Passed { get; set; }
 
-        /// <summary>This field is not set for rule SqlAssertion.</summary>
+        /// <summary>
+        /// Output only. The number of rows which passed a rule evaluation.This field is only valid for row-level type
+        /// rules.This field is not set for rule SqlAssertion.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passedCount")]
         public virtual System.Nullable<long> PassedCount { get; set; }
 
-        /// <summary>The rule specified in the DataQualitySpec, as is.</summary>
+        /// <summary>Output only. The rule specified in the DataQualitySpec, as is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rule")]
         public virtual GoogleCloudDataplexV1DataQualityRule Rule { get; set; }
 
@@ -18604,6 +18608,25 @@ namespace Google.Apis.CloudDataplex.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+    }
+
+    /// <summary>Payload associated with Entry related log events.</summary>
+    public class GoogleCloudDataplexV1EntryLinkEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
+        /// <summary>The log message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Name of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
