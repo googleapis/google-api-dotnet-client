@@ -293,6 +293,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                CmekConfigs = new CmekConfigsResource(service);
                 Collections = new CollectionsResource(service);
                 DataStores = new DataStoresResource(service);
                 Evaluations = new EvaluationsResource(service);
@@ -303,6 +304,265 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                 RankingConfigs = new RankingConfigsResource(service);
                 SampleQuerySets = new SampleQuerySetsResource(service);
                 UserEvents = new UserEventsResource(service);
+            }
+
+            /// <summary>Gets the CmekConfigs resource.</summary>
+            public virtual CmekConfigsResource CmekConfigs { get; }
+
+            /// <summary>The "cmekConfigs" collection of methods.</summary>
+            public class CmekConfigsResource
+            {
+                private const string Resource = "cmekConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CmekConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>De-provisions a CmekConfig.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the CmekConfig to delete, such as
+                /// `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>De-provisions a CmekConfig.</summary>
+                public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the CmekConfig to delete, such as
+                    /// `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/cmekConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets the CmekConfig.</summary>
+                /// <param name="name">
+                /// Required. Resource name of CmekConfig, such as `projects/*/locations/*/cmekConfig` or
+                /// `projects/*/locations/*/cmekConfigs/*`. If the caller does not have permission to access the
+                /// CmekConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets the CmekConfig.</summary>
+                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaCmekConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of CmekConfig, such as `projects/*/locations/*/cmekConfig` or
+                    /// `projects/*/locations/*/cmekConfigs/*`. If the caller does not have permission to access the
+                    /// CmekConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/cmekConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all the CmekConfigs with the project.</summary>
+                /// <param name="parent">
+                /// Required. The parent location resource name, such as `projects/{project}/locations/{location}`. If
+                /// the caller does not have permission to list CmekConfigs under this location, regardless of whether
+                /// or not a CmekConfig exists, a PERMISSION_DENIED error is returned.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all the CmekConfigs with the project.</summary>
+                public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaListCmekConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent location resource name, such as `projects/{project}/locations/{location}`.
+                    /// If the caller does not have permission to list CmekConfigs under this location, regardless of
+                    /// whether or not a CmekConfig exists, a PERMISSION_DENIED error is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/cmekConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Provisions a CMEK key for use in a location of a customer's project. This method will also conduct
+                /// location validation on the provided cmekConfig to make sure the key is valid and can be used in the
+                /// selected location.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the CmekConfig of the form
+                /// `projects/{project}/locations/{location}/cmekConfig` or
+                /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaCmekConfig body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Provisions a CMEK key for use in a location of a customer's project. This method will also conduct
+                /// location validation on the provided cmekConfig to make sure the key is valid and can be used in the
+                /// selected location.
+                /// </summary>
+                public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaCmekConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the CmekConfig of the form
+                    /// `projects/{project}/locations/{location}/cmekConfig` or
+                    /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Set the following CmekConfig as the default to be used for child resources if one is not
+                    /// specified.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("setDefault", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> SetDefault { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaCmekConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/cmekConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("setDefault", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "setDefault",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Collections resource.</summary>
@@ -17978,6 +18238,59 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                 }
             }
 
+            /// <summary>Gets the CmekConfig.</summary>
+            /// <param name="name">
+            /// Required. Resource name of CmekConfig, such as `projects/*/locations/*/cmekConfig` or
+            /// `projects/*/locations/*/cmekConfigs/*`. If the caller does not have permission to access the CmekConfig,
+            /// regardless of whether or not it exists, a PERMISSION_DENIED error is returned.
+            /// </param>
+            public virtual GetCmekConfigRequest GetCmekConfig(string name)
+            {
+                return new GetCmekConfigRequest(this.service, name);
+            }
+
+            /// <summary>Gets the CmekConfig.</summary>
+            public class GetCmekConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaCmekConfig>
+            {
+                /// <summary>Constructs a new GetCmekConfig request.</summary>
+                public GetCmekConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of CmekConfig, such as `projects/*/locations/*/cmekConfig` or
+                /// `projects/*/locations/*/cmekConfigs/*`. If the caller does not have permission to access the
+                /// CmekConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getCmekConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}";
+
+                /// <summary>Initializes GetCmekConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/cmekConfig$",
+                    });
+                }
+            }
+
             /// <summary>
             /// Obtains the time series data of organic or dedicated crawl rate for monitoring. When dedicated crawl
             /// rate is not set, it will return vertex AI's organic crawl rate time series. Organic crawl means Google
@@ -18179,6 +18492,88 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Provisions a CMEK key for use in a location of a customer's project. This method will also conduct
+            /// location validation on the provided cmekConfig to make sure the key is valid and can be used in the
+            /// selected location.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the CmekConfig of the form `projects/{project}/locations/{location}/cmekConfig` or
+            /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+            /// </param>
+            public virtual UpdateCmekConfigRequest UpdateCmekConfig(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaCmekConfig body, string name)
+            {
+                return new UpdateCmekConfigRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Provisions a CMEK key for use in a location of a customer's project. This method will also conduct
+            /// location validation on the provided cmekConfig to make sure the key is valid and can be used in the
+            /// selected location.
+            /// </summary>
+            public class UpdateCmekConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new UpdateCmekConfig request.</summary>
+                public UpdateCmekConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaCmekConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the CmekConfig of the form
+                /// `projects/{project}/locations/{location}/cmekConfig` or
+                /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Set the following CmekConfig as the default to be used for child resources if one is not specified.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("setDefault", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> SetDefault { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaCmekConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateCmekConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}";
+
+                /// <summary>Initializes UpdateCmekConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/cmekConfig$",
+                    });
+                    RequestParameters.Add("setDefault", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "setDefault",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -19956,6 +20351,16 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1DataStore : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Immutable. Whether data in the DataStore has ACL information. If set to `true`, the source data must have
+        /// ACL. ACL will be ingested when data is ingested by DocumentService.ImportDocuments methods. When ACL is
+        /// enabled for the DataStore, Document can't be accessed by calling DocumentService.GetDocument or
+        /// DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC` industry vertical with
+        /// non-`PUBLIC_WEBSITE` content config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclEnabled")]
+        public virtual System.Nullable<bool> AclEnabled { get; set; }
+
         /// <summary>Optional. Configuration for advanced site search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advancedSiteSearchConfig")]
         public virtual GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig AdvancedSiteSearchConfig { get; set; }
@@ -23690,6 +24095,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isActionConfigured")]
         public virtual System.Nullable<bool> IsActionConfigured { get; set; }
+
+        /// <summary>
+        /// Optional. The Service Directory resource name (projects/*/locations/*/namespaces/*/services/*) representing
+        /// a VPC network endpoint used to connect to the data source's `instance_uri`, defined in DataConnector.params.
+        /// Required when VPC Service Controls are enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30199,9 +30612,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec CustomFineTuningSpec { get; set; }
 
         /// <summary>
-        /// Specifications that define the specific [DataStore]s to be searched, along with configurations for those
-        /// data stores. This is only considered for Engines with multiple data stores. For engines with a single data
-        /// store, the specs directly under SearchRequest should be used.
+        /// Specifications that define the specific DataStores to be searched, along with configurations for those data
+        /// stores. This is only considered for Engines with multiple data stores. For engines with a single data store,
+        /// the specs directly under SearchRequest should be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
@@ -30336,21 +30749,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// The ranking expression controls the customized ranking on retrieval documents. This overrides
         /// ServingConfig.ranking_expression. The syntax and supported features depend on the ranking_expression_backend
-        /// value. If ranking_expression_backend is not provided, it defaults to BYOE. === BYOE === If ranking
-        /// expression is not provided or set to BYOE, it should be a single function or multiple functions that are
-        /// joined by "+". * ranking_expression = function, { " + ", function }; Supported functions: * double *
-        /// relevance_score * double * dotProduct(embedding_field_path) Function variables: * `relevance_score`:
-        /// pre-defined keywords, used for measure relevance between query and document. * `embedding_field_path`: the
-        /// document embedding field used with query embedding vector. * `dotProduct`: embedding function between
-        /// embedding_field_path and query embedding vector. Example ranking expression: If document has an embedding
-        /// field doc_embedding, the ranking expression could be `0.5 * relevance_score + 0.3 *
-        /// dotProduct(doc_embedding)`. === CLEARBOX === If ranking expression is set to CLEARBOX, the following
-        /// expression types (and combinations of those chained using + or * operators) are supported: * double * signal
-        /// * log(signal) * exp(signal) * rr(signal, double &amp;gt; 0) -- reciprocal rank transformation with second
-        /// argument being a denominator constant. * is_nan(signal) -- returns 0 if signal is NaN, 1 otherwise. *
-        /// fill_nan(signal1, signal2 | double) -- if signal1 is NaN, returns signal2 | double, else returns signal1.
-        /// Examples: * 0.2 * gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0)) + 0.3 *
-        /// is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32) The following signals are
+        /// value. If ranking_expression_backend is not provided, it defaults to BYOE. === BYOE === If
+        /// ranking_expression_backend is not provided or set to `BYOE`, it should be a single function or multiple
+        /// functions that are joined by "+". * ranking_expression = function, { " + ", function }; Supported functions:
+        /// * double * relevance_score * double * dotProduct(embedding_field_path) Function variables: *
+        /// `relevance_score`: pre-defined keywords, used for measure relevance between query and document. *
+        /// `embedding_field_path`: the document embedding field used with query embedding vector. * `dotProduct`:
+        /// embedding function between embedding_field_path and query embedding vector. Example ranking expression: If
+        /// document has an embedding field doc_embedding, the ranking expression could be `0.5 * relevance_score + 0.3
+        /// * dotProduct(doc_embedding)`. === CLEARBOX === If ranking_expression_backend is set to `CLEARBOX`, the
+        /// following expression types (and combinations of those chained using + or * operators) are supported: *
+        /// double * signal * log(signal) * exp(signal) * rr(signal, double &amp;gt; 0) -- reciprocal rank
+        /// transformation with second argument being a denominator constant. * is_nan(signal) -- returns 0 if signal is
+        /// NaN, 1 otherwise. * fill_nan(signal1, signal2 | double) -- if signal1 is NaN, returns signal2 | double, else
+        /// returns signal1. Examples: * 0.2 * gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0))
+        /// + 0.3 * is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32) The following signals are
         /// supported: * gecko_score -- semantic similarity adjustment * bm25_score -- keyword match adjustment *
         /// jetstream_score -- semantic relevance adjustment * pctr_rank -- predicted conversion rate adjustment as a
         /// rank * freshness_rank -- freshness adjustment as a rank * base_rank -- the default rank of the result
@@ -30467,9 +30880,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Condition boost specifications. If a document matches multiple conditions in the specifictions, boost scores
-        /// from these specifications are all applied and combined in a non-linear way. Maximum number of specifications
-        /// is 20.
+        /// Condition boost specifications. If a document matches multiple conditions in the specifications, boost
+        /// scores from these specifications are all applied and combined in a non-linear way. Maximum number of
+        /// specifications is 20.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionBoostSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpec> ConditionBoostSpecs { get; set; }
@@ -32360,7 +32773,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Condition boost specifications. If a suggestion matches multiple conditions in the specifictions, boost
+        /// Condition boost specifications. If a suggestion matches multiple conditions in the specifications, boost
         /// values from these specifications are all applied and combined in a non-linear way. Maximum number of
         /// specifications is 20. Note: Currently only support language condition boost.
         /// </summary>
@@ -35886,6 +36299,16 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1betaDataStore : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Immutable. Whether data in the DataStore has ACL information. If set to `true`, the source data must have
+        /// ACL. ACL will be ingested when data is ingested by DocumentService.ImportDocuments methods. When ACL is
+        /// enabled for the DataStore, Document can't be accessed by calling DocumentService.GetDocument or
+        /// DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC` industry vertical with
+        /// non-`PUBLIC_WEBSITE` content config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclEnabled")]
+        public virtual System.Nullable<bool> AclEnabled { get; set; }
+
         /// <summary>Optional. Configuration for advanced site search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advancedSiteSearchConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig AdvancedSiteSearchConfig { get; set; }
@@ -38933,6 +39356,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for CmekConfigService.ListCmekConfigs method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaListCmekConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All the customer's CmekConfigs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaCmekConfig> CmekConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for ListControls method.</summary>
     public class GoogleCloudDiscoveryengineV1betaListControlsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -40897,9 +41331,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec ContentSearchSpec { get; set; }
 
         /// <summary>
-        /// Specifications that define the specific [DataStore]s to be searched, along with configurations for those
-        /// data stores. This is only considered for Engines with multiple data stores. For engines with a single data
-        /// store, the specs directly under SearchRequest should be used.
+        /// Specifications that define the specific DataStores to be searched, along with configurations for those data
+        /// stores. This is only considered for Engines with multiple data stores. For engines with a single data store,
+        /// the specs directly under SearchRequest should be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
@@ -41034,21 +41468,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// The ranking expression controls the customized ranking on retrieval documents. This overrides
         /// ServingConfig.ranking_expression. The syntax and supported features depend on the ranking_expression_backend
-        /// value. If ranking_expression_backend is not provided, it defaults to BYOE. === BYOE === If ranking
-        /// expression is not provided or set to BYOE, it should be a single function or multiple functions that are
-        /// joined by "+". * ranking_expression = function, { " + ", function }; Supported functions: * double *
-        /// relevance_score * double * dotProduct(embedding_field_path) Function variables: * `relevance_score`:
-        /// pre-defined keywords, used for measure relevance between query and document. * `embedding_field_path`: the
-        /// document embedding field used with query embedding vector. * `dotProduct`: embedding function between
-        /// embedding_field_path and query embedding vector. Example ranking expression: If document has an embedding
-        /// field doc_embedding, the ranking expression could be `0.5 * relevance_score + 0.3 *
-        /// dotProduct(doc_embedding)`. === CLEARBOX === If ranking expression is set to CLEARBOX, the following
-        /// expression types (and combinations of those chained using + or * operators) are supported: * double * signal
-        /// * log(signal) * exp(signal) * rr(signal, double &amp;gt; 0) -- reciprocal rank transformation with second
-        /// argument being a denominator constant. * is_nan(signal) -- returns 0 if signal is NaN, 1 otherwise. *
-        /// fill_nan(signal1, signal2 | double) -- if signal1 is NaN, returns signal2 | double, else returns signal1.
-        /// Examples: * 0.2 * gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0)) + 0.3 *
-        /// is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32) The following signals are
+        /// value. If ranking_expression_backend is not provided, it defaults to BYOE. === BYOE === If
+        /// ranking_expression_backend is not provided or set to `BYOE`, it should be a single function or multiple
+        /// functions that are joined by "+". * ranking_expression = function, { " + ", function }; Supported functions:
+        /// * double * relevance_score * double * dotProduct(embedding_field_path) Function variables: *
+        /// `relevance_score`: pre-defined keywords, used for measure relevance between query and document. *
+        /// `embedding_field_path`: the document embedding field used with query embedding vector. * `dotProduct`:
+        /// embedding function between embedding_field_path and query embedding vector. Example ranking expression: If
+        /// document has an embedding field doc_embedding, the ranking expression could be `0.5 * relevance_score + 0.3
+        /// * dotProduct(doc_embedding)`. === CLEARBOX === If ranking_expression_backend is set to `CLEARBOX`, the
+        /// following expression types (and combinations of those chained using + or * operators) are supported: *
+        /// double * signal * log(signal) * exp(signal) * rr(signal, double &amp;gt; 0) -- reciprocal rank
+        /// transformation with second argument being a denominator constant. * is_nan(signal) -- returns 0 if signal is
+        /// NaN, 1 otherwise. * fill_nan(signal1, signal2 | double) -- if signal1 is NaN, returns signal2 | double, else
+        /// returns signal1. Examples: * 0.2 * gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0))
+        /// + 0.3 * is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32) The following signals are
         /// supported: * gecko_score -- semantic similarity adjustment * bm25_score -- keyword match adjustment *
         /// jetstream_score -- semantic relevance adjustment * pctr_rank -- predicted conversion rate adjustment as a
         /// rank * freshness_rank -- freshness adjustment as a rank * base_rank -- the default rank of the result
@@ -41165,9 +41599,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Condition boost specifications. If a document matches multiple conditions in the specifictions, boost scores
-        /// from these specifications are all applied and combined in a non-linear way. Maximum number of specifications
-        /// is 20.
+        /// Condition boost specifications. If a document matches multiple conditions in the specifications, boost
+        /// scores from these specifications are all applied and combined in a non-linear way. Maximum number of
+        /// specifications is 20.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionBoostSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec> ConditionBoostSpecs { get; set; }
