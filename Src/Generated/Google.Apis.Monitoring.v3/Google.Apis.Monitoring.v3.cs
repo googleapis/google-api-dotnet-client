@@ -11728,6 +11728,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentMatchers")]
         public virtual System.Collections.Generic.IList<ContentMatcher> ContentMatchers { get; set; }
 
+        /// <summary>Whether the check is disabled or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
         /// <summary>
         /// A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud
         /// Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
