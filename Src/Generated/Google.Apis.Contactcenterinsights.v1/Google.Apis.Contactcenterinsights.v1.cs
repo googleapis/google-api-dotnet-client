@@ -6575,6 +6575,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
+        /// <summary>A sheets document destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sheetsDestination")]
+        public virtual GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination SheetsDestination { get; set; }
+
         /// <summary>
         /// Optional. If set, a template for labeling conversations and scorecard questions will be created from the
         /// conversation_filter and the questions under the scorecard(s). The feedback label `filter` will be ignored.
@@ -6624,6 +6628,25 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Google Sheets document details to write the feedback labels to.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The title of the new sheet to write the feedback labels to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sheetTitle")]
+        public virtual string SheetTitle { get; set; }
+
+        /// <summary>
+        /// Required. The Google Sheets document to write the feedback labels to. Retrieved from Google Sheets URI. E.g.
+        /// `https://docs.google.com/spreadsheets/d/1234567890` The spreadsheet must be shared with the Insights P4SA.
+        /// The spreadsheet ID written to will be returned as `file_names` in the BulkDownloadFeedbackLabelsMetadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetUri")]
+        public virtual string SpreadsheetUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for the BulkDownloadFeedbackLabel endpoint.</summary>
     public class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6637,6 +6660,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>A cloud storage bucket source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource GcsSource { get; set; }
+
+        /// <summary>A sheets document source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sheetsSource")]
+        public virtual GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource SheetsSource { get; set; }
 
         /// <summary>
         /// Optional. If set, upload will not happen and the labels will be validated. If not set, then default behavior
@@ -6661,6 +6688,20 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectUri")]
         public virtual string ObjectUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Sheets document details to get the feedback label file from.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Google Sheets document to write the feedback labels to. Retrieved from Google Sheets URI. E.g.
+        /// `https://docs.google.com/spreadsheets/d/1234567890` The spreadsheet must be shared with the Insights P4SA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetUri")]
+        public virtual string SpreadsheetUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10810,6 +10851,24 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The data points that make up the time series .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataPoints")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint> DataPoints { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for querying performance overview.</summary>
+    public class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for querying performance overview.</summary>
+    public class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The summary text of the performance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryText")]
+        public virtual string SummaryText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15484,6 +15543,24 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The data points that make up the time series .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataPoints")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint> DataPoints { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for querying performance overview.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for querying performance overview.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The summary text of the performance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryText")]
+        public virtual string SummaryText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
