@@ -3854,7 +3854,8 @@ namespace Google.Apis.Backupdr.v1
 
                     /// <summary>
                     /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
+                    /// server will use 100 as default. Maximum value is 500 and values above 500 will be coerced to
+                    /// 500.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
