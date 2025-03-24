@@ -23599,6 +23599,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1DataStore : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Immutable. Whether data in the DataStore has ACL information. If set to `true`, the source data must have
+        /// ACL. ACL will be ingested when data is ingested by DocumentService.ImportDocuments methods. When ACL is
+        /// enabled for the DataStore, Document can't be accessed by calling DocumentService.GetDocument or
+        /// DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC` industry vertical with
+        /// non-`PUBLIC_WEBSITE` content config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclEnabled")]
+        public virtual System.Nullable<bool> AclEnabled { get; set; }
+
         /// <summary>Optional. Configuration for advanced site search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advancedSiteSearchConfig")]
         public virtual GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig AdvancedSiteSearchConfig { get; set; }
@@ -27334,6 +27344,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isActionConfigured")]
         public virtual System.Nullable<bool> IsActionConfigured { get; set; }
 
+        /// <summary>
+        /// Optional. The Service Directory resource name (projects/*/locations/*/namespaces/*/services/*) representing
+        /// a VPC network endpoint used to connect to the data source's `instance_uri`, defined in DataConnector.params.
+        /// Required when VPC Service Controls are enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -27412,7 +27430,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Condition boost specifications. If a suggestion matches multiple conditions in the specifictions, boost
+        /// Condition boost specifications. If a suggestion matches multiple conditions in the specifications, boost
         /// values from these specifications are all applied and combined in a non-linear way. Maximum number of
         /// specifications is 20. Note: Currently only support language condition boost.
         /// </summary>
@@ -38453,9 +38471,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec CustomFineTuningSpec { get; set; }
 
         /// <summary>
-        /// Specifications that define the specific [DataStore]s to be searched, along with configurations for those
-        /// data stores. This is only considered for Engines with multiple data stores. For engines with a single data
-        /// store, the specs directly under SearchRequest should be used.
+        /// Specifications that define the specific DataStores to be searched, along with configurations for those data
+        /// stores. This is only considered for Engines with multiple data stores. For engines with a single data store,
+        /// the specs directly under SearchRequest should be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
@@ -38590,21 +38608,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// The ranking expression controls the customized ranking on retrieval documents. This overrides
         /// ServingConfig.ranking_expression. The syntax and supported features depend on the ranking_expression_backend
-        /// value. If ranking_expression_backend is not provided, it defaults to BYOE. === BYOE === If ranking
-        /// expression is not provided or set to BYOE, it should be a single function or multiple functions that are
-        /// joined by "+". * ranking_expression = function, { " + ", function }; Supported functions: * double *
-        /// relevance_score * double * dotProduct(embedding_field_path) Function variables: * `relevance_score`:
-        /// pre-defined keywords, used for measure relevance between query and document. * `embedding_field_path`: the
-        /// document embedding field used with query embedding vector. * `dotProduct`: embedding function between
-        /// embedding_field_path and query embedding vector. Example ranking expression: If document has an embedding
-        /// field doc_embedding, the ranking expression could be `0.5 * relevance_score + 0.3 *
-        /// dotProduct(doc_embedding)`. === CLEARBOX === If ranking expression is set to CLEARBOX, the following
-        /// expression types (and combinations of those chained using + or * operators) are supported: * double * signal
-        /// * log(signal) * exp(signal) * rr(signal, double &amp;gt; 0) -- reciprocal rank transformation with second
-        /// argument being a denominator constant. * is_nan(signal) -- returns 0 if signal is NaN, 1 otherwise. *
-        /// fill_nan(signal1, signal2 | double) -- if signal1 is NaN, returns signal2 | double, else returns signal1.
-        /// Examples: * 0.2 * gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0)) + 0.3 *
-        /// is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32) The following signals are
+        /// value. If ranking_expression_backend is not provided, it defaults to BYOE. === BYOE === If
+        /// ranking_expression_backend is not provided or set to `BYOE`, it should be a single function or multiple
+        /// functions that are joined by "+". * ranking_expression = function, { " + ", function }; Supported functions:
+        /// * double * relevance_score * double * dotProduct(embedding_field_path) Function variables: *
+        /// `relevance_score`: pre-defined keywords, used for measure relevance between query and document. *
+        /// `embedding_field_path`: the document embedding field used with query embedding vector. * `dotProduct`:
+        /// embedding function between embedding_field_path and query embedding vector. Example ranking expression: If
+        /// document has an embedding field doc_embedding, the ranking expression could be `0.5 * relevance_score + 0.3
+        /// * dotProduct(doc_embedding)`. === CLEARBOX === If ranking_expression_backend is set to `CLEARBOX`, the
+        /// following expression types (and combinations of those chained using + or * operators) are supported: *
+        /// double * signal * log(signal) * exp(signal) * rr(signal, double &amp;gt; 0) -- reciprocal rank
+        /// transformation with second argument being a denominator constant. * is_nan(signal) -- returns 0 if signal is
+        /// NaN, 1 otherwise. * fill_nan(signal1, signal2 | double) -- if signal1 is NaN, returns signal2 | double, else
+        /// returns signal1. Examples: * 0.2 * gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0))
+        /// + 0.3 * is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32) The following signals are
         /// supported: * gecko_score -- semantic similarity adjustment * bm25_score -- keyword match adjustment *
         /// jetstream_score -- semantic relevance adjustment * pctr_rank -- predicted conversion rate adjustment as a
         /// rank * freshness_rank -- freshness adjustment as a rank * base_rank -- the default rank of the result
@@ -38721,9 +38739,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Condition boost specifications. If a document matches multiple conditions in the specifictions, boost scores
-        /// from these specifications are all applied and combined in a non-linear way. Maximum number of specifications
-        /// is 20.
+        /// Condition boost specifications. If a document matches multiple conditions in the specifications, boost
+        /// scores from these specifications are all applied and combined in a non-linear way. Maximum number of
+        /// specifications is 20.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionBoostSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpec> ConditionBoostSpecs { get; set; }
@@ -43705,6 +43723,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1betaDataStore : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Immutable. Whether data in the DataStore has ACL information. If set to `true`, the source data must have
+        /// ACL. ACL will be ingested when data is ingested by DocumentService.ImportDocuments methods. When ACL is
+        /// enabled for the DataStore, Document can't be accessed by calling DocumentService.GetDocument or
+        /// DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC` industry vertical with
+        /// non-`PUBLIC_WEBSITE` content config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclEnabled")]
+        public virtual System.Nullable<bool> AclEnabled { get; set; }
+
         /// <summary>Optional. Configuration for advanced site search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advancedSiteSearchConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig AdvancedSiteSearchConfig { get; set; }
@@ -46704,9 +46732,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec ContentSearchSpec { get; set; }
 
         /// <summary>
-        /// Specifications that define the specific [DataStore]s to be searched, along with configurations for those
-        /// data stores. This is only considered for Engines with multiple data stores. For engines with a single data
-        /// store, the specs directly under SearchRequest should be used.
+        /// Specifications that define the specific DataStores to be searched, along with configurations for those data
+        /// stores. This is only considered for Engines with multiple data stores. For engines with a single data store,
+        /// the specs directly under SearchRequest should be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
@@ -46841,21 +46869,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// The ranking expression controls the customized ranking on retrieval documents. This overrides
         /// ServingConfig.ranking_expression. The syntax and supported features depend on the ranking_expression_backend
-        /// value. If ranking_expression_backend is not provided, it defaults to BYOE. === BYOE === If ranking
-        /// expression is not provided or set to BYOE, it should be a single function or multiple functions that are
-        /// joined by "+". * ranking_expression = function, { " + ", function }; Supported functions: * double *
-        /// relevance_score * double * dotProduct(embedding_field_path) Function variables: * `relevance_score`:
-        /// pre-defined keywords, used for measure relevance between query and document. * `embedding_field_path`: the
-        /// document embedding field used with query embedding vector. * `dotProduct`: embedding function between
-        /// embedding_field_path and query embedding vector. Example ranking expression: If document has an embedding
-        /// field doc_embedding, the ranking expression could be `0.5 * relevance_score + 0.3 *
-        /// dotProduct(doc_embedding)`. === CLEARBOX === If ranking expression is set to CLEARBOX, the following
-        /// expression types (and combinations of those chained using + or * operators) are supported: * double * signal
-        /// * log(signal) * exp(signal) * rr(signal, double &amp;gt; 0) -- reciprocal rank transformation with second
-        /// argument being a denominator constant. * is_nan(signal) -- returns 0 if signal is NaN, 1 otherwise. *
-        /// fill_nan(signal1, signal2 | double) -- if signal1 is NaN, returns signal2 | double, else returns signal1.
-        /// Examples: * 0.2 * gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0)) + 0.3 *
-        /// is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32) The following signals are
+        /// value. If ranking_expression_backend is not provided, it defaults to BYOE. === BYOE === If
+        /// ranking_expression_backend is not provided or set to `BYOE`, it should be a single function or multiple
+        /// functions that are joined by "+". * ranking_expression = function, { " + ", function }; Supported functions:
+        /// * double * relevance_score * double * dotProduct(embedding_field_path) Function variables: *
+        /// `relevance_score`: pre-defined keywords, used for measure relevance between query and document. *
+        /// `embedding_field_path`: the document embedding field used with query embedding vector. * `dotProduct`:
+        /// embedding function between embedding_field_path and query embedding vector. Example ranking expression: If
+        /// document has an embedding field doc_embedding, the ranking expression could be `0.5 * relevance_score + 0.3
+        /// * dotProduct(doc_embedding)`. === CLEARBOX === If ranking_expression_backend is set to `CLEARBOX`, the
+        /// following expression types (and combinations of those chained using + or * operators) are supported: *
+        /// double * signal * log(signal) * exp(signal) * rr(signal, double &amp;gt; 0) -- reciprocal rank
+        /// transformation with second argument being a denominator constant. * is_nan(signal) -- returns 0 if signal is
+        /// NaN, 1 otherwise. * fill_nan(signal1, signal2 | double) -- if signal1 is NaN, returns signal2 | double, else
+        /// returns signal1. Examples: * 0.2 * gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0))
+        /// + 0.3 * is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32) The following signals are
         /// supported: * gecko_score -- semantic similarity adjustment * bm25_score -- keyword match adjustment *
         /// jetstream_score -- semantic relevance adjustment * pctr_rank -- predicted conversion rate adjustment as a
         /// rank * freshness_rank -- freshness adjustment as a rank * base_rank -- the default rank of the result
@@ -46972,9 +47000,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Condition boost specifications. If a document matches multiple conditions in the specifictions, boost scores
-        /// from these specifications are all applied and combined in a non-linear way. Maximum number of specifications
-        /// is 20.
+        /// Condition boost specifications. If a document matches multiple conditions in the specifications, boost
+        /// scores from these specifications are all applied and combined in a non-linear way. Maximum number of
+        /// specifications is 20.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionBoostSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec> ConditionBoostSpecs { get; set; }
