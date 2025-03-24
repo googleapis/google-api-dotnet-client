@@ -6825,7 +6825,7 @@ namespace Google.Apis.NetAppFiles.v1.Data
     {
         /// <summary>
         /// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be
-        /// range from 7-183. Default is 31.
+        /// range from 2-183. Default is 31.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coolingThresholdDays")]
         public virtual System.Nullable<int> CoolingThresholdDays { get; set; }
