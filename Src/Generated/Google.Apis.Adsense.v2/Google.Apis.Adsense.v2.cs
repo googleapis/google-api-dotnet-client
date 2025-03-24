@@ -2922,7 +2922,7 @@ namespace Google.Apis.Adsense.v2
 
                     /// <summary>
                     /// Impressions. An impression is counted for each ad request where at least one ad has been
-                    /// downloaded to the user’s device and has begun to load. It is the number of ad units (for content
+                    /// downloaded to the user's device and has begun to load. It is the number of ad units (for content
                     /// ads) or search queries (for search ads) that showed ads.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TOTAL_IMPRESSIONS")]
@@ -2930,7 +2930,7 @@ namespace Google.Apis.Adsense.v2
 
                     /// <summary>
                     /// Impressions. An impression is counted for each ad request where at least one ad has been
-                    /// downloaded to the user’s device and has begun to load. It is the number of ad units (for content
+                    /// downloaded to the user's device and has begun to load. It is the number of ad units (for content
                     /// ads) or search queries (for search ads) that showed ads.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("IMPRESSIONS")]
@@ -3079,7 +3079,12 @@ namespace Google.Apis.Adsense.v2
                     [Google.Apis.Util.StringValueAttribute("TOTAL_EARNINGS")]
                     TOTALEARNINGS = 31,
 
-                    /// <summary>Number of results pages.</summary>
+                    /// <summary>
+                    /// Number of results pages. This metric can only be used when generating a report in the Google
+                    /// timezone, not the account timezone. Since the account timezone is the default for report
+                    /// generation, this metric can only be used by explicitly specifying
+                    /// `reportingTimeZone=GOOGLE_TIME_ZONE`.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("WEBSEARCH_RESULT_PAGES")]
                     WEBSEARCHRESULTPAGES = 32,
 
@@ -3759,7 +3764,7 @@ namespace Google.Apis.Adsense.v2
 
                     /// <summary>
                     /// Impressions. An impression is counted for each ad request where at least one ad has been
-                    /// downloaded to the user’s device and has begun to load. It is the number of ad units (for content
+                    /// downloaded to the user's device and has begun to load. It is the number of ad units (for content
                     /// ads) or search queries (for search ads) that showed ads.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TOTAL_IMPRESSIONS")]
@@ -3767,7 +3772,7 @@ namespace Google.Apis.Adsense.v2
 
                     /// <summary>
                     /// Impressions. An impression is counted for each ad request where at least one ad has been
-                    /// downloaded to the user’s device and has begun to load. It is the number of ad units (for content
+                    /// downloaded to the user's device and has begun to load. It is the number of ad units (for content
                     /// ads) or search queries (for search ads) that showed ads.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("IMPRESSIONS")]
@@ -3916,7 +3921,12 @@ namespace Google.Apis.Adsense.v2
                     [Google.Apis.Util.StringValueAttribute("TOTAL_EARNINGS")]
                     TOTALEARNINGS = 31,
 
-                    /// <summary>Number of results pages.</summary>
+                    /// <summary>
+                    /// Number of results pages. This metric can only be used when generating a report in the Google
+                    /// timezone, not the account timezone. Since the account timezone is the default for report
+                    /// generation, this metric can only be used by explicitly specifying
+                    /// `reportingTimeZone=GOOGLE_TIME_ZONE`.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("WEBSEARCH_RESULT_PAGES")]
                     WEBSEARCHRESULTPAGES = 32,
 
