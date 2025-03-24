@@ -48,7 +48,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.AdvertisersResource+AdGroupsResource+TargetingTypesResource+AssignedTargetingOptionsResource+ListRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -99,7 +100,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.AdvertisersResource+AssetsResource+UploadMediaUpload.AltEnum": [
     "json",
@@ -159,7 +161,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.AdvertisersResource+CampaignsResource+TargetingTypesResource+AssignedTargetingOptionsResource+ListRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -210,7 +213,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.AdvertisersResource+InsertionOrdersResource+TargetingTypesResource+AssignedTargetingOptionsResource+CreateRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -261,7 +265,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.AdvertisersResource+InsertionOrdersResource+TargetingTypesResource+AssignedTargetingOptionsResource+DeleteRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -312,7 +317,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.AdvertisersResource+InsertionOrdersResource+TargetingTypesResource+AssignedTargetingOptionsResource+GetRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -363,7 +369,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.AdvertisersResource+InsertionOrdersResource+TargetingTypesResource+AssignedTargetingOptionsResource+ListRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -414,7 +421,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.AdvertisersResource+InvoicesResource+ListRequest.LoiSapinInvoiceTypeEnum": [
     "LOI_SAPIN_INVOICE_TYPE_UNSPECIFIED",
@@ -470,7 +478,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.AdvertisersResource+LineItemsResource+TargetingTypesResource+AssignedTargetingOptionsResource+DeleteRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -521,7 +530,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.AdvertisersResource+LineItemsResource+TargetingTypesResource+AssignedTargetingOptionsResource+GetRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -572,7 +582,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.AdvertisersResource+LineItemsResource+TargetingTypesResource+AssignedTargetingOptionsResource+ListRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -623,7 +634,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.AdvertisersResource+TargetingTypesResource+AssignedTargetingOptionsResource+CreateRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -674,7 +686,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.AdvertisersResource+TargetingTypesResource+AssignedTargetingOptionsResource+DeleteRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -725,7 +738,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.AdvertisersResource+TargetingTypesResource+AssignedTargetingOptionsResource+GetRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -776,7 +790,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.AdvertisersResource+TargetingTypesResource+AssignedTargetingOptionsResource+ListRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -827,7 +842,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.DisplayVideoBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
@@ -896,7 +912,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.PartnersResource+TargetingTypesResource+AssignedTargetingOptionsResource+DeleteRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -947,7 +964,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.PartnersResource+TargetingTypesResource+AssignedTargetingOptionsResource+GetRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -998,7 +1016,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.PartnersResource+TargetingTypesResource+AssignedTargetingOptionsResource+ListRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -1049,7 +1068,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.TargetingTypesResource+TargetingOptionsResource+GetRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -1100,7 +1120,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.TargetingTypesResource+TargetingOptionsResource+ListRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -1151,7 +1172,8 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ],
   "Google.Apis.DisplayVideo.v3.TargetingTypesResource+TargetingOptionsResource+SearchRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
@@ -1202,6 +1224,7 @@
     "TARGETING_TYPE_CONTENT_GENRE",
     "TARGETING_TYPE_YOUTUBE_VIDEO",
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
-    "TARGETING_TYPE_SESSION_POSITION"
+    "TARGETING_TYPE_SESSION_POSITION",
+    "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   ]
 }
