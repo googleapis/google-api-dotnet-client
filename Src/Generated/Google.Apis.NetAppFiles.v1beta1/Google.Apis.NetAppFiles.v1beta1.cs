@@ -6730,6 +6730,12 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk) By default set to false
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customPerformanceEnabled")]
+        public virtual System.Nullable<bool> CustomPerformanceEnabled { get; set; }
+
         /// <summary>Optional. Description of the storage pool</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -6790,6 +6796,17 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateDetails")]
         public virtual string StateDetails { get; set; }
 
+        /// <summary>
+        /// Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the
+        /// total_throughput_mibps
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalIops")]
+        public virtual System.Nullable<long> TotalIops { get; set; }
+
+        /// <summary>Optional. Custom Performance Total Throughput of the pool (in MiB/s)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalThroughputMibps")]
+        public virtual System.Nullable<long> TotalThroughputMibps { get; set; }
+
         /// <summary>Output only. Allocated size of all volumes in GIB in the storage pool</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeCapacityGib")]
         public virtual System.Nullable<long> VolumeCapacityGib { get; set; }
@@ -6825,7 +6842,7 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
     {
         /// <summary>
         /// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be
-        /// range from 7-183. Default is 31.
+        /// range from 2-183. Default is 31.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coolingThresholdDays")]
         public virtual System.Nullable<int> CoolingThresholdDays { get; set; }
