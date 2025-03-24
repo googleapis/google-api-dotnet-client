@@ -1493,6 +1493,13 @@ namespace Google.Apis.Datastream.v1
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
+                    /// <summary>
+                    /// Optional. When supplied with PSC Interface config, will get/create the tenant project required
+                    /// for the customer to allow list and won't actually create the private connection.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Datastream.v1.Data.PrivateConnection Body { get; set; }
 
@@ -1539,6 +1546,14 @@ namespace Google.Apis.Datastream.v1
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4716,6 +4731,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>PSC Interface Config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscInterfaceConfig")]
+        public virtual PscInterfaceConfig PscInterfaceConfig { get; set; }
+
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
@@ -4782,6 +4801,22 @@ namespace Google.Apis.Datastream.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateConnection")]
         public virtual string PrivateConnection { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The PSC Interface configuration is used to create PSC Interface between Datastream and the consumer's PSC.
+    /// </summary>
+    public class PscInterfaceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Fully qualified name of the Network Attachment that Datastream will connect to. Format:
+        /// `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
