@@ -634,7 +634,12 @@ namespace Google.Apis.Verifiedaccess.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Result message for VerifiedAccess.VerifyChallengeResponse.</summary>
+    /// <summary>
+    /// Result message for VerifiedAccess.VerifyChallengeResponse. The response returned when successful for Managed
+    /// profiles on Unmanaged browsers will NOT have devicePermanentId, keyTrustLevel, virtualDeviceId and customerId
+    /// fields. Managed profiles will INSTEAD have the profileCustomerId, virtualProfileId, profilePermanentId and
+    /// profileKeyTrustLevel fields.
+    /// </summary>
     public class VerifyChallengeResponseResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Attested device ID (ADID).</summary>
