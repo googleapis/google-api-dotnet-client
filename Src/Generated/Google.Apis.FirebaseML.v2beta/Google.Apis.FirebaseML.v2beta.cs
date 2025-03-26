@@ -1152,6 +1152,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
         public virtual System.Nullable<int> TotalTokenCount { get; set; }
 
+        /// <summary>
+        /// Output only. Traffic type. This shows whether a request consumes Pay-As-You-Go or Provisioned Throughput
+        /// quota.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trafficType")]
+        public virtual string TrafficType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1182,6 +1189,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. If specified, the media resolution specified will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaResolution")]
         public virtual string MediaResolution { get; set; }
+
+        /// <summary>Optional. Config for model selection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelConfig")]
+        public virtual GoogleCloudAiplatformV1beta1GenerationConfigModelConfig ModelConfig { get; set; }
 
         /// <summary>Optional. Positive penalties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("presencePenalty")]
@@ -1239,6 +1250,17 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. If specified, nucleus sampling will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topP")]
         public virtual System.Nullable<float> TopP { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for model selection.</summary>
+    public class GoogleCloudAiplatformV1beta1GenerationConfigModelConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Feature selection preference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureSelectionPreference")]
+        public virtual string FeatureSelectionPreference { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
