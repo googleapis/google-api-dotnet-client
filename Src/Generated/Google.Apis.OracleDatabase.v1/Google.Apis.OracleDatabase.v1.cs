@@ -1157,6 +1157,69 @@ namespace Google.Apis.OracleDatabase.v1
                         });
                     }
                 }
+
+                /// <summary>
+                /// Initiates a switchover of specified autonomous deatabase to the associated peer database.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Autonomous Database in the following format:
+                /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}.
+                /// </param>
+                public virtual SwitchoverRequest Switchover(Google.Apis.OracleDatabase.v1.Data.SwitchoverAutonomousDatabaseRequest body, string name)
+                {
+                    return new SwitchoverRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Initiates a switchover of specified autonomous deatabase to the associated peer database.
+                /// </summary>
+                public class SwitchoverRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Switchover request.</summary>
+                    public SwitchoverRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.SwitchoverAutonomousDatabaseRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Autonomous Database in the following format:
+                    /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.SwitchoverAutonomousDatabaseRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "switchover";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:switchover";
+
+                    /// <summary>Initializes Switchover parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autonomousDatabases/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the AutonomousDbVersions resource.</summary>
@@ -2744,6 +2807,13 @@ namespace Google.Apis.OracleDatabase.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -2783,6 +2853,14 @@ namespace Google.Apis.OracleDatabase.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -2899,6 +2977,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string Database { get; set; }
 
         /// <summary>
+        /// Output only. List of supported GCP region to clone the Autonomous Database for disaster recovery. Format:
+        /// `project/{project}/locations/{location}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disasterRecoverySupportedLocations")]
+        public virtual System.Collections.Generic.IList<string> DisasterRecoverySupportedLocations { get; set; }
+
+        /// <summary>
         /// Optional. The display name for the Autonomous Database. The name does not have to be unique within your
         /// project.
         /// </summary>
@@ -2929,9 +3014,21 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
+        /// <summary>Output only. The peer Autonomous Database names of the given Autonomous Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerAutonomousDatabases")]
+        public virtual System.Collections.Generic.IList<string> PeerAutonomousDatabases { get; set; }
+
         /// <summary>Optional. The properties of the Autonomous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual AutonomousDatabaseProperties Properties { get; set; }
+
+        /// <summary>
+        /// Optional. The source Autonomous Database configuration for the standby Autonomous Database. The source
+        /// Autonomous Database is configured while creating the Peer Autonomous Database and can't be updated after
+        /// creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceConfig")]
+        public virtual SourceConfig SourceConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3384,6 +3481,48 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerContacts")]
         public virtual System.Collections.Generic.IList<CustomerContact> CustomerContacts { get; set; }
 
+        private string _dataGuardRoleChangedTimeRaw;
+
+        private object _dataGuardRoleChangedTime;
+
+        /// <summary>
+        /// Output only. The date and time the Autonomous Data Guard role was changed for the standby Autonomous
+        /// Database.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataGuardRoleChangedTime")]
+        public virtual string DataGuardRoleChangedTimeRaw
+        {
+            get => _dataGuardRoleChangedTimeRaw;
+            set
+            {
+                _dataGuardRoleChangedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _dataGuardRoleChangedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DataGuardRoleChangedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DataGuardRoleChangedTimeDateTimeOffset instead.")]
+        public virtual object DataGuardRoleChangedTime
+        {
+            get => _dataGuardRoleChangedTime;
+            set
+            {
+                _dataGuardRoleChangedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _dataGuardRoleChangedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DataGuardRoleChangedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DataGuardRoleChangedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DataGuardRoleChangedTimeRaw);
+            set => DataGuardRoleChangedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Output only. The current state of the Data Safe registration for the Autonomous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSafeState")]
         public virtual string DataSafeState { get; set; }
@@ -3411,6 +3550,49 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Required. The workload type of the Autonomous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dbWorkload")]
         public virtual string DbWorkload { get; set; }
+
+        private string _disasterRecoveryRoleChangedTimeRaw;
+
+        private object _disasterRecoveryRoleChangedTime;
+
+        /// <summary>
+        /// Output only. The date and time the Disaster Recovery role was changed for the standby Autonomous Database.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disasterRecoveryRoleChangedTime")]
+        public virtual string DisasterRecoveryRoleChangedTimeRaw
+        {
+            get => _disasterRecoveryRoleChangedTimeRaw;
+            set
+            {
+                _disasterRecoveryRoleChangedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _disasterRecoveryRoleChangedTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="DisasterRecoveryRoleChangedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DisasterRecoveryRoleChangedTimeDateTimeOffset instead.")]
+        public virtual object DisasterRecoveryRoleChangedTime
+        {
+            get => _disasterRecoveryRoleChangedTime;
+            set
+            {
+                _disasterRecoveryRoleChangedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _disasterRecoveryRoleChangedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DisasterRecoveryRoleChangedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DisasterRecoveryRoleChangedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DisasterRecoveryRoleChangedTimeRaw);
+            set => DisasterRecoveryRoleChangedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>
         /// Output only. This field indicates the number of seconds of data loss during a Data Guard failover.
@@ -5298,6 +5480,27 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The source configuration for the standby Autonomnous Database.</summary>
+    public class SourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. This field specifies if the replication of automatic backups is enabled when creating a Data
+        /// Guard.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticBackupsReplicationEnabled")]
+        public virtual System.Nullable<bool> AutomaticBackupsReplicationEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from
+        /// a source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autonomousDatabase")]
+        public virtual string AutonomousDatabase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for `AutonomousDatabase.Start`.</summary>
     public class StartAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5337,6 +5540,17 @@ namespace Google.Apis.OracleDatabase.v1.Data
     /// <summary>The request for `AutonomousDatabase.Stop`.</summary>
     public class StopAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for `AutonomousDatabase.Switchover`.</summary>
+    public class SwitchoverAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The peer database name to switch over to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerAutonomousDatabase")]
+        public virtual string PeerAutonomousDatabase { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
