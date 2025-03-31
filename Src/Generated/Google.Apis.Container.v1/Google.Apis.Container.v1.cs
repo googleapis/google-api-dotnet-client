@@ -8413,6 +8413,10 @@ namespace Google.Apis.Container.v1.Data
     /// </summary>
     public class EphemeralStorageLocalSsdConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Number of local SSDs to use for GKE Data Cache.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataCacheCount")]
+        public virtual System.Nullable<int> DataCacheCount { get; set; }
+
         /// <summary>
         /// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A zero (or unset) value has
         /// different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible
@@ -9676,6 +9680,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fastSocket")]
         public virtual FastSocket FastSocket { get; set; }
 
+        /// <summary>Flex Start flag for enabling Flex Start VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flexStart")]
+        public virtual System.Nullable<bool> FlexStart { get; set; }
+
         /// <summary>Google Container File System (image streaming) configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
         public virtual GcfsConfig GcfsConfig { get; set; }
@@ -10141,7 +10149,7 @@ namespace Google.Apis.Container.v1.Data
     {
         /// <summary>
         /// Specifies the autopilot configuration for this node pool. This field is exclusively reserved for Cluster
-        /// Autoscaler to implement go/gke-managed-nodes-ccc-api
+        /// Autoscaler.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autopilotConfig")]
         public virtual AutopilotConfig AutopilotConfig { get; set; }
@@ -12282,6 +12290,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Enable or disable NCCL fast socket for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fastSocket")]
         public virtual FastSocket FastSocket { get; set; }
+
+        /// <summary>Flex Start flag for enabling Flex Start VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flexStart")]
+        public virtual System.Nullable<bool> FlexStart { get; set; }
 
         /// <summary>GCFS config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
