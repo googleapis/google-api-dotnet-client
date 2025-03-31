@@ -4325,6 +4325,12 @@ namespace Google.Apis.DeploymentManager.v2beta.Data
 
     public class InstancesBulkInsertOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// [Output Only] The machine type of the VMs that were created used internally only by KCP flex bulk insert.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
         /// <summary>Status information per location (location name is key). Example key: zones/us-central1-a</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perLocationStatus")]
         public virtual System.Collections.Generic.IDictionary<string, BulkInsertOperationStatus> PerLocationStatus { get; set; }
