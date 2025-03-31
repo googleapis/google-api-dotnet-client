@@ -21426,6 +21426,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>The layout parsing configurations for documents.</summary>
     public class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If true, the LLM based annotation is added to the image during parsing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableImageAnnotation")]
+        public virtual System.Nullable<bool> EnableImageAnnotation { get; set; }
+
+        /// <summary>Optional. If true, the LLM based annotation is added to the table during parsing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableTableAnnotation")]
+        public virtual System.Nullable<bool> EnableTableAnnotation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -27719,6 +27727,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>The layout parsing configurations for documents.</summary>
     public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If true, the LLM based annotation is added to the image during parsing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableImageAnnotation")]
+        public virtual System.Nullable<bool> EnableImageAnnotation { get; set; }
+
+        /// <summary>Optional. If true, the LLM based annotation is added to the table during parsing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableTableAnnotation")]
+        public virtual System.Nullable<bool> EnableTableAnnotation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -32647,6 +32663,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Information of an end user.</summary>
     public class GoogleCloudDiscoveryengineV1alphaUserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. IANA time zone, e.g. Europe/Budapest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
         /// <summary>
         /// User agent as included in the HTTP header. The field must be a UTF-8 encoded string with a length limit of
         /// 1,000 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. This should not be set when using the
@@ -37589,6 +37609,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>The layout parsing configurations for documents.</summary>
     public class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If true, the LLM based annotation is added to the image during parsing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableImageAnnotation")]
+        public virtual System.Nullable<bool> EnableImageAnnotation { get; set; }
+
+        /// <summary>Optional. If true, the LLM based annotation is added to the table during parsing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableTableAnnotation")]
+        public virtual System.Nullable<bool> EnableTableAnnotation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -44495,6 +44523,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Information of an end user.</summary>
     public class GoogleCloudDiscoveryengineV1betaUserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. IANA time zone, e.g. Europe/Budapest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
         /// <summary>
         /// User agent as included in the HTTP header. The field must be a UTF-8 encoded string with a length limit of
         /// 1,000 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. This should not be set when using the
