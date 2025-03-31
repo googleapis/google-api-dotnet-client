@@ -8699,6 +8699,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// </summary>
     public class EphemeralStorageLocalSsdConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Number of local SSDs to use for GKE Data Cache.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataCacheCount")]
+        public virtual System.Nullable<int> DataCacheCount { get; set; }
+
         /// <summary>
         /// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A zero (or unset) value has
         /// different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible
@@ -10078,6 +10082,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fastSocket")]
         public virtual FastSocket FastSocket { get; set; }
 
+        /// <summary>Flex Start flag for enabling Flex Start VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flexStart")]
+        public virtual System.Nullable<bool> FlexStart { get; set; }
+
         /// <summary>GCFS (Google Container File System) configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
         public virtual GcfsConfig GcfsConfig { get; set; }
@@ -10548,7 +10556,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>
         /// Specifies the autopilot configuration for this node pool. This field is exclusively reserved for Cluster
-        /// Autoscaler to implement go/gke-managed-nodes-ccc-api
+        /// Autoscaler.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autopilotConfig")]
         public virtual AutopilotConfig AutopilotConfig { get; set; }
@@ -11630,6 +11638,21 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>RotationConfig is config for secret manager auto rotation.</summary>
+    public class RotationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the rotation is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The interval between two consecutive rotations. Default rotation interval is 2 minutes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotationInterval")]
+        public virtual object RotationInterval { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>SandboxConfig contains configurations of the sandbox to use for the node.</summary>
     public class SandboxConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11678,6 +11701,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Enable/Disable Secret Manager Config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Rotation config for secret manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotationConfig")]
+        public virtual RotationConfig RotationConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12799,6 +12826,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Enable or disable NCCL fast socket for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fastSocket")]
         public virtual FastSocket FastSocket { get; set; }
+
+        /// <summary>Flex Start flag for enabling Flex Start VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flexStart")]
+        public virtual System.Nullable<bool> FlexStart { get; set; }
 
         /// <summary>GCFS config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
