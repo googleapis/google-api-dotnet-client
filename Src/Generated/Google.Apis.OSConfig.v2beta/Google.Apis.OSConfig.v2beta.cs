@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -706,7 +706,19 @@ namespace Google.Apis.OSConfig.v2beta
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Optional. The list of fields to update.</summary>
+                        /// <summary>
+                        /// Optional. The list of fields to merge into the existing policy orchestrator. A special ["*"]
+                        /// field mask can be used to simply replace the entire resource. Otherwise, for all paths
+                        /// referenced in the mask, following merge rules are used: * output only fields are ignored, *
+                        /// primitive fields are replaced, * repeated fields are replaced, * map fields are merged key
+                        /// by key, * message fields are cleared if not set in the request, otherwise they are merged
+                        /// recursively (in particular - message fields set to an empty message has no side effects) If
+                        /// field mask is not specified, it is automatically inferred from the request using following
+                        /// rules: * primitive fields are listed, if set to a non-default value (as there is no way to
+                        /// distinguish between default and unset value), * map and repeated fields are listed, *
+                        /// `google.protobuf.Any` fields are listed, * other message fields are traversed recursively.
+                        /// Note: implicit mask does not allow clearing fields.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
@@ -1468,7 +1480,19 @@ namespace Google.Apis.OSConfig.v2beta
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Optional. The list of fields to update.</summary>
+                        /// <summary>
+                        /// Optional. The list of fields to merge into the existing policy orchestrator. A special ["*"]
+                        /// field mask can be used to simply replace the entire resource. Otherwise, for all paths
+                        /// referenced in the mask, following merge rules are used: * output only fields are ignored, *
+                        /// primitive fields are replaced, * repeated fields are replaced, * map fields are merged key
+                        /// by key, * message fields are cleared if not set in the request, otherwise they are merged
+                        /// recursively (in particular - message fields set to an empty message has no side effects) If
+                        /// field mask is not specified, it is automatically inferred from the request using following
+                        /// rules: * primitive fields are listed, if set to a non-default value (as there is no way to
+                        /// distinguish between default and unset value), * map and repeated fields are listed, *
+                        /// `google.protobuf.Any` fields are listed, * other message fields are traversed recursively.
+                        /// Note: implicit mask does not allow clearing fields.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
@@ -2226,7 +2250,19 @@ namespace Google.Apis.OSConfig.v2beta
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Optional. The list of fields to update.</summary>
+                        /// <summary>
+                        /// Optional. The list of fields to merge into the existing policy orchestrator. A special ["*"]
+                        /// field mask can be used to simply replace the entire resource. Otherwise, for all paths
+                        /// referenced in the mask, following merge rules are used: * output only fields are ignored, *
+                        /// primitive fields are replaced, * repeated fields are replaced, * map fields are merged key
+                        /// by key, * message fields are cleared if not set in the request, otherwise they are merged
+                        /// recursively (in particular - message fields set to an empty message has no side effects) If
+                        /// field mask is not specified, it is automatically inferred from the request using following
+                        /// rules: * primitive fields are listed, if set to a non-default value (as there is no way to
+                        /// distinguish between default and unset value), * map and repeated fields are listed, *
+                        /// `google.protobuf.Any` fields are listed, * other message fields are traversed recursively.
+                        /// Note: implicit mask does not allow clearing fields.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
@@ -2690,6 +2726,111 @@ namespace Google.Apis.OSConfig.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the metadata of the long-running operation.</summary>
+    public class GoogleCloudOsconfigV2OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
+        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
+        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
+
+        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
+        public virtual string StatusMessage { get; set; }
+
+        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Output only. Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for the list policy orchestrator resources.</summary>
     public class GoogleCloudOsconfigV2betaListPolicyOrchestratorsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3104,6 +3245,10 @@ namespace Google.Apis.OSConfig.v2beta.Data
             set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Unique identifier of the iteration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iterationId")]
+        public virtual string IterationId { get; set; }
+
         /// <summary>Output only. Overall number of actions done by the orchestrator so far.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performedActions")]
         public virtual System.Nullable<long> PerformedActions { get; set; }
@@ -3111,13 +3256,6 @@ namespace Google.Apis.OSConfig.v2beta.Data
         /// <summary>Output only. An estimated percentage of the progress. Number between 0 and 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual System.Nullable<float> Progress { get; set; }
-
-        /// <summary>
-        /// Output only. Handle to the Progressive Rollouts API rollout resource, which contains detailed information
-        /// about a particular orchestration iteration.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rolloutResource")]
-        public virtual string RolloutResource { get; set; }
 
         private string _startTimeRaw;
 
