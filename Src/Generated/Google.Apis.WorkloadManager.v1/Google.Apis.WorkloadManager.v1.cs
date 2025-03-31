@@ -3857,6 +3857,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>Disk mount on the instance.</summary>
     public class SapDiscoveryResourceInstancePropertiesDiskMount : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Names of the disks providing this mount point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskNames")]
+        public virtual System.Collections.Generic.IList<string> DiskNames { get; set; }
+
         /// <summary>Optional. Filesystem mount point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mountPoint")]
         public virtual string MountPoint { get; set; }
