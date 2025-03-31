@@ -7528,6 +7528,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
 
+        /// <summary>
+        /// Optional. Machine type of the VM instance. E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
+        /// cpu_count must match the number of vCPUs in the machine type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7934,6 +7941,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Optional. Configuration for SQL Server homogeneous migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlserverHomogeneousMigrationJobConfig")]
         public virtual SqlServerHomogeneousMigrationJobConfig SqlserverHomogeneousMigrationJobConfig { get; set; }
+
+        /// <summary>Configuration for heterogeneous **SQL Server to Cloud SQL for PostgreSQL** migrations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlserverToPostgresConfig")]
+        public virtual SqlServerToPostgresConfig SqlserverToPostgresConfig { get; set; }
 
         /// <summary>The current migration job state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -9466,6 +9477,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlId")]
         public virtual string CloudSqlId { get; set; }
 
+        /// <summary>Required. The name of the specific database within the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
         /// <summary>Forward SSH tunnel connectivity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardSshConnectivity")]
         public virtual ForwardSshTunnelConnectivity ForwardSshConnectivity { get; set; }
@@ -9590,6 +9605,49 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Optional. Enable differential backups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useDiffBackup")]
         public virtual System.Nullable<bool> UseDiffBackup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for SQL Server as a source in a migration.</summary>
+    public class SqlServerSourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The log sequence number (LSN) to start CDC data migration from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cdcStartPosition")]
+        public virtual string CdcStartPosition { get; set; }
+
+        /// <summary>
+        /// Optional. Maximum number of connections Database Migration Service will open to the source for CDC phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentCdcConnections")]
+        public virtual System.Nullable<int> MaxConcurrentCdcConnections { get; set; }
+
+        /// <summary>
+        /// Optional. Maximum number of connections Database Migration Service will open to the source for full dump
+        /// phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentFullDumpConnections")]
+        public virtual System.Nullable<int> MaxConcurrentFullDumpConnections { get; set; }
+
+        /// <summary>Optional. Whether to skip full dump or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipFullDump")]
+        public virtual System.Nullable<bool> SkipFullDump { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for heterogeneous **SQL Server to Cloud SQL for PostgreSQL** migrations.</summary>
+    public class SqlServerToPostgresConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for Postgres destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresDestinationConfig")]
+        public virtual PostgresDestinationConfig PostgresDestinationConfig { get; set; }
+
+        /// <summary>Optional. Configuration for SQL Server source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlserverSourceConfig")]
+        public virtual SqlServerSourceConfig SqlserverSourceConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
