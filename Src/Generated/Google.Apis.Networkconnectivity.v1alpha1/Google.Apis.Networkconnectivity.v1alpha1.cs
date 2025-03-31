@@ -3041,6 +3041,13 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Optional. ExcludeCidrRanges flag. Specifies a set of CIDR blocks that allows exclusion of particular CIDR
+        /// ranges from the auto-allocation process, without having to reserve these blocks
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeCidrRanges")]
+        public virtual System.Collections.Generic.IList<string> ExcludeCidrRanges { get; set; }
+
+        /// <summary>
         /// Optional. Immutable ranges cannot have their fields modified, except for labels and description.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("immutable")]
