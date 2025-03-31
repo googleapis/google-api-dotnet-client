@@ -2260,7 +2260,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <summary>Updates a print server's configuration.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. Resource name of the print server. Leave empty when creating. Format:
+                /// Identifier. Resource name of the print server. Leave empty when creating. Format:
                 /// `customers/{customer.id}/printServers/{print_server.id}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.PrintServer body, string name)
@@ -2280,7 +2280,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                     }
 
                     /// <summary>
-                    /// Immutable. Resource name of the print server. Leave empty when creating. Format:
+                    /// Identifier. Resource name of the print server. Leave empty when creating. Format:
                     /// `customers/{customer.id}/printServers/{print_server.id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2830,8 +2830,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <summary>Updates a `Printer` resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The resource name of the Printer object, in the format customers/{customer-id}/printers/{printer-id}
-                /// (During printer creation leave empty)
+                /// Identifier. The resource name of the Printer object, in the format
+                /// customers/{customer-id}/printers/{printer-id} (During printer creation leave empty)
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Printer body, string name)
                 {
@@ -2850,7 +2850,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                     }
 
                     /// <summary>
-                    /// The resource name of the Printer object, in the format
+                    /// Identifier. The resource name of the Printer object, in the format
                     /// customers/{customer-id}/printers/{printer-id} (During printer creation leave empty)
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -13190,7 +13190,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// Immutable. Resource name of the print server. Leave empty when creating. Format:
+        /// Identifier. Resource name of the print server. Leave empty when creating. Format:
         /// `customers/{customer.id}/printServers/{print_server.id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -13299,8 +13299,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string MakeAndModel { get; set; }
 
         /// <summary>
-        /// The resource name of the Printer object, in the format customers/{customer-id}/printers/{printer-id} (During
-        /// printer creation leave empty)
+        /// Identifier. The resource name of the Printer object, in the format
+        /// customers/{customer-id}/printers/{printer-id} (During printer creation leave empty)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
