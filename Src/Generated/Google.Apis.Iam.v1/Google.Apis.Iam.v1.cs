@@ -3976,6 +3976,692 @@ namespace Google.Apis.Iam.v1
                                 }
                             }
                         }
+
+                        /// <summary>
+                        /// Add an AttestationRule on a WorkloadIdentityPoolManagedIdentity. The total attestation rules
+                        /// after addition must not exceed 50.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="resource">
+                        /// Required. The resource name of the managed identity or namespace resource to add an
+                        /// attestation rule to.
+                        /// </param>
+                        public virtual AddAttestationRuleRequest AddAttestationRule(Google.Apis.Iam.v1.Data.AddAttestationRuleRequest body, string resource)
+                        {
+                            return new AddAttestationRuleRequest(this.service, body, resource);
+                        }
+
+                        /// <summary>
+                        /// Add an AttestationRule on a WorkloadIdentityPoolManagedIdentity. The total attestation rules
+                        /// after addition must not exceed 50.
+                        /// </summary>
+                        public class AddAttestationRuleRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new AddAttestationRule request.</summary>
+                            public AddAttestationRuleRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.AddAttestationRuleRequest body, string resource) : base(service)
+                            {
+                                Resource = resource;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the managed identity or namespace resource to add an
+                            /// attestation rule to.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Resource { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Iam.v1.Data.AddAttestationRuleRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "addAttestationRule";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+resource}:addAttestationRule";
+
+                            /// <summary>Initializes AddAttestationRule parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resource",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/managedIdentities/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Creates a new WorkloadIdentityPoolManagedIdentity in a WorkloadIdentityPoolNamespace.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The parent resource to create the manage identity in. The only supported location
+                        /// is `global`.
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkloadIdentityPoolManagedIdentity body, string parent)
+                        {
+                            return new CreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Creates a new WorkloadIdentityPoolManagedIdentity in a WorkloadIdentityPoolNamespace.
+                        /// </summary>
+                        public class CreateRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.WorkloadIdentityPoolManagedIdentity body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent resource to create the manage identity in. The only supported
+                            /// location is `global`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Required. The ID to use for the managed identity. This value must: * contain at most 63
+                            /// characters * contain only lowercase alphanumeric characters or `-` * start with an
+                            /// alphanumeric character * end with an alphanumeric character The prefix "gcp-" will be
+                            /// reserved for future uses.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("workloadIdentityPoolManagedIdentityId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string WorkloadIdentityPoolManagedIdentityId { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Iam.v1.Data.WorkloadIdentityPoolManagedIdentity Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/managedIdentities";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+$",
+                                });
+                                RequestParameters.Add("workloadIdentityPoolManagedIdentityId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "workloadIdentityPoolManagedIdentityId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Deletes a WorkloadIdentityPoolManagedIdentity. You can undelete a managed identity for 30
+                        /// days. After 30 days, deletion is permanent.
+                        /// </summary>
+                        /// <param name="name">Required. The name of the managed identity to delete.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Deletes a WorkloadIdentityPoolManagedIdentity. You can undelete a managed identity for 30
+                        /// days. After 30 days, deletion is permanent.
+                        /// </summary>
+                        public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the managed identity to delete.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/managedIdentities/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Gets an individual WorkloadIdentityPoolManagedIdentity.</summary>
+                        /// <param name="name">Required. The name of the managed identity to retrieve.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets an individual WorkloadIdentityPoolManagedIdentity.</summary>
+                        public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkloadIdentityPoolManagedIdentity>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the managed identity to retrieve.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/managedIdentities/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Lists all non-deleted WorkloadIdentityPoolManagedIdentitys in a namespace. If `show_deleted`
+                        /// is set to `true`, then deleted managed identites are also listed.
+                        /// </summary>
+                        /// <param name="parent">Required. The parent resource to list managed identities for.</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>
+                        /// Lists all non-deleted WorkloadIdentityPoolManagedIdentitys in a namespace. If `show_deleted`
+                        /// is set to `true`, then deleted managed identites are also listed.
+                        /// </summary>
+                        public class ListRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ListWorkloadIdentityPoolManagedIdentitiesResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The parent resource to list managed identities for.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// The maximum number of managed identities to return. If unspecified, at most 50 managed
+                            /// identities are returned. The maximum value is 1000; values above are 1000 truncated to
+                            /// 1000.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// A page token, received from a previous `ListWorkloadIdentityPoolManagedIdentities` call.
+                            /// Provide this to retrieve the subsequent page.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Whether to return soft-deleted managed identities.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/managedIdentities";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "showDeleted",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>List all AttestationRule on a WorkloadIdentityPoolManagedIdentity.</summary>
+                        /// <param name="resource">
+                        /// Required. The resource name of the managed identity or namespace resource to list
+                        /// attestation rules of.
+                        /// </param>
+                        public virtual ListAttestationRulesRequest ListAttestationRules(string resource)
+                        {
+                            return new ListAttestationRulesRequest(this.service, resource);
+                        }
+
+                        /// <summary>List all AttestationRule on a WorkloadIdentityPoolManagedIdentity.</summary>
+                        public class ListAttestationRulesRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ListAttestationRulesResponse>
+                        {
+                            /// <summary>Constructs a new ListAttestationRules request.</summary>
+                            public ListAttestationRulesRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                            {
+                                Resource = resource;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the managed identity or namespace resource to list
+                            /// attestation rules of.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Resource { get; private set; }
+
+                            /// <summary>
+                            /// Optional. A query filter. Supports the following function: * `container_ids()`: Returns
+                            /// only the AttestationRules under the specific container ids. The function expects a
+                            /// comma-delimited list with only project numbers and must use the format `projects/`. For
+                            /// example: `container_ids(projects/, projects/,...)`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>
+                            /// Optional. The maximum number of AttestationRules to return. If unspecified, at most 50
+                            /// AttestationRules are returned. The maximum value is 100; values above 100 are truncated
+                            /// to 100.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. A page token, received from a previous `ListWorkloadIdentityPoolProviderKeys`
+                            /// call. Provide this to retrieve the subsequent page.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "listAttestationRules";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+resource}:listAttestationRules";
+
+                            /// <summary>Initializes ListAttestationRules parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resource",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/managedIdentities/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Updates an existing WorkloadIdentityPoolManagedIdentity in a WorkloadIdentityPoolNamespace.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Output only. The resource name of the managed identity.</param>
+                        public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkloadIdentityPoolManagedIdentity body, string name)
+                        {
+                            return new PatchRequest(this.service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Updates an existing WorkloadIdentityPoolManagedIdentity in a WorkloadIdentityPoolNamespace.
+                        /// </summary>
+                        public class PatchRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.WorkloadIdentityPoolManagedIdentity body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Output only. The resource name of the managed identity.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Required. The list of fields to update.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Iam.v1.Data.WorkloadIdentityPoolManagedIdentity Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/managedIdentities/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Remove an AttestationRule on a WorkloadIdentityPoolManagedIdentity.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="resource">
+                        /// Required. The resource name of the managed identity or namespace resource to remove an
+                        /// attestation rule from.
+                        /// </param>
+                        public virtual RemoveAttestationRuleRequest RemoveAttestationRule(Google.Apis.Iam.v1.Data.RemoveAttestationRuleRequest body, string resource)
+                        {
+                            return new RemoveAttestationRuleRequest(this.service, body, resource);
+                        }
+
+                        /// <summary>Remove an AttestationRule on a WorkloadIdentityPoolManagedIdentity.</summary>
+                        public class RemoveAttestationRuleRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new RemoveAttestationRule request.</summary>
+                            public RemoveAttestationRuleRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.RemoveAttestationRuleRequest body, string resource) : base(service)
+                            {
+                                Resource = resource;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the managed identity or namespace resource to remove an
+                            /// attestation rule from.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Resource { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Iam.v1.Data.RemoveAttestationRuleRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "removeAttestationRule";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+resource}:removeAttestationRule";
+
+                            /// <summary>Initializes RemoveAttestationRule parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resource",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/managedIdentities/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Set all AttestationRule on a WorkloadIdentityPoolManagedIdentity. A maximum of 50
+                        /// AttestationRules can be set.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="resource">
+                        /// Required. The resource name of the managed identity or namespace resource to add an
+                        /// attestation rule to.
+                        /// </param>
+                        public virtual SetAttestationRulesRequest SetAttestationRules(Google.Apis.Iam.v1.Data.SetAttestationRulesRequest body, string resource)
+                        {
+                            return new SetAttestationRulesRequest(this.service, body, resource);
+                        }
+
+                        /// <summary>
+                        /// Set all AttestationRule on a WorkloadIdentityPoolManagedIdentity. A maximum of 50
+                        /// AttestationRules can be set.
+                        /// </summary>
+                        public class SetAttestationRulesRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new SetAttestationRules request.</summary>
+                            public SetAttestationRulesRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.SetAttestationRulesRequest body, string resource) : base(service)
+                            {
+                                Resource = resource;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the managed identity or namespace resource to add an
+                            /// attestation rule to.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Resource { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Iam.v1.Data.SetAttestationRulesRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "setAttestationRules";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+resource}:setAttestationRules";
+
+                            /// <summary>Initializes SetAttestationRules parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resource",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/managedIdentities/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Undeletes a WorkloadIdentityPoolManagedIdentity, as long as it was deleted fewer than 30
+                        /// days ago.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Required. The name of the managed identity to undelete.</param>
+                        public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkloadIdentityPoolManagedIdentityRequest body, string name)
+                        {
+                            return new UndeleteRequest(this.service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Undeletes a WorkloadIdentityPoolManagedIdentity, as long as it was deleted fewer than 30
+                        /// days ago.
+                        /// </summary>
+                        public class UndeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Undelete request.</summary>
+                            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.UndeleteWorkloadIdentityPoolManagedIdentityRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the managed identity to undelete.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Iam.v1.Data.UndeleteWorkloadIdentityPoolManagedIdentityRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "undelete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:undelete";
+
+                            /// <summary>Initializes Undelete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/managedIdentities/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Gets the Operations resource.</summary>
@@ -4044,6 +4730,393 @@ namespace Google.Apis.Iam.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/operations/[^/]+$",
                                 });
                             }
+                        }
+                    }
+
+                    /// <summary>Creates a new WorkloadIdentityPoolNamespace in a WorkloadIdentityPool.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource to create the namespace in. The only supported location is
+                    /// `global`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkloadIdentityPoolNamespace body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a new WorkloadIdentityPoolNamespace in a WorkloadIdentityPool.</summary>
+                    public class CreateRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.WorkloadIdentityPoolNamespace body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource to create the namespace in. The only supported location is
+                        /// `global`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the namespace. This value must: * contain at most 63 characters
+                        /// * contain only lowercase alphanumeric characters or `-` * start with an alphanumeric
+                        /// character * end with an alphanumeric character The prefix "gcp-" will be reserved for future
+                        /// uses.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("workloadIdentityPoolNamespaceId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string WorkloadIdentityPoolNamespaceId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Iam.v1.Data.WorkloadIdentityPoolNamespace Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/namespaces";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+$",
+                            });
+                            RequestParameters.Add("workloadIdentityPoolNamespaceId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "workloadIdentityPoolNamespaceId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a WorkloadIdentityPoolNamespace. You can undelete a namespace for 30 days. After 30
+                    /// days, deletion is permanent.
+                    /// </summary>
+                    /// <param name="name">Required. The name of the namespace to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a WorkloadIdentityPoolNamespace. You can undelete a namespace for 30 days. After 30
+                    /// days, deletion is permanent.
+                    /// </summary>
+                    public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the namespace to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets an individual WorkloadIdentityPoolNamespace.</summary>
+                    /// <param name="name">Required. The name of the namespace to retrieve.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets an individual WorkloadIdentityPoolNamespace.</summary>
+                    public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkloadIdentityPoolNamespace>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the namespace to retrieve.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists all non-deleted WorkloadIdentityPoolNamespaces in a workload identity pool. If
+                    /// `show_deleted` is set to `true`, then deleted namespaces are also listed.
+                    /// </summary>
+                    /// <param name="parent">Required. The parent resource to list namespaces for.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists all non-deleted WorkloadIdentityPoolNamespaces in a workload identity pool. If
+                    /// `show_deleted` is set to `true`, then deleted namespaces are also listed.
+                    /// </summary>
+                    public class ListRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ListWorkloadIdentityPoolNamespacesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent resource to list namespaces for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The maximum number of namespaces to return. If unspecified, at most 50 namespaces are
+                        /// returned. The maximum value is 1000; values above are 1000 truncated to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListWorkloadIdentityPoolNamespaces` call. Provide
+                        /// this to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Whether to return soft-deleted namespaces.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/namespaces";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "showDeleted",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates an existing WorkloadIdentityPoolNamespace in a WorkloadIdentityPool.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Output only. The resource name of the namespace.</param>
+                    public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkloadIdentityPoolNamespace body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates an existing WorkloadIdentityPoolNamespace in a WorkloadIdentityPool.</summary>
+                    public class PatchRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.WorkloadIdentityPoolNamespace body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Output only. The resource name of the namespace.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. The list of fields to update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Iam.v1.Data.WorkloadIdentityPoolNamespace Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Undeletes a WorkloadIdentityPoolNamespace, as long as it was deleted fewer than 30 days ago.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the namespace to undelete.</param>
+                    public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkloadIdentityPoolNamespaceRequest body, string name)
+                    {
+                        return new UndeleteRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Undeletes a WorkloadIdentityPoolNamespace, as long as it was deleted fewer than 30 days ago.
+                    /// </summary>
+                    public class UndeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Undelete request.</summary>
+                        public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.UndeleteWorkloadIdentityPoolNamespaceRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the namespace to undelete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Iam.v1.Data.UndeleteWorkloadIdentityPoolNamespaceRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "undelete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:undelete";
+
+                        /// <summary>Initializes Undelete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+$",
+                            });
                         }
                     }
                 }
@@ -5190,6 +6263,73 @@ namespace Google.Apis.Iam.v1
                 }
 
                 /// <summary>
+                /// Gets IAM policies for one of WorkloadIdentityPool WorkloadIdentityPoolNamespace
+                /// WorkloadIdentityPoolManagedIdentity
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Iam.v1.Data.GetIamPolicyRequest body, string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Gets IAM policies for one of WorkloadIdentityPool WorkloadIdentityPoolNamespace
+                /// WorkloadIdentityPoolManagedIdentity
+                /// </summary>
+                public class GetIamPolicyRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Iam.v1.Data.GetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Lists all non-deleted WorkloadIdentityPools in a project. If `show_deleted` is set to `true`, then
                 /// deleted pools are also listed.
                 /// </summary>
@@ -5343,6 +6483,140 @@ namespace Google.Apis.Iam.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets IAM policies on one of WorkloadIdentityPool WorkloadIdentityPoolNamespace
+                /// WorkloadIdentityPoolManagedIdentity
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Iam.v1.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets IAM policies on one of WorkloadIdentityPool WorkloadIdentityPoolNamespace
+                /// WorkloadIdentityPoolManagedIdentity
+                /// </summary>
+                public class SetIamPolicyRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Iam.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns the caller's permissions on one of WorkloadIdentityPool WorkloadIdentityPoolNamespace
+                /// WorkloadIdentityPoolManagedIdentity
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Iam.v1.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns the caller's permissions on one of WorkloadIdentityPool WorkloadIdentityPoolNamespace
+                /// WorkloadIdentityPoolManagedIdentity
+                /// </summary>
+                public class TestIamPermissionsRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Iam.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+$",
                         });
                     }
                 }
@@ -8044,6 +9318,17 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for AddAttestationRule.</summary>
+    public class AddAttestationRuleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The attestation rule to be added.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationRule")]
+        public virtual AttestationRule AttestationRule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Audit log information specific to Cloud IAM admin APIs. This message is serialized as an `Any` type in the
     /// `ServiceData` message of an `AuditLog` message.
@@ -8053,6 +9338,23 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>The permission_delta when when creating or updating a Role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionDelta")]
         public virtual PermissionDelta PermissionDelta { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines which workloads can receive an identity within a pool. When an AttestationRule is defined under a
+    /// managed identity, matching workloads may receive that identity.
+    /// </summary>
+    public class AttestationRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A single workload operating on Google Cloud. For example:
+        /// `//compute.googleapis.com/projects/123/uid/zones/us-central1-a/instances/12345`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleCloudResource")]
+        public virtual string GoogleCloudResource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8635,6 +9937,80 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents configuration for generating mutual TLS (mTLS) certificates for the identities within this pool.
+    /// </summary>
+    public class InlineCertificateIssuanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A required mapping of a cloud region to the CA pool resource located in that region used for
+        /// certificate issuance, adhering to these constraints: * Key format: A supported cloud region name equivalent
+        /// to the location identifier in the corresponding map entry's value. * Value format: A valid CA pool resource
+        /// path format like: "projects/{project}/locations/{location}/caPools/{ca_pool}" * Region Matching: Workloads
+        /// are ONLY issued certificates from CA pools within the same region. Also the CA pool region (in value) must
+        /// match the workload's region (key).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caPools")]
+        public virtual System.Collections.Generic.IDictionary<string, string> CaPools { get; set; }
+
+        /// <summary>
+        /// Optional. Key algorithm to use when generating the key pair. This key pair will be used to create the
+        /// certificate. If unspecified, this will default to ECDSA_P256.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyAlgorithm")]
+        public virtual string KeyAlgorithm { get; set; }
+
+        /// <summary>
+        /// Optional. Lifetime of the workload certificates issued by the CA pool. Must be between 10 hours - 30 days.
+        /// If unspecified, this will be defaulted to 24 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifetime")]
+        public virtual object Lifetime { get; set; }
+
+        /// <summary>
+        /// Optional. Rotation window percentage indicating when certificate rotation should be initiated based on
+        /// remaining lifetime. Must be between 10 - 80. If unspecified, this will be defaulted to 50.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotationWindowPercentage")]
+        public virtual System.Nullable<int> RotationWindowPercentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines configuration for extending trust to additional trust domains. By establishing trust with another
+    /// domain, the current domain will recognize and accept certificates issued by entities within the trusted domains.
+    /// Note that a trust domain automatically trusts itself, eliminating the need for explicit configuration.
+    /// </summary>
+    public class InlineTrustConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Maps specific trust domains (e.g., "example.com") to their corresponding TrustStore objects, which
+        /// contain the trusted root certificates for that domain. There can be a maximum of 10 trust domain entries in
+        /// this map. Note that a trust domain automatically trusts itself and don't need to be specified here. If
+        /// however, this WorkloadIdentityPool's trust domain contains any trust anchors in the additional_trust_bundles
+        /// map, those trust anchors will be *appended to* the Trust Bundle automatically derived from your
+        /// InlineCertificateIssuanceConfig's ca_pools.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalTrustBundles")]
+        public virtual System.Collections.Generic.IDictionary<string, TrustStore> AdditionalTrustBundles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Intermediate CA certificates used for building the trust chain to trust anchor</summary>
+    public class IntermediateCA : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>PEM certificate of the PKI used for validation. Must only contain one ca certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pemCertificate")]
+        public virtual string PemCertificate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a public key data along with its format.</summary>
     public class KeyData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8807,6 +10183,24 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListAttestationRules.</summary>
+    public class ListAttestationRulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of AttestationRules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationRules")]
+        public virtual System.Collections.Generic.IList<AttestationRule> AttestationRules { get; set; }
+
+        /// <summary>
+        /// Optional. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListOauthClientCredentials.</summary>
     public class ListOauthClientCredentialsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8928,6 +10322,42 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>A list of pools.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workforcePools")]
         public virtual System.Collections.Generic.IList<WorkforcePool> WorkforcePools { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListWorkloadIdentityPoolManagedIdentities.</summary>
+    public class ListWorkloadIdentityPoolManagedIdentitiesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of managed identities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityPoolManagedIdentities")]
+        public virtual System.Collections.Generic.IList<WorkloadIdentityPoolManagedIdentity> WorkloadIdentityPoolManagedIdentities { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListWorkloadIdentityPoolNamespaces.</summary>
+    public class ListWorkloadIdentityPoolNamespacesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of namespaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityPoolNamespaces")]
+        public virtual System.Collections.Generic.IList<WorkloadIdentityPoolNamespace> WorkloadIdentityPoolNamespaces { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9312,6 +10742,20 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The Google Cloud service that owns this namespace.</summary>
+    public class OwnerService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The service agent principal subject, e.g.
+        /// "serviceAccount:service-1234@gcp-sa-gkehub.iam.gserviceaccount.com".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalSubject")]
+        public virtual string PrincipalSubject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The service account patch request. You can patch only the `display_name` and `description` fields. You must use
     /// the `update_mask` field to specify which of these fields you want to patch. Only the fields specified in the
@@ -9600,6 +11044,17 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>Excluisive action returned by the CLH.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusiveAction")]
         public virtual string ExclusiveAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for RemoveAttestationRule.</summary>
+    public class RemoveAttestationRuleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The attestation rule to be removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationRule")]
+        public virtual AttestationRule AttestationRule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9905,6 +11360,17 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for SetAttestationRules.</summary>
+    public class SetAttestationRulesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The attestation rules to be set. At most 50 attestation rules can be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationRules")]
+        public virtual System.Collections.Generic.IList<AttestationRule> AttestationRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10069,6 +11535,44 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a root of trust.</summary>
+    public class TrustAnchor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// PEM certificate of the PKI used for validation. Must only contain one ca certificate(either root or
+        /// intermediate cert).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pemCertificate")]
+        public virtual string PemCertificate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Trust store that contains trust anchors and optional intermediate CAs used in PKI to build trust chain and
+    /// verify client's identity.
+    /// </summary>
+    public class TrustStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Set of intermediate CA certificates used for building the trust chain to trust anchor. IMPORTANT:
+        /// * Intermediate CAs are only supported when configuring x509 federation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intermediateCas")]
+        public virtual System.Collections.Generic.IList<IntermediateCA> IntermediateCas { get; set; }
+
+        /// <summary>
+        /// Required. List of Trust Anchors to be used while performing validation against a given TrustStore. The
+        /// incoming end entity's certificate must be chained up to one of the trust anchors here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustAnchors")]
+        public virtual System.Collections.Generic.IList<TrustAnchor> TrustAnchors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for UndeleteOauthClient.</summary>
     public class UndeleteOauthClientRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10124,6 +11628,20 @@ namespace Google.Apis.Iam.v1.Data
 
     /// <summary>Request message for UndeleteWorkforcePoolSubject.</summary>
     public class UndeleteWorkforcePoolSubjectRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UndeleteWorkloadIdentityPoolManagedIdentity.</summary>
+    public class UndeleteWorkloadIdentityPoolManagedIdentityRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UndeleteWorkloadIdentityPoolNamespace.</summary>
+    public class UndeleteWorkloadIdentityPoolNamespaceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10538,11 +12056,162 @@ namespace Google.Apis.Iam.v1.Data
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. Defines the Certificate Authority (CA) pool resources and configurations required for issuance and
+        /// rotation of mTLS workload certificates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineCertificateIssuanceConfig")]
+        public virtual InlineCertificateIssuanceConfig InlineCertificateIssuanceConfig { get; set; }
+
+        /// <summary>Optional. Represents config to add additional trusted trust domains.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineTrustConfig")]
+        public virtual InlineTrustConfig InlineTrustConfig { get; set; }
+
+        /// <summary>Immutable. The mode the pool is operating in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
         /// <summary>Output only. The resource name of the pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>Output only. The state of the pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a managed identity for a workload identity pool namespace.</summary>
+    public class WorkloadIdentityPoolManagedIdentity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A description of the managed identity. Cannot exceed 256 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for the identity,
+        /// however existing credentials will still be accepted until they expire.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>
+        /// Output only. Time after which the managed identity will be permanently purged and cannot be recovered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The resource name of the managed identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the managed identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a namespace for a workload identity pool. Namespaces are used to segment identities within the pool.
+    /// </summary>
+    public class WorkloadIdentityPoolNamespace : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A description of the namespace. Cannot exceed 256 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Whether the namespace is disabled. If disabled, credentials may no longer be issued for identities within
+        /// this namespace, however existing credentials will still be accepted until they expire.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>
+        /// Output only. Time after which the namespace will be permanently purged and cannot be recovered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The resource name of the namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The Google Cloud service that owns this namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerService")]
+        public virtual OwnerService OwnerService { get; set; }
+
+        /// <summary>Output only. The state of the namespace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
