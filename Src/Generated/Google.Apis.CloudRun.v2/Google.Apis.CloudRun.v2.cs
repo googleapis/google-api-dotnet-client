@@ -6426,6 +6426,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; }
 
+        /// <summary>Optional. IAP settings on the Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iapEnabled")]
+        public virtual System.Nullable<bool> IapEnabled { get; set; }
+
         /// <summary>
         /// Optional. Provides the ingress settings for this Service. On output, returns the currently observed ingress
         /// settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
@@ -6434,9 +6438,8 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string Ingress { get; set; }
 
         /// <summary>
-        /// Optional. Disables IAM permission check for run.routes.invoke for callers of this service. This feature is
-        /// available by invitation only. For more information, visit
-        /// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        /// Optional. Disables IAM permission check for run.routes.invoke for callers of this service. For more
+        /// information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invokerIamDisabled")]
         public virtual System.Nullable<bool> InvokerIamDisabled { get; set; }
@@ -6534,6 +6537,13 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terminalCondition")]
         public virtual GoogleCloudRunV2Condition TerminalCondition { get; set; }
+
+        /// <summary>
+        /// Output only. True if Cloud Run Threat Detection monitoring is enabled for the parent project of this
+        /// Service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threatDetectionEnabled")]
+        public virtual System.Nullable<bool> ThreatDetectionEnabled { get; set; }
 
         /// <summary>
         /// Optional. Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If
@@ -7876,25 +7886,6 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceCount")]
         public virtual System.Nullable<int> MaxInstanceCount { get; set; }
-
-        /// <summary>
-        /// Optional. A maximum percentage of instances that will be moved in each step of traffic split changes. When
-        /// set to a positive value, the server will bring up, at most, that percentage of new instances at a time
-        /// before moving traffic to them. After moving traffic, the server will bring down instances of the old
-        /// revision. This can reduce a spike of total active instances during changes from one revision to another but
-        /// specifying how many extra instances can be brought up at a time.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxSurge")]
-        public virtual System.Nullable<int> MaxSurge { get; set; }
-
-        /// <summary>
-        /// Optional. A maximum percentage of instances that may be unavailable during changes from one revision to
-        /// another. When set to a positive value, the server may bring down instances before bringing up new instances.
-        /// This can prevent a spike of total active instances during changes from one revision by reducing the pool of
-        /// instances before bringing up new ones. Some requests may be slow or fail to serve during the transition.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxUnavailable")]
-        public virtual System.Nullable<int> MaxUnavailable { get; set; }
 
         /// <summary>
         /// Optional. The minimum count of instances distributed among revisions based on the specified instance split
@@ -9944,6 +9935,7 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This is proto2's version of MessageSet.</summary>
     public class Proto2BridgeMessageSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
