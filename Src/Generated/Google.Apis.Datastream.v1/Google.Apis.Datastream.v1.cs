@@ -2771,6 +2771,13 @@ namespace Google.Apis.Datastream.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -2810,6 +2817,14 @@ namespace Google.Apis.Datastream.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -2861,6 +2876,10 @@ namespace Google.Apis.Datastream.v1.Data
     /// </summary>
     public class BackfillAllStrategy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>MongoDB data source objects to avoid backfilling</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mongodbExcludedObjects")]
+        public virtual MongodbCluster MongodbExcludedObjects { get; set; }
+
         /// <summary>MySQL data source objects to avoid backfilling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlExcludedObjects")]
         public virtual MysqlRdbms MysqlExcludedObjects { get; set; }
@@ -3164,6 +3183,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>MongoDB Connection Profile configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mongodbProfile")]
+        public virtual MongodbProfile MongodbProfile { get; set; }
+
         /// <summary>MySQL ConnectionProfile configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlProfile")]
         public virtual MysqlProfile MysqlProfile { get; set; }
@@ -3318,6 +3341,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hierarchyDepth")]
         public virtual System.Nullable<int> HierarchyDepth { get; set; }
 
+        /// <summary>MongoDB cluster to enrich with child data objects and metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mongodbCluster")]
+        public virtual MongodbCluster MongodbCluster { get; set; }
+
         /// <summary>MySQL RDBMS to enrich with child data objects and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlRdbms")]
         public virtual MysqlRdbms MysqlRdbms { get; set; }
@@ -3330,6 +3357,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlRdbms")]
         public virtual PostgresqlRdbms PostgresqlRdbms { get; set; }
 
+        /// <summary>Salesforce organization to enrich with child data objects and metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("salesforceOrg")]
+        public virtual SalesforceOrg SalesforceOrg { get; set; }
+
         /// <summary>SQLServer RDBMS to enrich with child data objects and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerRdbms")]
         public virtual SqlServerRdbms SqlServerRdbms { get; set; }
@@ -3341,6 +3372,10 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>Response from a discover request.</summary>
     public class DiscoverConnectionProfileResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Enriched MongoDB cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mongodbCluster")]
+        public virtual MongodbCluster MongodbCluster { get; set; }
+
         /// <summary>Enriched MySQL RDBMS object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlRdbms")]
         public virtual MysqlRdbms MysqlRdbms { get; set; }
@@ -3352,6 +3387,10 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Enriched PostgreSQL RDBMS object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlRdbms")]
         public virtual PostgresqlRdbms PostgresqlRdbms { get; set; }
+
+        /// <summary>Enriched Salesforce organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("salesforceOrg")]
+        public virtual SalesforceOrg SalesforceOrg { get; set; }
 
         /// <summary>Enriched SQLServer RDBMS object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerRdbms")]
@@ -3535,6 +3574,24 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>Use GTID based replication.</summary>
     public class Gtid : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A HostAddress represents a transport end point, which is the combination of an IP address or hostname and a port
+    /// number.
+    /// </summary>
+    public class HostAddress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Hostname for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>Optional. Port for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3755,6 +3812,131 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>Merge mode defines that all changes to a table will be merged at the destination table.</summary>
     public class Merge : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MongoDB Cluster structure.</summary>
+    public class MongodbCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>MongoDB databases in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databases")]
+        public virtual System.Collections.Generic.IList<MongodbDatabase> Databases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MongoDB Collection.</summary>
+    public class MongodbCollection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Collection name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collection")]
+        public virtual string Collection { get; set; }
+
+        /// <summary>Fields in the collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<MongodbField> Fields { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MongoDB Database.</summary>
+    public class MongodbDatabase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Collections in the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collections")]
+        public virtual System.Collections.Generic.IList<MongodbCollection> Collections { get; set; }
+
+        /// <summary>Database name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MongoDB Field.</summary>
+    public class MongodbField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Field name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MongoDB data source object identifier.</summary>
+    public class MongodbObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The collection name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collection")]
+        public virtual string Collection { get; set; }
+
+        /// <summary>Required. The database name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MongoDB profile.</summary>
+    public class MongodbProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. List of host addresses for a MongoDB cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostAddresses")]
+        public virtual System.Collections.Generic.IList<HostAddress> HostAddresses { get; set; }
+
+        /// <summary>
+        /// Optional. Password for the MongoDB connection. Mutually exclusive with the `secret_manager_stored_password`
+        /// field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the replica set. Only needed for self hosted replica set type MongoDB cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaSet")]
+        public virtual string ReplicaSet { get; set; }
+
+        /// <summary>
+        /// Optional. A reference to a Secret Manager resource name storing the SQLServer connection password. Mutually
+        /// exclusive with the `password` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerStoredPassword")]
+        public virtual string SecretManagerStoredPassword { get; set; }
+
+        /// <summary>Srv connection format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("srvConnectionFormat")]
+        public virtual SrvConnectionFormat SrvConnectionFormat { get; set; }
+
+        /// <summary>Standard connection format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standardConnectionFormat")]
+        public virtual StandardConnectionFormat StandardConnectionFormat { get; set; }
+
+        /// <summary>Required. Username for the MongoDB connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MongoDB source configuration.</summary>
+    public class MongodbSourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>MongoDB collections to exclude from the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
+        public virtual MongodbCluster ExcludeObjects { get; set; }
+
+        /// <summary>MongoDB collections to include in the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
+        public virtual MongodbCluster IncludeObjects { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5106,6 +5288,10 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>The configuration of the stream source.</summary>
     public class SourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>MongoDB data source configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mongodbSourceConfig")]
+        public virtual MongodbSourceConfig MongodbSourceConfig { get; set; }
+
         /// <summary>MySQL data source configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlSourceConfig")]
         public virtual MysqlSourceConfig MysqlSourceConfig { get; set; }
@@ -5153,6 +5339,10 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>Represents an identifier of an object in the data source.</summary>
     public class SourceObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>MongoDB data source object identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mongodbIdentifier")]
+        public virtual MongodbObjectIdentifier MongodbIdentifier { get; set; }
+
         /// <summary>Mysql data source object identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlIdentifier")]
         public virtual MysqlObjectIdentifier MysqlIdentifier { get; set; }
@@ -5386,6 +5576,20 @@ namespace Google.Apis.Datastream.v1.Data
 
     /// <summary>Configuration to use Transaction Logs CDC read method.</summary>
     public class SqlServerTransactionLogs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Srv connection format.</summary>
+    public class SrvConnectionFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Standard connection format.</summary>
+    public class StandardConnectionFormat : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
