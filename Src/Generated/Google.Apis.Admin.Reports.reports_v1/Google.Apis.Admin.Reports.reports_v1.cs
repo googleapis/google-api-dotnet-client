@@ -488,6 +488,13 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("vault")]
                 Vault = 22,
+
+                /// <summary>
+                /// The Gemini for Workspace app's activity reports return information about various types of Gemini
+                /// activity events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("gemini_for_workspace")]
+                GeminiForWorkspace = 23,
             }
 
             /// <summary>
@@ -631,7 +638,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = @"(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)|(vault)",
+                    Pattern = @"(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_for_workspace)",
                 });
                 RequestParameters.Add("actorIpAddress", new Google.Apis.Discovery.Parameter
                 {
@@ -1819,9 +1826,17 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ownerDomain")]
         public virtual string OwnerDomain { get; set; }
 
+        /// <summary>Details of the resource on which the action was performed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceDetails")]
+        public virtual System.Collections.Generic.IList<ResourceDetails> ResourceDetails { get; set; }
+
         /// <summary>User doing the action.</summary>
         public class ActorData
         {
+            /// <summary>Details of the application that was the actor for the activity.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("applicationInfo")]
+            public virtual ApplicationInfoData ApplicationInfo { get; set; }
+
             /// <summary>The type of actor.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("callerType")]
             public virtual string CallerType { get; set; }
@@ -1846,6 +1861,22 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
             public virtual string ProfileId { get; set; }
+
+            /// <summary>Details of the application that was the actor for the activity.</summary>
+            public class ApplicationInfoData
+            {
+                /// <summary>Name of the application used to perform the action.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("applicationName")]
+                public virtual string ApplicationName { get; set; }
+
+                /// <summary>Whether the application was impersonating a user.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("impersonation")]
+                public virtual System.Nullable<bool> Impersonation { get; set; }
+
+                /// <summary>OAuth client id of the third party application used to perform the action.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("oauthClientId")]
+                public virtual string OauthClientId { get; set; }
+            }
         }
 
         /// <summary>Activity events in the report.</summary>
@@ -1868,6 +1899,10 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
             public virtual System.Collections.Generic.IList<ParametersData> Parameters { get; set; }
+
+            /// <summary>Resource ids associated with the event.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("resourceIds")]
+            public virtual System.Collections.Generic.IList<string> ResourceIds { get; set; }
 
             /// <summary>
             /// Type of event. The Google Workspace service or feature that an administrator changes is identified in
@@ -1983,6 +2018,32 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         }
     }
 
+    /// <summary>Details of the label applied on the resource.</summary>
+    public class AppliedLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of fields which are part of the label and have been set by the user. If label has a field which was not
+        /// set by the user, it would not be present in this list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldValues")]
+        public virtual System.Collections.Generic.IList<FieldValue> FieldValues { get; set; }
+
+        /// <summary>Identifier of the label - Only the label id, not the full OnePlatform resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The reason why the label was applied on the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual Reason Reason { get; set; }
+
+        /// <summary>Title of the label</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A notification channel used to watch for resource changes.</summary>
     public class Channel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2045,6 +2106,161 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
+    /// </summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the field value set by the user for the particular label.</summary>
+    public class FieldValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Setting a date value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateValue")]
+        public virtual Date DateValue { get; set; }
+
+        /// <summary>Display name of the field</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Identifier of the field</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Setting an integer value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integerValue")]
+        public virtual System.Nullable<long> IntegerValue { get; set; }
+
+        /// <summary>Setting a long text value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longTextValue")]
+        public virtual string LongTextValue { get; set; }
+
+        /// <summary>The reason why the field was applied to the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual Reason Reason { get; set; }
+
+        /// <summary>Setting a selection list value by selecting multiple values from a dropdown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectionListValue")]
+        public virtual FieldValueSelectionListValue SelectionListValue { get; set; }
+
+        /// <summary>Setting a selection value by selecting a single value from a dropdown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectionValue")]
+        public virtual FieldValueSelectionValue SelectionValue { get; set; }
+
+        /// <summary>Setting a text list value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textListValue")]
+        public virtual FieldValueTextListValue TextListValue { get; set; }
+
+        /// <summary>Setting a text value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textValue")]
+        public virtual string TextValue { get; set; }
+
+        /// <summary>Type of the field</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>If the field is unset, this will be true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unsetValue")]
+        public virtual System.Nullable<bool> UnsetValue { get; set; }
+
+        /// <summary>Setting a user list value by selecting multiple users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userListValue")]
+        public virtual FieldValueUserListValue UserListValue { get; set; }
+
+        /// <summary>Setting a user value by selecting a single user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userValue")]
+        public virtual FieldValueUserValue UserValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Setting a selection list value by selecting multiple values from a dropdown.</summary>
+    public class FieldValueSelectionListValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of selections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<FieldValueSelectionValue> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Setting a selection value by selecting a single value from a dropdown.</summary>
+    public class FieldValueSelectionValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the selection is badged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("badged")]
+        public virtual System.Nullable<bool> Badged { get; set; }
+
+        /// <summary>Display name of the selection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Identifier of the selection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Setting a text list value.</summary>
+    public class FieldValueTextListValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of text values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Setting a user list value by selecting multiple users.</summary>
+    public class FieldValueUserListValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<FieldValueUserValue> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Setting a user value by selecting a single user.</summary>
+    public class FieldValueUserValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>JSON template for a parameter used in various reports.</summary>
     public class NestedParameter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2075,6 +2291,55 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         /// <summary>String value of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The reason why the label/field was applied.</summary>
+    public class Reason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reasonType")]
+        public virtual string ReasonType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the resource on which the action was performed.</summary>
+    public class ResourceDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Id of the application to which this resource belongs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
+        public virtual System.Nullable<long> ApplicationId { get; set; }
+
+        /// <summary>List of labels applied on the resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedLabels")]
+        public virtual System.Collections.Generic.IList<AppliedLabel> AppliedLabels { get; set; }
+
+        /// <summary>Identifier of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Owner of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerEmail")]
+        public virtual string OwnerEmail { get; set; }
+
+        /// <summary>Defines relationship of the resource to the events</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relation")]
+        public virtual string Relation { get; set; }
+
+        /// <summary>
+        /// Title of the resource. For instance, in case of a drive document, this would be the title of the document.
+        /// In case of an email, this would be the subject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Type of the resource - document, email, chat message</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

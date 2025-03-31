@@ -22,7 +22,8 @@
     "chrome",
     "data_studio",
     "keep",
-    "vault"
+    "vault",
+    "gemini_for_workspace"
   ],
   "Google.Apis.Admin.Reports.reports_v1.ActivitiesResource+WatchRequest.ApplicationNameEnum": [
     "application_name_unspecified",
