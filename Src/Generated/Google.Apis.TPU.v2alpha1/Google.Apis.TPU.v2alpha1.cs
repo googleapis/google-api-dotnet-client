@@ -2083,6 +2083,13 @@ namespace Google.Apis.TPU.v2alpha1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -2122,6 +2129,14 @@ namespace Google.Apis.TPU.v2alpha1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -3182,6 +3197,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. The provisioning model for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisioningModel")]
+        public virtual string ProvisioningModel { get; set; }
+
         /// <summary>The queueing policy of the QueuedRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queueingPolicy")]
         public virtual QueueingPolicy QueueingPolicy { get; set; }
@@ -3192,6 +3211,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationName")]
         public virtual string ReservationName { get; set; }
+
+        /// <summary>Optional. The duration of the requested resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runDuration")]
+        public virtual RunDuration RunDuration { get; set; }
 
         /// <summary>Optional. The Spot tier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spot")]
@@ -3386,6 +3409,56 @@ namespace Google.Apis.TPU.v2alpha1.Data
     /// <summary>Request for ResetQueuedResource.</summary>
     public class ResetQueuedResourceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the maximum lifetime of the requested resource.</summary>
+    public class RunDuration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum duration of the requested resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRunDuration")]
+        public virtual object MaxRunDuration { get; set; }
+
+        private string _terminationTimeRaw;
+
+        private object _terminationTime;
+
+        /// <summary>The time at which the requested resource will be terminated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terminationTime")]
+        public virtual string TerminationTimeRaw
+        {
+            get => _terminationTimeRaw;
+            set
+            {
+                _terminationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _terminationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TerminationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminationTimeDateTimeOffset instead.")]
+        public virtual object TerminationTime
+        {
+            get => _terminationTime;
+            set
+            {
+                _terminationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _terminationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TerminationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TerminationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminationTimeRaw);
+            set => TerminationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
