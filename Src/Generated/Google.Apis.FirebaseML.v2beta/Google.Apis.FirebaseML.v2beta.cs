@@ -1243,6 +1243,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("temperature")]
         public virtual System.Nullable<float> Temperature { get; set; }
 
+        /// <summary>
+        /// Optional. Config for thinking features. An error will be returned if this field is set for models that don't
+        /// support thinking.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thinkingConfig")]
+        public virtual GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig ThinkingConfig { get; set; }
+
         /// <summary>Optional. If specified, top-k sampling will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topK")]
         public virtual System.Nullable<float> TopK { get; set; }
@@ -1308,6 +1315,25 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Config for thinking features.</summary>
+    public class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Indicates whether to enable thinking mode. If true, the model will enable thinking mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableThinking")]
+        public virtual System.Nullable<bool> EnableThinking { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates the thinking budget in tokens. This is only applied when enable_thinking is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thinkingBudget")]
+        public virtual System.Nullable<int> ThinkingBudget { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Tool to retrieve public web data for grounding, powered by Google.</summary>
     public class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1337,6 +1363,12 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Chunk from context retrieved by the retrieval tools.</summary>
     public class GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Additional context for the RAG retrieval result. This is only populated when using the RAG retrieval tool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragChunk")]
+        public virtual GoogleCloudAiplatformV1beta1RagChunk RagChunk { get; set; }
+
         /// <summary>Text of the attribution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -1555,6 +1587,36 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>The name of the preset voice to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voiceName")]
         public virtual string VoiceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A RagChunk includes the content of a chunk of a RagFile, and associated metadata.</summary>
+    public class GoogleCloudAiplatformV1beta1RagChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If populated, represents where the chunk starts and ends in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
+        public virtual GoogleCloudAiplatformV1beta1RagChunkPageSpan PageSpan { get; set; }
+
+        /// <summary>The content of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents where the chunk starts and ends in the document.</summary>
+    public class GoogleCloudAiplatformV1beta1RagChunkPageSpan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page where chunk starts in the document. Inclusive. 1-indexed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstPage")]
+        public virtual System.Nullable<int> FirstPage { get; set; }
+
+        /// <summary>Page where chunk ends in the document. Inclusive. 1-indexed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastPage")]
+        public virtual System.Nullable<int> LastPage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
