@@ -57,7 +57,7 @@ namespace Google.Apis.AreaInsights.v1
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Places Insights API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Places Aggregate API.</summary>
         public class Scope
         {
             /// <summary>
@@ -67,7 +67,7 @@ namespace Google.Apis.AreaInsights.v1
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Places Insights API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Places Aggregate API.</summary>
         public static class ScopeConstants
         {
             /// <summary>
@@ -277,13 +277,12 @@ namespace Google.Apis.AreaInsights.v1
         }
 
         /// <summary>
-        /// Compute Insights RPC This method lets you retrieve insights about areas using a variaty of filter such as:
-        /// area, place type, operating status, price level and ratings. Currently "count" and "places" insights are
-        /// supported. With "count" insights you can answer questions such as "How many restaurant are located in
-        /// California that are operational, are inexpensive and have an average rating of at least 4 stars" (see
-        /// `insight` enum for more details). With "places" insights, you can determine which places match the requested
-        /// filter. Clients can then use those place resource names to fetch more details about each individual place
-        /// using the Places API.
+        /// This method lets you retrieve insights about areas using a variety of filter such as: area, place type,
+        /// operating status, price level and ratings. Currently "count" and "places" insights are supported. With
+        /// "count" insights you can answer questions such as "How many restaurant are located in California that are
+        /// operational, are inexpensive and have an average rating of at least 4 stars" (see `insight` enum for more
+        /// details). With "places" insights, you can determine which places match the requested filter. Clients can
+        /// then use those place resource names to fetch more details about each individual place using the Places API.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual ComputeInsightsRequest ComputeInsights(Google.Apis.AreaInsights.v1.Data.ComputeInsightsRequest body)
@@ -292,13 +291,12 @@ namespace Google.Apis.AreaInsights.v1
         }
 
         /// <summary>
-        /// Compute Insights RPC This method lets you retrieve insights about areas using a variaty of filter such as:
-        /// area, place type, operating status, price level and ratings. Currently "count" and "places" insights are
-        /// supported. With "count" insights you can answer questions such as "How many restaurant are located in
-        /// California that are operational, are inexpensive and have an average rating of at least 4 stars" (see
-        /// `insight` enum for more details). With "places" insights, you can determine which places match the requested
-        /// filter. Clients can then use those place resource names to fetch more details about each individual place
-        /// using the Places API.
+        /// This method lets you retrieve insights about areas using a variety of filter such as: area, place type,
+        /// operating status, price level and ratings. Currently "count" and "places" insights are supported. With
+        /// "count" insights you can answer questions such as "How many restaurant are located in California that are
+        /// operational, are inexpensive and have an average rating of at least 4 stars" (see `insight` enum for more
+        /// details). With "places" insights, you can determine which places match the requested filter. Clients can
+        /// then use those place resource names to fetch more details about each individual place using the Places API.
         /// </summary>
         public class ComputeInsightsRequest : AreaInsightsBaseServiceRequest<Google.Apis.AreaInsights.v1.Data.ComputeInsightsResponse>
         {
