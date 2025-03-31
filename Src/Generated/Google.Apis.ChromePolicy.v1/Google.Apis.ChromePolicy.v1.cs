@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2542,6 +2542,13 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// <summary>file name, relative to root of source tree</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Names of files imported by this file purely for the purpose of providing option extensions. These are
+        /// excluded from the dependency list above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optionDependency")]
+        public virtual System.Collections.Generic.IList<string> OptionDependency { get; set; }
 
         /// <summary>e.g. "foo", "foo.bar", etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("package")]
