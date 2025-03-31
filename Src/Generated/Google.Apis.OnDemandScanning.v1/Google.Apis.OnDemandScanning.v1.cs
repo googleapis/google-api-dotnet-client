@@ -1075,7 +1075,7 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         /// <summary>
         /// The binary package. This is significant when the source is different than the binary itself. Historically if
         /// they've differed, we've stored the name of the source and its version in the package/version fields, but we
-        /// should also store the binary package info, as that's what's actually installed. See b/175908657#comment15.
+        /// should also store the binary package info, as that's what's actually installed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryVersion")]
         public virtual PackageVersion BinaryVersion { get; set; }
@@ -2410,10 +2410,7 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Details about the layer a package was found in. This should be the same as the LayerDetails message in
-    /// google3/third_party/scalibr/binary/proto/scan_result.proto.
-    /// </summary>
+    /// <summary>Details about the layer a package was found in.</summary>
     public class LayerDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The base images the layer is found within.</summary>
@@ -2941,7 +2938,7 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
         public virtual string PackageType { get; set; }
 
-        /// <summary>CVEs that this package is no longer vulnerable to go/drydock-dd-custom-binary-scanning</summary>
+        /// <summary>CVEs that this package is no longer vulnerable to</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patchedCve")]
         public virtual System.Collections.Generic.IList<string> PatchedCve { get; set; }
 
