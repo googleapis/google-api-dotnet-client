@@ -19582,6 +19582,13 @@ namespace Google.Apis.Dialogflow.v2beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -19621,6 +19628,14 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -22990,6 +23005,21 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> RequestHeaders { get; set; }
 
         /// <summary>
+        /// Optional. The SecretManager secret version resource storing the username:password pair for HTTP Basic
+        /// authentication. Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVersionForUsernamePassword")]
+        public virtual string SecretVersionForUsernamePassword { get; set; }
+
+        /// <summary>
+        /// Optional. The HTTP request headers to send together with webhook requests. Header values are stored in
+        /// SecretManager secret versions. When the same header name is specified in both `request_headers` and
+        /// `secret_versions_for_request_headers`, the value in `secret_versions_for_request_headers` will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVersionsForRequestHeaders")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue> SecretVersionsForRequestHeaders { get; set; }
+
+        /// <summary>
         /// Optional. Indicate the auth token type generated from the [Diglogflow service
         /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is
         /// sent in the Authorization header.
@@ -23029,10 +23059,32 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
         /// <summary>
+        /// Optional. The name of the SecretManager secret version resource storing the client secret. If this field is
+        /// set, the `client_secret` field will be ignored. Format:
+        /// `projects/{project}/secrets/{secret}/versions/{version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVersionForClientSecret")]
+        public virtual string SecretVersionForClientSecret { get; set; }
+
+        /// <summary>
         /// Required. The token endpoint provided by the 3rd party platform to exchange an access token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenEndpoint")]
         public virtual string TokenEndpoint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the value of an HTTP header stored in a SecretManager secret version.</summary>
+    public class GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The SecretManager secret version resource storing the header value. Format:
+        /// `projects/{project}/secrets/{secret}/versions/{version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVersion")]
+        public virtual string SecretVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25770,6 +25822,21 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> RequestHeaders { get; set; }
 
         /// <summary>
+        /// Optional. The SecretManager secret version resource storing the username:password pair for HTTP Basic
+        /// authentication. Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVersionForUsernamePassword")]
+        public virtual string SecretVersionForUsernamePassword { get; set; }
+
+        /// <summary>
+        /// Optional. The HTTP request headers to send together with webhook requests. Header values are stored in
+        /// SecretManager secret versions. When the same header name is specified in both `request_headers` and
+        /// `secret_versions_for_request_headers`, the value in `secret_versions_for_request_headers` will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVersionsForRequestHeaders")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue> SecretVersionsForRequestHeaders { get; set; }
+
+        /// <summary>
         /// Optional. Indicate the auth token type generated from the [Diglogflow service
         /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is
         /// sent in the Authorization header.
@@ -25809,10 +25876,32 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
         /// <summary>
+        /// Optional. The name of the SecretManager secret version resource storing the client secret. If this field is
+        /// set, the `client_secret` field will be ignored. Format:
+        /// `projects/{project}/secrets/{secret}/versions/{version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVersionForClientSecret")]
+        public virtual string SecretVersionForClientSecret { get; set; }
+
+        /// <summary>
         /// Required. The token endpoint provided by the 3rd party platform to exchange an access token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenEndpoint")]
         public virtual string TokenEndpoint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the value of an HTTP header stored in a SecretManager secret version.</summary>
+    public class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The SecretManager secret version resource storing the header value. Format:
+        /// `projects/{project}/secrets/{secret}/versions/{version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVersion")]
+        public virtual string SecretVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26892,6 +26981,25 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Optional. Suggested summary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarySuggestion")]
         public virtual GoogleCloudDialogflowV2SummarySuggestion SummarySuggestion { get; set; }
+
+        /// <summary>Optional. List of request and response for tool calls executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCallInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo> ToolCallInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request and response for a tool call.</summary>
+    public class GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Request for a tool call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCall")]
+        public virtual GoogleCloudDialogflowV2ToolCall ToolCall { get; set; }
+
+        /// <summary>Required. Response for a tool call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCallResult")]
+        public virtual GoogleCloudDialogflowV2ToolCallResult ToolCallResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28742,6 +28850,139 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Required. Summary text for the section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summary")]
         public virtual string Summary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a call of a specific tool's action with the specified inputs.</summary>
+    public class GoogleCloudDialogflowV2ToolCall : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the tool's action associated with this call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time of the tool call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The action's input parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> InputParameters { get; set; }
+
+        /// <summary>Required. The tool associated with this call. Format: `projects//locations//tools/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual string Tool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of calling a tool's action.</summary>
+    public class GoogleCloudDialogflowV2ToolCallResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the tool's action associated with this call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Only populated if the response content is utf-8 encoded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time of the tool call result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The tool call's error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleCloudDialogflowV2ToolCallResultError Error { get; set; }
+
+        /// <summary>
+        /// Only populated if the response content is not utf-8 encoded. (by definition byte fields are base64 encoded).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawContent")]
+        public virtual string RawContent { get; set; }
+
+        /// <summary>Required. The tool associated with this call. Format: `projects//locations//tools/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual string Tool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An error produced by the tool call.</summary>
+    public class GoogleCloudDialogflowV2ToolCallResultError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The error message of the function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -31828,6 +32069,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual GoogleCloudDialogflowV2beta1SummarizationContext SummarizationContext { get; set; }
 
         /// <summary>
+        /// Optional. Resource names of the tools that the generator can choose from. Format:
+        /// `projects//locations//tools/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tools")]
+        public virtual System.Collections.Generic.IList<string> Tools { get; set; }
+
+        /// <summary>
         /// Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerEvent")]
@@ -31884,6 +32132,25 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Optional. Suggested summary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarySuggestion")]
         public virtual GoogleCloudDialogflowV2beta1SummarySuggestion SummarySuggestion { get; set; }
+
+        /// <summary>Optional. List of request and response for tool calls executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCallInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo> ToolCallInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request and response for a tool call.</summary>
+    public class GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Request for a tool call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCall")]
+        public virtual GoogleCloudDialogflowV2beta1ToolCall ToolCall { get; set; }
+
+        /// <summary>Required. Response for a tool call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCallResult")]
+        public virtual GoogleCloudDialogflowV2beta1ToolCallResult ToolCallResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -36742,6 +37009,139 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synthesizeSpeechConfigs")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig> SynthesizeSpeechConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a call of a specific tool's action with the specified inputs.</summary>
+    public class GoogleCloudDialogflowV2beta1ToolCall : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the tool's action associated with this call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time of the tool call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The action's input parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> InputParameters { get; set; }
+
+        /// <summary>Required. The tool associated with this call. Format: `projects//locations//tools/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual string Tool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of calling a tool's action.</summary>
+    public class GoogleCloudDialogflowV2beta1ToolCallResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the tool's action associated with this call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Only populated if the response content is utf-8 encoded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time of the tool call result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The tool call's error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleCloudDialogflowV2beta1ToolCallResultError Error { get; set; }
+
+        /// <summary>
+        /// Only populated if the response content is not utf-8 encoded. (by definition byte fields are base64 encoded).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawContent")]
+        public virtual string RawContent { get; set; }
+
+        /// <summary>Required. The tool associated with this call. Format: `projects//locations//tools/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual string Tool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An error produced by the tool call.</summary>
+    public class GoogleCloudDialogflowV2beta1ToolCallResultError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The error message of the function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
