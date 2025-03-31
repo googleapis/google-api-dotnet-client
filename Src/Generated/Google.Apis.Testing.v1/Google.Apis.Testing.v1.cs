@@ -1042,6 +1042,13 @@ namespace Google.Apis.Testing.v1
                 DEVICEIPBLOCKS = 5,
             }
 
+            /// <summary>
+            /// Optional. Whether to include viewable only models in the response. This is only applicable for Android
+            /// models.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeViewableModels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeViewableModels { get; set; }
+
             /// <summary>For authorization, the cloud project requesting the TestEnvironmentCatalog.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
@@ -1064,6 +1071,14 @@ namespace Google.Apis.Testing.v1
                     Name = "environmentType",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeViewableModels", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeViewableModels",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -1266,6 +1281,13 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A description of an Android device tests may be run on.</summary>
     public class AndroidModel : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Reasons for access denial. This model is accessible if this list is empty, otherwise the model is viewable
+        /// only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessDeniedReasons")]
+        public virtual System.Collections.Generic.IList<string> AccessDeniedReasons { get; set; }
+
         /// <summary>The company that this device is branded with. Example: "Google", "Samsung".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; }
