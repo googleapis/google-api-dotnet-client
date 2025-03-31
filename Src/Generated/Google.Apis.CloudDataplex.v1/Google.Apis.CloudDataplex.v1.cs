@@ -13896,6 +13896,13 @@ namespace Google.Apis.CloudDataplex.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
                 /// </summary>
@@ -13935,6 +13942,14 @@ namespace Google.Apis.CloudDataplex.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -15126,7 +15141,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>
         /// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive
         /// discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60
-        /// minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab:
+        /// minutes.To explicitly set a timezone to the cron tab, apply a prefix in the cron tab:
         /// "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from
         /// IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
         /// </summary>
@@ -15998,6 +16013,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryPublishing")]
         public virtual GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing BigqueryPublishing { get; set; }
 
+        /// <summary>Output only. Statistics of the DataDiscoveryScan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanStatistics")]
+        public virtual GoogleCloudDataplexV1DataDiscoveryResultScanStatistics ScanStatistics { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -16008,6 +16027,53 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Output only. The BigQuery dataset the discovered tables are published to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
         public virtual string Dataset { get; set; }
+
+        /// <summary>Output only. The location of the BigQuery publishing dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics of the DataDiscoveryScan.</summary>
+    public class GoogleCloudDataplexV1DataDiscoveryResultScanStatistics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data processed in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProcessedBytes")]
+        public virtual System.Nullable<long> DataProcessedBytes { get; set; }
+
+        /// <summary>The number of files excluded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filesExcluded")]
+        public virtual System.Nullable<int> FilesExcluded { get; set; }
+
+        /// <summary>The number of filesets created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filesetsCreated")]
+        public virtual System.Nullable<int> FilesetsCreated { get; set; }
+
+        /// <summary>The number of filesets deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filesetsDeleted")]
+        public virtual System.Nullable<int> FilesetsDeleted { get; set; }
+
+        /// <summary>The number of filesets updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filesetsUpdated")]
+        public virtual System.Nullable<int> FilesetsUpdated { get; set; }
+
+        /// <summary>The number of files scanned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scannedFileCount")]
+        public virtual System.Nullable<int> ScannedFileCount { get; set; }
+
+        /// <summary>The number of tables created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tablesCreated")]
+        public virtual System.Nullable<int> TablesCreated { get; set; }
+
+        /// <summary>The number of tables deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tablesDeleted")]
+        public virtual System.Nullable<int> TablesDeleted { get; set; }
+
+        /// <summary>The number of tables updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tablesUpdated")]
+        public virtual System.Nullable<int> TablesUpdated { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20162,6 +20228,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Export job result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportResult")]
+        public virtual GoogleCloudDataplexV1MetadataJobExportJobResult ExportResult { get; set; }
+
+        /// <summary>Export job specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportSpec")]
+        public virtual GoogleCloudDataplexV1MetadataJobExportJobSpec ExportSpec { get; set; }
+
         /// <summary>Output only. Import job result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importResult")]
         public virtual GoogleCloudDataplexV1MetadataJobImportJobResult ImportResult { get; set; }
@@ -20232,6 +20306,88 @@ namespace Google.Apis.CloudDataplex.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Export Job Results. The result is based on the snapshot at the time when the job is created.</summary>
+    public class GoogleCloudDataplexV1MetadataJobExportJobResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The error message if the export job failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>Output only. The number of entries that have been exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportedEntries")]
+        public virtual System.Nullable<long> ExportedEntries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Export job specification.</summary>
+    public class GoogleCloudDataplexV1MetadataJobExportJobSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The root path of the exported metadata. Must be in the format: "gs://" Or specify a customized
+        /// prefix after the bucket: "gs://///.../". The length limit of the customized prefix is 128 characters. The
+        /// bucket must be in the same VPC-SC perimeter with the job.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputPath")]
+        public virtual string OutputPath { get; set; }
+
+        /// <summary>Required. Selects the entries to be exported by this job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Scope of the export job.</summary>
+    public class GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The aspect types that are in scope for the export job. Optional. If specified, only aspects of the specified
+        /// types will be affected by the job. Must follow the format: "projects//locations//aspectTypes/"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspectTypes")]
+        public virtual System.Collections.Generic.IList<string> AspectTypes { get; set; }
+
+        /// <summary>
+        /// The entry groups that are in scope for the export job. Optional. If specified, only entries in the specified
+        /// entry groups will be exported by the job. Must be in the VPC-SC perimeter of the job. The location of the
+        /// entry groups must be the same as the job. Either projects or entry_groups can be specified when
+        /// organization_level_export is set to false. Must follow the format: "projects//locations//entryGroups/"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryGroups")]
+        public virtual System.Collections.Generic.IList<string> EntryGroups { get; set; }
+
+        /// <summary>
+        /// If specified, only entries of the specified types will be affected by the job. Must follow the format:
+        /// "projects//locations//entryTypes/"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryTypes")]
+        public virtual System.Collections.Generic.IList<string> EntryTypes { get; set; }
+
+        /// <summary>
+        /// Indicating if it is an organization level export job. - When set to true, exports all entries from entry
+        /// groups and projects sharing the same organization id of the Metadata Job. Only projects and entry groups in
+        /// the VPC-SC perimeter will be exported. The projects and entry groups are ignored. - When set to false, one
+        /// of the projects or entry groups must be specified. - Default to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationLevel")]
+        public virtual System.Nullable<bool> OrganizationLevel { get; set; }
+
+        /// <summary>
+        /// The projects that are in the scope of the export job. Can either be project numbers or project IDs. If
+        /// specified, only the entries from the specified projects will be exported. The projects must be in the same
+        /// organization and in the VPC-SC perimeter. Either projects or entry_groups can be specified when
+        /// organization_level_export is set to false. Must follow the format: "projects/"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projects")]
+        public virtual System.Collections.Generic.IList<string> Projects { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21810,7 +21966,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>
         /// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive
         /// discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60
-        /// minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab:
+        /// minutes.To explicitly set a timezone to the cron tab, apply a prefix in the cron tab:
         /// "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from
         /// IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
         /// </summary>
