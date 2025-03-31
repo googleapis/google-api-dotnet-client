@@ -7363,6 +7363,13 @@ namespace Google.Apis.GKEOnPrem.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -7402,6 +7409,14 @@ namespace Google.Apis.GKEOnPrem.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -10479,6 +10494,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Enable advanced cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAdvancedCluster")]
+        public virtual System.Nullable<bool> EnableAdvancedCluster { get; set; }
+
         /// <summary>Output only. The DNS name of VMware admin cluster's API server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
         public virtual string Endpoint { get; set; }
@@ -11059,6 +11078,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>Disable bundled ingress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableBundledIngress")]
         public virtual System.Nullable<bool> DisableBundledIngress { get; set; }
+
+        /// <summary>Enable advanced cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAdvancedCluster")]
+        public virtual System.Nullable<bool> EnableAdvancedCluster { get; set; }
 
         /// <summary>Enable control plane V2. Default to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableControlPlaneV2")]
