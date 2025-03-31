@@ -2169,6 +2169,21 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A set of Confidential Instance options.</summary>
+    public class ConfidentialInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Defines the type of technology used by the confidential instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialInstanceType")]
+        public virtual string ConfidentialInstanceType { get; set; }
+
+        /// <summary>Optional. Defines whether the instance should have confidential compute enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
+        public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for getting WbI configurations in a location</summary>
     public class Config : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2455,6 +2470,10 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         /// <summary>Optional. The boot disk for the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDisk")]
         public virtual BootDisk BootDisk { get; set; }
+
+        /// <summary>Optional. Confidential instance configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialInstanceConfig")]
+        public virtual ConfidentialInstanceConfig ConfidentialInstanceConfig { get; set; }
 
         /// <summary>Optional. Use a container image to start the notebook instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerImage")]
