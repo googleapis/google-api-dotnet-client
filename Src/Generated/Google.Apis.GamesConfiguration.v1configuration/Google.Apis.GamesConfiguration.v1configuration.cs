@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -58,7 +58,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Play Game Services Publishing API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Play Games Services Publishing API.</summary>
         public class Scope
         {
             /// <summary>View and manage your Google Play Developer account</summary>
@@ -66,7 +66,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         }
 
         /// <summary>
-        /// Available OAuth 2.0 scope constants for use with the Google Play Game Services Publishing API.
+        /// Available OAuth 2.0 scope constants for use with the Google Play Games Services Publishing API.
         /// </summary>
         public static class ScopeConstants
         {
