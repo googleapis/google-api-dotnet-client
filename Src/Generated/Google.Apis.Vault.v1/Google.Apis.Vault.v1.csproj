@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Vault.v1 Client Library</Title>
-    <Version>1.69.0.3695</Version>
+    <Version>1.69.0.3729</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Vault v1.
 
       Product documentation is available at:
-      https://developers.google.com/vault
+      https://developers.google.com/workspace/vault
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.Vault.v1/latest/api/Google.Apis.Vault.v1.html

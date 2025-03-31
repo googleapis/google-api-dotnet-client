@@ -1873,7 +1873,7 @@ namespace Google.Apis.Vault.v1
 
                 /// <summary>
                 /// Returns the basic details and a list of matter owners and collaborators (see
-                /// [MatterPermissions](https://developers.google.com/vault/reference/rest/v1/matters#matterpermission)).
+                /// [MatterPermissions](https://developers.google.com/workspace/vault/reference/rest/v1/matters#matterpermission)).
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL = 2,
@@ -1979,7 +1979,7 @@ namespace Google.Apis.Vault.v1
 
                 /// <summary>
                 /// Returns the basic details and a list of matter owners and collaborators (see
-                /// [MatterPermissions](https://developers.google.com/vault/reference/rest/v1/matters#matterpermission)).
+                /// [MatterPermissions](https://developers.google.com/workspace/vault/reference/rest/v1/matters#matterpermission)).
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL = 2,
@@ -3291,8 +3291,8 @@ namespace Google.Apis.Vault.v1.Data
     public class HangoutsChatInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of Chat spaces IDs, as provided by the [Chat API](https://developers.google.com/chat). There is a
-        /// limit of exporting from 500 Chat spaces per request.
+        /// A list of Chat spaces IDs, as provided by the [Chat API](https://developers.google.com/workspace/chat).
+        /// There is a limit of exporting from 500 Chat spaces per request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roomId")]
         public virtual System.Collections.Generic.IList<string> RoomId { get; set; }
