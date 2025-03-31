@@ -2352,6 +2352,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about resources affected by this finding.</summary>
+    public class AffectedResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The count of resources affected by the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Allowed IP rule.</summary>
     public class Allowed : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4177,6 +4188,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
         public virtual Access Access { get; set; }
+
+        /// <summary>AffectedResources associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affectedResources")]
+        public virtual AffectedResources AffectedResources { get; set; }
 
         /// <summary>Represents an application associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("application")]
@@ -6373,6 +6388,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about resources affected by this finding.</summary>
+    public class GoogleCloudSecuritycenterV2AffectedResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The count of resources affected by the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Allowed IP rule.</summary>
     public class GoogleCloudSecuritycenterV2Allowed : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8178,6 +8204,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
         public virtual GoogleCloudSecuritycenterV2Access Access { get; set; }
+
+        /// <summary>AffectedResources associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affectedResources")]
+        public virtual GoogleCloudSecuritycenterV2AffectedResources AffectedResources { get; set; }
 
         /// <summary>Represents an application associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("application")]
