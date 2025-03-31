@@ -596,7 +596,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                 /// <param name="name">
                 /// Required. Redis backupCollection resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}` where
-                /// `location_id` refers to a GCP region.
+                /// `location_id` refers to a Google Cloud region.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -616,7 +616,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                     /// <summary>
                     /// Required. Redis backupCollection resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}` where
-                    /// `location_id` refers to a GCP region.
+                    /// `location_id` refers to a Google Cloud region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -652,7 +652,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The resource name of the backupCollection location using the form:
-                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.
+                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -675,7 +675,8 @@ namespace Google.Apis.CloudRedis.v1beta1
 
                     /// <summary>
                     /// Required. The resource name of the backupCollection location using the form:
-                    /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.
+                    /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -768,7 +769,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                 /// <param name="name">
                 /// Required. Redis cluster resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to
-                /// a GCP region.
+                /// a Google Cloud region.
                 /// </param>
                 public virtual BackupRequest Backup(Google.Apis.CloudRedis.v1beta1.Data.BackupClusterRequest body, string name)
                 {
@@ -798,7 +799,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                     /// <summary>
                     /// Required. Redis cluster resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers
-                    /// to a GCP region.
+                    /// to a Google Cloud region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -843,7 +844,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The resource name of the cluster location using the form:
-                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.
+                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRedis.v1beta1.Data.Cluster body, string parent)
                 {
@@ -869,7 +870,8 @@ namespace Google.Apis.CloudRedis.v1beta1
 
                     /// <summary>
                     /// Required. The resource name of the cluster location using the form:
-                    /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.
+                    /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -937,7 +939,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                 /// <param name="name">
                 /// Required. Redis cluster resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to
-                /// a GCP region.
+                /// a Google Cloud region.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -957,7 +959,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                     /// <summary>
                     /// Required. Redis cluster resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers
-                    /// to a GCP region.
+                    /// to a Google Cloud region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1002,7 +1004,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                 /// <param name="name">
                 /// Required. Redis cluster resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to
-                /// a GCP region.
+                /// a Google Cloud region.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1022,7 +1024,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                     /// <summary>
                     /// Required. Redis cluster resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers
-                    /// to a GCP region.
+                    /// to a Google Cloud region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1055,7 +1057,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                 /// <param name="name">
                 /// Required. Redis cluster certificate authority resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}/certificateAuthority` where
-                /// `location_id` refers to a GCP region.
+                /// `location_id` refers to a Google Cloud region.
                 /// </param>
                 public virtual GetCertificateAuthorityRequest GetCertificateAuthority(string name)
                 {
@@ -1075,7 +1077,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                     /// <summary>
                     /// Required. Redis cluster certificate authority resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}/certificateAuthority` where
-                    /// `location_id` refers to a GCP region.
+                    /// `location_id` refers to a Google Cloud region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1112,7 +1114,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The resource name of the cluster location using the form:
-                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.
+                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1136,7 +1138,8 @@ namespace Google.Apis.CloudRedis.v1beta1
 
                     /// <summary>
                     /// Required. The resource name of the cluster location using the form:
-                    /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.
+                    /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1296,7 +1299,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                 /// <param name="name">
                 /// Required. Redis Cluster instance resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to
-                /// a GCP region.
+                /// a Google Cloud region.
                 /// </param>
                 public virtual RescheduleClusterMaintenanceRequest RescheduleClusterMaintenance(Google.Apis.CloudRedis.v1beta1.Data.RescheduleClusterMaintenanceRequest body, string name)
                 {
@@ -1317,7 +1320,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                     /// <summary>
                     /// Required. Redis Cluster instance resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers
-                    /// to a GCP region.
+                    /// to a Google Cloud region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2472,6 +2475,13 @@ namespace Google.Apis.CloudRedis.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -2511,6 +2521,14 @@ namespace Google.Apis.CloudRedis.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
