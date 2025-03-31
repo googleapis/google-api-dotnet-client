@@ -1024,6 +1024,136 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
+            /// Resumes a suspended subscription. The new billing cycle will start at the time of the request. It should
+            /// be called directly by the partner using service accounts.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the subscription resource to be resumed. It will have the format of
+            /// "partners/{partner_id}/subscriptions/{subscription_id}"
+            /// </param>
+            public virtual ResumeRequest Resume(Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest body, string name)
+            {
+                return new ResumeRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Resumes a suspended subscription. The new billing cycle will start at the time of the request. It should
+            /// be called directly by the partner using service accounts.
+            /// </summary>
+            public class ResumeRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse>
+            {
+                /// <summary>Constructs a new Resume request.</summary>
+                public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the subscription resource to be resumed. It will have the format of
+                /// "partners/{partner_id}/subscriptions/{subscription_id}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "resume";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:resume";
+
+                /// <summary>Initializes Resume parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^partners/[^/]+/subscriptions/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Suspends a subscription. Contract terms may dictate if a prorated refund will be issued upon suspension.
+            /// It should be called directly by the partner using service accounts.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the subscription resource to be suspended. It will have the format of
+            /// "partners/{partner_id}/subscriptions/{subscription_id}"
+            /// </param>
+            public virtual SuspendRequest Suspend(Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest body, string name)
+            {
+                return new SuspendRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Suspends a subscription. Contract terms may dictate if a prorated refund will be issued upon suspension.
+            /// It should be called directly by the partner using service accounts.
+            /// </summary>
+            public class SuspendRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse>
+            {
+                /// <summary>Constructs a new Suspend request.</summary>
+                public SuspendRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the subscription resource to be suspended. It will have the format of
+                /// "partners/{partner_id}/subscriptions/{subscription_id}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "suspend";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:suspend";
+
+                /// <summary>Initializes Suspend parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^partners/[^/]+/subscriptions/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Currently, it is used by **Google One, Play Pass** partners. Revokes the pending cancellation of a
             /// subscription, which is currently in `STATE_CANCEL_AT_END_OF_CYCLE` state. If the subscription is already
             /// cancelled, the request will fail. It should be called directly by the partner using service accounts.
@@ -1949,6 +2079,24 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to resume a suspended subscription.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response that contains the resumed subscription.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resumed subscription resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1Subscription Subscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A description of what time period or moment in time the product or service is being delivered over.
     /// </summary>
@@ -2616,6 +2764,24 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousSubscriptionId")]
         public virtual string PreviousSubscriptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to suspend a subscription.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response that contains the suspended subscription.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The suspended subscription resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1Subscription Subscription { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
