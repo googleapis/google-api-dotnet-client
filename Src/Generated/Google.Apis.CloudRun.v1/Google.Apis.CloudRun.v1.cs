@@ -5703,6 +5703,13 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -5742,6 +5749,14 @@ namespace Google.Apis.CloudRun.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -9268,7 +9283,8 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`:
         /// Revision * `run.googleapis.com/encryption-key`: Revision, Execution. *
         /// `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`:
-        /// Service. * `run.googleapis.com/health-check-disabled`: Revision. * `run.googleapis.com/ingress`: Service. *
+        /// Service. * `run.googleapis.com/gpu-zonal-redundancy-disabled`: Revision. *
+        /// `run.googleapis.com/health-check-disabled`: Revision. * `run.googleapis.com/ingress`: Service. *
         /// `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service *
         /// `run.googleapis.com/network-interfaces`: Revision, Execution. *
         /// `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision,
@@ -9749,8 +9765,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ServiceAccountName { get; set; }
 
         /// <summary>
-        /// TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run:
-        /// defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour).
+        /// Optional. TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud
+        /// Run: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
         public virtual System.Nullable<int> TimeoutSeconds { get; set; }
