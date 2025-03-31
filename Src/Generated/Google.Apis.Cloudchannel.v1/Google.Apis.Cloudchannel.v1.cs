@@ -6367,7 +6367,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>
         /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
         /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
-        /// order. Not yet implemented: if populated in a request, this field isn't evaluated in the API.
+        /// order.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
         public virtual string PriceReferenceId { get; set; }
@@ -7311,7 +7311,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>
         /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
         /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
-        /// order. Not yet implemented: if this field is populated in a request, it isn't evaluated in the API.
+        /// order.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
         public virtual string PriceReferenceId { get; set; }
@@ -9607,7 +9607,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>
         /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
         /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
-        /// order. Not yet implemented: if this field is populated in a request, it isn't evaluated in the API.
+        /// order.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
         public virtual string PriceReferenceId { get; set; }
