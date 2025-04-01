@@ -216,6 +216,7 @@ namespace Google.Apis.Auth.OAuth2
                 JsonCredentialParameters.ServiceAccountCredentialType => GoogleCredential.FromServiceAccountCredential(CreateServiceAccountCredentialFromParameters(credentialParameters)),
                 JsonCredentialParameters.ExternalAccountCredentialType => new GoogleCredential(CreateExternalCredentialFromParameters(credentialParameters)),
                 JsonCredentialParameters.ImpersonatedServiceAccountCredentialType => new GoogleCredential(CreateImpersonatedServiceAccountCredentialFromParameters(credentialParameters)),
+                JsonCredentialParameters.ExternalAccountAuthorizedUserCredentialType => new GoogleCredential(CreateExternalAccountAuthorizedUserCredentialFromParemeters(credentialParameters)),
                 _ => throw new InvalidOperationException($"Error creating credential from JSON or JSON parameters. Unrecognized credential type {credentialParameters.Type}."),
             };
 
@@ -376,6 +377,29 @@ namespace Google.Apis.Auth.OAuth2
                 return (impersonatedCredential as IGoogleCredential).WithUniverseDomain(parameters.UniverseDomain) as ImpersonatedCredential;
             }
             return impersonatedCredential;
+        }
+
+        private ExternalAccountAuthorizedUserCredential CreateExternalAccountAuthorizedUserCredentialFromParemeters(JsonCredentialParameters parameters)
+        {
+            if (parameters.Type != JsonCredentialParameters.ExternalAccountAuthorizedUserCredentialType
+                || string.IsNullOrEmpty(parameters.TokenUrl)
+                || string.IsNullOrEmpty(parameters.RefreshToken)
+                || string.IsNullOrEmpty(parameters.ClientId)
+                || string.IsNullOrEmpty(parameters.ClientSecret))
+            {
+                throw new InvalidOperationException("JSON data does not represent a valid external account authorized user credential.");
+            }
+
+            var initializer = new ExternalAccountAuthorizedUserCredential.Initializer(
+                parameters.TokenUrl, parameters.RefreshToken, parameters.ClientId, parameters.ClientSecret)
+            {
+                Audience = parameters.Audience,
+                QuotaProject = parameters.QuotaProject,
+                TokenInfoUrl = parameters.TokenInfoUrl,
+                UniverseDomain = parameters.UniverseDomain,
+            };
+
+            return new ExternalAccountAuthorizedUserCredential(initializer);
         }
 
         /// <summary> 

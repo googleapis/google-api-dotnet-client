@@ -81,7 +81,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
         private const string ImpersonatedServiceAccountCredentialFileName = "impersonated_service_account_credential.json";
         private const string ImpersonatedServiceAccountCredentialUniverseDomainFileName = "impersonated_service_account_credential_universe_domain.json";
         private const string ImpersonatedServiceAccountCredentialUniverseDomainDifferentFileName = "impersonated_service_account_credential_universe_domain_different.json";
-        private const string RecursiveImpersonatedServiceAccountCredentialName = "recursive_impersonated_service_account_credential.json";
+        private const string RecursiveImpersonatedServiceAccountCredentialFileName = "recursive_impersonated_service_account_credential.json";
+        private const string ExternalAccountAuthorizedUserCredentialFileName = "external_account_authorized_user_credential.json";
 
         public DefaultCredentialProviderTests()
         {
@@ -380,9 +381,29 @@ namespace Google.Apis.Auth.Tests.OAuth2
         [Fact]
         public async Task GetDefaultCredential_RecursiveImpersonatedCredential_FromEnvironmentVariable()
         {
-            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, RecursiveImpersonatedServiceAccountCredentialName);
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, RecursiveImpersonatedServiceAccountCredentialFileName);
 
             await Assert.ThrowsAsync<InvalidOperationException>(() => credentialProvider.GetDefaultCredentialAsync());
+        }
+
+        #endregion
+
+        #region ExternalAccountAuthorizedUserCredential
+
+        [Fact]
+        public async Task GetDefaultCredential_ExternalAccountAuthorizedUserCredential_FromEnvironmentVariable()
+        {
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, ExternalAccountAuthorizedUserCredentialFileName);
+
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
+
+            var externalCredential = Assert.IsType<ExternalAccountAuthorizedUserCredential>(credential.UnderlyingCredential);
+            Assert.Equal("refreshToken", externalCredential.RefreshToken);
+            Assert.Equal("https://sts.googleapis.com/v1/oauthtoken", externalCredential.TokenServerUrl);
+            Assert.Equal("clientId", externalCredential.ClientId);
+            Assert.Equal("clientSecret", externalCredential.ClientSecret);
+            Assert.Equal("//iam.googleapis.com/locations/global/workforcePools/poolId/providers/providerId", externalCredential.Audience);
+            Assert.Equal("https://sts.googleapis.com/v1/introspect", externalCredential.TokenInfoUrl);
         }
 
         #endregion
