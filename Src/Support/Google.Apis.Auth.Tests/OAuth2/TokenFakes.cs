@@ -146,8 +146,14 @@ namespace Google.Apis.Auth.Tests.OAuth2
     /// </summary>
     internal class FetchesTokenMessageHandler : CountableMessageHandler
     {
-        protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request, CancellationToken taskCancellationToken) =>
-            Task.FromResult(new HttpResponseMessage()
+        public string LatestRequestContent { get; private set; }
+
+        protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request, CancellationToken taskCancellationToken)
+        {
+
+            LatestRequestContent = request?.Content is null ? null : await request.Content.ReadAsStringAsync();
+
+            return new HttpResponseMessage()
             {
                 Content = new StringContent(
                     NewtonsoftJsonSerializer.Instance.Serialize(new TokenResponse
@@ -158,7 +164,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
                         Scope = "b"
                     }),
                     Encoding.UTF8)
-            });
+            };
+        }
     }
 
     /// <summary>
