@@ -52,6 +52,12 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public const string ExternalAccountCredentialType = "external_account";
 
+        /// <summary>
+        /// OAuth2 credentials sourced using external identities through Workforce Identity Federation.
+        /// Obtaining the initial access and refresh token can be done through the Google Cloud CLI.
+        /// </summary>
+        public const string ExternalAccountAuthorizedUserCredentialType = "external_account_authorized_user";
+
         /// <summary>Type of the credential.</summary>
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -173,6 +179,12 @@ namespace Google.Apis.Auth.OAuth2
         /// </remarks>
         [JsonProperty("token_url")]
         public string TokenUrl { get; set; }
+
+        /// <summary>
+        /// Endpoint to retrieve information related to an external account authorized user, like email, username, etc.
+        /// </summary>
+        [JsonProperty("token_info_url")]
+        public string TokenInfoUrl { get; set; }
 
         /// <summary>
         /// The GCP project number to be used for Workforce Pools
