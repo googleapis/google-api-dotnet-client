@@ -2422,6 +2422,10 @@ namespace Google.Apis.ChromePolicy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oneofDecl")]
         public virtual System.Collections.Generic.IList<Proto2OneofDescriptorProto> OneofDecl { get; set; }
 
+        /// <summary>Support for `export` and `local` keywords on enums.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
+        public virtual string Visibility { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2434,6 +2438,10 @@ namespace Google.Apis.ChromePolicy.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IList<Proto2EnumValueDescriptorProto> Value { get; set; }
+
+        /// <summary>Support for `export` and `local` keywords on enums.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
+        public virtual string Visibility { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
