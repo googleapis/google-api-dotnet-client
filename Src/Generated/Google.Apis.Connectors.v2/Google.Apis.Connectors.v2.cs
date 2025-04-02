@@ -423,6 +423,26 @@ namespace Google.Apis.Connectors.v2
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>Specified view of the action schema.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>Specified view of the action schema.</summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>VIEW_UNSPECIFIED. The unset value. Defaults to BASIC View.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ACTION_SCHEMA_VIEW_UNSPECIFIED")]
+                            ACTIONSCHEMAVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Return basic action schema.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ACTION_SCHEMA_VIEW_BASIC")]
+                            ACTIONSCHEMAVIEWBASIC = 1,
+
+                            /// <summary>Return enriched action schema.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ACTION_SCHEMA_VIEW_ENRICHED")]
+                            ACTIONSCHEMAVIEWENRICHED = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
@@ -443,6 +463,14 @@ namespace Google.Apis.Connectors.v2
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/actions/[^/]+$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }

@@ -8,6 +8,11 @@
     "1",
     "2"
   ],
+  "Google.Apis.Connectors.v2.ProjectsResource+LocationsResource+ConnectionsResource+ActionsResource+GetRequest.ViewEnum": [
+    "ACTION_SCHEMA_VIEW_UNSPECIFIED",
+    "ACTION_SCHEMA_VIEW_BASIC",
+    "ACTION_SCHEMA_VIEW_ENRICHED"
+  ],
   "Google.Apis.Connectors.v2.ProjectsResource+LocationsResource+ConnectionsResource+ActionsResource+ListRequest.ViewEnum": [
     "ACTION_VIEW_UNSPECIFIED",
     "ACTION_VIEW_BASIC",
