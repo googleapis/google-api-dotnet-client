@@ -2811,6 +2811,10 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
+            /// <summary>Returns the comment threads of the specified post.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PostId { get; set; }
+
             /// <summary>
             /// Limits the returned comment threads to those matching the specified key words. Not compatible with the
             /// 'id' filter.
@@ -2914,6 +2918,14 @@ namespace Google.Apis.YouTube.v3
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("postId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "postId",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -12370,7 +12382,7 @@ namespace Google.Apis.YouTube.v3.Data
 
         /// <summary>
         /// The id of the corresponding YouTube channel. In case of a channel comment this is the channel the comment
-        /// refers to. In case of a video comment it's the video's channel.
+        /// refers to. In case of a video or post comment it's the video/post's channel.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
         public virtual string ChannelId { get; set; }
@@ -12385,9 +12397,13 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("moderationStatus")]
         public virtual string ModerationStatus { get; set; }
 
-        /// <summary>The unique id of the parent comment, only set for replies.</summary>
+        /// <summary>The unique id of the top-level comment, only set for replies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentId")]
         public virtual string ParentId { get; set; }
+
+        /// <summary>The ID of the post the comment refers to, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postId")]
+        public virtual string PostId { get; set; }
 
         /// <summary>The date and time when the comment was originally published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
@@ -12461,9 +12477,10 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The id of the author's YouTube channel, if any.</summary>
+    /// <summary>Contains the id of the author's YouTube channel, if any.</summary>
     public class CommentSnippetAuthorChannelId : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The id of the author's YouTube channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -12570,7 +12587,7 @@ namespace Google.Apis.YouTube.v3.Data
 
         /// <summary>
         /// The YouTube channel the comments in the thread refer to or the channel with the video the comments refer to.
-        /// If video_id isn't set the comments refer to the channel itself.
+        /// If neither video_id nor post_id is set the comments refer to the channel itself.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
         public virtual string ChannelId { get; set; }
@@ -12578,6 +12595,10 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Whether the thread (and therefore all its comments) is visible to all YouTube users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPublic")]
         public virtual System.Nullable<bool> IsPublic { get; set; }
+
+        /// <summary>The ID of the post the comments refer to, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postId")]
+        public virtual string PostId { get; set; }
 
         /// <summary>The top level comment of this thread.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topLevelComment")]
@@ -12587,9 +12608,7 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalReplyCount")]
         public virtual System.Nullable<long> TotalReplyCount { get; set; }
 
-        /// <summary>
-        /// The ID of the video the comments refer to, if any. No video_id implies a channel discussion comment.
-        /// </summary>
+        /// <summary>The ID of the video the comments refer to, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
         public virtual string VideoId { get; set; }
 
