@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2782,7 +2782,10 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Request to find devices.</summary>
     public class FindDevicesByDeviceIdentifierRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Required. The device identifier to search for.</summary>
+        /// <summary>
+        /// Required. Required. The device identifier to search for. If serial number is provided then case insensitive
+        /// serial number matches are allowed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; }
 
