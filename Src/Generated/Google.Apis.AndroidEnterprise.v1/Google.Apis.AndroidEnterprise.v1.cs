@@ -1368,7 +1368,10 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// called after calling Enterprises.Enroll or Enterprises.CompleteSignup, and before Enterprises.SetAccount; at
         /// other times it will return an error. Subsequent calls after the first will generate a new, unique set of
         /// credentials, and invalidate the previously generated credentials. Once the service account is bound to the
-        /// enterprise, it can be managed using the serviceAccountKeys resource.
+        /// enterprise, it can be managed using the serviceAccountKeys resource. *Note:* After you create a key, you
+        /// might need to wait for 60 seconds or more before you perform another operation with the key. If you try to
+        /// perform an operation with the key immediately after you create the key, and you receive an error, you can
+        /// retry the request with exponential backoff .
         /// </summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual GetServiceAccountRequest GetServiceAccount(string enterpriseId)
@@ -1383,7 +1386,10 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// called after calling Enterprises.Enroll or Enterprises.CompleteSignup, and before Enterprises.SetAccount; at
         /// other times it will return an error. Subsequent calls after the first will generate a new, unique set of
         /// credentials, and invalidate the previously generated credentials. Once the service account is bound to the
-        /// enterprise, it can be managed using the serviceAccountKeys resource.
+        /// enterprise, it can be managed using the serviceAccountKeys resource. *Note:* After you create a key, you
+        /// might need to wait for 60 seconds or more before you perform another operation with the key. If you try to
+        /// perform an operation with the key immediately after you create the key, and you receive an error, you can
+        /// retry the request with exponential backoff .
         /// </summary>
         public class GetServiceAccountRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ServiceAccount>
         {
@@ -6651,9 +6657,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// An event generated when an enterprise is upgraded. **Note:** This feature is not generally available.
-    /// </summary>
+    /// <summary>An event generated when an enterprise is upgraded.</summary>
     public class EnterpriseUpgradeEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The upgrade state.</summary>
@@ -7214,9 +7218,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseId")]
         public virtual string EnterpriseId { get; set; }
 
-        /// <summary>
-        /// Notifications about enterprise upgrade. **Note:** This feature is not generally available.
-        /// </summary>
+        /// <summary>Notifications about enterprise upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseUpgradeEvent")]
         public virtual EnterpriseUpgradeEvent EnterpriseUpgradeEvent { get; set; }
 
