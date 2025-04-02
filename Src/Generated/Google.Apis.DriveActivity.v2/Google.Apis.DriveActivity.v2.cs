@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -847,7 +847,7 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual Folder Folder { get; set; }
 
         /// <summary>
-        /// The MIME type of the Drive item. See https://developers.google.com/drive/v3/web/mime-types.
+        /// The MIME type of the Drive item. See https://developers.google.com/workspace/drive/v3/web/mime-types.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
@@ -1004,7 +1004,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>
         /// The comment in the discussion thread. This identifier is an opaque string compatible with the Drive API; see
-        /// https://developers.google.com/drive/v3/reference/comments/get
+        /// https://developers.google.com/workspace/drive/v3/reference/comments/get
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legacyCommentId")]
         public virtual string LegacyCommentId { get; set; }
@@ -1012,7 +1012,7 @@ namespace Google.Apis.DriveActivity.v2.Data
         /// <summary>
         /// The discussion thread to which the comment was added. This identifier is an opaque string compatible with
         /// the Drive API and references the first comment in a discussion; see
-        /// https://developers.google.com/drive/v3/reference/comments/get
+        /// https://developers.google.com/workspace/drive/v3/reference/comments/get
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legacyDiscussionId")]
         public virtual string LegacyDiscussionId { get; set; }
@@ -1188,8 +1188,9 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual Group Group { get; set; }
 
         /// <summary>
-        /// Indicates the [Google Drive permissions role](https://developers.google.com/drive/web/manage-sharing#roles).
-        /// The role determines a user's ability to read, write, and comment on items.
+        /// Indicates the [Google Drive permissions
+        /// role](https://developers.google.com/workspace/drive/web/manage-sharing#roles). The role determines a user's
+        /// ability to read, write, and comment on items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -1411,7 +1412,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
     /// <summary>
     /// Information about the target of activity. For more information on how activity history is shared with users, see
-    /// [Activity history visibility](https://developers.google.com/drive/activity/v2#activityhistory).
+    /// [Activity history visibility](https://developers.google.com/workspace/drive/activity/v2#activityhistory).
     /// </summary>
     public class Target : Google.Apis.Requests.IDirectResponseSchema
     {
