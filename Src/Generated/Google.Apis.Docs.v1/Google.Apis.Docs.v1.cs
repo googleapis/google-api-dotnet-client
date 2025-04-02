@@ -4166,6 +4166,14 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("matchCase")]
         public virtual System.Nullable<bool> MatchCase { get; set; }
 
+        /// <summary>
+        /// Optional. True if the find value should be treated as a regular expression. Any backslashes in the pattern
+        /// should be escaped. - `True`: the search text is treated as a regular expressions. - `False`: the search text
+        /// is treated as a substring for matching.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchByRegex")]
+        public virtual System.Nullable<bool> SearchByRegex { get; set; }
+
         /// <summary>The text to search for in the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }

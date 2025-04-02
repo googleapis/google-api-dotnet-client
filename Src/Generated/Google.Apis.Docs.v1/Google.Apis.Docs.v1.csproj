@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Docs.v1 Client Library</Title>
-    <Version>1.69.0.3701</Version>
+    <Version>1.69.0.3736</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Docs v1.
 
       Product documentation is available at:
-      https://developers.google.com/docs/
+      https://developers.google.com/workspace/docs/
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.Docs.v1/latest/api/Google.Apis.Docs.v1.html
