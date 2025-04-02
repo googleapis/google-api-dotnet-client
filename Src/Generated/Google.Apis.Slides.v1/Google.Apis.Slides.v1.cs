@@ -3011,7 +3011,8 @@ namespace Google.Apis.Slides.v1.Data
 
     /// <summary>
     /// A PageElement kind representing a generic shape that doesn't have a more specific classification. For more
-    /// information, see [Size and position page elements](https://developers.google.com/slides/api/guides/transform).
+    /// information, see [Size and position page
+    /// elements](https://developers.google.com/workspace/slides/api/guides/transform).
     /// </summary>
     public class Shape : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3279,6 +3280,14 @@ namespace Google.Apis.Slides.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchCase")]
         public virtual System.Nullable<bool> MatchCase { get; set; }
+
+        /// <summary>
+        /// Optional. True if the find value should be treated as a regular expression. Any backslashes in the pattern
+        /// should be escaped. - `True`: the search text is treated as a regular expressions. - `False`: the search text
+        /// is treated as a substring for matching.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchByRegex")]
+        public virtual System.Nullable<bool> SearchByRegex { get; set; }
 
         /// <summary>The text to search for in the shape or table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
