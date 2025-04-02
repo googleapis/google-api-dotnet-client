@@ -1168,7 +1168,7 @@ namespace Google.Apis.AddressValidation.v1.Data
         /// any validation signals. For validation signals, refer to `validation_granularity` below. For example, if the
         /// input address includes a specific apartment number, then the `input_granularity` here will be `SUB_PREMISE`.
         /// If we cannot match the apartment number in the databases or the apartment number is invalid, the
-        /// `validation_granularity` will likely be `PREMISE` or below.
+        /// `validation_granularity` will likely be `PREMISE` or worse.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputGranularity")]
         public virtual string InputGranularity { get; set; }
