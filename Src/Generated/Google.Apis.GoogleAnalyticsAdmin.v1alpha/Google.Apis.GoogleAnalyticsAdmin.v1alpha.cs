@@ -1486,6 +1486,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             FirebaseLinks = new FirebaseLinksResource(service);
             GoogleAdsLinks = new GoogleAdsLinksResource(service);
             KeyEvents = new KeyEventsResource(service);
+            ReportingDataAnnotations = new ReportingDataAnnotationsResource(service);
             RollupPropertySourceLinks = new RollupPropertySourceLinksResource(service);
             SearchAds360Links = new SearchAds360LinksResource(service);
             SubpropertyEventFilters = new SubpropertyEventFiltersResource(service);
@@ -8528,6 +8529,375 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
+        /// <summary>Gets the ReportingDataAnnotations resource.</summary>
+        public virtual ReportingDataAnnotationsResource ReportingDataAnnotations { get; }
+
+        /// <summary>The "reportingDataAnnotations" collection of methods.</summary>
+        public class ReportingDataAnnotationsResource
+        {
+            private const string Resource = "reportingDataAnnotations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ReportingDataAnnotationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a Reporting Data Annotation.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The property for which to create a Reporting Data Annotation. Format: properties/property_id
+            /// Example: properties/123
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaReportingDataAnnotation body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>Creates a Reporting Data Annotation.</summary>
+            public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaReportingDataAnnotation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaReportingDataAnnotation body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The property for which to create a Reporting Data Annotation. Format:
+                /// properties/property_id Example: properties/123
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaReportingDataAnnotation Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/reportingDataAnnotations";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes a Reporting Data Annotation.</summary>
+            /// <param name="name">
+            /// Required. Resource name of the Reporting Data Annotation to delete. Format:
+            /// properties/property_id/reportingDataAnnotations/reporting_data_annotation Example:
+            /// properties/123/reportingDataAnnotations/456
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>Deletes a Reporting Data Annotation.</summary>
+            public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the Reporting Data Annotation to delete. Format:
+                /// properties/property_id/reportingDataAnnotations/reporting_data_annotation Example:
+                /// properties/123/reportingDataAnnotations/456
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/reportingDataAnnotations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lookup a single Reporting Data Annotation.</summary>
+            /// <param name="name">
+            /// Required. Resource name of the Reporting Data Annotation to lookup. Format:
+            /// properties/property_id/reportingDataAnnotations/reportingDataAnnotation Example:
+            /// properties/123/reportingDataAnnotations/456
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Lookup a single Reporting Data Annotation.</summary>
+            public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaReportingDataAnnotation>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the Reporting Data Annotation to lookup. Format:
+                /// properties/property_id/reportingDataAnnotations/reportingDataAnnotation Example:
+                /// properties/123/reportingDataAnnotations/456
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/reportingDataAnnotations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>List all Reporting Data Annotations on a property.</summary>
+            /// <param name="parent">
+            /// Required. Resource name of the property. Format: properties/property_id Example: properties/123
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>List all Reporting Data Annotations on a property.</summary>
+            public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the property. Format: properties/property_id Example: properties/123
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. Filter that restricts which reporting data annotations under the parent property are
+                /// listed. Supported fields are: * 'name' * `title` * `description` * `annotation_date` *
+                /// `annotation_date_range` * `color` Additionally, this API provides the following helper functions: *
+                /// annotation_duration() : the duration that this annotation marks,
+                /// [durations](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/duration.proto).
+                /// expect a numeric representation of seconds followed by an `s` suffix. *
+                /// is_annotation_in_range(start_date, end_date) : if the annotation is in the range specified by the
+                /// `start_date` and `end_date`. The dates are in ISO-8601 format, for example `2031-06-28`. Supported
+                /// operations: * `=` : equals * `!=` : not equals * `&amp;lt;` : less than * `&amp;gt;` : greater than
+                /// * `&amp;lt;=` : less than or equals * `&amp;gt;=` : greater than or equals * `:` : has operator *
+                /// `=~` : [regular expression](https://github.com/google/re2/wiki/Syntax) match * `!~` : [regular
+                /// expression](https://github.com/google/re2/wiki/Syntax) does not match * `NOT` : Logical not * `AND`
+                /// : Logical and * `OR` : Logical or Examples: 1. `title="Holiday Sale"` 2. `description=~"[Bb]ig
+                /// [Gg]ame.*[Ss]ale"` 3. `is_annotation_in_range("2025-12-25", "2026-01-16") = true` 4.
+                /// `annotation_duration() &amp;gt;= 172800s AND title:BOGO`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of resources to return. The service may return fewer than this value,
+                /// even if there are additional pages. If unspecified, at most 50 resources will be returned. The
+                /// maximum value is 200; (higher values will be coerced to the maximum)
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListReportingDataAnnotations` call. Provide this
+                /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListReportingDataAnnotations` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/reportingDataAnnotations";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a Reporting Data Annotation.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. Identifier. Resource name of this Reporting Data Annotation. Format:
+            /// 'properties/{property_id}/reportingDataAnnotations/{reporting_data_annotation}' Format:
+            /// 'properties/123/reportingDataAnnotations/456'
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaReportingDataAnnotation body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates a Reporting Data Annotation.</summary>
+            public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaReportingDataAnnotation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaReportingDataAnnotation body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Identifier. Resource name of this Reporting Data Annotation. Format:
+                /// 'properties/{property_id}/reportingDataAnnotations/{reporting_data_annotation}' Format:
+                /// 'properties/123/reportingDataAnnotations/456'
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. The list of fields to update. Field names must be in snake case (for example,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaReportingDataAnnotation Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/reportingDataAnnotations/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the RollupPropertySourceLinks resource.</summary>
         public virtual RollupPropertySourceLinksResource RollupPropertySourceLinks { get; }
 
@@ -12121,6 +12491,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
         public virtual GoogleAnalyticsAdminV1alphaProperty Property { get; set; }
 
+        /// <summary>A snapshot of a ReportingDataAnnotation resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingDataAnnotation")]
+        public virtual GoogleAnalyticsAdminV1alphaReportingDataAnnotation ReportingDataAnnotation { get; set; }
+
         /// <summary>A snapshot of a SearchAds360Link resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchAds360Link")]
         public virtual GoogleAnalyticsAdminV1alphaSearchAds360Link SearchAds360Link { get; set; }
@@ -14324,6 +14698,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListReportingDataAnnotation RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of Reporting Data Annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingDataAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaReportingDataAnnotation> ReportingDataAnnotations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListRollupPropertySourceLinks RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14835,6 +15227,75 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventEditRules")]
         public virtual System.Collections.Generic.IList<string> EventEditRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Reporting Data Annotation is a comment connected to certain dates for reporting data.</summary>
+    public class GoogleAnalyticsAdminV1alphaReportingDataAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If set, the Reporting Data Annotation is for a specific date represented by this field. The date must be a
+        /// valid date with year, month and day set. The date may be in the past, present, or future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationDate")]
+        public virtual GoogleTypeDate AnnotationDate { get; set; }
+
+        /// <summary>If set, the Reporting Data Annotation is for a range of dates represented by this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationDateRange")]
+        public virtual GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange AnnotationDateRange { get; set; }
+
+        /// <summary>Required. The color used for display of this Reporting Data Annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("color")]
+        public virtual string Color { get; set; }
+
+        /// <summary>Optional. Description for this Reporting Data Annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. Identifier. Resource name of this Reporting Data Annotation. Format:
+        /// 'properties/{property_id}/reportingDataAnnotations/{reporting_data_annotation}' Format:
+        /// 'properties/123/reportingDataAnnotations/456'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. If true, this annotation was generated by the Google Analytics system. System-generated
+        /// annotations cannot be updated or deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemGenerated")]
+        public virtual System.Nullable<bool> SystemGenerated { get; set; }
+
+        /// <summary>Required. Human-readable title for this Reporting Data Annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a Reporting Data Annotation's date range, both start and end dates are inclusive. Time zones are
+    /// based on the parent property.
+    /// </summary>
+    public class GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The end date for this range. Must be a valid date with year, month, and day set. This date must be
+        /// greater than or equal to the start date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual GoogleTypeDate EndDate { get; set; }
+
+        /// <summary>
+        /// Required. The start date for this range. Must be a valid date with year, month, and day set. The date may be
+        /// in the past, present, or future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual GoogleTypeDate StartDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15417,6 +15878,35 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// </summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
+    /// </summary>
+    public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
