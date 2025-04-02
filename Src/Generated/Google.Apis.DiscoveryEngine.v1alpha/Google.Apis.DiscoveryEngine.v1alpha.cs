@@ -11543,9 +11543,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <summary>
                     /// Indicates which fields in the provided DataConnector to update. Supported field paths include: -
                     /// refresh_interval - params - auto_run_disabled - action_config - destination_configs -
-                    /// blocking_reasons Note: Support for these fields may vary depending on the connector type. For
-                    /// example, not all connectors support `destination_configs`. If an unsupported or unknown field
-                    /// path is provided, the request will return an INVALID_ARGUMENT error.
+                    /// blocking_reasons - sync_mode Note: Support for these fields may vary depending on the connector
+                    /// type. For example, not all connectors support `destination_configs`. If an unsupported or
+                    /// unknown field path is provided, the request will return an INVALID_ARGUMENT error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -21518,6 +21518,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string DataStorageTransform { get; set; }
 
         /// <summary>
+        /// For the first notification of a |diff_encoded| HttpRequestInfo, this is the index of the blob mint that
+        /// Scotty should use when writing the resulting blob. This field is optional. It's not required ever, even if
+        /// `original_object_blob_mint_index` is set. In situations like that, we will use the destination blob's mint
+        /// for the destination blob and regular blob ACL checks for the original object. Note: This field is only for
+        /// use by Drive API for diff uploads.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationBlobMintIndex")]
+        public virtual System.Nullable<int> DestinationBlobMintIndex { get; set; }
+
+        /// <summary>
         /// Specifies the Scotty Drop Target to use for uploads. If present in a media response, Scotty does not upload
         /// to a standard drop zone. Instead, Scotty saves the upload directly to the location specified in this drop
         /// target. Unlike drop zones, the drop target is the final storage location for an upload. So, the agent does
@@ -21542,6 +21552,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaForDiff")]
         public virtual GdataMedia MediaForDiff { get; set; }
+
+        /// <summary>
+        /// For the first notification of a |diff_encoded| HttpRequestInfo, this is the index of the blob mint that
+        /// Scotty should use when reading the original blob. This field is optional. It's not required ever, even if
+        /// `destination_blob_mint_index` is set. In situations like that, we will use the destination blob's mint for
+        /// the destination blob and regular blob ACL checks for the original object. Note: This field is only for use
+        /// by Drive API for diff uploads.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalObjectBlobMintIndex")]
+        public virtual System.Nullable<int> OriginalObjectBlobMintIndex { get; set; }
 
         /// <summary>Request class to use for all Blobstore operations for this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestClass")]
@@ -31843,6 +31863,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("realtimeState")]
         public virtual string RealtimeState { get; set; }
 
+        /// <summary>Optional. The configuration for realtime sync.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("realtimeSyncConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig RealtimeSyncConfig { get; set; }
+
         /// <summary>
         /// Required. The refresh interval for data sync. If duration is set to 0, the data will be synced in real time.
         /// The streaming feature is not supported yet. The minimum is 30 minutes and maximum is 7 days.
@@ -31902,6 +31926,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for realtime sync to store additional params for realtime sync.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The ID of the Secret Manager secret used for webhook secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("realtimeSyncSecret")]
+        public virtual string RealtimeSyncSecret { get; set; }
+
+        /// <summary>Optional. Webhook url for the connector to specify additional params for realtime sync.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookUri")]
+        public virtual string WebhookUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
