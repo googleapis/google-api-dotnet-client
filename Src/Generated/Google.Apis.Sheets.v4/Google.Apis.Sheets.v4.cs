@@ -558,17 +558,18 @@ namespace Google.Apis.Sheets.v4
             /// <summary>
             /// Appends values to a spreadsheet. The input range is used to search for existing data and find a "table"
             /// within that range. Values will be appended to the next row of the table, starting with the first column
-            /// of the table. See the [guide](/sheets/api/guides/values#appending_values) and [sample
-            /// code](/sheets/api/samples/writing#append_values) for specific details of how tables are detected and
-            /// data is appended. The caller must specify the spreadsheet ID, range, and a valueInputOption. The
-            /// `valueInputOption` only controls how the input data will be added to the sheet (column-wise or
-            /// row-wise), it does not influence what cell the data starts being written to.
+            /// of the table. See the
+            /// [guide](https://developers.google.com/workspace/sheets/api/guides/values#appending_values) and [sample
+            /// code](https://developers.google.com/workspace/sheets/api/samples/writing#append_values) for specific
+            /// details of how tables are detected and data is appended. The caller must specify the spreadsheet ID,
+            /// range, and a valueInputOption. The `valueInputOption` only controls how the input data will be added to
+            /// the sheet (column-wise or row-wise), it does not influence what cell the data starts being written to.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
             /// <param name="range">
-            /// The [A1 notation](/sheets/api/guides/concepts#cell) of a range to search for a logical table of data.
-            /// Values are appended after the last row of the table.
+            /// The [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of a range to
+            /// search for a logical table of data. Values are appended after the last row of the table.
             /// </param>
             public virtual AppendRequest Append(Google.Apis.Sheets.v4.Data.ValueRange body, string spreadsheetId, string range)
             {
@@ -578,11 +579,12 @@ namespace Google.Apis.Sheets.v4
             /// <summary>
             /// Appends values to a spreadsheet. The input range is used to search for existing data and find a "table"
             /// within that range. Values will be appended to the next row of the table, starting with the first column
-            /// of the table. See the [guide](/sheets/api/guides/values#appending_values) and [sample
-            /// code](/sheets/api/samples/writing#append_values) for specific details of how tables are detected and
-            /// data is appended. The caller must specify the spreadsheet ID, range, and a valueInputOption. The
-            /// `valueInputOption` only controls how the input data will be added to the sheet (column-wise or
-            /// row-wise), it does not influence what cell the data starts being written to.
+            /// of the table. See the
+            /// [guide](https://developers.google.com/workspace/sheets/api/guides/values#appending_values) and [sample
+            /// code](https://developers.google.com/workspace/sheets/api/samples/writing#append_values) for specific
+            /// details of how tables are detected and data is appended. The caller must specify the spreadsheet ID,
+            /// range, and a valueInputOption. The `valueInputOption` only controls how the input data will be added to
+            /// the sheet (column-wise or row-wise), it does not influence what cell the data starts being written to.
             /// </summary>
             public class AppendRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.AppendValuesResponse>
             {
@@ -600,8 +602,8 @@ namespace Google.Apis.Sheets.v4
                 public virtual string SpreadsheetId { get; private set; }
 
                 /// <summary>
-                /// The [A1 notation](/sheets/api/guides/concepts#cell) of a range to search for a logical table of
-                /// data. Values are appended after the last row of the table.
+                /// The [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of a
+                /// range to search for a logical table of data. Values are appended after the last row of the table.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
@@ -700,7 +702,7 @@ namespace Google.Apis.Sheets.v4
                     /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`. Sheets treats
                     /// date and time values as decimal values. This lets you perform arithmetic on them in formulas.
                     /// For more information on interpreting date and time values, see [About date &amp;amp; time
-                    /// values](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
+                    /// values](https://developers.google.com/workspace/sheets/api/guides/formats#about_date_time_values).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMULA")]
                     FORMULA = 2,
@@ -1020,8 +1022,9 @@ namespace Google.Apis.Sheets.v4
                 }
 
                 /// <summary>
-                /// The [A1 notation or R1C1 notation](/sheets/api/guides/concepts#cell) of the range to retrieve values
-                /// from.
+                /// The [A1 notation or R1C1
+                /// notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the range to
+                /// retrieve values from.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("ranges", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> Ranges { get; set; }
@@ -1060,7 +1063,7 @@ namespace Google.Apis.Sheets.v4
                     /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`. Sheets treats
                     /// date and time values as decimal values. This lets you perform arithmetic on them in formulas.
                     /// For more information on interpreting date and time values, see [About date &amp;amp; time
-                    /// values](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
+                    /// values](https://developers.google.com/workspace/sheets/api/guides/formats#about_date_time_values).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMULA")]
                     FORMULA = 2,
@@ -1308,7 +1311,9 @@ namespace Google.Apis.Sheets.v4
             /// <param name="body">The body of the request.</param>
             /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
             /// <param name="range">
-            /// The [A1 notation or R1C1 notation](/sheets/api/guides/concepts#cell) of the values to clear.
+            /// The [A1 notation or R1C1
+            /// notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the values to
+            /// clear.
             /// </param>
             public virtual ClearRequest Clear(Google.Apis.Sheets.v4.Data.ClearValuesRequest body, string spreadsheetId, string range)
             {
@@ -1335,7 +1340,9 @@ namespace Google.Apis.Sheets.v4
                 public virtual string SpreadsheetId { get; private set; }
 
                 /// <summary>
-                /// The [A1 notation or R1C1 notation](/sheets/api/guides/concepts#cell) of the values to clear.
+                /// The [A1 notation or R1C1
+                /// notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the values to
+                /// clear.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
@@ -1383,8 +1390,9 @@ namespace Google.Apis.Sheets.v4
             /// </summary>
             /// <param name="spreadsheetId">The ID of the spreadsheet to retrieve data from.</param>
             /// <param name="range">
-            /// The [A1 notation or R1C1 notation](/sheets/api/guides/concepts#cell) of the range to retrieve values
-            /// from.
+            /// The [A1 notation or R1C1
+            /// notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the range to
+            /// retrieve values from.
             /// </param>
             public virtual GetRequest Get(string spreadsheetId, string range)
             {
@@ -1409,8 +1417,9 @@ namespace Google.Apis.Sheets.v4
                 public virtual string SpreadsheetId { get; private set; }
 
                 /// <summary>
-                /// The [A1 notation or R1C1 notation](/sheets/api/guides/concepts#cell) of the range to retrieve values
-                /// from.
+                /// The [A1 notation or R1C1
+                /// notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the range to
+                /// retrieve values from.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
@@ -1509,7 +1518,7 @@ namespace Google.Apis.Sheets.v4
                     /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`. Sheets treats
                     /// date and time values as decimal values. This lets you perform arithmetic on them in formulas.
                     /// For more information on interpreting date and time values, see [About date &amp;amp; time
-                    /// values](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
+                    /// values](https://developers.google.com/workspace/sheets/api/guides/formats#about_date_time_values).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMULA")]
                     FORMULA = 2,
@@ -1577,7 +1586,10 @@ namespace Google.Apis.Sheets.v4
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
-            /// <param name="range">The [A1 notation](/sheets/api/guides/concepts#cell) of the values to update.</param>
+            /// <param name="range">
+            /// The [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the values
+            /// to update.
+            /// </param>
             public virtual UpdateRequest Update(Google.Apis.Sheets.v4.Data.ValueRange body, string spreadsheetId, string range)
             {
                 return new UpdateRequest(this.service, body, spreadsheetId, range);
@@ -1602,7 +1614,10 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SpreadsheetId { get; private set; }
 
-                /// <summary>The [A1 notation](/sheets/api/guides/concepts#cell) of the values to update.</summary>
+                /// <summary>
+                /// The [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the
+                /// values to update.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
@@ -1683,7 +1698,7 @@ namespace Google.Apis.Sheets.v4
                     /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`. Sheets treats
                     /// date and time values as decimal values. This lets you perform arithmetic on them in formulas.
                     /// For more information on interpreting date and time values, see [About date &amp;amp; time
-                    /// values](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
+                    /// values](https://developers.google.com/workspace/sheets/api/guides/formats#about_date_time_values).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMULA")]
                     FORMULA = 2,
@@ -1899,14 +1914,15 @@ namespace Google.Apis.Sheets.v4
         /// <summary>
         /// Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. By default, data within
         /// grids is not returned. You can include grid data in one of 2 ways: * Specify a [field
-        /// mask](https://developers.google.com/sheets/api/guides/field-masks) listing your desired fields using the
-        /// `fields` URL parameter in HTTP * Set the includeGridData URL parameter to true. If a field mask is set, the
-        /// `includeGridData` parameter is ignored For large spreadsheets, as a best practice, retrieve only the
-        /// specific spreadsheet fields that you want. To retrieve only subsets of spreadsheet data, use the ranges URL
-        /// parameter. Ranges are specified using [A1 notation](/sheets/api/guides/concepts#cell). You can define a
-        /// single cell (for example, `A1`) or multiple cells (for example, `A1:D5`). You can also get cells from other
-        /// sheets within the same spreadsheet (for example, `Sheet2!A1:C4`) or retrieve multiple ranges at once (for
-        /// example, `?ranges=A1:D5&amp;amp;ranges=Sheet2!A1:C4`). Limiting the range returns only the portions of the
+        /// mask](https://developers.google.com/workspace/sheets/api/guides/field-masks) listing your desired fields
+        /// using the `fields` URL parameter in HTTP * Set the includeGridData URL parameter to true. If a field mask is
+        /// set, the `includeGridData` parameter is ignored For large spreadsheets, as a best practice, retrieve only
+        /// the specific spreadsheet fields that you want. To retrieve only subsets of spreadsheet data, use the ranges
+        /// URL parameter. Ranges are specified using [A1
+        /// notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell). You can define a single
+        /// cell (for example, `A1`) or multiple cells (for example, `A1:D5`). You can also get cells from other sheets
+        /// within the same spreadsheet (for example, `Sheet2!A1:C4`) or retrieve multiple ranges at once (for example,
+        /// `?ranges=A1:D5&amp;amp;ranges=Sheet2!A1:C4`). Limiting the range returns only the portions of the
         /// spreadsheet that intersect the requested ranges.
         /// </summary>
         /// <param name="spreadsheetId">The spreadsheet to request.</param>
@@ -1918,14 +1934,15 @@ namespace Google.Apis.Sheets.v4
         /// <summary>
         /// Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. By default, data within
         /// grids is not returned. You can include grid data in one of 2 ways: * Specify a [field
-        /// mask](https://developers.google.com/sheets/api/guides/field-masks) listing your desired fields using the
-        /// `fields` URL parameter in HTTP * Set the includeGridData URL parameter to true. If a field mask is set, the
-        /// `includeGridData` parameter is ignored For large spreadsheets, as a best practice, retrieve only the
-        /// specific spreadsheet fields that you want. To retrieve only subsets of spreadsheet data, use the ranges URL
-        /// parameter. Ranges are specified using [A1 notation](/sheets/api/guides/concepts#cell). You can define a
-        /// single cell (for example, `A1`) or multiple cells (for example, `A1:D5`). You can also get cells from other
-        /// sheets within the same spreadsheet (for example, `Sheet2!A1:C4`) or retrieve multiple ranges at once (for
-        /// example, `?ranges=A1:D5&amp;amp;ranges=Sheet2!A1:C4`). Limiting the range returns only the portions of the
+        /// mask](https://developers.google.com/workspace/sheets/api/guides/field-masks) listing your desired fields
+        /// using the `fields` URL parameter in HTTP * Set the includeGridData URL parameter to true. If a field mask is
+        /// set, the `includeGridData` parameter is ignored For large spreadsheets, as a best practice, retrieve only
+        /// the specific spreadsheet fields that you want. To retrieve only subsets of spreadsheet data, use the ranges
+        /// URL parameter. Ranges are specified using [A1
+        /// notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell). You can define a single
+        /// cell (for example, `A1`) or multiple cells (for example, `A1:D5`). You can also get cells from other sheets
+        /// within the same spreadsheet (for example, `Sheet2!A1:C4`) or retrieve multiple ranges at once (for example,
+        /// `?ranges=A1:D5&amp;amp;ranges=Sheet2!A1:C4`). Limiting the range returns only the portions of the
         /// spreadsheet that intersect the requested ranges.
         /// </summary>
         public class GetRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.Spreadsheet>
@@ -1997,10 +2014,10 @@ namespace Google.Apis.Sheets.v4
         /// dataFilters parameter. Multiple DataFilters can be specified. Specifying one or more data filters returns
         /// the portions of the spreadsheet that intersect ranges matched by any of the filters. By default, data within
         /// grids is not returned. You can include grid data one of 2 ways: * Specify a [field
-        /// mask](https://developers.google.com/sheets/api/guides/field-masks) listing your desired fields using the
-        /// `fields` URL parameter in HTTP * Set the includeGridData parameter to true. If a field mask is set, the
-        /// `includeGridData` parameter is ignored For large spreadsheets, as a best practice, retrieve only the
-        /// specific spreadsheet fields that you want.
+        /// mask](https://developers.google.com/workspace/sheets/api/guides/field-masks) listing your desired fields
+        /// using the `fields` URL parameter in HTTP * Set the includeGridData parameter to true. If a field mask is
+        /// set, the `includeGridData` parameter is ignored For large spreadsheets, as a best practice, retrieve only
+        /// the specific spreadsheet fields that you want.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="spreadsheetId">The spreadsheet to request.</param>
@@ -2015,10 +2032,10 @@ namespace Google.Apis.Sheets.v4
         /// dataFilters parameter. Multiple DataFilters can be specified. Specifying one or more data filters returns
         /// the portions of the spreadsheet that intersect ranges matched by any of the filters. By default, data within
         /// grids is not returned. You can include grid data one of 2 ways: * Specify a [field
-        /// mask](https://developers.google.com/sheets/api/guides/field-masks) listing your desired fields using the
-        /// `fields` URL parameter in HTTP * Set the includeGridData parameter to true. If a field mask is set, the
-        /// `includeGridData` parameter is ignored For large spreadsheets, as a best practice, retrieve only the
-        /// specific spreadsheet fields that you want.
+        /// mask](https://developers.google.com/workspace/sheets/api/guides/field-masks) listing your desired fields
+        /// using the `fields` URL parameter in HTTP * Set the includeGridData parameter to true. If a field mask is
+        /// set, the `includeGridData` parameter is ignored For large spreadsheets, as a best practice, retrieve only
+        /// the specific spreadsheet fields that you want.
         /// </summary>
         public class GetByDataFilterRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.Spreadsheet>
         {
@@ -2866,8 +2883,9 @@ namespace Google.Apis.Sheets.v4.Data
     public class BatchClearValuesByDataFilterResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The ranges that were cleared, in [A1 notation](/sheets/api/guides/concepts#cell). If the requests are for an
-        /// unbounded range or a ranger larger than the bounds of the sheet, this is the actual ranges that were
+        /// The ranges that were cleared, in [A1
+        /// notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell). If the requests are for
+        /// an unbounded range or a ranger larger than the bounds of the sheet, this is the actual ranges that were
         /// cleared, bounded to the sheet's limits.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clearedRanges")]
@@ -2884,7 +2902,10 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>The request for clearing more than one range of values in a spreadsheet.</summary>
     public class BatchClearValuesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ranges to clear, in [A1 notation or R1C1 notation](/sheets/api/guides/concepts#cell).</summary>
+        /// <summary>
+        /// The ranges to clear, in [A1 notation or R1C1
+        /// notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ranges")]
         public virtual System.Collections.Generic.IList<string> Ranges { get; set; }
 
@@ -6216,8 +6237,9 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>
         /// Pattern string used for formatting. If not set, a default pattern based on the user's locale will be used if
-        /// necessary for the given type. See the [Date and Number Formats guide](/sheets/api/guides/formats) for more
-        /// information about the supported patterns.
+        /// necessary for the given type. See the [Date and Number Formats
+        /// guide](https://developers.google.com/workspace/sheets/api/guides/formats) for more information about the
+        /// supported patterns.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
         public virtual string Pattern { get; set; }
@@ -8633,7 +8655,8 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual ValueRange UpdatedData { get; set; }
 
         /// <summary>
-        /// The range (in [A1 notation](/sheets/api/guides/concepts#cell)) that updates were applied to.
+        /// The range (in [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell)) that
+        /// updates were applied to.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedRange")]
         public virtual string UpdatedRange { get; set; }
@@ -8695,7 +8718,8 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string MajorDimension { get; set; }
 
         /// <summary>
-        /// The range the values cover, in [A1 notation](/sheets/api/guides/concepts#cell). For output, this range
+        /// The range the values cover, in [A1
+        /// notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell). For output, this range
         /// indicates the entire requested range, even though the values will exclude trailing rows and columns. When
         /// appending values, this field represents the range to search for a table, after which values will be
         /// appended.
