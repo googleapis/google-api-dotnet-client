@@ -26355,6 +26355,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("realtimeState")]
         public virtual string RealtimeState { get; set; }
 
+        /// <summary>Optional. The configuration for realtime sync.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("realtimeSyncConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig RealtimeSyncConfig { get; set; }
+
         /// <summary>
         /// Required. The refresh interval for data sync. If duration is set to 0, the data will be synced in real time.
         /// The streaming feature is not supported yet. The minimum is 30 minutes and maximum is 7 days.
@@ -26414,6 +26418,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for realtime sync to store additional params for realtime sync.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The ID of the Secret Manager secret used for webhook secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("realtimeSyncSecret")]
+        public virtual string RealtimeSyncSecret { get; set; }
+
+        /// <summary>Optional. Webhook url for the connector to specify additional params for realtime sync.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookUri")]
+        public virtual string WebhookUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -37261,6 +37280,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Document captures all raw metadata information of items to be recommended or searched.</summary>
     public class GoogleCloudDiscoveryengineV1betaDocument : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Access control information for the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclInfo")]
+        public virtual GoogleCloudDiscoveryengineV1betaDocumentAclInfo AclInfo { get; set; }
+
         /// <summary>
         /// The unstructured data linked to this document. Content must be set if this document is under a
         /// `CONTENT_REQUIRED` data store.
@@ -37363,6 +37386,40 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structData")]
         public virtual System.Collections.Generic.IDictionary<string, object> StructData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ACL Information of the Document.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDocumentAclInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Readers of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction> Readers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AclRestriction to model complex inheritance restrictions. Example: Modeling a "Both Permit" inheritance, where
+    /// to access a child document, user needs to have access to parent document. Document Hierarchy - Space_S
+    /// --&amp;gt; Page_P. Readers: Space_S: group_1, user_1 Page_P: group_2, group_3, user_2 Space_S ACL Restriction -
+    /// { "acl_info": { "readers": [ { "principals": [ { "group_id": "group_1" }, { "user_id": "user_1" } ] } ] } }
+    /// Page_P ACL Restriction. { "acl_info": { "readers": [ { "principals": [ { "group_id": "group_2" }, { "group_id":
+    /// "group_3" }, { "user_id": "user_2" } ], }, { "principals": [ { "group_id": "group_1" }, { "user_id": "user_1" }
+    /// ], } ] } }
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All users within the Identity Provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpWide")]
+        public virtual System.Nullable<bool> IdpWide { get; set; }
+
+        /// <summary>List of principals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principals")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaPrincipal> Principals { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -39866,6 +39923,29 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Request for pausing training of an engine.</summary>
     public class GoogleCloudDiscoveryengineV1betaPauseEngineRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Principal identifier of a user or a group.</summary>
+    public class GoogleCloudDiscoveryengineV1betaPrincipal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Group identifier. For Google Workspace user account, group_id should be the google workspace group email.
+        /// For non-google identity provider user account, group_id is the mapped group identifier configured during the
+        /// workforcepool config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
+        public virtual string GroupId { get; set; }
+
+        /// <summary>
+        /// User identifier. For Google Workspace user account, user_id should be the google workspace user email. For
+        /// non-google identity provider user account, user_id is the mapped user identifier configured during the
+        /// workforcepool config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
