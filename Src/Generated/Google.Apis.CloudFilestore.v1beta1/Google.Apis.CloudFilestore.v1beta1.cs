@@ -2373,6 +2373,13 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -2416,6 +2423,14 @@ namespace Google.Apis.CloudFilestore.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -2666,9 +2681,13 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Directory Services configuration for Kerberos-based authentication.</summary>
+    /// <summary>Directory Services configuration.</summary>
     public class DirectoryServicesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Configuration for LDAP servers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ldap")]
+        public virtual LdapConfig Ldap { get; set; }
+
         /// <summary>Configuration for Managed Service for Microsoft Active Directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedActiveDirectory")]
         public virtual ManagedActiveDirectoryConfig ManagedActiveDirectory { get; set; }
@@ -3313,10 +3332,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>
-        /// Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol
-        /// is "NFS_V4_1".
-        /// </summary>
+        /// <summary>Optional. Directory Services configuration. Should only be set if protocol is "NFS_V4_1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directoryServices")]
         public virtual DirectoryServicesConfig DirectoryServices { get; set; }
 
@@ -3420,6 +3436,42 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>The service tier of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; }
+    }
+
+    /// <summary>LdapConfig contains all the parameters for connecting to LDAP servers.</summary>
+    public class LdapConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The LDAP domain name in the format of `my-domain.com`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>
+        /// Optional. The groups Organizational Unit (OU) is optional. This parameter is a hint to allow faster lookup
+        /// in the LDAP namespace. In case that this parameter is not provided, Filestore instance will query the whole
+        /// LDAP namespace.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupsOu")]
+        public virtual string GroupsOu { get; set; }
+
+        /// <summary>
+        /// Required. The servers names are used for specifying the LDAP servers names. The LDAP servers names can come
+        /// with two formats: 1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`. 2. IP address, for
+        /// example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`. All servers names must be in the same format: either all DNS
+        /// names or all IP addresses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servers")]
+        public virtual System.Collections.Generic.IList<string> Servers { get; set; }
+
+        /// <summary>
+        /// Optional. The users Organizational Unit (OU) is optional. This parameter is a hint to allow faster lookup in
+        /// the LDAP namespace. In case that this parameter is not provided, Filestore instance will query the whole
+        /// LDAP namespace.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usersOu")]
+        public virtual string UsersOu { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>ListBackupsResponse is the result of ListBackupsRequest.</summary>
