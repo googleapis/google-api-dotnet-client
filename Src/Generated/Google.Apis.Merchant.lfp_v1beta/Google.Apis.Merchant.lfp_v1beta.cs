@@ -269,6 +269,7 @@ namespace Google.Apis.Merchant.lfp_v1beta
         {
             this.service = service;
             LfpInventories = new LfpInventoriesResource(service);
+            LfpMerchantStates = new LfpMerchantStatesResource(service);
             LfpSales = new LfpSalesResource(service);
             LfpStores = new LfpStoresResource(service);
         }
@@ -345,6 +346,75 @@ namespace Google.Apis.Merchant.lfp_v1beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^accounts/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the LfpMerchantStates resource.</summary>
+        public virtual LfpMerchantStatesResource LfpMerchantStates { get; }
+
+        /// <summary>The "lfpMerchantStates" collection of methods.</summary>
+        public class LfpMerchantStatesResource
+        {
+            private const string Resource = "lfpMerchantStates";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LfpMerchantStatesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Gets the LFP state of a merchant</summary>
+            /// <param name="name">
+            /// Required. The name of the state to retrieve. Format:
+            /// `accounts/{account}/lfpMerchantStates/{target_merchant}`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Gets the LFP state of a merchant</summary>
+            public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.lfp_v1beta.Data.LfpMerchantState>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the state to retrieve. Format:
+                /// `accounts/{account}/lfpMerchantStates/{target_merchant}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "lfp/v1beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/lfpMerchantStates/[^/]+$",
                     });
                 }
             }
@@ -698,6 +768,44 @@ namespace Google.Apis.Merchant.lfp_v1beta
 }
 namespace Google.Apis.Merchant.lfp_v1beta.Data
 {
+    /// <summary>Country-specific settings for the merchant.</summary>
+    public class CountrySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>True if this merchant has enabled free local listings in MC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeLocalListingsEnabled")]
+        public virtual System.Nullable<bool> FreeLocalListingsEnabled { get; set; }
+
+        /// <summary>Output only. The verification state of this merchant's instock serving feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instockServingVerificationState")]
+        public virtual string InstockServingVerificationState { get; set; }
+
+        /// <summary>Output only. The verification state of this merchant's inventory check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryVerificationState")]
+        public virtual string InventoryVerificationState { get; set; }
+
+        /// <summary>True if this merchant has enabled local inventory ads in MC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localInventoryAdsEnabled")]
+        public virtual System.Nullable<bool> LocalInventoryAdsEnabled { get; set; }
+
+        /// <summary>Output only. The verification state of this merchant's pickup serving feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupServingVerificationState")]
+        public virtual string PickupServingVerificationState { get; set; }
+
+        /// <summary>Output only. The product page type selected by this merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productPageType")]
+        public virtual string ProductPageType { get; set; }
+
+        /// <summary>
+        /// Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for
+        /// the country for which these settings are defined.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -705,6 +813,38 @@ namespace Google.Apis.Merchant.lfp_v1beta.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The inventory statistics for a merchant.</summary>
+    public class InventoryStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Number of entries (understanding entry as a pair of product and store) that were built based on provided
+        /// inventories/sales and submitted to Google.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("submittedEntries")]
+        public virtual System.Nullable<long> SubmittedEntries { get; set; }
+
+        /// <summary>Number of submitted in stock entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("submittedInStockEntries")]
+        public virtual System.Nullable<long> SubmittedInStockEntries { get; set; }
+
+        /// <summary>
+        /// Number of products from provided inventories/sales that were created from matches to existing online
+        /// products provided by the merchant or to the Google catalog.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("submittedProducts")]
+        public virtual System.Nullable<long> SubmittedProducts { get; set; }
+
+        /// <summary>
+        /// Number of entries that were built based on provided inventories/sales and couldn't be submitted to Google
+        /// due to errors like missing product.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unsubmittedEntries")]
+        public virtual System.Nullable<long> UnsubmittedEntries { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -834,6 +974,36 @@ namespace Google.Apis.Merchant.lfp_v1beta.Data
         /// <summary>Required. The Merchant Center ID of the merchant to submit the inventory for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetAccount")]
         public virtual System.Nullable<long> TargetAccount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The LFP state of a merchant.</summary>
+    public class LfpMerchantState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Country-specific settings for the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countrySettings")]
+        public virtual System.Collections.Generic.IList<CountrySettings> CountrySettings { get; set; }
+
+        /// <summary>The inventory statistics for the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryStats")]
+        public virtual InventoryStats InventoryStats { get; set; }
+
+        /// <summary>Number of [GBPs](https://www.google.com/business/) this merchant has access to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedGbps")]
+        public virtual System.Nullable<long> LinkedGbps { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the `LfpMerchantState` resource. Format:
+        /// `accounts/{account}/lfpMerchantStates/{target_merchant}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state per store from the specified merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeStates")]
+        public virtual System.Collections.Generic.IList<LfpStoreState> StoreStates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1020,6 +1190,25 @@ namespace Google.Apis.Merchant.lfp_v1beta.Data
         /// <summary>Optional. The website URL for the store or merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websiteUri")]
         public virtual string WebsiteUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The state of a specific merchant's store.</summary>
+    public class LfpStoreState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The store matching state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingState")]
+        public virtual string MatchingState { get; set; }
+
+        /// <summary>The hint of why the matching has failed (only set if matching_state is FAILED).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingStateHint")]
+        public virtual string MatchingStateHint { get; set; }
+
+        /// <summary>Required. Immutable. The identifier of this store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
+        public virtual string StoreCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
