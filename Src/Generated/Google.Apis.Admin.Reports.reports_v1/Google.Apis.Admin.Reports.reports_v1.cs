@@ -2310,10 +2310,6 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
     /// <summary>Details of the resource on which the action was performed.</summary>
     public class ResourceDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Id of the application to which this resource belongs</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
-        public virtual System.Nullable<long> ApplicationId { get; set; }
-
         /// <summary>List of labels applied on the resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliedLabels")]
         public virtual System.Collections.Generic.IList<AppliedLabel> AppliedLabels { get; set; }
@@ -2321,10 +2317,6 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         /// <summary>Identifier of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
-
-        /// <summary>Owner of the resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ownerEmail")]
-        public virtual string OwnerEmail { get; set; }
 
         /// <summary>Defines relationship of the resource to the events</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relation")]
