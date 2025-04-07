@@ -2066,7 +2066,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
 
             /// <summary>Retrieve shipping setting information.</summary>
             /// <param name="name">
-            /// Required. The name of the shipping setting to retrieve. Format: `accounts/{account}/shippingsetting`
+            /// Required. The name of the shipping setting to retrieve. Format: `accounts/{account}/shippingsettings`
             /// </param>
             public virtual GetShippingSettingsRequest GetShippingSettings(string name)
             {
@@ -2084,7 +2084,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 }
 
                 /// <summary>
-                /// Required. The name of the shipping setting to retrieve. Format: `accounts/{account}/shippingsetting`
+                /// Required. The name of the shipping setting to retrieve. Format:
+                /// `accounts/{account}/shippingsettings`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2197,7 +2198,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
             /// <summary>Returns the state of a terms of service agreement.</summary>
             /// <param name="name">
             /// Required. The resource name of the terms of service version. Format:
-            /// `accounts/{account}/termsOfServiceAgreementState/{identifier}` The identifier format is:
+            /// `accounts/{account}/termsOfServiceAgreementStates/{identifier}` The identifier format is:
             /// `{TermsOfServiceKind}-{country}`
             /// </param>
             public virtual GetRequest Get(string name)
@@ -2217,7 +2218,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
 
                 /// <summary>
                 /// Required. The resource name of the terms of service version. Format:
-                /// `accounts/{account}/termsOfServiceAgreementState/{identifier}` The identifier format is:
+                /// `accounts/{account}/termsOfServiceAgreementStates/{identifier}` The identifier format is:
                 /// `{TermsOfServiceKind}-{country}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2656,8 +2657,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
         }
 
         /// <summary>
-        /// Creates a standalone Merchant Center account with additional configuration. Adds the user that makes the
-        /// request as an admin for the new account.
+        /// Creates a Merchant Center account with additional configuration. Adds the user that makes the request as an
+        /// admin for the new account.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateAndConfigureRequest CreateAndConfigure(Google.Apis.Merchant.accounts_v1beta.Data.CreateAndConfigureAccountRequest body)
@@ -2666,8 +2667,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
         }
 
         /// <summary>
-        /// Creates a standalone Merchant Center account with additional configuration. Adds the user that makes the
-        /// request as an admin for the new account.
+        /// Creates a Merchant Center account with additional configuration. Adds the user that makes the request as an
+        /// admin for the new account.
         /// </summary>
         public class CreateAndConfigureRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Account>
         {
@@ -4718,6 +4719,12 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual RestockingFee RestockingFee { get; set; }
 
         /// <summary>
+        /// The field specifies the return label source. This field is required when return method is BY_MAIL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnLabelSource")]
+        public virtual string ReturnLabelSource { get; set; }
+
+        /// <summary>
         /// Optional. The return methods of how customers can return an item. This value is required to not be empty
         /// unless the type of return policy is noReturns.
         /// </summary>
@@ -5470,7 +5477,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     }
 
     /// <summary>
-    /// The merchant account's [shipping setting](https://support.google.com/merchants/answer/6069284).
+    /// The merchant account's [shipping settings](https://support.google.com/merchants/answer/6069284).
     /// </summary>
     public class ShippingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5487,7 +5494,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Identifier. The resource name of the shipping setting. Format: `accounts/{account}/shippingSetting`
+        /// Identifier. The resource name of the shipping settings. Format: `accounts/{account}/shippingSettings`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5605,10 +5612,11 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
 
     /// <summary>
     /// The `TermsOfService` message represents a specific version of the terms of service that merchants must accept to
-    /// access certain features or services (see https://support.google.com/merchants/answer/160173). This message is
-    /// important for the onboarding process, ensuring that merchants agree to the necessary legal agreements for using
-    /// the service. Merchants can retrieve the latest terms of service for a given `kind` and `region` through
-    /// `RetrieveLatestTermsOfService`, and accept them as required through `AcceptTermsOfService`.
+    /// access certain features or services. For more information, see [Terms of
+    /// Service](https://support.google.com/merchants/answer/160173). This message is important for the onboarding
+    /// process, ensuring that merchants agree to the necessary legal agreements for using the service. Merchants can
+    /// retrieve the latest terms of service for a given `kind` and `region` through `RetrieveLatestTermsOfService`, and
+    /// accept them as required through `AcceptTermsOfService`.
     /// </summary>
     public class TermsOfService : Google.Apis.Requests.IDirectResponseSchema
     {
