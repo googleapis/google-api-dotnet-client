@@ -16519,7 +16519,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
     {
         /// <summary>
         /// Optional. The BigQuery table to export DataProfileScan results to. Format:
-        /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID or
+        /// projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultsTable")]
         public virtual string ResultsTable { get; set; }
@@ -17103,7 +17104,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
     {
         /// <summary>
         /// Optional. The BigQuery table to export DataQualityScan results to. Format:
-        /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID or
+        /// projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultsTable")]
         public virtual string ResultsTable { get; set; }
