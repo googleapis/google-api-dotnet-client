@@ -295,9 +295,9 @@ namespace Google.Apis.Merchant.products_v1beta
             /// </summary>
             /// <param name="name">
             /// Required. The name of the product input resource to delete. Format:
-            /// accounts/{account}/productInputs/{product} where the last section `product` consists of 4 parts:
-            /// channel~content_language~feed_label~offer_id example for product name is
-            /// "accounts/123/productInputs/online~en~US~sku123"
+            /// `accounts/{account}/productInputs/{product}` where the last section `product` consists of 4 parts:
+            /// `channel~content_language~feed_label~offer_id` example for product name is
+            /// `accounts/123/productInputs/online~en~US~sku123`.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -319,9 +319,9 @@ namespace Google.Apis.Merchant.products_v1beta
 
                 /// <summary>
                 /// Required. The name of the product input resource to delete. Format:
-                /// accounts/{account}/productInputs/{product} where the last section `product` consists of 4 parts:
-                /// channel~content_language~feed_label~offer_id example for product name is
-                /// "accounts/123/productInputs/online~en~US~sku123"
+                /// `accounts/{account}/productInputs/{product}` where the last section `product` consists of 4 parts:
+                /// `channel~content_language~feed_label~offer_id` example for product name is
+                /// `accounts/123/productInputs/online~en~US~sku123`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -372,7 +372,7 @@ namespace Google.Apis.Merchant.products_v1beta
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The account where this product will be inserted. Format: accounts/{account}
+            /// Required. The account where this product will be inserted. Format: `accounts/{account}`
             /// </param>
             public virtual InsertRequest Insert(Google.Apis.Merchant.products_v1beta.Data.ProductInput body, string parent)
             {
@@ -395,7 +395,7 @@ namespace Google.Apis.Merchant.products_v1beta
                 }
 
                 /// <summary>
-                /// Required. The account where this product will be inserted. Format: accounts/{account}
+                /// Required. The account where this product will be inserted. Format: `accounts/{account}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -452,10 +452,10 @@ namespace Google.Apis.Merchant.products_v1beta
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Identifier. The name of the product input. Format:
-            /// `"{productinput.name=accounts/{account}/productInputs/{productinput}}"` where the last section
-            /// `productinput` consists of 4 parts: channel~content_language~feed_label~offer_id example for product
-            /// input name is "accounts/123/productInputs/online~en~US~sku123"
+            /// Identifier. The name of the product input. Format: `accounts/{account}/productInputs/{productinput}`
+            /// where the last section `productinput` consists of 4 parts:
+            /// `channel~content_language~feed_label~offer_id` example for product input name is
+            /// `accounts/123/productInputs/online~en~US~sku123`
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Merchant.products_v1beta.Data.ProductInput body, string name)
             {
@@ -477,10 +477,10 @@ namespace Google.Apis.Merchant.products_v1beta
                 }
 
                 /// <summary>
-                /// Identifier. The name of the product input. Format:
-                /// `"{productinput.name=accounts/{account}/productInputs/{productinput}}"` where the last section
-                /// `productinput` consists of 4 parts: channel~content_language~feed_label~offer_id example for product
-                /// input name is "accounts/123/productInputs/online~en~US~sku123"
+                /// Identifier. The name of the product input. Format: `accounts/{account}/productInputs/{productinput}`
+                /// where the last section `productinput` consists of 4 parts:
+                /// `channel~content_language~feed_label~offer_id` example for product input name is
+                /// `accounts/123/productInputs/online~en~US~sku123`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -574,8 +574,8 @@ namespace Google.Apis.Merchant.products_v1beta
             /// </summary>
             /// <param name="name">
             /// Required. The name of the product to retrieve. Format: `accounts/{account}/products/{product}` where the
-            /// last section `product` consists of 4 parts: channel~content_language~feed_label~offer_id example for
-            /// product name is "accounts/123/products/online~en~US~sku123"
+            /// last section `product` consists of 4 parts: `channel~content_language~feed_label~offer_id` example for
+            /// product name is `accounts/123/products/online~en~US~sku123`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -597,8 +597,8 @@ namespace Google.Apis.Merchant.products_v1beta
 
                 /// <summary>
                 /// Required. The name of the product to retrieve. Format: `accounts/{account}/products/{product}` where
-                /// the last section `product` consists of 4 parts: channel~content_language~feed_label~offer_id example
-                /// for product name is "accounts/123/products/online~en~US~sku123"
+                /// the last section `product` consists of 4 parts: `channel~content_language~feed_label~offer_id`
+                /// example for product name is `accounts/123/products/online~en~US~sku123`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -629,12 +629,12 @@ namespace Google.Apis.Merchant.products_v1beta
 
             /// <summary>
             /// Lists the processed products in your Merchant Center account. The response might contain fewer items
-            /// than specified by pageSize. Rely on pageToken to determine if there are more items to be requested.
+            /// than specified by `pageSize`. Rely on `pageToken` to determine if there are more items to be requested.
             /// After inserting, updating, or deleting a product input, it may take several minutes before the updated
             /// processed product can be retrieved.
             /// </summary>
             /// <param name="parent">
-            /// Required. The account to list processed products for. Format: accounts/{account}
+            /// Required. The account to list processed products for. Format: `accounts/{account}`
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -643,7 +643,7 @@ namespace Google.Apis.Merchant.products_v1beta
 
             /// <summary>
             /// Lists the processed products in your Merchant Center account. The response might contain fewer items
-            /// than specified by pageSize. Rely on pageToken to determine if there are more items to be requested.
+            /// than specified by `pageSize`. Rely on `pageToken` to determine if there are more items to be requested.
             /// After inserting, updating, or deleting a product input, it may take several minutes before the updated
             /// processed product can be retrieved.
             /// </summary>
@@ -656,7 +656,9 @@ namespace Google.Apis.Merchant.products_v1beta
                     InitParameters();
                 }
 
-                /// <summary>Required. The account to list processed products for. Format: accounts/{account}</summary>
+                /// <summary>
+                /// Required. The account to list processed products for. Format: `accounts/{account}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1298,6 +1300,34 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information regarding Automated Discounts.</summary>
+    public class AutomatedDiscounts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The current sale price for products with a price optimized using Google Automated Discounts (GAD). Absent if
+        /// the information about the GAD_price of the product is not available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gadPrice")]
+        public virtual Price GadPrice { get; set; }
+
+        /// <summary>
+        /// The price prior to the application of the first price reduction Absent if the information about the prior
+        /// price of the product is not available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priorPrice")]
+        public virtual Price PriorPrice { get; set; }
+
+        /// <summary>
+        /// The price prior to the application of consecutive price reductions Absent if the information about the prior
+        /// price of the product is not available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priorPriceProgressive")]
+        public virtual Price PriorPriceProgressive { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Product [certification](https://support.google.com/merchants/answer/13528839), initially introduced for EU
     /// energy efficiency labeling compliance using the EU EPREL database.
@@ -1741,18 +1771,21 @@ namespace Google.Apis.Merchant.products_v1beta.Data
 
     /// <summary>
     /// The processed product, built from multiple product inputs after applying rules and supplemental data sources.
-    /// This processed product matches what is shown in your Merchant Center account and in Shopping ads and other
-    /// surfaces across Google. Each product is built from exactly one primary data source product input, and multiple
-    /// supplemental data source inputs. After inserting, updating, or deleting a product input, it may take several
-    /// minutes before the updated processed product can be retrieved. All fields in the processed product and its
-    /// sub-messages match the name of their corresponding attribute in the [Product data
-    /// specification](https://support.google.com/merchants/answer/7052112) with some exceptions.
+    /// This processed product matches what is shown in your Merchant Center account. Each product is built from exactly
+    /// one primary data source product input, and multiple supplemental data source inputs. After inserting, updating,
+    /// or deleting a product input, it may take several minutes before the updated processed product can be retrieved.
+    /// All fields in the processed product and its sub-messages match the name of their corresponding attribute in the
+    /// [Product data specification](https://support.google.com/merchants/answer/7052112) with some exceptions.
     /// </summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. A list of product attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual Attributes Attributes { get; set; }
+
+        /// <summary>Output only. The automated discounts information for the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automatedDiscounts")]
+        public virtual AutomatedDiscounts AutomatedDiscounts { get; set; }
 
         /// <summary>
         /// Output only. The [channel](https://support.google.com/merchants/answer/7361332) of the product.
@@ -1785,9 +1818,9 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual string FeedLabel { get; set; }
 
         /// <summary>
-        /// The name of the product. Format: `"{product.name=accounts/{account}/products/{product}}"` where the last
-        /// section `product` consists of 4 parts: channel~content_language~feed_label~offer_id example for product name
-        /// is "accounts/123/products/online~en~US~sku123"
+        /// The name of the product. Format: `accounts/{account}/products/{product}` where the last section `product`
+        /// consists of 4 parts: `channel~content_language~feed_label~offer_id` example for product name is
+        /// `accounts/123/products/online~en~US~sku123`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1927,10 +1960,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         /// <summary>
         /// Optional. A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute
         /// of the data specification in its generic form (for example, `{ "name": "size type", "value": "regular" }`).
-        /// This is useful for submitting attributes not explicitly exposed by the API, such as additional attributes
-        /// used for Buy on Google. Maximum allowed number of characters for each custom attribute is 10240 (represents
-        /// sum of characters for name and value). Maximum 2500 custom attributes can be set per product, with total
-        /// size of 102.4kB. Underscores in custom attribute names are replaced by spaces upon insertion.
+        /// This is useful for submitting attributes not explicitly exposed by the API. Maximum allowed number of
+        /// characters for each custom attribute is 10240 (represents sum of characters for name and value). Maximum
+        /// 2500 custom attributes can be set per product, with total size of 102.4kB. Underscores in custom attribute
+        /// names are replaced by spaces upon insertion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributes")]
         public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; }
@@ -1943,10 +1976,9 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual string FeedLabel { get; set; }
 
         /// <summary>
-        /// Identifier. The name of the product input. Format:
-        /// `"{productinput.name=accounts/{account}/productInputs/{productinput}}"` where the last section
-        /// `productinput` consists of 4 parts: channel~content_language~feed_label~offer_id example for product input
-        /// name is "accounts/123/productInputs/online~en~US~sku123"
+        /// Identifier. The name of the product input. Format: `accounts/{account}/productInputs/{productinput}` where
+        /// the last section `productinput` consists of 4 parts: `channel~content_language~feed_label~offer_id` example
+        /// for product input name is `accounts/123/productInputs/online~en~US~sku123`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1961,8 +1993,7 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual string OfferId { get; set; }
 
         /// <summary>
-        /// Output only. The name of the processed product. Format:
-        /// `"{product.name=accounts/{account}/products/{product}}"`
+        /// Output only. The name of the processed product. Format: `accounts/{account}/products/{product}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual string Product { get; set; }
