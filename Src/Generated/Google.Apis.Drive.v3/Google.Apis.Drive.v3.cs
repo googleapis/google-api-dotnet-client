@@ -378,9 +378,9 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Gets information about the user, the user's Drive, and system capabilities. For more information, see
-        /// [Return user info](https://developers.google.com/drive/api/guides/user-info). Required: The `fields`
-        /// parameter must be set. To return the exact fields you need, see [Return specific
-        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// [Return user info](https://developers.google.com/workspace/drive/api/guides/user-info). Required: The
+        /// `fields` parameter must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
         /// </summary>
         public virtual GetRequest Get()
         {
@@ -389,9 +389,9 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Gets information about the user, the user's Drive, and system capabilities. For more information, see
-        /// [Return user info](https://developers.google.com/drive/api/guides/user-info). Required: The `fields`
-        /// parameter must be set. To return the exact fields you need, see [Return specific
-        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// [Return user info](https://developers.google.com/workspace/drive/api/guides/user-info). Required: The
+        /// `fields` parameter must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
         /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.About>
         {
@@ -650,7 +650,7 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Gets a specific app. For more information, see [Return user
-        /// info](https://developers.google.com/drive/api/guides/user-info).
+        /// info](https://developers.google.com/workspace/drive/api/guides/user-info).
         /// </summary>
         /// <param name="appId">The ID of the app.</param>
         public virtual GetRequest Get(string appId)
@@ -660,7 +660,7 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Gets a specific app. For more information, see [Return user
-        /// info](https://developers.google.com/drive/api/guides/user-info).
+        /// info](https://developers.google.com/workspace/drive/api/guides/user-info).
         /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.App>
         {
@@ -701,7 +701,7 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Lists a user's installed apps. For more information, see [Return user
-        /// info](https://developers.google.com/drive/api/guides/user-info).
+        /// info](https://developers.google.com/workspace/drive/api/guides/user-info).
         /// </summary>
         public virtual ListRequest List()
         {
@@ -710,7 +710,7 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Lists a user's installed apps. For more information, see [Return user
-        /// info](https://developers.google.com/drive/api/guides/user-info).
+        /// info](https://developers.google.com/workspace/drive/api/guides/user-info).
         /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.AppList>
         {
@@ -800,7 +800,7 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Gets the starting pageToken for listing future changes. For more information, see [Retrieve
-        /// changes](https://developers.google.com/drive/api/guides/manage-changes).
+        /// changes](https://developers.google.com/workspace/drive/api/guides/manage-changes).
         /// </summary>
         public virtual GetStartPageTokenRequest GetStartPageToken()
         {
@@ -809,7 +809,7 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Gets the starting pageToken for listing future changes. For more information, see [Retrieve
-        /// changes](https://developers.google.com/drive/api/guides/manage-changes).
+        /// changes](https://developers.google.com/workspace/drive/api/guides/manage-changes).
         /// </summary>
         public class GetStartPageTokenRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.StartPageToken>
         {
@@ -888,7 +888,7 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Lists the changes for a user or shared drive. For more information, see [Retrieve
-        /// changes](https://developers.google.com/drive/api/guides/manage-changes).
+        /// changes](https://developers.google.com/workspace/drive/api/guides/manage-changes).
         /// </summary>
         /// <param name="pageToken">
         /// The token for continuing a previous list request on the next page. This should be set to the value of
@@ -901,7 +901,7 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Lists the changes for a user or shared drive. For more information, see [Retrieve
-        /// changes](https://developers.google.com/drive/api/guides/manage-changes).
+        /// changes](https://developers.google.com/workspace/drive/api/guides/manage-changes).
         /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ChangeList>
         {
@@ -1121,7 +1121,7 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Subscribes to changes for a user. For more information, see [Notifications for resource
-        /// changes](https://developers.google.com/drive/api/guides/push).
+        /// changes](https://developers.google.com/workspace/drive/api/guides/push).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="pageToken">
@@ -1135,7 +1135,7 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Subscribes to changes for a user. For more information, see [Notifications for resource
-        /// changes](https://developers.google.com/drive/api/guides/push).
+        /// changes](https://developers.google.com/workspace/drive/api/guides/push).
         /// </summary>
         public class WatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Channel>
         {
@@ -1377,7 +1377,7 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Stops watching resources through this channel. For more information, see [Notifications for resource
-        /// changes](https://developers.google.com/drive/api/guides/push).
+        /// changes](https://developers.google.com/workspace/drive/api/guides/push).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual StopRequest Stop(Google.Apis.Drive.v3.Data.Channel body)
@@ -1387,7 +1387,7 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Stops watching resources through this channel. For more information, see [Notifications for resource
-        /// changes](https://developers.google.com/drive/api/guides/push).
+        /// changes](https://developers.google.com/workspace/drive/api/guides/push).
         /// </summary>
         public class StopRequest : DriveBaseServiceRequest<string>
         {
@@ -1437,9 +1437,9 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Creates a comment on a file. For more information, see [Manage comments and
-        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
-        /// must be set. To return the exact fields you need, see [Return specific
-        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields`
+        /// parameter must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
@@ -1450,9 +1450,9 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Creates a comment on a file. For more information, see [Manage comments and
-        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
-        /// must be set. To return the exact fields you need, see [Return specific
-        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields`
+        /// parameter must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
         /// </summary>
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Comment>
         {
@@ -1500,9 +1500,9 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Deletes a comment. For more information, see [Manage comments and
-        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
-        /// must be set. To return the exact fields you need, see [Return specific
-        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields`
+        /// parameter must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
         /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="commentId">The ID of the comment.</param>
@@ -1513,9 +1513,9 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Deletes a comment. For more information, see [Manage comments and
-        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
-        /// must be set. To return the exact fields you need, see [Return specific
-        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields`
+        /// parameter must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
         /// </summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
@@ -1569,9 +1569,9 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Gets a comment by ID. For more information, see [Manage comments and
-        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
-        /// must be set. To return the exact fields you need, see [Return specific
-        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields`
+        /// parameter must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
         /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="commentId">The ID of the comment.</param>
@@ -1582,9 +1582,9 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Gets a comment by ID. For more information, see [Manage comments and
-        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
-        /// must be set. To return the exact fields you need, see [Return specific
-        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields`
+        /// parameter must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
         /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Comment>
         {
@@ -1652,9 +1652,9 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Lists a file's comments. For more information, see [Manage comments and
-        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
-        /// must be set. To return the exact fields you need, see [Return specific
-        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields`
+        /// parameter must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
         /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         public virtual ListRequest List(string fileId)
@@ -1664,9 +1664,9 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Lists a file's comments. For more information, see [Manage comments and
-        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
-        /// must be set. To return the exact fields you need, see [Return specific
-        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields`
+        /// parameter must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
         /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.CommentList>
         {
@@ -1760,9 +1760,9 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Updates a comment with patch semantics. For more information, see [Manage comments and
-        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
-        /// must be set. To return the exact fields you need, see [Return specific
-        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields`
+        /// parameter must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
@@ -1774,9 +1774,9 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Updates a comment with patch semantics. For more information, see [Manage comments and
-        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
-        /// must be set. To return the exact fields you need, see [Return specific
-        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields`
+        /// parameter must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
         /// </summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Comment>
         {
@@ -2102,7 +2102,7 @@ namespace Google.Apis.Drive.v3
         /// <summary>
         ///  Lists the user's shared drives. This method accepts the `q` parameter, which is a search query combining
         /// one or more search terms. For more information, see the [Search for shared
-        /// drives](/drive/api/guides/search-shareddrives) guide.
+        /// drives](/workspace/drive/api/guides/search-shareddrives) guide.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -2112,7 +2112,7 @@ namespace Google.Apis.Drive.v3
         /// <summary>
         ///  Lists the user's shared drives. This method accepts the `q` parameter, which is a search query combining
         /// one or more search terms. For more information, see the [Search for shared
-        /// drives](/drive/api/guides/search-shareddrives) guide.
+        /// drives](/workspace/drive/api/guides/search-shareddrives) guide.
         /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.DriveList>
         {
@@ -2485,14 +2485,14 @@ namespace Google.Apis.Drive.v3
         /// characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid
         /// MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid
         /// MIME type can be uploaded. For more information on uploading files, see [Upload file
-        /// data](/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.create` must specify the MIME
-        /// type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `name` property
-        /// when inserting files with the API. For example, an operation to insert a JPEG file should specify something
-        /// like `"name": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only `fileExtension`
-        /// property populated with the extension originally specified in the `title` property. When a Google Drive user
-        /// requests to download a file, or when the file is downloaded through the sync client, Drive builds a full
-        /// filename (with extension) based on the title. In cases where the extension is missing, Drive attempts to
-        /// determine the extension based on the file's MIME type.
+        /// data](/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.create` must specify
+        /// the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `name`
+        /// property when inserting files with the API. For example, an operation to insert a JPEG file should specify
+        /// something like `"name": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only
+        /// `fileExtension` property populated with the extension originally specified in the `title` property. When a
+        /// Google Drive user requests to download a file, or when the file is downloaded through the sync client, Drive
+        /// builds a full filename (with extension) based on the title. In cases where the extension is missing, Drive
+        /// attempts to determine the extension based on the file's MIME type.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Drive.v3.Data.File body)
@@ -2505,14 +2505,14 @@ namespace Google.Apis.Drive.v3
         /// characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid
         /// MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid
         /// MIME type can be uploaded. For more information on uploading files, see [Upload file
-        /// data](/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.create` must specify the MIME
-        /// type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `name` property
-        /// when inserting files with the API. For example, an operation to insert a JPEG file should specify something
-        /// like `"name": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only `fileExtension`
-        /// property populated with the extension originally specified in the `title` property. When a Google Drive user
-        /// requests to download a file, or when the file is downloaded through the sync client, Drive builds a full
-        /// filename (with extension) based on the title. In cases where the extension is missing, Drive attempts to
-        /// determine the extension based on the file's MIME type.
+        /// data](/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.create` must specify
+        /// the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `name`
+        /// property when inserting files with the API. For example, an operation to insert a JPEG file should specify
+        /// something like `"name": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only
+        /// `fileExtension` property populated with the extension originally specified in the `title` property. When a
+        /// Google Drive user requests to download a file, or when the file is downloaded through the sync client, Drive
+        /// builds a full filename (with extension) based on the title. In cases where the extension is missing, Drive
+        /// attempts to determine the extension based on the file's MIME type.
         /// </summary>
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.File>
         {
@@ -2670,14 +2670,14 @@ namespace Google.Apis.Drive.v3
         /// characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid
         /// MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid
         /// MIME type can be uploaded. For more information on uploading files, see [Upload file
-        /// data](/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.create` must specify the MIME
-        /// type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `name` property
-        /// when inserting files with the API. For example, an operation to insert a JPEG file should specify something
-        /// like `"name": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only `fileExtension`
-        /// property populated with the extension originally specified in the `title` property. When a Google Drive user
-        /// requests to download a file, or when the file is downloaded through the sync client, Drive builds a full
-        /// filename (with extension) based on the title. In cases where the extension is missing, Drive attempts to
-        /// determine the extension based on the file's MIME type.
+        /// data](/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.create` must specify
+        /// the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `name`
+        /// property when inserting files with the API. For example, an operation to insert a JPEG file should specify
+        /// something like `"name": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only
+        /// `fileExtension` property populated with the extension originally specified in the `title` property. When a
+        /// Google Drive user requests to download a file, or when the file is downloaded through the sync client, Drive
+        /// builds a full filename (with extension) based on the title. In cases where the extension is missing, Drive
+        /// attempts to determine the extension based on the file's MIME type.
         /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
@@ -3316,8 +3316,8 @@ namespace Google.Apis.Drive.v3
         ///  Gets a file's metadata or content by ID. If you provide the URL parameter `alt=media`, then the response
         /// includes the file contents in the response body. Downloading content with `alt=media` only works if the file
         /// is stored in Drive. To download Google Docs, Sheets, and Slides use
-        /// [`files.export`](/drive/api/reference/rest/v3/files/export) instead. For more information, see [Download
-        /// &amp;amp; export files](/drive/api/guides/manage-downloads).
+        /// [`files.export`](/workspace/drive/api/reference/rest/v3/files/export) instead. For more information, see
+        /// [Download &amp;amp; export files](/workspace/drive/api/guides/manage-downloads).
         /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         public virtual GetRequest Get(string fileId)
@@ -3329,8 +3329,8 @@ namespace Google.Apis.Drive.v3
         ///  Gets a file's metadata or content by ID. If you provide the URL parameter `alt=media`, then the response
         /// includes the file contents in the response body. Downloading content with `alt=media` only works if the file
         /// is stored in Drive. To download Google Docs, Sheets, and Slides use
-        /// [`files.export`](/drive/api/reference/rest/v3/files/export) instead. For more information, see [Download
-        /// &amp;amp; export files](/drive/api/guides/manage-downloads).
+        /// [`files.export`](/workspace/drive/api/reference/rest/v3/files/export) instead. For more information, see
+        /// [Download &amp;amp; export files](/workspace/drive/api/guides/manage-downloads).
         /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.File>
         {
@@ -3526,9 +3526,9 @@ namespace Google.Apis.Drive.v3
         /// <summary>
         ///  Lists the user's files. This method accepts the `q` parameter, which is a search query combining one or
         /// more search terms. For more information, see the [Search for files &amp;amp;
-        /// folders](/drive/api/guides/search-files) guide. *Note:* This method returns *all* files by default,
-        /// including trashed files. If you don't want trashed files to appear in the list, use the `trashed=false`
-        /// query parameter to remove trashed files from the results.
+        /// folders](/workspace/drive/api/guides/search-files) guide. *Note:* This method returns *all* files by
+        /// default, including trashed files. If you don't want trashed files to appear in the list, use the
+        /// `trashed=false` query parameter to remove trashed files from the results.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -3538,9 +3538,9 @@ namespace Google.Apis.Drive.v3
         /// <summary>
         ///  Lists the user's files. This method accepts the `q` parameter, which is a search query combining one or
         /// more search terms. For more information, see the [Search for files &amp;amp;
-        /// folders](/drive/api/guides/search-files) guide. *Note:* This method returns *all* files by default,
-        /// including trashed files. If you don't want trashed files to appear in the list, use the `trashed=false`
-        /// query parameter to remove trashed files from the results.
+        /// folders](/workspace/drive/api/guides/search-files) guide. *Note:* This method returns *all* files by
+        /// default, including trashed files. If you don't want trashed files to appear in the list, use the
+        /// `trashed=false` query parameter to remove trashed files from the results.
         /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.FileList>
         {
@@ -3925,7 +3925,7 @@ namespace Google.Apis.Drive.v3
         /// uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
         /// types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
         /// used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see
-        /// [Upload file data](/drive/api/guides/manage-uploads).
+        /// [Upload file data](/workspace/drive/api/guides/manage-uploads).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
@@ -3941,7 +3941,7 @@ namespace Google.Apis.Drive.v3
         /// uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
         /// types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
         /// used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see
-        /// [Upload file data](/drive/api/guides/manage-uploads).
+        /// [Upload file data](/workspace/drive/api/guides/manage-uploads).
         /// </summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.File>
         {
@@ -4124,7 +4124,7 @@ namespace Google.Apis.Drive.v3
         /// uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
         /// types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
         /// used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see
-        /// [Upload file data](/drive/api/guides/manage-uploads).
+        /// [Upload file data](/workspace/drive/api/guides/manage-uploads).
         /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
@@ -7083,7 +7083,7 @@ namespace Google.Apis.Drive.v3.Data
     {
         /// <summary>
         /// A region of the document represented as a JSON string. For details on defining anchor properties, refer to
-        /// [Manage comments and replies](https://developers.google.com/drive/api/v3/manage-comments).
+        /// [Manage comments and replies](https://developers.google.com/workspace/drive/api/v3/manage-comments).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anchor")]
         public virtual string Anchor { get; set; }
@@ -8920,7 +8920,7 @@ namespace Google.Apis.Drive.v3.Data
     /// A permission for a file. A permission grants a user, group, domain, or the world access to a file or a folder
     /// hierarchy. By default, permissions requests only return a subset of fields. Permission kind, ID, type, and role
     /// are always returned. To retrieve specific fields, see
-    /// https://developers.google.com/drive/api/guides/fields-parameter. Some resource methods (such as
+    /// https://developers.google.com/workspace/drive/api/guides/fields-parameter. Some resource methods (such as
     /// `permissions.update`) require a `permissionId`. Use the `permissions.list` method to retrieve the ID for a file,
     /// folder, or shared drive.
     /// </summary>

@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Drive.v3 Client Library</Title>
-    <Version>1.69.0.3703</Version>
+    <Version>1.69.0.3740</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Drive v3.
 
       Product documentation is available at:
-      https://developers.google.com/drive/
+      https://developers.google.com/workspace/drive/
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.Drive.v3/latest/api/Google.Apis.Drive.v3.html
