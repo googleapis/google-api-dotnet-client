@@ -34,6 +34,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// <param name="initializer">The service initializer.</param>
         public HangoutsChatService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            CustomEmojis = new CustomEmojisResource(this);
             Media = new MediaResource(this);
             Spaces = new SpacesResource(this);
             Users = new UsersResource(this);
@@ -111,6 +112,12 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public static string ChatBot = "https://www.googleapis.com/auth/chat.bot";
+
+            /// <summary>View, create, and delete custom emoji in Google Chat</summary>
+            public static string ChatCustomemojis = "https://www.googleapis.com/auth/chat.customemojis";
+
+            /// <summary>View custom emoji in Google Chat</summary>
+            public static string ChatCustomemojisReadonly = "https://www.googleapis.com/auth/chat.customemojis.readonly";
 
             /// <summary>Delete conversations and spaces and remove access to associated files in Google Chat</summary>
             public static string ChatDelete = "https://www.googleapis.com/auth/chat.delete";
@@ -225,6 +232,12 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public const string ChatBot = "https://www.googleapis.com/auth/chat.bot";
 
+            /// <summary>View, create, and delete custom emoji in Google Chat</summary>
+            public const string ChatCustomemojis = "https://www.googleapis.com/auth/chat.customemojis";
+
+            /// <summary>View custom emoji in Google Chat</summary>
+            public const string ChatCustomemojisReadonly = "https://www.googleapis.com/auth/chat.customemojis.readonly";
+
             /// <summary>Delete conversations and spaces and remove access to associated files in Google Chat</summary>
             public const string ChatDelete = "https://www.googleapis.com/auth/chat.delete";
 
@@ -284,6 +297,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Read and update your space settings</summary>
             public const string ChatUsersSpacesettings = "https://www.googleapis.com/auth/chat.users.spacesettings";
         }
+
+        /// <summary>Gets the CustomEmojis resource.</summary>
+        public virtual CustomEmojisResource CustomEmojis { get; }
 
         /// <summary>Gets the Media resource.</summary>
         public virtual MediaResource Media { get; }
@@ -473,6 +489,305 @@ namespace Google.Apis.HangoutsChat.v1
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "customEmojis" collection of methods.</summary>
+    public class CustomEmojisResource
+    {
+        private const string Resource = "customEmojis";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public CustomEmojisResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Creates a custom emoji. Custom emojis are only available for Google Workspace accounts, and the
+        /// administrator must turn custom emojis on for the organization. For more information, see [Learn about custom
+        /// emojis in Google Chat](https://support.google.com/chat/answer/12800149) and [Manage custom emoji
+        /// permissions](https://support.google.com/a/answer/12850085). Requires [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.HangoutsChat.v1.Data.CustomEmoji body)
+        {
+            return new CreateRequest(this.service, body);
+        }
+
+        /// <summary>
+        /// Creates a custom emoji. Custom emojis are only available for Google Workspace accounts, and the
+        /// administrator must turn custom emojis on for the organization. For more information, see [Learn about custom
+        /// emojis in Google Chat](https://support.google.com/chat/answer/12800149) and [Manage custom emoji
+        /// permissions](https://support.google.com/a/answer/12850085). Requires [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// </summary>
+        public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.CustomEmoji>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.CustomEmoji body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.HangoutsChat.v1.Data.CustomEmoji Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/customEmojis";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
+        /// Deletes a custom emoji. By default, users can only delete custom emoji they created. [Emoji
+        /// managers](https://support.google.com/a/answer/12850085) assigned by the administrator can delete any custom
+        /// emoji in the organization. See [Learn about custom emojis in Google
+        /// Chat](https://support.google.com/chat/answer/12800149). Custom emojis are only available for Google
+        /// Workspace accounts, and the administrator must turn custom emojis on for the organization. For more
+        /// information, see [Learn about custom emojis in Google Chat](https://support.google.com/chat/answer/12800149)
+        /// and [Manage custom emoji permissions](https://support.google.com/a/answer/12850085). Requires [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// </summary>
+        /// <param name="name">
+        /// Required. Resource name of the custom emoji to delete. Format: `customEmojis/{customEmoji}` You can use the
+        /// emoji name as an alias for `{customEmoji}`. For example, `customEmojis/:example-emoji:` where
+        /// `:example-emoji:` is the emoji name for a custom emoji.
+        /// </param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(this.service, name);
+        }
+
+        /// <summary>
+        /// Deletes a custom emoji. By default, users can only delete custom emoji they created. [Emoji
+        /// managers](https://support.google.com/a/answer/12850085) assigned by the administrator can delete any custom
+        /// emoji in the organization. See [Learn about custom emojis in Google
+        /// Chat](https://support.google.com/chat/answer/12800149). Custom emojis are only available for Google
+        /// Workspace accounts, and the administrator must turn custom emojis on for the organization. For more
+        /// information, see [Learn about custom emojis in Google Chat](https://support.google.com/chat/answer/12800149)
+        /// and [Manage custom emoji permissions](https://support.google.com/a/answer/12850085). Requires [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// </summary>
+        public class DeleteRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Resource name of the custom emoji to delete. Format: `customEmojis/{customEmoji}` You can use
+            /// the emoji name as an alias for `{customEmoji}`. For example, `customEmojis/:example-emoji:` where
+            /// `:example-emoji:` is the emoji name for a custom emoji.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^customEmojis/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Returns details about a custom emoji. Custom emojis are only available for Google Workspace accounts, and
+        /// the administrator must turn custom emojis on for the organization. For more information, see [Learn about
+        /// custom emojis in Google Chat](https://support.google.com/chat/answer/12800149) and [Manage custom emoji
+        /// permissions](https://support.google.com/a/answer/12850085). Requires [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// </summary>
+        /// <param name="name">
+        /// Required. Resource name of the custom emoji. Format: `customEmojis/{customEmoji}` You can use the emoji name
+        /// as an alias for `{customEmoji}`. For example, `customEmojis/:example-emoji:` where `:example-emoji:` is the
+        /// emoji name for a custom emoji.
+        /// </param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(this.service, name);
+        }
+
+        /// <summary>
+        /// Returns details about a custom emoji. Custom emojis are only available for Google Workspace accounts, and
+        /// the administrator must turn custom emojis on for the organization. For more information, see [Learn about
+        /// custom emojis in Google Chat](https://support.google.com/chat/answer/12800149) and [Manage custom emoji
+        /// permissions](https://support.google.com/a/answer/12850085). Requires [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// </summary>
+        public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.CustomEmoji>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Resource name of the custom emoji. Format: `customEmojis/{customEmoji}` You can use the emoji
+            /// name as an alias for `{customEmoji}`. For example, `customEmojis/:example-emoji:` where
+            /// `:example-emoji:` is the emoji name for a custom emoji.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^customEmojis/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Lists custom emojis visible to the authenticated user. Custom emojis are only available for Google Workspace
+        /// accounts, and the administrator must turn custom emojis on for the organization. For more information, see
+        /// [Learn about custom emojis in Google Chat](https://support.google.com/chat/answer/12800149) and [Manage
+        /// custom emoji permissions](https://support.google.com/a/answer/12850085). Requires [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// </summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(this.service);
+        }
+
+        /// <summary>
+        /// Lists custom emojis visible to the authenticated user. Custom emojis are only available for Google Workspace
+        /// accounts, and the administrator must turn custom emojis on for the organization. For more information, see
+        /// [Learn about custom emojis in Google Chat](https://support.google.com/chat/answer/12800149) and [Manage
+        /// custom emoji permissions](https://support.google.com/a/answer/12850085). Requires [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// </summary>
+        public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListCustomEmojisResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. A query filter. Supports filtering by creator. To filter by creator, you must specify a valid
+            /// value. Currently only `creator("users/me")` and `NOT creator("users/me")` are accepted to filter custom
+            /// emojis by whether they were created by the calling user or not. For example, the following query returns
+            /// custom emojis created by the caller:
+            /// ```
+            /// creator("users/me")
+            /// ```
+            /// Invalid queries are rejected with an
+            /// `INVALID_ARGUMENT` error.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// Optional. The maximum number of custom emojis returned. The service can return fewer custom emojis than
+            /// this value. If unspecified, the default value is 25. The maximum value is 200; values above 200 are
+            /// changed to 200.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. (If resuming from a previous query.) A page token received from a previous list custom emoji
+            /// call. Provide this to retrieve the subsequent page. When paginating, the filter value should match the
+            /// call that provided the page token. Passing a different value might lead to unexpected results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/customEmojis";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
         }
     }
 
@@ -1793,8 +2108,7 @@ namespace Google.Apis.HangoutsChat.v1
                     /// user.name = "users/{user}" emoji.unicode = "🙂" OR emoji.custom_emoji.uid = "{uid}" AND
                     /// user.name = "users/{user}"
                     /// ```
-                    /// Invalid queries are rejected by the server with an
-                    /// `INVALID_ARGUMENT` error.
+                    /// Invalid queries are rejected with an `INVALID_ARGUMENT` error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -4772,9 +5086,37 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a custom emoji.</summary>
+    /// <summary>Represents a [custom emoji](https://support.google.com/chat/answer/12800149).</summary>
     public class CustomEmoji : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Immutable. User-provided name for the custom emoji, which is unique within the organization.
+        /// Required when the custom emoji is created, output only otherwise. Emoji names must start and end with
+        /// colons, must be lowercase and can only contain alphanumeric characters, hyphens, and underscores. Hyphens
+        /// and underscores should be used to separate words and cannot be used consecutively. Example:
+        /// `:valid-emoji-name:`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emojiName")]
+        public virtual string EmojiName { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the custom emoji, assigned by the server. Format:
+        /// `customEmojis/{customEmoji}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Input only. Payload data. Required when the custom emoji is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual CustomEmojiPayload Payload { get; set; }
+
+        /// <summary>
+        /// Output only. A temporary image URL for the custom emoji, valid for at least 10 minutes. Note that this is
+        /// not populated in the response when the custom emoji is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temporaryImageUri")]
+        public virtual string TemporaryImageUri { get; set; }
+
         /// <summary>Output only. Unique key for the custom emoji resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
@@ -4789,6 +5131,26 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The custom emoji.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customEmoji")]
         public virtual CustomEmoji CustomEmoji { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Payload data for the custom emoji.</summary>
+    public class CustomEmojiPayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Input only. The image used for the custom emoji. The payload must be under 256 KB and the
+        /// dimension of the image must be square and between 64 and 500 pixels. The restrictions are subject to change.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileContent")]
+        public virtual string FileContent { get; set; }
+
+        /// <summary>
+        /// Required. Input only. The image file name. Supported file extensions: `.png`, `.jpg`, `.gif`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
+        public virtual string Filename { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7048,6 +7410,24 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
         public virtual string TopLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response to list custom emojis.</summary>
+    public class ListCustomEmojisResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unordered list. List of custom emojis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customEmojis")]
+        public virtual System.Collections.Generic.IList<CustomEmoji> CustomEmojis { get; set; }
+
+        /// <summary>
+        /// A token that you can send as `pageToken` to retrieve the next page of results. If empty, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
