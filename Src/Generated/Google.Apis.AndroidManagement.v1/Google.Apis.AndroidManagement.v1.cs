@@ -4779,6 +4779,24 @@ namespace Google.Apis.AndroidManagement.v1.Data
     }
 
     /// <summary>
+    /// An event sent for an enterprise upgrade. An enterprise upgrade is a process that upgrades a managed Google Play
+    /// Accounts enterprise to a managed Google domain.
+    /// </summary>
+    public class EnterpriseUpgradeEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of upgraded enterprise in the format "enterprises/{enterprise}"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterprise")]
+        public virtual string Enterprise { get; set; }
+
+        /// <summary>Output only. The upgrade state of the enterprise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeState")]
+        public virtual string UpgradeState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Configuration to enable an app as an extension app, with the capability of interacting with Android Device
     /// Policy offline. For Android versions 11 and above, extension apps are exempt from battery restrictions so will
     /// not be placed into the restricted App Standby Bucket
