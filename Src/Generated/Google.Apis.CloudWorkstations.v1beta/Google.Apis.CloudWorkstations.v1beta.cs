@@ -992,6 +992,13 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
+                            /// <summary>
+                            /// Optional. Filter the Workstations to be listed. Possible filters are described in
+                            /// https://google.aip.dev/160.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
                             /// <summary>Optional. Maximum number of items to return.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
@@ -1022,6 +1029,14 @@ namespace Google.Apis.CloudWorkstations.v1beta
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/workstationClusters/[^/]+/workstationConfigs/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                                 {
@@ -1777,6 +1792,13 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>
+                        /// Optional. Filter the WorkstationConfigs to be listed. Possible filters are described in
+                        /// https://google.aip.dev/160.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
                         /// <summary>Optional. Maximum number of items to return.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -1807,6 +1829,14 @@ namespace Google.Apis.CloudWorkstations.v1beta
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/workstationClusters/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
@@ -2374,6 +2404,13 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>
+                    /// Optional. Filter the WorkstationClusters to be listed. Possible filters are described in
+                    /// https://google.aip.dev/160.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>Optional. Maximum number of items to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -2404,6 +2441,14 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -3065,9 +3110,10 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must
         /// be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory
         /// after the workstation is restarted. Only file systems supported by Container-Optimized OS (COS) are
-        /// explicitly supported. For a list of supported file systems, please refer to the [COS
-        /// documentation](https://cloud.google.com/container-optimized-os/docs/concepts/supported-filesystems). This
-        /// field is mutable.
+        /// explicitly supported. For a list of supported file systems, see [the filesystems available in
+        /// Container-Optimized
+        /// OS](https://cloud.google.com/container-optimized-os/docs/concepts/supported-filesystems). This field is
+        /// mutable.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
         public virtual string SourceSnapshot { get; set; }
