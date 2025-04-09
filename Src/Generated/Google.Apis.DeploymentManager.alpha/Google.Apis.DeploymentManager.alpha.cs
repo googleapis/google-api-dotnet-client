@@ -4667,6 +4667,12 @@ namespace Google.Apis.DeploymentManager.alpha.Data
         public virtual string SelfLinkWithId { get; set; }
 
         /// <summary>
+        /// This field is used internally by the Autoscaler team and should not be promoted to "alpha/beta/v1".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setAutoscalerLinkOperationMetadata")]
+        public virtual SetAutoscalerLinkOperationMetadata SetAutoscalerLinkOperationMetadata { get; set; }
+
+        /// <summary>
         /// [Output Only] If the operation is for projects.setCommonInstanceMetadata, this field will contain
         /// information on all underlying zonal actions and their state.
         /// </summary>
@@ -5356,6 +5362,16 @@ namespace Google.Apis.DeploymentManager.alpha.Data
         /// <summary>The IAM service account email address like test@myproject.iam.gserviceaccount.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SetAutoscalerLinkOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of zonal IGM IDs part of the RMIG.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zonalIgmIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ZonalIgmIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
