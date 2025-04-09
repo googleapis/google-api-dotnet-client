@@ -1246,14 +1246,14 @@ namespace Google.Apis.Meet.v2
 
         /// <summary>
         /// Ends an active conference (if there's one). For an example, see [End active
-        /// conference](https://developers.google.com/meet/api/guides/meeting-spaces#end-active-conference).
+        /// conference](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#end-active-conference).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Required. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for the
         /// space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more
         /// information, see [How Meet identifies a meeting
-        /// space](https://developers.google.com/meet/api/guides/meeting-spaces#identify-meeting-space).
+        /// space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space).
         /// </param>
         public virtual EndActiveConferenceRequest EndActiveConference(Google.Apis.Meet.v2.Data.EndActiveConferenceRequest body, string name)
         {
@@ -1262,7 +1262,7 @@ namespace Google.Apis.Meet.v2
 
         /// <summary>
         /// Ends an active conference (if there's one). For an example, see [End active
-        /// conference](https://developers.google.com/meet/api/guides/meeting-spaces#end-active-conference).
+        /// conference](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#end-active-conference).
         /// </summary>
         public class EndActiveConferenceRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Empty>
         {
@@ -1278,7 +1278,7 @@ namespace Google.Apis.Meet.v2
             /// Required. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for
             /// the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For
             /// more information, see [How Meet identifies a meeting
-            /// space](https://developers.google.com/meet/api/guides/meeting-spaces#identify-meeting-space).
+            /// space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -1315,7 +1315,7 @@ namespace Google.Apis.Meet.v2
 
         /// <summary>
         /// Gets details about a meeting space. For an example, see [Get a meeting
-        /// space](https://developers.google.com/meet/api/guides/meeting-spaces#get-meeting-space).
+        /// space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#get-meeting-space).
         /// </summary>
         /// <param name="name">
         /// Required. Resource name of the space. Format: `spaces/{space}` or `spaces/{meetingCode}`. `{space}` is the
@@ -1326,7 +1326,8 @@ namespace Google.Apis.Meet.v2
         /// different meeting spaces in the future. Generally, a `meetingCode` expires 365 days after last use. For more
         /// information, see [Learn about meeting codes in Google
         /// Meet](https://support.google.com/meet/answer/10710509). For more information, see [How Meet identifies a
-        /// meeting space](https://developers.google.com/meet/api/guides/meeting-spaces#identify-meeting-space).
+        /// meeting
+        /// space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space).
         /// </param>
         public virtual GetRequest Get(string name)
         {
@@ -1335,7 +1336,7 @@ namespace Google.Apis.Meet.v2
 
         /// <summary>
         /// Gets details about a meeting space. For an example, see [Get a meeting
-        /// space](https://developers.google.com/meet/api/guides/meeting-spaces#get-meeting-space).
+        /// space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#get-meeting-space).
         /// </summary>
         public class GetRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Space>
         {
@@ -1355,7 +1356,8 @@ namespace Google.Apis.Meet.v2
             /// reused for different meeting spaces in the future. Generally, a `meetingCode` expires 365 days after
             /// last use. For more information, see [Learn about meeting codes in Google
             /// Meet](https://support.google.com/meet/answer/10710509). For more information, see [How Meet identifies a
-            /// meeting space](https://developers.google.com/meet/api/guides/meeting-spaces#identify-meeting-space).
+            /// meeting
+            /// space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -1386,14 +1388,14 @@ namespace Google.Apis.Meet.v2
 
         /// <summary>
         /// Updates details about a meeting space. For an example, see [Update a meeting
-        /// space](https://developers.google.com/meet/api/guides/meeting-spaces#update-meeting-space).
+        /// space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#update-meeting-space).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Immutable. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for
         /// the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more
         /// information, see [How Meet identifies a meeting
-        /// space](https://developers.google.com/meet/api/guides/meeting-spaces#identify-meeting-space).
+        /// space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space).
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Meet.v2.Data.Space body, string name)
         {
@@ -1402,7 +1404,7 @@ namespace Google.Apis.Meet.v2
 
         /// <summary>
         /// Updates details about a meeting space. For an example, see [Update a meeting
-        /// space](https://developers.google.com/meet/api/guides/meeting-spaces#update-meeting-space).
+        /// space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#update-meeting-space).
         /// </summary>
         public class PatchRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Space>
         {
@@ -1418,7 +1420,7 @@ namespace Google.Apis.Meet.v2
             /// Immutable. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier
             /// for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`.
             /// For more information, see [How Meet identifies a meeting
-            /// space](https://developers.google.com/meet/api/guides/meeting-spaces#identify-meeting-space).
+            /// space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -2176,7 +2178,7 @@ namespace Google.Apis.Meet.v2.Data
         /// Immutable. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for
         /// the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more
         /// information, see [How Meet identifies a meeting
-        /// space](https://developers.google.com/meet/api/guides/meeting-spaces#identify-meeting-space).
+        /// space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
