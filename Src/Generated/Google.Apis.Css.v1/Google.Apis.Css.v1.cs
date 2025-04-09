@@ -271,6 +271,7 @@ namespace Google.Apis.Css.v1
             CssProductInputs = new CssProductInputsResource(service);
             CssProducts = new CssProductsResource(service);
             Labels = new LabelsResource(service);
+            Quotas = new QuotasResource(service);
         }
 
         /// <summary>Gets the CssProductInputs resource.</summary>
@@ -946,6 +947,105 @@ namespace Google.Apis.Css.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^accounts/[^/]+/labels/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Quotas resource.</summary>
+        public virtual QuotasResource Quotas { get; }
+
+        /// <summary>The "quotas" collection of methods.</summary>
+        public class QuotasResource
+        {
+            private const string Resource = "quotas";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public QuotasResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Lists the daily call quota and usage per group for your CSS Center account.</summary>
+            /// <param name="parent">
+            /// Required. The CSS account that owns the collection of method quotas and resources. In most cases, this
+            /// is the CSS domain. Format: accounts/{account}
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists the daily call quota and usage per group for your CSS Center account.</summary>
+            public class ListRequest : CssBaseServiceRequest<Google.Apis.Css.v1.Data.ListQuotaGroupsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The CSS account that owns the collection of method quotas and resources. In most cases,
+                /// this is the CSS domain. Format: accounts/{account}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of quotas to return in the response, used for paging. Defaults to 500;
+                /// values above 1000 will be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. Token (if provided) to retrieve the subsequent page. All other parameters must match the
+                /// original call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/quotas";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -2062,6 +2162,52 @@ namespace Google.Apis.Css.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the ListMethodGroups method.</summary>
+    public class ListQuotaGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// The methods, current quota usage and limits per each group. The quota is shared between all methods in the
+        /// group. The groups are sorted in descending order based on quota_usage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaGroups")]
+        public virtual System.Collections.Generic.IList<QuotaGroup> QuotaGroups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The method details per method in the CSS API.</summary>
+    public class MethodDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the method for example `cssproductsservice.listcssproducts`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; }
+
+        /// <summary>Output only. The path for the method such as `v1/cssproductsservice.listcssproducts`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>
+        /// Output only. The sub-API that the method belongs to. In the CSS API, this is always `css`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subapi")]
+        public virtual string Subapi { get; set; }
+
+        /// <summary>Output only. The API version that the method belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The price represented as a number and currency.</summary>
     public class Price : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2133,6 +2279,43 @@ namespace Google.Apis.Css.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The group information for methods in the CSS API. The quota is shared between all methods in the group. Even if
+    /// none of the methods within the group have usage the information for the group is returned.
+    /// </summary>
+    public class QuotaGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of all methods group quota applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodDetails")]
+        public virtual System.Collections.Generic.IList<MethodDetails> MethodDetails { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the quota group. Format: accounts/{account}/quotas/{group} Example:
+        /// `accounts/12345678/quotas/css-products-insert` Note: The {group} part is not guaranteed to follow a specific
+        /// pattern.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The maximum number of calls allowed per day for the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaLimit")]
+        public virtual System.Nullable<long> QuotaLimit { get; set; }
+
+        /// <summary>Output only. The maximum number of calls allowed per minute for the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaMinuteLimit")]
+        public virtual System.Nullable<long> QuotaMinuteLimit { get; set; }
+
+        /// <summary>
+        /// Output only. The current quota usage, meaning the number of calls already made on a given day to the methods
+        /// in the group. The daily quota limits reset at at 12:00 PM midday UTC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaUsage")]
+        public virtual System.Nullable<long> QuotaUsage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
