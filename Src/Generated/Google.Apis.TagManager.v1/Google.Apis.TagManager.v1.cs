@@ -4160,10 +4160,6 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("folder")]
         public virtual System.Collections.Generic.IList<Folder> Folder { get; set; }
 
-        /// <summary>The macros in the container that this version was taken from.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("macro")]
-        public virtual System.Collections.Generic.IList<Macro> Macro { get; set; }
-
         /// <summary>Container version display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4171,10 +4167,6 @@ namespace Google.Apis.TagManager.v1.Data
         /// <summary>User notes on how to apply this container version in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
-
-        /// <summary>The rules in the container that this version was taken from.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rule")]
-        public virtual System.Collections.Generic.IList<Rule> Rule { get; set; }
 
         /// <summary>The tags in the container that this version was taken from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
@@ -4214,14 +4206,6 @@ namespace Google.Apis.TagManager.v1.Data
         /// <summary>Container version display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>Number of macros in the container version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numMacros")]
-        public virtual string NumMacros { get; set; }
-
-        /// <summary>Number of rules in the container version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numRules")]
-        public virtual string NumRules { get; set; }
 
         /// <summary>Number of tags in the container version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numTags")]
@@ -4485,74 +4469,6 @@ namespace Google.Apis.TagManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a Google Tag Manager Macro.</summary>
-    public class Macro : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>GTM Account ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; }
-
-        /// <summary>GTM Container ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
-        public virtual string ContainerId { get; set; }
-
-        /// <summary>
-        /// For mobile containers only: A list of rule IDs for disabling conditional macros; the macro is enabled if one
-        /// of the enabling rules is true while all the disabling rules are false. Treated as an unordered set.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disablingRuleId")]
-        public virtual System.Collections.Generic.IList<string> DisablingRuleId { get; set; }
-
-        /// <summary>
-        /// For mobile containers only: A list of rule IDs for enabling conditional macros; the macro is enabled if one
-        /// of the enabling rules is true while all the disabling rules are false. Treated as an unordered set.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enablingRuleId")]
-        public virtual System.Collections.Generic.IList<string> EnablingRuleId { get; set; }
-
-        /// <summary>
-        /// The fingerprint of the GTM Macro as computed at storage time. This value is recomputed whenever the macro is
-        /// modified.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
-        public virtual string Fingerprint { get; set; }
-
-        /// <summary>The Macro ID uniquely identifies the GTM Macro.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("macroId")]
-        public virtual string MacroId { get; set; }
-
-        /// <summary>Macro display name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>User notes on how to apply this macro in the container.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
-        public virtual string Notes { get; set; }
-
-        /// <summary>The macro's parameters.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
-        public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
-
-        /// <summary>Parent folder id.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parentFolderId")]
-        public virtual string ParentFolderId { get; set; }
-
-        /// <summary>The end timestamp in milliseconds to schedule a macro.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndMs")]
-        public virtual System.Nullable<long> ScheduleEndMs { get; set; }
-
-        /// <summary>The start timestamp in milliseconds to schedule a macro.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartMs")]
-        public virtual System.Nullable<long> ScheduleStartMs { get; set; }
-
-        /// <summary>GTM Macro Type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Represents a Google Tag Manager Parameter.</summary>
     public class Parameter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4607,44 +4523,6 @@ namespace Google.Apis.TagManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a Google Tag Manager Rule.</summary>
-    public class Rule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>GTM Account ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; }
-
-        /// <summary>The list of conditions that make up this rule (implicit AND between them).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual System.Collections.Generic.IList<Condition> Condition { get; set; }
-
-        /// <summary>GTM Container ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
-        public virtual string ContainerId { get; set; }
-
-        /// <summary>
-        /// The fingerprint of the GTM Rule as computed at storage time. This value is recomputed whenever the rule is
-        /// modified.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
-        public virtual string Fingerprint { get; set; }
-
-        /// <summary>Rule display name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>User notes on how to apply this rule in the container.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
-        public virtual string Notes { get; set; }
-
-        /// <summary>The Rule ID uniquely identifies the GTM Rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
-        public virtual string RuleId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class SetupTag : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4669,10 +4547,6 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>Blocking rule IDs. If any of the listed rules evaluate to true, the tag will not fire.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blockingRuleId")]
-        public virtual System.Collections.Generic.IList<string> BlockingRuleId { get; set; }
-
         /// <summary>
         /// Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire.
         /// </summary>
@@ -4689,13 +4563,6 @@ namespace Google.Apis.TagManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
-
-        /// <summary>
-        /// Firing rule IDs. A tag will fire when any of the listed rules are true and all of its blockingRuleIds (if
-        /// any specified) are false.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("firingRuleId")]
-        public virtual System.Collections.Generic.IList<string> FiringRuleId { get; set; }
 
         /// <summary>
         /// Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its
