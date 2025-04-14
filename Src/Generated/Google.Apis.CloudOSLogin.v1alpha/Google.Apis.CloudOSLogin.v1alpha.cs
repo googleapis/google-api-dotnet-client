@@ -1229,18 +1229,16 @@ namespace Google.Apis.CloudOSLogin.v1alpha.Data
         public virtual string AppEngineInstance { get; set; }
 
         /// <summary>
-        /// The compute instance to sign the SSH public key for. Expected format:
+        /// The Compute instance to sign the SSH public key for. Expected format:
         /// projects/{project}/zones/{zone}/instances/{numeric_instance_id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeInstance")]
         public virtual string ComputeInstance { get; set; }
 
         /// <summary>
-        /// Optional. The service account for the Compute instance. If the instance in question does not have a service
-        /// account, this field should be left empty. If the wrong service account is provided, this operation will
-        /// return a signed certificate that will not be accepted by the VM. During rollout of the new regionalized
-        /// SignSshPublicKey API, this field will be required for all requests, but the VM will not initially carry out
-        /// the
+        /// Optional. The service account for the instance. If the instance in question does not have a service account,
+        /// this field should be left empty. If the wrong service account is provided, this operation will return a
+        /// signed certificate that will not be accepted by the VM.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
