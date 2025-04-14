@@ -1776,7 +1776,10 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A network setting contains network configurations.</summary>
+    /// <summary>
+    /// A network setting contains network configurations. It adheres to the PolicyAPI formats defined under the
+    /// namespace chrome.networks.{wifi/ethernet/cellular/vpn}.Details
+    /// </summary>
     public class GoogleChromePolicyVersionsV1NetworkSetting : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The fully qualified name of the network setting.</summary>
