@@ -1190,7 +1190,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
 
                 /// <summary>
                 /// Optional. The maximum number of issues to return. The service may return fewer than this value. If
-                /// unspecified, at most 50 users will be returned. The maximum value is 100; values above 100 will be
+                /// unspecified, at most 50 issues will be returned. The maximum value is 100; values above 100 will be
                 /// coerced to 100
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -3245,7 +3245,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Required. The account for which to accept the ToS.</summary>
+            /// <summary>Required. The account for which to accept the ToS. Format: `accounts/{account}`</summary>
             [Google.Apis.Util.RequestParameterAttribute("account", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Account { get; set; }
 
@@ -3437,11 +3437,9 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string TermsOfService { get; set; }
 
         /// <summary>
-        /// When set, it states that the accepted
-        /// [TermsOfService](google.shopping.merchant.accounts.v1main.TermsOfService) is only valid until the end of
-        /// this date (in UTC). A new one must be accepted before then. The information of the required
-        /// [TermsOfService](google.shopping.merchant.accounts.v1main.TermsOfService) is found in the
-        /// [Required](Required) message.
+        /// When set, it states that the accepted `TermsOfService` is only valid until the end of this date (in UTC). A
+        /// new one must be accepted before then. The information of the required `TermsOfService` is found in the
+        /// `Required` message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validUntil")]
         public virtual Date ValidUntil { get; set; }
@@ -5289,15 +5287,13 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     /// <summary>Describes the terms of service which are required to be accepted.</summary>
     public class Required : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The [termsOfService](google.shopping.merchant.accounts.v1main.TermsOfService) that need to be accepted.
-        /// </summary>
+        /// <summary>The `TermsOfService` that need to be accepted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("termsOfService")]
         public virtual string TermsOfService { get; set; }
 
         /// <summary>
-        /// Full URL to the terms of service file. This field is the same as
-        /// [TermsOfService.file_uri](TermsOfService.file_uri), it is added here for convenience only.
+        /// Full URL to the terms of service file. This field is the same as `TermsOfService.file_uri`, it is added here
+        /// for convenience only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tosFileUri")]
         public virtual string TosFileUri { get; set; }
@@ -5656,17 +5652,14 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
 
     /// <summary>
     /// This resource represents the agreement state for a given account and terms of service kind. The state is as
-    /// follows: * If the merchant has accepted a terms of service: [accepted](TermsOfServiceAggrementState.accepted)
-    /// will be populated, otherwise it will be empty * If the merchant must sign a terms of service:
-    /// [required](TermsOfServiceAggrementState.required) will be populated, otherwise it will be empty. Note that both
-    /// [required](TermsOfServiceAggrementState.required) and [accepted](TermsOfServiceAggrementState.accepted) can be
-    /// present. In this case the `accepted` terms of services will have an expiration date set in the
-    /// [valid_until](Accepted.valid_until) field. The `required` terms of services need to be accepted before
+    /// follows: * If the merchant has accepted a terms of service, `accepted` will be populated, otherwise it will be
+    /// empty * If the merchant must sign a terms of service, `required` will be populated, otherwise it will be empty.
+    /// Note that both `required` and `accepted` can be present. In this case the `accepted` terms of services will have
+    /// an expiration date set in the `valid_until` field. The `required` terms of services need to be accepted before
     /// `valid_until` in order for the account to continue having a valid agreement. When accepting new terms of
     /// services we expect 3Ps to display the text associated with the given terms of service agreement (the url to the
-    /// file containing the text is added in the Required message below as [tos_file_uri](Accepted.tos_file_uri). The
-    /// actual acceptance of the terms of service is done by calling accept on the [TermsOfService](TermsOfService)
-    /// resource.
+    /// file containing the text is added in the Required message below as `tos_file_uri`. The actual acceptance of the
+    /// terms of service is done by calling accept on the `TermsOfService` resource.
     /// </summary>
     public class TermsOfServiceAgreementState : Google.Apis.Requests.IDirectResponseSchema
     {
