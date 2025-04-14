@@ -1,0 +1,11 @@
+{
+  "Google.Apis.StorageBatchOperations.v1.StorageBatchOperationsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.StorageBatchOperations.v1.StorageBatchOperationsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
