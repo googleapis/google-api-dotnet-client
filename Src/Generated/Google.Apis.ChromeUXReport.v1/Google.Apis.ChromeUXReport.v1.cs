@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -613,6 +613,13 @@ namespace Google.Apis.ChromeUXReport.v1.Data
     /// </summary>
     public class QueryHistoryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The number of collection periods to return. If not specified, the default is 25. If present, must be in the
+        /// range [1, 40].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionPeriodCount")]
+        public virtual System.Nullable<int> CollectionPeriodCount { get; set; }
+
         /// <summary>
         /// The form factor is a query dimension that specifies the device class that the record's data should belong
         /// to. Note: If no form factor is specified, then a special record with aggregated data over all form factors
