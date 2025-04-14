@@ -8387,14 +8387,6 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numGtagConfigs")]
         public virtual string NumGtagConfigs { get; set; }
 
-        /// <summary>Number of macros in the container version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numMacros")]
-        public virtual string NumMacros { get; set; }
-
-        /// <summary>Number of rules in the container version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numRules")]
-        public virtual string NumRules { get; set; }
-
         /// <summary>Number of tags in the container version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numTags")]
         public virtual string NumTags { get; set; }
@@ -9457,10 +9449,6 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>Blocking rule IDs. If any of the listed rules evaluate to true, the tag will not fire.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blockingRuleId")]
-        public virtual System.Collections.Generic.IList<string> BlockingRuleId { get; set; }
-
         /// <summary>
         /// Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire.
         /// </summary>
@@ -9481,13 +9469,6 @@ namespace Google.Apis.TagManager.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
-
-        /// <summary>
-        /// Firing rule IDs. A tag will fire when any of the listed rules are true and all of its blockingRuleIds (if
-        /// any specified) are false.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("firingRuleId")]
-        public virtual System.Collections.Generic.IList<string> FiringRuleId { get; set; }
 
         /// <summary>
         /// Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its
