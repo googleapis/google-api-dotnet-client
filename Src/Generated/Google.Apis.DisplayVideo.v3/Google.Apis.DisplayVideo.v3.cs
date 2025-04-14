@@ -47,7 +47,6 @@ namespace Google.Apis.DisplayVideo.v3
             Media = new MediaResource(this);
             Partners = new PartnersResource(this);
             Sdfdownloadtasks = new SdfdownloadtasksResource(this);
-            Sdfuploadtasks = new SdfuploadtasksResource(this);
             TargetingTypes = new TargetingTypesResource(this);
             Users = new UsersResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://displayvideo.googleapis.com/");
@@ -150,9 +149,6 @@ namespace Google.Apis.DisplayVideo.v3
 
         /// <summary>Gets the Sdfdownloadtasks resource.</summary>
         public virtual SdfdownloadtasksResource Sdfdownloadtasks { get; }
-
-        /// <summary>Gets the Sdfuploadtasks resource.</summary>
-        public virtual SdfuploadtasksResource Sdfuploadtasks { get; }
 
         /// <summary>Gets the TargetingTypes resource.</summary>
         public virtual TargetingTypesResource TargetingTypes { get; }
@@ -20589,91 +20585,6 @@ namespace Google.Apis.DisplayVideo.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-            }
-        }
-    }
-
-    /// <summary>The "sdfuploadtasks" collection of methods.</summary>
-    public class SdfuploadtasksResource
-    {
-        private const string Resource = "sdfuploadtasks";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public SdfuploadtasksResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-            Operations = new OperationsResource(service);
-        }
-
-        /// <summary>Gets the Operations resource.</summary>
-        public virtual OperationsResource Operations { get; }
-
-        /// <summary>The "operations" collection of methods.</summary>
-        public class OperationsResource
-        {
-            private const string Resource = "operations";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public OperationsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>
-            /// Gets the latest state of an asynchronous SDF download task operation. Clients should poll this method at
-            /// intervals of 30 seconds.
-            /// </summary>
-            /// <param name="name">The name of the operation resource.</param>
-            public virtual GetRequest Get(string name)
-            {
-                return new GetRequest(this.service, name);
-            }
-
-            /// <summary>
-            /// Gets the latest state of an asynchronous SDF download task operation. Clients should poll this method at
-            /// intervals of 30 seconds.
-            /// </summary>
-            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Operation>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>The name of the operation resource.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "get";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v3/{+name}";
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^sdfuploadtasks/operations/[^/]+$",
-                    });
-                }
             }
         }
     }
