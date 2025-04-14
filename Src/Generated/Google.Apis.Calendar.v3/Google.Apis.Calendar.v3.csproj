@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Calendar.v3 Client Library</Title>
-    <Version>1.69.0.3667</Version>
+    <Version>1.69.0.3746</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Calendar v3.
 
       Product documentation is available at:
-      https://developers.google.com/google-apps/calendar/firstapp
+      https://developers.google.com/workspace/calendar/firstapp
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.Calendar.v3/latest/api/Google.Apis.Calendar.v3.html
