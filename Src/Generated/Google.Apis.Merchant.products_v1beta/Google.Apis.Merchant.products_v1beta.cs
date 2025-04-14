@@ -1311,15 +1311,15 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual Price GadPrice { get; set; }
 
         /// <summary>
-        /// The price prior to the application of the first price reduction Absent if the information about the prior
+        /// The price prior to the application of the first price reduction. Absent if the information about the prior
         /// price of the product is not available.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priorPrice")]
         public virtual Price PriorPrice { get; set; }
 
         /// <summary>
-        /// The price prior to the application of consecutive price reductions Absent if the information about the prior
-        /// price of the product is not available.
+        /// The price prior to the application of consecutive price reductions. Absent if the information about the
+        /// prior price of the product is not available.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priorPriceProgressive")]
         public virtual Price PriorPriceProgressive { get; set; }
@@ -1936,7 +1936,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
     /// following attributes are required: feedLabel, contentLanguage and offerId. After inserting, updating, or
     /// deleting a product input, it may take several minutes before the processed product can be retrieved. All fields
     /// in the product input and its sub-messages match the English name of their corresponding attribute in the
-    /// vertical spec with [some exceptions](https://support.google.com/merchants/answer/7052112).
+    /// [Products Data Specification](https://support.google.com/merchants/answer/188494) with [some
+    /// exceptions](https://support.google.com/merchants/answer/7052112). The following reference documentation lists
+    /// the field names in the **camelCase** casing style while the Products Data Specification lists the names in the
+    /// **snake_case** casing style.
     /// </summary>
     public class ProductInput : Google.Apis.Requests.IDirectResponseSchema
     {
