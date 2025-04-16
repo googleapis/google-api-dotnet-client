@@ -5094,7 +5094,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for BigLake managed tables.</summary>
+    /// <summary>Configuration for BigQuery tables for Apache Iceberg (formerly BigLake managed tables.)</summary>
     public class BigLakeConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -11743,7 +11743,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class Table : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Specifies the configuration of a BigLake managed table.</summary>
+        /// <summary>Optional. Specifies the configuration of a BigQuery table for Apache Iceberg.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("biglakeConfiguration")]
         public virtual BigLakeConfiguration BiglakeConfiguration { get; set; }
 
