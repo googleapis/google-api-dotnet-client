@@ -841,8 +841,8 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GoogleCloudAiplatformV1beta1FunctionCall : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Required. The function parameters and values in JSON object format. See
-        /// [FunctionDeclaration.parameters] for parameter details.
+        /// Optional. The function parameters and values in JSON object format. See [FunctionDeclaration.parameters] for
+        /// parameter details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IDictionary<string, object> Args { get; set; }
@@ -1306,7 +1306,8 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The model name to use. Only the public LLM models are accepted. e.g. 'gemini-1.5-pro-001'.
+        /// The model name to use. Only the public LLM models are accepted. See [Supported
+        /// models](https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/inference#supported-models).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
         public virtual string ModelName { get; set; }
@@ -1318,12 +1319,6 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Config for thinking features.</summary>
     public class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Indicates whether to enable thinking mode. If true, the model will enable thinking mode.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableThinking")]
-        public virtual System.Nullable<bool> EnableThinking { get; set; }
-
         /// <summary>
         /// Optional. Indicates the thinking budget in tokens. This is only applied when enable_thinking is true.
         /// </summary>
@@ -1697,7 +1692,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Config for LlmRanker.</summary>
     public class GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The model name used for ranking. Format: `gemini-1.5-pro`</summary>
+        /// <summary>
+        /// Optional. The model name used for ranking. See [Supported
+        /// models](https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/inference#supported-models).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
         public virtual string ModelName { get; set; }
 
@@ -1980,6 +1978,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>The speech generation config.</summary>
     public class GoogleCloudAiplatformV1beta1SpeechConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Language code (ISO 639. e.g. en-US) for the speech synthesization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
         /// <summary>The configuration for the speaker to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voiceConfig")]
         public virtual GoogleCloudAiplatformV1beta1VoiceConfig VoiceConfig { get; set; }
