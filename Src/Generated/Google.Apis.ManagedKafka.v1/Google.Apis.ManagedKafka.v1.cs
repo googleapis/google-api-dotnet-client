@@ -3705,7 +3705,8 @@ namespace Google.Apis.ManagedKafka.v1.Data
     /// Task Retry Policy is implemented on a best-effort basis. Retry delay will be exponential based on provided
     /// minimum and maximum backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. Note that the delay between
     /// consecutive task restarts may not always precisely match the configured settings. This can happen when the
-    /// ConnectCluster is in rebalancing state or if the ConnectCluster is unresponsive etc.
+    /// ConnectCluster is in rebalancing state or if the ConnectCluster is unresponsive etc. The default values for
+    /// minimum and maximum backoffs are 60 seconds and 30 minutes respectively.
     /// </summary>
     public class TaskRetryPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
