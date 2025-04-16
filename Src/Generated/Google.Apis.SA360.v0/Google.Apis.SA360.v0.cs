@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4112,7 +4112,7 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A view on the usage of ad group ad asset combination.</summary>
+    /// <summary>A view on the usage of asset group asset top combinations.</summary>
     public class GoogleAdsSearchads360V0ResourcesAssetGroupTopCombinationView : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The top combinations of assets that served together.</summary>
@@ -5520,6 +5520,12 @@ namespace Google.Apis.SA360.v0.Data
     /// <summary>A customer.</summary>
     public class GoogleAdsSearchads360V0ResourcesCustomer : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The account level of the customer: Manager, Sub-manager, Associate manager, Service account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountLevel")]
+        public virtual string AccountLevel { get; set; }
+
         /// <summary>Output only. Account status, for example, Enabled, Paused, Removed, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountStatus")]
         public virtual string AccountStatus { get; set; }
@@ -5530,6 +5536,17 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountType")]
         public virtual string AccountType { get; set; }
+
+        /// <summary>Output only. The descriptive name of the associate manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associateManagerDescriptiveName")]
+        public virtual string AssociateManagerDescriptiveName { get; set; }
+
+        /// <summary>
+        /// Output only. The customer ID of the associate manager. A 0 value indicates that the customer has no SA360
+        /// associate manager.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associateManagerId")]
+        public virtual System.Nullable<long> AssociateManagerId { get; set; }
 
         /// <summary>Whether auto-tagging is enabled for the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoTaggingEnabled")]
@@ -5584,6 +5601,16 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("manager")]
         public virtual System.Nullable<bool> Manager { get; set; }
 
+        /// <summary>Output only. The descriptive name of the manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managerDescriptiveName")]
+        public virtual string ManagerDescriptiveName { get; set; }
+
+        /// <summary>
+        /// Output only. The customer ID of the manager. A 0 value indicates that the customer has no SA360 manager.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managerId")]
+        public virtual System.Nullable<long> ManagerId { get; set; }
+
         /// <summary>
         /// Immutable. The resource name of the customer. Customer resource names have the form:
         /// `customers/{customer_id}`
@@ -5594,6 +5621,17 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Output only. The status of the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
+
+        /// <summary>Output only. The descriptive name of the sub manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subManagerDescriptiveName")]
+        public virtual string SubManagerDescriptiveName { get; set; }
+
+        /// <summary>
+        /// Output only. The customer ID of the sub manager. A 0 value indicates that the customer has no sub SA360
+        /// manager.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subManagerId")]
+        public virtual System.Nullable<long> SubManagerId { get; set; }
 
         /// <summary>Immutable. The local timezone ID of the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
