@@ -1098,6 +1098,51 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
                     }
 
+                    /// <summary>Get the secret for the associated connector.</summary>
+                    /// <param name="name">Required. The full resource name of the associated data connector.</param>
+                    public virtual GetConnectorSecretRequest GetConnectorSecret(string name)
+                    {
+                        return new GetConnectorSecretRequest(this.service, name);
+                    }
+
+                    /// <summary>Get the secret for the associated connector.</summary>
+                    public class GetConnectorSecretRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse>
+                    {
+                        /// <summary>Constructs a new GetConnectorSecret request.</summary>
+                        public GetConnectorSecretRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The full resource name of the associated data connector.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getConnectorSecret";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}:getConnectorSecret";
+
+                        /// <summary>Initializes GetConnectorSecret parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataConnector$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Starts an immediate synchronization process for a DataConnector. Third Party Connector Users
                     /// must specify which entities should be synced. FHIR Connectors must provide a timestamp to
@@ -1627,6 +1672,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Name { get; private set; }
 
+                                /// <summary>Optional. Specifies config for IMAGE_BYTES.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("imageId", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string ImageId { get; set; }
+
                                 /// <summary>What format output should be. If unspecified, defaults to JSON.</summary>
                                 [Google.Apis.Util.RequestParameterAttribute("processedDocumentFormat", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual System.Nullable<ProcessedDocumentFormatEnum> ProcessedDocumentFormat { get; set; }
@@ -1693,6 +1742,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                         ParameterType = "path",
                                         DefaultValue = null,
                                         Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/branches/[^/]+/documents/[^/]+$",
+                                    });
+                                    RequestParameters.Add("imageId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "imageId",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
                                     });
                                     RequestParameters.Add("processedDocumentFormat", new Google.Apis.Discovery.Parameter
                                     {
@@ -11542,10 +11599,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                     /// <summary>
                     /// Indicates which fields in the provided DataConnector to update. Supported field paths include: -
-                    /// refresh_interval - params - auto_run_disabled - action_config - destination_configs -
-                    /// blocking_reasons - sync_mode Note: Support for these fields may vary depending on the connector
-                    /// type. For example, not all connectors support `destination_configs`. If an unsupported or
-                    /// unknown field path is provided, the request will return an INVALID_ARGUMENT error.
+                    /// refresh_interval - params - auto_run_disabled - action_config - action_config.action_params -
+                    /// action_config.service_name - destination_configs - blocking_reasons - sync_mode Note: Support
+                    /// for these fields may vary depending on the connector type. For example, not all connectors
+                    /// support `destination_configs`. If an unsupported or unknown field path is provided, the request
+                    /// will return an INVALID_ARGUMENT error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -12048,6 +12106,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
+                            /// <summary>Optional. Specifies config for IMAGE_BYTES.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("imageId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string ImageId { get; set; }
+
                             /// <summary>What format output should be. If unspecified, defaults to JSON.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("processedDocumentFormat", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<ProcessedDocumentFormatEnum> ProcessedDocumentFormat { get; set; }
@@ -12110,6 +12172,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/branches/[^/]+/documents/[^/]+$",
+                                });
+                                RequestParameters.Add("imageId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "imageId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                                 RequestParameters.Add("processedDocumentFormat", new Google.Apis.Discovery.Parameter
                                 {
@@ -22838,8 +22908,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1ConditionTimeRange> ActiveTimeRange { get; set; }
 
         /// <summary>
-        /// Optional. Query regex to match the whole search query. Cannot be set when Condition.query_terms is set. This
-        /// is currently supporting promotion use case.
+        /// Optional. Query regex to match the whole search query. Cannot be set when Condition.query_terms is set. Only
+        /// supported for Basic Site Search promotion serving controls.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryRegex")]
         public virtual string QueryRegex { get; set; }
@@ -26146,6 +26216,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Optional. The Promotion description. Maximum length: 200 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. The Document the user wants to promote. For site search, leave unset and only populate uri. Can be
+        /// set along with uri.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual string Document { get; set; }
 
         /// <summary>
         /// Optional. The enabled promotion will be returned for any serving configs associated with the parent of the
@@ -29669,6 +29746,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaChunk : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Annotation contents if the current chunk contains annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationContents")]
+        public virtual System.Collections.Generic.IList<string> AnnotationContents { get; set; }
+
         /// <summary>Output only. Metadata of the current chunk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chunkMetadata")]
         public virtual GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata ChunkMetadata { get; set; }
@@ -29676,6 +29757,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Content is a string from a document (parsed content).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
+
+        /// <summary>
+        /// Output only. Image Data URLs if the current chunk contains images. Data URLs are composed of four parts: a
+        /// prefix (data:), a MIME type indicating the type of data, an optional base64 token if non-textual, and the
+        /// data itself: data:,
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataUrls")]
+        public virtual System.Collections.Generic.IList<string> DataUrls { get; set; }
 
         /// <summary>
         /// Output only. This field is OUTPUT_ONLY. It contains derived data that are not in the original input
@@ -30047,8 +30136,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaConditionTimeRange> ActiveTimeRange { get; set; }
 
         /// <summary>
-        /// Optional. Query regex to match the whole search query. Cannot be set when Condition.query_terms is set. This
-        /// is currently supporting promotion use case.
+        /// Optional. Query regex to match the whole search query. Cannot be set when Condition.query_terms is set. Only
+        /// supported for Basic Site Search promotion serving controls.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryRegex")]
         public virtual string QueryRegex { get; set; }
@@ -33168,8 +33257,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1alphaDocumentAclInfo AclInfo { get; set; }
 
         /// <summary>
-        /// The unstructured data linked to this document. Content must be set if this document is under a
-        /// `CONTENT_REQUIRED` data store.
+        /// The unstructured data linked to this document. Content can only be set and must be set if this document is
+        /// under a `CONTENT_REQUIRED` data store.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual GoogleCloudDiscoveryengineV1alphaDocumentContent Content { get; set; }
@@ -33313,9 +33402,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     {
         /// <summary>
         /// The MIME type of the content. Supported types: * `application/pdf` (PDF, only native PDFs are supported for
-        /// now) * `text/html` (HTML) * `application/vnd.openxmlformats-officedocument.wordprocessingml.document` (DOCX)
-        /// * `application/vnd.openxmlformats-officedocument.presentationml.presentation` (PPTX) * `text/plain` (TXT)
-        /// See https://www.iana.org/assignments/media-types/media-types.xhtml.
+        /// now) * `text/html` (HTML) * `text/plain` (TXT) * `text/xml` (XML) * `application/json` (JSON) *
+        /// `application/vnd.openxmlformats-officedocument.wordprocessingml.document` (DOCX) *
+        /// `application/vnd.openxmlformats-officedocument.presentationml.presentation` (PPTX) *
+        /// `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` (XLSX) *
+        /// `application/vnd.ms-excel.sheet.macroenabled.12` (XLSM) The following types are supported only if layout
+        /// parser is enabled in the data store: * `image/bmp` (BMP) * `image/gif` (GIF) * `image/jpeg` (JPEG) *
+        /// `image/png` (PNG) * `image/tiff` (TIFF) See https://www.iana.org/assignments/media-types/media-types.xhtml.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
@@ -34693,6 +34786,33 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUris")]
         public virtual System.Collections.Generic.IList<string> InputUris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for DataConnectorService.GetConnectorSecret.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The app name of the associated Connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("app")]
+        public virtual string App { get; set; }
+
+        /// <summary>The client id of the associated Connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>The instance name of the associated Connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; }
+
+        /// <summary>The redirect url of the associated Connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
+        public virtual string RedirectUri { get; set; }
+
+        /// <summary>The tenant id of the associated Connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantId")]
+        public virtual string TenantId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -38458,6 +38578,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Optional. The Promotion description. Maximum length: 200 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. The Document the user wants to promote. For site search, leave unset and only populate uri. Can be
+        /// set along with uri.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual string Document { get; set; }
 
         /// <summary>
         /// Optional. The enabled promotion will be returned for any serving configs associated with the parent of the
@@ -42983,8 +43110,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaConditionTimeRange> ActiveTimeRange { get; set; }
 
         /// <summary>
-        /// Optional. Query regex to match the whole search query. Cannot be set when Condition.query_terms is set. This
-        /// is currently supporting promotion use case.
+        /// Optional. Query regex to match the whole search query. Cannot be set when Condition.query_terms is set. Only
+        /// supported for Basic Site Search promotion serving controls.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryRegex")]
         public virtual string QueryRegex { get; set; }
@@ -46738,6 +46865,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Optional. The Promotion description. Maximum length: 200 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. The Document the user wants to promote. For site search, leave unset and only populate uri. Can be
+        /// set along with uri.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual string Document { get; set; }
 
         /// <summary>
         /// Optional. The enabled promotion will be returned for any serving configs associated with the parent of the
