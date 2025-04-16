@@ -2948,7 +2948,7 @@ namespace Google.Apis.Script.v1.Data
 
         /// <summary>
         /// The parent's Drive ID that the script will be attached to. This is usually the ID of a Google Document or
-        /// Google Sheet. This filed is optional, and if not set, a stand-alone script will be created.
+        /// Google Sheet. This field is optional, and if not set, a stand-alone script will be created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentId")]
         public virtual string ParentId { get; set; }
