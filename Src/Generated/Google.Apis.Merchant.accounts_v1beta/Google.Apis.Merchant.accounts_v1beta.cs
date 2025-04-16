@@ -273,6 +273,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
         {
             this.service = service;
             AutofeedSettings = new AutofeedSettingsResource(service);
+            AutomaticImprovements = new AutomaticImprovementsResource(service);
             BusinessIdentity = new BusinessIdentityResource(service);
             BusinessInfo = new BusinessInfoResource(service);
             EmailPreferences = new EmailPreferencesResource(service);
@@ -410,6 +411,151 @@ namespace Google.Apis.Merchant.accounts_v1beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^accounts/[^/]+/autofeedSettings$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the AutomaticImprovements resource.</summary>
+        public virtual AutomaticImprovementsResource AutomaticImprovements { get; }
+
+        /// <summary>The "automaticImprovements" collection of methods.</summary>
+        public class AutomaticImprovementsResource
+        {
+            private const string Resource = "automaticImprovements";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AutomaticImprovementsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Retrieves the automatic improvements of an account.</summary>
+            /// <param name="name">
+            /// Required. The resource name of the automatic improvements. Format:
+            /// `accounts/{account}/automaticImprovements`
+            /// </param>
+            public virtual GetAutomaticImprovementsRequest GetAutomaticImprovements(string name)
+            {
+                return new GetAutomaticImprovementsRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves the automatic improvements of an account.</summary>
+            public class GetAutomaticImprovementsRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.AutomaticImprovements>
+            {
+                /// <summary>Constructs a new GetAutomaticImprovements request.</summary>
+                public GetAutomaticImprovementsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the automatic improvements. Format:
+                /// `accounts/{account}/automaticImprovements`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getAutomaticImprovements";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes GetAutomaticImprovements parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/automaticImprovements$",
+                    });
+                }
+            }
+
+            /// <summary>Updates the automatic improvements of an account.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The resource name of the automatic improvements. Format:
+            /// `accounts/{account}/automaticImprovements`.
+            /// </param>
+            public virtual UpdateAutomaticImprovementsRequest UpdateAutomaticImprovements(Google.Apis.Merchant.accounts_v1beta.Data.AutomaticImprovements body, string name)
+            {
+                return new UpdateAutomaticImprovementsRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates the automatic improvements of an account.</summary>
+            public class UpdateAutomaticImprovementsRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.AutomaticImprovements>
+            {
+                /// <summary>Constructs a new UpdateAutomaticImprovements request.</summary>
+                public UpdateAutomaticImprovementsRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.AutomaticImprovements body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The resource name of the automatic improvements. Format:
+                /// `accounts/{account}/automaticImprovements`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. List of fields being updated. The following fields are supported (in both `snake_case` and
+                /// `lowerCamelCase`): - `item_updates` - `item_updates.account_level_settings` - `image_improvements` -
+                /// `image_improvements.account_level_settings` - `shipping_improvements` -
+                /// `shipping_improvements.allow_shipping_improvements`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.AutomaticImprovements Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateAutomaticImprovements";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes UpdateAutomaticImprovements parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/automaticImprovements$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -2822,57 +2968,6 @@ namespace Google.Apis.Merchant.accounts_v1beta
             }
         }
 
-        /// <summary>Retrieves the automatic improvements of an account.</summary>
-        /// <param name="name">
-        /// Required. The resource name of the automatic improvements. Format:
-        /// `accounts/{account}/automaticImprovements`
-        /// </param>
-        public virtual GetAutomaticImprovementsRequest GetAutomaticImprovements(string name)
-        {
-            return new GetAutomaticImprovementsRequest(this.service, name);
-        }
-
-        /// <summary>Retrieves the automatic improvements of an account.</summary>
-        public class GetAutomaticImprovementsRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.AutomaticImprovements>
-        {
-            /// <summary>Constructs a new GetAutomaticImprovements request.</summary>
-            public GetAutomaticImprovementsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The resource name of the automatic improvements. Format:
-            /// `accounts/{account}/automaticImprovements`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "getAutomaticImprovements";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "accounts/v1beta/{+name}";
-
-            /// <summary>Initializes GetAutomaticImprovements parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^accounts/[^/]+/automaticImprovements$",
-                });
-            }
-        }
-
         /// <summary>
         /// Lists accounts accessible to the calling user and matching the constraints of the request such as page size
         /// or filters. This is not just listing the sub-accounts of an MCA, but all accounts the calling user has
@@ -3117,82 +3212,6 @@ namespace Google.Apis.Merchant.accounts_v1beta
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^accounts/[^/]+$",
-                });
-                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "updateMask",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>Updates the automatic improvements of an account.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">
-        /// Identifier. The resource name of the automatic improvements. Format:
-        /// `accounts/{account}/automaticImprovements`.
-        /// </param>
-        public virtual UpdateAutomaticImprovementsRequest UpdateAutomaticImprovements(Google.Apis.Merchant.accounts_v1beta.Data.AutomaticImprovements body, string name)
-        {
-            return new UpdateAutomaticImprovementsRequest(this.service, body, name);
-        }
-
-        /// <summary>Updates the automatic improvements of an account.</summary>
-        public class UpdateAutomaticImprovementsRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.AutomaticImprovements>
-        {
-            /// <summary>Constructs a new UpdateAutomaticImprovements request.</summary>
-            public UpdateAutomaticImprovementsRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.AutomaticImprovements body, string name) : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Identifier. The resource name of the automatic improvements. Format:
-            /// `accounts/{account}/automaticImprovements`.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>
-            /// Required. List of fields being updated. The following fields are supported (in both `snake_case` and
-            /// `lowerCamelCase`): - `item_updates` - `item_updates.account_level_settings` - `image_improvements` -
-            /// `image_improvements.account_level_settings` - `shipping_improvements` -
-            /// `shipping_improvements.allow_shipping_improvements`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object UpdateMask { get; set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Merchant.accounts_v1beta.Data.AutomaticImprovements Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "updateAutomaticImprovements";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "PATCH";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "accounts/v1beta/{+name}";
-
-            /// <summary>Initializes UpdateAutomaticImprovements parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^accounts/[^/]+/automaticImprovements$",
                 });
                 RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                 {
