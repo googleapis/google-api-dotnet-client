@@ -982,7 +982,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     public virtual Google.Apis.Util.Repeatable<string> AssetTypes { get; set; }
 
                     /// <summary>
-                    /// Optional. Page size. If a value is not specified, the default value of 10 is used.
+                    /// Optional. Page size. If a value is not specified, the default value of 10 is used. The maximum
+                    /// value is 50.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
