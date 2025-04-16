@@ -1720,7 +1720,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 }
             }
 
-            /// <summary>Updates a release.</summary>
+            /// <summary>Updates automated test configuration.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Identifier. The name of the test configuration resource. Format:
@@ -1731,7 +1731,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 return new UpdateTestConfigRequest(this.service, body, name);
             }
 
-            /// <summary>Updates a release.</summary>
+            /// <summary>Updates automated test configuration.</summary>
             public class UpdateTestConfigRequest : FirebaseAppDistributionBaseServiceRequest<Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaTestConfig>
             {
                 /// <summary>Constructs a new UpdateTestConfig request.</summary>
@@ -2078,7 +2078,6 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Instructions for AI driven test</summary>
     public class GoogleFirebaseAppdistroV1alphaAiInstructions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Steps to be accomplished by the AI</summary>
