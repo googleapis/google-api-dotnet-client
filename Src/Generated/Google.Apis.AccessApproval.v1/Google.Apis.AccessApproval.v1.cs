@@ -2137,6 +2137,17 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ancestorHasActiveKeyVersion")]
         public virtual System.Nullable<bool> AncestorHasActiveKeyVersion { get; set; }
 
+        /// <summary>Optional. Policy for approval. This contains all policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvalPolicy")]
+        public virtual CustomerApprovalApprovalPolicy ApprovalPolicy { get; set; }
+
+        /// <summary>
+        /// Output only. Policy for approval included inherited settings to understand the exact policy applied to this
+        /// resource. This is a read-only field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveApprovalPolicy")]
+        public virtual CustomerApprovalApprovalPolicy EffectiveApprovalPolicy { get; set; }
+
         /// <summary>
         /// Output only. This field is read only (not settable via UpdateAccessApprovalSettings method). If the field is
         /// true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of
@@ -2548,6 +2559,10 @@ namespace Google.Apis.AccessApproval.v1.Data
             set => InvalidateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>True when the request has been approved by the customer's defined policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyApproved")]
+        public virtual System.Nullable<bool> PolicyApproved { get; set; }
+
         /// <summary>The signature for the ApprovalRequest and details on how it was signed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureInfo")]
         public virtual SignatureInfo SignatureInfo { get; set; }
@@ -2565,6 +2580,17 @@ namespace Google.Apis.AccessApproval.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual string Command { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents all the policies that can be set for Customer Approval.</summary>
+    public class CustomerApprovalApprovalPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Policy for approval based on the justification given.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justificationBasedApprovalPolicy")]
+        public virtual string JustificationBasedApprovalPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
