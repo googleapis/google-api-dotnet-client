@@ -507,8 +507,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                         /// <summary>
                         /// Required. The ID of the listing to create. Must contain only Unicode letters, numbers (0-9),
-                        /// underscores (_). Should not use characters that require URL-escaping, or characters outside
-                        /// of ASCII, spaces. Max length: 100 bytes.
+                        /// underscores (_). Max length: 100 bytes.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("listingId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ListingId { get; set; }
@@ -1194,8 +1193,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                     /// <summary>
                     /// Required. The ID of the data exchange. Must contain only Unicode letters, numbers (0-9),
-                    /// underscores (_). Should not use characters that require URL-escaping, or characters outside of
-                    /// ASCII, spaces. Max length: 100 bytes.
+                    /// underscores (_). Max length: 100 bytes.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dataExchangeId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DataExchangeId { get; set; }
@@ -2293,30 +2291,6 @@ namespace Google.Apis.AnalyticsHub.v1
 namespace Google.Apis.AnalyticsHub.v1.Data
 {
     /// <summary>
-    /// Information about an associated [Analytics Hub
-    /// subscription](https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).
-    /// </summary>
-    public class AnalyticsHubSubscriptionInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The name of the associated Analytics Hub listing resource. Pattern:
-        /// "projects/{project}/locations/{location}/dataExchanges/{data_exchange}/listings/{listing}"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("listing")]
-        public virtual string Listing { get; set; }
-
-        /// <summary>
-        /// Optional. The name of the associated Analytics Hub subscription resource. Pattern:
-        /// "projects/{project}/locations/{location}/subscriptions/{subscription}"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
-        public virtual string Subscription { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
     /// there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used
@@ -2412,12 +2386,6 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
-
-        /// <summary>
-        /// Output only. An output-only field that indicates whether or not the subscription can receive messages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
 
         /// <summary>
         /// Optional. The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
@@ -2601,8 +2569,10 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         public virtual System.Nullable<long> MaxBytes { get; set; }
 
         /// <summary>
-        /// Optional. The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max
-        /// 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgment deadline.
+        /// Optional. File batching settings. If no max_duration setting is specified, a max_duration of 5 minutes will
+        /// be set by default. max_duration is required regardless of whether other file batching settings are
+        /// specified. The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute,
+        /// max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDuration")]
         public virtual object MaxDuration { get; set; }
@@ -2622,12 +2592,6 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
-
-        /// <summary>
-        /// Output only. An output-only field that indicates whether or not the subscription can receive messages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
 
         /// <summary>Optional. If set, message data will be written to Cloud Storage in text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textConfig")]
@@ -2771,9 +2735,9 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// <summary>
         /// Optional. The maximum number of delivery attempts for any message. The value must be between 5 and 100. The
         /// number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times the
-        /// acknowledgment deadline has been exceeded for the message). A NACK is any call to ModifyAckDeadline with a 0
-        /// deadline. Note that client libraries may automatically extend ack_deadlines. This field will be honored on a
-        /// best effort basis. If this parameter is 0, a default value of 5 is used.
+        /// acknowledgement deadline has been exceeded for the message). A NACK is any call to ModifyAckDeadline with a
+        /// 0 deadline. Note that client libraries may automatically extend ack_deadlines. This field will be honored on
+        /// a best effort basis. If this parameter is 0, a default value of 5 is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDeliveryAttempts")]
         public virtual System.Nullable<int> MaxDeliveryAttempts { get; set; }
@@ -3015,8 +2979,9 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     }
 
     /// <summary>
-    /// A subscription resource. If none of `push_config`, `bigquery_config`, or `cloud_storage_config` is set, then the
-    /// subscriber will pull and ack messages using API methods. At most one of these fields may be set.
+    /// Defines the destination Pub/Sub subscription. If none of `push_config`, `bigquery_config`,
+    /// `cloud_storage_config`, `pubsub_export_config`, or `pubsublite_export_config` is set, then the subscriber will
+    /// pull and ack messages using API methods. At most one of these fields may be set.
     /// </summary>
     public class GooglePubsubV1Subscription : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3035,13 +3000,6 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; }
-
-        /// <summary>
-        /// Output only. Information about the associated Analytics Hub subscription. Only set if the subscritpion is
-        /// created by Analytics Hub.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("analyticsHubSubscriptionInfo")]
-        public virtual AnalyticsHubSubscriptionInfo AnalyticsHubSubscriptionInfo { get; set; }
 
         /// <summary>
         /// Optional. If delivery to BigQuery is used with this subscription, this field is used to configure it.
@@ -3077,8 +3035,8 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// <summary>
         /// Optional. If true, Pub/Sub provides the following guarantees for the delivery of a message with a given
         /// value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be
-        /// resent before the message's acknowledgment deadline expires. * An acknowledged message will not be resent to
-        /// a subscriber. Note that subscribers may still receive multiple copies of a message when
+        /// resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent
+        /// to a subscriber. Note that subscribers may still receive multiple copies of a message when
         /// `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client.
         /// These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
         /// </summary>
@@ -3157,27 +3115,11 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// <summary>
         /// Optional. A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set,
         /// the default retry policy is applied. This generally implies that messages will be retried as soon as
-        /// possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgment deadline exceeded
-        /// events for a given message.
+        /// possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline
+        /// exceeded events for a given message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retryPolicy")]
         public virtual RetryPolicy RetryPolicy { get; set; }
-
-        /// <summary>
-        /// Output only. An output-only field indicating whether or not the subscription can receive messages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>
-        /// Output only. Indicates the minimum duration for which a message is retained after it is published to the
-        /// subscription's topic. If this field is set, messages published to the subscription's topic in the last
-        /// `topic_message_retention_duration` are always available to subscribers. See the `message_retention_duration`
-        /// field in `Topic`. This field is set only in responses from the server; it is ignored if it is set in any
-        /// requests.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topicMessageRetentionDuration")]
-        public virtual object TopicMessageRetentionDuration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3716,7 +3658,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     {
         /// <summary>
         /// Optional. Region hint on where the data might be published. Data affinity regions are modifiable. See
-        /// go/regions for full listing of possible Cloud regions.
+        /// https://cloud.google.com/about/locations for full listing of possible Cloud regions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataAffinityRegions")]
         public virtual System.Collections.Generic.IList<string> DataAffinityRegions { get; set; }
@@ -3870,7 +3812,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     /// <summary>
     /// A policy that specifies how Pub/Sub retries message delivery. Retry delay will be exponential based on provided
     /// minimum and maximum backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. RetryPolicy will be triggered
-    /// on NACKs or acknowledgment deadline exceeded events for a given message. Retry Policy is implemented on a best
+    /// on NACKs or acknowledgement deadline exceeded events for a given message. Retry Policy is implemented on a best
     /// effort basis. At times, the delay between consecutive deliveries may not match the configuration. That is, delay
     /// can be more or less than configured backoff.
     /// </summary>
