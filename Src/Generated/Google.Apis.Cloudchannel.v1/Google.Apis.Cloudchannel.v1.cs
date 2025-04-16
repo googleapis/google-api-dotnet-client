@@ -9717,6 +9717,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("opportunity")]
         public virtual string Opportunity { get; set; }
 
+        /// <summary>Resource name of the partner. Format: partners/{partner}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partner")]
+        public virtual string Partner { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
