@@ -1722,8 +1722,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// * Alerts from AppSettingsChanged bucket Rules configured by Admin which contain the below rules. Calendar
-    /// settings changed Drive settings changed Email settings changed Mobile settings changed
+    /// Alerts from AppSettingsChanged bucket Rules configured by Admin which contain the following rules: - Calendar
+    /// settings changed - Drive settings changed - Email settings changed - Mobile settings changed
     /// </summary>
     public class AppSettingsChanged : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2585,7 +2585,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// * Event occurred when primary admin changed in customer's account. The event are being received from insight
+    /// Event occurred when primary admin changed in customer's account. The event are being received from insight
     /// forwarder
     /// </summary>
     public class PrimaryAdminChangedEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -2754,7 +2754,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// * Event occurred when SSO Profile created in customer's account. The event are being received from insight
+    /// Event occurred when SSO Profile created in customer's account. The event are being received from insight
     /// forwarder
     /// </summary>
     public class SSOProfileCreatedEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -2768,7 +2768,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// * Event occurred when SSO Profile deleted in customer's account. The event are being received from insight
+    /// Event occurred when SSO Profile deleted in customer's account. The event are being received from insight
     /// forwarder
     /// </summary>
     public class SSOProfileDeletedEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -2782,7 +2782,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// * Event occurred when SSO Profile updated in customer's account. The event are being received from insight
+    /// Event occurred when SSO Profile updated in customer's account. The event are being received from insight
     /// forwarder
     /// </summary>
     public class SSOProfileUpdatedEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -2919,8 +2919,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// * Event occurred when password was reset for super admin in customer's account. The event are being received
-    /// from insight forwarder
+    /// Event occurred when password was reset for super admin in customer's account. The event are being received from
+    /// insight forwarder
     /// </summary>
     public class SuperAdminPasswordResetEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3078,9 +3078,9 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// * Alerts from UserChanges bucket Rules for predefined rules which contain the below rules. Suspended user made
-    /// active New user Added User suspended (by admin) User granted admin privileges User admin privileges revoked User
-    /// deleted Users password changed
+    /// Alerts from UserChanges bucket Rules for predefined rules which contain the following rules: - Suspended user
+    /// made active - New user added - User suspended (by admin) - User granted admin privileges - User admin privileges
+    /// revoked - User deleted - Users password changed
     /// </summary>
     public class UserChanges : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3102,6 +3102,71 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>Resource name that uniquely identifies the detector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Alert that is triggered when a Vault accelerated deletion request is created or canceled.</summary>
+    public class VaultAcceleratedDeletion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The action can be one of create and cancel</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
+        public virtual string ActionType { get; set; }
+
+        /// <summary>Currentlty only Gmail is supported as app type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appType")]
+        public virtual string AppType { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The UTC timestamp of when the AD request was created</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Accelerated deletion request ID intended to be used to construct the Vault UI link to the AD request
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionRequestId")]
+        public virtual string DeletionRequestId { get; set; }
+
+        /// <summary>
+        /// Matter ID of the accelerated deletion request intended to be used to construct the Vault UI link to the AD
+        /// request
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matterId")]
+        public virtual string MatterId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
