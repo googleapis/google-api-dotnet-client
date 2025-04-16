@@ -1213,7 +1213,7 @@ namespace Google.Apis.Merchant.inventories_v1beta.Data
 
         /// <summary>
         /// Availability of the product in this region. For accepted attribute values, see the [regional product
-        /// inventory data specification](https://support.google.com/merchants/answer/3061342)
+        /// inventory data specification](https://support.google.com/merchants/answer/6324448).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual string Availability { get; set; }
