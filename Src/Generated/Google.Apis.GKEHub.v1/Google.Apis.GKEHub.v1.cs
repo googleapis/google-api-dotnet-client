@@ -5568,6 +5568,10 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multiclusteringress")]
         public virtual MultiClusterIngressFeatureSpec Multiclusteringress { get; set; }
 
+        /// <summary>RBAC Role Binding Actuation feature spec</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rbacrolebindingactuation")]
+        public virtual RBACRoleBindingActuationFeatureSpec Rbacrolebindingactuation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5586,6 +5590,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>FleetObservability feature state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetobservability")]
         public virtual FleetObservabilityFeatureState Fleetobservability { get; set; }
+
+        /// <summary>RBAC Role Binding Actuation feature state</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rbacrolebindingactuation")]
+        public virtual RBACRoleBindingActuationFeatureState Rbacrolebindingactuation { get; set; }
 
         /// <summary>Output only. The "running state" of the Feature in this Fleet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -8200,7 +8208,10 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalId")]
         public virtual string ExternalId { get; set; }
 
-        /// <summary>Optional. Labels for this membership.</summary>
+        /// <summary>
+        /// Optional. Labels for this membership. These labels are not leveraged by multi-cluster features, instead, we
+        /// prefer cluster labels, which can be set on GKE cluster or other cluster types.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -9566,6 +9577,28 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>**RBAC RoleBinding Actuation**: The Hub-wide input for the RBACRoleBindingActuation feature.</summary>
+    public class RBACRoleBindingActuationFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of allowed custom roles (ClusterRoles). If a ClusterRole is not part of this list, it cannot be
+        /// used in a Scope RBACRoleBinding. If a ClusterRole in this list is in use, it cannot be removed from the
+        /// list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedCustomRoles")]
+        public virtual System.Collections.Generic.IList<string> AllowedCustomRoles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**RBAC RoleBinding Actuation**: An empty state left as an example Hub-wide Feature state.</summary>
+    public class RBACRoleBindingActuationFeatureState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding resource.</summary>
     public class RBACRoleBindingLifecycleState : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9626,6 +9659,10 @@ namespace Google.Apis.GKEHub.v1.Data
     /// <summary>Role is the type for Kubernetes roles</summary>
     public class Role : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. custom_role is the name of a custom KubernetesClusterRole to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRole")]
+        public virtual string CustomRole { get; set; }
+
         /// <summary>predefined_role is the Kubernetes default role to use</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predefinedRole")]
         public virtual string PredefinedRole { get; set; }
