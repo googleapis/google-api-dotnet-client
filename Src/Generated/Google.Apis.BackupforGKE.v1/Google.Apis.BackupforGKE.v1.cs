@@ -292,9 +292,598 @@ namespace Google.Apis.BackupforGKE.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                BackupChannels = new BackupChannelsResource(service);
                 BackupPlans = new BackupPlansResource(service);
                 Operations = new OperationsResource(service);
+                RestoreChannels = new RestoreChannelsResource(service);
                 RestorePlans = new RestorePlansResource(service);
+            }
+
+            /// <summary>Gets the BackupChannels resource.</summary>
+            public virtual BackupChannelsResource BackupChannels { get; }
+
+            /// <summary>The "backupChannels" collection of methods.</summary>
+            public class BackupChannelsResource
+            {
+                private const string Resource = "backupChannels";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BackupChannelsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    BackupPlanBindings = new BackupPlanBindingsResource(service);
+                }
+
+                /// <summary>Gets the BackupPlanBindings resource.</summary>
+                public virtual BackupPlanBindingsResource BackupPlanBindings { get; }
+
+                /// <summary>The "backupPlanBindings" collection of methods.</summary>
+                public class BackupPlanBindingsResource
+                {
+                    private const string Resource = "backupPlanBindings";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public BackupPlanBindingsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Retrieve the details of a single BackupPlanBinding.</summary>
+                    /// <param name="name">
+                    /// Required. Fully qualified BackupPlanBinding name. Format:
+                    /// `projects/*/locations/*/backupChannels/*/backupPlanBindings/*`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Retrieve the details of a single BackupPlanBinding.</summary>
+                    public class GetRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.BackupPlanBinding>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Fully qualified BackupPlanBinding name. Format:
+                        /// `projects/*/locations/*/backupChannels/*/backupPlanBindings/*`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupChannels/[^/]+/backupPlanBindings/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists BackupPlanBindings in a given location.</summary>
+                    /// <param name="parent">
+                    /// Required. The BackupChannel that contains the BackupPlanBindings to list. Format:
+                    /// `projects/*/locations/*/backupChannels/*`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists BackupPlanBindings in a given location.</summary>
+                    public class ListRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.ListBackupPlanBindingsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The BackupChannel that contains the BackupPlanBindings to list. Format:
+                        /// `projects/*/locations/*/backupChannels/*`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. Field match expression used to filter the results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. Field by which to sort the results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. The target number of results to return in a single response. If not specified, a
+                        /// default value will be chosen by the service. Note that the response may include a partial
+                        /// list and a caller should only rely on the response's next_page_token to determine if there
+                        /// are more instances left to be queried.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The value of next_page_token received from a previous `ListBackupPlanBindings`
+                        /// call. Provide this to retrieve the subsequent page in a multi-page list of results. When
+                        /// paginating, all other parameters provided to `ListBackupPlanBindings` must match the call
+                        /// that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/backupPlanBindings";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupChannels/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a new BackupChannel in a given location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The location within which to create the BackupChannel. Format: `projects/*/locations/*`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.BackupforGKE.v1.Data.BackupChannel body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new BackupChannel in a given location.</summary>
+                public class CreateRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.BackupforGKE.v1.Data.BackupChannel body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location within which to create the BackupChannel. Format:
+                    /// `projects/*/locations/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The client-provided short name for the BackupChannel resource. This name must: - be
+                    /// between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters,
+                    /// numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number -
+                    /// be unique within the set of BackupChannels in this location If the user does not provide a name,
+                    /// a uuid will be used as the name.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("backupChannelId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string BackupChannelId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BackupforGKE.v1.Data.BackupChannel Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/backupChannels";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("backupChannelId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "backupChannelId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes an existing BackupChannel.</summary>
+                /// <param name="name">
+                /// Required. Fully qualified BackupChannel name. Format: `projects/*/locations/*/backupChannels/*`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes an existing BackupChannel.</summary>
+                public class DeleteRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Fully qualified BackupChannel name. Format: `projects/*/locations/*/backupChannels/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If provided, this value must match the current value of the target BackupChannel's
+                    /// etag field or the request is rejected.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, any BackupPlanAssociations below this BackupChannel will also be
+                    /// deleted. Otherwise, the request will only succeed if the BackupChannel has no
+                    /// BackupPlanAssociations.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backupChannels/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve the details of a single BackupChannel.</summary>
+                /// <param name="name">
+                /// Required. Fully qualified BackupChannel name. Format: `projects/*/locations/*/backupChannels/*`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Retrieve the details of a single BackupChannel.</summary>
+                public class GetRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.BackupChannel>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Fully qualified BackupChannel name. Format: `projects/*/locations/*/backupChannels/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backupChannels/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists BackupChannels in a given location.</summary>
+                /// <param name="parent">
+                /// Required. The location that contains the BackupChannels to list. Format: `projects/*/locations/*`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists BackupChannels in a given location.</summary>
+                public class ListRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.ListBackupChannelsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location that contains the BackupChannels to list. Format:
+                    /// `projects/*/locations/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Field match expression used to filter the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Field by which to sort the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The target number of results to return in a single response. If not specified, a
+                    /// default value will be chosen by the service. Note that the response may include a partial list
+                    /// and a caller should only rely on the response's next_page_token to determine if there are more
+                    /// instances left to be queried.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The value of next_page_token received from a previous `ListBackupChannels` call.
+                    /// Provide this to retrieve the subsequent page in a multi-page list of results. When paginating,
+                    /// all other parameters provided to `ListBackupChannels` must match the call that provided the page
+                    /// token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/backupChannels";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a BackupChannel.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The fully qualified name of the BackupChannel. `projects/*/locations/*/backupChannels/*`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.BackupforGKE.v1.Data.BackupChannel body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a BackupChannel.</summary>
+                public class PatchRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BackupforGKE.v1.Data.BackupChannel body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The fully qualified name of the BackupChannel.
+                    /// `projects/*/locations/*/backupChannels/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. This is used to specify the fields to be overwritten in the BackupChannel targeted for
+                    /// update. The values for each of these updated fields will be taken from the `backup_channel`
+                    /// provided with this request. Field names are relative to the root of the resource (e.g.,
+                    /// `description`, `labels`, etc.) If no `update_mask` is provided, all fields in `backup_channel`
+                    /// will be written to the target BackupChannel resource. Note that OUTPUT_ONLY and IMMUTABLE fields
+                    /// in `backup_channel` are ignored and are not used to update the target BackupChannel.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BackupforGKE.v1.Data.BackupChannel Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backupChannels/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the BackupPlans resource.</summary>
@@ -2267,6 +2856,581 @@ namespace Google.Apis.BackupforGKE.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the RestoreChannels resource.</summary>
+            public virtual RestoreChannelsResource RestoreChannels { get; }
+
+            /// <summary>The "restoreChannels" collection of methods.</summary>
+            public class RestoreChannelsResource
+            {
+                private const string Resource = "restoreChannels";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RestoreChannelsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    RestorePlanBindings = new RestorePlanBindingsResource(service);
+                }
+
+                /// <summary>Gets the RestorePlanBindings resource.</summary>
+                public virtual RestorePlanBindingsResource RestorePlanBindings { get; }
+
+                /// <summary>The "restorePlanBindings" collection of methods.</summary>
+                public class RestorePlanBindingsResource
+                {
+                    private const string Resource = "restorePlanBindings";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public RestorePlanBindingsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Retrieve the details of a single RestorePlanBinding.</summary>
+                    /// <param name="name">
+                    /// Required. Fully qualified RestorePlanBinding name. Format:
+                    /// `projects/*/locations/*/restoreChannels/*/restorePlanBindings/*`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Retrieve the details of a single RestorePlanBinding.</summary>
+                    public class GetRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.RestorePlanBinding>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Fully qualified RestorePlanBinding name. Format:
+                        /// `projects/*/locations/*/restoreChannels/*/restorePlanBindings/*`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/restoreChannels/[^/]+/restorePlanBindings/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists RestorePlanBindings in a given location.</summary>
+                    /// <param name="parent">
+                    /// Required. The RestoreChannel that contains the ListRestorePlanBindings to list. Format:
+                    /// `projects/*/locations/*/restoreChannels/*`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists RestorePlanBindings in a given location.</summary>
+                    public class ListRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.ListRestorePlanBindingsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The RestoreChannel that contains the ListRestorePlanBindings to list. Format:
+                        /// `projects/*/locations/*/restoreChannels/*`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. Field match expression used to filter the results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. Field by which to sort the results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. The target number of results to return in a single response. If not specified, a
+                        /// default value will be chosen by the service. Note that the response may include a partial
+                        /// list and a caller should only rely on the response's next_page_token to determine if there
+                        /// are more instances left to be queried.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The value of next_page_token received from a previous `ListRestorePlanBindings`
+                        /// call. Provide this to retrieve the subsequent page in a multi-page list of results. When
+                        /// paginating, all other parameters provided to `ListRestorePlanBindings` must match the call
+                        /// that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/restorePlanBindings";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/restoreChannels/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a new RestoreChannel in a given location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The location within which to create the RestoreChannel. Format: `projects/*/locations/*`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.BackupforGKE.v1.Data.RestoreChannel body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new RestoreChannel in a given location.</summary>
+                public class CreateRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.BackupforGKE.v1.Data.RestoreChannel body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location within which to create the RestoreChannel. Format:
+                    /// `projects/*/locations/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The client-provided short name for the RestoreChannel resource. This name must: - be
+                    /// between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters,
+                    /// numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number -
+                    /// be unique within the set of RestoreChannels in this location If the user does not provide a
+                    /// name, a uuid will be used as the name.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("restoreChannelId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RestoreChannelId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BackupforGKE.v1.Data.RestoreChannel Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/restoreChannels";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("restoreChannelId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "restoreChannelId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes an existing RestoreChannel.</summary>
+                /// <param name="name">
+                /// Required. Fully qualified RestoreChannel name. Format: `projects/*/locations/*/restoreChannels/*`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes an existing RestoreChannel.</summary>
+                public class DeleteRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Fully qualified RestoreChannel name. Format:
+                    /// `projects/*/locations/*/restoreChannels/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If provided, this value must match the current value of the target RestoreChannel's
+                    /// etag field or the request is rejected.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/restoreChannels/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve the details of a single RestoreChannel.</summary>
+                /// <param name="name">
+                /// Required. Fully qualified RestoreChannel name. Format: `projects/*/locations/*/restoreChannels/*`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Retrieve the details of a single RestoreChannel.</summary>
+                public class GetRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.RestoreChannel>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Fully qualified RestoreChannel name. Format:
+                    /// `projects/*/locations/*/restoreChannels/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/restoreChannels/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists RestoreChannels in a given location.</summary>
+                /// <param name="parent">
+                /// Required. The location that contains the RestoreChannels to list. Format: `projects/*/locations/*`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists RestoreChannels in a given location.</summary>
+                public class ListRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.ListRestoreChannelsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location that contains the RestoreChannels to list. Format:
+                    /// `projects/*/locations/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Field match expression used to filter the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Field by which to sort the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The target number of results to return in a single response. If not specified, a
+                    /// default value will be chosen by the service. Note that the response may include a partial list
+                    /// and a caller should only rely on the response's next_page_token to determine if there are more
+                    /// instances left to be queried.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The value of next_page_token received from a previous `ListRestoreChannels` call.
+                    /// Provide this to retrieve the subsequent page in a multi-page list of results. When paginating,
+                    /// all other parameters provided to `ListRestoreChannels` must match the call that provided the
+                    /// page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/restoreChannels";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a RestoreChannel.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The fully qualified name of the RestoreChannel.
+                /// `projects/*/locations/*/restoreChannels/*`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.BackupforGKE.v1.Data.RestoreChannel body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a RestoreChannel.</summary>
+                public class PatchRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BackupforGKE.v1.Data.RestoreChannel body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The fully qualified name of the RestoreChannel.
+                    /// `projects/*/locations/*/restoreChannels/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. This is used to specify the fields to be overwritten in the RestoreChannel targeted
+                    /// for update. The values for each of these updated fields will be taken from the `restore_channel`
+                    /// provided with this request. Field names are relative to the root of the resource (e.g.,
+                    /// `description`, `destination_project_id`, etc.) If no `update_mask` is provided, all fields in
+                    /// `restore_channel` will be written to the target RestoreChannel resource. Note that OUTPUT_ONLY
+                    /// and IMMUTABLE fields in `restore_channel` are ignored and are not used to update the target
+                    /// RestoreChannel.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BackupforGKE.v1.Data.RestoreChannel Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/restoreChannels/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4482,6 +5646,133 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Nullable<int> VolumeCount { get; set; }
     }
 
+    /// <summary>
+    /// A BackupChannel imposes constraints on where clusters can be backed up. The BackupChannel should be in the same
+    /// project and region as the cluster being backed up. The backup can be created only in destination_project.
+    /// </summary>
+    public class BackupChannel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when this BackupChannel resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. User specified descriptive string for this BackupChannel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The project where Backups are allowed to be stored. The format is `projects/{project}`.
+        /// Currently, {project} can only be the project number. Support for project IDs will be added in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationProject")]
+        public virtual string DestinationProject { get; set; }
+
+        /// <summary>
+        /// Output only. The project_id where Backups are allowed to be stored. Example Project ID: "my-project-id".
+        /// This will be an OUTPUT_ONLY field to return the project_id of the destination project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationProjectId")]
+        public virtual string DestinationProjectId { get; set; }
+
+        /// <summary>
+        /// Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates
+        /// of a BackupChannel from overwriting each other. It is strongly suggested that systems make use of the 'etag'
+        /// in the read-modify-write cycle to perform BackupChannel updates in order to avoid race conditions: An `etag`
+        /// is returned in the response to `GetBackupChannel`, and systems are expected to put that etag in the request
+        /// to `UpdateBackupChannel` or `DeleteBackupChannel` to ensure that their change will be applied to the same
+        /// version of the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Optional. A set of custom labels supplied by user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The fully qualified name of the BackupChannel. `projects/*/locations/*/backupChannels/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Server generated global unique identifier of
+        /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when this BackupChannel resource was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
     /// <summary>BackupConfig defines the configuration of Backups created via this BackupPlan.</summary>
     public class BackupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4745,6 +6036,247 @@ namespace Google.Apis.BackupforGKE.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+    }
+
+    /// <summary>
+    /// A BackupPlanBinding binds a BackupPlan with a BackupChannel. This resource is created automatically when a
+    /// BackupPlan is created using a BackupChannel. This also serves as a holder for cross-project fields that need to
+    /// be displayed in the current project.
+    /// </summary>
+    public class BackupPlanBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Immutable. The fully qualified name of the BackupPlan bound with the parent BackupChannel.
+        /// `projects/*/locations/*/backupPlans/{backup_plan}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlan")]
+        public virtual string BackupPlan { get; set; }
+
+        /// <summary>Output only. Contains details about the backup plan/backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanDetails")]
+        public virtual BackupPlanDetails BackupPlanDetails { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. The fully qualified name of the cluster that is being backed up Valid formats: -
+        /// `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual string Cluster { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when this binding was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates
+        /// of a BackupPlanBinding from overwriting each other. It is strongly suggested that systems make use of the
+        /// 'etag' in the read-modify-write cycle to perform BackupPlanBinding updates in order to avoid race
+        /// conditions: An `etag` is returned in the response to `GetBackupPlanBinding`, and systems are expected to put
+        /// that etag in the request to `UpdateBackupPlanBinding` or `DeleteBackupPlanBinding` to ensure that their
+        /// change will be applied to the same version of the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Identifier. The fully qualified name of the BackupPlanBinding.
+        /// `projects/*/locations/*/backupChannels/*/backupPlanBindings/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Server generated global unique identifier of
+        /// [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when this binding was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>Contains metadata about the backup plan/backup.</summary>
+    public class BackupPlanDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The fully qualified name of the last successful Backup created under this BackupPlan.
+        /// `projects/*/locations/*/backupPlans/*/backups/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSuccessfulBackup")]
+        public virtual string LastSuccessfulBackup { get; set; }
+
+        private string _lastSuccessfulBackupTimeRaw;
+
+        private object _lastSuccessfulBackupTime;
+
+        /// <summary>
+        /// Output only. Completion time of the last successful Backup. This is sourced from a successful Backup's
+        /// complete_time field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSuccessfulBackupTime")]
+        public virtual string LastSuccessfulBackupTimeRaw
+        {
+            get => _lastSuccessfulBackupTimeRaw;
+            set
+            {
+                _lastSuccessfulBackupTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastSuccessfulBackupTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastSuccessfulBackupTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSuccessfulBackupTimeDateTimeOffset instead.")]
+        public virtual object LastSuccessfulBackupTime
+        {
+            get => _lastSuccessfulBackupTime;
+            set
+            {
+                _lastSuccessfulBackupTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastSuccessfulBackupTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastSuccessfulBackupTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastSuccessfulBackupTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSuccessfulBackupTimeRaw);
+            set => LastSuccessfulBackupTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _nextScheduledBackupTimeRaw;
+
+        private object _nextScheduledBackupTime;
+
+        /// <summary>
+        /// Output only. Start time of next scheduled backup under this BackupPlan by either cron_schedule or rpo
+        /// config. This is sourced from BackupPlan.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextScheduledBackupTime")]
+        public virtual string NextScheduledBackupTimeRaw
+        {
+            get => _nextScheduledBackupTimeRaw;
+            set
+            {
+                _nextScheduledBackupTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _nextScheduledBackupTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NextScheduledBackupTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NextScheduledBackupTimeDateTimeOffset instead.")]
+        public virtual object NextScheduledBackupTime
+        {
+            get => _nextScheduledBackupTime;
+            set
+            {
+                _nextScheduledBackupTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _nextScheduledBackupTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="NextScheduledBackupTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NextScheduledBackupTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextScheduledBackupTimeRaw);
+            set => NextScheduledBackupTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The number of Kubernetes Pods backed up in the last successful Backup created via this
+        /// BackupPlan.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectedPodCount")]
+        public virtual System.Nullable<int> ProtectedPodCount { get; set; }
+
+        /// <summary>
+        /// Output only. A number that represents the current risk level of this BackupPlan from RPO perspective with 1
+        /// being no risk and 5 being highest risk.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rpoRiskLevel")]
+        public virtual System.Nullable<int> RpoRiskLevel { get; set; }
+
+        /// <summary>Output only. State of the BackupPlan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
@@ -5068,6 +6600,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// <summary>Response message for GetBackupIndexDownloadUrl.</summary>
     public class GetBackupIndexDownloadUrlResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. The signed URL for downloading the backup index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedUrl")]
         public virtual string SignedUrl { get; set; }
 
@@ -5211,6 +6744,50 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListBackupChannels.</summary>
+    public class ListBackupChannelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of BackupChannels matching the given criteria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupChannels")]
+        public virtual System.Collections.Generic.IList<BackupChannel> BackupChannels { get; set; }
+
+        /// <summary>
+        /// A token which may be sent as page_token in a subsequent `ListBackupChannels` call to retrieve the next page
+        /// of results. If this field is omitted or empty, then there are no more results to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListBackupPlanBindings.</summary>
+    public class ListBackupPlanBindingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of BackupPlanBindings matching the given criteria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanBindings")]
+        public virtual System.Collections.Generic.IList<BackupPlanBinding> BackupPlanBindings { get; set; }
+
+        /// <summary>
+        /// A token which may be sent as page_token in a subsequent `ListBackupPlanBindingss` call to retrieve the next
+        /// page of results. If this field is omitted or empty, then there are no more results to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListBackupPlans.</summary>
     public class ListBackupPlansResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5265,6 +6842,50 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListRestoreChannels.</summary>
+    public class ListRestoreChannelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token which may be sent as page_token in a subsequent `ListRestoreChannels` call to retrieve the next page
+        /// of results. If this field is omitted or empty, then there are no more results to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of RestoreChannels matching the given criteria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreChannels")]
+        public virtual System.Collections.Generic.IList<RestoreChannel> RestoreChannels { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListRestorePlanBindings.</summary>
+    public class ListRestorePlanBindingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token which may be sent as page_token in a subsequent `ListRestorePlanBindings` call to retrieve the next
+        /// page of results. If this field is omitted or empty, then there are no more results to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of RestorePlanBindings matching the given criteria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restorePlanBindings")]
+        public virtual System.Collections.Generic.IList<RestorePlanBinding> RestorePlanBindings { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5899,6 +7520,134 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Nullable<int> VolumesRestoredCount { get; set; }
     }
 
+    /// <summary>
+    /// A RestoreChannel imposes constraints on where backups can be restored. The RestoreChannel should be in the same
+    /// project and region as the backups. The backups can only be restored in the `destination_project`.
+    /// </summary>
+    public class RestoreChannel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when this RestoreChannel was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. User specified descriptive string for this RestoreChannel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The project into which the backups will be restored. The format is
+        /// `projects/{project}`. Currently, {project} can only be the project number. Support for project IDs will be
+        /// added in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationProject")]
+        public virtual string DestinationProject { get; set; }
+
+        /// <summary>
+        /// Output only. The project_id where backups will be restored. Example Project ID: "my-project-id". This will
+        /// be an OUTPUT_ONLY field to return the project_id of the destination project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationProjectId")]
+        public virtual string DestinationProjectId { get; set; }
+
+        /// <summary>
+        /// Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates
+        /// of a RestoreChannel from overwriting each other. It is strongly suggested that systems make use of the
+        /// 'etag' in the read-modify-write cycle to perform RestoreChannel updates in order to avoid race conditions:
+        /// An `etag` is returned in the response to `GetRestoreChannel`, and systems are expected to put that etag in
+        /// the request to `UpdateRestoreChannel` or `DeleteRestoreChannel` to ensure that their change will be applied
+        /// to the same version of the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Optional. A set of custom labels supplied by user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The fully qualified name of the RestoreChannel. `projects/*/locations/*/restoreChannels/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Server generated global unique identifier of
+        /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when this RestoreChannel was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
     /// <summary>Configuration of a restore.</summary>
     public class RestoreConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6128,6 +7877,127 @@ namespace Google.Apis.BackupforGKE.v1.Data
         private object _updateTime;
 
         /// <summary>Output only. The timestamp when this RestorePlan resource was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>
+    /// A RestorePlanBinding binds a RestorePlan with a RestoreChannel. This resource is created automatically when a
+    /// RestorePlan is created using a RestoreChannel. This also serves as a holder for cross-project fields that need
+    /// to be displayed in the current project.
+    /// </summary>
+    public class RestorePlanBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The fully qualified name of the BackupPlan bound to the specified RestorePlan.
+        /// `projects/*/locations/*/backukpPlans/{backup_plan}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlan")]
+        public virtual string BackupPlan { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when this binding was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates
+        /// of a RestorePlanBinding from overwriting each other. It is strongly suggested that systems make use of the
+        /// 'etag' in the read-modify-write cycle to perform RestorePlanBinding updates in order to avoid race
+        /// conditions: An `etag` is returned in the response to `GetRestorePlanBinding`, and systems are expected to
+        /// put that etag in the request to `UpdateRestorePlanBinding` or `DeleteRestorePlanBinding` to ensure that
+        /// their change will be applied to the same version of the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Identifier. The fully qualified name of the RestorePlanBinding.
+        /// `projects/*/locations/*/restoreChannels/*/restorePlanBindings/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The fully qualified name of the RestorePlan bound to this RestoreChannel.
+        /// `projects/*/locations/*/restorePlans/{restore_plan}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restorePlan")]
+        public virtual string RestorePlan { get; set; }
+
+        /// <summary>
+        /// Output only. Server generated global unique identifier of
+        /// [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when this binding was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
