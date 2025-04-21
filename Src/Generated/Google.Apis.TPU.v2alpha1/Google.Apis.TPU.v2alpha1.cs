@@ -2271,6 +2271,13 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
         public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
 
+        /// <summary>
+        /// Optional. Image from which boot disk is to be created. If not specified, the default image for the runtime
+        /// version will be used. Example: `projects/$PROJECT_ID/global/images/$IMAGE_NAME`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
+        public virtual string SourceImage { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3484,6 +3491,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         /// <summary>Defines whether the node is preemptible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
         public virtual System.Nullable<bool> Preemptible { get; set; }
+
+        /// <summary>Optional. Defines the provisioning model for the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisioningModel")]
+        public virtual string ProvisioningModel { get; set; }
 
         /// <summary>Whether the node is created under a reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reserved")]
