@@ -782,9 +782,6 @@ namespace Google.Apis.Logging.v2
                     /// <param name="parent">
                     /// Required. The full resource name of the bucket to create a link for.
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.Link body, string parent)
                     {
@@ -808,9 +805,6 @@ namespace Google.Apis.Logging.v2
                         /// <summary>
                         /// Required. The full resource name of the bucket to create a link for.
                         /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                        /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                        /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                        /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -3056,6 +3050,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
                 /// </summary>
@@ -3095,6 +3096,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^billingAccounts/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -5059,9 +5068,6 @@ namespace Google.Apis.Logging.v2
                     /// <param name="parent">
                     /// Required. The full resource name of the bucket to create a link for.
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.Link body, string parent)
                     {
@@ -5085,9 +5091,6 @@ namespace Google.Apis.Logging.v2
                         /// <summary>
                         /// Required. The full resource name of the bucket to create a link for.
                         /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                        /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                        /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                        /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -7895,6 +7898,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
                 /// </summary>
@@ -7934,6 +7944,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -9039,9 +9057,6 @@ namespace Google.Apis.Logging.v2
                 /// <param name="parent">
                 /// Required. The full resource name of the bucket to create a link for.
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.Link body, string parent)
                 {
@@ -9065,9 +9080,6 @@ namespace Google.Apis.Logging.v2
                     /// <summary>
                     /// Required. The full resource name of the bucket to create a link for.
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -10822,6 +10834,13 @@ namespace Google.Apis.Logging.v2
             public virtual string Name { get; private set; }
 
             /// <summary>
+            /// Optional. A list of extra location types that should be used as conditions for controlling the
+            /// visibility of the locations.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+            /// <summary>
             /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
             /// "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
             /// </summary>
@@ -10859,6 +10878,14 @@ namespace Google.Apis.Logging.v2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "extraLocationTypes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                 {
@@ -11607,9 +11634,6 @@ namespace Google.Apis.Logging.v2
                     /// <param name="parent">
                     /// Required. The full resource name of the bucket to create a link for.
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.Link body, string parent)
                     {
@@ -11633,9 +11657,6 @@ namespace Google.Apis.Logging.v2
                         /// <summary>
                         /// Required. The full resource name of the bucket to create a link for.
                         /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                        /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                        /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                        /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -14443,6 +14464,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
                 /// </summary>
@@ -14482,6 +14510,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -16078,9 +16114,6 @@ namespace Google.Apis.Logging.v2
                     /// <param name="parent">
                     /// Required. The full resource name of the bucket to create a link for.
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.Link body, string parent)
                     {
@@ -16104,9 +16137,6 @@ namespace Google.Apis.Logging.v2
                         /// <summary>
                         /// Required. The full resource name of the bucket to create a link for.
                         /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                        /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                        /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-                        /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -18914,6 +18944,13 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
                 /// </summary>
@@ -18953,6 +18990,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -21606,9 +21651,6 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>
         /// Required. The full resource name of the bucket to create a link for.
         /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-        /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-        /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-        /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
