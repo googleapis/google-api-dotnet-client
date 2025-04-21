@@ -4862,6 +4862,13 @@ namespace Google.Apis.NetAppFiles.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -4901,6 +4908,14 @@ namespace Google.Apis.NetAppFiles.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -5074,6 +5089,12 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
     /// <summary>A NetApp Backup.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Region in which backup is stored. Format: `projects/{project_id}/locations/{location}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRegion")]
+        public virtual string BackupRegion { get; set; }
+
         /// <summary>Output only. Type of backup, manually created or created by a backup policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupType")]
         public virtual string BackupType { get; set; }
@@ -5166,6 +5187,13 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// <summary>Output only. The backup state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. Region of the volume from which the backup was created. Format:
+        /// `projects/{project_id}/locations/{location}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeRegion")]
+        public virtual string VolumeRegion { get; set; }
 
         /// <summary>
         /// Output only. Size of the file system when the backup was created. When creating a new volume from the
@@ -5307,6 +5335,16 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
     /// <summary>A NetApp BackupVault.</summary>
     public class BackupVault : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Region where the backups are stored. Format: `projects/{project_id}/locations/{location}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRegion")]
+        public virtual string BackupRegion { get; set; }
+
+        /// <summary>Optional. Type of backup vault to be created. Default is IN_REGION.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupVaultType")]
+        public virtual string BackupVaultType { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -5348,6 +5386,13 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>
+        /// Output only. Name of the Backup vault created in backup region. Format:
+        /// `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationBackupVault")]
+        public virtual string DestinationBackupVault { get; set; }
+
         /// <summary>Resource labels to represent user provided metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -5358,6 +5403,20 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the Backup vault created in source region. Format:
+        /// `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceBackupVault")]
+        public virtual string SourceBackupVault { get; set; }
+
+        /// <summary>
+        /// Output only. Region in which the backup vault is created. Format:
+        /// `projects/{project_id}/locations/{location}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceRegion")]
+        public virtual string SourceRegion { get; set; }
 
         /// <summary>Output only. The backup vault state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
