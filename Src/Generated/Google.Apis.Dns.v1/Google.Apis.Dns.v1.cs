@@ -4636,6 +4636,10 @@ namespace Google.Apis.Dns.v1.Data
 
     public class ManagedZoneForwardingConfigNameServerTarget : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Fully qualified domain name for the forwarding target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
+        public virtual string DomainName { get; set; }
+
         /// <summary>
         /// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions
         /// based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to
