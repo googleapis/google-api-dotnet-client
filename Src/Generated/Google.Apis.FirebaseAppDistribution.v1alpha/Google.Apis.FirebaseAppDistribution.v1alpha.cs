@@ -852,61 +852,6 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 });
             }
         }
-
-        /// <summary>
-        /// Provision app distribution for an existing Firebase app, enabling it to subsequently be used by appdistro.
-        /// </summary>
-        /// <param name="mobilesdkAppId">
-        /// Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example:
-        /// 1:581234567376:android:aa0a3c7b135e90289
-        /// </param>
-        public virtual ProvisionAppRequest ProvisionApp(string mobilesdkAppId)
-        {
-            return new ProvisionAppRequest(this.service, mobilesdkAppId);
-        }
-
-        /// <summary>
-        /// Provision app distribution for an existing Firebase app, enabling it to subsequently be used by appdistro.
-        /// </summary>
-        public class ProvisionAppRequest : FirebaseAppDistributionBaseServiceRequest<Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaProvisionAppResponse>
-        {
-            /// <summary>Constructs a new ProvisionApp request.</summary>
-            public ProvisionAppRequest(Google.Apis.Services.IClientService service, string mobilesdkAppId) : base(service)
-            {
-                MobilesdkAppId = mobilesdkAppId;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)}
-            /// Example: 1:581234567376:android:aa0a3c7b135e90289
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("mobilesdkAppId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string MobilesdkAppId { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "provisionApp";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/apps/{mobilesdkAppId}";
-
-            /// <summary>Initializes ProvisionApp parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("mobilesdkAppId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "mobilesdkAppId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
     }
 
     /// <summary>The "projects" collection of methods.</summary>
@@ -2612,13 +2557,6 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("usernameResourceName")]
         public virtual string UsernameResourceName { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The response message for `ProvisionApp`.</summary>
-    public class GoogleFirebaseAppdistroV1alphaProvisionAppResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
