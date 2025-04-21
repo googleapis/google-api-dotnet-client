@@ -8855,6 +8855,13 @@ namespace Google.Apis.VMwareEngine.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -8894,6 +8901,14 @@ namespace Google.Apis.VMwareEngine.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -9391,6 +9406,13 @@ namespace Google.Apis.VMwareEngine.v1.Data
     /// </summary>
     public class Constraints : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Output Only. A list of intervals in which maintenance windows are not allowed. Any time window
+        /// that overlaps with any of these intervals will be considered invalid.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disallowedIntervals")]
+        public virtual System.Collections.Generic.IList<WeeklyTimeInterval> DisallowedIntervals { get; set; }
+
         /// <summary>
         /// Output only. Minimum number of hours must be allotted for the upgrade activities for each selected day. This
         /// is a minimum; the upgrade schedule can allot more hours for the given day.
@@ -12775,6 +12797,32 @@ namespace Google.Apis.VMwareEngine.v1.Data
         /// <summary>Output only. Type of VPC network (INTRANET, INTERNET, or GOOGLE_CLOUD)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a time interval, spanning across days of the week. Until local timezones are supported, this interval
+    /// is in UTC.
+    /// </summary>
+    public class WeeklyTimeInterval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The day on which the interval ends. Can be same as start day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDay")]
+        public virtual string EndDay { get; set; }
+
+        /// <summary>Output only. The time on the end day at which the interval ends.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual TimeOfDay EndTime { get; set; }
+
+        /// <summary>Output only. The day on which the interval starts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDay")]
+        public virtual string StartDay { get; set; }
+
+        /// <summary>Output only. The time on the start day at which the interval starts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
