@@ -2156,11 +2156,17 @@ namespace Google.Apis.ChromeManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("appId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AppId { get; set; }
 
-                /// <summary>Type of the app.</summary>
+                /// <summary>
+                /// Type of the app. Optional. If not provided, an app type will be inferred from the format of the app
+                /// ID.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appType", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AppTypeEnum> AppType { get; set; }
 
-                /// <summary>Type of the app.</summary>
+                /// <summary>
+                /// Type of the app. Optional. If not provided, an app type will be inferred from the format of the app
+                /// ID.
+                /// </summary>
                 public enum AppTypeEnum
                 {
                     /// <summary>App type not specified.</summary>
