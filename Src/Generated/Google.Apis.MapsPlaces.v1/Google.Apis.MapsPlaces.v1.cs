@@ -1149,16 +1149,11 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual GoogleTypeLocalizedText Content { get; set; }
 
         /// <summary>
-        /// Experimental: See
-        /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
-        /// details. References that are related to this block of content.
+        /// The list of resource names of the referenced places. This name can be used in other APIs that accept Place
+        /// resource names.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("references")]
-        public virtual GoogleMapsPlacesV1References References { get; set; }
-
-        /// <summary>The topic of the content, for example "overview" or "restaurant".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
-        public virtual string Topic { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("referencedPlaces")]
+        public virtual System.Collections.Generic.IList<string> ReferencedPlaces { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1547,14 +1542,6 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowsDogs")]
         public virtual System.Nullable<bool> AllowsDogs { get; set; }
 
-        /// <summary>
-        /// Experimental: See
-        /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
-        /// details. AI-generated summary of the area that the place is in.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("areaSummary")]
-        public virtual GoogleMapsPlacesV1PlaceAreaSummary AreaSummary { get; set; }
-
         /// <summary>A set of data provider that must be shown with this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributions")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceAttribution> Attributions { get; set; }
@@ -1613,6 +1600,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("editorialSummary")]
         public virtual GoogleTypeLocalizedText EditorialSummary { get; set; }
 
+        /// <summary>The summary of amenities near the EV charging station.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evChargeAmenitySummary")]
+        public virtual GoogleMapsPlacesV1PlaceEvChargeAmenitySummary EvChargeAmenitySummary { get; set; }
+
         /// <summary>Information of ev charging options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evChargeOptions")]
         public virtual GoogleMapsPlacesV1EVChargeOptions EvChargeOptions { get; set; }
@@ -1627,11 +1618,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fuelOptions")]
         public virtual GoogleMapsPlacesV1FuelOptions FuelOptions { get; set; }
 
-        /// <summary>
-        /// Experimental: See
-        /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
-        /// details. AI-generated summary of the place.
-        /// </summary>
+        /// <summary>AI-generated summary of the place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generativeSummary")]
         public virtual GoogleMapsPlacesV1PlaceGenerativeSummary GenerativeSummary { get; set; }
 
@@ -1695,6 +1682,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>A human-readable phone number for the place, in national format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nationalPhoneNumber")]
         public virtual string NationalPhoneNumber { get; set; }
+
+        /// <summary>A summary of points of interest near the place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("neighborhoodSummary")]
+        public virtual GoogleMapsPlacesV1PlaceNeighborhoodSummary NeighborhoodSummary { get; set; }
 
         /// <summary>Place provides outdoor seating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outdoorSeating")]
@@ -1794,6 +1785,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>Place has restroom.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restroom")]
         public virtual System.Nullable<bool> Restroom { get; set; }
+
+        /// <summary>AI-generated summary of the place using user reviews.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewSummary")]
+        public virtual GoogleMapsPlacesV1PlaceReviewSummary ReviewSummary { get; set; }
 
         /// <summary>
         /// List of reviews about this place, sorted by relevance. A maximum of 5 reviews can be returned.
@@ -1947,27 +1942,6 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Experimental: See
-    /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
-    /// details. AI-generated summary of the area that the place is in.
-    /// </summary>
-    public class GoogleMapsPlacesV1PlaceAreaSummary : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Content blocks that compose the area summary. Each block has a separate topic about the area.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentBlocks")]
-        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1ContentBlock> ContentBlocks { get; set; }
-
-        /// <summary>A link where users can flag a problem with the summary.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("flagContentUri")]
-        public virtual string FlagContentUri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Information about data providers of this place.</summary>
     public class GoogleMapsPlacesV1PlaceAttribution : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1999,19 +1973,52 @@ namespace Google.Apis.MapsPlaces.v1.Data
     }
 
     /// <summary>
-    /// Experimental: See
-    /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
-    /// details. AI-generated summary of the place.
+    /// The summary of amenities near the EV charging station. This only applies to places with type
+    /// `electric_vehicle_charging_station`. The `overview` field is guaranteed to be provided while the other fields
+    /// are optional.
     /// </summary>
+    public class GoogleMapsPlacesV1PlaceEvChargeAmenitySummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A summary of the nearby coffee options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coffee")]
+        public virtual GoogleMapsPlacesV1ContentBlock Coffee { get; set; }
+
+        /// <summary>
+        /// The AI disclosure message "Summarized with Gemini" (and its localized variants). This will be in the
+        /// language specified in the request if available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disclosureText")]
+        public virtual GoogleTypeLocalizedText DisclosureText { get; set; }
+
+        /// <summary>A link where users can flag a problem with the summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagContentUri")]
+        public virtual string FlagContentUri { get; set; }
+
+        /// <summary>An overview of the available amenities. This is guaranteed to be provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overview")]
+        public virtual GoogleMapsPlacesV1ContentBlock Overview { get; set; }
+
+        /// <summary>A summary of the nearby restaurants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restaurant")]
+        public virtual GoogleMapsPlacesV1ContentBlock Restaurant { get; set; }
+
+        /// <summary>A summary of the nearby gas stations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("store")]
+        public virtual GoogleMapsPlacesV1ContentBlock Store { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AI-generated summary of the place.</summary>
     public class GoogleMapsPlacesV1PlaceGenerativeSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The detailed description of the place.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual GoogleTypeLocalizedText Description { get; set; }
-
-        /// <summary>A link where users can flag a problem with the description summary.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("descriptionFlagContentUri")]
-        public virtual string DescriptionFlagContentUri { get; set; }
+        /// <summary>
+        /// The AI disclosure message "Summarized with Gemini" (and its localized variants). This will be in the
+        /// language specified in the request if available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disclosureText")]
+        public virtual GoogleTypeLocalizedText DisclosureText { get; set; }
 
         /// <summary>The overview of the place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overview")]
@@ -2020,10 +2027,6 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>A link where users can flag a problem with the overview summary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overviewFlagContentUri")]
         public virtual string OverviewFlagContentUri { get; set; }
-
-        /// <summary>References that are used to generate the summary description.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("references")]
-        public virtual GoogleMapsPlacesV1References References { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2063,6 +2066,32 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeAReviewUri")]
         public virtual string WriteAReviewUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A summary of points of interest near the place.</summary>
+    public class GoogleMapsPlacesV1PlaceNeighborhoodSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A detailed description of the neighborhood.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual GoogleMapsPlacesV1ContentBlock Description { get; set; }
+
+        /// <summary>
+        /// The AI disclosure message "Summarized with Gemini" (and its localized variants). This will be in the
+        /// language specified in the request if available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disclosureText")]
+        public virtual GoogleTypeLocalizedText DisclosureText { get; set; }
+
+        /// <summary>A link where users can flag a problem with the summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagContentUri")]
+        public virtual string FlagContentUri { get; set; }
+
+        /// <summary>An overview summary of the neighborhood.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overview")]
+        public virtual GoogleMapsPlacesV1ContentBlock Overview { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2337,6 +2366,28 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>AI-generated summary of the place using user reviews.</summary>
+    public class GoogleMapsPlacesV1PlaceReviewSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The AI disclosure message "Summarized with Gemini" (and its localized variants). This will be in the
+        /// language specified in the request if available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disclosureText")]
+        public virtual GoogleTypeLocalizedText DisclosureText { get; set; }
+
+        /// <summary>A link where users can flag a problem with the summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagContentUri")]
+        public virtual string FlagContentUri { get; set; }
+
+        /// <summary>The summary of user reviews.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual GoogleTypeLocalizedText Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Sub-destinations are specific places associated with a main place. These provide more specific destinations for
     /// users who are searching within a large or complex place, like an airport, national park, university, or stadium.
@@ -2392,28 +2443,6 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>The low end of the price range (inclusive). Price should be at or above this amount.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startPrice")]
         public virtual GoogleTypeMoney StartPrice { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Experimental: See
-    /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
-    /// details. Reference that the generative content is related to.
-    /// </summary>
-    public class GoogleMapsPlacesV1References : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The list of resource names of the referenced places. This name can be used in other APIs that accept Place
-        /// resource names.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("places")]
-        public virtual System.Collections.Generic.IList<string> Places { get; set; }
-
-        /// <summary>Reviews that serve as references.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reviews")]
-        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Review> Reviews { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
