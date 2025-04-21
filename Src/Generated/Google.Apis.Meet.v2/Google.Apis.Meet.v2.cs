@@ -2270,17 +2270,11 @@ namespace Google.Apis.Meet.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessType")]
         public virtual string AccessType { get; set; }
 
-        /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Configuration pertaining to the
-        /// auto-generated artifacts that the meeting supports.
-        /// </summary>
+        /// <summary>Configuration pertaining to the auto-generated artifacts that the meeting supports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifactConfig")]
         public virtual ArtifactConfig ArtifactConfig { get; set; }
 
-        /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Whether attendance report is enabled
-        /// for the meeting space.
-        /// </summary>
+        /// <summary>Whether attendance report is enabled for the meeting space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attendanceReportGenerationType")]
         public virtual string AttendanceReportGenerationType { get; set; }
 
@@ -2292,15 +2286,14 @@ namespace Google.Apis.Meet.v2.Data
         public virtual string EntryPointAccess { get; set; }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): The pre-configured moderation mode for
-        /// the Meeting. Default: Controlled by the user's policies.
+        /// The pre-configured moderation mode for the Meeting. Default: Controlled by the user's policies.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moderation")]
         public virtual string Moderation { get; set; }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): When moderation.ON, these restrictions
-        /// go into effect for the meeting. When moderation.OFF, will be reset to default ModerationRestrictions.
+        /// When moderation.ON, these restrictions go into effect for the meeting. When moderation.OFF, will be reset to
+        /// default ModerationRestrictions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moderationRestrictions")]
         public virtual ModerationRestrictions ModerationRestrictions { get; set; }
