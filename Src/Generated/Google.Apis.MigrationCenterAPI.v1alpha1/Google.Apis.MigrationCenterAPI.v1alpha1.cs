@@ -7582,6 +7582,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. The recommended versions of the discovery client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendedVersions")]
+        public virtual System.Collections.Generic.IList<DiscoveryClientDiscoveryClientRecommendedVersion> RecommendedVersions { get; set; }
+
         /// <summary>Required. Service account used by the discovery client for various operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -7647,6 +7651,21 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         }
 
         /// <summary>Output only. Client version, as reported in recent heartbeat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Discovery client recommended version.</summary>
+    public class DiscoveryClientDiscoveryClientRecommendedVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URI of the discovery client version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The version of the discovery client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
