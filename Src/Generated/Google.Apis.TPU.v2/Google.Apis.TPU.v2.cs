@@ -2587,6 +2587,10 @@ namespace Google.Apis.TPU.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
+        /// <summary>Output only. Upcoming maintenance on this TPU node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upcomingMaintenance")]
+        public virtual UpcomingMaintenance UpcomingMaintenance { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3212,6 +3216,44 @@ namespace Google.Apis.TPU.v2.Data
         /// <summary>Optional. The TPU node(s) being requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeSpec")]
         public virtual System.Collections.Generic.IList<NodeSpec> NodeSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Upcoming Maintenance notification information.</summary>
+    public class UpcomingMaintenance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates if the maintenance can be customer triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canReschedule")]
+        public virtual System.Nullable<bool> CanReschedule { get; set; }
+
+        /// <summary>
+        /// The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestWindowStartTime")]
+        public virtual string LatestWindowStartTime { get; set; }
+
+        /// <summary>The status of the maintenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceStatus")]
+        public virtual string MaintenanceStatus { get; set; }
+
+        /// <summary>Defines the type of maintenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text
+        /// format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowEndTime")]
+        public virtual string WindowEndTime { get; set; }
+
+        /// <summary>
+        /// The current start time of the maintenance window. This timestamp value is in RFC3339 text format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowStartTime")]
+        public virtual string WindowStartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
