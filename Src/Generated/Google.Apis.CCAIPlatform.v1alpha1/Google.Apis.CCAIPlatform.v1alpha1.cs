@@ -1232,6 +1232,10 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adminUser")]
         public virtual AdminUser AdminUser { get; set; }
 
+        /// <summary>Optional. Whether the advanced reporting feature is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedReportingEnabled")]
+        public virtual System.Nullable<bool> AdvancedReportingEnabled { get; set; }
+
         /// <summary>
         /// Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud
         /// identity
