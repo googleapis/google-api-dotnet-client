@@ -63,5 +63,13 @@
     "ADVERTISED",
     "LEARNED",
     "UNSPECIFIED_ROUTE_TYPE"
+  ],
+  "Google.Apis.Compute.alpha.SubnetworksResource+GetRequest.ViewsEnum": [
+    "DEFAULT",
+    "WITH_UTILIZATION"
+  ],
+  "Google.Apis.Compute.alpha.SubnetworksResource+ListRequest.ViewsEnum": [
+    "DEFAULT",
+    "WITH_UTILIZATION"
   ]
 }
