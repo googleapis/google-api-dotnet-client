@@ -3068,79 +3068,6 @@ namespace Google.Apis.BeyondCorp.v1
                 }
 
                 /// <summary>
-                /// Calls the Bouncer method ShouldThrottle to check if a request should be throttled.
-                /// </summary>
-                /// <param name="name">Required. Name of the resource</param>
-                public virtual ShouldThrottleRequest ShouldThrottle(string name)
-                {
-                    return new ShouldThrottleRequest(this.service, name);
-                }
-
-                /// <summary>
-                /// Calls the Bouncer method ShouldThrottle to check if a request should be throttled.
-                /// </summary>
-                public class ShouldThrottleRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1.Data.ShouldThrottleResponse>
-                {
-                    /// <summary>Constructs a new ShouldThrottle request.</summary>
-                    public ShouldThrottleRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Name of the resource</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Optional. The port that is being throttled</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("port", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> Port { get; set; }
-
-                    /// <summary>Optional. The current throughput through the port (mbps)</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestedAmount", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<long> RequestedAmount { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "shouldThrottle";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}:shouldThrottle";
-
-                    /// <summary>Initializes ShouldThrottle parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/appGateways/[^/]+$",
-                        });
-                        RequestParameters.Add("port", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "port",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("requestedAmount", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestedAmount",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>
                 /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
                 /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
                 /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
@@ -5345,6 +5272,13 @@ namespace Google.Apis.BeyondCorp.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -5384,6 +5318,14 @@ namespace Google.Apis.BeyondCorp.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -8352,17 +8294,6 @@ namespace Google.Apis.BeyondCorp.v1.Data
         /// <summary>A list of locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for calling ShouldThrottle</summary>
-    public class ShouldThrottleResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether the port should be throttled</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("shouldThrottle")]
-        public virtual System.Nullable<bool> ShouldThrottle { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
