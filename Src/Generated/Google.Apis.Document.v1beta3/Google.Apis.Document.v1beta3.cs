@@ -4884,6 +4884,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
+        /// <summary>Optional. An internal identifier for document. Should be loggable (no PII).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docid")]
+        public virtual string Docid { get; set; }
+
         /// <summary>Parsed layout of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentLayout")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentDocumentLayout DocumentLayout { get; set; }
@@ -5057,6 +5061,10 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>ID of the block.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockId")]
         public virtual string BlockId { get; set; }
+
+        /// <summary>Identifies the bounding box for the block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
+        public virtual GoogleCloudDocumentaiV1beta3BoundingPoly BoundingBox { get; set; }
 
         /// <summary>Block consisting of list content/structure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listBlock")]
