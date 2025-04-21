@@ -291,7 +291,7 @@ namespace Google.Apis.Merchant.conversions_v1beta
             /// <summary>Creates a new conversion source.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The merchant account that will own the new conversion source. Format: accounts/{account}
+            /// Required. The merchant account that will own the new conversion source. Format: `accounts/{account}`
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Merchant.conversions_v1beta.Data.ConversionSource body, string parent)
             {
@@ -310,7 +310,7 @@ namespace Google.Apis.Merchant.conversions_v1beta
                 }
 
                 /// <summary>
-                /// Required. The merchant account that will own the new conversion source. Format: accounts/{account}
+                /// Required. The merchant account that will own the new conversion source. Format: `accounts/{account}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -352,7 +352,7 @@ namespace Google.Apis.Merchant.conversions_v1beta
             /// </summary>
             /// <param name="name">
             /// Required. The name of the conversion source to be deleted. Format:
-            /// accounts/{account}/conversionSources/{conversion_source}
+            /// `accounts/{account}/conversionSources/{conversion_source}`
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -375,7 +375,7 @@ namespace Google.Apis.Merchant.conversions_v1beta
 
                 /// <summary>
                 /// Required. The name of the conversion source to be deleted. Format:
-                /// accounts/{account}/conversionSources/{conversion_source}
+                /// `accounts/{account}/conversionSources/{conversion_source}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -407,7 +407,7 @@ namespace Google.Apis.Merchant.conversions_v1beta
             /// <summary>Fetches a conversion source.</summary>
             /// <param name="name">
             /// Required. The name of the conversion source to be fetched. Format:
-            /// accounts/{account}/conversionSources/{conversion_source}
+            /// `accounts/{account}/conversionSources/{conversion_source}`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -426,7 +426,7 @@ namespace Google.Apis.Merchant.conversions_v1beta
 
                 /// <summary>
                 /// Required. The name of the conversion source to be fetched. Format:
-                /// accounts/{account}/conversionSources/{conversion_source}
+                /// `accounts/{account}/conversionSources/{conversion_source}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -457,7 +457,8 @@ namespace Google.Apis.Merchant.conversions_v1beta
 
             /// <summary>Retrieves the list of conversion sources the caller has access to.</summary>
             /// <param name="parent">
-            /// Required. The merchant account who owns the collection of conversion sources. Format: accounts/{account}
+            /// Required. The merchant account who owns the collection of conversion sources. Format:
+            /// `accounts/{account}`
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -476,7 +477,7 @@ namespace Google.Apis.Merchant.conversions_v1beta
 
                 /// <summary>
                 /// Required. The merchant account who owns the collection of conversion sources. Format:
-                /// accounts/{account}
+                /// `accounts/{account}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -494,7 +495,10 @@ namespace Google.Apis.Merchant.conversions_v1beta
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Optional. Show deleted (archived) option.</summary>
+                /// <summary>
+                /// Optional. Show deleted (archived) conversion sources. By default, deleted conversion sources are not
+                /// returned.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
@@ -553,10 +557,10 @@ namespace Google.Apis.Merchant.conversions_v1beta
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Output only. Identifier. Generated by the Content API upon creation of a new `ConversionSource`. Format:
-            /// [a-z]{4}:.+ The four characters before the colon represent the type of conversio source. Content after
-            /// the colon represents the ID of the conversion source within that type. The ID of two different
+            /// `[a-z]{4}:.+` The four characters before the colon represent the type of conversion source. Content
+            /// after the colon represents the ID of the conversion source within that type. The ID of two different
             /// conversion sources might be the same across different types. The following type prefixes are supported:
-            /// - galk: For GoogleAnalyticsLink sources. - mcdn: For MerchantCenterDestination sources.
+            /// * `galk`: For GoogleAnalyticsLink sources. * `mcdn`: For MerchantCenterDestination sources.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Merchant.conversions_v1beta.Data.ConversionSource body, string name)
             {
@@ -579,10 +583,10 @@ namespace Google.Apis.Merchant.conversions_v1beta
 
                 /// <summary>
                 /// Output only. Identifier. Generated by the Content API upon creation of a new `ConversionSource`.
-                /// Format: [a-z]{4}:.+ The four characters before the colon represent the type of conversio source.
+                /// Format: `[a-z]{4}:.+` The four characters before the colon represent the type of conversion source.
                 /// Content after the colon represents the ID of the conversion source within that type. The ID of two
                 /// different conversion sources might be the same across different types. The following type prefixes
-                /// are supported: - galk: For GoogleAnalyticsLink sources. - mcdn: For MerchantCenterDestination
+                /// are supported: * `galk`: For GoogleAnalyticsLink sources. * `mcdn`: For MerchantCenterDestination
                 /// sources.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -637,7 +641,7 @@ namespace Google.Apis.Merchant.conversions_v1beta
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The name of the conversion source to be undeleted. Format:
-            /// accounts/{account}/conversionSources/{conversion_source}
+            /// `accounts/{account}/conversionSources/{conversion_source}`
             /// </param>
             public virtual UndeleteRequest Undelete(Google.Apis.Merchant.conversions_v1beta.Data.UndeleteConversionSourceRequest body, string name)
             {
@@ -660,7 +664,7 @@ namespace Google.Apis.Merchant.conversions_v1beta
 
                 /// <summary>
                 /// Required. The name of the conversion source to be undeleted. Format:
-                /// accounts/{account}/conversionSources/{conversion_source}
+                /// `accounts/{account}/conversionSources/{conversion_source}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -703,11 +707,13 @@ namespace Google.Apis.Merchant.conversions_v1beta.Data
     public class AttributionSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Lookback windows (in days) used for attribution in this source. Supported values are 7, 30, 40.
+        /// Required. Lookback window (in days) used for attribution in this source. Supported values are `7`, `30`
+        /// &amp;amp; `40`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionLookbackWindowDays")]
         public virtual System.Nullable<int> AttributionLookbackWindowDays { get; set; }
 
+        /// <summary>Required. Attribution model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionModel")]
         public virtual string AttributionModel { get; set; }
 
@@ -782,10 +788,10 @@ namespace Google.Apis.Merchant.conversions_v1beta.Data
 
         /// <summary>
         /// Output only. Identifier. Generated by the Content API upon creation of a new `ConversionSource`. Format:
-        /// [a-z]{4}:.+ The four characters before the colon represent the type of conversio source. Content after the
-        /// colon represents the ID of the conversion source within that type. The ID of two different conversion
-        /// sources might be the same across different types. The following type prefixes are supported: - galk: For
-        /// GoogleAnalyticsLink sources. - mcdn: For MerchantCenterDestination sources.
+        /// `[a-z]{4}:.+` The four characters before the colon represent the type of conversion source. Content after
+        /// the colon represents the ID of the conversion source within that type. The ID of two different conversion
+        /// sources might be the same across different types. The following type prefixes are supported: * `galk`: For
+        /// GoogleAnalyticsLink sources. * `mcdn`: For MerchantCenterDestination sources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -798,7 +804,7 @@ namespace Google.Apis.Merchant.conversions_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message representing a types of conversion events</summary>
+    /// <summary>Message representing the type of a conversion event.</summary>
     public class ConversionType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Conversion event name, as it'll be reported by the client.</summary>
@@ -869,7 +875,7 @@ namespace Google.Apis.Merchant.conversions_v1beta.Data
     /// </summary>
     public class MerchantCenterDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Attribution settings being used for the Merchant Center Destination.</summary>
+        /// <summary>Required. Attribution settings used for the Merchant Center Destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionSettings")]
         public virtual AttributionSettings AttributionSettings { get; set; }
 
@@ -886,7 +892,7 @@ namespace Google.Apis.Merchant.conversions_v1beta.Data
 
         /// <summary>
         /// Required. Merchant-specified display name for the destination. This is the name that identifies the
-        /// conversion source within the Merchant Center UI. Limited to 64 characters.
+        /// conversion source within the Merchant Center UI. The maximum length is 64 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
