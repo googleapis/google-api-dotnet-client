@@ -8936,7 +8936,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>
         /// "": "" Algorithms can be e.g. sha256, sha512 See
-        /// https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+        /// https://github.com/in-toto/attestation/blob/main/spec/v1/digest_set.md.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]
         public virtual System.Collections.Generic.IDictionary<string, string> Digest { get; set; }
