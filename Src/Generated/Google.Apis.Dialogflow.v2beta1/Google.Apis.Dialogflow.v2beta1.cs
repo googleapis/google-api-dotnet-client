@@ -30955,6 +30955,28 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Pronunciation customization for a phrase.</summary>
+    public class GoogleCloudDialogflowV2beta1CustomPronunciationParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The phonetic encoding of the phrase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneticEncoding")]
+        public virtual string PhoneticEncoding { get; set; }
+
+        /// <summary>
+        /// The phrase to which the customization is applied. The phrase can be multiple words, such as proper nouns,
+        /// but shouldn't span the length of the sentence.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phrase")]
+        public virtual string Phrase { get; set; }
+
+        /// <summary>The pronunciation of the phrase. This must be in the phonetic encoding specified above.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pronunciation")]
+        public virtual string Pronunciation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request to detect user's intent.</summary>
     public class GoogleCloudDialogflowV2beta1DetectIntentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -36919,6 +36941,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pitch")]
         public virtual System.Nullable<double> Pitch { get; set; }
+
+        /// <summary>Optional. The custom pronunciations for the synthesized audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pronunciations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1CustomPronunciationParams> Pronunciations { get; set; }
 
         /// <summary>
         /// Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the
