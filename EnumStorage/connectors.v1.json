@@ -16,6 +16,11 @@
     "VIEW_UNSPECIFIED",
     "BASIC"
   ],
+  "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+ConnectionsResource+EndUserAuthenticationsResource+GetRequest.ViewEnum": [
+    "END_USER_AUTHENTICATION_VIEW_UNSPECIFIED",
+    "BASIC_VIEW",
+    "FULL_VIEW"
+  ],
   "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+ConnectionsResource+GetRequest.ViewEnum": [
     "CONNECTION_VIEW_UNSPECIFIED",
     "BASIC",
