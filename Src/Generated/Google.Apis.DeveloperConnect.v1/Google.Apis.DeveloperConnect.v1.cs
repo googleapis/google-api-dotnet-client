@@ -427,14 +427,14 @@ namespace Google.Apis.DeveloperConnect.v1
                         }
                     }
 
-                    /// <summary>Delete the User of the user themselves.</summary>
+                    /// <summary>Delete the User based on the user credentials.</summary>
                     /// <param name="name">Required. Name of the AccountConnector resource</param>
                     public virtual DeleteSelfRequest DeleteSelf(string name)
                     {
                         return new DeleteSelfRequest(this.service, name);
                     }
 
-                    /// <summary>Delete the User of the user themselves.</summary>
+                    /// <summary>Delete the User based on the user credentials.</summary>
                     public class DeleteSelfRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new DeleteSelf request.</summary>
@@ -531,14 +531,14 @@ namespace Google.Apis.DeveloperConnect.v1
                         }
                     }
 
-                    /// <summary>Fetches the User of the user themselves.</summary>
+                    /// <summary>Fetch the User based on the user credentials.</summary>
                     /// <param name="name">Required. Name of the AccountConnector resource</param>
                     public virtual FetchSelfRequest FetchSelf(string name)
                     {
                         return new FetchSelfRequest(this.service, name);
                     }
 
-                    /// <summary>Fetches the User of the user themselves.</summary>
+                    /// <summary>Fetch the User based on the user credentials.</summary>
                     public class FetchSelfRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.User>
                     {
                         /// <summary>Constructs a new FetchSelf request.</summary>
@@ -1028,7 +1028,7 @@ namespace Google.Apis.DeveloperConnect.v1
                 /// <summary>Updates the parameters of a single AccountConnector.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Identifier. The resource name of the userConnection, in the format
+                /// Identifier. The resource name of the accountConnector, in the format
                 /// `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DeveloperConnect.v1.Data.AccountConnector body, string name)
@@ -1048,16 +1048,16 @@ namespace Google.Apis.DeveloperConnect.v1
                     }
 
                     /// <summary>
-                    /// Identifier. The resource name of the userConnection, in the format
+                    /// Identifier. The resource name of the accountConnector, in the format
                     /// `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. If set to true, and the userConnection is not found a new userConnection will be
+                    /// Optional. If set to true, and the accountConnector is not found a new accountConnector will be
                     /// created. In this situation `update_mask` is ignored. The creation will succeed only if the input
-                    /// userConnection has all the necessary
+                    /// accountConnector has all the necessary
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> AllowMissing { get; set; }
@@ -3113,7 +3113,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. The timestamp when the userConnection was created.</summary>
+        /// <summary>Output only. The timestamp when the accountConnector was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -3158,7 +3158,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Identifier. The resource name of the userConnection, in the format
+        /// Identifier. The resource name of the accountConnector, in the format
         /// `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3176,7 +3176,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. The timestamp when the userConnection was updated.</summary>
+        /// <summary>Output only. The timestamp when the accountConnector was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
