@@ -314,8 +314,527 @@ namespace Google.Apis.ManagedKafka.v1
                 public ClustersResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Acls = new AclsResource(service);
                     ConsumerGroups = new ConsumerGroupsResource(service);
                     Topics = new TopicsResource(service);
+                }
+
+                /// <summary>Gets the Acls resource.</summary>
+                public virtual AclsResource Acls { get; }
+
+                /// <summary>The "acls" collection of methods.</summary>
+                public class AclsResource
+                {
+                    private const string Resource = "acls";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AclsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Incremental update: Adds an acl entry to an acl. Creates the acl if it does not exist yet.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="acl">
+                    /// Required. The name of the acl to add the acl entry to. Structured like:
+                    /// `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of
+                    /// `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl.
+                    /// See `Acl.name` for details.
+                    /// </param>
+                    public virtual AddAclEntryRequest AddAclEntry(Google.Apis.ManagedKafka.v1.Data.AclEntry body, string acl)
+                    {
+                        return new AddAclEntryRequest(this.service, body, acl);
+                    }
+
+                    /// <summary>
+                    /// Incremental update: Adds an acl entry to an acl. Creates the acl if it does not exist yet.
+                    /// </summary>
+                    public class AddAclEntryRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.AddAclEntryResponse>
+                    {
+                        /// <summary>Constructs a new AddAclEntry request.</summary>
+                        public AddAclEntryRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.AclEntry body, string acl) : base(service)
+                        {
+                            Acl = acl;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the acl to add the acl entry to. Structured like:
+                        /// `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of
+                        /// `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the
+                        /// acl. See `Acl.name` for details.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("acl", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Acl { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedKafka.v1.Data.AclEntry Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "addAclEntry";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+acl}:addAclEntry";
+
+                        /// <summary>Initializes AddAclEntry parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("acl", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "acl",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/acls/.*$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Creates a new acl in the given project, location, and cluster.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent cluster in which to create the acl. Structured like
+                    /// `projects/{project}/locations/{location}/clusters/{cluster}`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.ManagedKafka.v1.Data.Acl body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a new acl in the given project, location, and cluster.</summary>
+                    public class CreateRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.Acl>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.Acl body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent cluster in which to create the acl. Structured like
+                        /// `projects/{project}/locations/{location}/clusters/{cluster}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the acl, which will become the final component of the acl's
+                        /// name. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name,
+                        /// pattern_type) of the acl. `acl_id` is structured like one of the following: For acls on the
+                        /// cluster: `cluster` For acls on a single resource within the cluster: `topic/{resource_name}`
+                        /// `consumerGroup/{resource_name}` `transactionalId/{resource_name}` For acls on all resources
+                        /// that match a prefix: `topicPrefixed/{resource_name}` `consumerGroupPrefixed/{resource_name}`
+                        /// `transactionalIdPrefixed/{resource_name}` For acls on all resources of a given type (i.e.
+                        /// the wildcard literal "*"): `allTopics` (represents `topic/*`) `allConsumerGroups`
+                        /// (represents `consumerGroup/*`) `allTransactionalIds` (represents `transactionalId/*`)
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("aclId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string AclId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedKafka.v1.Data.Acl Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/acls";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                            });
+                            RequestParameters.Add("aclId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "aclId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes an acl.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the acl to delete. Structured like:
+                    /// `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of
+                    /// `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl.
+                    /// See `Acl.name` for details.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes an acl.</summary>
+                    public class DeleteRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the acl to delete. Structured like:
+                        /// `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of
+                        /// `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the
+                        /// acl. See `Acl.name` for details.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/acls/.*$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns the properties of a single acl.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the acl to return. Structured like:
+                    /// `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of
+                    /// `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl.
+                    /// See `Acl.name` for details.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Returns the properties of a single acl.</summary>
+                    public class GetRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.Acl>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the acl to return. Structured like:
+                        /// `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of
+                        /// `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the
+                        /// acl. See `Acl.name` for details.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/acls/.*$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists the acls in a given cluster.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent cluster whose acls are to be listed. Structured like
+                    /// `projects/{project}/locations/{location}/clusters/{cluster}`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists the acls in a given cluster.</summary>
+                    public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.ListAclsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent cluster whose acls are to be listed. Structured like
+                        /// `projects/{project}/locations/{location}/clusters/{cluster}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of acls to return. The service may return fewer than this
+                        /// value. If unset or zero, all acls for the parent is returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListAcls` call. Provide this to retrieve
+                        /// the subsequent page. When paginating, all other parameters provided to `ListAcls` must match
+                        /// the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/acls";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the properties of a single acl.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Identifier. The name for the acl. Represents a single Resource Pattern. Structured like:
+                    /// projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id} The structure of
+                    /// `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl.
+                    /// `acl_id` is structured like one of the following: For acls on the cluster: `cluster` For acls on
+                    /// a single resource within the cluster: `topic/{resource_name}` `consumerGroup/{resource_name}`
+                    /// `transactionalId/{resource_name}` For acls on all resources that match a prefix:
+                    /// `topicPrefixed/{resource_name}` `consumerGroupPrefixed/{resource_name}`
+                    /// `transactionalIdPrefixed/{resource_name}` For acls on all resources of a given type (i.e. the
+                    /// wildcard literal "*"): `allTopics` (represents `topic/*`) `allConsumerGroups` (represents
+                    /// `consumerGroup/*`) `allTransactionalIds` (represents `transactionalId/*`)
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.ManagedKafka.v1.Data.Acl body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates the properties of a single acl.</summary>
+                    public class PatchRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.Acl>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.Acl body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Identifier. The name for the acl. Represents a single Resource Pattern. Structured like:
+                        /// projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id} The structure of
+                        /// `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the
+                        /// acl. `acl_id` is structured like one of the following: For acls on the cluster: `cluster`
+                        /// For acls on a single resource within the cluster: `topic/{resource_name}`
+                        /// `consumerGroup/{resource_name}` `transactionalId/{resource_name}` For acls on all resources
+                        /// that match a prefix: `topicPrefixed/{resource_name}` `consumerGroupPrefixed/{resource_name}`
+                        /// `transactionalIdPrefixed/{resource_name}` For acls on all resources of a given type (i.e.
+                        /// the wildcard literal "*"): `allTopics` (represents `topic/*`) `allConsumerGroups`
+                        /// (represents `consumerGroup/*`) `allTransactionalIds` (represents `transactionalId/*`)
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Field mask is used to specify the fields to be overwritten in the Acl resource by
+                        /// the update. The fields specified in the update_mask are relative to the resource, not the
+                        /// full request. A field will be overwritten if it is in the mask.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedKafka.v1.Data.Acl Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/acls/.*$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Incremental update: Removes an acl entry from an acl. Deletes the acl if its acl entries become
+                    /// empty (i.e. if the removed entry was the last one in the acl).
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="acl">
+                    /// Required. The name of the acl to remove the acl entry from. Structured like:
+                    /// `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of
+                    /// `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl.
+                    /// See `Acl.name` for details.
+                    /// </param>
+                    public virtual RemoveAclEntryRequest RemoveAclEntry(Google.Apis.ManagedKafka.v1.Data.AclEntry body, string acl)
+                    {
+                        return new RemoveAclEntryRequest(this.service, body, acl);
+                    }
+
+                    /// <summary>
+                    /// Incremental update: Removes an acl entry from an acl. Deletes the acl if its acl entries become
+                    /// empty (i.e. if the removed entry was the last one in the acl).
+                    /// </summary>
+                    public class RemoveAclEntryRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.RemoveAclEntryResponse>
+                    {
+                        /// <summary>Constructs a new RemoveAclEntry request.</summary>
+                        public RemoveAclEntryRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.AclEntry body, string acl) : base(service)
+                        {
+                            Acl = acl;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the acl to remove the acl entry from. Structured like:
+                        /// `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of
+                        /// `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the
+                        /// acl. See `Acl.name` for details.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("acl", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Acl { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedKafka.v1.Data.AclEntry Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "removeAclEntry";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+acl}:removeAclEntry";
+
+                        /// <summary>Initializes RemoveAclEntry parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("acl", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "acl",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/acls/.*$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the ConsumerGroups resource.</summary>
@@ -2839,6 +3358,107 @@ namespace Google.Apis.ManagedKafka.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents the set of ACLs for a given Kafka Resource Pattern, which consists of resource_type, resource_name
+    /// and pattern_type.
+    /// </summary>
+    public class Acl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The ACL entries that apply to the resource pattern. The maximum number of allowed entries 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclEntries")]
+        public virtual System.Collections.Generic.IList<AclEntry> AclEntries { get; set; }
+
+        /// <summary>
+        /// Optional. `etag` is used for concurrency control. An `etag` is returned in the response to `GetAcl` and
+        /// `CreateAcl`. Callers are required to put that etag in the request to `UpdateAcl` to ensure that their change
+        /// will be applied to the same version of the acl that exists in the Kafka Cluster. A terminal 'T' character in
+        /// the etag indicates that the AclEntries were truncated; more entries for the Acl exist on the Kafka Cluster,
+        /// but can't be returned in the Acl due to repeated field limits.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Identifier. The name for the acl. Represents a single Resource Pattern. Structured like:
+        /// projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id} The structure of `acl_id` defines
+        /// the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. `acl_id` is structured like
+        /// one of the following: For acls on the cluster: `cluster` For acls on a single resource within the cluster:
+        /// `topic/{resource_name}` `consumerGroup/{resource_name}` `transactionalId/{resource_name}` For acls on all
+        /// resources that match a prefix: `topicPrefixed/{resource_name}` `consumerGroupPrefixed/{resource_name}`
+        /// `transactionalIdPrefixed/{resource_name}` For acls on all resources of a given type (i.e. the wildcard
+        /// literal "*"): `allTopics` (represents `topic/*`) `allConsumerGroups` (represents `consumerGroup/*`)
+        /// `allTransactionalIds` (represents `transactionalId/*`)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The ACL pattern type derived from the name. One of: LITERAL, PREFIXED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patternType")]
+        public virtual string PatternType { get; set; }
+
+        /// <summary>
+        /// Output only. The ACL resource name derived from the name. For cluster resource_type, this is always
+        /// "kafka-cluster". Can be the wildcard literal "*".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>
+        /// Output only. The ACL resource type derived from the name. One of: CLUSTER, TOPIC, GROUP, TRANSACTIONAL_ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+    }
+
+    /// <summary>Represents the access granted for a given Resource Pattern in an ACL.</summary>
+    public class AclEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The host. Must be set to "*" for Managed Service for Apache Kafka.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>
+        /// Required. The operation type. Allowed values are (case insensitive): ALL, READ, WRITE, CREATE, DELETE,
+        /// ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS, ALTER_CONFIGS, and IDEMPOTENT_WRITE. See
+        /// https://kafka.apache.org/documentation/#operations_resources_and_protocols for valid combinations of
+        /// resource_type and operation for different Kafka API requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>Required. The permission type. Accepted values are (case insensitive): ALLOW, DENY.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissionType")]
+        public virtual string PermissionType { get; set; }
+
+        /// <summary>
+        /// Required. The principal. Specified as Google Cloud account, with the Kafka StandardAuthorizer prefix
+        /// "User:". For example: "User:test-kafka-client@test-project.iam.gserviceaccount.com". Can be the wildcard
+        /// "User:*" to refer to all users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principal")]
+        public virtual string Principal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for AddAclEntry.</summary>
+    public class AddAclEntryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated acl.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acl")]
+        public virtual Acl Acl { get; set; }
+
+        /// <summary>Whether the acl was created as a result of adding the acl entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclCreated")]
+        public virtual System.Nullable<bool> AclCreated { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3277,6 +3897,24 @@ namespace Google.Apis.ManagedKafka.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for ListAcls.</summary>
+    public class ListAclsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of acls in the requested parent. The order of the acls is unspecified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acls")]
+        public virtual System.Collections.Generic.IList<Acl> Acls { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted,
+        /// there are no more results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for ListClusters.</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3625,6 +4263,23 @@ namespace Google.Apis.ManagedKafka.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for RemoveAclEntry.</summary>
+    public class RemoveAclEntryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated acl. Returned if the removed acl entry was not the last entry in the acl.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acl")]
+        public virtual Acl Acl { get; set; }
+
+        /// <summary>
+        /// Returned with value true if the removed acl entry was the last entry in the acl, resulting in acl deletion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclDeleted")]
+        public virtual System.Nullable<bool> AclDeleted { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
