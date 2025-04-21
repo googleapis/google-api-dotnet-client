@@ -2440,7 +2440,10 @@ namespace Google.Apis.GKEHub.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("infrastructureType")]
         public virtual string InfrastructureType { get; set; }
 
-        /// <summary>Optional. GCP labels for this membership.</summary>
+        /// <summary>
+        /// Optional. GCP labels for this membership. These labels are not leveraged by multi-cluster features, instead,
+        /// we prefer cluster labels, which can be set on GKE cluster or other cluster types.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
