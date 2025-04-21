@@ -685,9 +685,9 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         public virtual System.Nullable<int> SampleRateHertz { get; set; }
 
         /// <summary>
-        /// Optional. Input only. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed
+        /// Optional. Input only. Speaking rate/speed, in the range [0.25, 2.0]. 1.0 is the normal native speed
         /// supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to
-        /// the native 1.0 speed. Any other values &amp;lt; 0.25 or &amp;gt; 4.0 will return an error.
+        /// the native 1.0 speed. Any other values &amp;lt; 0.25 or &amp;gt; 2.0 will return an error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakingRate")]
         public virtual System.Nullable<double> SpeakingRate { get; set; }
