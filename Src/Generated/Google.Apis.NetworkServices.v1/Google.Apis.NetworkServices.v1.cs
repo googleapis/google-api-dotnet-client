@@ -6731,6 +6731,13 @@ namespace Google.Apis.NetworkServices.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -6770,6 +6777,14 @@ namespace Google.Apis.NetworkServices.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -7425,10 +7440,12 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// available under the namespace `com.google....`. For example:
         /// `com.google.lb_traffic_extension.lbtrafficextension1.chain1.ext1`. The following variables are supported in
         /// the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
-        /// This field is subject to following limitations: * The total size of the metadata must be less than 1KiB. *
-        /// The total number of keys in the metadata must be less than 20. * The length of each key must be less than 64
-        /// characters. * The length of each value must be less than 1024 characters. * All values must be strings. This
-        /// field is not supported for plugin extensions. Setting it results in a validation error.
+        /// This field must not be set for plugin extensions. Setting it results in a validation error. You can set
+        /// metadata at either the resource level or the extension level. The extension level metadata is recommended
+        /// because you can pass a different set of metadata through each extension to the backend. This field is
+        /// subject to following limitations: * The total size of the metadata must be less than 1KiB. * The total
+        /// number of keys in the metadata must be less than 16. * The length of each key must be less than 64
+        /// characters. * The length of each value must be less than 1024 characters. * All values must be strings.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
@@ -8921,7 +8938,8 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Required. A list of references to the forwarding rules to which this service extension is attached. At least
-        /// one forwarding rule is required. There can be only one `LbRouteExtension` resource per forwarding rule.
+        /// one forwarding rule is required. Only one `LbRouteExtension` resource can be associated with a forwarding
+        /// rule.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRules")]
         public virtual System.Collections.Generic.IList<string> ForwardingRules { get; set; }
@@ -8944,10 +8962,14 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Optional. The metadata provided here is included as part of the `metadata_context` (of type
-        /// `google.protobuf.Struct`) in the `ProcessingRequest` message sent to the extension server. The metadata is
-        /// available under the namespace `com.google.lb_route_extension.`. The following variables are supported in the
-        /// metadata Struct: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource
-        /// name. This field is not supported for plugin extensions. Setting it results in a validation error.
+        /// `google.protobuf.Struct`) in the `ProcessingRequest` message sent to the extension server. The metadata
+        /// applies to all extensions in all extensions chains in this resource. The metadata is available under the key
+        /// `com.google.lb_route_extension.`. The following variables are supported in the metadata:
+        /// `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name. This field
+        /// must not be set if at least one of the extension chains contains plugin extensions. Setting it results in a
+        /// validation error. You can set metadata at either the resource level or the extension level. The extension
+        /// level metadata is recommended because you can pass a different set of metadata through each extension to the
+        /// backend.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
@@ -9059,7 +9081,8 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Optional. A list of references to the forwarding rules to which this service extension is attached. At least
-        /// one forwarding rule is required. There can be only one `LBTrafficExtension` resource per forwarding rule.
+        /// one forwarding rule is required. Only one `LbTrafficExtension` resource can be associated with a forwarding
+        /// rule.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRules")]
         public virtual System.Collections.Generic.IList<string> ForwardingRules { get; set; }
@@ -9081,11 +9104,15 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual string LoadBalancingScheme { get; set; }
 
         /// <summary>
-        /// Optional. The metadata provided here is included in the `ProcessingRequest.metadata_context.filter_metadata`
-        /// map field. The metadata is available under the key `com.google.lb_traffic_extension.`. The following
-        /// variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's
-        /// fully qualified resource name. This field is not supported for plugin extensions. Setting it results in a
-        /// validation error.
+        /// Optional. The metadata provided here is included as part of the `metadata_context` (of type
+        /// `google.protobuf.Struct`) in the `ProcessingRequest` message sent to the extension server. The metadata
+        /// applies to all extensions in all extensions chains in this resource. The metadata is available under the key
+        /// `com.google.lb_traffic_extension.`. The following variables are supported in the metadata:
+        /// `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name. This field
+        /// must not be set if at least one of the extension chains contains plugin extensions. Setting it results in a
+        /// validation error. You can set metadata at either the resource level or the extension level. The extension
+        /// level metadata is recommended because you can pass a different set of metadata through each extension to the
+        /// backend.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
@@ -9979,7 +10006,8 @@ namespace Google.Apis.NetworkServices.v1.Data
     /// <summary>
     /// ServiceBinding can be used to: - Bind a Service Directory Service to be used in a BackendService resource. This
     /// feature will be deprecated soon. - Bind a Private Service Connect producer service to be used in consumer Cloud
-    /// Service Mesh or Application Load Balancers.
+    /// Service Mesh or Application Load Balancers. - Bind a Cloud Run service to be used in consumer Cloud Service Mesh
+    /// or Application Load Balancers.
     /// </summary>
     public class ServiceBinding : Google.Apis.Requests.IDirectResponseSchema
     {
