@@ -5614,6 +5614,13 @@ namespace Google.Apis.CloudDeploy.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -5653,6 +5660,14 @@ namespace Google.Apis.CloudDeploy.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -6592,7 +6607,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("predeploy")]
         public virtual Predeploy Predeploy { get; set; }
 
-        /// <summary>Optional. Whether to run verify tests after each percentage deployment.</summary>
+        /// <summary>
+        /// Optional. Whether to run verify tests after each percentage deployment via `skaffold verify`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verify")]
         public virtual System.Nullable<bool> Verify { get; set; }
 
@@ -7411,7 +7428,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// The weak etag of the `Automation` resource. This checksum is computed by the server based on the value of
+        /// The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of
         /// other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value
         /// before proceeding.
         /// </summary>
@@ -8705,7 +8722,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("profiles")]
         public virtual System.Collections.Generic.IList<string> Profiles { get; set; }
 
-        /// <summary>Optional. Whether to run verify tests after the deployment.</summary>
+        /// <summary>Optional. Whether to run verify tests after the deployment via `skaffold verify`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verify")]
         public virtual System.Nullable<bool> Verify { get; set; }
 
@@ -10588,7 +10605,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("predeploy")]
         public virtual Predeploy Predeploy { get; set; }
 
-        /// <summary>Optional. Whether to verify a deployment.</summary>
+        /// <summary>Optional. Whether to verify a deployment via `skaffold verify`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verify")]
         public virtual System.Nullable<bool> Verify { get; set; }
 
