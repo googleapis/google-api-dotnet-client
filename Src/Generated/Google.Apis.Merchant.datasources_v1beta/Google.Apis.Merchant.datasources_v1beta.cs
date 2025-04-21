@@ -673,8 +673,7 @@ namespace Google.Apis.Merchant.datasources_v1beta
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Identifier. The name of the data source. Format:
-            /// `{datasource.name=accounts/{account}/dataSources/{datasource}}`
+            /// Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}`
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Merchant.datasources_v1beta.Data.DataSource body, string name)
             {
@@ -696,8 +695,7 @@ namespace Google.Apis.Merchant.datasources_v1beta
                 }
 
                 /// <summary>
-                /// Identifier. The name of the data source. Format:
-                /// `{datasource.name=accounts/{account}/dataSources/{datasource}}`
+                /// Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -785,8 +783,7 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         public virtual MerchantReviewDataSource MerchantReviewDataSource { get; set; }
 
         /// <summary>
-        /// Identifier. The name of the data source. Format:
-        /// `{datasource.name=accounts/{account}/dataSources/{datasource}}`
+        /// Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
