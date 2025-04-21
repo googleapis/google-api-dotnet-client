@@ -6697,6 +6697,48 @@ namespace Google.Apis.DataCatalog.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tagTemplateMigration")]
         public virtual string TagTemplateMigration { get; set; }
 
+        private string _templateMigrationEnabledTimeRaw;
+
+        private object _templateMigrationEnabledTime;
+
+        /// <summary>
+        /// The time when the Tag Template migration was enabled. If the Tag Template migration is not enabled, this
+        /// field is not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateMigrationEnabledTime")]
+        public virtual string TemplateMigrationEnabledTimeRaw
+        {
+            get => _templateMigrationEnabledTimeRaw;
+            set
+            {
+                _templateMigrationEnabledTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _templateMigrationEnabledTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TemplateMigrationEnabledTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TemplateMigrationEnabledTimeDateTimeOffset instead.")]
+        public virtual object TemplateMigrationEnabledTime
+        {
+            get => _templateMigrationEnabledTime;
+            set
+            {
+                _templateMigrationEnabledTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _templateMigrationEnabledTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TemplateMigrationEnabledTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TemplateMigrationEnabledTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TemplateMigrationEnabledTimeRaw);
+            set => TemplateMigrationEnabledTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
