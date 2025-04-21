@@ -3,9 +3,9 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Baremetalsolution.v2 Client Library</Title>
-    <Version>1.68.0.3529</Version>
+    <Version>1.69.0.3756</Version>
     <Authors>Google LLC</Authors>
-    <Copyright>Copyright 2024 Google LLC</Copyright>
+    <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
     <PackageProjectUrl>https://github.com/google/google-api-dotnet-client</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -60,8 +60,8 @@
   <!-- common dependencies -->
   <ItemGroup>
     <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="5.0.0" PrivateAssets="All" />
-    <PackageReference Include="Google.Apis" Version="1.68.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.68.0" />
+    <PackageReference Include="Google.Apis" Version="1.69.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.69.0" />
   </ItemGroup>
 
 </Project>
