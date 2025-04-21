@@ -2259,6 +2259,10 @@ namespace Google.Apis.GKEHub.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
         public virtual PolicyControllerSpec Policycontroller { get; set; }
 
+        /// <summary>Rbacrolebindingactuation-specific FeatureSpec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rbacrolebindingactuation")]
+        public virtual RBACRoleBindingActuationSpec Rbacrolebindingactuation { get; set; }
+
         /// <summary>ServiceMesh Feature Spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicemesh")]
         public virtual ServiceMeshSpec Servicemesh { get; set; }
@@ -2299,6 +2303,10 @@ namespace Google.Apis.GKEHub.v2.Data
         /// <summary>Policy Controller state</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
         public virtual PolicyControllerState Policycontroller { get; set; }
+
+        /// <summary>RBAC Role Binding Actuation state</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rbacrolebindingactuation")]
+        public virtual RBACRoleBindingActuationState Rbacrolebindingactuation { get; set; }
 
         /// <summary>Service mesh state</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicemesh")]
@@ -3544,6 +3552,85 @@ namespace Google.Apis.GKEHub.v2.Data
         /// <summary>Matches a taint value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RBACRoleBindingState is the status of an RBACRoleBinding which exists on a membership.</summary>
+    public class RBACRoleBindingActuationRBACRoleBindingState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The reason for the failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. The state of the RBACRoleBinding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>The time the RBACRoleBinding status was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// **RBAC RoleBinding Actuation**: The membership-specific input for RBACRoleBindingActuation feature.
+    /// </summary>
+    public class RBACRoleBindingActuationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// **RBAC RoleBinding Actuation**: A membership-specific Feature state for the RBACRoleBindingActuation fleet
+    /// feature.
+    /// </summary>
+    public class RBACRoleBindingActuationState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The state of RBACRoleBindings using custom roles that exist on the cluster, keyed by
+        /// RBACRoleBinding resource name with format:
+        /// projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rbacrolebindingStates")]
+        public virtual System.Collections.Generic.IDictionary<string, RBACRoleBindingActuationRBACRoleBindingState> RbacrolebindingStates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
