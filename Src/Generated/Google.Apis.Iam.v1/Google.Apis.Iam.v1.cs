@@ -10576,7 +10576,11 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedAudiences")]
         public virtual System.Collections.Generic.IList<string> AllowedAudiences { get; set; }
 
-        /// <summary>Required. The OIDC issuer URL. Must be an HTTPS endpoint.</summary>
+        /// <summary>
+        /// Required. The OIDC issuer URL. Must be an HTTPS endpoint. Used per OpenID Connect Discovery 1.0 spec to
+        /// locate the provider's public keys (via `jwks_uri`) for verifying tokens like the OIDC ID token. These public
+        /// key types must be 'EC' or 'RSA'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuerUri")]
         public virtual string IssuerUri { get; set; }
 
@@ -12361,6 +12365,10 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>An X.509-type identity provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x509")]
+        public virtual X509 X509 { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12427,6 +12435,24 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>Required. The purpose of the key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("use")]
         public virtual string Use { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An X.509-type identity provider represents a CA. It is trusted to assert a client identity if the client has a
+    /// certificate that chains up to this CA.
+    /// </summary>
+    public class X509 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A Trust store, use this trust store as a wrapper to config the trust anchor and optional
+        /// intermediate cas to help build the trust chain for the incoming end entity certificate. Follow the x509
+        /// guidelines to define those PEM encoded certs. Only 1 trust store is currently supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustStore")]
+        public virtual TrustStore TrustStore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
