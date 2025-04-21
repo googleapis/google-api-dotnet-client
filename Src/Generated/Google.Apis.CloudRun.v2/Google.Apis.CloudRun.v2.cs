@@ -6978,6 +6978,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; }
 
+        /// <summary>Optional. Output only. True if GPU zonal redundancy is disabled on this task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuZonalRedundancyDisabled")]
+        public virtual System.Nullable<bool> GpuZonalRedundancyDisabled { get; set; }
+
         /// <summary>Output only. Index of the Task, unique per execution, and beginning at 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
@@ -9935,7 +9939,14 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>This is proto2's version of MessageSet.</summary>
+    /// <summary>
+    /// This is proto2's version of MessageSet. DEPRECATED: DO NOT USE FOR NEW FIELDS. If you are using editions or
+    /// proto2, please make your own extendable messages for your use case. If you are using proto3, please use `Any`
+    /// instead. MessageSet was the implementation of extensions for proto1. When proto2 was introduced, extensions were
+    /// implemented as a first-class feature. This schema for MessageSet was meant to be a "bridge" solution to migrate
+    /// MessageSet-bearing messages from proto1 to proto2. This schema has been open-sourced only to facilitate the
+    /// migration of Google products with MessageSet-bearing messages to open-source environments.
+    /// </summary>
     public class Proto2BridgeMessageSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
