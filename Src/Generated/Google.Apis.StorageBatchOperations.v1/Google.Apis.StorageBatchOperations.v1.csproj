@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.StorageBatchOperations.v1 Client Library</Title>
-    <Version>1.69.0.3739</Version>
+    <Version>1.69.0.3751</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Storagebatchoperations v1.
 
       Product documentation is available at:
-      https://cloud.google.com/storage/docs/metadata
+      https://cloud.google.com/storage/docs/batch-operations/overview
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.StorageBatchOperations.v1/latest/api/Google.Apis.StorageBatchOperations.v1.html
