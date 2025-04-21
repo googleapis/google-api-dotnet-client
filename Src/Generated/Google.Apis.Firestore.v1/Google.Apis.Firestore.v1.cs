@@ -303,6 +303,7 @@ namespace Google.Apis.Firestore.v1
                 CollectionGroups = new CollectionGroupsResource(service);
                 Documents = new DocumentsResource(service);
                 Operations = new OperationsResource(service);
+                UserCreds = new UserCredsResource(service);
             }
 
             /// <summary>Gets the BackupSchedules resource.</summary>
@@ -3085,6 +3086,438 @@ namespace Google.Apis.Firestore.v1
                 }
             }
 
+            /// <summary>Gets the UserCreds resource.</summary>
+            public virtual UserCredsResource UserCreds { get; }
+
+            /// <summary>The "userCreds" collection of methods.</summary>
+            public class UserCredsResource
+            {
+                private const string Resource = "userCreds";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public UserCredsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Create a user creds.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. A parent name of the form `projects/{project_id}/databases/{database_id}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1UserCreds body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a user creds.</summary>
+                public class CreateRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1UserCreds>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1UserCreds body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A parent name of the form `projects/{project_id}/databases/{database_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for the user creds, which will become the final component of the user
+                    /// creds's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with
+                    /// first character a letter and the last a letter or a number. Must not be UUID-like
+                    /// /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("userCredsId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string UserCredsId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1UserCreds Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/userCreds";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
+                        RequestParameters.Add("userCredsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userCredsId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a user creds.</summary>
+                /// <param name="name">
+                /// Required. A name of the form
+                /// `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a user creds.</summary>
+                public class DeleteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the form
+                    /// `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/userCreds/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Disables a user creds. No-op if the user creds are already disabled.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. A name of the form
+                /// `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
+                /// </param>
+                public virtual DisableRequest Disable(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1DisableUserCredsRequest body, string name)
+                {
+                    return new DisableRequest(this.service, body, name);
+                }
+
+                /// <summary>Disables a user creds. No-op if the user creds are already disabled.</summary>
+                public class DisableRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1UserCreds>
+                {
+                    /// <summary>Constructs a new Disable request.</summary>
+                    public DisableRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1DisableUserCredsRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the form
+                    /// `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1DisableUserCredsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "disable";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:disable";
+
+                    /// <summary>Initializes Disable parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/userCreds/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Enables a user creds. No-op if the user creds are already enabled.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. A name of the form
+                /// `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
+                /// </param>
+                public virtual EnableRequest Enable(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1EnableUserCredsRequest body, string name)
+                {
+                    return new EnableRequest(this.service, body, name);
+                }
+
+                /// <summary>Enables a user creds. No-op if the user creds are already enabled.</summary>
+                public class EnableRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1UserCreds>
+                {
+                    /// <summary>Constructs a new Enable request.</summary>
+                    public EnableRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1EnableUserCredsRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the form
+                    /// `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1EnableUserCredsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "enable";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:enable";
+
+                    /// <summary>Initializes Enable parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/userCreds/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets a user creds resource. Note that the returned resource does not contain the secret value
+                /// itself.
+                /// </summary>
+                /// <param name="name">
+                /// Required. A name of the form
+                /// `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Gets a user creds resource. Note that the returned resource does not contain the secret value
+                /// itself.
+                /// </summary>
+                public class GetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1UserCreds>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the form
+                    /// `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/userCreds/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// List all user creds in the database. Note that the returned resource does not contain the secret
+                /// value itself.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. A parent database name of the form `projects/{project_id}/databases/{database_id}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// List all user creds in the database. Note that the returned resource does not contain the secret
+                /// value itself.
+                /// </summary>
+                public class ListRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ListUserCredsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A parent database name of the form `projects/{project_id}/databases/{database_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/userCreds";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Resets the password of a user creds.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. A name of the form
+                /// `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
+                /// </param>
+                public virtual ResetPasswordRequest ResetPassword(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ResetUserPasswordRequest body, string name)
+                {
+                    return new ResetPasswordRequest(this.service, body, name);
+                }
+
+                /// <summary>Resets the password of a user creds.</summary>
+                public class ResetPasswordRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1UserCreds>
+                {
+                    /// <summary>Constructs a new ResetPassword request.</summary>
+                    public ResetPasswordRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ResetUserPasswordRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the form
+                    /// `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ResetUserPasswordRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "resetPassword";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:resetPassword";
+
+                    /// <summary>Initializes ResetPassword parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/userCreds/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>
             /// Bulk deletes a subset of documents from Google Cloud Firestore. Documents created or updated after the
             /// underlying system starts to process the request will not be deleted. The bulk delete occurs in the
@@ -3951,6 +4384,13 @@ namespace Google.Apis.Firestore.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -3990,6 +4430,14 @@ namespace Google.Apis.Firestore.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -5609,6 +6057,10 @@ namespace Google.Apis.Firestore.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Immutable. The edition of the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseEdition")]
+        public virtual string DatabaseEdition { get; set; }
+
         /// <summary>State of delete protection for the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteProtectionState")]
         public virtual string DeleteProtectionState { get; set; }
@@ -5705,6 +6157,17 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
+        /// Output only. Background: Free tier is the ability of a Firestore database to use a small amount of resources
+        /// every day without being charged. Once usage exceeds the free tier limit further usage is charged. Whether
+        /// this database can make use of the free tier. Only one database per project can be eligible for the free
+        /// tier. The first (or next) database that is created in a project without a free tier database will be marked
+        /// as eligible for the free tier. Databases that are created while there is a free tier database will not be
+        /// eligible for the free tier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeTier")]
+        public virtual System.Nullable<bool> FreeTier { get; set; }
+
+        /// <summary>
         /// Output only. The key_prefix for this database. This key_prefix is used, in combination with the project ID
         /// ("~") to construct the application ID that is returned from the Cloud Datastore APIs in Google App Engine
         /// first generation runtimes. This value may be empty in which case the appid to use for URL-encoded keys is
@@ -5737,6 +6200,13 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>Output only. Information about the provenance of this database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceInfo")]
         public virtual GoogleFirestoreAdminV1SourceInfo SourceInfo { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// "123/environment": "production", "123/costCenter": "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information
@@ -5800,6 +6270,20 @@ namespace Google.Apis.Firestore.v1.Data
 
     /// <summary>Metadata related to the delete database operation.</summary>
     public class GoogleFirestoreAdminV1DeleteDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for FirestoreAdmin.DisableUserCreds.</summary>
+    public class GoogleFirestoreAdminV1DisableUserCredsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for FirestoreAdmin.EnableUserCreds.</summary>
+    public class GoogleFirestoreAdminV1EnableUserCredsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6367,6 +6851,10 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiScope")]
         public virtual string ApiScope { get; set; }
 
+        /// <summary>Immutable. The density configuration of the index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("density")]
+        public virtual string Density { get; set; }
+
         /// <summary>
         /// The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100
         /// fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not
@@ -6377,6 +6865,16 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1IndexField> Fields { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes,
+        /// none of the paths in the index definition reach or traverse an array, except via an explicit array index.
+        /// For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except
+        /// via an explicit array index. Violations will result in errors. Note this field only applies to index with
+        /// MONGODB_COMPATIBLE_API ApiScope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multikey")]
+        public virtual System.Nullable<bool> Multikey { get; set; }
 
         /// <summary>
         /// Output only. A server defined name for this index. The form of this name for composite indexes will be:
@@ -6394,6 +6892,10 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryScope")]
         public virtual string QueryScope { get; set; }
+
+        /// <summary>Optional. The number of shards for the index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
+        public virtual System.Nullable<int> ShardCount { get; set; }
 
         /// <summary>Output only. The serving state of the index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -6669,6 +7171,17 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response for FirestoreAdmin.ListUserCreds.</summary>
+    public class GoogleFirestoreAdminV1ListUserCredsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user creds for the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCreds")]
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1UserCreds> UserCreds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The metadata message for google.cloud.location.Location.metadata.</summary>
     public class GoogleFirestoreAdminV1LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6689,6 +7202,26 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>The amount of work estimated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedWork")]
         public virtual System.Nullable<long> EstimatedWork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for FirestoreAdmin.ResetUserPassword.</summary>
+    public class GoogleFirestoreAdminV1ResetUserPasswordRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a Resource Identity principal.</summary>
+    public class GoogleFirestoreAdminV1ResourceIdentity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Principal identifier string. See: https://cloud.google.com/iam/docs/principal-identifiers
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principal")]
+        public virtual string Principal { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6818,6 +7351,13 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual GoogleFirestoreAdminV1EncryptionConfig EncryptionConfig { get; set; }
 
+        /// <summary>
+        /// Optional. Immutable. Tags to be bound to the restored database. The tags should be provided in the format of
+        /// `tagKeys/{tag_key_id} -&amp;gt; tagValues/{tag_value_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6898,6 +7438,111 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>Metadata related to the update database operation.</summary>
     public class GoogleFirestoreAdminV1UpdateDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Cloud Firestore User Creds.</summary>
+    public class GoogleFirestoreAdminV1UserCreds : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the user creds were created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The resource name of the UserCreds. Format:
+        /// `projects/{project}/databases/{database}/userCreds/{user_creds}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Resource Identity descriptor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceIdentity")]
+        public virtual GoogleFirestoreAdminV1ResourceIdentity ResourceIdentity { get; set; }
+
+        /// <summary>
+        /// Output only. The plaintext server-generated password for the user creds. Only populated in responses for
+        /// CreateUserCreds and ResetUserPassword.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securePassword")]
+        public virtual string SecurePassword { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the user creds are enabled or disabled. Defaults to ENABLED on creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the user creds were last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
