@@ -3425,6 +3425,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allocatedStorageSizeTb")]
         public virtual System.Nullable<double> AllocatedStorageSizeTb { get; set; }
 
+        /// <summary>Optional. The list of allowlisted IP addresses for the Autonomous Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowlistedIps")]
+        public virtual System.Collections.Generic.IList<string> AllowlistedIps { get; set; }
+
         /// <summary>Output only. The details for the Oracle APEX Application Development.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apexDetails")]
         public virtual AutonomousDatabaseApex ApexDetails { get; set; }
