@@ -3272,6 +3272,14 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
     /// <summary>Request for the `SetupFunctionUpgradeConfig` method.</summary>
     public class SetupFunctionUpgradeConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The trigger's service account. The service account must have permission to invoke Cloud Run
+        /// services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service
+        /// account: `{project_number}-compute@developer.gserviceaccount.com`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerServiceAccount")]
+        public virtual string TriggerServiceAccount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
