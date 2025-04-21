@@ -663,6 +663,13 @@ namespace Google.Apis.NetworkManagement.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -702,6 +709,14 @@ namespace Google.Apis.NetworkManagement.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -2240,6 +2255,13 @@ namespace Google.Apis.NetworkManagement.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -2279,6 +2301,14 @@ namespace Google.Apis.NetworkManagement.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -3876,13 +3906,16 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string AbortCause { get; set; }
 
         /// <summary>
-        /// The EdgeLocation from which a packet destined for/originating from the internet will egress/ingress the
-        /// Google network. This will only be populated for a connectivity test which has an internet destination/source
-        /// address. The absence of this field *must not* be used as an indication that the destination/source is part
-        /// of the Google network.
+        /// The EdgeLocation from which a packet, destined to the internet, will egress the Google network. This will
+        /// only be populated for a connectivity test which has an internet destination address. The absence of this
+        /// field *must not* be used as an indication that the destination is part of the Google network.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationEgressLocation")]
         public virtual EdgeLocation DestinationEgressLocation { get; set; }
+
+        /// <summary>Probing results for all edge devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edgeResponses")]
+        public virtual System.Collections.Generic.IList<SingleEdgeResponse> EdgeResponses { get; set; }
 
         /// <summary>
         /// The source and destination endpoints derived from the test input and used for active probing.
@@ -3893,6 +3926,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>Details about an internal failure or the cancellation of active probing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
+
+        /// <summary>Whether all relevant edge devices were probed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probedAllDevices")]
+        public virtual System.Nullable<bool> ProbedAllDevices { get; set; }
 
         /// <summary>
         /// Latency as measured by active probing in one direction: from the source to the destination endpoint.
@@ -4315,6 +4352,43 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Probing results for a single edge device.</summary>
+    public class SingleEdgeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The EdgeLocation from which a packet, destined to the internet, will egress the Google network. This will
+        /// only be populated for a connectivity test which has an internet destination address. The absence of this
+        /// field *must not* be used as an indication that the destination is part of the Google network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationEgressLocation")]
+        public virtual EdgeLocation DestinationEgressLocation { get; set; }
+
+        /// <summary>Router name in the format '{router}.{metroshard}'. For example: pf01.aaa01, pr02.aaa01.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationRouter")]
+        public virtual string DestinationRouter { get; set; }
+
+        /// <summary>
+        /// Latency as measured by active probing in one direction: from the source to the destination endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probingLatency")]
+        public virtual LatencyDistribution ProbingLatency { get; set; }
+
+        /// <summary>The overall result of active probing for this egress device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual string Result { get; set; }
+
+        /// <summary>Number of probes sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentProbeCount")]
+        public virtual System.Nullable<int> SentProbeCount { get; set; }
+
+        /// <summary>Number of probes that reached the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulProbeCount")]
+        public virtual System.Nullable<int> SuccessfulProbeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -4686,7 +4760,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
 
         /// <summary>
         /// Optional. The state of the VPC Flow Log configuration. Default value is ENABLED. When creating a new
-        /// configuration, it must be enabled.
+        /// configuration, it must be enabled. Setting state=DISABLED will pause the log generation for this config.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
