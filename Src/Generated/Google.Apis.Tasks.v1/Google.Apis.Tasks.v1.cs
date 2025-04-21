@@ -877,7 +877,7 @@ namespace Google.Apis.Tasks.v1
         }
 
         /// <summary>
-        /// Returns all tasks in the specified task list. Does not return assigned tasks be default (from Docs, Chat
+        /// Returns all tasks in the specified task list. Doesn't return assigned tasks by default (from Docs, Chat
         /// Spaces). A user can have up to 20,000 non-hidden tasks per list and up to 100,000 tasks in total at a time.
         /// </summary>
         /// <param name="tasklist">Task list identifier.</param>
@@ -887,7 +887,7 @@ namespace Google.Apis.Tasks.v1
         }
 
         /// <summary>
-        /// Returns all tasks in the specified task list. Does not return assigned tasks be default (from Docs, Chat
+        /// Returns all tasks in the specified task list. Doesn't return assigned tasks by default (from Docs, Chat
         /// Spaces). A user can have up to 20,000 non-hidden tasks per list and up to 100,000 tasks in total at a time.
         /// </summary>
         public class ListRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.Tasks>
