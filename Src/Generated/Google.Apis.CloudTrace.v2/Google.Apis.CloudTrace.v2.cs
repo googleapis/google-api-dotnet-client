@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -318,7 +318,9 @@ namespace Google.Apis.CloudTrace.v2
                     this.service = service;
                 }
 
-                /// <summary>Creates a new span.</summary>
+                /// <summary>
+                /// Creates a new span. If a span ID already exists, an additional copy of the span will be stored.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The resource name of the span in the following format: *
@@ -332,7 +334,9 @@ namespace Google.Apis.CloudTrace.v2
                     return new CreateSpanRequest(this.service, body, name);
                 }
 
-                /// <summary>Creates a new span.</summary>
+                /// <summary>
+                /// Creates a new span. If a span ID already exists, an additional copy of the span will be stored.
+                /// </summary>
                 public class CreateSpanRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v2.Data.Span>
                 {
                     /// <summary>Constructs a new CreateSpan request.</summary>
@@ -384,7 +388,10 @@ namespace Google.Apis.CloudTrace.v2
                 }
             }
 
-            /// <summary>Batch writes new spans to new or existing traces. You cannot update existing spans.</summary>
+            /// <summary>
+            /// Batch writes new spans to new or existing traces. You cannot update existing spans. If a span ID already
+            /// exists, an additional copy of the span will be stored.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The name of the project where the spans belong. The format is `projects/[PROJECT_ID]`.
@@ -394,7 +401,10 @@ namespace Google.Apis.CloudTrace.v2
                 return new BatchWriteRequest(this.service, body, name);
             }
 
-            /// <summary>Batch writes new spans to new or existing traces. You cannot update existing spans.</summary>
+            /// <summary>
+            /// Batch writes new spans to new or existing traces. You cannot update existing spans. If a span ID already
+            /// exists, an additional copy of the span will be stored.
+            /// </summary>
             public class BatchWriteRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v2.Data.Empty>
             {
                 /// <summary>Constructs a new BatchWrite request.</summary>
