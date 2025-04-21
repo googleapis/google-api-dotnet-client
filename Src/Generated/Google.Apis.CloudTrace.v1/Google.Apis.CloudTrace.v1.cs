@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -607,10 +607,8 @@ namespace Google.Apis.CloudTrace.v1
         }
 
         /// <summary>
-        /// Sends new traces to Cloud Trace or updates existing traces. If the ID of a trace that you send matches that
-        /// of an existing trace, any fields in the existing trace and its spans are overwritten by the provided values,
-        /// and any new fields provided are merged with the existing trace data. If the ID does not match, a new trace
-        /// is created.
+        /// Sends trace spans to Cloud Trace. Spans cannot be updated. If the trace ID and span ID already exist, an
+        /// additional copy of the span will be stored.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. ID of the Cloud project where the trace data is stored.</param>
@@ -620,10 +618,8 @@ namespace Google.Apis.CloudTrace.v1
         }
 
         /// <summary>
-        /// Sends new traces to Cloud Trace or updates existing traces. If the ID of a trace that you send matches that
-        /// of an existing trace, any fields in the existing trace and its spans are overwritten by the provided values,
-        /// and any new fields provided are merged with the existing trace data. If the ID does not match, a new trace
-        /// is created.
+        /// Sends trace spans to Cloud Trace. Spans cannot be updated. If the trace ID and span ID already exist, an
+        /// additional copy of the span will be stored.
         /// </summary>
         public class PatchTracesRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v1.Data.Empty>
         {
