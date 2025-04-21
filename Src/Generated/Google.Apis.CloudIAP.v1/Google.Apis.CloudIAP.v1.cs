@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2334,7 +2334,7 @@ namespace Google.Apis.CloudIAP.v1.Data
         /// call changes the state of the resource. Custom org policy backend uses these attributes to enforce custom
         /// org policies. For create operations, GCP service is expected to pass resource from customer request as is.
         /// For update/patch operations, GCP service is expected to compute the next state with the patch provided by
-        /// the user. See go/custom-constraints-org-policy-integration-guide for additional details.
+        /// the user. See go/federated-custom-org-policy-integration-guide for additional details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedNextState")]
         public virtual System.Collections.Generic.IDictionary<string, object> ExpectedNextState { get; set; }
