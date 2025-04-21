@@ -60,15 +60,15 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Payments Reseller Subscription API.</summary>
         public class Scope
         {
-            /// <summary>Associate you with your personal info on Google</summary>
-            public static string Openid = "openid";
+            /// <summary>See and/or control the devices that you selected</summary>
+            public static string SdmService = "https://www.googleapis.com/auth/sdm.service";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Payments Reseller Subscription API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>Associate you with your personal info on Google</summary>
-            public const string Openid = "openid";
+            /// <summary>See and/or control the devices that you selected</summary>
+            public const string SdmService = "https://www.googleapis.com/auth/sdm.service";
         }
 
         /// <summary>Gets the Partners resource.</summary>
