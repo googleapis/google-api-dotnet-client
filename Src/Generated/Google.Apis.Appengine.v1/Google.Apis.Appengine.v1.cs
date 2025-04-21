@@ -1796,6 +1796,13 @@ namespace Google.Apis.Appengine.v1
                 public virtual string AppsId { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
                 /// </summary>
@@ -1833,6 +1840,14 @@ namespace Google.Apis.Appengine.v1
                         Name = "appsId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4024,6 +4039,199 @@ namespace Google.Apis.Appengine.v1
                                     Name = "versionsId",
                                     IsRequired = true,
                                     ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Updates the specified Version resource. You can specify the following fields depending on
+                        /// the App Engine environment and type of scaling that the version resource uses:Standard
+                        /// environment instance_class
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class)automatic
+                        /// scaling in the standard environment: automatic_scaling.min_idle_instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+                        /// automatic_scaling.max_idle_instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+                        /// automaticScaling.standard_scheduler_settings.max_instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+                        /// automaticScaling.standard_scheduler_settings.min_instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+                        /// automaticScaling.standard_scheduler_settings.target_cpu_utilization
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+                        /// automaticScaling.standard_scheduler_settings.target_throughput_utilization
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)basic
+                        /// scaling or manual scaling in the standard environment: serving_status
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)
+                        /// manual_scaling.instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#manualscaling)Flexible
+                        /// environment serving_status
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)automatic
+                        /// scaling in the flexible environment: automatic_scaling.min_total_instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+                        /// automatic_scaling.max_total_instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+                        /// automatic_scaling.cool_down_period_sec
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+                        /// automatic_scaling.cpu_utilization.target_utilization
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)manual
+                        /// scaling in the flexible environment: manual_scaling.instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#manualscaling)
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="projectsId">
+                        /// Part of `name`. Name of the resource to update. Example:
+                        /// apps/myapp/services/default/versions/1.
+                        /// </param>
+                        /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
+                        /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
+                        /// <param name="servicesId">Part of `name`. See documentation of `projectsId`.</param>
+                        /// <param name="versionsId">Part of `name`. See documentation of `projectsId`.</param>
+                        public virtual PatchRequest Patch(Google.Apis.Appengine.v1.Data.Version body, string projectsId, string locationsId, string applicationsId, string servicesId, string versionsId)
+                        {
+                            return new PatchRequest(this.service, body, projectsId, locationsId, applicationsId, servicesId, versionsId);
+                        }
+
+                        /// <summary>
+                        /// Updates the specified Version resource. You can specify the following fields depending on
+                        /// the App Engine environment and type of scaling that the version resource uses:Standard
+                        /// environment instance_class
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class)automatic
+                        /// scaling in the standard environment: automatic_scaling.min_idle_instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+                        /// automatic_scaling.max_idle_instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+                        /// automaticScaling.standard_scheduler_settings.max_instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+                        /// automaticScaling.standard_scheduler_settings.min_instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+                        /// automaticScaling.standard_scheduler_settings.target_cpu_utilization
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+                        /// automaticScaling.standard_scheduler_settings.target_throughput_utilization
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)basic
+                        /// scaling or manual scaling in the standard environment: serving_status
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)
+                        /// manual_scaling.instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#manualscaling)Flexible
+                        /// environment serving_status
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)automatic
+                        /// scaling in the flexible environment: automatic_scaling.min_total_instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+                        /// automatic_scaling.max_total_instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+                        /// automatic_scaling.cool_down_period_sec
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+                        /// automatic_scaling.cpu_utilization.target_utilization
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)manual
+                        /// scaling in the flexible environment: manual_scaling.instances
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#manualscaling)
+                        /// </summary>
+                        public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1.Data.Version body, string projectsId, string locationsId, string applicationsId, string servicesId, string versionsId) : base(service)
+                            {
+                                ProjectsId = projectsId;
+                                LocationsId = locationsId;
+                                ApplicationsId = applicationsId;
+                                ServicesId = servicesId;
+                                VersionsId = versionsId;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Part of `name`. Name of the resource to update. Example:
+                            /// apps/myapp/services/default/versions/1.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ProjectsId { get; private set; }
+
+                            /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string LocationsId { get; private set; }
+
+                            /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ApplicationsId { get; private set; }
+
+                            /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ServicesId { get; private set; }
+
+                            /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("versionsId", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string VersionsId { get; private set; }
+
+                            /// <summary>Standard field mask for the set of fields to be updated.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Appengine.v1.Data.Version Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "locationsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "applicationsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servicesId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("versionsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "versionsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
