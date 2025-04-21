@@ -2266,7 +2266,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The account where this product will be inserted. Format: accounts/{account}
+            /// Required. The account for which this shipping setting will be inserted. If you are using an advanced
+            /// account, you must specify the unique identifier of the sub-account for which you want to insert the
+            /// shipping setting. Format: `accounts/{ACCOUNT_ID}`
             /// </param>
             public virtual InsertRequest Insert(Google.Apis.Merchant.accounts_v1beta.Data.ShippingSettings body, string parent)
             {
@@ -2288,7 +2290,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 }
 
                 /// <summary>
-                /// Required. The account where this product will be inserted. Format: accounts/{account}
+                /// Required. The account for which this shipping setting will be inserted. If you are using an advanced
+                /// account, you must specify the unique identifier of the sub-account for which you want to insert the
+                /// shipping setting. Format: `accounts/{ACCOUNT_ID}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -3511,7 +3515,8 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         /// <summary>
         /// Required. The time zone of the account. On writes, `time_zone` sets both the `reporting_time_zone` and the
         /// `display_time_zone`. For reads, `time_zone` always returns the `display_time_zone`. If `display_time_zone`
-        /// doesn't exist for your account, `time_zone` is empty.
+        /// doesn't exist for your account, `time_zone` is empty. The `version` field is not supported, won't be set in
+        /// responses and will be silently ignored if specified in requests.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual TimeZone TimeZone { get; set; }
@@ -5433,7 +5438,8 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>
-        /// The CLDR code of the currency to which this service applies. Must match that of the prices in rate groups.
+        /// Required. The CLDR code of the currency to which this service applies. Must match that of the prices in rate
+        /// groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
         public virtual string CurrencyCode { get; set; }
