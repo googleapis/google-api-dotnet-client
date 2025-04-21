@@ -405,9 +405,9 @@ namespace Google.Apis.StorageBatchOperations.v1
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID in case you
-                    /// need to retry your request. Requests with same `request_id` will ignored for at least 60 minutes
-                    /// since the first request. The request ID must be a valid UUID with the exception that zero UUID
-                    /// is not supported (00000000-0000-0000-0000-000000000000).
+                    /// need to retry your request. Requests with same `request_id` will be ignored for at least 60
+                    /// minutes since the first request. The request ID must be a valid UUID with the exception that
+                    /// zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -487,9 +487,9 @@ namespace Google.Apis.StorageBatchOperations.v1
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID in case you
-                    /// need to retry your request. Requests with same `request_id` will ignored for at least 60 minutes
-                    /// since the first request. The request ID must be a valid UUID with the exception that zero UUID
-                    /// is not supported (00000000-0000-0000-0000-000000000000).
+                    /// need to retry your request. Requests with same `request_id` will be ignored for at least 60
+                    /// minutes since the first request. The request ID must be a valid UUID with the exception that
+                    /// zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -1138,8 +1138,8 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
     {
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID in case you need to retry
-        /// your request. Requests with same `request_id` will ignored for at least 60 minutes since the first request.
-        /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+        /// your request. Requests with same `request_id` will be ignored for at least 60 minutes since the first
+        /// request. The request ID must be a valid UUID with the exception that zero UUID is not supported
         /// (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
@@ -1521,9 +1521,9 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         /// Required. `manifest_location` must contain the manifest source file that is a CSV file in a Google Cloud
         /// Storage bucket. Each row in the file must include the object details i.e. BucketId and Name. Generation may
         /// optionally be specified. When it is not specified the live object is acted upon. `manifest_location` should
-        /// either be 1) An absolute path to the object in the format of gs://bucket_name/path/file_name.csv. 2) An
+        /// either be 1) An absolute path to the object in the format of `gs://bucket_name/path/file_name.csv`. 2) An
         /// absolute path with a single wildcard character in the file name, for example
-        /// gs://bucket_name/path/file_name*.csv. If manifest location is specified with a wildcard, objects in all
+        /// `gs://bucket_name/path/file_name*.csv`. If manifest location is specified with a wildcard, objects in all
         /// manifest files matching the pattern will be acted upon.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifestLocation")]
