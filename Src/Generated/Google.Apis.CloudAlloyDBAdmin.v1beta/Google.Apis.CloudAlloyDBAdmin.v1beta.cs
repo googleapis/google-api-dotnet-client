@@ -3926,6 +3926,45 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUid")]
         public virtual string ClusterUid { get; set; }
 
+        private string _createCompletionTimeRaw;
+
+        private object _createCompletionTime;
+
+        /// <summary>Output only. Timestamp when the resource finished being created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createCompletionTime")]
+        public virtual string CreateCompletionTimeRaw
+        {
+            get => _createCompletionTimeRaw;
+            set
+            {
+                _createCompletionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createCompletionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateCompletionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateCompletionTimeDateTimeOffset instead.")]
+        public virtual object CreateCompletionTime
+        {
+            get => _createCompletionTime;
+            set
+            {
+                _createCompletionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createCompletionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateCompletionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateCompletionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateCompletionTimeRaw);
+            set => CreateCompletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -4396,7 +4435,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Optional. Configuration parameters related to the Gemini in Databases add-on.</summary>
+        /// <summary>Optional. Deprecated and unused. This field will be removed in the near future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geminiConfig")]
         public virtual GeminiClusterConfig GeminiConfig { get; set; }
 
@@ -4628,10 +4667,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPoolSize")]
         public virtual string DefaultPoolSize { get; set; }
 
-        /// <summary>
-        /// Optional. Deprecated; Prefer 'enabled' as this will be removed soon. TODO(b/394996708) move to reserved once
-        /// the field is removed from the gcloud client.
-        /// </summary>
+        /// <summary>Optional. Deprecated; Prefer 'enabled' as this will be removed soon.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enable")]
         public virtual System.Nullable<bool> Enable { get; set; }
 
@@ -5100,14 +5136,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Cluster level configuration parameters related to the Gemini in Databases add-on.</summary>
+    /// <summary>Deprecated and unused. This field will be removed in the near future.</summary>
     public class GeminiClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. Whether the Gemini in Databases add-on is enabled for the cluster. It will be true only if the
-        /// add-on has been enabled for the billing account corresponding to the cluster. Its status is toggled from the
-        /// Admin Control Center (ACC) and cannot be toggled using AlloyDB's APIs.
-        /// </summary>
+        /// <summary>Output only. Deprecated and unused. This field will be removed in the near future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitled")]
         public virtual System.Nullable<bool> Entitled { get; set; }
 
@@ -5115,14 +5147,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Instance level configuration parameters related to the Gemini in Databases add-on.</summary>
+    /// <summary>Deprecated and unused. This field will be removed in the near future.</summary>
     public class GeminiInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. Whether the Gemini in Databases add-on is enabled for the instance. It will be true only if the
-        /// add-on has been enabled for the billing account corresponding to the instance. Its status is toggled from
-        /// the Admin Control Center (ACC) and cannot be toggled using AlloyDB's APIs.
-        /// </summary>
+        /// <summary>Output only. Deprecated and unused. This field will be removed in the near future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitled")]
         public virtual System.Nullable<bool> Entitled { get; set; }
 
@@ -5445,7 +5473,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gceZone")]
         public virtual string GceZone { get; set; }
 
-        /// <summary>Optional. Configuration parameters related to the Gemini in Databases add-on.</summary>
+        /// <summary>Optional. Deprecated and unused. This field will be removed in the near future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geminiConfig")]
         public virtual GeminiInstanceConfig GeminiConfig { get; set; }
 
@@ -6204,7 +6232,15 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
         public virtual string ConsumerNetwork { get; set; }
 
-        /// <summary>Output only. The status of the service connection policy.</summary>
+        /// <summary>
+        /// Output only. The status of the service connection policy. Possible values: "STATE_UNSPECIFIED" - Default
+        /// state, when Connection Map is created initially. "VALID" - Set when policy and map configuration is valid,
+        /// and their matching can lead to allowing creation of PSC Connections subject to other constraints like
+        /// connections limit. "CONNECTION_POLICY_MISSING" - No Service Connection Policy found for this network and
+        /// Service Class "POLICY_LIMIT_REACHED" - Service Connection Policy limit reached for this network and Service
+        /// Class "CONSUMER_INSTANCE_PROJECT_NOT_ALLOWLISTED" - The consumer instance project is not in
+        /// AllowedGoogleProducersResourceHierarchyLevels of the matching ServiceConnectionPolicy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerNetworkStatus")]
         public virtual string ConsumerNetworkStatus { get; set; }
 
@@ -6216,7 +6252,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
 
-        /// <summary>Output only. The status of the PSC service automation connection.</summary>
+        /// <summary>
+        /// Output only. The status of the PSC service automation connection. Possible values: "STATE_UNSPECIFIED" - An
+        /// invalid state as the default case. "ACTIVE" - The connection has been created successfully. "FAILED" - The
+        /// connection is not functional since some resources on the connection fail to be created. "CREATING" - The
+        /// connection is being created. "DELETING" - The connection is being deleted. "CREATE_REPAIRING" - The
+        /// connection is being repaired to complete creation. "DELETE_REPAIRING" - The connection is being repaired to
+        /// complete deletion.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
@@ -6424,7 +6467,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for restoring a Cluster from a backup or another cluster at a given point in time.</summary>
+    /// <summary>
+    /// Message for restoring a Cluster from a backup or another cluster at a given point in time. NEXT_ID: 11
+    /// </summary>
     public class RestoreClusterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Backup source.</summary>
