@@ -8099,6 +8099,10 @@ namespace Google.Apis.Container.v1.Data
     /// </summary>
     public class ConfidentialNodes : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Defines the type of technology used by the confidential node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialInstanceType")]
+        public virtual string ConfidentialInstanceType { get; set; }
+
         /// <summary>Whether Confidential Nodes feature is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
