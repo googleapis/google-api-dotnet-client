@@ -12392,7 +12392,7 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("driveFile")]
         public virtual SharedDriveFile DriveFile { get; set; }
 
-        /// <summary>Google Forms material.</summary>
+        /// <summary>Google Forms material. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("form")]
         public virtual Form Form { get; set; }
 
