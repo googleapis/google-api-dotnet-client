@@ -459,9 +459,10 @@ namespace Google.Apis.Css.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The name of the CSS Product input. Format: `accounts/{account}/cssProductInputs/{css_product_input}`,
-            /// where the last section `css_product_input` consists of 3 parts: contentLanguage~feedLabel~offerId.
-            /// Example: accounts/123/cssProductInputs/de~DE~rawProvidedId123
+            /// Identifier. The name of the CSS Product input. Format:
+            /// `accounts/{account}/cssProductInputs/{css_product_input}`, where the last section `css_product_input`
+            /// consists of 3 parts: contentLanguage~feedLabel~offerId. Example:
+            /// accounts/123/cssProductInputs/de~DE~rawProvidedId123
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Css.v1.Data.CssProductInput body, string name)
             {
@@ -484,7 +485,7 @@ namespace Google.Apis.Css.v1
                 }
 
                 /// <summary>
-                /// The name of the CSS Product input. Format:
+                /// Identifier. The name of the CSS Product input. Format:
                 /// `accounts/{account}/cssProductInputs/{css_product_input}`, where the last section
                 /// `css_product_input` consists of 3 parts: contentLanguage~feedLabel~offerId. Example:
                 /// accounts/123/cssProductInputs/de~DE~rawProvidedId123
@@ -900,7 +901,9 @@ namespace Google.Apis.Css.v1
 
             /// <summary>Updates a label.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The resource name of the label. Format: accounts/{account}/labels/{label}</param>
+            /// <param name="name">
+            /// Identifier. The resource name of the label. Format: accounts/{account}/labels/{label}
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.Css.v1.Data.AccountLabel body, string name)
             {
                 return new PatchRequest(this.service, body, name);
@@ -917,7 +920,9 @@ namespace Google.Apis.Css.v1
                     InitParameters();
                 }
 
-                /// <summary>The resource name of the label. Format: accounts/{account}/labels/{label}</summary>
+                /// <summary>
+                /// Identifier. The resource name of the label. Format: accounts/{account}/labels/{label}
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1344,7 +1349,7 @@ namespace Google.Apis.Css.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelType")]
         public virtual string LabelType { get; set; }
 
-        /// <summary>The resource name of the label. Format: accounts/{account}/labels/{label}</summary>
+        /// <summary>Identifier. The resource name of the label. Format: accounts/{account}/labels/{label}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1809,8 +1814,9 @@ namespace Google.Apis.Css.v1.Data
         }
 
         /// <summary>
-        /// The name of the CSS Product input. Format: `accounts/{account}/cssProductInputs/{css_product_input}`, where
-        /// the last section `css_product_input` consists of 3 parts: contentLanguage~feedLabel~offerId. Example:
+        /// Identifier. The name of the CSS Product input. Format:
+        /// `accounts/{account}/cssProductInputs/{css_product_input}`, where the last section `css_product_input`
+        /// consists of 3 parts: contentLanguage~feedLabel~offerId. Example:
         /// accounts/123/cssProductInputs/de~DE~rawProvidedId123
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
