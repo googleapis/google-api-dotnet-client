@@ -1958,6 +1958,10 @@ namespace Google.Apis.Sheets.v4
             [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SpreadsheetId { get; private set; }
 
+            /// <summary>True if tables should be excluded in the banded ranges. False if not set.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("excludeTablesInBandedRanges", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ExcludeTablesInBandedRanges { get; set; }
+
             /// <summary>
             /// True if grid data should be returned. This parameter is ignored if a field mask was set in the request.
             /// </summary>
@@ -1986,6 +1990,14 @@ namespace Google.Apis.Sheets.v4
                     Name = "spreadsheetId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("excludeTablesInBandedRanges", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "excludeTablesInBandedRanges",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2345,6 +2357,17 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Adds a new table to the spreadsheet.</summary>
+    public class AddTableRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The table to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual Table Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Adds new cells after the last row with data in a sheet, inserting new rows into the sheet if necessary.
     /// </summary>
@@ -2365,6 +2388,13 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The sheet ID to append the data to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
         public virtual System.Nullable<int> SheetId { get; set; }
+
+        /// <summary>
+        /// The ID of the table to append data to. The data will be only appended to the table body. This field also
+        /// takes precedence over the `sheet_id` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2832,6 +2862,12 @@ namespace Google.Apis.Sheets.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortSpecs")]
         public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; }
+
+        /// <summary>
+        /// The table this filter is backed by, if any. When writing, only one of range or table_id may be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4977,6 +5013,17 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Removes the table with the given ID from the spreadsheet.</summary>
+    public class DeleteTableRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the table to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Developer metadata associated with a location or object in a spreadsheet. Developer metadata may be used to
     /// associate arbitrary data with various parts of a spreadsheet and will remain associated at those locations as
@@ -5482,14 +5529,14 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual System.Nullable<int> FilterViewId { get; set; }
 
         /// <summary>
-        /// The named range this filter view is backed by, if any. When writing, only one of range or named_range_id may
-        /// be set.
+        /// The named range this filter view is backed by, if any. When writing, only one of range or named_range_id or
+        /// table_id may be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRangeId")]
         public virtual string NamedRangeId { get; set; }
 
         /// <summary>
-        /// The range this filter view covers. When writing, only one of range or named_range_id may be set.
+        /// The range this filter view covers. When writing, only one of range or named_range_id or table_id may be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual GridRange Range { get; set; }
@@ -5500,6 +5547,13 @@ namespace Google.Apis.Sheets.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortSpecs")]
         public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; }
+
+        /// <summary>
+        /// The table this filter view is backed by, if any. When writing, only one of range or named_range_id or
+        /// table_id may be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
 
         /// <summary>The name of the filter view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
@@ -5594,6 +5648,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The DataFilters used to select which ranges to retrieve from the spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFilters")]
         public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; }
+
+        /// <summary>True if tables should be excluded in the banded ranges. False if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeTablesInBandedRanges")]
+        public virtual System.Nullable<bool> ExcludeTablesInBandedRanges { get; set; }
 
         /// <summary>
         /// True if grid data should be returned. This parameter is ignored if a field mask was set in the request.
@@ -6748,7 +6806,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// The named range this protected range is backed by, if any. When writing, only one of range or named_range_id
-        /// may be set.
+        /// or table_id may be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRangeId")]
         public virtual string NamedRangeId { get; set; }
@@ -6759,7 +6817,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// The range that is being protected. The range may be fully unbounded, in which case this is considered a
-        /// protected sheet. When writing, only one of range or named_range_id may be set.
+        /// protected sheet. When writing, only one of range or named_range_id or table_id may be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual GridRange Range { get; set; }
@@ -6769,6 +6827,13 @@ namespace Google.Apis.Sheets.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestingUserCanEdit")]
         public virtual System.Nullable<bool> RequestingUserCanEdit { get; set; }
+
+        /// <summary>
+        /// The table this protected range is backed by, if any. When writing, only one of range or named_range_id or
+        /// table_id may be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
 
         /// <summary>
         /// The list of unprotected ranges within a protected sheet. Unprotected ranges are only supported on protected
@@ -6954,6 +7019,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addSlicer")]
         public virtual AddSlicerRequest AddSlicer { get; set; }
 
+        /// <summary>Adds a table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addTable")]
+        public virtual AddTableRequest AddTable { get; set; }
+
         /// <summary>Appends cells after the last row with data in a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appendCells")]
         public virtual AppendCellsRequest AppendCells { get; set; }
@@ -7043,6 +7112,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Deletes a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteSheet")]
         public virtual DeleteSheetRequest DeleteSheet { get; set; }
+
+        /// <summary>A request for deleting a table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTable")]
+        public virtual DeleteTableRequest DeleteTable { get; set; }
 
         /// <summary>Duplicates a filter view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duplicateFilterView")]
@@ -7179,6 +7252,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Updates the spreadsheet's properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateSpreadsheetProperties")]
         public virtual UpdateSpreadsheetPropertiesRequest UpdateSpreadsheetProperties { get; set; }
+
+        /// <summary>Updates a table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTable")]
+        public virtual UpdateTableRequest UpdateTable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7480,6 +7557,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The slicers on this sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slicers")]
         public virtual System.Collections.Generic.IList<Slicer> Slicers { get; set; }
+
+        /// <summary>The tables on this sheet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tables")]
+        public virtual System.Collections.Generic.IList<Table> Tables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7805,6 +7886,109 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The spreadsheet theme color pairs. To update you must provide all theme color pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("themeColors")]
         public virtual System.Collections.Generic.IList<ThemeColorPair> ThemeColors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A table.</summary>
+    public class Table : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The table column properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnProperties")]
+        public virtual System.Collections.Generic.IList<TableColumnProperties> ColumnProperties { get; set; }
+
+        /// <summary>The table name. This is unique to all tables in the same spreadsheet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The table range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual GridRange Range { get; set; }
+
+        /// <summary>The table rows properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowsProperties")]
+        public virtual TableRowsProperties RowsProperties { get; set; }
+
+        /// <summary>The id of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A data validation rule for a column in a table.</summary>
+    public class TableColumnDataValidationRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The condition that data in the cell must match. Valid only if the [BooleanCondition.type] is ONE_OF_LIST.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual BooleanCondition Condition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The table column.</summary>
+    public class TableColumnProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The 0-based column index. This index is relative to its position in the table and is not necessarily the
+        /// same as the column index in the sheet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnIndex")]
+        public virtual System.Nullable<int> ColumnIndex { get; set; }
+
+        /// <summary>The column name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnName")]
+        public virtual string ColumnName { get; set; }
+
+        /// <summary>The column type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnType")]
+        public virtual string ColumnType { get; set; }
+
+        /// <summary>The column data validation rule. Only set for dropdown column type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataValidationRule")]
+        public virtual TableColumnDataValidationRule DataValidationRule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The table row properties.</summary>
+    public class TableRowsProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The first color that is alternating. If this field is set, the first banded row is filled with the specified
+        /// color. Otherwise, the first banded row is filled with a default color.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstBandColorStyle")]
+        public virtual ColorStyle FirstBandColorStyle { get; set; }
+
+        /// <summary>
+        /// The color of the last row. If this field is not set a footer is not added, the last row is filled with
+        /// either first_band_color_style or second_band_color_style, depending on the color of the previous row. If
+        /// updating an existing table without a footer to have a footer, the range will be expanded by 1 row. If
+        /// updating an existing table with a footer and removing a footer, the range will be shrunk by 1 row.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("footerColorStyle")]
+        public virtual ColorStyle FooterColorStyle { get; set; }
+
+        /// <summary>
+        /// The color of the header row. If this field is set, the header row is filled with the specified color.
+        /// Otherwise, the header row is filled with a default color.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerColorStyle")]
+        public virtual ColorStyle HeaderColorStyle { get; set; }
+
+        /// <summary>
+        /// The second color that is alternating. If this field is set, the second banded row is filled with the
+        /// specified color. Otherwise, the second banded row is filled with a default color.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondBandColorStyle")]
+        public virtual ColorStyle SecondBandColorStyle { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8630,6 +8814,24 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The properties to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual SpreadsheetProperties Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Updates a table in the spreadsheet.</summary>
+    public class UpdateTableRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The fields that should be updated. At least one field must be specified. The root `table` is
+        /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; }
+
+        /// <summary>Required. The table to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual Table Table { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
