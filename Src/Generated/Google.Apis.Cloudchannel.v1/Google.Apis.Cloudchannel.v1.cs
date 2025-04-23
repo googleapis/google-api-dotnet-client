@@ -6365,9 +6365,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1Parameter> Parameters { get; set; }
 
         /// <summary>
-        /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
-        /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
-        /// order.
+        /// Optional. Price reference ID for the offer. Only for offers that require additional price information. Used
+        /// to guarantee that the pricing is consistent between quoting the offer and placing the order.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
         public virtual string PriceReferenceId { get; set; }
@@ -7007,6 +7006,13 @@ namespace Google.Apis.Cloudchannel.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. Indicate if a customer is attesting about the correctness of provided information. Only required
+        /// if creating a GCP Entitlement.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerAttestationState")]
+        public virtual string CustomerAttestationState { get; set; }
+
         /// <summary>Required. The customer's primary domain. Must match the primary contact email's domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
@@ -7309,9 +7315,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1Parameter> Parameters { get; set; }
 
         /// <summary>
-        /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
-        /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
-        /// order.
+        /// Optional. Price reference ID for the offer. Only for offers that require additional price information. Used
+        /// to guarantee that the pricing is consistent between quoting the offer and placing the order.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
         public virtual string PriceReferenceId { get; set; }
@@ -7714,7 +7719,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The list of Offers requested.</summary>
+        /// <summary>
+        /// The list of Offers requested. The pricing information for each Offer only includes the base price. Effective
+        /// prices and discounts aren't populated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offers")]
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1Offer> Offers { get; set; }
 
@@ -8450,9 +8458,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual GoogleCloudChannelV1Offer Offer { get; set; }
 
         /// <summary>
-        /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
-        /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
-        /// order.
+        /// Optional. Price reference ID for the offer. Only for offers that require additional price information. Used
+        /// to guarantee that the pricing is consistent between quoting the offer and placing the order.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
         public virtual string PriceReferenceId { get; set; }
@@ -9130,9 +9137,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual GoogleCloudChannelV1Offer Offer { get; set; }
 
         /// <summary>
-        /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
-        /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
-        /// order.
+        /// Optional. Price reference ID for the offer. Only for offers that require additional price information. Used
+        /// to guarantee that the pricing is consistent between quoting the offer and placing the order.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
         public virtual string PriceReferenceId { get; set; }
@@ -9605,9 +9611,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1alpha1Parameter> Parameters { get; set; }
 
         /// <summary>
-        /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
-        /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
-        /// order.
+        /// Optional. Price reference ID for the offer. Only for offers that require additional price information. Used
+        /// to guarantee that the pricing is consistent between quoting the offer and placing the order.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
         public virtual string PriceReferenceId { get; set; }
