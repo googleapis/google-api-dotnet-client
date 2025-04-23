@@ -1644,8 +1644,8 @@ namespace Google.Apis.ServiceUsage.v1beta1
 
             /// <summary>Retrieves a summary of quota information for a specific quota metric</summary>
             /// <param name="name">
-            /// The resource name of the quota limit. An example name would be:
-            /// `projects/123/services/serviceusage.googleapis.com/quotas/metrics/serviceusage.googleapis.com%2Fmutate_requests`
+            /// The resource name of the quota. An example name would be:
+            /// `projects/123/services/serviceusage.googleapis.com/consumerQuotaMetrics/serviceusage.googleapis.com%2Fmutate_requests`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1663,8 +1663,8 @@ namespace Google.Apis.ServiceUsage.v1beta1
                 }
 
                 /// <summary>
-                /// The resource name of the quota limit. An example name would be:
-                /// `projects/123/services/serviceusage.googleapis.com/quotas/metrics/serviceusage.googleapis.com%2Fmutate_requests`
+                /// The resource name of the quota. An example name would be:
+                /// `projects/123/services/serviceusage.googleapis.com/consumerQuotaMetrics/serviceusage.googleapis.com%2Fmutate_requests`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
