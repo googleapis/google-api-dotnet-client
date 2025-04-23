@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1507,6 +1507,13 @@ namespace Google.Apis.CloudResourceManager.v2.Data
     /// </summary>
     public class Folder : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Optional capabilities configured for this folder (via UpdateCapability API). Example:
+        /// `folders/123/capabilities/app-management`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configuredCapabilities")]
+        public virtual System.Collections.Generic.IList<string> ConfiguredCapabilities { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -1559,6 +1566,13 @@ namespace Google.Apis.CloudResourceManager.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
         public virtual string LifecycleState { get; set; }
+
+        /// <summary>
+        /// Output only. Management Project associated with this folder (if app-management capability is enabled).
+        /// Example: `projects/google-mp-123` OUTPUT ONLY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementProject")]
+        public virtual string ManagementProject { get; set; }
 
         /// <summary>
         /// Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example:
