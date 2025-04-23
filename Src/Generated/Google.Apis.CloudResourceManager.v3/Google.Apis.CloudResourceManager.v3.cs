@@ -411,6 +411,149 @@ namespace Google.Apis.CloudResourceManager.v3
         public FoldersResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Capabilities = new CapabilitiesResource(service);
+        }
+
+        /// <summary>Gets the Capabilities resource.</summary>
+        public virtual CapabilitiesResource Capabilities { get; }
+
+        /// <summary>The "capabilities" collection of methods.</summary>
+        public class CapabilitiesResource
+        {
+            private const string Resource = "capabilities";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CapabilitiesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Retrieves the Capability identified by the supplied resource name.</summary>
+            /// <param name="name">
+            /// Required. The name of the capability to get. For example, `folders/123/capabilities/app-management`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves the Capability identified by the supplied resource name.</summary>
+            public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Capability>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the capability to get. For example, `folders/123/capabilities/app-management`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/capabilities/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Updates the Capability.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Immutable. Identifier. The resource name of the capability. Must be in the following form: *
+            /// `folders/{folder_id}/capabilities/{capability_name}` For example,
+            /// `folders/123/capabilities/app-management` Following are the allowed {capability_name} values: *
+            /// `app-management`
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.CloudResourceManager.v3.Data.Capability body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates the Capability.</summary>
+            public class PatchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.Capability body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Immutable. Identifier. The resource name of the capability. Must be in the following form: *
+                /// `folders/{folder_id}/capabilities/{capability_name}` For example,
+                /// `folders/123/capabilities/app-management` Following are the allowed {capability_name} values: *
+                /// `app-management`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The list of fields to update. Only [Capability.value] can be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudResourceManager.v3.Data.Capability Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/capabilities/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>
@@ -4580,6 +4723,25 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Representation of a Capability.</summary>
+    public class Capability : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Identifier. The resource name of the capability. Must be in the following form: *
+        /// `folders/{folder_id}/capabilities/{capability_name}` For example, `folders/123/capabilities/app-management`
+        /// Following are the allowed {capability_name} values: * `app-management`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The configured value of the capability at the given parent resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<bool> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata describing a long running folder operation</summary>
     public class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4889,6 +5051,13 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     /// </summary>
     public class Folder : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Optional capabilities configured for this folder (via UpdateCapability API). Example:
+        /// `folders/123/capabilities/app-management`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configuredCapabilities")]
+        public virtual System.Collections.Generic.IList<string> ConfiguredCapabilities { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -4978,6 +5147,13 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. Management Project associated with this folder (if app-management capability is enabled).
+        /// Example: `projects/google-mp-123` OUTPUT ONLY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementProject")]
+        public virtual string ManagementProject { get; set; }
 
         /// <summary>
         /// Output only. The resource name of the folder. Its format is `folders/{folder_id}`, for example:
