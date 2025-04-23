@@ -3074,7 +3074,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
         /// `ListAccounts` method. This method will produce the same results as calling `ListsAccounts` with the
         /// following filter: `relationship(providerId={parent} AND service(type="ACCOUNT_AGGREGATION"))`
         /// </summary>
-        /// <param name="provider">Required. The aggregation service provider. Format: `providers/{providerId}`</param>
+        /// <param name="provider">Required. The aggregation service provider. Format: `accounts/{providerId}`</param>
         public virtual ListSubaccountsRequest ListSubaccounts(string provider)
         {
             return new ListSubaccountsRequest(this.service, provider);
@@ -3094,7 +3094,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 InitParameters();
             }
 
-            /// <summary>Required. The aggregation service provider. Format: `providers/{providerId}`</summary>
+            /// <summary>Required. The aggregation service provider. Format: `accounts/{providerId}`</summary>
             [Google.Apis.Util.RequestParameterAttribute("provider", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Provider { get; private set; }
 
@@ -3253,7 +3253,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
         }
 
         /// <summary>Accepts a `TermsOfService`. Executing this method requires admin access.</summary>
-        public class AcceptRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Empty>
+        public class AcceptRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.AcceptTermsOfServiceResponse>
         {
             /// <summary>Constructs a new Accept request.</summary>
             public AcceptRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -3283,7 +3283,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
             public override string MethodName => "accept";
 
             /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
+            public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
             public override string RestPath => "accounts/v1beta/{+name}:accept";
@@ -3445,6 +3445,17 @@ namespace Google.Apis.Merchant.accounts_v1beta
 }
 namespace Google.Apis.Merchant.accounts_v1beta.Data
 {
+    /// <summary>Response message for the `AcceptTermsOfService` method.</summary>
+    public class AcceptTermsOfServiceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The agreement state after accepting the ToS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("termsOfServiceAgreementState")]
+        public virtual TermsOfServiceAgreementState TermsOfServiceAgreementState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes the accepted terms of service.</summary>
     public class Accepted : Google.Apis.Requests.IDirectResponseSchema
     {
