@@ -1318,7 +1318,7 @@ namespace Google.Apis.Forms.v1.Data
 
         /// <summary>
         /// Output only. The form URI to share with responders. This opens a page that allows the user to submit
-        /// responses but not edit the questions. For forms that have `publish_settings` value set, this will be the
+        /// responses but not edit the questions. For forms that have `publish_settings` value set, this is the
         /// published form URI.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responderUri")]
