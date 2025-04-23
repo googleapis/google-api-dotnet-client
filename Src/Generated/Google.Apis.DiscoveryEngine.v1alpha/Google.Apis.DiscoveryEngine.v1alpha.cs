@@ -22758,6 +22758,56 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The specification for answer generation.</summary>
+    public class GoogleCloudDiscoveryengineV1AnswerGenerationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The specification for user specified classifier spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDefinedClassifierSpec")]
+        public virtual GoogleCloudDiscoveryengineV1AnswerGenerationSpecUserDefinedClassifierSpec UserDefinedClassifierSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for user defined classifier.</summary>
+    public class GoogleCloudDiscoveryengineV1AnswerGenerationSpecUserDefinedClassifierSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether or not to enable and include user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableUserDefinedClassifier")]
+        public virtual System.Nullable<bool> EnableUserDefinedClassifier { get; set; }
+
+        /// <summary>Optional. The model id to be used for the user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; }
+
+        /// <summary>Optional. The preamble to be used for the user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preamble")]
+        public virtual string Preamble { get; set; }
+
+        /// <summary>Optional. The seed value to be used for the user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seed")]
+        public virtual System.Nullable<int> Seed { get; set; }
+
+        /// <summary>Optional. The task marker to be used for the user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskMarker")]
+        public virtual string TaskMarker { get; set; }
+
+        /// <summary>Optional. The temperature value to be used for the user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temperature")]
+        public virtual System.Nullable<double> Temperature { get; set; }
+
+        /// <summary>Optional. The top-k value to be used for the user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topK")]
+        public virtual System.Nullable<long> TopK { get; set; }
+
+        /// <summary>Optional. The top-p value to be used for the user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topP")]
+        public virtual System.Nullable<double> TopP { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.BatchCreateTargetSites operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
@@ -24772,6 +24822,18 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableTableAnnotation")]
         public virtual System.Nullable<bool> EnableTableAnnotation { get; set; }
 
+        /// <summary>Optional. List of HTML classes to exclude from the parsed content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeHtmlClasses")]
+        public virtual System.Collections.Generic.IList<string> ExcludeHtmlClasses { get; set; }
+
+        /// <summary>Optional. List of HTML elements to exclude from the parsed content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeHtmlElements")]
+        public virtual System.Collections.Generic.IList<string> ExcludeHtmlElements { get; set; }
+
+        /// <summary>Optional. List of HTML ids to exclude from the parsed content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeHtmlIds")]
+        public virtual System.Collections.Generic.IList<string> ExcludeHtmlIds { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -24971,6 +25033,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string IndustryVertical { get; set; }
 
         /// <summary>
+        /// Configurations for the Media Engine. Only applicable on the data stores with solution_type
+        /// SOLUTION_TYPE_RECOMMENDATION and IndustryVertical.MEDIA vertical.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaRecommendationEngineConfig")]
+        public virtual GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
+
+        /// <summary>
         /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a
         /// length limit of 1024 characters. Format:
         /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63
@@ -25128,6 +25197,115 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
         public virtual string CompanyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional config specs for a Media Recommendation engine.</summary>
+    public class GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Additional engine features config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engineFeaturesConfig")]
+        public virtual GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigEngineFeaturesConfig EngineFeaturesConfig { get; set; }
+
+        /// <summary>
+        /// The optimization objective. e.g., `cvr`. This field together with optimization_objective describe engine
+        /// metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not
+        /// specified, we choose default based on engine type. Default depends on type of recommendation:
+        /// `recommended-for-you` =&amp;gt; `ctr` `others-you-may-like` =&amp;gt; `ctr`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjective")]
+        public virtual string OptimizationObjective { get; set; }
+
+        /// <summary>
+        /// Name and value of the custom threshold for cvr optimization_objective. For target_field `watch-time`,
+        /// target_field_value must be an integer value indicating the media progress time in seconds between (0, 86400]
+        /// (excludes 0, includes 86400) (e.g., 90). For target_field `watch-percentage`, the target_field_value must be
+        /// a valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjectiveConfig")]
+        public virtual GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigOptimizationObjectiveConfig OptimizationObjectiveConfig { get; set; }
+
+        /// <summary>
+        /// The training state that the engine is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running
+        /// the service is frequency of training - this can be used to determine when to train engine in order to
+        /// control cost. If not specified: the default value for `CreateEngine` method is `TRAINING`. The default value
+        /// for `UpdateEngine` method is to keep the state the same as before.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingState")]
+        public virtual string TrainingState { get; set; }
+
+        /// <summary>
+        /// Required. The type of engine. e.g., `recommended-for-you`. This field together with optimization_objective
+        /// describe engine metadata to use to control engine training and serving. Currently supported values:
+        /// `recommended-for-you`, `others-you-may-like`, `more-like-this`, `most-popular-items`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>More feature configs of the selected engine type.</summary>
+    public class GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigEngineFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Most popular engine feature config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mostPopularConfig")]
+        public virtual GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigMostPopularFeatureConfig MostPopularConfig { get; set; }
+
+        /// <summary>Recommended for you engine feature config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendedForYouConfig")]
+        public virtual GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig RecommendedForYouConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Feature configurations that are required for creating a Most Popular engine.</summary>
+    public class GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigMostPopularFeatureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The time window of which the engine is queried at training and prediction time. Positive integers only. The
+        /// value translates to the last X days of events. Currently required for the `most-popular-items` engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeWindowDays")]
+        public virtual System.Nullable<long> TimeWindowDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Custom threshold for `cvr` optimization_objective.</summary>
+    public class GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigOptimizationObjectiveConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetField")]
+        public virtual string TargetField { get; set; }
+
+        /// <summary>Required. The threshold to be applied to the target (e.g., 0.5).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetFieldValueFloat")]
+        public virtual System.Nullable<float> TargetFieldValueFloat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional feature configurations for creating a `recommended-for-you` engine.</summary>
+    public class GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The type of event with which the engine is queried at prediction time. If set to `generic`, only
+        /// `view-item`, `media-play`,and `media-complete` will be used as `context-event` in engine training. If set to
+        /// `view-home-page`, `view-home-page` will also be used as `context-events` in addition to `view-item`,
+        /// `media-play`, and `media-complete`. Currently supported for the `recommended-for-you` engine. Currently
+        /// supported values: `view-home-page`, `generic`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextEventType")]
+        public virtual string ContextEventType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26512,6 +26690,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1ServingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The specification for answer generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerGenerationSpec")]
+        public virtual GoogleCloudDiscoveryengineV1AnswerGenerationSpec AnswerGenerationSpec { get; set; }
+
         /// <summary>
         /// Boost controls to use in serving path. All triggered boost controls will be applied. Boost controls must be
         /// in the same data store as the serving config. Maximum of 20 boost controls.
@@ -27468,6 +27650,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boostSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpec BoostSpec { get; set; }
 
+        /// <summary>Optional. Experiment ids for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experimentIds")]
+        public virtual System.Collections.Generic.IList<string> ExperimentIds { get; set; }
+
         /// <summary>
         /// Indicates if tail suggestions should be returned if there are no suggestions that match the full query. Even
         /// if set to true, if there are suggestions that match the full query, those are returned and no tail
@@ -28071,6 +28257,56 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>ID of the citation source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referenceId")]
         public virtual string ReferenceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for answer generation.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The specification for user specified classifier spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDefinedClassifierSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpecUserDefinedClassifierSpec UserDefinedClassifierSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for user defined classifier.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpecUserDefinedClassifierSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether or not to enable and include user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableUserDefinedClassifier")]
+        public virtual System.Nullable<bool> EnableUserDefinedClassifier { get; set; }
+
+        /// <summary>Optional. The model id to be used for the user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; }
+
+        /// <summary>Optional. The preamble to be used for the user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preamble")]
+        public virtual string Preamble { get; set; }
+
+        /// <summary>Optional. The seed value to be used for the user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seed")]
+        public virtual System.Nullable<int> Seed { get; set; }
+
+        /// <summary>Optional. The task marker to be used for the user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskMarker")]
+        public virtual string TaskMarker { get; set; }
+
+        /// <summary>Optional. The temperature value to be used for the user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temperature")]
+        public virtual System.Nullable<double> Temperature { get; set; }
+
+        /// <summary>Optional. The top-k value to be used for the user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topK")]
+        public virtual System.Nullable<long> TopK { get; set; }
+
+        /// <summary>Optional. The top-p value to be used for the user defined classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topP")]
+        public virtual System.Nullable<double> TopP { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29552,6 +29788,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Nullable<bool> GroundingCheckRequired { get; set; }
 
         /// <summary>
+        /// Confidence score for the claim in the answer candidate, in the range of [0, 1]. This is set only when
+        /// enable_claim_level_score is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>
         /// Position indicating the start of the claim in the answer candidate, measured in bytes. Note that this is not
         /// measured in characters and, therefore, must be rendered in the user interface keeping in mind that some
         /// characters may take more than one byte. For example, if the claim text contains non-ASCII characters, the
@@ -29575,6 +29818,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citationThreshold")]
         public virtual System.Nullable<double> CitationThreshold { get; set; }
+
+        /// <summary>The control flag that enables claim-level grounding score in the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableClaimLevelScore")]
+        public virtual System.Nullable<bool> EnableClaimLevelScore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -31710,6 +31957,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaDataConnector : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Whether the connector will be created with an ACL config. Currently this field only affects Cloud
+        /// Storage and BigQuery connectors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclEnabled")]
+        public virtual System.Nullable<bool> AclEnabled { get; set; }
+
         /// <summary>Optional. Action configurations to make the connector support actions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaActionConfig ActionConfig { get; set; }
@@ -31734,6 +31988,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockingReasons")]
         public virtual System.Collections.Generic.IList<string> BlockingReasons { get; set; }
+
+        /// <summary>
+        /// Optional. The modes enabled for this connector. Default state is CONNECTOR_MODE_UNSPECIFIED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorModes")]
+        public virtual System.Collections.Generic.IList<string> ConnectorModes { get; set; }
 
         /// <summary>
         /// Output only. The type of connector. Each source can only map to one type. For example, salesforce,
@@ -31788,6 +32048,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Optional. Any target destinations used to connect to third-party services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaDestinationConfig> DestinationConfigs { get; set; }
+
+        /// <summary>Optional. Any params and credentials used specifically for EUA connectors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endUserConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig EndUserConfig { get; set; }
 
         /// <summary>List of entities from the connected data source to ingest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
@@ -32015,6 +32279,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Any params and credentials used specifically for EUA connectors.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Any additional parameters needed for EUA.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalParams")]
+        public virtual System.Collections.Generic.IDictionary<string, object> AdditionalParams { get; set; }
+
+        /// <summary>Optional. Any authentication parameters specific to EUA connectors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authParams")]
+        public virtual System.Collections.Generic.IDictionary<string, object> AuthParams { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -33402,8 +33681,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     {
         /// <summary>
         /// The MIME type of the content. Supported types: * `application/pdf` (PDF, only native PDFs are supported for
-        /// now) * `text/html` (HTML) * `text/plain` (TXT) * `text/xml` (XML) * `application/json` (JSON) *
-        /// `application/vnd.openxmlformats-officedocument.wordprocessingml.document` (DOCX) *
+        /// now) * `text/html` (HTML) * `text/plain` (TXT) * `application/xml` or `text/xml` (XML) * `application/json`
+        /// (JSON) * `application/vnd.openxmlformats-officedocument.wordprocessingml.document` (DOCX) *
         /// `application/vnd.openxmlformats-officedocument.presentationml.presentation` (PPTX) *
         /// `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` (XLSX) *
         /// `application/vnd.ms-excel.sheet.macroenabled.12` (XLSM) The following types are supported only if layout
@@ -33649,6 +33928,18 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Optional. If true, the LLM based annotation is added to the table during parsing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableTableAnnotation")]
         public virtual System.Nullable<bool> EnableTableAnnotation { get; set; }
+
+        /// <summary>Optional. List of HTML classes to exclude from the parsed content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeHtmlClasses")]
+        public virtual System.Collections.Generic.IList<string> ExcludeHtmlClasses { get; set; }
+
+        /// <summary>Optional. List of HTML elements to exclude from the parsed content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeHtmlElements")]
+        public virtual System.Collections.Generic.IList<string> ExcludeHtmlElements { get; set; }
+
+        /// <summary>Optional. List of HTML ids to exclude from the parsed content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeHtmlIds")]
+        public virtual System.Collections.Generic.IList<string> ExcludeHtmlIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34061,6 +34352,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Additional config specs for a Media Recommendation engine.</summary>
     public class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Additional engine features config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engineFeaturesConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigEngineFeaturesConfig EngineFeaturesConfig { get; set; }
+
         /// <summary>
         /// The optimization objective. e.g., `cvr`. This field together with optimization_objective describe engine
         /// metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not
@@ -34100,6 +34395,35 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>More feature configs of the selected engine type.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigEngineFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Most popular engine feature config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mostPopularConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig MostPopularConfig { get; set; }
+
+        /// <summary>Recommended for you engine feature config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendedForYouConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig RecommendedForYouConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Feature configurations that are required for creating a Most Popular engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The time window of which the engine is queried at training and prediction time. Positive integers only. The
+        /// value translates to the last X days of events. Currently required for the `most-popular-items` engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeWindowDays")]
+        public virtual System.Nullable<long> TimeWindowDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Custom threshold for `cvr` optimization_objective.</summary>
     public class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -34112,6 +34436,23 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Required. The threshold to be applied to the target (e.g., 0.5).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetFieldValueFloat")]
         public virtual System.Nullable<float> TargetFieldValueFloat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional feature configurations for creating a `recommended-for-you` engine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The type of event with which the engine is queried at prediction time. If set to `generic`, only
+        /// `view-item`, `media-play`,and `media-complete` will be used as `context-event` in engine training. If set to
+        /// `view-home-page`, `view-home-page` will also be used as `context-events` in addition to `view-item`,
+        /// `media-play`, and `media-complete`. Currently supported for the `recommended-for-you` engine. Currently
+        /// supported values: `view-home-page`, `generic`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextEventType")]
+        public virtual string ContextEventType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34502,6 +34843,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chunkText")]
         public virtual string ChunkText { get; set; }
 
+        /// <summary>The domain of the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
         /// <summary>The index of this chunk. Currently, only used for the streaming mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
@@ -34516,6 +34861,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>More fine-grained information for the source reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> SourceMetadata { get; set; }
+
+        /// <summary>The title of the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The URI of the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34797,6 +35150,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>The app name of the associated Connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("app")]
         public virtual string App { get; set; }
+
+        /// <summary>The authorization uri for the data connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationUri")]
+        public virtual string AuthorizationUri { get; set; }
 
         /// <summary>The client id of the associated Connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
@@ -40281,6 +40638,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaServingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The specification for answer generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerGenerationSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerGenerationSpec AnswerGenerationSpec { get; set; }
+
         /// <summary>
         /// Boost controls to use in serving path. All triggered boost controls will be applied. Boost controls must be
         /// in the same data store as the serving config. Maximum of 20 boost controls.
@@ -42558,9 +42919,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Describes the assistant settings of the widget.</summary>
     public class GoogleCloudDiscoveryengineV1alphaWidgetConfigAssistantSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether or not the Google search grounding toggle is shown.</summary>
+        /// <summary>
+        /// Whether or not the Google search grounding toggle is shown. Deprecated. Use web_grounding_type instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleSearchGroundingEnabled")]
         public virtual System.Nullable<bool> GoogleSearchGroundingEnabled { get; set; }
+
+        /// <summary>Optional. The type of web grounding to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webGroundingType")]
+        public virtual string WebGroundingType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -42820,6 +43187,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Whether or not to enable autocomplete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAutocomplete")]
         public virtual System.Nullable<bool> EnableAutocomplete { get; set; }
+
+        /// <summary>Optional. If set to true, the widget will enable people search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePeopleSearch")]
+        public virtual System.Nullable<bool> EnablePeopleSearch { get; set; }
 
         /// <summary>Turn on or off collecting the search result quality feedback from end users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableQualityFeedback")]
@@ -44950,6 +45321,18 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableTableAnnotation")]
         public virtual System.Nullable<bool> EnableTableAnnotation { get; set; }
 
+        /// <summary>Optional. List of HTML classes to exclude from the parsed content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeHtmlClasses")]
+        public virtual System.Collections.Generic.IList<string> ExcludeHtmlClasses { get; set; }
+
+        /// <summary>Optional. List of HTML elements to exclude from the parsed content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeHtmlElements")]
+        public virtual System.Collections.Generic.IList<string> ExcludeHtmlElements { get; set; }
+
+        /// <summary>Optional. List of HTML ids to exclude from the parsed content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeHtmlIds")]
+        public virtual System.Collections.Generic.IList<string> ExcludeHtmlIds { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -45149,6 +45532,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string IndustryVertical { get; set; }
 
         /// <summary>
+        /// Configurations for the Media Engine. Only applicable on the data stores with solution_type
+        /// SOLUTION_TYPE_RECOMMENDATION and IndustryVertical.MEDIA vertical.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaRecommendationEngineConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
+
+        /// <summary>
         /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a
         /// length limit of 1024 characters. Format:
         /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63
@@ -45306,6 +45696,115 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
         public virtual string CompanyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional config specs for a Media Recommendation engine.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Additional engine features config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engineFeaturesConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigEngineFeaturesConfig EngineFeaturesConfig { get; set; }
+
+        /// <summary>
+        /// The optimization objective. e.g., `cvr`. This field together with optimization_objective describe engine
+        /// metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not
+        /// specified, we choose default based on engine type. Default depends on type of recommendation:
+        /// `recommended-for-you` =&amp;gt; `ctr` `others-you-may-like` =&amp;gt; `ctr`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjective")]
+        public virtual string OptimizationObjective { get; set; }
+
+        /// <summary>
+        /// Name and value of the custom threshold for cvr optimization_objective. For target_field `watch-time`,
+        /// target_field_value must be an integer value indicating the media progress time in seconds between (0, 86400]
+        /// (excludes 0, includes 86400) (e.g., 90). For target_field `watch-percentage`, the target_field_value must be
+        /// a valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjectiveConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig OptimizationObjectiveConfig { get; set; }
+
+        /// <summary>
+        /// The training state that the engine is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running
+        /// the service is frequency of training - this can be used to determine when to train engine in order to
+        /// control cost. If not specified: the default value for `CreateEngine` method is `TRAINING`. The default value
+        /// for `UpdateEngine` method is to keep the state the same as before.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingState")]
+        public virtual string TrainingState { get; set; }
+
+        /// <summary>
+        /// Required. The type of engine. e.g., `recommended-for-you`. This field together with optimization_objective
+        /// describe engine metadata to use to control engine training and serving. Currently supported values:
+        /// `recommended-for-you`, `others-you-may-like`, `more-like-this`, `most-popular-items`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>More feature configs of the selected engine type.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigEngineFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Most popular engine feature config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mostPopularConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig MostPopularConfig { get; set; }
+
+        /// <summary>Recommended for you engine feature config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendedForYouConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig RecommendedForYouConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Feature configurations that are required for creating a Most Popular engine.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The time window of which the engine is queried at training and prediction time. Positive integers only. The
+        /// value translates to the last X days of events. Currently required for the `most-popular-items` engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeWindowDays")]
+        public virtual System.Nullable<long> TimeWindowDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Custom threshold for `cvr` optimization_objective.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetField")]
+        public virtual string TargetField { get; set; }
+
+        /// <summary>Required. The threshold to be applied to the target (e.g., 0.5).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetFieldValueFloat")]
+        public virtual System.Nullable<float> TargetFieldValueFloat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional feature configurations for creating a `recommended-for-you` engine.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The type of event with which the engine is queried at prediction time. If set to `generic`, only
+        /// `view-item`, `media-play`,and `media-complete` will be used as `context-event` in engine training. If set to
+        /// `view-home-page`, `view-home-page` will also be used as `context-events` in addition to `view-item`,
+        /// `media-play`, and `media-complete`. Currently supported for the `recommended-for-you` engine. Currently
+        /// supported values: `view-home-page`, `generic`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextEventType")]
+        public virtual string ContextEventType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
