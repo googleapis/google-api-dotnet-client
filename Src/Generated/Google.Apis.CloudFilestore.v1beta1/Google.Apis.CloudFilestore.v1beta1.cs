@@ -3818,6 +3818,13 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string Network { get; set; }
 
         /// <summary>
+        /// Optional. Private Service Connect configuration. Should only be set when connect_mode is
+        /// PRIVATE_SERVICE_CONNECT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscConfig")]
+        public virtual PscConfig PscConfig { get; set; }
+
+        /// <summary>
         /// Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using
         /// DIRECT_PEERING connect mode. * [Allocated IP address
         /// range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using
@@ -3871,6 +3878,13 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipRanges")]
         public virtual System.Collections.Generic.IList<string> IpRanges { get; set; }
+
+        /// <summary>
+        /// Optional. The source VPC network for ip_ranges. Required for instances using Private Service Connect,
+        /// optional otherwise. If provided, must be the same network specified in the `NetworkConfig.network` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
 
         /// <summary>The security flavors allowed for mount operations. The default is AUTH_SYS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityFlavors")]
@@ -4105,6 +4119,21 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerInstance")]
         public virtual string PeerInstance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Private Service Connect configuration.</summary>
+    public class PscConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Consumer service project in which the Private Service Connect endpoint would be set up. This is optional,
+        /// and only relevant in case the network is a shared VPC. If this is not specified, the endpoint would be setup
+        /// in the VPC host project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointProject")]
+        public virtual string EndpointProject { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
