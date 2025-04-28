@@ -2837,6 +2837,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pscNetworkAttachmentUri")]
         public virtual string PscNetworkAttachmentUri { get; set; }
 
+        /// <summary>Indicates whether the Compute Engine instance is running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("running")]
+        public virtual System.Nullable<bool> Running { get; set; }
+
         /// <summary>Service account authorized for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
