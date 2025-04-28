@@ -9309,6 +9309,19 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
 
+        /// <summary>
+        /// Optional. The schema name. This will be required only if the object uses a schema name as part of its unique
+        /// identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>
+        /// Optional. The table name. This will be required only if the object is a level below database or schema.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
         /// <summary>Required. The type of the migration job object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
