@@ -1532,9 +1532,10 @@ namespace Google.Apis.Classroom.v1
             /// Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its
             /// own data and permissions model, an add-on should call this to validate query parameters and the
             /// requesting user's role whenever the add-on is opened in an
-            /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview). This
-            /// method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT`
-            /// if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+            /// [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview).
+            /// This method returns the following error codes: * `PERMISSION_DENIED` for access errors. *
+            /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does
+            /// not exist.
             /// </summary>
             /// <param name="courseId">Required. Identifier of the course.</param>
             /// <param name="itemId">
@@ -1550,9 +1551,10 @@ namespace Google.Apis.Classroom.v1
             /// Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its
             /// own data and permissions model, an add-on should call this to validate query parameters and the
             /// requesting user's role whenever the add-on is opened in an
-            /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview). This
-            /// method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT`
-            /// if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+            /// [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview).
+            /// This method returns the following error codes: * `PERMISSION_DENIED` for access errors. *
+            /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does
+            /// not exist.
             /// </summary>
             public class GetAddOnContextRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.AddOnContext>
             {
@@ -1587,7 +1589,7 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>
                 /// Optional. The identifier of the attachment. This field is required for all requests except when the
                 /// user is in the [Attachment Discovery
-                /// iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
+                /// iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AttachmentId { get; set; }
@@ -2909,9 +2911,9 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>
                 /// Creates a rubric. The requesting user and course owner must have rubrics creation capabilities. For
                 /// details, see [licensing
-                /// requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements). For
-                /// further details, see [Rubrics structure and known limitations](/classroom/rubrics/limitations). This
-                /// request must be made by the Google Cloud console of the [OAuth client
+                /// requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements).
+                /// For further details, see [Rubrics structure and known limitations](/classroom/rubrics/limitations).
+                /// This request must be made by the Google Cloud console of the [OAuth client
                 /// ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item.
                 /// This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user isn't
                 /// permitted to create rubrics for course work in the requested course. * `INTERNAL` if the request has
@@ -2931,9 +2933,9 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>
                 /// Creates a rubric. The requesting user and course owner must have rubrics creation capabilities. For
                 /// details, see [licensing
-                /// requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements). For
-                /// further details, see [Rubrics structure and known limitations](/classroom/rubrics/limitations). This
-                /// request must be made by the Google Cloud console of the [OAuth client
+                /// requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements).
+                /// For further details, see [Rubrics structure and known limitations](/classroom/rubrics/limitations).
+                /// This request must be made by the Google Cloud console of the [OAuth client
                 /// ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item.
                 /// This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user isn't
                 /// permitted to create rubrics for course work in the requested course. * `INTERNAL` if the request has
@@ -3002,7 +3004,7 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>
                 /// Deletes a rubric. The requesting user and course owner must have rubrics creation capabilities. For
                 /// details, see [licensing
-                /// requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements).
+                /// requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements).
                 /// This request must be made by the Google Cloud console of the [OAuth client
                 /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding rubric. This
                 /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project
@@ -3022,7 +3024,7 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>
                 /// Deletes a rubric. The requesting user and course owner must have rubrics creation capabilities. For
                 /// details, see [licensing
-                /// requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements).
+                /// requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements).
                 /// This request must be made by the Google Cloud console of the [OAuth client
                 /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding rubric. This
                 /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project
@@ -3282,7 +3284,7 @@ namespace Google.Apis.Classroom.v1
                 /// update capabilities are [limited](/classroom/rubrics/limitations) once grading has started. The
                 /// requesting user and course owner must have rubrics creation capabilities. For details, see
                 /// [licensing
-                /// requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements).
+                /// requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements).
                 /// This request must be made by the Google Cloud console of the [OAuth client
                 /// ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item.
                 /// This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer
@@ -3307,7 +3309,7 @@ namespace Google.Apis.Classroom.v1
                 /// update capabilities are [limited](/classroom/rubrics/limitations) once grading has started. The
                 /// requesting user and course owner must have rubrics creation capabilities. For details, see
                 /// [licensing
-                /// requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements).
+                /// requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements).
                 /// This request must be made by the Google Cloud console of the [OAuth client
                 /// ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item.
                 /// This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer
@@ -4540,9 +4542,10 @@ namespace Google.Apis.Classroom.v1
             /// Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its
             /// own data and permissions model, an add-on should call this to validate query parameters and the
             /// requesting user's role whenever the add-on is opened in an
-            /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview). This
-            /// method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT`
-            /// if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+            /// [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview).
+            /// This method returns the following error codes: * `PERMISSION_DENIED` for access errors. *
+            /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does
+            /// not exist.
             /// </summary>
             /// <param name="courseId">Required. Identifier of the course.</param>
             /// <param name="itemId">
@@ -4558,9 +4561,10 @@ namespace Google.Apis.Classroom.v1
             /// Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its
             /// own data and permissions model, an add-on should call this to validate query parameters and the
             /// requesting user's role whenever the add-on is opened in an
-            /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview). This
-            /// method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT`
-            /// if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+            /// [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview).
+            /// This method returns the following error codes: * `PERMISSION_DENIED` for access errors. *
+            /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does
+            /// not exist.
             /// </summary>
             public class GetAddOnContextRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.AddOnContext>
             {
@@ -4595,7 +4599,7 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>
                 /// Optional. The identifier of the attachment. This field is required for all requests except when the
                 /// user is in the [Attachment Discovery
-                /// iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
+                /// iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AttachmentId { get; set; }
@@ -5027,8 +5031,8 @@ namespace Google.Apis.Classroom.v1
             /// Updates a rubric. See google.classroom.v1.Rubric for details of which fields can be updated. Rubric
             /// update capabilities are [limited](/classroom/rubrics/limitations) once grading has started. The
             /// requesting user and course owner must have rubrics creation capabilities. For details, see [licensing
-            /// requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements). This
-            /// request must be made by the Google Cloud console of the [OAuth client
+            /// requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements).
+            /// This request must be made by the Google Cloud console of the [OAuth client
             /// ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item. This
             /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project
             /// didn't create the corresponding course work, if the user isn't permitted to make the requested
@@ -5050,8 +5054,8 @@ namespace Google.Apis.Classroom.v1
             /// Updates a rubric. See google.classroom.v1.Rubric for details of which fields can be updated. Rubric
             /// update capabilities are [limited](/classroom/rubrics/limitations) once grading has started. The
             /// requesting user and course owner must have rubrics creation capabilities. For details, see [licensing
-            /// requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements). This
-            /// request must be made by the Google Cloud console of the [OAuth client
+            /// requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements).
+            /// This request must be made by the Google Cloud console of the [OAuth client
             /// ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item. This
             /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project
             /// didn't create the corresponding course work, if the user isn't permitted to make the requested
@@ -5983,9 +5987,10 @@ namespace Google.Apis.Classroom.v1
             /// Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its
             /// own data and permissions model, an add-on should call this to validate query parameters and the
             /// requesting user's role whenever the add-on is opened in an
-            /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview). This
-            /// method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT`
-            /// if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+            /// [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview).
+            /// This method returns the following error codes: * `PERMISSION_DENIED` for access errors. *
+            /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does
+            /// not exist.
             /// </summary>
             /// <param name="courseId">Required. Identifier of the course.</param>
             /// <param name="itemId">
@@ -6001,9 +6006,10 @@ namespace Google.Apis.Classroom.v1
             /// Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its
             /// own data and permissions model, an add-on should call this to validate query parameters and the
             /// requesting user's role whenever the add-on is opened in an
-            /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview). This
-            /// method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT`
-            /// if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+            /// [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview).
+            /// This method returns the following error codes: * `PERMISSION_DENIED` for access errors. *
+            /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does
+            /// not exist.
             /// </summary>
             public class GetAddOnContextRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.AddOnContext>
             {
@@ -6038,7 +6044,7 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>
                 /// Optional. The identifier of the attachment. This field is required for all requests except when the
                 /// user is in the [Attachment Discovery
-                /// iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
+                /// iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AttachmentId { get; set; }
@@ -7274,9 +7280,10 @@ namespace Google.Apis.Classroom.v1
             /// Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its
             /// own data and permissions model, an add-on should call this to validate query parameters and the
             /// requesting user's role whenever the add-on is opened in an
-            /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview). This
-            /// method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT`
-            /// if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+            /// [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview).
+            /// This method returns the following error codes: * `PERMISSION_DENIED` for access errors. *
+            /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does
+            /// not exist.
             /// </summary>
             /// <param name="courseId">Required. Identifier of the course.</param>
             /// <param name="postId">Optional. Deprecated, use `item_id` instead.</param>
@@ -7289,9 +7296,10 @@ namespace Google.Apis.Classroom.v1
             /// Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its
             /// own data and permissions model, an add-on should call this to validate query parameters and the
             /// requesting user's role whenever the add-on is opened in an
-            /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview). This
-            /// method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT`
-            /// if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+            /// [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview).
+            /// This method returns the following error codes: * `PERMISSION_DENIED` for access errors. *
+            /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does
+            /// not exist.
             /// </summary>
             public class GetAddOnContextRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.AddOnContext>
             {
@@ -7323,7 +7331,7 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>
                 /// Optional. The identifier of the attachment. This field is required for all requests except when the
                 /// user is in the [Attachment Discovery
-                /// iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
+                /// iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AttachmentId { get; set; }
@@ -7411,12 +7419,12 @@ namespace Google.Apis.Classroom.v1
 
             /// <summary>
             /// Adds a user as a student of a course. Domain administrators are permitted to [directly
-            /// add](https://developers.google.com/classroom/guides/manage-users) users within their domain as students
-            /// to courses within their domain. Students are permitted to add themselves to a course using an enrollment
-            /// code. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not
-            /// permitted to create students in this course or for access errors. * `NOT_FOUND` if the requested course
-            /// ID does not exist. * `FAILED_PRECONDITION` if the requested user's account is disabled, for the
-            /// following request errors: * CourseMemberLimitReached * CourseNotModifiable *
+            /// add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as
+            /// students to courses within their domain. Students are permitted to add themselves to a course using an
+            /// enrollment code. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
+            /// user is not permitted to create students in this course or for access errors. * `NOT_FOUND` if the
+            /// requested course ID does not exist. * `FAILED_PRECONDITION` if the requested user's account is disabled,
+            /// for the following request errors: * CourseMemberLimitReached * CourseNotModifiable *
             /// UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a
             /// student or teacher in the course.
             /// </summary>
@@ -7432,12 +7440,12 @@ namespace Google.Apis.Classroom.v1
 
             /// <summary>
             /// Adds a user as a student of a course. Domain administrators are permitted to [directly
-            /// add](https://developers.google.com/classroom/guides/manage-users) users within their domain as students
-            /// to courses within their domain. Students are permitted to add themselves to a course using an enrollment
-            /// code. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not
-            /// permitted to create students in this course or for access errors. * `NOT_FOUND` if the requested course
-            /// ID does not exist. * `FAILED_PRECONDITION` if the requested user's account is disabled, for the
-            /// following request errors: * CourseMemberLimitReached * CourseNotModifiable *
+            /// add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as
+            /// students to courses within their domain. Students are permitted to add themselves to a course using an
+            /// enrollment code. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
+            /// user is not permitted to create students in this course or for access errors. * `NOT_FOUND` if the
+            /// requested course ID does not exist. * `FAILED_PRECONDITION` if the requested user's account is disabled,
+            /// for the following request errors: * CourseMemberLimitReached * CourseNotModifiable *
             /// UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a
             /// student or teacher in the course.
             /// </summary>
@@ -7773,12 +7781,12 @@ namespace Google.Apis.Classroom.v1
 
             /// <summary>
             /// Creates a teacher of a course. Domain administrators are permitted to [directly
-            /// add](https://developers.google.com/classroom/guides/manage-users) users within their domain as teachers
-            /// to courses within their domain. Non-admin users should send an Invitation instead. This method returns
-            /// the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create
-            /// teachers in this course or for access errors. * `NOT_FOUND` if the requested course ID does not exist. *
-            /// `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors: *
-            /// CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached *
+            /// add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as
+            /// teachers to courses within their domain. Non-admin users should send an Invitation instead. This method
+            /// returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
+            /// create teachers in this course or for access errors. * `NOT_FOUND` if the requested course ID does not
+            /// exist. * `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request
+            /// errors: * CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached *
             /// UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a
             /// teacher or student in the course.
             /// </summary>
@@ -7793,12 +7801,12 @@ namespace Google.Apis.Classroom.v1
 
             /// <summary>
             /// Creates a teacher of a course. Domain administrators are permitted to [directly
-            /// add](https://developers.google.com/classroom/guides/manage-users) users within their domain as teachers
-            /// to courses within their domain. Non-admin users should send an Invitation instead. This method returns
-            /// the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create
-            /// teachers in this course or for access errors. * `NOT_FOUND` if the requested course ID does not exist. *
-            /// `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors: *
-            /// CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached *
+            /// add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as
+            /// teachers to courses within their domain. Non-admin users should send an Invitation instead. This method
+            /// returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
+            /// create teachers in this course or for access errors. * `NOT_FOUND` if the requested course ID does not
+            /// exist. * `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request
+            /// errors: * CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached *
             /// UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a
             /// teacher or student in the course.
             /// </summary>
@@ -9095,7 +9103,7 @@ namespace Google.Apis.Classroom.v1
         /// Updates grading period settings of a course. Individual grading periods can be added, removed, or modified
         /// using this method. The requesting user and course owner must be eligible to modify Grading Periods. For
         /// details, see [licensing
-        /// requirements](https://developers.google.com/classroom/grading-periods/manage-grading-periods#licensing_requirements).
+        /// requirements](https://developers.google.com/workspace/classroom/grading-periods/manage-grading-periods#licensing_requirements).
         /// This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
         /// to modify the grading period settings in a course or for access errors: *
         /// UserIneligibleToUpdateGradingPeriodSettings * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND`
@@ -9112,7 +9120,7 @@ namespace Google.Apis.Classroom.v1
         /// Updates grading period settings of a course. Individual grading periods can be added, removed, or modified
         /// using this method. The requesting user and course owner must be eligible to modify Grading Periods. For
         /// details, see [licensing
-        /// requirements](https://developers.google.com/classroom/grading-periods/manage-grading-periods#licensing_requirements).
+        /// requirements](https://developers.google.com/workspace/classroom/grading-periods/manage-grading-periods#licensing_requirements).
         /// This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
         /// to modify the grading period settings in a course or for access errors: *
         /// UserIneligibleToUpdateGradingPeriodSettings * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND`
