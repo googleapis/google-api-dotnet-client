@@ -10707,7 +10707,11 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// has at least one variant in stock. For primary products with no variants set the true availability at the
         /// primary level. Corresponding properties: Google Merchant Center property
         /// [availability](https://support.google.com/merchants/answer/6324448). Schema.org property
-        /// [Offer.availability](https://schema.org/availability).
+        /// [Offer.availability](https://schema.org/availability). This field is currently only used by the
+        /// Recommendations API. For Search, please make use of fulfillment_types or custom attributes for similar
+        /// behaviour. See [here](
+        /// https://cloud.google.com/retail/docs/local-inventory-updates#local-inventory-update-methods) for more
+        /// details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual string Availability { get; set; }
