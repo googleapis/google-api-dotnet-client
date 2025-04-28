@@ -455,8 +455,7 @@ namespace Google.Apis.WorkspaceEvents.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Creates a Google Workspace
-        /// subscription. To learn how to use this method, see [Create a Google Workspace
+        /// Creates a Google Workspace subscription. To learn how to use this method, see [Create a Google Workspace
         /// subscription](https://developers.google.com/workspace/events/guides/create-subscription).
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -466,8 +465,7 @@ namespace Google.Apis.WorkspaceEvents.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Creates a Google Workspace
-        /// subscription. To learn how to use this method, see [Create a Google Workspace
+        /// Creates a Google Workspace subscription. To learn how to use this method, see [Create a Google Workspace
         /// subscription](https://developers.google.com/workspace/events/guides/create-subscription).
         /// </summary>
         public class CreateRequest : WorkspaceEventsBaseServiceRequest<Google.Apis.WorkspaceEvents.v1.Data.Operation>
@@ -516,8 +514,7 @@ namespace Google.Apis.WorkspaceEvents.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Deletes a Google Workspace
-        /// subscription. To learn how to use this method, see [Delete a Google Workspace
+        /// Deletes a Google Workspace subscription. To learn how to use this method, see [Delete a Google Workspace
         /// subscription](https://developers.google.com/workspace/events/guides/delete-subscription).
         /// </summary>
         /// <param name="name">
@@ -529,8 +526,7 @@ namespace Google.Apis.WorkspaceEvents.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Deletes a Google Workspace
-        /// subscription. To learn how to use this method, see [Delete a Google Workspace
+        /// Deletes a Google Workspace subscription. To learn how to use this method, see [Delete a Google Workspace
         /// subscription](https://developers.google.com/workspace/events/guides/delete-subscription).
         /// </summary>
         public class DeleteRequest : WorkspaceEventsBaseServiceRequest<Google.Apis.WorkspaceEvents.v1.Data.Operation>
@@ -617,9 +613,8 @@ namespace Google.Apis.WorkspaceEvents.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Gets details about a Google Workspace
-        /// subscription. To learn how to use this method, see [Get details about a Google Workspace
-        /// subscription](https://developers.google.com/workspace/events/guides/get-subscription).
+        /// Gets details about a Google Workspace subscription. To learn how to use this method, see [Get details about
+        /// a Google Workspace subscription](https://developers.google.com/workspace/events/guides/get-subscription).
         /// </summary>
         /// <param name="name">
         /// Required. Resource name of the subscription. Format: `subscriptions/{subscription}`
@@ -630,9 +625,8 @@ namespace Google.Apis.WorkspaceEvents.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Gets details about a Google Workspace
-        /// subscription. To learn how to use this method, see [Get details about a Google Workspace
-        /// subscription](https://developers.google.com/workspace/events/guides/get-subscription).
+        /// Gets details about a Google Workspace subscription. To learn how to use this method, see [Get details about
+        /// a Google Workspace subscription](https://developers.google.com/workspace/events/guides/get-subscription).
         /// </summary>
         public class GetRequest : WorkspaceEventsBaseServiceRequest<Google.Apis.WorkspaceEvents.v1.Data.Subscription>
         {
@@ -672,8 +666,7 @@ namespace Google.Apis.WorkspaceEvents.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Lists Google Workspace subscriptions.
-        /// To learn how to use this method, see [List Google Workspace
+        /// Lists Google Workspace subscriptions. To learn how to use this method, see [List Google Workspace
         /// subscriptions](https://developers.google.com/workspace/events/guides/list-subscriptions).
         /// </summary>
         public virtual ListRequest List()
@@ -682,8 +675,7 @@ namespace Google.Apis.WorkspaceEvents.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Lists Google Workspace subscriptions.
-        /// To learn how to use this method, see [List Google Workspace
+        /// Lists Google Workspace subscriptions. To learn how to use this method, see [List Google Workspace
         /// subscriptions](https://developers.google.com/workspace/events/guides/list-subscriptions).
         /// </summary>
         public class ListRequest : WorkspaceEventsBaseServiceRequest<Google.Apis.WorkspaceEvents.v1.Data.ListSubscriptionsResponse>
@@ -772,9 +764,8 @@ namespace Google.Apis.WorkspaceEvents.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Updates or renews a Google Workspace
-        /// subscription. To learn how to use this method, see [Update or renew a Google Workspace
-        /// subscription](https://developers.google.com/workspace/events/guides/update-subscription).
+        /// Updates or renews a Google Workspace subscription. To learn how to use this method, see [Update or renew a
+        /// Google Workspace subscription](https://developers.google.com/workspace/events/guides/update-subscription).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -786,9 +777,8 @@ namespace Google.Apis.WorkspaceEvents.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Updates or renews a Google Workspace
-        /// subscription. To learn how to use this method, see [Update or renew a Google Workspace
-        /// subscription](https://developers.google.com/workspace/events/guides/update-subscription).
+        /// Updates or renews a Google Workspace subscription. To learn how to use this method, see [Update or renew a
+        /// Google Workspace subscription](https://developers.google.com/workspace/events/guides/update-subscription).
         /// </summary>
         public class PatchRequest : WorkspaceEventsBaseServiceRequest<Google.Apis.WorkspaceEvents.v1.Data.Operation>
         {
@@ -867,11 +857,10 @@ namespace Google.Apis.WorkspaceEvents.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Reactivates a suspended Google
-        /// Workspace subscription. This method resets your subscription's `State` field to `ACTIVE`. Before you use
-        /// this method, you must fix the error that suspended the subscription. This method will ignore or reject any
-        /// subscription that isn't currently in a suspended state. To learn how to use this method, see [Reactivate a
-        /// Google Workspace
+        /// Reactivates a suspended Google Workspace subscription. This method resets your subscription's `State` field
+        /// to `ACTIVE`. Before you use this method, you must fix the error that suspended the subscription. This method
+        /// will ignore or reject any subscription that isn't currently in a suspended state. To learn how to use this
+        /// method, see [Reactivate a Google Workspace
         /// subscription](https://developers.google.com/workspace/events/guides/reactivate-subscription).
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -884,11 +873,10 @@ namespace Google.Apis.WorkspaceEvents.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview): Reactivates a suspended Google
-        /// Workspace subscription. This method resets your subscription's `State` field to `ACTIVE`. Before you use
-        /// this method, you must fix the error that suspended the subscription. This method will ignore or reject any
-        /// subscription that isn't currently in a suspended state. To learn how to use this method, see [Reactivate a
-        /// Google Workspace
+        /// Reactivates a suspended Google Workspace subscription. This method resets your subscription's `State` field
+        /// to `ACTIVE`. Before you use this method, you must fix the error that suspended the subscription. This method
+        /// will ignore or reject any subscription that isn't currently in a suspended state. To learn how to use this
+        /// method, see [Reactivate a Google Workspace
         /// subscription](https://developers.google.com/workspace/events/guides/reactivate-subscription).
         /// </summary>
         public class ReactivateRequest : WorkspaceEventsBaseServiceRequest<Google.Apis.WorkspaceEvents.v1.Data.Operation>
@@ -1080,9 +1068,8 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
     }
 
     /// <summary>
-    /// [Developer Preview](https://developers.google.com/workspace/preview). A subscription to receive events about a
-    /// Google Workspace resource. To learn more about subscriptions, see the [Google Workspace Events API
-    /// overview](https://developers.google.com/workspace/events).
+    /// A subscription to receive events about a Google Workspace resource. To learn more about subscriptions, see the
+    /// [Google Workspace Events API overview](https://developers.google.com/workspace/events).
     /// </summary>
     public class Subscription : Google.Apis.Requests.IDirectResponseSchema
     {
