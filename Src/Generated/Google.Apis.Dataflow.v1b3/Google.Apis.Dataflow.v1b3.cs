@@ -8045,6 +8045,14 @@ namespace Google.Apis.Dataflow.v1b3.Data
     public class MetricUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Worker-computed aggregate value for the "Trie" aggregation kind. The only possible value type is a
+        /// BoundedTrieNode. Introduced this field to avoid breaking older SDKs when Dataflow service starts to populate
+        /// the `bounded_trie` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundedTrie")]
+        public virtual object BoundedTrie { get; set; }
+
+        /// <summary>
         /// True if this metric is reported as the total cumulative aggregate value accumulated since the worker started
         /// working on this WorkItem. By default this is false, indicating that this metric is reported as a delta that
         /// is not associated with any WorkItem.
