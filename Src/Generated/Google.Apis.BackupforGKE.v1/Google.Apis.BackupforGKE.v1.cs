@@ -7398,7 +7398,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>User specified descriptive string for this Restore.</summary>
+        /// <summary>Optional. User specified descriptive string for this Restore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
