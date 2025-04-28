@@ -11206,10 +11206,8 @@ namespace Google.Apis.DisplayVideo.v2
             }
 
             /// <summary>
-            /// Creates a new custom bidding script. Returns the newly created script if successful. *Warning*: Starting
-            /// **April 1, 2025**, requests updating custom bidding algorithms that are assigned to line items will
-            /// return an error. [Read more about this announced
-            /// change](/display-video/api/deprecations#features.custom_bidding_floodlight).
+            /// Creates a new custom bidding script. Returns the newly created script if successful. Requests creating a
+            /// custom bidding script under an algorithm assigned to a line item will return an error.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="customBiddingAlgorithmId">
@@ -11221,10 +11219,8 @@ namespace Google.Apis.DisplayVideo.v2
             }
 
             /// <summary>
-            /// Creates a new custom bidding script. Returns the newly created script if successful. *Warning*: Starting
-            /// **April 1, 2025**, requests updating custom bidding algorithms that are assigned to line items will
-            /// return an error. [Read more about this announced
-            /// change](/display-video/api/deprecations#features.custom_bidding_floodlight).
+            /// Creates a new custom bidding script. Returns the newly created script if successful. Requests creating a
+            /// custom bidding script under an algorithm assigned to a line item will return an error.
             /// </summary>
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.CustomBiddingScript>
             {
@@ -11758,9 +11754,7 @@ namespace Google.Apis.DisplayVideo.v2
 
         /// <summary>
         /// Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful.
-        /// *Warning*: Starting **April 1, 2025**, requests updating custom bidding algorithms that are assigned to line
-        /// items will return an error. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.custom_bidding_floodlight).
+        /// Requests updating a custom bidding algorithm assigned to a line item will return an error.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customBiddingAlgorithmId">
@@ -11773,9 +11767,7 @@ namespace Google.Apis.DisplayVideo.v2
 
         /// <summary>
         /// Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful.
-        /// *Warning*: Starting **April 1, 2025**, requests updating custom bidding algorithms that are assigned to line
-        /// items will return an error. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.custom_bidding_floodlight).
+        /// Requests updating a custom bidding algorithm assigned to a line item will return an error.
         /// </summary>
         public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.CustomBiddingAlgorithm>
         {
@@ -17327,7 +17319,7 @@ namespace Google.Apis.DisplayVideo.v2
         /// operation. The metadata type of this operation is SdfDownloadTaskMetadata. If the request is successful, the
         /// response type of the operation is SdfDownloadTask. The response will not include the download files, which
         /// must be retrieved with media.download. The state of operation can be retrieved with
-        /// sdfdownloadtask.operations.get. Any errors can be found in the error.message. Note that error.details is
+        /// `sdfdownloadtasks.operations.get`. Any errors can be found in the error.message. Note that error.details is
         /// expected to be empty.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -17341,7 +17333,7 @@ namespace Google.Apis.DisplayVideo.v2
         /// operation. The metadata type of this operation is SdfDownloadTaskMetadata. If the request is successful, the
         /// response type of the operation is SdfDownloadTask. The response will not include the download files, which
         /// must be retrieved with media.download. The state of operation can be retrieved with
-        /// sdfdownloadtask.operations.get. Any errors can be found in the error.message. Note that error.details is
+        /// `sdfdownloadtasks.operations.get`. Any errors can be found in the error.message. Note that error.details is
         /// expected to be empty.
         /// </summary>
         public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.Operation>
@@ -18955,10 +18947,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details of Adloox brand safety settings.</summary>
+    /// <summary>Details of Scope3 (previously known as Adloox) brand safety settings.</summary>
     public class Adloox : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Adloox categories to exclude.</summary>
+        /// <summary>Scope3 categories to exclude.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedAdlooxCategories")]
         public virtual System.Collections.Generic.IList<string> ExcludedAdlooxCategories { get; set; }
 
@@ -21343,11 +21335,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
     {
         /// <summary>
         /// The Floodlight activity configs used to track conversions. The number of conversions counted is the sum of
-        /// all of the conversions counted by all of the Floodlight activity IDs specified in this field. *Warning*:
-        /// Starting **April 1, 2025**, this field will no longer be writable while a custom bidding algorithm is
-        /// assigned to the line item. If you set this field and assign a custom bidding algorithm in the same request,
-        /// the floodlight activities must match the ones used by the custom bidding algorithm. [Read more about this
-        /// announced change](/display-video/api/deprecations#features.custom_bidding_floodlight).
+        /// all of the conversions counted by all of the Floodlight activity IDs specified in this field. This field
+        /// can't be updated if a custom bidding algorithm is assigned to the line item. If you set this field and
+        /// assign a custom bidding algorithm in the same request, the floodlight activities must match the ones used by
+        /// the custom bidding algorithm.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityConfigs")]
         public virtual System.Collections.Generic.IList<TrackingFloodlightActivityConfig> FloodlightActivityConfigs { get; set; }
@@ -24160,13 +24151,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
         public virtual System.Nullable<long> CampaignId { get; set; }
 
-        /// <summary>
-        /// The conversion tracking setting of the line item. *Warning*: Starting **April 1, 2025**, the
-        /// floodlight_activity_configs field will no longer be writable while a custom bidding algorithm is assigned to
-        /// the line item. If you set this field and assign a custom bidding algorithm in the same request, the
-        /// floodlight activities must match the ones used by the custom bidding algorithm. [Read more about this
-        /// announced change](/display-video/api/deprecations#features.custom_bidding_floodlight).
-        /// </summary>
+        /// <summary>The conversion tracking setting of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionCounting")]
         public virtual ConversionCountingConfig ConversionCounting { get; set; }
 
@@ -25146,10 +25131,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
     {
         /// <summary>
         /// The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when performance_goal_type is
-        /// set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. *Warning*: Starting **April 1, 2025**,
-        /// assigning a custom bidding algorithm that uses floodlight activities not identified in
-        /// floodlightActivityConfigs will return an error. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.custom_bidding_floodlight).
+        /// set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom bidding algorithm that uses
+        /// floodlight activities not identified in floodlightActivityConfigs will return an error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmId")]
         public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; }
@@ -25877,10 +25860,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
     {
         /// <summary>
         /// The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when performance_goal_type is
-        /// set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. *Warning*: Starting **April 1, 2025**,
-        /// assigning a custom bidding algorithm that uses floodlight activities not identified in
-        /// floodlightActivityConfigs will return an error. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.custom_bidding_floodlight).
+        /// set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. Assigning a custom bidding algorithm that uses
+        /// floodlight activities not identified in floodlightActivityConfigs will return an error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmId")]
         public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; }
@@ -26324,7 +26305,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Type for the response returned by [SdfDownloadTaskService.CreateSdfDownloadTask].</summary>
+    /// <summary>Type for the response returned by SdfDownloadTaskService.CreateSdfDownloadTask.</summary>
     public class SdfDownloadTask : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -26339,7 +26320,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Type for the metadata returned by [SdfDownloadTaskService.CreateSdfDownloadTask].</summary>
+    /// <summary>Type for the metadata returned by SdfDownloadTaskService.CreateSdfDownloadTask.</summary>
     public class SdfDownloadTaskMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -26874,7 +26855,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// </summary>
     public class ThirdPartyVerifierAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Third party brand verifier -- Adloox.</summary>
+        /// <summary>Third party brand verifier -- Scope3 (previously known as Adloox).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adloox")]
         public virtual Adloox Adloox { get; set; }
 
