@@ -2356,6 +2356,13 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>
+        /// Managed constraint and canned constraint sometimes can have equivalents. This field is used to store the
+        /// equivalent constraint name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("equivalentConstraint")]
+        public virtual string EquivalentConstraint { get; set; }
+
         /// <summary>Defines this constraint as being a list constraint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listConstraint")]
         public virtual GoogleCloudOrgpolicyV2ConstraintListConstraint ListConstraint { get; set; }
