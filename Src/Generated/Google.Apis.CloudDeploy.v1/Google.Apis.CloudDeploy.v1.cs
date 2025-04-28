@@ -10593,14 +10593,15 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class Standard : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be
+        /// Optional. Configuration for the postdeploy job. If this is not configured, the postdeploy job will not be
         /// present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postdeploy")]
         public virtual Postdeploy Postdeploy { get; set; }
 
         /// <summary>
-        /// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+        /// Optional. Configuration for the predeploy job. If this is not configured, the predeploy job will not be
+        /// present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predeploy")]
         public virtual Predeploy Predeploy { get; set; }
