@@ -13878,6 +13878,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual GoogleCloudDialogflowCxV3TextInput Text { get; set; }
 
+        /// <summary>The results of a tool executed by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCallResult")]
+        public virtual GoogleCloudDialogflowCxV3ToolCallResult ToolCallResult { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -13962,6 +13966,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Returns a text response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual GoogleCloudDialogflowCxV3ResponseMessageText Text { get; set; }
+
+        /// <summary>Returns the definition of a tool call that should be executed by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCall")]
+        public virtual GoogleCloudDialogflowCxV3ToolCall ToolCall { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14477,6 +14485,63 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Required. The UTF-8 encoded natural language text to be processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a call of a specific tool's action with the specified inputs.</summary>
+    public class GoogleCloudDialogflowCxV3ToolCall : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the tool's action associated with this call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Optional. The action's input parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> InputParameters { get; set; }
+
+        /// <summary>
+        /// Required. The tool associated with this call. Format: `projects//locations//agents//tools/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual string Tool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of calling a tool's action that has been executed by the client.</summary>
+    public class GoogleCloudDialogflowCxV3ToolCallResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the tool's action associated with this call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>The tool call's error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleCloudDialogflowCxV3ToolCallResultError Error { get; set; }
+
+        /// <summary>The tool call's output parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> OutputParameters { get; set; }
+
+        /// <summary>
+        /// Required. The tool associated with this call. Format: `projects//locations//agents//tools/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual string Tool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An error produced by the tool call.</summary>
+    public class GoogleCloudDialogflowCxV3ToolCallResultError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The error message of the function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17604,7 +17669,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     }
 
     /// <summary>Exception thrown during the execution of an action.</summary>
-    public class GoogleCloudDialogflowCxV3beta1Exception : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudDialogflowCxV3beta1ExceptionDetail : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The error message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
@@ -22408,7 +22473,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The exception thrown during the execution of the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exception")]
-        public virtual GoogleCloudDialogflowCxV3beta1Exception Exception { get; set; }
+        public virtual GoogleCloudDialogflowCxV3beta1ExceptionDetail Exception { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
