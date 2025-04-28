@@ -2386,10 +2386,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>If true, the returned list will include locations which are not yet revealed.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeUnrevealedLocations", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeUnrevealedLocations { get; set; }
-
                 /// <summary>
                 /// The maximum number of results to return. If not set, the service selects a default.
                 /// </summary>
@@ -2435,14 +2431,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("includeUnrevealedLocations", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeUnrevealedLocations",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2777,6 +2765,16 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerDefinedName")]
         public virtual string ConsumerDefinedName { get; set; }
+
+        /// <summary>
+        /// Optional. The consumer_project_number associated with this Apigee instance. This field is added specifically
+        /// to support Apigee integration with SLM Rollout and UMM. It represents the numerical project ID of the GCP
+        /// project that consumes this Apigee instance. It is used for SLM rollout notifications and UMM integration,
+        /// enabling proper mapping to customer projects and log delivery for Apigee instances. This field complements
+        /// consumer_project_id and may be used for specific Apigee scenarios where the numerical ID is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerProjectNumber")]
+        public virtual string ConsumerProjectNumber { get; set; }
 
         private string _createTimeRaw;
 
