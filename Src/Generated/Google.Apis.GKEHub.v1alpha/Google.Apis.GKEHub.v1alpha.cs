@@ -6038,6 +6038,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("workloadcertificate")]
         public virtual FeatureSpec Workloadcertificate { get; set; }
 
+        /// <summary>Workload Identity feature spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadidentity")]
+        public virtual WorkloadIdentityFeatureSpec Workloadidentity { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6072,6 +6076,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Output only. The "running state" of the Feature in this Fleet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual FeatureState State { get; set; }
+
+        /// <summary>WorkloadIdentity fleet-level state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadidentity")]
+        public virtual WorkloadIdentityFeatureState Workloadidentity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9207,6 +9215,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual FeatureState State { get; set; }
 
+        /// <summary>Workload Identity membership specific state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadidentity")]
+        public virtual WorkloadIdentityMembershipState Workloadidentity { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10629,10 +10641,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Condition being reported. TODO b/395151419: Remove this message once the membership-level conditions field uses
-    /// the common Condition message.
-    /// </summary>
+    /// <summary>Condition being reported.</summary>
     public class ServiceMeshCondition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10691,10 +10700,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Condition being reported. TODO b/395151419: This message should be used to replace the membership-level
-    /// Condition message.
-    /// </summary>
+    /// <summary>Condition being reported.</summary>
     public class ServiceMeshFeatureCondition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10766,10 +10772,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("analysisMessages")]
         public virtual System.Collections.Generic.IList<ServiceMeshAnalysisMessage> AnalysisMessages { get; set; }
 
-        /// <summary>
-        /// Output only. List of conditions reported for this membership. TODO b/395151419: Use the common Condition
-        /// message.
-        /// </summary>
+        /// <summary>Output only. List of conditions reported for this membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<ServiceMeshCondition> Conditions { get; set; }
 
@@ -10967,6 +10970,90 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Validator type to validate membership with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validator")]
         public virtual string Validator { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**WorkloadIdentity**: Global feature specification.</summary>
+    public class WorkloadIdentityFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that
+        /// sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopeTenancyPool")]
+        public virtual string ScopeTenancyPool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**WorkloadIdentity**: Global feature state.</summary>
+    public class WorkloadIdentityFeatureState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The state of the IAM namespaces for the fleet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceStateDetails")]
+        public virtual System.Collections.Generic.IDictionary<string, WorkloadIdentityNamespaceStateDetail> NamespaceStateDetails { get; set; }
+
+        /// <summary>Deprecated, will erase after code is changed to use the new field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceStates")]
+        public virtual System.Collections.Generic.IDictionary<string, string> NamespaceStates { get; set; }
+
+        /// <summary>The full name of the scope-tenancy pool for the fleet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopeTenancyWorkloadIdentityPool")]
+        public virtual string ScopeTenancyWorkloadIdentityPool { get; set; }
+
+        /// <summary>The full name of the svc.id.goog pool for the fleet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityPool")]
+        public virtual string WorkloadIdentityPool { get; set; }
+
+        /// <summary>The state of the Workload Identity Pools for the fleet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityPoolStateDetails")]
+        public virtual System.Collections.Generic.IDictionary<string, WorkloadIdentityWorkloadIdentityPoolStateDetail> WorkloadIdentityPoolStateDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**WorkloadIdentity**: The membership-specific state for WorkloadIdentity feature.</summary>
+    public class WorkloadIdentityMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Deprecated, will erase after code is changed to use the new field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>NamespaceStateDetail represents the state of a IAM namespace.</summary>
+    public class WorkloadIdentityNamespaceStateDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The state of the IAM namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>A human-readable description of the current state or returned error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// WorkloadIdentityPoolStateDetail represents the state of the Workload Identity Pools for the fleet.
+    /// </summary>
+    public class WorkloadIdentityWorkloadIdentityPoolStateDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The state of the Workload Identity Pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>A human-readable description of the current state or returned error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
