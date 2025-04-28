@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -34,6 +34,7 @@ namespace Google.Apis.IAMCredentials.v1
         /// <param name="initializer">The service initializer.</param>
         public IAMCredentialsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Locations = new LocationsResource(this);
             Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://iamcredentials.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://iamcredentials.googleapis.com/batch");
@@ -76,6 +77,9 @@ namespace Google.Apis.IAMCredentials.v1
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -262,6 +266,85 @@ namespace Google.Apis.IAMCredentials.v1
         }
     }
 
+    /// <summary>The "locations" collection of methods.</summary>
+    public class LocationsResource
+    {
+        private const string Resource = "locations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public LocationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            WorkforcePools = new WorkforcePoolsResource(service);
+        }
+
+        /// <summary>Gets the WorkforcePools resource.</summary>
+        public virtual WorkforcePoolsResource WorkforcePools { get; }
+
+        /// <summary>The "workforcePools" collection of methods.</summary>
+        public class WorkforcePoolsResource
+        {
+            private const string Resource = "workforcePools";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public WorkforcePoolsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Returns the trust boundary info for a given workforce pool.</summary>
+            /// <param name="name">Required. Resource name of workforce pool.</param>
+            public virtual GetAllowedLocationsRequest GetAllowedLocations(string name)
+            {
+                return new GetAllowedLocationsRequest(this.service, name);
+            }
+
+            /// <summary>Returns the trust boundary info for a given workforce pool.</summary>
+            public class GetAllowedLocationsRequest : IAMCredentialsBaseServiceRequest<Google.Apis.IAMCredentials.v1.Data.WorkforcePoolAllowedLocations>
+            {
+                /// <summary>Constructs a new GetAllowedLocations request.</summary>
+                public GetAllowedLocationsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Resource name of workforce pool.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getAllowedLocations";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}/allowedLocations";
+
+                /// <summary>Initializes GetAllowedLocations parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^locations/[^/]+/workforcePools/[^/]+$",
+                    });
+                }
+            }
+        }
+    }
+
     /// <summary>The "projects" collection of methods.</summary>
     public class ProjectsResource
     {
@@ -274,7 +357,90 @@ namespace Google.Apis.IAMCredentials.v1
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Locations = new LocationsResource(service);
             ServiceAccounts = new ServiceAccountsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                WorkloadIdentityPools = new WorkloadIdentityPoolsResource(service);
+            }
+
+            /// <summary>Gets the WorkloadIdentityPools resource.</summary>
+            public virtual WorkloadIdentityPoolsResource WorkloadIdentityPools { get; }
+
+            /// <summary>The "workloadIdentityPools" collection of methods.</summary>
+            public class WorkloadIdentityPoolsResource
+            {
+                private const string Resource = "workloadIdentityPools";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public WorkloadIdentityPoolsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Returns the trust boundary info for a given workload identity pool.</summary>
+                /// <param name="name">Required. Resource name of workload identity pool.</param>
+                public virtual GetAllowedLocationsRequest GetAllowedLocations(string name)
+                {
+                    return new GetAllowedLocationsRequest(this.service, name);
+                }
+
+                /// <summary>Returns the trust boundary info for a given workload identity pool.</summary>
+                public class GetAllowedLocationsRequest : IAMCredentialsBaseServiceRequest<Google.Apis.IAMCredentials.v1.Data.WorkloadIdentityPoolAllowedLocations>
+                {
+                    /// <summary>Constructs a new GetAllowedLocations request.</summary>
+                    public GetAllowedLocationsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Resource name of workload identity pool.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getAllowedLocations";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}/allowedLocations";
+
+                    /// <summary>Initializes GetAllowedLocations parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+$",
+                        });
+                    }
+                }
+            }
         }
 
         /// <summary>Gets the ServiceAccounts resource.</summary>
@@ -698,13 +864,31 @@ namespace Google.Apis.IAMCredentials.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeEmail")]
         public virtual System.Nullable<bool> IncludeEmail { get; set; }
 
+        /// <summary>
+        /// Include the organization number of the service account in the token. If set to `true`, the token will
+        /// contain a `google.organization_number` claim. The value of the claim will be `null` if the service account
+        /// isn't associated with an organization.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationNumberIncluded")]
+        public virtual System.Nullable<bool> OrganizationNumberIncluded { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     public class GenerateIdTokenResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The OpenId Connect ID token.</summary>
+        /// <summary>
+        /// The OpenId Connect ID token. The token is a JSON Web Token (JWT) that contains a payload with claims. See
+        /// the [JSON Web Token spec](https://tools.ietf.org/html/rfc7519) for more information. Here is an example of a
+        /// decoded JWT payload:
+        /// ```
+        /// { "iss": "https://accounts.google.com", "iat": 1496953245, "exp": 1496953245,
+        /// "aud": "https://www.example.com", "sub": "107517467455664443765", "azp": "107517467455664443765", "email":
+        /// "my-iam-account@my-project.iam.gserviceaccount.com", "email_verified": true, "google": {
+        /// "organization_number": 123456 } }
+        /// ```
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
 
@@ -822,6 +1006,40 @@ namespace Google.Apis.IAMCredentials.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedJwt")]
         public virtual string SignedJwt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a list of allowed locations for given workforce pool.</summary>
+    public class WorkforcePoolAllowedLocations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The hex encoded bitmap of the trust boundary locations</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encodedLocations")]
+        public virtual string EncodedLocations { get; set; }
+
+        /// <summary>
+        /// Output only. The human readable trust boundary locations. For example, ["us-central1", "europe-west1"]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a list of allowed locations for given workload identity pool.</summary>
+    public class WorkloadIdentityPoolAllowedLocations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The hex encoded bitmap of the trust boundary locations</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encodedLocations")]
+        public virtual string EncodedLocations { get; set; }
+
+        /// <summary>
+        /// Output only. The human readable trust boundary locations. For example, ["us-central1", "europe-west1"]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
