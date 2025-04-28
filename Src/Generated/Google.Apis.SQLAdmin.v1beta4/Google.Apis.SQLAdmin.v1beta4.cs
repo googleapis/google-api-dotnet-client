@@ -5550,7 +5550,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
         public virtual string BackupRun { get; set; }
 
-        /// <summary>Output only. The database version of the instance of when this backup was made.</summary>
+        /// <summary>Output only. The database version of the instance of at the time this backup was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
         public virtual string DatabaseVersion { get; set; }
 
@@ -5845,7 +5845,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupKind")]
         public virtual string BackupKind { get; set; }
 
-        /// <summary>Output only. The instance database version when this backup was made.</summary>
+        /// <summary>Output only. The instance database version at the time this backup was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
         public virtual string DatabaseVersion { get; set; }
 
@@ -6210,22 +6210,24 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details of a single node of a read pool.</summary>
+    /// <summary>Details of a single read pool node of a read pool.</summary>
     public class ConnectPoolNodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The DNS name of the node.</summary>
+        /// <summary>Output only. The DNS name of the read pool node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsName")]
         public virtual string DnsName { get; set; }
 
-        /// <summary>Output only. The list of DNS names used by this instance.</summary>
+        /// <summary>Output only. The list of DNS names used by this read pool node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsNames")]
         public virtual System.Collections.Generic.IList<DnsNameMapping> DnsNames { get; set; }
 
-        /// <summary>Output only. Mappings containing IP addresses that can be used to connect to the node.</summary>
+        /// <summary>
+        /// Output only. Mappings containing IP addresses that can be used to connect to the read pool node.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
         public virtual System.Collections.Generic.IList<IpMapping> IpAddresses { get; set; }
 
-        /// <summary>Output only. The name of the node. Doesn't include the project ID.</summary>
+        /// <summary>Output only. The name of the read pool node. Doesn't include the project ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -6274,11 +6276,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The number of nodes in a read pool.</summary>
+        /// <summary>The number of read pool nodes in a read pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
 
-        /// <summary>Output only. Entries containing information about each node of the read pool.</summary>
+        /// <summary>Output only. Entries containing information about each read pool node of the read pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<ConnectPoolNodeConfig> Nodes { get; set; }
 
@@ -6308,14 +6310,6 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>The managed connection pooling configuration.</summary>
     public class ConnectionPoolConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Client idle timeout.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientConnectionIdleTimeout")]
-        public virtual object ClientConnectionIdleTimeout { get; set; }
-
-        /// <summary>Managed connection pool size.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("connPoolSize")]
-        public virtual System.Nullable<int> ConnPoolSize { get; set; }
-
         /// <summary>Whether managed connection pooling is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionPoolingEnabled")]
         public virtual System.Nullable<bool> ConnectionPoolingEnabled { get; set; }
@@ -6323,22 +6317,6 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Optional. List of connection pool configuration flags</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flags")]
         public virtual System.Collections.Generic.IList<ConnectionPoolFlags> Flags { get; set; }
-
-        /// <summary>Maximum number of client connections in connection pool.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxClientConnections")]
-        public virtual System.Nullable<int> MaxClientConnections { get; set; }
-
-        /// <summary>The managed connection pool mode for the instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("poolMode")]
-        public virtual string PoolMode { get; set; }
-
-        /// <summary>Query wait timeout.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queryWaitTimeout")]
-        public virtual object QueryWaitTimeout { get; set; }
-
-        /// <summary>Server idle timeout.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serverConnectionIdleTimeout")]
-        public virtual object ServerConnectionIdleTimeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6601,11 +6579,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The number of nodes in a read pool.</summary>
+        /// <summary>The number of read pool nodes in a read pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
 
-        /// <summary>Output only. Entries containing information about each node of the read pool.</summary>
+        /// <summary>Output only. Entries containing information about each read pool node of the read pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<PoolNodeConfig> Nodes { get; set; }
 
@@ -7016,7 +6994,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Option for export offload.</summary>
+        /// <summary>Whether to perform a serverless export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offload")]
         public virtual System.Nullable<bool> Offload { get; set; }
 
@@ -7233,8 +7211,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
             public class PostgresExportOptionsData
             {
                 /// <summary>
-                /// Optional. Use this option to include DROP SQL statements. These statements are used to delete
-                /// database objects before running the import operation.
+                /// Optional. Use this option to include DROP &amp;lt;object&amp;gt; SQL statements. Use these
+                /// statements to delete database objects before running the import operation.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("clean")]
                 public virtual System.Nullable<bool> Clean { get; set; }
@@ -8950,32 +8928,32 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details of a single node of a read pool.</summary>
+    /// <summary>Details of a single read pool node of a read pool.</summary>
     public class PoolNodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The DNS name of the node.</summary>
+        /// <summary>Output only. The DNS name of the read pool node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsName")]
         public virtual string DnsName { get; set; }
 
-        /// <summary>Output only. The list of DNS names used by this node.</summary>
+        /// <summary>Output only. The list of DNS names used by this read pool node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsNames")]
         public virtual System.Collections.Generic.IList<DnsNameMapping> DnsNames { get; set; }
 
-        /// <summary>Output only. The serving zone of the node.</summary>
+        /// <summary>Output only. The zone of the read pool node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gceZone")]
         public virtual string GceZone { get; set; }
 
-        /// <summary>Output only. Mappings containing IP addresses that can be used to connect to the node.</summary>
+        /// <summary>
+        /// Output only. Mappings containing IP addresses that can be used to connect to the read pool node.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
         public virtual System.Collections.Generic.IList<IpMapping> IpAddresses { get; set; }
 
-        /// <summary>
-        /// Output only. The name of the node, to be used for retrieving metrics and logs for the node.
-        /// </summary>
+        /// <summary>Output only. The name of the read pool node, to be used for retrieving metrics and logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The current state of the node.</summary>
+        /// <summary>Output only. The current state of the read pool node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -9367,7 +9345,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>
         /// Optional. When this parameter is set to true, Cloud SQL instances can connect to Vertex AI to pass requests
         /// for real-time predictions and insights to the AI. The default value is false. This applies only to Cloud SQL
-        /// for PostgreSQL instances.
+        /// for MySQL and Cloud SQL for PostgreSQL instances.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableGoogleMlIntegration")]
         public virtual System.Nullable<bool> EnableGoogleMlIntegration { get; set; }
@@ -10185,6 +10163,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
+
+        /// <summary>Indicates if user is active for IAM Authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamStatus")]
+        public virtual string IamStatus { get; set; }
 
         /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project ID. Can be omitted for *update*
