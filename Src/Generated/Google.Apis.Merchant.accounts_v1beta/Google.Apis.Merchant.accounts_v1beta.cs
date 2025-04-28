@@ -1301,7 +1301,12 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 this.service = service;
             }
 
-            /// <summary>Lists all account issues of a Merchant Center account.</summary>
+            /// <summary>
+            /// Lists all account issues of a Merchant Center account. When called on a multi-client account, this
+            /// method only returns issues belonging to that account, not its sub-accounts. To retrieve issues for
+            /// sub-accounts, you must first call the accounts.listSubaccounts method to obtain a list of sub-accounts,
+            /// and then call `accounts.issues.list` for each sub-account individually.
+            /// </summary>
             /// <param name="parent">
             /// Required. The parent, which owns this collection of issues. Format: `accounts/{account}`
             /// </param>
@@ -1310,7 +1315,12 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 return new ListRequest(this.service, parent);
             }
 
-            /// <summary>Lists all account issues of a Merchant Center account.</summary>
+            /// <summary>
+            /// Lists all account issues of a Merchant Center account. When called on a multi-client account, this
+            /// method only returns issues belonging to that account, not its sub-accounts. To retrieve issues for
+            /// sub-accounts, you must first call the accounts.listSubaccounts method to obtain a list of sub-accounts,
+            /// and then call `accounts.issues.list` for each sub-account individually.
+            /// </summary>
             public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListAccountIssuesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
