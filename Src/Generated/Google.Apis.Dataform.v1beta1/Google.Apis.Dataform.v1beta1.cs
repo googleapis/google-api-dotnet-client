@@ -3756,7 +3756,10 @@ namespace Google.Apis.Dataform.v1beta1
                     }
                 }
 
-                /// <summary>Lists Repositories in a given project and location.</summary>
+                /// <summary>
+                /// Lists Repositories in a given project and location. **Note:** *This method can return repositories
+                /// not shown in the [Dataform UI](https://console.cloud.google.com/bigquery/dataform)*.
+                /// </summary>
                 /// <param name="parent">
                 /// Required. The location in which to list repositories. Must be in the format
                 /// `projects/*/locations/*`.
@@ -3766,7 +3769,10 @@ namespace Google.Apis.Dataform.v1beta1
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists Repositories in a given project and location.</summary>
+                /// <summary>
+                /// Lists Repositories in a given project and location. **Note:** *This method can return repositories
+                /// not shown in the [Dataform UI](https://console.cloud.google.com/bigquery/dataform)*.
+                /// </summary>
                 public class ListRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.ListRepositoriesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -4541,6 +4547,87 @@ namespace Google.Apis.Dataform.v1beta1
 }
 namespace Google.Apis.Dataform.v1beta1.Data
 {
+    /// <summary>Error table information, used to write error data into a BigQuery table.</summary>
+    public class ActionErrorTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error table partition expiration in days. Only positive values are allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionDays")]
+        public virtual System.Nullable<int> RetentionDays { get; set; }
+
+        /// <summary>Error Table target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual Target Target { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Load definition for incremental load modes</summary>
+    public class ActionIncrementalLoadMode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Column name for incremental load modes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Simplified load configuration for actions</summary>
+    public class ActionLoadConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Append into destination table</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("append")]
+        public virtual ActionSimpleLoadMode Append { get; set; }
+
+        /// <summary>
+        /// Insert records where the value exceeds the previous maximum value for a column in the destination table
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
+        public virtual ActionIncrementalLoadMode Maximum { get; set; }
+
+        /// <summary>Replace destination table</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replace")]
+        public virtual ActionSimpleLoadMode Replace { get; set; }
+
+        /// <summary>
+        /// Insert records where the value of a column is not already present in the destination table
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unique")]
+        public virtual ActionIncrementalLoadMode Unique { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Simple load definition</summary>
+    public class ActionSimpleLoadMode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Definition of a SQL Data Preparation</summary>
+    public class ActionSqlDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error table configuration,</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorTable")]
+        public virtual ActionErrorTable ErrorTable { get; set; }
+
+        /// <summary>Load configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadConfig")]
+        public virtual ActionLoadConfig LoadConfig { get; set; }
+
+        /// <summary>
+        /// The SQL query representing the data preparation steps. Formatted as a Pipe SQL query statement.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an assertion upon a SQL query which is required return zero rows.</summary>
     public class Assertion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4685,6 +4772,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>Optional. The default schema (BigQuery dataset ID) for assertions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assertionSchema")]
         public virtual string AssertionSchema { get; set; }
+
+        /// <summary>Optional. The prefix to prepend to built-in assertion names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("builtinAssertionNamePrefix")]
+        public virtual string BuiltinAssertionNamePrefix { get; set; }
 
         /// <summary>
         /// Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
@@ -5040,6 +5131,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalTarget")]
         public virtual Target CanonicalTarget { get; set; }
 
+        /// <summary>The data preparation executed by this action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataPreparation")]
+        public virtual DataPreparation DataPreparation { get; set; }
+
         /// <summary>The declaration declared by this action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("declaration")]
         public virtual Declaration Declaration { get; set; }
@@ -5116,6 +5211,66 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines a compiled Data Preparation entity</summary>
+    public class DataPreparation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// SQL definition for a Data Preparation. Contains a SQL query and additional context information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentsSql")]
+        public virtual SqlDefinition ContentsSql { get; set; }
+
+        /// <summary>The data preparation definition, stored as a YAML string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentsYaml")]
+        public virtual string ContentsYaml { get; set; }
+
+        /// <summary>A list of actions that this action depends on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependencyTargets")]
+        public virtual System.Collections.Generic.IList<Target> DependencyTargets { get; set; }
+
+        /// <summary>Whether this action is disabled (i.e. should not be run).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>Arbitrary, user-defined tags on this action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a workflow action that will run a Data Preparation.</summary>
+    public class DataPreparationAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// SQL definition for a Data Preparation. Contains a SQL query and additional context information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentsSql")]
+        public virtual ActionSqlDefinition ContentsSql { get; set; }
+
+        /// <summary>
+        /// Output only. YAML representing the contents of the data preparation. Can be used to show the customer what
+        /// the input was to their workflow.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentsYaml")]
+        public virtual string ContentsYaml { get; set; }
+
+        /// <summary>Output only. The generated BigQuery SQL script that will be executed. For reference only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedSql")]
+        public virtual string GeneratedSql { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the BigQuery job that executed the SQL in sql_script. Only set once the job has
+        /// started to run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a relation which is not managed by Dataform but which may be referenced by Dataform actions.
     /// </summary>
@@ -5172,6 +5327,21 @@ namespace Google.Apis.Dataform.v1beta1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error table information, used to write error data into a BigQuery table.</summary>
+    public class ErrorTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error table partition expiration in days. Only positive values are allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionDays")]
+        public virtual System.Nullable<int> RetentionDays { get; set; }
+
+        /// <summary>Error Table target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual Target Target { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5343,6 +5513,17 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>Required. The Git remote's URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Load definition for incremental load modes</summary>
+    public class IncrementalLoadMode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Column name for incremental load modes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5670,6 +5851,33 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>List of workspaces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workspaces")]
         public virtual System.Collections.Generic.IList<Workspace> Workspaces { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Simplified load configuration for actions</summary>
+    public class LoadConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Append into destination table</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("append")]
+        public virtual SimpleLoadMode Append { get; set; }
+
+        /// <summary>
+        /// Insert records where the value exceeds the previous maximum value for a column in the destination table
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
+        public virtual IncrementalLoadMode Maximum { get; set; }
+
+        /// <summary>Replace destination table</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replace")]
+        public virtual SimpleLoadMode Replace { get; set; }
+
+        /// <summary>
+        /// Insert records where the value of a column is not already present in the destination table
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unique")]
+        public virtual IncrementalLoadMode Unique { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6677,6 +6885,34 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Simple load definition</summary>
+    public class SimpleLoadMode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Definition of a SQL Data Preparation</summary>
+    public class SqlDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error table configuration,</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorTable")]
+        public virtual ErrorTable ErrorTable { get; set; }
+
+        /// <summary>Load configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("load")]
+        public virtual LoadConfig Load { get; set; }
+
+        /// <summary>
+        /// The SQL query representing the data preparation steps. Formatted as a Pipe SQL query statement.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configures fields for performing SSH authentication.</summary>
     public class SshAuthenticationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6833,6 +7069,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cronSchedule")]
         public virtual string CronSchedule { get; set; }
 
+        /// <summary>Optional. Disables automatic creation of workflow invocations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
         /// <summary>
         /// Output only. All the metadata information that is used internally to serve the resource. For example:
         /// timestamps, flags, status fields, etc. The format of this field is a JSON string.
@@ -6980,6 +7220,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalTarget")]
         public virtual Target CanonicalTarget { get; set; }
+
+        /// <summary>Output only. The workflow action's data preparation action details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataPreparationAction")]
+        public virtual DataPreparationAction DataPreparationAction { get; set; }
 
         /// <summary>Output only. If and only if action's state is FAILED a failure reason is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
