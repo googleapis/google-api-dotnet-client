@@ -4156,6 +4156,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("computeCount")]
         public virtual System.Nullable<int> ComputeCount { get; set; }
 
+        /// <summary>Output only. The compute model of the Exadata Infrastructure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeModel")]
+        public virtual string ComputeModel { get; set; }
+
         /// <summary>Output only. The number of enabled CPU cores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
@@ -4167,6 +4171,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Output only. Size, in terabytes, of the DATA disk group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStorageSizeTb")]
         public virtual System.Nullable<double> DataStorageSizeTb { get; set; }
+
+        /// <summary>Output only. The database server type of the Exadata Infrastructure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseServerType")]
+        public virtual string DatabaseServerType { get; set; }
 
         /// <summary>Output only. The local node storage allocated in GBs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dbNodeStorageSizeGb")]
@@ -4326,6 +4334,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("storageCount")]
         public virtual System.Nullable<int> StorageCount { get; set; }
 
+        /// <summary>Output only. The storage server type of the Exadata Infrastructure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageServerType")]
+        public virtual string StorageServerType { get; set; }
+
         /// <summary>
         /// Output only. The software version of the storage servers (cells) in the Exadata Infrastructure.
         /// </summary>
@@ -4348,11 +4360,11 @@ namespace Google.Apis.OracleDatabase.v1.Data
     /// </summary>
     public class CloudVmCluster : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. CIDR range of the backup subnet.</summary>
+        /// <summary>Optional. CIDR range of the backup subnet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupSubnetCidr")]
         public virtual string BackupSubnetCidr { get; set; }
 
-        /// <summary>Required. Network settings. CIDR to use for cluster IP allocation.</summary>
+        /// <summary>Optional. Network settings. CIDR to use for cluster IP allocation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidr")]
         public virtual string Cidr { get; set; }
 
@@ -4424,7 +4436,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The name of the VPC network. Format: projects/{project}/global/networks/{network}
+        /// Optional. The name of the VPC network. Format: projects/{project}/global/networks/{network}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
@@ -4447,6 +4459,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Output only. Compartment ID of cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compartmentId")]
         public virtual string CompartmentId { get; set; }
+
+        /// <summary>Output only. The compute model of the VM Cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeModel")]
+        public virtual string ComputeModel { get; set; }
 
         /// <summary>Required. Number of enabled CPU cores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCoreCount")]
