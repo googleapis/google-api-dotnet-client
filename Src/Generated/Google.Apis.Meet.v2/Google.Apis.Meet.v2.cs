@@ -2203,8 +2203,8 @@ namespace Google.Apis.Meet.v2.Data
     }
 
     /// <summary>
-    /// Configuration related to smart notes in a meeting space. More details about smart notes
-    /// https://support.google.com/meet/answer/14754931?hl=en.
+    /// Configuration related to smart notes in a meeting space. For more information about smart notes, see ["Take
+    /// notes for me" in Google Meet](https://support.google.com/meet/answer/14754931).
     /// </summary>
     public class SmartNotesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
