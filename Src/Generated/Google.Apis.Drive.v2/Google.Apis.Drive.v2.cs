@@ -11996,7 +11996,7 @@ namespace Google.Apis.Drive.v2.Data
         /// <summary>Output only. The user's profile picture.</summary>
         public class PictureData
         {
-            /// <summary>Output Only. A URL that points to a profile picture of this user.</summary>
+            /// <summary>Output only. A URL that points to a profile picture of this user.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
             public virtual string Url { get; set; }
         }
