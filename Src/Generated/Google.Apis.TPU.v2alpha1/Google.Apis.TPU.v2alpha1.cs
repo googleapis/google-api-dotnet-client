@@ -2267,9 +2267,30 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerEncryptionKey")]
         public virtual CustomerEncryptionKey CustomerEncryptionKey { get; set; }
 
+        /// <summary>
+        /// Optional. Size of the boot disk in GB. It must be larger than or equal to the size of the image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<long> DiskSizeGb { get; set; }
+
         /// <summary>Optional. Whether the boot disk will be created with confidential compute mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
         public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per
+        /// second that the disk can handle. To learn more about IOPS, see [Provisioning persistent disk
+        /// performance](https://cloud.google.com/compute/docs/disks/performance#provisioned-iops).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedIops")]
+        public virtual System.Nullable<long> ProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput MB per
+        /// second that the disk can handle.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedThroughput")]
+        public virtual System.Nullable<long> ProvisionedThroughput { get; set; }
 
         /// <summary>
         /// Optional. Image from which boot disk is to be created. If not specified, the default image for the runtime
