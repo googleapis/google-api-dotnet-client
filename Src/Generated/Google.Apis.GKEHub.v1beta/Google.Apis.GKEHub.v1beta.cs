@@ -9992,10 +9992,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Condition being reported. TODO b/395151419: Remove this message once the membership-level conditions field uses
-    /// the common Condition message.
-    /// </summary>
+    /// <summary>Condition being reported.</summary>
     public class ServiceMeshCondition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10078,10 +10075,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
     /// </summary>
     public class ServiceMeshMembershipState : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. List of conditions reported for this membership. TODO b/395151419: Use the common Condition
-        /// message.
-        /// </summary>
+        /// <summary>Output only. List of conditions reported for this membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<ServiceMeshCondition> Conditions { get; set; }
 
