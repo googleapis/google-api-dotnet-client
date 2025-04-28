@@ -6681,6 +6681,13 @@ namespace Google.Apis.Networkconnectivity.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -6720,6 +6727,14 @@ namespace Google.Apis.Networkconnectivity.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -7962,7 +7977,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>
         /// Output only. The list of Producer VPC spokes that this VPC spoke is a service consumer VPC spoke for. These
         /// producer VPCs are connected through VPC peering to this spoke's backing VPC network. Because they are
-        /// directly connected throuh VPC peering, NCC export filters do not apply between the service consumer VPC
+        /// directly connected through VPC peering, NCC export filters do not apply between the service consumer VPC
         /// spoke and any of its producer VPC spokes. This VPC spoke cannot be deleted as long as any of these producer
         /// VPC spokes are connected to the NCC Hub.
         /// </summary>
