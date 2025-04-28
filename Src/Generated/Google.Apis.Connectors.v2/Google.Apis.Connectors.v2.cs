@@ -2074,6 +2074,16 @@ namespace Google.Apis.Connectors.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumerDefinedName")]
         public virtual string ConsumerDefinedName { get; set; }
 
+        /// <summary>
+        /// Optional. The consumer_project_number associated with this Apigee instance. This field is added specifically
+        /// to support Apigee integration with SLM Rollout and UMM. It represents the numerical project ID of the GCP
+        /// project that consumes this Apigee instance. It is used for SLM rollout notifications and UMM integration,
+        /// enabling proper mapping to customer projects and log delivery for Apigee instances. This field complements
+        /// consumer_project_id and may be used for specific Apigee scenarios where the numerical ID is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerProjectNumber")]
+        public virtual string ConsumerProjectNumber { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
