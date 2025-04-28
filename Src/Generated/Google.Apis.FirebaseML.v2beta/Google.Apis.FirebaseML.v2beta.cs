@@ -1826,6 +1826,12 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GoogleCloudAiplatformV1beta1Schema : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Can either be a boolean or an object; controls the presence of additional properties.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalProperties")]
+        public virtual object AdditionalProperties { get; set; }
+
+        /// <summary>
         /// Optional. The value should be validated against any (one or more) of the subschemas in the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anyOf")]
