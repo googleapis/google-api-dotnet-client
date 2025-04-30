@@ -5031,7 +5031,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
         }
 
-        /// <summary>Sets the inventory verification contract for the specified country.</summary>
+        /// <summary>Sets the inventory verification contact for the specified country.</summary>
         /// <param name="merchantId">
         /// The ID of the managing account. If this parameter is not the same as accountId, then this account must be a
         /// multi-client account and `accountId` must be the ID of a sub-account of this account.
@@ -5048,7 +5048,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new SetinventoryverificationcontactRequest(this.service, merchantId, accountId, country, language, contactName, contactEmail);
         }
 
-        /// <summary>Sets the inventory verification contract for the specified country.</summary>
+        /// <summary>Sets the inventory verification contact for the specified country.</summary>
         public class SetinventoryverificationcontactRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiasettingsSetInventoryVerificationContactResponse>
         {
             /// <summary>Constructs a new Setinventoryverificationcontact request.</summary>
