@@ -282,6 +282,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
             OnlineReturnPolicies = new OnlineReturnPoliciesResource(service);
             Programs = new ProgramsResource(service);
             Regions = new RegionsResource(service);
+            Relationships = new RelationshipsResource(service);
+            Services = new ServicesResource(service);
             ShippingSettings = new ShippingSettingsResource(service);
             TermsOfServiceAgreementStates = new TermsOfServiceAgreementStatesResource(service);
             Users = new UsersResource(service);
@@ -2203,6 +2205,503 @@ namespace Google.Apis.Merchant.accounts_v1beta
             }
         }
 
+        /// <summary>Gets the Relationships resource.</summary>
+        public virtual RelationshipsResource Relationships { get; }
+
+        /// <summary>The "relationships" collection of methods.</summary>
+        public class RelationshipsResource
+        {
+            private const string Resource = "relationships";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RelationshipsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Retrieve an account relationship.</summary>
+            /// <param name="name">Required. The resource name of the account relationship to get.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Retrieve an account relationship.</summary>
+            public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.AccountRelationship>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name of the account relationship to get.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/relationships/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>List account relationships for the specified account.</summary>
+            /// <param name="parent">Required. The parent account of the account relationship to filter by.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>List account relationships for the specified account.</summary>
+            public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListAccountRelationshipsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent account of the account relationship to filter by.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of elements to return in the response. Use for paging. If no
+                /// `page_size` is specified, `100` is used as the default value. The maximum allowed value is `1000`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. The token returned by the previous `list` request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+parent}/relationships";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates the account relationship. Executing this method requires admin access.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Identifier. The resource name of the account relationship.</param>
+            public virtual PatchRequest Patch(Google.Apis.Merchant.accounts_v1beta.Data.AccountRelationship body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates the account relationship. Executing this method requires admin access.</summary>
+            public class PatchRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.AccountRelationship>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.AccountRelationship body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Identifier. The resource name of the account relationship.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. List of fields being updated. The following fields are supported (in both `snake_case` and
+                /// `lowerCamelCase`): - `account_id_alias`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.AccountRelationship Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/relationships/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Services resource.</summary>
+        public virtual ServicesResource Services { get; }
+
+        /// <summary>The "services" collection of methods.</summary>
+        public class ServicesResource
+        {
+            private const string Resource = "services";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ServicesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Approve an account service proposal.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The resource name of the account service to approve.</param>
+            public virtual ApproveRequest Approve(Google.Apis.Merchant.accounts_v1beta.Data.ApproveAccountServiceRequest body, string name)
+            {
+                return new ApproveRequest(this.service, body, name);
+            }
+
+            /// <summary>Approve an account service proposal.</summary>
+            public class ApproveRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.AccountService>
+            {
+                /// <summary>Constructs a new Approve request.</summary>
+                public ApproveRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.ApproveAccountServiceRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name of the account service to approve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.ApproveAccountServiceRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "approve";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}:approve";
+
+                /// <summary>Initializes Approve parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/services/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieve an account service.</summary>
+            /// <param name="name">Required. The resource name of the account service to get.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Retrieve an account service.</summary>
+            public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.AccountService>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name of the account service to get.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/services/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>List account services for the specified accounts. Supports filtering.</summary>
+            /// <param name="parent">Required. The parent account of the account service to filter by.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>List account services for the specified accounts. Supports filtering.</summary>
+            public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListAccountServicesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent account of the account service to filter by.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of elements to return in the response. Use for paging. If no
+                /// `page_size` is specified, `100` is used as the default value. The maximum allowed value is `1000`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. The token returned by the previous `list` request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+parent}/services";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Propose an account service.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The resource name of the parent account for the service.</param>
+            public virtual ProposeRequest Propose(Google.Apis.Merchant.accounts_v1beta.Data.ProposeAccountServiceRequest body, string parent)
+            {
+                return new ProposeRequest(this.service, body, parent);
+            }
+
+            /// <summary>Propose an account service.</summary>
+            public class ProposeRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.AccountService>
+            {
+                /// <summary>Constructs a new Propose request.</summary>
+                public ProposeRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.ProposeAccountServiceRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name of the parent account for the service.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.ProposeAccountServiceRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "propose";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+parent}/services:propose";
+
+                /// <summary>Initializes Propose parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Reject an account service (both proposed and approve services can be rejected).</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The resource name of the account service to reject.</param>
+            public virtual RejectRequest Reject(Google.Apis.Merchant.accounts_v1beta.Data.RejectAccountServiceRequest body, string name)
+            {
+                return new RejectRequest(this.service, body, name);
+            }
+
+            /// <summary>Reject an account service (both proposed and approve services can be rejected).</summary>
+            public class RejectRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Empty>
+            {
+                /// <summary>Constructs a new Reject request.</summary>
+                public RejectRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.RejectAccountServiceRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name of the account service to reject.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.RejectAccountServiceRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "reject";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}:reject";
+
+                /// <summary>Initializes Reject parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/services/[^/]+$",
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the ShippingSettings resource.</summary>
         public virtual ShippingSettingsResource ShippingSettings { get; }
 
@@ -3476,7 +3975,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceptedBy")]
         public virtual string AcceptedBy { get; set; }
 
-        /// <summary>The accepted [termsOfService](google.shopping.merchant.accounts.v1main.TermsOfService).</summary>
+        /// <summary>The accepted termsOfService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("termsOfService")]
         public virtual string TermsOfService { get; set; }
 
@@ -3590,6 +4089,140 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`AccountManagement` payload.</summary>
+    public class AccountManagement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `AccountRelationship` message defines a formal connection between a merchant's account and a service
+    /// provider's account. This relationship enables the provider to offer specific services to the merchant, such as
+    /// product management or campaign management. It specifies the access rights and permissions to the merchant's data
+    /// relevant to those services. Establishing an account relationship involves linking the merchant's account with a
+    /// provider's account. The provider could be another Google account (like Google Ads or Google My Business) or a
+    /// third-party platform (such as Shopify or WooCommerce).
+    /// </summary>
+    public class AccountRelationship : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An optional alias you can assign to this account relationship. This alias acts as a convenient
+        /// identifier for your own reference and management. It must be unique among all your account relationships
+        /// with the same provider. For example, you might use `account_id_alias` to assign a friendly name to this
+        /// relationship for easier identification in your systems.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountIdAlias")]
+        public virtual string AccountIdAlias { get; set; }
+
+        /// <summary>Identifier. The resource name of the account relationship.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Immutable. The provider of the service. Either the reference to an account such as `providers/123` or a
+        /// well-known service provider (one of `providers/GOOGLE_ADS` or `providers/GOOGLE_BUSINESS_PROFILE`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; }
+
+        /// <summary>Output only. The human-readable display name of the provider account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerDisplayName")]
+        public virtual string ProviderDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `AccountService` message represents a specific service that a provider account offers to a merchant account.
+    /// `AccountService` defines the permissions and capabilities granted to the provider, allowing for operations such
+    /// as product management or campaign management. The lifecycle of an `AccountService` involves a proposal phase,
+    /// where one party suggests the service, and an approval phase, where the other party accepts or rejects it. This
+    /// handshake mechanism ensures mutual consent before any access is granted. This mechanism safeguards both parties
+    /// by ensuring that access rights are granted appropriately and that both the merchant and provider are aware of
+    /// the services enabled. In scenarios where a user is an admin of both accounts, the approval can happen
+    /// automatically. The mutability of a service is also managed through `AccountService`. Some services might be
+    /// immutable, for example, if they were established through other systems or APIs, and you cannot alter them
+    /// through this API.
+    /// </summary>
+    public class AccountService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Service type for account aggregation. This enables the provider, which is a Multi-Client Account (MCA), to
+        /// manage multiple sub-accounts (client accounts). Through this service, the MCA provider can perform
+        /// administrative and operational tasks across all linked sub-accounts. This is useful for agencies,
+        /// aggregators, or large retailers that need centralized control over many merchant accounts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountAggregation")]
+        public virtual AccountAggregation AccountAggregation { get; set; }
+
+        /// <summary>
+        /// Service type for account management. Enables the provider to perform administrative actions on the
+        /// merchant's account, such as configuring account settings, managing users, or updating business information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountManagement")]
+        public virtual AccountManagement AccountManagement { get; set; }
+
+        /// <summary>
+        /// Service type for managing advertising campaigns. Grants the provider access to create and manage the
+        /// merchant's ad campaigns, including setting up campaigns, adjusting bids, and optimizing performance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignsManagement")]
+        public virtual CampaignsManagement CampaignsManagement { get; set; }
+
+        /// <summary>
+        /// Immutable. An optional, immutable identifier that Google uses to refer to this account when communicating
+        /// with the provider. This should be the unique account ID within the provider's system (for example, your shop
+        /// ID in Shopify). If you have multiple accounts with the same provider - for instance, different accounts for
+        /// various regions — the `external_account_id` differentiates between them, ensuring accurate linking and
+        /// integration between Google and the provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAccountId")]
+        public virtual string ExternalAccountId { get; set; }
+
+        /// <summary>
+        /// Output only. Information about the state of the service in terms of establishing it (e.g. is it pending
+        /// approval or approved).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handshake")]
+        public virtual Handshake Handshake { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the service is mutable (e.g. through Approve / Reject RPCs). A service that was created
+        /// through another system or API might be immutable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mutability")]
+        public virtual string Mutability { get; set; }
+
+        /// <summary>Identifier. The resource name of the account service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Service type for managing products. This allows the provider to handle product data on behalf of the
+        /// merchant, including reading and writing product listings. It's commonly used when the provider offers
+        /// inventory management or catalog synchronization services to keep the merchant's product information
+        /// up-to-date across platforms.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productsManagement")]
+        public virtual ProductsManagement ProductsManagement { get; set; }
+
+        /// <summary>
+        /// Output only. The provider of the service. Either the reference to an account such as `providers/123` or a
+        /// well-known service provider (one of `providers/GOOGLE_ADS` or `providers/GOOGLE_BUSINESS_PROFILE`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; }
+
+        /// <summary>Output only. The human-readable display name of the provider account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerDisplayName")]
+        public virtual string ProviderDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Additional instructions to add account services during creation of the account.</summary>
     public class AddAccountService : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3660,6 +4293,13 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
         public virtual string StreetAddress { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to approve an account service.</summary>
+    public class ApproveAccountServiceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3954,6 +4594,13 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phoneVerificationState")]
         public virtual string PhoneVerificationState { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`CampaignManagement` payload.</summary>
+    public class CampaignsManagement : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4316,6 +4963,23 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     }
 
     /// <summary>
+    /// The current status of establishing of the service. (for example, pending approval or approved).
+    /// </summary>
+    public class Handshake : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The most recent account to modify the account service's `approval_status`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actor")]
+        public virtual string Actor { get; set; }
+
+        /// <summary>Output only. The approval state of this handshake.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvalState")]
+        public virtual string ApprovalState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A non-empty list of row or column headers for a table. Exactly one of `prices`, `weights`, `num_items`,
     /// `postal_code_group_names`, or `location` must be set.
     /// </summary>
@@ -4496,6 +5160,42 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
         /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response after trying to list account relationships.</summary>
+    public class ListAccountRelationshipsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The account relationships that match your filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountRelationships")]
+        public virtual System.Collections.Generic.IList<AccountRelationship> AccountRelationships { get; set; }
+
+        /// <summary>
+        /// A page token. You can send the `page_token` to get the next page. Only included in the `list` response if
+        /// there are more pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response after trying to list account services.</summary>
+    public class ListAccountServicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The account services that match your filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountServices")]
+        public virtual System.Collections.Generic.IList<AccountService> AccountServices { get; set; }
+
+        /// <summary>
+        /// A page token. You can send the `page_token` to get the next page. Only included in the `list` response if
+        /// there are more pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -5195,6 +5895,13 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`ProductsManagement` payload.</summary>
+    public class ProductsManagement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Defines participation in a given program for the specified account. Programs provide a mechanism for adding
     /// functionality to merchant accounts. A typical example of this is the [Free product
@@ -5234,6 +5941,24 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unmetRequirements")]
         public virtual System.Collections.Generic.IList<Requirement> UnmetRequirements { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to propose an account service.</summary>
+    public class ProposeAccountServiceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The account service to propose.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountService")]
+        public virtual AccountService AccountService { get; set; }
+
+        /// <summary>
+        /// Required. The provider of the service. Either the reference to an account such as `providers/123` or a
+        /// well-known service provider (one of `providers/GOOGLE_ADS` or `providers/GOOGLE_BUSINESS_PROFILE`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5325,6 +6050,13 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shippingEligible")]
         public virtual System.Nullable<bool> ShippingEligible { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to reject an account service.</summary>
+    public class RejectAccountServiceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5704,7 +6436,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     /// an expiration date set in the `valid_until` field. The `required` terms of services need to be accepted before
     /// `valid_until` in order for the account to continue having a valid agreement. When accepting new terms of
     /// services we expect 3Ps to display the text associated with the given terms of service agreement (the url to the
-    /// file containing the text is added in the Required message below as `tos_file_uri`. The actual acceptance of the
+    /// file containing the text is added in the Required message below as `tos_file_uri`). The actual acceptance of the
     /// terms of service is done by calling accept on the `TermsOfService` resource.
     /// </summary>
     public class TermsOfServiceAgreementState : Google.Apis.Requests.IDirectResponseSchema
