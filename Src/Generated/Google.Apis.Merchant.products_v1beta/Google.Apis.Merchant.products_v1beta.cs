@@ -2002,11 +2002,13 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual string Product { get; set; }
 
         /// <summary>
-        /// Optional. Represents the existing version (freshness) of the product, which can be used to preserve the
-        /// right order when multiple updates are done at the same time. If set, the insertion is prevented when version
-        /// number is lower than the current version number of the existing product. Re-insertion (for example, product
-        /// refresh after 30 days) can be performed with the current `version_number`. Only supported for insertions
-        /// into primary data sources. If the operation is prevented, the aborted exception will be thrown.
+        /// Optional. Immutable. Represents the existing version (freshness) of the product, which can be used to
+        /// preserve the right order when multiple updates are done at the same time. If set, the insertion is prevented
+        /// when version number is lower than the current version number of the existing product. Re-insertion (for
+        /// example, product refresh after 30 days) can be performed with the current `version_number`. Only supported
+        /// for insertions into primary data sources. Do not set this field for updates. Do not set this field for
+        /// insertions into supplemental data sources. If the operation is prevented, the aborted exception will be
+        /// thrown.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionNumber")]
         public virtual System.Nullable<long> VersionNumber { get; set; }
