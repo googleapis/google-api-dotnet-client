@@ -317,6 +317,176 @@ namespace Google.Apis.CloudDataplex.v1
                     this.service = service;
                 }
 
+                /// <summary>Create an EncryptionConfig.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The location at which the EncryptionConfig is to be created.</param>
+                public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EncryptionConfig body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create an EncryptionConfig.</summary>
+                public class CreateRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EncryptionConfig body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The location at which the EncryptionConfig is to be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID of the EncryptionConfig to create. Currently, only a value of "default" is
+                    /// supported.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("encryptionConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string EncryptionConfigId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EncryptionConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/encryptionConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("encryptionConfigId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "encryptionConfigId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Delete an EncryptionConfig.</summary>
+                /// <param name="name">Required. The name of the EncryptionConfig to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Delete an EncryptionConfig.</summary>
+                public class DeleteRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the EncryptionConfig to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. Etag of the EncryptionConfig. This is a strong etag.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/encryptionConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Get an EncryptionConfig.</summary>
+                /// <param name="name">Required. The name of the EncryptionConfig to fetch.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Get an EncryptionConfig.</summary>
+                public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EncryptionConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the EncryptionConfig to fetch.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/encryptionConfigs/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
@@ -387,6 +557,194 @@ namespace Google.Apis.CloudDataplex.v1
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>List EncryptionConfigs.</summary>
+                /// <param name="parent">Required. The location for which the EncryptionConfig is to be listed.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>List EncryptionConfigs.</summary>
+                public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ListEncryptionConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The location for which the EncryptionConfig is to be listed.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Filter the EncryptionConfigs to be returned. Using bare literals: (These values will
+                    /// be matched anywhere it may appear in the object's field values) * filter=some_value Using
+                    /// fields: (These values will be matched only in the specified field) *
+                    /// filter=some_field=some_value Supported fields: * name, key, create_time, update_time,
+                    /// encryption_state Example: *
+                    /// filter=name=organizations/123/locations/us-central1/encryptionConfigs/test-config conjunctions:
+                    /// (AND, OR, NOT) *
+                    /// filter=name=organizations/123/locations/us-central1/encryptionConfigs/test-config AND mode=CMEK
+                    /// logical operators: (&amp;gt;, &amp;lt;, &amp;gt;=, &amp;lt;=, !=, =, :), *
+                    /// filter=create_time&amp;gt;2024-05-01T00:00:00.000Z
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Order by fields for the result.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Maximum number of EncryptionConfigs to return. The service may return fewer than this
+                    /// value. If unspecified, at most 10 EncryptionConfigs will be returned. The maximum value is 1000;
+                    /// values above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Page token received from a previous ListEncryptionConfigs call. Provide this to
+                    /// retrieve the subsequent page. When paginating, the parameters - filter and order_by provided to
+                    /// ListEncryptionConfigs must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/encryptionConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update an EncryptionConfig.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the EncryptionConfig. Format:
+                /// organizations/{organization}/locations/{location}/encryptionConfigs/{encryption_config} Global
+                /// location is not supported.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EncryptionConfig body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update an EncryptionConfig.</summary>
+                public class PatchRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EncryptionConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the EncryptionConfig. Format:
+                    /// organizations/{organization}/locations/{location}/encryptionConfigs/{encryption_config} Global
+                    /// location is not supported.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Mask of fields to update. The service treats an omitted field mask as an implied field
+                    /// mask equivalent to all fields that are populated (have a non-empty value).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EncryptionConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/encryptionConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -16013,7 +16371,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryPublishing")]
         public virtual GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing BigqueryPublishing { get; set; }
 
-        /// <summary>Output only. Statistics of the DataDiscoveryScan.</summary>
+        /// <summary>Output only. Describes result statistics of a data scan discovery job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scanStatistics")]
         public virtual GoogleCloudDataplexV1DataDiscoveryResultScanStatistics ScanStatistics { get; set; }
 
@@ -16036,7 +16394,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Statistics of the DataDiscoveryScan.</summary>
+    /// <summary>Describes result statistics of a data scan discovery job.</summary>
     public class GoogleCloudDataplexV1DataDiscoveryResultScanStatistics : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The data processed in bytes.</summary>
@@ -18228,6 +18586,131 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A Resource designed to manage encryption configurations for customers to support Customer Managed Encryption
+    /// Keys (CMEK).
+    /// </summary>
+    public class GoogleCloudDataplexV1EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the Encryption configuration was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The state of encryption of the databases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionState")]
+        public virtual string EncryptionState { get; set; }
+
+        /// <summary>Etag of the EncryptionConfig. This is a strong etag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Output only. Details of the failure if anything related to Cmek db fails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureDetails")]
+        public virtual GoogleCloudDataplexV1EncryptionConfigFailureDetails FailureDetails { get; set; }
+
+        /// <summary>
+        /// Optional. If a key is chosen, it means that the customer is using CMEK. If a key is not chosen, it means
+        /// that the customer is using Google managed encryption.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the EncryptionConfig. Format:
+        /// organizations/{organization}/locations/{location}/encryptionConfigs/{encryption_config} Global location is
+        /// not supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when the Encryption configuration was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>Details of the failure if anything related to Cmek db fails.</summary>
+    public class GoogleCloudDataplexV1EncryptionConfigFailureDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The error code for the failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual string ErrorCode { get; set; }
+
+        /// <summary>
+        /// Output only. The error message will be shown to the user. Set only if the error code is REQUIRE_USER_ACTION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents tables and fileset metadata contained within a zone.</summary>
     public class GoogleCloudDataplexV1Entity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19966,6 +20449,27 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>List EncryptionConfigs Response</summary>
+    public class GoogleCloudDataplexV1ListEncryptionConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of EncryptionConfigs under the given parent location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1EncryptionConfig> EncryptionConfigs { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachableLocations")]
+        public virtual System.Collections.Generic.IList<string> UnreachableLocations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>List metadata entities response.</summary>
     public class GoogleCloudDataplexV1ListEntitiesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20313,14 +20817,17 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Export Job Results. The result is based on the snapshot at the time when the job is created.</summary>
+    /// <summary>
+    /// Summary results from a metadata export job. The results are a snapshot of the metadata at the time when the job
+    /// was created. The exported entries are saved to a Cloud Storage bucket.
+    /// </summary>
     public class GoogleCloudDataplexV1MetadataJobExportJobResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The error message if the export job failed.</summary>
+        /// <summary>Output only. The error message if the metadata export job failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; }
 
-        /// <summary>Output only. The number of entries that have been exported.</summary>
+        /// <summary>Output only. The number of entries that were exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportedEntries")]
         public virtual System.Nullable<long> ExportedEntries { get; set; }
 
@@ -20328,18 +20835,20 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Export job specification.</summary>
+    /// <summary>Job specification for a metadata export job.</summary>
     public class GoogleCloudDataplexV1MetadataJobExportJobSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The root path of the exported metadata. Must be in the format: "gs://" Or specify a customized
-        /// prefix after the bucket: "gs://///.../". The length limit of the customized prefix is 128 characters. The
-        /// bucket must be in the same VPC-SC perimeter with the job.
+        /// Required. The root path of the Cloud Storage bucket to export the metadata to, in the format gs://{bucket}/.
+        /// You can optionally specify a custom prefix after the bucket name, in the format gs://{bucket}/{prefix}/. The
+        /// maximum length of the custom prefix is 128 characters. Dataplex constructs the object path for the exported
+        /// files by using the bucket name and prefix that you provide, followed by a system-generated path.The bucket
+        /// must be in the same VPC Service Controls perimeter as the job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputPath")]
         public virtual string OutputPath { get; set; }
 
-        /// <summary>Required. Selects the entries to be exported by this job.</summary>
+        /// <summary>Required. The scope of the export job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope Scope { get; set; }
 
@@ -20347,46 +20856,50 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Scope of the export job.</summary>
+    /// <summary>The scope of the export job.</summary>
     public class GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The aspect types that are in scope for the export job. Optional. If specified, only aspects of the specified
-        /// types will be affected by the job. Must follow the format: "projects//locations//aspectTypes/"
+        /// The aspect types that are in scope for the export job, specified as relative resource names in the format
+        /// projects/{project_id_or_number}/locations/{location}/aspectTypes/{aspect_type_id}. Only aspects that belong
+        /// to the specified aspect types are affected by the job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspectTypes")]
         public virtual System.Collections.Generic.IList<string> AspectTypes { get; set; }
 
         /// <summary>
-        /// The entry groups that are in scope for the export job. Optional. If specified, only entries in the specified
-        /// entry groups will be exported by the job. Must be in the VPC-SC perimeter of the job. The location of the
-        /// entry groups must be the same as the job. Either projects or entry_groups can be specified when
-        /// organization_level_export is set to false. Must follow the format: "projects//locations//entryGroups/"
+        /// The entry groups whose metadata you want to export, in the format
+        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}. Only the entries in
+        /// the specified entry groups are exported.The entry groups must be in the same location and the same VPC
+        /// Service Controls perimeter as the job.If you set the job scope to be a list of entry groups, then set the
+        /// organization-level export flag to false and don't provide a list of projects.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryGroups")]
         public virtual System.Collections.Generic.IList<string> EntryGroups { get; set; }
 
         /// <summary>
-        /// If specified, only entries of the specified types will be affected by the job. Must follow the format:
-        /// "projects//locations//entryTypes/"
+        /// The entry types that are in scope for the export job, specified as relative resource names in the format
+        /// projects/{project_id_or_number}/locations/{location}/entryTypes/{entry_type_id}. Only entries that belong to
+        /// the specified entry types are affected by the job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryTypes")]
         public virtual System.Collections.Generic.IList<string> EntryTypes { get; set; }
 
         /// <summary>
-        /// Indicating if it is an organization level export job. - When set to true, exports all entries from entry
-        /// groups and projects sharing the same organization id of the Metadata Job. Only projects and entry groups in
-        /// the VPC-SC perimeter will be exported. The projects and entry groups are ignored. - When set to false, one
-        /// of the projects or entry groups must be specified. - Default to false.
+        /// Whether the metadata export job is an organization-level export job. If true, the job exports the entries
+        /// from the same organization and VPC Service Controls perimeter as the job. The project that the job belongs
+        /// to determines the VPC Service Controls perimeter. If you set the job scope to be at the organization level,
+        /// then don't provide a list of projects or entry groups. If false, you must specify a list of projects or a
+        /// list of entry groups whose entries you want to export.The default is false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizationLevel")]
         public virtual System.Nullable<bool> OrganizationLevel { get; set; }
 
         /// <summary>
-        /// The projects that are in the scope of the export job. Can either be project numbers or project IDs. If
-        /// specified, only the entries from the specified projects will be exported. The projects must be in the same
-        /// organization and in the VPC-SC perimeter. Either projects or entry_groups can be specified when
-        /// organization_level_export is set to false. Must follow the format: "projects/"
+        /// The projects whose metadata you want to export, in the format projects/{project_id_or_number}. Only the
+        /// entries from the specified projects are exported.The projects must be in the same organization and VPC
+        /// Service Controls perimeter as the job.If you set the job scope to be a list of projects, then set the
+        /// organization-level export flag to false and don't provide a list of entry groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projects")]
         public virtual System.Collections.Generic.IList<string> Projects { get; set; }
@@ -20530,8 +21043,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>
         /// Optional. The URI of a Cloud Storage bucket or folder (beginning with gs:// and ending with /) that contains
         /// the metadata import files for this job.A metadata import file defines the values to set for each of the
-        /// entries and aspects in a metadata job. For more information about how to create a metadata import file and
-        /// the file requirements, see Metadata import file
+        /// entries and aspects in a metadata import job. For more information about how to create a metadata import
+        /// file and the file requirements, see Metadata import file
         /// (https://cloud.google.com/dataplex/docs/import-metadata#metadata-import-file).You can provide multiple
         /// metadata import files in the same metadata job. The bucket or folder must contain at least one metadata
         /// import file, in JSON Lines format (either .json or .jsonl file extension).In FULL entry sync mode, don't
