@@ -41,4 +41,5 @@
 
   // b/415809720 for investigating the failure
   "compute.alpha",
+  "compute.beta",
 ]
