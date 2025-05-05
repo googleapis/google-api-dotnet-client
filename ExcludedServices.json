@@ -38,4 +38,7 @@
   "identitytoolkit.v1",
   "identitytoolkit.v2",
   "identitytoolkit.v3",
+
+  // b/415809720 for investigating the failure
+  "compute.alpha",
 ]
