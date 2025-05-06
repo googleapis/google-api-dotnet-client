@@ -986,7 +986,10 @@ namespace Google.Apis.Merchant.lfp_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("countrySettings")]
         public virtual System.Collections.Generic.IList<CountrySettings> CountrySettings { get; set; }
 
-        /// <summary>The inventory statistics for the merchant.</summary>
+        /// <summary>
+        /// The inventory statistics for the merchant. The field will be absent if the merchant has no inventory
+        /// submitted through LFP.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventoryStats")]
         public virtual InventoryStats InventoryStats { get; set; }
 
@@ -1001,7 +1004,10 @@ namespace Google.Apis.Merchant.lfp_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The state per store from the specified merchant.</summary>
+        /// <summary>
+        /// Output only. The state per store from the specified merchant. The field will be absent if the merchant has
+        /// no stores submitted through LFP.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeStates")]
         public virtual System.Collections.Generic.IList<LfpStoreState> StoreStates { get; set; }
 
