@@ -11968,7 +11968,10 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Output only. The email address of the user.</summary>
+        /// <summary>
+        /// Output only. The email address of the user. This may not be present in certain contexts if the user has not
+        /// made their email address visible to the requester.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; }
 
@@ -11978,11 +11981,13 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isAuthenticatedUser")]
         public virtual System.Nullable<bool> IsAuthenticatedUser { get; set; }
 
-        /// <summary>Output only. This is always `drive#user`.</summary>
+        /// <summary>
+        /// Output only. Identifies what kind of resource this is. Value: the fixed string `drive#user`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Output only. The user's ID as visible in the permissions collection.</summary>
+        /// <summary>Output only. The user's ID as visible in Permission resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionId")]
         public virtual string PermissionId { get; set; }
 
