@@ -2111,25 +2111,6 @@ namespace Google.Apis.WorkloadManager.v1
 }
 namespace Google.Apis.WorkloadManager.v1.Data
 {
-    /// <summary>The API layer server</summary>
-    public class APILayerServer : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The api layer name</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Output only. OS information</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
-        public virtual string OsVersion { get; set; }
-
-        /// <summary>Output only. resources in the component</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<CloudResource> Resources { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>* An AgentCommand specifies a one-time executable program for the agent to run.</summary>
     public class AgentCommand : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2142,56 +2123,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The availability groups for sqlserver</summary>
-    public class AvailabilityGroup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The databases</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("databases")]
-        public virtual System.Collections.Generic.IList<string> Databases { get; set; }
-
-        /// <summary>Output only. The availability group name</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Output only. The primary server</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("primaryServer")]
-        public virtual string PrimaryServer { get; set; }
-
-        /// <summary>Output only. The secondary servers</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secondaryServers")]
-        public virtual System.Collections.Generic.IList<string> SecondaryServers { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The backend server</summary>
-    public class BackendServer : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The backup file</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backupFile")]
-        public virtual string BackupFile { get; set; }
-
-        /// <summary>Output only. The backup schedule</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backupSchedule")]
-        public virtual string BackupSchedule { get; set; }
-
-        /// <summary>Output only. The backend name</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Output only. OS information</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
-        public virtual string OsVersion { get; set; }
-
-        /// <summary>Output only. resources in the component</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<CloudResource> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2288,21 +2219,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The cluster for sqlserver</summary>
-    public class Cluster : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The nodes</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
-        public virtual System.Collections.Generic.IList<string> Nodes { get; set; }
-
-        /// <summary>Output only. The witness server</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("witnessServer")]
-        public virtual string WitnessServer { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>* Command specifies the type of command to execute.</summary>
     public class Command : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2344,29 +2260,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Sub component health.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subComponentHealthes")]
         public virtual System.Collections.Generic.IList<ComponentHealth> SubComponentHealthes { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The database for sqlserver</summary>
-    public class Database : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The backup file</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backupFile")]
-        public virtual string BackupFile { get; set; }
-
-        /// <summary>Output only. The backup schedule</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backupSchedule")]
-        public virtual string BackupSchedule { get; set; }
-
-        /// <summary>Output only. The host VM</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hostVm")]
-        public virtual string HostVm { get; set; }
-
-        /// <summary>Output only. The database name</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2759,25 +2652,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The front end server</summary>
-    public class FrontEndServer : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The frontend name</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Output only. OS information</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
-        public virtual string OsVersion { get; set; }
-
-        /// <summary>Output only. resources in the component</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<CloudResource> Resources { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Message describing compute engine instance filter</summary>
     public class GceInstanceFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3093,21 +2967,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>All scanned resources in response</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scannedResources")]
         public virtual System.Collections.Generic.IList<ScannedResource> ScannedResources { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The load balancer for sqlserver</summary>
-    public class LoadBalancerServer : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The IP address</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ip")]
-        public virtual string Ip { get; set; }
-
-        /// <summary>Output only. The VM name</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vm")]
-        public virtual string Vm { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4106,29 +3965,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The body of sqlserver workload</summary>
-    public class SqlserverWorkload : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The availability groups for sqlserver</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ags")]
-        public virtual System.Collections.Generic.IList<AvailabilityGroup> Ags { get; set; }
-
-        /// <summary>Output only. The cluster for sqlserver</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
-        public virtual Cluster Cluster { get; set; }
-
-        /// <summary>Output only. The databases for sqlserver</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("databases")]
-        public virtual System.Collections.Generic.IList<Database> Databases { get; set; }
-
-        /// <summary>Output only. The load balancer for sqlserver</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerServer")]
-        public virtual LoadBalancerServer LoadBalancerServer { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -4172,29 +4008,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Output only. Number of new fixes compared to the previous execution</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newFixes")]
         public virtual System.Nullable<long> NewFixes { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The body of three tier workload</summary>
-    public class ThreeTierWorkload : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The API layer for three tier workload</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiLayer")]
-        public virtual APILayerServer ApiLayer { get; set; }
-
-        /// <summary>Output only. The backend for three tier workload</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backend")]
-        public virtual BackendServer Backend { get; set; }
-
-        /// <summary>Output only. the workload endpoint</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
-        public virtual string Endpoint { get; set; }
-
-        /// <summary>Output only. The frontend for three tier workload</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("frontend")]
-        public virtual FrontEndServer Frontend { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4274,6 +4087,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Optional. Maintenance status</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceStatus")]
         public virtual string MaintenanceStatus { get; set; }
+
+        /// <summary>Optional. Instance maintenance behavior. Could be "MIGRATE" or "TERMINATE".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onHostMaintenance")]
+        public virtual string OnHostMaintenance { get; set; }
 
         private string _startTimeRaw;
 
@@ -4405,17 +4222,9 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sapWorkload")]
         public virtual SapWorkload SapWorkload { get; set; }
 
-        /// <summary>The sqlserver workload content</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sqlserverWorkload")]
-        public virtual SqlserverWorkload SqlserverWorkload { get; set; }
-
         /// <summary>Output only. [output only] the current state if a a workload</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        /// <summary>The 3 tier web app workload content</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("threeTierWorkload")]
-        public virtual ThreeTierWorkload ThreeTierWorkload { get; set; }
 
         /// <summary>Required. The type of the workload</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadType")]
