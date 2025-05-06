@@ -8477,9 +8477,9 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string GroupId { get; set; }
 
         /// <summary>
-        /// Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an
-        /// absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace,
-        /// e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+        /// Optional. Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be
+        /// either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from
+        /// /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
