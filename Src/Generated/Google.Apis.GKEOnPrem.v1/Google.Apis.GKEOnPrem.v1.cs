@@ -8282,6 +8282,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localName")]
         public virtual string LocalName { get; set; }
 
+        /// <summary>Output only. The namespace of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localNamespace")]
+        public virtual string LocalNamespace { get; set; }
+
         /// <summary>Maintenance configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceConfig")]
         public virtual BareMetalMaintenanceConfig MaintenanceConfig { get; set; }
