@@ -1598,9 +1598,10 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// <summary>Updates an existing reservation resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. The
-                /// reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a
-                /// letter and must not end with a dash. Its maximum length is 64 characters.
+                /// Identifier. The resource name of the reservation, e.g.,
+                /// `projects/*/locations/*/reservations/team1-prod`. The reservation_id must only contain lower case
+                /// alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its
+                /// maximum length is 64 characters.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BigQueryReservation.v1.Data.Reservation body, string name)
                 {
@@ -1619,9 +1620,10 @@ namespace Google.Apis.BigQueryReservation.v1
                     }
 
                     /// <summary>
-                    /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
-                    /// The reservation_id must only contain lower case alphanumeric characters or dashes. It must start
-                    /// with a letter and must not end with a dash. Its maximum length is 64 characters.
+                    /// Identifier. The resource name of the reservation, e.g.,
+                    /// `projects/*/locations/*/reservations/team1-prod`. The reservation_id must only contain lower
+                    /// case alphanumeric characters or dashes. It must start with a letter and must not end with a
+                    /// dash. Its maximum length is 64 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2078,7 +2080,7 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentSlots")]
         public virtual System.Nullable<long> CurrentSlots { get; set; }
 
-        /// <summary>Number of slots to be scaled when needed.</summary>
+        /// <summary>Optional. Number of slots to be scaled when needed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxSlots")]
         public virtual System.Nullable<long> MaxSlots { get; set; }
 
@@ -2510,16 +2512,16 @@ namespace Google.Apis.BigQueryReservation.v1.Data
     /// <summary>A reservation is a mechanism used to guarantee slots to users.</summary>
     public class Reservation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The configuration parameters for the auto scaling feature.</summary>
+        /// <summary>Optional. The configuration parameters for the auto scaling feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscale")]
         public virtual Autoscale Autoscale { get; set; }
 
         /// <summary>
-        /// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this
-        /// reservation. This is a soft target due to asynchronous nature of the system and various optimizations for
-        /// small queries. Default value is 0 which means that concurrency target will be automatically computed by the
-        /// system. NOTE: this field is exposed as target job concurrency in the Information Schema, DDL and BigQuery
-        /// CLI.
+        /// Optional. Job concurrency target which sets a soft upper bound on the number of jobs that can run
+        /// concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various
+        /// optimizations for small queries. Default value is 0 which means that concurrency target will be
+        /// automatically computed by the system. NOTE: this field is exposed as target job concurrency in the
+        /// Information Schema, DDL and BigQuery CLI.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("concurrency")]
         public virtual System.Nullable<long> Concurrency { get; set; }
@@ -2561,14 +2563,14 @@ namespace Google.Apis.BigQueryReservation.v1.Data
             set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Edition of the reservation.</summary>
+        /// <summary>Optional. Edition of the reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edition")]
         public virtual string Edition { get; set; }
 
         /// <summary>
-        /// If false, any query or pipeline job using this reservation will use idle slots from other reservations
-        /// within the same admin project. If true, a query or pipeline job using this reservation will execute with the
-        /// slot capacity specified in the slot_capacity field at most.
+        /// Optional. If false, any query or pipeline job using this reservation will use idle slots from other
+        /// reservations within the same admin project. If true, a query or pipeline job using this reservation will
+        /// execute with the slot capacity specified in the slot_capacity field at most.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreIdleSlots")]
         public virtual System.Nullable<bool> IgnoreIdleSlots { get; set; }
@@ -2619,9 +2621,9 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual System.Nullable<bool> MultiRegionAuxiliary { get; set; }
 
         /// <summary>
-        /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. The
-        /// reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a letter
-        /// and must not end with a dash. Its maximum length is 64 characters.
+        /// Identifier. The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+        /// The reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a
+        /// letter and must not end with a dash. Its maximum length is 64 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2651,8 +2653,8 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual ReplicationStatus ReplicationStatus { get; set; }
 
         /// <summary>
-        /// The scaling mode for the reservation. If the field is present but max_slots is not present, requests will be
-        /// rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.
+        /// Optional. The scaling mode for the reservation. If the field is present but max_slots is not present,
+        /// requests will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scalingMode")]
         public virtual string ScalingMode { get; set; }
@@ -2667,8 +2669,8 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual string SecondaryLocation { get; set; }
 
         /// <summary>
-        /// Baseline slots available to this reservation. A slot is a unit of computational power in BigQuery, and
-        /// serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if
+        /// Optional. Baseline slots available to this reservation. A slot is a unit of computational power in BigQuery,
+        /// and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if
         /// ignore_idle_slots is set to false, or autoscaling is enabled. The total slot_capacity of the reservation and
         /// its siblings may exceed the total slot_count of capacity commitments. In that case, the exceeding slots will
         /// be charged with the autoscale SKU. You can increase the number of baseline slots in a reservation every few
