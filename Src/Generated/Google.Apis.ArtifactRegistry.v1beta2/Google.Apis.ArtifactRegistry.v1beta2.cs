@@ -3887,11 +3887,11 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. If set, the repository satisfies physical zone isolation.</summary>
+        /// <summary>Output only. Whether or not this repository satisfies PZI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
 
-        /// <summary>Output only. If set, the repository satisfies physical zone separation.</summary>
+        /// <summary>Output only. Whether or not this repository satisfies PZS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
