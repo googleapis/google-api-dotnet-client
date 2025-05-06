@@ -850,7 +850,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// <summary>Updates an app profile within an instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The unique name of the app profile. Values are of the form
+                /// The unique name of the app profile, up to 50 characters long. Values are of the form
                 /// `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BigtableAdmin.v2.Data.AppProfile body, string name)
@@ -870,7 +870,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
                     /// <summary>
-                    /// The unique name of the app profile. Values are of the form
+                    /// The unique name of the app profile, up to 50 characters long. Values are of the form
                     /// `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5771,7 +5771,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual MultiClusterRoutingUseAny MultiClusterRoutingUseAny { get; set; }
 
         /// <summary>
-        /// The unique name of the app profile. Values are of the form
+        /// The unique name of the app profile, up to 50 characters long. Values are of the form
         /// `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -8445,6 +8445,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>A SQL logical view object that can be referenced in SQL queries.</summary>
     public class LogicalView : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Set to true to make the LogicalView protected against deletion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionProtection")]
+        public virtual System.Nullable<bool> DeletionProtection { get; set; }
+
         /// <summary>
         /// Optional. The etag for this logical view. This may be sent on update requests to ensure that the client has
         /// an up-to-date value before proceeding. The server returns an ABORTED error on a mismatched etag.
