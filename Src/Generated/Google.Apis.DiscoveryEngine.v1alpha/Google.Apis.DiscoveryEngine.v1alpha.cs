@@ -49123,6 +49123,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mediaRequestInfo")]
         public virtual ApiservingMediaRequestInfo MediaRequestInfo { get; set; }
 
+        /// <summary>The project (notebook) id of the uploaded source. Prefer to use the parent field instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>
+        /// The source id of the associated file. If not set, a source id will be generated and a new tentative source
+        /// will be created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceId")]
+        public virtual string SourceId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
