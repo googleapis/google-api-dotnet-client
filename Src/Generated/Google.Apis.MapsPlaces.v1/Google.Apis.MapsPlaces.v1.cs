@@ -2526,6 +2526,25 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual GoogleTypeLocalizedText Text { get; set; }
 
+        /// <summary>The date when the author visited the place. This is trucated to month.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visitDate")]
+        public virtual GoogleMapsPlacesV1ReviewVisitDate VisitDate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The date when the author visited the place. This is trucated to month.</summary>
+    public class GoogleMapsPlacesV1ReviewVisitDate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The month the author visited the place, e.g. 4. The value is between 1 and 12.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>The year the author visited the place, e.g. 2025.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
