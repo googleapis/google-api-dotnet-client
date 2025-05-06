@@ -2850,6 +2850,10 @@ namespace Google.Apis.Monitoring.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Set if the project has been tombstoned by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isTombstoned")]
+        public virtual System.Nullable<bool> IsTombstoned { get; set; }
+
         /// <summary>
         /// Immutable. The resource name of the MonitoredProject. On input, the resource name includes the scoping
         /// project ID and monitored project ID. On output, it contains the equivalent project numbers. Example:
@@ -3980,7 +3984,7 @@ namespace Google.Apis.Monitoring.v1.Data
     /// <summary>Condition that determines whether the widget should be displayed.</summary>
     public class VisibilityCondition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A condition whose evaluation is based on the value of a template variable.</summary>
+        /// <summary>A condition whose evaluation is based on the value of a template1 variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateVariableCondition")]
         public virtual TemplateVariableCondition TemplateVariableCondition { get; set; }
 
