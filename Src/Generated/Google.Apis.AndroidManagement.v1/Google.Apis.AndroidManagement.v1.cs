@@ -1836,7 +1836,7 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>Gets a web app.</summary>
             /// <param name="name">
-            /// The name of the web app in the form enterprises/{enterpriseId}/webApp/{packageName}.
+            /// The name of the web app in the form enterprises/{enterpriseId}/webApps/{packageName}.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1854,7 +1854,7 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
                 /// <summary>
-                /// The name of the web app in the form enterprises/{enterpriseId}/webApp/{packageName}.
+                /// The name of the web app in the form enterprises/{enterpriseId}/webApps/{packageName}.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3399,6 +3399,25 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An admin has enabled or disabled backup service.</summary>
+    public class BackupServiceToggledEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Package name of the admin app requesting the change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminPackageName")]
+        public virtual string AdminPackageName { get; set; }
+
+        /// <summary>User ID of the admin app from the which the change was requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminUserId")]
+        public virtual System.Nullable<int> AdminUserId { get; set; }
+
+        /// <summary>Whether the backup service is enabled</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupServiceState")]
+        public virtual string BackupServiceState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Batched event logs of events from the device.</summary>
     public class BatchUsageLogEvents : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3682,7 +3701,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>
         /// If the command failed, an error code explaining the failure. This is not set when the command is cancelled
-        /// by the caller.
+        /// by the caller. For reasoning about command errors, prefer fields in the following order (most preferred
+        /// first): 1. Command-specific fields like clearAppsDataStatus, startLostModeStatus, or similar, if they exist.
+        /// 2. This field, if set. 3. The generic error field in the Operation that wraps the command.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
         public virtual string ErrorCode { get; set; }
@@ -3694,6 +3715,18 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newPassword")]
         public virtual string NewPassword { get; set; }
+
+        /// <summary>
+        /// Optional. Parameters for the REQUEST_DEVICE_INFO command to get device related information. If this is set,
+        /// then it is suggested that type should not be set. In this case, the server automatically sets it to
+        /// REQUEST_DEVICE_INFO . It is also acceptable to explicitly set type to REQUEST_DEVICE_INFO.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestDeviceInfoParams")]
+        public virtual RequestDeviceInfoParams RequestDeviceInfoParams { get; set; }
+
+        /// <summary>Output only. Status of the REQUEST_DEVICE_INFO command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestDeviceInfoStatus")]
+        public virtual RequestDeviceInfoStatus RequestDeviceInfoStatus { get; set; }
 
         /// <summary>For commands of type RESET_PASSWORD, optionally specifies flags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resetPasswordFlags")]
@@ -4343,6 +4376,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// </summary>
     public class DeviceConnectivityManagement : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Controls whether Bluetooth sharing is allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bluetoothSharing")]
+        public virtual string BluetoothSharing { get; set; }
+
         /// <summary>
         /// Controls Wi-Fi configuring privileges. Based on the option set, user will have either full or limited or no
         /// control in configuring Wi-Fi networks.
@@ -4551,6 +4588,28 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousDpc")]
         public virtual string PreviousDpc { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>EID information for each eUICC chip.</summary>
+    public class Eid : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The EID</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eid")]
+        public virtual string EidValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information related to the EIDs of the device.</summary>
+    public class EidInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. EID information for each eUICC chip.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eids")]
+        public virtual System.Collections.Generic.IList<Eid> Eids { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4796,6 +4855,20 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information related to the eUICC chip.</summary>
+    public class EuiccChipInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The Embedded Identity Document (EID) that identifies the eUICC chip for each eUICC chip on the
+        /// device. This is available on company owned devices running Android 13 and above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eid")]
+        public virtual string Eid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Configuration to enable an app as an extension app, with the capability of interacting with Android Device
     /// Policy offline. For Android versions 11 and above, extension apps are exempt from battery restrictions so will
@@ -5006,6 +5079,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseSpecificId")]
         public virtual string EnterpriseSpecificId { get; set; }
+
+        /// <summary>Output only. Information related to the eUICC chip.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("euiccChipInfo")]
+        public virtual System.Collections.Generic.IList<EuiccChipInfo> EuiccChipInfo { get; set; }
 
         /// <summary>GPU shutdown temperature thresholds in Celsius for each GPU on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gpuShutdownTemperatures")]
@@ -6330,6 +6407,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountTypesWithManagementDisabled")]
         public virtual System.Collections.Generic.IList<string> AccountTypesWithManagementDisabled { get; set; }
 
+        /// <summary>Optional. Whether bluetooth sharing is allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bluetoothSharing")]
+        public virtual string BluetoothSharing { get; set; }
+
         /// <summary>If true, the camera is disabled on the personal profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cameraDisabled")]
         public virtual System.Nullable<bool> CameraDisabled { get; set; }
@@ -7126,6 +7207,32 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Parameters associated with the REQUEST_DEVICE_INFO command to get device related information.</summary>
+    public class RequestDeviceInfoParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Type of device information to be requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceInfo")]
+        public virtual string DeviceInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Status of the REQUEST_DEVICE_INFO command.</summary>
+    public class RequestDeviceInfoStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information related to the EIDs of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eidInfo")]
+        public virtual EidInfo EidInfo { get; set; }
+
+        /// <summary>Output only. Status of a REQUEST_DEVICE_INFO command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Controls for the screen brightness settings.</summary>
     public class ScreenBrightnessSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7751,6 +7858,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>An app process was started. Part of SECURITY_LOGS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appProcessStartEvent")]
         public virtual AppProcessStartEvent AppProcessStartEvent { get; set; }
+
+        /// <summary>An admin has enabled or disabled backup service. Part of SECURITY_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupServiceToggledEvent")]
+        public virtual BackupServiceToggledEvent BackupServiceToggledEvent { get; set; }
 
         /// <summary>
         /// A new root certificate was installed into the system's trusted credential storage. Part of SECURITY_LOGS.
