@@ -1159,7 +1159,7 @@ namespace Google.Apis.OracleDatabase.v1
                 }
 
                 /// <summary>
-                /// Initiates a switchover of specified autonomous deatabase to the associated peer database.
+                /// Initiates a switchover of specified autonomous database to the associated peer database.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -1172,7 +1172,7 @@ namespace Google.Apis.OracleDatabase.v1
                 }
 
                 /// <summary>
-                /// Initiates a switchover of specified autonomous deatabase to the associated peer database.
+                /// Initiates a switchover of specified autonomous database to the associated peer database.
                 /// </summary>
                 public class SwitchoverRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
                 {
@@ -5564,7 +5564,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The request for `AutonomousDatabase.Switchover`.</summary>
+    /// <summary>The request for `OracleDatabase.SwitchoverAutonomousDatabase`.</summary>
     public class SwitchoverAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The peer database name to switch over to.</summary>
