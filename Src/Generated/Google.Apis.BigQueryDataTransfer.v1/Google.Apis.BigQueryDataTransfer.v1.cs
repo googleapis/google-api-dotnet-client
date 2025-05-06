@@ -321,8 +321,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. The data source in the form: `projects/{project_id}/dataSources/{data_source_id}` or
-            /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
+            /// Required. The name of the data source. If you are using the regionless method, the location must be `US`
+            /// and the name should be in the following form: * `projects/{project_id}/dataSources/{data_source_id}` If
+            /// you are using the regionalized method, the name should be in the following form: *
+            /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
             /// </param>
             public virtual CheckValidCredsRequest CheckValidCreds(Google.Apis.BigQueryDataTransfer.v1.Data.CheckValidCredsRequest body, string name)
             {
@@ -343,8 +345,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// Required. The data source in the form: `projects/{project_id}/dataSources/{data_source_id}` or
-                /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
+                /// Required. The name of the data source. If you are using the regionless method, the location must be
+                /// `US` and the name should be in the following form: *
+                /// `projects/{project_id}/dataSources/{data_source_id}` If you are using the regionalized method, the
+                /// name should be in the following form: *
+                /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -381,8 +386,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
             /// <summary>Retrieves a supported data source and returns its settings.</summary>
             /// <param name="name">
-            /// Required. The field will contain name of the resource requested, for example:
-            /// `projects/{project_id}/dataSources/{data_source_id}` or
+            /// Required. The name of the resource requested. If you are using the regionless method, the location must
+            /// be `US` and the name should be in the following form: *
+            /// `projects/{project_id}/dataSources/{data_source_id}` If you are using the regionalized method, the name
+            /// should be in the following form: *
             /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
             /// </param>
             public virtual GetRequest Get(string name)
@@ -401,8 +408,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// Required. The field will contain name of the resource requested, for example:
-                /// `projects/{project_id}/dataSources/{data_source_id}` or
+                /// Required. The name of the resource requested. If you are using the regionless method, the location
+                /// must be `US` and the name should be in the following form: *
+                /// `projects/{project_id}/dataSources/{data_source_id}` If you are using the regionalized method, the
+                /// name should be in the following form: *
                 /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -553,8 +562,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The data source in the form: `projects/{project_id}/dataSources/{data_source_id}` or
-                /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
+                /// Required. The name of the data source. If you are using the regionless method, the location must be
+                /// `US` and the name should be in the following form: *
+                /// `projects/{project_id}/dataSources/{data_source_id}` If you are using the regionalized method, the
+                /// name should be in the following form: *
+                /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
                 /// </param>
                 public virtual CheckValidCredsRequest CheckValidCreds(Google.Apis.BigQueryDataTransfer.v1.Data.CheckValidCredsRequest body, string name)
                 {
@@ -575,8 +587,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>
-                    /// Required. The data source in the form: `projects/{project_id}/dataSources/{data_source_id}` or
-                    /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
+                    /// Required. The name of the data source. If you are using the regionless method, the location must
+                    /// be `US` and the name should be in the following form: *
+                    /// `projects/{project_id}/dataSources/{data_source_id}` If you are using the regionalized method,
+                    /// the name should be in the following form: *
+                    /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -613,8 +628,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
                 /// <summary>Retrieves a supported data source and returns its settings.</summary>
                 /// <param name="name">
-                /// Required. The field will contain name of the resource requested, for example:
-                /// `projects/{project_id}/dataSources/{data_source_id}` or
+                /// Required. The name of the resource requested. If you are using the regionless method, the location
+                /// must be `US` and the name should be in the following form: *
+                /// `projects/{project_id}/dataSources/{data_source_id}` If you are using the regionalized method, the
+                /// name should be in the following form: *
                 /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -633,8 +650,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>
-                    /// Required. The field will contain name of the resource requested, for example:
-                    /// `projects/{project_id}/dataSources/{data_source_id}` or
+                    /// Required. The name of the resource requested. If you are using the regionless method, the
+                    /// location must be `US` and the name should be in the following form: *
+                    /// `projects/{project_id}/dataSources/{data_source_id}` If you are using the regionalized method,
+                    /// the name should be in the following form: *
                     /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -799,8 +818,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
                         /// <summary>Returns log messages for the transfer run.</summary>
                         /// <param name="parent">
-                        /// Required. Transfer run name in the form:
-                        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+                        /// Required. Transfer run name. If you are using the regionless method, the location must be
+                        /// `US` and the name should be in the following form: *
+                        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the
+                        /// regionalized method, the name should be in the following form: *
                         /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
                         /// </param>
                         public virtual ListRequest List(string parent)
@@ -819,8 +840,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             }
 
                             /// <summary>
-                            /// Required. Transfer run name in the form:
-                            /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+                            /// Required. Transfer run name. If you are using the regionless method, the location must
+                            /// be `US` and the name should be in the following form: *
+                            /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the
+                            /// regionalized method, the name should be in the following form: *
                             /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -937,8 +960,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
                     /// <summary>Deletes the specified transfer run.</summary>
                     /// <param name="name">
-                    /// Required. The field will contain name of the resource requested, for example:
-                    /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+                    /// Required. The name of the resource requested. If you are using the regionless method, the
+                    /// location must be `US` and the name should be in the following form: *
+                    /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the
+                    /// regionalized method, the name should be in the following form: *
                     /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
@@ -957,8 +982,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         }
 
                         /// <summary>
-                        /// Required. The field will contain name of the resource requested, for example:
-                        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+                        /// Required. The name of the resource requested. If you are using the regionless method, the
+                        /// location must be `US` and the name should be in the following form: *
+                        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the
+                        /// regionalized method, the name should be in the following form: *
                         /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -990,8 +1017,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
                     /// <summary>Returns information about the particular transfer run.</summary>
                     /// <param name="name">
-                    /// Required. The field will contain name of the resource requested, for example:
-                    /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+                    /// Required. The name of the resource requested. If you are using the regionless method, the
+                    /// location must be `US` and the name should be in the following form: *
+                    /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the
+                    /// regionalized method, the name should be in the following form: *
                     /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
                     /// </param>
                     public virtual GetRequest Get(string name)
@@ -1010,8 +1039,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         }
 
                         /// <summary>
-                        /// Required. The field will contain name of the resource requested, for example:
-                        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+                        /// Required. The name of the resource requested. If you are using the regionless method, the
+                        /// location must be `US` and the name should be in the following form: *
+                        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the
+                        /// regionalized method, the name should be in the following form: *
                         /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1043,9 +1074,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
                     /// <summary>Returns information about running and completed transfer runs.</summary>
                     /// <param name="parent">
-                    /// Required. Name of transfer configuration for which transfer runs should be retrieved. Format of
-                    /// transfer configuration resource name is: `projects/{project_id}/transferConfigs/{config_id}` or
-                    /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+                    /// Required. Name of transfer configuration for which transfer runs should be retrieved. If you are
+                    /// using the regionless method, the location must be `US` and the name should be in the following
+                    /// form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized
+                    /// method, the name should be in the following form: *
+                    /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1063,10 +1096,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         }
 
                         /// <summary>
-                        /// Required. Name of transfer configuration for which transfer runs should be retrieved. Format
-                        /// of transfer configuration resource name is:
-                        /// `projects/{project_id}/transferConfigs/{config_id}` or
-                        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+                        /// Required. Name of transfer configuration for which transfer runs should be retrieved. If you
+                        /// are using the regionless method, the location must be `US` and the name should be in the
+                        /// following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the
+                        /// regionalized method, the name should be in the following form: *
+                        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1330,8 +1364,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// Deletes a data transfer configuration, including any associated transfer runs and logs.
                 /// </summary>
                 /// <param name="name">
-                /// Required. The field will contain name of the resource requested, for example:
-                /// `projects/{project_id}/transferConfigs/{config_id}` or
+                /// Required. The name of the resource to delete. If you are using the regionless method, the location
+                /// must be `US` and the name should be in the following form: *
+                /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the
+                /// name should be in the following form: *
                 /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -1352,8 +1388,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>
-                    /// Required. The field will contain name of the resource requested, for example:
-                    /// `projects/{project_id}/transferConfigs/{config_id}` or
+                    /// Required. The name of the resource to delete. If you are using the regionless method, the
+                    /// location must be `US` and the name should be in the following form: *
+                    /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method,
+                    /// the name should be in the following form: *
                     /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1385,8 +1423,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
                 /// <summary>Returns information about a data transfer config.</summary>
                 /// <param name="name">
-                /// Required. The field will contain name of the resource requested, for example:
-                /// `projects/{project_id}/transferConfigs/{config_id}` or
+                /// Required. The name of the resource requested. If you are using the regionless method, the location
+                /// must be `US` and the name should be in the following form: *
+                /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the
+                /// name should be in the following form: *
                 /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -1405,8 +1445,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>
-                    /// Required. The field will contain name of the resource requested, for example:
-                    /// `projects/{project_id}/transferConfigs/{config_id}` or
+                    /// Required. The name of the resource requested. If you are using the regionless method, the
+                    /// location must be `US` and the name should be in the following form: *
+                    /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method,
+                    /// the name should be in the following form: *
                     /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1440,8 +1482,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// Returns information about all transfer configs owned by a project in the specified location.
                 /// </summary>
                 /// <param name="parent">
-                /// Required. The BigQuery project id for which transfer configs should be returned:
-                /// `projects/{project_id}` or `projects/{project_id}/locations/{location_id}`
+                /// Required. The BigQuery project id for which transfer configs should be returned. If you are using
+                /// the regionless method, the location must be `US` and `parent` should be in the following form: *
+                /// `projects/{project_id} If you are using the regionalized method, `parent` should be in the following
+                /// form: * `projects/{project_id}/locations/{location_id}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1461,8 +1505,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>
-                    /// Required. The BigQuery project id for which transfer configs should be returned:
-                    /// `projects/{project_id}` or `projects/{project_id}/locations/{location_id}`
+                    /// Required. The BigQuery project id for which transfer configs should be returned. If you are
+                    /// using the regionless method, the location must be `US` and `parent` should be in the following
+                    /// form: * `projects/{project_id} If you are using the regionalized method, `parent` should be in
+                    /// the following form: * `projects/{project_id}/locations/{location_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1680,9 +1726,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. Transfer configuration name in the form:
-                /// `projects/{project_id}/transferConfigs/{config_id}` or
-                /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+                /// Required. Transfer configuration name. If you are using the regionless method, the location must be
+                /// `US` and the name should be in the following form: *
+                /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the
+                /// name should be in the following form: *
+                /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                 /// </param>
                 public virtual ScheduleRunsRequest ScheduleRuns(Google.Apis.BigQueryDataTransfer.v1.Data.ScheduleTransferRunsRequest body, string parent)
                 {
@@ -1705,9 +1753,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>
-                    /// Required. Transfer configuration name in the form:
-                    /// `projects/{project_id}/transferConfigs/{config_id}` or
-                    /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+                    /// Required. Transfer configuration name. If you are using the regionless method, the location must
+                    /// be `US` and the name should be in the following form: *
+                    /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method,
+                    /// the name should be in the following form: *
+                    /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1743,15 +1793,19 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// Start manual transfer runs to be executed now with schedule_time equal to current time. The transfer
-                /// runs can be created for a time range where the run_time is between start_time (inclusive) and
-                /// end_time (exclusive), or for a specific run_time.
+                /// Manually initiates transfer runs. You can schedule these runs in two ways: 1. For a specific point
+                /// in time using the 'requested_run_time' parameter. 2. For a period between 'start_time' (inclusive)
+                /// and 'end_time' (exclusive). If scheduling a single run, it is set to execute immediately
+                /// (schedule_time equals the current time). When scheduling multiple runs within a time range, the
+                /// first run starts now, and subsequent runs are delayed by 15 seconds each.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. Transfer configuration name in the form:
-                /// `projects/{project_id}/transferConfigs/{config_id}` or
-                /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+                /// Required. Transfer configuration name. If you are using the regionless method, the location must be
+                /// `US` and the name should be in the following form: *
+                /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the
+                /// name should be in the following form: *
+                /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                 /// </param>
                 public virtual StartManualRunsRequest StartManualRuns(Google.Apis.BigQueryDataTransfer.v1.Data.StartManualTransferRunsRequest body, string parent)
                 {
@@ -1759,9 +1813,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// Start manual transfer runs to be executed now with schedule_time equal to current time. The transfer
-                /// runs can be created for a time range where the run_time is between start_time (inclusive) and
-                /// end_time (exclusive), or for a specific run_time.
+                /// Manually initiates transfer runs. You can schedule these runs in two ways: 1. For a specific point
+                /// in time using the 'requested_run_time' parameter. 2. For a period between 'start_time' (inclusive)
+                /// and 'end_time' (exclusive). If scheduling a single run, it is set to execute immediately
+                /// (schedule_time equals the current time). When scheduling multiple runs within a time range, the
+                /// first run starts now, and subsequent runs are delayed by 15 seconds each.
                 /// </summary>
                 public class StartManualRunsRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.StartManualTransferRunsResponse>
                 {
@@ -1774,9 +1830,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>
-                    /// Required. Transfer configuration name in the form:
-                    /// `projects/{project_id}/transferConfigs/{config_id}` or
-                    /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+                    /// Required. Transfer configuration name. If you are using the regionless method, the location must
+                    /// be `US` and the name should be in the following form: *
+                    /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method,
+                    /// the name should be in the following form: *
+                    /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2149,8 +2207,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
                     /// <summary>Returns log messages for the transfer run.</summary>
                     /// <param name="parent">
-                    /// Required. Transfer run name in the form:
-                    /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+                    /// Required. Transfer run name. If you are using the regionless method, the location must be `US`
+                    /// and the name should be in the following form: *
+                    /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the
+                    /// regionalized method, the name should be in the following form: *
                     /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
                     /// </param>
                     public virtual ListRequest List(string parent)
@@ -2169,8 +2229,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         }
 
                         /// <summary>
-                        /// Required. Transfer run name in the form:
-                        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+                        /// Required. Transfer run name. If you are using the regionless method, the location must be
+                        /// `US` and the name should be in the following form: *
+                        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the
+                        /// regionalized method, the name should be in the following form: *
                         /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2281,8 +2343,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
                 /// <summary>Deletes the specified transfer run.</summary>
                 /// <param name="name">
-                /// Required. The field will contain name of the resource requested, for example:
-                /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+                /// Required. The name of the resource requested. If you are using the regionless method, the location
+                /// must be `US` and the name should be in the following form: *
+                /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the regionalized
+                /// method, the name should be in the following form: *
                 /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -2301,8 +2365,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>
-                    /// Required. The field will contain name of the resource requested, for example:
-                    /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+                    /// Required. The name of the resource requested. If you are using the regionless method, the
+                    /// location must be `US` and the name should be in the following form: *
+                    /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the
+                    /// regionalized method, the name should be in the following form: *
                     /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2334,8 +2400,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
                 /// <summary>Returns information about the particular transfer run.</summary>
                 /// <param name="name">
-                /// Required. The field will contain name of the resource requested, for example:
-                /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+                /// Required. The name of the resource requested. If you are using the regionless method, the location
+                /// must be `US` and the name should be in the following form: *
+                /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the regionalized
+                /// method, the name should be in the following form: *
                 /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -2354,8 +2422,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>
-                    /// Required. The field will contain name of the resource requested, for example:
-                    /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+                    /// Required. The name of the resource requested. If you are using the regionless method, the
+                    /// location must be `US` and the name should be in the following form: *
+                    /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the
+                    /// regionalized method, the name should be in the following form: *
                     /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2387,9 +2457,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
                 /// <summary>Returns information about running and completed transfer runs.</summary>
                 /// <param name="parent">
-                /// Required. Name of transfer configuration for which transfer runs should be retrieved. Format of
-                /// transfer configuration resource name is: `projects/{project_id}/transferConfigs/{config_id}` or
-                /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+                /// Required. Name of transfer configuration for which transfer runs should be retrieved. If you are
+                /// using the regionless method, the location must be `US` and the name should be in the following form:
+                /// * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the
+                /// name should be in the following form: *
+                /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2407,9 +2479,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of transfer configuration for which transfer runs should be retrieved. Format of
-                    /// transfer configuration resource name is: `projects/{project_id}/transferConfigs/{config_id}` or
-                    /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+                    /// Required. Name of transfer configuration for which transfer runs should be retrieved. If you are
+                    /// using the regionless method, the location must be `US` and the name should be in the following
+                    /// form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized
+                    /// method, the name should be in the following form: *
+                    /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2671,8 +2745,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// Deletes a data transfer configuration, including any associated transfer runs and logs.
             /// </summary>
             /// <param name="name">
-            /// Required. The field will contain name of the resource requested, for example:
-            /// `projects/{project_id}/transferConfigs/{config_id}` or
+            /// Required. The name of the resource to delete. If you are using the regionless method, the location must
+            /// be `US` and the name should be in the following form: *
+            /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name
+            /// should be in the following form: *
             /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
             /// </param>
             public virtual DeleteRequest Delete(string name)
@@ -2693,8 +2769,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// Required. The field will contain name of the resource requested, for example:
-                /// `projects/{project_id}/transferConfigs/{config_id}` or
+                /// Required. The name of the resource to delete. If you are using the regionless method, the location
+                /// must be `US` and the name should be in the following form: *
+                /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the
+                /// name should be in the following form: *
                 /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2726,8 +2804,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
             /// <summary>Returns information about a data transfer config.</summary>
             /// <param name="name">
-            /// Required. The field will contain name of the resource requested, for example:
-            /// `projects/{project_id}/transferConfigs/{config_id}` or
+            /// Required. The name of the resource requested. If you are using the regionless method, the location must
+            /// be `US` and the name should be in the following form: *
+            /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name
+            /// should be in the following form: *
             /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
             /// </param>
             public virtual GetRequest Get(string name)
@@ -2746,8 +2826,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// Required. The field will contain name of the resource requested, for example:
-                /// `projects/{project_id}/transferConfigs/{config_id}` or
+                /// Required. The name of the resource requested. If you are using the regionless method, the location
+                /// must be `US` and the name should be in the following form: *
+                /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the
+                /// name should be in the following form: *
                 /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2781,8 +2863,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// Returns information about all transfer configs owned by a project in the specified location.
             /// </summary>
             /// <param name="parent">
-            /// Required. The BigQuery project id for which transfer configs should be returned: `projects/{project_id}`
-            /// or `projects/{project_id}/locations/{location_id}`
+            /// Required. The BigQuery project id for which transfer configs should be returned. If you are using the
+            /// regionless method, the location must be `US` and `parent` should be in the following form: *
+            /// `projects/{project_id} If you are using the regionalized method, `parent` should be in the following
+            /// form: * `projects/{project_id}/locations/{location_id}`
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2802,8 +2886,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// Required. The BigQuery project id for which transfer configs should be returned:
-                /// `projects/{project_id}` or `projects/{project_id}/locations/{location_id}`
+                /// Required. The BigQuery project id for which transfer configs should be returned. If you are using
+                /// the regionless method, the location must be `US` and `parent` should be in the following form: *
+                /// `projects/{project_id} If you are using the regionalized method, `parent` should be in the following
+                /// form: * `projects/{project_id}/locations/{location_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -3019,8 +3105,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Transfer configuration name in the form: `projects/{project_id}/transferConfigs/{config_id}`
-            /// or `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+            /// Required. Transfer configuration name. If you are using the regionless method, the location must be `US`
+            /// and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If
+            /// you are using the regionalized method, the name should be in the following form: *
+            /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
             /// </param>
             public virtual ScheduleRunsRequest ScheduleRuns(Google.Apis.BigQueryDataTransfer.v1.Data.ScheduleTransferRunsRequest body, string parent)
             {
@@ -3043,9 +3131,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// Required. Transfer configuration name in the form:
-                /// `projects/{project_id}/transferConfigs/{config_id}` or
-                /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+                /// Required. Transfer configuration name. If you are using the regionless method, the location must be
+                /// `US` and the name should be in the following form: *
+                /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the
+                /// name should be in the following form: *
+                /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -3081,14 +3171,18 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             }
 
             /// <summary>
-            /// Start manual transfer runs to be executed now with schedule_time equal to current time. The transfer
-            /// runs can be created for a time range where the run_time is between start_time (inclusive) and end_time
-            /// (exclusive), or for a specific run_time.
+            /// Manually initiates transfer runs. You can schedule these runs in two ways: 1. For a specific point in
+            /// time using the 'requested_run_time' parameter. 2. For a period between 'start_time' (inclusive) and
+            /// 'end_time' (exclusive). If scheduling a single run, it is set to execute immediately (schedule_time
+            /// equals the current time). When scheduling multiple runs within a time range, the first run starts now,
+            /// and subsequent runs are delayed by 15 seconds each.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Transfer configuration name in the form: `projects/{project_id}/transferConfigs/{config_id}`
-            /// or `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+            /// Required. Transfer configuration name. If you are using the regionless method, the location must be `US`
+            /// and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If
+            /// you are using the regionalized method, the name should be in the following form: *
+            /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
             /// </param>
             public virtual StartManualRunsRequest StartManualRuns(Google.Apis.BigQueryDataTransfer.v1.Data.StartManualTransferRunsRequest body, string parent)
             {
@@ -3096,9 +3190,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             }
 
             /// <summary>
-            /// Start manual transfer runs to be executed now with schedule_time equal to current time. The transfer
-            /// runs can be created for a time range where the run_time is between start_time (inclusive) and end_time
-            /// (exclusive), or for a specific run_time.
+            /// Manually initiates transfer runs. You can schedule these runs in two ways: 1. For a specific point in
+            /// time using the 'requested_run_time' parameter. 2. For a period between 'start_time' (inclusive) and
+            /// 'end_time' (exclusive). If scheduling a single run, it is set to execute immediately (schedule_time
+            /// equals the current time). When scheduling multiple runs within a time range, the first run starts now,
+            /// and subsequent runs are delayed by 15 seconds each.
             /// </summary>
             public class StartManualRunsRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.StartManualTransferRunsResponse>
             {
@@ -3111,9 +3207,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// Required. Transfer configuration name in the form:
-                /// `projects/{project_id}/transferConfigs/{config_id}` or
-                /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+                /// Required. Transfer configuration name. If you are using the regionless method, the location must be
+                /// `US` and the name should be in the following form: *
+                /// `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the
+                /// name should be in the following form: *
+                /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
