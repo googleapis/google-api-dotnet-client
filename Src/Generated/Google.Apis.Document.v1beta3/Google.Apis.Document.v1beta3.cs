@@ -5278,6 +5278,10 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Represents a table type block.</summary>
     public class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Annotation of the table block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentAnnotations Annotations { get; set; }
+
         /// <summary>Body rows containing main table content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bodyRows")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow> BodyRows { get; set; }
@@ -5454,6 +5458,9 @@ namespace Google.Apis.Document.v1beta3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moneyValue")]
         public virtual GoogleTypeMoney MoneyValue { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("signatureValue")]
+        public virtual System.Nullable<bool> SignatureValue { get; set; }
 
         /// <summary>
         /// Optional. An optional field to store a normalized string. For some entity types, one of respective
@@ -7554,9 +7561,21 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chunkingConfig")]
         public virtual GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfigChunkingConfig ChunkingConfig { get; set; }
 
+        /// <summary>Optional. Whether to include image annotations in layout parser response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableImageAnnotation")]
+        public virtual System.Nullable<bool> EnableImageAnnotation { get; set; }
+
+        /// <summary>Optional. Whether to extract images in layout parser response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableImageExtraction")]
+        public virtual System.Nullable<bool> EnableImageExtraction { get; set; }
+
         /// <summary>Optional. Whether to refine PDF layout using LLM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableLlmLayoutParsing")]
         public virtual System.Nullable<bool> EnableLlmLayoutParsing { get; set; }
+
+        /// <summary>Optional. Whether to include table annotations in layout parser response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableTableAnnotation")]
+        public virtual System.Nullable<bool> EnableTableAnnotation { get; set; }
 
         /// <summary>Optional. Whether to include bounding boxes in layout parser processor response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnBoundingBoxes")]
