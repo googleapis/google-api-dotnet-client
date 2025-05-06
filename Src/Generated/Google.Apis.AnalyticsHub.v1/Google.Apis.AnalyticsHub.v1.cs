@@ -3258,6 +3258,12 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     /// </summary>
     public class Listing : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowOnlyMetadataSharing")]
+        public virtual System.Nullable<bool> AllowOnlyMetadataSharing { get; set; }
+
         /// <summary>Shared dataset i.e. BigQuery dataset source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDataset")]
         public virtual BigQueryDatasetSource BigqueryDataset { get; set; }
