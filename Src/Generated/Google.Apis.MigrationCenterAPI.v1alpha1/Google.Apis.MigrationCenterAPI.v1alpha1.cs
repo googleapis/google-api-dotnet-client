@@ -7661,11 +7661,11 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Discovery client recommended version.</summary>
     public class DiscoveryClientDiscoveryClientRecommendedVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URI of the discovery client version.</summary>
+        /// <summary>Output only. The URI of the discovery client version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
-        /// <summary>The version of the discovery client.</summary>
+        /// <summary>Output only. The version of the discovery client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
