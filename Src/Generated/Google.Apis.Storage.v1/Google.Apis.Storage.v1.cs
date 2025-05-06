@@ -161,6 +161,10 @@ namespace Google.Apis.Storage.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json = 0,
+
+            /// <summary>Responses containing object data</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media = 1,
         }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -6669,6 +6673,10 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
                 Json = 0,
+
+                /// <summary>Responses containing object data</summary>
+                [Google.Apis.Util.StringValueAttribute("media")]
+                Media = 1,
             }
 
             /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -7203,6 +7211,22 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifSourceMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfSourceMetagenerationNotMatch { get; set; }
 
+            /// <summary>Set of properties to return. Defaults to noAcl.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projection", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ProjectionEnum> Projection { get; set; }
+
+            /// <summary>Set of properties to return. Defaults to noAcl.</summary>
+            public enum ProjectionEnum
+            {
+                /// <summary>Include all properties.</summary>
+                [Google.Apis.Util.StringValueAttribute("full")]
+                Full = 0,
+
+                /// <summary>Omit the owner, acl property.</summary>
+                [Google.Apis.Util.StringValueAttribute("noAcl")]
+                NoAcl = 1,
+            }
+
             /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
@@ -7303,6 +7327,14 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("ifSourceMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
                 {
                     Name = "ifSourceMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

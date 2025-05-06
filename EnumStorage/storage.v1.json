@@ -93,7 +93,8 @@
     "noAcl"
   ],
   "Google.Apis.Storage.v1.ObjectsResource+InsertMediaUpload.AltEnum": [
-    "json"
+    "json",
+    "media"
   ],
   "Google.Apis.Storage.v1.ObjectsResource+InsertMediaUpload.PredefinedAclEnum": [
     "authenticatedRead",
@@ -120,6 +121,10 @@
     "noAcl"
   ],
   "Google.Apis.Storage.v1.ObjectsResource+ListRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+MoveRequest.ProjectionEnum": [
     "full",
     "noAcl"
   ],
@@ -168,6 +173,7 @@
     "noAcl"
   ],
   "Google.Apis.Storage.v1.StorageBaseServiceRequest<<TResponse>>.AltEnum": [
-    "json"
+    "json",
+    "media"
   ]
 }
