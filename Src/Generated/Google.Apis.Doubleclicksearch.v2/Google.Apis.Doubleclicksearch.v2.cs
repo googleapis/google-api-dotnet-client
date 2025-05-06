@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1321,7 +1321,10 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A conversion containing data relevant to DoubleClick Search.</summary>
+    /// <summary>
+    /// A conversion containing data relevant to DoubleClick Search. Common DS3 API conversion fields: Id Range [1 -
+    /// 2800]. Next Id to use: 33
+    /// </summary>
     public class Conversion : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>DS ad group ID.</summary>
