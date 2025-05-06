@@ -14,6 +14,18 @@
     "ACL",
     "FULL"
   ],
+  "Google.Apis.Bigquery.v2.DatasetsResource+PatchRequest.UpdateModeEnum": [
+    "UPDATE_MODE_UNSPECIFIED",
+    "UPDATE_METADATA",
+    "UPDATE_ACL",
+    "UPDATE_FULL"
+  ],
+  "Google.Apis.Bigquery.v2.DatasetsResource+UpdateRequest.UpdateModeEnum": [
+    "UPDATE_MODE_UNSPECIFIED",
+    "UPDATE_METADATA",
+    "UPDATE_ACL",
+    "UPDATE_FULL"
+  ],
   "Google.Apis.Bigquery.v2.JobsResource+InsertMediaUpload.AltEnum": [
     "json",
     "media",
