@@ -1459,7 +1459,7 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>[#next-free-field: 7]</summary>
+    /// <summary>[#next-free-field: 8]</summary>
     public class SocketAddress : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1487,6 +1487,13 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedPort")]
         public virtual string NamedPort { get; set; }
+
+        /// <summary>
+        /// The Linux network namespace to bind the socket to. If this is set, Envoy will create the socket in the
+        /// specified network namespace. Only supported on Linux. [#not-implemented-hide:]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkNamespaceFilepath")]
+        public virtual string NetworkNamespaceFilepath { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("portValue")]
         public virtual System.Nullable<long> PortValue { get; set; }
