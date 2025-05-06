@@ -7017,7 +7017,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Optional. Specifies the timeout for each individual message on the stream. The timeout must be between
-        /// `10`-`1000` milliseconds. Required for callout extensions. This field is not supported for plugin
+        /// `10`-`10000` milliseconds. Required for callout extensions. This field is not supported for plugin
         /// extensions. Setting it results in a validation error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
@@ -9828,6 +9828,10 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failoverConfig")]
         public virtual ServiceLbPolicyFailoverConfig FailoverConfig { get; set; }
 
+        /// <summary>Optional. Configuration to provide isolation support for the associated Backend Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isolationConfig")]
+        public virtual ServiceLbPolicyIsolationConfig IsolationConfig { get; set; }
+
         /// <summary>Optional. Set of label tags associated with the ServiceLbPolicy resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -9916,6 +9920,21 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failoverHealthThreshold")]
         public virtual System.Nullable<int> FailoverHealthThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration to provide isolation support for the associated Backend Service.</summary>
+    public class ServiceLbPolicyIsolationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The isolation granularity of the load balancer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isolationGranularity")]
+        public virtual string IsolationGranularity { get; set; }
+
+        /// <summary>Optional. The isolation mode of the load balancer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isolationMode")]
+        public virtual string IsolationMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
