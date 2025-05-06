@@ -27,5 +27,15 @@
     "CONVERSATION_VIEW_UNSPECIFIED",
     "BASIC",
     "FULL"
+  ],
+  "Google.Apis.Contactcenterinsights.v1.ProjectsResource+LocationsResource+DatasetsResource+ConversationsResource+GetRequest.ViewEnum": [
+    "CONVERSATION_VIEW_UNSPECIFIED",
+    "FULL",
+    "BASIC"
+  ],
+  "Google.Apis.Contactcenterinsights.v1.ProjectsResource+LocationsResource+DatasetsResource+ConversationsResource+ListRequest.ViewEnum": [
+    "CONVERSATION_VIEW_UNSPECIFIED",
+    "FULL",
+    "BASIC"
   ]
 }
