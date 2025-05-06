@@ -932,7 +932,11 @@ namespace Google.Apis.DisplayVideo.v4
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
 
-                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            /// <summary>
+                            /// Filter website content by content themes (for example, religion). Only supported for
+                            /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                            /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                             TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
@@ -1304,7 +1308,11 @@ namespace Google.Apis.DisplayVideo.v4
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
 
-                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            /// <summary>
+                            /// Filter website content by content themes (for example, religion). Only supported for
+                            /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                            /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                             TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
@@ -4693,7 +4701,11 @@ namespace Google.Apis.DisplayVideo.v4
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
 
-                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            /// <summary>
+                            /// Filter website content by content themes (for example, religion). Only supported for
+                            /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                            /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                             TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
@@ -5115,7 +5127,11 @@ namespace Google.Apis.DisplayVideo.v4
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
 
-                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            /// <summary>
+                            /// Filter website content by content themes (for example, religion). Only supported for
+                            /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                            /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                             TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
@@ -5541,7 +5557,11 @@ namespace Google.Apis.DisplayVideo.v4
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
 
-                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            /// <summary>
+                            /// Filter website content by content themes (for example, religion). Only supported for
+                            /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                            /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                             TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
@@ -5965,7 +5985,11 @@ namespace Google.Apis.DisplayVideo.v4
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                             TARGETINGTYPESESSIONPOSITION = 48,
 
-                            /// <summary>Filter website content by content themes (for example, religion).</summary>
+                            /// <summary>
+                            /// Filter website content by content themes (for example, religion). Only supported for
+                            /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                            /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                             TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                         }
@@ -8799,7 +8823,11 @@ namespace Google.Apis.DisplayVideo.v4
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
 
-                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        /// <summary>
+                        /// Filter website content by content themes (for example, religion). Only supported for
+                        /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                        /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
@@ -9130,7 +9158,11 @@ namespace Google.Apis.DisplayVideo.v4
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
 
-                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        /// <summary>
+                        /// Filter website content by content themes (for example, religion). Only supported for
+                        /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                        /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
@@ -9185,7 +9217,8 @@ namespace Google.Apis.DisplayVideo.v4
                 /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                 /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID`
                 /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` *
-                /// `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD`
+                /// `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` *
+                /// `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
                 /// </param>
                 /// <param name="assignedTargetingOptionId">
                 /// Required. An identifier unique to the targeting type in this advertiser that identifies the assigned
@@ -9216,7 +9249,8 @@ namespace Google.Apis.DisplayVideo.v4
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
                     /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
-                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD`
+                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` *
+                    /// `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual TargetingTypeEnum TargetingType { get; private set; }
@@ -9225,7 +9259,8 @@ namespace Google.Apis.DisplayVideo.v4
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
                     /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
-                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD`
+                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` *
+                    /// `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
                     /// </summary>
                     public enum TargetingTypeEnum
                     {
@@ -9471,7 +9506,11 @@ namespace Google.Apis.DisplayVideo.v4
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
 
-                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        /// <summary>
+                        /// Filter website content by content themes (for example, religion). Only supported for
+                        /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                        /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
@@ -9529,7 +9568,8 @@ namespace Google.Apis.DisplayVideo.v4
                 /// Required. Identifies the type of assigned targeting options to list. Supported targeting types: *
                 /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID`
                 /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` *
-                /// `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD`
+                /// `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` *
+                /// `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
                 /// </param>
                 public virtual ListRequest List(long advertiserId, ListRequest.TargetingTypeEnum targetingType)
                 {
@@ -9555,7 +9595,8 @@ namespace Google.Apis.DisplayVideo.v4
                     /// Required. Identifies the type of assigned targeting options to list. Supported targeting types:
                     /// * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
                     /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
-                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD`
+                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` *
+                    /// `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual TargetingTypeEnum TargetingType { get; private set; }
@@ -9564,7 +9605,8 @@ namespace Google.Apis.DisplayVideo.v4
                     /// Required. Identifies the type of assigned targeting options to list. Supported targeting types:
                     /// * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
                     /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
-                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD`
+                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` *
+                    /// `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
                     /// </summary>
                     public enum TargetingTypeEnum
                     {
@@ -9810,7 +9852,11 @@ namespace Google.Apis.DisplayVideo.v4
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
 
-                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        /// <summary>
+                        /// Filter website content by content themes (for example, religion). Only supported for
+                        /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                        /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
@@ -10229,9 +10275,9 @@ namespace Google.Apis.DisplayVideo.v4
             public virtual string Filter { get; set; }
 
             /// <summary>
-            /// Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` *
-            /// `updateTime` The default sorting order is ascending. To specify descending order for a field, a suffix
-            /// "desc" should be added to the field name. For example, `displayName desc`.
+            /// Field by which to sort the list. Acceptable values are: * `advertiserId` (default) * `displayName` *
+            /// `entityStatus` * `updateTime` The default sorting order is ascending. To specify descending order for a
+            /// field, a suffix "desc" should be added to the field name. For example, `displayName desc`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
@@ -16298,7 +16344,11 @@ namespace Google.Apis.DisplayVideo.v4
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
 
-                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        /// <summary>
+                        /// Filter website content by content themes (for example, religion). Only supported for
+                        /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                        /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
@@ -16626,7 +16676,11 @@ namespace Google.Apis.DisplayVideo.v4
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
 
-                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        /// <summary>
+                        /// Filter website content by content themes (for example, religion). Only supported for
+                        /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                        /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
@@ -16961,7 +17015,11 @@ namespace Google.Apis.DisplayVideo.v4
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
 
-                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        /// <summary>
+                        /// Filter website content by content themes (for example, religion). Only supported for
+                        /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                        /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
@@ -17294,7 +17352,11 @@ namespace Google.Apis.DisplayVideo.v4
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                         TARGETINGTYPESESSIONPOSITION = 48,
 
-                        /// <summary>Filter website content by content themes (for example, religion).</summary>
+                        /// <summary>
+                        /// Filter website content by content themes (for example, religion). Only supported for
+                        /// Advertiser resources. Targeting of this type cannot be created or updated using the API.
+                        /// This targeting is only inherited by child YouTube and Demand Gen line item resources.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                         TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                     }
@@ -18160,7 +18222,11 @@ namespace Google.Apis.DisplayVideo.v4
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                     TARGETINGTYPESESSIONPOSITION = 48,
 
-                    /// <summary>Filter website content by content themes (for example, religion).</summary>
+                    /// <summary>
+                    /// Filter website content by content themes (for example, religion). Only supported for Advertiser
+                    /// resources. Targeting of this type cannot be created or updated using the API. This targeting is
+                    /// only inherited by child YouTube and Demand Gen line item resources.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                     TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                 }
@@ -18508,7 +18574,11 @@ namespace Google.Apis.DisplayVideo.v4
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                     TARGETINGTYPESESSIONPOSITION = 48,
 
-                    /// <summary>Filter website content by content themes (for example, religion).</summary>
+                    /// <summary>
+                    /// Filter website content by content themes (for example, religion). Only supported for Advertiser
+                    /// resources. Targeting of this type cannot be created or updated using the API. This targeting is
+                    /// only inherited by child YouTube and Demand Gen line item resources.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                     TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                 }
@@ -18888,7 +18958,11 @@ namespace Google.Apis.DisplayVideo.v4
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SESSION_POSITION")]
                     TARGETINGTYPESESSIONPOSITION = 48,
 
-                    /// <summary>Filter website content by content themes (for example, religion).</summary>
+                    /// <summary>
+                    /// Filter website content by content themes (for example, religion). Only supported for Advertiser
+                    /// resources. Targeting of this type cannot be created or updated using the API. This targeting is
+                    /// only inherited by child YouTube and Demand Gen line item resources.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_THEME_EXCLUSION")]
                     TARGETINGTYPECONTENTTHEMEEXCLUSION = 49,
                 }
@@ -19989,7 +20063,9 @@ namespace Google.Apis.DisplayVideo.v4.Data
     /// <summary>Rule-based algorithm.</summary>
     public class AlgorithmRules : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Attribution model for the algorithm.</summary>
+        /// <summary>
+        /// Attribution model for the algorithm. This field is only supported for allowlisted partners.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionModelId")]
         public virtual System.Nullable<long> AttributionModelId { get; set; }
 
@@ -19997,7 +20073,9 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("impressionSignalRuleset")]
         public virtual AlgorithmRulesRuleset ImpressionSignalRuleset { get; set; }
 
-        /// <summary>Rules for the post-impression signals.</summary>
+        /// <summary>
+        /// Rules for the post-impression signals. This field is only supported for allowlisted partners.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postImpressionSignalRuleset")]
         public virtual AlgorithmRulesRuleset PostImpressionSignalRuleset { get; set; }
 
@@ -20048,7 +20126,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
 
-        /// <summary>Video player size value.</summary>
+        /// <summary>Video player size value. This field is only supported for allowlisted partners.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoPlayerSizeValue")]
         public virtual string VideoPlayerSizeValue { get; set; }
 
@@ -20140,11 +20218,11 @@ namespace Google.Apis.DisplayVideo.v4.Data
     /// <summary>Signal used to evaluate rules.</summary>
     public class AlgorithmRulesSignal : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Signal based on active views.</summary>
+        /// <summary>Signal based on active views. This field is only supported for allowlisted partners.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeViewSignal")]
         public virtual string ActiveViewSignal { get; set; }
 
-        /// <summary>Signal based on clicks.</summary>
+        /// <summary>Signal based on clicks. This field is only supported for allowlisted partners.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickSignal")]
         public virtual string ClickSignal { get; set; }
 
@@ -20185,11 +20263,16 @@ namespace Google.Apis.DisplayVideo.v4.Data
     /// <summary>Adjusted value of the signal used for rule evaluation.</summary>
     public class AlgorithmRulesSignalValue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Signal based on active views. Only `TIME_ON_SCREEN` is supported.</summary>
+        /// <summary>
+        /// Signal based on active views. Only `TIME_ON_SCREEN` is supported. This field is only supported for
+        /// allowlisted partners.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeViewSignal")]
         public virtual string ActiveViewSignal { get; set; }
 
-        /// <summary>Signal based on floodlight conversion events.</summary>
+        /// <summary>
+        /// Signal based on floodlight conversion events. This field is only supported for allowlisted partners.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityConversionSignal")]
         public virtual AlgorithmRulesFloodlightActivityConversionSignal FloodlightActivityConversionSignal { get; set; }
 
