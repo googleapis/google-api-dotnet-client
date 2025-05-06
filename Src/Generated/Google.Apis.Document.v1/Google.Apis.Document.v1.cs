@@ -4062,6 +4062,9 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("moneyValue")]
         public virtual GoogleTypeMoney MoneyValue { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("signatureValue")]
+        public virtual System.Nullable<bool> SignatureValue { get; set; }
+
         /// <summary>
         /// Optional. An optional field to store a normalized string. For some entity types, one of respective
         /// `structured_value` fields may also be populated. Also not all the types of `structured_value` will be
