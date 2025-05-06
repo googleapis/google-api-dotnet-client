@@ -2060,6 +2060,23 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Bot information and metadata.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1Bot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Enumerated field representing the type of bot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("botType")]
+        public virtual string BotType { get; set; }
+
+        /// <summary>
+        /// Optional. Enumerated string value that indicates the identity of the bot, formatted in kebab-case.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metrics related to challenges.</summary>
     public class GoogleCloudRecaptchaenterpriseV1ChallengeMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3031,6 +3048,12 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>
+        /// Output only. Bots with identities that have been verified by reCAPTCHA and detected in the event.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedBots")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1Bot> VerifiedBots { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
