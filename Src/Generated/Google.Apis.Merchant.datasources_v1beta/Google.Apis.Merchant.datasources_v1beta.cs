@@ -673,7 +673,7 @@ namespace Google.Apis.Merchant.datasources_v1beta
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}`
+            /// Required. Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}`
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Merchant.datasources_v1beta.Data.DataSource body, string name)
             {
@@ -695,7 +695,8 @@ namespace Google.Apis.Merchant.datasources_v1beta
                 }
 
                 /// <summary>
-                /// Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}`
+                /// Required. Identifier. The name of the data source. Format:
+                /// `accounts/{account}/dataSources/{datasource}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -751,7 +752,7 @@ namespace Google.Apis.Merchant.datasources_v1beta
 namespace Google.Apis.Merchant.datasources_v1beta.Data
 {
     /// <summary>
-    /// The [data source](https://support.google.com/merchants/answer/7439058) for the Merchant Center account.
+    /// The [data source](/merchant/api/guides/data-sources/overview) for the Merchant Center account.
     /// </summary>
     public class DataSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -783,7 +784,7 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         public virtual MerchantReviewDataSource MerchantReviewDataSource { get; set; }
 
         /// <summary>
-        /// Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}`
+        /// Required. Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
