@@ -9774,7 +9774,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string EmailAddress { get; set; }
 
         /// <summary>
-        /// Output only. Identifies what kind of resource this is. Value: the fixed string `"drive#user"`.
+        /// Output only. Identifies what kind of resource this is. Value: the fixed string `drive#user`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
