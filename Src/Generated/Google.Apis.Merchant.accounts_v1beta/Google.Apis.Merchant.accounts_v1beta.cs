@@ -3583,7 +3583,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
         /// `ListAccounts` method. This method will produce the same results as calling `ListsAccounts` with the
         /// following filter: `relationship(providerId={parent} AND service(type="ACCOUNT_AGGREGATION"))`
         /// </summary>
-        /// <param name="provider">Required. The aggregation service provider. Format: `accounts/{providerId}`</param>
+        /// <param name="provider">Required. The aggregation service provider. Format: `accounts/{accountId}`</param>
         public virtual ListSubaccountsRequest ListSubaccounts(string provider)
         {
             return new ListSubaccountsRequest(this.service, provider);
@@ -3603,7 +3603,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 InitParameters();
             }
 
-            /// <summary>Required. The aggregation service provider. Format: `accounts/{providerId}`</summary>
+            /// <summary>Required. The aggregation service provider. Format: `accounts/{accountId}`</summary>
             [Google.Apis.Util.RequestParameterAttribute("provider", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Provider { get; private set; }
 
@@ -5400,15 +5400,11 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     /// </summary>
     public class OnlineReturnPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// This field specifies if merchant only accepts defective products for returns, and this field is required.
-        /// </summary>
+        /// <summary>Optional. This field specifies if merchant only accepts defective products for returns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceptDefectiveOnly")]
         public virtual System.Nullable<bool> AcceptDefectiveOnly { get; set; }
 
-        /// <summary>
-        /// This field specifies if merchant allows customers to exchange products, this field is required.
-        /// </summary>
+        /// <summary>Optional. This field specifies if merchant allows customers to exchange products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceptExchange")]
         public virtual System.Nullable<bool> AcceptExchange { get; set; }
 
@@ -5449,7 +5445,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual Policy Policy { get; set; }
 
         /// <summary>
-        /// The field specifies the number of days it takes for merchants to process refunds, field is optional.
+        /// Optional. The field specifies the number of days it takes for merchants to process refunds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processRefundDays")]
         public virtual System.Nullable<int> ProcessRefundDays { get; set; }
@@ -5461,9 +5457,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restockingFee")]
         public virtual RestockingFee RestockingFee { get; set; }
 
-        /// <summary>
-        /// The field specifies the return label source. This field is required when return method is BY_MAIL.
-        /// </summary>
+        /// <summary>Optional. The field specifies the return label source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnLabelSource")]
         public virtual string ReturnLabelSource { get; set; }
 
