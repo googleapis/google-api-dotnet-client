@@ -7484,7 +7484,7 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Optional. Specifies the timeout for each individual message on the stream. The timeout must be between
-        /// `10`-`1000` milliseconds. Required for callout extensions. This field is not supported for plugin
+        /// `10`-`10000` milliseconds. Required for callout extensions. This field is not supported for plugin
         /// extensions. Setting it results in a validation error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
