@@ -577,8 +577,8 @@ namespace Google.Apis.SQLAdmin.v1
         }
 
         /// <summary>
-        /// Updates the retention period and description of the backup. You can use this API to update final backups
-        /// only.
+        /// This API updates the following: 1- retention period and description of backup in case of final backups only.
+        /// 2- gcbdr_soft_delete_status of backup in case of GCBDR managed backups only.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -590,8 +590,8 @@ namespace Google.Apis.SQLAdmin.v1
         }
 
         /// <summary>
-        /// Updates the retention period and description of the backup. You can use this API to update final backups
-        /// only.
+        /// This API updates the following: 1- retention period and description of backup in case of final backups only.
+        /// 2- gcbdr_soft_delete_status of backup in case of GCBDR managed backups only.
         /// </summary>
         public class UpdateBackupRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.Operation>
         {
@@ -610,8 +610,8 @@ namespace Google.Apis.SQLAdmin.v1
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// The list of fields that you can update. You can update only the description and retention period of the
-            /// final backup.
+            /// The list of fields that you can update. 1- You can update only the description and retention period for
+            /// a final backup. 2- You can update only the gcbdr_soft_delete_status for GCBDR managed backup.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -3017,6 +3017,67 @@ namespace Google.Apis.SQLAdmin.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Point in time restore for an instance managed by Google Cloud Backup and Disaster Recovery.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">
+        /// Required. The parent resource where you created this instance. Format: projects/{project}
+        /// </param>
+        public virtual PointInTimeRestoreRequest PointInTimeRestore(Google.Apis.SQLAdmin.v1.Data.PointInTimeRestoreContext body, string parent)
+        {
+            return new PointInTimeRestoreRequest(this.service, body, parent);
+        }
+
+        /// <summary>
+        /// Point in time restore for an instance managed by Google Cloud Backup and Disaster Recovery.
+        /// </summary>
+        public class PointInTimeRestoreRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new PointInTimeRestore request.</summary>
+            public PointInTimeRestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1.Data.PointInTimeRestoreContext body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The parent resource where you created this instance. Format: projects/{project}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1.Data.PointInTimeRestoreContext Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "pointInTimeRestore";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+parent}:pointInTimeRestore";
+
+            /// <summary>Initializes PointInTimeRestore parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
                 });
             }
         }
@@ -5532,7 +5593,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A backup resource.</summary>
+    /// <summary>A backup resource. Next ID: 30</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5735,6 +5796,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Backup retention settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRetentionSettings")]
         public virtual BackupRetentionSettings BackupRetentionSettings { get; set; }
+
+        /// <summary>Output only. Backup tier that manages the backups for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupTier")]
+        public virtual string BackupTier { get; set; }
 
         /// <summary>
         /// (MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be disabled
@@ -7957,6 +8022,14 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backup")]
         public virtual string Backup { get; set; }
 
+        /// <summary>
+        /// The name of the backup that's used to restore a Cloud SQL instance: Format:
+        /// "projects/{project-id}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}/backups/{backup-uid}".
+        /// Only one of restore_backup_context, backup, backupdr_backup can be passed to the input.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupdrBackup")]
+        public virtual string BackupdrBackup { get; set; }
+
         /// <summary>Parameters required to perform the restore backup operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreBackupContext")]
         public virtual RestoreBackupContext RestoreBackupContext { get; set; }
@@ -8913,6 +8986,95 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>The target disk shrink size in GigaBytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSizeGb")]
         public virtual System.Nullable<long> TargetSizeGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The context to perform a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster
+    /// Recovery.
+    /// </summary>
+    public class PointInTimeRestoreContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of the allocated IP range for the internal IP Cloud SQL instance. For example:
+        /// "google-managed-services-default". If you set this, then Cloud SQL creates the IP address for the cloned
+        /// instance in the allocated range. This range must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035)
+        /// standards. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// [a-z]([-a-z0-9]*[a-z0-9])?. Reserved for future use. http://go/speckle-subnet-picker-clone
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedIpRange")]
+        public virtual string AllocatedIpRange { get; set; }
+
+        /// <summary>
+        /// The Google Cloud Backup and Disaster Recovery Datasource URI. Format:
+        /// projects/{project}/locations/{region}/backupVaults/{backupvault}/dataSources/{datasource}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasource")]
+        public virtual string Datasource { get; set; }
+
+        private string _pointInTimeRaw;
+
+        private object _pointInTime;
+
+        /// <summary>Required. The date and time to which you want to restore the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointInTime")]
+        public virtual string PointInTimeRaw
+        {
+            get => _pointInTimeRaw;
+            set
+            {
+                _pointInTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _pointInTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PointInTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PointInTimeDateTimeOffset instead.")]
+        public virtual object PointInTime
+        {
+            get => _pointInTime;
+            set
+            {
+                _pointInTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _pointInTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PointInTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PointInTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PointInTimeRaw);
+            set => PointInTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Point-in-time recovery of a regional instance in the specified zones. If not specified, clone to
+        /// the same secondary zone as the source instance. This value cannot be the same as the preferred_zone field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredSecondaryZone")]
+        public virtual string PreferredSecondaryZone { get; set; }
+
+        /// <summary>
+        /// Optional. Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone
+        /// to the same primary zone as the source instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredZone")]
+        public virtual string PreferredZone { get; set; }
+
+        /// <summary>
+        /// Optional. The resource link for the VPC network from which the Cloud SQL instance is accessible for private
+        /// IP. For example, `/projects/myProject/global/networks/default`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateNetwork")]
+        public virtual string PrivateNetwork { get; set; }
+
+        /// <summary>Target instance name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetInstance")]
+        public virtual string TargetInstance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10155,10 +10317,6 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
-
-        /// <summary>Indicates if user is active for IAM Authentication.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iamStatus")]
-        public virtual string IamStatus { get; set; }
 
         /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project ID. Can be omitted for `update`
