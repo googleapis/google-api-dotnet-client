@@ -911,7 +911,7 @@ namespace Google.Apis.Forms.v1
         /// `publish_settings` field.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="formId">Required. The ID of the form. You can get the id from `Form.form_id` field.</param>
+        /// <param name="formId">Required. The ID of the form. You can get the id from Form.form_id field.</param>
         public virtual SetPublishSettingsRequest SetPublishSettings(Google.Apis.Forms.v1.Data.SetPublishSettingsRequest body, string formId)
         {
             return new SetPublishSettingsRequest(this.service, body, formId);
@@ -931,7 +931,7 @@ namespace Google.Apis.Forms.v1
                 InitParameters();
             }
 
-            /// <summary>Required. The ID of the form. You can get the id from `Form.form_id` field.</summary>
+            /// <summary>Required. The ID of the form. You can get the id from Form.form_id field.</summary>
             [Google.Apis.Util.RequestParameterAttribute("formId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FormId { get; private set; }
 
@@ -1310,16 +1310,16 @@ namespace Google.Apis.Forms.v1.Data
 
         /// <summary>
         /// Output only. The publishing settings for a form. This field isn't set for legacy forms because they don't
-        /// have the `publish_settings` field. All newly created forms support publish settings. Forms with
-        /// `publish_settings` value set can call SetPublishSettings API to publish or unpublish the form.
+        /// have the publish_settings field. All newly created forms support publish settings. Forms with
+        /// publish_settings value set can call SetPublishSettings API to publish or unpublish the form.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishSettings")]
         public virtual PublishSettings PublishSettings { get; set; }
 
         /// <summary>
         /// Output only. The form URI to share with responders. This opens a page that allows the user to submit
-        /// responses but not edit the questions. For forms that have `publish_settings` value set, this is the
-        /// published form URI.
+        /// responses but not edit the questions. For forms that have publish_settings value set, this is the published
+        /// form URI.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responderUri")]
         public virtual string ResponderUri { get; set; }
@@ -1332,14 +1332,14 @@ namespace Google.Apis.Forms.v1.Data
         /// *content* has not changed. Conversely, a changed ID (for the same form and user) usually means the form
         /// *content* has been updated; however, a changed ID can also be due to internal factors such as ID format
         /// changes. Form content excludes form metadata, including: * sharing settings (who has access to the form) *
-        /// `publish_settings` (if the form supports publishing and if it is published)
+        /// publish_settings (if the form supports publishing and if it is published)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
 
         /// <summary>
-        /// The form's settings. This must be updated with UpdateSettingsRequest; it is ignored during `forms.create`
-        /// and UpdateFormInfoRequest.
+        /// The form's settings. This must be updated with UpdateSettingsRequest; it is ignored during CreateForm and
+        /// UpdateFormInfoRequest.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settings")]
         public virtual FormSettings Settings { get; set; }
@@ -1610,7 +1610,7 @@ namespace Google.Apis.Forms.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Output only. The title of the document which is visible in Drive. If `Info.title` is empty, `document_title`
+        /// Output only. The title of the document which is visible in Drive. If Info.title is empty, `document_title`
         /// may appear in its place in the Google Forms UI and be visible to responders. `document_title` can be set on
         /// create, but cannot be modified by a batchUpdate request. Please use the [Google Drive
         /// API](https://developers.google.com/drive/api/v3/reference/files/update) if you need to programmatically
@@ -2052,10 +2052,10 @@ namespace Google.Apis.Forms.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response of a `SetPublishSettings` request.</summary>
+    /// <summary>The response of a SetPublishSettings request.</summary>
     public class SetPublishSettingsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The ID of the Form. This is same as the `Form.form_id` field.</summary>
+        /// <summary>Required. The ID of the Form. This is same as the Form.form_id field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formId")]
         public virtual string FormId { get; set; }
 
