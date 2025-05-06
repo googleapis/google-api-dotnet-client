@@ -6778,6 +6778,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bottomText")]
         public virtual string BottomText { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("materialIcon")]
+        public virtual GoogleAppsCardV1MaterialIcon MaterialIcon { get; set; }
+
         /// <summary>
         /// Whether the item is selected by default. If the selection input only accepts one value (such as for radio
         /// buttons or a dropdown menu), only set this field for one item.
@@ -6785,11 +6788,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selected")]
         public virtual System.Nullable<bool> Selected { get; set; }
 
-        /// <summary>
-        /// For multiselect menus, the URL for the icon displayed next to the item's `text` field. Supports PNG and JPEG
-        /// files. Must be an `HTTPS` URL. For example,
-        /// `https://developers.google.com/workspace/chat/images/quickstart-app-avatar.png`.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIconUri")]
         public virtual string StartIconUri { get; set; }
 
