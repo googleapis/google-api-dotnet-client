@@ -494,18 +494,18 @@ namespace Google.Apis.Bigquery.v2
                 DATASETVIEWUNSPECIFIED = 0,
 
                 /// <summary>
-                /// Includes metadata information for the dataset, such as location, etag, lastModifiedTime, etc.
+                /// Updates metadata information for the dataset, such as friendlyName, description, labels, etc.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("METADATA")]
                 METADATA = 1,
 
                 /// <summary>
-                /// Includes ACL information for the dataset, which defines dataset access for one or more entities.
+                /// Updates ACL information for the dataset, which defines dataset access for one or more entities.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("ACL")]
                 ACL = 2,
 
-                /// <summary>Includes both dataset metadata and ACL information.</summary>
+                /// <summary>Updates both dataset metadata and ACL information.</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL = 3,
             }
@@ -790,6 +790,40 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("accessPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> AccessPolicyVersion { get; set; }
 
+            /// <summary>
+            /// Optional. Specifies the fields of dataset that update/patch operation is targeting By default, both
+            /// metadata and ACL fields are updated.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<UpdateModeEnum> UpdateMode { get; set; }
+
+            /// <summary>
+            /// Optional. Specifies the fields of dataset that update/patch operation is targeting By default, both
+            /// metadata and ACL fields are updated.
+            /// </summary>
+            public enum UpdateModeEnum
+            {
+                /// <summary>The default value. Default to the UPDATE_FULL.</summary>
+                [Google.Apis.Util.StringValueAttribute("UPDATE_MODE_UNSPECIFIED")]
+                UPDATEMODEUNSPECIFIED = 0,
+
+                /// <summary>
+                /// Includes metadata information for the dataset, such as friendlyName, description, labels, etc.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("UPDATE_METADATA")]
+                UPDATEMETADATA = 1,
+
+                /// <summary>
+                /// Includes ACL information for the dataset, which defines dataset access for one or more entities.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("UPDATE_ACL")]
+                UPDATEACL = 2,
+
+                /// <summary>Includes both dataset metadata and ACL information.</summary>
+                [Google.Apis.Util.StringValueAttribute("UPDATE_FULL")]
+                UPDATEFULL = 3,
+            }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Dataset Body { get; set; }
 
@@ -828,6 +862,14 @@ namespace Google.Apis.Bigquery.v2
                 RequestParameters.Add("accessPolicyVersion", new Google.Apis.Discovery.Parameter
                 {
                     Name = "accessPolicyVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMode",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -959,6 +1001,40 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("accessPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> AccessPolicyVersion { get; set; }
 
+            /// <summary>
+            /// Optional. Specifies the fields of dataset that update/patch operation is targeting By default, both
+            /// metadata and ACL fields are updated.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<UpdateModeEnum> UpdateMode { get; set; }
+
+            /// <summary>
+            /// Optional. Specifies the fields of dataset that update/patch operation is targeting By default, both
+            /// metadata and ACL fields are updated.
+            /// </summary>
+            public enum UpdateModeEnum
+            {
+                /// <summary>The default value. Default to the UPDATE_FULL.</summary>
+                [Google.Apis.Util.StringValueAttribute("UPDATE_MODE_UNSPECIFIED")]
+                UPDATEMODEUNSPECIFIED = 0,
+
+                /// <summary>
+                /// Includes metadata information for the dataset, such as friendlyName, description, labels, etc.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("UPDATE_METADATA")]
+                UPDATEMETADATA = 1,
+
+                /// <summary>
+                /// Includes ACL information for the dataset, which defines dataset access for one or more entities.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("UPDATE_ACL")]
+                UPDATEACL = 2,
+
+                /// <summary>Includes both dataset metadata and ACL information.</summary>
+                [Google.Apis.Util.StringValueAttribute("UPDATE_FULL")]
+                UPDATEFULL = 3,
+            }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Dataset Body { get; set; }
 
@@ -997,6 +1073,14 @@ namespace Google.Apis.Bigquery.v2
                 RequestParameters.Add("accessPolicyVersion", new Google.Apis.Discovery.Parameter
                 {
                     Name = "accessPolicyVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMode",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -8242,8 +8326,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual TimePartitioning TimePartitioning { get; set; }
 
         /// <summary>
-        /// Optional. [Experimental] Default time zone that will apply when parsing timestamp values that have no
-        /// specific time zone.
+        /// Optional. Default time zone that will apply when parsing timestamp values that have no specific time zone.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
@@ -8985,10 +9068,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("referencedRoutines")]
         public virtual System.Collections.Generic.IList<RoutineReference> ReferencedRoutines { get; set; }
 
-        /// <summary>
-        /// Output only. Referenced tables for the job. Queries that reference more than 50 tables will not have a
-        /// complete list.
-        /// </summary>
+        /// <summary>Output only. Referenced tables for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencedTables")]
         public virtual System.Collections.Generic.IList<TableReference> ReferencedTables { get; set; }
 
@@ -10612,6 +10692,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingUnits")]
         public virtual System.Nullable<long> PendingUnits { get; set; }
+
+        /// <summary>
+        /// Total shuffle usage ratio in shuffle RAM per reservation of this query. This will be provided for
+        /// reservation customers only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleRamUsageRatio")]
+        public virtual System.Nullable<double> ShuffleRamUsageRatio { get; set; }
 
         /// <summary>Cumulative slot-ms consumed by the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSlotMs")]
