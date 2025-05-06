@@ -674,6 +674,13 @@ namespace Google.Apis.MigrationCenterAPI.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. When this value is set to 'true,' the response will include all assets, including
+                    /// those that are hidden.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("showHidden", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ShowHidden { get; set; }
+
                     /// <summary>View of the assets. Defaults to BASIC.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -758,6 +765,14 @@ namespace Google.Apis.MigrationCenterAPI.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("showHidden", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showHidden",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5340,6 +5355,13 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
+        /// <summary>
+        /// Optional. When this value is set to 'true,' the response will include all assets, including those that are
+        /// hidden.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("showHidden")]
+        public virtual System.Nullable<bool> ShowHidden { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5570,6 +5592,51 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         /// <summary>Output only. Asset information specific for logical databases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseDetails")]
         public virtual DatabaseDetails DatabaseDetails { get; set; }
+
+        /// <summary>Optional. Indicates if the asset is hidden.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hidden")]
+        public virtual System.Nullable<bool> Hidden { get; set; }
+
+        /// <summary>Optional. An optional reason for marking this asset as hidden.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hideReason")]
+        public virtual string HideReason { get; set; }
+
+        private string _hideTimeRaw;
+
+        private object _hideTime;
+
+        /// <summary>Output only. The timestamp when the asset was marked as hidden.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hideTime")]
+        public virtual string HideTimeRaw
+        {
+            get => _hideTimeRaw;
+            set
+            {
+                _hideTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _hideTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="HideTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use HideTimeDateTimeOffset instead.")]
+        public virtual object HideTime
+        {
+            get => _hideTime;
+            set
+            {
+                _hideTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _hideTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="HideTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? HideTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(HideTimeRaw);
+            set => HideTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Output only. The list of insights associated with the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insightList")]
