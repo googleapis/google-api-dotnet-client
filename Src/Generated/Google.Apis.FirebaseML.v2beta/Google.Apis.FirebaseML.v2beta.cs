@@ -2115,6 +2115,17 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("engine")]
         public virtual string Engine { get; set; }
 
+        /// <summary>Optional. Filter strings to be passed to the search API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. Number of search results to return per query. The default value is 10. The maximumm allowed value
+        /// is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxResults")]
+        public virtual System.Nullable<int> MaxResults { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
