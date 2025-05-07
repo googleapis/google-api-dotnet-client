@@ -4220,7 +4220,7 @@ namespace Google.Apis.Iam.v1
 
                         /// <summary>
                         /// Lists all non-deleted WorkloadIdentityPoolManagedIdentitys in a namespace. If `show_deleted`
-                        /// is set to `true`, then deleted managed identites are also listed.
+                        /// is set to `true`, then deleted managed identities are also listed.
                         /// </summary>
                         /// <param name="parent">Required. The parent resource to list managed identities for.</param>
                         public virtual ListRequest List(string parent)
@@ -4230,7 +4230,7 @@ namespace Google.Apis.Iam.v1
 
                         /// <summary>
                         /// Lists all non-deleted WorkloadIdentityPoolManagedIdentitys in a namespace. If `show_deleted`
-                        /// is set to `true`, then deleted managed identites are also listed.
+                        /// is set to `true`, then deleted managed identities are also listed.
                         /// </summary>
                         public class ListRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ListWorkloadIdentityPoolManagedIdentitiesResponse>
                         {
@@ -6262,10 +6262,7 @@ namespace Google.Apis.Iam.v1
                     }
                 }
 
-                /// <summary>
-                /// Gets IAM policies for one of WorkloadIdentityPool WorkloadIdentityPoolNamespace
-                /// WorkloadIdentityPoolManagedIdentity
-                /// </summary>
+                /// <summary>Gets the IAM policy of a WorkloadIdentityPool.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
                 /// REQUIRED: The resource for which the policy is being requested. See [Resource
@@ -6277,10 +6274,7 @@ namespace Google.Apis.Iam.v1
                     return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
-                /// <summary>
-                /// Gets IAM policies for one of WorkloadIdentityPool WorkloadIdentityPoolNamespace
-                /// WorkloadIdentityPoolManagedIdentity
-                /// </summary>
+                /// <summary>Gets the IAM policy of a WorkloadIdentityPool.</summary>
                 public class GetIamPolicyRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -6487,10 +6481,7 @@ namespace Google.Apis.Iam.v1
                     }
                 }
 
-                /// <summary>
-                /// Sets IAM policies on one of WorkloadIdentityPool WorkloadIdentityPoolNamespace
-                /// WorkloadIdentityPoolManagedIdentity
-                /// </summary>
+                /// <summary>Sets the IAM policies on a WorkloadIdentityPool</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
                 /// REQUIRED: The resource for which the policy is being specified. See [Resource
@@ -6502,10 +6493,7 @@ namespace Google.Apis.Iam.v1
                     return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
-                /// <summary>
-                /// Sets IAM policies on one of WorkloadIdentityPool WorkloadIdentityPoolNamespace
-                /// WorkloadIdentityPoolManagedIdentity
-                /// </summary>
+                /// <summary>Sets the IAM policies on a WorkloadIdentityPool</summary>
                 public class SetIamPolicyRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -6554,10 +6542,7 @@ namespace Google.Apis.Iam.v1
                     }
                 }
 
-                /// <summary>
-                /// Returns the caller's permissions on one of WorkloadIdentityPool WorkloadIdentityPoolNamespace
-                /// WorkloadIdentityPoolManagedIdentity
-                /// </summary>
+                /// <summary>Returns the caller's permissions on a WorkloadIdentityPool</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
                 /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
@@ -6569,10 +6554,7 @@ namespace Google.Apis.Iam.v1
                     return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
-                /// <summary>
-                /// Returns the caller's permissions on one of WorkloadIdentityPool WorkloadIdentityPoolNamespace
-                /// WorkloadIdentityPoolManagedIdentity
-                /// </summary>
+                /// <summary>Returns the caller's permissions on a WorkloadIdentityPool</summary>
                 public class TestIamPermissionsRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -9943,33 +9925,34 @@ namespace Google.Apis.Iam.v1.Data
     public class InlineCertificateIssuanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A required mapping of a cloud region to the CA pool resource located in that region used for
-        /// certificate issuance, adhering to these constraints: * Key format: A supported cloud region name equivalent
-        /// to the location identifier in the corresponding map entry's value. * Value format: A valid CA pool resource
-        /// path format like: "projects/{project}/locations/{location}/caPools/{ca_pool}" * Region Matching: Workloads
-        /// are ONLY issued certificates from CA pools within the same region. Also the CA pool region (in value) must
-        /// match the workload's region (key).
+        /// Optional. A required mapping of a Google Cloud region to the CA pool resource located in that region. The CA
+        /// pool is used for certificate issuance, adhering to the following constraints: * Key format: A supported
+        /// cloud region name equivalent to the location identifier in the corresponding map entry's value. * Value
+        /// format: A valid CA pool resource path format like:
+        /// "projects/{project}/locations/{location}/caPools/{ca_pool}" * Region Matching: Workloads are ONLY issued
+        /// certificates from CA pools within the same region. Also the CA pool region (in value) must match the
+        /// workload's region (key).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caPools")]
         public virtual System.Collections.Generic.IDictionary<string, string> CaPools { get; set; }
 
         /// <summary>
         /// Optional. Key algorithm to use when generating the key pair. This key pair will be used to create the
-        /// certificate. If unspecified, this will default to ECDSA_P256.
+        /// certificate. If not specified, this will default to ECDSA_P256.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyAlgorithm")]
         public virtual string KeyAlgorithm { get; set; }
 
         /// <summary>
-        /// Optional. Lifetime of the workload certificates issued by the CA pool. Must be between 10 hours - 30 days.
-        /// If unspecified, this will be defaulted to 24 hours.
+        /// Optional. Lifetime of the workload certificates issued by the CA pool. Must be between 10 hours and 30 days.
+        /// If not specified, this will be defaulted to 24 hours.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifetime")]
         public virtual object Lifetime { get; set; }
 
         /// <summary>
         /// Optional. Rotation window percentage indicating when certificate rotation should be initiated based on
-        /// remaining lifetime. Must be between 10 - 80. If unspecified, this will be defaulted to 50.
+        /// remaining lifetime. Must be between 10 and 80. If not specified, this will be defaulted to 50.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotationWindowPercentage")]
         public virtual System.Nullable<int> RotationWindowPercentage { get; set; }
@@ -9986,11 +9969,11 @@ namespace Google.Apis.Iam.v1.Data
     public class InlineTrustConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Maps specific trust domains (e.g., "example.com") to their corresponding TrustStore objects, which
-        /// contain the trusted root certificates for that domain. There can be a maximum of 10 trust domain entries in
-        /// this map. Note that a trust domain automatically trusts itself and don't need to be specified here. If
-        /// however, this WorkloadIdentityPool's trust domain contains any trust anchors in the additional_trust_bundles
-        /// map, those trust anchors will be *appended to* the Trust Bundle automatically derived from your
+        /// Optional. Maps specific trust domains (e.g., "example.com") to their corresponding TrustStore, which contain
+        /// the trusted root certificates for that domain. There can be a maximum of 10 trust domain entries in this
+        /// map. Note that a trust domain automatically trusts itself and don't need to be specified here. If however,
+        /// this WorkloadIdentityPool's trust domain contains any trust anchors in the additional_trust_bundles map,
+        /// those trust anchors will be *appended to* the trust bundle automatically derived from your
         /// InlineCertificateIssuanceConfig's ca_pools.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalTrustBundles")]
@@ -10577,9 +10560,9 @@ namespace Google.Apis.Iam.v1.Data
         public virtual System.Collections.Generic.IList<string> AllowedAudiences { get; set; }
 
         /// <summary>
-        /// Required. The OIDC issuer URL. Must be an HTTPS endpoint. Used per OpenID Connect Discovery 1.0 spec to
-        /// locate the provider's public keys (via `jwks_uri`) for verifying tokens like the OIDC ID token. These public
-        /// key types must be 'EC' or 'RSA'.
+        /// Required. The OIDC issuer URL. Must be an HTTPS endpoint. Per OpenID Connect Discovery 1.0 spec, the OIDC
+        /// issuer URL is used to locate the provider's public keys (via `jwks_uri`) for verifying tokens like the OIDC
+        /// ID token. These public key types must be 'EC' or 'RSA'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuerUri")]
         public virtual string IssuerUri { get; set; }
@@ -10953,9 +10936,9 @@ namespace Google.Apis.Iam.v1.Data
     public class QueryGrantableRolesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The full resource name to query from the list of grantable roles. The name follows the Google
-        /// Cloud Platform resource format. For example, a Cloud Platform project with id `my-project` will be named
-        /// `//cloudresourcemanager.googleapis.com/projects/my-project`.
+        /// Required. Required. The full resource name to query from the list of grantable roles. The name follows the
+        /// Google Cloud Platform resource format. For example, a Cloud Platform project with id `my-project` will be
+        /// named `//cloudresourcemanager.googleapis.com/projects/my-project`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; }
@@ -11555,20 +11538,20 @@ namespace Google.Apis.Iam.v1.Data
 
     /// <summary>
     /// Trust store that contains trust anchors and optional intermediate CAs used in PKI to build trust chain and
-    /// verify client's identity.
+    /// verify a client's identity.
     /// </summary>
     public class TrustStore : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Set of intermediate CA certificates used for building the trust chain to trust anchor. IMPORTANT:
-        /// * Intermediate CAs are only supported when configuring x509 federation.
+        /// Optional. Set of intermediate CA certificates used for building the trust chain to the trust anchor.
+        /// Important: Intermediate CAs are only supported for X.509 federation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intermediateCas")]
         public virtual System.Collections.Generic.IList<IntermediateCA> IntermediateCas { get; set; }
 
         /// <summary>
-        /// Required. List of Trust Anchors to be used while performing validation against a given TrustStore. The
-        /// incoming end entity's certificate must be chained up to one of the trust anchors here.
+        /// Required. List of trust anchors to be used while performing validation against a given TrustStore. The
+        /// incoming end entity's certificate must be in the trust chain of one of the trust anchors here.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustAnchors")]
         public virtual System.Collections.Generic.IList<TrustAnchor> TrustAnchors { get; set; }
@@ -12447,9 +12430,9 @@ namespace Google.Apis.Iam.v1.Data
     public class X509 : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. A Trust store, use this trust store as a wrapper to config the trust anchor and optional
-        /// intermediate cas to help build the trust chain for the incoming end entity certificate. Follow the x509
-        /// guidelines to define those PEM encoded certs. Only 1 trust store is currently supported.
+        /// Required. A TrustStore. Use this trust store as a wrapper to config the trust anchor and optional
+        /// intermediate cas to help build the trust chain for the incoming end entity certificate. Follow the X.509
+        /// guidelines to define those PEM encoded certs. Only one trust store is currently supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustStore")]
         public virtual TrustStore TrustStore { get; set; }
