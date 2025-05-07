@@ -976,7 +976,7 @@ namespace Google.Apis.Iam.v2beta.Data
         public virtual System.Collections.Generic.IList<string> DeniedPermissions { get; set; }
 
         /// <summary>
-        /// The identities that are prevented from using one or more permissions on Google Cloud resources. This field
+        ///  The identities that are prevented from using one or more permissions on Google Cloud resources. This field
         /// can contain the following values: * `principal://goog/subject/{email_id}`: A specific Google Account.
         /// Includes Gmail, Cloud Identity, and Google Workspace user accounts. For example,
         /// `principal://goog/subject/alice@example.com`. *
