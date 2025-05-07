@@ -1038,10 +1038,11 @@ namespace Google.Apis.Merchant.accounts_v1beta
             /// Claims a store's homepage. Executing this method requires admin access. If the homepage is already
             /// claimed, this will recheck the verification (unless the merchant is exempted from claiming, which also
             /// exempts from verification) and return a successful response. If ownership can no longer be verified, it
-            /// will return an error, but it won't clear the claim. In case of failure, a canonical error message will
-            /// be returned: * PERMISSION_DENIED: user doesn't have the necessary permissions on this MC account; *
-            /// FAILED_PRECONDITION: - The account is not a Merchant Center account; - MC account doesn't have a
-            /// homepage; - claiming failed (in this case the error message will contain more details).
+            /// will return an error, but it won't clear the claim. In case of failure, a canonical error message is
+            /// returned: * PERMISSION_DENIED: User doesn't have the necessary permissions on this Merchant Center
+            /// account. * FAILED_PRECONDITION: - The account is not a Merchant Center account. - Merchant Center
+            /// account doesn't have a homepage. - Claiming failed (in this case the error message contains more
+            /// details).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -1056,10 +1057,11 @@ namespace Google.Apis.Merchant.accounts_v1beta
             /// Claims a store's homepage. Executing this method requires admin access. If the homepage is already
             /// claimed, this will recheck the verification (unless the merchant is exempted from claiming, which also
             /// exempts from verification) and return a successful response. If ownership can no longer be verified, it
-            /// will return an error, but it won't clear the claim. In case of failure, a canonical error message will
-            /// be returned: * PERMISSION_DENIED: user doesn't have the necessary permissions on this MC account; *
-            /// FAILED_PRECONDITION: - The account is not a Merchant Center account; - MC account doesn't have a
-            /// homepage; - claiming failed (in this case the error message will contain more details).
+            /// will return an error, but it won't clear the claim. In case of failure, a canonical error message is
+            /// returned: * PERMISSION_DENIED: User doesn't have the necessary permissions on this Merchant Center
+            /// account. * FAILED_PRECONDITION: - The account is not a Merchant Center account. - Merchant Center
+            /// account doesn't have a homepage. - Claiming failed (in this case the error message contains more
+            /// details).
             /// </summary>
             public class ClaimRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Homepage>
             {
@@ -4651,8 +4653,8 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     public class ClaimHomepageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. When set to `true`, this option removes any existing claim on the requested website and replaces
-        /// it with a claim from the account that makes the request.
+        /// Optional. When set to `true`, this option removes any existing claim on the requested website from any other
+        /// account to the account making the request, effectively replacing the previous claim.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overwrite")]
         public virtual System.Nullable<bool> Overwrite { get; set; }
@@ -5899,10 +5901,9 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     /// <summary>
     /// Defines participation in a given program for the specified account. Programs provide a mechanism for adding
     /// functionality to merchant accounts. A typical example of this is the [Free product
-    /// listings](https://support.google.com/merchants/topic/9240261?ref_topic=7257954,7259405,&amp;amp;sjid=796648681813264022-EU)
-    /// program, which enables products from a merchant's store to be shown across Google for free. The following list
-    /// is the available set of program resource IDs accessible through the API: * `free-listings` * `shopping-ads` *
-    /// `youtube-shopping-checkout`
+    /// listings](https://support.google.com/merchants/answer/13889434) program, which enables products from a
+    /// merchant's store to be shown across Google for free. The following list is the available set of program resource
+    /// IDs accessible through the API: * `free-listings` * `shopping-ads` * `youtube-shopping-checkout`
     /// </summary>
     public class Program : Google.Apis.Requests.IDirectResponseSchema
     {
