@@ -5872,6 +5872,10 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
         public virtual System.Nullable<bool> AllowMissing { get; set; }
 
+        /// <summary>Optional. Optional cascading rules for deleting related assets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cascadingRules")]
+        public virtual System.Collections.Generic.IList<CascadingRule> CascadingRules { get; set; }
+
         /// <summary>
         /// Required. The IDs of the assets to delete. A maximum of 1000 assets can be deleted in a batch. Format:
         /// projects/{project}/locations/{location}/assets/{name}.
@@ -5942,6 +5946,24 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cascading rule for related logical DBs.</summary>
+    public class CascadeLogicalDBsRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies cascading rules for traversing relations.</summary>
+    public class CascadingRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cascading rule for related logical DBs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cascadeLogicalDbs")]
+        public virtual CascadeLogicalDBsRule CascadeLogicalDbs { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
