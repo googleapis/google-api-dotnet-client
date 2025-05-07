@@ -3319,6 +3319,59 @@ namespace Google.Apis.Contactcenterinsights.v1
                         this.service = service;
                     }
 
+                    /// <summary>Gets conversation statistics.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="location">Required. The location of the conversations.</param>
+                    public virtual CalculateStatsRequest CalculateStats(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1CalculateStatsRequest body, string location)
+                    {
+                        return new CalculateStatsRequest(this.service, body, location);
+                    }
+
+                    /// <summary>Gets conversation statistics.</summary>
+                    public class CalculateStatsRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1CalculateStatsResponse>
+                    {
+                        /// <summary>Constructs a new CalculateStats request.</summary>
+                        public CalculateStatsRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1CalculateStatsRequest body, string location) : base(service)
+                        {
+                            Location = location;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The location of the conversations.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Location { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1CalculateStatsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "calculateStats";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+location}/conversations:calculateStats";
+
+                        /// <summary>Initializes CalculateStats parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Deletes a conversation.</summary>
                     /// <param name="name">Required. The name of the conversation to delete.</param>
                     public virtual DeleteRequest Delete(string name)
@@ -8320,6 +8373,20 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for calculating conversation statistics.</summary>
+    public class GoogleCloudContactcenterinsightsV1CalculateStatsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A filter to reduce results to a specific subset. This field is useful for getting statistics about
+        /// conversations with specific properties.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response for calculating conversation statistics.</summary>
     public class GoogleCloudContactcenterinsightsV1CalculateStatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9362,6 +9429,64 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Required. The parent resource of the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Dataset resource represents a collection of conversations that may be bounded (Static Dataset, e.g. golden
+    /// dataset for training), or unbounded (Dynamic Dataset, e.g. live traffic, or agent training traffic)
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1Dataset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Dataset create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Dataset description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. Resource name of the dataset. Format:
+        /// projects/{project}/locations/{location}/datasets/{dataset}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12614,6 +12739,177 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The metadata for an SampleConversationsToDataset operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1SampleConversationsToDatasetMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Partial errors during sample conversations to dataset operation that might cause the operation
+        /// output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>Output only. The original request for sample conversations to dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1SampleConversationsToDatasetRequest Request { get; set; }
+
+        /// <summary>Output only. Statistics for SampleConversationsToDataset operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleConversationsToDatasetStats")]
+        public virtual GoogleCloudContactcenterinsightsV1SampleConversationsToDatasetMetadataSampleConversationsToDatasetStats SampleConversationsToDatasetStats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for SampleConversationsToDataset operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1SampleConversationsToDatasetMetadataSampleConversationsToDatasetStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The number of objects which were unable to be sampled due to errors. The errors are populated
+        /// in the partial_errors field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedSampleCount")]
+        public virtual System.Nullable<int> FailedSampleCount { get; set; }
+
+        /// <summary>Output only. The number of new conversations added during this sample operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulSampleCount")]
+        public virtual System.Nullable<int> SuccessfulSampleCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to sample conversations to a dataset.</summary>
+    public class GoogleCloudContactcenterinsightsV1SampleConversationsToDatasetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The dataset resource to copy the conversations to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationDataset")]
+        public virtual GoogleCloudContactcenterinsightsV1Dataset DestinationDataset { get; set; }
+
+        /// <summary>Required. The parent resource of the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>Optional. The sample rule used for sampling conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRule")]
+        public virtual GoogleCloudContactcenterinsightsV1SampleRule SampleRule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to an SampleConversationsToDataset operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1SampleConversationsToDatasetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for sampling conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1SampleRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// To specify the filter for the conversions that should apply this sample rule. An empty filter means this
+        /// sample rule applies to all conversations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationFilter")]
+        public virtual string ConversationFilter { get; set; }
+
+        /// <summary>
+        /// Optional. Group by dimension to sample the conversation. If no dimension is provided, the sampling will be
+        /// applied to the project level. Current supported dimensions is 'quality_metadata.agent_info.agent_id'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
+        public virtual string Dimension { get; set; }
+
+        /// <summary>
+        /// Percentage of conversations that we should sample based on the dimension between [0, 100].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("samplePercentage")]
+        public virtual System.Nullable<double> SamplePercentage { get; set; }
+
+        /// <summary>Number of the conversations that we should sample based on the dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRow")]
+        public virtual System.Nullable<long> SampleRow { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The data for a sentiment annotation.</summary>
     public class GoogleCloudContactcenterinsightsV1SentimentData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14870,6 +15166,64 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Required. The parent resource of the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Dataset resource represents a collection of conversations that may be bounded (Static Dataset, e.g. golden
+    /// dataset for training), or unbounded (Dynamic Dataset, e.g. live traffic, or agent training traffic)
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1Dataset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Dataset create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Dataset description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. Resource name of the dataset. Format:
+        /// projects/{project}/locations/{location}/datasets/{dataset}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17303,6 +17657,177 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Query source for the answer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("querySource")]
         public virtual string QuerySource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for an SampleConversationsToDataset operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1SampleConversationsToDatasetMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Partial errors during sample conversations to dataset operation that might cause the operation
+        /// output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>Output only. The original request for sample conversations to dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1SampleConversationsToDatasetRequest Request { get; set; }
+
+        /// <summary>Output only. Statistics for SampleConversationsToDataset operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleConversationsToDatasetStats")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1SampleConversationsToDatasetMetadataSampleConversationsToDatasetStats SampleConversationsToDatasetStats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for SampleConversationsToDataset operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1SampleConversationsToDatasetMetadataSampleConversationsToDatasetStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The number of objects which were unable to be sampled due to errors. The errors are populated
+        /// in the partial_errors field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedSampleCount")]
+        public virtual System.Nullable<int> FailedSampleCount { get; set; }
+
+        /// <summary>Output only. The number of new conversations added during this sample operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulSampleCount")]
+        public virtual System.Nullable<int> SuccessfulSampleCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to sample conversations to a dataset.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1SampleConversationsToDatasetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The dataset resource to copy the conversations to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationDataset")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1Dataset DestinationDataset { get; set; }
+
+        /// <summary>Required. The parent resource of the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>Optional. The sample rule used for sampling conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRule")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1SampleRule SampleRule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to an SampleConversationsToDataset operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1SampleConversationsToDatasetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for sampling conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1SampleRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// To specify the filter for the conversions that should apply this sample rule. An empty filter means this
+        /// sample rule applies to all conversations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationFilter")]
+        public virtual string ConversationFilter { get; set; }
+
+        /// <summary>
+        /// Optional. Group by dimension to sample the conversation. If no dimension is provided, the sampling will be
+        /// applied to the project level. Current supported dimensions is 'quality_metadata.agent_info.agent_id'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
+        public virtual string Dimension { get; set; }
+
+        /// <summary>
+        /// Percentage of conversations that we should sample based on the dimension between [0, 100].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("samplePercentage")]
+        public virtual System.Nullable<double> SamplePercentage { get; set; }
+
+        /// <summary>Number of the conversations that we should sample based on the dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRow")]
+        public virtual System.Nullable<long> SampleRow { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
