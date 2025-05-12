@@ -3886,7 +3886,11 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>MongoDB profile.</summary>
     public class MongodbProfile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. List of host addresses for a MongoDB cluster.</summary>
+        /// <summary>
+        /// Required. List of host addresses for a MongoDB cluster. For SRV connection format, this list must contain
+        /// exactly one DNS host without a port. For Standard connection format, this list must contain all the required
+        /// hosts in the cluster with their respective ports.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostAddresses")]
         public virtual System.Collections.Generic.IList<HostAddress> HostAddresses { get; set; }
 
@@ -3898,7 +3902,8 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string Password { get; set; }
 
         /// <summary>
-        /// Optional. Name of the replica set. Only needed for self hosted replica set type MongoDB cluster.
+        /// Optional. Name of the replica set. Only needed for self hosted replica set type MongoDB cluster. For SRV
+        /// connection format, this field must be empty. For Standard connection format, this field must be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicaSet")]
         public virtual string ReplicaSet { get; set; }
