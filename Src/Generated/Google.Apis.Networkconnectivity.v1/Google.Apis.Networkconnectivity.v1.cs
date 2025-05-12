@@ -6830,6 +6830,28 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Range auto-allocation options, to be optionally used when CIDR block is not explicitly set.</summary>
+    public class AllocationOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Allocation strategy Not setting this field when the allocation is requested means an
+        /// implementation defined strategy is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocationStrategy")]
+        public virtual string AllocationStrategy { get; set; }
+
+        /// <summary>
+        /// Optional. This field must be set only when allocation_strategy is set to RANDOM_FIRST_N_AVAILABLE. The value
+        /// should be the maximum expected parallelism of range creation requests issued to the same space of peered
+        /// netwroks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstAvailableRangesLookupSize")]
+        public virtual System.Nullable<int> FirstAvailableRangesLookupSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -7683,6 +7705,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// </summary>
     public class InternalRange : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Range auto-allocation options, may be set only when auto-allocation is selected by not setting
+        /// ip_cidr_range (and setting prefix_length).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocationOptions")]
+        public virtual AllocationOptions AllocationOptions { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -8448,6 +8477,27 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>The VPC network where this VM is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcNetwork")]
         public virtual string VpcNetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A route next hop that leads to a spoke resource.</summary>
+    public class NextHopSpoke : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Indicates whether site-to-site data transfer is allowed for this spoke resource. Data transfer is available
+        /// only in [supported
+        /// locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
+        /// Whether this route is accessible to other hybrid spokes with site-to-site data transfer enabled. If this is
+        /// false, the route is only accessible to VPC spokes of the connected Hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteToSiteDataTransfer")]
+        public virtual System.Nullable<bool> SiteToSiteDataTransfer { get; set; }
+
+        /// <summary>The URI of the spoke resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9304,6 +9354,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>Immutable. The next-hop Router appliance instance for packets on this route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopRouterApplianceInstance")]
         public virtual NextHopRouterApplianceInstance NextHopRouterApplianceInstance { get; set; }
+
+        /// <summary>Immutable. The next-hop spoke for packets on this route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextHopSpoke")]
+        public virtual NextHopSpoke NextHopSpoke { get; set; }
 
         /// <summary>Immutable. The destination VPC network for packets on this route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopVpcNetwork")]
