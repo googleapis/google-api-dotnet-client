@@ -906,8 +906,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>
-        /// This API updates the following: 1- retention period and description of backup in case of final backups only.
-        /// 2- gcbdr_soft_delete_status of backup in case of GCBDR managed backups only.
+        /// Updates the retention period and the description of the backup. You can use this API to update final backups
+        /// only.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -919,8 +919,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>
-        /// This API updates the following: 1- retention period and description of backup in case of final backups only.
-        /// 2- gcbdr_soft_delete_status of backup in case of GCBDR managed backups only.
+        /// Updates the retention period and the description of the backup. You can use this API to update final backups
+        /// only.
         /// </summary>
         public class UpdateBackupRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
@@ -939,8 +939,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// The list of fields that you can update. 1- You can update only the description and retention period for
-            /// a final backup. 2- You can update only the gcbdr_soft_delete_status for GCBDR managed backup.
+            /// The list of fields that you can update. You can update only the description and retention period of the
+            /// final backup.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
