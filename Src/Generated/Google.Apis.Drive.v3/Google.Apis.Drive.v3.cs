@@ -4746,6 +4746,10 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("emailMessage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EmailMessage { get; set; }
 
+            /// <summary>Whether the request should enforce expansive access rules.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enforceExpansiveAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceExpansiveAccess { get; set; }
+
             /// <summary>Deprecated: See `moveToNewOwnersRoot` for details.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
@@ -4821,6 +4825,14 @@ namespace Google.Apis.Drive.v3
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enforceExpansiveAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enforceExpansiveAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
                     Pattern = null,
                 });
                 RequestParameters.Add("enforceSingleParent", new Google.Apis.Discovery.Parameter
