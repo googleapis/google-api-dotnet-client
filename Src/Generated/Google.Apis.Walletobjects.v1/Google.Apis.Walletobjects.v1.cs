@@ -7385,7 +7385,7 @@ namespace Google.Apis.Walletobjects.v1.Data
     public class DiscoverableProgramMerchantSignupInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        ///  User data that is sent in a POST request to the signup website URL. This information is encoded and then
+        /// User data that is sent in a POST request to the signup website URL. This information is encoded and then
         /// shared so that the merchant's website can prefill fields used to enroll the user for the discoverable
         /// program.
         /// </summary>
