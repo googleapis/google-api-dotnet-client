@@ -16456,7 +16456,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// The end position of the error in the uploaded text version of the module. This field may be omitted if no
-        /// specific position applies, or if one could not be computed..
+        /// specific position applies, or if one could not be computed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
         public virtual Position End { get; set; }
@@ -16485,6 +16485,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// </summary>
     public class CustomModuleValidationErrors : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The list of errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<CustomModuleValidationError> Errors { get; set; }
 
@@ -25352,9 +25353,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>A position in the uploaded text version of a module.</summary>
     public class Position : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The column number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnNumber")]
         public virtual System.Nullable<int> ColumnNumber { get; set; }
 
+        /// <summary>The line number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
         public virtual System.Nullable<int> LineNumber { get; set; }
 
