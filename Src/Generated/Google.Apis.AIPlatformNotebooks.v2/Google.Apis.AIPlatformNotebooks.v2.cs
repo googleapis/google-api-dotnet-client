@@ -1923,6 +1923,13 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -1962,6 +1969,14 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -2175,10 +2190,6 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         /// <summary>Optional. Defines the type of technology used by the confidential instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialInstanceType")]
         public virtual string ConfidentialInstanceType { get; set; }
-
-        /// <summary>Optional. Defines whether the instance should have confidential compute enabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
-        public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2519,6 +2530,10 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; }
 
+        /// <summary>Optional. Specifies the reservations that this instance can consume from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
+        public virtual ReservationAffinity ReservationAffinity { get; set; }
+
         /// <summary>
         /// Optional. The service account that serves as an identity for the VM instance. Currently supports only one
         /// service account.
@@ -2610,6 +2625,13 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         /// <summary>Optional. If true, the notebook instance will not register with the proxy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableProxyAccess")]
         public virtual System.Nullable<bool> DisableProxyAccess { get; set; }
+
+        /// <summary>
+        /// Optional. If true, deletion protection will be enabled for this Workbench Instance. If false, deletion
+        /// protection will be disabled for this Workbench Instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableDeletionProtection")]
+        public virtual System.Nullable<bool> EnableDeletionProtection { get; set; }
 
         /// <summary>
         /// Optional. Flag that specifies that a notebook can be accessed with third party identity provider.
@@ -3087,6 +3109,36 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A reservation that an instance can consume from.</summary>
+    public class ReservationAffinity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY
+        /// (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumeReservationType")]
+        public virtual string ConsumeReservationType { get; set; }
+
+        /// <summary>
+        /// Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name,
+        /// use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its
+        /// value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// Optional. Corresponds to the label values of a reservation resource. This can be either a name to a
+        /// reservation in the same project or "projects/different-project/reservations/some-reservation-name" to target
+        /// a shared reservation in the same zone but in a different project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for resetting a notebook instance</summary>
     public class ResetInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3181,7 +3233,7 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         /// Optional. Defines whether the VM instance has integrity monitoring enabled. Enables monitoring and
         /// attestation of the boot integrity of the VM instance. The attestation is performed against the integrity
         /// policy baseline. This baseline is initially derived from the implicitly trusted boot image when the VM
-        /// instance is created. Enabled by default.
+        /// instance is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
         public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; }
@@ -3194,7 +3246,7 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
         public virtual System.Nullable<bool> EnableSecureBoot { get; set; }
 
-        /// <summary>Optional. Defines whether the VM instance has the vTPM enabled. Enabled by default.</summary>
+        /// <summary>Optional. Defines whether the VM instance has the vTPM enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
         public virtual System.Nullable<bool> EnableVtpm { get; set; }
 
