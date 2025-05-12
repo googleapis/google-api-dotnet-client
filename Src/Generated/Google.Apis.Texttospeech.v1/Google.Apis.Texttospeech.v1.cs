@@ -1124,6 +1124,10 @@ namespace Google.Apis.Texttospeech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customPronunciations")]
         public virtual CustomPronunciations CustomPronunciations { get; set; }
 
+        /// <summary>Markup for HD voices specifically. This field may not be used with any other voices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("markup")]
+        public virtual string Markup { get; set; }
+
         /// <summary>The multi-speaker input to be synthesized. Only applicable for multi-speaker synthesis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiSpeakerMarkup")]
         public virtual MultiSpeakerMarkup MultiSpeakerMarkup { get; set; }
