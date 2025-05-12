@@ -31901,6 +31901,15 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string GeneratorName { get; set; }
 
         /// <summary>
+        /// Optional. Name of the CX SecuritySettings which is used to redact generated response. If this field is
+        /// empty, try to fetch v2 security_settings, which is a project level setting. If this field is empty and no v2
+        /// security_settings set up in this project, no redaction will be done. Format:
+        /// `projects//locations//securitySettings/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securitySettings")]
+        public virtual string SecuritySettings { get; set; }
+
+        /// <summary>
         /// Optional. A list of trigger events. Generator will be triggered only if it's trigger event is included here.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerEvents")]
