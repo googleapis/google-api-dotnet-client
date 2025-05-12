@@ -6490,7 +6490,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The total number of CryptoKeyVersions that matched the query.</summary>
+        /// <summary>
+        /// The total number of CryptoKeyVersions that matched the query. This field is not populated if
+        /// ListCryptoKeyVersionsRequest.filter is applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
 
@@ -6512,7 +6515,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The total number of CryptoKeys that matched the query.</summary>
+        /// <summary>
+        /// The total number of CryptoKeys that matched the query. This field is not populated if
+        /// ListCryptoKeysRequest.filter is applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
 
@@ -6534,7 +6540,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The total number of EkmConnections that matched the query.</summary>
+        /// <summary>
+        /// The total number of EkmConnections that matched the query. This field is not populated if
+        /// ListEkmConnectionsRequest.filter is applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
 
@@ -6556,7 +6565,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The total number of ImportJobs that matched the query.</summary>
+        /// <summary>
+        /// The total number of ImportJobs that matched the query. This field is not populated if
+        /// ListImportJobsRequest.filter is applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
 
@@ -6596,7 +6608,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The total number of KeyRings that matched the query.</summary>
+        /// <summary>
+        /// The total number of KeyRings that matched the query. This field is not populated if
+        /// ListKeyRingsRequest.filter is applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
 
