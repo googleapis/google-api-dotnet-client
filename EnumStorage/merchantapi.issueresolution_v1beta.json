@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Merchant.issueresolution_v1beta.MerchantBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Merchant.issueresolution_v1beta.MerchantBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
