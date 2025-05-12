@@ -2225,7 +2225,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
             }
 
             /// <summary>Retrieve an account relationship.</summary>
-            /// <param name="name">Required. The resource name of the account relationship to get.</param>
+            /// <param name="name">
+            /// Required. The resource name of the account relationship to get. Format:
+            /// `accounts/{account}/relationships/{relationship}`
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(this.service, name);
@@ -2241,7 +2244,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
                     InitParameters();
                 }
 
-                /// <summary>Required. The resource name of the account relationship to get.</summary>
+                /// <summary>
+                /// Required. The resource name of the account relationship to get. Format:
+                /// `accounts/{account}/relationships/{relationship}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2270,7 +2276,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
             }
 
             /// <summary>List account relationships for the specified account.</summary>
-            /// <param name="parent">Required. The parent account of the account relationship to filter by.</param>
+            /// <param name="parent">
+            /// Required. The parent account of the account relationship to filter by. Format: `accounts/{account}`
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(this.service, parent);
@@ -2286,7 +2294,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
                     InitParameters();
                 }
 
-                /// <summary>Required. The parent account of the account relationship to filter by.</summary>
+                /// <summary>
+                /// Required. The parent account of the account relationship to filter by. Format: `accounts/{account}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2343,7 +2353,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
 
             /// <summary>Updates the account relationship. Executing this method requires admin access.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Identifier. The resource name of the account relationship.</param>
+            /// <param name="name">
+            /// Identifier. The resource name of the account relationship. Format:
+            /// `accounts/{account}/relationships/{relationship}`
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.Merchant.accounts_v1beta.Data.AccountRelationship body, string name)
             {
                 return new PatchRequest(this.service, body, name);
@@ -2360,7 +2373,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
                     InitParameters();
                 }
 
-                /// <summary>Identifier. The resource name of the account relationship.</summary>
+                /// <summary>
+                /// Identifier. The resource name of the account relationship. Format:
+                /// `accounts/{account}/relationships/{relationship}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2429,7 +2445,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
 
             /// <summary>Approve an account service proposal.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The resource name of the account service to approve.</param>
+            /// <param name="name">
+            /// Required. The resource name of the account service to approve. Format:
+            /// `accounts/{account}/services/{service}`
+            /// </param>
             public virtual ApproveRequest Approve(Google.Apis.Merchant.accounts_v1beta.Data.ApproveAccountServiceRequest body, string name)
             {
                 return new ApproveRequest(this.service, body, name);
@@ -2446,7 +2465,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
                     InitParameters();
                 }
 
-                /// <summary>Required. The resource name of the account service to approve.</summary>
+                /// <summary>
+                /// Required. The resource name of the account service to approve. Format:
+                /// `accounts/{account}/services/{service}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2481,7 +2503,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
             }
 
             /// <summary>Retrieve an account service.</summary>
-            /// <param name="name">Required. The resource name of the account service to get.</param>
+            /// <param name="name">
+            /// Required. The resource name of the account service to get. Format:
+            /// `accounts/{account}/services/{service}`
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(this.service, name);
@@ -2497,7 +2522,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
                     InitParameters();
                 }
 
-                /// <summary>Required. The resource name of the account service to get.</summary>
+                /// <summary>
+                /// Required. The resource name of the account service to get. Format:
+                /// `accounts/{account}/services/{service}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2526,7 +2554,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
             }
 
             /// <summary>List account services for the specified accounts. Supports filtering.</summary>
-            /// <param name="parent">Required. The parent account of the account service to filter by.</param>
+            /// <param name="parent">
+            /// Required. The parent account of the account service to filter by. Format: `accounts/{account}`
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(this.service, parent);
@@ -2542,7 +2572,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
                     InitParameters();
                 }
 
-                /// <summary>Required. The parent account of the account service to filter by.</summary>
+                /// <summary>
+                /// Required. The parent account of the account service to filter by. Format: `accounts/{account}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2599,7 +2631,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
 
             /// <summary>Propose an account service.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The resource name of the parent account for the service.</param>
+            /// <param name="parent">
+            /// Required. The resource name of the parent account for the service. Format: `accounts/{account}`
+            /// </param>
             public virtual ProposeRequest Propose(Google.Apis.Merchant.accounts_v1beta.Data.ProposeAccountServiceRequest body, string parent)
             {
                 return new ProposeRequest(this.service, body, parent);
@@ -2616,7 +2650,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
                     InitParameters();
                 }
 
-                /// <summary>Required. The resource name of the parent account for the service.</summary>
+                /// <summary>
+                /// Required. The resource name of the parent account for the service. Format: `accounts/{account}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2652,7 +2688,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
 
             /// <summary>Reject an account service (both proposed and approve services can be rejected).</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The resource name of the account service to reject.</param>
+            /// <param name="name">
+            /// Required. The resource name of the account service to reject. Format:
+            /// `accounts/{account}/services/{service}`
+            /// </param>
             public virtual RejectRequest Reject(Google.Apis.Merchant.accounts_v1beta.Data.RejectAccountServiceRequest body, string name)
             {
                 return new RejectRequest(this.service, body, name);
@@ -2669,7 +2708,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
                     InitParameters();
                 }
 
-                /// <summary>Required. The resource name of the account service to reject.</summary>
+                /// <summary>
+                /// Required. The resource name of the account service to reject. Format:
+                /// `accounts/{account}/services/{service}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -4117,7 +4159,10 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountIdAlias")]
         public virtual string AccountIdAlias { get; set; }
 
-        /// <summary>Identifier. The resource name of the account relationship.</summary>
+        /// <summary>
+        /// Identifier. The resource name of the account relationship. Format:
+        /// `accounts/{account}/relationships/{relationship}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4197,7 +4242,9 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mutability")]
         public virtual string Mutability { get; set; }
 
-        /// <summary>Identifier. The resource name of the account service.</summary>
+        /// <summary>
+        /// Identifier. The resource name of the account service. Format: `accounts/{account}/services/{service}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -6679,7 +6726,10 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("carrierService")]
         public virtual string CarrierService { get; set; }
 
-        /// <summary>Required. Warehouse name. This should match warehouse</summary>
+        /// <summary>
+        /// Required. Warehouse name. This should match
+        /// [warehouse](/merchant/api/reference/rest/accounts_v1beta/accounts.shippingSettings#warehouse)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warehouse")]
         public virtual string Warehouse { get; set; }
 
