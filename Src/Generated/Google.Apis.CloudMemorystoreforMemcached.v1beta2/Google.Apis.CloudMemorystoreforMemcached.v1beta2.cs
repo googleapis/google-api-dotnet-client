@@ -1337,6 +1337,13 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. A list of extra location types that should be used as conditions for controlling the
+                /// visibility of the locations.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
+
+                /// <summary>
                 /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
                 /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
                 /// </summary>
@@ -1376,6 +1383,14 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extraLocationTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -1800,6 +1815,16 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerDefinedName")]
         public virtual string ConsumerDefinedName { get; set; }
+
+        /// <summary>
+        /// Optional. The consumer_project_number associated with this Apigee instance. This field is added specifically
+        /// to support Apigee integration with SLM Rollout and UMM. It represents the numerical project ID of the GCP
+        /// project that consumes this Apigee instance. It is used for SLM rollout notifications and UMM integration,
+        /// enabling proper mapping to customer projects and log delivery for Apigee instances. This field complements
+        /// consumer_project_id and may be used for specific Apigee scenarios where the numerical ID is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerProjectNumber")]
+        public virtual string ConsumerProjectNumber { get; set; }
 
         private string _createTimeRaw;
 
