@@ -1,0 +1,66 @@
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+
+  <!-- nupkg information -->
+  <PropertyGroup>
+    <Title>Google.Apis.FirebaseAppHosting.v1 Client Library</Title>
+    <Version>1.69.0.3773</Version>
+    <Authors>Google LLC</Authors>
+    <Copyright>Copyright 2025 Google LLC</Copyright>
+    <PackageTags>Google</PackageTags>
+    <PackageProjectUrl>https://github.com/google/google-api-dotnet-client</PackageProjectUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
+    <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
+    <PackageIcon>NuGetIcon.png</PackageIcon>
+    <Description>
+      Google APIs Client Library for working with Firebaseapphosting v1.
+
+      Product documentation is available at:
+      https://firebase.google.com/docs/app-hosting
+
+      API reference documentation for this package is available at:
+      https://googleapis.dev/dotnet/Google.Apis.FirebaseAppHosting.v1/latest/api/Google.Apis.FirebaseAppHosting.v1.html
+
+      The source code for this package is available at:
+      https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated/Google.Apis.FirebaseAppHosting.v1
+
+      Supported Platforms:
+      - .NET Framework 4.6.2+
+      - .NET Standard 2.0
+      - .NET 6.0+
+
+      Incompatible platforms:
+      - .NET Framework &lt; 4.6.2
+      - Silverlight
+      - UWP (will build, but is known not to work at runtime)
+      - Xamarin/MAUI
+      - Windows 8 Apps
+      - Windows Phone 8.1
+      - Windows Phone Silverlight 8.0
+    </Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../../LICENSE" Pack="true" PackagePath="" />
+    <None Include="../../../NuGetIcon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <!-- build properties -->
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net462;net6.0</TargetFrameworks>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
+    <DebugType>portable</DebugType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>1570,1587,1591</NoWarn>
+  </PropertyGroup>
+
+  <!-- common dependencies -->
+  <ItemGroup>
+    <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="5.0.0" PrivateAssets="All" />
+    <PackageReference Include="Google.Apis" Version="1.69.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.69.0" />
+  </ItemGroup>
+
+</Project>
