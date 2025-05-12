@@ -2826,6 +2826,166 @@ namespace Google.Apis.AndroidManagement.v1.Data
     }
 
     /// <summary>
+    /// Access Point Name (APN) policy. Configuration for Access Point Names (APNs) which may override any other APNs on
+    /// the device. See OVERRIDE_APNS_ENABLED and overrideApns for details.
+    /// </summary>
+    public class ApnPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. APN settings for override APNs. There must not be any conflict between any of APN settings
+        /// provided, otherwise the policy will be rejected. Two ApnSettings are considered to conflict when all of the
+        /// following fields match on both: numericOperatorId, apn, proxyAddress, proxyPort, mmsProxyAddress,
+        /// mmsProxyPort, mmsc, mvnoType, protocol, roamingProtocol. If some of the APN settings result in
+        /// non-compliance of INVALID_VALUE , they will be ignored. This can be set on fully managed devices on Android
+        /// 10 and above. This can also be set on work profiles on Android 13 and above and only with ApnSetting's with
+        /// ENTERPRISE APN type. A nonComplianceDetail with API_LEVEL is reported if the Android version is less than
+        /// 10. A nonComplianceDetail with MANAGEMENT_MODE is reported for work profiles on Android versions less than
+        /// 13.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apnSettings")]
+        public virtual System.Collections.Generic.IList<ApnSetting> ApnSettings { get; set; }
+
+        /// <summary>
+        /// Optional. Whether override APNs are disabled or enabled. See DevicePolicyManager.setOverrideApnsEnabled
+        /// (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#setOverrideApnsEnabled) for
+        /// more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrideApns")]
+        public virtual string OverrideApns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An Access Point Name (APN) configuration for a carrier data connection. The APN provides configuration to
+    /// connect a cellular network device to an IP data network. A carrier uses this setting to decide which IP address
+    /// to assign, any security methods to apply, and how the device might be connected to private networks.
+    /// </summary>
+    public class ApnSetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether User Plane resources have to be activated during every transition from CM-IDLE mode to
+        /// CM-CONNECTED state for this APN. See 3GPP TS 23.501 section 5.6.13.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alwaysOnSetting")]
+        public virtual string AlwaysOnSetting { get; set; }
+
+        /// <summary>Required. Name of the APN. Policy will be rejected if this field is empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apn")]
+        public virtual string Apn { get; set; }
+
+        /// <summary>
+        /// Required. Usage categories for the APN. Policy will be rejected if this field is empty or contains
+        /// APN_TYPE_UNSPECIFIED or duplicates. Multiple APN types can be set on fully managed devices. ENTERPRISE is
+        /// the only allowed APN type on work profiles. A nonComplianceDetail with MANAGEMENT_MODE is reported for any
+        /// other value on work profiles. APN types that are not supported on the device or management mode will be
+        /// ignored. If this results in the empty list, the APN setting will be ignored, because apnTypes is a required
+        /// field. A nonComplianceDetail with INVALID_VALUE is reported if none of the APN types are supported on the
+        /// device or management mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apnTypes")]
+        public virtual System.Collections.Generic.IList<string> ApnTypes { get; set; }
+
+        /// <summary>Optional. Authentication type of the APN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authType")]
+        public virtual string AuthType { get; set; }
+
+        /// <summary>
+        /// Optional. Carrier ID for the APN. A value of 0 (default) means not set and negative values are rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierId")]
+        public virtual System.Nullable<int> CarrierId { get; set; }
+
+        /// <summary>
+        /// Required. Human-readable name that describes the APN. Policy will be rejected if this field is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. MMS (Multimedia Messaging Service) proxy address of the APN which can be an IP address or hostname
+        /// (not a URL).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mmsProxyAddress")]
+        public virtual string MmsProxyAddress { get; set; }
+
+        /// <summary>
+        /// Optional. MMS (Multimedia Messaging Service) proxy port of the APN. A value of 0 (default) means not set and
+        /// negative values are rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mmsProxyPort")]
+        public virtual System.Nullable<int> MmsProxyPort { get; set; }
+
+        /// <summary>Optional. MMSC (Multimedia Messaging Service Center) URI of the APN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mmsc")]
+        public virtual string Mmsc { get; set; }
+
+        /// <summary>
+        /// Optional. The default MTU (Maximum Transmission Unit) size in bytes of the IPv4 routes brought up by this
+        /// APN setting. A value of 0 (default) means not set and negative values are rejected. Supported on Android 13
+        /// and above. A nonComplianceDetail with API_LEVEL is reported if the Android version is less than 13.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mtuV4")]
+        public virtual System.Nullable<int> MtuV4 { get; set; }
+
+        /// <summary>
+        /// Optional. The MTU (Maximum Transmission Unit) size of the IPv6 mobile interface to which the APN connected.
+        /// A value of 0 (default) means not set and negative values are rejected. Supported on Android 13 and above. A
+        /// nonComplianceDetail with API_LEVEL is reported if the Android version is less than 13.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mtuV6")]
+        public virtual System.Nullable<int> MtuV6 { get; set; }
+
+        /// <summary>Optional. MVNO match type for the APN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mvnoType")]
+        public virtual string MvnoType { get; set; }
+
+        /// <summary>
+        /// Optional. Radio technologies (network types) the APN may use. Policy will be rejected if this field contains
+        /// NETWORK_TYPE_UNSPECIFIED or duplicates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTypes")]
+        public virtual System.Collections.Generic.IList<string> NetworkTypes { get; set; }
+
+        /// <summary>
+        /// Optional. The numeric operator ID of the APN. Numeric operator ID is defined as MCC (Mobile Country Code) +
+        /// MNC (Mobile Network Code).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numericOperatorId")]
+        public virtual string NumericOperatorId { get; set; }
+
+        /// <summary>Optional. APN password of the APN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>Optional. The protocol to use to connect to this APN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
+
+        /// <summary>Optional. The proxy address of the APN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyAddress")]
+        public virtual string ProxyAddress { get; set; }
+
+        /// <summary>
+        /// Optional. The proxy port of the APN. A value of 0 (default) means not set and negative values are rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyPort")]
+        public virtual System.Nullable<int> ProxyPort { get; set; }
+
+        /// <summary>Optional. The protocol to use to connect to this APN while the device is roaming.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roamingProtocol")]
+        public virtual string RoamingProtocol { get; set; }
+
+        /// <summary>Optional. APN username of the APN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Information about a process. It contains process name, start time, app Uid, app Pid, seinfo tag, hash of the
     /// base APK.
     /// </summary>
@@ -3306,6 +3466,16 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionGrants")]
         public virtual System.Collections.Generic.IList<PermissionGrant> PermissionGrants { get; set; }
+
+        /// <summary>
+        /// Optional. ID of the preferential network the application uses. There must be a configuration for the
+        /// specified network ID in preferentialNetworkServiceConfigs. If set to PREFERENTIAL_NETWORK_ID_UNSPECIFIED,
+        /// the application will use the default network ID specified in defaultPreferentialNetworkId. See the
+        /// documentation of defaultPreferentialNetworkId for the list of apps excluded from this defaulting. This
+        /// applies on both work profiles and fully managed devices on Android 13 and above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferentialNetworkId")]
+        public virtual string PreferentialNetworkId { get; set; }
 
         /// <summary>
         /// Optional. Specifies whether user control is permitted for the app. User control includes user actions like
@@ -4376,6 +4546,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// </summary>
     public class DeviceConnectivityManagement : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Access Point Name (APN) policy. Configuration for Access Point Names (APNs) which may override any
+        /// other APNs on the device. See OVERRIDE_APNS_ENABLED and overrideApns for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apnPolicy")]
+        public virtual ApnPolicy ApnPolicy { get; set; }
+
         /// <summary>Optional. Controls whether Bluetooth sharing is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bluetoothSharing")]
         public virtual string BluetoothSharing { get; set; }
@@ -4386,6 +4563,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configureWifi")]
         public virtual string ConfigureWifi { get; set; }
+
+        /// <summary>
+        /// Optional. Preferential network service configuration. Setting this field will override
+        /// preferentialNetworkService. This can be set on both work profiles and fully managed devices on Android 13
+        /// and above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferentialNetworkServiceSettings")]
+        public virtual PreferentialNetworkServiceSettings PreferentialNetworkServiceSettings { get; set; }
 
         /// <summary>
         /// Controls tethering settings. Based on the value set, the user is partially or fully disallowed from using
@@ -6639,6 +6824,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ensureVerifyAppsEnabled")]
         public virtual System.Nullable<bool> EnsureVerifyAppsEnabled { get; set; }
 
+        /// <summary>
+        /// Optional. Controls whether the enterpriseDisplayName is visible on the device (e.g. lock screen message on
+        /// company-owned devices).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterpriseDisplayNameVisibility")]
+        public virtual string EnterpriseDisplayNameVisibility { get; set; }
+
         /// <summary>Whether factory resetting from settings is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("factoryResetDisabled")]
         public virtual System.Nullable<bool> FactoryResetDisabled { get; set; }
@@ -6826,10 +7018,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Collections.Generic.IList<PolicyEnforcementRule> PolicyEnforcementRules { get; set; }
 
         /// <summary>
-        /// Controls whether preferential network service is enabled on the work profile. For example, an organization
-        /// may have an agreement with a carrier that all of the work data from its employees' devices will be sent via
-        /// a network service dedicated for enterprise use. An example of a supported preferential network service is
-        /// the enterprise slice on 5G networks. This has no effect on fully managed devices.
+        /// Controls whether preferential network service is enabled on the work profile or on fully managed devices.
+        /// For example, an organization may have an agreement with a carrier that all of the work data from its
+        /// employees' devices will be sent via a network service dedicated for enterprise use. An example of a
+        /// supported preferential network service is the enterprise slice on 5G networks. This policy has no effect if
+        /// preferentialNetworkServiceSettings or ApplicationPolicy.preferentialNetworkId is set on devices running
+        /// Android 13 or above.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferentialNetworkService")]
         public virtual string PreferentialNetworkService { get; set; }
@@ -7101,6 +7295,70 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Event type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Individual preferential network service configuration.</summary>
+    public class PreferentialNetworkServiceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether fallback to the device-wide default network is allowed. If this is set to
+        /// FALLBACK_TO_DEFAULT_CONNECTION_ALLOWED, then nonMatchingNetworks must not be set to
+        /// NON_MATCHING_NETWORKS_DISALLOWED, the policy will be rejected otherwise. Note: If this is set to
+        /// FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED, applications are not able to access the internet if the 5G slice
+        /// is not available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fallbackToDefaultConnection")]
+        public virtual string FallbackToDefaultConnection { get; set; }
+
+        /// <summary>
+        /// Optional. Whether apps this configuration applies to are blocked from using networks other than the
+        /// preferential service. If this is set to NON_MATCHING_NETWORKS_DISALLOWED, then fallbackToDefaultConnection
+        /// must be set to FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonMatchingNetworks")]
+        public virtual string NonMatchingNetworks { get; set; }
+
+        /// <summary>
+        /// Required. Preferential network identifier. This must not be set to NO_PREFERENTIAL_NETWORK or
+        /// PREFERENTIAL_NETWORK_ID_UNSPECIFIED, the policy will be rejected otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferentialNetworkId")]
+        public virtual string PreferentialNetworkId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Preferential network service settings.</summary>
+    public class PreferentialNetworkServiceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Default preferential network ID for the applications that are not in applications or if
+        /// ApplicationPolicy.preferentialNetworkId is set to PREFERENTIAL_NETWORK_ID_UNSPECIFIED. There must be a
+        /// configuration for the specified network ID in preferentialNetworkServiceConfigs, unless this is set to
+        /// NO_PREFERENTIAL_NETWORK. If set to PREFERENTIAL_NETWORK_ID_UNSPECIFIED or unset, this defaults to
+        /// NO_PREFERENTIAL_NETWORK. Note: If the default preferential network is misconfigured, applications with no
+        /// ApplicationPolicy.preferentialNetworkId set are not able to access the internet. This setting does not apply
+        /// to the following critical apps: com.google.android.apps.work.clouddpc
+        /// com.google.android.gmsApplicationPolicy.preferentialNetworkId can still be used to configure the
+        /// preferential network for them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultPreferentialNetworkId")]
+        public virtual string DefaultPreferentialNetworkId { get; set; }
+
+        /// <summary>
+        /// Required. Preferential network service configurations which enables having multiple enterprise slices. There
+        /// must not be multiple configurations with the same preferentialNetworkId. If a configuration is not
+        /// referenced by any application by setting ApplicationPolicy.preferentialNetworkId or by setting
+        /// defaultPreferentialNetworkId, it will be ignored. For devices on 4G networks, enterprise APN needs to be
+        /// configured additionally to set up data call for preferential network service. These APNs can be added using
+        /// apnPolicy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferentialNetworkServiceConfigs")]
+        public virtual System.Collections.Generic.IList<PreferentialNetworkServiceConfig> PreferentialNetworkServiceConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
