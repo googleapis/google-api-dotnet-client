@@ -5326,7 +5326,7 @@ namespace Google.Apis.Adsense.v2.Data
     /// </summary>
     public class PolicyTopic : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Deprecated. Policy topics no longer have a "must-fix" classification.</summary>
+        /// <summary>Required. Deprecated. Always set to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mustFix")]
         public virtual System.Nullable<bool> MustFix { get; set; }
 
