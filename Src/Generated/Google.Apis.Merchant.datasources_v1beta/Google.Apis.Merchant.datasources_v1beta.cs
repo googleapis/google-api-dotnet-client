@@ -362,7 +362,10 @@ namespace Google.Apis.Merchant.datasources_v1beta
                 }
             }
 
-            /// <summary>Creates the new data source configuration for the given account.</summary>
+            /// <summary>
+            /// Creates the new data source configuration for the given account. This method always creates a new data
+            /// source.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The account where this data source will be created. Format: `accounts/{account}`
@@ -372,7 +375,10 @@ namespace Google.Apis.Merchant.datasources_v1beta
                 return new CreateRequest(this.service, body, parent);
             }
 
-            /// <summary>Creates the new data source configuration for the given account.</summary>
+            /// <summary>
+            /// Creates the new data source configuration for the given account. This method always creates a new data
+            /// source.
+            /// </summary>
             public class CreateRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.datasources_v1beta.Data.DataSource>
             {
                 /// <summary>Constructs a new Create request.</summary>
