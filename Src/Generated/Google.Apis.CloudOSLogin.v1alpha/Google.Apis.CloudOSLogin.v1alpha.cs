@@ -1223,7 +1223,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha.Data
     {
         /// <summary>
         /// The App Engine instance to sign the SSH public key for. Expected format:
-        /// services/{service}/versions/{version}/instances/{instance}
+        /// apps/{app}/services/{service}/versions/{version}/instances/{instance}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineInstance")]
         public virtual string AppEngineInstance { get; set; }
