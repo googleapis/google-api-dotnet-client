@@ -6351,6 +6351,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tempStoragePrefix")]
         public virtual string TempStoragePrefix { get; set; }
 
+        /// <summary>Optional. True when any worker pool that uses public IPs is present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usePublicIps")]
+        public virtual System.Nullable<bool> UsePublicIps { get; set; }
+
         /// <summary>Output only. Whether the job uses the Streaming Engine resource-based billing model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useStreamingEngineResourceBasedBilling")]
         public virtual System.Nullable<bool> UseStreamingEngineResourceBasedBilling { get; set; }
