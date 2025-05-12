@@ -2412,6 +2412,13 @@ namespace Google.Apis.OracleDatabase.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. An expression for filtering the results of the request. Only the shape and gi_version
+                    /// fields are supported in this format: `shape="{shape}"`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// Optional. The maximum number of items to return. If unspecified, a maximum of 50 Oracle Grid
                     /// Infrastructure (GI) versions will be returned. The maximum value is 1000; values above 1000 will
                     /// be reset to 1000.
@@ -2443,6 +2450,14 @@ namespace Google.Apis.OracleDatabase.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -2928,7 +2943,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adminPassword")]
         public virtual string AdminPassword { get; set; }
 
-        /// <summary>Optional. The subnet CIDR range for the Autonmous Database.</summary>
+        /// <summary>Optional. The subnet CIDR range for the Autonomous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidr")]
         public virtual string Cidr { get; set; }
 
@@ -5500,7 +5515,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The source configuration for the standby Autonomnous Database.</summary>
+    /// <summary>The source configuration for the standby Autonomous Database.</summary>
     public class SourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
