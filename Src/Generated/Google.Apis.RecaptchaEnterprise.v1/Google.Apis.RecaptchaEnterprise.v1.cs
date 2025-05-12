@@ -2471,6 +2471,12 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cardTestingVerdict")]
         public virtual GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict CardTestingVerdict { get; set; }
 
+        /// <summary>
+        /// Output only. Reasons why the transaction is probably fraudulent and received a high transaction risk score.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("riskReasons")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason> RiskReasons { get; set; }
+
         /// <summary>Output only. Assessment of this transaction for risk of a stolen instrument.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stolenInstrumentVerdict")]
         public virtual GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict StolenInstrumentVerdict { get; set; }
@@ -2512,6 +2518,17 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("risk")]
         public virtual System.Nullable<float> Risk { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Risk reasons applicable to the Fraud Prevention assessment.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Risk reasons applicable to the Fraud Prevention assessment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
