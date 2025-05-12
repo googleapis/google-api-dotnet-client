@@ -316,6 +316,7 @@ namespace Google.Apis.Connectors.v1
                 {
                     this.service = service;
                     ConnectionSchemaMetadata = new ConnectionSchemaMetadataResource(service);
+                    EndUserAuthentications = new EndUserAuthenticationsResource(service);
                     EventSubscriptions = new EventSubscriptionsResource(service);
                     RuntimeActionSchemas = new RuntimeActionSchemasResource(service);
                     RuntimeEntitySchemas = new RuntimeEntitySchemasResource(service);
@@ -746,6 +747,406 @@ namespace Google.Apis.Connectors.v1
                     }
                 }
 
+                /// <summary>Gets the EndUserAuthentications resource.</summary>
+                public virtual EndUserAuthenticationsResource EndUserAuthentications { get; }
+
+                /// <summary>The "endUserAuthentications" collection of methods.</summary>
+                public class EndUserAuthenticationsResource
+                {
+                    private const string Resource = "endUserAuthentications";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public EndUserAuthenticationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Creates a new EndUserAuthentication in a given project,location and connection.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. Parent resource of the EndUserAuthentication, of the form:
+                    /// `projects/*/locations/*/connections/*`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Connectors.v1.Data.EndUserAuthentication body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a new EndUserAuthentication in a given project,location and connection.
+                    /// </summary>
+                    public class CreateRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.EndUserAuthentication body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Parent resource of the EndUserAuthentication, of the form:
+                        /// `projects/*/locations/*/connections/*`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifier to assign to the EndUserAuthentication. Must be unique within scope of
+                        /// the parent resource.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("endUserAuthenticationId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string EndUserAuthenticationId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Connectors.v1.Data.EndUserAuthentication Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/endUserAuthentications";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                            });
+                            RequestParameters.Add("endUserAuthenticationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "endUserAuthenticationId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a single EndUserAuthentication.</summary>
+                    /// <param name="name">
+                    /// Required. Resource name of the form:
+                    /// `projects/*/locations/*/connections/*/endUserAuthentication/*`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a single EndUserAuthentication.</summary>
+                    public class DeleteRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the form:
+                        /// `projects/*/locations/*/connections/*/endUserAuthentication/*`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/endUserAuthentications/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a single EndUserAuthentication.</summary>
+                    /// <param name="name">
+                    /// Required. Resource name of the form:
+                    /// `projects/*/locations/*/connections/*/EndUserAuthentications/*`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets details of a single EndUserAuthentication.</summary>
+                    public class GetRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.EndUserAuthentication>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the form:
+                        /// `projects/*/locations/*/connections/*/EndUserAuthentications/*`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. View of the EndUserAuthentication to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>Optional. View of the EndUserAuthentication to return.</summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>END_USER_AUTHENTICATION_UNSPECIFIED.</summary>
+                            [Google.Apis.Util.StringValueAttribute("END_USER_AUTHENTICATION_VIEW_UNSPECIFIED")]
+                            ENDUSERAUTHENTICATIONVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Do not include secret fields.</summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC_VIEW")]
+                            BASICVIEW = 1,
+
+                            /// <summary>Include secret fields.</summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL_VIEW")]
+                            FULLVIEW = 2,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/endUserAuthentications/[^/]+$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>List EndUserAuthentications in a given project,location and connection.</summary>
+                    /// <param name="parent">
+                    /// Required. Parent resource of the EndUserAuthentication, of the form:
+                    /// `projects/*/locations/*/connections/*`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>List EndUserAuthentications in a given project,location and connection.</summary>
+                    public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.ListEndUserAuthenticationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Parent resource of the EndUserAuthentication, of the form:
+                        /// `projects/*/locations/*/connections/*`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Order by parameters.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>Page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/endUserAuthentications";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the parameters of a single EndUserAuthentication.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Identifier. Resource name of the EndUserAuthentication. Format:
+                    /// projects/{project}/locations/{location}/connections/{connection}/endUserAuthentications/{end_user_authentication}
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Connectors.v1.Data.EndUserAuthentication body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates the parameters of a single EndUserAuthentication.</summary>
+                    public class PatchRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.EndUserAuthentication body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Identifier. Resource name of the EndUserAuthentication. Format:
+                        /// projects/{project}/locations/{location}/connections/{connection}/endUserAuthentications/{end_user_authentication}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Required. The list of fields to update. A field will be overwritten if it is in the mask.
+                        /// You can modify only the fields listed below. To update the EndUserAuthentication details: *
+                        /// `notify_endpoint_destination`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Connectors.v1.Data.EndUserAuthentication Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/endUserAuthentications/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
                 /// <summary>Gets the EventSubscriptions resource.</summary>
                 public virtual EventSubscriptionsResource EventSubscriptions { get; }
 
@@ -1039,7 +1440,7 @@ namespace Google.Apis.Connectors.v1
                     /// <summary>Updates the parameters of a single EventSubscription.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Required. Resource name of the EventSubscription. Format:
+                    /// Required. Identifier. Resource name of the EventSubscription. Format:
                     /// projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Connectors.v1.Data.EventSubscription body, string name)
@@ -1059,7 +1460,7 @@ namespace Google.Apis.Connectors.v1
                         }
 
                         /// <summary>
-                        /// Required. Resource name of the EventSubscription. Format:
+                        /// Required. Identifier. Resource name of the EventSubscription. Format:
                         /// projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1945,11 +2346,13 @@ namespace Google.Apis.Connectors.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. You can modify only the fields listed below. To lock/unlock a connection: *
-                    /// `lock_config` To suspend/resume a connection: * `suspended` To update the connection details: *
-                    /// `description` * `labels` * `connector_version` * `config_variables` * `auth_config` *
-                    /// `destination_configs` * `node_config` * `log_config` * `ssl_config` * `eventing_enablement_type`
-                    /// * `eventing_config` * `auth_override_enabled`
+                    /// Required. The list of fields to update. Fields are specified relative to the connection. A field
+                    /// will be overwritten if it is in the mask. The field mask must not be empty, and it must not
+                    /// contain fields that are immutable or only set by the server. You can modify only the fields
+                    /// listed below. To lock/unlock a connection: * `lock_config` To suspend/resume a connection: *
+                    /// `suspended` To update the connection details: * `description` * `labels` * `connector_version` *
+                    /// `config_variables` * `auth_config` * `destination_configs` * `node_config` * `log_config` *
+                    /// `ssl_config` * `eventing_enablement_type` * `eventing_config` * `auth_override_enabled`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -4729,6 +5132,32 @@ namespace Google.Apis.Connectors.v1
                             public virtual string Name { get; private set; }
 
                             /// <summary>
+                            /// Optional. Enum to control whether schema enrichment related fields should be included in
+                            /// the response.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("schemaView", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<SchemaViewEnum> SchemaView { get; set; }
+
+                            /// <summary>
+                            /// Optional. Enum to control whether schema enrichment related fields should be included in
+                            /// the response.
+                            /// </summary>
+                            public enum SchemaViewEnum
+                            {
+                                /// <summary>VIEW_UNSPECIFIED. The unset value. Defaults to BASIC View.</summary>
+                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_SCHEMA_VIEW_UNSPECIFIED")]
+                                CONNECTORVERSIONSCHEMAVIEWUNSPECIFIED = 0,
+
+                                /// <summary>Return basic connector version schema.</summary>
+                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_SCHEMA_VIEW_BASIC")]
+                                CONNECTORVERSIONSCHEMAVIEWBASIC = 1,
+
+                                /// <summary>Return enriched connector version schema.</summary>
+                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_SCHEMA_VIEW_ENRICHED")]
+                                CONNECTORVERSIONSCHEMAVIEWENRICHED = 2,
+                            }
+
+                            /// <summary>
                             /// Specifies which fields of the ConnectorVersion are returned in the response. Defaults to
                             /// `CUSTOMER` view.
                             /// </summary>
@@ -4774,6 +5203,14 @@ namespace Google.Apis.Connectors.v1
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/providers/[^/]+/connectors/[^/]+/versions/[^/]+$",
+                                });
+                                RequestParameters.Add("schemaView", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "schemaView",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                                 RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
                                 {
@@ -4822,6 +5259,32 @@ namespace Google.Apis.Connectors.v1
                             /// <summary>Page token.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
+
+                            /// <summary>
+                            /// Optional. Enum to control whether schema enrichment related fields should be included in
+                            /// the response.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("schemaView", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<SchemaViewEnum> SchemaView { get; set; }
+
+                            /// <summary>
+                            /// Optional. Enum to control whether schema enrichment related fields should be included in
+                            /// the response.
+                            /// </summary>
+                            public enum SchemaViewEnum
+                            {
+                                /// <summary>VIEW_UNSPECIFIED. The unset value. Defaults to BASIC View.</summary>
+                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_SCHEMA_VIEW_UNSPECIFIED")]
+                                CONNECTORVERSIONSCHEMAVIEWUNSPECIFIED = 0,
+
+                                /// <summary>Return basic connector version schema.</summary>
+                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_SCHEMA_VIEW_BASIC")]
+                                CONNECTORVERSIONSCHEMAVIEWBASIC = 1,
+
+                                /// <summary>Return enriched connector version schema.</summary>
+                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_SCHEMA_VIEW_ENRICHED")]
+                                CONNECTORVERSIONSCHEMAVIEWENRICHED = 2,
+                            }
 
                             /// <summary>
                             /// Specifies which fields of the ConnectorVersion are returned in the response. Defaults to
@@ -4881,6 +5344,14 @@ namespace Google.Apis.Connectors.v1
                                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("schemaView", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "schemaView",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -5760,15 +6231,15 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>AuthConfig defines details of a authentication type.</summary>
     public class AuthConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List containing additional auth configs.</summary>
+        /// <summary>Optional. List containing additional auth configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalVariables")]
         public virtual System.Collections.Generic.IList<ConfigVariable> AdditionalVariables { get; set; }
 
-        /// <summary>Identifier key for auth config</summary>
+        /// <summary>Optional. Identifier key for auth config</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authKey")]
         public virtual string AuthKey { get; set; }
 
-        /// <summary>The type of authentication configured.</summary>
+        /// <summary>Optional. The type of authentication configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authType")]
         public virtual string AuthType { get; set; }
 
@@ -6077,7 +6548,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
         public virtual System.Nullable<long> IntValue { get; set; }
 
-        /// <summary>Key of the config variable.</summary>
+        /// <summary>Optional. Key of the config variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
@@ -6280,6 +6751,14 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("envoyImageLocation")]
         public virtual string EnvoyImageLocation { get; set; }
 
+        /// <summary>
+        /// Optional. Additional Oauth2.0 Auth config for EUA. If the connection is configured using non-OAuth
+        /// authentication but OAuth needs to be used for EUA, this field can be populated with the OAuth config. This
+        /// should be a OAuth2AuthCodeFlow Auth type only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("euaOauthAuthConfig")]
+        public virtual AuthConfig EuaOauthAuthConfig { get; set; }
+
         /// <summary>Optional. Eventing config of a connection</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventingConfig")]
         public virtual EventingConfig EventingConfig { get; set; }
@@ -6291,6 +6770,14 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. Eventing Runtime Data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventingRuntimeData")]
         public virtual EventingRuntimeData EventingRuntimeData { get; set; }
+
+        /// <summary>
+        /// Optional. Fallback on admin credentials for the connection. If this both auth_override_enabled and
+        /// fallback_on_admin_credentials are set to true, the connection will use the admin credentials if the dynamic
+        /// auth header is not present during auth override.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fallbackOnAdminCredentials")]
+        public virtual System.Nullable<bool> FallbackOnAdminCredentials { get; set; }
 
         /// <summary>Output only. The name of the Hostname of the Service Directory service with TLS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
@@ -6719,6 +7206,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("migrateTls")]
         public virtual System.Nullable<bool> MigrateTls { get; set; }
 
+        /// <summary>Indicate whether connector is being migrated to use direct VPC egress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkEgressMode")]
+        public virtual string NetworkEgressMode { get; set; }
+
         /// <summary>Indicate whether cloud spanner is required for connector job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisionCloudSpanner")]
         public virtual System.Nullable<bool> ProvisionCloudSpanner { get; set; }
@@ -6845,6 +7336,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. The priority entity types for the connector version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priorityEntityTypes")]
+        public virtual System.Collections.Generic.IList<PriorityEntityType> PriorityEntityTypes { get; set; }
 
         /// <summary>Output only. ReleaseVersion of the connector, for example: "1.0.1-alpha".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseVersion")]
@@ -6982,7 +7477,7 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Log configuration for the connection.</summary>
     public class ConnectorsLogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Enabled represents whether logging is enabled or not for a connection.</summary>
+        /// <summary>Optional. Enabled represents whether logging is enabled or not for a connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
@@ -7477,6 +7972,24 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>EUASecret provides a reference to entries in Secret Manager.</summary>
+    public class EUASecret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The plain string value of the secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretValue")]
+        public virtual string SecretValue { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of the secret version in the format, format as:
+        /// `projects/*/secrets/*/versions/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVersion")]
+        public virtual string SecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Egress control config for connector runtime. These configurations define the rules to identify which outbound
     /// domains/hosts needs to be whitelisted. It may be a static information for a particular connector version or it
@@ -7532,7 +8045,7 @@ namespace Google.Apis.Connectors.v1.Data
     public class EncryptionKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The [KMS key name] with which the content of the Operation is encrypted. The expected format:
+        /// Optional. The [KMS key name] with which the content of the Operation is encrypted. The expected format:
         /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
@@ -7549,13 +8062,438 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Endpoint message includes details of the Destination endpoint.</summary>
     public class EndPoint : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URI of the Endpoint.</summary>
+        /// <summary>Optional. The URI of the Endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointUri")]
         public virtual string EndpointUri { get; set; }
 
-        /// <summary>List of Header to be added to the Endpoint.</summary>
+        /// <summary>Optional. List of Header to be added to the Endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IList<Header> Headers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AuthConfig defines details of a authentication type.</summary>
+    public class EndUserAuthentication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Config variables for the EndUserAuthentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configVariables")]
+        public virtual System.Collections.Generic.IList<EndUserAuthenticationConfigVariable> ConfigVariables { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Created time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Destination configs for the EndUserAuthentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationConfigs")]
+        public virtual System.Collections.Generic.IList<DestinationConfig> DestinationConfigs { get; set; }
+
+        /// <summary>Optional. The EndUserAuthenticationConfig for the EndUserAuthentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endUserAuthenticationConfig")]
+        public virtual EndUserAuthenticationConfig EndUserAuthenticationConfig { get; set; }
+
+        /// <summary>Optional. Labels for the EndUserAuthentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. Identifier. Resource name of the EndUserAuthentication. Format:
+        /// projects/{project}/locations/{location}/connections/{connection}/endUserAuthentications/{end_user_authentication}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The destination to hit when we receive an event</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifyEndpointDestination")]
+        public virtual EndUserAuthenticationNotifyEndpointDestination NotifyEndpointDestination { get; set; }
+
+        /// <summary>Optional. Roles for the EndUserAuthentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roles")]
+        public virtual System.Collections.Generic.IList<string> Roles { get; set; }
+
+        /// <summary>Optional. Status of the EndUserAuthentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual EndUserAuthenticationEndUserAuthenticationStatus Status { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Updated time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The user id of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>EndUserAuthenticationConfig defines details of a authentication configuration for EUC</summary>
+    public class EndUserAuthenticationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List containing additional auth configs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalVariables")]
+        public virtual System.Collections.Generic.IList<EndUserAuthenticationConfigVariable> AdditionalVariables { get; set; }
+
+        /// <summary>Identifier key for auth config</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authKey")]
+        public virtual string AuthKey { get; set; }
+
+        /// <summary>The type of authentication configured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authType")]
+        public virtual string AuthType { get; set; }
+
+        /// <summary>Oauth2AuthCodeFlow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2AuthCodeFlow")]
+        public virtual EndUserAuthenticationConfigOauth2AuthCodeFlow Oauth2AuthCodeFlow { get; set; }
+
+        /// <summary>Oauth2AuthCodeFlowGoogleManaged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2AuthCodeFlowGoogleManaged")]
+        public virtual EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged Oauth2AuthCodeFlowGoogleManaged { get; set; }
+
+        /// <summary>Oauth2ClientCredentials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientCredentials")]
+        public virtual EndUserAuthenticationConfigOauth2ClientCredentials Oauth2ClientCredentials { get; set; }
+
+        /// <summary>Oauth2JwtBearer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2JwtBearer")]
+        public virtual EndUserAuthenticationConfigOauth2JwtBearer Oauth2JwtBearer { get; set; }
+
+        /// <summary>SSH Public Key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshPublicKey")]
+        public virtual EndUserAuthenticationConfigSshPublicKey SshPublicKey { get; set; }
+
+        /// <summary>UserPassword.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPassword")]
+        public virtual EndUserAuthenticationConfigUserPassword UserPassword { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Parameters to support Oauth 2.0 Auth Code Grant Authentication. See
+    /// https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+    /// </summary>
+    public class EndUserAuthenticationConfigOauth2AuthCodeFlow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Authorization code to be exchanged for access and refresh tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authCode")]
+        public virtual string AuthCode { get; set; }
+
+        /// <summary>Optional. Auth URL for Authorization Code Flow</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authUri")]
+        public virtual string AuthUri { get; set; }
+
+        /// <summary>Optional. Client ID for user-provided OAuth app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Optional. Client secret for user-provided OAuth app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual EUASecret ClientSecret { get; set; }
+
+        /// <summary>Optional. Whether to enable PKCE when the user performs the auth code flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePkce")]
+        public virtual System.Nullable<bool> EnablePkce { get; set; }
+
+        /// <summary>Optional. Auth Code Data</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthTokenData")]
+        public virtual OAuthTokenData OauthTokenData { get; set; }
+
+        /// <summary>Optional. PKCE verifier to be used during the auth code exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pkceVerifier")]
+        public virtual string PkceVerifier { get; set; }
+
+        /// <summary>Optional. Redirect URI to be provided during the auth code exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
+        public virtual string RedirectUri { get; set; }
+
+        /// <summary>Optional. Scopes the connection will request when the user performs the auth code flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google Provided OAuth Client. See
+    /// https://tools.ietf.org/html/rfc6749#section-1.3.1 for more details.
+    /// </summary>
+    public class EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Authorization code to be exchanged for access and refresh tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authCode")]
+        public virtual string AuthCode { get; set; }
+
+        /// <summary>Auth Code Data</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthTokenData")]
+        public virtual OAuthTokenData OauthTokenData { get; set; }
+
+        /// <summary>Optional. Redirect URI to be provided during the auth code exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
+        public virtual string RedirectUri { get; set; }
+
+        /// <summary>Required. Scopes the connection will request when the user performs the auth code flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See
+    /// https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
+    /// </summary>
+    public class EndUserAuthenticationConfigOauth2ClientCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The client identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Required. string value or secret version containing the client secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual EUASecret ClientSecret { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Parameters to support JSON Web Token (JWT) Profile for Oauth 2.0 Authorization Grant based authentication. See
+    /// https://tools.ietf.org/html/rfc7523 for more details.
+    /// </summary>
+    public class EndUserAuthenticationConfigOauth2JwtBearer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. secret version/value reference containing a PKCS#8 PEM-encoded private key associated with the
+        /// Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
+        /// Specified in the form as: `projects/*/strings/*/versions/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
+        public virtual EUASecret ClientKey { get; set; }
+
+        /// <summary>JwtClaims providers fields to generate the token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jwtClaims")]
+        public virtual EndUserAuthenticationConfigOauth2JwtBearerJwtClaims JwtClaims { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>JWT claims used for the jwt-bearer authorization grant.</summary>
+    public class EndUserAuthenticationConfigOauth2JwtBearerJwtClaims : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value for the "aud" claim.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual string Audience { get; set; }
+
+        /// <summary>Value for the "iss" claim.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
+        public virtual string Issuer { get; set; }
+
+        /// <summary>Value for the "sub" claim.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual string Subject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters to support Ssh public key Authentication.</summary>
+    public class EndUserAuthenticationConfigSshPublicKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Format of SSH Client cert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certType")]
+        public virtual string CertType { get; set; }
+
+        /// <summary>Required. SSH Client Cert. It should contain both public and private key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshClientCert")]
+        public virtual EUASecret SshClientCert { get; set; }
+
+        /// <summary>Required. Password (passphrase) for ssh client certificate if it has one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshClientCertPass")]
+        public virtual EUASecret SshClientCertPass { get; set; }
+
+        /// <summary>The user account used to authenticate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters to support Username and Password Authentication.</summary>
+    public class EndUserAuthenticationConfigUserPassword : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. string value or secret version reference containing the password.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual EUASecret Password { get; set; }
+
+        /// <summary>Username.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// EndUserAuthenticationConfigVariable represents a configuration variable present in a EndUserAuthentication.
+    /// </summary>
+    public class EndUserAuthenticationConfigVariable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value is a bool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>Value is an integer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
+        public virtual System.Nullable<long> IntValue { get; set; }
+
+        /// <summary>Required. Key of the config variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Value is a secret</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretValue")]
+        public virtual EUASecret SecretValue { get; set; }
+
+        /// <summary>Value is a string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>EndUserAuthentication Status denotes the status of the EndUserAuthentication resource.</summary>
+    public class EndUserAuthenticationEndUserAuthenticationStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Description of the state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. State of Event Subscription resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for NotifyEndpointDestination Destination to hit when the refresh token is expired.</summary>
+    public class EndUserAuthenticationNotifyEndpointDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. OPTION 1: Hit an endpoint when the refresh token is expired.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual EndUserAuthenticationNotifyEndpointDestinationEndPoint Endpoint { get; set; }
+
+        /// <summary>Required. Service account needed for runtime plane to notify the backend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Required. type of the destination</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Endpoint message includes details of the Destination endpoint.</summary>
+    public class EndUserAuthenticationNotifyEndpointDestinationEndPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The URI of the Endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointUri")]
+        public virtual string EndpointUri { get; set; }
+
+        /// <summary>Optional. List of Header to be added to the Endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IList<EndUserAuthenticationNotifyEndpointDestinationEndPointHeader> Headers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Header details for a given header to be added to Endpoint.</summary>
+    public class EndUserAuthenticationNotifyEndpointDestinationEndPointHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Key of Header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Required. Value of Header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7761,7 +8699,7 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual JMS Jms { get; set; }
 
         /// <summary>
-        /// Required. Resource name of the EventSubscription. Format:
+        /// Required. Identifier. Resource name of the EventSubscription. Format:
         /// projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -7835,11 +8773,11 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pubsub")]
         public virtual PubSub Pubsub { get; set; }
 
-        /// <summary>Service account needed for runtime plane to trigger IP workflow.</summary>
+        /// <summary>Optional. Service account needed for runtime plane to trigger IP workflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
-        /// <summary>type of the destination</summary>
+        /// <summary>Optional. type of the destination</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -8363,11 +9301,11 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Header details for a given header to be added to Endpoint.</summary>
     public class Header : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Key of Header.</summary>
+        /// <summary>Optional. Key of Header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        /// <summary>Value of Header.</summary>
+        /// <summary>Optional. Value of Header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -8717,15 +9655,15 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>JWT claims used for the jwt-bearer authorization grant.</summary>
     public class JwtClaims : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Value for the "aud" claim.</summary>
+        /// <summary>Optional. Value for the "aud" claim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
         public virtual string Audience { get; set; }
 
-        /// <summary>Value for the "iss" claim.</summary>
+        /// <summary>Optional. Value for the "iss" claim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
         public virtual string Issuer { get; set; }
 
-        /// <summary>Value for the "sub" claim.</summary>
+        /// <summary>Optional. Value for the "sub" claim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subject")]
         public virtual string Subject { get; set; }
 
@@ -8830,6 +9768,25 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>A list of customConnectors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customConnectors")]
         public virtual System.Collections.Generic.IList<CustomConnector> CustomConnectors { get; set; }
+
+        /// <summary>Next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ConnectorsService.ListEndUserAuthentications</summary>
+    public class ListEndUserAuthenticationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Subscriptions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endUserAuthentications")]
+        public virtual System.Collections.Generic.IList<EndUserAuthentication> EndUserAuthentications { get; set; }
 
         /// <summary>Next page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -9062,11 +10019,11 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Determines whether or no a connection is locked. If locked, a reason must be specified.</summary>
     public class LockConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indicates whether or not the connection is locked.</summary>
+        /// <summary>Optional. Indicates whether or not the connection is locked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locked")]
         public virtual System.Nullable<bool> Locked { get; set; }
 
-        /// <summary>Describes why a connection is locked.</summary>
+        /// <summary>Optional. Describes why a connection is locked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
 
@@ -9586,11 +10543,11 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Node configuration for the connection.</summary>
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Maximum number of nodes in the runtime nodes.</summary>
+        /// <summary>Optional. Maximum number of nodes in the runtime nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxNodeCount")]
         public virtual System.Nullable<int> MaxNodeCount { get; set; }
 
-        /// <summary>Minimum number of nodes in the runtime nodes.</summary>
+        /// <summary>Optional. Minimum number of nodes in the runtime nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
         public virtual System.Nullable<int> MinNodeCount { get; set; }
 
@@ -9635,41 +10592,97 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>pass only at create and not update using updateMask Auth Code Data</summary>
+    public class OAuthTokenData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Access token for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
+        public virtual EUASecret AccessToken { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Optional. Timestamp when the access token was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Time in seconds when the access token expires.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiry")]
+        public virtual object Expiry { get; set; }
+
+        /// <summary>Optional. Refresh token for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshToken")]
+        public virtual EUASecret RefreshToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Parameters to support Oauth 2.0 Auth Code Grant Authentication. See
     /// https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
     /// </summary>
     public class Oauth2AuthCodeFlow : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Authorization code to be exchanged for access and refresh tokens.</summary>
+        /// <summary>Optional. Authorization code to be exchanged for access and refresh tokens.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authCode")]
         public virtual string AuthCode { get; set; }
 
-        /// <summary>Auth URL for Authorization Code Flow</summary>
+        /// <summary>Optional. Auth URL for Authorization Code Flow</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authUri")]
         public virtual string AuthUri { get; set; }
 
-        /// <summary>Client ID for user-provided OAuth app.</summary>
+        /// <summary>Optional. Client ID for user-provided OAuth app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>Client secret for user-provided OAuth app.</summary>
+        /// <summary>Optional. Client secret for user-provided OAuth app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual Secret ClientSecret { get; set; }
 
-        /// <summary>Whether to enable PKCE when the user performs the auth code flow.</summary>
+        /// <summary>Optional. Whether to enable PKCE when the user performs the auth code flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePkce")]
         public virtual System.Nullable<bool> EnablePkce { get; set; }
 
-        /// <summary>PKCE verifier to be used during the auth code exchange.</summary>
+        /// <summary>Optional. PKCE verifier to be used during the auth code exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pkceVerifier")]
         public virtual string PkceVerifier { get; set; }
 
-        /// <summary>Redirect URI to be provided during the auth code exchange.</summary>
+        /// <summary>Optional. Redirect URI to be provided during the auth code exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
         public virtual string RedirectUri { get; set; }
 
-        /// <summary>Scopes the connection will request when the user performs the auth code flow.</summary>
+        /// <summary>Optional. Scopes the connection will request when the user performs the auth code flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
@@ -9705,11 +10718,11 @@ namespace Google.Apis.Connectors.v1.Data
     /// </summary>
     public class Oauth2ClientCredentials : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The client identifier.</summary>
+        /// <summary>Optional. The client identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>Secret version reference containing the client secret.</summary>
+        /// <summary>Optional. Secret version reference containing the client secret.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual Secret ClientSecret { get; set; }
 
@@ -9724,14 +10737,14 @@ namespace Google.Apis.Connectors.v1.Data
     public class Oauth2JwtBearer : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
-        /// This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the
-        /// form as: `projects/*/secrets/*/versions/*`.
+        /// Optional. Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client
+        /// Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
+        /// Specified in the form as: `projects/*/secrets/*/versions/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
         public virtual Secret ClientKey { get; set; }
 
-        /// <summary>JwtClaims providers fields to generate the token.</summary>
+        /// <summary>Optional. JwtClaims providers fields to generate the token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jwtClaims")]
         public virtual JwtClaims JwtClaims { get; set; }
 
@@ -10103,6 +11116,29 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>PriorityEntityType represents an entity type with its associated priority and order.</summary>
+    public class PriorityEntityType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The description of the entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The order of the entity type within its priority group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("order")]
+        public virtual System.Nullable<int> Order { get; set; }
+
+        /// <summary>The priority of the entity type, such as P0, P1, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual string Priority { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Provider indicates the owner who provides the connectors.</summary>
@@ -10708,7 +11744,8 @@ namespace Google.Apis.Connectors.v1.Data
     public class Secret : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resource name of the secret version in the format, format as: `projects/*/secrets/*/versions/*`.
+        /// Optional. The resource name of the secret version in the format, format as:
+        /// `projects/*/secrets/*/versions/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretVersion")]
         public virtual string SecretVersion { get; set; }
@@ -10829,19 +11866,19 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Parameters to support Ssh public key Authentication.</summary>
     public class SshPublicKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Format of SSH Client cert.</summary>
+        /// <summary>Optional. Format of SSH Client cert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certType")]
         public virtual string CertType { get; set; }
 
-        /// <summary>SSH Client Cert. It should contain both public and private key.</summary>
+        /// <summary>Optional. SSH Client Cert. It should contain both public and private key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshClientCert")]
         public virtual Secret SshClientCert { get; set; }
 
-        /// <summary>Password (passphrase) for ssh client certificate if it has one.</summary>
+        /// <summary>Optional. Password (passphrase) for ssh client certificate if it has one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshClientCertPass")]
         public virtual Secret SshClientCertPass { get; set; }
 
-        /// <summary>The user account used to authenticate.</summary>
+        /// <summary>Optional. The user account used to authenticate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
 
@@ -11114,11 +12151,11 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Parameters to support Username and Password Authentication.</summary>
     public class UserPassword : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Secret version reference containing the password.</summary>
+        /// <summary>Optional. Secret version reference containing the password.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual Secret Password { get; set; }
 
-        /// <summary>Username.</summary>
+        /// <summary>Optional. Username.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
 

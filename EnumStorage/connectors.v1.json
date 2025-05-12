@@ -57,10 +57,20 @@
     "JSON_SCHEMA",
     "EUA_SCHEMA"
   ],
+  "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+ProvidersResource+ConnectorsResource+VersionsResource+GetRequest.SchemaViewEnum": [
+    "CONNECTOR_VERSION_SCHEMA_VIEW_UNSPECIFIED",
+    "CONNECTOR_VERSION_SCHEMA_VIEW_BASIC",
+    "CONNECTOR_VERSION_SCHEMA_VIEW_ENRICHED"
+  ],
   "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+ProvidersResource+ConnectorsResource+VersionsResource+GetRequest.ViewEnum": [
     "CONNECTOR_VERSION_VIEW_UNSPECIFIED",
     "CONNECTOR_VERSION_VIEW_BASIC",
     "CONNECTOR_VERSION_VIEW_FULL"
+  ],
+  "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+ProvidersResource+ConnectorsResource+VersionsResource+ListRequest.SchemaViewEnum": [
+    "CONNECTOR_VERSION_SCHEMA_VIEW_UNSPECIFIED",
+    "CONNECTOR_VERSION_SCHEMA_VIEW_BASIC",
+    "CONNECTOR_VERSION_SCHEMA_VIEW_ENRICHED"
   ],
   "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+ProvidersResource+ConnectorsResource+VersionsResource+ListRequest.ViewEnum": [
     "CONNECTOR_VERSION_VIEW_UNSPECIFIED",
