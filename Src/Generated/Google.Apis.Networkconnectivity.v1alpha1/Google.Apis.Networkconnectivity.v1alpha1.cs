@@ -2622,7 +2622,7 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
     public class AllocationOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Allocation strategy Not setting this field when the allocation is requested means an
+        /// Optional. Allocation strategy. Not setting this field when the allocation is requested means an
         /// implementation defined strategy is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allocationStrategy")]
