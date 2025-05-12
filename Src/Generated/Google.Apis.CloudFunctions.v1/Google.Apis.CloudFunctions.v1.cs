@@ -1652,6 +1652,14 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
         public virtual string Runtime { get; set; }
 
+        /// <summary>Output only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Secret environment variables configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretEnvironmentVariables")]
         public virtual System.Collections.Generic.IList<SecretEnvVar> SecretEnvironmentVariables { get; set; }
