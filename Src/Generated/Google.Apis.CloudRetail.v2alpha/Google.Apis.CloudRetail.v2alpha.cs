@@ -9476,14 +9476,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("refinedSearch")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaConversationalSearchResponseRefinedSearch> RefinedSearch { get; set; }
 
-        /// <summary>
-        /// This field is deprecated. Please find the refinded_query from search response when using
-        /// CONVERSATIONAL_FILTER_ONLY mode in ConversationalSearchResponse.refined_search instead. The rephrased query
-        /// based on the user's query and the conversation history. It can be used to fetch the relevant search results.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rephrasedQuery")]
-        public virtual string RephrasedQuery { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
