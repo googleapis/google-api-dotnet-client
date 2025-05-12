@@ -2054,7 +2054,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reviewsUri")]
         public virtual string ReviewsUri { get; set; }
 
-        /// <summary>A link to show reviews of this place on Google Maps.</summary>
+        /// <summary>A link to write a review for this place on Google Maps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeAReviewUri")]
         public virtual string WriteAReviewUri { get; set; }
 
@@ -2370,6 +2370,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>A link where users can flag a problem with the summary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flagContentUri")]
         public virtual string FlagContentUri { get; set; }
+
+        /// <summary>A link to show reviews of this place on Google Maps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewsUri")]
+        public virtual string ReviewsUri { get; set; }
 
         /// <summary>The summary of user reviews.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
