@@ -1963,7 +1963,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
     {
         /// <summary>
         /// Required. The URL that points to the file that stores the object list entries. This file must allow public
-        /// access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+        /// access. The URL is either an HTTP/HTTPS address (e.g. `https://example.com/urllist.tsv`) or a Cloud Storage
+        /// path (e.g. `gs://my-bucket/urllist.tsv`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listUrl")]
         public virtual string ListUrl { get; set; }
@@ -2153,8 +2154,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure,
     /// and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or
     /// metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3
-    /// objects, and the `Last-Modified` header of Azure blobs. Transfers with a PosixFilesystem source or destination
-    /// don't support `ObjectConditions`.
+    /// objects, and the `Last-Modified` header of Azure blobs. For S3 objects, the `LastModified` value is the time the
+    /// object begins uploading. If the object meets your "last modification time" criteria, but has not finished
+    /// uploading, the object is not transferred. See [Transfer from Amazon S3 to Cloud
+    /// Storage](https://cloud.google.com/storage-transfer/docs/create-transfers/agentless/s3#transfer_options) for more
+    /// information. Transfers with a PosixFilesystem source or destination don't support `ObjectConditions`.
     /// </summary>
     public class ObjectConditions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2861,6 +2865,18 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual Schedule Schedule { get; set; }
+
+        /// <summary>
+        /// Optional. The service account to be used to access resources in the consumer project in the transfer job. We
+        /// accept `email` or `uniqueId` for the service account. Service account format is
+        /// projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID} See
+        /// https://cloud.google.com/iam/docs/reference/credentials/rest/v1/projects.serviceAccounts/generateAccessToken#path-parameters
+        /// for details. Caller requires the following IAM permission on the specified service account:
+        /// `iam.serviceAccounts.actAs`. project-PROJECT_NUMBER@storage-transfer-service.iam.gserviceaccount.com
+        /// requires the following IAM permission on the specified service account: `iam.serviceAccounts.getAccessToken`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>
         /// Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the
