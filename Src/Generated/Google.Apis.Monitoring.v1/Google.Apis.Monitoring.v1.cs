@@ -3984,7 +3984,7 @@ namespace Google.Apis.Monitoring.v1.Data
     /// <summary>Condition that determines whether the widget should be displayed.</summary>
     public class VisibilityCondition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A condition whose evaluation is based on the value of a template1 variable.</summary>
+        /// <summary>A condition whose evaluation is based on the value of a template variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateVariableCondition")]
         public virtual TemplateVariableCondition TemplateVariableCondition { get; set; }
 
