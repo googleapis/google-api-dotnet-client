@@ -26624,8 +26624,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig> AlertPolicyConfigs { get; set; }
 
         /// <summary>
-        /// Indicates whether the connector is disabled for auto run. It can be used to pause periodical and real time
-        /// sync.
+        /// Optional. Indicates whether the connector is disabled for auto run. It can be used to pause periodical and
+        /// real time sync. Update: with the introduction of incremental_sync_disabled, auto_run_disabled is used to
+        /// pause/disable only full syncs
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRunDisabled")]
         public virtual System.Nullable<bool> AutoRunDisabled { get; set; }
@@ -26730,6 +26731,20 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identityScheduleConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig IdentityScheduleConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The refresh interval specifically for incremental data syncs. If unset, incremental syncs will use
+        /// the default from env, set to 3hrs. The minimum is 30 minutes and maximum is 7 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("incrementalRefreshInterval")]
+        public virtual object IncrementalRefreshInterval { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates whether incremental syncs are paused for this connector. This is independent of
+        /// auto_run_disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("incrementalSyncDisabled")]
+        public virtual System.Nullable<bool> IncrementalSyncDisabled { get; set; }
 
         /// <summary>
         /// Input only. The KMS key to be used to protect the DataStores managed by this connector. Must be set for
