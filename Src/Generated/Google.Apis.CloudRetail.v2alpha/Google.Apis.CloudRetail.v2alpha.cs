@@ -10887,7 +10887,11 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     /// <summary>Merchant Center Feed filter criterion.</summary>
     public class GoogleCloudRetailV2alphaMerchantCenterAccountLinkMerchantCenterFeedFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Merchant Center primary feed ID.</summary>
+        /// <summary>AFM data source ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
+        public virtual System.Nullable<long> DataSourceId { get; set; }
+
+        /// <summary>Merchant Center primary feed ID. Deprecated: use data_source_id instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedId")]
         public virtual System.Nullable<long> PrimaryFeedId { get; set; }
 
@@ -10902,7 +10906,11 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     /// <summary>Merchant Center Feed filter criterion.</summary>
     public class GoogleCloudRetailV2alphaMerchantCenterFeedFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Merchant Center primary feed ID.</summary>
+        /// <summary>AFM data source ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
+        public virtual System.Nullable<long> DataSourceId { get; set; }
+
+        /// <summary>Merchant Center primary feed ID. Deprecated: use data_source_id instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedId")]
         public virtual System.Nullable<long> PrimaryFeedId { get; set; }
 
