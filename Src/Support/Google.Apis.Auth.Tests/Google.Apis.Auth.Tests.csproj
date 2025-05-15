@@ -20,7 +20,7 @@
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
     <ProjectReference Include="..\Google.Apis.Tests\Google.Apis.Tests.csproj" />
 
-    <PackageReference Include="BouncyCastle.Cryptography" Version="2.5.1" />
+    <PackageReference Include="BouncyCastle.Cryptography" Version="2.6.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net462'">
