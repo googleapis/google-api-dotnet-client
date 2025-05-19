@@ -8029,24 +8029,6 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("manualInstanceCount")]
         public virtual System.Nullable<int> ManualInstanceCount { get; set; }
 
-        /// <summary>
-        /// Optional. The maximum count of instances distributed among revisions based on the specified instance split
-        /// percentages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceCount")]
-        public virtual System.Nullable<int> MaxInstanceCount { get; set; }
-
-        /// <summary>
-        /// Optional. The minimum count of instances distributed among revisions based on the specified instance split
-        /// percentages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("minInstanceCount")]
-        public virtual System.Nullable<int> MinInstanceCount { get; set; }
-
-        /// <summary>Optional. The scaling mode for the worker pool.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scalingMode")]
-        public virtual string ScalingMode { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
