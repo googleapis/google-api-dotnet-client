@@ -998,7 +998,7 @@ namespace Google.Apis.CloudResourceManager.v3
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Output only. The resource name of the folder. Its format is `folders/{folder_id}`, for example:
+        /// Identifier. The resource name of the folder. Its format is `folders/{folder_id}`, for example:
         /// "folders/1234".
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.CloudResourceManager.v3.Data.Folder body, string name)
@@ -1026,7 +1026,7 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Output only. The resource name of the folder. Its format is `folders/{folder_id}`, for example:
+            /// Identifier. The resource name of the folder. Its format is `folders/{folder_id}`, for example:
             /// "folders/1234".
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5156,7 +5156,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ManagementProject { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the folder. Its format is `folders/{folder_id}`, for example:
+        /// Identifier. The resource name of the folder. Its format is `folders/{folder_id}`, for example:
         /// "folders/1234".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
