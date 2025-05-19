@@ -1778,7 +1778,7 @@ namespace Google.Apis.OracleDatabase.v1
                     /// <summary>Lists the database nodes of a VM Cluster.</summary>
                     /// <param name="parent">
                     /// Required. The parent value for database node in the following format:
-                    /// projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}.
+                    /// projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}. .
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1797,7 +1797,7 @@ namespace Google.Apis.OracleDatabase.v1
 
                         /// <summary>
                         /// Required. The parent value for database node in the following format:
-                        /// projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}.
+                        /// projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}. .
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
