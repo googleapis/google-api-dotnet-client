@@ -12134,7 +12134,11 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>
         /// The payload for the command result. The following commands respond with a payload: *
         /// `DEVICE_START_CRD_SESSION`: Payload is a stringified JSON object in the form: { "url": url }. The URL
-        /// provides a link to the Chrome Remote Desktop session.
+        /// provides a link to the Chrome Remote Desktop session. * `FETCH_CRD_AVAILABILITY_INFO`: Payload is a
+        /// stringified JSON object in the form: { "deviceIdleTimeInSeconds": number, "userSessionType": string,
+        /// "remoteSupportAvailability": string, "remoteAccessAvailability": string }. The "remoteSupportAvailability"
+        /// field is set to "AVAILABLE" if `shared` CRD session to the device is available. The
+        /// "remoteAccessAvailability" field is set to "AVAILABLE" if `private` CRD session to the device is available.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commandResultPayload")]
         public virtual string CommandResultPayload { get; set; }
