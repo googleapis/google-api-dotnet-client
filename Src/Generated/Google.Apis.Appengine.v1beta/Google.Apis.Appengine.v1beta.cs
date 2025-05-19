@@ -3838,6 +3838,7 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     this.service = service;
                     AuthorizedDomains = new AuthorizedDomainsResource(service);
+                    DomainMappings = new DomainMappingsResource(service);
                     Services = new ServicesResource(service);
                 }
 
@@ -3953,6 +3954,116 @@ namespace Google.Apis.Appengine.v1beta
                                 Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the DomainMappings resource.</summary>
+                public virtual DomainMappingsResource DomainMappings { get; }
+
+                /// <summary>The "domainMappings" collection of methods.</summary>
+                public class DomainMappingsResource
+                {
+                    private const string Resource = "domainMappings";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DomainMappingsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets the specified domain mapping.</summary>
+                    /// <param name="projectsId">
+                    /// Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
+                    /// </param>
+                    /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="domainMappingsId">Part of `name`. See documentation of `projectsId`.</param>
+                    public virtual GetRequest Get(string projectsId, string locationsId, string applicationsId, string domainMappingsId)
+                    {
+                        return new GetRequest(this.service, projectsId, locationsId, applicationsId, domainMappingsId);
+                    }
+
+                    /// <summary>Gets the specified domain mapping.</summary>
+                    public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.DomainMapping>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string applicationsId, string domainMappingsId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            ApplicationsId = applicationsId;
+                            DomainMappingsId = domainMappingsId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Part of `name`. Name of the resource requested. Example:
+                        /// apps/myapp/domainMappings/example.com.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ApplicationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("domainMappingsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string DomainMappingsId { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("domainMappingsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "domainMappingsId",
+                                IsRequired = true,
+                                ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -4381,6 +4492,141 @@ namespace Google.Apis.Appengine.v1beta
                                 Name = "servicesId",
                                 IsRequired = true,
                                 ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the configuration of the specified service.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="projectsId">
+                    /// Part of `name`. Name of the resource to update. Example: apps/myapp/services/default.
+                    /// </param>
+                    /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="servicesId">Part of `name`. See documentation of `projectsId`.</param>
+                    public virtual PatchRequest Patch(Google.Apis.Appengine.v1beta.Data.Service body, string projectsId, string locationsId, string applicationsId, string servicesId)
+                    {
+                        return new PatchRequest(this.service, body, projectsId, locationsId, applicationsId, servicesId);
+                    }
+
+                    /// <summary>Updates the configuration of the specified service.</summary>
+                    public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta.Data.Service body, string projectsId, string locationsId, string applicationsId, string servicesId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            ApplicationsId = applicationsId;
+                            ServicesId = servicesId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Part of `name`. Name of the resource to update. Example: apps/myapp/services/default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ApplicationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ServicesId { get; private set; }
+
+                        /// <summary>
+                        /// Set to true to gradually shift traffic to one or more versions that you specify. By default,
+                        /// traffic is shifted immediately. For gradual traffic migration, the target versions must be
+                        /// located within instances that are configured for both warmup requests
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#InboundServiceType)
+                        /// and automatic scaling
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#AutomaticScaling).
+                        /// You must specify the shardBy
+                        /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services#ShardBy)
+                        /// field in the Service resource. Gradual traffic migration is not supported in the App Engine
+                        /// flexible environment. For examples, see Migrating and Splitting Traffic
+                        /// (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("migrateTraffic", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> MigrateTraffic { get; set; }
+
+                        /// <summary>Required. Standard field mask for the set of fields to be updated.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Appengine.v1beta.Data.Service Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "servicesId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("migrateTraffic", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "migrateTraffic",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
