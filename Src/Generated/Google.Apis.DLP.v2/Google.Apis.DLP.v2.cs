@@ -16684,7 +16684,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fileStoreInfoTypeSummaries")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FileStoreInfoTypeSummary> FileStoreInfoTypeSummaries { get; set; }
 
-        /// <summary>The file store does not have any files. If the profiling failed, this will be false.</summary>
+        /// <summary>The file store does not have any files. If the profiling operation failed, this is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileStoreIsEmpty")]
         public virtual System.Nullable<bool> FileStoreIsEmpty { get; set; }
 
