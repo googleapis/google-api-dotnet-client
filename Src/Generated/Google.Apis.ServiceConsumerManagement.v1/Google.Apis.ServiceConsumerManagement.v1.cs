@@ -1437,7 +1437,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
 
         /// <summary>
         /// Content of the configuration. The underlying schema should be defined by Aspect owners as protobuf message
-        /// under `apiserving/configaspects/proto`.
+        /// under `google/api/configaspects/proto`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual System.Collections.Generic.IDictionary<string, object> Spec { get; set; }
