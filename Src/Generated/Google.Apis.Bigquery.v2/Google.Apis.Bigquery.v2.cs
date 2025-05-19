@@ -6345,6 +6345,13 @@ namespace Google.Apis.Bigquery.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("datasetReference")]
             public virtual DatasetReference DatasetReference { get; set; }
 
+            /// <summary>
+            /// Output only. Reference to a read-only external dataset defined in data catalogs outside of BigQuery.
+            /// Filled out when the dataset type is EXTERNAL.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("externalDatasetReference")]
+            public virtual ExternalDatasetReference ExternalDatasetReference { get; set; }
+
             /// <summary>An alternate name for the dataset. The friendly name is purely decorative in nature.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
             public virtual string FriendlyName { get; set; }
@@ -8346,11 +8353,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// Optional. Specifies the action that occurs if the destination table already exists. The following values are
         /// supported: * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the data, removes the
-        /// constraints and uses the schema from the load job. * WRITE_APPEND: If the table already exists, BigQuery
-        /// appends the data to the table. * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate'
-        /// error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only
-        /// occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur
-        /// as one atomic update upon job completion.
+        /// constraints and uses the schema from the load job. * WRITE_TRUNCATE_DATA: If the table already exists,
+        /// BigQuery overwrites the data, but keeps the constraints and schema of the existing table. * WRITE_APPEND: If
+        /// the table already exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the table already exists
+        /// and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND.
+        /// Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation,
+        /// truncation and append actions occur as one atomic update upon job completion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
         public virtual string WriteDisposition { get; set; }
@@ -8550,11 +8558,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// Optional. Specifies the action that occurs if the destination table already exists. The following values are
         /// supported: * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the data, removes the
-        /// constraints, and uses the schema from the query result. * WRITE_APPEND: If the table already exists,
-        /// BigQuery appends the data to the table. * WRITE_EMPTY: If the table already exists and contains data, a
-        /// 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and
-        /// only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions
-        /// occur as one atomic update upon job completion.
+        /// constraints, and uses the schema from the query result. * WRITE_TRUNCATE_DATA: If the table already exists,
+        /// BigQuery overwrites the data, but keeps the constraints and schema of the existing table. * WRITE_APPEND: If
+        /// the table already exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the table already exists
+        /// and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each
+        /// action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation
+        /// and append actions occur as one atomic update upon job completion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
         public virtual string WriteDisposition { get; set; }
