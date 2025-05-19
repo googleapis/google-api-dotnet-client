@@ -7708,7 +7708,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalFreeBytes")]
         public virtual System.Nullable<long> TotalFreeBytes { get; set; }
 
-        /// <summary>VMware disk details.</summary>
+        /// <summary>VMware disk details. Deprecated</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmwareConfig")]
         public virtual VmwareDiskConfig VmwareConfig { get; set; }
 
