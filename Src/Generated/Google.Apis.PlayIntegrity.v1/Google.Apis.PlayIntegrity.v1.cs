@@ -400,6 +400,59 @@ namespace Google.Apis.PlayIntegrity.v1
                 });
             }
         }
+
+        /// <summary>Decodes the PC integrity token and returns the PC token payload.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="packageName">Package name of the app the attached integrity token belongs to.</param>
+        public virtual DecodePcIntegrityTokenRequest DecodePcIntegrityToken(Google.Apis.PlayIntegrity.v1.Data.DecodePcIntegrityTokenRequest body, string packageName)
+        {
+            return new DecodePcIntegrityTokenRequest(this.service, body, packageName);
+        }
+
+        /// <summary>Decodes the PC integrity token and returns the PC token payload.</summary>
+        public class DecodePcIntegrityTokenRequest : PlayIntegrityBaseServiceRequest<Google.Apis.PlayIntegrity.v1.Data.DecodePcIntegrityTokenResponse>
+        {
+            /// <summary>Constructs a new DecodePcIntegrityToken request.</summary>
+            public DecodePcIntegrityTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.PlayIntegrity.v1.Data.DecodePcIntegrityTokenRequest body, string packageName) : base(service)
+            {
+                PackageName = packageName;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Package name of the app the attached integrity token belongs to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.PlayIntegrity.v1.Data.DecodePcIntegrityTokenRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "decodePcIntegrityToken";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+packageName}:decodePcIntegrityToken";
+
+            /// <summary>Initializes DecodePcIntegrityToken parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
+        }
     }
 }
 namespace Google.Apis.PlayIntegrity.v1.Data
@@ -496,6 +549,28 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to decode the PC integrity token.</summary>
+    public class DecodePcIntegrityTokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Encoded integrity token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integrityToken")]
+        public virtual string IntegrityToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing the decoded PC integrity payload.</summary>
+    public class DecodePcIntegrityTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Plain token payload generated from the decoded integrity token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenPayloadExternal")]
+        public virtual PcTokenPayloadExternal TokenPayloadExternal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Contains information about the device for which the integrity token was generated, e.g. Android SDK version.
     /// </summary>
@@ -571,6 +646,87 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         /// <summary>The evaluation of Play Protect verdict.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playProtectVerdict")]
         public virtual string PlayProtectVerdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the device attestation information.</summary>
+    public class PcDeviceIntegrity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details about the integrity of the device the app is running on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceRecognitionVerdict")]
+        public virtual System.Collections.Generic.IList<string> DeviceRecognitionVerdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the integrity request information.</summary>
+    public class PcRequestDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Request hash that was provided in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestHash")]
+        public virtual string RequestHash { get; set; }
+
+        /// <summary>
+        /// Required. Application package name this attestation was requested for. Note: This field makes no guarantees
+        /// or promises on the caller integrity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestPackageName")]
+        public virtual string RequestPackageName { get; set; }
+
+        private string _requestTimeRaw;
+
+        private object _requestTime;
+
+        /// <summary>Required. Timestamp, of the integrity application request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
+        public virtual string RequestTimeRaw
+        {
+            get => _requestTimeRaw;
+            set
+            {
+                _requestTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _requestTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RequestTimeDateTimeOffset instead.")]
+        public virtual object RequestTime
+        {
+            get => _requestTime;
+            set
+            {
+                _requestTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _requestTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains PC device attestation details.</summary>
+    public class PcTokenPayloadExternal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Details about the device integrity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceIntegrity")]
+        public virtual PcDeviceIntegrity DeviceIntegrity { get; set; }
+
+        /// <summary>Required. Details about the integrity request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestDetails")]
+        public virtual PcRequestDetails RequestDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
