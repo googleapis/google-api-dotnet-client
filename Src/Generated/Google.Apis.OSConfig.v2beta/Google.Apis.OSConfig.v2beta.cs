@@ -713,11 +713,11 @@ namespace Google.Apis.OSConfig.v2beta
                         /// primitive fields are replaced, * repeated fields are replaced, * map fields are merged key
                         /// by key, * message fields are cleared if not set in the request, otherwise they are merged
                         /// recursively (in particular - message fields set to an empty message has no side effects) If
-                        /// field mask is not specified, it is automatically inferred from the request using following
-                        /// rules: * primitive fields are listed, if set to a non-default value (as there is no way to
-                        /// distinguish between default and unset value), * map and repeated fields are listed, *
-                        /// `google.protobuf.Any` fields are listed, * other message fields are traversed recursively.
-                        /// Note: implicit mask does not allow clearing fields.
+                        /// field mask (or its paths) is not specified, it is automatically inferred from the request
+                        /// using following rules: * primitive fields are listed, if set to a non-default value (as
+                        /// there is no way to distinguish between default and unset value), * map and repeated fields
+                        /// are listed, * `google.protobuf.Any` fields are listed, * other message fields are traversed
+                        /// recursively. Note: implicit mask does not allow clearing fields.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -1487,11 +1487,11 @@ namespace Google.Apis.OSConfig.v2beta
                         /// primitive fields are replaced, * repeated fields are replaced, * map fields are merged key
                         /// by key, * message fields are cleared if not set in the request, otherwise they are merged
                         /// recursively (in particular - message fields set to an empty message has no side effects) If
-                        /// field mask is not specified, it is automatically inferred from the request using following
-                        /// rules: * primitive fields are listed, if set to a non-default value (as there is no way to
-                        /// distinguish between default and unset value), * map and repeated fields are listed, *
-                        /// `google.protobuf.Any` fields are listed, * other message fields are traversed recursively.
-                        /// Note: implicit mask does not allow clearing fields.
+                        /// field mask (or its paths) is not specified, it is automatically inferred from the request
+                        /// using following rules: * primitive fields are listed, if set to a non-default value (as
+                        /// there is no way to distinguish between default and unset value), * map and repeated fields
+                        /// are listed, * `google.protobuf.Any` fields are listed, * other message fields are traversed
+                        /// recursively. Note: implicit mask does not allow clearing fields.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -2257,11 +2257,11 @@ namespace Google.Apis.OSConfig.v2beta
                         /// primitive fields are replaced, * repeated fields are replaced, * map fields are merged key
                         /// by key, * message fields are cleared if not set in the request, otherwise they are merged
                         /// recursively (in particular - message fields set to an empty message has no side effects) If
-                        /// field mask is not specified, it is automatically inferred from the request using following
-                        /// rules: * primitive fields are listed, if set to a non-default value (as there is no way to
-                        /// distinguish between default and unset value), * map and repeated fields are listed, *
-                        /// `google.protobuf.Any` fields are listed, * other message fields are traversed recursively.
-                        /// Note: implicit mask does not allow clearing fields.
+                        /// field mask (or its paths) is not specified, it is automatically inferred from the request
+                        /// using following rules: * primitive fields are listed, if set to a non-default value (as
+                        /// there is no way to distinguish between default and unset value), * map and repeated fields
+                        /// are listed, * `google.protobuf.Any` fields are listed, * other message fields are traversed
+                        /// recursively. Note: implicit mask does not allow clearing fields.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -3332,6 +3332,20 @@ namespace Google.Apis.OSConfig.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// This is proto2's version of MessageSet. DEPRECATED: DO NOT USE FOR NEW FIELDS. If you are using editions or
+    /// proto2, please make your own extendable messages for your use case. If you are using proto3, please use `Any`
+    /// instead. MessageSet was the implementation of extensions for proto1. When proto2 was introduced, extensions were
+    /// implemented as a first-class feature. This schema for MessageSet was meant to be a "bridge" solution to migrate
+    /// MessageSet-bearing messages from proto1 to proto2. This schema has been open-sourced only to facilitate the
+    /// migration of Google products with MessageSet-bearing messages to open-source environments.
+    /// </summary>
+    public class MessageSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An OS policy defines the desired state configuration for a VM.</summary>
     public class OSPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4284,6 +4298,47 @@ namespace Google.Apis.OSConfig.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wire-format for a Status object</summary>
+    public class StatusProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional int32 canonical_code = 6;
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalCode")]
+        public virtual System.Nullable<int> CanonicalCode { get; set; }
+
+        /// <summary>
+        /// Numeric code drawn from the space specified below. Often, this is the canonical error space, and code is
+        /// drawn from google3/util/task/codes.proto copybara:strip_begin(b/383363683) copybara:strip_end_and_replace
+        /// optional int32 code = 1;
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// Detail message copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional string message = 3;
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>
+        /// message_set associates an arbitrary proto message with the status. copybara:strip_begin(b/383363683)
+        /// copybara:strip_end_and_replace optional proto2.bridge.MessageSet message_set = 5;
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageSet")]
+        public virtual MessageSet MessageSet { get; set; }
+
+        /// <summary>
+        /// copybara:strip_begin(b/383363683) Space to which this status belongs copybara:strip_end_and_replace optional
+        /// string space = 2; // Space to which this status belongs
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("space")]
+        public virtual string Space { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
