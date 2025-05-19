@@ -2660,9 +2660,9 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// Optional. Input only. The owner of this instance after creation. Format: `alias@example.com` Currently
-        /// supports one owner only. If not specified, all of the service account users of your VM instance's service
-        /// account can use the instance.
+        /// Optional. The owner of this instance after creation. Format: `alias@example.com` Currently supports one
+        /// owner only. If not specified, all of the service account users of your VM instance's service account can use
+        /// the instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceOwners")]
         public virtual System.Collections.Generic.IList<string> InstanceOwners { get; set; }
