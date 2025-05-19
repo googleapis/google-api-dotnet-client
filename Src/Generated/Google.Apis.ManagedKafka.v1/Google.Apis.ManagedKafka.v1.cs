@@ -297,6 +297,7 @@ namespace Google.Apis.ManagedKafka.v1
                 Clusters = new ClustersResource(service);
                 ConnectClusters = new ConnectClustersResource(service);
                 Operations = new OperationsResource(service);
+                SchemaRegistries = new SchemaRegistriesResource(service);
             }
 
             /// <summary>Gets the Clusters resource.</summary>
@@ -3191,6 +3192,3552 @@ namespace Google.Apis.ManagedKafka.v1
                 }
             }
 
+            /// <summary>Gets the SchemaRegistries resource.</summary>
+            public virtual SchemaRegistriesResource SchemaRegistries { get; }
+
+            /// <summary>The "schemaRegistries" collection of methods.</summary>
+            public class SchemaRegistriesResource
+            {
+                private const string Resource = "schemaRegistries";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SchemaRegistriesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Compatibility = new CompatibilityResource(service);
+                    Config = new ConfigResource(service);
+                    Contexts = new ContextsResource(service);
+                    Mode = new ModeResource(service);
+                    Schemas = new SchemasResource(service);
+                    Subjects = new SubjectsResource(service);
+                }
+
+                /// <summary>Gets the Compatibility resource.</summary>
+                public virtual CompatibilityResource Compatibility { get; }
+
+                /// <summary>The "compatibility" collection of methods.</summary>
+                public class CompatibilityResource
+                {
+                    private const string Resource = "compatibility";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public CompatibilityResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Check compatibility of a schema with all versions or a specific version of a subject.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the resource to check compatibility for. The format is either of
+                    /// following: *
+                    /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/*/versions:
+                    /// Check compatibility with one or more versions of the specified subject. *
+                    /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/{subject}/versions/{version}:
+                    /// Check compatibility with a specific version of the subject.
+                    /// </param>
+                    public virtual CheckCompatibilityRequest CheckCompatibility(Google.Apis.ManagedKafka.v1.Data.CheckCompatibilityRequest body, string name)
+                    {
+                        return new CheckCompatibilityRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Check compatibility of a schema with all versions or a specific version of a subject.
+                    /// </summary>
+                    public class CheckCompatibilityRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.CheckCompatibilityResponse>
+                    {
+                        /// <summary>Constructs a new CheckCompatibility request.</summary>
+                        public CheckCompatibilityRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.CheckCompatibilityRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the resource to check compatibility for. The format is either of
+                        /// following: *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/*/versions:
+                        /// Check compatibility with one or more versions of the specified subject. *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/{subject}/versions/{version}:
+                        /// Check compatibility with a specific version of the subject.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedKafka.v1.Data.CheckCompatibilityRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "checkCompatibility";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes CheckCompatibility parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/compatibility/.*$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Config resource.</summary>
+                public virtual ConfigResource Config { get; }
+
+                /// <summary>The "config" collection of methods.</summary>
+                public class ConfigResource
+                {
+                    private const string Resource = "config";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ConfigResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Delete schema config for a subject.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of subject to delete the config for. The format is *
+                    /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Delete schema config for a subject.</summary>
+                    public class DeleteRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaConfig>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of subject to delete the config for. The format is *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/config/.*$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Get schema config at global level or for a subject.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name to get the config for. It can be either of following: *
+                    /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Get config at
+                    /// global level. *
+                    /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}: Get
+                    /// config for a specific subject.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Get schema config at global level or for a subject.</summary>
+                    public class GetRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaConfig>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name to get the config for. It can be either of following: *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Get
+                        /// config at global level. *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}:
+                        /// Get config for a specific subject.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. If true, the config will fall back to the config at the global level if no subject
+                        /// level config is found.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("defaultToGlobal", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> DefaultToGlobal { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/config/.*$",
+                            });
+                            RequestParameters.Add("defaultToGlobal", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "defaultToGlobal",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Update config at global level or for a subject. Creates a SchemaSubject-level SchemaConfig if it
+                    /// does not exist.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name to update the config for. It can be either of following: *
+                    /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Update config
+                    /// at global level. *
+                    /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}:
+                    /// Update config for a specific subject.
+                    /// </param>
+                    public virtual UpdateRequest Update(Google.Apis.ManagedKafka.v1.Data.UpdateSchemaConfigRequest body, string name)
+                    {
+                        return new UpdateRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Update config at global level or for a subject. Creates a SchemaSubject-level SchemaConfig if it
+                    /// does not exist.
+                    /// </summary>
+                    public class UpdateRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaConfig>
+                    {
+                        /// <summary>Constructs a new Update request.</summary>
+                        public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.UpdateSchemaConfigRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name to update the config for. It can be either of following: *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Update
+                        /// config at global level. *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}:
+                        /// Update config for a specific subject.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedKafka.v1.Data.UpdateSchemaConfigRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "update";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PUT";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Update parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/config/.*$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Contexts resource.</summary>
+                public virtual ContextsResource Contexts { get; }
+
+                /// <summary>The "contexts" collection of methods.</summary>
+                public class ContextsResource
+                {
+                    private const string Resource = "contexts";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ContextsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Compatibility = new CompatibilityResource(service);
+                        Config = new ConfigResource(service);
+                        Mode = new ModeResource(service);
+                        Schemas = new SchemasResource(service);
+                        Subjects = new SubjectsResource(service);
+                    }
+
+                    /// <summary>Gets the Compatibility resource.</summary>
+                    public virtual CompatibilityResource Compatibility { get; }
+
+                    /// <summary>The "compatibility" collection of methods.</summary>
+                    public class CompatibilityResource
+                    {
+                        private const string Resource = "compatibility";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public CompatibilityResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Check compatibility of a schema with all versions or a specific version of a subject.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The name of the resource to check compatibility for. The format is either of
+                        /// following: *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/*/versions:
+                        /// Check compatibility with one or more versions of the specified subject. *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/{subject}/versions/{version}:
+                        /// Check compatibility with a specific version of the subject.
+                        /// </param>
+                        public virtual CheckCompatibilityRequest CheckCompatibility(Google.Apis.ManagedKafka.v1.Data.CheckCompatibilityRequest body, string name)
+                        {
+                            return new CheckCompatibilityRequest(this.service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Check compatibility of a schema with all versions or a specific version of a subject.
+                        /// </summary>
+                        public class CheckCompatibilityRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.CheckCompatibilityResponse>
+                        {
+                            /// <summary>Constructs a new CheckCompatibility request.</summary>
+                            public CheckCompatibilityRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.CheckCompatibilityRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the resource to check compatibility for. The format is either of
+                            /// following: *
+                            /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/*/versions:
+                            /// Check compatibility with one or more versions of the specified subject. *
+                            /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/{subject}/versions/{version}:
+                            /// Check compatibility with a specific version of the subject.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.ManagedKafka.v1.Data.CheckCompatibilityRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "checkCompatibility";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes CheckCompatibility parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/compatibility/.*$",
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the Config resource.</summary>
+                    public virtual ConfigResource Config { get; }
+
+                    /// <summary>The "config" collection of methods.</summary>
+                    public class ConfigResource
+                    {
+                        private const string Resource = "config";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ConfigResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Delete schema config for a subject.</summary>
+                        /// <param name="name">
+                        /// Required. The resource name of subject to delete the config for. The format is *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>Delete schema config for a subject.</summary>
+                        public class DeleteRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaConfig>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of subject to delete the config for. The format is *
+                            /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/config/.*$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Get schema config at global level or for a subject.</summary>
+                        /// <param name="name">
+                        /// Required. The resource name to get the config for. It can be either of following: *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Get
+                        /// config at global level. *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}:
+                        /// Get config for a specific subject.
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Get schema config at global level or for a subject.</summary>
+                        public class GetRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaConfig>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name to get the config for. It can be either of following: *
+                            /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Get
+                            /// config at global level. *
+                            /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}:
+                            /// Get config for a specific subject.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. If true, the config will fall back to the config at the global level if no
+                            /// subject level config is found.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("defaultToGlobal", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> DefaultToGlobal { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/config/.*$",
+                                });
+                                RequestParameters.Add("defaultToGlobal", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "defaultToGlobal",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Update config at global level or for a subject. Creates a SchemaSubject-level SchemaConfig
+                        /// if it does not exist.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The resource name to update the config for. It can be either of following: *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Update
+                        /// config at global level. *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}:
+                        /// Update config for a specific subject.
+                        /// </param>
+                        public virtual UpdateRequest Update(Google.Apis.ManagedKafka.v1.Data.UpdateSchemaConfigRequest body, string name)
+                        {
+                            return new UpdateRequest(this.service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Update config at global level or for a subject. Creates a SchemaSubject-level SchemaConfig
+                        /// if it does not exist.
+                        /// </summary>
+                        public class UpdateRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaConfig>
+                        {
+                            /// <summary>Constructs a new Update request.</summary>
+                            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.UpdateSchemaConfigRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name to update the config for. It can be either of following: *
+                            /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config:
+                            /// Update config at global level. *
+                            /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}:
+                            /// Update config for a specific subject.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.ManagedKafka.v1.Data.UpdateSchemaConfigRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "update";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PUT";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Update parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/config/.*$",
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the Mode resource.</summary>
+                    public virtual ModeResource Mode { get; }
+
+                    /// <summary>The "mode" collection of methods.</summary>
+                    public class ModeResource
+                    {
+                        private const string Resource = "mode";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ModeResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Get mode at global level or for a subject.</summary>
+                        /// <param name="name">
+                        /// Required. The resource name of the mode. The format is *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}:
+                        /// mode for a schema registry, or *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}:
+                        /// mode for a specific subject in a specific context
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Get mode at global level or for a subject.</summary>
+                        public class GetRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaMode>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the mode. The format is *
+                            /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}:
+                            /// mode for a schema registry, or *
+                            /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}:
+                            /// mode for a specific subject in a specific context
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/mode/.*$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Update mode at global level or for a subject.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The resource name of the mode. The format is *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}:
+                        /// mode for a schema registry, or *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}:
+                        /// mode for a specific subject in a specific context
+                        /// </param>
+                        public virtual UpdateRequest Update(Google.Apis.ManagedKafka.v1.Data.UpdateSchemaModeRequest body, string name)
+                        {
+                            return new UpdateRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Update mode at global level or for a subject.</summary>
+                        public class UpdateRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaMode>
+                        {
+                            /// <summary>Constructs a new Update request.</summary>
+                            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.UpdateSchemaModeRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the mode. The format is *
+                            /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}:
+                            /// mode for a schema registry, or *
+                            /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}:
+                            /// mode for a specific subject in a specific context
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.ManagedKafka.v1.Data.UpdateSchemaModeRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "update";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PUT";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Update parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/mode/.*$",
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the Schemas resource.</summary>
+                    public virtual SchemasResource Schemas { get; }
+
+                    /// <summary>The "schemas" collection of methods.</summary>
+                    public class SchemasResource
+                    {
+                        private const string Resource = "schemas";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public SchemasResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            Subjects = new SubjectsResource(service);
+                            Types = new TypesResource(service);
+                            Versions = new VersionsResource(service);
+                        }
+
+                        /// <summary>Gets the Subjects resource.</summary>
+                        public virtual SubjectsResource Subjects { get; }
+
+                        /// <summary>The "subjects" collection of methods.</summary>
+                        public class SubjectsResource
+                        {
+                            private const string Resource = "subjects";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public SubjectsResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>
+                            /// List subjects which reference a particular schema id. The response will be an array of
+                            /// subject names.
+                            /// </summary>
+                            /// <param name="parent">
+                            /// Required. The schema resource whose associated subjects are to be listed. Structured
+                            /// like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}`
+                            /// </param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(this.service, parent);
+                            }
+
+                            /// <summary>
+                            /// List subjects which reference a particular schema id. The response will be an array of
+                            /// subject names.
+                            /// </summary>
+                            public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The schema resource whose associated subjects are to be listed. Structured
+                                /// like:
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                                /// or
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>
+                                /// Optional. If true, the response will include soft-deleted subjects. The default is
+                                /// false.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<bool> Deleted { get; set; }
+
+                                /// <summary>Optional. The subject to filter the subjects by.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("subject", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string Subject { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "list";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+parent}/subjects";
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/schemas/.*$",
+                                    });
+                                    RequestParameters.Add("deleted", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "deleted",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("subject", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "subject",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+                        }
+
+                        /// <summary>Gets the Types resource.</summary>
+                        public virtual TypesResource Types { get; }
+
+                        /// <summary>The "types" collection of methods.</summary>
+                        public class TypesResource
+                        {
+                            private const string Resource = "types";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public TypesResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>
+                            /// List the supported schema types. The response will be an array of schema types.
+                            /// </summary>
+                            /// <param name="parent">
+                            /// Required. The parent schema registry whose schema types are to be listed. Structured
+                            /// like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}`
+                            /// </param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(this.service, parent);
+                            }
+
+                            /// <summary>
+                            /// List the supported schema types. The response will be an array of schema types.
+                            /// </summary>
+                            public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The parent schema registry whose schema types are to be listed. Structured
+                                /// like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "list";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+parent}/schemas/types";
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+$",
+                                    });
+                                }
+                            }
+                        }
+
+                        /// <summary>Gets the Versions resource.</summary>
+                        public virtual VersionsResource Versions { get; }
+
+                        /// <summary>The "versions" collection of methods.</summary>
+                        public class VersionsResource
+                        {
+                            private const string Resource = "versions";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public VersionsResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>
+                            /// List the schema versions for the given schema id. The response will be an array of
+                            /// subject-version pairs as: [{"subject":"subject1", "version":1}, {"subject":"subject2",
+                            /// "version":2}].
+                            /// </summary>
+                            /// <param name="parent">
+                            /// Required. The schema whose schema versions are to be listed. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}`
+                            /// </param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(this.service, parent);
+                            }
+
+                            /// <summary>
+                            /// List the schema versions for the given schema id. The response will be an array of
+                            /// subject-version pairs as: [{"subject":"subject1", "version":1}, {"subject":"subject2",
+                            /// "version":2}].
+                            /// </summary>
+                            public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The schema whose schema versions are to be listed. Structured like:
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                                /// or
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>
+                                /// Optional. If true, the response will include soft-deleted versions of the schema,
+                                /// even if the subject is soft-deleted. The default is false.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<bool> Deleted { get; set; }
+
+                                /// <summary>Optional. The subject to filter the subjects by.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("subject", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string Subject { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "list";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+parent}/versions";
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/schemas/.*$",
+                                    });
+                                    RequestParameters.Add("deleted", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "deleted",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("subject", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "subject",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+                        }
+
+                        /// <summary>Get the schema for the given schema id.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the schema to return. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Get the schema for the given schema id.</summary>
+                        public class GetRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.Schema>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the schema to return. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. Used to limit the search for the schema ID to a specific subject, otherwise
+                            /// the schema ID will be searched for in all subjects in the given specified context.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("subject", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Subject { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/schemas/.*$",
+                                });
+                                RequestParameters.Add("subject", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "subject",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Get the schema string for the given schema id. The response will be the schema string.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The name of the schema to return. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                        /// </param>
+                        public virtual GetSchemaRequest GetSchema(string name)
+                        {
+                            return new GetSchemaRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Get the schema string for the given schema id. The response will be the schema string.
+                        /// </summary>
+                        public class GetSchemaRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new GetSchema request.</summary>
+                            public GetSchemaRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the schema to return. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. Used to limit the search for the schema ID to a specific subject, otherwise
+                            /// the schema ID will be searched for in all subjects in the given specified context.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("subject", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Subject { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "getSchema";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}/schema";
+
+                            /// <summary>Initializes GetSchema parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/schemas/.*$",
+                                });
+                                RequestParameters.Add("subject", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "subject",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the Subjects resource.</summary>
+                    public virtual SubjectsResource Subjects { get; }
+
+                    /// <summary>The "subjects" collection of methods.</summary>
+                    public class SubjectsResource
+                    {
+                        private const string Resource = "subjects";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public SubjectsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            Versions = new VersionsResource(service);
+                        }
+
+                        /// <summary>Gets the Versions resource.</summary>
+                        public virtual VersionsResource Versions { get; }
+
+                        /// <summary>The "versions" collection of methods.</summary>
+                        public class VersionsResource
+                        {
+                            private const string Resource = "versions";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public VersionsResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                                Referencedby = new ReferencedbyResource(service);
+                            }
+
+                            /// <summary>Gets the Referencedby resource.</summary>
+                            public virtual ReferencedbyResource Referencedby { get; }
+
+                            /// <summary>The "referencedby" collection of methods.</summary>
+                            public class ReferencedbyResource
+                            {
+                                private const string Resource = "referencedby";
+
+                                /// <summary>The service which this resource belongs to.</summary>
+                                private readonly Google.Apis.Services.IClientService service;
+
+                                /// <summary>Constructs a new resource.</summary>
+                                public ReferencedbyResource(Google.Apis.Services.IClientService service)
+                                {
+                                    this.service = service;
+                                }
+
+                                /// <summary>
+                                /// Get a list of IDs of schemas that reference the schema with the given subject and
+                                /// version.
+                                /// </summary>
+                                /// <param name="parent">
+                                /// Required. The version to list referenced by. Structured like:
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                                /// or
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                                /// </param>
+                                public virtual ListRequest List(string parent)
+                                {
+                                    return new ListRequest(this.service, parent);
+                                }
+
+                                /// <summary>
+                                /// Get a list of IDs of schemas that reference the schema with the given subject and
+                                /// version.
+                                /// </summary>
+                                public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                                {
+                                    /// <summary>Constructs a new List request.</summary>
+                                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                    {
+                                        Parent = parent;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The version to list referenced by. Structured like:
+                                    /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                                    /// or
+                                    /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Parent { get; private set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "list";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "GET";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v1/{+parent}/referencedby";
+
+                                    /// <summary>Initializes List parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/subjects/[^/]+/versions/[^/]+$",
+                                        });
+                                    }
+                                }
+                            }
+
+                            /// <summary>Register a new version under a given subject with the given schema.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="parent">
+                            /// Required. The subject to create the version for. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                            /// </param>
+                            public virtual CreateRequest Create(Google.Apis.ManagedKafka.v1.Data.CreateVersionRequest body, string parent)
+                            {
+                                return new CreateRequest(this.service, body, parent);
+                            }
+
+                            /// <summary>Register a new version under a given subject with the given schema.</summary>
+                            public class CreateRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.CreateVersionResponse>
+                            {
+                                /// <summary>Constructs a new Create request.</summary>
+                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.CreateVersionRequest body, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The subject to create the version for. Structured like:
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                                /// or
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.ManagedKafka.v1.Data.CreateVersionRequest Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "create";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+parent}/versions";
+
+                                /// <summary>Initializes Create parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/subjects/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>
+                            /// Delete a version of a subject. The response will be the deleted version id.
+                            /// </summary>
+                            /// <param name="name">
+                            /// Required. The name of the subject version to delete. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                            /// </param>
+                            public virtual DeleteRequest Delete(string name)
+                            {
+                                return new DeleteRequest(this.service, name);
+                            }
+
+                            /// <summary>
+                            /// Delete a version of a subject. The response will be the deleted version id.
+                            /// </summary>
+                            public class DeleteRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                            {
+                                /// <summary>Constructs a new Delete request.</summary>
+                                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The name of the subject version to delete. Structured like:
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                                /// or
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>
+                                /// Optional. If true, both the version and the referenced schema ID will be permanently
+                                /// deleted. The default is false. If false, the version will be deleted but the schema
+                                /// ID will be retained. Soft-deleted versions can still be searched in ListVersions API
+                                /// call with deleted=true query parameter. A soft-delete of a version must be performed
+                                /// before a hard-delete.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("permanent", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<bool> Permanent { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "delete";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "DELETE";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}";
+
+                                /// <summary>Initializes Delete parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/subjects/[^/]+/versions/[^/]+$",
+                                    });
+                                    RequestParameters.Add("permanent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "permanent",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+
+                            /// <summary>Get a versioned schema (schema with subject/version) of a subject.</summary>
+                            /// <param name="name">
+                            /// Required. The name of the subject to return versions. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                            /// </param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(this.service, name);
+                            }
+
+                            /// <summary>Get a versioned schema (schema with subject/version) of a subject.</summary>
+                            public class GetRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaVersion>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The name of the subject to return versions. Structured like:
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                                /// or
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>
+                                /// Optional. If true, no matter if the subject/version is soft-deleted or not, it
+                                /// returns the version details. If false, it returns NOT_FOUND error if the
+                                /// subject/version is soft-deleted. The default is false.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<bool> Deleted { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "get";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}";
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/subjects/[^/]+/versions/[^/]+$",
+                                    });
+                                    RequestParameters.Add("deleted", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "deleted",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+
+                            /// <summary>
+                            /// Get the schema string only for a version of a subject. The response will be the schema
+                            /// string.
+                            /// </summary>
+                            /// <param name="name">
+                            /// Required. The name of the subject to return versions. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                            /// </param>
+                            public virtual GetSchemaRequest GetSchema(string name)
+                            {
+                                return new GetSchemaRequest(this.service, name);
+                            }
+
+                            /// <summary>
+                            /// Get the schema string only for a version of a subject. The response will be the schema
+                            /// string.
+                            /// </summary>
+                            public class GetSchemaRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                            {
+                                /// <summary>Constructs a new GetSchema request.</summary>
+                                public GetSchemaRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The name of the subject to return versions. Structured like:
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                                /// or
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>
+                                /// Optional. If true, no matter if the subject/version is soft-deleted or not, it
+                                /// returns the version details. If false, it returns NOT_FOUND error if the
+                                /// subject/version is soft-deleted. The default is false.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<bool> Deleted { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "getSchema";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}/schema";
+
+                                /// <summary>Initializes GetSchema parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/subjects/[^/]+/versions/[^/]+$",
+                                    });
+                                    RequestParameters.Add("deleted", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "deleted",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+
+                            /// <summary>
+                            /// Get all versions of a subject. The response will be an array of versions of the subject.
+                            /// </summary>
+                            /// <param name="parent">
+                            /// Required. The subject whose versions are to be listed. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                            /// </param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(this.service, parent);
+                            }
+
+                            /// <summary>
+                            /// Get all versions of a subject. The response will be an array of versions of the subject.
+                            /// </summary>
+                            public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The subject whose versions are to be listed. Structured like:
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                                /// or
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>
+                                /// Optional. If true, the response will include soft-deleted versions of an active or
+                                /// soft-deleted subject. The default is false.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<bool> Deleted { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "list";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+parent}/versions";
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/subjects/[^/]+$",
+                                    });
+                                    RequestParameters.Add("deleted", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "deleted",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+                        }
+
+                        /// <summary>
+                        /// Delete a subject. The response will be an array of versions of the deleted subject.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The name of the subject to delete. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                        /// or
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Delete a subject. The response will be an array of versions of the deleted subject.
+                        /// </summary>
+                        public class DeleteRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the subject to delete. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. If true, the subject and all associated metadata including the schema ID will
+                            /// be deleted permanently. Otherwise, only the subject is soft-deleted. The default is
+                            /// false. Soft-deleted subjects can still be searched in ListSubjects API call with
+                            /// deleted=true query parameter. A soft-delete of a subject must be performed before a
+                            /// hard-delete.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("permanent", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> Permanent { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/subjects/[^/]+$",
+                                });
+                                RequestParameters.Add("permanent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "permanent",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// List subjects in the schema registry. The response will be an array of subject names.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. The parent schema registry/context whose subjects are to be listed. Structured
+                        /// like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` or
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>
+                        /// List subjects in the schema registry. The response will be an array of subject names.
+                        /// </summary>
+                        public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent schema registry/context whose subjects are to be listed. Structured
+                            /// like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. If true, the response will include soft-deleted subjects. The default is
+                            /// false.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> Deleted { get; set; }
+
+                            /// <summary>
+                            /// Optional. The context to filter the subjects by, in the format of `:.{context}:`. If
+                            /// unset, all subjects in the registry are returned. Set to empty string or add as
+                            /// '?subjectPrefix=' at the end of this request to list subjects in the default context.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("subjectPrefix", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string SubjectPrefix { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/subjects";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+$",
+                                });
+                                RequestParameters.Add("deleted", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "deleted",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("subjectPrefix", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "subjectPrefix",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Lookup a schema under the specified subject.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The subject to lookup the schema in. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                        /// or
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                        /// </param>
+                        public virtual LookupVersionRequest LookupVersion(Google.Apis.ManagedKafka.v1.Data.LookupVersionRequest body, string parent)
+                        {
+                            return new LookupVersionRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>Lookup a schema under the specified subject.</summary>
+                        public class LookupVersionRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaVersion>
+                        {
+                            /// <summary>Constructs a new LookupVersion request.</summary>
+                            public LookupVersionRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.LookupVersionRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The subject to lookup the schema in. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.ManagedKafka.v1.Data.LookupVersionRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "lookupVersion";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}";
+
+                            /// <summary>Initializes LookupVersion parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/subjects/[^/]+$",
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Get the context.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the context to return. Structured like:
+                    /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Get the context.</summary>
+                    public class GetRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.Context>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the context to return. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>List contexts for a schema registry.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent of the contexts. Structured like:
+                    /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>List contexts for a schema registry.</summary>
+                    public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent of the contexts. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/contexts";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Mode resource.</summary>
+                public virtual ModeResource Mode { get; }
+
+                /// <summary>The "mode" collection of methods.</summary>
+                public class ModeResource
+                {
+                    private const string Resource = "mode";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ModeResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Get mode at global level or for a subject.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the mode. The format is *
+                    /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}: mode
+                    /// for a schema registry, or *
+                    /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}:
+                    /// mode for a specific subject in a specific context
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Get mode at global level or for a subject.</summary>
+                    public class GetRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaMode>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the mode. The format is *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}:
+                        /// mode for a schema registry, or *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}:
+                        /// mode for a specific subject in a specific context
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/mode/.*$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Update mode at global level or for a subject.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the mode. The format is *
+                    /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}: mode
+                    /// for a schema registry, or *
+                    /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}:
+                    /// mode for a specific subject in a specific context
+                    /// </param>
+                    public virtual UpdateRequest Update(Google.Apis.ManagedKafka.v1.Data.UpdateSchemaModeRequest body, string name)
+                    {
+                        return new UpdateRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Update mode at global level or for a subject.</summary>
+                    public class UpdateRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaMode>
+                    {
+                        /// <summary>Constructs a new Update request.</summary>
+                        public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.UpdateSchemaModeRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the mode. The format is *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}:
+                        /// mode for a schema registry, or *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}:
+                        /// mode for a specific subject in a specific context
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedKafka.v1.Data.UpdateSchemaModeRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "update";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PUT";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Update parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/mode/.*$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Schemas resource.</summary>
+                public virtual SchemasResource Schemas { get; }
+
+                /// <summary>The "schemas" collection of methods.</summary>
+                public class SchemasResource
+                {
+                    private const string Resource = "schemas";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SchemasResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Subjects = new SubjectsResource(service);
+                        Types = new TypesResource(service);
+                        Versions = new VersionsResource(service);
+                    }
+
+                    /// <summary>Gets the Subjects resource.</summary>
+                    public virtual SubjectsResource Subjects { get; }
+
+                    /// <summary>The "subjects" collection of methods.</summary>
+                    public class SubjectsResource
+                    {
+                        private const string Resource = "subjects";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public SubjectsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// List subjects which reference a particular schema id. The response will be an array of
+                        /// subject names.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. The schema resource whose associated subjects are to be listed. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                        /// or
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>
+                        /// List subjects which reference a particular schema id. The response will be an array of
+                        /// subject names.
+                        /// </summary>
+                        public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The schema resource whose associated subjects are to be listed. Structured
+                            /// like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. If true, the response will include soft-deleted subjects. The default is
+                            /// false.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> Deleted { get; set; }
+
+                            /// <summary>Optional. The subject to filter the subjects by.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("subject", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Subject { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/subjects";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/schemas/.*$",
+                                });
+                                RequestParameters.Add("deleted", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "deleted",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("subject", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "subject",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the Types resource.</summary>
+                    public virtual TypesResource Types { get; }
+
+                    /// <summary>The "types" collection of methods.</summary>
+                    public class TypesResource
+                    {
+                        private const string Resource = "types";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public TypesResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// List the supported schema types. The response will be an array of schema types.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. The parent schema registry whose schema types are to be listed. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>
+                        /// List the supported schema types. The response will be an array of schema types.
+                        /// </summary>
+                        public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent schema registry whose schema types are to be listed. Structured
+                            /// like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/schemas/types";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+$",
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the Versions resource.</summary>
+                    public virtual VersionsResource Versions { get; }
+
+                    /// <summary>The "versions" collection of methods.</summary>
+                    public class VersionsResource
+                    {
+                        private const string Resource = "versions";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public VersionsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// List the schema versions for the given schema id. The response will be an array of
+                        /// subject-version pairs as: [{"subject":"subject1", "version":1}, {"subject":"subject2",
+                        /// "version":2}].
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. The schema whose schema versions are to be listed. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                        /// or
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>
+                        /// List the schema versions for the given schema id. The response will be an array of
+                        /// subject-version pairs as: [{"subject":"subject1", "version":1}, {"subject":"subject2",
+                        /// "version":2}].
+                        /// </summary>
+                        public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The schema whose schema versions are to be listed. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. If true, the response will include soft-deleted versions of the schema, even
+                            /// if the subject is soft-deleted. The default is false.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> Deleted { get; set; }
+
+                            /// <summary>Optional. The subject to filter the subjects by.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("subject", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Subject { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/versions";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/schemas/.*$",
+                                });
+                                RequestParameters.Add("deleted", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "deleted",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("subject", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "subject",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Get the schema for the given schema id.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the schema to return. Structured like:
+                    /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Get the schema for the given schema id.</summary>
+                    public class GetRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.Schema>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the schema to return. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Used to limit the search for the schema ID to a specific subject, otherwise the
+                        /// schema ID will be searched for in all subjects in the given specified context.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("subject", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Subject { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/schemas/.*$",
+                            });
+                            RequestParameters.Add("subject", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "subject",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Get the schema string for the given schema id. The response will be the schema string.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The name of the schema to return. Structured like:
+                    /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                    /// </param>
+                    public virtual GetSchemaRequest GetSchema(string name)
+                    {
+                        return new GetSchemaRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Get the schema string for the given schema id. The response will be the schema string.
+                    /// </summary>
+                    public class GetSchemaRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                    {
+                        /// <summary>Constructs a new GetSchema request.</summary>
+                        public GetSchemaRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the schema to return. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Used to limit the search for the schema ID to a specific subject, otherwise the
+                        /// schema ID will be searched for in all subjects in the given specified context.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("subject", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Subject { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getSchema";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}/schema";
+
+                        /// <summary>Initializes GetSchema parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/schemas/.*$",
+                            });
+                            RequestParameters.Add("subject", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "subject",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Subjects resource.</summary>
+                public virtual SubjectsResource Subjects { get; }
+
+                /// <summary>The "subjects" collection of methods.</summary>
+                public class SubjectsResource
+                {
+                    private const string Resource = "subjects";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SubjectsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Versions = new VersionsResource(service);
+                    }
+
+                    /// <summary>Gets the Versions resource.</summary>
+                    public virtual VersionsResource Versions { get; }
+
+                    /// <summary>The "versions" collection of methods.</summary>
+                    public class VersionsResource
+                    {
+                        private const string Resource = "versions";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public VersionsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            Referencedby = new ReferencedbyResource(service);
+                        }
+
+                        /// <summary>Gets the Referencedby resource.</summary>
+                        public virtual ReferencedbyResource Referencedby { get; }
+
+                        /// <summary>The "referencedby" collection of methods.</summary>
+                        public class ReferencedbyResource
+                        {
+                            private const string Resource = "referencedby";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public ReferencedbyResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>
+                            /// Get a list of IDs of schemas that reference the schema with the given subject and
+                            /// version.
+                            /// </summary>
+                            /// <param name="parent">
+                            /// Required. The version to list referenced by. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                            /// </param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(this.service, parent);
+                            }
+
+                            /// <summary>
+                            /// Get a list of IDs of schemas that reference the schema with the given subject and
+                            /// version.
+                            /// </summary>
+                            public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The version to list referenced by. Structured like:
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                                /// or
+                                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "list";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+parent}/referencedby";
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/subjects/[^/]+/versions/[^/]+$",
+                                    });
+                                }
+                            }
+                        }
+
+                        /// <summary>Register a new version under a given subject with the given schema.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The subject to create the version for. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                        /// or
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.ManagedKafka.v1.Data.CreateVersionRequest body, string parent)
+                        {
+                            return new CreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>Register a new version under a given subject with the given schema.</summary>
+                        public class CreateRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.CreateVersionResponse>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.CreateVersionRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The subject to create the version for. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.ManagedKafka.v1.Data.CreateVersionRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/versions";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/subjects/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Delete a version of a subject. The response will be the deleted version id.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The name of the subject version to delete. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                        /// or
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Delete a version of a subject. The response will be the deleted version id.
+                        /// </summary>
+                        public class DeleteRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the subject version to delete. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. If true, both the version and the referenced schema ID will be permanently
+                            /// deleted. The default is false. If false, the version will be deleted but the schema ID
+                            /// will be retained. Soft-deleted versions can still be searched in ListVersions API call
+                            /// with deleted=true query parameter. A soft-delete of a version must be performed before a
+                            /// hard-delete.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("permanent", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> Permanent { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/subjects/[^/]+/versions/[^/]+$",
+                                });
+                                RequestParameters.Add("permanent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "permanent",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Get a versioned schema (schema with subject/version) of a subject.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the subject to return versions. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                        /// or
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Get a versioned schema (schema with subject/version) of a subject.</summary>
+                        public class GetRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaVersion>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the subject to return versions. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. If true, no matter if the subject/version is soft-deleted or not, it returns
+                            /// the version details. If false, it returns NOT_FOUND error if the subject/version is
+                            /// soft-deleted. The default is false.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> Deleted { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/subjects/[^/]+/versions/[^/]+$",
+                                });
+                                RequestParameters.Add("deleted", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "deleted",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Get the schema string only for a version of a subject. The response will be the schema
+                        /// string.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The name of the subject to return versions. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                        /// or
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                        /// </param>
+                        public virtual GetSchemaRequest GetSchema(string name)
+                        {
+                            return new GetSchemaRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Get the schema string only for a version of a subject. The response will be the schema
+                        /// string.
+                        /// </summary>
+                        public class GetSchemaRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new GetSchema request.</summary>
+                            public GetSchemaRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the subject to return versions. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. If true, no matter if the subject/version is soft-deleted or not, it returns
+                            /// the version details. If false, it returns NOT_FOUND error if the subject/version is
+                            /// soft-deleted. The default is false.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> Deleted { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "getSchema";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}/schema";
+
+                            /// <summary>Initializes GetSchema parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/subjects/[^/]+/versions/[^/]+$",
+                                });
+                                RequestParameters.Add("deleted", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "deleted",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Get all versions of a subject. The response will be an array of versions of the subject.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. The subject whose versions are to be listed. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                        /// or
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>
+                        /// Get all versions of a subject. The response will be an array of versions of the subject.
+                        /// </summary>
+                        public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The subject whose versions are to be listed. Structured like:
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                            /// or
+                            /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. If true, the response will include soft-deleted versions of an active or
+                            /// soft-deleted subject. The default is false.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> Deleted { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/versions";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/subjects/[^/]+$",
+                                });
+                                RequestParameters.Add("deleted", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "deleted",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>
+                    /// Delete a subject. The response will be an array of versions of the deleted subject.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The name of the subject to delete. Structured like:
+                    /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                    /// or
+                    /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Delete a subject. The response will be an array of versions of the deleted subject.
+                    /// </summary>
+                    public class DeleteRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the subject to delete. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                        /// or
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. If true, the subject and all associated metadata including the schema ID will be
+                        /// deleted permanently. Otherwise, only the subject is soft-deleted. The default is false.
+                        /// Soft-deleted subjects can still be searched in ListSubjects API call with deleted=true query
+                        /// parameter. A soft-delete of a subject must be performed before a hard-delete.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("permanent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Permanent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/subjects/[^/]+$",
+                            });
+                            RequestParameters.Add("permanent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "permanent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// List subjects in the schema registry. The response will be an array of subject names.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. The parent schema registry/context whose subjects are to be listed. Structured like:
+                    /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` or
+                    /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>
+                    /// List subjects in the schema registry. The response will be an array of subject names.
+                    /// </summary>
+                    public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.HttpBody>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent schema registry/context whose subjects are to be listed. Structured
+                        /// like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` or
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. If true, the response will include soft-deleted subjects. The default is false.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Deleted { get; set; }
+
+                        /// <summary>
+                        /// Optional. The context to filter the subjects by, in the format of `:.{context}:`. If unset,
+                        /// all subjects in the registry are returned. Set to empty string or add as '?subjectPrefix='
+                        /// at the end of this request to list subjects in the default context.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("subjectPrefix", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string SubjectPrefix { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/subjects";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+$",
+                            });
+                            RequestParameters.Add("deleted", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "deleted",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("subjectPrefix", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "subjectPrefix",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lookup a schema under the specified subject.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The subject to lookup the schema in. Structured like:
+                    /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                    /// or
+                    /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                    /// </param>
+                    public virtual LookupVersionRequest LookupVersion(Google.Apis.ManagedKafka.v1.Data.LookupVersionRequest body, string parent)
+                    {
+                        return new LookupVersionRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Lookup a schema under the specified subject.</summary>
+                    public class LookupVersionRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaVersion>
+                    {
+                        /// <summary>Constructs a new LookupVersion request.</summary>
+                        public LookupVersionRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.LookupVersionRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The subject to lookup the schema in. Structured like:
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}`
+                        /// or
+                        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedKafka.v1.Data.LookupVersionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "lookupVersion";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}";
+
+                        /// <summary>Initializes LookupVersion parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/subjects/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Create a schema registry instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent whose schema registry instance is to be created. Structured like:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.ManagedKafka.v1.Data.CreateSchemaRegistryRequest body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a schema registry instance.</summary>
+                public class CreateRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaRegistry>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedKafka.v1.Data.CreateSchemaRegistryRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent whose schema registry instance is to be created. Structured like:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ManagedKafka.v1.Data.CreateSchemaRegistryRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/schemaRegistries";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Delete a schema registry instance.</summary>
+                /// <param name="name">
+                /// Required. The name of the schema registry instance to delete. Structured like:
+                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Delete a schema registry instance.</summary>
+                public class DeleteRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the schema registry instance to delete. Structured like:
+                    /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Get the schema registry instance.</summary>
+                /// <param name="name">
+                /// Required. The name of the schema registry instance to return. Structured like:
+                /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Get the schema registry instance.</summary>
+                public class GetRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaRegistry>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the schema registry instance to return. Structured like:
+                    /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>List schema registries.</summary>
+                /// <param name="parent">
+                /// Required. The parent whose schema registry instances are to be listed. Structured like:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>List schema registries.</summary>
+                public class ListRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.ListSchemaRegistriesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent whose schema registry instances are to be listed. Structured like:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/schemaRegistries";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -3479,6 +7026,47 @@ namespace Google.Apis.ManagedKafka.v1.Data
         /// <summary>Required. The number of vCPUs to provision for the cluster. Minimum: 3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
         public virtual System.Nullable<long> VcpuCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for CheckCompatibility.</summary>
+    public class CheckCompatibilityRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The schema references used by the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<SchemaReference> References { get; set; }
+
+        /// <summary>Required. The schema payload</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>Optional. The schema type of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaType")]
+        public virtual string SchemaType { get; set; }
+
+        /// <summary>
+        /// Optional. If true, the response will contain the compatibility check result with reasons for failed checks.
+        /// The default is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verbose")]
+        public virtual System.Nullable<bool> Verbose { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for CheckCompatibility.</summary>
+    public class CheckCompatibilityResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The compatibility check result. If true, the schema is compatible with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("is_compatible")]
+        public virtual System.Nullable<bool> IsCompatible { get; set; }
+
+        /// <summary>Failure reasons if verbose = true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<string> Messages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3867,6 +7455,99 @@ namespace Google.Apis.ManagedKafka.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Context represents an independent schema grouping in a schema registry instance.</summary>
+    public class Context : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The name of the context. Structured like:
+        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}` The context
+        /// name {context} can contain the following: * Up to 255 characters. * Allowed characters: letters (uppercase
+        /// or lowercase), numbers, and the following special characters: `.`, `-`, `_`, `+`, `%`, and `~`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The subjects of the context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subjects")]
+        public virtual System.Collections.Generic.IList<string> Subjects { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to create a schema registry instance.</summary>
+    public class CreateSchemaRegistryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The schema registry instance to create. The name field is ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaRegistry")]
+        public virtual SchemaRegistry SchemaRegistry { get; set; }
+
+        /// <summary>
+        /// Required. The schema registry instance ID to use for this schema registry. The ID must contain only letters
+        /// (a-z, A-Z), numbers (0-9), and underscores (-). The maximum length is 63 characters. The ID must not start
+        /// with a number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaRegistryId")]
+        public virtual string SchemaRegistryId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for CreateVersion.</summary>
+    public class CreateVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The schema ID of the schema. If not specified, the schema ID will be generated by the server. If
+        /// the schema ID is specified, it must not be used by an existing schema that is different from the schema to
+        /// be created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<int> Id { get; set; }
+
+        /// <summary>
+        /// Optional. If true, the schema will be normalized before being stored. The default is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalize")]
+        public virtual System.Nullable<bool> Normalize { get; set; }
+
+        /// <summary>Optional. The schema references used by the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<SchemaReference> References { get; set; }
+
+        /// <summary>Required. The schema payload</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>
+        /// Optional. The type of the schema. It is optional. If not specified, the schema type will be AVRO.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaType")]
+        public virtual string SchemaType { get; set; }
+
+        /// <summary>
+        /// Optional. The version to create. It is optional. If not specified, the version will be created with the max
+        /// version ID of the subject increased by 1. If the version ID is specified, it will be used as the new version
+        /// ID and must not be used by an existing version of the subject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for CreateVersion.</summary>
+    public class CreateVersionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifier of the schema created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<int> Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -3892,6 +7573,39 @@ namespace Google.Apis.ManagedKafka.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be
+    /// represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and
+    /// non-streaming API methods in the request as well as the response. It can be used as a top-level request field,
+    /// which is convenient if one wants to extract parameters from either the URL or HTTP template into the request
+    /// fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id.
+    /// string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service
+    /// ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+    /// UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service
+    /// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc
+    /// UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes
+    /// how the request and response bodies are handled, all other features will continue to work unchanged.
+    /// </summary>
+    public class HttpBody : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The HTTP Content-Type header value specifying the content type of the body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; }
+
+        /// <summary>The HTTP request/response body as raw binary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>
+        /// Application specific response metadata. Must be set in the first response for streaming APIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4027,6 +7741,17 @@ namespace Google.Apis.ManagedKafka.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for ListSchemaRegistries.</summary>
+    public class ListSchemaRegistriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The schema registry instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaRegistries")]
+        public virtual System.Collections.Generic.IList<SchemaRegistry> SchemaRegistries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for ListTopics.</summary>
     public class ListTopicsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4072,6 +7797,38 @@ namespace Google.Apis.ManagedKafka.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for LookupVersion.</summary>
+    public class LookupVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If true, soft-deleted versions will be included in lookup, no matter if the subject is active or
+        /// soft-deleted. If false, soft-deleted versions will be excluded. The default is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
+        public virtual System.Nullable<bool> Deleted { get; set; }
+
+        /// <summary>
+        /// Optional. If true, the schema will be normalized before being looked up. The default is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalize")]
+        public virtual System.Nullable<bool> Normalize { get; set; }
+
+        /// <summary>Optional. The schema references used by the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<SchemaReference> References { get; set; }
+
+        /// <summary>Required. The schema payload</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>Optional. The schema type of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaType")]
+        public virtual string SchemaType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4313,6 +8070,145 @@ namespace Google.Apis.ManagedKafka.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Schema for a Kafka message.</summary>
+    public class Schema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The schema references used by the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<SchemaReference> References { get; set; }
+
+        /// <summary>The schema payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string SchemaValue { get; set; }
+
+        /// <summary>Optional. The schema type of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaType")]
+        public virtual string SchemaType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SchemaConfig represents configuration for a schema registry or a specific subject.</summary>
+    public class SchemaConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The subject to which this subject is an alias of. Only applicable for subject config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alias")]
+        public virtual string Alias { get; set; }
+
+        /// <summary>
+        /// Required. The compatibility type of the schema. The default value is BACKWARD. If unset in a
+        /// SchemaSubject-level SchemaConfig, defaults to the global value. If unset in a SchemaRegistry-level
+        /// SchemaConfig, reverts to the default value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compatibility")]
+        public virtual string Compatibility { get; set; }
+
+        /// <summary>
+        /// Optional. If true, the schema will be normalized before being stored or looked up. The default is false. If
+        /// unset in a SchemaSubject-level SchemaConfig, the global value will be used. If unset in a
+        /// SchemaRegistry-level SchemaConfig, reverts to the default value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalize")]
+        public virtual System.Nullable<bool> Normalize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// SchemaMode represents the mode of a schema registry or a specific subject. Four modes are supported: * NONE:
+    /// This is the default mode for a subject and essentially means that the subject does not have any mode set. This
+    /// means the subject will follow the schema registry's mode. * READONLY: The schema registry is in read-only mode.
+    /// * READWRITE: The schema registry is in read-write mode, which allows limited write operations on the schema. *
+    /// IMPORT: The schema registry is in import mode, which allows more editing operations on the schema for data
+    /// importing purposes.
+    /// </summary>
+    public class SchemaMode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The mode type of a schema registry (READWRITE by default) or of a subject (NONE by default, which
+        /// means use the global schema registry setting).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SchemaReference is a reference to a schema.</summary>
+    public class SchemaReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The subject of the reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual string Subject { get; set; }
+
+        /// <summary>Required. The version of the reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SchemaRegistry is a schema registry instance.</summary>
+    public class SchemaRegistry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The contexts of the schema registry instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
+        public virtual System.Collections.Generic.IList<string> Contexts { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the schema registry instance. Structured like:
+        /// `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` The instance name
+        /// {schema_registry} can contain the following: * Up to 255 characters. * Letters (uppercase or lowercase),
+        /// numbers, and underscores.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Version of a schema.</summary>
+    public class SchemaVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The schema ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<int> Id { get; set; }
+
+        /// <summary>Optional. The schema references used by the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<SchemaReference> References { get; set; }
+
+        /// <summary>Required. The schema payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>Optional. The schema type of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaType")]
+        public virtual string SchemaType { get; set; }
+
+        /// <summary>Required. The subject of the version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual string Subject { get; set; }
+
+        /// <summary>Required. The version ID</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -4414,6 +8310,42 @@ namespace Google.Apis.ManagedKafka.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationFactor")]
         public virtual System.Nullable<int> ReplicationFactor { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request for updating schema config. On a SchemaSubject-level SchemaConfig, an unset field will be removed from
+    /// the SchemaConfig.
+    /// </summary>
+    public class UpdateSchemaConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The compatibility type of the schemas. Cannot be unset for a SchemaRegistry-level SchemaConfig. If
+        /// unset on a SchemaSubject-level SchemaConfig, removes the compatibility field for the SchemaConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compatibility")]
+        public virtual string Compatibility { get; set; }
+
+        /// <summary>
+        /// Optional. If true, the schema will be normalized before being stored or looked up. The default is false.
+        /// Cannot be unset for a SchemaRegistry-level SchemaConfig. If unset on a SchemaSubject-level SchemaConfig,
+        /// removes the normalize field for the SchemaConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalize")]
+        public virtual System.Nullable<bool> Normalize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for updating schema registry or subject mode.</summary>
+    public class UpdateSchemaModeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The mode type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
