@@ -6342,6 +6342,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual DatabaseEngineInfo Destination { get; set; }
 
+        /// <summary>Optional. The provider for the destination database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationProvider")]
+        public virtual string DestinationProvider { get; set; }
+
         /// <summary>Optional. The display name for the workspace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -6414,6 +6418,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Required. The source engine details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual DatabaseEngineInfo Source { get; set; }
+
+        /// <summary>Optional. The provider for the source database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceProvider")]
+        public virtual string SourceProvider { get; set; }
 
         private string _updateTimeRaw;
 
