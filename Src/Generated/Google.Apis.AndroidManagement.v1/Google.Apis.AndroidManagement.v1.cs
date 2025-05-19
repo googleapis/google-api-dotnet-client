@@ -601,8 +601,9 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
             /// <summary>
-            /// Deletes a device. This operation wipes the device. Deleted devices do not show up in
-            /// enterprises.devices.list calls and a 404 is returned from enterprises.devices.get.
+            /// Deletes a device. This operation attempts to wipe the device but this is not guaranteed to succeed if
+            /// the device is offline for an extended period. Deleted devices do not show up in enterprises.devices.list
+            /// calls and a 404 is returned from enterprises.devices.get.
             /// </summary>
             /// <param name="name">
             /// The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}.
@@ -613,8 +614,9 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
             /// <summary>
-            /// Deletes a device. This operation wipes the device. Deleted devices do not show up in
-            /// enterprises.devices.list calls and a 404 is returned from enterprises.devices.get.
+            /// Deletes a device. This operation attempts to wipe the device but this is not guaranteed to succeed if
+            /// the device is offline for an extended period. Deleted devices do not show up in enterprises.devices.list
+            /// calls and a 404 is returned from enterprises.devices.get.
             /// </summary>
             public class DeleteRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.Empty>
             {
