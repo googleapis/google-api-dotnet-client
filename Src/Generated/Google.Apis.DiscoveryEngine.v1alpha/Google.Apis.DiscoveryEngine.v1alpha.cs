@@ -528,6 +528,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 Evaluations = new EvaluationsResource(service);
                 GroundingConfigs = new GroundingConfigsResource(service);
                 IdentityMappingStores = new IdentityMappingStoresResource(service);
+                Notebooks = new NotebooksResource(service);
                 Operations = new OperationsResource(service);
                 Podcasts = new PodcastsResource(service);
                 RankingConfigs = new RankingConfigsResource(service);
@@ -1722,8 +1723,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     IMAGECONVERTEDDOCUMENT = 4,
 
                                     /// <summary>
-                                    /// Return image bytes if image_id of a document is provided, only supported for
-                                    /// enabling shareholder-structure in layout parsing config for now.
+                                    /// Return image bytes in base64 encoded format if image_id of a document is
+                                    /// provided, only supported for enabling shareholder-structure in layout parsing
+                                    /// config for now.
                                     /// </summary>
                                     [Google.Apis.Util.StringValueAttribute("IMAGE_BYTES")]
                                     IMAGEBYTES = 5,
@@ -7996,7 +7998,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <summary>Updates a DataStore</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Immutable. The full resource name of the data store. Format:
+                    /// Immutable. Identifier. The full resource name of the data store. Format:
                     /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
                     /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
                     /// </param>
@@ -8017,7 +8019,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
 
                         /// <summary>
-                        /// Immutable. The full resource name of the data store. Format:
+                        /// Immutable. Identifier. The full resource name of the data store. Format:
                         /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
                         /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
                         /// </summary>
@@ -10813,8 +10815,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <summary>Updates an Engine</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
-                    /// string with a length limit of 1024 characters. Format:
+                    /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a
+                    /// UTF-8 encoded string with a length limit of 1024 characters. Format:
                     /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine
                     /// should be 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT
                     /// error is returned.
@@ -10836,8 +10838,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
 
                         /// <summary>
-                        /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8
-                        /// encoded string with a length limit of 1024 characters. Format:
+                        /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a
+                        /// UTF-8 encoded string with a length limit of 1024 characters. Format:
                         /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine
                         /// should be 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an
                         /// INVALID_ARGUMENT error is returned.
@@ -12159,8 +12161,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 IMAGECONVERTEDDOCUMENT = 4,
 
                                 /// <summary>
-                                /// Return image bytes if image_id of a document is provided, only supported for
-                                /// enabling shareholder-structure in layout parsing config for now.
+                                /// Return image bytes in base64 encoded format if image_id of a document is provided,
+                                /// only supported for enabling shareholder-structure in layout parsing config for now.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("IMAGE_BYTES")]
                                 IMAGEBYTES = 5,
@@ -17596,7 +17598,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 /// <summary>Updates a DataStore</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. The full resource name of the data store. Format:
+                /// Immutable. Identifier. The full resource name of the data store. Format:
                 /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
                 /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
                 /// </param>
@@ -17617,7 +17619,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
 
                     /// <summary>
-                    /// Immutable. The full resource name of the data store. Format:
+                    /// Immutable. Identifier. The full resource name of the data store. Format:
                     /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
                     /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
                     /// </summary>
@@ -18868,6 +18870,122 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/identityMappingStores/[^/]+$",
                         });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Notebooks resource.</summary>
+            public virtual NotebooksResource Notebooks { get; }
+
+            /// <summary>The "notebooks" collection of methods.</summary>
+            public class NotebooksResource
+            {
+                private const string Resource = "notebooks";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NotebooksResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Sources = new SourcesResource(service);
+                }
+
+                /// <summary>Gets the Sources resource.</summary>
+                public virtual SourcesResource Sources { get; }
+
+                /// <summary>The "sources" collection of methods.</summary>
+                public class SourcesResource
+                {
+                    private const string Resource = "sources";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SourcesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Uploads a file for Notebook LM to use. Creates a Source.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource where the sources will be created. Format:
+                    /// projects/{project}/locations/{location}/notebooks/{notebook}
+                    /// </param>
+                    /// <param name="sourceId">
+                    /// The source id of the associated file. If not set, a source id will be generated and a new
+                    /// tentative source will be created.
+                    /// </param>
+                    public virtual UploadFileRequest UploadFile(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaUploadSourceFileRequest body, string parent, string sourceId)
+                    {
+                        return new UploadFileRequest(this.service, body, parent, sourceId);
+                    }
+
+                    /// <summary>Uploads a file for Notebook LM to use. Creates a Source.</summary>
+                    public class UploadFileRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaUploadSourceFileResponse>
+                    {
+                        /// <summary>Constructs a new UploadFile request.</summary>
+                        public UploadFileRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaUploadSourceFileRequest body, string parent, string sourceId) : base(service)
+                        {
+                            Parent = parent;
+                            SourceId = sourceId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource where the sources will be created. Format:
+                        /// projects/{project}/locations/{location}/notebooks/{notebook}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The source id of the associated file. If not set, a source id will be generated and a new
+                        /// tentative source will be created.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("sourceId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string SourceId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaUploadSourceFileRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "uploadFile";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/sources/{sourceId}:uploadFile";
+
+                        /// <summary>Initializes UploadFile parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/notebooks/[^/]+$",
+                            });
+                            RequestParameters.Add("sourceId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "sourceId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
                     }
                 }
             }
@@ -24045,7 +24163,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string KmsKeyName { get; set; }
 
         /// <summary>
-        /// Immutable. The full resource name of the data store. Format:
+        /// Immutable. Identifier. The full resource name of the data store. Format:
         /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field
         /// must be a UTF-8 encoded string with a length limit of 1024 characters.
         /// </summary>
@@ -24225,7 +24343,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Stores information regarding the serving configurations at DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
+        /// <summary>Optional. If set true, the DataStore will not be available for serving search requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
         public virtual System.Nullable<bool> DisabledForServing { get; set; }
 
@@ -25201,11 +25319,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         }
 
         /// <summary>
-        /// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type
-        /// of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT,
-        /// multiple DataStores in the same Collection can be associated here. Note that when used in
-        /// CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary
-        /// initializations.
+        /// Optional. The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
+        /// SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If
+        /// solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note
+        /// that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for
+        /// necessary initializations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreIds")]
         public virtual System.Collections.Generic.IList<string> DataStoreIds { get; set; }
@@ -25222,8 +25340,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on
-        /// DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine.
+        /// Optional. The industry vertical that the engine registers. The restriction of the Engine industry vertical
+        /// is based on DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -25236,8 +25354,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
 
         /// <summary>
-        /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a
-        /// length limit of 1024 characters. Format:
+        /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
+        /// string with a length limit of 1024 characters. Format:
         /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63
         /// characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
@@ -32846,7 +32964,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1alphaLanguageInfo LanguageInfo { get; set; }
 
         /// <summary>
-        /// Immutable. The full resource name of the data store. Format:
+        /// Immutable. Identifier. The full resource name of the data store. Format:
         /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field
         /// must be a UTF-8 encoded string with a length limit of 1024 characters.
         /// </summary>
@@ -33030,7 +33148,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Stores information regarding the serving configurations at DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
+        /// <summary>Optional. If set true, the DataStore will not be available for serving search requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
         public virtual System.Nullable<bool> DisabledForServing { get; set; }
 
@@ -34500,11 +34618,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         }
 
         /// <summary>
-        /// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type
-        /// of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT,
-        /// multiple DataStores in the same Collection can be associated here. Note that when used in
-        /// CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary
-        /// initializations.
+        /// Optional. The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
+        /// SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If
+        /// solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note
+        /// that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for
+        /// necessary initializations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreIds")]
         public virtual System.Collections.Generic.IList<string> DataStoreIds { get; set; }
@@ -34521,8 +34639,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on
-        /// DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine.
+        /// Optional. The industry vertical that the engine registers. The restriction of the Engine industry vertical
+        /// is based on DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -34535,8 +34653,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
 
         /// <summary>
-        /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a
-        /// length limit of 1024 characters. Format:
+        /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
+        /// string with a length limit of 1024 characters. Format:
         /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63
         /// characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
@@ -44918,7 +45036,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1betaLanguageInfo LanguageInfo { get; set; }
 
         /// <summary>
-        /// Immutable. The full resource name of the data store. Format:
+        /// Immutable. Identifier. The full resource name of the data store. Format:
         /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field
         /// must be a UTF-8 encoded string with a length limit of 1024 characters.
         /// </summary>
@@ -45102,7 +45220,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Stores information regarding the serving configurations at DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
+        /// <summary>Optional. If set true, the DataStore will not be available for serving search requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
         public virtual System.Nullable<bool> DisabledForServing { get; set; }
 
@@ -46028,11 +46146,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         }
 
         /// <summary>
-        /// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type
-        /// of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT,
-        /// multiple DataStores in the same Collection can be associated here. Note that when used in
-        /// CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary
-        /// initializations.
+        /// Optional. The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
+        /// SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If
+        /// solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note
+        /// that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for
+        /// necessary initializations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreIds")]
         public virtual System.Collections.Generic.IList<string> DataStoreIds { get; set; }
@@ -46049,8 +46167,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on
-        /// DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine.
+        /// Optional. The industry vertical that the engine registers. The restriction of the Engine industry vertical
+        /// is based on DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -46063,8 +46181,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
 
         /// <summary>
-        /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a
-        /// length limit of 1024 characters. Format:
+        /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
+        /// string with a length limit of 1024 characters. Format:
         /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63
         /// characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
@@ -49654,10 +49772,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Media upload request metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaRequestInfo")]
         public virtual ApiservingMediaRequestInfo MediaRequestInfo { get; set; }
-
-        /// <summary>The project (notebook) id of the uploaded source. Prefer to use the parent field instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; }
 
         /// <summary>
         /// The source id of the associated file. If not set, a source id will be generated and a new tentative source
