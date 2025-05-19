@@ -6379,7 +6379,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connectionPoolingEnabled")]
         public virtual System.Nullable<bool> ConnectionPoolingEnabled { get; set; }
 
-        /// <summary>Optional. List of connection pool configuration flags</summary>
+        /// <summary>Optional. List of connection pool configuration flags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flags")]
         public virtual System.Collections.Generic.IList<ConnectionPoolFlags> Flags { get; set; }
 
@@ -7808,9 +7808,9 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual System.Nullable<int> QueryPlansPerMinute { get; set; }
 
         /// <summary>
-        /// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more
-        /// than this field value will be truncated to this value. When unset, query length will be the default value.
-        /// Changing query length will restart the database.
+        /// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query lengths
+        /// greater than this field value will be truncated to this value. When unset, query length will be the default
+        /// value. Changing query length will restart the database.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryStringLength")]
         public virtual System.Nullable<int> QueryStringLength { get; set; }
@@ -9120,9 +9120,9 @@ namespace Google.Apis.SQLAdmin.v1.Data
     public class PscAutoConnectionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The consumer network of this consumer endpoint. This must be a resource path that includes both the host
-        /// project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host
-        /// project of this network might be different from the consumer service project.
+        /// Optional. The consumer network of this consumer endpoint. This must be a resource path that includes both
+        /// the host project and the network name. For example, `projects/project1/global/networks/network1`. The
+        /// consumer host project of this network might be different from the consumer service project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
         public virtual string ConsumerNetwork { get; set; }
@@ -9132,8 +9132,8 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ConsumerNetworkStatus { get; set; }
 
         /// <summary>
-        /// This is the project ID of consumer service project of this consumer endpoint. Optional. This is only
-        /// applicable if consumer_network is a shared vpc network.
+        /// Optional. This is the project ID of consumer service project of this consumer endpoint. Optional. This is
+        /// only applicable if consumer_network is a shared vpc network.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerProject")]
         public virtual string ConsumerProject { get; set; }
@@ -9160,6 +9160,14 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerProjects")]
         public virtual System.Collections.Generic.IList<string> AllowedConsumerProjects { get; set; }
+
+        /// <summary>
+        /// Optional. The network attachment of the consumer network that the Private Service Connect enabled Cloud SQL
+        /// instance is authorized to connect via PSC interface. format:
+        /// projects/PROJECT/regions/REGION/networkAttachments/ID
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachmentUri")]
+        public virtual string NetworkAttachmentUri { get; set; }
 
         /// <summary>
         /// Optional. The list of settings for requested Private Service Connect consumer endpoints that can be used to
