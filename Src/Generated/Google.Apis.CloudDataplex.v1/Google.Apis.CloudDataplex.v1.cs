@@ -5351,7 +5351,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The resource name of the parent Entry Group:
-                    /// projects/{project}/locations/{location}/entryGroups/{entry_group}.
+                    /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EntryLink body, string parent)
                     {
@@ -5371,7 +5371,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the parent Entry Group:
-                        /// projects/{project}/locations/{location}/entryGroups/{entry_group}.
+                        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -5425,7 +5425,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>Deletes an Entry Link.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the Entry Link:
-                    /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entryLinks/{entry_link}.
+                    /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}.
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -5444,7 +5444,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the Entry Link:
-                        /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entryLinks/{entry_link}.
+                        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -5473,17 +5473,17 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>Gets an entry link.</summary>
+                    /// <summary>Gets an Entry Link.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the Entry Link:
-                    /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entryLinks/{entry_link}.
+                    /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>Gets an entry link.</summary>
+                    /// <summary>Gets an Entry Link.</summary>
                     public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EntryLink>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -5495,7 +5495,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The resource name of the Entry Link:
-                        /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entryLinks/{entry_link}.
+                        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -15814,7 +15814,7 @@ namespace Google.Apis.CloudDataplex.v1
             /// <summary>Searches for Entries matching the given query and scope.</summary>
             /// <param name="name">
             /// Required. The project to which the request should be attributed in the following form:
-            /// projects/{project}/locations/{location}.
+            /// projects/{project}/locations/global.
             /// </param>
             public virtual SearchEntriesRequest SearchEntries(string name)
             {
@@ -15833,7 +15833,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                 /// <summary>
                 /// Required. The project to which the request should be attributed in the following form:
-                /// projects/{project}/locations/{location}.
+                /// projects/{project}/locations/global.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -20512,7 +20512,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         }
     }
 
-    /// <summary>EntryLink represents a link between two entries.</summary>
+    /// <summary>EntryLink represents a link between two Entries.</summary>
     public class GoogleCloudDataplexV1EntryLink : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -20554,20 +20554,20 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Required. Immutable. Relative resource name of the Entry Link Type used to create this Entry Link, of the
-        /// form: projects/{project}/locations/{location}/entryLinkTypes/{entry_link_type}.
+        /// form: `projects/{project_id_or_number}/locations/{location_id}/entryLinkTypes/{entry_link_type_id}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryLinkType")]
         public virtual string EntryLinkType { get; set; }
 
         /// <summary>
-        /// Required. Specifies the entries referenced in the entry link. There should be exactly two entry references.
+        /// Required. Specifies the Entries referenced in the Entry Link. There should be exactly two entry references.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryReferences")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1EntryLinkEntryReference> EntryReferences { get; set; }
 
         /// <summary>
         /// Output only. Immutable. Identifier. The relative resource name of the Entry Link, of the form:
-        /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entryLinks/{entry_link}.
+        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -20613,24 +20613,24 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Reference to the Entry that is linked through the entry link.</summary>
+    /// <summary>Reference to the Entry that is linked through the Entry Link.</summary>
     public class GoogleCloudDataplexV1EntryLinkEntryReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Immutable. The relative resource name of the referenced entry, of the form:
-        /// projects/{project}/locations/{location}/entryGroups/{entryGroup}/entries/{entry}.
+        /// Required. Immutable. The relative resource name of the referenced Entry, of the form:
+        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Immutable. The path in the entry that is referenced in the entry link. Empty path denotes that the entry
-        /// itself is referenced in the entry link.
+        /// Immutable. The path in the Entry that is referenced in the Entry Link. Empty path denotes that the Entry
+        /// itself is referenced in the Entry Link.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>Required. Immutable. The reference type of the entry.</summary>
+        /// <summary>Required. Immutable. The reference type of the Entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
