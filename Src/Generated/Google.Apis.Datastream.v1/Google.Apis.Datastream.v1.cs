@@ -3942,6 +3942,13 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
         public virtual MongodbCluster IncludeObjects { get; set; }
 
+        /// <summary>
+        /// Optional. Maximum number of concurrent backfill tasks. The number should be non-negative and less than or
+        /// equal to 50. If not set (or set to 0), the system's default value is used
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentBackfillTasks")]
+        public virtual System.Nullable<int> MaxConcurrentBackfillTasks { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5596,6 +5603,12 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>Standard connection format.</summary>
     public class StandardConnectionFormat : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Specifies whether the client connects directly to the host[:port] in the connection URI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directConnection")]
+        public virtual System.Nullable<bool> DirectConnection { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
