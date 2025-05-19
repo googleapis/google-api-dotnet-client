@@ -6765,7 +6765,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                     /// <summary>Updates a DataStore</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Immutable. The full resource name of the data store. Format:
+                    /// Immutable. Identifier. The full resource name of the data store. Format:
                     /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
                     /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
                     /// </param>
@@ -6786,7 +6786,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                         }
 
                         /// <summary>
-                        /// Immutable. The full resource name of the data store. Format:
+                        /// Immutable. Identifier. The full resource name of the data store. Format:
                         /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
                         /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
                         /// </summary>
@@ -9191,8 +9191,8 @@ namespace Google.Apis.DiscoveryEngine.v1
                     /// <summary>Updates an Engine</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
-                    /// string with a length limit of 1024 characters. Format:
+                    /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a
+                    /// UTF-8 encoded string with a length limit of 1024 characters. Format:
                     /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine
                     /// should be 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT
                     /// error is returned.
@@ -9214,8 +9214,8 @@ namespace Google.Apis.DiscoveryEngine.v1
                         }
 
                         /// <summary>
-                        /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8
-                        /// encoded string with a length limit of 1024 characters. Format:
+                        /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a
+                        /// UTF-8 encoded string with a length limit of 1024 characters. Format:
                         /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine
                         /// should be 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an
                         /// INVALID_ARGUMENT error is returned.
@@ -14711,7 +14711,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                 /// <summary>Updates a DataStore</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. The full resource name of the data store. Format:
+                /// Immutable. Identifier. The full resource name of the data store. Format:
                 /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
                 /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
                 /// </param>
@@ -14732,7 +14732,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                     }
 
                     /// <summary>
-                    /// Immutable. The full resource name of the data store. Format:
+                    /// Immutable. Identifier. The full resource name of the data store. Format:
                     /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
                     /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
                     /// </summary>
@@ -20766,7 +20766,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string KmsKeyName { get; set; }
 
         /// <summary>
-        /// Immutable. The full resource name of the data store. Format:
+        /// Immutable. Identifier. The full resource name of the data store. Format:
         /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field
         /// must be a UTF-8 encoded string with a length limit of 1024 characters.
         /// </summary>
@@ -20946,7 +20946,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Stores information regarding the serving configurations at DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
+        /// <summary>Optional. If set true, the DataStore will not be available for serving search requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
         public virtual System.Nullable<bool> DisabledForServing { get; set; }
 
@@ -22239,11 +22239,11 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         }
 
         /// <summary>
-        /// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type
-        /// of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT,
-        /// multiple DataStores in the same Collection can be associated here. Note that when used in
-        /// CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary
-        /// initializations.
+        /// Optional. The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
+        /// SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If
+        /// solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note
+        /// that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for
+        /// necessary initializations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreIds")]
         public virtual System.Collections.Generic.IList<string> DataStoreIds { get; set; }
@@ -22260,8 +22260,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on
-        /// DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine.
+        /// Optional. The industry vertical that the engine registers. The restriction of the Engine industry vertical
+        /// is based on DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -22274,8 +22274,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
 
         /// <summary>
-        /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a
-        /// length limit of 1024 characters. Format:
+        /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
+        /// string with a length limit of 1024 characters. Format:
         /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63
         /// characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
@@ -30575,7 +30575,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1alphaLanguageInfo LanguageInfo { get; set; }
 
         /// <summary>
-        /// Immutable. The full resource name of the data store. Format:
+        /// Immutable. Identifier. The full resource name of the data store. Format:
         /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field
         /// must be a UTF-8 encoded string with a length limit of 1024 characters.
         /// </summary>
@@ -30759,7 +30759,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Stores information regarding the serving configurations at DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
+        /// <summary>Optional. If set true, the DataStore will not be available for serving search requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
         public virtual System.Nullable<bool> DisabledForServing { get; set; }
 
@@ -31901,11 +31901,11 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         }
 
         /// <summary>
-        /// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type
-        /// of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT,
-        /// multiple DataStores in the same Collection can be associated here. Note that when used in
-        /// CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary
-        /// initializations.
+        /// Optional. The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
+        /// SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If
+        /// solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note
+        /// that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for
+        /// necessary initializations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreIds")]
         public virtual System.Collections.Generic.IList<string> DataStoreIds { get; set; }
@@ -31922,8 +31922,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on
-        /// DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine.
+        /// Optional. The industry vertical that the engine registers. The restriction of the Engine industry vertical
+        /// is based on DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -31936,8 +31936,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
 
         /// <summary>
-        /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a
-        /// length limit of 1024 characters. Format:
+        /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
+        /// string with a length limit of 1024 characters. Format:
         /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63
         /// characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
@@ -38009,7 +38009,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1betaLanguageInfo LanguageInfo { get; set; }
 
         /// <summary>
-        /// Immutable. The full resource name of the data store. Format:
+        /// Immutable. Identifier. The full resource name of the data store. Format:
         /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field
         /// must be a UTF-8 encoded string with a length limit of 1024 characters.
         /// </summary>
@@ -38193,7 +38193,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Stores information regarding the serving configurations at DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
+        /// <summary>Optional. If set true, the DataStore will not be available for serving search requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
         public virtual System.Nullable<bool> DisabledForServing { get; set; }
 
@@ -39119,11 +39119,11 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         }
 
         /// <summary>
-        /// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type
-        /// of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT,
-        /// multiple DataStores in the same Collection can be associated here. Note that when used in
-        /// CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary
-        /// initializations.
+        /// Optional. The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and
+        /// SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If
+        /// solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note
+        /// that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for
+        /// necessary initializations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreIds")]
         public virtual System.Collections.Generic.IList<string> DataStoreIds { get; set; }
@@ -39140,8 +39140,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on
-        /// DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine.
+        /// Optional. The industry vertical that the engine registers. The restriction of the Engine industry vertical
+        /// is based on DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -39154,8 +39154,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
 
         /// <summary>
-        /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a
-        /// length limit of 1024 characters. Format:
+        /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
+        /// string with a length limit of 1024 characters. Format:
         /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63
         /// characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
