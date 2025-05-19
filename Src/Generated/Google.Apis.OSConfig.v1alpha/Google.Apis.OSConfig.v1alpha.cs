@@ -2975,6 +2975,20 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// This is proto2's version of MessageSet. DEPRECATED: DO NOT USE FOR NEW FIELDS. If you are using editions or
+    /// proto2, please make your own extendable messages for your use case. If you are using proto3, please use `Any`
+    /// instead. MessageSet was the implementation of extensions for proto1. When proto2 was introduced, extensions were
+    /// implemented as a first-class feature. This schema for MessageSet was meant to be a "bridge" solution to migrate
+    /// MessageSet-bearing messages from proto1 to proto2. This schema has been open-sourced only to facilitate the
+    /// migration of Google products with MessageSet-bearing messages to open-source environments.
+    /// </summary>
+    public class MessageSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An OS policy defines the desired state configuration for a VM.</summary>
     public class OSPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4196,6 +4210,47 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wire-format for a Status object</summary>
+    public class StatusProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional int32 canonical_code = 6;
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalCode")]
+        public virtual System.Nullable<int> CanonicalCode { get; set; }
+
+        /// <summary>
+        /// Numeric code drawn from the space specified below. Often, this is the canonical error space, and code is
+        /// drawn from google3/util/task/codes.proto copybara:strip_begin(b/383363683) copybara:strip_end_and_replace
+        /// optional int32 code = 1;
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// Detail message copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional string message = 3;
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>
+        /// message_set associates an arbitrary proto message with the status. copybara:strip_begin(b/383363683)
+        /// copybara:strip_end_and_replace optional proto2.bridge.MessageSet message_set = 5;
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageSet")]
+        public virtual MessageSet MessageSet { get; set; }
+
+        /// <summary>
+        /// copybara:strip_begin(b/383363683) Space to which this status belongs copybara:strip_end_and_replace optional
+        /// string space = 2; // Space to which this status belongs
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("space")]
+        public virtual string Space { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
