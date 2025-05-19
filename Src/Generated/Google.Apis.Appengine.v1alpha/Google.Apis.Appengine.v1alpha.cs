@@ -1664,6 +1664,7 @@ namespace Google.Apis.Appengine.v1alpha
                 {
                     this.service = service;
                     AuthorizedDomains = new AuthorizedDomainsResource(service);
+                    DomainMappings = new DomainMappingsResource(service);
                 }
 
                 /// <summary>Gets the AuthorizedDomains resource.</summary>
@@ -1778,6 +1779,116 @@ namespace Google.Apis.Appengine.v1alpha
                                 Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the DomainMappings resource.</summary>
+                public virtual DomainMappingsResource DomainMappings { get; }
+
+                /// <summary>The "domainMappings" collection of methods.</summary>
+                public class DomainMappingsResource
+                {
+                    private const string Resource = "domainMappings";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DomainMappingsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets the specified domain mapping.</summary>
+                    /// <param name="projectsId">
+                    /// Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
+                    /// </param>
+                    /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="domainMappingsId">Part of `name`. See documentation of `projectsId`.</param>
+                    public virtual GetRequest Get(string projectsId, string locationsId, string applicationsId, string domainMappingsId)
+                    {
+                        return new GetRequest(this.service, projectsId, locationsId, applicationsId, domainMappingsId);
+                    }
+
+                    /// <summary>Gets the specified domain mapping.</summary>
+                    public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1alpha.Data.DomainMapping>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string applicationsId, string domainMappingsId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            ApplicationsId = applicationsId;
+                            DomainMappingsId = domainMappingsId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Part of `name`. Name of the resource requested. Example:
+                        /// apps/myapp/domainMappings/example.com.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ApplicationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("domainMappingsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string DomainMappingsId { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("domainMappingsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "domainMappingsId",
+                                IsRequired = true,
+                                ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
