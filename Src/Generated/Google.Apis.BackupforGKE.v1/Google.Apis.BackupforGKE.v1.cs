@@ -5821,9 +5821,59 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>BackupConfigDetails defines the configuration of Backups created via this BackupPlan.</summary>
+    public class BackupConfigDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. If True, include all namespaced resources</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allNamespaces")]
+        public virtual System.Nullable<bool> AllNamespaces { get; set; }
+
+        /// <summary>
+        /// Output only. This defines a customer managed encryption key that will be used to encrypt the "config"
+        /// portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup
+        /// artifacts will not be encrypted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
+        public virtual EncryptionKey EncryptionKey { get; set; }
+
+        /// <summary>
+        /// Output only. This flag specifies whether Kubernetes Secret resources should be included when they fall into
+        /// the scope of Backups. Default: False
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeSecrets")]
+        public virtual System.Nullable<bool> IncludeSecrets { get; set; }
+
+        /// <summary>
+        /// Output only. This flag specifies whether volume data should be backed up when PVCs are included in the scope
+        /// of a Backup. Default: False
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeVolumeData")]
+        public virtual System.Nullable<bool> IncludeVolumeData { get; set; }
+
+        /// <summary>
+        /// Output only. If set, include just the resources referenced by the listed ProtectedApplications.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedApplications")]
+        public virtual NamespacedNames SelectedApplications { get; set; }
+
+        /// <summary>Output only. If set, include just the resources in the listed namespaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedNamespaces")]
+        public virtual Namespaces SelectedNamespaces { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines the configuration and scheduling for a "line" of Backups.</summary>
     public class BackupPlan : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The fully qualified name of the BackupChannel to be used to create a backup. This field is set
+        /// only if the cluster being backed up is in a different project. `projects/*/locations/*/backupChannels/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupChannel")]
+        public virtual string BackupChannel { get; set; }
+
         /// <summary>Optional. Defines the configuration of Backups created via this BackupPlan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupConfig")]
         public virtual BackupConfig BackupConfig { get; set; }
@@ -6167,6 +6217,12 @@ namespace Google.Apis.BackupforGKE.v1.Data
     public class BackupPlanDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. Contains details about the BackupConfig of Backups created via this BackupPlan.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConfigDetails")]
+        public virtual BackupConfigDetails BackupConfigDetails { get; set; }
+
+        /// <summary>
         /// Output only. The fully qualified name of the last successful Backup created under this BackupPlan.
         /// `projects/*/locations/*/backupPlans/*/backups/*`
         /// </summary>
@@ -6263,6 +6319,12 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectedPodCount")]
         public virtual System.Nullable<int> ProtectedPodCount { get; set; }
+
+        /// <summary>
+        /// Output only. Contains details about the RetentionPolicy of Backups created via this BackupPlan.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionPolicyDetails")]
+        public virtual RetentionPolicyDetails RetentionPolicyDetails { get; set; }
 
         /// <summary>
         /// Output only. A number that represents the current risk level of this BackupPlan from RPO perspective with 1
@@ -7846,6 +7908,14 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. The fully qualified name of the RestoreChannel to be used to create a RestorePlan. This field
+        /// is set only if the `backup_plan` is in a different project than the RestorePlan. Format:
+        /// `projects/*/locations/*/restoreChannels/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreChannel")]
+        public virtual string RestoreChannel { get; set; }
+
         /// <summary>Required. Configuration of Restores created via this RestorePlan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreConfig")]
         public virtual RestoreConfig RestoreConfig { get; set; }
@@ -8063,6 +8133,32 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locked")]
         public virtual System.Nullable<bool> Locked { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RetentionPolicyDetails defines a Backup retention policy for a BackupPlan.</summary>
+    public class RetentionPolicyDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value
+        /// between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches
+        /// Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect
+        /// existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0
+        /// (no delete blocking)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupDeleteLockDays")]
+        public virtual System.Nullable<int> BackupDeleteLockDays { get; set; }
+
+        /// <summary>
+        /// Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer
+        /// value &amp;gt;= 0 and &amp;lt;= 365. If specified, a Backup created under this BackupPlan will be
+        /// automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups
+        /// created under this BackupPlan will NOT be subject to automatic deletion. Default: 0 (no automatic deletion)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRetainDays")]
+        public virtual System.Nullable<int> BackupRetainDays { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
