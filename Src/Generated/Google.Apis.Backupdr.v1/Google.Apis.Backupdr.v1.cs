@@ -632,6 +632,104 @@ namespace Google.Apis.Backupdr.v1
                     }
                 }
 
+                /// <summary>Update a BackupPlanAssociation</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Identifier. The resource name of BackupPlanAssociation in below format Format :
+                /// projects/{project}/locations/{location}/backupPlanAssociations/{backupPlanAssociationId}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Backupdr.v1.Data.BackupPlanAssociation body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a BackupPlanAssociation</summary>
+                public class PatchRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.BackupPlanAssociation body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Identifier. The resource name of BackupPlanAssociation in below format Format :
+                    /// projects/{project}/locations/{location}/backupPlanAssociations/{backupPlanAssociationId}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. The list of fields to update. Field mask is used to specify the fields to be
+                    /// overwritten in the BackupPlanAssociation resource by the update. The fields specified in the
+                    /// update_mask are relative to the resource, not the full request. A field will be overwritten if
+                    /// it is in the mask. If the user does not provide a mask then the request will fail. Currently
+                    /// backup_plan_association.backup_plan is the only supported field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Backupdr.v1.Data.BackupPlanAssociation Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backupPlanAssociations/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Triggers a new Backup.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2809,6 +2907,13 @@ namespace Google.Apis.Backupdr.v1
                     public virtual System.Nullable<bool> Force { get; set; }
 
                     /// <summary>
+                    /// Optional. If set to true, we will force update access restriction even if some non compliant
+                    /// data sources are present. The default is 'false'.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("forceUpdateAccessRestriction", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ForceUpdateAccessRestriction { get; set; }
+
+                    /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
@@ -2866,6 +2971,14 @@ namespace Google.Apis.Backupdr.v1
                         RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
                         {
                             Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("forceUpdateAccessRestriction", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "forceUpdateAccessRestriction",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4542,6 +4655,10 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Output only. Disk specific backup properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskBackupProperties")]
+        public virtual DiskBackupProperties DiskBackupProperties { get; set; }
+
         private string _enforcedRetentionEndTimeRaw;
 
         private object _enforcedRetentionEndTime;
@@ -5374,6 +5491,10 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Output only. All resource types to which backupPlan can be applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedResourceTypes")]
+        public virtual System.Collections.Generic.IList<string> SupportedResourceTypes { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -6182,6 +6303,12 @@ namespace Google.Apis.Backupdr.v1.Data
     /// </summary>
     public class DataSource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. This field is set to true if the backup is blocked by vault access restriction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupBlockedByVaultAccessRestriction")]
+        public virtual System.Nullable<bool> BackupBlockedByVaultAccessRestriction { get; set; }
+
         /// <summary>Output only. Details of how the resource is configured for backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupConfigInfo")]
         public virtual BackupConfigInfo BackupConfigInfo { get; set; }
@@ -6360,6 +6487,12 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("computeInstanceDatasourceProperties")]
         public virtual ComputeInstanceDataSourceProperties ComputeInstanceDatasourceProperties { get; set; }
 
+        /// <summary>
+        /// DiskDataSourceProperties has a subset of Disk properties that are useful at the Datasource level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskDatasourceProperties")]
+        public virtual DiskDataSourceProperties DiskDatasourceProperties { get; set; }
+
         /// <summary>Output only. Full resource pathname URL of the source Google Cloud resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpResourcename")]
         public virtual string GcpResourcename { get; set; }
@@ -6373,6 +6506,201 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DiskBackupProperties represents the properties of a Disk backup.</summary>
+    public class DiskBackupProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The architecture of the source disk. Valid values are ARM64 or X86_64.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>A description of the source disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>A list of guest OS features that are applicable to this backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeature")]
+        public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeature { get; set; }
+
+        /// <summary>
+        /// A list of publicly available licenses that are applicable to this backup. This is applicable if the original
+        /// image had licenses attached, e.g. Windows image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
+        public virtual System.Collections.Generic.IList<string> Licenses { get; set; }
+
+        /// <summary>Region and zone are mutually exclusive fields. The URL of the region of the source disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>The URL of the Zones where the source disk should be replicated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaZones")]
+        public virtual System.Collections.Generic.IList<string> ReplicaZones { get; set; }
+
+        /// <summary>Size(in GB) of the source disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<long> SizeGb { get; set; }
+
+        /// <summary>The source disk used to create this backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceDisk")]
+        public virtual string SourceDisk { get; set; }
+
+        /// <summary>The URL of the type of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The URL of the Zone where the source disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// DiskDataSourceProperties represents the properties of a Disk resource that are stored in the DataSource. .
+    /// </summary>
+    public class DiskDataSourceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The description of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Name of the disk backed up by the datasource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The size of the disk in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<long> SizeGb { get; set; }
+
+        /// <summary>The type of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DiskRestoreProperties represents the properties of a Disk restore.</summary>
+    public class DiskRestoreProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The access mode of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessMode")]
+        public virtual string AccessMode { get; set; }
+
+        /// <summary>Optional. The architecture of the source disk. Valid values are ARM64 or X86_64.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>
+        /// Optional. An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionKey")]
+        public virtual CustomerEncryptionKey DiskEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates whether this disk is using confidential compute mode. Encryption with a Cloud KMS key is
+        /// required to enable this option.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
+        public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
+
+        /// <summary>
+        /// Optional. A list of features to enable in the guest operating system. This is applicable only for bootable
+        /// images.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeature")]
+        public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeature { get; set; }
+
+        /// <summary>
+        /// Optional. Labels to apply to this disk. These can be modified later using setLabels method. Label values can
+        /// be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. A list of publicly available licenses that are applicable to this backup. This is applicable if
+        /// the original image had licenses attached, e.g. Windows image
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
+        public virtual System.Collections.Generic.IList<string> Licenses { get; set; }
+
+        /// <summary>Required. Name of the disk..</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Physical block size of the persistent disk, in bytes. If not present in a request, a default value
+        /// is used. Currently, the supported size is 4096.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("physicalBlockSizeBytes")]
+        public virtual System.Nullable<long> PhysicalBlockSizeBytes { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per
+        /// second that the disk can handle.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedIops")]
+        public virtual System.Nullable<long> ProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput MB per
+        /// second that the disk can handle.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedThroughput")]
+        public virtual System.Nullable<long> ProvisionedThroughput { get; set; }
+
+        /// <summary>Optional. Resource manager tags to be bound to the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceManagerTags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceManagerTags { get; set; }
+
+        /// <summary>Optional. Resource policies applied to this disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicy")]
+        public virtual System.Collections.Generic.IList<string> ResourcePolicy { get; set; }
+
+        /// <summary>Required. The size of the disk in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<long> SizeGb { get; set; }
+
+        /// <summary>
+        /// Optional. The storage pool in which the new disk is created. You can provide this as a partial or full URL
+        /// to the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePool")]
+        public virtual string StoragePool { get; set; }
+
+        /// <summary>
+        /// Required. URL of the disk type resource describing which disk type to use to create the disk.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DiskTargetEnvironment represents the target environment for the disk.</summary>
+    public class DiskTargetEnvironment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Target project for the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
+
+        /// <summary>Required. Target zone for the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7686,6 +8014,25 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>RegionDiskTargetEnvironment represents the target environment for the disk.</summary>
+    public class RegionDiskTargetEnvironment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Target project for the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
+
+        /// <summary>Required. Target region for the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>Required. Target URLs of the replica zones for the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaZones")]
+        public virtual System.Collections.Generic.IList<string> ReplicaZones { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for deleting a DataSource.</summary>
     public class RemoveDataSourceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7776,6 +8123,18 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Compute Engine target environment to be used during restore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeInstanceTargetEnvironment")]
         public virtual ComputeInstanceTargetEnvironment ComputeInstanceTargetEnvironment { get; set; }
+
+        /// <summary>Disk properties to be overridden during restore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskRestoreProperties")]
+        public virtual DiskRestoreProperties DiskRestoreProperties { get; set; }
+
+        /// <summary>Disk target environment to be used during restore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskTargetEnvironment")]
+        public virtual DiskTargetEnvironment DiskTargetEnvironment { get; set; }
+
+        /// <summary>Region disk target environment to be used during restore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionDiskTargetEnvironment")]
+        public virtual RegionDiskTargetEnvironment RegionDiskTargetEnvironment { get; set; }
 
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
