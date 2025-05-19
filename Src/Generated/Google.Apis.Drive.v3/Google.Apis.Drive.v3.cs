@@ -1500,9 +1500,7 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Deletes a comment. For more information, see [Manage comments and
-        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields`
-        /// parameter must be set. To return the exact fields you need, see [Return specific
-        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
         /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="commentId">The ID of the comment.</param>
@@ -1513,9 +1511,7 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Deletes a comment. For more information, see [Manage comments and
-        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields`
-        /// parameter must be set. To return the exact fields you need, see [Return specific
-        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
+        /// replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
         /// </summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
