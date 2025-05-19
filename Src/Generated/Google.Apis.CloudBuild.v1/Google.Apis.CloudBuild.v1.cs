@@ -6654,6 +6654,13 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>
+        /// Optional. The configuration of a trigger that creates a build whenever an event from the DeveloperConnect
+        /// API is received.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerConnectEventConfig")]
+        public virtual DeveloperConnectEventConfig DeveloperConnectEventConfig { get; set; }
+
         /// <summary>If true, the trigger will never automatically execute a build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
@@ -7673,6 +7680,34 @@ namespace Google.Apis.CloudBuild.v1.Data
     }
 
     /// <summary>
+    /// The configuration of a trigger that creates a build whenever an event from the DeveloperConnect API is received.
+    /// </summary>
+    public class DeveloperConnectEventConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Developer Connect Git repository link, formatted as
+        /// `projects/*/locations/*/connections/*/gitRepositoryLink/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitRepositoryLink")]
+        public virtual string GitRepositoryLink { get; set; }
+
+        /// <summary>Output only. The type of DeveloperConnect GitRepositoryLink.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitRepositoryLinkType")]
+        public virtual string GitRepositoryLinkType { get; set; }
+
+        /// <summary>Filter to match changes in pull requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullRequest")]
+        public virtual PullRequestFilter PullRequest { get; set; }
+
+        /// <summary>Filter to match changes in refs like branches and tags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("push")]
+        public virtual PushFilter Push { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -8571,9 +8606,9 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string GroupId { get; set; }
 
         /// <summary>
-        /// Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an
-        /// absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace,
-        /// e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+        /// Optional. Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be
+        /// either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from
+        /// /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
@@ -10214,7 +10249,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Legacy Private Pool configuration.</summary>
+        /// <summary>Private Pool configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privatePoolV1Config")]
         public virtual PrivatePoolV1Config PrivatePoolV1Config { get; set; }
 
