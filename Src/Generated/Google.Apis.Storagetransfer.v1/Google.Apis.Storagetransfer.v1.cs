@@ -1644,6 +1644,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string CredentialsSecret { get; set; }
 
         /// <summary>
+        /// Optional. Federated identity config of a user registered Azure application. If `federated_identity_config`
+        /// is specified, do not specify azure_credentials or credentials_secret.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("federatedIdentityConfig")]
+        public virtual FederatedIdentityConfig FederatedIdentityConfig { get; set; }
+
+        /// <summary>
         /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is
         /// treated as an object prefix. As such, it should generally not begin with a '/'.
         /// </summary>
@@ -1872,6 +1879,29 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Identities of a user registered Azure application that enables identity federation to trust tokens issued by the
+    /// user's Google service account. For more information about Azure application and identity federation, see
+    /// [Register an application with the Microsoft identity platform]
+    /// (https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app) Azure RBAC roles then need
+    /// be assigned to the Azure application to authorize access to the user's Azure data source. For more information
+    /// about Azure RBAC roles for blobs, see [Manage Access Rights with RBAC]
+    /// (https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-with-azure-active-directory#manage-access-rights-with-rbac)
+    /// </summary>
+    public class FederatedIdentityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Client (application) ID of the application with federated credentials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Required. Tenant (directory) ID of the application with federated credentials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantId")]
+        public virtual string TenantId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
