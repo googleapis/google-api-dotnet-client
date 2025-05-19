@@ -2368,6 +2368,17 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The result of adding a table.</summary>
+    public class AddTableResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The table that was added.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual Table Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Adds new cells after the last row with data in a sheet, inserting new rows into the sheet if necessary.
     /// </summary>
@@ -7299,6 +7310,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>A reply from adding a slicer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addSlicer")]
         public virtual AddSlicerResponse AddSlicer { get; set; }
+
+        /// <summary>A reply from adding a table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addTable")]
+        public virtual AddTableResponse AddTable { get; set; }
 
         /// <summary>A reply from cancelling data source object refreshes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelDataSourceRefresh")]
