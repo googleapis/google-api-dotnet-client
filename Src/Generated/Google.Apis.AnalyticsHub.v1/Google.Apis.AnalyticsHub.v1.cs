@@ -329,7 +329,7 @@ namespace Google.Apis.AnalyticsHub.v1
                 /// <summary>Lists all data exchanges from projects in a given organization and location.</summary>
                 /// <param name="organization">
                 /// Required. The organization resource path of the projects containing DataExchanges. e.g.
-                /// `organizations/myorg/locations/US`.
+                /// `organizations/myorg/locations/us`.
                 /// </param>
                 public virtual ListRequest List(string organization)
                 {
@@ -348,7 +348,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                     /// <summary>
                     /// Required. The organization resource path of the projects containing DataExchanges. e.g.
-                    /// `organizations/myorg/locations/US`.
+                    /// `organizations/myorg/locations/us`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Organization { get; private set; }
@@ -480,7 +480,7 @@ namespace Google.Apis.AnalyticsHub.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent resource path of the listing. e.g.
-                    /// `projects/myproject/locations/US/dataExchanges/123`.
+                    /// `projects/myproject/locations/us/dataExchanges/123`.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.AnalyticsHub.v1.Data.Listing body, string parent)
                     {
@@ -500,7 +500,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                         /// <summary>
                         /// Required. The parent resource path of the listing. e.g.
-                        /// `projects/myproject/locations/US/dataExchanges/123`.
+                        /// `projects/myproject/locations/us/dataExchanges/123`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -553,7 +553,7 @@ namespace Google.Apis.AnalyticsHub.v1
                     /// <summary>Deletes a listing.</summary>
                     /// <param name="name">
                     /// Required. Resource name of the listing to delete. e.g.
-                    /// `projects/myproject/locations/US/dataExchanges/123/listings/456`.
+                    /// `projects/myproject/locations/us/dataExchanges/123/listings/456`.
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -572,7 +572,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                         /// <summary>
                         /// Required. Resource name of the listing to delete. e.g.
-                        /// `projects/myproject/locations/US/dataExchanges/123/listings/456`.
+                        /// `projects/myproject/locations/us/dataExchanges/123/listings/456`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -620,7 +620,7 @@ namespace Google.Apis.AnalyticsHub.v1
                     /// <summary>Gets the details of a listing.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the listing. e.g.
-                    /// `projects/myproject/locations/US/dataExchanges/123/listings/456`.
+                    /// `projects/myproject/locations/us/dataExchanges/123/listings/456`.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -639,7 +639,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                         /// <summary>
                         /// Required. The resource name of the listing. e.g.
-                        /// `projects/myproject/locations/US/dataExchanges/123/listings/456`.
+                        /// `projects/myproject/locations/us/dataExchanges/123/listings/456`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -732,7 +732,7 @@ namespace Google.Apis.AnalyticsHub.v1
                     /// <summary>Lists all listings in a given project and location.</summary>
                     /// <param name="parent">
                     /// Required. The parent resource path of the listing. e.g.
-                    /// `projects/myproject/locations/US/dataExchanges/123`.
+                    /// `projects/myproject/locations/us/dataExchanges/123`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -751,7 +751,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                         /// <summary>
                         /// Required. The parent resource path of the listing. e.g.
-                        /// `projects/myproject/locations/US/dataExchanges/123`.
+                        /// `projects/myproject/locations/us/dataExchanges/123`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -812,8 +812,8 @@ namespace Google.Apis.AnalyticsHub.v1
                     /// <summary>Lists all subscriptions on a given Data Exchange or Listing.</summary>
                     /// <param name="resource">
                     /// Required. Resource name of the requested target. This resource may be either a Listing or a
-                    /// DataExchange. e.g. projects/123/locations/US/dataExchanges/456 OR e.g.
-                    /// projects/123/locations/US/dataExchanges/456/listings/789
+                    /// DataExchange. e.g. projects/123/locations/us/dataExchanges/456 OR e.g.
+                    /// projects/123/locations/us/dataExchanges/456/listings/789
                     /// </param>
                     public virtual ListSubscriptionsRequest ListSubscriptions(string resource)
                     {
@@ -832,8 +832,8 @@ namespace Google.Apis.AnalyticsHub.v1
 
                         /// <summary>
                         /// Required. Resource name of the requested target. This resource may be either a Listing or a
-                        /// DataExchange. e.g. projects/123/locations/US/dataExchanges/456 OR e.g.
-                        /// projects/123/locations/US/dataExchanges/456/listings/789
+                        /// DataExchange. e.g. projects/123/locations/us/dataExchanges/456 OR e.g.
+                        /// projects/123/locations/us/dataExchanges/456/listings/789
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Resource { get; private set; }
@@ -904,7 +904,7 @@ namespace Google.Apis.AnalyticsHub.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Output only. The resource name of the listing. e.g.
-                    /// `projects/myproject/locations/US/dataExchanges/123/listings/456`
+                    /// `projects/myproject/locations/us/dataExchanges/123/listings/456`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.AnalyticsHub.v1.Data.Listing body, string name)
                     {
@@ -924,7 +924,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                         /// <summary>
                         /// Output only. The resource name of the listing. e.g.
-                        /// `projects/myproject/locations/US/dataExchanges/123/listings/456`
+                        /// `projects/myproject/locations/us/dataExchanges/123/listings/456`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1043,7 +1043,7 @@ namespace Google.Apis.AnalyticsHub.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. Resource name of the listing that you want to subscribe to. e.g.
-                    /// `projects/myproject/locations/US/dataExchanges/123/listings/456`.
+                    /// `projects/myproject/locations/us/dataExchanges/123/listings/456`.
                     /// </param>
                     public virtual SubscribeRequest Subscribe(Google.Apis.AnalyticsHub.v1.Data.SubscribeListingRequest body, string name)
                     {
@@ -1067,7 +1067,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                         /// <summary>
                         /// Required. Resource name of the listing that you want to subscribe to. e.g.
-                        /// `projects/myproject/locations/US/dataExchanges/123/listings/456`.
+                        /// `projects/myproject/locations/us/dataExchanges/123/listings/456`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1167,7 +1167,7 @@ namespace Google.Apis.AnalyticsHub.v1
                 /// <summary>Creates a new data exchange.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource path of the data exchange. e.g. `projects/myproject/locations/US`.
+                /// Required. The parent resource path of the data exchange. e.g. `projects/myproject/locations/us`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.AnalyticsHub.v1.Data.DataExchange body, string parent)
                 {
@@ -1186,7 +1186,7 @@ namespace Google.Apis.AnalyticsHub.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource path of the data exchange. e.g. `projects/myproject/locations/US`.
+                    /// Required. The parent resource path of the data exchange. e.g. `projects/myproject/locations/us`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1239,7 +1239,7 @@ namespace Google.Apis.AnalyticsHub.v1
                 /// <summary>Deletes an existing data exchange.</summary>
                 /// <param name="name">
                 /// Required. The full name of the data exchange resource that you want to delete. For example,
-                /// `projects/myproject/locations/US/dataExchanges/123`.
+                /// `projects/myproject/locations/us/dataExchanges/123`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1258,7 +1258,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                     /// <summary>
                     /// Required. The full name of the data exchange resource that you want to delete. For example,
-                    /// `projects/myproject/locations/US/dataExchanges/123`.
+                    /// `projects/myproject/locations/us/dataExchanges/123`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1290,7 +1290,7 @@ namespace Google.Apis.AnalyticsHub.v1
                 /// <summary>Gets the details of a data exchange.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the data exchange. e.g.
-                /// `projects/myproject/locations/US/dataExchanges/123`.
+                /// `projects/myproject/locations/us/dataExchanges/123`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1309,7 +1309,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                     /// <summary>
                     /// Required. The resource name of the data exchange. e.g.
-                    /// `projects/myproject/locations/US/dataExchanges/123`.
+                    /// `projects/myproject/locations/us/dataExchanges/123`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1401,7 +1401,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                 /// <summary>Lists all data exchanges in a given project and location.</summary>
                 /// <param name="parent">
-                /// Required. The parent resource path of the data exchanges. e.g. `projects/myproject/locations/US`.
+                /// Required. The parent resource path of the data exchanges. e.g. `projects/myproject/locations/us`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1420,7 +1420,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                     /// <summary>
                     /// Required. The parent resource path of the data exchanges. e.g.
-                    /// `projects/myproject/locations/US`.
+                    /// `projects/myproject/locations/us`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1479,8 +1479,8 @@ namespace Google.Apis.AnalyticsHub.v1
                 /// <summary>Lists all subscriptions on a given Data Exchange or Listing.</summary>
                 /// <param name="resource">
                 /// Required. Resource name of the requested target. This resource may be either a Listing or a
-                /// DataExchange. e.g. projects/123/locations/US/dataExchanges/456 OR e.g.
-                /// projects/123/locations/US/dataExchanges/456/listings/789
+                /// DataExchange. e.g. projects/123/locations/us/dataExchanges/456 OR e.g.
+                /// projects/123/locations/us/dataExchanges/456/listings/789
                 /// </param>
                 public virtual ListSubscriptionsRequest ListSubscriptions(string resource)
                 {
@@ -1499,8 +1499,8 @@ namespace Google.Apis.AnalyticsHub.v1
 
                     /// <summary>
                     /// Required. Resource name of the requested target. This resource may be either a Listing or a
-                    /// DataExchange. e.g. projects/123/locations/US/dataExchanges/456 OR e.g.
-                    /// projects/123/locations/US/dataExchanges/456/listings/789
+                    /// DataExchange. e.g. projects/123/locations/us/dataExchanges/456 OR e.g.
+                    /// projects/123/locations/us/dataExchanges/456/listings/789
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
@@ -1571,7 +1571,7 @@ namespace Google.Apis.AnalyticsHub.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. The resource name of the data exchange. e.g.
-                /// `projects/myproject/locations/US/dataExchanges/123`.
+                /// `projects/myproject/locations/us/dataExchanges/123`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.AnalyticsHub.v1.Data.DataExchange body, string name)
                 {
@@ -1591,7 +1591,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                     /// <summary>
                     /// Output only. The resource name of the data exchange. e.g.
-                    /// `projects/myproject/locations/US/dataExchanges/123`.
+                    /// `projects/myproject/locations/us/dataExchanges/123`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1704,12 +1704,13 @@ namespace Google.Apis.AnalyticsHub.v1
 
                 /// <summary>
                 /// Creates a Subscription to a Data Clean Room. This is a long-running operation as it will create one
-                /// or more linked datasets.
+                /// or more linked datasets. Throws a Bad Request error if the Data Exchange does not contain any
+                /// listings.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. Resource name of the Data Exchange. e.g.
-                /// `projects/publisherproject/locations/US/dataExchanges/123`
+                /// `projects/publisherproject/locations/us/dataExchanges/123`
                 /// </param>
                 public virtual SubscribeRequest Subscribe(Google.Apis.AnalyticsHub.v1.Data.SubscribeDataExchangeRequest body, string name)
                 {
@@ -1718,7 +1719,8 @@ namespace Google.Apis.AnalyticsHub.v1
 
                 /// <summary>
                 /// Creates a Subscription to a Data Clean Room. This is a long-running operation as it will create one
-                /// or more linked datasets.
+                /// or more linked datasets. Throws a Bad Request error if the Data Exchange does not contain any
+                /// listings.
                 /// </summary>
                 public class SubscribeRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.Operation>
                 {
@@ -1732,7 +1734,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                     /// <summary>
                     /// Required. Resource name of the Data Exchange. e.g.
-                    /// `projects/publisherproject/locations/US/dataExchanges/123`
+                    /// `projects/publisherproject/locations/us/dataExchanges/123`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1849,7 +1851,7 @@ namespace Google.Apis.AnalyticsHub.v1
                 /// <summary>Deletes a subscription.</summary>
                 /// <param name="name">
                 /// Required. Resource name of the subscription to delete. e.g.
-                /// projects/123/locations/US/subscriptions/456
+                /// projects/123/locations/us/subscriptions/456
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1868,7 +1870,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                     /// <summary>
                     /// Required. Resource name of the subscription to delete. e.g.
-                    /// projects/123/locations/US/subscriptions/456
+                    /// projects/123/locations/us/subscriptions/456
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1899,7 +1901,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                 /// <summary>Gets the details of a Subscription.</summary>
                 /// <param name="name">
-                /// Required. Resource name of the subscription. e.g. projects/123/locations/US/subscriptions/456
+                /// Required. Resource name of the subscription. e.g. projects/123/locations/us/subscriptions/456
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1917,7 +1919,7 @@ namespace Google.Apis.AnalyticsHub.v1
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the subscription. e.g. projects/123/locations/US/subscriptions/456
+                    /// Required. Resource name of the subscription. e.g. projects/123/locations/us/subscriptions/456
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2009,7 +2011,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                 /// <summary>Lists all subscriptions in a given project and location.</summary>
                 /// <param name="parent">
-                /// Required. The parent resource path of the subscription. e.g. projects/myproject/locations/US
+                /// Required. The parent resource path of the subscription. e.g. projects/myproject/locations/us
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2027,7 +2029,7 @@ namespace Google.Apis.AnalyticsHub.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource path of the subscription. e.g. projects/myproject/locations/US
+                    /// Required. The parent resource path of the subscription. e.g. projects/myproject/locations/us
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2107,7 +2109,7 @@ namespace Google.Apis.AnalyticsHub.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. Resource name of the Subscription to refresh. e.g.
-                /// `projects/subscriberproject/locations/US/subscriptions/123`
+                /// `projects/subscriberproject/locations/us/subscriptions/123`
                 /// </param>
                 public virtual RefreshRequest Refresh(Google.Apis.AnalyticsHub.v1.Data.RefreshSubscriptionRequest body, string name)
                 {
@@ -2130,7 +2132,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                     /// <summary>
                     /// Required. Resource name of the Subscription to refresh. e.g.
-                    /// `projects/subscriberproject/locations/US/subscriptions/123`
+                    /// `projects/subscriberproject/locations/us/subscriptions/123`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2169,7 +2171,7 @@ namespace Google.Apis.AnalyticsHub.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. Resource name of the subscription to revoke. e.g.
-                /// projects/123/locations/US/subscriptions/456
+                /// projects/123/locations/us/subscriptions/456
                 /// </param>
                 public virtual RevokeRequest Revoke(Google.Apis.AnalyticsHub.v1.Data.RevokeSubscriptionRequest body, string name)
                 {
@@ -2189,7 +2191,7 @@ namespace Google.Apis.AnalyticsHub.v1
 
                     /// <summary>
                     /// Required. Resource name of the subscription to revoke. e.g.
-                    /// projects/123/locations/US/subscriptions/456
+                    /// projects/123/locations/us/subscriptions/456
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2655,7 +2657,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
 
         /// <summary>
         /// Output only. The resource name of the data exchange. e.g.
-        /// `projects/myproject/locations/US/dataExchanges/123`.
+        /// `projects/myproject/locations/us/dataExchanges/123`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2782,13 +2784,6 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
-
-        /// <summary>
-        /// Optional. The geographic locations where the dataset should be replicated. See
-        /// https://cloud.google.com/bigquery/docs/locations for supported locations.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("replicaLocations")]
-        public virtual System.Collections.Generic.IList<string> ReplicaLocations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3322,7 +3317,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
 
         /// <summary>
         /// Output only. The resource name of the listing. e.g.
-        /// `projects/myproject/locations/US/dataExchanges/123/listings/456`
+        /// `projects/myproject/locations/us/dataExchanges/123/listings/456`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3957,7 +3952,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     public class SubscribeDataExchangeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The parent resource path of the Subscription. e.g. `projects/subscriberproject/locations/US`
+        /// Required. The parent resource path of the Subscription. e.g. `projects/subscriberproject/locations/us`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; }
@@ -4066,10 +4061,14 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         }
 
         /// <summary>
-        /// Output only. Resource name of the source Data Exchange. e.g. projects/123/locations/US/dataExchanges/456
+        /// Output only. Resource name of the source Data Exchange. e.g. projects/123/locations/us/dataExchanges/456
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataExchange")]
         public virtual string DataExchange { get; set; }
+
+        /// <summary>Optional. BigQuery destination dataset to create for the subscriber.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationDataset")]
+        public virtual DestinationDataset DestinationDataset { get; set; }
 
         private string _lastModifyTimeRaw;
 
@@ -4112,7 +4111,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
 
         /// <summary>
         /// Output only. Map of listing resource names to associated linked resource, e.g.
-        /// projects/123/locations/US/dataExchanges/456/listings/789 -&amp;gt; projects/123/datasets/my_dataset For
+        /// projects/123/locations/us/dataExchanges/456/listings/789 -&amp;gt; projects/123/datasets/my_dataset For
         /// listing-level subscriptions, this is a map of size 1. Only contains values if state == STATE_ACTIVE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedDatasetMap")]
@@ -4126,7 +4125,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
 
         /// <summary>
         /// Output only. Resource name of the source Listing. e.g.
-        /// projects/123/locations/US/dataExchanges/456/listings/789
+        /// projects/123/locations/us/dataExchanges/456/listings/789
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listing")]
         public virtual string Listing { get; set; }
@@ -4140,7 +4139,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
 
         /// <summary>
         /// Output only. The resource name of the subscription. e.g.
-        /// `projects/myproject/locations/US/subscriptions/123`.
+        /// `projects/myproject/locations/us/subscriptions/123`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
