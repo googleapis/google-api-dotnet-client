@@ -9787,10 +9787,17 @@ namespace Google.Apis.Iam.v1.Data
     public class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The filter used to request specific records from IdP. In case of attributes type as
-        /// AZURE_AD_GROUPS_MAIL, it represents the filter used to request specific groups for users from IdP. By
-        /// default, all of the groups associated with the user are fetched. The groups should be mail enabled and
-        /// security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+        /// Optional. The filter used to request specific records from the IdP. By default, all of the groups that are
+        /// associated with a user are fetched. For Microsoft Entra ID, you can add `$search` query parameters using
+        /// [Keyword Query Language]
+        /// (https://learn.microsoft.com/en-us/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference).
+        /// To learn more about `$search` querying in Microsoft Entra ID, see [Use the `$search` query parameter]
+        /// (https://learn.microsoft.com/en-us/graph/search-query-parameter). Additionally, Workforce Identity
+        /// Federation automatically adds the following [`$filter` query parameters]
+        /// (https://learn.microsoft.com/en-us/graph/filter-query-parameter), based on the value of `attributes_type`.
+        /// Values passed to `filter` are converted to `$search` query parameters. Additional `$filter` query parameters
+        /// cannot be added using this field. * `AZURE_AD_GROUPS_MAIL`: `mailEnabled` and `securityEnabled` filters are
+        /// applied. * `AZURE_AD_GROUPS_ID`: `securityEnabled` filter is applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -11831,6 +11838,13 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>Optional. A user-specified description of the provider. Cannot exceed 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. If true, populates additional debug information in Cloud Audit Logs for this provider. Logged
+        /// attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailedAuditLogging")]
+        public virtual System.Nullable<bool> DetailedAuditLogging { get; set; }
 
         /// <summary>
         /// Optional. Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens.
