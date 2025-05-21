@@ -1862,7 +1862,7 @@ namespace Google.Apis.CloudComposer.v1beta1
                 /// <summary>Restart Airflow web server.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The resource name of the environment to restart the web server for, in the form:
+                /// Required. The resource name of the environment to restart the web server for, in the form:
                 /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
                 /// </param>
                 public virtual RestartWebServerRequest RestartWebServer(Google.Apis.CloudComposer.v1beta1.Data.RestartWebServerRequest body, string name)
@@ -1882,7 +1882,7 @@ namespace Google.Apis.CloudComposer.v1beta1
                     }
 
                     /// <summary>
-                    /// The resource name of the environment to restart the web server for, in the form:
+                    /// Required. The resource name of the environment to restart the web server for, in the form:
                     /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
