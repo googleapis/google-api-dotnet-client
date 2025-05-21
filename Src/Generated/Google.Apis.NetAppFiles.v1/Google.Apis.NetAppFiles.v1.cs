@@ -5150,6 +5150,45 @@ namespace Google.Apis.NetAppFiles.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        private string _enforcedRetentionEndTimeRaw;
+
+        private object _enforcedRetentionEndTime;
+
+        /// <summary>Output only. The time until which the backup is not deletable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcedRetentionEndTime")]
+        public virtual string EnforcedRetentionEndTimeRaw
+        {
+            get => _enforcedRetentionEndTimeRaw;
+            set
+            {
+                _enforcedRetentionEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _enforcedRetentionEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EnforcedRetentionEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EnforcedRetentionEndTimeDateTimeOffset instead.")]
+        public virtual object EnforcedRetentionEndTime
+        {
+            get => _enforcedRetentionEndTime;
+            set
+            {
+                _enforcedRetentionEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _enforcedRetentionEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EnforcedRetentionEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EnforcedRetentionEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EnforcedRetentionEndTimeRaw);
+            set => EnforcedRetentionEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Resource labels to represent user provided metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -5332,6 +5371,45 @@ namespace Google.Apis.NetAppFiles.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Retention policy for backups in the backup vault</summary>
+    public class BackupRetentionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Minimum retention duration in days for backups in the backup vault.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupMinimumEnforcedRetentionDays")]
+        public virtual System.Nullable<int> BackupMinimumEnforcedRetentionDays { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates if the daily backups are immutable. Atleast one of daily_backup_immutable,
+        /// weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dailyBackupImmutable")]
+        public virtual System.Nullable<bool> DailyBackupImmutable { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates if the manual backups are immutable. Atleast one of daily_backup_immutable,
+        /// weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manualBackupImmutable")]
+        public virtual System.Nullable<bool> ManualBackupImmutable { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates if the monthly backups are immutable. Atleast one of daily_backup_immutable,
+        /// weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monthlyBackupImmutable")]
+        public virtual System.Nullable<bool> MonthlyBackupImmutable { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates if the weekly backups are immutable. Atleast one of daily_backup_immutable,
+        /// weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weeklyBackupImmutable")]
+        public virtual System.Nullable<bool> WeeklyBackupImmutable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A NetApp BackupVault.</summary>
     public class BackupVault : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5340,6 +5418,10 @@ namespace Google.Apis.NetAppFiles.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRegion")]
         public virtual string BackupRegion { get; set; }
+
+        /// <summary>Optional. Backup retention policy defining the retenton of backups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRetentionPolicy")]
+        public virtual BackupRetentionPolicy BackupRetentionPolicy { get; set; }
 
         /// <summary>Optional. Type of backup vault to be created. Default is IN_REGION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupVaultType")]
@@ -6789,6 +6871,12 @@ namespace Google.Apis.NetAppFiles.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk) By default set to false
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customPerformanceEnabled")]
+        public virtual System.Nullable<bool> CustomPerformanceEnabled { get; set; }
+
         /// <summary>Optional. Description of the storage pool</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -6848,6 +6936,17 @@ namespace Google.Apis.NetAppFiles.v1.Data
         /// <summary>Output only. State details of the storage pool</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateDetails")]
         public virtual string StateDetails { get; set; }
+
+        /// <summary>
+        /// Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the
+        /// total_throughput_mibps
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalIops")]
+        public virtual System.Nullable<long> TotalIops { get; set; }
+
+        /// <summary>Optional. Custom Performance Total Throughput of the pool (in MiB/s)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalThroughputMibps")]
+        public virtual System.Nullable<long> TotalThroughputMibps { get; set; }
 
         /// <summary>Output only. Allocated size of all volumes in GIB in the storage pool</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeCapacityGib")]
@@ -6964,7 +7063,7 @@ namespace Google.Apis.NetAppFiles.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalTransferDuration")]
         public virtual object TotalTransferDuration { get; set; }
 
-        /// <summary>Cumulative bytes trasferred so far for the replication relatinonship.</summary>
+        /// <summary>Cumulative bytes transferred so far for the replication relationship.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferBytes")]
         public virtual System.Nullable<long> TransferBytes { get; set; }
 
