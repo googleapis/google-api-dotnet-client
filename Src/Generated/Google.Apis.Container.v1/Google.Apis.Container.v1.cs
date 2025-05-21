@@ -7137,6 +7137,13 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addonsConfig")]
         public virtual AddonsConfig AddonsConfig { get; set; }
 
+        /// <summary>
+        /// The list of user specified Kubernetes feature gates. Each string represents the activation status of a
+        /// feature gate (e.g. "featureX=true" or "featureX=false")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alphaClusterFeatureGates")]
+        public virtual System.Collections.Generic.IList<string> AlphaClusterFeatureGates { get; set; }
+
         /// <summary>Configuration controlling RBAC group membership information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authenticatorGroupsConfig")]
         public virtual AuthenticatorGroupsConfig AuthenticatorGroupsConfig { get; set; }
