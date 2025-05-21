@@ -2500,9 +2500,16 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>A banded (alternating colors) range in a sheet.</summary>
     public class BandedRange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the banded range.</summary>
+        /// <summary>The ID of the banded range. If unset, refer to banded_range_reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandedRangeId")]
         public virtual System.Nullable<int> BandedRangeId { get; set; }
+
+        /// <summary>
+        /// Output only. The reference of the banded range, used to identify the ID that is not supported by the
+        /// banded_range_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bandedRangeReference")]
+        public virtual string BandedRangeReference { get; set; }
 
         /// <summary>
         /// Properties for column bands. These properties are applied on a column- by-column basis throughout all the
