@@ -9699,6 +9699,17 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A message with a list of double values.</summary>
+    public class GoogleCloudRetailV2alphaDoubleList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of double values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the EnrollSolution method. This will be returned by the
     /// google.longrunning.Operation.metadata field.
@@ -14022,6 +14033,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchingVariantFields")]
         public virtual System.Collections.Generic.IDictionary<string, object> MatchingVariantFields { get; set; }
+
+        /// <summary>Google provided available scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelScores")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2alphaDoubleList> ModelScores { get; set; }
 
         /// <summary>
         /// Specifies previous events related to this product for this user based on UserEvent with same
