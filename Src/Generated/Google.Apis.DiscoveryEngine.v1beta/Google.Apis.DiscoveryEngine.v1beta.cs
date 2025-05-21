@@ -35702,6 +35702,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotationContents")]
         public virtual System.Collections.Generic.IList<string> AnnotationContents { get; set; }
 
+        /// <summary>Output only. The annotation metadata includes structured content in the current chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationMetadata")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaChunkAnnotationMetadata> AnnotationMetadata { get; set; }
+
         /// <summary>Output only. Metadata of the current chunk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chunkMetadata")]
         public virtual GoogleCloudDiscoveryengineV1betaChunkChunkMetadata ChunkMetadata { get; set; }
@@ -35751,6 +35755,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceScore")]
         public virtual System.Nullable<double> RelevanceScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The annotation metadata includes structured content in the current chunk.</summary>
+    public class GoogleCloudDiscoveryengineV1betaChunkAnnotationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Image id is provided if the structured content is based on an image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageId")]
+        public virtual string ImageId { get; set; }
+
+        /// <summary>Output only. The structured content information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredContent")]
+        public virtual GoogleCloudDiscoveryengineV1betaChunkStructuredContent StructuredContent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35811,6 +35830,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>The start page of the chunk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageStart")]
         public virtual System.Nullable<int> PageStart { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The structured content information.</summary>
+    public class GoogleCloudDiscoveryengineV1betaChunkStructuredContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The content of the structured content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Output only. The structure type of the structured content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structureType")]
+        public virtual string StructureType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
