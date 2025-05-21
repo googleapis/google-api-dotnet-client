@@ -1847,6 +1847,65 @@ namespace Google.Apis.CloudComposer.v1
                     }
                 }
 
+                /// <summary>Restart Airflow web server.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the environment to restart the web server for, in the form:
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                /// </param>
+                public virtual RestartWebServerRequest RestartWebServer(Google.Apis.CloudComposer.v1.Data.RestartWebServerRequest body, string name)
+                {
+                    return new RestartWebServerRequest(this.service, body, name);
+                }
+
+                /// <summary>Restart Airflow web server.</summary>
+                public class RestartWebServerRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new RestartWebServer request.</summary>
+                    public RestartWebServerRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1.Data.RestartWebServerRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the environment to restart the web server for, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudComposer.v1.Data.RestartWebServerRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "restartWebServer";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:restartWebServer";
+
+                    /// <summary>Initializes RestartWebServer parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Creates a snapshots of a Cloud Composer environment. As a result of this operation, snapshot of
                 /// environment's state is stored in a location specified in the SaveSnapshotRequest.
@@ -3728,6 +3787,13 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledSnapshotsConfig")]
         public virtual ScheduledSnapshotsConfig ScheduledSnapshotsConfig { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Restart Airflow web server.</summary>
+    public class RestartWebServerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
