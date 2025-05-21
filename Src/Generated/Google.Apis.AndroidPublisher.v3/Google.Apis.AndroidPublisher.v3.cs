@@ -7594,10 +7594,10 @@ namespace Google.Apis.AndroidPublisher.v3
                         /// specified resource. Regional prices for the resource have to be specified according to the
                         /// information published in [this
                         /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time
-                        /// the supported locations substantially change, the version will be incremented. Using this
-                        /// field will ensure that creating and updating the resource with an older region's version and
-                        /// set of regional prices and currencies will succeed even though a new version is available.
-                        /// The latest version is 2022/02.
+                        /// the supported locations substantially change, the version will be incremented. The latest
+                        /// supported version is available in this article. Using this field will ensure that creating
+                        /// and updating the resource with an older region's version and set of regional prices and
+                        /// currencies will succeed even though a new version is available.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RegionsVersionVersion { get; set; }
@@ -8175,10 +8175,10 @@ namespace Google.Apis.AndroidPublisher.v3
                         /// specified resource. Regional prices for the resource have to be specified according to the
                         /// information published in [this
                         /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time
-                        /// the supported locations substantially change, the version will be incremented. Using this
-                        /// field will ensure that creating and updating the resource with an older region's version and
-                        /// set of regional prices and currencies will succeed even though a new version is available.
-                        /// The latest version is 2022/02.
+                        /// the supported locations substantially change, the version will be incremented. The latest
+                        /// supported version is available in this article. Using this field will ensure that creating
+                        /// and updating the resource with an older region's version and set of regional prices and
+                        /// currencies will succeed even though a new version is available.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RegionsVersionVersion { get; set; }
@@ -9047,10 +9047,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// resource. Regional prices for the resource have to be specified according to the information
                 /// published in [this
                 /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the
-                /// supported locations substantially change, the version will be incremented. Using this field will
-                /// ensure that creating and updating the resource with an older region's version and set of regional
-                /// prices and currencies will succeed even though a new version is available. The latest version is
-                /// 2022/02.
+                /// supported locations substantially change, the version will be incremented. The latest supported
+                /// version is available in this article. Using this field will ensure that creating and updating the
+                /// resource with an older region's version and set of regional prices and currencies will succeed even
+                /// though a new version is available.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RegionsVersionVersion { get; set; }
@@ -9399,10 +9399,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// resource. Regional prices for the resource have to be specified according to the information
                 /// published in [this
                 /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the
-                /// supported locations substantially change, the version will be incremented. Using this field will
-                /// ensure that creating and updating the resource with an older region's version and set of regional
-                /// prices and currencies will succeed even though a new version is available. The latest version is
-                /// 2022/02.
+                /// supported locations substantially change, the version will be incremented. The latest supported
+                /// version is available in this article. Using this field will ensure that creating and updating the
+                /// resource with an older region's version and set of regional prices and currencies will succeed even
+                /// though a new version is available.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RegionsVersionVersion { get; set; }
@@ -9554,6 +9554,142 @@ namespace Google.Apis.AndroidPublisher.v3
         public OrdersResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+        }
+
+        /// <summary>Get order details for a list of orders.</summary>
+        /// <param name="packageName">
+        /// Required. The package name of the application for which this subscription or in-app item was purchased (for
+        /// example, 'com.some.thing').
+        /// </param>
+        public virtual BatchgetRequest Batchget(string packageName)
+        {
+            return new BatchgetRequest(this.service, packageName);
+        }
+
+        /// <summary>Get order details for a list of orders.</summary>
+        public class BatchgetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.BatchGetOrdersResponse>
+        {
+            /// <summary>Constructs a new Batchget request.</summary>
+            public BatchgetRequest(Google.Apis.Services.IClientService service, string packageName) : base(service)
+            {
+                PackageName = packageName;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The package name of the application for which this subscription or in-app item was purchased
+            /// (for example, 'com.some.thing').
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>
+            /// Required. The list of order IDs to retrieve order details for. There must be between 1 and 1000
+            /// (inclusive) order IDs per request. If any order ID is not found or does not match the provided package,
+            /// the entire request will fail with an error. The order IDs must be distinct.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> OrderIds { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "batchget";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/orders:batchGet";
+
+            /// <summary>Initializes Batchget parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Get order details for a single order.</summary>
+        /// <param name="packageName">
+        /// Required. The package name of the application for which this subscription or in-app item was purchased (for
+        /// example, 'com.some.thing').
+        /// </param>
+        /// <param name="orderId">
+        /// Required. The order ID provided to the user when the subscription or in-app order was purchased.
+        /// </param>
+        public virtual GetRequest Get(string packageName, string orderId)
+        {
+            return new GetRequest(this.service, packageName, orderId);
+        }
+
+        /// <summary>Get order details for a single order.</summary>
+        public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Order>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string packageName, string orderId) : base(service)
+            {
+                PackageName = packageName;
+                OrderId = orderId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The package name of the application for which this subscription or in-app item was purchased
+            /// (for example, 'com.some.thing').
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>
+            /// Required. The order ID provided to the user when the subscription or in-app order was purchased.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/orders/{orderId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
         }
 
         /// <summary>
@@ -12447,6 +12583,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for the orders.batchGet API.</summary>
+    public class BatchGetOrdersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details for the requested order IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orders")]
+        public virtual System.Collections.Generic.IList<Order> Orders { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for BatchGetSubscriptionOffers endpoint.</summary>
     public class BatchGetSubscriptionOffersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12646,6 +12793,31 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Address information for the customer, for use in tax computation.</summary>
+    public class BuyerAddress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Two letter country code based on ISO-3166-1 Alpha-2 (UN country codes).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyerCountry")]
+        public virtual string BuyerCountry { get; set; }
+
+        /// <summary>
+        /// Postal code of an address. When Google is the Merchant of Record for the order, this information is not
+        /// included.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyerPostcode")]
+        public virtual string BuyerPostcode { get; set; }
+
+        /// <summary>
+        /// Top-level administrative subdivision of the buyer address country. When Google is the Merchant of Record for
+        /// the order, this information is not included.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyerState")]
+        public virtual string BuyerState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for CancelAppRecovery.</summary>
     public class CancelAppRecoveryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12697,6 +12869,50 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Subscription was canceled by user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInitiatedCancellation")]
         public virtual UserInitiatedCancellation UserInitiatedCancellation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of when the order was canceled.</summary>
+    public class CancellationEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
+        /// <summary>The time when the order was canceled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14219,6 +14435,54 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of a line item.</summary>
+    public class LineItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Item's listed price on Play Store, this may or may not include tax. Excludes any discounts or promotions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listingPrice")]
+        public virtual Money ListingPrice { get; set; }
+
+        /// <summary>Details of a one-time purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimePurchaseDetails")]
+        public virtual OneTimePurchaseDetails OneTimePurchaseDetails { get; set; }
+
+        /// <summary>Details of a paid app purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paidAppDetails")]
+        public virtual PaidAppDetails PaidAppDetails { get; set; }
+
+        /// <summary>
+        /// The purchased product ID or in-app SKU (for example, 'monthly001' or 'com.some.thing.inapp1').
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>
+        /// Developer-specified name of the product. Displayed in buyer's locale. Example: coins, monthly subscription,
+        /// etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTitle")]
+        public virtual string ProductTitle { get; set; }
+
+        /// <summary>Details of a subscription purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionDetails")]
+        public virtual SubscriptionDetails SubscriptionDetails { get; set; }
+
+        /// <summary>The tax paid for this line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tax")]
+        public virtual Money Tax { get; set; }
+
+        /// <summary>
+        /// The total amount paid by the user for this line item, taking into account discounts and tax.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("total")]
+        public virtual Money Total { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Response message for ListAppRecoveries. -- api-linter: core::0158::response-next-page-token-field=disabled
     /// </summary>
@@ -14601,6 +14865,189 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of a one-time purchase.</summary>
+    public class OneTimePurchaseDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The offer ID of the one-time purchase offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>The number of items purchased (for multi-quantity item purchases).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<int> Quantity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of an order.</summary>
+    public class Order : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Address information for the customer, for use in tax computation. When Google is the Merchant of Record for
+        /// the order, only country is shown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyerAddress")]
+        public virtual BuyerAddress BuyerAddress { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time when the order was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Your revenue for this order in the buyer's currency, including deductions of partial refunds, taxes and
+        /// fees. Google deducts standard transaction and third party fees from each sale, including VAT in some
+        /// regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerRevenueInBuyerCurrency")]
+        public virtual Money DeveloperRevenueInBuyerCurrency { get; set; }
+
+        private string _lastEventTimeRaw;
+
+        private object _lastEventTime;
+
+        /// <summary>The time of the last event that occurred on the order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastEventTime")]
+        public virtual string LastEventTimeRaw
+        {
+            get => _lastEventTimeRaw;
+            set
+            {
+                _lastEventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastEventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastEventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastEventTimeDateTimeOffset instead.")]
+        public virtual object LastEventTime
+        {
+            get => _lastEventTime;
+            set
+            {
+                _lastEventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastEventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastEventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastEventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastEventTimeRaw);
+            set => LastEventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The individual line items making up this order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
+        public virtual System.Collections.Generic.IList<LineItem> LineItems { get; set; }
+
+        /// <summary>Detailed information about the order at creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderDetails")]
+        public virtual OrderDetails OrderDetails { get; set; }
+
+        /// <summary>Details about events which modified the order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderHistory")]
+        public virtual OrderHistory OrderHistory { get; set; }
+
+        /// <summary>The order ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
+        public virtual string OrderId { get; set; }
+
+        /// <summary>
+        /// Play points applied to the order, including offer information, discount rate and point values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointsDetails")]
+        public virtual PointsDetails PointsDetails { get; set; }
+
+        /// <summary>The token provided to the user's device when the subscription or item was purchased.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseToken")]
+        public virtual string PurchaseToken { get; set; }
+
+        /// <summary>The state of the order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The total tax paid as a part of this order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tax")]
+        public virtual Money Tax { get; set; }
+
+        /// <summary>The final amount paid by the customer, taking into account discounts and taxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("total")]
+        public virtual Money Total { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Detailed information about the order at creation time.</summary>
+    public class OrderDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates whether the listed price was tax inclusive or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxInclusive")]
+        public virtual System.Nullable<bool> TaxInclusive { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about events which modified the order.</summary>
+    public class OrderHistory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details of when the order was canceled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancellationEvent")]
+        public virtual CancellationEvent CancellationEvent { get; set; }
+
+        /// <summary>Details of the partial refund events for this order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialRefundEvents")]
+        public virtual System.Collections.Generic.IList<PartialRefundEvent> PartialRefundEvents { get; set; }
+
+        /// <summary>Details of when the order was processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processedEvent")]
+        public virtual ProcessedEvent ProcessedEvent { get; set; }
+
+        /// <summary>Details of when the order was fully refunded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refundEvent")]
+        public virtual RefundEvent RefundEvent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Details of a recurring external transaction product which doesn't belong to any other more specific category.
     /// </summary>
@@ -14736,6 +15183,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of a paid app purchase.</summary>
+    public class PaidAppDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A partial refund of a transaction.</summary>
     public class PartialRefund : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14752,6 +15206,95 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refundPreTaxAmount")]
         public virtual Price RefundPreTaxAmount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the partial refund events for this order.</summary>
+    public class PartialRefundEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time when the partial refund was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _processTimeRaw;
+
+        private object _processTime;
+
+        /// <summary>The time when the partial refund was processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processTime")]
+        public virtual string ProcessTimeRaw
+        {
+            get => _processTimeRaw;
+            set
+            {
+                _processTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _processTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ProcessTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ProcessTimeDateTimeOffset instead.")]
+        public virtual object ProcessTime
+        {
+            get => _processTime;
+            set
+            {
+                _processTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _processTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ProcessTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ProcessTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ProcessTimeRaw);
+            set => ProcessTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Details for the partial refund.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refundDetails")]
+        public virtual RefundDetails RefundDetails { get; set; }
+
+        /// <summary>The state of the partial refund.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14809,6 +15352,40 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// </summary>
     public class PendingCancellation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details relating to any Play Points applied to an order.</summary>
+    public class PointsDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The monetary value of a Play Points coupon. This is the discount the coupon provides, which may not be the
+        /// total amount. Only set when Play Points coupons have been used. E.g. for a 100 points for $2 coupon, this is
+        /// $2.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointsCouponValue")]
+        public virtual Money PointsCouponValue { get; set; }
+
+        /// <summary>
+        /// The percentage rate which the Play Points promotion reduces the cost by. E.g. for a 100 points for $2
+        /// coupon, this is 500,000. Since $2 has an estimate of 200 points, but the actual Points required, 100, is 50%
+        /// of this, and 50% in micros is 500,000. Between 0 and 1,000,000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointsDiscountRateMicros")]
+        public virtual System.Nullable<long> PointsDiscountRateMicros { get; set; }
+
+        /// <summary>ID unique to the play points offer in use for this order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointsOfferId")]
+        public virtual string PointsOfferId { get; set; }
+
+        /// <summary>
+        /// The number of Play Points applied in this order. E.g. for a 100 points for $2 coupon, this is 100. For
+        /// coupon stacked with base offer, this is the total points spent across both.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointsSpent")]
+        public virtual System.Nullable<long> PointsSpent { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -14898,6 +15475,50 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Price in 1/million of the currency base unit, represented as a string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceMicros")]
         public virtual string PriceMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of when the order was processed.</summary>
+    public class ProcessedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
+        /// <summary>The time when the order was processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15043,6 +15664,73 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("otherRecurringProduct")]
         public virtual OtherRecurringProduct OtherRecurringProduct { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for a partial or full refund.</summary>
+    public class RefundDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount of tax refunded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tax")]
+        public virtual Money Tax { get; set; }
+
+        /// <summary>The total amount refunded, including tax.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("total")]
+        public virtual Money Total { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of when the order was fully refunded.</summary>
+    public class RefundEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
+        /// <summary>The time when the order was fully refunded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Details for the full refund.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refundDetails")]
+        public virtual RefundDetails RefundDetails { get; set; }
+
+        /// <summary>The reason the order was refunded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refundReason")]
+        public virtual string RefundReason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15309,9 +15997,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// Required. A string representing the version of available regions being used for the specified resource.
         /// Regional prices for the resource have to be specified according to the information published in [this
         /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported
-        /// locations substantially change, the version will be incremented. Using this field will ensure that creating
-        /// and updating the resource with an older region's version and set of regional prices and currencies will
-        /// succeed even though a new version is available. The latest version is 2022/02.
+        /// locations substantially change, the version will be incremented. The latest supported version is available
+        /// in this article. Using this field will ensure that creating and updating the resource with an older region's
+        /// version and set of regional prices and currencies will succeed even though a new version is available.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -15476,6 +16164,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual RevocationContextFullRefund FullRefund { get; set; }
 
         /// <summary>
+        /// Optional. Used when a specific item should be refunded in a subscription with multiple items.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemBasedRefund")]
+        public virtual RevocationContextItemBasedRefund ItemBasedRefund { get; set; }
+
+        /// <summary>
         /// Optional. Used when users should be refunded a prorated amount they paid for their subscription based on the
         /// amount of time remaining in a subscription.
         /// </summary>
@@ -15489,6 +16183,19 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Used to determine if the refund type in the RevocationContext is a full refund.</summary>
     public class RevocationContextFullRefund : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Used to determine what specific item to revoke in a subscription with multiple items.</summary>
+    public class RevocationContextItemBasedRefund : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. If the subscription is a subscription bundle, the product id of the subscription to revoke.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -15785,6 +16492,110 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedExpiryTimeMillis")]
         public virtual System.Nullable<long> ExpectedExpiryTimeMillis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a subscription purchase.</summary>
+    public class SubscriptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The base plan ID of the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basePlanId")]
+        public virtual string BasePlanId { get; set; }
+
+        /// <summary>The offer ID for the current subscription offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>The pricing phase for the billing period funded by this order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerPhase")]
+        public virtual string OfferPhase { get; set; }
+
+        private string _servicePeriodEndTimeRaw;
+
+        private object _servicePeriodEndTime;
+
+        /// <summary>
+        /// The end of the billing period funded by this order. This is a snapshot of the billing/service period end
+        /// time at the moment the order was processed, and should be used only for accounting. To get the current end
+        /// time of the subscription service period, use purchases.subscriptionsv2.get.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicePeriodEndTime")]
+        public virtual string ServicePeriodEndTimeRaw
+        {
+            get => _servicePeriodEndTimeRaw;
+            set
+            {
+                _servicePeriodEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _servicePeriodEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ServicePeriodEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ServicePeriodEndTimeDateTimeOffset instead.")]
+        public virtual object ServicePeriodEndTime
+        {
+            get => _servicePeriodEndTime;
+            set
+            {
+                _servicePeriodEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _servicePeriodEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ServicePeriodEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ServicePeriodEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ServicePeriodEndTimeRaw);
+            set => ServicePeriodEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _servicePeriodStartTimeRaw;
+
+        private object _servicePeriodStartTime;
+
+        /// <summary>
+        /// The start of the billing period funded by this order. This is a snapshot of the billing/service period start
+        /// time at the moment the order was processed, and should be used only for accounting.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicePeriodStartTime")]
+        public virtual string ServicePeriodStartTimeRaw
+        {
+            get => _servicePeriodStartTimeRaw;
+            set
+            {
+                _servicePeriodStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _servicePeriodStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ServicePeriodStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ServicePeriodStartTimeDateTimeOffset instead.")]
+        public virtual object ServicePeriodStartTime
+        {
+            get => _servicePeriodStartTime;
+            set
+            {
+                _servicePeriodStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _servicePeriodStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ServicePeriodStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ServicePeriodStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ServicePeriodStartTimeRaw);
+            set => ServicePeriodStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
