@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.ServiceUsage.v1beta1 Client Library</Title>
-    <Version>1.69.0.3783</Version>
+    <Version>1.69.0.3787</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
