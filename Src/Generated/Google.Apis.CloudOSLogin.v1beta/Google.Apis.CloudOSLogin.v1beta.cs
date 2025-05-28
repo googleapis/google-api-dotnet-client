@@ -437,7 +437,7 @@ namespace Google.Apis.CloudOSLogin.v1beta
 
                 /// <summary>Signs an SSH public key for a user to authenticate to an instance.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The parent project and region for the signing request.</param>
+                /// <param name="parent">Required. The parent project and region for the signing request.</param>
                 public virtual SignSshPublicKeyRequest SignSshPublicKey(Google.Apis.CloudOSLogin.v1beta.Data.SignSshPublicKeyRequest body, string parent)
                 {
                     return new SignSshPublicKeyRequest(this.service, body, parent);
@@ -454,7 +454,7 @@ namespace Google.Apis.CloudOSLogin.v1beta
                         InitParameters();
                     }
 
-                    /// <summary>The parent project and region for the signing request.</summary>
+                    /// <summary>Required. The parent project and region for the signing request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -508,7 +508,7 @@ namespace Google.Apis.CloudOSLogin.v1beta
 
                 /// <summary>Signs an SSH public key for a user to authenticate to an instance.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The parent project and region for the signing request.</param>
+                /// <param name="parent">Required. The parent project and region for the signing request.</param>
                 public virtual SignSshPublicKeyRequest SignSshPublicKey(Google.Apis.CloudOSLogin.v1beta.Data.SignSshPublicKeyRequest body, string parent)
                 {
                     return new SignSshPublicKeyRequest(this.service, body, parent);
@@ -525,7 +525,7 @@ namespace Google.Apis.CloudOSLogin.v1beta
                         InitParameters();
                     }
 
-                    /// <summary>The parent project and region for the signing request.</summary>
+                    /// <summary>Required. The parent project and region for the signing request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -945,11 +945,11 @@ namespace Google.Apis.CloudOSLogin.v1beta
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The project ID of the Google Cloud Platform project.</summary>
+            /// <summary>Required. The project ID of the Google Cloud Platform project.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
 
-            /// <summary>A system ID for filtering the results of the request.</summary>
+            /// <summary>Optional. A system ID for filtering the results of the request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("systemId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SystemId { get; set; }
 
@@ -1331,7 +1331,7 @@ namespace Google.Apis.CloudOSLogin.v1beta.Data
 
     public class SignSshPublicKeyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The SSH public key to sign.</summary>
+        /// <summary>Required. The SSH public key to sign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshPublicKey")]
         public virtual string SshPublicKey { get; set; }
 
