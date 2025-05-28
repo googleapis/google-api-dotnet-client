@@ -1038,6 +1038,93 @@ namespace Google.Apis.BigQueryReservation.v1
                     }
 
                     /// <summary>
+                    /// Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource
+                    /// doesn't exist or you don't have the permission to view it. * An empty policy if the resource
+                    /// exists but doesn't have a set policy. Supported resources are: - Reservations -
+                    /// ReservationAssignments To call this method, you must have the following Google IAM permissions:
+                    /// - `bigqueryreservation.reservations.getIamPolicy` to get policies on reservations.
+                    /// </summary>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                    {
+                        return new GetIamPolicyRequest(this.service, resource);
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource
+                    /// doesn't exist or you don't have the permission to view it. * An empty policy if the resource
+                    /// exists but doesn't have a set policy. Supported resources are: - Reservations -
+                    /// ReservationAssignments To call this method, you must have the following Google IAM permissions:
+                    /// - `bigqueryreservation.reservations.getIamPolicy` to get policies on reservations.
+                    /// </summary>
+                    public class GetIamPolicyRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1.Data.Policy>
+                    {
+                        /// <summary>Constructs a new GetIamPolicy request.</summary>
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
+                        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reservations/[^/]+/assignments/[^/]+$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Lists assignments. Only explicitly created assignments will be returned. Example: * Organization
                     /// `organizationA` contains two projects, `project1` and `project2`. * Reservation `res1` exists
                     /// and was created previously. * CreateAssignment was used previously to define the following
@@ -1270,6 +1357,144 @@ namespace Google.Apis.BigQueryReservation.v1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Sets an access control policy for a resource. Replaces any existing policy. Supported resources
+                    /// are: - Reservations To call this method, you must have the following Google IAM permissions: -
+                    /// `bigqueryreservation.reservations.setIamPolicy` to set policies on reservations.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BigQueryReservation.v1.Data.SetIamPolicyRequest body, string resource)
+                    {
+                        return new SetIamPolicyRequest(this.service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Sets an access control policy for a resource. Replaces any existing policy. Supported resources
+                    /// are: - Reservations To call this method, you must have the following Google IAM permissions: -
+                    /// `bigqueryreservation.reservations.setIamPolicy` to set policies on reservations.
+                    /// </summary>
+                    public class SetIamPolicyRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1.Data.Policy>
+                    {
+                        /// <summary>Constructs a new SetIamPolicy request.</summary>
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryReservation.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.BigQueryReservation.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "setIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reservations/[^/]+/assignments/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets your permissions on a resource. Returns an empty set of permissions if the resource doesn't
+                    /// exist. Supported resources are: - Reservations No Google IAM permissions are required to call
+                    /// this method.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.BigQueryReservation.v1.Data.TestIamPermissionsRequest body, string resource)
+                    {
+                        return new TestIamPermissionsRequest(this.service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Gets your permissions on a resource. Returns an empty set of permissions if the resource doesn't
+                    /// exist. Supported resources are: - Reservations No Google IAM permissions are required to call
+                    /// this method.
+                    /// </summary>
+                    public class TestIamPermissionsRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1.Data.TestIamPermissionsResponse>
+                    {
+                        /// <summary>Constructs a new TestIamPermissions request.</summary>
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryReservation.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.BigQueryReservation.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "testIamPermissions";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reservations/[^/]+/assignments/[^/]+$",
                             });
                         }
                     }
@@ -1523,9 +1748,9 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// <summary>
                 /// Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource
                 /// doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists
-                /// but doesn't have a set policy. Supported resources are: - Reservations To call this method, you must
-                /// have the following Google IAM permissions: - `bigqueryreservation.reservations.getIamPolicy` to get
-                /// policies on reservations.
+                /// but doesn't have a set policy. Supported resources are: - Reservations - ReservationAssignments To
+                /// call this method, you must have the following Google IAM permissions: -
+                /// `bigqueryreservation.reservations.getIamPolicy` to get policies on reservations.
                 /// </summary>
                 /// <param name="resource">
                 /// REQUIRED: The resource for which the policy is being requested. See [Resource
@@ -1540,9 +1765,9 @@ namespace Google.Apis.BigQueryReservation.v1
                 /// <summary>
                 /// Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource
                 /// doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists
-                /// but doesn't have a set policy. Supported resources are: - Reservations To call this method, you must
-                /// have the following Google IAM permissions: - `bigqueryreservation.reservations.getIamPolicy` to get
-                /// policies on reservations.
+                /// but doesn't have a set policy. Supported resources are: - Reservations - ReservationAssignments To
+                /// call this method, you must have the following Google IAM permissions: -
+                /// `bigqueryreservation.reservations.getIamPolicy` to get policies on reservations.
                 /// </summary>
                 public class GetIamPolicyRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1.Data.Policy>
                 {
@@ -2704,6 +2929,10 @@ namespace Google.Apis.BigQueryReservation.v1.Data
     /// <summary>The request for ReservationService.FailoverReservation.</summary>
     public class FailoverReservationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. failover mode for the failover operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failoverMode")]
+        public virtual string FailoverMode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2973,6 +3202,49 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastReplicationTimeRaw);
             set => LastReplicationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _softFailoverStartTimeRaw;
+
+        private object _softFailoverStartTime;
+
+        /// <summary>
+        /// Output only. The time at which a soft failover for the reservation and its associated datasets was
+        /// initiated. After this field is set, all subsequent changes to the reservation will be rejected unless a hard
+        /// failover overrides this operation. This field will be cleared once the failover is complete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softFailoverStartTime")]
+        public virtual string SoftFailoverStartTimeRaw
+        {
+            get => _softFailoverStartTimeRaw;
+            set
+            {
+                _softFailoverStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _softFailoverStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SoftFailoverStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SoftFailoverStartTimeDateTimeOffset instead.")]
+        public virtual object SoftFailoverStartTime
+        {
+            get => _softFailoverStartTime;
+            set
+            {
+                _softFailoverStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _softFailoverStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SoftFailoverStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SoftFailoverStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SoftFailoverStartTimeRaw);
+            set => SoftFailoverStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
