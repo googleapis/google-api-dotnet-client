@@ -2263,7 +2263,7 @@ namespace Google.Apis.Baremetalsolution.v2
                     }
                 }
 
-                /// <summary>Submit a provisiong configuration for a given project.</summary>
+                /// <summary>Submit a provisioning configuration for a given project.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent project and location containing the ProvisioningConfig.
@@ -2273,7 +2273,7 @@ namespace Google.Apis.Baremetalsolution.v2
                     return new SubmitRequest(this.service, body, parent);
                 }
 
-                /// <summary>Submit a provisiong configuration for a given project.</summary>
+                /// <summary>Submit a provisioning configuration for a given project.</summary>
                 public class SubmitRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.SubmitProvisioningConfigResponse>
                 {
                     /// <summary>Constructs a new Submit request.</summary>
@@ -4068,7 +4068,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual System.Nullable<bool> Hyperthreading { get; set; }
 
         /// <summary>
-        /// A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
+        /// A transient unique identifier to identify an instance within an ProvisioningConfig request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
