@@ -7708,10 +7708,6 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalFreeBytes")]
         public virtual System.Nullable<long> TotalFreeBytes { get; set; }
 
-        /// <summary>VMware disk details. Deprecated</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vmwareConfig")]
-        public virtual VmwareDiskConfig VmwareConfig { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12014,29 +12010,6 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageMultiplier")]
         public virtual System.Nullable<double> StorageMultiplier { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>VMware disk config details.</summary>
-    public class VmwareDiskConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>VMDK backing type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backingType")]
-        public virtual string BackingType { get; set; }
-
-        /// <summary>RDM compatibility mode.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rdmCompatibilityMode")]
-        public virtual string RdmCompatibilityMode { get; set; }
-
-        /// <summary>Is VMDK shared with other VMs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("shared")]
-        public virtual System.Nullable<bool> Shared { get; set; }
-
-        /// <summary>VMDK disk mode.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vmdkDiskMode")]
-        public virtual string VmdkDiskMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
