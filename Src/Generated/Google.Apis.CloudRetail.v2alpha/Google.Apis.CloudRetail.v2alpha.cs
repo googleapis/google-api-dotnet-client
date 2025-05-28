@@ -9531,7 +9531,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Suggested answers to the follow-up question.</summary>
+    /// <summary>
+    /// Suggested answers to the follow-up question. If it's numerical attribute, only ProductAttributeInterval will be
+    /// set. If it's textual attribute, only productAttributeValue will be set.
+    /// </summary>
     public class GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestionSuggestedAnswer : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -13382,6 +13385,15 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tileNavigationSpec")]
         public virtual GoogleCloudRetailV2alphaSearchRequestTileNavigationSpec TileNavigationSpec { get; set; }
 
+        /// <summary>
+        /// Optional. The user attributes that could be used for personalization of search results. * Populate at most
+        /// 100 key-value pairs per query. * Only supports string keys and repeated string values. * Duplcate keys are
+        /// not allowed within a single query. Example: user_attributes: [ { key: "pets" value { values: "dog" values:
+        /// "cat" } }, { key: "state" value { values: "CA" } } ]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAttributes")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2alphaStringList> UserAttributes { get; set; }
+
         /// <summary>User information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
         public virtual GoogleCloudRetailV2alphaUserInfo UserInfo { get; set; }
@@ -14394,6 +14406,17 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     /// </summary>
     public class GoogleCloudRetailV2alphaSetInventoryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of string values.</summary>
+    public class GoogleCloudRetailV2alphaStringList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>String values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
