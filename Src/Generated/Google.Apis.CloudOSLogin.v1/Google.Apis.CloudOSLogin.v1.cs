@@ -579,7 +579,7 @@ namespace Google.Apis.CloudOSLogin.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Mask to control which fields get updated. Updates all if not present.</summary>
+                /// <summary>Optional. Mask to control which fields get updated. Updates all if not present.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -647,11 +647,11 @@ namespace Google.Apis.CloudOSLogin.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The project ID of the Google Cloud Platform project.</summary>
+            /// <summary>Required. The project ID of the Google Cloud Platform project.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
 
-            /// <summary>A system ID for filtering the results of the request.</summary>
+            /// <summary>Optional. A system ID for filtering the results of the request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("systemId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SystemId { get; set; }
 
