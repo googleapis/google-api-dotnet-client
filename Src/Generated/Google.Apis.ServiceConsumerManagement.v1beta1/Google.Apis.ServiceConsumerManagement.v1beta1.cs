@@ -2134,6 +2134,100 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`BatchingConfigProto` defines the batching configuration for an API method.</summary>
+    public class BatchingConfigProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The request and response fields used in batching.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchDescriptor")]
+        public virtual BatchingDescriptorProto BatchDescriptor { get; set; }
+
+        /// <summary>The thresholds which trigger a batched request to be sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thresholds")]
+        public virtual BatchingSettingsProto Thresholds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// `BatchingDescriptorProto` specifies the fields of the request message to be used for batching, and, optionally,
+    /// the fields of the response message to be used for demultiplexing.
+    /// </summary>
+    public class BatchingDescriptorProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The repeated field in the request message to be aggregated by batching.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchedField")]
+        public virtual string BatchedField { get; set; }
+
+        /// <summary>
+        /// A list of the fields in the request message. Two requests will be batched together only if the values of
+        /// every field specified in `request_discriminator_fields` is equal between the two requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discriminatorFields")]
+        public virtual System.Collections.Generic.IList<string> DiscriminatorFields { get; set; }
+
+        /// <summary>
+        /// Optional. When present, indicates the field in the response message to be used to demultiplex the response
+        /// into multiple response messages, in correspondence with the multiple request messages originally batched
+        /// together.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subresponseField")]
+        public virtual string SubresponseField { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// `BatchingSettingsProto` specifies a set of batching thresholds, each of which acts as a trigger to send a batch
+    /// of messages as a request. At least one threshold must be positive nonzero.
+    /// </summary>
+    public class BatchingSettingsProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The duration after which a batch should be sent, starting from the addition of the first message to that
+        /// batch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delayThreshold")]
+        public virtual object DelayThreshold { get; set; }
+
+        /// <summary>The maximum number of elements collected in a batch that could be accepted by server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elementCountLimit")]
+        public virtual System.Nullable<int> ElementCountLimit { get; set; }
+
+        /// <summary>
+        /// The number of elements of a field collected into a batch which, if exceeded, causes the batch to be sent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elementCountThreshold")]
+        public virtual System.Nullable<int> ElementCountThreshold { get; set; }
+
+        /// <summary>The maximum size of data allowed by flow control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowControlByteLimit")]
+        public virtual System.Nullable<int> FlowControlByteLimit { get; set; }
+
+        /// <summary>The maximum number of elements allowed by flow control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowControlElementLimit")]
+        public virtual System.Nullable<int> FlowControlElementLimit { get; set; }
+
+        /// <summary>The behavior to take when the flow control limit is exceeded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowControlLimitExceededBehavior")]
+        public virtual string FlowControlLimitExceededBehavior { get; set; }
+
+        /// <summary>The maximum size of the request that could be accepted by server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestByteLimit")]
+        public virtual System.Nullable<int> RequestByteLimit { get; set; }
+
+        /// <summary>
+        /// The aggregated size of the batched field which, if exceeded, causes the batch to be sent. This size is
+        /// computed by aggregating the sizes of the request field to be batched, not of the entire request message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestByteThreshold")]
+        public virtual System.Nullable<long> RequestByteThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Billing related configuration of the service. The following example shows how to configure monitored resources
     /// and metrics for billing, `consumer_destinations` is the only supported destination and the monitored resources
@@ -3268,6 +3362,14 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoPopulatedFields")]
         public virtual System.Collections.Generic.IList<string> AutoPopulatedFields { get; set; }
+
+        /// <summary>
+        /// Batching configuration for an API method in client libraries. Example of a YAML configuration: publishing:
+        /// method_settings: - selector: google.example.v1.ExampleService.BatchCreateExample batching:
+        /// element_count_threshold: 1000 request_byte_threshold: 100000000 delay_threshold_millis: 10
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batching")]
+        public virtual BatchingConfigProto Batching { get; set; }
 
         /// <summary>
         /// Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs
