@@ -3919,6 +3919,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("srvConnectionFormat")]
         public virtual SrvConnectionFormat SrvConnectionFormat { get; set; }
 
+        /// <summary>Optional. SSL configuration for the MongoDB connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslConfig")]
+        public virtual MongodbSslConfig SslConfig { get; set; }
+
         /// <summary>Standard connection format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standardConnectionFormat")]
         public virtual StandardConnectionFormat StandardConnectionFormat { get; set; }
@@ -3948,6 +3952,55 @@ namespace Google.Apis.Datastream.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentBackfillTasks")]
         public virtual System.Nullable<int> MaxConcurrentBackfillTasks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MongoDB SSL configuration information.</summary>
+    public class MongodbSslConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Input only. PEM-encoded certificate of the CA that signed the source database server's
+        /// certificate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caCertificate")]
+        public virtual string CaCertificate { get; set; }
+
+        /// <summary>Output only. Indicates whether the ca_certificate field is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caCertificateSet")]
+        public virtual System.Nullable<bool> CaCertificateSet { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. PEM-encoded certificate that will be used by the replica to authenticate against the
+        /// source database server. If this field is used then the 'client_key' and the 'ca_certificate' fields are
+        /// mandatory.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
+        public virtual string ClientCertificate { get; set; }
+
+        /// <summary>Output only. Indicates whether the client_certificate field is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCertificateSet")]
+        public virtual System.Nullable<bool> ClientCertificateSet { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. PEM-encoded private key associated with the Client Certificate. If this field is used
+        /// then the 'client_certificate' and the 'ca_certificate' fields are mandatory.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
+        public virtual string ClientKey { get; set; }
+
+        /// <summary>Output only. Indicates whether the client_key field is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientKeySet")]
+        public virtual System.Nullable<bool> ClientKeySet { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. A reference to a Secret Manager resource name storing the PEM-encoded private key
+        /// associated with the Client Certificate. If this field is used then the 'client_certificate' and the
+        /// 'ca_certificate' fields are mandatory. Mutually exclusive with the `client_key` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerStoredClientKey")]
+        public virtual string SecretManagerStoredClientKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5007,7 +5060,7 @@ namespace Google.Apis.Datastream.v1.Data
     {
         /// <summary>
         /// Required. Fully qualified name of the Network Attachment that Datastream will connect to. Format:
-        /// `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}`
+        /// `projects/{project}/regions/{region}/networkAttachments/{name}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
         public virtual string NetworkAttachment { get; set; }
