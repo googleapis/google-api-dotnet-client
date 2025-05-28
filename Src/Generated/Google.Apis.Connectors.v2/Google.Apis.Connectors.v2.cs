@@ -937,6 +937,10 @@ namespace Google.Apis.Connectors.v2
                             [Google.Apis.Util.RequestParameterAttribute("sortBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual Google.Apis.Util.Repeatable<string> SortBy { get; set; }
 
+                            /// <summary>List of 'sort_order' columns to use when returning the results.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual Google.Apis.Util.Repeatable<string> SortOrder { get; set; }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
@@ -985,6 +989,14 @@ namespace Google.Apis.Connectors.v2
                                 RequestParameters.Add("sortBy", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "sortBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "sortOrder",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
