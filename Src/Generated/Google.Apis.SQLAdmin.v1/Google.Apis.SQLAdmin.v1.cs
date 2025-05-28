@@ -6497,6 +6497,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backendType")]
         public virtual string BackendType { get; set; }
 
+        /// <summary>Clears private network settings when the instance is restored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clearNetwork")]
+        public virtual System.Nullable<bool> ClearNetwork { get; set; }
+
         /// <summary>Connection name of the Cloud SQL instance used in connection strings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionName")]
         public virtual string ConnectionName { get; set; }
