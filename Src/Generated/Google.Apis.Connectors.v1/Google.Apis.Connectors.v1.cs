@@ -2352,7 +2352,8 @@ namespace Google.Apis.Connectors.v1
                     /// listed below. To lock/unlock a connection: * `lock_config` To suspend/resume a connection: *
                     /// `suspended` To update the connection details: * `description` * `labels` * `connector_version` *
                     /// `config_variables` * `auth_config` * `destination_configs` * `node_config` * `log_config` *
-                    /// `ssl_config` * `eventing_enablement_type` * `eventing_config` * `auth_override_enabled`
+                    /// `ssl_config` * `eventing_enablement_type` * `eventing_config` * `auth_override_enabled` *
+                    /// `async_operations_enabled`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -3050,7 +3051,7 @@ namespace Google.Apis.Connectors.v1
 
                     /// <summary>
                     /// Required. Identifier to assign to the EndpointAttachment. Must be unique within scope of the
-                    /// parent resource.
+                    /// parent resource. The regex is: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("endpointAttachmentId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string EndpointAttachmentId { get; set; }
@@ -5132,32 +5133,6 @@ namespace Google.Apis.Connectors.v1
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// Optional. Enum to control whether schema enrichment related fields should be included in
-                            /// the response.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("schemaView", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<SchemaViewEnum> SchemaView { get; set; }
-
-                            /// <summary>
-                            /// Optional. Enum to control whether schema enrichment related fields should be included in
-                            /// the response.
-                            /// </summary>
-                            public enum SchemaViewEnum
-                            {
-                                /// <summary>VIEW_UNSPECIFIED. The unset value. Defaults to BASIC View.</summary>
-                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_SCHEMA_VIEW_UNSPECIFIED")]
-                                CONNECTORVERSIONSCHEMAVIEWUNSPECIFIED = 0,
-
-                                /// <summary>Return basic connector version schema.</summary>
-                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_SCHEMA_VIEW_BASIC")]
-                                CONNECTORVERSIONSCHEMAVIEWBASIC = 1,
-
-                                /// <summary>Return enriched connector version schema.</summary>
-                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_SCHEMA_VIEW_ENRICHED")]
-                                CONNECTORVERSIONSCHEMAVIEWENRICHED = 2,
-                            }
-
-                            /// <summary>
                             /// Specifies which fields of the ConnectorVersion are returned in the response. Defaults to
                             /// `CUSTOMER` view.
                             /// </summary>
@@ -5204,14 +5179,6 @@ namespace Google.Apis.Connectors.v1
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/providers/[^/]+/connectors/[^/]+/versions/[^/]+$",
                                 });
-                                RequestParameters.Add("schemaView", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "schemaView",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
                                 RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "view",
@@ -5224,11 +5191,7 @@ namespace Google.Apis.Connectors.v1
                         }
 
                         /// <summary>Lists Connector Versions in a given project and location.</summary>
-                        /// <param name="parent">
-                        /// Required. Parent resource of the connectors, of the form:
-                        /// `projects/*/locations/*/providers/*/connectors/*` Only global location is supported for
-                        /// ConnectorVersion resource.
-                        /// </param>
+                        /// <param name="parent"><c>null</c></param>
                         public virtual ListRequest List(string parent)
                         {
                             return new ListRequest(this.service, parent);
@@ -5244,11 +5207,6 @@ namespace Google.Apis.Connectors.v1
                                 InitParameters();
                             }
 
-                            /// <summary>
-                            /// Required. Parent resource of the connectors, of the form:
-                            /// `projects/*/locations/*/providers/*/connectors/*` Only global location is supported for
-                            /// ConnectorVersion resource.
-                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
@@ -5259,32 +5217,6 @@ namespace Google.Apis.Connectors.v1
                             /// <summary>Page token.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
-
-                            /// <summary>
-                            /// Optional. Enum to control whether schema enrichment related fields should be included in
-                            /// the response.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("schemaView", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<SchemaViewEnum> SchemaView { get; set; }
-
-                            /// <summary>
-                            /// Optional. Enum to control whether schema enrichment related fields should be included in
-                            /// the response.
-                            /// </summary>
-                            public enum SchemaViewEnum
-                            {
-                                /// <summary>VIEW_UNSPECIFIED. The unset value. Defaults to BASIC View.</summary>
-                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_SCHEMA_VIEW_UNSPECIFIED")]
-                                CONNECTORVERSIONSCHEMAVIEWUNSPECIFIED = 0,
-
-                                /// <summary>Return basic connector version schema.</summary>
-                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_SCHEMA_VIEW_BASIC")]
-                                CONNECTORVERSIONSCHEMAVIEWBASIC = 1,
-
-                                /// <summary>Return enriched connector version schema.</summary>
-                                [Google.Apis.Util.StringValueAttribute("CONNECTOR_VERSION_SCHEMA_VIEW_ENRICHED")]
-                                CONNECTORVERSIONSCHEMAVIEWENRICHED = 2,
-                            }
 
                             /// <summary>
                             /// Specifies which fields of the ConnectorVersion are returned in the response. Defaults to
@@ -5344,14 +5276,6 @@ namespace Google.Apis.Connectors.v1
                                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("schemaView", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "schemaView",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -7336,10 +7260,6 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>Optional. The priority entity types for the connector version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("priorityEntityTypes")]
-        public virtual System.Collections.Generic.IList<PriorityEntityType> PriorityEntityTypes { get; set; }
 
         /// <summary>Output only. ReleaseVersion of the connector, for example: "1.0.1-alpha".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseVersion")]
@@ -11116,29 +11036,6 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
-    }
-
-    /// <summary>PriorityEntityType represents an entity type with its associated priority and order.</summary>
-    public class PriorityEntityType : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The description of the entity type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>The entity type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>The order of the entity type within its priority group.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("order")]
-        public virtual System.Nullable<int> Order { get; set; }
-
-        /// <summary>The priority of the entity type, such as P0, P1, etc.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
-        public virtual string Priority { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Provider indicates the owner who provides the connectors.</summary>
