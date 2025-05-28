@@ -9314,6 +9314,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localName")]
         public virtual string LocalName { get; set; }
 
+        /// <summary>Optional. The namespace of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localNamespace")]
+        public virtual string LocalNamespace { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10560,6 +10564,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("preparedSecrets")]
         public virtual VmwareAdminPreparedSecretsConfig PreparedSecrets { get; set; }
 
+        /// <summary>Configuration for registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateRegistryConfig")]
+        public virtual VmwareAdminPrivateRegistryConfig PrivateRegistryConfig { get; set; }
+
         /// <summary>Output only. If set, there are currently changes in flight to the VMware admin cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
@@ -10801,6 +10809,25 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>Whether prepared secrets is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VmwareAdminPrivateRegistryConfig represents configuration for admin cluster registry.</summary>
+    public class VmwareAdminPrivateRegistryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The registry address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual string Address { get; set; }
+
+        /// <summary>
+        /// When the container runtime pulls an image from private registry, the registry must prove its identity by
+        /// presenting a certificate. The registry's certificate is signed by a certificate authority (CA). The
+        /// container runtime uses the CA's certificate to validate the registry's certificate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caCert")]
+        public virtual string CaCert { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
