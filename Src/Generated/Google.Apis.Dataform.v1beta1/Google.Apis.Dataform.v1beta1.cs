@@ -6028,6 +6028,14 @@ namespace Google.Apis.Dataform.v1beta1.Data
     public class NotebookRuntimeOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The resource name of the [Colab runtime template] (https://cloud.google.com/colab/docs/runtimes),
+        /// from which a runtime is created for notebook executions. If not specified, a runtime is created with Colab's
+        /// default specifications.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiPlatformNotebookRuntimeTemplate")]
+        public virtual string AiPlatformNotebookRuntimeTemplate { get; set; }
+
+        /// <summary>
         /// Optional. The Google Cloud Storage location to upload the result to. Format: `gs://bucket-name`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsOutputBucket")]
