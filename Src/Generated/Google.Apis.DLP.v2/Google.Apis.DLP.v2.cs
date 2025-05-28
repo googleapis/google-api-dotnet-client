@@ -14437,9 +14437,20 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfileResourceName")]
         public virtual string DataProfileResourceName { get; set; }
 
+        /// <summary>The type of the resource that was profiled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceType")]
+        public virtual GooglePrivacyDlpV2DataSourceType DataSourceType { get; set; }
+
         /// <summary>A unique identifier for the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingId")]
         public virtual string FindingId { get; set; }
+
+        /// <summary>
+        /// The [full resource name](https://cloud.google.com/apis/design/resource_names#full_resource_name) of the
+        /// resource profiled for this finding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
+        public virtual string FullResourceName { get; set; }
 
         /// <summary>
         /// The [type of content](https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference) that
