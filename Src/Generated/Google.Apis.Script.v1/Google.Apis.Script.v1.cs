@@ -2246,17 +2246,6 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response for executing or debugging a function in an Apps Script project.</summary>
-    public class ExecuteStreamResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The result of the execution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("result")]
-        public virtual ScriptExecutionResult Result { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// An object that provides information about the nature of an error resulting from an attempted execution of a
     /// script function using the Apps Script API. If a run call succeeds but the script function (or Apps Script
@@ -2721,17 +2710,6 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>`ListValue` is a wrapper around a repeated field of values.</summary>
-    public class ListValue : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Repeated field of dynamically typed values.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<Value> Values { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Response with the list of the versions for the specified script project.</summary>
     public class ListVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3002,17 +2980,6 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The result of an execution.</summary>
-    public class ScriptExecutionResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The returned value of the execution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("returnValue")]
-        public virtual Value ReturnValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A stack trace through the script that shows where the execution failed.</summary>
     public class ScriptStackTraceElement : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3059,68 +3026,12 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// `Struct` represents a structured data value, consisting of fields which map to dynamically typed values.
-    /// </summary>
-    public class Struct : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Unordered map of dynamically typed values.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IDictionary<string, Value> Fields { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request with deployment information to update an existing deployment.</summary>
     public class UpdateDeploymentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The deployment configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentConfig")]
         public virtual DeploymentConfig DeploymentConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>`Value` represents a dynamically typed value which is the outcome of an executed script.</summary>
-    public class Value : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Represents a boolean value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
-        public virtual System.Nullable<bool> BoolValue { get; set; }
-
-        /// <summary>Represents raw byte values.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bytesValue")]
-        public virtual string BytesValue { get; set; }
-
-        /// <summary>Represents a date in ms since the epoch.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dateValue")]
-        public virtual System.Nullable<long> DateValue { get; set; }
-
-        /// <summary>Represents a repeated `Value`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("listValue")]
-        public virtual ListValue ListValue { get; set; }
-
-        /// <summary>Represents a null value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nullValue")]
-        public virtual string NullValue { get; set; }
-
-        /// <summary>Represents a double value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numberValue")]
-        public virtual System.Nullable<double> NumberValue { get; set; }
-
-        /// <summary>Represents a structured proto value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("protoValue")]
-        public virtual System.Collections.Generic.IDictionary<string, object> ProtoValue { get; set; }
-
-        /// <summary>Represents a string value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; }
-
-        /// <summary>Represents a structured value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("structValue")]
-        public virtual Struct StructValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
