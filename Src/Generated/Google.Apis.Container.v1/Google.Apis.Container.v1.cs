@@ -6610,6 +6610,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gkeBackupAgentConfig")]
         public virtual GkeBackupAgentConfig GkeBackupAgentConfig { get; set; }
 
+        /// <summary>Configuration for the High Scale Checkpointing add-on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highScaleCheckpointingConfig")]
+        public virtual HighScaleCheckpointingConfig HighScaleCheckpointingConfig { get; set; }
+
         /// <summary>
         /// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica
         /// pods a replication controller has based on the resource usage of the existing pods.
@@ -6684,12 +6688,29 @@ namespace Google.Apis.Container.v1.Data
         public virtual System.Nullable<bool> EnableNestedVirtualization { get; set; }
 
         /// <summary>
+        /// Type of Performance Monitoring Unit (PMU) requested on node pool instances. If unset, PMU will not be
+        /// available to the node.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("performanceMonitoringUnit")]
+        public virtual string PerformanceMonitoringUnit { get; set; }
+
+        /// <summary>
         /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If
         /// unset, the maximum number of threads supported per core by the underlying processor is assumed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threadsPerCore")]
         public virtual System.Nullable<long> ThreadsPerCore { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AnonymousAuthenticationConfig defines the settings needed to limit endpoints that allow anonymous
+    /// authentication.
+    /// </summary>
+    public class AnonymousAuthenticationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7143,6 +7164,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alphaClusterFeatureGates")]
         public virtual System.Collections.Generic.IList<string> AlphaClusterFeatureGates { get; set; }
+
+        /// <summary>Configuration for limiting anonymous access to all endpoints except the health checks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anonymousAuthenticationConfig")]
+        public virtual AnonymousAuthenticationConfig AnonymousAuthenticationConfig { get; set; }
 
         /// <summary>Configuration controlling RBAC group membership information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authenticatorGroupsConfig")]
@@ -7653,6 +7678,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Configurations for the various addons available to run in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAddonsConfig")]
         public virtual AddonsConfig DesiredAddonsConfig { get; set; }
+
+        /// <summary>Configuration for limiting anonymous access to all endpoints except the health checks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredAnonymousAuthenticationConfig")]
+        public virtual AnonymousAuthenticationConfig DesiredAnonymousAuthenticationConfig { get; set; }
 
         /// <summary>The desired authenticator groups config for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAuthenticatorGroupsConfig")]
@@ -8660,6 +8689,17 @@ namespace Google.Apis.Container.v1.Data
     public class GkeBackupAgentConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the Backup for GKE agent is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the High Scale Checkpointing.</summary>
+    public class HighScaleCheckpointingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the High Scale Checkpointing is enabled for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
