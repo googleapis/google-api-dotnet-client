@@ -35,6 +35,7 @@ namespace Google.Apis.CloudKMS.v1
         public CloudKMSService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Folders = new FoldersResource(this);
+            Organizations = new OrganizationsResource(this);
             Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://cloudkms.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://cloudkms.googleapis.com/batch");
@@ -88,6 +89,9 @@ namespace Google.Apis.CloudKMS.v1
 
         /// <summary>Gets the Folders resource.</summary>
         public virtual FoldersResource Folders { get; }
+
+        /// <summary>Gets the Organizations resource.</summary>
+        public virtual OrganizationsResource Organizations { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -337,6 +341,51 @@ namespace Google.Apis.CloudKMS.v1
             }
         }
 
+        /// <summary>Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <param name="name">Required. The name of the KeyAccessJustificationsPolicyConfig to get.</param>
+        public virtual GetKajPolicyConfigRequest GetKajPolicyConfig(string name)
+        {
+            return new GetKajPolicyConfigRequest(this.service, name);
+        }
+
+        /// <summary>Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        public class GetKajPolicyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig>
+        {
+            /// <summary>Constructs a new GetKajPolicyConfig request.</summary>
+            public GetKajPolicyConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the KeyAccessJustificationsPolicyConfig to get.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getKajPolicyConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes GetKajPolicyConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+/kajPolicyConfig$",
+                });
+            }
+        }
+
         /// <summary>
         /// Updates the AutokeyConfig for a folder. The caller must have both `cloudkms.autokeyConfigs.update`
         /// permission on the parent folder and `cloudkms.cryptoKeys.setIamPolicy` permission on the provided key
@@ -404,6 +453,208 @@ namespace Google.Apis.CloudKMS.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^folders/[^/]+/autokeyConfig$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
+        /// "{organizations|folders|projects}/*/kajPolicyConfig".
+        /// </param>
+        public virtual UpdateKajPolicyConfigRequest UpdateKajPolicyConfig(Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig body, string name)
+        {
+            return new UpdateKajPolicyConfigRequest(this.service, body, name);
+        }
+
+        /// <summary>Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        public class UpdateKajPolicyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig>
+        {
+            /// <summary>Constructs a new UpdateKajPolicyConfig request.</summary>
+            public UpdateKajPolicyConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
+            /// "{organizations|folders|projects}/*/kajPolicyConfig".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Optional. The list of fields to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateKajPolicyConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes UpdateKajPolicyConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+/kajPolicyConfig$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "organizations" collection of methods.</summary>
+    public class OrganizationsResource
+    {
+        private const string Resource = "organizations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <param name="name">Required. The name of the KeyAccessJustificationsPolicyConfig to get.</param>
+        public virtual GetKajPolicyConfigRequest GetKajPolicyConfig(string name)
+        {
+            return new GetKajPolicyConfigRequest(this.service, name);
+        }
+
+        /// <summary>Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        public class GetKajPolicyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig>
+        {
+            /// <summary>Constructs a new GetKajPolicyConfig request.</summary>
+            public GetKajPolicyConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the KeyAccessJustificationsPolicyConfig to get.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getKajPolicyConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes GetKajPolicyConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+/kajPolicyConfig$",
+                });
+            }
+        }
+
+        /// <summary>Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
+        /// "{organizations|folders|projects}/*/kajPolicyConfig".
+        /// </param>
+        public virtual UpdateKajPolicyConfigRequest UpdateKajPolicyConfig(Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig body, string name)
+        {
+            return new UpdateKajPolicyConfigRequest(this.service, body, name);
+        }
+
+        /// <summary>Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        public class UpdateKajPolicyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig>
+        {
+            /// <summary>Constructs a new UpdateKajPolicyConfig request.</summary>
+            public UpdateKajPolicyConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
+            /// "{organizations|folders|projects}/*/kajPolicyConfig".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Optional. The list of fields to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateKajPolicyConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes UpdateKajPolicyConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+/kajPolicyConfig$",
                 });
                 RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                 {
@@ -4664,6 +4915,51 @@ namespace Google.Apis.CloudKMS.v1
             }
         }
 
+        /// <summary>Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <param name="name">Required. The name of the KeyAccessJustificationsPolicyConfig to get.</param>
+        public virtual GetKajPolicyConfigRequest GetKajPolicyConfig(string name)
+        {
+            return new GetKajPolicyConfigRequest(this.service, name);
+        }
+
+        /// <summary>Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        public class GetKajPolicyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig>
+        {
+            /// <summary>Constructs a new GetKajPolicyConfig request.</summary>
+            public GetKajPolicyConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the KeyAccessJustificationsPolicyConfig to get.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getKajPolicyConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes GetKajPolicyConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/kajPolicyConfig$",
+                });
+            }
+        }
+
         /// <summary>Returns the effective Cloud KMS Autokey configuration for a given project.</summary>
         /// <param name="parent">
         /// Required. Name of the resource project to the show effective Cloud KMS Autokey configuration for. This may
@@ -4711,6 +5007,188 @@ namespace Google.Apis.CloudKMS.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Returns the KeyAccessJustificationsEnrollmentConfig of the resource closest to the given project in
+        /// hierarchy.
+        /// </summary>
+        /// <param name="project">
+        /// Required. The number or id of the project to get the effective KeyAccessJustificationsEnrollmentConfig for.
+        /// </param>
+        public virtual ShowEffectiveKeyAccessJustificationsEnrollmentConfigRequest ShowEffectiveKeyAccessJustificationsEnrollmentConfig(string project)
+        {
+            return new ShowEffectiveKeyAccessJustificationsEnrollmentConfigRequest(this.service, project);
+        }
+
+        /// <summary>
+        /// Returns the KeyAccessJustificationsEnrollmentConfig of the resource closest to the given project in
+        /// hierarchy.
+        /// </summary>
+        public class ShowEffectiveKeyAccessJustificationsEnrollmentConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse>
+        {
+            /// <summary>Constructs a new ShowEffectiveKeyAccessJustificationsEnrollmentConfig request.</summary>
+            public ShowEffectiveKeyAccessJustificationsEnrollmentConfigRequest(Google.Apis.Services.IClientService service, string project) : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The number or id of the project to get the effective KeyAccessJustificationsEnrollmentConfig
+            /// for.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "showEffectiveKeyAccessJustificationsEnrollmentConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+project}:showEffectiveKeyAccessJustificationsEnrollmentConfig";
+
+            /// <summary>Initializes ShowEffectiveKeyAccessJustificationsEnrollmentConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Returns the KeyAccessJustificationsPolicyConfig of the resource closest to the given project in hierarchy.
+        /// </summary>
+        /// <param name="project">
+        /// Required. The number or id of the project to get the effective KeyAccessJustificationsPolicyConfig. In the
+        /// format of "projects/{|}"
+        /// </param>
+        public virtual ShowEffectiveKeyAccessJustificationsPolicyConfigRequest ShowEffectiveKeyAccessJustificationsPolicyConfig(string project)
+        {
+            return new ShowEffectiveKeyAccessJustificationsPolicyConfigRequest(this.service, project);
+        }
+
+        /// <summary>
+        /// Returns the KeyAccessJustificationsPolicyConfig of the resource closest to the given project in hierarchy.
+        /// </summary>
+        public class ShowEffectiveKeyAccessJustificationsPolicyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ShowEffectiveKeyAccessJustificationsPolicyConfigResponse>
+        {
+            /// <summary>Constructs a new ShowEffectiveKeyAccessJustificationsPolicyConfig request.</summary>
+            public ShowEffectiveKeyAccessJustificationsPolicyConfigRequest(Google.Apis.Services.IClientService service, string project) : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The number or id of the project to get the effective KeyAccessJustificationsPolicyConfig. In
+            /// the format of "projects/{|}"
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "showEffectiveKeyAccessJustificationsPolicyConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+project}:showEffectiveKeyAccessJustificationsPolicyConfig";
+
+            /// <summary>Initializes ShowEffectiveKeyAccessJustificationsPolicyConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
+        /// "{organizations|folders|projects}/*/kajPolicyConfig".
+        /// </param>
+        public virtual UpdateKajPolicyConfigRequest UpdateKajPolicyConfig(Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig body, string name)
+        {
+            return new UpdateKajPolicyConfigRequest(this.service, body, name);
+        }
+
+        /// <summary>Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        public class UpdateKajPolicyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig>
+        {
+            /// <summary>Constructs a new UpdateKajPolicyConfig request.</summary>
+            public UpdateKajPolicyConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
+            /// "{organizations|folders|projects}/*/kajPolicyConfig".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Optional. The list of fields to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateKajPolicyConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes UpdateKajPolicyConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/kajPolicyConfig$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -4936,6 +5414,14 @@ namespace Google.Apis.CloudKMS.v1.Data
     public class AutokeyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. A checksum computed by the server based on the value of other fields. This may be sent on update
+        /// requests to ensure that the client has an up-to-date value before proceeding. The request will be rejected
+        /// with an ABORTED error on a mismatched etag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// Optional. Name of the key project, e.g. `projects/{PROJECT_ID}` or `projects/{PROJECT_NUMBER}`, where Cloud
         /// KMS Autokey will provision a new CryptoKey when a KeyHandle is created. On UpdateAutokeyConfig, the caller
         /// will require `cloudkms.cryptoKeys.setIamPolicy` permission on this key project. Once configured, for Cloud
@@ -4955,9 +5441,6 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Output only. The state for the AutokeyConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
@@ -6351,6 +6834,21 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The configuration of a protection level for a project's Key Access Justifications enrollment.</summary>
+    public class KeyAccessJustificationsEnrollmentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the project has KAJ logging enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditLogging")]
+        public virtual System.Nullable<bool> AuditLogging { get; set; }
+
+        /// <summary>Whether the project is enrolled in KAJ policy enforcement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyEnforcement")]
+        public virtual System.Nullable<bool> PolicyEnforcement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason values for encrypt, decrypt, and
     /// sign operations on a CryptoKey.
@@ -6363,6 +6861,28 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedAccessReasons")]
         public virtual System.Collections.Generic.IList<string> AllowedAccessReasons { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A singleton configuration for Key Access Justifications policies.</summary>
+    public class KeyAccessJustificationsPolicyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The default key access justification policy used when a CryptoKey is created in this folder. This
+        /// is only used when a Key Access Justifications policy is not provided in the CreateCryptoKeyRequest. This
+        /// overrides any default policies in its ancestry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultKeyAccessJustificationPolicy")]
+        public virtual KeyAccessJustificationsPolicy DefaultKeyAccessJustificationPolicy { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
+        /// "{organizations|folders|projects}/*/kajPolicyConfig".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7383,6 +7903,40 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Name of the key project configured in the resource project's folder ancestry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyProject")]
         public virtual string KeyProject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for KeyAccessJustificationsConfig.ShowEffectiveKeyAccessJustificationsEnrollmentConfig
+    /// </summary>
+    public class ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The effective KeyAccessJustificationsEnrollmentConfig for external keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalConfig")]
+        public virtual KeyAccessJustificationsEnrollmentConfig ExternalConfig { get; set; }
+
+        /// <summary>The effective KeyAccessJustificationsEnrollmentConfig for hardware keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hardwareConfig")]
+        public virtual KeyAccessJustificationsEnrollmentConfig HardwareConfig { get; set; }
+
+        /// <summary>The effective KeyAccessJustificationsEnrollmentConfig for software keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
+        public virtual KeyAccessJustificationsEnrollmentConfig SoftwareConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for KeyAccessJustificationsConfig.ShowEffectiveKeyAccessJustificationsPolicyConfig.
+    /// </summary>
+    public class ShowEffectiveKeyAccessJustificationsPolicyConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The effective KeyAccessJustificationsPolicyConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveKajPolicy")]
+        public virtual KeyAccessJustificationsPolicyConfig EffectiveKajPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
