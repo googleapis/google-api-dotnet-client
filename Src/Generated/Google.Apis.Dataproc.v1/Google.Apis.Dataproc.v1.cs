@@ -1105,148 +1105,6 @@ namespace Google.Apis.Dataproc.v1
                         }
                     }
 
-                    /// <summary>Obtain build data for Native Job</summary>
-                    /// <param name="name">
-                    /// Required. The fully qualified name of the batch to retrieve in the format
-                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
-                    /// </param>
-                    public virtual AccessNativeBuildInfoRequest AccessNativeBuildInfo(string name)
-                    {
-                        return new AccessNativeBuildInfoRequest(this.service, name);
-                    }
-
-                    /// <summary>Obtain build data for Native Job</summary>
-                    public class AccessNativeBuildInfoRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSparkApplicationNativeBuildInfoResponse>
-                    {
-                        /// <summary>Constructs a new AccessNativeBuildInfo request.</summary>
-                        public AccessNativeBuildInfoRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The fully qualified name of the batch to retrieve in the format
-                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Required. Parent (Batch) resource reference.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Parent { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "accessNativeBuildInfo";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}:accessNativeBuildInfo";
-
-                        /// <summary>Initializes AccessNativeBuildInfo parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
-                            });
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Obtain data corresponding to a particular Native SQL Query for a Spark Application.
-                    /// </summary>
-                    /// <param name="name">
-                    /// Required. The fully qualified name of the batch to retrieve in the format
-                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
-                    /// </param>
-                    public virtual AccessNativeSqlQueryRequest AccessNativeSqlQuery(string name)
-                    {
-                        return new AccessNativeSqlQueryRequest(this.service, name);
-                    }
-
-                    /// <summary>
-                    /// Obtain data corresponding to a particular Native SQL Query for a Spark Application.
-                    /// </summary>
-                    public class AccessNativeSqlQueryRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSparkApplicationNativeSqlQueryResponse>
-                    {
-                        /// <summary>Constructs a new AccessNativeSqlQuery request.</summary>
-                        public AccessNativeSqlQueryRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The fully qualified name of the batch to retrieve in the format
-                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Required. Execution ID</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> ExecutionId { get; set; }
-
-                        /// <summary>Required. Parent (Batch) resource reference.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Parent { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "accessNativeSqlQuery";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}:accessNativeSqlQuery";
-
-                        /// <summary>Initializes AccessNativeSqlQuery parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
-                            });
-                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "executionId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-
                     /// <summary>
                     /// Obtain Spark Plan Graph for a Spark Application SQL execution. Limits the number of clusters
                     /// returned as part of the graph to 10000.
@@ -2225,99 +2083,6 @@ namespace Google.Apis.Dataproc.v1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
-                            });
-                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>Obtain data corresponding to Native SQL Queries for a Spark Application.</summary>
-                    /// <param name="name">
-                    /// Required. The fully qualified name of the batch to retrieve in the format
-                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
-                    /// </param>
-                    public virtual SearchNativeSqlQueriesRequest SearchNativeSqlQueries(string name)
-                    {
-                        return new SearchNativeSqlQueriesRequest(this.service, name);
-                    }
-
-                    /// <summary>Obtain data corresponding to Native SQL Queries for a Spark Application.</summary>
-                    public class SearchNativeSqlQueriesRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSparkApplicationNativeSqlQueriesResponse>
-                    {
-                        /// <summary>Constructs a new SearchNativeSqlQueries request.</summary>
-                        public SearchNativeSqlQueriesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The fully qualified name of the batch to retrieve in the format
-                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>
-                        /// Optional. Maximum number of queries to return in each response. The service may return fewer
-                        /// than this. The default page size is 10; the maximum page size is 100.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>
-                        /// Optional. A page token received from a previous SearchSparkApplicationNativeSqlQueries call.
-                        /// Provide this token to retrieve the subsequent page.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Required. Parent (Batch) resource reference.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Parent { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "searchNativeSqlQueries";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}:searchNativeSqlQueries";
-
-                        /// <summary>Initializes SearchNativeSqlQueries parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
                             });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
@@ -4428,152 +4193,6 @@ namespace Google.Apis.Dataproc.v1
                     }
 
                     /// <summary>
-                    /// Obtain data corresponding to Native Build Information for a Spark Application.
-                    /// </summary>
-                    /// <param name="name">
-                    /// Required. The fully qualified name of the session to retrieve in the format
-                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
-                    /// </param>
-                    public virtual AccessNativeBuildInfoRequest AccessNativeBuildInfo(string name)
-                    {
-                        return new AccessNativeBuildInfoRequest(this.service, name);
-                    }
-
-                    /// <summary>
-                    /// Obtain data corresponding to Native Build Information for a Spark Application.
-                    /// </summary>
-                    public class AccessNativeBuildInfoRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSessionSparkApplicationNativeBuildInfoResponse>
-                    {
-                        /// <summary>Constructs a new AccessNativeBuildInfo request.</summary>
-                        public AccessNativeBuildInfoRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The fully qualified name of the session to retrieve in the format
-                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Required. Parent (Session) resource reference.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Parent { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "accessNativeBuildInfo";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}:accessNativeBuildInfo";
-
-                        /// <summary>Initializes AccessNativeBuildInfo parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
-                            });
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Obtain data corresponding to a particular Native SQL Query for a Spark Application.
-                    /// </summary>
-                    /// <param name="name">
-                    /// Required. The fully qualified name of the session to retrieve in the format
-                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
-                    /// </param>
-                    public virtual AccessNativeSqlQueryRequest AccessNativeSqlQuery(string name)
-                    {
-                        return new AccessNativeSqlQueryRequest(this.service, name);
-                    }
-
-                    /// <summary>
-                    /// Obtain data corresponding to a particular Native SQL Query for a Spark Application.
-                    /// </summary>
-                    public class AccessNativeSqlQueryRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSessionSparkApplicationNativeSqlQueryResponse>
-                    {
-                        /// <summary>Constructs a new AccessNativeSqlQuery request.</summary>
-                        public AccessNativeSqlQueryRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The fully qualified name of the session to retrieve in the format
-                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Required. Execution ID</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> ExecutionId { get; set; }
-
-                        /// <summary>Required. Parent (Session) resource reference.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Parent { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "accessNativeSqlQuery";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}:accessNativeSqlQuery";
-
-                        /// <summary>Initializes AccessNativeSqlQuery parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
-                            });
-                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "executionId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>
                     /// Obtain Spark Plan Graph for a Spark Application SQL execution. Limits the number of clusters
                     /// returned as part of the graph to 10000.
                     /// </summary>
@@ -5552,99 +5171,6 @@ namespace Google.Apis.Dataproc.v1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
-                            });
-                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>Obtain data corresponding to Native SQL Queries for a Spark Application.</summary>
-                    /// <param name="name">
-                    /// Required. The fully qualified name of the session to retrieve in the format
-                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
-                    /// </param>
-                    public virtual SearchNativeSqlQueriesRequest SearchNativeSqlQueries(string name)
-                    {
-                        return new SearchNativeSqlQueriesRequest(this.service, name);
-                    }
-
-                    /// <summary>Obtain data corresponding to Native SQL Queries for a Spark Application.</summary>
-                    public class SearchNativeSqlQueriesRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSessionSparkApplicationNativeSqlQueriesResponse>
-                    {
-                        /// <summary>Constructs a new SearchNativeSqlQueries request.</summary>
-                        public SearchNativeSqlQueriesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The fully qualified name of the session to retrieve in the format
-                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>
-                        /// Optional. Maximum number of queries to return in each response. The service may return fewer
-                        /// than this. The default page size is 10; the maximum page size is 100.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>
-                        /// Optional. A page token received from a previous SearchSessionSparkApplicationSqlQueries
-                        /// call. Provide this token to retrieve the subsequent page.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Required. Parent (Session) resource reference.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Parent { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "searchNativeSqlQueries";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}:searchNativeSqlQueries";
-
-                        /// <summary>Initializes SearchNativeSqlQueries parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
                             });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
@@ -12071,28 +11597,6 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details of a native build info for a Spark Application</summary>
-    public class AccessSessionSparkApplicationNativeBuildInfoResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Native SQL Execution Data</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("executionData")]
-        public virtual NativeBuildInfoUiData ExecutionData { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details of a native query for a Spark Application</summary>
-    public class AccessSessionSparkApplicationNativeSqlQueryResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Native SQL Execution Data</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("executionData")]
-        public virtual NativeSqlExecutionUiData ExecutionData { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A summary of Spark Application</summary>
     public class AccessSessionSparkApplicationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12165,28 +11669,6 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Output only. Data corresponding to a spark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobData")]
         public virtual JobData JobData { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details of Native Build Info for a Spark Application</summary>
-    public class AccessSparkApplicationNativeBuildInfoResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Native Build Info Data</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("buildInfo")]
-        public virtual NativeBuildInfoUiData BuildInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details of a query for a Spark Application</summary>
-    public class AccessSparkApplicationNativeSqlQueryResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Native SQL Execution Data</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("executionData")]
-        public virtual NativeSqlExecutionUiData ExecutionData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12631,6 +12113,10 @@ namespace Google.Apis.Dataproc.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("basicAlgorithm")]
         public virtual BasicAutoscalingAlgorithm BasicAlgorithm { get; set; }
+
+        /// <summary>Optional. The type of the clusters for which this autoscaling policy is to be configured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterType")]
+        public virtual string ClusterType { get; set; }
 
         /// <summary>
         /// Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
@@ -13223,6 +12709,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auxiliaryNodeGroups")]
         public virtual System.Collections.Generic.IList<AuxiliaryNodeGroup> AuxiliaryNodeGroups { get; set; }
 
+        /// <summary>Optional. The type of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterType")]
+        public virtual string ClusterType { get; set; }
+
         /// <summary>
         /// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console
         /// output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US,
@@ -13687,7 +13177,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Specifies the config of disk options for a group of VM instances.</summary>
+    /// <summary>Specifies the config of boot disk and attached disk options for a group of VM instances.</summary>
     public class DiskConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -15919,6 +15409,55 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoDeleteTtl")]
         public virtual object AutoDeleteTtl { get; set; }
 
+        private string _autoStopTimeRaw;
+
+        private object _autoStopTime;
+
+        /// <summary>
+        /// Optional. The time when cluster will be auto-stopped (see JSON representation of Timestamp
+        /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoStopTime")]
+        public virtual string AutoStopTimeRaw
+        {
+            get => _autoStopTimeRaw;
+            set
+            {
+                _autoStopTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _autoStopTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="AutoStopTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AutoStopTimeDateTimeOffset instead.")]
+        public virtual object AutoStopTime
+        {
+            get => _autoStopTime;
+            set
+            {
+                _autoStopTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _autoStopTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="AutoStopTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? AutoStopTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AutoStopTimeRaw);
+            set => AutoStopTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The lifetime duration of the cluster. The cluster will be auto-stopped at the end of this period,
+        /// calculated from the time of submission of the create or update cluster request. Minimum value is 10 minutes;
+        /// maximum value is 14 days (see JSON representation of Duration
+        /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoStopTtl")]
+        public virtual object AutoStopTtl { get; set; }
+
         /// <summary>
         /// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this
         /// threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see
@@ -15967,6 +15506,14 @@ namespace Google.Apis.Dataproc.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IdleStartTimeRaw);
             set => IdleStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Optional. The duration to keep the cluster started while idling (when no jobs are running). Passing this
+        /// threshold will cause the cluster to be stopped. Minimum value is 5 minutes; maximum value is 14 days (see
+        /// JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idleStopTtl")]
+        public virtual object IdleStopTtl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16903,6 +16450,17 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Properties of the workload organized by origin.</summary>
+    public class PropertiesInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Properties set by autotuning engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autotuningProperties")]
+        public virtual System.Collections.Generic.IDictionary<string, ValueInfo> AutotuningProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines how Dataproc should create VMs with a mixture of provisioning models.</summary>
     public class ProvisioningModelMix : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17520,6 +17078,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
         public virtual string OutputUri { get; set; }
 
+        /// <summary>Optional. Properties of the workload organized by origin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertiesInfo")]
+        public virtual PropertiesInfo PropertiesInfo { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -17574,24 +17136,6 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Output only. Data corresponding to a spark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationJobs")]
         public virtual System.Collections.Generic.IList<JobData> SparkApplicationJobs { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>List of all Native queries for a Spark Application.</summary>
-    public class SearchSessionSparkApplicationNativeSqlQueriesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// This token is included in the response if there are more results to fetch. To fetch additional results,
-        /// provide this value as the page_token in a subsequent SearchSessionSparkApplicationSqlQueriesRequest.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>Output only. Native SQL Execution Data</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationNativeSqlQueries")]
-        public virtual System.Collections.Generic.IList<NativeSqlExecutionUiData> SparkApplicationNativeSqlQueries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17736,24 +17280,6 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Output only. Data corresponding to a spark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationJobs")]
         public virtual System.Collections.Generic.IList<JobData> SparkApplicationJobs { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>List of all Native SQL queries details for a Spark Application.</summary>
-    public class SearchSparkApplicationNativeSqlQueriesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// This token is included in the response if there are more results to fetch. To fetch additional results,
-        /// provide this value as the page_token in a subsequent SearchSparkApplicationNativeSqlQueriesRequest.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>Output only. Native SQL Execution Data</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationNativeSqlQueries")]
-        public virtual System.Collections.Generic.IList<NativeSqlExecutionUiData> SparkApplicationNativeSqlQueries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20704,6 +20230,25 @@ namespace Google.Apis.Dataproc.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SnapshotTimeRaw);
             set => SnapshotTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Annotatated property value.</summary>
+    public class ValueInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Annotation, comment or explanation why the property was set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotation")]
+        public virtual string Annotation { get; set; }
+
+        /// <summary>Optional. Value which was replaced by the corresponding component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overriddenValue")]
+        public virtual string OverriddenValue { get; set; }
+
+        /// <summary>Property value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
