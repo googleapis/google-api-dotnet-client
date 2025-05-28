@@ -10332,6 +10332,10 @@ namespace Google.Apis.Storage.v1.Data
         /// </summary>
         public class IpFilterData
         {
+            /// <summary>Whether to allow cross-org VPCs in the bucket's IP filter configuration.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("allowCrossOrgVpcs")]
+            public virtual System.Nullable<bool> AllowCrossOrgVpcs { get; set; }
+
             /// <summary>The mode of the IP filter. Valid values are 'Enabled' and 'Disabled'.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("mode")]
             public virtual string Mode { get; set; }
