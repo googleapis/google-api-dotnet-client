@@ -5420,6 +5420,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>Settings for the cluster's primary instance</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryInstanceSettings")]
         public virtual PrimaryInstanceSettings PrimaryInstanceSettings { get; set; }
 
@@ -9723,6 +9724,14 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
         public virtual string ClientKey { get; set; }
+
+        /// <summary>
+        /// Optional. SSL flags used for establishing SSL connection to the source database. Only source specific flags
+        /// are supported. An object containing a list of "key": "value" pairs. Example: {
+        /// "server_certificate_hostname": "server.com"}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslFlags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> SslFlags { get; set; }
 
         /// <summary>
         /// Optional. The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'.
