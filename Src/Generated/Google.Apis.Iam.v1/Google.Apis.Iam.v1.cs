@@ -9951,15 +9951,16 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string KeyAlgorithm { get; set; }
 
         /// <summary>
-        /// Optional. Lifetime of the workload certificates issued by the CA pool. Must be between 10 hours and 30 days.
+        /// Optional. Lifetime of the workload certificates issued by the CA pool. Must be between 24 hours and 30 days.
         /// If not specified, this will be defaulted to 24 hours.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifetime")]
         public virtual object Lifetime { get; set; }
 
         /// <summary>
-        /// Optional. Rotation window percentage indicating when certificate rotation should be initiated based on
-        /// remaining lifetime. Must be between 10 and 80. If not specified, this will be defaulted to 50.
+        /// Optional. Rotation window percentage, the percentage of remaining lifetime after which certificate rotation
+        /// is initiated. Must be between 50 and 80. If no value is specified, rotation window percentage is defaulted
+        /// to 50.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotationWindowPercentage")]
         public virtual System.Nullable<int> RotationWindowPercentage { get; set; }
@@ -11544,8 +11545,8 @@ namespace Google.Apis.Iam.v1.Data
     }
 
     /// <summary>
-    /// Trust store that contains trust anchors and optional intermediate CAs used in PKI to build trust chain and
-    /// verify a client's identity.
+    /// Trust store that contains trust anchors and optional intermediate CAs used in PKI to build a trust chain(trust
+    /// hierarchy) and verify a client's identity.
     /// </summary>
     public class TrustStore : Google.Apis.Requests.IDirectResponseSchema
     {
