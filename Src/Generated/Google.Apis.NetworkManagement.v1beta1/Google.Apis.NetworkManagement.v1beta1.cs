@@ -2804,6 +2804,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>Details of the final state "deliver" and associated resource.</summary>
     public class DeliverInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Recognized type of a Google Service the packet is delivered to (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleServiceType")]
+        public virtual string GoogleServiceType { get; set; }
+
         /// <summary>IP address of the target (if applicable).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
@@ -3652,7 +3656,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>For display only. Metadata associated with a Compute Engine network. Next ID: 7</summary>
+    /// <summary>For display only. Metadata associated with a Compute Engine network.</summary>
     public class NetworkInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Name of a Compute Engine network.</summary>
