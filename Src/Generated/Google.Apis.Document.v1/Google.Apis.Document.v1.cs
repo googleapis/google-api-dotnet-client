@@ -4997,9 +4997,9 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Grounding config of the entity type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groundingConfig")]
-        public virtual string GroundingConfig { get; set; }
+        /// <summary>Specifies how the entity's value is obtained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; }
 
         /// <summary>The name of the property. Follows the same guidelines as the EntityType name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
