@@ -6934,6 +6934,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hashedSize")]
         public virtual System.Nullable<long> HashedSize { get; set; }
 
+        /// <summary>Operation(s) performed on a file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<FileOperation> Operations { get; set; }
+
         /// <summary>True when the hash covers only a prefix of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partiallyHashed")]
         public virtual System.Nullable<bool> PartiallyHashed { get; set; }
@@ -6952,6 +6956,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Size of the file in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Operation(s) performed on a file.</summary>
+    public class FileOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the operation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10742,6 +10757,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hashedSize")]
         public virtual System.Nullable<long> HashedSize { get; set; }
 
+        /// <summary>Operation(s) performed on a file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2FileOperation> Operations { get; set; }
+
         /// <summary>True when the hash covers only a prefix of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partiallyHashed")]
         public virtual System.Nullable<bool> PartiallyHashed { get; set; }
@@ -10760,6 +10779,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Size of the file in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Operation(s) performed on a file.</summary>
+    public class GoogleCloudSecuritycenterV2FileOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the operation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
