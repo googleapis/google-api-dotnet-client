@@ -390,6 +390,73 @@ namespace Google.Apis.Dataflow.v1b3
                     }
                 }
 
+                /// <summary>Get worker stacktraces from debug capture.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The project id.</param>
+                /// <param name="jobId">The job for which to get stacktraces.</param>
+                public virtual GetWorkerStacktracesRequest GetWorkerStacktraces(Google.Apis.Dataflow.v1b3.Data.GetWorkerStacktracesRequest body, string projectId, string jobId)
+                {
+                    return new GetWorkerStacktracesRequest(this.service, body, projectId, jobId);
+                }
+
+                /// <summary>Get worker stacktraces from debug capture.</summary>
+                public class GetWorkerStacktracesRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.GetWorkerStacktracesResponse>
+                {
+                    /// <summary>Constructs a new GetWorkerStacktraces request.</summary>
+                    public GetWorkerStacktracesRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.GetWorkerStacktracesRequest body, string projectId, string jobId) : base(service)
+                    {
+                        ProjectId = projectId;
+                        JobId = jobId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>The project id.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The job for which to get stacktraces.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string JobId { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataflow.v1b3.Data.GetWorkerStacktracesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getWorkerStacktraces";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/projects/{projectId}/jobs/{jobId}/debug/getWorkerStacktraces";
+
+                    /// <summary>Initializes GetWorkerStacktraces parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Send encoded debug capture data for component.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">The project id.</param>
@@ -6844,6 +6911,31 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to get worker stacktraces from debug capture.</summary>
+    public class GetWorkerStacktracesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The worker for which to get stacktraces. The returned stacktraces will be for the SDK harness running on
+        /// this worker.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerId")]
+        public virtual string WorkerId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to get worker stacktraces from debug capture.</summary>
+    public class GetWorkerStacktracesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Repeated as unified worker may have multiple SDK processes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdks")]
+        public virtual System.Collections.Generic.IList<Sdk> Sdks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Histogram of value counts for a distribution. Buckets have an inclusive lower bound and exclusive upper bound
     /// and use "1,2,5 bucketing": The first bucket range is from [0,1) and all subsequent bucket boundaries are powers
@@ -9139,6 +9231,21 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A structured representation of an SDK.</summary>
+    public class Sdk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The SDK harness id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkId")]
+        public virtual string SdkId { get; set; }
+
+        /// <summary>The stacktraces for the processes running on the SDK harness.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stacks")]
+        public virtual System.Collections.Generic.IList<Stack> Stacks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A bug found in the Dataflow SDK.</summary>
     public class SdkBug : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9787,6 +9894,69 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>The low order bits: n &amp; 0xffffffff.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowBits")]
         public virtual System.Nullable<long> LowBits { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A structuredstacktrace for a process running on the worker.</summary>
+    public class Stack : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The raw stack trace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackContent")]
+        public virtual string StackContent { get; set; }
+
+        /// <summary>
+        /// With java thread dumps we may get collapsed stacks e.g., N threads in stack "". Instead of having to copy
+        /// over the same stack trace N times, this int field captures this.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadCount")]
+        public virtual System.Nullable<int> ThreadCount { get; set; }
+
+        /// <summary>Thread name. For example, "CommitThread-0,10,main"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadName")]
+        public virtual string ThreadName { get; set; }
+
+        /// <summary>The state of the thread. For example, "WAITING".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadState")]
+        public virtual string ThreadState { get; set; }
+
+        private string _timestampRaw;
+
+        private object _timestamp;
+
+        /// <summary>Timestamp at which the stack was captured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string TimestampRaw
+        {
+            get => _timestampRaw;
+            set
+            {
+                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
+        public virtual object Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
