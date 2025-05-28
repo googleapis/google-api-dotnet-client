@@ -10337,7 +10337,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
             }
 
-            /// <summary>Checks whether a user's subscription purchase is valid and returns its expiry time.</summary>
+            /// <summary>
+            /// Deprecated: Use purchases.subscriptionsv2.get instead. Checks whether a user's subscription purchase is
+            /// valid and returns its expiry time.
+            /// </summary>
             /// <param name="packageName">
             /// The package name of the application for which this subscription was purchased (for example,
             /// 'com.some.thing').
@@ -10349,7 +10352,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 return new GetRequest(this.service, packageName, subscriptionId, token);
             }
 
-            /// <summary>Checks whether a user's subscription purchase is valid and returns its expiry time.</summary>
+            /// <summary>
+            /// Deprecated: Use purchases.subscriptionsv2.get instead. Checks whether a user's subscription purchase is
+            /// valid and returns its expiry time.
+            /// </summary>
             public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchase>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -10417,8 +10423,8 @@ namespace Google.Apis.AndroidPublisher.v3
             }
 
             /// <summary>
-            /// Refunds a user's subscription purchase, but the subscription remains valid until its expiration time and
-            /// it will continue to recur.
+            /// Deprecated: Use orders.refund instead. Refunds a user's subscription purchase, but the subscription
+            /// remains valid until its expiration time and it will continue to recur.
             /// </summary>
             /// <param name="packageName">
             /// The package name of the application for which this subscription was purchased (for example,
@@ -10432,8 +10438,8 @@ namespace Google.Apis.AndroidPublisher.v3
             }
 
             /// <summary>
-            /// Refunds a user's subscription purchase, but the subscription remains valid until its expiration time and
-            /// it will continue to recur.
+            /// Deprecated: Use orders.refund instead. Refunds a user's subscription purchase, but the subscription
+            /// remains valid until its expiration time and it will continue to recur.
             /// </summary>
             public class RefundRequest : AndroidPublisherBaseServiceRequest<string>
             {
@@ -10502,8 +10508,9 @@ namespace Google.Apis.AndroidPublisher.v3
             }
 
             /// <summary>
-            /// Refunds and immediately revokes a user's subscription purchase. Access to the subscription will be
-            /// terminated immediately and it will stop recurring.
+            /// Deprecated: Use purchases.subscriptionsv2.revoke instead. Refunds and immediately revokes a user's
+            /// subscription purchase. Access to the subscription will be terminated immediately and it will stop
+            /// recurring.
             /// </summary>
             /// <param name="packageName">
             /// The package name of the application for which this subscription was purchased (for example,
@@ -10517,8 +10524,9 @@ namespace Google.Apis.AndroidPublisher.v3
             }
 
             /// <summary>
-            /// Refunds and immediately revokes a user's subscription purchase. Access to the subscription will be
-            /// terminated immediately and it will stop recurring.
+            /// Deprecated: Use purchases.subscriptionsv2.revoke instead. Refunds and immediately revokes a user's
+            /// subscription purchase. Access to the subscription will be terminated immediately and it will stop
+            /// recurring.
             /// </summary>
             public class RevokeRequest : AndroidPublisherBaseServiceRequest<string>
             {
@@ -14880,7 +14888,21 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details of an order.</summary>
+    /// <summary>
+    /// The Order resource encapsulates comprehensive information about a transaction made on Google Play. It includes a
+    /// variety of attributes that provide details about the order itself, the products purchased, and the history of
+    /// events related to the order. The Orders APIs provide real-time access to your order data within the Google Play
+    /// ecosystem. You can retrieve detailed information and metadata for both one-time and recurring orders, including
+    /// transaction details like charges, taxes, and refunds, as well as metadata such as pricing phases for
+    /// subscriptions. The Orders APIs let you automate tasks related to order management, reducing the need for manual
+    /// checks via the Play Developer Console. The following are some of the use cases for this API: + Real-time order
+    /// data retrieval - Get order details and metadata immediately after a purchase using an order ID. + Order update
+    /// synchronization - Periodically sync order updates to maintain an up-to-date record of order information. Note: +
+    /// The Orders API calls count towards your Play Developer API quota, which defaults to 200K daily, and may be
+    /// insufficient to sync extensive order histories. + A maximum of 1000 orders can be retrieved per call. Using
+    /// larger page sizes is recommended to minimize quota usage. Check your quota in the Cloud Console and request more
+    /// if required.
+    /// </summary>
     public class Order : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -17134,10 +17156,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// The order id of the latest order associated with the purchase of the subscription. For autoRenewing
-        /// subscription, this is the order id of signup order if it is not renewed yet, or the last recurring order id
-        /// (success, pending, or declined order). For prepaid subscription, this is the order id associated with the
-        /// queried purchase token.
+        /// Deprecated: Use line_items.latest_successful_order_id instead. The order id of the latest order associated
+        /// with the purchase of the subscription. For autoRenewing subscription, this is the order id of signup order
+        /// if it is not renewed yet, or the last recurring order id (success, pending, or declined order). For prepaid
+        /// subscription, this is the order id associated with the queried purchase token.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestOrderId")]
         public virtual string LatestOrderId { get; set; }
