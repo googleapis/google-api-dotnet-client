@@ -25148,6 +25148,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("excludeHtmlIds")]
         public virtual System.Collections.Generic.IList<string> ExcludeHtmlIds { get; set; }
 
+        /// <summary>
+        /// Optional. Contains the required structure types to extract from the document. Supported values: *
+        /// `shareholder-structure`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredContentTypes")]
+        public virtual System.Collections.Generic.IList<string> StructuredContentTypes { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -25338,6 +25345,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
+        /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
+        /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
+        /// `people-search-org-chart` * `bi-directional-audio` * `feedback`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("features")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
 
         /// <summary>
         /// Optional. The industry vertical that the engine registers. The restriction of the Engine industry vertical
@@ -31208,7 +31224,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Errors { get; set; }
 
-        /// <summary>The number of documents extracted from connector source, ready to be ingested to UCS.</summary>
+        /// <summary>The number of documents extracted from connector source, ready to be ingested to VAIS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractedRecordCount")]
         public virtual System.Nullable<long> ExtractedRecordCount { get; set; }
 
@@ -31219,6 +31235,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Metadata to generate the progress bar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress Progress { get; set; }
+
+        /// <summary>
+        /// The number of documents scheduled to be crawled/extracted from connector source. This only applies to third
+        /// party connectors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledRecordCount")]
+        public virtual System.Nullable<long> ScheduledRecordCount { get; set; }
 
         /// <summary>The number of requests sent to 3p API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceApiRequestCount")]
@@ -34452,6 +34475,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("excludeHtmlIds")]
         public virtual System.Collections.Generic.IList<string> ExcludeHtmlIds { get; set; }
 
+        /// <summary>
+        /// Optional. Contains the required structure types to extract from the document. Supported values: *
+        /// `shareholder-structure`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredContentTypes")]
+        public virtual System.Collections.Generic.IList<string> StructuredContentTypes { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -34671,6 +34701,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
+        /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
+        /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
+        /// `people-search-org-chart` * `bi-directional-audio` * `feedback`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("features")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
 
         /// <summary>
         /// Optional. The industry vertical that the engine registers. The restriction of the Engine industry vertical
@@ -34980,6 +35019,46 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataState")]
         public virtual string DataState { get; set; }
+
+        private string _lastTrainTimeRaw;
+
+        private object _lastTrainTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the latest successful training finished. Only applicable on Media
+        /// Recommendation engines.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastTrainTime")]
+        public virtual string LastTrainTimeRaw
+        {
+            get => _lastTrainTimeRaw;
+            set
+            {
+                _lastTrainTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastTrainTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastTrainTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastTrainTimeDateTimeOffset instead.")]
+        public virtual object LastTrainTime
+        {
+            get => _lastTrainTime;
+            set
+            {
+                _lastTrainTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastTrainTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastTrainTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastTrainTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastTrainTimeRaw);
+            set => LastTrainTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         private string _lastTuneTimeRaw;
 
@@ -43282,15 +43361,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         }
 
         /// <summary>
-        /// Optional. The full resource name of the User, in the format of
-        /// `projects/{project}/locations/{location}/userStores/{user_store}/users/{user_id}`. This field must be a
-        /// UTF-8 encoded string with a length limit of 2048 characters. If the user field is empty, it's indicating the
-        /// user has not logged in yet and no User entity is created.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual string User { get; set; }
-
-        /// <summary>
         /// Required. Immutable. The user principal of the User, could be email address or other prinical identifier.
         /// This field is immutable. Admin assign licenses based on the user principal.
         /// </summary>
@@ -43888,6 +43958,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableVisualContentSummary")]
         public virtual System.Nullable<bool> EnableVisualContentSummary { get; set; }
+
+        /// <summary>
+        /// Output only. Feature config for the engine to opt in or opt out of features. Supported keys: *
+        /// `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` *
+        /// `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("features")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
 
         /// <summary>Describes generative answer configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generativeAnswerConfig")]
@@ -46009,6 +46087,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("excludeHtmlIds")]
         public virtual System.Collections.Generic.IList<string> ExcludeHtmlIds { get; set; }
 
+        /// <summary>
+        /// Optional. Contains the required structure types to extract from the document. Supported values: *
+        /// `shareholder-structure`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredContentTypes")]
+        public virtual System.Collections.Generic.IList<string> StructuredContentTypes { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -46199,6 +46284,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
+        /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
+        /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
+        /// `people-search-org-chart` * `bi-directional-audio` * `feedback`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("features")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
 
         /// <summary>
         /// Optional. The industry vertical that the engine registers. The restriction of the Engine industry vertical
