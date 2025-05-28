@@ -1059,7 +1059,8 @@ namespace Google.Apis.DataCatalog.v1
                         /// ReconcileTagsRequest.force_delete_missing parameter is set, the operation deletes tags not
                         /// included in the input tag list. `ReconcileTags` returns a long-running operation resource
                         /// that can be queried with Operations.GetOperation to return ReconcileTagsMetadata and a
-                        /// ReconcileTagsResponse message.
+                        /// ReconcileTagsResponse message. Note: SearchCatalog might return stale search results for up
+                        /// to 24 hours after the `ReconcileTags` operation completes.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">Required. Name of Entry to be tagged.</param>
@@ -1073,7 +1074,8 @@ namespace Google.Apis.DataCatalog.v1
                         /// ReconcileTagsRequest.force_delete_missing parameter is set, the operation deletes tags not
                         /// included in the input tag list. `ReconcileTags` returns a long-running operation resource
                         /// that can be queried with Operations.GetOperation to return ReconcileTagsMetadata and a
-                        /// ReconcileTagsResponse message.
+                        /// ReconcileTagsResponse message. Note: SearchCatalog might return stale search results for up
+                        /// to 24 hours after the `ReconcileTags` operation completes.
                         /// </summary>
                         public class ReconcileRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.Operation>
                         {
