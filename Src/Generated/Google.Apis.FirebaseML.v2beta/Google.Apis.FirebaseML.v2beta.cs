@@ -546,6 +546,183 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The generic reusable api auth config. Deprecated. Please use AuthConfig
+    /// (google/cloud/aiplatform/master/auth.proto) instead.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1ApiAuth : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The API secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeyConfig")]
+        public virtual GoogleCloudAiplatformV1beta1ApiAuthApiKeyConfig ApiKeyConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The API secret.</summary>
+    public class GoogleCloudAiplatformV1beta1ApiAuthApiKeyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The SecretManager secret version resource name storing API key. e.g.
+        /// projects/{project}/secrets/{secret}/versions/{version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeySecretVersion")]
+        public virtual string ApiKeySecretVersion { get; set; }
+
+        /// <summary>The API key string. Either this or `api_key_secret_version` must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeyString")]
+        public virtual string ApiKeyString { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Auth configuration to run the extension.</summary>
+    public class GoogleCloudAiplatformV1beta1AuthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Config for API key auth.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeyConfig")]
+        public virtual GoogleCloudAiplatformV1beta1AuthConfigApiKeyConfig ApiKeyConfig { get; set; }
+
+        /// <summary>Type of auth scheme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authType")]
+        public virtual string AuthType { get; set; }
+
+        /// <summary>Config for Google Service Account auth.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleServiceAccountConfig")]
+        public virtual GoogleCloudAiplatformV1beta1AuthConfigGoogleServiceAccountConfig GoogleServiceAccountConfig { get; set; }
+
+        /// <summary>Config for HTTP Basic auth.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpBasicAuthConfig")]
+        public virtual GoogleCloudAiplatformV1beta1AuthConfigHttpBasicAuthConfig HttpBasicAuthConfig { get; set; }
+
+        /// <summary>Config for user oauth.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthConfig")]
+        public virtual GoogleCloudAiplatformV1beta1AuthConfigOauthConfig OauthConfig { get; set; }
+
+        /// <summary>Config for user OIDC auth.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oidcConfig")]
+        public virtual GoogleCloudAiplatformV1beta1AuthConfigOidcConfig OidcConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for authentication with API key.</summary>
+    public class GoogleCloudAiplatformV1beta1AuthConfigApiKeyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of the SecretManager secret version resource storing the API key. Format:
+        /// `projects/{project}/secrets/{secrete}/versions/{version}` - If both `api_key_secret` and `api_key_string`
+        /// are specified, this field takes precedence over `api_key_string`. - If specified, the
+        /// `secretmanager.versions.access` permission should be granted to Vertex AI Extension Service Agent
+        /// (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) on the specified resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeySecret")]
+        public virtual string ApiKeySecret { get; set; }
+
+        /// <summary>Optional. The API key to be used in the request directly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeyString")]
+        public virtual string ApiKeyString { get; set; }
+
+        /// <summary>Optional. The location of the API key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpElementLocation")]
+        public virtual string HttpElementLocation { get; set; }
+
+        /// <summary>
+        /// Optional. The parameter name of the API key. E.g. If the API request is "https://example.com/act?api_key=",
+        /// "api_key" would be the parameter name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for Google Service Account Authentication.</summary>
+    public class GoogleCloudAiplatformV1beta1AuthConfigGoogleServiceAccountConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The service account that the extension execution service runs as. - If the service account is
+        /// specified, the `iam.serviceAccounts.getAccessToken` permission should be granted to Vertex AI Extension
+        /// Service Agent (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) on the
+        /// specified service account. - If not specified, the Vertex AI Extension Service Agent will be used to execute
+        /// the Extension.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for HTTP Basic Authentication.</summary>
+    public class GoogleCloudAiplatformV1beta1AuthConfigHttpBasicAuthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the SecretManager secret version resource storing the base64 encoded credentials.
+        /// Format: `projects/{project}/secrets/{secrete}/versions/{version}` - If specified, the
+        /// `secretmanager.versions.access` permission should be granted to Vertex AI Extension Service Agent
+        /// (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) on the specified resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credentialSecret")]
+        public virtual string CredentialSecret { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for user oauth.</summary>
+    public class GoogleCloudAiplatformV1beta1AuthConfigOauthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Access token for extension endpoint. Only used to propagate token from
+        /// [[ExecuteExtensionRequest.runtime_auth_config]] at request time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>
+        /// The service account used to generate access tokens for executing the Extension. - If the service account is
+        /// specified, the `iam.serviceAccounts.getAccessToken` permission should be granted to Vertex AI Extension
+        /// Service Agent (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) on the
+        /// provided service account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for user OIDC auth.</summary>
+    public class GoogleCloudAiplatformV1beta1AuthConfigOidcConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// OpenID Connect formatted ID token for extension endpoint. Only used to propagate token from
+        /// [[ExecuteExtensionRequest.runtime_auth_config]] at request time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idToken")]
+        public virtual string IdToken { get; set; }
+
+        /// <summary>
+        /// The service account used to generate an OpenID Connect (OIDC)-compatible JWT token signed by the Google OIDC
+        /// Provider (accounts.google.com) for extension endpoint
+        /// (https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-oidc). - The
+        /// audience for the token will be set to the URL in the server url defined in the OpenApi spec. - If the
+        /// service account is provided, the service account should grant `iam.serviceAccounts.getOpenIdToken`
+        /// permission to Vertex AI Extension Service Agent
+        /// (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Content blob.</summary>
     public class GoogleCloudAiplatformV1beta1Blob : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -664,7 +841,8 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>
-    /// Result of executing the [ExecutableCode]. Always follows a `part` containing the [ExecutableCode].
+    /// Result of executing the [ExecutableCode]. Only generated when using the [CodeExecution] tool, and always follows
+    /// a `part` containing the [ExecutableCode].
     /// </summary>
     public class GoogleCloudAiplatformV1beta1CodeExecutionResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -795,7 +973,8 @@ namespace Google.Apis.FirebaseML.v2beta.Data
 
     /// <summary>
     /// Code generated by the model that is meant to be executed, and the result returned to the model. Generated when
-    /// using the [FunctionDeclaration] tool and [FunctionCallingConfig] mode is set to [Mode.CODE].
+    /// using the [CodeExecution] tool, in which the code will be automatically executed, and a corresponding
+    /// [CodeExecutionResult] will also be generated.
     /// </summary>
     public class GoogleCloudAiplatformV1beta1ExecutableCode : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -807,6 +986,72 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Retrieve from data source powered by external API for grounding. The external API is not owned by Google, but
+    /// need to follow the pre-defined API spec.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1ExternalApi : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The authentication config to access the API. Deprecated. Please use auth_config instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiAuth")]
+        public virtual GoogleCloudAiplatformV1beta1ApiAuth ApiAuth { get; set; }
+
+        /// <summary>The API spec that the external API implements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiSpec")]
+        public virtual string ApiSpec { get; set; }
+
+        /// <summary>The authentication config to access the API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authConfig")]
+        public virtual GoogleCloudAiplatformV1beta1AuthConfig AuthConfig { get; set; }
+
+        /// <summary>Parameters for the elastic search API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elasticSearchParams")]
+        public virtual GoogleCloudAiplatformV1beta1ExternalApiElasticSearchParams ElasticSearchParams { get; set; }
+
+        /// <summary>
+        /// The endpoint of the external API. The system will call the API at this endpoint to retrieve the data for
+        /// grounding. Example: https://acme.com:443/search
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
+
+        /// <summary>Parameters for the simple search API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("simpleSearchParams")]
+        public virtual GoogleCloudAiplatformV1beta1ExternalApiSimpleSearchParams SimpleSearchParams { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The search parameters to use for the ELASTIC_SEARCH spec.</summary>
+    public class GoogleCloudAiplatformV1beta1ExternalApiElasticSearchParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ElasticSearch index to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual string Index { get; set; }
+
+        /// <summary>
+        /// Optional. Number of hits (chunks) to request. When specified, it is passed to Elasticsearch as the
+        /// `num_hits` param.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numHits")]
+        public virtual System.Nullable<int> NumHits { get; set; }
+
+        /// <summary>The ElasticSearch search template to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchTemplate")]
+        public virtual string SearchTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The search parameters to use for SIMPLE_SEARCH spec.</summary>
+    public class GoogleCloudAiplatformV1beta1ExternalApiSimpleSearchParams : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -915,11 +1160,32 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual GoogleCloudAiplatformV1beta1Schema Parameters { get; set; }
 
         /// <summary>
+        /// Optional. Describes the parameters to the function in JSON Schema format. The schema must describe an object
+        /// where the properties are the parameters to the function. For example:
+        /// ```
+        /// { "type": "object", "properties":
+        /// { "name": { "type": "string" }, "age": { "type": "integer" } }, "additionalProperties": false, "required":
+        /// ["name", "age"], "propertyOrdering": ["name", "age"] }
+        /// ```
+        /// This field is mutually exclusive with
+        /// `parameters`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parametersJsonSchema")]
+        public virtual object ParametersJsonSchema { get; set; }
+
+        /// <summary>
         /// Optional. Describes the output from this function in JSON Schema format. Reflects the Open API 3.03 Response
         /// Object. The Schema defines the type used for the response value of the function.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual GoogleCloudAiplatformV1beta1Schema Response { get; set; }
+
+        /// <summary>
+        /// Optional. Describes the output from this function in JSON Schema format. The value specified by the schema
+        /// is the response value of the function. This field is mutually exclusive with `response`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseJsonSchema")]
+        public virtual object ResponseJsonSchema { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1174,6 +1440,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("candidateCount")]
         public virtual System.Nullable<int> CandidateCount { get; set; }
 
+        /// <summary>Optional. If enabled, the model will detect emotions and adapt its responses accordingly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAffectiveDialog")]
+        public virtual System.Nullable<bool> EnableAffectiveDialog { get; set; }
+
         /// <summary>Optional. Frequency penalties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyPenalty")]
         public virtual System.Nullable<float> FrequencyPenalty { get; set; }
@@ -1197,6 +1467,21 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. Positive penalties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("presencePenalty")]
         public virtual System.Nullable<float> PresencePenalty { get; set; }
+
+        /// <summary>
+        /// Optional. Output schema of the generated response. This is an alternative to `response_schema` that accepts
+        /// [JSON Schema](https://json-schema.org/). If set, `response_schema` must be omitted, but `response_mime_type`
+        /// is required. While the full JSON Schema may be sent, not all features are supported. Specifically, only the
+        /// following properties are supported: - `$id` - `$defs` - `$ref` - `$anchor` - `type` - `format` - `title` -
+        /// `description` - `enum` (for strings and numbers) - `items` - `prefixItems` - `minItems` - `maxItems` -
+        /// `minimum` - `maximum` - `anyOf` - `oneOf` (interpreted the same as `anyOf`) - `properties` -
+        /// `additionalProperties` - `required` The non-standard `propertyOrdering` property may also be set. Cyclic
+        /// references are unrolled to a limited degree and, as such, may only be used within non-required properties.
+        /// (Nullable properties are not sufficient.) If `$ref` is set on a sub-schema, no other properties, except for
+        /// than those starting as a `$`, may be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseJsonSchema")]
+        public virtual object ResponseJsonSchema { get; set; }
 
         /// <summary>Optional. If true, export the logprobs results in response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseLogprobs")]
@@ -1572,6 +1857,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("thought")]
         public virtual System.Nullable<bool> Thought { get; set; }
 
+        /// <summary>Optional. An opaque signature for the thought so it can be reused in subsequent requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thoughtSignature")]
+        public virtual string ThoughtSignature { get; set; }
+
         /// <summary>
         /// Optional. Video metadata. The metadata should only be specified while the video data is presented in
         /// inline_data or file_data.
@@ -1727,6 +2016,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. Deprecated. This option is no longer supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableAttribution")]
         public virtual System.Nullable<bool> DisableAttribution { get; set; }
+
+        /// <summary>Use data source powered by external API for grounding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalApi")]
+        public virtual GoogleCloudAiplatformV1beta1ExternalApi ExternalApi { get; set; }
 
         /// <summary>Set to use data source powered by Vertex AI Search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexAiSearch")]
@@ -2032,6 +2325,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual GoogleCloudAiplatformV1beta1ToolCodeExecution CodeExecution { get; set; }
 
         /// <summary>
+        /// Optional. Tool to support the model interacting directly with the computer. If enabled, it automatically
+        /// populates computer-use specific Function Declarations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computerUse")]
+        public virtual GoogleCloudAiplatformV1beta1ToolComputerUse ComputerUse { get; set; }
+
+        /// <summary>
         /// Optional. Tool to support searching public web data, powered by Vertex AI Search and Sec4 compliance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseWebSearch")]
@@ -2080,6 +2380,17 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Tool to support computer use.</summary>
+    public class GoogleCloudAiplatformV1beta1ToolComputerUse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The environment being operated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Tool config. This config is shared for all tools provided in the request.</summary>
     public class GoogleCloudAiplatformV1beta1ToolConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2109,6 +2420,14 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GoogleCloudAiplatformV1beta1VertexAISearch : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Specifications that define the specific DataStores to be searched, along with configurations for those data
+        /// stores. This is only considered for Engines with multiple data stores. It should only be set if engine is
+        /// used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1VertexAISearchDataStoreSpec> DataStoreSpecs { get; set; }
+
+        /// <summary>
         /// Optional. Fully-qualified Vertex AI Search data store resource ID. Format:
         /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
         /// </summary>
@@ -2137,6 +2456,32 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Define data stores within engine to filter on in a search call and configurations for those data stores. For
+    /// more information, see
+    /// https://cloud.google.com/generative-ai-app-builder/docs/reference/rpc/google.cloud.discoveryengine.v1#datastorespec
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1VertexAISearchDataStoreSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Full resource name of DataStore, such as Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
+
+        /// <summary>
+        /// Optional. Filter specification to filter documents in the data store specified by data_store field. For more
+        /// information on filtering, see
+        /// [Filtering](https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Retrieve from Vertex RAG Store for grounding.</summary>
     public class GoogleCloudAiplatformV1beta1VertexRagStore : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2159,6 +2504,15 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. Number of top k results to return from the selected corpora.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("similarityTopK")]
         public virtual System.Nullable<int> SimilarityTopK { get; set; }
+
+        /// <summary>
+        /// Optional. Currently only supported for Gemini Multimodal Live API. In Gemini Multimodal Live API, if
+        /// `store_context` bool is specified, Gemini will leverage it to automatically memorize the interactions
+        /// between the client and Gemini, and retrieve context when needed to augment the response generation for
+        /// users' ongoing and future interactions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeContext")]
+        public virtual System.Nullable<bool> StoreContext { get; set; }
 
         /// <summary>Optional. Only return results with vector distance smaller than the threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vectorDistanceThreshold")]
