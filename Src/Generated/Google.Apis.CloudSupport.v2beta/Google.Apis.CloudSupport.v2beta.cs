@@ -1293,7 +1293,7 @@ namespace Google.Apis.CloudSupport.v2beta
         /// ```
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name for the case.</param>
+        /// <param name="name">Identifier. The resource name for the case.</param>
         public virtual PatchRequest Patch(Google.Apis.CloudSupport.v2beta.Data.Case body, string name)
         {
             return new PatchRequest(this.service, body, name);
@@ -1327,7 +1327,7 @@ namespace Google.Apis.CloudSupport.v2beta
                 InitParameters();
             }
 
-            /// <summary>The resource name for the case.</summary>
+            /// <summary>Identifier. The resource name for the case.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -2052,7 +2052,7 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         /// <summary>
         /// The email address of the actor. If not provided, it is inferred from the credentials supplied during case
         /// creation. When a name is provided, an email must also be provided. If the user is a Google Support agent,
-        /// this is obfuscated. This field is deprecated. Use **username** field instead.
+        /// this is obfuscated. This field is deprecated. Use `username` instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
@@ -2133,7 +2133,7 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
-        /// <summary>Output only. The resource name of the attachment.</summary>
+        /// <summary>Output only. Identifier. The resource name of the attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2269,7 +2269,7 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
-        /// <summary>The resource name for the case.</summary>
+        /// <summary>Identifier. The resource name for the case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
