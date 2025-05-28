@@ -5650,7 +5650,9 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
     /// <summary>HybridPeeringDetails contains details about the hybrid peering.</summary>
     public class HybridPeeringDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.</summary>
+        /// <summary>
+        /// Output only. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual string Command { get; set; }
 
@@ -5658,7 +5660,7 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
 
         private object _commandExpiryTime;
 
-        /// <summary>Optional. Expiration time for the peering command to be executed on user's ONTAP.</summary>
+        /// <summary>Output only. Expiration time for the peering command to be executed on user's ONTAP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commandExpiryTime")]
         public virtual string CommandExpiryTimeRaw
         {
@@ -5693,29 +5695,29 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
             set => CommandExpiryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Temporary passphrase generated to accept cluster peering command.</summary>
+        /// <summary>Output only. Temporary passphrase generated to accept cluster peering command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passphrase")]
         public virtual string Passphrase { get; set; }
 
         /// <summary>
-        /// Optional. Name of the user's local source cluster to be peered with the destination cluster.
+        /// Output only. Name of the user's local source cluster to be peered with the destination cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerClusterName")]
         public virtual string PeerClusterName { get; set; }
 
         /// <summary>
-        /// Optional. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+        /// Output only. Name of the user's local source vserver svm to be peered with the destination vserver svm.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerSvmName")]
         public virtual string PeerSvmName { get; set; }
 
         /// <summary>
-        /// Optional. Name of the user's local source volume to be peered with the destination volume.
+        /// Output only. Name of the user's local source volume to be peered with the destination volume.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerVolumeName")]
         public virtual string PeerVolumeName { get; set; }
 
-        /// <summary>Optional. IP address of the subnet.</summary>
+        /// <summary>Output only. IP address of the subnet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetIp")]
         public virtual string SubnetIp { get; set; }
 
@@ -5737,9 +5739,17 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Optional. Type of the hybrid replication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridReplicationType")]
+        public virtual string HybridReplicationType { get; set; }
+
         /// <summary>Optional. Labels to be added to the replication as the key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Optional. Constituent volume count for large volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("largeVolumeConstituentCount")]
+        public virtual System.Nullable<int> LargeVolumeConstituentCount { get; set; }
 
         /// <summary>
         /// Required. Name of the user's local source cluster to be peered with the destination cluster.
@@ -5766,6 +5776,10 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// <summary>Required. Desired name for the replication of this volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replication")]
         public virtual string Replication { get; set; }
+
+        /// <summary>Optional. Replication Schedule for the replication created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicationSchedule")]
+        public virtual string ReplicationSchedule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6497,6 +6511,12 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hybridReplicationType")]
         public virtual string HybridReplicationType { get; set; }
 
+        /// <summary>
+        /// Output only. Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridReplicationUserCommands")]
+        public virtual UserCommands HybridReplicationUserCommands { get; set; }
+
         /// <summary>Resource labels to represent user provided metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -7126,6 +7146,17 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>UserCommands contains the commands to be executed by the customer.</summary>
+    public class UserCommands : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of commands to be executed by the customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commands")]
+        public virtual System.Collections.Generic.IList<string> Commands { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
