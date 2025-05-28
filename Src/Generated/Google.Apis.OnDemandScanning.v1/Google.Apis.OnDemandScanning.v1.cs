@@ -1789,6 +1789,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpe")]
         public virtual string Cpe { get; set; }
 
+        /// <summary>Files that make up the resource described by the occurrence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("files")]
+        public virtual System.Collections.Generic.IList<File> Files { get; set; }
+
         private string _lastScanTimeRaw;
 
         private object _lastScanTime;
@@ -1871,6 +1875,18 @@ namespace Google.Apis.OnDemandScanning.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("sig")]
         public virtual string Sig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class File : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("digest")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Digest { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
