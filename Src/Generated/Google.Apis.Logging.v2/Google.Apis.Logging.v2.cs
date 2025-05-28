@@ -3151,9 +3151,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new
-            /// entries. Log entries written shortly before the delete operation might not be deleted. Entries received
-            /// after the delete operation with a timestamp before the operation will be deleted.
+            /// Deletes all the log entries in a log for the global _Default Log Bucket. The log reappears if it
+            /// receives new entries. Log entries written shortly before the delete operation might not be deleted.
+            /// Entries received after the delete operation with a timestamp before the operation will be deleted.
             /// </summary>
             /// <param name="logName">
             /// Required. The resource name of the log to delete: projects/[PROJECT_ID]/logs/[LOG_ID]
@@ -3168,9 +3168,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new
-            /// entries. Log entries written shortly before the delete operation might not be deleted. Entries received
-            /// after the delete operation with a timestamp before the operation will be deleted.
+            /// Deletes all the log entries in a log for the global _Default Log Bucket. The log reappears if it
+            /// receives new entries. Log entries written shortly before the delete operation might not be deleted.
+            /// Entries received after the delete operation with a timestamp before the operation will be deleted.
             /// </summary>
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
@@ -7999,9 +7999,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new
-            /// entries. Log entries written shortly before the delete operation might not be deleted. Entries received
-            /// after the delete operation with a timestamp before the operation will be deleted.
+            /// Deletes all the log entries in a log for the global _Default Log Bucket. The log reappears if it
+            /// receives new entries. Log entries written shortly before the delete operation might not be deleted.
+            /// Entries received after the delete operation with a timestamp before the operation will be deleted.
             /// </summary>
             /// <param name="logName">
             /// Required. The resource name of the log to delete: projects/[PROJECT_ID]/logs/[LOG_ID]
@@ -8016,9 +8016,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new
-            /// entries. Log entries written shortly before the delete operation might not be deleted. Entries received
-            /// after the delete operation with a timestamp before the operation will be deleted.
+            /// Deletes all the log entries in a log for the global _Default Log Bucket. The log reappears if it
+            /// receives new entries. Log entries written shortly before the delete operation might not be deleted.
+            /// Entries received after the delete operation with a timestamp before the operation will be deleted.
             /// </summary>
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
@@ -10930,8 +10930,8 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
-        /// Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new
-        /// entries. Log entries written shortly before the delete operation might not be deleted. Entries received
+        /// Deletes all the log entries in a log for the global _Default Log Bucket. The log reappears if it receives
+        /// new entries. Log entries written shortly before the delete operation might not be deleted. Entries received
         /// after the delete operation with a timestamp before the operation will be deleted.
         /// </summary>
         /// <param name="logName">
@@ -10947,8 +10947,8 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
-        /// Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new
-        /// entries. Log entries written shortly before the delete operation might not be deleted. Entries received
+        /// Deletes all the log entries in a log for the global _Default Log Bucket. The log reappears if it receives
+        /// new entries. Log entries written shortly before the delete operation might not be deleted. Entries received
         /// after the delete operation with a timestamp before the operation will be deleted.
         /// </summary>
         public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
@@ -14565,9 +14565,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new
-            /// entries. Log entries written shortly before the delete operation might not be deleted. Entries received
-            /// after the delete operation with a timestamp before the operation will be deleted.
+            /// Deletes all the log entries in a log for the global _Default Log Bucket. The log reappears if it
+            /// receives new entries. Log entries written shortly before the delete operation might not be deleted.
+            /// Entries received after the delete operation with a timestamp before the operation will be deleted.
             /// </summary>
             /// <param name="logName">
             /// Required. The resource name of the log to delete: projects/[PROJECT_ID]/logs/[LOG_ID]
@@ -14582,9 +14582,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new
-            /// entries. Log entries written shortly before the delete operation might not be deleted. Entries received
-            /// after the delete operation with a timestamp before the operation will be deleted.
+            /// Deletes all the log entries in a log for the global _Default Log Bucket. The log reappears if it
+            /// receives new entries. Log entries written shortly before the delete operation might not be deleted.
+            /// Entries received after the delete operation with a timestamp before the operation will be deleted.
             /// </summary>
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
@@ -19045,9 +19045,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new
-            /// entries. Log entries written shortly before the delete operation might not be deleted. Entries received
-            /// after the delete operation with a timestamp before the operation will be deleted.
+            /// Deletes all the log entries in a log for the global _Default Log Bucket. The log reappears if it
+            /// receives new entries. Log entries written shortly before the delete operation might not be deleted.
+            /// Entries received after the delete operation with a timestamp before the operation will be deleted.
             /// </summary>
             /// <param name="logName">
             /// Required. The resource name of the log to delete: projects/[PROJECT_ID]/logs/[LOG_ID]
@@ -19062,9 +19062,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new
-            /// entries. Log entries written shortly before the delete operation might not be deleted. Entries received
-            /// after the delete operation with a timestamp before the operation will be deleted.
+            /// Deletes all the log entries in a log for the global _Default Log Bucket. The log reappears if it
+            /// receives new entries. Log entries written shortly before the delete operation might not be deleted.
+            /// Entries received after the delete operation with a timestamp before the operation will be deleted.
             /// </summary>
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
