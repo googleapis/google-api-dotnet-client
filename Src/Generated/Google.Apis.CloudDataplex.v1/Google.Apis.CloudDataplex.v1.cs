@@ -7036,23 +7036,19 @@ namespace Google.Apis.CloudDataplex.v1
                         this.service = service;
                     }
 
-                    /// <summary>
-                    /// GlossaryCategory APIs are CCFE passthrough APIs. Creates a new GlossaryCategory resource.
-                    /// </summary>
+                    /// <summary>Creates a new GlossaryCategory resource.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent resource where this GlossaryCategory will be created. Format:
-                    /// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} where locationId refers to a
-                    /// GCP region.
+                    /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where
+                    /// locationId refers to a GCP region.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1GlossaryCategory body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
                     }
 
-                    /// <summary>
-                    /// GlossaryCategory APIs are CCFE passthrough APIs. Creates a new GlossaryCategory resource.
-                    /// </summary>
+                    /// <summary>Creates a new GlossaryCategory resource.</summary>
                     public class CreateRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1GlossaryCategory>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -7065,13 +7061,13 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The parent resource where this GlossaryCategory will be created. Format:
-                        /// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} where locationId refers
-                        /// to a GCP region.
+                        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where
+                        /// locationId refers to a GCP region.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Required. Category ID: GlossaryCategory identifier.</summary>
+                        /// <summary>Required. GlossaryCategory identifier.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("categoryId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string CategoryId { get; set; }
 
@@ -7114,12 +7110,13 @@ namespace Google.Apis.CloudDataplex.v1
                     }
 
                     /// <summary>
-                    /// Deletes a GlossaryCategory resource. All the categories and terms nested directly under the
-                    /// category will be moved one level up to the parent in the hierarchy.
+                    /// Deletes a GlossaryCategory resource. All the GlossaryCategories and GlossaryTerms nested
+                    /// directly under the specified GlossaryCategory will be moved one level up to the parent in the
+                    /// hierarchy.
                     /// </summary>
                     /// <param name="name">
                     /// Required. The name of the GlossaryCategory to delete. Format:
-                    /// projects/{project}/locations/{location}/glossary/{glossary}/categories/{glossary_category}
+                    /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id}
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -7127,8 +7124,9 @@ namespace Google.Apis.CloudDataplex.v1
                     }
 
                     /// <summary>
-                    /// Deletes a GlossaryCategory resource. All the categories and terms nested directly under the
-                    /// category will be moved one level up to the parent in the hierarchy.
+                    /// Deletes a GlossaryCategory resource. All the GlossaryCategories and GlossaryTerms nested
+                    /// directly under the specified GlossaryCategory will be moved one level up to the parent in the
+                    /// hierarchy.
                     /// </summary>
                     public class DeleteRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.Empty>
                     {
@@ -7141,7 +7139,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The name of the GlossaryCategory to delete. Format:
-                        /// projects/{project}/locations/{location}/glossary/{glossary}/categories/{glossary_category}
+                        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -7170,17 +7168,17 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>Retrieves a specified GlossaryCategory resource.</summary>
+                    /// <summary>Gets a GlossaryCategory resource.</summary>
                     /// <param name="name">
                     /// Required. The name of the GlossaryCategory to retrieve. Format:
-                    /// projects/{project}/locations/{location}/glossaries/{glossary}/categories/{glossary_category}
+                    /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id}
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>Retrieves a specified GlossaryCategory resource.</summary>
+                    /// <summary>Gets a GlossaryCategory resource.</summary>
                     public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1GlossaryCategory>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -7192,7 +7190,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The name of the GlossaryCategory to retrieve. Format:
-                        /// projects/{project}/locations/{location}/glossaries/{glossary}/categories/{glossary_category}
+                        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -7300,17 +7298,18 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>Lists GlossaryCategory resources in a glossary.</summary>
+                    /// <summary>Lists GlossaryCategory resources in a Glossary.</summary>
                     /// <param name="parent">
-                    /// Required. The parent, which has this collection of categories. Format:
-                    /// projects/{project}/locations/{location}/glossaries/{glossary} Location is the GCP region.
+                    /// Required. The parent, which has this collection of GlossaryCategories. Format:
+                    /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} Location is the
+                    /// GCP region.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>Lists GlossaryCategory resources in a glossary.</summary>
+                    /// <summary>Lists GlossaryCategory resources in a Glossary.</summary>
                     public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ListGlossaryCategoriesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -7321,32 +7320,36 @@ namespace Google.Apis.CloudDataplex.v1
                         }
 
                         /// <summary>
-                        /// Required. The parent, which has this collection of categories. Format:
-                        /// projects/{project}/locations/{location}/glossaries/{glossary} Location is the GCP region.
+                        /// Required. The parent, which has this collection of GlossaryCategories. Format:
+                        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} Location is
+                        /// the GCP region.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Filter expression that filters categories listed in the response. Filters
-                        /// supported: List GlossaryCategories based on immediate parent in the resource hierarchy. This
-                        /// will only return the GlossaryCategories nested directly under the parent and no other
-                        /// subsequent nested categories will be returned.
+                        /// Optional. Filter expression that filters GlossaryCategories listed in the response. Filters
+                        /// are supported on the following fields: - immediate_parentExamples of using a filter are: -
+                        /// immediate_parent="projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}"
+                        /// -
+                        /// immediate_parent="projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id}"This
+                        /// will only return the GlossaryCategories that are directly nested under the specified parent.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
                         /// <summary>
-                        /// Optional. Order by expression that orders categories listed in the response. Order by fields
-                        /// are: name or create_time for the result. If not specified, the ordering is undefined.
+                        /// Optional. Order by expression that orders GlossaryCategories listed in the response. Order
+                        /// by fields are: name or create_time for the result. If not specified, the ordering is
+                        /// undefined.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
                         /// <summary>
-                        /// Optional. The maximum number of categories to return. The service may return fewer than this
-                        /// value. If unspecified, at most 50 categories will be returned. The maximum value is 1000;
-                        /// values above 1000 will be coerced to 1000.
+                        /// Optional. The maximum number of GlossaryCategories to return. The service may return fewer
+                        /// than this value. If unspecified, at most 50 GlossaryCategories will be returned. The maximum
+                        /// value is 1000; values above 1000 will be coerced to 1000.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -7419,7 +7422,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Output only. Identifier. The resource name of the GlossaryCategory. Format:
-                    /// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
+                    /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id}
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1GlossaryCategory body, string name)
                     {
@@ -7439,7 +7442,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Output only. Identifier. The resource name of the GlossaryCategory. Format:
-                        /// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
+                        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -7640,23 +7643,19 @@ namespace Google.Apis.CloudDataplex.v1
                         this.service = service;
                     }
 
-                    /// <summary>
-                    /// GlossaryTerm APIs are CCFE passthrough APIs. Creates a new GlossaryTerm resource.
-                    /// </summary>
+                    /// <summary>Creates a new GlossaryTerm resource.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. The parent resource where this GlossaryTerm will be created. Format:
-                    /// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} where locationId refers to a
-                    /// GCP region.
+                    /// Required. The parent resource where the GlossaryTerm will be created. Format:
+                    /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where
+                    /// location_id refers to a GCP region.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1GlossaryTerm body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
                     }
 
-                    /// <summary>
-                    /// GlossaryTerm APIs are CCFE passthrough APIs. Creates a new GlossaryTerm resource.
-                    /// </summary>
+                    /// <summary>Creates a new GlossaryTerm resource.</summary>
                     public class CreateRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1GlossaryTerm>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -7668,14 +7667,14 @@ namespace Google.Apis.CloudDataplex.v1
                         }
 
                         /// <summary>
-                        /// Required. The parent resource where this GlossaryTerm will be created. Format:
-                        /// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} where locationId refers
-                        /// to a GCP region.
+                        /// Required. The parent resource where the GlossaryTerm will be created. Format:
+                        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where
+                        /// location_id refers to a GCP region.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Required. Term ID: GlossaryTerm identifier.</summary>
+                        /// <summary>Required. GlossaryTerm identifier.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("termId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string TermId { get; set; }
 
@@ -7720,7 +7719,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>Deletes a GlossaryTerm resource.</summary>
                     /// <param name="name">
                     /// Required. The name of the GlossaryTerm to delete. Format:
-                    /// projects/{project}/locations/{location}/glossary/{glossary}/terms/{glossary_term}
+                    /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id}
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -7739,7 +7738,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The name of the GlossaryTerm to delete. Format:
-                        /// projects/{project}/locations/{location}/glossary/{glossary}/terms/{glossary_term}
+                        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -7768,17 +7767,17 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>Retrieves a specified GlossaryTerm resource.</summary>
+                    /// <summary>Gets a GlossaryTerm resource.</summary>
                     /// <param name="name">
                     /// Required. The name of the GlossaryTerm to retrieve. Format:
-                    /// projects/{project}/locations/{location}/glossaries/{glossary}/terms/{glossary_term}
+                    /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id}
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>Retrieves a specified GlossaryTerm resource.</summary>
+                    /// <summary>Gets a GlossaryTerm resource.</summary>
                     public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1GlossaryTerm>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -7790,7 +7789,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. The name of the GlossaryTerm to retrieve. Format:
-                        /// projects/{project}/locations/{location}/glossaries/{glossary}/terms/{glossary_term}
+                        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -7898,17 +7897,18 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>Lists GlossaryTerm resources in a glossary.</summary>
+                    /// <summary>Lists GlossaryTerm resources in a Glossary.</summary>
                     /// <param name="parent">
-                    /// Required. The parent, which has this collection of terms. Format:
-                    /// projects/{project}/locations/{location}/glossaries/{glossary} Location is the GCP region.
+                    /// Required. The parent, which has this collection of GlossaryTerms. Format:
+                    /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where
+                    /// location_id refers to a GCP region.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>Lists GlossaryTerm resources in a glossary.</summary>
+                    /// <summary>Lists GlossaryTerm resources in a Glossary.</summary>
                     public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ListGlossaryTermsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -7919,32 +7919,35 @@ namespace Google.Apis.CloudDataplex.v1
                         }
 
                         /// <summary>
-                        /// Required. The parent, which has this collection of terms. Format:
-                        /// projects/{project}/locations/{location}/glossaries/{glossary} Location is the GCP region.
+                        /// Required. The parent, which has this collection of GlossaryTerms. Format:
+                        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where
+                        /// location_id refers to a GCP region.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Filter expression that filters terms listed in the response. Filters supported:
-                        /// List GlossaryTerms based on immediate parent in the resource hierarchy. This will only
-                        /// return the terms nested directly under the parent and no other subsequent nested terms will
-                        /// be returned.
+                        /// Optional. Filter expression that filters GlossaryTerms listed in the response. Filters are
+                        /// supported on the following fields: - immediate_parentExamples of using a filter are: -
+                        /// immediate_parent="projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}"
+                        /// -
+                        /// immediate_parent="projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id}"This
+                        /// will only return the GlossaryTerms that are directly nested under the specified parent.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
                         /// <summary>
-                        /// Optional. Order by expression that orders terms listed in the response. Order by fields are:
-                        /// name or create_time for the result. If not specified, the ordering is undefined.
+                        /// Optional. Order by expression that orders GlossaryTerms listed in the response. Order by
+                        /// fields are: name or create_time for the result. If not specified, the ordering is undefined.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
                         /// <summary>
-                        /// Optional. The maximum number of terms to return. The service may return fewer than this
-                        /// value. If unspecified, at most 50 terms will be returned. The maximum value is 1000; values
-                        /// above 1000 will be coerced to 1000.
+                        /// Optional. The maximum number of GlossaryTerms to return. The service may return fewer than
+                        /// this value. If unspecified, at most 50 GlossaryTerms will be returned. The maximum value is
+                        /// 1000; values above 1000 will be coerced to 1000.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -8017,7 +8020,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Output only. Identifier. The resource name of the GlossaryTerm. Format:
-                    /// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/terms/{termId}
+                    /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id}
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1GlossaryTerm body, string name)
                     {
@@ -8037,7 +8040,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Output only. Identifier. The resource name of the GlossaryTerm. Format:
-                        /// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/terms/{termId}
+                        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -8225,7 +8228,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource where this Glossary will be created. Format:
-                /// projects/{projectId}/locations/{locationId} where locationId refers to a GCP region.
+                /// projects/{project_id_or_number}/locations/{location_id} where location_id refers to a GCP region.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Glossary body, string parent)
                 {
@@ -8245,7 +8248,8 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The parent resource where this Glossary will be created. Format:
-                    /// projects/{projectId}/locations/{locationId} where locationId refers to a GCP region.
+                    /// projects/{project_id_or_number}/locations/{location_id} where location_id refers to a GCP
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -8255,7 +8259,7 @@ namespace Google.Apis.CloudDataplex.v1
                     public virtual string GlossaryId { get; set; }
 
                     /// <summary>
-                    /// Optional. Validates the request without actually creating the glossary. Default: false.
+                    /// Optional. Validates the request without actually creating the Glossary. Default: false.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -8307,12 +8311,12 @@ namespace Google.Apis.CloudDataplex.v1
                 }
 
                 /// <summary>
-                /// Deletes a Glossary resource. All the categories and terms within the glossary must be deleted before
-                /// a glossary can be deleted.
+                /// Deletes a Glossary resource. All the categories and terms within the Glossary must be deleted before
+                /// the Glossary can be deleted.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The name of the Glossary to delete. Format:
-                /// projects/{project}/locations/{location}/glossary/{glossary}
+                /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -8320,8 +8324,8 @@ namespace Google.Apis.CloudDataplex.v1
                 }
 
                 /// <summary>
-                /// Deletes a Glossary resource. All the categories and terms within the glossary must be deleted before
-                /// a glossary can be deleted.
+                /// Deletes a Glossary resource. All the categories and terms within the Glossary must be deleted before
+                /// the Glossary can be deleted.
                 /// </summary>
                 public class DeleteRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
@@ -8334,7 +8338,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The name of the Glossary to delete. Format:
-                    /// projects/{project}/locations/{location}/glossary/{glossary}
+                    /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -8379,17 +8383,17 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Retrieves a specified Glossary resource.</summary>
+                /// <summary>Gets a Glossary resource.</summary>
                 /// <param name="name">
                 /// Required. The name of the Glossary to retrieve. Format:
-                /// projects/{project}/locations/{location}/glossaries/{glossary}
+                /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Retrieves a specified Glossary resource.</summary>
+                /// <summary>Gets a Glossary resource.</summary>
                 public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Glossary>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -8401,7 +8405,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The name of the Glossary to retrieve. Format:
-                    /// projects/{project}/locations/{location}/glossaries/{glossary}
+                    /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -8510,8 +8514,8 @@ namespace Google.Apis.CloudDataplex.v1
 
                 /// <summary>Lists Glossary resources in a project and location.</summary>
                 /// <param name="parent">
-                /// Required. The parent, which has this collection of glossaries. Format:
-                /// projects/{project}/locations/{location} Location is the GCP region.
+                /// Required. The parent, which has this collection of Glossaries. Format:
+                /// projects/{project_id_or_number}/locations/{location_id} where location_id refers to a GCP region.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -8529,29 +8533,31 @@ namespace Google.Apis.CloudDataplex.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent, which has this collection of glossaries. Format:
-                    /// projects/{project}/locations/{location} Location is the GCP region.
+                    /// Required. The parent, which has this collection of Glossaries. Format:
+                    /// projects/{project_id_or_number}/locations/{location_id} where location_id refers to a GCP
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Filter expression that filters glossaries listed in the response. Initially, no filter
-                    /// is supported.
+                    /// Optional. Filter expression that filters Glossaries listed in the response. Filters on proto
+                    /// fields of Glossary are supported. Examples of using a filter are: - display_name="my-glossary" -
+                    /// categoryCount=1 - termCount=0
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Optional. Order by expression that orders glossaries listed in the response. Order by fields
+                    /// Optional. Order by expression that orders Glossaries listed in the response. Order by fields
                     /// are: name or create_time for the result. If not specified, the ordering is undefined.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Optional. The maximum number of glossaries to return. The service may return fewer than this
-                    /// value. If unspecified, at most 50 glossaries will be returned. The maximum value is 1000; values
+                    /// Optional. The maximum number of Glossaries to return. The service may return fewer than this
+                    /// value. If unspecified, at most 50 Glossaries will be returned. The maximum value is 1000; values
                     /// above 1000 will be coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -8625,7 +8631,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. Identifier. The resource name of the Glossary. Format:
-                /// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}
+                /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Glossary body, string name)
                 {
@@ -8645,7 +8651,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Output only. Identifier. The resource name of the Glossary. Format:
-                    /// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}
+                    /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -8655,7 +8661,7 @@ namespace Google.Apis.CloudDataplex.v1
                     public virtual object UpdateMask { get; set; }
 
                     /// <summary>
-                    /// Optional. Validates the request without actually updating the glossary. Default: false.
+                    /// Optional. Validates the request without actually updating the Glossary. Default: false.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -17831,6 +17837,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string Location { get; set; }
 
         /// <summary>
+        /// Optional. The project of the BigQuery dataset to publish BigLake external or non-BigLake external tables to.
+        /// If not specified, the project of the Cloud Storage bucket will be used. The format is
+        /// "projects/{project_id_or_number}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
+
+        /// <summary>
         /// Optional. Determines whether to publish discovered tables as BigLake external tables or non-BigLake external
         /// tables.
         /// </summary>
@@ -18260,6 +18274,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual string Column { get; set; }
 
+        /// <summary>Output only. The dimension-level results for this column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityDimensionResult> Dimensions { get; set; }
+
+        /// <summary>Output only. Whether the column passed or failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passed")]
+        public virtual System.Nullable<bool> Passed { get; set; }
+
         /// <summary>
         /// Output only. The column-level data quality score for this data scan job if and only if the 'column' field is
         /// set.The score ranges between between 0, 100 (up to two decimal points).
@@ -18310,6 +18332,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>The output of a DataQualityScan.</summary>
     public class GoogleCloudDataplexV1DataQualityResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The status of publishing the data scan to Catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogPublishingStatus")]
+        public virtual GoogleCloudDataplexV1DataScanCatalogPublishingStatus CatalogPublishingStatus { get; set; }
+
         /// <summary>
         /// Output only. A list of results at the column level.A column will have a corresponding
         /// DataQualityColumnResult if and only if there is at least one rule with the 'column' field set to it.
@@ -18760,6 +18786,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>DataQualityScan related setting.</summary>
     public class GoogleCloudDataplexV1DataQualitySpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If set, the latest DataScan job result will be published to Dataplex Catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogPublishingEnabled")]
+        public virtual System.Nullable<bool> CatalogPublishingEnabled { get; set; }
+
         /// <summary>Optional. Actions to take upon job completion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postScanActions")]
         public virtual GoogleCloudDataplexV1DataQualitySpecPostScanActions PostScanActions { get; set; }
@@ -19047,11 +19077,26 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The status of publishing the data scan result to Catalog.</summary>
+    public class GoogleCloudDataplexV1DataScanCatalogPublishingStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Execution state for catalog publishing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// These messages contain information about the execution of a datascan. The monitored resource is 'DataScan'
     /// </summary>
     public class GoogleCloudDataplexV1DataScanEvent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The status of publishing the data scan to Catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogPublishingStatus")]
+        public virtual GoogleCloudDataplexV1DataScanCatalogPublishingStatus CatalogPublishingStatus { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -21225,12 +21270,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
     }
 
     /// <summary>
-    /// A Glossary represents a collection of categories and terms defined by the user. Glossary is a top level resource
-    /// and is the GCP parent resource of all the categories and terms within it.
+    /// A Glossary represents a collection of GlossaryCategories and GlossaryTerms defined by the user. Glossary is a
+    /// top level resource and is the GCP parent resource of all the GlossaryCategories and GlossaryTerms within it.
     /// </summary>
     public class GoogleCloudDataplexV1Glossary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The number of categories in the glossary.</summary>
+        /// <summary>Output only. The number of GlossaryCategories in the Glossary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryCount")]
         public virtual System.Nullable<int> CategoryCount { get; set; }
 
@@ -21238,7 +21283,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. The time at which the glossary was created.</summary>
+        /// <summary>Output only. The time at which the Glossary was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -21271,13 +21316,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. The user-mutable description of the glossary.</summary>
+        /// <summary>Optional. The user-mutable description of the Glossary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. User friendly display name of the glossary. This is user-mutable. This will be same as the
-        /// glossaryId, if not specified.
+        /// Optional. User friendly display name of the Glossary. This is user-mutable. This will be same as the
+        /// GlossaryId, if not specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -21296,12 +21341,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Output only. Identifier. The resource name of the Glossary. Format:
-        /// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}
+        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The number of terms in the glossary.</summary>
+        /// <summary>Output only. The number of GlossaryTerms in the Glossary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("termCount")]
         public virtual System.Nullable<int> TermCount { get; set; }
 
@@ -21316,7 +21361,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. The time at which the glossary was last updated.</summary>
+        /// <summary>Output only. The time at which the Glossary was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -21351,8 +21396,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
     }
 
     /// <summary>
-    /// A GlossaryCategory represents a collection of categories and terms within a Glossary that are related to each
-    /// other.
+    /// A GlossaryCategory represents a collection of GlossaryCategories and GlossaryTerms within a Glossary that are
+    /// related to each other.
     /// </summary>
     public class GoogleCloudDataplexV1GlossaryCategory : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21399,7 +21444,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Optional. User friendly display name of the GlossaryCategory. This is user-mutable. This will be same as the
-        /// categoryId, if not specified.
+        /// GlossaryCategoryId, if not specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -21410,15 +21455,16 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Output only. Identifier. The resource name of the GlossaryCategory. Format:
-        /// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
+        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
         /// Required. The immediate parent of the GlossaryCategory in the resource-hierarchy. It can either be a
-        /// Glossary or a Category. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR
-        /// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
+        /// Glossary or a GlossaryCategory. Format:
+        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} OR
+        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
@@ -21472,8 +21518,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
     }
 
     /// <summary>
-    /// GlossaryTerms are the core of glossary. A GlossaryTerm holds a rich text description that can be attached to
-    /// entries or specific columns to enrich them.
+    /// GlossaryTerms are the core of Glossary. A GlossaryTerm holds a rich text description that can be attached to
+    /// Entries or specific columns to enrich them.
     /// </summary>
     public class GoogleCloudDataplexV1GlossaryTerm : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21520,7 +21566,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Optional. User friendly display name of the GlossaryTerm. This is user-mutable. This will be same as the
-        /// termId, if not specified.
+        /// GlossaryTermId, if not specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -21531,15 +21577,15 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Output only. Identifier. The resource name of the GlossaryTerm. Format:
-        /// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/terms/{termId}
+        /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
         /// Required. The immediate parent of the GlossaryTerm in the resource-hierarchy. It can either be a Glossary or
-        /// a Category. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR
-        /// projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
+        /// a GlossaryCategory. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}
+        /// OR projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
@@ -22411,7 +22457,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>List Glossaries Response</summary>
     public class GoogleCloudDataplexV1ListGlossariesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Lists the glossaries in the specified parent.</summary>
+        /// <summary>Lists the Glossaries in the specified parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glossaries")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1Glossary> Glossaries { get; set; }
 
@@ -22433,7 +22479,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>List GlossaryCategories Response</summary>
     public class GoogleCloudDataplexV1ListGlossaryCategoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Lists the glossaryCategories in the specified parent.</summary>
+        /// <summary>Lists the GlossaryCategories in the specified parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1GlossaryCategory> Categories { get; set; }
 
@@ -22462,7 +22508,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Lists the terms in the specified parent.</summary>
+        /// <summary>Lists the GlossaryTerms in the specified parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terms")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1GlossaryTerm> Terms { get; set; }
 
