@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.RecaptchaEnterprise.v1 Client Library</Title>
-    <Version>1.69.0.3776</Version>
+    <Version>1.69.0.3790</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
