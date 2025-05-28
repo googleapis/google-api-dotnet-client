@@ -5694,8 +5694,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The project where Backups are allowed to be stored. The format is `projects/{project}`.
-        /// Currently, {project} can only be the project number. Support for project IDs will be added in the future.
+        /// Required. Immutable. The project where Backups are allowed to be stored. The format is
+        /// `projects/{projectId}` or `projects/{projectNumber}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationProject")]
         public virtual string DestinationProject { get; set; }
@@ -7631,8 +7631,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
 
         /// <summary>
         /// Required. Immutable. The project into which the backups will be restored. The format is
-        /// `projects/{project}`. Currently, {project} can only be the project number. Support for project IDs will be
-        /// added in the future.
+        /// `projects/{projectId}` or `projects/{projectNumber}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationProject")]
         public virtual string DestinationProject { get; set; }
