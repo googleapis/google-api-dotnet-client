@@ -5650,7 +5650,9 @@ namespace Google.Apis.NetAppFiles.v1.Data
     /// <summary>HybridPeeringDetails contains details about the hybrid peering.</summary>
     public class HybridPeeringDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.</summary>
+        /// <summary>
+        /// Output only. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual string Command { get; set; }
 
@@ -5658,7 +5660,7 @@ namespace Google.Apis.NetAppFiles.v1.Data
 
         private object _commandExpiryTime;
 
-        /// <summary>Optional. Expiration time for the peering command to be executed on user's ONTAP.</summary>
+        /// <summary>Output only. Expiration time for the peering command to be executed on user's ONTAP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commandExpiryTime")]
         public virtual string CommandExpiryTimeRaw
         {
@@ -5693,29 +5695,29 @@ namespace Google.Apis.NetAppFiles.v1.Data
             set => CommandExpiryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Temporary passphrase generated to accept cluster peering command.</summary>
+        /// <summary>Output only. Temporary passphrase generated to accept cluster peering command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passphrase")]
         public virtual string Passphrase { get; set; }
 
         /// <summary>
-        /// Optional. Name of the user's local source cluster to be peered with the destination cluster.
+        /// Output only. Name of the user's local source cluster to be peered with the destination cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerClusterName")]
         public virtual string PeerClusterName { get; set; }
 
         /// <summary>
-        /// Optional. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+        /// Output only. Name of the user's local source vserver svm to be peered with the destination vserver svm.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerSvmName")]
         public virtual string PeerSvmName { get; set; }
 
         /// <summary>
-        /// Optional. Name of the user's local source volume to be peered with the destination volume.
+        /// Output only. Name of the user's local source volume to be peered with the destination volume.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerVolumeName")]
         public virtual string PeerVolumeName { get; set; }
 
-        /// <summary>Optional. IP address of the subnet.</summary>
+        /// <summary>Output only. IP address of the subnet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetIp")]
         public virtual string SubnetIp { get; set; }
 
