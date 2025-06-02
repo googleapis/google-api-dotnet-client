@@ -31876,13 +31876,20 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>Settings for YouTube and Partners line items.</summary>
     public class YoutubeAndPartnersSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The kind of content on which the YouTube and Partners ads will be shown.</summary>
+        /// <summary>
+        /// The kind of content on which the YouTube and Partners ads will be shown. *Warning*: Starting **June 12,
+        /// 2025**, this setting will no longer be editable. This field will eventually be removed. [Read more about
+        /// this announced change](/display-video/api/deprecations#features.li_yt_content_category)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentCategory")]
         public virtual string ContentCategory { get; set; }
 
         /// <summary>
         /// Output only. The content category which takes effect when serving the line item. When content category is
         /// set in both line item and advertiser, the stricter one will take effect when serving the line item.
+        /// *Warning*: Starting **June 12, 2025**, this field will only reflect the advertiser level setting for new
+        /// line items. [Read more about this announced
+        /// change](/display-video/api/deprecations#features.li_yt_content_category)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveContentCategory")]
         public virtual string EffectiveContentCategory { get; set; }
