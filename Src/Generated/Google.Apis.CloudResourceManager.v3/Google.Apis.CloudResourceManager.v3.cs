@@ -37,6 +37,7 @@ namespace Google.Apis.CloudResourceManager.v3
             EffectiveTags = new EffectiveTagsResource(this);
             Folders = new FoldersResource(this);
             Liens = new LiensResource(this);
+            Locations = new LocationsResource(this);
             Operations = new OperationsResource(this);
             Organizations = new OrganizationsResource(this);
             Projects = new ProjectsResource(this);
@@ -103,6 +104,9 @@ namespace Google.Apis.CloudResourceManager.v3
 
         /// <summary>Gets the Liens resource.</summary>
         public virtual LiensResource Liens { get; }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
 
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
@@ -1621,6 +1625,251 @@ namespace Google.Apis.CloudResourceManager.v3
                     DefaultValue = null,
                     Pattern = null,
                 });
+            }
+        }
+    }
+
+    /// <summary>The "locations" collection of methods.</summary>
+    public class LocationsResource
+    {
+        private const string Resource = "locations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public LocationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            EffectiveTagBindingCollections = new EffectiveTagBindingCollectionsResource(service);
+            TagBindingCollections = new TagBindingCollectionsResource(service);
+        }
+
+        /// <summary>Gets the EffectiveTagBindingCollections resource.</summary>
+        public virtual EffectiveTagBindingCollectionsResource EffectiveTagBindingCollections { get; }
+
+        /// <summary>The "effectiveTagBindingCollections" collection of methods.</summary>
+        public class EffectiveTagBindingCollectionsResource
+        {
+            private const string Resource = "effectiveTagBindingCollections";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public EffectiveTagBindingCollectionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Returns effective tag bindings on a GCP resource.</summary>
+            /// <param name="name">
+            /// Required. The full name of the EffectiveTagBindingCollection in format:
+            /// `locations/{location}/effectiveTagBindingCollections/{encoded-full-resource-name}` where the
+            /// encoded-full-resource-name is the UTF-8 encoded name of the resource the TagBindings are bound to. E.g.
+            /// "locations/global/effectiveTagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Returns effective tag bindings on a GCP resource.</summary>
+            public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.EffectiveTagBindingCollection>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The full name of the EffectiveTagBindingCollection in format:
+                /// `locations/{location}/effectiveTagBindingCollections/{encoded-full-resource-name}` where the
+                /// encoded-full-resource-name is the UTF-8 encoded name of the resource the TagBindings are bound to.
+                /// E.g.
+                /// "locations/global/effectiveTagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^locations/[^/]+/effectiveTagBindingCollections/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the TagBindingCollections resource.</summary>
+        public virtual TagBindingCollectionsResource TagBindingCollections { get; }
+
+        /// <summary>The "tagBindingCollections" collection of methods.</summary>
+        public class TagBindingCollectionsResource
+        {
+            private const string Resource = "tagBindingCollections";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public TagBindingCollectionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Returns tag bindings directly attached to a GCP resource.</summary>
+            /// <param name="name">
+            /// Required. The full name of the TagBindingCollection in format:
+            /// `locations/{location}/tagBindingCollections/{encoded-full-resource-name}` where the
+            /// enoded-full-resource-name is the UTF-8 encoded name of the resource the TagBindings are bound to. E.g.
+            /// "locations/global/tagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Returns tag bindings directly attached to a GCP resource.</summary>
+            public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.TagBindingCollection>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The full name of the TagBindingCollection in format:
+                /// `locations/{location}/tagBindingCollections/{encoded-full-resource-name}` where the
+                /// enoded-full-resource-name is the UTF-8 encoded name of the resource the TagBindings are bound to.
+                /// E.g.
+                /// "locations/global/tagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^locations/[^/]+/tagBindingCollections/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates tag bindings directly attached to a GCP resource. Update_mask can be kept empty or "*".
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The name of the TagBindingCollection, following the convention:
+            /// `locations/{location}/tagBindingCollections/{encoded-full-resource-name}` where the
+            /// encoded-full-resource-name is the UTF-8 encoded name of the GCP resource the TagBindings are bound to.
+            /// "locations/global/tagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.CloudResourceManager.v3.Data.TagBindingCollection body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Updates tag bindings directly attached to a GCP resource. Update_mask can be kept empty or "*".
+            /// </summary>
+            public class PatchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.TagBindingCollection body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The name of the TagBindingCollection, following the convention:
+                /// `locations/{location}/tagBindingCollections/{encoded-full-resource-name}` where the
+                /// encoded-full-resource-name is the UTF-8 encoded name of the GCP resource the TagBindings are bound
+                /// to.
+                /// "locations/global/tagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. An update mask to selectively update fields.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudResourceManager.v3.Data.TagBindingCollection Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^locations/[^/]+/tagBindingCollections/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
             }
         }
     }
@@ -4991,6 +5240,36 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a collection of effective tag bindings for a GCP resource.</summary>
+    public class EffectiveTagBindingCollection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Tag keys/values effectively bound to this resource, specified in namespaced format. For example:
+        /// "123/environment": "production"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> EffectiveTags { get; set; }
+
+        /// <summary>
+        /// The full resource name of the resource the TagBindings are bound to. E.g.
+        /// `//cloudresourcemanager.googleapis.com/projects/123`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
+        public virtual string FullResourceName { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the EffectiveTagBindingCollection, following the convention:
+        /// `locations/{location}/effectiveTagBindingCollections/{encoded-full-resource-name}` where the
+        /// encoded-full-resource-name is the UTF-8 encoded name of the GCP resource the TagBindings are bound to. E.g.
+        /// "locations/global/effectiveTagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -6236,6 +6515,40 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a collection of tags directly bound to a GCP resource.</summary>
+    public class TagBindingCollection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A checksum based on the current bindings which can be passed to prevent race conditions. This
+        /// field is always set in server responses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// The full resource name of the resource the TagBindings are bound to. E.g.
+        /// `//cloudresourcemanager.googleapis.com/projects/123`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
+        public virtual string FullResourceName { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the TagBindingCollection, following the convention:
+        /// `locations/{location}/tagBindingCollections/{encoded-full-resource-name}` where the
+        /// encoded-full-resource-name is the UTF-8 encoded name of the GCP resource the TagBindings are bound to.
+        /// "locations/global/tagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Tag keys/values directly bound to this resource, specified in namespaced format. For example:
+        /// "123/environment": "production"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+    }
+
     /// <summary>
     /// A TagHold represents the use of a TagValue that is not captured by TagBindings. If a TagValue has any TagHolds,
     /// deletion will be blocked. This resource is intended to be created in the same cloud location as the `holder`.
@@ -6404,7 +6717,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
 
         /// <summary>
         /// Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within
-        /// the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric
+        /// the same tag namespace. The short name must be 1-256 characters, beginning and ending with an alphanumeric
         /// character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortName")]
@@ -6526,7 +6839,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
 
         /// <summary>
         /// Required. Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues
-        /// within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an
+        /// within the same parent TagKey. The short name must be 256 characters or less, beginning and ending with an
         /// alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortName")]
