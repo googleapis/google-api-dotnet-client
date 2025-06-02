@@ -7591,13 +7591,12 @@ namespace Google.Apis.AndroidPublisher.v3
 
                         /// <summary>
                         /// Required. A string representing the version of available regions being used for the
-                        /// specified resource. Regional prices for the resource have to be specified according to the
-                        /// information published in [this
+                        /// specified resource. Regional prices and latest supported version for the resource have to be
+                        /// specified according to the information published in [this
                         /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time
-                        /// the supported locations substantially change, the version will be incremented. The latest
-                        /// supported version is available in this article. Using this field will ensure that creating
-                        /// and updating the resource with an older region's version and set of regional prices and
-                        /// currencies will succeed even though a new version is available.
+                        /// the supported locations substantially change, the version will be incremented. Using this
+                        /// field will ensure that creating and updating the resource with an older region's version and
+                        /// set of regional prices and currencies will succeed even though a new version is available.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RegionsVersionVersion { get; set; }
@@ -8172,13 +8171,12 @@ namespace Google.Apis.AndroidPublisher.v3
 
                         /// <summary>
                         /// Required. A string representing the version of available regions being used for the
-                        /// specified resource. Regional prices for the resource have to be specified according to the
-                        /// information published in [this
+                        /// specified resource. Regional prices and latest supported version for the resource have to be
+                        /// specified according to the information published in [this
                         /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time
-                        /// the supported locations substantially change, the version will be incremented. The latest
-                        /// supported version is available in this article. Using this field will ensure that creating
-                        /// and updating the resource with an older region's version and set of regional prices and
-                        /// currencies will succeed even though a new version is available.
+                        /// the supported locations substantially change, the version will be incremented. Using this
+                        /// field will ensure that creating and updating the resource with an older region's version and
+                        /// set of regional prices and currencies will succeed even though a new version is available.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RegionsVersionVersion { get; set; }
@@ -9044,13 +9042,12 @@ namespace Google.Apis.AndroidPublisher.v3
 
                 /// <summary>
                 /// Required. A string representing the version of available regions being used for the specified
-                /// resource. Regional prices for the resource have to be specified according to the information
-                /// published in [this
+                /// resource. Regional prices and latest supported version for the resource have to be specified
+                /// according to the information published in [this
                 /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the
-                /// supported locations substantially change, the version will be incremented. The latest supported
-                /// version is available in this article. Using this field will ensure that creating and updating the
-                /// resource with an older region's version and set of regional prices and currencies will succeed even
-                /// though a new version is available.
+                /// supported locations substantially change, the version will be incremented. Using this field will
+                /// ensure that creating and updating the resource with an older region's version and set of regional
+                /// prices and currencies will succeed even though a new version is available.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RegionsVersionVersion { get; set; }
@@ -9396,13 +9393,12 @@ namespace Google.Apis.AndroidPublisher.v3
 
                 /// <summary>
                 /// Required. A string representing the version of available regions being used for the specified
-                /// resource. Regional prices for the resource have to be specified according to the information
-                /// published in [this
+                /// resource. Regional prices and latest supported version for the resource have to be specified
+                /// according to the information published in [this
                 /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the
-                /// supported locations substantially change, the version will be incremented. The latest supported
-                /// version is available in this article. Using this field will ensure that creating and updating the
-                /// resource with an older region's version and set of regional prices and currencies will succeed even
-                /// though a new version is available.
+                /// supported locations substantially change, the version will be incremented. Using this field will
+                /// ensure that creating and updating the resource with an older region's version and set of regional
+                /// prices and currencies will succeed even though a new version is available.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RegionsVersionVersion { get; set; }
@@ -10086,7 +10082,10 @@ namespace Google.Apis.AndroidPublisher.v3
             /// The package name of the application for which this subscription was purchased (for example,
             /// 'com.some.thing').
             /// </param>
-            /// <param name="subscriptionId">The purchased subscription ID (for example, 'monthly001').</param>
+            /// <param name="subscriptionId">
+            /// Note: Since May 21, 2025, subscription_id is not required, and not recommended for subscription with
+            /// add-ons. The purchased subscription ID (for example, 'monthly001').
+            /// </param>
             /// <param name="token">The token provided to the user's device when the subscription was purchased.</param>
             public virtual AcknowledgeRequest Acknowledge(Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesAcknowledgeRequest body, string packageName, string subscriptionId, string token)
             {
@@ -10113,7 +10112,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
-                /// <summary>The purchased subscription ID (for example, 'monthly001').</summary>
+                /// <summary>
+                /// Note: Since May 21, 2025, subscription_id is not required, and not recommended for subscription with
+                /// add-ons. The purchased subscription ID (for example, 'monthly001').
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SubscriptionId { get; private set; }
 
@@ -10174,7 +10176,10 @@ namespace Google.Apis.AndroidPublisher.v3
             /// The package name of the application for which this subscription was purchased (for example,
             /// 'com.some.thing').
             /// </param>
-            /// <param name="subscriptionId">The purchased subscription ID (for example, 'monthly001').</param>
+            /// <param name="subscriptionId">
+            /// Note: Since May 21, 2025, subscription_id is not required, and not recommended for subscription with
+            /// add-ons. The purchased subscription ID (for example, 'monthly001').
+            /// </param>
             /// <param name="token">The token provided to the user's device when the subscription was purchased.</param>
             public virtual CancelRequest Cancel(string packageName, string subscriptionId, string token)
             {
@@ -10202,7 +10207,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
-                /// <summary>The purchased subscription ID (for example, 'monthly001').</summary>
+                /// <summary>
+                /// Note: Since May 21, 2025, subscription_id is not required, and not recommended for subscription with
+                /// add-ons. The purchased subscription ID (for example, 'monthly001').
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SubscriptionId { get; private set; }
 
@@ -12528,7 +12536,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priceChangeDetails")]
         public virtual SubscriptionItemPriceChangeDetails PriceChangeDetails { get; set; }
 
-        /// <summary>The current recurring price of the auto renewing plan.</summary>
+        /// <summary>
+        /// The current recurring price of the auto renewing plan. Note that the price does not take into account
+        /// discounts and taxes, call orders.get API instead if transaction details are needed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurringPrice")]
         public virtual Money RecurringPrice { get; set; }
 
@@ -16017,11 +16028,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>
         /// Required. A string representing the version of available regions being used for the specified resource.
-        /// Regional prices for the resource have to be specified according to the information published in [this
+        /// Regional prices and latest supported version for the resource have to be specified according to the
+        /// information published in [this
         /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported
-        /// locations substantially change, the version will be incremented. The latest supported version is available
-        /// in this article. Using this field will ensure that creating and updating the resource with an older region's
-        /// version and set of regional prices and currencies will succeed even though a new version is available.
+        /// locations substantially change, the version will be incremented. Using this field will ensure that creating
+        /// and updating the resource with an older region's version and set of regional prices and currencies will
+        /// succeed even though a new version is available.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -16186,7 +16198,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual RevocationContextFullRefund FullRefund { get; set; }
 
         /// <summary>
-        /// Optional. Used when a specific item should be refunded in a subscription with multiple items.
+        /// Optional. Used when a specific item should be refunded in a subscription with add-on items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemBasedRefund")]
         public virtual RevocationContextItemBasedRefund ItemBasedRefund { get; set; }
@@ -16213,7 +16225,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     public class RevocationContextItemBasedRefund : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. If the subscription is a subscription bundle, the product id of the subscription to revoke.
+        /// Required. If the subscription is a subscription with add-ons, the product id of the subscription item to
+        /// revoke.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; }
@@ -17113,6 +17126,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
             set => ExpiryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// The order id of the latest successful order associated with this item. Not present if the item is not owned
+        /// by the user yet (e.g. the item being deferred replaced to).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestSuccessfulOrderId")]
+        public virtual string LatestSuccessfulOrderId { get; set; }
+
         /// <summary>The offer details for this item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerDetails")]
         public virtual OfferDetails OfferDetails { get; set; }
@@ -17282,7 +17302,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details about taxation, Google Play policy and legal compliance for subscription products.</summary>
+    /// <summary>Details about taxation, Google Play policy, and legal compliance for subscription products.</summary>
     public class SubscriptionTaxAndComplianceSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
