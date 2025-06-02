@@ -11860,13 +11860,6 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     public class AuthzPolicyAuthzRuleFromRequestSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A list of identities derived from the client's certificate. This field is under development and we
-        /// don't recommend using it at this time. Limited to 5 principals.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("principals")]
-        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleStringMatch> Principals { get; set; }
-
-        /// <summary>
         /// Optional. A list of resources to match against the resource of the source VM of a request. Limited to 5
         /// resources.
         /// </summary>
