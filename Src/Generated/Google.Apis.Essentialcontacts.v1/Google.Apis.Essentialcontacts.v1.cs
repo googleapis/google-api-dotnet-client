@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2129,8 +2129,8 @@ namespace Google.Apis.Essentialcontacts.v1.Data
         private object _validateTime;
 
         /// <summary>
-        /// The last time the validation_state was updated, either manually or automatically. A contact is considered
-        /// stale if its validation state was updated more than 1 year ago.
+        /// Output only. The last time the validation_state was updated, either manually or automatically. A contact is
+        /// considered stale if its validation state was updated more than 1 year ago.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateTime")]
         public virtual string ValidateTimeRaw
