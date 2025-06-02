@@ -6893,6 +6893,14 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Optional. A URL referring to a SecurityPolicy resource. SecurityPolicy is used to enforce rate limiting
+        /// policy on the inbound traffic at the identified backends. If this field is not set, rate limiting is
+        /// disabled for this endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPolicy")]
+        public virtual string SecurityPolicy { get; set; }
+
+        /// <summary>
         /// Optional. A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the
         /// authentication policy to be applied to terminate the inbound traffic at the identified backends. If this
         /// field is not set, authentication is disabled(open) for this endpoint.
@@ -8241,7 +8249,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     /// <summary>
     /// Specifies the policy on how requests are shadowed to a separate mirrored destination service. The proxy does not
     /// wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host/authority
-    /// header is suffixed with -shadow.
+    /// header is suffixed with -shadow. Mirroring is currently not supported for Cloud Run destinations.
     /// </summary>
     public class HttpRouteRequestMirrorPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
