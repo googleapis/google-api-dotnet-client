@@ -1242,7 +1242,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// This API replaces user authorized OAuth consent based APIs (Create, Entitle). Issues a timed session
             /// token for the given user intent. You can use the session token to redirect the user to Google to finish
             /// the signup flow. You can re-generate new session token repeatedly for the same request if necessary,
-            /// regardless of the previous tokens being expired or not.
+            /// regardless of the previous tokens being expired or not. By default, the session token is valid for 1
+            /// hour.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -1257,7 +1258,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// This API replaces user authorized OAuth consent based APIs (Create, Entitle). Issues a timed session
             /// token for the given user intent. You can use the session token to redirect the user to Google to finish
             /// the signup flow. You can re-generate new session token repeatedly for the same request if necessary,
-            /// regardless of the previous tokens being expired or not.
+            /// regardless of the previous tokens being expired or not. By default, the session token is valid for 1
+            /// hour.
             /// </summary>
             public class GenerateRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse>
             {
