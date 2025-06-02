@@ -6220,6 +6220,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkStateChangeEvent")]
         public virtual GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent NetworkStateChangeEvent { get; set; }
 
+        /// <summary>Output only. Payload for OS crash event. Present only when `event_type` is `OS_CRASH`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osCrashEvent")]
+        public virtual GoogleChromeManagementV1TelemetryOsCrashEvent OsCrashEvent { get; set; }
+
         private string _reportTimeRaw;
 
         private object _reportTime;
@@ -6401,6 +6405,25 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userOrgUnitId")]
         public virtual string UserOrgUnitId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>OS crash data.</summary>
+    public class GoogleChromeManagementV1TelemetryOsCrashEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Crash id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crashId")]
+        public virtual string CrashId { get; set; }
+
+        /// <summary>Crash type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crashType")]
+        public virtual string CrashType { get; set; }
+
+        /// <summary>Session type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionType")]
+        public virtual string SessionType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
