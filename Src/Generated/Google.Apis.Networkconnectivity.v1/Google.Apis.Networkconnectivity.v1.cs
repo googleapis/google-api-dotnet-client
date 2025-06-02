@@ -3178,7 +3178,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// <summary>Updates the parameters of a single internal range.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. The name of an internal range. Format:
+                /// Identifier. The name of an internal range. Format:
                 /// projects/{project}/locations/{location}/internalRanges/{internal_range} See:
                 /// https://google.aip.dev/122#fields-representing-resource-names
                 /// </param>
@@ -3199,7 +3199,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     }
 
                     /// <summary>
-                    /// Immutable. The name of an internal range. Format:
+                    /// Identifier. The name of an internal range. Format:
                     /// projects/{project}/locations/{location}/internalRanges/{internal_range} See:
                     /// https://google.aip.dev/122#fields-representing-resource-names
                     /// </summary>
@@ -7807,8 +7807,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IList<string> RouteTables { get; set; }
 
         /// <summary>
-        /// The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center
-        /// automatically populates it based on the set of spokes attached to the hub.
+        /// Output only. The VPC networks associated with this hub's spokes. This field is read-only. Network
+        /// Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routingVpcs")]
         public virtual System.Collections.Generic.IList<RoutingVPC> RoutingVpcs { get; set; }
@@ -7966,7 +7966,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>A description of this resource.</summary>
+        /// <summary>Optional. A description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -7984,9 +7984,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Nullable<bool> Immutable { get; set; }
 
         /// <summary>
-        /// The IP range that this internal range defines. NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and
-        /// peering=FOR_SELF. NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified
-        /// explicitly.
+        /// Optional. The IP range that this internal range defines. NOTE: IPv6 ranges are limited to
+        /// usage=EXTERNAL_TO_VPC and peering=FOR_SELF. NOTE: For IPv6 Ranges this field is compulsory, i.e. the address
+        /// range must be specified explicitly.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; }
@@ -8000,7 +8000,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual Migration Migration { get; set; }
 
         /// <summary>
-        /// Immutable. The name of an internal range. Format:
+        /// Identifier. The name of an internal range. Format:
         /// projects/{project}/locations/{location}/internalRanges/{internal_range} See:
         /// https://google.aip.dev/122#fields-representing-resource-names
         /// </summary>
@@ -8008,9 +8008,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The URL or resource ID of the network in which to reserve the internal range. The network cannot be deleted
-        /// if there are any reserved internal ranges referring to it. Legacy networks are not supported. For example:
-        /// https://www.googleapis.com/compute/v1/projects/{project}/locations/global/networks/{network}
+        /// Immutable. The URL or resource ID of the network in which to reserve the internal range. The network cannot
+        /// be deleted if there are any reserved internal ranges referring to it. Legacy networks are not supported. For
+        /// example: https://www.googleapis.com/compute/v1/projects/{project}/locations/global/networks/{network}
         /// projects/{project}/locations/global/networks/{network} {network}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
@@ -8020,16 +8020,16 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("overlaps")]
         public virtual System.Collections.Generic.IList<string> Overlaps { get; set; }
 
-        /// <summary>The type of peering set for this internal range.</summary>
+        /// <summary>Optional. The type of peering set for this internal range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peering")]
         public virtual string Peering { get; set; }
 
         /// <summary>
-        /// An alternate to ip_cidr_range. Can be set when trying to create an IPv4 reservation that automatically finds
-        /// a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the
-        /// range sizes do not match. Can also be used during updates to change the range size. NOTE: For IPv6 this
-        /// field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this
-        /// field only works as a redundant parameter.
+        /// Optional. An alternate to ip_cidr_range. Can be set when trying to create an IPv4 reservation that
+        /// automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, there
+        /// is an error if the range sizes do not match. Can also be used during updates to change the range size. NOTE:
+        /// For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words,
+        /// with IPv6 this field only works as a redundant parameter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefixLength")]
         public virtual System.Nullable<int> PrefixLength { get; set; }
@@ -8079,7 +8079,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The type of usage set for this InternalRange.</summary>
+        /// <summary>Optional. The type of usage set for this InternalRange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usage")]
         public virtual string Usage { get; set; }
 
@@ -8162,7 +8162,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IList<string> ProposedExcludeExportRanges { get; set; }
 
         /// <summary>
-        /// Optional. The proposed include export IP ranges waiting for hub administration's approval.
+        /// Output only. The proposed include export IP ranges waiting for hub administration's approval.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeExportRanges")]
         public virtual System.Collections.Generic.IList<string> ProposedIncludeExportRanges { get; set; }
@@ -8237,7 +8237,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IList<string> ProposedExcludeExportRanges { get; set; }
 
         /// <summary>
-        /// Optional. The proposed include export IP ranges waiting for hub administration's approval.
+        /// Output only. The proposed include export IP ranges waiting for hub administration's approval.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeExportRanges")]
         public virtual System.Collections.Generic.IList<string> ProposedIncludeExportRanges { get; set; }
