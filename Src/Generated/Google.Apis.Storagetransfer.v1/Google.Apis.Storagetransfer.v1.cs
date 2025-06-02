@@ -1885,21 +1885,19 @@ namespace Google.Apis.Storagetransfer.v1.Data
     }
 
     /// <summary>
-    /// Identities of a user registered Azure application that enables identity federation to trust tokens issued by the
-    /// user's Google service account. For more information about Azure application and identity federation, see
-    /// [Register an application with the Microsoft identity platform]
-    /// (https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app) Azure RBAC roles then need
-    /// be assigned to the Azure application to authorize access to the user's Azure data source. For more information
-    /// about Azure RBAC roles for blobs, see [Manage Access Rights with RBAC]
-    /// (https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-with-azure-active-directory#manage-access-rights-with-rbac)
+    /// The identity of an Azure application through which Storage Transfer Service can authenticate requests using
+    /// Azure workload identity federation. Storage Transfer Service can issue requests to Azure Storage through
+    /// registered Azure applications, eliminating the need to pass credentials to Storage Transfer Service directly. To
+    /// configure federated identity, see [Configure access to Microsoft Azure
+    /// Storage](https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#option_3_authenticate_using_federated_identity).
     /// </summary>
     public class FederatedIdentityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Client (application) ID of the application with federated credentials.</summary>
+        /// <summary>Required. The client (application) ID of the application with federated credentials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>Required. Tenant (directory) ID of the application with federated credentials.</summary>
+        /// <summary>Required. The tenant (directory) ID of the application with federated credentials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenantId")]
         public virtual string TenantId { get; set; }
 
@@ -2897,13 +2895,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual Schedule Schedule { get; set; }
 
         /// <summary>
-        /// Optional. The service account to be used to access resources in the consumer project in the transfer job. We
-        /// accept `email` or `uniqueId` for the service account. Service account format is
-        /// projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID} See
-        /// https://cloud.google.com/iam/docs/reference/credentials/rest/v1/projects.serviceAccounts/generateAccessToken#path-parameters
-        /// for details. Caller requires the following IAM permission on the specified service account:
-        /// `iam.serviceAccounts.actAs`. project-PROJECT_NUMBER@storage-transfer-service.iam.gserviceaccount.com
-        /// requires the following IAM permission on the specified service account: `iam.serviceAccounts.getAccessToken`
+        /// Optional. The user-managed service account to which to delegate service agent permissions. You can grant
+        /// Cloud Storage bucket permissions to this service account instead of to the Transfer Service service agent.
+        /// Format is `projects/-/serviceAccounts/ACCOUNT_EMAIL_OR_UNIQUEID` Either the service account email
+        /// (`SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com`) or the unique ID (`123456789012345678901`) are
+        /// accepted in the string. The `-` wildcard character is required; replacing it with a project ID is invalid.
+        /// See https://cloud.google.com//storage-transfer/docs/delegate-service-agent-permissions for required
+        /// permissions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
