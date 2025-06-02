@@ -1330,7 +1330,7 @@ namespace Google.Apis.NetworkManagement.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource of the VPC Flow Logs configuration to create:
-                /// `projects/{project_id}/locations/global`
+                /// `projects/{project_id}/locations/global` `organizations/{organization_id}/locations/global`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig body, string parent)
                 {
@@ -1357,7 +1357,7 @@ namespace Google.Apis.NetworkManagement.v1
 
                     /// <summary>
                     /// Required. The parent resource of the VPC Flow Logs configuration to create:
-                    /// `projects/{project_id}/locations/global`
+                    /// `projects/{project_id}/locations/global` `organizations/{organization_id}/locations/global`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1406,8 +1406,9 @@ namespace Google.Apis.NetworkManagement.v1
 
                 /// <summary>Deletes a specific `VpcFlowLogsConfig`.</summary>
                 /// <param name="name">
-                /// Required. `VpcFlowLogsConfig` resource name using the form:
-                /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
+                /// Required. `VpcFlowLogsConfig` resource name using one of the form:
+                /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}
+                /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1425,8 +1426,9 @@ namespace Google.Apis.NetworkManagement.v1
                     }
 
                     /// <summary>
-                    /// Required. `VpcFlowLogsConfig` resource name using the form:
-                    /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
+                    /// Required. `VpcFlowLogsConfig` resource name using one of the form:
+                    /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}
+                    /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1459,6 +1461,7 @@ namespace Google.Apis.NetworkManagement.v1
                 /// <param name="name">
                 /// Required. `VpcFlowLogsConfig` resource name using the form:
                 /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
+                /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1478,6 +1481,7 @@ namespace Google.Apis.NetworkManagement.v1
                     /// <summary>
                     /// Required. `VpcFlowLogsConfig` resource name using the form:
                     /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
+                    /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1509,6 +1513,7 @@ namespace Google.Apis.NetworkManagement.v1
                 /// <summary>Lists all `VpcFlowLogsConfigs` in a given project.</summary>
                 /// <param name="parent">
                 /// Required. The parent resource of the VpcFlowLogsConfig: `projects/{project_id}/locations/global`
+                /// `organizations/{organization_id}/locations/global`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1527,6 +1532,7 @@ namespace Google.Apis.NetworkManagement.v1
 
                     /// <summary>
                     /// Required. The parent resource of the VpcFlowLogsConfig: `projects/{project_id}/locations/global`
+                    /// `organizations/{organization_id}/locations/global`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1617,8 +1623,9 @@ namespace Google.Apis.NetworkManagement.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Identifier. Unique name of the configuration using the form:
+                /// Identifier. Unique name of the configuration using one of the forms:
                 /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+                /// `organizations/{organization_number}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig body, string name)
                 {
@@ -1644,8 +1651,9 @@ namespace Google.Apis.NetworkManagement.v1
                     }
 
                     /// <summary>
-                    /// Identifier. Unique name of the configuration using the form:
+                    /// Identifier. Unique name of the configuration using one of the forms:
                     /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+                    /// `organizations/{organization_number}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2661,6 +2669,13 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual string Policy { get; set; }
+
+        /// <summary>
+        /// The priority of the firewall policy that this rule is associated with. This field is not applicable to VPC
+        /// firewall rules and implied VPC firewall rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyPriority")]
+        public virtual System.Nullable<int> PolicyPriority { get; set; }
 
         /// <summary>
         /// The URI of the firewall policy that this rule is associated with. This field is not applicable to VPC
@@ -4262,8 +4277,9 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual System.Collections.Generic.IList<string> MetadataFields { get; set; }
 
         /// <summary>
-        /// Identifier. Unique name of the configuration using the form:
+        /// Identifier. Unique name of the configuration using one of the forms:
         /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+        /// `organizations/{organization_number}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
