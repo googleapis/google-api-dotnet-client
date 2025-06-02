@@ -1873,14 +1873,14 @@ namespace Google.Apis.CloudIAP.v1.Data
     }
 
     /// <summary>
-    /// Allows customers to configure HTTP request paths that'll allow HTTP OPTIONS call to bypass authentication and
+    /// Allows customers to configure HTTP request paths that'll allow HTTP `OPTIONS` call to bypass authentication and
     /// authorization.
     /// </summary>
     public class CorsSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Configuration to allow HTTP OPTIONS calls to skip authorization. If undefined, IAP will not apply any
-        /// special logic to OPTIONS requests.
+        /// Configuration to allow HTTP `OPTIONS` calls to skip authentication and authorization. If undefined, IAP will
+        /// not apply any special logic to `OPTIONS` requests.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowHttpOptions")]
         public virtual System.Nullable<bool> AllowHttpOptions { get; set; }
@@ -1959,7 +1959,9 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Allows customers to configure tenant_id for GCIP instance per-app.</summary>
+    /// <summary>
+    /// Allows customers to configure tenant IDs for a Cloud Identity Platform (GCIP) instance for each application.
+    /// </summary>
     public class GcipSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1970,10 +1972,10 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string LoginPageUri { get; set; }
 
         /// <summary>
-        /// Optional. GCIP tenant ids that are linked to the IAP resource. tenant_ids could be a string beginning with a
-        /// number character to indicate authenticating with GCIP tenant flow, or in the format of _ to indicate
-        /// authenticating with GCIP agent flow. If agent flow is used, tenant_ids should only contain one single
-        /// element, while for tenant flow, tenant_ids can contain multiple elements.
+        /// Optional. GCIP tenant IDs that are linked to the IAP resource. `tenant_ids` could be a string beginning with
+        /// a number character to indicate authenticating with GCIP tenant flow, or in the format of `_` to indicate
+        /// authenticating with GCIP agent flow. If agent flow is used, `tenant_ids` should only contain one single
+        /// element, while for tenant flow, `tenant_ids` can contain multiple elements.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenantIds")]
         public virtual System.Collections.Generic.IList<string> TenantIds { get; set; }
@@ -2351,6 +2353,17 @@ namespace Google.Apis.CloudIAP.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// The locations of the resource. This field is used to determine whether the request is compliant with Trust
+        /// Boundaries. Usage: - If unset or empty, the location of authorization is used as the target location. - For
+        /// global resources: use a single value of "global". - For regional/multi-regional resources: use name of the
+        /// GCP region(s) where the resource exists (e.g., ["us-east1", "us-west1"]). For multi-regional resources
+        /// specify the name of each GCP region in the resource's multi-region. NOTE: Only GCP cloud region names are
+        /// supported - go/cloud-region-names.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; }
 
         /// <summary>
         /// The **relative** name of the resource, which is the URI path of the resource without the leading "/". See
