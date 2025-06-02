@@ -5566,7 +5566,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details regarding the upgrade of instaces associated with a cluster.</summary>
+    /// <summary>Details regarding the upgrade of instances associated with a cluster.</summary>
     public class InstanceUpgradeDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Instance type.</summary>
