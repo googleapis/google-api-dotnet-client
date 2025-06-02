@@ -5097,6 +5097,10 @@ namespace Google.Apis.Dataproc.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>Optional. List of Job IDs to filter by if provided.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("jobIds", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> JobIds { get; set; }
+
                         /// <summary>Optional. List only jobs in the specific state.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("jobStatus", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<JobStatusEnum> JobStatus { get; set; }
@@ -5163,6 +5167,14 @@ namespace Google.Apis.Dataproc.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("jobIds", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobIds",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("jobStatus", new Google.Apis.Discovery.Parameter
                             {
@@ -5232,6 +5244,10 @@ namespace Google.Apis.Dataproc.v1
                         [Google.Apis.Util.RequestParameterAttribute("details", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> Details { get; set; }
 
+                        /// <summary>Optional. List of Spark Connect operation IDs to filter by if provided.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("operationIds", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> OperationIds { get; set; }
+
                         /// <summary>
                         /// Optional. Maximum number of queries to return in each response. The service may return fewer
                         /// than this. The default page size is 10; the maximum page size is 100.
@@ -5278,6 +5294,14 @@ namespace Google.Apis.Dataproc.v1
                             RequestParameters.Add("details", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "details",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("operationIds", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "operationIds",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5660,6 +5684,10 @@ namespace Google.Apis.Dataproc.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Parent { get; set; }
 
+                        /// <summary>Optional. List of Stage IDs to filter by if provided.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageIds", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> StageIds { get; set; }
+
                         /// <summary>Optional. List only stages in the given state.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("stageStatus", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<StageStatusEnum> StageStatus { get; set; }
@@ -5740,6 +5768,14 @@ namespace Google.Apis.Dataproc.v1
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageIds", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageIds",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -15409,55 +15445,6 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoDeleteTtl")]
         public virtual object AutoDeleteTtl { get; set; }
 
-        private string _autoStopTimeRaw;
-
-        private object _autoStopTime;
-
-        /// <summary>
-        /// Optional. The time when cluster will be auto-stopped (see JSON representation of Timestamp
-        /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("autoStopTime")]
-        public virtual string AutoStopTimeRaw
-        {
-            get => _autoStopTimeRaw;
-            set
-            {
-                _autoStopTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _autoStopTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="AutoStopTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AutoStopTimeDateTimeOffset instead.")]
-        public virtual object AutoStopTime
-        {
-            get => _autoStopTime;
-            set
-            {
-                _autoStopTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _autoStopTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="AutoStopTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? AutoStopTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AutoStopTimeRaw);
-            set => AutoStopTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>
-        /// Optional. The lifetime duration of the cluster. The cluster will be auto-stopped at the end of this period,
-        /// calculated from the time of submission of the create or update cluster request. Minimum value is 10 minutes;
-        /// maximum value is 14 days (see JSON representation of Duration
-        /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("autoStopTtl")]
-        public virtual object AutoStopTtl { get; set; }
-
         /// <summary>
         /// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this
         /// threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see
@@ -15506,14 +15493,6 @@ namespace Google.Apis.Dataproc.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IdleStartTimeRaw);
             set => IdleStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-
-        /// <summary>
-        /// Optional. The duration to keep the cluster started while idling (when no jobs are running). Passing this
-        /// threshold will cause the cluster to be stopped. Minimum value is 5 minutes; maximum value is 14 days (see
-        /// JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("idleStopTtl")]
-        public virtual object IdleStopTtl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
