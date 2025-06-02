@@ -1708,8 +1708,8 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
     public class StringMatcher : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The input string must have the substring specified here. Note: empty contains match is not allowed, please
-        /// use regex instead. Examples: * ``abc`` matches the value ``xyz.abc.def``
+        /// The input string must have the substring specified here. .. note:: Empty contains match is not allowed,
+        /// please use ``safe_regex`` instead. Examples: * ``abc`` matches the value ``xyz.abc.def``
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contains")]
         public virtual string Contains { get; set; }
@@ -1726,16 +1726,16 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         public virtual string Exact { get; set; }
 
         /// <summary>
-        /// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. This has no effect
-        /// for the safe_regex match. For example, the matcher ``data`` will match both input string ``Data`` and
-        /// ``data`` if set to true.
+        /// If ``true``, indicates the exact/prefix/suffix/contains matching should be case insensitive. This has no
+        /// effect for the ``safe_regex`` match. For example, the matcher ``data`` will match both input string ``Data``
+        /// and ``data`` if this option is set to ``true``.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreCase")]
         public virtual System.Nullable<bool> IgnoreCase { get; set; }
 
         /// <summary>
-        /// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex
-        /// instead. Examples: * ``abc`` matches the value ``abc.xyz``
+        /// The input string must have the prefix specified here. .. note:: Empty prefix match is not allowed, please
+        /// use ``safe_regex`` instead. Examples: * ``abc`` matches the value ``abc.xyz``
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
         public virtual string Prefix { get; set; }
@@ -1745,8 +1745,8 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         public virtual RegexMatcher SafeRegex { get; set; }
 
         /// <summary>
-        /// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex
-        /// instead. Examples: * ``abc`` matches the value ``xyz.abc``
+        /// The input string must have the suffix specified here. .. note:: Empty suffix match is not allowed, please
+        /// use ``safe_regex`` instead. Examples: * ``abc`` matches the value ``xyz.abc``
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
         public virtual string Suffix { get; set; }
