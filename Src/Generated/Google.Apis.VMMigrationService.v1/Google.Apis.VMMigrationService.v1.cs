@@ -2978,6 +2978,59 @@ namespace Google.Apis.VMMigrationService.v1
                         }
                     }
 
+                    /// <summary>Extend the migrating VM time to live.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="migratingVm">Required. The name of the MigratingVm.</param>
+                    public virtual ExtendMigrationRequest ExtendMigration(Google.Apis.VMMigrationService.v1.Data.ExtendMigrationRequest body, string migratingVm)
+                    {
+                        return new ExtendMigrationRequest(this.service, body, migratingVm);
+                    }
+
+                    /// <summary>Extend the migrating VM time to live.</summary>
+                    public class ExtendMigrationRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new ExtendMigration request.</summary>
+                        public ExtendMigrationRequest(Google.Apis.Services.IClientService service, Google.Apis.VMMigrationService.v1.Data.ExtendMigrationRequest body, string migratingVm) : base(service)
+                        {
+                            MigratingVm = migratingVm;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the MigratingVm.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("migratingVm", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string MigratingVm { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMMigrationService.v1.Data.ExtendMigrationRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "extendMigration";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+migratingVm}:extendMigration";
+
+                        /// <summary>Initializes ExtendMigration parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("migratingVm", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "migratingVm",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/migratingVms/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Marks a migration as completed, deleting migration resources that are no longer being used. Only
                     /// applicable after cutover is done.
@@ -6843,6 +6896,65 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Expiration holds information about the expiration of a MigratingVm.</summary>
+    public class Expiration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>Output only. Timestamp of when this resource is considered expired.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Describes whether the expiration can be extended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendable")]
+        public virtual System.Nullable<bool> Extendable { get; set; }
+
+        /// <summary>Output only. The number of times expiration was extended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionCount")]
+        public virtual System.Nullable<int> ExtensionCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for 'ExtendMigrationRequest' request.</summary>
+    public class ExtendMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for fetchInventory.</summary>
     public class FetchInventoryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7879,6 +7991,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
+
+        /// <summary>Output only. Provides details about the expiration state of the migrating VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiration")]
+        public virtual Expiration Expiration { get; set; }
 
         /// <summary>
         /// Output only. The group this migrating vm is included in, if any. The group is represented by the full path
