@@ -11796,6 +11796,25 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Gemini Gem link.</summary>
+    public class GeminiGem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Gems resource id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Title of the Gem. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>URL that can be used to access the Gem. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Global user permission description.</summary>
     public class GlobalPermission : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12392,7 +12411,8 @@ namespace Google.Apis.Classroom.v1.Data
     }
 
     /// <summary>
-    /// Material attached to course work. When creating attachments, setting the `form` field is not supported.
+    /// Material attached to course work. When creating attachments, setting the `form`, `gem`, or `notebook` field is
+    /// not supported.
     /// </summary>
     public class Material : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12404,12 +12424,20 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("form")]
         public virtual Form Form { get; set; }
 
+        /// <summary>Gemini Gem material. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gem")]
+        public virtual GeminiGem Gem { get; set; }
+
         /// <summary>
         /// Link material. On creation, this is upgraded to a more appropriate type if possible, and this is reflected
         /// in the response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual Link Link { get; set; }
+
+        /// <summary>NotebookLM Notebook material. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebook")]
+        public virtual NotebookLmNotebook Notebook { get; set; }
 
         /// <summary>YouTube video material.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("youtubeVideo")]
@@ -12529,6 +12557,25 @@ namespace Google.Apis.Classroom.v1.Data
         /// <summary>The user's first name. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
         public virtual string GivenName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>NotebookLM Notebook link.</summary>
+    public class NotebookLmNotebook : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Notebook resource id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Title of the Notebook. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>URL that can be used to access the Notebook. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
