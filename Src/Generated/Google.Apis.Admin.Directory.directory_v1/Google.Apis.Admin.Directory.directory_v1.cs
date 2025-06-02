@@ -12133,12 +12133,13 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     {
         /// <summary>
         /// The payload for the command result. The following commands respond with a payload: *
-        /// `DEVICE_START_CRD_SESSION`: Payload is a stringified JSON object in the form: { "url": url }. The URL
-        /// provides a link to the Chrome Remote Desktop session. * `FETCH_CRD_AVAILABILITY_INFO`: Payload is a
-        /// stringified JSON object in the form: { "deviceIdleTimeInSeconds": number, "userSessionType": string,
-        /// "remoteSupportAvailability": string, "remoteAccessAvailability": string }. The "remoteSupportAvailability"
-        /// field is set to "AVAILABLE" if `shared` CRD session to the device is available. The
-        /// "remoteAccessAvailability" field is set to "AVAILABLE" if `private` CRD session to the device is available.
+        /// `DEVICE_START_CRD_SESSION`: Payload is a stringified JSON object in the form: { "url": url }. The provided
+        /// URL links to the Chrome Remote Desktop session and requires authentication using only the `email` associated
+        /// with the command's issuance. * `FETCH_CRD_AVAILABILITY_INFO`: Payload is a stringified JSON object in the
+        /// form: { "deviceIdleTimeInSeconds": number, "userSessionType": string, "remoteSupportAvailability": string,
+        /// "remoteAccessAvailability": string }. The "remoteSupportAvailability" field is set to "AVAILABLE" if
+        /// `shared` CRD session to the device is available. The "remoteAccessAvailability" field is set to "AVAILABLE"
+        /// if `private` CRD session to the device is available.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commandResultPayload")]
         public virtual string CommandResultPayload { get; set; }
@@ -12210,11 +12211,12 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// active device, set `ackedUserPresence` to `true`. `crdSessionType` can only select from values `private`
         /// (which grants the remote admin exclusive control of the ChromeOS device) or `shared` (which allows the admin
         /// and the local user to share control of the ChromeOS device). If not set, `crdSessionType` defaults to
-        /// `shared`. * `REBOOT`: Payload is a stringified JSON object in the form: { "user_session_delay_seconds": 300
-        /// }. The `user_session_delay_seconds` is the amount of seconds to wait before rebooting the device if a user
-        /// is logged in. It has to be an integer in the range [0,300]. When payload is not present for reboot, 0 delay
-        /// is the default. Note: This only applies if an actual user is logged in, including a Guest. If the device is
-        /// in the login screen or in Kiosk mode the value is not respected and the device immediately reboots. *
+        /// `shared`. The `FETCH_CRD_AVAILABILITY_INFO` command can be used to determine available session types on the
+        /// device. * `REBOOT`: Payload is a stringified JSON object in the form: { "user_session_delay_seconds": 300 }.
+        /// The `user_session_delay_seconds` is the amount of seconds to wait before rebooting the device if a user is
+        /// logged in. It has to be an integer in the range [0,300]. When payload is not present for reboot, 0 delay is
+        /// the default. Note: This only applies if an actual user is logged in, including a Guest. If the device is in
+        /// the login screen or in Kiosk mode the value is not respected and the device immediately reboots. *
         /// `FETCH_SUPPORT_PACKET`: Payload is optionally a stringified JSON object in the form:
         /// {"supportPacketDetails":{ "issueCaseId": optional_support_case_id_string, "issueDescription":
         /// optional_issue_description_string, "requestedDataCollectors": []}} The list of available
