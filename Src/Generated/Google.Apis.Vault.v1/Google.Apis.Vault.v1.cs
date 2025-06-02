@@ -3010,6 +3010,13 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeTeamDrives")]
         public virtual System.Nullable<bool> IncludeTeamDrives { get; set; }
 
+        /// <summary>
+        /// Optional. Options to include or exclude documents in shared drives. We recommend using this field over
+        /// include_shared_drives. This field overrides include_shared_drives and include_team_drives when set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedDrivesOption")]
+        public virtual string SharedDrivesOption { get; set; }
+
         private string _versionDateRaw;
 
         private object _versionDate;
