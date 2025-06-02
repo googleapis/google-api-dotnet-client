@@ -7192,6 +7192,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Additional metadata that is returned by the backend for the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
         /// successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of
