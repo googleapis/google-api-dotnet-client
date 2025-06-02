@@ -4534,6 +4534,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryConfig")]
         public virtual SecondaryConfig SecondaryConfig { get; set; }
 
+        /// <summary>
+        /// Output only. AlloyDB per-cluster service agent email. This service account is created per-cluster
+        /// per-project, and is different from that of the primary service agent which is created per-project. The
+        /// service account naming format is subject to change.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
+
         /// <summary>SSL configuration for this AlloyDB cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslConfig")]
         public virtual SslConfig SslConfig { get; set; }
@@ -5701,7 +5709,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details regarding the upgrade of instaces associated with a cluster.</summary>
+    /// <summary>Details regarding the upgrade of instances associated with a cluster.</summary>
     public class InstanceUpgradeDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Instance type.</summary>
