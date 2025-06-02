@@ -11,7 +11,8 @@
   "Google.Apis.AndroidManagement.v1.EnterprisesResource+DevicesResource+DeleteRequest.WipeDataFlagsEnum": [
     "WIPE_DATA_FLAG_UNSPECIFIED",
     "PRESERVE_RESET_PROTECTION_DATA",
-    "WIPE_EXTERNAL_STORAGE"
+    "WIPE_EXTERNAL_STORAGE",
+    "WIPE_ESIMS"
   ],
   "Google.Apis.AndroidManagement.v1.EnterprisesResource+ListRequest.ViewEnum": [
     "ENTERPRISE_VIEW_UNSPECIFIED",
