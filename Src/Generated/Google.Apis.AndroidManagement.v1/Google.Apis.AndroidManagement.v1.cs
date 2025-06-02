@@ -661,6 +661,14 @@ namespace Google.Apis.AndroidManagement.v1
                     /// <summary>Additionally wipe the device's external storage (such as SD cards).</summary>
                     [Google.Apis.Util.StringValueAttribute("WIPE_EXTERNAL_STORAGE")]
                     WIPEEXTERNALSTORAGE = 2,
+
+                    /// <summary>
+                    /// For company-owned devices, this removes all eSIMs from the device when the device is wiped. In
+                    /// personally-owned devices, this will remove managed eSIMs (eSIMs which are added via the ADD_ESIM
+                    /// command) on the devices and no personally owned eSIMs will be removed.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("WIPE_ESIMS")]
+                    WIPEESIMS = 3,
                 }
 
                 /// <summary>
@@ -2731,6 +2739,21 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Parameters associated with the ADD_ESIM command to add an eSIM profile to the device.</summary>
+    public class AddEsimParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The activation code for the eSIM profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activationCode")]
+        public virtual string ActivationCode { get; set; }
+
+        /// <summary>Required. The activation state of the eSIM profile once it is downloaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activationState")]
+        public virtual string ActivationState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Advanced security settings. In most cases, setting these is not needed.</summary>
     public class AdvancedSecurityOverrides : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3810,6 +3833,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
     public class Command : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Parameters for the ADD_ESIM command to add an eSIM profile to the device. If this is set, then it
+        /// is suggested that type should not be set. In this case, the server automatically sets it to ADD_ESIM. It is
+        /// also acceptable to explicitly set type to ADD_ESIM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addEsimParams")]
+        public virtual AddEsimParams AddEsimParams { get; set; }
+
+        /// <summary>
         /// Parameters for the CLEAR_APP_DATA command to clear the data of specified apps from the device. See
         /// ClearAppsDataParams. If this is set, then it is suggested that type should not be set. In this case, the
         /// server automatically sets it to CLEAR_APP_DATA. It is also acceptable to explicitly set type to
@@ -3880,6 +3911,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
         public virtual string ErrorCode { get; set; }
 
+        /// <summary>Output only. Status of an ADD_ESIM or REMOVE_ESIM command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("esimStatus")]
+        public virtual EsimCommandStatus EsimStatus { get; set; }
+
         /// <summary>
         /// For commands of type RESET_PASSWORD, optionally specifies the new password. Note: The new password must be
         /// at least 6 characters long if it is numeric in case of Android 14 devices. Else the command will fail with
@@ -3887,6 +3922,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newPassword")]
         public virtual string NewPassword { get; set; }
+
+        /// <summary>
+        /// Optional. Parameters for the REMOVE_ESIM command to remove an eSIM profile from the device. If this is set,
+        /// then it is suggested that type should not be set. In this case, the server automatically sets it to
+        /// REMOVE_ESIM. It is also acceptable to explicitly set type to REMOVE_ESIM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeEsimParams")]
+        public virtual RemoveEsimParams RemoveEsimParams { get; set; }
 
         /// <summary>
         /// Optional. Parameters for the REQUEST_DEVICE_INFO command to get device related information. If this is set,
@@ -5042,6 +5085,39 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Status and error details (if present) of an ADD_ESIM or REMOVE_ESIM command.</summary>
+    public class EsimCommandStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Information about the eSIM added or removed. This is populated only when the eSIM operation
+        /// status is SUCCESS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("esimInfo")]
+        public virtual EsimInfo EsimInfo { get; set; }
+
+        /// <summary>Output only. Details of the error if the status is set to INTERNAL_ERROR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalErrorDetails")]
+        public virtual InternalErrorDetails InternalErrorDetails { get; set; }
+
+        /// <summary>Output only. Status of an ADD_ESIM or REMOVE_ESIM command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the eSIM added or removed.</summary>
+    public class EsimInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. ICC ID of the eSIM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iccId")]
+        public virtual string IccId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information related to the eUICC chip.</summary>
     public class EuiccChipInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5402,6 +5478,37 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Optional. Network type constraint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTypeConstraint")]
         public virtual string NetworkTypeConstraint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Internal error details if present for the ADD_ESIM or REMOVE_ESIM command.</summary>
+    public class InternalErrorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Integer representation of the error code as specified here
+        /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#EXTRA_EMBEDDED_SUBSCRIPTION_DETAILED_CODE).
+        /// See also, OPERATION_SMDX_SUBJECT_REASON_CODE. See error_code_detail for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual System.Nullable<long> ErrorCode { get; set; }
+
+        /// <summary>Output only. The error code detail corresponding to the error_code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCodeDetail")]
+        public virtual string ErrorCodeDetail { get; set; }
+
+        /// <summary>
+        /// Output only. Integer representation of the operation code as specified here
+        /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#EXTRA_EMBEDDED_SUBSCRIPTION_DETAILED_CODE).
+        /// See operation_code_detail for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationCode")]
+        public virtual System.Nullable<long> OperationCode { get; set; }
+
+        /// <summary>Output only. The operation code detail corresponding to the operation_code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationCodeDetail")]
+        public virtual string OperationCodeDetail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7196,6 +7303,21 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("wifiConfigsLockdownEnabled")]
         public virtual System.Nullable<bool> WifiConfigsLockdownEnabled { get; set; }
 
+        /// <summary>
+        /// Optional. Wipe flags to indicate what data is wiped when a device or profile wipe is triggered due to any
+        /// reason (for example, non-compliance). This does not apply to the enterprises.devices.delete method. . This
+        /// list must not have duplicates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wipeDataFlags")]
+        public virtual System.Collections.Generic.IList<string> WipeDataFlags { get; set; }
+
+        /// <summary>
+        /// Optional. Controls the work account setup configuration, such as details of whether a Google authenticated
+        /// account is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workAccountSetupConfig")]
+        public virtual WorkAccountSetupConfig WorkAccountSetupConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7462,6 +7584,17 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>User ID in which the change was requested in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetUserId")]
         public virtual System.Nullable<int> TargetUserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters associated with the REMOVE_ESIM command to remove an eSIM profile from the device.</summary>
+    public class RemoveEsimParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. ICC ID of the eSIM profile to be deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iccId")]
+        public virtual string IccId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8047,9 +8180,25 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// </summary>
     public class TelephonyInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Activation state of the SIM card on the device. This is applicable for eSIMs only. This is
+        /// supported on all devices for API level 35 and above. This is always ACTIVATION_STATE_UNSPECIFIED for
+        /// physical SIMs and for devices below API level 35.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activationState")]
+        public virtual string ActivationState { get; set; }
+
         /// <summary>The carrier name associated with this SIM card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
         public virtual string CarrierName { get; set; }
+
+        /// <summary>
+        /// Output only. The configuration mode of the SIM card on the device. This is applicable for eSIMs only. This
+        /// is supported on all devices for API level 35 and above. This is always CONFIG_MODE_UNSPECIFIED for physical
+        /// SIMs and for devices below API level 35.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configMode")]
+        public virtual string ConfigMode { get; set; }
 
         /// <summary>Output only. The ICCID associated with this SIM card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iccId")]
@@ -8552,6 +8701,29 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// </summary>
     public class WipeFailureEvent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Controls the work account setup configuration, such as details of whether a Google authenticated account is
+    /// required.
+    /// </summary>
+    public class WorkAccountSetupConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The authentication type of the user on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationType")]
+        public virtual string AuthenticationType { get; set; }
+
+        /// <summary>
+        /// Optional. The specific google work account email address to be added. This field is only relevant if
+        /// authenticationType is GOOGLE_AUTHENTICATED. This must be an enterprise account and not a consumer account.
+        /// Once set and a Google authenticated account is added to the device, changing this field will have no effect,
+        /// and thus recommended to be set only once.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredAccountEmail")]
+        public virtual string RequiredAccountEmail { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
