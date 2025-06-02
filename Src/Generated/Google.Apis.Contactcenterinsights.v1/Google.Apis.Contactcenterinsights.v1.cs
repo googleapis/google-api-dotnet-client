@@ -12779,6 +12779,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudContactcenterinsightsV1GcsSource GcsSource { get; set; }
 
+        /// <summary>Cloud Storage URI that points to a file that contains the conversation metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataUri")]
+        public virtual string MetadataUri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -18941,6 +18945,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>A Cloud Storage location specification for the audio and transcript.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1GcsSource GcsSource { get; set; }
+
+        /// <summary>Cloud Storage URI that points to a file that contains the conversation metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataUri")]
+        public virtual string MetadataUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
