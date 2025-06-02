@@ -9240,7 +9240,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
 
     /// <summary>
     /// The type of machines to consider when calculating virtual machine migration insights and recommendations for
-    /// GCE. Not all machine types are available in all zones and regions.
+    /// Compute Engine. Not all machine types are available in all zones and regions.
     /// </summary>
     public class MachinePreferences : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12037,8 +12037,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual System.Nullable<double> CpuOvercommitRatio { get; set; }
 
         /// <summary>
-        /// Optional. Discount percentage for the license type offered to you by Broadcom. Must be between 0 and 100.
-        /// Only valid when service_type is set to SERVICE_TYPE_PORTABLE_LICENSE.
+        /// Optional. Discount percentage for the license offered to you by Broadcom. Must be between 0 and 100. Only
+        /// valid when service_type is set to SERVICE_TYPE_PORTABLE_LICENSE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseDiscountPercentage")]
         public virtual System.Nullable<float> LicenseDiscountPercentage { get; set; }
@@ -12053,7 +12053,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memoryOvercommitRatio")]
         public virtual System.Nullable<double> MemoryOvercommitRatio { get; set; }
 
-        /// <summary>Optional. VMWare Service Type (Fully Licensed or Portable License).</summary>
+        /// <summary>Optional. GCVE service type (fully licensed or portable license).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceType")]
         public virtual string ServiceType { get; set; }
 
