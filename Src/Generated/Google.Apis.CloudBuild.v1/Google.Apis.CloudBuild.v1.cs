@@ -8310,8 +8310,8 @@ namespace Google.Apis.CloudBuild.v1.Data
     public class GitSourceRepository : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Developer Connect Git repository link or the url that matches a repository link in the current project,
-        /// formatted as `projects/*/locations/*/connections/*/gitRepositoryLink/*`
+        /// The Developer Connect Git repository link formatted as
+        /// `projects/*/locations/*/connections/*/gitRepositoryLink/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerConnect")]
         public virtual string DeveloperConnect { get; set; }
