@@ -341,692 +341,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     public AnnotationStoresResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-                        Annotations = new AnnotationsResource(service);
-                    }
-
-                    /// <summary>Gets the Annotations resource.</summary>
-                    public virtual AnnotationsResource Annotations { get; }
-
-                    /// <summary>The "annotations" collection of methods.</summary>
-                    public class AnnotationsResource
-                    {
-                        private const string Resource = "annotations";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public AnnotationsResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-                        }
-
-                        /// <summary>
-                        /// Creates a new Annotation record. It is valid to create Annotation objects for the same
-                        /// source more than once since a unique ID is assigned to each record by this service.
-                        /// </summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">
-                        /// Required. The name of the Annotation store this annotation belongs to. For example,
-                        /// `projects/my-project/locations/us-central1/datasets/mydataset/annotationStores/myannotationstore`.
-                        /// </param>
-                        public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.Annotation body, string parent)
-                        {
-                            return new CreateRequest(this.service, body, parent);
-                        }
-
-                        /// <summary>
-                        /// Creates a new Annotation record. It is valid to create Annotation objects for the same
-                        /// source more than once since a unique ID is assigned to each record by this service.
-                        /// </summary>
-                        public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Annotation>
-                        {
-                            /// <summary>Constructs a new Create request.</summary>
-                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.Annotation body, string parent) : base(service)
-                            {
-                                Parent = parent;
-                                Body = body;
-                                InitParameters();
-                            }
-
-                            /// <summary>
-                            /// Required. The name of the Annotation store this annotation belongs to. For example,
-                            /// `projects/my-project/locations/us-central1/datasets/mydataset/annotationStores/myannotationstore`.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Parent { get; private set; }
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.CloudHealthcare.v1beta1.Data.Annotation Body { get; set; }
-
-                            /// <summary>Returns the body of the request.</summary>
-                            protected override object GetBody() => Body;
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "create";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "POST";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1beta1/{+parent}/annotations";
-
-                            /// <summary>Initializes Create parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
-                                });
-                            }
-                        }
-
-                        /// <summary>Deletes an Annotation or returns NOT_FOUND if it does not exist.</summary>
-                        /// <param name="name">Required. The resource name of the Annotation to delete.</param>
-                        public virtual DeleteRequest Delete(string name)
-                        {
-                            return new DeleteRequest(this.service, name);
-                        }
-
-                        /// <summary>Deletes an Annotation or returns NOT_FOUND if it does not exist.</summary>
-                        public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
-                        {
-                            /// <summary>Constructs a new Delete request.</summary>
-                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                            {
-                                Name = name;
-                                InitParameters();
-                            }
-
-                            /// <summary>Required. The resource name of the Annotation to delete.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "delete";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "DELETE";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1beta1/{+name}";
-
-                            /// <summary>Initializes Delete parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+/annotations/[^/]+$",
-                                });
-                            }
-                        }
-
-                        /// <summary>Gets an Annotation.</summary>
-                        /// <param name="name">Required. The resource name of the Annotation to retrieve.</param>
-                        public virtual GetRequest Get(string name)
-                        {
-                            return new GetRequest(this.service, name);
-                        }
-
-                        /// <summary>Gets an Annotation.</summary>
-                        public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Annotation>
-                        {
-                            /// <summary>Constructs a new Get request.</summary>
-                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                            {
-                                Name = name;
-                                InitParameters();
-                            }
-
-                            /// <summary>Required. The resource name of the Annotation to retrieve.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "get";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "GET";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1beta1/{+name}";
-
-                            /// <summary>Initializes Get parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+/annotations/[^/]+$",
-                                });
-                            }
-                        }
-
-                        /// <summary>
-                        /// Lists the Annotations in the given Annotation store for a source resource.
-                        /// </summary>
-                        /// <param name="parent">
-                        /// Required. Name of the Annotation store to retrieve Annotations from.
-                        /// </param>
-                        public virtual ListRequest List(string parent)
-                        {
-                            return new ListRequest(this.service, parent);
-                        }
-
-                        /// <summary>
-                        /// Lists the Annotations in the given Annotation store for a source resource.
-                        /// </summary>
-                        public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListAnnotationsResponse>
-                        {
-                            /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                            {
-                                Parent = parent;
-                                InitParameters();
-                            }
-
-                            /// <summary>Required. Name of the Annotation store to retrieve Annotations from.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Parent { get; private set; }
-
-                            /// <summary>
-                            /// Restricts Annotations returned to those matching a filter. Functions available for
-                            /// filtering are: - `matches("annotation_source.cloud_healthcare_source.name", substring)`.
-                            /// Filter on `cloud_healthcare_source.name`. For example:
-                            /// `matches("annotation_source.cloud_healthcare_source.name", "some source")`. -
-                            /// `matches("annotation", substring)`. Filter on all fields of annotation. For example:
-                            /// `matches("annotation", "some-content")`. - `type("text")`, `type("image")`,
-                            /// `type("resource")`. Filter on the type of annotation `data`.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string Filter { get; set; }
-
-                            /// <summary>
-                            /// Limit on the number of Annotations to return in a single response. If not specified, 100
-                            /// is used. May not be larger than 1000.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
-                            /// <summary>
-                            /// The next_page_token value returned from the previous List request, if any.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
-
-                            /// <summary>Controls which fields are populated in the response.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<ViewEnum> View { get; set; }
-
-                            /// <summary>Controls which fields are populated in the response.</summary>
-                            public enum ViewEnum
-                            {
-                                /// <summary>Same as BASIC.</summary>
-                                [Google.Apis.Util.StringValueAttribute("ANNOTATION_VIEW_UNSPECIFIED")]
-                                ANNOTATIONVIEWUNSPECIFIED = 0,
-
-                                /// <summary>
-                                /// Only `name`, `annotation_source` and `custom_data` fields are populated.
-                                /// </summary>
-                                [Google.Apis.Util.StringValueAttribute("ANNOTATION_VIEW_BASIC")]
-                                ANNOTATIONVIEWBASIC = 1,
-
-                                /// <summary>All fields are populated.</summary>
-                                [Google.Apis.Util.StringValueAttribute("ANNOTATION_VIEW_FULL")]
-                                ANNOTATIONVIEWFULL = 2,
-                            }
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "list";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "GET";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1beta1/{+parent}/annotations";
-
-                            /// <summary>Initializes List parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
-                                });
-                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "view",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            }
-                        }
-
-                        /// <summary>Updates the Annotation.</summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="name">
-                        /// Identifier. Resource name of the Annotation, of the form
-                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
-                        /// </param>
-                        public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.Annotation body, string name)
-                        {
-                            return new PatchRequest(this.service, body, name);
-                        }
-
-                        /// <summary>Updates the Annotation.</summary>
-                        public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Annotation>
-                        {
-                            /// <summary>Constructs a new Patch request.</summary>
-                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.Annotation body, string name) : base(service)
-                            {
-                                Name = name;
-                                Body = body;
-                                InitParameters();
-                            }
-
-                            /// <summary>
-                            /// Identifier. Resource name of the Annotation, of the form
-                            /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-                            /// <summary>
-                            /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
-                            /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual object UpdateMask { get; set; }
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.CloudHealthcare.v1beta1.Data.Annotation Body { get; set; }
-
-                            /// <summary>Returns the body of the request.</summary>
-                            protected override object GetBody() => Body;
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "patch";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "PATCH";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1beta1/{+name}";
-
-                            /// <summary>Initializes Patch parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+/annotations/[^/]+$",
-                                });
-                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "updateMask",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            }
-                        }
-                    }
-
-                    /// <summary>Creates a new Annotation store within the parent dataset.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. The name of the dataset this Annotation store belongs to.</param>
-                    public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore body, string parent)
-                    {
-                        return new CreateRequest(this.service, body, parent);
-                    }
-
-                    /// <summary>Creates a new Annotation store within the parent dataset.</summary>
-                    public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore>
-                    {
-                        /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. The name of the dataset this Annotation store belongs to.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>
-                        /// Required. The ID of the Annotation store that is being created. The string must match the
-                        /// following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("annotationStoreId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string AnnotationStoreId { get; set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "create";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+parent}/annotationStores";
-
-                        /// <summary>Initializes Create parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                            });
-                            RequestParameters.Add("annotationStoreId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "annotationStoreId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Deletes the specified Annotation store and removes all annotations that are contained within it.
-                    /// </summary>
-                    /// <param name="name">Required. The resource name of the Annotation store to delete.</param>
-                    public virtual DeleteRequest Delete(string name)
-                    {
-                        return new DeleteRequest(this.service, name);
-                    }
-
-                    /// <summary>
-                    /// Deletes the specified Annotation store and removes all annotations that are contained within it.
-                    /// </summary>
-                    public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
-                    {
-                        /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. The resource name of the Annotation store to delete.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "delete";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "DELETE";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+name}";
-
-                        /// <summary>Initializes Delete parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Evaluate an Annotation store against a ground truth Annotation store. When the operation
-                    /// finishes successfully, a detailed response is returned of type EvaluateAnnotationStoreResponse,
-                    /// contained in the response. The metadata field type is OperationMetadata. Errors are logged to
-                    /// Cloud Logging (see [Viewing error logs in Cloud
-                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">
-                    /// Required. The Annotation store to compare against `golden_store`, in the format of
-                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
-                    /// </param>
-                    public virtual EvaluateRequest Evaluate(Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateAnnotationStoreRequest body, string name)
-                    {
-                        return new EvaluateRequest(this.service, body, name);
-                    }
-
-                    /// <summary>
-                    /// Evaluate an Annotation store against a ground truth Annotation store. When the operation
-                    /// finishes successfully, a detailed response is returned of type EvaluateAnnotationStoreResponse,
-                    /// contained in the response. The metadata field type is OperationMetadata. Errors are logged to
-                    /// Cloud Logging (see [Viewing error logs in Cloud
-                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
-                    /// </summary>
-                    public class EvaluateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
-                    {
-                        /// <summary>Constructs a new Evaluate request.</summary>
-                        public EvaluateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateAnnotationStoreRequest body, string name) : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The Annotation store to compare against `golden_store`, in the format of
-                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateAnnotationStoreRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "evaluate";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+name}:evaluate";
-
-                        /// <summary>Initializes Evaluate parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Export Annotations from the Annotation store. If the request is successful, a detailed response
-                    /// is returned of type ExportAnnotationsResponse, contained in the response field when the
-                    /// operation finishes. The metadata field type is OperationMetadata. Errors are logged to Cloud
-                    /// Logging (see [Viewing error logs in Cloud
-                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">
-                    /// Required. The name of the Annotation store to export annotations to, in the format of
-                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
-                    /// </param>
-                    public virtual ExportRequest Export(Google.Apis.CloudHealthcare.v1beta1.Data.ExportAnnotationsRequest body, string name)
-                    {
-                        return new ExportRequest(this.service, body, name);
-                    }
-
-                    /// <summary>
-                    /// Export Annotations from the Annotation store. If the request is successful, a detailed response
-                    /// is returned of type ExportAnnotationsResponse, contained in the response field when the
-                    /// operation finishes. The metadata field type is OperationMetadata. Errors are logged to Cloud
-                    /// Logging (see [Viewing error logs in Cloud
-                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
-                    /// </summary>
-                    public class ExportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
-                    {
-                        /// <summary>Constructs a new Export request.</summary>
-                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ExportAnnotationsRequest body, string name) : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The name of the Annotation store to export annotations to, in the format of
-                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CloudHealthcare.v1beta1.Data.ExportAnnotationsRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "export";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+name}:export";
-
-                        /// <summary>Initializes Export parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Gets the specified Annotation store or returns NOT_FOUND if it does not exist.
-                    /// </summary>
-                    /// <param name="name">Required. The resource name of the Annotation store to get.</param>
-                    public virtual GetRequest Get(string name)
-                    {
-                        return new GetRequest(this.service, name);
-                    }
-
-                    /// <summary>
-                    /// Gets the specified Annotation store or returns NOT_FOUND if it does not exist.
-                    /// </summary>
-                    public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore>
-                    {
-                        /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. The resource name of the Annotation store to get.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "get";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+name}";
-
-                        /// <summary>Initializes Get parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
-                            });
-                        }
                     }
 
                     /// <summary>
@@ -1102,260 +416,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "options.requestedPolicyVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Import Annotations to the Annotation store by loading data from the specified sources. If the
-                    /// request is successful, a detailed response is returned as of type ImportAnnotationsResponse,
-                    /// contained in the response field when the operation finishes. The metadata field type is
-                    /// OperationMetadata. Errors are logged to Cloud Logging (see [Viewing error logs in Cloud
-                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">
-                    /// Required. The name of the Annotation store to which the server imports annotations, in the
-                    /// format
-                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
-                    /// </param>
-                    public virtual ImportRequest Import(Google.Apis.CloudHealthcare.v1beta1.Data.ImportAnnotationsRequest body, string name)
-                    {
-                        return new ImportRequest(this.service, body, name);
-                    }
-
-                    /// <summary>
-                    /// Import Annotations to the Annotation store by loading data from the specified sources. If the
-                    /// request is successful, a detailed response is returned as of type ImportAnnotationsResponse,
-                    /// contained in the response field when the operation finishes. The metadata field type is
-                    /// OperationMetadata. Errors are logged to Cloud Logging (see [Viewing error logs in Cloud
-                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
-                    /// </summary>
-                    public class ImportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
-                    {
-                        /// <summary>Constructs a new Import request.</summary>
-                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ImportAnnotationsRequest body, string name) : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The name of the Annotation store to which the server imports annotations, in the
-                        /// format
-                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CloudHealthcare.v1beta1.Data.ImportAnnotationsRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "import";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+name}:import";
-
-                        /// <summary>Initializes Import parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>Lists the Annotation stores in the given dataset for a source store.</summary>
-                    /// <param name="parent">Required. Name of the dataset.</param>
-                    public virtual ListRequest List(string parent)
-                    {
-                        return new ListRequest(this.service, parent);
-                    }
-
-                    /// <summary>Lists the Annotation stores in the given dataset for a source store.</summary>
-                    public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListAnnotationStoresResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. Name of the dataset.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>
-                        /// Restricts stores returned to those matching a filter. The following syntax is available: * A
-                        /// string field value can be written as text inside quotation marks, for example `"query
-                        /// text"`. The only valid relational operation for text fields is equality (`=`), where text is
-                        /// searched within the field, rather than having the field be equal to the text. For example,
-                        /// `"Comment = great"` returns messages with `great` in the comment field. * A number field
-                        /// value can be written as an integer, a decimal, or an exponential. The valid relational
-                        /// operators for number fields are the equality operator (`=`), along with the less
-                        /// than/greater than operators (`&amp;lt;`, `&amp;lt;=`, `&amp;gt;`, `&amp;gt;=`). Note that
-                        /// there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression
-                        /// to negate it. * A date field value must be written in `yyyy-mm-dd` form. Fields with date
-                        /// and time use the RFC3339 time format. Leading zeros are required for one-digit months and
-                        /// days. The valid relational operators for date fields are the equality operator (`=`) , along
-                        /// with the less than/greater than operators (`&amp;lt;`, `&amp;lt;=`, `&amp;gt;`,
-                        /// `&amp;gt;=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT`
-                        /// operator to an expression to negate it. * Multiple field query expressions can be combined
-                        /// in one query by adding `AND` or `OR` operators between the expressions. If a boolean
-                        /// operator appears within a quoted string, it is not treated as special, it's just another
-                        /// part of the character string to be matched. You can prepend the `NOT` operator to an
-                        /// expression to negate it. Only filtering on labels is supported, for example
-                        /// `labels.key=value`.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
-
-                        /// <summary>
-                        /// Limit on the number of Annotation stores to return in a single response. If not specified,
-                        /// 100 is used. May not be larger than 1000.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>
-                        /// The next_page_token value returned from the previous List request, if any.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "list";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+parent}/annotationStores";
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                            });
-                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>Updates the specified Annotation store.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">
-                    /// Identifier. Resource name of the Annotation store, of the form
-                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
-                    /// </param>
-                    public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore body, string name)
-                    {
-                        return new PatchRequest(this.service, body, name);
-                    }
-
-                    /// <summary>Updates the specified Annotation store.</summary>
-                    public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore>
-                    {
-                        /// <summary>Constructs a new Patch request.</summary>
-                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore body, string name) : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Identifier. Resource name of the Annotation store, of the form
-                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>
-                        /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
-                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object UpdateMask { get; set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "patch";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "PATCH";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+name}";
-
-                        /// <summary>Initializes Patch parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/annotationStores/[^/]+$",
-                            });
-                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -7662,8 +6722,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// If a resource type other than Binary is used in the request it's treated in the same way as
                         /// non-FHIR data (e.g., images, zip archives, pdf files, documents). When a non-FHIR content
                         /// type is used in the request, a Binary resource will be generated, and the uploaded data will
-                        /// be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`R4`). The
-                        /// Binary resource's `contentType` will be filled in using the value of the `Content-Type`
+                        /// be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`R4` and `R5`).
+                        /// The Binary resource's `contentType` will be filled in using the value of the `Content-Type`
                         /// header, and the `securityContext` field (not present in `DSTU2`) will be populated from the
                         /// `X-Security-Context` header if it exists. At this time `securityContext` has no special
                         /// behavior in the Cloud Healthcare API. Note: the limit on data ingested through this method
@@ -7696,8 +6756,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// If a resource type other than Binary is used in the request it's treated in the same way as
                         /// non-FHIR data (e.g., images, zip archives, pdf files, documents). When a non-FHIR content
                         /// type is used in the request, a Binary resource will be generated, and the uploaded data will
-                        /// be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`R4`). The
-                        /// Binary resource's `contentType` will be filled in using the value of the `Content-Type`
+                        /// be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`R4` and `R5`).
+                        /// The Binary resource's `contentType` will be filled in using the value of the `Content-Type`
                         /// header, and the `securityContext` field (not present in `DSTU2`) will be populated from the
                         /// `X-Security-Context` header if it exists. At this time `securityContext` has no special
                         /// behavior in the Cloud Healthcare API. Note: the limit on data ingested through this method
@@ -7832,13 +6892,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// the request it will be treated in the same way as non-FHIR data. When a non-FHIR content
                         /// type is used in the request, a Binary resource will be generated using the ID from the
                         /// resource path, and the uploaded data will be stored in the `content` field (`DSTU2` and
-                        /// `STU3`), or the `data` field (`R4`). The Binary resource's `contentType` will be filled in
-                        /// using the value of the `Content-Type` header, and the `securityContext` field (not present
-                        /// in `DSTU2`) will be populated from the `X-Security-Context` header if it exists. At this
-                        /// time `securityContext` has no special behavior in the Cloud Healthcare API. Note: the limit
-                        /// on data ingested through this method is 2 GB. For best performance, use a non-FHIR data type
-                        /// instead of wrapping the data in a Binary resource. Some of the Healthcare API features, such
-                        /// as [exporting to
+                        /// `STU3`), or the `data` field (`R4` and `R5`). The Binary resource's `contentType` will be
+                        /// filled in using the value of the `Content-Type` header, and the `securityContext` field (not
+                        /// present in `DSTU2`) will be populated from the `X-Security-Context` header if it exists. At
+                        /// this time `securityContext` has no special behavior in the Cloud Healthcare API. Note: the
+                        /// limit on data ingested through this method is 2 GB. For best performance, use a non-FHIR
+                        /// data type instead of wrapping the data in a Binary resource. Some of the Healthcare API
+                        /// features, such as [exporting to
                         /// BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or
                         /// [Pub/Sub
                         /// notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high)
@@ -7871,13 +6931,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// the request it will be treated in the same way as non-FHIR data. When a non-FHIR content
                         /// type is used in the request, a Binary resource will be generated using the ID from the
                         /// resource path, and the uploaded data will be stored in the `content` field (`DSTU2` and
-                        /// `STU3`), or the `data` field (`R4`). The Binary resource's `contentType` will be filled in
-                        /// using the value of the `Content-Type` header, and the `securityContext` field (not present
-                        /// in `DSTU2`) will be populated from the `X-Security-Context` header if it exists. At this
-                        /// time `securityContext` has no special behavior in the Cloud Healthcare API. Note: the limit
-                        /// on data ingested through this method is 2 GB. For best performance, use a non-FHIR data type
-                        /// instead of wrapping the data in a Binary resource. Some of the Healthcare API features, such
-                        /// as [exporting to
+                        /// `STU3`), or the `data` field (`R4` and `R5`). The Binary resource's `contentType` will be
+                        /// filled in using the value of the `Content-Type` header, and the `securityContext` field (not
+                        /// present in `DSTU2`) will be populated from the `X-Security-Context` header if it exists. At
+                        /// this time `securityContext` has no special behavior in the Cloud Healthcare API. Note: the
+                        /// limit on data ingested through this method is 2 GB. For best performance, use a non-FHIR
+                        /// data type instead of wrapping the data in a Binary resource. Some of the Healthcare API
+                        /// features, such as [exporting to
                         /// BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or
                         /// [Pub/Sub
                         /// notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high)
@@ -8002,7 +7062,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Implements the FHIR standard $translate operation
                         /// ([DSTU2](https://www.hl7.org/fhir/DSTU2/operation-conceptmap-translate.html),
                         /// [STU3](https://www.hl7.org/fhir/STU3/operation-conceptmap-translate.html),
-                        /// [R4](https://www.hl7.org/fhir/R4/operation-conceptmap-translate.html)). On success, the
+                        /// [R4](https://www.hl7.org/fhir/R4/operation-conceptmap-translate.html),
+                        /// [R5](https://www.hl7.org/fhir/R5/operation-conceptmap-translate.html)). On success, the
                         /// response body contains a JSON-encoded representation of a FHIR Parameters resource, which
                         /// includes the translation result. Errors generated by the FHIR store contain a JSON-encoded
                         /// `OperationOutcome` resource describing the reason for the error. If the request cannot be
@@ -8022,7 +7083,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Implements the FHIR standard $translate operation
                         /// ([DSTU2](https://www.hl7.org/fhir/DSTU2/operation-conceptmap-translate.html),
                         /// [STU3](https://www.hl7.org/fhir/STU3/operation-conceptmap-translate.html),
-                        /// [R4](https://www.hl7.org/fhir/R4/operation-conceptmap-translate.html)). On success, the
+                        /// [R4](https://www.hl7.org/fhir/R4/operation-conceptmap-translate.html),
+                        /// [R5](https://www.hl7.org/fhir/R5/operation-conceptmap-translate.html)). On success, the
                         /// response body contains a JSON-encoded representation of a FHIR Parameters resource, which
                         /// includes the translation result. Errors generated by the FHIR store contain a JSON-encoded
                         /// `OperationOutcome` resource describing the reason for the error. If the request cannot be
@@ -8157,7 +7219,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// standard $translate operation
                         /// ([DSTU2](https://www.hl7.org/fhir/DSTU2/operation-conceptmap-translate.html),
                         /// [STU3](https://www.hl7.org/fhir/STU3/operation-conceptmap-translate.html),
-                        /// [R4](https://www.hl7.org/fhir/R4/operation-conceptmap-translate.html)). On success, the
+                        /// [R4](https://www.hl7.org/fhir/R4/operation-conceptmap-translate.html)),
+                        /// [R5](https://www.hl7.org/fhir/R5/operation-conceptmap-translate.html)). On success, the
                         /// response body contains a JSON-encoded representation of a FHIR Parameters resource, which
                         /// includes the translation result. Errors generated by the FHIR store contain a JSON-encoded
                         /// `OperationOutcome` resource describing the reason for the error. If the request cannot be
@@ -8175,7 +7238,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// standard $translate operation
                         /// ([DSTU2](https://www.hl7.org/fhir/DSTU2/operation-conceptmap-translate.html),
                         /// [STU3](https://www.hl7.org/fhir/STU3/operation-conceptmap-translate.html),
-                        /// [R4](https://www.hl7.org/fhir/R4/operation-conceptmap-translate.html)). On success, the
+                        /// [R4](https://www.hl7.org/fhir/R4/operation-conceptmap-translate.html)),
+                        /// [R5](https://www.hl7.org/fhir/R5/operation-conceptmap-translate.html)). On success, the
                         /// response body contains a JSON-encoded representation of a FHIR Parameters resource, which
                         /// includes the translation result. Errors generated by the FHIR store contain a JSON-encoded
                         /// `OperationOutcome` resource describing the reason for the error. If the request cannot be
@@ -8321,8 +7385,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Retrieves an Encounter resource and resources related to that Encounter. Implements the FHIR
                         /// extended operation Encounter-everything
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/encounter-operations.html#everything),
-                        /// [STU3](https://hl7.org/fhir/STU3/encounter-operations.html#everything), or
-                        /// [R4](https://hl7.org/fhir/R4/encounter-operation-everything.html). On success, the response
+                        /// [STU3](https://hl7.org/fhir/STU3/encounter-operations.html#everything),
+                        /// [R4](https://hl7.org/fhir/R4/encounter-operation-everything.html), or
+                        /// [R5](https://hl7.org/fhir/R5/encounter-operation-everything.html)). On success, the response
                         /// body contains a JSON-encoded representation of a `Bundle` resource of type `searchset`,
                         /// containing the results of the operation. Errors generated by the FHIR store contain a
                         /// JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request
@@ -8334,7 +7399,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Encounter Compartment definition
                         /// ([DSTU2](http://hl7.org/fhir/DSTU2/compartment-encounter.html),
                         /// [STU3](http://www.hl7.org/fhir/stu3/compartmentdefinition-encounter.html),
-                        /// [R4](http://hl7.org/fhir/R4/compartmentdefinition-encounter.html)), which details the
+                        /// [R4](http://hl7.org/fhir/R4/compartmentdefinition-encounter.html),
+                        /// [R5](http://hl7.org/fhir/R5/compartmentdefinition-encounter.html)), which details the
                         /// eligible resource types and referencing search parameters. * Resources referencing to the
                         /// Encounter resource through the
                         /// "http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter" extension.
@@ -8351,8 +7417,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Retrieves an Encounter resource and resources related to that Encounter. Implements the FHIR
                         /// extended operation Encounter-everything
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/encounter-operations.html#everything),
-                        /// [STU3](https://hl7.org/fhir/STU3/encounter-operations.html#everything), or
-                        /// [R4](https://hl7.org/fhir/R4/encounter-operation-everything.html). On success, the response
+                        /// [STU3](https://hl7.org/fhir/STU3/encounter-operations.html#everything),
+                        /// [R4](https://hl7.org/fhir/R4/encounter-operation-everything.html), or
+                        /// [R5](https://hl7.org/fhir/R5/encounter-operation-everything.html)). On success, the response
                         /// body contains a JSON-encoded representation of a `Bundle` resource of type `searchset`,
                         /// containing the results of the operation. Errors generated by the FHIR store contain a
                         /// JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request
@@ -8364,7 +7431,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Encounter Compartment definition
                         /// ([DSTU2](http://hl7.org/fhir/DSTU2/compartment-encounter.html),
                         /// [STU3](http://www.hl7.org/fhir/stu3/compartmentdefinition-encounter.html),
-                        /// [R4](http://hl7.org/fhir/R4/compartmentdefinition-encounter.html)), which details the
+                        /// [R4](http://hl7.org/fhir/R4/compartmentdefinition-encounter.html),
+                        /// [R5](http://hl7.org/fhir/R5/compartmentdefinition-encounter.html)), which details the
                         /// eligible resource types and referencing search parameters. * Resources referencing to the
                         /// Encounter resource through the
                         /// "http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter" extension.
@@ -8480,7 +7548,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// specified as query parameters, grouped by `Observation.code`, sorted from most recent to
                         /// oldest. Implements the FHIR extended operation Observation-lastn
                         /// ([STU3](https://hl7.org/fhir/STU3/observation-operations.html#lastn),
-                        /// [R4](https://hl7.org/fhir/R4/observation-operation-lastn.html)). DSTU2 doesn't define the
+                        /// [R4](https://hl7.org/fhir/R4/observation-operation-lastn.html),
+                        /// [R5](https://hl7.org/fhir/R5/observation-operation-lastn.html)). DSTU2 doesn't define the
                         /// Observation-lastn method, but the server supports it the same way it supports STU3. Search
                         /// terms are provided as query parameters following the same pattern as the search method. The
                         /// following search parameters must be provided: - `subject` or `patient` to specify a subject
@@ -8507,7 +7576,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// specified as query parameters, grouped by `Observation.code`, sorted from most recent to
                         /// oldest. Implements the FHIR extended operation Observation-lastn
                         /// ([STU3](https://hl7.org/fhir/STU3/observation-operations.html#lastn),
-                        /// [R4](https://hl7.org/fhir/R4/observation-operation-lastn.html)). DSTU2 doesn't define the
+                        /// [R4](https://hl7.org/fhir/R4/observation-operation-lastn.html),
+                        /// [R5](https://hl7.org/fhir/R5/observation-operation-lastn.html)). DSTU2 doesn't define the
                         /// Observation-lastn method, but the server supports it the same way it supports STU3. Search
                         /// terms are provided as query parameters following the same pattern as the search method. The
                         /// following search parameters must be provided: - `subject` or `patient` to specify a subject
@@ -8659,7 +7729,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// extended operation Patient-everything
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/patient-operations.html#everything),
                         /// [STU3](https://hl7.org/fhir/STU3/patient-operations.html#everything),
-                        /// [R4](https://hl7.org/fhir/R4/patient-operation-everything.html)). On success, the response
+                        /// [R4](https://hl7.org/fhir/R4/patient-operation-everything.html),
+                        /// [R5](https://hl7.org/fhir/R5/patient-operation-everything.html)). On success, the response
                         /// body contains a JSON-encoded representation of a `Bundle` resource of type `searchset`,
                         /// containing the results of the operation. Errors generated by the FHIR store contain a
                         /// JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request
@@ -8670,8 +7741,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// criteria are based on the membership rules in the patient compartment definition
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/compartment-patient.html),
                         /// [STU3](http://www.hl7.org/fhir/stu3/compartmentdefinition-patient.html),
-                        /// [R4](https://hl7.org/fhir/R4/compartmentdefinition-patient.html)), which details the
-                        /// eligible resource types and referencing search parameters. For samples that show how to call
+                        /// [R4](https://hl7.org/fhir/R4/compartmentdefinition-patient.html),
+                        /// [R5](http://hl7.org/fhir/R5/compartmentdefinition-patient.html)), which details the eligible
+                        /// resource types and referencing search parameters. For samples that show how to call
                         /// `Patient-everything`, see [Getting all patient compartment
                         /// resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#getting_all_patient_compartment_resources).
                         /// </summary>
@@ -8688,7 +7760,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// extended operation Patient-everything
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/patient-operations.html#everything),
                         /// [STU3](https://hl7.org/fhir/STU3/patient-operations.html#everything),
-                        /// [R4](https://hl7.org/fhir/R4/patient-operation-everything.html)). On success, the response
+                        /// [R4](https://hl7.org/fhir/R4/patient-operation-everything.html),
+                        /// [R5](https://hl7.org/fhir/R5/patient-operation-everything.html)). On success, the response
                         /// body contains a JSON-encoded representation of a `Bundle` resource of type `searchset`,
                         /// containing the results of the operation. Errors generated by the FHIR store contain a
                         /// JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request
@@ -8699,8 +7772,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// criteria are based on the membership rules in the patient compartment definition
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/compartment-patient.html),
                         /// [STU3](http://www.hl7.org/fhir/stu3/compartmentdefinition-patient.html),
-                        /// [R4](https://hl7.org/fhir/R4/compartmentdefinition-patient.html)), which details the
-                        /// eligible resource types and referencing search parameters. For samples that show how to call
+                        /// [R4](https://hl7.org/fhir/R4/compartmentdefinition-patient.html),
+                        /// [R5](http://hl7.org/fhir/R5/compartmentdefinition-patient.html)), which details the eligible
+                        /// resource types and referencing search parameters. For samples that show how to call
                         /// `Patient-everything`, see [Getting all patient compartment
                         /// resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#getting_all_patient_compartment_resources).
                         /// </summary>
@@ -9046,8 +8120,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Validates an input FHIR resource's conformance to its profiles and the profiles configured
                         /// on the FHIR store. Implements the FHIR extended operation $validate
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/resource-operations.html#validate),
-                        /// [STU3](https://hl7.org/fhir/STU3/resource-operations.html#validate), or
-                        /// [R4](https://hl7.org/fhir/R4/resource-operation-validate.html)). The request body must
+                        /// [STU3](https://hl7.org/fhir/STU3/resource-operations.html#validate),
+                        /// [R4](https://hl7.org/fhir/R4/resource-operation-validate.html), or
+                        /// [R5](https://hl7.org/fhir/R5/resource-operation-validate.html)). The request body must
                         /// contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type:
                         /// application/fhir+json`. The `Parameters` input syntax is not supported. The `profile` query
                         /// parameter can be used to request that the resource only be validated against a specific
@@ -9063,8 +8138,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="type">
                         /// Required. The FHIR resource type of the resource being validated. For a complete list, see
                         /// the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
-                        /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html), or
-                        /// [R4](https://hl7.org/fhir/R4/resourcelist.html)). Must match the resource type in the
+                        /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
+                        /// [R4](https://hl7.org/fhir/R4/resourcelist.html), or
+                        /// [R5](https://hl7.org/fhir/R5/resourcelist.html)). Must match the resource type in the
                         /// provided content.
                         /// </param>
                         public virtual ResourceValidateRequest ResourceValidate(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string type)
@@ -9076,8 +8152,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Validates an input FHIR resource's conformance to its profiles and the profiles configured
                         /// on the FHIR store. Implements the FHIR extended operation $validate
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/resource-operations.html#validate),
-                        /// [STU3](https://hl7.org/fhir/STU3/resource-operations.html#validate), or
-                        /// [R4](https://hl7.org/fhir/R4/resource-operation-validate.html)). The request body must
+                        /// [STU3](https://hl7.org/fhir/STU3/resource-operations.html#validate),
+                        /// [R4](https://hl7.org/fhir/R4/resource-operation-validate.html), or
+                        /// [R5](https://hl7.org/fhir/R5/resource-operation-validate.html)). The request body must
                         /// contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type:
                         /// application/fhir+json`. The `Parameters` input syntax is not supported. The `profile` query
                         /// parameter can be used to request that the resource only be validated against a specific
@@ -9106,8 +8183,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// <summary>
                             /// Required. The FHIR resource type of the resource being validated. For a complete list,
                             /// see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
-                            /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html), or
-                            /// [R4](https://hl7.org/fhir/R4/resourcelist.html)). Must match the resource type in the
+                            /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
+                            /// [R4](https://hl7.org/fhir/R4/resourcelist.html), or
+                            /// [R5](https://hl7.org/fhir/R5/resourcelist.html)). Must match the resource type in the
                             /// provided content.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Path)]
@@ -9313,11 +8391,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <summary>
                         /// Gets the FHIR capability statement
                         /// ([STU3](https://hl7.org/fhir/STU3/capabilitystatement.html),
-                        /// [R4](https://hl7.org/fhir/R4/capabilitystatement.html)), or the [conformance
+                        /// [R4](https://hl7.org/fhir/R4/capabilitystatement.html),
+                        /// [R5](https://hl7.org/fhir/R5/capabilitystatement.html)), or the [conformance
                         /// statement](https://hl7.org/fhir/DSTU2/conformance.html) in the DSTU2 case for the store,
                         /// which contains a description of functionality supported by the server. Implements the FHIR
                         /// standard capabilities interaction ([STU3](https://hl7.org/fhir/STU3/http.html#capabilities),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#capabilities)), or the [conformance
+                        /// [R4](https://hl7.org/fhir/R4/http.html#capabilities),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#capabilities)), or the [conformance
                         /// interaction](https://hl7.org/fhir/DSTU2/http.html#conformance) in the DSTU2 case. On
                         /// success, the response body contains a JSON-encoded representation of a `CapabilityStatement`
                         /// resource.
@@ -9333,11 +8413,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <summary>
                         /// Gets the FHIR capability statement
                         /// ([STU3](https://hl7.org/fhir/STU3/capabilitystatement.html),
-                        /// [R4](https://hl7.org/fhir/R4/capabilitystatement.html)), or the [conformance
+                        /// [R4](https://hl7.org/fhir/R4/capabilitystatement.html),
+                        /// [R5](https://hl7.org/fhir/R5/capabilitystatement.html)), or the [conformance
                         /// statement](https://hl7.org/fhir/DSTU2/conformance.html) in the DSTU2 case for the store,
                         /// which contains a description of functionality supported by the server. Implements the FHIR
                         /// standard capabilities interaction ([STU3](https://hl7.org/fhir/STU3/http.html#capabilities),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#capabilities)), or the [conformance
+                        /// [R4](https://hl7.org/fhir/R4/http.html#capabilities),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#capabilities)), or the [conformance
                         /// interaction](https://hl7.org/fhir/DSTU2/http.html#conformance) in the DSTU2 case. On
                         /// success, the response body contains a JSON-encoded representation of a `CapabilityStatement`
                         /// resource.
@@ -9383,7 +8465,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Deletes FHIR resources that match a search query. Implements the FHIR standard conditional
                         /// delete interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#2.1.0.12.1),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#2.21.0.13.1),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#3.1.0.7.1)). If multiple resources match, all
+                        /// [R4](https://hl7.org/fhir/R4/http.html#3.1.0.7.1),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#3.1.0.7.1)). If multiple resources match, all
                         /// matching resources are deleted. Search terms are provided as query parameters following the
                         /// same pattern as the search method. Not all FHIR resources that match the search query might
                         /// be deleted because, by default, a maximum of 100 FHIR resources can be deleted. The number
@@ -9403,7 +8486,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Required. The FHIR resource type to delete, such as Patient or Observation. For a complete
                         /// list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
                         /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-                        /// [R4](https://hl7.org/fhir/R4/resourcelist.html)).
+                        /// [R4](https://hl7.org/fhir/R4/resourcelist.html),
+                        /// [R5](https://hl7.org/fhir/R5/resourcelist.html)).
                         /// </param>
                         public virtual ConditionalDeleteRequest ConditionalDelete(string parent, string type)
                         {
@@ -9414,7 +8498,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Deletes FHIR resources that match a search query. Implements the FHIR standard conditional
                         /// delete interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#2.1.0.12.1),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#2.21.0.13.1),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#3.1.0.7.1)). If multiple resources match, all
+                        /// [R4](https://hl7.org/fhir/R4/http.html#3.1.0.7.1),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#3.1.0.7.1)). If multiple resources match, all
                         /// matching resources are deleted. Search terms are provided as query parameters following the
                         /// same pattern as the search method. Not all FHIR resources that match the search query might
                         /// be deleted because, by default, a maximum of 100 FHIR resources can be deleted. The number
@@ -9448,7 +8533,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// complete list, see the FHIR Resource Index
                             /// ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
                             /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-                            /// [R4](https://hl7.org/fhir/R4/resourcelist.html)).
+                            /// [R4](https://hl7.org/fhir/R4/resourcelist.html),
+                            /// [R5](https://hl7.org/fhir/R5/resourcelist.html)).
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Type { get; private set; }
@@ -9490,7 +8576,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// updates part of that resource by applying the operations specified in a [JSON
                         /// Patch](http://jsonpatch.com/) document. Implements the FHIR standard conditional patch
                         /// interaction ([STU3](https://hl7.org/fhir/STU3/http.html#patch),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#patch)). DSTU2 doesn't define a conditional patch
+                        /// [R4](https://hl7.org/fhir/R4/http.html#patch),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#patch)). DSTU2 doesn't define a conditional patch
                         /// method, but the server supports it in the same way it supports STU3. Search terms are
                         /// provided as query parameters following the same pattern as the search method. If the search
                         /// criteria identify more than one match, the request returns a `412 Precondition Failed`
@@ -9511,7 +8598,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Required. The FHIR resource type to update, such as Patient or Observation. For a complete
                         /// list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
                         /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-                        /// [R4](https://hl7.org/fhir/R4/resourcelist.html)).
+                        /// [R4](https://hl7.org/fhir/R4/resourcelist.html),
+                        /// [R5](https://hl7.org/fhir/R5/resourcelist.html)).
                         /// </param>
                         public virtual ConditionalPatchRequest ConditionalPatch(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string type)
                         {
@@ -9523,7 +8611,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// updates part of that resource by applying the operations specified in a [JSON
                         /// Patch](http://jsonpatch.com/) document. Implements the FHIR standard conditional patch
                         /// interaction ([STU3](https://hl7.org/fhir/STU3/http.html#patch),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#patch)). DSTU2 doesn't define a conditional patch
+                        /// [R4](https://hl7.org/fhir/R4/http.html#patch),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#patch)). DSTU2 doesn't define a conditional patch
                         /// method, but the server supports it in the same way it supports STU3. Search terms are
                         /// provided as query parameters following the same pattern as the search method. If the search
                         /// criteria identify more than one match, the request returns a `412 Precondition Failed`
@@ -9558,7 +8647,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// complete list, see the FHIR Resource Index
                             /// ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
                             /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-                            /// [R4](https://hl7.org/fhir/R4/resourcelist.html)).
+                            /// [R4](https://hl7.org/fhir/R4/resourcelist.html),
+                            /// [R5](https://hl7.org/fhir/R5/resourcelist.html)).
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Type { get; private set; }
@@ -9606,7 +8696,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// updates the entire contents of that resource. Implements the FHIR standard conditional
                         /// update interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#2.1.0.10.2),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#cond-update),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#cond-update)). Search terms are provided as query
+                        /// [R4](https://hl7.org/fhir/R4/http.html#cond-update),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#cond-update)). Search terms are provided as query
                         /// parameters following the same pattern as the search method. If the search criteria identify
                         /// more than one match, the request returns a `412 Precondition Failed` error. If the search
                         /// criteria identify zero matches, and the supplied resource body contains an `id`, and the
@@ -9633,7 +8724,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Required. The FHIR resource type to update, such as Patient or Observation. For a complete
                         /// list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
                         /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-                        /// [R4](https://hl7.org/fhir/R4/resourcelist.html)). Must match the resource type in the
+                        /// [R4](https://hl7.org/fhir/R4/resourcelist.html),
+                        /// [R5](https://hl7.org/fhir/R5/resourcelist.html)). Must match the resource type in the
                         /// provided content.
                         /// </param>
                         public virtual ConditionalUpdateRequest ConditionalUpdate(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string type)
@@ -9646,7 +8738,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// updates the entire contents of that resource. Implements the FHIR standard conditional
                         /// update interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#2.1.0.10.2),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#cond-update),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#cond-update)). Search terms are provided as query
+                        /// [R4](https://hl7.org/fhir/R4/http.html#cond-update),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#cond-update)). Search terms are provided as query
                         /// parameters following the same pattern as the search method. If the search criteria identify
                         /// more than one match, the request returns a `412 Precondition Failed` error. If the search
                         /// criteria identify zero matches, and the supplied resource body contains an `id`, and the
@@ -9687,7 +8780,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// complete list, see the FHIR Resource Index
                             /// ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
                             /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-                            /// [R4](https://hl7.org/fhir/R4/resourcelist.html)). Must match the resource type in the
+                            /// [R4](https://hl7.org/fhir/R4/resourcelist.html),
+                            /// [R5](https://hl7.org/fhir/R5/resourcelist.html)). Must match the resource type in the
                             /// provided content.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Path)]
@@ -9735,11 +8829,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Creates a FHIR resource. Implements the FHIR standard create interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#create),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#create),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#create)), which creates a new resource with a
+                        /// [R4](https://hl7.org/fhir/R4/http.html#create)),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#create)), which creates a new resource with a
                         /// server-assigned resource ID. Also supports the FHIR standard conditional create interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#ccreate),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#ccreate),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#ccreate)), specified by supplying an `If-None-Exist`
+                        /// [R4](https://hl7.org/fhir/R4/http.html#ccreate)),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#ccreate)), specified by supplying an `If-None-Exist`
                         /// header containing a FHIR search query. If no resources match this search query, the server
                         /// processes the create operation as normal. The request body must contain a JSON-encoded FHIR
                         /// resource, and the request headers must contain `Content-Type: application/fhir+json`. On
@@ -9757,7 +8853,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Required. The FHIR resource type to create, such as Patient or Observation. For a complete
                         /// list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
                         /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-                        /// [R4](https://hl7.org/fhir/R4/resourcelist.html)). Must match the resource type in the
+                        /// [R4](https://hl7.org/fhir/R4/resourcelist.html),
+                        /// [R5](https://hl7.org/fhir/R5/resourcelist.html)). Must match the resource type in the
                         /// provided content.
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string type)
@@ -9769,11 +8866,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Creates a FHIR resource. Implements the FHIR standard create interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#create),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#create),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#create)), which creates a new resource with a
+                        /// [R4](https://hl7.org/fhir/R4/http.html#create)),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#create)), which creates a new resource with a
                         /// server-assigned resource ID. Also supports the FHIR standard conditional create interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#ccreate),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#ccreate),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#ccreate)), specified by supplying an `If-None-Exist`
+                        /// [R4](https://hl7.org/fhir/R4/http.html#ccreate)),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#ccreate)), specified by supplying an `If-None-Exist`
                         /// header containing a FHIR search query. If no resources match this search query, the server
                         /// processes the create operation as normal. The request body must contain a JSON-encoded FHIR
                         /// resource, and the request headers must contain `Content-Type: application/fhir+json`. On
@@ -9805,7 +8904,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// complete list, see the FHIR Resource Index
                             /// ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
                             /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-                            /// [R4](https://hl7.org/fhir/R4/resourcelist.html)). Must match the resource type in the
+                            /// [R4](https://hl7.org/fhir/R4/resourcelist.html),
+                            /// [R5](https://hl7.org/fhir/R5/resourcelist.html)). Must match the resource type in the
                             /// provided content.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Path)]
@@ -9853,7 +8953,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Deletes a FHIR resource. Implements the FHIR standard delete interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#delete),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#delete),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#delete)). Note: Unless resource versioning is
+                        /// [R4](https://hl7.org/fhir/R4/http.html#delete),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#delete)). Note: Unless resource versioning is
                         /// disabled by setting the disable_resource_versioning flag on the FHIR store, the deleted
                         /// resources are moved to a history repository that can still be retrieved through vread and
                         /// related methods, unless they are removed by the purge method. For samples that show how to
@@ -9870,7 +8971,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Deletes a FHIR resource. Implements the FHIR standard delete interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#delete),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#delete),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#delete)). Note: Unless resource versioning is
+                        /// [R4](https://hl7.org/fhir/R4/http.html#delete),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#delete)). Note: Unless resource versioning is
                         /// disabled by setting the disable_resource_versioning flag on the FHIR store, the deleted
                         /// resources are moved to a history repository that can still be retrieved through vread and
                         /// related methods, unless they are removed by the purge method. For samples that show how to
@@ -9919,15 +9021,18 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// batch/transaction interaction and history operations.
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#transaction),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#transaction),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#transaction)). Supports all interactions within a
+                        /// [R4](https://hl7.org/fhir/R4/http.html#transaction),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#transaction)). Supports all interactions within a
                         /// bundle, except search. This method accepts Bundles of type `batch`, `transaction` and
                         /// `history`, processing `batch` and `transaction` bundles according to the batch processing
                         /// rules ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#2.1.0.16.1),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#2.21.0.17.1),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#brules)) and transaction processing rules
+                        /// [R4](https://hl7.org/fhir/R4/http.html#brules),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#brules)) and transaction processing rules
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#2.1.0.16.2),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#2.21.0.17.2),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#trules)). The request body must contain a
+                        /// [R4](https://hl7.org/fhir/R4/http.html#trules),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#trules)). The request body must contain a
                         /// JSON-encoded FHIR `Bundle` resource, and the request headers must contain `Content-Type:
                         /// application/fhir+json`. For a batch bundle or a successful transaction, the response body
                         /// contains a JSON-encoded representation of a `Bundle` resource of type `batch-response` or
@@ -9960,15 +9065,18 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// batch/transaction interaction and history operations.
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#transaction),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#transaction),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#transaction)). Supports all interactions within a
+                        /// [R4](https://hl7.org/fhir/R4/http.html#transaction),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#transaction)). Supports all interactions within a
                         /// bundle, except search. This method accepts Bundles of type `batch`, `transaction` and
                         /// `history`, processing `batch` and `transaction` bundles according to the batch processing
                         /// rules ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#2.1.0.16.1),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#2.21.0.17.1),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#brules)) and transaction processing rules
+                        /// [R4](https://hl7.org/fhir/R4/http.html#brules),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#brules)) and transaction processing rules
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#2.1.0.16.2),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#2.21.0.17.2),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#trules)). The request body must contain a
+                        /// [R4](https://hl7.org/fhir/R4/http.html#trules),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#trules)). The request body must contain a
                         /// JSON-encoded FHIR `Bundle` resource, and the request headers must contain `Content-Type:
                         /// application/fhir+json`. For a batch bundle or a successful transaction, the response body
                         /// contains a JSON-encoded representation of a `Bundle` resource of type `batch-response` or
@@ -10038,7 +9146,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// from the FHIR store. Implements the per-resource form of the FHIR standard history
                         /// interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#history),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#history),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#history)). On success, the response body contains a
+                        /// [R4](https://hl7.org/fhir/R4/http.html#history),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#history)). On success, the response body contains a
                         /// JSON-encoded representation of a `Bundle` resource of type `history`, containing the version
                         /// history sorted from most recent to oldest versions. Errors generated by the FHIR store
                         /// contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If
@@ -10058,7 +9167,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// from the FHIR store. Implements the per-resource form of the FHIR standard history
                         /// interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#history),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#history),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#history)). On success, the response body contains a
+                        /// [R4](https://hl7.org/fhir/R4/http.html#history),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#history)). On success, the response body contains a
                         /// JSON-encoded representation of a `Bundle` resource of type `history`, containing the version
                         /// history sorted from most recent to oldest versions. Errors generated by the FHIR store
                         /// contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If
@@ -10176,7 +9286,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Updates part of an existing resource by applying the operations specified in a [JSON
                         /// Patch](http://jsonpatch.com/) document. Implements the FHIR standard patch interaction
                         /// ([STU3](https://hl7.org/fhir/STU3/http.html#patch),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#patch)). DSTU2 doesn't define a patch method, but the
+                        /// [R4](https://hl7.org/fhir/R4/http.html#patch),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#patch)). DSTU2 doesn't define a patch method, but the
                         /// server supports it in the same way it supports STU3. The request body must contain a JSON
                         /// Patch document, and the request headers must contain `Content-Type:
                         /// application/json-patch+json`. On success, the response body contains a JSON-encoded
@@ -10198,7 +9309,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Updates part of an existing resource by applying the operations specified in a [JSON
                         /// Patch](http://jsonpatch.com/) document. Implements the FHIR standard patch interaction
                         /// ([STU3](https://hl7.org/fhir/STU3/http.html#patch),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#patch)). DSTU2 doesn't define a patch method, but the
+                        /// [R4](https://hl7.org/fhir/R4/http.html#patch),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#patch)). DSTU2 doesn't define a patch method, but the
                         /// server supports it in the same way it supports STU3. The request body must contain a JSON
                         /// Patch document, and the request headers must contain `Content-Type:
                         /// application/json-patch+json`. On success, the response body contains a JSON-encoded
@@ -10257,10 +9369,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Gets the contents of a FHIR resource. Implements the FHIR standard read interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#read),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#read),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#read)). Also supports the FHIR standard conditional
+                        /// [R4](https://hl7.org/fhir/R4/http.html#read)),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#read)). Also supports the FHIR standard conditional
                         /// read interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#cread),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#cread),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#cread)) specified by supplying an `If-Modified-Since`
+                        /// [R4](https://hl7.org/fhir/R4/http.html#cread)),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#cread)) specified by supplying an `If-Modified-Since`
                         /// header with a date/time value or an `If-None-Match` header with an ETag value. On success,
                         /// the response body contains a JSON-encoded representation of the resource. Errors generated
                         /// by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason
@@ -10279,10 +9393,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Gets the contents of a FHIR resource. Implements the FHIR standard read interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#read),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#read),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#read)). Also supports the FHIR standard conditional
+                        /// [R4](https://hl7.org/fhir/R4/http.html#read)),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#read)). Also supports the FHIR standard conditional
                         /// read interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#cread),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#cread),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#cread)) specified by supplying an `If-Modified-Since`
+                        /// [R4](https://hl7.org/fhir/R4/http.html#cread)),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#cread)) specified by supplying an `If-Modified-Since`
                         /// header with a date/time value or an `If-None-Match` header with an ETag value. On success,
                         /// the response body contains a JSON-encoded representation of the resource. Errors generated
                         /// by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason
@@ -10333,29 +9449,31 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// parameters. Implements the FHIR standard search interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#search),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#search),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#search)) using the search semantics described in the
+                        /// [R4](https://hl7.org/fhir/R4/http.html#search),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#search)) using the search semantics described in the
                         /// FHIR Search specification ([DSTU2](https://hl7.org/fhir/DSTU2/search.html),
-                        /// [STU3](https://hl7.org/fhir/STU3/search.html), [R4](https://hl7.org/fhir/R4/search.html)).
-                        /// Supports four methods of search defined by the specification: * `GET [base]?[parameters]` to
-                        /// search across all resources. * `GET [base]/[type]?[parameters]` to search resources of a
-                        /// specified type. * `POST [base]/_search?[parameters]` as an alternate form having the same
-                        /// semantics as the `GET` method across all resources. * `POST
-                        /// [base]/[type]/_search?[parameters]` as an alternate form having the same semantics as the
-                        /// `GET` method for the specified type. The `GET` and `POST` methods do not support compartment
-                        /// searches. The `POST` method does not support `application/x-www-form-urlencoded` search
-                        /// parameters. On success, the response body contains a JSON-encoded representation of a
-                        /// `Bundle` resource of type `searchset`, containing the results of the search. Errors
-                        /// generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing
-                        /// the reason for the error. If the request cannot be mapped to a valid API method on a FHIR
-                        /// store, a generic GCP error might be returned instead. The server's capability statement,
-                        /// retrieved through capabilities, indicates what search parameters are supported on each FHIR
-                        /// resource. A list of all search parameters defined by the specification can be found in the
-                        /// FHIR Search Parameter Registry
+                        /// [STU3](https://hl7.org/fhir/STU3/search.html), [R4](https://hl7.org/fhir/R4/search.html),
+                        /// [R5](https://hl7.org/fhir/R5/search.html)). Supports four methods of search defined by the
+                        /// specification: * `GET [base]?[parameters]` to search across all resources. * `GET
+                        /// [base]/[type]?[parameters]` to search resources of a specified type. * `POST
+                        /// [base]/_search?[parameters]` as an alternate form having the same semantics as the `GET`
+                        /// method across all resources. * `POST [base]/[type]/_search?[parameters]` as an alternate
+                        /// form having the same semantics as the `GET` method for the specified type. The `GET` and
+                        /// `POST` methods do not support compartment searches. The `POST` method does not support
+                        /// `application/x-www-form-urlencoded` search parameters. On success, the response body
+                        /// contains a JSON-encoded representation of a `Bundle` resource of type `searchset`,
+                        /// containing the results of the search. Errors generated by the FHIR store contain a
+                        /// JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request
+                        /// cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be
+                        /// returned instead. The server's capability statement, retrieved through capabilities,
+                        /// indicates what search parameters are supported on each FHIR resource. A list of all search
+                        /// parameters defined by the specification can be found in the FHIR Search Parameter Registry
                         /// ([STU3](https://hl7.org/fhir/STU3/searchparameter-registry.html),
-                        /// [R4](https://hl7.org/fhir/R4/searchparameter-registry.html)). FHIR search parameters for
+                        /// [R4](https://hl7.org/fhir/R4/searchparameter-registry.html),
+                        /// [R5](https://hl7.org/fhir/R5/searchparameter-registry.html)). FHIR search parameters for
                         /// DSTU2 can be found on each resource's definition page. Supported search modifiers:
                         /// `:missing`, `:exact`, `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`,
-                        /// `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported search result
+                        /// `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4 and R5). Supported search result
                         /// parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`,
                         /// and `_elements`. The maximum number of search results returned defaults to 100, which can be
                         /// overridden by the `_count` parameter up to a maximum limit of 1000. The server might return
@@ -10395,29 +9513,31 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// parameters. Implements the FHIR standard search interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#search),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#search),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#search)) using the search semantics described in the
+                        /// [R4](https://hl7.org/fhir/R4/http.html#search),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#search)) using the search semantics described in the
                         /// FHIR Search specification ([DSTU2](https://hl7.org/fhir/DSTU2/search.html),
-                        /// [STU3](https://hl7.org/fhir/STU3/search.html), [R4](https://hl7.org/fhir/R4/search.html)).
-                        /// Supports four methods of search defined by the specification: * `GET [base]?[parameters]` to
-                        /// search across all resources. * `GET [base]/[type]?[parameters]` to search resources of a
-                        /// specified type. * `POST [base]/_search?[parameters]` as an alternate form having the same
-                        /// semantics as the `GET` method across all resources. * `POST
-                        /// [base]/[type]/_search?[parameters]` as an alternate form having the same semantics as the
-                        /// `GET` method for the specified type. The `GET` and `POST` methods do not support compartment
-                        /// searches. The `POST` method does not support `application/x-www-form-urlencoded` search
-                        /// parameters. On success, the response body contains a JSON-encoded representation of a
-                        /// `Bundle` resource of type `searchset`, containing the results of the search. Errors
-                        /// generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing
-                        /// the reason for the error. If the request cannot be mapped to a valid API method on a FHIR
-                        /// store, a generic GCP error might be returned instead. The server's capability statement,
-                        /// retrieved through capabilities, indicates what search parameters are supported on each FHIR
-                        /// resource. A list of all search parameters defined by the specification can be found in the
-                        /// FHIR Search Parameter Registry
+                        /// [STU3](https://hl7.org/fhir/STU3/search.html), [R4](https://hl7.org/fhir/R4/search.html),
+                        /// [R5](https://hl7.org/fhir/R5/search.html)). Supports four methods of search defined by the
+                        /// specification: * `GET [base]?[parameters]` to search across all resources. * `GET
+                        /// [base]/[type]?[parameters]` to search resources of a specified type. * `POST
+                        /// [base]/_search?[parameters]` as an alternate form having the same semantics as the `GET`
+                        /// method across all resources. * `POST [base]/[type]/_search?[parameters]` as an alternate
+                        /// form having the same semantics as the `GET` method for the specified type. The `GET` and
+                        /// `POST` methods do not support compartment searches. The `POST` method does not support
+                        /// `application/x-www-form-urlencoded` search parameters. On success, the response body
+                        /// contains a JSON-encoded representation of a `Bundle` resource of type `searchset`,
+                        /// containing the results of the search. Errors generated by the FHIR store contain a
+                        /// JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request
+                        /// cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be
+                        /// returned instead. The server's capability statement, retrieved through capabilities,
+                        /// indicates what search parameters are supported on each FHIR resource. A list of all search
+                        /// parameters defined by the specification can be found in the FHIR Search Parameter Registry
                         /// ([STU3](https://hl7.org/fhir/STU3/searchparameter-registry.html),
-                        /// [R4](https://hl7.org/fhir/R4/searchparameter-registry.html)). FHIR search parameters for
+                        /// [R4](https://hl7.org/fhir/R4/searchparameter-registry.html),
+                        /// [R5](https://hl7.org/fhir/R5/searchparameter-registry.html)). FHIR search parameters for
                         /// DSTU2 can be found on each resource's definition page. Supported search modifiers:
                         /// `:missing`, `:exact`, `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`,
-                        /// `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported search result
+                        /// `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4 and R5). Supported search result
                         /// parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`,
                         /// and `_elements`. The maximum number of search results returned defaults to 100, which can be
                         /// overridden by the `_count` parameter up to a maximum limit of 1000. The server might return
@@ -10494,29 +9614,31 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// parameters. Implements the FHIR standard search interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#search),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#search),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#search)) using the search semantics described in the
+                        /// [R4](https://hl7.org/fhir/R4/http.html#search),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#search)) using the search semantics described in the
                         /// FHIR Search specification ([DSTU2](https://hl7.org/fhir/DSTU2/search.html),
-                        /// [STU3](https://hl7.org/fhir/STU3/search.html), [R4](https://hl7.org/fhir/R4/search.html)).
-                        /// Supports four methods of search defined by the specification: * `GET [base]?[parameters]` to
-                        /// search across all resources. * `GET [base]/[type]?[parameters]` to search resources of a
-                        /// specified type. * `POST [base]/_search?[parameters]` as an alternate form having the same
-                        /// semantics as the `GET` method across all resources. * `POST
-                        /// [base]/[type]/_search?[parameters]` as an alternate form having the same semantics as the
-                        /// `GET` method for the specified type. The `GET` and `POST` methods do not support compartment
-                        /// searches. The `POST` method does not support `application/x-www-form-urlencoded` search
-                        /// parameters. On success, the response body contains a JSON-encoded representation of a
-                        /// `Bundle` resource of type `searchset`, containing the results of the search. Errors
-                        /// generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing
-                        /// the reason for the error. If the request cannot be mapped to a valid API method on a FHIR
-                        /// store, a generic GCP error might be returned instead. The server's capability statement,
-                        /// retrieved through capabilities, indicates what search parameters are supported on each FHIR
-                        /// resource. A list of all search parameters defined by the specification can be found in the
-                        /// FHIR Search Parameter Registry
+                        /// [STU3](https://hl7.org/fhir/STU3/search.html), [R4](https://hl7.org/fhir/R4/search.html),
+                        /// [R5](https://hl7.org/fhir/R5/search.html)). Supports four methods of search defined by the
+                        /// specification: * `GET [base]?[parameters]` to search across all resources. * `GET
+                        /// [base]/[type]?[parameters]` to search resources of a specified type. * `POST
+                        /// [base]/_search?[parameters]` as an alternate form having the same semantics as the `GET`
+                        /// method across all resources. * `POST [base]/[type]/_search?[parameters]` as an alternate
+                        /// form having the same semantics as the `GET` method for the specified type. The `GET` and
+                        /// `POST` methods do not support compartment searches. The `POST` method does not support
+                        /// `application/x-www-form-urlencoded` search parameters. On success, the response body
+                        /// contains a JSON-encoded representation of a `Bundle` resource of type `searchset`,
+                        /// containing the results of the search. Errors generated by the FHIR store contain a
+                        /// JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request
+                        /// cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be
+                        /// returned instead. The server's capability statement, retrieved through capabilities,
+                        /// indicates what search parameters are supported on each FHIR resource. A list of all search
+                        /// parameters defined by the specification can be found in the FHIR Search Parameter Registry
                         /// ([STU3](https://hl7.org/fhir/STU3/searchparameter-registry.html),
-                        /// [R4](https://hl7.org/fhir/R4/searchparameter-registry.html)). FHIR search parameters for
+                        /// [R4](https://hl7.org/fhir/R4/searchparameter-registry.html),
+                        /// [R5](https://hl7.org/fhir/R5/searchparameter-registry.html)). FHIR search parameters for
                         /// DSTU2 can be found on each resource's definition page. Supported search modifiers:
                         /// `:missing`, `:exact`, `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`,
-                        /// `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported search result
+                        /// `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4 and R5). Supported search result
                         /// parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`,
                         /// and `_elements`. The maximum number of search results returned defaults to 100, which can be
                         /// overridden by the `_count` parameter up to a maximum limit of 1000. The server might return
@@ -10550,7 +9672,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Optional. The FHIR resource type to search, such as Patient or Observation. For a complete
                         /// list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
                         /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-                        /// [R4](https://hl7.org/fhir/R4/resourcelist.html)).
+                        /// [R4](https://hl7.org/fhir/R4/resourcelist.html),
+                        /// [R5](https://hl7.org/fhir/R5/resourcelist.html)).
                         /// </param>
                         public virtual SearchTypeRequest SearchType(Google.Apis.CloudHealthcare.v1beta1.Data.SearchResourcesRequest body, string parent, string resourceType)
                         {
@@ -10562,29 +9685,31 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// parameters. Implements the FHIR standard search interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#search),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#search),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#search)) using the search semantics described in the
+                        /// [R4](https://hl7.org/fhir/R4/http.html#search),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#search)) using the search semantics described in the
                         /// FHIR Search specification ([DSTU2](https://hl7.org/fhir/DSTU2/search.html),
-                        /// [STU3](https://hl7.org/fhir/STU3/search.html), [R4](https://hl7.org/fhir/R4/search.html)).
-                        /// Supports four methods of search defined by the specification: * `GET [base]?[parameters]` to
-                        /// search across all resources. * `GET [base]/[type]?[parameters]` to search resources of a
-                        /// specified type. * `POST [base]/_search?[parameters]` as an alternate form having the same
-                        /// semantics as the `GET` method across all resources. * `POST
-                        /// [base]/[type]/_search?[parameters]` as an alternate form having the same semantics as the
-                        /// `GET` method for the specified type. The `GET` and `POST` methods do not support compartment
-                        /// searches. The `POST` method does not support `application/x-www-form-urlencoded` search
-                        /// parameters. On success, the response body contains a JSON-encoded representation of a
-                        /// `Bundle` resource of type `searchset`, containing the results of the search. Errors
-                        /// generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing
-                        /// the reason for the error. If the request cannot be mapped to a valid API method on a FHIR
-                        /// store, a generic GCP error might be returned instead. The server's capability statement,
-                        /// retrieved through capabilities, indicates what search parameters are supported on each FHIR
-                        /// resource. A list of all search parameters defined by the specification can be found in the
-                        /// FHIR Search Parameter Registry
+                        /// [STU3](https://hl7.org/fhir/STU3/search.html), [R4](https://hl7.org/fhir/R4/search.html),
+                        /// [R5](https://hl7.org/fhir/R5/search.html)). Supports four methods of search defined by the
+                        /// specification: * `GET [base]?[parameters]` to search across all resources. * `GET
+                        /// [base]/[type]?[parameters]` to search resources of a specified type. * `POST
+                        /// [base]/_search?[parameters]` as an alternate form having the same semantics as the `GET`
+                        /// method across all resources. * `POST [base]/[type]/_search?[parameters]` as an alternate
+                        /// form having the same semantics as the `GET` method for the specified type. The `GET` and
+                        /// `POST` methods do not support compartment searches. The `POST` method does not support
+                        /// `application/x-www-form-urlencoded` search parameters. On success, the response body
+                        /// contains a JSON-encoded representation of a `Bundle` resource of type `searchset`,
+                        /// containing the results of the search. Errors generated by the FHIR store contain a
+                        /// JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request
+                        /// cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be
+                        /// returned instead. The server's capability statement, retrieved through capabilities,
+                        /// indicates what search parameters are supported on each FHIR resource. A list of all search
+                        /// parameters defined by the specification can be found in the FHIR Search Parameter Registry
                         /// ([STU3](https://hl7.org/fhir/STU3/searchparameter-registry.html),
-                        /// [R4](https://hl7.org/fhir/R4/searchparameter-registry.html)). FHIR search parameters for
+                        /// [R4](https://hl7.org/fhir/R4/searchparameter-registry.html),
+                        /// [R5](https://hl7.org/fhir/R5/searchparameter-registry.html)). FHIR search parameters for
                         /// DSTU2 can be found on each resource's definition page. Supported search modifiers:
                         /// `:missing`, `:exact`, `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`,
-                        /// `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported search result
+                        /// `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4 and R5). Supported search result
                         /// parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`,
                         /// and `_elements`. The maximum number of search results returned defaults to 100, which can be
                         /// overridden by the `_count` parameter up to a maximum limit of 1000. The server might return
@@ -10632,7 +9757,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// complete list, see the FHIR Resource Index
                             /// ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
                             /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-                            /// [R4](https://hl7.org/fhir/R4/resourcelist.html)).
+                            /// [R4](https://hl7.org/fhir/R4/resourcelist.html),
+                            /// [R5](https://hl7.org/fhir/R5/resourcelist.html)).
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("resourceType", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ResourceType { get; private set; }
@@ -10679,7 +9805,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Updates the entire contents of a resource. Implements the FHIR standard update interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#update),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#update),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#update)). If the specified resource does not exist
+                        /// [R4](https://hl7.org/fhir/R4/http.html#update),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#update)). If the specified resource does not exist
                         /// and the FHIR store has enable_update_create set, creates the resource with the
                         /// client-specified ID. It is strongly advised not to include or encode any sensitive data such
                         /// as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR
@@ -10691,8 +9818,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// JSON-encoded representation of the updated resource, including the server-assigned version
                         /// ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource
                         /// describing the reason for the error. If the request cannot be mapped to a valid API method
-                        /// on a FHIR store, a generic GCP error might be returned instead. For samples that show how to
-                        /// call `update`, see [Updating a FHIR
+                        /// on a FHIR store, a generic GCP error might be returned instead. In R5, the conditional
+                        /// update interaction If-None-Match is supported, including the wildcard behaviour. For samples
+                        /// that show how to call `update`, see [Updating a FHIR
                         /// resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
@@ -10706,7 +9834,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Updates the entire contents of a resource. Implements the FHIR standard update interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#update),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#update),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#update)). If the specified resource does not exist
+                        /// [R4](https://hl7.org/fhir/R4/http.html#update),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#update)). If the specified resource does not exist
                         /// and the FHIR store has enable_update_create set, creates the resource with the
                         /// client-specified ID. It is strongly advised not to include or encode any sensitive data such
                         /// as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR
@@ -10718,8 +9847,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// JSON-encoded representation of the updated resource, including the server-assigned version
                         /// ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource
                         /// describing the reason for the error. If the request cannot be mapped to a valid API method
-                        /// on a FHIR store, a generic GCP error might be returned instead. For samples that show how to
-                        /// call `update`, see [Updating a FHIR
+                        /// on a FHIR store, a generic GCP error might be returned instead. In R5, the conditional
+                        /// update interaction If-None-Match is supported, including the wildcard behaviour. For samples
+                        /// that show how to call `update`, see [Updating a FHIR
                         /// resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
                         /// </summary>
                         public class UpdateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
@@ -10771,7 +9901,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Implements the FHIR standard vread interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#vread),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#vread),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#vread)). On success, the response body contains a
+                        /// [R4](https://hl7.org/fhir/R4/http.html#vread),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#vread)). On success, the response body contains a
                         /// JSON-encoded representation of the resource. Errors generated by the FHIR store contain a
                         /// JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request
                         /// cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be
@@ -10789,7 +9920,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// Implements the FHIR standard vread interaction
                         /// ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#vread),
                         /// [STU3](https://hl7.org/fhir/STU3/http.html#vread),
-                        /// [R4](https://hl7.org/fhir/R4/http.html#vread)). On success, the response body contains a
+                        /// [R4](https://hl7.org/fhir/R4/http.html#vread),
+                        /// [R5](https://hl7.org/fhir/R5/http.html#vread)). On success, the response body contains a
                         /// JSON-encoded representation of the resource. Errors generated by the FHIR store contain a
                         /// JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request
                         /// cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be
@@ -11000,7 +10132,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// resource contains an error or fails be be enforced for any reason, the method returns an error
                     /// instead of an Operation. No resources will be reindexed and the
                     /// `consent_config.enforced_admin_consents` field will be unchanged. To enforce a consent check for
-                    /// data access, `consent_config.access_enforced` must be set to true for the FhirStore.
+                    /// data access, `consent_config.access_enforced` must be set to true for the FhirStore. FHIR
+                    /// Consent is not supported in DSTU2 or R5.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -11024,7 +10157,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// resource contains an error or fails be be enforced for any reason, the method returns an error
                     /// instead of an Operation. No resources will be reindexed and the
                     /// `consent_config.enforced_admin_consents` field will be unchanged. To enforce a consent check for
-                    /// data access, `consent_config.access_enforced` must be set to true for the FhirStore.
+                    /// data access, `consent_config.access_enforced` must be set to true for the FhirStore. FHIR
+                    /// Consent is not supported in DSTU2 or R5.
                     /// </summary>
                     public class ApplyAdminConsentsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
@@ -11083,7 +10217,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// ApplyConsentsResponse additionally contains the number of resources that was reindexed. Errors
                     /// are logged to Cloud Logging (see [Viewing error logs in Cloud
                     /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). To enforce consent check
-                    /// for data access, `consent_config.access_enforced` must be set to true for the FhirStore.
+                    /// for data access, `consent_config.access_enforced` must be set to true for the FhirStore. FHIR
+                    /// Consent is not supported in DSTU2 or R5.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -11105,7 +10240,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// ApplyConsentsResponse additionally contains the number of resources that was reindexed. Errors
                     /// are logged to Cloud Logging (see [Viewing error logs in Cloud
                     /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). To enforce consent check
-                    /// for data access, `consent_config.access_enforced` must be set to true for the FhirStore.
+                    /// for data access, `consent_config.access_enforced` must be set to true for the FhirStore. FHIR
+                    /// Consent is not supported in DSTU2 or R5.
                     /// </summary>
                     public class ApplyConsentsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
@@ -11475,6 +10611,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="sourceStore">
                     /// Required. Source FHIR store resource name. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                    /// R5 stores are not supported.
                     /// </param>
                     public virtual DeidentifyRequest Deidentify(Google.Apis.CloudHealthcare.v1beta1.Data.DeidentifyFhirStoreRequest body, string sourceStore)
                     {
@@ -11501,6 +10638,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <summary>
                         /// Required. Source FHIR store resource name. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                        /// R5 stores are not supported.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("sourceStore", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string SourceStore { get; private set; }
@@ -11581,7 +10719,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// Explains all the permitted/denied actor, purpose and environment for a given resource.
+                    /// Explains all the permitted/denied actor, purpose and environment for a given resource. FHIR
+                    /// Consent is not supported in DSTU2 or R5.
                     /// </summary>
                     /// <param name="name">
                     /// Required. The name of the FHIR store to enforce, in the format
@@ -11593,7 +10732,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// Explains all the permitted/denied actor, purpose and environment for a given resource.
+                    /// Explains all the permitted/denied actor, purpose and environment for a given resource. FHIR
+                    /// Consent is not supported in DSTU2 or R5.
                     /// </summary>
                     public class ExplainDataAccessRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ExplainDataAccessResponse>
                     {
@@ -14495,7 +13635,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="sourceDataset">
                 /// Required. Source dataset resource name. For example,
-                /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
+                /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`. R5 FHIR stores are not
+                /// supported and will be skipped.
                 /// </param>
                 public virtual DeidentifyRequest Deidentify(Google.Apis.CloudHealthcare.v1beta1.Data.DeidentifyDatasetRequest body, string sourceDataset)
                 {
@@ -14522,7 +13663,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     /// <summary>
                     /// Required. Source dataset resource name. For example,
-                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`. R5 FHIR stores are not
+                    /// supported and will be skipped.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("sourceDataset", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string SourceDataset { get; private set; }
@@ -15502,106 +14644,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An annotation record.</summary>
-    public class Annotation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Details of the source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotationSource")]
-        public virtual AnnotationSource AnnotationSource { get; set; }
-
-        /// <summary>
-        /// Additional information for this annotation record, such as annotator and verifier information or study
-        /// campaign.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customData")]
-        public virtual System.Collections.Generic.IDictionary<string, string> CustomData { get; set; }
-
-        /// <summary>Annotations for images. For example, bounding polygons.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageAnnotation")]
-        public virtual ImageAnnotation ImageAnnotation { get; set; }
-
-        /// <summary>
-        /// Identifier. Resource name of the Annotation, of the form
-        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Annotations for resource. For example, classification tags.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceAnnotation")]
-        public virtual ResourceAnnotation ResourceAnnotation { get; set; }
-
-        /// <summary>
-        /// Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textAnnotation")]
-        public virtual SensitiveTextAnnotation TextAnnotation { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Specifies how to store annotations during de-identification operation.</summary>
-    public class AnnotationConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The name of the annotation store, in the form
-        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`).
-        /// * The destination annotation store must be in the same project as the source data. De-identifying data
-        /// across multiple projects is not supported. * The destination annotation store must exist when using
-        /// DeidentifyDicomStore or DeidentifyFhirStore. DeidentifyDataset automatically creates the destination
-        /// annotation store.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotationStoreName")]
-        public virtual string AnnotationStoreName { get; set; }
-
-        /// <summary>
-        /// If set to true, the sensitive texts are included in SensitiveTextAnnotation of Annotation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("storeQuote")]
-        public virtual System.Nullable<bool> StoreQuote { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>AnnotationSource holds the source information of the annotation.</summary>
-    public class AnnotationSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Cloud Healthcare API resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cloudHealthcareSource")]
-        public virtual CloudHealthcareSource CloudHealthcareSource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// An Annotation store that can store annotation resources such as labels and tags for text, image and audio.
-    /// </summary>
-    public class AnnotationStore : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. User-supplied key-value pairs used to organize Annotation stores. Label keys must be between 1 and
-        /// 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE
-        /// regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8
-        /// encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>
-        /// Identifier. Resource name of the Annotation store, of the form
-        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Contains the error details of the unsupported admin Consent resources for when the ApplyAdminConsents method
     /// fails to apply one or more Consent resources.
@@ -16041,21 +15083,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A bounding polygon for the detected image annotation.</summary>
-    public class BoundingPoly : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A description of this polygon.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; }
-
-        /// <summary>List of the vertices of this polygon.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vertices")]
-        public virtual System.Collections.Generic.IList<Vertex> Vertices { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The configuration for exporting to Cloud Storage using the bulk export API.</summary>
     public class BulkExportGcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16186,17 +15213,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// </summary>
     public class CleanTextTag : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Cloud Healthcare API resource.</summary>
-    public class CloudHealthcareSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Full path of a Cloud Healthcare API resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -16735,13 +15751,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class DeidentifyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Configures how annotations, meaning that the location and infoType of sensitive information findings, are
-        /// created during de-identification. If unspecified, no annotations are created.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotation")]
-        public virtual AnnotationConfig Annotation { get; set; }
-
-        /// <summary>
         /// Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dicom")]
@@ -16916,16 +15925,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Delete tag.</summary>
     public class DeleteTag : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Contains multiple sensitive information findings for each resource slice.</summary>
-    public class Detail : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("findings")]
-        public virtual System.Collections.Generic.IList<Finding> Findings { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -17211,63 +16210,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to evaluate an Annotation store against a ground truth [Annotation store].</summary>
-    public class EvaluateAnnotationStoreRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The BigQuery table where the server writes the output. BigQueryDestination requires the
-        /// `roles/bigquery.dataEditor` and `roles/bigquery.jobUser` Cloud IAM roles.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
-        public virtual GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination BigqueryDestination { get; set; }
-
-        /// <summary>
-        /// Optional. InfoType mapping for `eval_store`. Different resources can map to the same infoType. For example,
-        /// `PERSON_NAME`, `PERSON`, `NAME`, and `HUMAN` are different. To map all of these into a single infoType (such
-        /// as `PERSON_NAME`), specify the following mapping:
-        /// ```
-        /// info_type_mapping["PERSON"] = "PERSON_NAME"
-        /// info_type_mapping["NAME"] = "PERSON_NAME" info_type_mapping["HUMAN"] = "PERSON_NAME"
-        /// ```
-        /// Unmentioned
-        /// infoTypes, such as `DATE`, are treated as identity mapping. For example:
-        /// ```
-        /// info_type_mapping["DATE"] =
-        /// "DATE"
-        /// ```
-        /// InfoTypes are case-insensitive.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("evalInfoTypeMapping")]
-        public virtual System.Collections.Generic.IDictionary<string, string> EvalInfoTypeMapping { get; set; }
-
-        /// <summary>Optional. Similar to `eval_info_type_mapping`, infoType mapping for `golden_store`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("goldenInfoTypeMapping")]
-        public virtual System.Collections.Generic.IDictionary<string, string> GoldenInfoTypeMapping { get; set; }
-
-        /// <summary>
-        /// Required. The Annotation store to use as ground truth, in the format of
-        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("goldenStore")]
-        public virtual string GoldenStore { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("infoTypeConfig")]
-        public virtual InfoTypeConfig InfoTypeConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Response for successful Annotation store evaluation operations. This structure is included in the response upon
-    /// operation completion.
-    /// </summary>
-    public class EvaluateAnnotationStoreResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Evaluate a user's Consents for all matching User data mappings. Note: User data mappings are indexed
     /// asynchronously, causing slight delays between the time mappings are created or updated and when they are
@@ -17464,39 +16406,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
         public virtual string Warning { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Request to export Annotations. The export operation is not atomic. If a failure occurs, any annotations already
-    /// exported are not removed.
-    /// </summary>
-    public class ExportAnnotationsRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The BigQuery output destination, which requires two IAM roles: `roles/bigquery.dataEditor` and
-        /// `roles/bigquery.jobUser`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
-        public virtual GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination BigqueryDestination { get; set; }
-
-        /// <summary>
-        /// The Cloud Storage destination, which requires the `roles/storage.objectAdmin` Cloud IAM role.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
-        public virtual GoogleCloudHealthcareV1beta1AnnotationGcsDestination GcsDestination { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Response for successful annotation export operations. This structure is included in response upon operation
-    /// completion.
-    /// </summary>
-    public class ExportAnnotationsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -17966,14 +16875,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// this flag has not been specified the behavior of the FHIR store will not change, references in complex data
         /// types will not be parsed. New stores will have this value set to ENABLED after a notification period.
         /// Warning: turning on this flag causes processing existing resources to fail if they contain references to
-        /// non-existent resources.
+        /// non-existent resources. Cannot be disabled in R5.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complexDataTypeReferenceParsing")]
         public virtual string ComplexDataTypeReferenceParsing { get; set; }
 
         /// <summary>
         /// Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to
-        /// absence of Consent resources.
+        /// absence of Consent resources. Not supported for R5 FHIR version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentConfig")]
         public virtual ConsentConfig ConsentConfig { get; set; }
@@ -18049,7 +16958,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>
         /// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this
         /// FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the
-        /// action that has triggered the notification. For example, "action":"CreateResource".
+        /// action that has triggered the notification. For example, "action":"CreateResource". Not supported in R5. Use
+        /// `notification_configs` instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual NotificationConfig NotificationConfig { get; set; }
@@ -18187,46 +17097,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>List of infoTypes to be filtered.</summary>
-    public class FilterList : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// These infoTypes are based on after the `eval_info_type_mapping` and `golden_info_type_mapping`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
-        public virtual System.Collections.Generic.IList<string> InfoTypes { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Finding : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Zero-based ending index of the found text, exclusively.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("end")]
-        public virtual System.Nullable<long> End { get; set; }
-
-        /// <summary>
-        /// The type of information stored in this text range. For example, HumanName, BirthDate, or Address.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
-        public virtual string InfoType { get; set; }
-
-        /// <summary>
-        /// The snippet of the sensitive text. This field is only populated during deidentification if `store_quote` is
-        /// set to true in DeidentifyConfig.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("quote")]
-        public virtual string Quote { get; set; }
-
-        /// <summary>Zero-based starting index of the found text, inclusively.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("start")]
-        public virtual System.Nullable<long> Start { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// The Cloud Storage output destination. The Cloud Healthcare Service Agent requires the
     /// `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage location.
@@ -18267,75 +17137,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// in the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory/**.ndjson`
         /// imports all files with `.ndjson` extensions in `my-directory/` and its sub-directories. * `?` to match 1
         /// character Files matching the wildcard are expected to contain content only, no metadata.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The BigQuery table for export.</summary>
-    public class GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false
-        /// is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to
-        /// write_disposition=WRITE_TRUNCATE.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("force")]
-        public virtual System.Nullable<bool> Force { get; set; }
-
-        /// <summary>Specifies the schema format to export.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("schemaType")]
-        public virtual string SchemaType { get; set; }
-
-        /// <summary>
-        /// BigQuery URI to a table, up to 2000 characters long, must be of the form bq://projectId.bqDatasetId.tableId.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tableUri")]
-        public virtual string TableUri { get; set; }
-
-        /// <summary>
-        /// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the
-        /// tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
-        public virtual string WriteDisposition { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The Cloud Storage location for export.</summary>
-    public class GoogleCloudHealthcareV1beta1AnnotationGcsDestination : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The Cloud Storage destination to export to. URI for a Cloud Storage directory where the server writes result
-        /// files, in the format `gs://{bucket-id}/{path/to/destination/dir}`. If there is no trailing slash, the
-        /// service appends one when composing the object path. The user is responsible for creating the Cloud Storage
-        /// bucket referenced in `uri_prefix`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uriPrefix")]
-        public virtual string UriPrefix { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Specifies the configuration for importing data from Cloud Storage.</summary>
-    public class GoogleCloudHealthcareV1beta1AnnotationGcsSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Points to a Cloud Storage URI containing file(s) with content only. The URI must be in the following format:
-        /// `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify multiple
-        /// files. Supported wildcards: '*' to match 0 or more non-separator characters '**' to match 0 or more
-        /// characters (including separators). Must be used at the end of a path and with no other wildcards in the
-        /// path. Can also be used with a file extension (such as .dcm), which imports all files with the extension in
-        /// the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory/**.json` imports
-        /// all files with .json extensions in `my-directory/` and its sub-directories. '?' to match 1 character All
-        /// other URI formats are invalid. Files matching the wildcard are expected to contain content only, no
-        /// metadata.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -18988,21 +17789,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Image annotation.</summary>
-    public class ImageAnnotation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of polygons outlining the sensitive regions in the image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("boundingPolys")]
-        public virtual System.Collections.Generic.IList<BoundingPoly> BoundingPolys { get; set; }
-
-        /// <summary>0-based index of the image frame. For example, an image frame in a DICOM instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("frameIndex")]
-        public virtual System.Nullable<int> FrameIndex { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Specifies how to handle de-identification of image pixels.</summary>
     public class ImageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19025,30 +17811,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textRedactionMode")]
         public virtual string TextRedactionMode { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Request to import Annotations. The Annotations to be imported must have client-supplied resource names which
-    /// indicate the annotation resource. The import operation is not atomic. If a failure occurs, any annotations
-    /// already imported are not removed.
-    /// </summary>
-    public class ImportAnnotationsRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
-        public virtual GoogleCloudHealthcareV1beta1AnnotationGcsSource GcsSource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Final response of importing Annotations in successful case. This structure is included in the response. It is
-    /// only included when the operation finishes.
-    /// </summary>
-    public class ImportAnnotationsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -19152,34 +17914,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudHealthcareV1beta1FhirGcsSource GcsSource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Specifies how to use infoTypes for evaluation. For example, a user might only want to evaluate `PERSON`,
-    /// `LOCATION`, and `AGE`.
-    /// </summary>
-    public class InfoTypeConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("evaluateList")]
-        public virtual FilterList EvaluateList { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("ignoreList")]
-        public virtual FilterList IgnoreList { get; set; }
-
-        /// <summary>
-        /// If `TRUE`, infoTypes described by `filter` are used for evaluation. Otherwise, infoTypes are not considered
-        /// for evaluation. For example: * Annotated text: "Toronto is a location" * Finding 1: `{"infoType": "PERSON",
-        /// "quote": "Toronto", "start": 0, "end": 7}` * Finding 2: `{"infoType": "CITY", "quote": "Toronto", "start":
-        /// 0, "end": 7}` * Finding 3: `{}` * Ground truth: `{"infoType": "LOCATION", "quote": "Toronto", "start": 0,
-        /// "end": 7}` When `strict_matching` is `TRUE`: * Finding 1: 1 false positive * Finding 2: 1 false positive *
-        /// Finding 3: 1 false negative When `strict_matching` is `FALSE`: * Finding 1: 1 true positive * Finding 2: 1
-        /// true positive * Finding 3: 1 false negative
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("strictMatching")]
-        public virtual System.Nullable<bool> StrictMatching { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19306,45 +18040,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
         public virtual string EntityId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Lists the Annotation stores in the given dataset.</summary>
-    public class ListAnnotationStoresResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The returned Annotation stores. Won't be more Annotation stores than the value of page_size in the request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotationStores")]
-        public virtual System.Collections.Generic.IList<AnnotationStore> AnnotationStores { get; set; }
-
-        /// <summary>
-        /// Token to retrieve the next page of results or empty if there are no more results in the list.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Lists the Annotations in the specified Annotation store.</summary>
-    public class ListAnnotationsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The returned Annotations. Won't be more values than the value of page_size in the request. See
-        /// `AnnotationView` in the request for populated fields.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
-        public virtual System.Collections.Generic.IList<Annotation> Annotations { get; set; }
-
-        /// <summary>
-        /// Token to retrieve the next page of results or empty if there are no more results in the list.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20278,17 +18973,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource level annotation.</summary>
-    public class ResourceAnnotation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A description of the annotation record.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A list of FHIR resources.</summary>
     public class Resources : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20719,7 +19403,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>
         /// Optional. The FHIR resource type to search, such as Patient or Observation. For a complete list, see the
         /// FHIR Resource Index ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html),
-        /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html), [R4](https://hl7.org/fhir/R4/resourcelist.html)).
+        /// [STU3](https://hl7.org/fhir/STU3/resourcelist.html), [R4](https://hl7.org/fhir/R4/resourcelist.html),
+        /// [R5](https://hl7.org/fhir/R5/resourcelist.html)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
@@ -20752,20 +19437,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setId")]
         public virtual string SetId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A TextAnnotation specifies a text range that includes sensitive information.</summary>
-    public class SensitiveTextAnnotation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For
-        /// example, Appointment.Narrative text1 --&amp;gt; {findings_1, findings_2, findings_3}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IDictionary<string, Detail> Details { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20998,7 +19669,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// The destination store must set enable_update_create to true. The destination store must have
         /// disable_referential_integrity set to true. If a resource cannot be de-identified, errors will be logged to
         /// Cloud Logging (see [Viewing error logs in Cloud
-        /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+        /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Not supported for R5 stores.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifiedStoreDestination")]
         public virtual DeidentifiedStoreDestination DeidentifiedStoreDestination { get; set; }
@@ -21339,21 +20010,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>The value to match with the field. For example, "My Application Name" or "2.3".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A 2D coordinate in an image. The origin is the top-left.</summary>
-    public class Vertex : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>X coordinate.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("x")]
-        public virtual System.Nullable<float> X { get; set; }
-
-        /// <summary>Y coordinate.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("y")]
-        public virtual System.Nullable<float> Y { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
