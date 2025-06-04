@@ -1726,8 +1726,9 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GoogleCloudAiplatformV1beta1GroundingSupport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence score of the support references. Ranges from 0 to 1. 1 is the most confident. This list must have
-        /// the same size as the grounding_chunk_indices.
+        /// Confidence score of the support references. Ranges from 0 to 1. 1 is the most confident. For Gemini 2.0 and
+        /// before, this list must have the same size as the grounding_chunk_indices. For Gemini 2.5 and after, this
+        /// list will be empty and should be ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidenceScores")]
         public virtual System.Collections.Generic.IList<System.Nullable<float>> ConfidenceScores { get; set; }
@@ -1853,7 +1854,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
-        /// <summary>Output only. Indicates if the part is thought from the model.</summary>
+        /// <summary>Optional. Indicates if the part is thought from the model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thought")]
         public virtual System.Nullable<bool> Thought { get; set; }
 
@@ -2366,6 +2367,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retrieval")]
         public virtual GoogleCloudAiplatformV1beta1Retrieval Retrieval { get; set; }
 
+        /// <summary>Optional. Tool to support URL context retrieval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlContext")]
+        public virtual GoogleCloudAiplatformV1beta1UrlContext UrlContext { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2408,6 +2413,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
 
     /// <summary>GoogleSearch tool type. Tool to support Google Search in Model. Powered by Google.</summary>
     public class GoogleCloudAiplatformV1beta1ToolGoogleSearch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tool to support URL context.</summary>
+    public class GoogleCloudAiplatformV1beta1UrlContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
