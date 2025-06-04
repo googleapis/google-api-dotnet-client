@@ -21701,6 +21701,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual GoogleCloudDataplexV1Entry Entry { get; set; }
 
         /// <summary>
+        /// Information about the entry link. User should provide either one of the entry or entry_link. While providing
+        /// entry_link, user should not provide update_mask and aspect_keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryLink")]
+        public virtual GoogleCloudDataplexV1EntryLink EntryLink { get; set; }
+
+        /// <summary>
         /// The fields to update, in paths that are relative to the Entry resource. Separate each field with a comma.In
         /// FULL entry sync mode, Dataplex includes the paths of all of the fields for an entry that can be modified,
         /// including aspects. This means that Dataplex replaces the existing entry with the entry in the metadata
@@ -22872,9 +22879,17 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createdEntries")]
         public virtual System.Nullable<long> CreatedEntries { get; set; }
 
+        /// <summary>Output only. The total number of entry links that were successfully created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdEntryLinks")]
+        public virtual System.Nullable<long> CreatedEntryLinks { get; set; }
+
         /// <summary>Output only. The total number of entries that were deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedEntries")]
         public virtual System.Nullable<long> DeletedEntries { get; set; }
+
+        /// <summary>Output only. The total number of entry links that were successfully deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedEntryLinks")]
+        public virtual System.Nullable<long> DeletedEntryLinks { get; set; }
 
         /// <summary>Output only. The total number of entries that were recreated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recreatedEntries")]
@@ -22883,6 +22898,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Output only. The total number of entries that were unchanged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unchangedEntries")]
         public virtual System.Nullable<long> UnchangedEntries { get; set; }
+
+        /// <summary>Output only. The total number of entry links that were left unchanged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unchangedEntryLinks")]
+        public virtual System.Nullable<long> UnchangedEntryLinks { get; set; }
 
         private string _updateTimeRaw;
 
@@ -23039,6 +23058,16 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Collections.Generic.IList<string> EntryGroups { get; set; }
 
         /// <summary>
+        /// Optional. The entry link types that are in scope for the import job, specified as relative resource names in
+        /// the format projects/{project_number_or_id}/locations/{location_id}/entryLinkTypes/{entry_link_type_id}. The
+        /// job modifies only the entryLinks that belong to these entry link types.If the metadata import file attempts
+        /// to create or delete an entry link whose entry link type isn't included in this list, the import job will
+        /// skip those entry links.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryLinkTypes")]
+        public virtual System.Collections.Generic.IList<string> EntryLinkTypes { get; set; }
+
+        /// <summary>
         /// Required. The entry types that are in scope for the import job, specified as relative resource names in the
         /// format projects/{project_number_or_id}/locations/{location_id}/entryTypes/{entry_type_id}. The job modifies
         /// only the entries and aspects that belong to these entry types.If the metadata import file attempts to modify
@@ -23048,6 +23077,26 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryTypes")]
         public virtual System.Collections.Generic.IList<string> EntryTypes { get; set; }
+
+        /// <summary>
+        /// Optional. The glossaries that are in scope for the import job, specified as relative resource names in the
+        /// format projects/{project_number_or_id}/locations/{location_id}/glossaries/{glossary_id}.While importing
+        /// Business Glossary entries, the user must provide glossaries. While importing entries, the user does not have
+        /// to provide glossaries. If the metadata import file attempts to modify Business Glossary entries whose
+        /// glossary isn't included in this list, the import job will skip those entries.The location of a glossary must
+        /// either match the location of the job, or the glossary must be global.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glossaries")]
+        public virtual System.Collections.Generic.IList<string> Glossaries { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the scope of entries that can be referenced in the entry links.Currently, projects are
+        /// supported as valid scopes. Format: projects/{project_number_or_id}If the metadata import file attempts to
+        /// create an entry link which references an entry that is not in the scope, the import job will skip that entry
+        /// link.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referencedEntryScopes")]
+        public virtual System.Collections.Generic.IList<string> ReferencedEntryScopes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
