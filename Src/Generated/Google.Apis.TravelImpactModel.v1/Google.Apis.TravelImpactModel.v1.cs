@@ -443,8 +443,7 @@ namespace Google.Apis.TravelImpactModel.v1.Data
     {
         /// <summary>
         /// Optional. Per-passenger emission estimate numbers. Will not be present if emissions could not be computed.
-        /// For the list of reasons why emissions could not be computed, see ComputeFlightEmissions. This field uses wtw
-        /// emissions aka ttw_emissions_grams_per_pax + wtt_emissions_grams_per_pax.
+        /// For the list of reasons why emissions could not be computed, see ComputeFlightEmissions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emissionsGramsPerPax")]
         public virtual EmissionsGramsPerPax EmissionsGramsPerPax { get; set; }
