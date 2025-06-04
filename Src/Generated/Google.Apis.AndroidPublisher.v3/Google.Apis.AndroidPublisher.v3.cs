@@ -16192,7 +16192,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     public class RevocationContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Used when users should be refunded the full amount of the latest order of the subscription.
+        /// Optional. Used when users should be refunded the full amount of latest charge on each item in the
+        /// subscription.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullRefund")]
         public virtual RevocationContextFullRefund FullRefund { get; set; }
