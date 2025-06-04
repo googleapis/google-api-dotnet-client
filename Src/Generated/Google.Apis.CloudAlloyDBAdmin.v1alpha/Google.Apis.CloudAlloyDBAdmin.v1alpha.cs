@@ -4742,6 +4742,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("poolMode")]
         public virtual string PoolMode { get; set; }
 
+        /// <summary>Output only. The number of running poolers per instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("poolerCount")]
+        public virtual System.Nullable<int> PoolerCount { get; set; }
+
         /// <summary>
         /// Optional. Deprecated. Use 'flags' instead. The maximum number of seconds queries are allowed to spend
         /// waiting for execution. If the query is not assigned to a server during that time, the client is
@@ -6063,6 +6067,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("trackActiveQueries")]
         public virtual System.Nullable<bool> TrackActiveQueries { get; set; }
 
+        /// <summary>Track client address for an instance. If not set, default value is "off".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackClientAddress")]
+        public virtual System.Nullable<bool> TrackClientAddress { get; set; }
+
         /// <summary>
         /// Output only. Track wait event types during query execution for an instance. This flag is turned "on" by
         /// default but tracking is enabled only after observability enabled flag is also turned on. This is read-only
@@ -7137,7 +7145,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance,
         /// spanner.googleapis.com/Instance, spanner.googleapis.com/Database, firestore.googleapis.com/Database,
         /// sqladmin.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster,
-        /// bigtableadmin.googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel
+        /// bigtableadmin.googleapis.com/Instance oracledatabase.googleapis.com/cloudExadataInfrastructures
+        /// oracledatabase.googleapis.com/cloudVmClusters oracledatabase.googleapis.com/autonomousDatabases REQUIRED
+        /// Please refer go/condor-common-datamodel
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
