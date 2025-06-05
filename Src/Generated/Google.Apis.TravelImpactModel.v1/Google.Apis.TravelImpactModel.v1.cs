@@ -312,6 +312,61 @@ namespace Google.Apis.TravelImpactModel.v1
                 base.InitParameters();
             }
         }
+
+        /// <summary>
+        /// Retrieves typical flight emissions estimates between two airports, also known as a market. If there are no
+        /// estimates available for a certain market, the response will return the market object with empty emission
+        /// fields. The request will still be considered successful. Details on how the typical emissions estimates are
+        /// computed are on
+        /// [GitHub](https://github.com/google/travel-impact-model/blob/main/projects/typical_flight_emissions.md). The
+        /// request can contain up to 1000 markets. If the request has more than 1000 markets, it will fail with an
+        /// INVALID_ARGUMENT error.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual ComputeTypicalFlightEmissionsRequest ComputeTypicalFlightEmissions(Google.Apis.TravelImpactModel.v1.Data.ComputeTypicalFlightEmissionsRequest body)
+        {
+            return new ComputeTypicalFlightEmissionsRequest(this.service, body);
+        }
+
+        /// <summary>
+        /// Retrieves typical flight emissions estimates between two airports, also known as a market. If there are no
+        /// estimates available for a certain market, the response will return the market object with empty emission
+        /// fields. The request will still be considered successful. Details on how the typical emissions estimates are
+        /// computed are on
+        /// [GitHub](https://github.com/google/travel-impact-model/blob/main/projects/typical_flight_emissions.md). The
+        /// request can contain up to 1000 markets. If the request has more than 1000 markets, it will fail with an
+        /// INVALID_ARGUMENT error.
+        /// </summary>
+        public class ComputeTypicalFlightEmissionsRequest : TravelImpactModelBaseServiceRequest<Google.Apis.TravelImpactModel.v1.Data.ComputeTypicalFlightEmissionsResponse>
+        {
+            /// <summary>Constructs a new ComputeTypicalFlightEmissions request.</summary>
+            public ComputeTypicalFlightEmissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.TravelImpactModel.v1.Data.ComputeTypicalFlightEmissionsRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.TravelImpactModel.v1.Data.ComputeTypicalFlightEmissionsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "computeTypicalFlightEmissions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/flights:computeTypicalFlightEmissions";
+
+            /// <summary>Initializes ComputeTypicalFlightEmissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
     }
 }
 namespace Google.Apis.TravelImpactModel.v1.Data
@@ -339,6 +394,38 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
         public virtual ModelVersion ModelVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of pair of airports (markets) to request the typical emissions for.</summary>
+    public class ComputeTypicalFlightEmissionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Request the typical flight emissions estimates for this market pair. A maximum of 1000 markets can
+        /// be requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("markets")]
+        public virtual System.Collections.Generic.IList<Market> Markets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response includes the emissions but also the model version.</summary>
+    public class ComputeTypicalFlightEmissionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The model version under which typical flight emission estimates for all flights in this response were
+        /// computed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual ModelVersion ModelVersion { get; set; }
+
+        /// <summary>Market's Typical Flight Emissions requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typicalFlightEmissions")]
+        public virtual System.Collections.Generic.IList<TypicalFlightEmissions> TypicalFlightEmissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -458,6 +545,21 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A pair of airports.</summary>
+    public class Market : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. IATA airport code for flight destination, e.g. "JFK".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; }
+
+        /// <summary>Required. IATA airport code for flight origin, e.g. "LHR".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("origin")]
+        public virtual string Origin { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Travel Impact Model version. For more information about the model versioning see
     /// https://github.com/google/travel-impact-model/#versioning.
@@ -492,6 +594,23 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patch")]
         public virtual System.Nullable<int> Patch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Typical flight emission estimates for a certain market</summary>
+    public class TypicalFlightEmissions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Typical flight emissions per passenger for requested market.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emissionsGramsPerPax")]
+        public virtual EmissionsGramsPerPax EmissionsGramsPerPax { get; set; }
+
+        /// <summary>
+        /// Required. Matches the flight identifiers in the request. Note: all IATA codes are capitalized.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("market")]
+        public virtual Market Market { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
