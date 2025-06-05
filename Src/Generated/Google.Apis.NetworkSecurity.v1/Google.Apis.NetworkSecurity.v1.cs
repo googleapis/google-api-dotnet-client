@@ -11860,6 +11860,12 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     public class AuthzPolicyAuthzRuleFromRequestSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. A list of IPs or CIDRs to match against the source IP of a request. Limited to 5 ip_blocks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipBlocks")]
+        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleIpBlock> IpBlocks { get; set; }
+
+        /// <summary>
         /// Optional. A list of resources to match against the resource of the source VM of a request. Limited to 5
         /// resources.
         /// </summary>
@@ -11880,6 +11886,21 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         /// <summary>Optional. Specifies how the header match will be performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual AuthzPolicyAuthzRuleStringMatch Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a range of IP Addresses.</summary>
+    public class AuthzPolicyAuthzRuleIpBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The length of the address range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual System.Nullable<int> Length { get; set; }
+
+        /// <summary>Required. The address prefix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
+        public virtual string Prefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
