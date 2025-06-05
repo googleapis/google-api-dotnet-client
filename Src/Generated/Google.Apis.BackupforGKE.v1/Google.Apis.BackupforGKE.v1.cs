@@ -5575,6 +5575,12 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selectedApplications")]
         public virtual NamespacedNames SelectedApplications { get; set; }
 
+        /// <summary>
+        /// Output only. If set, the list of labels whose constituent namespaces were included in the Backup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedNamespaceLabels")]
+        public virtual ResourceLabels SelectedNamespaceLabels { get; set; }
+
         /// <summary>Output only. If set, the list of namespaces that were included in the Backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedNamespaces")]
         public virtual Namespaces SelectedNamespaces { get; set; }
@@ -5812,6 +5818,10 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// <summary>If set, include just the resources referenced by the listed ProtectedApplications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedApplications")]
         public virtual NamespacedNames SelectedApplications { get; set; }
+
+        /// <summary>If set, the list of labels whose constituent namespaces were included in the Backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedNamespaceLabels")]
+        public virtual ResourceLabels SelectedNamespaceLabels { get; set; }
 
         /// <summary>If set, include just the resources in the listed namespaces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedNamespaces")]
@@ -6806,6 +6816,21 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A single Kubernetes label-value pair.</summary>
+    public class Label : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The key/name of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Optional. The value of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListBackupChannels.</summary>
     public class ListBackupChannelsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7314,6 +7339,17 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaces")]
         public virtual System.Collections.Generic.IList<string> Namespaces { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of Kubernetes labels.</summary>
+    public class ResourceLabels : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of Kubernetes label-value pairs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
+        public virtual System.Collections.Generic.IList<Label> ResourceLabelsValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
