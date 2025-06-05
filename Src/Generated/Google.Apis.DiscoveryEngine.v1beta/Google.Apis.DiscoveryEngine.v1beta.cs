@@ -490,7 +490,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                 /// <param name="name">
                 /// Required. The name of the CmekConfig of the form
                 /// `projects/{project}/locations/{location}/cmekConfig` or
-                /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+                /// `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaCmekConfig body, string name)
                 {
@@ -515,7 +515,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <summary>
                     /// Required. The name of the CmekConfig of the form
                     /// `projects/{project}/locations/{location}/cmekConfig` or
-                    /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+                    /// `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -18707,7 +18707,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The name of the CmekConfig of the form `projects/{project}/locations/{location}/cmekConfig` or
-            /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+            /// `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`.
             /// </param>
             public virtual UpdateCmekConfigRequest UpdateCmekConfig(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaCmekConfig body, string name)
             {
@@ -18732,7 +18732,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                 /// <summary>
                 /// Required. The name of the CmekConfig of the form
                 /// `projects/{project}/locations/{location}/cmekConfig` or
-                /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+                /// `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -19768,6 +19768,113 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the UserLicenseService.BatchUpdateUserLicenses operation. This will be
+    /// returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Count of user licenses that failed to be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of user licenses successfully updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for UserLicenseService.BatchUpdateUserLicenses method.</summary>
+    public class GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>UserLicenses successfully updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLicenses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1UserLicense> UserLicenses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configurations used to enable CMEK data encryption with Cloud KMS keys.</summary>
     public class GoogleCloudDiscoveryengineV1CmekConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19794,7 +19901,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Required. The name of the CmekConfig of the form `projects/{project}/locations/{location}/cmekConfig` or
-        /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+        /// `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -24443,6 +24550,151 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>User License information assigned by the admin.</summary>
+    public class GoogleCloudDiscoveryengineV1UserLicense : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. User created timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _lastLoginTimeRaw;
+
+        private object _lastLoginTime;
+
+        /// <summary>
+        /// Output only. User last logged in time. If the user has not logged in yet, this field will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastLoginTime")]
+        public virtual string LastLoginTimeRaw
+        {
+            get => _lastLoginTimeRaw;
+            set
+            {
+                _lastLoginTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastLoginTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastLoginTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastLoginTimeDateTimeOffset instead.")]
+        public virtual object LastLoginTime
+        {
+            get => _lastLoginTime;
+            set
+            {
+                _lastLoginTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastLoginTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastLoginTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastLoginTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastLoginTimeRaw);
+            set => LastLoginTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. License assignment state of the user. If the user is assigned with a license config, the user
+        /// loggin will be assigned with the license; If the user's license assignment state is unassigned or
+        /// unspecified, no license config will be associated to the user;
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseAssignmentState")]
+        public virtual string LicenseAssignmentState { get; set; }
+
+        /// <summary>Optional. The full resource name of the Subscription(LicenseConfig) assigned to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConfig")]
+        public virtual string LicenseConfig { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. User update timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. Immutable. The user principal of the User, could be email address or other prinical identifier.
+        /// This field is immutable. Admin assign licenses based on the user principal.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPrincipal")]
+        public virtual string UserPrincipal { get; set; }
+
+        /// <summary>
+        /// Optional. The user profile. We user user full name(First name + Last name) as user profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProfile")]
+        public virtual string UserProfile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Config to store data store type configuration for workspace data</summary>
     public class GoogleCloudDiscoveryengineV1WorkspaceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25367,7 +25619,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Required. The name of the CmekConfig of the form `projects/{project}/locations/{location}/cmekConfig` or
-        /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+        /// `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -26757,14 +27009,15 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Optional. The refresh interval specifically for incremental data syncs. If unset, incremental syncs will use
-        /// the default from env, set to 3hrs. The minimum is 30 minutes and maximum is 7 days.
+        /// the default from env, set to 3hrs. The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
+        /// connectors.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("incrementalRefreshInterval")]
         public virtual object IncrementalRefreshInterval { get; set; }
 
         /// <summary>
         /// Optional. Indicates whether incremental syncs are paused for this connector. This is independent of
-        /// auto_run_disabled.
+        /// auto_run_disabled. Applicable to only 3P connectors.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("incrementalSyncDisabled")]
         public virtual System.Nullable<bool> IncrementalSyncDisabled { get; set; }
@@ -29159,7 +29412,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Describes the specification of the evaluation.</summary>
     public class GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The specification of the query set.</summary>
+        /// <summary>Optional. The specification of the query set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("querySetSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpecQuerySetSpec QuerySetSpec { get; set; }
 
@@ -29181,7 +29434,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpecQuerySetSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The full resource name of the SampleQuerySet used for the evaluation, in the format of
+        /// Optional. The full resource name of the SampleQuerySet used for the evaluation, in the format of
         /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleQuerySet")]
@@ -32452,6 +32705,18 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual GoogleCloudDiscoveryengineV1alphaQuery Query { get; set; }
 
+        /// <summary>
+        /// Optional. Represents metadata related to the query config, for example LLM model and version used, model
+        /// parameters (temperature, grounding parameters, etc.). We don't want to import directly the
+        /// [AnswerGenerationSpec] structure as this will serve a more general purpose and a wider set of customers.
+        /// This information is used in particular when rendering alternative answers to the same prompt, providing
+        /// visual information about how each answer was generated. The prefix "google." will be reserved for the key,
+        /// and 1P services (Answer, Assistant, etc.) should always store their information with "google..". 3P services
+        /// can use anything not starting with "google."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> QueryConfigs { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -35394,6 +35659,98 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the UserLicenseService.BatchUpdateUserLicenses operation. This will be
+    /// returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Count of user licenses that failed to be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of user licenses successfully updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for UserLicenseService.BatchUpdateUserLicenses method.</summary>
     public class GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -35403,10 +35760,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteUnassignedUserLicenses")]
         public virtual System.Nullable<bool> DeleteUnassignedUserLicenses { get; set; }
-
-        /// <summary>Cloud Storage location for the input content.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
-        public virtual GoogleCloudDiscoveryengineV1betaGcsSource GcsSource { get; set; }
 
         /// <summary>The inline source for the input content for document embeddings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
@@ -35426,6 +35779,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// Required. A list of user licenses to update. Each user license must have a valid UserLicense.user_principal.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLicenses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaUserLicense> UserLicenses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for UserLicenseService.BatchUpdateUserLicenses method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>UserLicenses successfully updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLicenses")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaUserLicense> UserLicenses { get; set; }
 
@@ -35994,7 +36362,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Required. The name of the CmekConfig of the form `projects/{project}/locations/{location}/cmekConfig` or
-        /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+        /// `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -39346,7 +39714,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Describes the specification of the evaluation.</summary>
     public class GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The specification of the query set.</summary>
+        /// <summary>Optional. The specification of the query set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("querySetSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySetSpec QuerySetSpec { get; set; }
 
@@ -39368,7 +39736,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySetSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The full resource name of the SampleQuerySet used for the evaluation, in the format of
+        /// Optional. The full resource name of the SampleQuerySet used for the evaluation, in the format of
         /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleQuerySet")]
@@ -44660,6 +45028,18 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>The user query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual GoogleCloudDiscoveryengineV1betaQuery Query { get; set; }
+
+        /// <summary>
+        /// Optional. Represents metadata related to the query config, for example LLM model and version used, model
+        /// parameters (temperature, grounding parameters, etc.). We don't want to import directly the
+        /// [AnswerGenerationSpec] structure as this will serve a more general purpose and a wider set of customers.
+        /// This information is used in particular when rendering alternative answers to the same prompt, providing
+        /// visual information about how each answer was generated. The prefix "google." will be reserved for the key,
+        /// and 1P services (Answer, Assistant, etc.) should always store their information with "google..". 3P services
+        /// can use anything not starting with "google."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> QueryConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
