@@ -1,0 +1,11 @@
+{
+  "Google.Apis.SaaSServiceManagement.v1beta1.SaaSServiceManagementBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.SaaSServiceManagement.v1beta1.SaaSServiceManagementBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
