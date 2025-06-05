@@ -1502,7 +1502,7 @@ namespace Google.Apis.Config.v1
                 /// <summary>Updates a Deployment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Resource name of the deployment. Format:
+                /// Identifier. Resource name of the deployment. Format:
                 /// `projects/{project}/locations/{location}/deployments/{deployment}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Config.v1.Data.Deployment body, string name)
@@ -1522,7 +1522,7 @@ namespace Google.Apis.Config.v1
                     }
 
                     /// <summary>
-                    /// Resource name of the deployment. Format:
+                    /// Identifier. Resource name of the deployment. Format:
                     /// `projects/{project}/locations/{location}/deployments/{deployment}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3072,7 +3072,7 @@ namespace Google.Apis.Config.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("importExistingResources")]
         public virtual System.Nullable<bool> ImportExistingResources { get; set; }
 
-        /// <summary>User-defined metadata for the deployment.</summary>
+        /// <summary>Optional. User-defined metadata for the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -3088,7 +3088,8 @@ namespace Google.Apis.Config.v1.Data
         public virtual string LockState { get; set; }
 
         /// <summary>
-        /// Resource name of the deployment. Format: `projects/{project}/locations/{location}/deployments/{deployment}`
+        /// Identifier. Resource name of the deployment. Format:
+        /// `projects/{project}/locations/{location}/deployments/{deployment}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
