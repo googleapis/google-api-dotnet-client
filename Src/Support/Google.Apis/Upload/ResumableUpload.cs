@@ -557,7 +557,7 @@ namespace Google.Apis.Upload
             {
                 Logger.Error(ex, "MediaUpload[{0}] - Task was canceled", UploadUri);
                 UpdateProgress(new ResumableUploadProgress(ex, BytesServerReceived));
-                throw ex;
+                throw;
             }
             catch (Exception ex)
             {
@@ -585,7 +585,7 @@ namespace Google.Apis.Upload
             {
                 Logger.Error(ex, "MediaUpload[{0}] - Task was canceled", UploadUri);
                 UpdateProgress(new ResumableUploadProgress(ex, BytesServerReceived));
-                throw ex;
+                throw;
             }
             catch (Exception ex)
             {
