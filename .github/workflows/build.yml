@@ -11,11 +11,11 @@ jobs:
       with:
         submodules: true
 
-    # We build with .NET 6 SDK
-    - name: Setup .NET 6
+    # We build with .NET 8 SDK
+    - name: Setup .NET 8
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 8.0.x
 
     # We use the .NET Core 3.1 SDK runtime for additional testing
     - name: Setup .NET Core 3.1
@@ -30,7 +30,7 @@ jobs:
     - name: Test
       run: |
         dotnet test Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj --no-build --framework netcoreapp3.1 -c Release
-        dotnet test Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj --no-build --framework net6.0 -c Release
+        dotnet test Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj --no-build --framework net8.0 -c Release
         dotnet test Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj --no-build --framework netcoreapp3.1 -c Release
-        dotnet test Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj --no-build --framework net6.0 -c Release
+        dotnet test Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj --no-build --framework net8.0 -c Release
 
