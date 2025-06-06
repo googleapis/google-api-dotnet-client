@@ -2,10 +2,10 @@
   "language": "csharp",
   "description": "C# libraries for Google APIs.",
   // Version of the generated packages
-  "releaseVersion": "1.69.0",
+  "releaseVersion": "1.70.0",
   
   // Version of the support libraries upon which to depend.
-  "currentSupportVersion": "1.69.0",
+  "currentSupportVersion": "1.70.0",
 
   // Defines the map of Google.Cloud packages that supercede Google.Apis packages
   "cloudPackageMap": {
