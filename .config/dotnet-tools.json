@@ -19,6 +19,12 @@
       "commands": [
         "generate-sbom"
       ]
+    },
+    "Google.Api.Generator.Rest": {
+      "version": "1.5.0",
+      "commands": [
+        "google-rest-generator"
+      ]
     }
   }
 }
