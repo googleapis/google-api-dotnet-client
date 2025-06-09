@@ -564,7 +564,10 @@ namespace Google.Apis.Css.v1
             /// Retrieves the processed CSS Product from your CSS Center account. After inserting, updating, or deleting
             /// a product input, it may take several minutes before the updated final product can be retrieved.
             /// </summary>
-            /// <param name="name">Required. The name of the CSS product to retrieve.</param>
+            /// <param name="name">
+            /// Required. The name of the CSS product to retrieve. Format:
+            /// `accounts/{account}/cssProducts/{css_product}`
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(this.service, name);
@@ -583,7 +586,10 @@ namespace Google.Apis.Css.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. The name of the CSS product to retrieve.</summary>
+                /// <summary>
+                /// Required. The name of the CSS product to retrieve. Format:
+                /// `accounts/{account}/cssProducts/{css_product}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
