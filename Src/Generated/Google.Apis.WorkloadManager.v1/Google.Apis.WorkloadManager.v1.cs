@@ -2128,6 +2128,145 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The schema of agent status data.</summary>
+    public class AgentStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentName")]
+        public virtual string AgentName { get; set; }
+
+        /// <summary>Output only. The available version of the agent in artifact registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableVersion")]
+        public virtual string AvailableVersion { get; set; }
+
+        /// <summary>Output only. Whether the agent has full access to Cloud APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudApiAccessFullScopesGranted")]
+        public virtual string CloudApiAccessFullScopesGranted { get; set; }
+
+        /// <summary>Output only. The error message for the agent configuration if invalid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurationErrorMessage")]
+        public virtual string ConfigurationErrorMessage { get; set; }
+
+        /// <summary>Output only. The path to the agent configuration file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurationFilePath")]
+        public virtual string ConfigurationFilePath { get; set; }
+
+        /// <summary>Output only. Whether the agent configuration is valid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurationValid")]
+        public virtual string ConfigurationValid { get; set; }
+
+        /// <summary>Output only. The installed version of the agent on the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installedVersion")]
+        public virtual string InstalledVersion { get; set; }
+
+        /// <summary>Output only. The kernel version of the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelVersion")]
+        public virtual SapDiscoveryResourceInstancePropertiesKernelVersion KernelVersion { get; set; }
+
+        /// <summary>Output only. Optional references to public documentation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<AgentStatusReference> References { get; set; }
+
+        /// <summary>Output only. The services (process metrics, host metrics, etc.).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<AgentStatusServiceStatus> Services { get; set; }
+
+        /// <summary>Output only. Whether the agent service is enabled in systemd.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemdServiceEnabled")]
+        public virtual string SystemdServiceEnabled { get; set; }
+
+        /// <summary>Output only. Whether the agent service is running in systemd.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemdServiceRunning")]
+        public virtual string SystemdServiceRunning { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration value.</summary>
+    public class AgentStatusConfigValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Whether the configuration value is the default value or overridden.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; }
+
+        /// <summary>Output only. The name of the configuration value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The value of the configuration value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The IAM permission status.</summary>
+    public class AgentStatusIAMPermission : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Whether the permission is granted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("granted")]
+        public virtual string Granted { get; set; }
+
+        /// <summary>Output only. The name of the permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The reference to public documentation.</summary>
+    public class AgentStatusReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The URL of the reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of a service (process metrics, host metrics, etc.).</summary>
+    public class AgentStatusServiceStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The configuration values for the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configValues")]
+        public virtual System.Collections.Generic.IList<AgentStatusConfigValue> ConfigValues { get; set; }
+
+        /// <summary>Output only. The error message for the service if it is not fully functional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>Output only. Whether the service is fully functional (all checks passed).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullyFunctional")]
+        public virtual string FullyFunctional { get; set; }
+
+        /// <summary>Output only. The permissions required for the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamPermissions")]
+        public virtual System.Collections.Generic.IList<AgentStatusIAMPermission> IamPermissions { get; set; }
+
+        /// <summary>Output only. The name of the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the service (enabled or disabled in the configuration).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The message to display when the service state is unspecified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unspecifiedStateMessage")]
+        public virtual string UnspecifiedStateMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Backup properties.</summary>
     public class BackupProperties : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2257,9 +2396,12 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Sub component health.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subComponentHealthes")]
         public virtual System.Collections.Generic.IList<ComponentHealth> SubComponentHealthes { get; set; }
+
+        /// <summary>Sub component health.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subComponentsHealth")]
+        public virtual System.Collections.Generic.IList<ComponentHealth> SubComponentsHealth { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2693,6 +2835,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>A presentation of host resource usage where the workload runs.</summary>
     public class Insight : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The insights data for the agent status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentStatus")]
+        public virtual AgentStatus AgentStatus { get; set; }
+
         /// <summary>Required. The instance id where the insight is generated from</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
         public virtual string InstanceId { get; set; }
@@ -2757,25 +2903,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>a vm instance</summary>
-    public class Instance : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. name of the VM</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Output only. The location of the VM</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; }
-
-        /// <summary>Output only. The state of the VM</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Instance Properties.</summary>
     public class InstanceProperties : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2786,10 +2913,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Optional. Instance machine type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
-
-        /// <summary>Optional. Instance role.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; }
 
         /// <summary>Optional. Instance roles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
@@ -2806,29 +2929,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Optional. the next maintenance event on VM</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upcomingMaintenanceEvent")]
         public virtual UpcomingMaintenanceEvent UpcomingMaintenanceEvent { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The database layer</summary>
-    public class Layer : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>the application layer</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("applicationType")]
-        public virtual string ApplicationType { get; set; }
-
-        /// <summary>Optional. the database layer</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("databaseType")]
-        public virtual string DatabaseType { get; set; }
-
-        /// <summary>Optional. instances in a layer</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
-        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; }
-
-        /// <summary>Output only. system identification of a layer</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sid")]
-        public virtual string Sid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3705,6 +3805,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isDrSite")]
         public virtual System.Nullable<bool> IsDrSite { get; set; }
 
+        /// <summary>Optional. The kernel version of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osKernelVersion")]
+        public virtual SapDiscoveryResourceInstancePropertiesKernelVersion OsKernelVersion { get; set; }
+
         /// <summary>Optional. A virtual hostname of the instance if it has one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virtualHostname")]
         public virtual string VirtualHostname { get; set; }
@@ -3742,6 +3846,59 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Optional. Name of the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>KernelVersion encapsulates the kernel version data for the system.</summary>
+    public class SapDiscoveryResourceInstancePropertiesKernelVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Captures the distro-specific kernel version, the portion of the string following the first dash.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distroKernel")]
+        public virtual SapDiscoveryResourceInstancePropertiesKernelVersionVersion DistroKernel { get; set; }
+
+        /// <summary>
+        /// Optional. Captures the OS-specific kernel version, the portion of the string up to the first dash.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osKernel")]
+        public virtual SapDiscoveryResourceInstancePropertiesKernelVersionVersion OsKernel { get; set; }
+
+        /// <summary>Optional. Raw string of the kernel version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawString")]
+        public virtual string RawString { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Version is reported as Major.Minor.Build.Patch.</summary>
+    public class SapDiscoveryResourceInstancePropertiesKernelVersionVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The build version number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("build")]
+        public virtual System.Nullable<int> Build { get; set; }
+
+        /// <summary>Optional. The major version number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("major")]
+        public virtual System.Nullable<int> Major { get; set; }
+
+        /// <summary>Optional. The minor version number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minor")]
+        public virtual System.Nullable<int> Minor { get; set; }
+
+        /// <summary>Optional. The patch version number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patch")]
+        public virtual System.Nullable<int> Patch { get; set; }
+
+        /// <summary>
+        /// Optional. A catch-all for any unparsed version components. This is in case the number of points in the
+        /// version string exceeds the expected count of 4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remainder")]
+        public virtual string Remainder { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4159,24 +4316,13 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>workload resource</summary>
     public class WorkloadProfile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The application layer</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("application")]
-        public virtual Layer Application { get; set; }
-
-        /// <summary>Optional. The ascs layer</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ascs")]
-        public virtual Layer Ascs { get; set; }
-
-        /// <summary>Optional. The database layer</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("database")]
-        public virtual Layer Database { get; set; }
-
         /// <summary>Optional. such as name, description, version. More example can be found in deployment</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Identifier. name of resource names have the form 'projects/{project_id}/workloads/{workload_id}'
+        /// Identifier. name of resource names have the form
+        /// 'projects/{project_id}/locations/{location}/workloadProfiles/{workload_id}'
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4221,10 +4367,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>The sap workload content</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sapWorkload")]
         public virtual SapWorkload SapWorkload { get; set; }
-
-        /// <summary>Output only. [output only] the current state if a a workload</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
 
         /// <summary>Required. The type of the workload</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadType")]
@@ -4274,9 +4416,12 @@ namespace Google.Apis.WorkloadManager.v1.Data
             set => CheckTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The detailed condition reports of each component.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("componentHealthes")]
         public virtual System.Collections.Generic.IList<ComponentHealth> ComponentHealthes { get; set; }
+
+        /// <summary>The detailed condition reports of each component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentsHealth")]
+        public virtual System.Collections.Generic.IList<ComponentHealth> ComponentsHealth { get; set; }
 
         /// <summary>Output only. The health state of the workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
