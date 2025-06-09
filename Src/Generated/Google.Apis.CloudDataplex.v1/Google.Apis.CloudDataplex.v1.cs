@@ -16591,8 +16591,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1AspectTypeMetadataTemplate> RecordFields { get; set; }
 
         /// <summary>
-        /// Required. The datatype of this field. The following values are supported:Primitive types: string integer
-        /// boolean double datetime. Must be of the format RFC3339 UTC "Zulu" (Examples: "2014-10-02T15:01:23Z" and
+        /// Required. The datatype of this field. The following values are supported:Primitive types: string int bool
+        /// double datetime. Must be of the format RFC3339 UTC "Zulu" (Examples: "2014-10-02T15:01:23Z" and
         /// "2014-10-02T15:01:23.045123456Z").Complex types: enum array map record
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
