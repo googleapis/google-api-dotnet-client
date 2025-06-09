@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.SaaSServiceManagement.v1beta1 Client Library</Title>
-    <Version>1.69.0.3786</Version>
+    <Version>1.69.0.3800</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -15,6 +15,9 @@
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <Description>
       Google APIs Client Library for working with Saasservicemgmt v1beta1.
+
+      Product documentation is available at:
+      https://cloud.google.com/saas-runtime/docs
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.SaaSServiceManagement.v1beta1/latest/api/Google.Apis.SaaSServiceManagement.v1beta1.html
