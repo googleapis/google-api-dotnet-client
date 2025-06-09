@@ -1390,15 +1390,15 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     /// <summary>Cloud SQL configuration.</summary>
     public class CloudSQLConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Peering service used for peering with the Cloud SQL project.</summary>
+        /// <summary>Required. Peering service used for peering with the Cloud SQL project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
 
-        /// <summary>The name of the umbrella network in the Cloud SQL umbrella project.</summary>
+        /// <summary>Required. The name of the umbrella network in the Cloud SQL umbrella project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("umbrellaNetwork")]
         public virtual string UmbrellaNetwork { get; set; }
 
-        /// <summary>The project number of the Cloud SQL umbrella project.</summary>
+        /// <summary>Required. The project number of the Cloud SQL umbrella project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("umbrellaProject")]
         public virtual System.Nullable<long> UmbrellaProject { get; set; }
 
@@ -1435,10 +1435,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     public class Connection : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of service consumer's VPC network that's connected with service producer network, in the following
-        /// format: `projects/{project}/global/networks/{network}`. `{project}` is a project number, such as in `12345`
-        /// that includes the VPC service consumer's VPC network. `{network}` is the name of the service consumer's VPC
-        /// network.
+        /// Required. The name of service consumer's VPC network that's connected with service producer network, in the
+        /// following format: `projects/{project}/global/networks/{network}`. `{project}` is a project number, such as
+        /// in `12345` that includes the VPC service consumer's VPC network. `{network}` is the name of the service
+        /// consumer's VPC network.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
@@ -3223,9 +3223,9 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual string DnsSuffix { get; set; }
 
         /// <summary>
-        /// User assigned name for this resource. Must be unique within the consumer network. The name must be 1-63
-        /// characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters,
-        /// digits or dashes.
+        /// Required. User assigned name for this resource. Must be unique within the consumer network. The name must be
+        /// 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase
+        /// letters, digits or dashes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
