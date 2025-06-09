@@ -328,7 +328,8 @@ namespace Google.Apis.Merchant.products_v1beta
 
                 /// <summary>
                 /// Required. The primary or supplemental data source from which the product input should be deleted.
-                /// Format: `accounts/{account}/dataSources/{datasource}`.
+                /// Format: `accounts/{account}/dataSources/{datasource}`. For example,
+                /// `accounts/123456/dataSources/104628`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dataSource", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DataSource { get; set; }
@@ -403,7 +404,8 @@ namespace Google.Apis.Merchant.products_v1beta
                 /// <summary>
                 /// Required. The primary or supplemental product data source name. If the product already exists and
                 /// data source provided is different, then the product will be moved to a new data source. Only API
-                /// data sources are supported. Format: `accounts/{account}/dataSources/{datasource}`.
+                /// data sources are supported. Format: `accounts/{account}/dataSources/{datasource}`. For example,
+                /// `accounts/123456/dataSources/104628`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dataSource", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DataSource { get; set; }
@@ -488,7 +490,7 @@ namespace Google.Apis.Merchant.products_v1beta
                 /// <summary>
                 /// Required. The primary or supplemental product data source where `data_source` name identifies the
                 /// product input to be updated. Only API data sources are supported. Format:
-                /// `accounts/{account}/dataSources/{datasource}`.
+                /// `accounts/{account}/dataSources/{datasource}`. For example, `accounts/123456/dataSources/104628`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dataSource", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DataSource { get; set; }
@@ -664,7 +666,7 @@ namespace Google.Apis.Merchant.products_v1beta
 
                 /// <summary>
                 /// The maximum number of products to return. The service may return fewer than this value. The maximum
-                /// value is 250; values above 250 will be coerced to 250. If unspecified, the maximum number of
+                /// value is 1000; values above 1000 will be coerced to 1000. If unspecified, the maximum number of
                 /// products will be returned.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -729,7 +731,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalImageLinks")]
         public virtual System.Collections.Generic.IList<string> AdditionalImageLinks { get; set; }
 
-        /// <summary>Used to group items in an arbitrary way. Only for CPA%, discouraged otherwise.</summary>
+        /// <summary>
+        /// Used to group items in an arbitrary way. Only for CPA%, discouraged otherwise. For more information, see
+        /// [Display ads attribute](https://support.google.com/merchants/answer/6069387).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adsGrouping")]
         public virtual string AdsGrouping { get; set; }
 
@@ -752,14 +757,17 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual string AgeGroup { get; set; }
 
         /// <summary>
-        /// A safeguard in the "Automated Discounts" (https://support.google.com/merchants/answer/10295759) and "Dynamic
+        /// A safeguard in the [automated discounts] (https://support.google.com/merchants/answer/10295759) and "Dynamic
         /// Promotions" (https://support.google.com/merchants/answer/13949249) projects, ensuring that discounts on
-        /// merchants' offers do not fall below this value, thereby preserving the offer's value and profitability.
+        /// business offers do not fall below this value, thereby preserving the offer's value and profitability.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoPricingMinPrice")]
         public virtual Price AutoPricingMinPrice { get; set; }
 
-        /// <summary>Availability status of the item.</summary>
+        /// <summary>
+        /// [Availability](https://support.google.com/merchants/answer/6324448) status of the item. For example,
+        /// "in_stock" or "out_of_stock".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual string Availability { get; set; }
 
@@ -805,7 +813,9 @@ namespace Google.Apis.Merchant.products_v1beta.Data
             set => AvailabilityDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Brand of the item.</summary>
+        /// <summary>
+        /// [Brand](https://support.google.com/merchants/answer/6324351) of the item. For example, "Google".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; }
 
@@ -825,11 +835,16 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudExportAdditionalProperties")]
         public virtual System.Collections.Generic.IList<CloudExportAdditionalProperties> CloudExportAdditionalProperties { get; set; }
 
-        /// <summary>Color of the item.</summary>
+        /// <summary>
+        /// [Color](https://support.google.com/merchants/answer/6324487) of the item. For example, "red".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual string Color { get; set; }
 
-        /// <summary>Condition or state of the item.</summary>
+        /// <summary>
+        /// [Condition](https://support.google.com/merchants/answer/6324469) or state of the item. For example, "new" or
+        /// "used".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
 
@@ -837,23 +852,38 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("costOfGoodsSold")]
         public virtual Price CostOfGoodsSold { get; set; }
 
-        /// <summary>Custom label 0 for custom grouping of items in a Shopping campaign.</summary>
+        /// <summary>
+        /// [Custom label 0](https://support.google.com/merchants/answer/6324473) for custom grouping of items in a
+        /// Shopping campaign.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLabel0")]
         public virtual string CustomLabel0 { get; set; }
 
-        /// <summary>Custom label 1 for custom grouping of items in a Shopping campaign.</summary>
+        /// <summary>
+        /// [Custom label 1](https://support.google.com/merchants/answer/6324473) for custom grouping of items in a
+        /// Shopping campaign.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLabel1")]
         public virtual string CustomLabel1 { get; set; }
 
-        /// <summary>Custom label 2 for custom grouping of items in a Shopping campaign.</summary>
+        /// <summary>
+        /// [Custom label 2](https://support.google.com/merchants/answer/6324473) for custom grouping of items in a
+        /// Shopping campaign.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLabel2")]
         public virtual string CustomLabel2 { get; set; }
 
-        /// <summary>Custom label 3 for custom grouping of items in a Shopping campaign.</summary>
+        /// <summary>
+        /// [Custom label 3](https://support.google.com/merchants/answer/6324473) for custom grouping of items in a
+        /// Shopping campaign.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLabel3")]
         public virtual string CustomLabel3 { get; set; }
 
-        /// <summary>Custom label 4 for custom grouping of items in a Shopping campaign.</summary>
+        /// <summary>
+        /// [Custom label 4](https://support.google.com/merchants/answer/6324473) for custom grouping of items in a
+        /// Shopping campaign.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLabel4")]
         public virtual string CustomLabel4 { get; set; }
 
@@ -867,8 +897,8 @@ namespace Google.Apis.Merchant.products_v1beta.Data
 
         /// <summary>
         /// The date time when an offer becomes visible in search results across Google’s YouTube surfaces, in [ISO
-        /// 8601](http://en.wikipedia.org/wiki/ISO_8601) format. See [Disclosure date](
-        /// https://support.google.com/merchants/answer/13034208) for more information.
+        /// 8601](http://en.wikipedia.org/wiki/ISO_8601) format. See [Disclosure
+        /// date](https://support.google.com/merchants/answer/13034208) for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disclosureDate")]
         public virtual string DisclosureDateRaw
@@ -912,7 +942,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayAdsLink")]
         public virtual string DisplayAdsLink { get; set; }
 
-        /// <summary>Advertiser-specified recommendations.</summary>
+        /// <summary>
+        /// Advertiser-specified recommendations. For more information, see [Display ads attribute
+        /// specification](https://support.google.com/merchants/answer/6069387).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayAdsSimilarIds")]
         public virtual System.Collections.Generic.IList<string> DisplayAdsSimilarIds { get; set; }
 
@@ -920,7 +953,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayAdsTitle")]
         public virtual string DisplayAdsTitle { get; set; }
 
-        /// <summary>Offer margin for dynamic remarketing campaigns.</summary>
+        /// <summary>
+        /// Offer margin for dynamic remarketing campaigns. For more information, see [Display ads
+        /// attribute](https://support.google.com/merchants/answer/6069387).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayAdsValue")]
         public virtual System.Nullable<double> DisplayAdsValue { get; set; }
 
@@ -930,7 +966,9 @@ namespace Google.Apis.Merchant.products_v1beta.Data
 
         /// <summary>
         /// The list of destinations to exclude for this target (corresponds to unchecked check boxes in Merchant
-        /// Center).
+        /// Center). For more information, see [Excluded
+        /// destination](https://support.google.com/merchants/answer/6324486). Note: We recommend setting destinations
+        /// on datasources level for most use cases. Use this field within products to only setup exceptions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDestinations")]
         public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; }
@@ -990,7 +1028,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("freeShippingThreshold")]
         public virtual System.Collections.Generic.IList<FreeShippingThreshold> FreeShippingThreshold { get; set; }
 
-        /// <summary>Target gender of the item.</summary>
+        /// <summary>
+        /// Target [gender](https://support.google.com/merchants/answer/6324479) of the item. For example, "male" or
+        /// "female".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual string Gender { get; set; }
 
@@ -1023,7 +1064,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
 
         /// <summary>
         /// The list of destinations to include for this target (corresponds to checked check boxes in Merchant Center).
-        /// Default destinations are always included unless provided in `excludedDestinations`.
+        /// Default destinations are always included unless provided in `excludedDestinations`. For more information,
+        /// see [Included destination](https://support.google.com/merchants/answer/7501026). Note: We recommend setting
+        /// destinations on datasources level for most use cases. Use this field within products to only setup
+        /// exceptions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedDestinations")]
         public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; }
@@ -1033,8 +1077,9 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual Installment Installment { get; set; }
 
         /// <summary>
-        /// Whether the item is a merchant-defined bundle. A bundle is a custom grouping of different products sold by a
-        /// merchant for a single price.
+        /// Whether the item is a business-defined sub-API. A [sub-API]
+        /// (https://support.google.com/merchants/answer/6324449) is a custom grouping of different products sold by a
+        /// business for a single price.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isBundle")]
         public virtual System.Nullable<bool> IsBundle { get; set; }
@@ -1055,7 +1100,9 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual string Link { get; set; }
 
-        /// <summary>Link template for merchant hosted local storefront.</summary>
+        /// <summary>
+        /// [Link template](https://support.google.com/merchants/answer/13871172) for business hosted local storefront.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkTemplate")]
         public virtual string LinkTemplate { get; set; }
 
@@ -1070,7 +1117,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loyaltyPrograms")]
         public virtual System.Collections.Generic.IList<LoyaltyProgram> LoyaltyPrograms { get; set; }
 
-        /// <summary>The material of which the item is made.</summary>
+        /// <summary>
+        /// The [material](https://support.google.com/merchants/answer/6324410) of which the item is made. For example,
+        /// "Leather" or "Cotton".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("material")]
         public virtual string Material { get; set; }
 
@@ -1094,7 +1144,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mobileLink")]
         public virtual string MobileLink { get; set; }
 
-        /// <summary>Link template for merchant hosted local storefront optimized for mobile devices.</summary>
+        /// <summary>
+        /// [Link template](https://support.google.com/merchants/answer/13870216) for business hosted local storefront
+        /// optimized for mobile devices.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileLinkTemplate")]
         public virtual string MobileLinkTemplate { get; set; }
 
@@ -1104,11 +1157,13 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mpn")]
         public virtual string Mpn { get; set; }
 
-        /// <summary>The number of identical products in a merchant-defined multipack.</summary>
+        /// <summary>The number of identical products in a business-defined multipack.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multipack")]
         public virtual System.Nullable<long> Multipack { get; set; }
 
-        /// <summary>The item's pattern (for example, polka dots).</summary>
+        /// <summary>
+        /// The item's [pattern](https://support.google.com/merchants/answer/6324483). For example, polka dots.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
         public virtual string Pattern { get; set; }
 
@@ -1118,11 +1173,14 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pause")]
         public virtual string Pause { get; set; }
 
-        /// <summary>The pick up option for the item.</summary>
+        /// <summary>The [pickup](https://support.google.com/merchants/answer/14634021) option for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupMethod")]
         public virtual string PickupMethod { get; set; }
 
-        /// <summary>Item store pickup timeline.</summary>
+        /// <summary>
+        /// Item store pickup timeline. For more information, see [Pickup
+        /// SLA](https://support.google.com/merchants/answer/14635400).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupSla")]
         public virtual string PickupSla { get; set; }
 
@@ -1141,7 +1199,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productHeight")]
         public virtual ProductDimension ProductHeight { get; set; }
 
-        /// <summary>Bullet points describing the most relevant highlights of a product.</summary>
+        /// <summary>
+        /// Bullet points describing the most relevant [product
+        /// highlights](https://support.google.com/merchants/answer/9216100).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productHighlights")]
         public virtual System.Collections.Generic.IList<string> ProductHighlights { get; set; }
 
@@ -1154,7 +1215,7 @@ namespace Google.Apis.Merchant.products_v1beta.Data
 
         /// <summary>
         /// Categories of the item (formatted as in [product data
-        /// specification](https://support.google.com/merchants/answer/188494#product_type)).
+        /// specification](https://support.google.com/merchants/answer/7052112#product_category)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypes")]
         public virtual System.Collections.Generic.IList<string> ProductTypes { get; set; }
@@ -1182,8 +1243,8 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual Price SalePrice { get; set; }
 
         /// <summary>
-        /// Date range during which the item is on sale (see [product data
-        /// specification](https://support.google.com/merchants/answer/188494#sale_price_effective_date)).
+        /// Date range during which the item is on sale, see [product data
+        /// specification](https://support.google.com/merchants/answer/7052112#price_and_availability).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePriceEffectiveDate")]
         public virtual Interval SalePriceEffectiveDate { get; set; }
@@ -1219,27 +1280,32 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual ShippingDimension ShippingWidth { get; set; }
 
         /// <summary>
-        /// List of country codes (ISO 3166-1 alpha-2) to exclude the offer from Shopping Ads destination. Countries
-        /// from this list are removed from countries configured in data source settings.
+        /// List of country codes [(ISO 3166-1 alpha-2)](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) to exclude
+        /// the offer from Shopping Ads destination. Countries from this list are removed from countries configured in
+        /// data source settings.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shoppingAdsExcludedCountries")]
         public virtual System.Collections.Generic.IList<string> ShoppingAdsExcludedCountries { get; set; }
 
         /// <summary>
         /// Size of the item. Only one value is allowed. For variants with different sizes, insert a separate product
-        /// for each size with the same `itemGroupId` value (see
-        /// [https://support.google.com/merchants/answer/6324492](size definition)).
+        /// for each size with the same `itemGroupId` value, see
+        /// [Size](https://support.google.com/merchants/answer/6324492).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual string Size { get; set; }
 
-        /// <summary>System in which the size is specified. Recommended for apparel items.</summary>
+        /// <summary>
+        /// System in which the size is specified. Recommended for apparel items. For example, "US", "UK", "DE". For
+        /// more information, see [Size system](https://support.google.com/merchants/answer/6324502).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeSystem")]
         public virtual string SizeSystem { get; set; }
 
         /// <summary>
         /// The cut of the item. It can be used to represent combined size types for apparel items. Maximum two of size
-        /// types can be provided (see [https://support.google.com/merchants/answer/6324497](size type)).
+        /// types can be provided, see [Size type](https://support.google.com/merchants/answer/6324497). For example,
+        /// "petite", "plus size".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeTypes")]
         public virtual System.Collections.Generic.IList<string> SizeTypes { get; set; }
@@ -1263,7 +1329,7 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sustainabilityIncentives")]
         public virtual System.Collections.Generic.IList<ProductSustainabilityIncentive> SustainabilityIncentives { get; set; }
 
-        /// <summary>The tax category of the product.</summary>
+        /// <summary>The [tax category](https://support.google.com/merchants/answer/7569847) of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxCategory")]
         public virtual string TaxCategory { get; set; }
 
@@ -1638,7 +1704,7 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reportingContext")]
         public virtual string ReportingContext { get; set; }
 
-        /// <summary>Whether the issue can be resolved by the merchant.</summary>
+        /// <summary>Whether the issue can be resolved by the business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolution")]
         public virtual string Resolution { get; set; }
 
@@ -1724,9 +1790,9 @@ namespace Google.Apis.Merchant.products_v1beta.Data
 
         /// <summary>
         /// The label of the loyalty program. This is an internal label that uniquely identifies the relationship
-        /// between a merchant entity and a loyalty program entity. The label must be provided so that the system can
-        /// associate the assets below (for example, price and points) with a merchant. The corresponding program must
-        /// be linked to the merchant account.
+        /// between a business entity and a loyalty program entity. The label must be provided so that the system can
+        /// associate the assets below (for example, price and points) with a business. The corresponding program must
+        /// be linked to the Merchant Center account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("programLabel")]
         public virtual string ProgramLabel { get; set; }
@@ -1931,12 +1997,14 @@ namespace Google.Apis.Merchant.products_v1beta.Data
     /// <summary>
     /// This resource represents input data you submit for a product, not the processed product that you see in Merchant
     /// Center, in Shopping ads, or across Google surfaces. Product inputs, rules and supplemental data source data are
-    /// combined to create the processed Product. Required product input attributes to pass data validation checks are
-    /// primarily defined in the [Products Data Specification](https://support.google.com/merchants/answer/188494). The
-    /// following attributes are required: feedLabel, contentLanguage and offerId. After inserting, updating, or
-    /// deleting a product input, it may take several minutes before the processed product can be retrieved. All fields
-    /// in the product input and its sub-messages match the English name of their corresponding attribute in the
-    /// [Products Data Specification](https://support.google.com/merchants/answer/188494) with [some
+    /// combined to create the processed Product. For more information, see [Manage
+    /// products](/merchant/api/guides/products/overview). Required product input attributes to pass data validation
+    /// checks are primarily defined in the [Products Data
+    /// Specification](https://support.google.com/merchants/answer/188494). The following attributes are required:
+    /// feedLabel, contentLanguage and offerId. After inserting, updating, or deleting a product input, it may take
+    /// several minutes before the processed product can be retrieved. All fields in the product input and its
+    /// sub-messages match the English name of their corresponding attribute in the [Products Data
+    /// Specification](https://support.google.com/merchants/answer/188494) with [some
     /// exceptions](https://support.google.com/merchants/answer/7052112). The following reference documentation lists
     /// the field names in the **camelCase** casing style while the Products Data Specification lists the names in the
     /// **snake_case** casing style.
@@ -1972,8 +2040,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The [feed
-        /// label](https://developers.google.com/shopping-content/guides/products/feed-labels) for the product.
+        /// Required. Immutable. The label that lets you categorize and identify your products. The maximum allowed
+        /// characters are 20, and the supported characters are `A-Z`, `0-9`, hyphen, and underscore. The feed label
+        /// must not include any spaces. For more information, see [Using feed
+        /// labels](//support.google.com/merchants/answer/14994087).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
         public virtual string FeedLabel { get; set; }
