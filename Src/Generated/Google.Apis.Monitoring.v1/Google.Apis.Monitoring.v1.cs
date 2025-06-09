@@ -3946,6 +3946,55 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A widget that displays hierarchical data as a treemap.</summary>
+    public class Treemap : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The collection of datasets used to construct and populate the treemap. For the rendered treemap
+        /// rectangles: Color is determined by the aggregated value for each grouping. Size is proportional to the count
+        /// of time series aggregated within that rectangle's segment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSets")]
+        public virtual System.Collections.Generic.IList<TreemapDataSet> DataSets { get; set; }
+
+        /// <summary>Required. Ordered labels representing the hierarchical treemap structure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("treemapHierarchy")]
+        public virtual System.Collections.Generic.IList<string> TreemapHierarchy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The data represented by the treemap. Needs to include the data itself, plus rules on how to organize it
+    /// hierarchically.
+    /// </summary>
+    public class TreemapDataSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The collection of breakdowns to be applied to the dataset. A breakdown is a way to slice the data.
+        /// For example, you can break down the data by region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("breakdowns")]
+        public virtual System.Collections.Generic.IList<Breakdown> Breakdowns { get; set; }
+
+        /// <summary>
+        /// Optional. A collection of measures. A measure is a measured value of a property in your data. For example,
+        /// rainfall in inches, number of units sold, revenue gained, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measures")]
+        public virtual System.Collections.Generic.IList<Measure> Measures { get; set; }
+
+        /// <summary>
+        /// Required. The query that fetches the relevant data. See google.monitoring.dashboard.v1.TimeSeriesQuery
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesQuery")]
+        public virtual TimeSeriesQuery TimeSeriesQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A protocol buffer message type.</summary>
     public class Type : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4058,6 +4107,10 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>Optional. The title of the widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>A widget that displays data as a treemap.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("treemap")]
+        public virtual Treemap Treemap { get; set; }
 
         /// <summary>Optional. If set, this widget is rendered only when the condition is evaluated to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibilityCondition")]
