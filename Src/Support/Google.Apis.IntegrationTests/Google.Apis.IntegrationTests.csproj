@@ -19,8 +19,8 @@
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
 
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net462'">
