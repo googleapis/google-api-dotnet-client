@@ -22752,6 +22752,13 @@ namespace Google.Apis.Logging.v2.Data
         public virtual AppHub Apphub { get; set; }
 
         /// <summary>
+        /// Output only. AppHub application metadata associated with the destination application. This is only populated
+        /// if the log represented "edge"-like data (such as for VPC flow logs) with a source and destination.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apphubDestination")]
+        public virtual AppHub ApphubDestination { get; set; }
+
+        /// <summary>
         /// Output only. The Error Reporting (https://cloud.google.com/error-reporting) error groups associated with
         /// this LogEntry. Error Reporting sets the values for this field during error group creation.For more
         /// information, see View error details(
@@ -23126,7 +23133,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string Filter { get; set; }
 
         /// <summary>
-        /// Output only. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100
+        /// Optional. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100
         /// characters and can include only letters, digits, underscores, hyphens, and periods. First character has to
         /// be alphanumeric.
         /// </summary>
@@ -23605,7 +23612,7 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>
         /// Optional. Log entries that match any of these exclusion filters will not be exported.If a log entry is
-        /// matched by both filter and one of exclusion_filters it will not be exported.
+        /// matched by both filter and one of exclusions it will not be exported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
         public virtual System.Collections.Generic.IList<LogExclusion> Exclusions { get; set; }
@@ -23643,7 +23650,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual System.Nullable<bool> InterceptChildren { get; set; }
 
         /// <summary>
-        /// Output only. The client-assigned sink identifier, unique within the project.For example:
+        /// Optional. The client-assigned sink identifier, unique within the project.For example:
         /// "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100 characters and can include only the
         /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens, periods.First
         /// character has to be alphanumeric.
@@ -24303,7 +24310,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual LoggingQuery LoggingQuery { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of the recent query.In the format:
+        /// Optional. Resource name of the recent query.In the format:
         /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/recentQueries/[QUERY_ID]" For a list of supported locations,
         /// see Supported Regions (https://cloud.google.com/logging/docs/region-support)The QUERY_ID is a system
         /// generated alphanumeric ID.
