@@ -794,6 +794,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1SafetyRating> SafetyRatings { get; set; }
 
+        /// <summary>Output only. Metadata related to url context retrieval tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlContextMetadata")]
+        public virtual GoogleCloudAiplatformV1beta1UrlContextMetadata UrlContextMetadata { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2421,6 +2425,32 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Tool to support URL context.</summary>
     public class GoogleCloudAiplatformV1beta1UrlContext : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata related to url context retrieval tool.</summary>
+    public class GoogleCloudAiplatformV1beta1UrlContextMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of url context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlMetadata")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1UrlMetadata> UrlMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Context of the a single url retrieval.</summary>
+    public class GoogleCloudAiplatformV1beta1UrlMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Retrieved url by the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievedUrl")]
+        public virtual string RetrievedUrl { get; set; }
+
+        /// <summary>Status of the url retrieval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlRetrievalStatus")]
+        public virtual string UrlRetrievalStatus { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
