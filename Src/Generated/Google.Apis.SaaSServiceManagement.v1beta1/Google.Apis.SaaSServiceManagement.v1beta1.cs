@@ -57,7 +57,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the SaaS Service Management API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the SaaS Runtime API.</summary>
         public class Scope
         {
             /// <summary>
@@ -67,7 +67,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the SaaS Service Management API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the SaaS Runtime API.</summary>
         public static class ScopeConstants
         {
             /// <summary>
