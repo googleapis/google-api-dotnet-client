@@ -5379,28 +5379,28 @@ namespace Google.Apis.NetAppFiles.v1.Data
         public virtual System.Nullable<int> BackupMinimumEnforcedRetentionDays { get; set; }
 
         /// <summary>
-        /// Optional. Indicates if the daily backups are immutable. Atleast one of daily_backup_immutable,
+        /// Optional. Indicates if the daily backups are immutable. At least one of daily_backup_immutable,
         /// weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dailyBackupImmutable")]
         public virtual System.Nullable<bool> DailyBackupImmutable { get; set; }
 
         /// <summary>
-        /// Optional. Indicates if the manual backups are immutable. Atleast one of daily_backup_immutable,
+        /// Optional. Indicates if the manual backups are immutable. At least one of daily_backup_immutable,
         /// weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manualBackupImmutable")]
         public virtual System.Nullable<bool> ManualBackupImmutable { get; set; }
 
         /// <summary>
-        /// Optional. Indicates if the monthly backups are immutable. Atleast one of daily_backup_immutable,
+        /// Optional. Indicates if the monthly backups are immutable. At least one of daily_backup_immutable,
         /// weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyBackupImmutable")]
         public virtual System.Nullable<bool> MonthlyBackupImmutable { get; set; }
 
         /// <summary>
-        /// Optional. Indicates if the weekly backups are immutable. Atleast one of daily_backup_immutable,
+        /// Optional. Indicates if the weekly backups are immutable. At least one of daily_backup_immutable,
         /// weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weeklyBackupImmutable")]
@@ -6121,6 +6121,10 @@ namespace Google.Apis.NetAppFiles.v1.Data
     /// <summary>Metadata for a given google.cloud.location.Location.</summary>
     public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Indicates if the location has VCP support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasVcp")]
+        public virtual System.Nullable<bool> HasVcp { get; set; }
+
         /// <summary>Output only. Supported flex performance in a location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedFlexPerformance")]
         public virtual System.Collections.Generic.IList<string> SupportedFlexPerformance { get; set; }
@@ -6940,13 +6944,13 @@ namespace Google.Apis.NetAppFiles.v1.Data
         public virtual string StateDetails { get; set; }
 
         /// <summary>
-        /// Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the
+        /// Optional. Custom Performance Total IOPS of the pool if not provided, it will be calculated based on the
         /// total_throughput_mibps
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalIops")]
         public virtual System.Nullable<long> TotalIops { get; set; }
 
-        /// <summary>Optional. Custom Performance Total Throughput of the pool (in MiB/s)</summary>
+        /// <summary>Optional. Custom Performance Total Throughput of the pool (in MiBps)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalThroughputMibps")]
         public virtual System.Nullable<long> TotalThroughputMibps { get; set; }
 
