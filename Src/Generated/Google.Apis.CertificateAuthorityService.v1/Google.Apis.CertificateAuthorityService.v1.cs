@@ -3910,6 +3910,28 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     }
 
     /// <summary>
+    /// AttributeTypeAndValue specifies an attribute type and value. It can use either a OID or enum value to specify
+    /// the attribute type.
+    /// </summary>
+    public class AttributeTypeAndValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Object ID for an attribute type of an attribute and value pair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual ObjectId ObjectId { get; set; }
+
+        /// <summary>The attribute type of the attribute and value pair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The value for the attribute type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
     /// there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used
@@ -5896,6 +5918,20 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// RelativeDistinguishedName specifies a relative distinguished name which will be used to build a distinguished
+    /// name.
+    /// </summary>
+    public class RelativeDistinguishedName : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Attributes describes the attribute value assertions in the RDN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IList<AttributeTypeAndValue> Attributes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes fields that are relavent to the revocation of a Certificate.</summary>
     public class RevocationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6094,6 +6130,10 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         /// <summary>The province, territory, or regional state of the subject.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("province")]
         public virtual string Province { get; set; }
+
+        /// <summary>This field can be used in place of the named subject fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rdnSequence")]
+        public virtual System.Collections.Generic.IList<RelativeDistinguishedName> RdnSequence { get; set; }
 
         /// <summary>The street address of the subject.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
