@@ -12863,6 +12863,12 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     public class AuthzPolicyAuthzRuleFromRequestSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. A list of IPs or CIDRs to match against the source IP of a request. Limited to 5 ip_blocks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipBlocks")]
+        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleIpBlock> IpBlocks { get; set; }
+
+        /// <summary>
         /// Optional. A list of resources to match against the resource of the source VM of a request. Limited to 5
         /// resources.
         /// </summary>
@@ -12883,6 +12889,21 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>Optional. Specifies how the header match will be performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual AuthzPolicyAuthzRuleStringMatch Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a range of IP Addresses.</summary>
+    public class AuthzPolicyAuthzRuleIpBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The length of the address range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual System.Nullable<int> Length { get; set; }
+
+        /// <summary>Required. The address prefix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
+        public virtual string Prefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16772,8 +16793,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> AvailableSymantecSites { get; set; }
 
         /// <summary>
-        /// Optional. A secret ID or secret name can be specified, but it will be parsed and stored as secret URI in the
-        /// format of "projects/{PROJECT_NUMBER}/secrets/my-secret".
+        /// Optional. API Key used to call Symantec APIs on the user's behalf. Required if using SYMANTEC_CLOUD_SWG.
+        /// P4SA account needs permissions granted to read this secret. A secret ID, secret name, or secret URI can be
+        /// specified, but it will be parsed and stored as secret URI in the format of
+        /// "projects/{PROJECT_NUMBER}/secrets/my-secret".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretPath")]
         public virtual string SecretPath { get; set; }
