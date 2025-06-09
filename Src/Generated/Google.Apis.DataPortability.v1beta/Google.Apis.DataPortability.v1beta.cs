@@ -132,6 +132,9 @@ namespace Google.Apis.DataPortability.v1beta
             /// <summary>Move a copy of your Starred places list on Maps</summary>
             public static string DataportabilityMapsStarredPlaces = "https://www.googleapis.com/auth/dataportability.maps.starred_places";
 
+            /// <summary>Move a copy of your vehicle profile on Maps</summary>
+            public static string DataportabilityMapsVehicleProfile = "https://www.googleapis.com/auth/dataportability.maps.vehicle_profile";
+
             /// <summary>Move a copy of your Maps activity</summary>
             public static string DataportabilityMyactivityMaps = "https://www.googleapis.com/auth/dataportability.myactivity.maps";
 
@@ -345,6 +348,9 @@ namespace Google.Apis.DataPortability.v1beta
 
             /// <summary>Move a copy of your Starred places list on Maps</summary>
             public const string DataportabilityMapsStarredPlaces = "https://www.googleapis.com/auth/dataportability.maps.starred_places";
+
+            /// <summary>Move a copy of your vehicle profile on Maps</summary>
+            public const string DataportabilityMapsVehicleProfile = "https://www.googleapis.com/auth/dataportability.maps.vehicle_profile";
 
             /// <summary>Move a copy of your Maps activity</summary>
             public const string DataportabilityMyactivityMaps = "https://www.googleapis.com/auth/dataportability.myactivity.maps";
