@@ -4799,8 +4799,8 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     public class ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceRepository : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Developer Connect Git repository link or the url that matches a repository link in the current project,
-        /// formatted as `projects/*/locations/*/connections/*/gitRepositoryLink/*`
+        /// The Developer Connect Git repository link formatted as
+        /// `projects/*/locations/*/connections/*/gitRepositoryLink/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerConnect")]
         public virtual string DeveloperConnect { get; set; }
@@ -5793,6 +5793,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpe")]
         public virtual string Cpe { get; set; }
 
+        /// <summary>Optional. Files that make up the resource described by the occurrence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("files")]
+        public virtual System.Collections.Generic.IList<File> Files { get; set; }
+
         private string _lastScanTimeRaw;
 
         private object _lastScanTime;
@@ -6143,6 +6147,21 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Type of category (e.g. 'npm' for the PACKAGE_MANAGER category)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A file as part of a resource.</summary>
+    public class File : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The digest(s) of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digest")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Digest { get; set; }
+
+        /// <summary>Optional. The name of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
