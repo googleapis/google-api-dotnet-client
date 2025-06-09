@@ -2130,6 +2130,69 @@ namespace Google.Apis.DriveLabels.v2beta
         }
 
         /// <summary>
+        /// Updates a Label's EabledAppSettings. Enabling a Label in a Workspace Application allows it to be used in
+        /// that application. This change is not revisioned, does not require publishing, and takes effect immediately.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The resource name of the Label to update. The resource name of the Label to update.
+        /// </param>
+        public virtual UpdateLabelEnabledAppSettingsRequest UpdateLabelEnabledAppSettings(Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest body, string name)
+        {
+            return new UpdateLabelEnabledAppSettingsRequest(this.service, body, name);
+        }
+
+        /// <summary>
+        /// Updates a Label's EabledAppSettings. Enabling a Label in a Workspace Application allows it to be used in
+        /// that application. This change is not revisioned, does not require publishing, and takes effect immediately.
+        /// </summary>
+        public class UpdateLabelEnabledAppSettingsRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaLabel>
+        {
+            /// <summary>Constructs a new UpdateLabelEnabledAppSettings request.</summary>
+            public UpdateLabelEnabledAppSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the Label to update. The resource name of the Label to update.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DriveLabels.v2beta.Data.GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateLabelEnabledAppSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2beta/{+name}:updateLabelEnabledAppSettings";
+
+            /// <summary>Initializes UpdateLabelEnabledAppSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^labels/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
         /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label
         /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label resource
         /// as a whole, are not revisioned, and do not require publishing.
@@ -3947,6 +4010,10 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayHints")]
         public virtual GoogleAppsDriveLabelsV2betaLabelDisplayHints DisplayHints { get; set; }
 
+        /// <summary>Optional. The EnabledAppSettings for this Label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledAppSettings")]
+        public virtual GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings EnabledAppSettings { get; set; }
+
         /// <summary>List of fields in descending priority order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<GoogleAppsDriveLabelsV2betaField> Fields { get; set; }
@@ -4144,6 +4211,28 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         /// <summary>This label should be shown in the apply menu when applying values to a Drive item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shownInApply")]
         public virtual System.Nullable<bool> ShownInApply { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the Workspace apps in which the Label can be used.</summary>
+    public class GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The list of Apps where the Label can be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledApps")]
+        public virtual System.Collections.Generic.IList<GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp> EnabledApps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An App where the Label can be used.</summary>
+    public class GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The name of the App.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("app")]
+        public virtual string App { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4629,6 +4718,40 @@ namespace Google.Apis.DriveLabels.v2beta.Data
         public virtual System.Nullable<bool> UseAdminAccess { get; set; }
 
         /// <summary>When specified, only certain fields belonging to the indicated view will be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("view")]
+        public virtual string View { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request to update the `EnabledAppSettings` of the given Label. This change is not revisioned, does not require
+    /// publishing, and takes effect immediately. \
+    /// </summary>
+    public class GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The new `EnabledAppSettings` value for the Label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledAppSettings")]
+        public virtual GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings EnabledAppSettings { get; set; }
+
+        /// <summary>
+        /// Optional. The BCP-47 language code to use for evaluating localized field labels. When not specified, values
+        /// in the default configured language will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// Optional. Set to `true` in order to use the user's admin credentials. The server will verify the user is an
+        /// admin for the Label before allowing access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useAdminAccess")]
+        public virtual System.Nullable<bool> UseAdminAccess { get; set; }
+
+        /// <summary>
+        /// Optional. When specified, only certain fields belonging to the indicated view will be returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
         public virtual string View { get; set; }
 
