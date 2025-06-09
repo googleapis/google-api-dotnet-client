@@ -34,6 +34,7 @@ namespace Google.Apis.Merchant.issueresolution_v1beta
         /// <param name="initializer">The service initializer.</param>
         public MerchantService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Accounts = new AccountsResource(this);
             Issueresolution = new IssueresolutionResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://merchantapi.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://merchantapi.googleapis.com/batch");
@@ -70,6 +71,9 @@ namespace Google.Apis.Merchant.issueresolution_v1beta
             /// <summary>Manage your product listings and accounts for Google Shopping</summary>
             public const string Content = "https://www.googleapis.com/auth/content";
         }
+
+        /// <summary>Gets the Accounts resource.</summary>
+        public virtual AccountsResource Accounts { get; }
 
         /// <summary>Gets the Issueresolution resource.</summary>
         public virtual IssueresolutionResource Issueresolution { get; }
@@ -253,6 +257,145 @@ namespace Google.Apis.Merchant.issueresolution_v1beta
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "accounts" collection of methods.</summary>
+    public class AccountsResource
+    {
+        private const string Resource = "accounts";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AccountsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            AggregateProductStatuses = new AggregateProductStatusesResource(service);
+        }
+
+        /// <summary>Gets the AggregateProductStatuses resource.</summary>
+        public virtual AggregateProductStatusesResource AggregateProductStatuses { get; }
+
+        /// <summary>The "aggregateProductStatuses" collection of methods.</summary>
+        public class AggregateProductStatusesResource
+        {
+            private const string Resource = "aggregateProductStatuses";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AggregateProductStatusesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Lists the `AggregateProductStatuses` resources for your merchant account. The response might contain
+            /// fewer items than specified by `pageSize`. If `pageToken` was returned in previous request, it can be
+            /// used to obtain additional results.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The account to list aggregate product statuses for. Format: `accounts/{account}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>
+            /// Lists the `AggregateProductStatuses` resources for your merchant account. The response might contain
+            /// fewer items than specified by `pageSize`. If `pageToken` was returned in previous request, it can be
+            /// used to obtain additional results.
+            /// </summary>
+            public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.issueresolution_v1beta.Data.ListAggregateProductStatusesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The account to list aggregate product statuses for. Format: `accounts/{account}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. A filter expression that filters the aggregate product statuses. Filtering is only
+                /// supported by the `reporting_context` and `country` field. For example: `reporting_context =
+                /// "SHOPPING_ADS" AND country = "US"`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of aggregate product statuses to return. The service may return fewer
+                /// than this value. If unspecified, at most 25 aggregate product statuses are returned. The maximum
+                /// value is 250; values above 250 are coerced to 250.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListAggregateProductStatuses` call. Provide this
+                /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListAggregateProductStatuses` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "issueresolution/v1beta/{+parent}/aggregateProductStatuses";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
     }
 
@@ -673,6 +816,39 @@ namespace Google.Apis.Merchant.issueresolution_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Aggregate product statuses for a given reporting context and country.</summary>
+    public class AggregateProductStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The country of the aggregate product statuses. Represented as a [CLDR territory
+        /// code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; }
+
+        /// <summary>The product issues that affect the given reporting context and country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemLevelIssues")]
+        public virtual System.Collections.Generic.IList<ItemLevelIssue> ItemLevelIssues { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the `AggregateProductStatuses` resource. Format:
+        /// `accounts/{account}/aggregateProductStatuses/{aggregateProductStatuses}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The reporting context of the aggregate product statuses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingContext")]
+        public virtual string ReportingContext { get; set; }
+
+        /// <summary>Products statistics for the given reporting context and country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual Stats Stats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A detailed impact breakdown for a group of regions where the impact of the issue on different shopping
     /// destinations is the same.
@@ -966,6 +1142,63 @@ namespace Google.Apis.Merchant.issueresolution_v1beta.Data
         /// <summary>Value for text input field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textInputValue")]
         public virtual TextInputValue TextInputValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The ItemLevelIssue of the product status.</summary>
+    public class ItemLevelIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The attribute's name, if the issue is caused by a single attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attribute")]
+        public virtual string Attribute { get; set; }
+
+        /// <summary>The error code of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>A short issue description in English.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>A detailed issue description in English.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; }
+
+        /// <summary>The URL of a web page to help with resolving this issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationUri")]
+        public virtual string DocumentationUri { get; set; }
+
+        /// <summary>The number of products affected by this issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCount")]
+        public virtual System.Nullable<long> ProductCount { get; set; }
+
+        /// <summary>Whether the issue can be resolved by the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolution")]
+        public virtual string Resolution { get; set; }
+
+        /// <summary>How this issue affects serving of the offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the `ListAggregateProductStatuses` method.</summary>
+    public class ListAggregateProductStatusesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The `AggregateProductStatuses` resources for the given account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateProductStatuses")]
+        public virtual System.Collections.Generic.IList<AggregateProductStatus> AggregateProductStatuses { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1312,6 +1545,29 @@ namespace Google.Apis.Merchant.issueresolution_v1beta.Data
         /// <summary>Title of the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Products statistics.</summary>
+    public class Stats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of products that are active.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeCount")]
+        public virtual System.Nullable<long> ActiveCount { get; set; }
+
+        /// <summary>The number of products that are disapproved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disapprovedCount")]
+        public virtual System.Nullable<long> DisapprovedCount { get; set; }
+
+        /// <summary>The number of products that are expiring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiringCount")]
+        public virtual System.Nullable<long> ExpiringCount { get; set; }
+
+        /// <summary>The number of products that are pending.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingCount")]
+        public virtual System.Nullable<long> PendingCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
