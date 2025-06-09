@@ -4981,6 +4981,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("trafficPercentStrategy")]
         public virtual TrafficPercentStrategy TrafficPercentStrategy { get; set; }
 
+        /// <summary>The TPC universe which the rollout will be rolled out to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("universe")]
+        public virtual string Universe { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
