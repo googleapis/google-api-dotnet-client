@@ -3856,6 +3856,60 @@ namespace Google.Apis.ManagedKafka.v1
                             this.service = service;
                         }
 
+                        /// <summary>Delete schema mode for a subject.</summary>
+                        /// <param name="name">
+                        /// Required. The resource name of subject to delete the mode for. The format is *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject} *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>Delete schema mode for a subject.</summary>
+                        public class DeleteRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaMode>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of subject to delete the mode for. The format is *
+                            /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}
+                            /// *
+                            /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/contexts/[^/]+/mode/.*$",
+                                });
+                            }
+                        }
+
                         /// <summary>Get mode at global level or for a subject.</summary>
                         /// <param name="name">
                         /// Required. The resource name of the mode. The format is *
@@ -5250,6 +5304,59 @@ namespace Google.Apis.ManagedKafka.v1
                     public ModeResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                    }
+
+                    /// <summary>Delete schema mode for a subject.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of subject to delete the mode for. The format is *
+                    /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject} *
+                    /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Delete schema mode for a subject.</summary>
+                    public class DeleteRequest : ManagedKafkaBaseServiceRequest<Google.Apis.ManagedKafka.v1.Data.SchemaMode>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of subject to delete the mode for. The format is *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject} *
+                        /// projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemaRegistries/[^/]+/mode/.*$",
+                            });
+                        }
                     }
 
                     /// <summary>Get mode at global level or for a subject.</summary>
