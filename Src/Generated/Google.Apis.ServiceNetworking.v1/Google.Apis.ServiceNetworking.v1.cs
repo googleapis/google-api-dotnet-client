@@ -590,8 +590,9 @@ namespace Google.Apis.ServiceNetworking.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// The service that is managing peering connectivity for a service producer's organization. For Google
-            /// services that support this functionality, this value is `services/servicenetworking.googleapis.com`.
+            /// Required. The service that is managing peering connectivity for a service producer's organization. For
+            /// Google services that support this functionality, this value is
+            /// `services/servicenetworking.googleapis.com`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.ServiceNetworking.v1.Data.Connection body, string parent)
             {
@@ -616,8 +617,9 @@ namespace Google.Apis.ServiceNetworking.v1
                 }
 
                 /// <summary>
-                /// The service that is managing peering connectivity for a service producer's organization. For Google
-                /// services that support this functionality, this value is `services/servicenetworking.googleapis.com`.
+                /// Required. The service that is managing peering connectivity for a service producer's organization.
+                /// For Google services that support this functionality, this value is
+                /// `services/servicenetworking.googleapis.com`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -793,8 +795,8 @@ namespace Google.Apis.ServiceNetworking.v1
             /// <summary>Updates the allocated ranges that are assigned to a connection.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The private service connection that connects to a service producer organization. The name includes both
-            /// the private service name and the VPC network peering name in the format of
+            /// Required. The private service connection that connects to a service producer organization. The name
+            /// includes both the private service name and the VPC network peering name in the format of
             /// `services/{peering_service_name}/connections/{vpc_peering_name}`. For Google services that support this
             /// functionality, this is
             /// `services/servicenetworking.googleapis.com/connections/servicenetworking-googleapis-com`.
@@ -816,8 +818,8 @@ namespace Google.Apis.ServiceNetworking.v1
                 }
 
                 /// <summary>
-                /// The private service connection that connects to a service producer organization. The name includes
-                /// both the private service name and the VPC network peering name in the format of
+                /// Required. The private service connection that connects to a service producer organization. The name
+                /// includes both the private service name and the VPC network peering name in the format of
                 /// `services/{peering_service_name}/connections/{vpc_peering_name}`. For Google services that support
                 /// this functionality, this is
                 /// `services/servicenetworking.googleapis.com/connections/servicenetworking-googleapis-com`.
@@ -2266,8 +2268,8 @@ namespace Google.Apis.ServiceNetworking.v1
         /// <summary>Disables VPC service controls for a connection.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// The service that is managing peering connectivity for a service producer's organization. For Google services
-        /// that support this functionality, this value is `services/servicenetworking.googleapis.com`.
+        /// Required. The service that is managing peering connectivity for a service producer's organization. For
+        /// Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`.
         /// </param>
         public virtual DisableVpcServiceControlsRequest DisableVpcServiceControls(Google.Apis.ServiceNetworking.v1.Data.DisableVpcServiceControlsRequest body, string parent)
         {
@@ -2286,8 +2288,9 @@ namespace Google.Apis.ServiceNetworking.v1
             }
 
             /// <summary>
-            /// The service that is managing peering connectivity for a service producer's organization. For Google
-            /// services that support this functionality, this value is `services/servicenetworking.googleapis.com`.
+            /// Required. The service that is managing peering connectivity for a service producer's organization. For
+            /// Google services that support this functionality, this value is
+            /// `services/servicenetworking.googleapis.com`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
@@ -2325,8 +2328,8 @@ namespace Google.Apis.ServiceNetworking.v1
         /// <summary>Enables VPC service controls for a connection.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// The service that is managing peering connectivity for a service producer's organization. For Google services
-        /// that support this functionality, this value is `services/servicenetworking.googleapis.com`.
+        /// Required. The service that is managing peering connectivity for a service producer's organization. For
+        /// Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`.
         /// </param>
         public virtual EnableVpcServiceControlsRequest EnableVpcServiceControls(Google.Apis.ServiceNetworking.v1.Data.EnableVpcServiceControlsRequest body, string parent)
         {
@@ -2345,8 +2348,9 @@ namespace Google.Apis.ServiceNetworking.v1
             }
 
             /// <summary>
-            /// The service that is managing peering connectivity for a service producer's organization. For Google
-            /// services that support this functionality, this value is `services/servicenetworking.googleapis.com`.
+            /// Required. The service that is managing peering connectivity for a service producer's organization. For
+            /// Google services that support this functionality, this value is
+            /// `services/servicenetworking.googleapis.com`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
@@ -2742,7 +2746,8 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual string Purpose { get; set; }
 
         /// <summary>
-        /// Required. The name of a [region](/compute/docs/regions-zones) for the subnet, such `europe-west1`.
+        /// Required. The name of a [region](https://cloud.google.com/compute/docs/regions-zones) for the subnet, such
+        /// `europe-west1`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
@@ -2788,7 +2793,8 @@ namespace Google.Apis.ServiceNetworking.v1.Data
 
         /// <summary>
         /// Required. A name for the new subnet. For information about the naming requirements, see
-        /// [subnetwork](/compute/docs/reference/rest/v1/subnetworks) in the Compute API documentation.
+        /// [subnetwork](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks) in the Compute API
+        /// documentation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
@@ -3339,15 +3345,15 @@ namespace Google.Apis.ServiceNetworking.v1.Data
     /// <summary>Cloud SQL configuration.</summary>
     public class CloudSQLConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Peering service used for peering with the Cloud SQL project.</summary>
+        /// <summary>Required. Peering service used for peering with the Cloud SQL project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
 
-        /// <summary>The name of the umbrella network in the Cloud SQL umbrella project.</summary>
+        /// <summary>Required. The name of the umbrella network in the Cloud SQL umbrella project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("umbrellaNetwork")]
         public virtual string UmbrellaNetwork { get; set; }
 
-        /// <summary>The project number of the Cloud SQL umbrella project.</summary>
+        /// <summary>Required. The project number of the Cloud SQL umbrella project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("umbrellaProject")]
         public virtual System.Nullable<long> UmbrellaProject { get; set; }
 
@@ -3384,10 +3390,10 @@ namespace Google.Apis.ServiceNetworking.v1.Data
     public class Connection : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of service consumer's VPC network that's connected with service producer network, in the following
-        /// format: `projects/{project}/global/networks/{network}`. `{project}` is a project number, such as in `12345`
-        /// that includes the VPC service consumer's VPC network. `{network}` is the name of the service consumer's VPC
-        /// network.
+        /// Required. The name of service consumer's VPC network that's connected with service producer network, in the
+        /// following format: `projects/{project}/global/networks/{network}`. `{project}` is a project number, such as
+        /// in `12345` that includes the VPC service consumer's VPC network. `{network}` is the name of the service
+        /// consumer's VPC network.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
@@ -5329,9 +5335,9 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual string DnsSuffix { get; set; }
 
         /// <summary>
-        /// User assigned name for this resource. Must be unique within the consumer network. The name must be 1-63
-        /// characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters,
-        /// digits or dashes.
+        /// Required. User assigned name for this resource. Must be unique within the consumer network. The name must be
+        /// 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase
+        /// letters, digits or dashes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5795,9 +5801,9 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual System.Nullable<int> IpPrefixLength { get; set; }
 
         /// <summary>
-        /// Network name in the consumer project. This network must have been already peered with a shared VPC network
-        /// using CreateConnection method. Must be in a form 'projects/{project}/global/networks/{network}'. {project}
-        /// is a project number, as in '12345' {network} is network name.
+        /// Required. Network name in the consumer project. This network must have been already peered with a shared VPC
+        /// network using CreateConnection method. Must be in a form 'projects/{project}/global/networks/{network}'.
+        /// {project} is a project number, as in '12345' {network} is network name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
