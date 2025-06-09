@@ -10845,6 +10845,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paymentsManager")]
         public virtual System.Nullable<bool> PaymentsManager { get; set; }
 
+        /// <summary>Optional. Whether user has standard read-only access.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
+        public virtual System.Nullable<bool> ReadOnly__ { get; set; }
+
         /// <summary>
         /// Whether user is a reporting manager. This role is equivalent to the Performance and insights role in
         /// Merchant Center.
