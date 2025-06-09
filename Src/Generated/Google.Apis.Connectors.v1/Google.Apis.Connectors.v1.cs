@@ -8834,7 +8834,7 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Eventing Configuration of a connection next: 18</summary>
+    /// <summary>Eventing Configuration of a connection next: 19</summary>
     public class EventingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Additional eventing related field values</summary>
@@ -8866,6 +8866,13 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Optional. Auth details for the event listener.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listenerAuthConfig")]
         public virtual AuthConfig ListenerAuthConfig { get; set; }
+
+        /// <summary>
+        /// Optional. List of projects to be allowlisted for the service attachment created in the tenant project for
+        /// eventing ingress.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivityAllowlistedProjects")]
+        public virtual System.Collections.Generic.IList<string> PrivateConnectivityAllowlistedProjects { get; set; }
 
         /// <summary>Optional. Private Connectivity Enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivityEnabled")]
