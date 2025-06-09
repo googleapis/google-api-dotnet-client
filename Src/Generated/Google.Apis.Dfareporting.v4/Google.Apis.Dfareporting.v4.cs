@@ -21529,8 +21529,9 @@ namespace Google.Apis.Dfareporting.v4.Data
     }
 
     /// <summary>
-    /// Contains additional information about cart data. This field may only be used when calling batchinsert; it is not
-    /// supported by batchupdate.
+    ///  *Beta:* This feature is currently in beta. Contains additional information about cart data. This field may only
+    /// be used when calling batchinsert; it is not supported by batchupdate. Cart data reporting is only supported in
+    /// SA360. [Learn more](https://support.google.com/sa360/topic/13425788)
     /// </summary>
     public class CartData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22128,6 +22129,13 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// <summary>The quantity of the conversion. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; }
+
+        /// <summary>
+        /// Session attributes for the conversion, encoded as based64 bytes. This field may only be used when calling
+        /// batchinsert; it is not supported by batchupdate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionAttributesEncoded")]
+        public virtual string SessionAttributesEncoded { get; set; }
 
         /// <summary>The timestamp of conversion, in Unix epoch micros. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampMicros")]
@@ -23866,8 +23874,8 @@ namespace Google.Apis.Dfareporting.v4.Data
     }
 
     /// <summary>
-    /// A custom floodlight variable. This field may only be used when calling batchinsert; it is not supported by
-    /// batchupdate.
+    /// A custom floodlight variable. Can be used in both batchinsert and batchupdate. Adding this in batchupdate will
+    /// update or append the variable to the existing list.
     /// </summary>
     public class CustomFloodlightVariable : Google.Apis.Requests.IDirectResponseSchema
     {
