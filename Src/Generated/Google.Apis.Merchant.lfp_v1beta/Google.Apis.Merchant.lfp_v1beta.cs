@@ -371,7 +371,8 @@ namespace Google.Apis.Merchant.lfp_v1beta
             /// <summary>Gets the LFP state of a merchant</summary>
             /// <param name="name">
             /// Required. The name of the state to retrieve. Format:
-            /// `accounts/{account}/lfpMerchantStates/{target_merchant}`
+            /// `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example,
+            /// `accounts/123456/lfpMerchantStates/567890`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -390,7 +391,8 @@ namespace Google.Apis.Merchant.lfp_v1beta
 
                 /// <summary>
                 /// Required. The name of the state to retrieve. Format:
-                /// `accounts/{account}/lfpMerchantStates/{target_merchant}`
+                /// `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example,
+                /// `accounts/123456/lfpMerchantStates/567890`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -999,7 +1001,8 @@ namespace Google.Apis.Merchant.lfp_v1beta.Data
 
         /// <summary>
         /// Identifier. The name of the `LfpMerchantState` resource. Format:
-        /// `accounts/{account}/lfpMerchantStates/{target_merchant}`
+        /// `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example,
+        /// `accounts/123456/lfpMerchantStates/567890`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
