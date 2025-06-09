@@ -7054,13 +7054,20 @@ namespace Google.Apis.APIhub.v1.Data
     {
         /// <summary>
         /// Optional. The api functional requirements associated with the API resource. Carinality is 1 for this
-        /// attribute.
+        /// attribute. This maps to the following system defined attribute:
+        /// `projects/{project}/locations/{location}/attributes/system-api-functional-requirements` attribute. The value
+        /// of the attribute should be a proper URI, and in case of Cloud Storage URI, it should point to a Cloud
+        /// Storage object, not a directory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiFunctionalRequirements")]
         public virtual GoogleCloudApihubV1AttributeValues ApiFunctionalRequirements { get; set; }
 
         /// <summary>
-        /// Optional. The api requirement doc associated with the API resource. Carinality is 1 for this attribute.
+        /// Optional. The api requirement doc associated with the API resource. Carinality is 1 for this attribute. This
+        /// maps to the following system defined attribute:
+        /// `projects/{project}/locations/{location}/attributes/system-api-requirements` attribute. The value of the
+        /// attribute should be a proper URI, and in case of Cloud Storage URI, it should point to a Cloud Storage
+        /// object, not a directory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiRequirements")]
         public virtual GoogleCloudApihubV1AttributeValues ApiRequirements { get; set; }
@@ -7076,7 +7083,10 @@ namespace Google.Apis.APIhub.v1.Data
 
         /// <summary>
         /// Optional. The api technical requirements associated with the API resource. Carinality is 1 for this
-        /// attribute.
+        /// attribute. This maps to the following system defined attribute:
+        /// `projects/{project}/locations/{location}/attributes/system-api-technical-requirements` attribute. The value
+        /// of the attribute should be a proper URI, and in case of Cloud Storage URI, it should point to a Cloud
+        /// Storage object, not a directory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiTechnicalRequirements")]
         public virtual GoogleCloudApihubV1AttributeValues ApiTechnicalRequirements { get; set; }
