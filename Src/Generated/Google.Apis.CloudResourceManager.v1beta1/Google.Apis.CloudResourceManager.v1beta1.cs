@@ -2136,6 +2136,14 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     /// </summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. If this project is a Management Project, list of capabilities configured on the parent folder.
+        /// Note, presence of any capability implies that this is a Management Project. Example:
+        /// `folders/123/capabilities/app-management`. OUTPUT ONLY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configuredCapabilities")]
+        public virtual System.Collections.Generic.IList<string> ConfiguredCapabilities { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
