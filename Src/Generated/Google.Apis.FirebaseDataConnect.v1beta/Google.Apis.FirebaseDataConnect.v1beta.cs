@@ -2976,12 +2976,30 @@ namespace Google.Apis.FirebaseDataConnect.v1beta.Data
     /// <summary>GraphqlErrorExtensions contains additional information of `GraphqlError`.</summary>
     public class GraphqlErrorExtensions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Maps to canonical gRPC codes. If not specified, it represents `Code.INTERNAL`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>
+        /// More detailed error message to assist debugging. In the backend, only include it in admin authenticated API
+        /// like ExecuteGraphql. In the emulator, always include it to assist debugging.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("debugDetails")]
+        public virtual string DebugDetails { get; set; }
+
         /// <summary>
         /// The source file name where the error occurred. Included only for `UpdateSchema` and `UpdateConnector`, it
         /// corresponds to `File.path` of the provided `Source`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("file")]
         public virtual string File { get; set; }
+
+        /// <summary>
+        /// Distinguish which schema or connector the error originates from. It should be set on errors from control
+        /// plane APIs (e.g. `UpdateSchema`, `UpdateConnector`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
