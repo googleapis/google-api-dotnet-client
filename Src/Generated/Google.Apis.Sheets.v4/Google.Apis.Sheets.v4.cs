@@ -3614,6 +3614,16 @@ namespace Google.Apis.Sheets.v4.Data
     public class CellData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Runs of chips applied to subsections of the cell. Properties of a run start at a specific index in
+        /// the text and continue until the next run. When reading, all chipped and non-chipped runs are included.
+        /// Non-chipped runs will have an empty chip_run.chip. When writing, only runs with chips are included. Runs
+        /// containing chips are of length 1 and are represented in the user-entered text by an “@” placeholder symbol.
+        /// New runs will overwrite any prior runs. Writing a new user_entered_value will erase previous runs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chipRuns")]
+        public virtual System.Collections.Generic.IList<ChipRun> ChipRuns { get; set; }
+
+        /// <summary>
         /// Output only. Information about a data source formula on the cell. The field is set if user_entered_value is
         /// a formula referencing some DATA_SOURCE sheet, e.g. `=SUM(DataSheet!Column)`.
         /// </summary>
@@ -4030,6 +4040,36 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>A waterfall chart specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waterfallChart")]
         public virtual WaterfallChartSpec WaterfallChart { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Smart Chip.</summary>
+    public class Chip : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Properties of a linked person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personProperties")]
+        public virtual PersonProperties PersonProperties { get; set; }
+
+        /// <summary>Properties of a rich link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("richLinkProperties")]
+        public virtual RichLinkProperties RichLinkProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The run of a chip. The chip continues until the start index of the next run.</summary>
+    public class ChipRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The chip of this run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chip")]
+        public virtual Chip Chip { get; set; }
+
+        /// <summary>Required. The zero-based character index where this run starts, in UTF-16 code units.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6463,6 +6503,23 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Properties specific to a linked person.</summary>
+    public class PersonProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The display format of the person chip. If not set, the default display format is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayFormat")]
+        public virtual string DisplayFormat { get; set; }
+
+        /// <summary>Required. The email address linked to this person. This field is always present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A pie chart.</summary>
     public class PieChartSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7381,6 +7438,29 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>A reply from updating an embedded object's position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateEmbeddedObjectPosition")]
         public virtual UpdateEmbeddedObjectPositionResponse UpdateEmbeddedObjectPosition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Properties of a link to a Google resource (such as a file in Drive, a YouTube video, a Maps address, or a
+    /// Calendar event). Only Drive files can be written as chips. All other rich link types are read only. URIs cannot
+    /// exceed 2000 bytes when writing. NOTE: Writing Drive file chips requires at least one of the `drive.file`,
+    /// `drive.readonly`, or `drive` OAuth scopes.
+    /// </summary>
+    public class RichLinkProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The [MIME type](https://developers.google.com/drive/api/v3/mime-types) of the link, if there's
+        /// one (for example, when it's a file in Drive).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>Required. The URI to the link. This is always present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
