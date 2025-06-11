@@ -10332,6 +10332,12 @@ namespace Google.Apis.Storage.v1.Data
         /// </summary>
         public class IpFilterData
         {
+            /// <summary>
+            /// Whether to allow all service agents to access the bucket regardless of the IP filter configuration.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("allowAllServiceAgentAccess")]
+            public virtual System.Nullable<bool> AllowAllServiceAgentAccess { get; set; }
+
             /// <summary>Whether to allow cross-org VPCs in the bucket's IP filter configuration.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("allowCrossOrgVpcs")]
             public virtual System.Nullable<bool> AllowCrossOrgVpcs { get; set; }
