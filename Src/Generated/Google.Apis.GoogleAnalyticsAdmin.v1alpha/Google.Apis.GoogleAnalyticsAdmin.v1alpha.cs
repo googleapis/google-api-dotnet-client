@@ -1490,6 +1490,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             RollupPropertySourceLinks = new RollupPropertySourceLinksResource(service);
             SearchAds360Links = new SearchAds360LinksResource(service);
             SubpropertyEventFilters = new SubpropertyEventFiltersResource(service);
+            SubpropertySyncConfigs = new SubpropertySyncConfigsResource(service);
         }
 
         /// <summary>Gets the AccessBindings resource.</summary>
@@ -9846,6 +9847,235 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
+        /// <summary>Gets the SubpropertySyncConfigs resource.</summary>
+        public virtual SubpropertySyncConfigsResource SubpropertySyncConfigs { get; }
+
+        /// <summary>The "subpropertySyncConfigs" collection of methods.</summary>
+        public class SubpropertySyncConfigsResource
+        {
+            private const string Resource = "subpropertySyncConfigs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SubpropertySyncConfigsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Lookup for a single Subproperty Sync Config.</summary>
+            /// <param name="name">
+            /// Required. Resource name of the SubpropertySyncConfig to lookup. Format:
+            /// properties/{ordinary_property_id}/subpropertySyncConfigs/{subproperty_id} Example:
+            /// properties/1234/subpropertySyncConfigs/5678
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Lookup for a single Subproperty Sync Config.</summary>
+            public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertySyncConfig>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the SubpropertySyncConfig to lookup. Format:
+                /// properties/{ordinary_property_id}/subpropertySyncConfigs/{subproperty_id} Example:
+                /// properties/1234/subpropertySyncConfigs/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/subpropertySyncConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>List all Subproperty Sync Configs on a property.</summary>
+            /// <param name="parent">
+            /// Required. Resource name of the property. Format: properties/property_id Example: properties/123
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>List all Subproperty Sync Configs on a property.</summary>
+            public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the property. Format: properties/property_id Example: properties/123
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of resources to return. The service may return fewer than this value,
+                /// even if there are additional pages. If unspecified, at most 50 resources will be returned. The
+                /// maximum value is 200; (higher values will be coerced to the maximum)
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListSubpropertySyncConfig` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListSubpropertySyncConfig` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/subpropertySyncConfigs";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a Subproperty Sync Config.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Output only. Identifier. Format:
+            /// properties/{ordinary_property_id}/subpropertySyncConfigs/{subproperty_id} Example:
+            /// properties/1234/subpropertySyncConfigs/5678
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertySyncConfig body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates a Subproperty Sync Config.</summary>
+            public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertySyncConfig>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertySyncConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Output only. Identifier. Format:
+                /// properties/{ordinary_property_id}/subpropertySyncConfigs/{subproperty_id} Example:
+                /// properties/1234/subpropertySyncConfigs/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. The list of fields to update. Field names must be in snake case (for example,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertySyncConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/subpropertySyncConfigs/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>
         /// Acknowledges the terms of user data collection for the specified property. This acknowledgement must be
         /// completed (either in the Google Analytics UI or through this API) before MeasurementProtocolSecret resources
@@ -12503,6 +12733,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("skadnetworkConversionValueSchema")]
         public virtual GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema SkadnetworkConversionValueSchema { get; set; }
 
+        /// <summary>A snapshot of a SubpropertySyncConfig resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subpropertySyncConfig")]
+        public virtual GoogleAnalyticsAdminV1alphaSubpropertySyncConfig SubpropertySyncConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -14789,6 +15023,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListSubpropertySyncConfigs RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of Subproperty Sync Configs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subpropertySyncConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaSubpropertySyncConfig> SubpropertySyncConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines a condition for when an Event Edit or Event Creation rule applies to an event.</summary>
     public class GoogleAnalyticsAdminV1alphaMatchingCondition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15191,6 +15443,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// <summary>Request message for CreateSubproperty RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The subproperty feature synchronization mode for Custom Dimensions and Metrics</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customDimensionAndMetricSynchronizationMode")]
+        public virtual string CustomDimensionAndMetricSynchronizationMode { get; set; }
+
         /// <summary>Required. The subproperty to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subproperty")]
         public virtual GoogleAnalyticsAdminV1alphaProperty Subproperty { get; set; }
@@ -15855,6 +16111,37 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>Required. Unordered list. A list of Subproperty event filter expressions</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterExpressions")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression> FilterExpressions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Subproperty synchronization configuration controls how ordinary property configurations are synchronized to
+    /// subproperties. This resource is provisioned automatically for each subproperty.
+    /// </summary>
+    public class GoogleAnalyticsAdminV1alphaSubpropertySyncConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Immutable. Resource name of the Subproperty that these settings apply to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applyToProperty")]
+        public virtual string ApplyToProperty { get; set; }
+
+        /// <summary>
+        /// Required. Specifies the Custom Dimension / Metric synchronization mode for the Subproperty. If set to ALL,
+        /// Custom Dimension / Metric synchronization will be immediately enabled. Local configuration of Custom
+        /// Dimensions / Metrics will not be allowed on the Subproperty so long as the synchronization mode is set to
+        /// ALL. If set to NONE, Custom Dimensions / Metric synchronization is disabled. Custom Dimensions / Metrics
+        /// must be configured explicitly on the Subproperty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customDimensionAndMetricSyncMode")]
+        public virtual string CustomDimensionAndMetricSyncMode { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. Format: properties/{ordinary_property_id}/subpropertySyncConfigs/{subproperty_id}
+        /// Example: properties/1234/subpropertySyncConfigs/5678
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
