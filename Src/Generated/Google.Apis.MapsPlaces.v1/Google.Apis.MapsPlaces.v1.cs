@@ -2180,9 +2180,8 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual System.Nullable<bool> OpenNow { get; set; }
 
         /// <summary>
-        /// The periods that this place is open during the week. The periods are in chronological order, starting with
-        /// Sunday in the place-local timezone. An empty (but not absent) value indicates a place that is never open,
-        /// e.g. because it is closed temporarily for renovations.
+        /// NOTE: The ordering of the `periods` array is independent of the ordering of the `weekday_descriptions`
+        /// array. Do not assume they will begin on the same day.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periods")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceOpeningHoursPeriod> Periods { get; set; }
@@ -2200,8 +2199,11 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay> SpecialDays { get; set; }
 
         /// <summary>
-        /// Localized strings describing the opening hours of this place, one string for each day of the week. Will be
-        /// empty if the hours are unknown or could not be converted to localized text. Example: "Sun: 18:00–06:00"
+        /// Localized strings describing the opening hours of this place, one string for each day of the week. NOTE: The
+        /// order of the days and the start of the week is determined by the locale (language and region). The ordering
+        /// of the `periods` array is independent of the ordering of the `weekday_descriptions` array. Do not assume
+        /// they will begin on the same day. Will be empty if the hours are unknown or could not be converted to
+        /// localized text. Example: "Sun: 18:00–06:00"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weekdayDescriptions")]
         public virtual System.Collections.Generic.IList<string> WeekdayDescriptions { get; set; }
