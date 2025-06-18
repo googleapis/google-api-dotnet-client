@@ -2637,7 +2637,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+parent}:queryOrgVpcFlowLogsConfigs";
+                    public override string RestPath => "v1beta1/{+parent}/vpcFlowLogsConfigs:queryOrgVpcFlowLogsConfigs";
 
                     /// <summary>Initializes QueryOrgVpcFlowLogsConfigs parameter list.</summary>
                     protected override void InitParameters()
@@ -2649,7 +2649,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/vpcFlowLogsConfigs$",
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
@@ -3064,6 +3064,13 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>Wrapper for Cloud Run revision attributes.</summary>
     public class CloudRunRevisionEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The URI of the Cloud Run service that the revision belongs to. The format is:
+        /// projects/{project}/locations/{location}/services/{service}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceUri")]
+        public virtual string ServiceUri { get; set; }
+
         /// <summary>
         /// A [Cloud Run](https://cloud.google.com/run)
         /// [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is:
@@ -3836,13 +3843,19 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pscNetworkAttachmentUri")]
         public virtual string PscNetworkAttachmentUri { get; set; }
 
-        /// <summary>Indicates whether the Compute Engine instance is running.</summary>
+        /// <summary>
+        /// Indicates whether the Compute Engine instance is running. Deprecated: use the `status` field instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("running")]
         public virtual System.Nullable<bool> Running { get; set; }
 
         /// <summary>Service account authorized for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
+
+        /// <summary>The status of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>URI of a Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
