@@ -28925,7 +28925,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>Represents a call of a specific tool's action with the specified inputs.</summary>
     public class GoogleCloudDialogflowV2ToolCall : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The name of the tool's action associated with this call.</summary>
+        /// <summary>Optional. The name of the tool's action associated with this call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
@@ -28970,7 +28970,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputParameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> InputParameters { get; set; }
 
-        /// <summary>Required. The tool associated with this call. Format: `projects//locations//tools/`.</summary>
+        /// <summary>Optional. The tool associated with this call. Format: `projects//locations//tools/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tool")]
         public virtual string Tool { get; set; }
 
@@ -28981,7 +28981,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>The result of calling a tool's action.</summary>
     public class GoogleCloudDialogflowV2ToolCallResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The name of the tool's action associated with this call.</summary>
+        /// <summary>Optional. The name of the tool's action associated with this call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
@@ -29036,7 +29036,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rawContent")]
         public virtual string RawContent { get; set; }
 
-        /// <summary>Required. The tool associated with this call. Format: `projects//locations//tools/`.</summary>
+        /// <summary>Optional. The tool associated with this call. Format: `projects//locations//tools/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tool")]
         public virtual string Tool { get; set; }
 
@@ -37121,7 +37121,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>Represents a call of a specific tool's action with the specified inputs.</summary>
     public class GoogleCloudDialogflowV2beta1ToolCall : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The name of the tool's action associated with this call.</summary>
+        /// <summary>Optional. The name of the tool's action associated with this call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
@@ -37166,7 +37166,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputParameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> InputParameters { get; set; }
 
-        /// <summary>Required. The tool associated with this call. Format: `projects//locations//tools/`.</summary>
+        /// <summary>Optional. The tool associated with this call. Format: `projects//locations//tools/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tool")]
         public virtual string Tool { get; set; }
 
@@ -37177,7 +37177,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>The result of calling a tool's action.</summary>
     public class GoogleCloudDialogflowV2beta1ToolCallResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The name of the tool's action associated with this call.</summary>
+        /// <summary>Optional. The name of the tool's action associated with this call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
@@ -37232,7 +37232,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rawContent")]
         public virtual string RawContent { get; set; }
 
-        /// <summary>Required. The tool associated with this call. Format: `projects//locations//tools/`.</summary>
+        /// <summary>Optional. The tool associated with this call. Format: `projects//locations//tools/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tool")]
         public virtual string Tool { get; set; }
 
