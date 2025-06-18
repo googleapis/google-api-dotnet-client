@@ -31163,7 +31163,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Defines a user inputed query.</summary>
     public class GoogleCloudDiscoveryengineV1alphaQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Unique Id for the query.</summary>
+        /// <summary>Output only. Unique Id for the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryId")]
         public virtual string QueryId { get; set; }
 
@@ -31729,26 +31729,40 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec QueryExpansionSpec { get; set; }
 
         /// <summary>
-        /// The ranking expression controls the customized ranking on retrieval documents. This overrides
-        /// ServingConfig.ranking_expression. The syntax and supported features depend on the ranking_expression_backend
-        /// value. If ranking_expression_backend is not provided, it defaults to BYOE. === BYOE === If
-        /// ranking_expression_backend is not provided or set to `BYOE`, it should be a single function or multiple
-        /// functions that are joined by "+". * ranking_expression = function, { " + ", function }; Supported functions:
-        /// * double * relevance_score * double * dotProduct(embedding_field_path) Function variables: *
-        /// `relevance_score`: pre-defined keywords, used for measure relevance between query and document. *
-        /// `embedding_field_path`: the document embedding field used with query embedding vector. * `dotProduct`:
-        /// embedding function between embedding_field_path and query embedding vector. Example ranking expression: If
-        /// document has an embedding field doc_embedding, the ranking expression could be `0.5 * relevance_score + 0.3
-        /// * dotProduct(doc_embedding)`. === CLEARBOX === If ranking_expression_backend is set to `CLEARBOX`, the
-        /// following expression types (and combinations of those chained using + or * operators) are supported: *
-        /// double * signal * log(signal) * exp(signal) * rr(signal, double &amp;gt; 0) -- reciprocal rank
-        /// transformation with second argument being a denominator constant. * is_nan(signal) -- returns 0 if signal is
-        /// NaN, 1 otherwise. * fill_nan(signal1, signal2 | double) -- if signal1 is NaN, returns signal2 | double, else
-        /// returns signal1. Examples: * 0.2 * gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0))
-        /// + 0.3 * is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32) The following signals are
-        /// supported: * gecko_score -- semantic similarity adjustment * bm25_score -- keyword match adjustment *
-        /// jetstream_score -- semantic relevance adjustment * pctr_rank -- predicted conversion rate adjustment as a
-        /// rank * freshness_rank -- freshness adjustment as a rank * base_rank -- the default rank of the result
+        /// Optional. The ranking expression controls the customized ranking on retrieval documents. This overrides
+        /// ServingConfig.ranking_expression. The syntax and supported features depend on the
+        /// `ranking_expression_backend` value. If `ranking_expression_backend` is not provided, it defaults to
+        /// `RANK_BY_EMBEDDING`. If ranking_expression_backend is not provided or set to `RANK_BY_EMBEDDING`, it should
+        /// be a single function or multiple functions that are joined by "+". * ranking_expression = function, { " + ",
+        /// function }; Supported functions: * double * relevance_score * double * dotProduct(embedding_field_path)
+        /// Function variables: * `relevance_score`: pre-defined keywords, used for measure relevance between query and
+        /// document. * `embedding_field_path`: the document embedding field used with query embedding vector. *
+        /// `dotProduct`: embedding function between `embedding_field_path` and query embedding vector. Example ranking
+        /// expression: If document has an embedding field doc_embedding, the ranking expression could be `0.5 *
+        /// relevance_score + 0.3 * dotProduct(doc_embedding)`. If ranking_expression_backend is set to
+        /// `RANK_BY_FORMULA`, the following expression types (and combinations of those chained using + or * operators)
+        /// are supported: * `double` * `signal` * `log(signal)` * `exp(signal)` * `rr(signal, double &amp;gt; 0)` --
+        /// reciprocal rank transformation with second argument being a denominator constant. * `is_nan(signal)` --
+        /// returns 0 if signal is NaN, 1 otherwise. * `fill_nan(signal1, signal2 | double)` -- if signal1 is NaN,
+        /// returns signal2 | double, else returns signal1. Here are a few examples of ranking formulas that use the
+        /// supported ranking expression types: - `0.2 * semantic_similarity_score + 0.8 *
+        /// log(keyword_similarity_score)` -- mostly rank by the logarithm of `keyword_similarity_score` with slight
+        /// `semantic_smilarity_score` adjustment. - `0.2 * exp(fill_nan(semantic_similarity_score, 0)) + 0.3 *
+        /// is_nan(keyword_similarity_score)` -- rank by the exponent of `semantic_similarity_score` filling the value
+        /// with 0 if it's NaN, also add constant 0.3 adjustment to the final score if `semantic_similarity_score` is
+        /// NaN. - `0.2 * rr(semantic_similarity_score, 16) + 0.8 * rr(keyword_similarity_score, 16)` -- mostly rank by
+        /// the reciprocal rank of `keyword_similarity_score` with slight adjustment of reciprocal rank of
+        /// `semantic_smilarity_score`. The following signals are supported: * `semantic_similarity_score`: semantic
+        /// similarity adjustment that is calculated using the embeddings generated by a proprietary Google model. This
+        /// score determines how semantically similar a search query is to a document. * `keyword_similarity_score`:
+        /// keyword match adjustment uses the Best Match 25 (BM25) ranking function. This score is calculated using a
+        /// probabilistic model to estimate the probability that a document is relevant to a given query. *
+        /// `relevance_score`: semantic relevance adjustment that uses a proprietary Google model to determine the
+        /// meaning and intent behind a user's query in context with the content in the documents. * `pctr_rank`:
+        /// predicted conversion rate adjustment as a rank use predicted Click-through rate (pCTR) to gauge the
+        /// relevance and attractiveness of a search result from a user's perspective. A higher pCTR suggests that the
+        /// result is more likely to satisfy the user's query and intent, making it a valuable signal for ranking. *
+        /// `freshness_rank`: freshness adjustment as a rank * `base_rank`: the default rank of the result
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
         public virtual string RankingExpression { get; set; }
@@ -31821,6 +31835,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spellCorrectionSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestSpellCorrectionSpec SpellCorrectionSpec { get; set; }
+
+        /// <summary>
+        /// Uses the Engine, ServingConfig and Control freshly read from the database. Note: this skips config cache and
+        /// introduces dependency on databases, which could significantly increase the API latency. It should only be
+        /// used for testing, but not serving end users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useLatestData")]
+        public virtual System.Nullable<bool> UseLatestData { get; set; }
 
         /// <summary>
         /// Information about the end user. Highly recommended for analytics and personalization. UserInfo.user_agent is
@@ -32688,8 +32710,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1alphaSessionTurn : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resource name of the answer to the user query. Only set if the answer generation (/answer API call)
-        /// happened in this turn.
+        /// Optional. The resource name of the answer to the user query. Only set if the answer generation (/answer API
+        /// call) happened in this turn.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answer")]
         public virtual string Answer { get; set; }
@@ -32701,21 +32723,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("detailedAnswer")]
         public virtual GoogleCloudDiscoveryengineV1alphaAnswer DetailedAnswer { get; set; }
 
-        /// <summary>The user query.</summary>
+        /// <summary>
+        /// Optional. The user query. May not be set if this turn is merely regenerating an answer to a different turn
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual GoogleCloudDiscoveryengineV1alphaQuery Query { get; set; }
-
-        /// <summary>
-        /// Optional. Represents metadata related to the query config, for example LLM model and version used, model
-        /// parameters (temperature, grounding parameters, etc.). We don't want to import directly the
-        /// [AnswerGenerationSpec] structure as this will serve a more general purpose and a wider set of customers.
-        /// This information is used in particular when rendering alternative answers to the same prompt, providing
-        /// visual information about how each answer was generated. The prefix "google." will be reserved for the key,
-        /// and 1P services (Answer, Assistant, etc.) should always store their information with "google..". 3P services
-        /// can use anything not starting with "google."
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queryConfigs")]
-        public virtual System.Collections.Generic.IDictionary<string, string> QueryConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -41471,6 +41483,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Principal identifier of a user or a group.</summary>
     public class GoogleCloudDiscoveryengineV1betaPrincipal : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>For 3P application identities which are not present in the customer identity provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalEntityId")]
+        public virtual string ExternalEntityId { get; set; }
+
         /// <summary>
         /// Group identifier. For Google Workspace user account, group_id should be the google workspace group email.
         /// For non-google identity provider user account, group_id is the mapped group identifier configured during the
@@ -42162,7 +42178,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Defines a user inputed query.</summary>
     public class GoogleCloudDiscoveryengineV1betaQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Unique Id for the query.</summary>
+        /// <summary>Output only. Unique Id for the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryId")]
         public virtual string QueryId { get; set; }
 
@@ -43122,26 +43138,40 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec QueryExpansionSpec { get; set; }
 
         /// <summary>
-        /// The ranking expression controls the customized ranking on retrieval documents. This overrides
-        /// ServingConfig.ranking_expression. The syntax and supported features depend on the ranking_expression_backend
-        /// value. If ranking_expression_backend is not provided, it defaults to BYOE. === BYOE === If
-        /// ranking_expression_backend is not provided or set to `BYOE`, it should be a single function or multiple
-        /// functions that are joined by "+". * ranking_expression = function, { " + ", function }; Supported functions:
-        /// * double * relevance_score * double * dotProduct(embedding_field_path) Function variables: *
-        /// `relevance_score`: pre-defined keywords, used for measure relevance between query and document. *
-        /// `embedding_field_path`: the document embedding field used with query embedding vector. * `dotProduct`:
-        /// embedding function between embedding_field_path and query embedding vector. Example ranking expression: If
-        /// document has an embedding field doc_embedding, the ranking expression could be `0.5 * relevance_score + 0.3
-        /// * dotProduct(doc_embedding)`. === CLEARBOX === If ranking_expression_backend is set to `CLEARBOX`, the
-        /// following expression types (and combinations of those chained using + or * operators) are supported: *
-        /// double * signal * log(signal) * exp(signal) * rr(signal, double &amp;gt; 0) -- reciprocal rank
-        /// transformation with second argument being a denominator constant. * is_nan(signal) -- returns 0 if signal is
-        /// NaN, 1 otherwise. * fill_nan(signal1, signal2 | double) -- if signal1 is NaN, returns signal2 | double, else
-        /// returns signal1. Examples: * 0.2 * gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0))
-        /// + 0.3 * is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32) The following signals are
-        /// supported: * gecko_score -- semantic similarity adjustment * bm25_score -- keyword match adjustment *
-        /// jetstream_score -- semantic relevance adjustment * pctr_rank -- predicted conversion rate adjustment as a
-        /// rank * freshness_rank -- freshness adjustment as a rank * base_rank -- the default rank of the result
+        /// Optional. The ranking expression controls the customized ranking on retrieval documents. This overrides
+        /// ServingConfig.ranking_expression. The syntax and supported features depend on the
+        /// `ranking_expression_backend` value. If `ranking_expression_backend` is not provided, it defaults to
+        /// `RANK_BY_EMBEDDING`. If ranking_expression_backend is not provided or set to `RANK_BY_EMBEDDING`, it should
+        /// be a single function or multiple functions that are joined by "+". * ranking_expression = function, { " + ",
+        /// function }; Supported functions: * double * relevance_score * double * dotProduct(embedding_field_path)
+        /// Function variables: * `relevance_score`: pre-defined keywords, used for measure relevance between query and
+        /// document. * `embedding_field_path`: the document embedding field used with query embedding vector. *
+        /// `dotProduct`: embedding function between `embedding_field_path` and query embedding vector. Example ranking
+        /// expression: If document has an embedding field doc_embedding, the ranking expression could be `0.5 *
+        /// relevance_score + 0.3 * dotProduct(doc_embedding)`. If ranking_expression_backend is set to
+        /// `RANK_BY_FORMULA`, the following expression types (and combinations of those chained using + or * operators)
+        /// are supported: * `double` * `signal` * `log(signal)` * `exp(signal)` * `rr(signal, double &amp;gt; 0)` --
+        /// reciprocal rank transformation with second argument being a denominator constant. * `is_nan(signal)` --
+        /// returns 0 if signal is NaN, 1 otherwise. * `fill_nan(signal1, signal2 | double)` -- if signal1 is NaN,
+        /// returns signal2 | double, else returns signal1. Here are a few examples of ranking formulas that use the
+        /// supported ranking expression types: - `0.2 * semantic_similarity_score + 0.8 *
+        /// log(keyword_similarity_score)` -- mostly rank by the logarithm of `keyword_similarity_score` with slight
+        /// `semantic_smilarity_score` adjustment. - `0.2 * exp(fill_nan(semantic_similarity_score, 0)) + 0.3 *
+        /// is_nan(keyword_similarity_score)` -- rank by the exponent of `semantic_similarity_score` filling the value
+        /// with 0 if it's NaN, also add constant 0.3 adjustment to the final score if `semantic_similarity_score` is
+        /// NaN. - `0.2 * rr(semantic_similarity_score, 16) + 0.8 * rr(keyword_similarity_score, 16)` -- mostly rank by
+        /// the reciprocal rank of `keyword_similarity_score` with slight adjustment of reciprocal rank of
+        /// `semantic_smilarity_score`. The following signals are supported: * `semantic_similarity_score`: semantic
+        /// similarity adjustment that is calculated using the embeddings generated by a proprietary Google model. This
+        /// score determines how semantically similar a search query is to a document. * `keyword_similarity_score`:
+        /// keyword match adjustment uses the Best Match 25 (BM25) ranking function. This score is calculated using a
+        /// probabilistic model to estimate the probability that a document is relevant to a given query. *
+        /// `relevance_score`: semantic relevance adjustment that uses a proprietary Google model to determine the
+        /// meaning and intent behind a user's query in context with the content in the documents. * `pctr_rank`:
+        /// predicted conversion rate adjustment as a rank use predicted Click-through rate (pCTR) to gauge the
+        /// relevance and attractiveness of a search result from a user's perspective. A higher pCTR suggests that the
+        /// result is more likely to satisfy the user's query and intent, making it a valuable signal for ranking. *
+        /// `freshness_rank`: freshness adjustment as a rank * `base_rank`: the default rank of the result
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
         public virtual string RankingExpression { get; set; }
@@ -45012,8 +45042,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1betaSessionTurn : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resource name of the answer to the user query. Only set if the answer generation (/answer API call)
-        /// happened in this turn.
+        /// Optional. The resource name of the answer to the user query. Only set if the answer generation (/answer API
+        /// call) happened in this turn.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answer")]
         public virtual string Answer { get; set; }
@@ -45025,21 +45055,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("detailedAnswer")]
         public virtual GoogleCloudDiscoveryengineV1betaAnswer DetailedAnswer { get; set; }
 
-        /// <summary>The user query.</summary>
+        /// <summary>
+        /// Optional. The user query. May not be set if this turn is merely regenerating an answer to a different turn
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual GoogleCloudDiscoveryengineV1betaQuery Query { get; set; }
-
-        /// <summary>
-        /// Optional. Represents metadata related to the query config, for example LLM model and version used, model
-        /// parameters (temperature, grounding parameters, etc.). We don't want to import directly the
-        /// [AnswerGenerationSpec] structure as this will serve a more general purpose and a wider set of customers.
-        /// This information is used in particular when rendering alternative answers to the same prompt, providing
-        /// visual information about how each answer was generated. The prefix "google." will be reserved for the key,
-        /// and 1P services (Answer, Assistant, etc.) should always store their information with "google..". 3P services
-        /// can use anything not starting with "google."
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queryConfigs")]
-        public virtual System.Collections.Generic.IDictionary<string, string> QueryConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
