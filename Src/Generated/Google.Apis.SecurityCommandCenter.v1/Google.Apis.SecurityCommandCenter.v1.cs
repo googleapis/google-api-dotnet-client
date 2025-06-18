@@ -15256,6 +15256,41 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains information about the AI model associated with the finding.</summary>
+    public class AiModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The platform on which the model is deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentPlatform")]
+        public virtual string DeploymentPlatform { get; set; }
+
+        /// <summary>The user defined display name of model. Ex. baseline-classification-model</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The domain of the model, for example, “image-classification”.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>The name of the model library, for example, “transformers”.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("library")]
+        public virtual string Library { get; set; }
+
+        /// <summary>The region in which the model is used, for example, “us-central1”.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The name of the AI model, for example, "gemini:1.0.0".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The publisher of the model, for example, “google” or “nvidia”.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
+        public virtual string Publisher { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Allowed IP rule.</summary>
     public class Allowed : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16954,6 +16989,27 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Vertex AI dataset associated with the finding.</summary>
+    public class Dataset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user defined display name of dataset, e.g. plants-dataset</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Resource name of dataset, e.g. projects/{project}/locations/{location}/datasets/2094040236064505856
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Data source, such as BigQuery source URI, e.g. bq://scc-nexus-test.AIPPtest.gsod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Denied IP rule.</summary>
     public class Denied : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17408,6 +17464,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("affectedResources")]
         public virtual AffectedResources AffectedResources { get; set; }
 
+        /// <summary>The AI model associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiModel")]
+        public virtual AiModel AiModel { get; set; }
+
         /// <summary>Represents an application associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("application")]
         public virtual Application Application { get; set; }
@@ -17817,6 +17877,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toxicCombination")]
         public virtual ToxicCombination ToxicCombination { get; set; }
+
+        /// <summary>VertexAi associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexAi")]
+        public virtual VertexAi VertexAi { get; set; }
 
         /// <summary>
         /// Represents vulnerability-specific fields like CVE and CVSS scores. CVE stands for Common Vulnerabilities and
@@ -19436,6 +19500,41 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains information about the AI model associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2AiModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The platform on which the model is deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentPlatform")]
+        public virtual string DeploymentPlatform { get; set; }
+
+        /// <summary>The user defined display name of model. Ex. baseline-classification-model</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The domain of the model, for example, “image-classification”.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>The name of the model library, for example, “transformers”.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("library")]
+        public virtual string Library { get; set; }
+
+        /// <summary>The region in which the model is used, for example, “us-central1”.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The name of the AI model, for example, "gemini:1.0.0".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The publisher of the model, for example, “google” or “nvidia”.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
+        public virtual string Publisher { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Allowed IP rule.</summary>
     public class GoogleCloudSecuritycenterV2Allowed : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20806,6 +20905,27 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Vertex AI dataset associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2Dataset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user defined display name of dataset, e.g. plants-dataset</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Resource name of dataset, e.g. projects/{project}/locations/{location}/datasets/2094040236064505856
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Data source, such as BigQuery source URI, e.g. bq://scc-nexus-test.AIPPtest.gsod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Denied IP rule.</summary>
     public class GoogleCloudSecuritycenterV2Denied : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21261,6 +21381,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("affectedResources")]
         public virtual GoogleCloudSecuritycenterV2AffectedResources AffectedResources { get; set; }
 
+        /// <summary>The AI model associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiModel")]
+        public virtual GoogleCloudSecuritycenterV2AiModel AiModel { get; set; }
+
         /// <summary>Represents an application associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("application")]
         public virtual GoogleCloudSecuritycenterV2Application Application { get; set; }
@@ -21586,8 +21710,9 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         }
 
         /// <summary>
-        /// The [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of
-        /// the finding. The following list shows some examples: +
+        /// Identifier. The [relative resource
+        /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding. The
+        /// following list shows some examples: +
         /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}` +
         /// `organizations/{organization_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` +
         /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}` +
@@ -21680,6 +21805,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toxicCombination")]
         public virtual GoogleCloudSecuritycenterV2ToxicCombination ToxicCombination { get; set; }
+
+        /// <summary>VertexAi associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexAi")]
+        public virtual GoogleCloudSecuritycenterV2VertexAi VertexAi { get; set; }
 
         /// <summary>
         /// Represents vulnerability-specific fields like CVE and CVSS scores. CVE stands for Common Vulnerabilities and
@@ -22909,6 +23038,24 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Vertex AI training pipeline associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2Pipeline : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user defined display name of pipeline, e.g. plants-classification</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Resource name of pipeline, e.g.
+        /// projects/{project}/locations/{location}/trainingPipelines/5253428229225578496
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Kubernetes Pod.</summary>
     public class GoogleCloudSecuritycenterV2Pod : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23728,6 +23875,21 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedFindings")]
         public virtual System.Collections.Generic.IList<string> RelatedFindings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Vertex AI-related information associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2VertexAi : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Datasets associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasets")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2Dataset> Datasets { get; set; }
+
+        /// <summary>Pipelines associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelines")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2Pipeline> Pipelines { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25235,6 +25397,24 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Vertex AI training pipeline associated with the finding.</summary>
+    public class Pipeline : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user defined display name of pipeline, e.g. plants-classification</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Resource name of pipeline, e.g.
+        /// projects/{project}/locations/{location}/trainingPipelines/5253428229225578496
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Kubernetes Pod.</summary>
     public class Pod : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26491,6 +26671,21 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceValueConfigsUsed")]
         public virtual System.Collections.Generic.IList<ResourceValueConfigMetadata> ResourceValueConfigsUsed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Vertex AI-related information associated with the finding.</summary>
+    public class VertexAi : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Datasets associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasets")]
+        public virtual System.Collections.Generic.IList<Dataset> Datasets { get; set; }
+
+        /// <summary>Pipelines associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelines")]
+        public virtual System.Collections.Generic.IList<Pipeline> Pipelines { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
