@@ -4686,6 +4686,57 @@ namespace Google.Apis.CloudRetail.v2beta
                     }
                 }
 
+                /// <summary>Returns the conversational search customization config for a given catalog.</summary>
+                /// <param name="name">
+                /// Required. Resource name of the parent catalog. Format:
+                /// projects/{project}/locations/{location}/catalogs/{catalog}
+                /// </param>
+                public virtual GetConversationalSearchCustomizationConfigRequest GetConversationalSearchCustomizationConfig(string name)
+                {
+                    return new GetConversationalSearchCustomizationConfigRequest(this.service, name);
+                }
+
+                /// <summary>Returns the conversational search customization config for a given catalog.</summary>
+                public class GetConversationalSearchCustomizationConfigRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaConversationalSearchCustomizationConfig>
+                {
+                    /// <summary>Constructs a new GetConversationalSearchCustomizationConfig request.</summary>
+                    public GetConversationalSearchCustomizationConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the parent catalog. Format:
+                    /// projects/{project}/locations/{location}/catalogs/{catalog}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getConversationalSearchCustomizationConfig";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta/{+name}/conversationalSearchCustomizationConfig";
+
+                    /// <summary>Initializes GetConversationalSearchCustomizationConfig parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Get which branch is currently default branch set by CatalogService.SetDefaultBranch method under a
                 /// specified parent catalog.
@@ -5188,6 +5239,80 @@ namespace Google.Apis.CloudRetail.v2beta
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/completionConfig$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the conversational search customization config for a given catalog.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="catalog">
+                /// Required. Resource name of the catalog. Format:
+                /// projects/{project}/locations/{location}/catalogs/{catalog}
+                /// </param>
+                public virtual UpdateConversationalSearchCustomizationConfigRequest UpdateConversationalSearchCustomizationConfig(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaConversationalSearchCustomizationConfig body, string catalog)
+                {
+                    return new UpdateConversationalSearchCustomizationConfigRequest(this.service, body, catalog);
+                }
+
+                /// <summary>Updates the conversational search customization config for a given catalog.</summary>
+                public class UpdateConversationalSearchCustomizationConfigRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaConversationalSearchCustomizationConfig>
+                {
+                    /// <summary>Constructs a new UpdateConversationalSearchCustomizationConfig request.</summary>
+                    public UpdateConversationalSearchCustomizationConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaConversationalSearchCustomizationConfig body, string catalog) : base(service)
+                    {
+                        Catalog = catalog;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the catalog. Format:
+                    /// projects/{project}/locations/{location}/catalogs/{catalog}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("catalog", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Catalog { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Indicates which fields in the provided ConversationalSearchCustomizationConfig to
+                    /// update. If not set or empty, all supported fields are updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaConversationalSearchCustomizationConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateConversationalSearchCustomizationConfig";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta/{+catalog}/conversationalSearchCustomizationConfig";
+
+                    /// <summary>Initializes UpdateConversationalSearchCustomizationConfig parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("catalog", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "catalog",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -9351,6 +9476,32 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The public proto to represent the conversational search customization config. It will be converted to the
+    /// internal proto in the backend.
+    /// </summary>
+    public class GoogleCloudRetailV2betaConversationalSearchCustomizationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Resource name of the catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalog")]
+        public virtual string Catalog { get; set; }
+
+        /// <summary>Optional. The configs for intent classification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentClassificationConfig")]
+        public virtual GoogleCloudRetailV2betaIntentClassificationConfig IntentClassificationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The retailer's display name that could be used in our LLM answers. Example - "Google"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retailerDisplayName")]
+        public virtual string RetailerDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata associated with a create operation.</summary>
     public class GoogleCloudRetailV2betaCreateModelMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10193,6 +10344,67 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>Aggregated statistics of user event import status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importSummary")]
         public virtual GoogleCloudRetailV2betaUserEventImportSummary ImportSummary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The public proto to represent the intent classification config. It will be converted to the internal proto in
+    /// the backend.
+    /// </summary>
+    public class GoogleCloudRetailV2betaIntentClassificationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of keywords that will be used to classify the query to the "BLOCKLISTED" intent type. The
+        /// keywords are case insensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocklistKeywords")]
+        public virtual System.Collections.Generic.IList<string> BlocklistKeywords { get; set; }
+
+        /// <summary>
+        /// Optional. A list of intent types that will be disabled for this customer. The intent types must match one of
+        /// the predefined intent types defined at
+        /// https://cloud.google.com/retail/docs/reference/rpc/google.cloud.retail.v2alpha#querytype
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabledIntentTypes")]
+        public virtual System.Collections.Generic.IList<string> DisabledIntentTypes { get; set; }
+
+        /// <summary>Optional. A list of examples for intent classification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("example")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaIntentClassificationConfigExample> Example { get; set; }
+
+        /// <summary>
+        /// Optional. Customers can use the preamble to specify any requirements for blocklisting intent classification.
+        /// This preamble will be added to the blocklisting intent classification model prompt.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelPreamble")]
+        public virtual string ModelPreamble { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An example for intent classification.</summary>
+    public class GoogleCloudRetailV2betaIntentClassificationConfigExample : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The intent_type must match one of the predefined intent types defined at
+        /// https://cloud.google.com/retail/docs/reference/rpc/google.cloud.retail.v2alpha#querytype
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentType")]
+        public virtual string IntentType { get; set; }
+
+        /// <summary>Required. Example query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>
+        /// Optional. The reason for the intent classification. This is used to explain the intent classification
+        /// decision.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13069,8 +13281,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string Condition { get; set; }
 
         /// <summary>
-        /// Whether to pin unexpanded results. If this field is set to true, unexpanded products are always at the top
-        /// of the search results, followed by the expanded results.
+        /// Whether to pin unexpanded results. The default value is false. If this field is set to true, unexpanded
+        /// products are always at the top of the search results, followed by the expanded results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pinUnexpandedResults")]
         public virtual System.Nullable<bool> PinUnexpandedResults { get; set; }
@@ -14011,7 +14223,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// A unique identifier for tracking a visitor session with a length limit of 128 bytes. A session is an
-        /// aggregation of an end user behavior in a time span. A general guideline to populate the sesion_id: 1. If
+        /// aggregation of an end user behavior in a time span. A general guideline to populate the session_id: 1. If
         /// user has no activity for 30 min, a new session_id should be assigned. 2. The session_id should be unique
         /// across users, suggest use uuid or add visitor_id as prefix.
         /// </summary>
