@@ -335,6 +335,57 @@ namespace Google.Apis.AdSensePlatform.v1alpha
                         this.service = service;
                     }
 
+                    /// <summary>Gets a Platform Child Site for a specified Platform Child Account and site.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the platform child site to retrieve. Format:
+                    /// accounts/{account}/platforms/{platform}/childAccounts/{child_account}/sites/{platform_child_site}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets a Platform Child Site for a specified Platform Child Account and site.</summary>
+                    public class GetRequest : AdSensePlatformBaseServiceRequest<Google.Apis.AdSensePlatform.v1alpha.Data.PlatformChildSite>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the platform child site to retrieve. Format:
+                        /// accounts/{account}/platforms/{platform}/childAccounts/{child_account}/sites/{platform_child_site}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^accounts/[^/]+/platforms/[^/]+/childAccounts/[^/]+/sites/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Lists Platform Child Sites for a specified Platform Child Account.</summary>
                     /// <param name="parent">
                     /// Required. The name of the child account under the given platform which owns the platform child
@@ -509,6 +560,57 @@ namespace Google.Apis.AdSensePlatform.v1alpha
                 public GroupsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                }
+
+                /// <summary>Gets a Platform Group for a specified Platform and group.</summary>
+                /// <param name="name">
+                /// Required. The name of the platform group to retrieve. Format:
+                /// accounts/{account}/platforms/{platform}/groups/{group}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a Platform Group for a specified Platform and group.</summary>
+                public class GetRequest : AdSensePlatformBaseServiceRequest<Google.Apis.AdSensePlatform.v1alpha.Data.PlatformGroup>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the platform group to retrieve. Format:
+                    /// accounts/{account}/platforms/{platform}/groups/{group}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/platforms/[^/]+/groups/[^/]+$",
+                        });
+                    }
                 }
 
                 /// <summary>Lists Platform Groups for a specified Platform.</summary>
