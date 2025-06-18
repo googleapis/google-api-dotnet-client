@@ -979,6 +979,12 @@ namespace Google.Apis.DataFusion.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. If set to true, any nested resources from this instance will also be deleted.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -999,6 +1005,14 @@ namespace Google.Apis.DataFusion.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -2332,8 +2346,8 @@ namespace Google.Apis.DataFusion.v1beta1.Data
     public class CryptoKeyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be
-        /// in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// Optional. The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key
+        /// should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyReference")]
         public virtual string KeyReference { get; set; }
@@ -2356,7 +2370,7 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         public virtual string Domain { get; set; }
 
         /// <summary>
-        /// Required. The resource name of the dns peering zone. Format:
+        /// Identifier. The resource name of the dns peering zone. Format:
         /// projects/{project}/locations/{location}/instances/{instance}/dnsPeerings/{dns_peering}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2516,7 +2530,8 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         }
 
         /// <summary>
-        /// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        /// Optional. The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK)
+        /// feature.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyConfig")]
         public virtual CryptoKeyConfig CryptoKeyConfig { get; set; }
@@ -2526,14 +2541,14 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         public virtual System.Nullable<bool> DataplexDataLineageIntegrationEnabled { get; set; }
 
         /// <summary>
-        /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data
-        /// processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud
-        /// resources.
+        /// Optional. User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run
+        /// data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to
+        /// cloud resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataprocServiceAccount")]
         public virtual string DataprocServiceAccount { get; set; }
 
-        /// <summary>A description of this instance.</summary>
+        /// <summary>Optional. A description of this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -2541,27 +2556,27 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disabledReason")]
         public virtual System.Collections.Generic.IList<string> DisabledReason { get; set; }
 
-        /// <summary>Display name for an instance.</summary>
+        /// <summary>Optional. Display name for an instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Option to enable granular role-based access control.</summary>
+        /// <summary>Optional. Option to enable granular role-based access control.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableRbac")]
         public virtual System.Nullable<bool> EnableRbac { get; set; }
 
-        /// <summary>Option to enable Dataproc Stackdriver Logging.</summary>
+        /// <summary>Optional. Option to enable Dataproc Stackdriver Logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
 
-        /// <summary>Option to enable Stackdriver Monitoring.</summary>
+        /// <summary>Optional. Option to enable Stackdriver Monitoring.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverMonitoring")]
         public virtual System.Nullable<bool> EnableStackdriverMonitoring { get; set; }
 
-        /// <summary>Option to enable zone separation.</summary>
+        /// <summary>Output only. Option to enable zone separation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableZoneSeparation")]
         public virtual System.Nullable<bool> EnableZoneSeparation { get; set; }
 
-        /// <summary>Option to enable and pass metadata for event publishing.</summary>
+        /// <summary>Optional. Option to enable and pass metadata for event publishing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventPublishConfig")]
         public virtual EventPublishConfig EventPublishConfig { get; set; }
 
@@ -2599,12 +2614,15 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Network configuration options. These are required when a private Data Fusion instance is to be created.
+        /// Optional. Network configuration options. These are required when a private Data Fusion instance is to be
+        /// created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
         public virtual NetworkConfig NetworkConfig { get; set; }
 
-        /// <summary>Map of additional options used to configure the behavior of Data Fusion instance.</summary>
+        /// <summary>
+        /// Optional. Map of additional options used to configure the behavior of Data Fusion instance.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual System.Collections.Generic.IDictionary<string, string> Options { get; set; }
 
@@ -2617,8 +2635,8 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         public virtual string PatchRevision { get; set; }
 
         /// <summary>
-        /// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will
-        /// have private IP addresses and will not be able to access the public internet.
+        /// Optional. Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion
+        /// nodes will have private IP addresses and will not be able to access the public internet.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateInstance")]
         public virtual System.Nullable<bool> PrivateInstance { get; set; }
@@ -2701,7 +2719,7 @@ namespace Google.Apis.DataFusion.v1beta1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Current version of Data Fusion.</summary>
+        /// <summary>Optional. Current version of Data Fusion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -2710,7 +2728,8 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         public virtual string WorkforceIdentityServiceEndpoint { get; set; }
 
         /// <summary>
-        /// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+        /// Optional. Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use
+        /// this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
