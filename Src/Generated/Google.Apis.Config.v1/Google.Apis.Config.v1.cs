@@ -2085,6 +2085,374 @@ namespace Google.Apis.Config.v1
                 public PreviewsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    ResourceChanges = new ResourceChangesResource(service);
+                    ResourceDrifts = new ResourceDriftsResource(service);
+                }
+
+                /// <summary>Gets the ResourceChanges resource.</summary>
+                public virtual ResourceChangesResource ResourceChanges { get; }
+
+                /// <summary>The "resourceChanges" collection of methods.</summary>
+                public class ResourceChangesResource
+                {
+                    private const string Resource = "resourceChanges";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ResourceChangesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Get a ResourceChange for a given preview.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the resource change to retrieve. Format:
+                    /// 'projects/{project_id}/locations/{location}/previews/{preview}/resourceChanges/{resource_change}'.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Get a ResourceChange for a given preview.</summary>
+                    public class GetRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.ResourceChange>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the resource change to retrieve. Format:
+                        /// 'projects/{project_id}/locations/{location}/previews/{preview}/resourceChanges/{resource_change}'.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/previews/[^/]+/resourceChanges/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists ResourceChanges for a given preview.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent in whose context the ResourceChanges are listed. The parent value is in the
+                    /// format: 'projects/{project_id}/locations/{location}/previews/{preview}'.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists ResourceChanges for a given preview.</summary>
+                    public class ListRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.ListResourceChangesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent in whose context the ResourceChanges are listed. The parent value is in
+                        /// the format: 'projects/{project_id}/locations/{location}/previews/{preview}'.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Lists the resource changes that match the filter expression. A filter expression
+                        /// filters the resource changes listed in the response. The expression must be of the form
+                        /// '{field} {operator} {value}' where operators: '&amp;lt;', '&amp;gt;', '&amp;lt;=',
+                        /// '&amp;gt;=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is
+                        /// roughly synonymous with equality). {field} can refer to a proto or JSON field, or a
+                        /// synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name:
+                        /// name = "projects/foo/locations/us-central1/previews/dep/resourceChanges/baz
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. Field to use to sort the list.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. When requesting a page of resource changes, 'page_size' specifies number of
+                        /// resource changes to return. If unspecified, at most 500 will be returned. The maximum value
+                        /// is 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. Token returned by previous call to 'ListResourceChanges' which specifies the
+                        /// position in the list from where to continue listing the resource changes.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/resourceChanges";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/previews/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the ResourceDrifts resource.</summary>
+                public virtual ResourceDriftsResource ResourceDrifts { get; }
+
+                /// <summary>The "resourceDrifts" collection of methods.</summary>
+                public class ResourceDriftsResource
+                {
+                    private const string Resource = "resourceDrifts";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ResourceDriftsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Get a ResourceDrift for a given preview.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the resource drift to retrieve. Format:
+                    /// 'projects/{project_id}/locations/{location}/previews/{preview}/resourceDrifts/{resource_drift}'.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Get a ResourceDrift for a given preview.</summary>
+                    public class GetRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.ResourceDrift>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the resource drift to retrieve. Format:
+                        /// 'projects/{project_id}/locations/{location}/previews/{preview}/resourceDrifts/{resource_drift}'.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/previews/[^/]+/resourceDrifts/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>List ResourceDrifts for a given preview.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent in whose context the ResourceDrifts are listed. The parent value is in the
+                    /// format: 'projects/{project_id}/locations/{location}/previews/{preview}'.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>List ResourceDrifts for a given preview.</summary>
+                    public class ListRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.ListResourceDriftsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent in whose context the ResourceDrifts are listed. The parent value is in
+                        /// the format: 'projects/{project_id}/locations/{location}/previews/{preview}'.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Lists the resource drifts that match the filter expression. A filter expression
+                        /// filters the resource drifts listed in the response. The expression must be of the form
+                        /// '{field} {operator} {value}' where operators: '&amp;lt;', '&amp;gt;', '&amp;lt;=',
+                        /// '&amp;gt;=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is
+                        /// roughly synonymous with equality). {field} can refer to a proto or JSON field, or a
+                        /// synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name:
+                        /// name = "projects/foo/locations/us-central1/previews/dep/resourceDrifts/baz
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. Field to use to sort the list.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. When requesting a page of resource drifts, 'page_size' specifies number of
+                        /// resource drifts to return. If unspecified, at most 500 will be returned. The maximum value
+                        /// is 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. Token returned by previous call to 'ListResourceDrifts' which specifies the
+                        /// position in the list from where to continue listing the resource drifts.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/resourceDrifts";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/previews/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a Preview.</summary>
@@ -3410,6 +3778,50 @@ namespace Google.Apis.Config.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A response to a 'ListResourceChanges' call. Contains a list of ResourceChanges.</summary>
+    public class ListResourceChangesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to request the next page of resources from the 'ListResourceChanges' method. The value of an empty
+        /// string means that there are no more resources to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of ResourceChanges.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceChanges")]
+        public virtual System.Collections.Generic.IList<ResourceChange> ResourceChanges { get; set; }
+
+        /// <summary>Unreachable resources, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response to a 'ListResourceDrifts' call. Contains a list of ResourceDrifts.</summary>
+    public class ListResourceDriftsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to request the next page of resources from the 'ListResourceDrifts' method. The value of an empty
+        /// string means that there are no more resources to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of ResourceDrifts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceDrifts")]
+        public virtual System.Collections.Generic.IList<ResourceDrift> ResourceDrifts { get; set; }
+
+        /// <summary>Unreachable resources, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A response to a 'ListResources' call. Contains a list of Resources.</summary>
     public class ListResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4026,6 +4438,60 @@ namespace Google.Apis.Config.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A property change represents a change to a property in the state file.</summary>
+    public class PropertyChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Representations of the object value after the actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("after")]
+        public virtual object After { get; set; }
+
+        /// <summary>Output only. The paths of sensitive fields in `after`. Paths are relative to `path`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("afterSensitivePaths")]
+        public virtual System.Collections.Generic.IList<string> AfterSensitivePaths { get; set; }
+
+        /// <summary>Output only. Representations of the object value before the actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("before")]
+        public virtual object Before { get; set; }
+
+        /// <summary>Output only. The paths of sensitive fields in `before`. Paths are relative to `path`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("beforeSensitivePaths")]
+        public virtual System.Collections.Generic.IList<string> BeforeSensitivePaths { get; set; }
+
+        /// <summary>Output only. The path of the property change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A property drift represents a drift to a property in the state file.</summary>
+    public class PropertyDrift : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Representations of the object value after the actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("after")]
+        public virtual object After { get; set; }
+
+        /// <summary>Output only. The paths of sensitive fields in `after`. Paths are relative to `path`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("afterSensitivePaths")]
+        public virtual System.Collections.Generic.IList<string> AfterSensitivePaths { get; set; }
+
+        /// <summary>Output only. Representations of the object value before the actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("before")]
+        public virtual object Before { get; set; }
+
+        /// <summary>Output only. The paths of sensitive fields in `before`. Paths are relative to `path`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("beforeSensitivePaths")]
+        public virtual System.Collections.Generic.IList<string> BeforeSensitivePaths { get; set; }
+
+        /// <summary>Output only. The path of the property drift.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Resource represents a Google Cloud Platform resource actuated by IM. Resources are child resources of Revisions.
     /// </summary>
@@ -4070,6 +4536,104 @@ namespace Google.Apis.Config.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource change represents a change to a resource in the state file.</summary>
+    public class ResourceChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The intent of the resource change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intent")]
+        public virtual string Intent { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the resource change. Format:
+        /// 'projects/{project_id}/locations/{location}/previews/{preview}/resourceChanges/{resource_change}'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The property changes of the resource change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyChanges")]
+        public virtual System.Collections.Generic.IList<PropertyChange> PropertyChanges { get; set; }
+
+        /// <summary>Output only. Terraform info of the resource change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terraformInfo")]
+        public virtual ResourceChangeTerraformInfo TerraformInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Terraform info of a ResourceChange.</summary>
+    public class ResourceChangeTerraformInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. TF resource actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<string> Actions { get; set; }
+
+        /// <summary>Output only. TF resource address that uniquely identifies the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual string Address { get; set; }
+
+        /// <summary>Output only. TF resource provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; }
+
+        /// <summary>Output only. TF resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. TF resource type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource drift represents a drift to a resource in the state file.</summary>
+    public class ResourceDrift : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The name of the resource drift. Format:
+        /// 'projects/{project_id}/locations/{location}/previews/{preview}/resourceDrifts/{resource_drift}'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The property drifts of the resource drift.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyDrifts")]
+        public virtual System.Collections.Generic.IList<PropertyDrift> PropertyDrifts { get; set; }
+
+        /// <summary>Output only. Terraform info of the resource drift.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terraformInfo")]
+        public virtual ResourceDriftTerraformInfo TerraformInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Terraform info of a ResourceChange.</summary>
+    public class ResourceDriftTerraformInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The address of the drifted resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual string Address { get; set; }
+
+        /// <summary>Output only. The provider of the drifted resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; }
+
+        /// <summary>Output only. TF resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. The type of the drifted resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
