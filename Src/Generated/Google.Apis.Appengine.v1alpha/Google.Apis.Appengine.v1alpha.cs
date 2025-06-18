@@ -1663,8 +1663,589 @@ namespace Google.Apis.Appengine.v1alpha
                 public ApplicationsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    AuthorizedCertificates = new AuthorizedCertificatesResource(service);
                     AuthorizedDomains = new AuthorizedDomainsResource(service);
                     DomainMappings = new DomainMappingsResource(service);
+                }
+
+                /// <summary>Gets the AuthorizedCertificates resource.</summary>
+                public virtual AuthorizedCertificatesResource AuthorizedCertificates { get; }
+
+                /// <summary>The "authorizedCertificates" collection of methods.</summary>
+                public class AuthorizedCertificatesResource
+                {
+                    private const string Resource = "authorizedCertificates";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AuthorizedCertificatesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Uploads the specified SSL certificate.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="projectsId">
+                    /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                    /// </param>
+                    /// <param name="locationsId">Part of `parent`. See documentation of `projectsId`.</param>
+                    /// <param name="applicationsId">Part of `parent`. See documentation of `projectsId`.</param>
+                    public virtual CreateRequest Create(Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate body, string projectsId, string locationsId, string applicationsId)
+                    {
+                        return new CreateRequest(this.service, body, projectsId, locationsId, applicationsId);
+                    }
+
+                    /// <summary>Uploads the specified SSL certificate.</summary>
+                    public class CreateRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate body, string projectsId, string locationsId, string applicationsId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            ApplicationsId = applicationsId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+                        /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+                        /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ApplicationsId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes the specified SSL certificate.</summary>
+                    /// <param name="projectsId">
+                    /// Part of `name`. Name of the resource to delete. Example:
+                    /// apps/myapp/authorizedCertificates/12345.
+                    /// </param>
+                    /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="authorizedCertificatesId">
+                    /// Part of `name`. See documentation of `projectsId`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string projectsId, string locationsId, string applicationsId, string authorizedCertificatesId)
+                    {
+                        return new DeleteRequest(this.service, projectsId, locationsId, applicationsId, authorizedCertificatesId);
+                    }
+
+                    /// <summary>Deletes the specified SSL certificate.</summary>
+                    public class DeleteRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1alpha.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string applicationsId, string authorizedCertificatesId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            ApplicationsId = applicationsId;
+                            AuthorizedCertificatesId = authorizedCertificatesId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Part of `name`. Name of the resource to delete. Example:
+                        /// apps/myapp/authorizedCertificates/12345.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ApplicationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("authorizedCertificatesId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AuthorizedCertificatesId { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("authorizedCertificatesId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "authorizedCertificatesId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets the specified SSL certificate.</summary>
+                    /// <param name="projectsId">
+                    /// Part of `name`. Name of the resource requested. Example:
+                    /// apps/myapp/authorizedCertificates/12345.
+                    /// </param>
+                    /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="authorizedCertificatesId">
+                    /// Part of `name`. See documentation of `projectsId`.
+                    /// </param>
+                    public virtual GetRequest Get(string projectsId, string locationsId, string applicationsId, string authorizedCertificatesId)
+                    {
+                        return new GetRequest(this.service, projectsId, locationsId, applicationsId, authorizedCertificatesId);
+                    }
+
+                    /// <summary>Gets the specified SSL certificate.</summary>
+                    public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string applicationsId, string authorizedCertificatesId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            ApplicationsId = applicationsId;
+                            AuthorizedCertificatesId = authorizedCertificatesId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Part of `name`. Name of the resource requested. Example:
+                        /// apps/myapp/authorizedCertificates/12345.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ApplicationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("authorizedCertificatesId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AuthorizedCertificatesId { get; private set; }
+
+                        /// <summary>Controls the set of fields returned in the GET response.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>Controls the set of fields returned in the GET response.</summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>
+                            /// Basic certificate information, including applicable domains and expiration date.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC_CERTIFICATE")]
+                            BASICCERTIFICATE = 0,
+
+                            /// <summary>
+                            /// The information from BASIC_CERTIFICATE, plus detailed information on the domain mappings
+                            /// that have this certificate mapped.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL_CERTIFICATE")]
+                            FULLCERTIFICATE = 1,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("authorizedCertificatesId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "authorizedCertificatesId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all SSL certificates the user is authorized to administer.</summary>
+                    /// <param name="projectsId">
+                    /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                    /// </param>
+                    /// <param name="locationsId">Part of `parent`. See documentation of `projectsId`.</param>
+                    /// <param name="applicationsId">Part of `parent`. See documentation of `projectsId`.</param>
+                    public virtual ListRequest List(string projectsId, string locationsId, string applicationsId)
+                    {
+                        return new ListRequest(this.service, projectsId, locationsId, applicationsId);
+                    }
+
+                    /// <summary>Lists all SSL certificates the user is authorized to administer.</summary>
+                    public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1alpha.Data.ListAuthorizedCertificatesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string applicationsId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            ApplicationsId = applicationsId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+                        /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+                        /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ApplicationsId { get; private set; }
+
+                        /// <summary>Maximum results to return per page.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Continuation token for fetching the next page of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Controls the set of fields returned in the LIST response.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>Controls the set of fields returned in the LIST response.</summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>
+                            /// Basic certificate information, including applicable domains and expiration date.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC_CERTIFICATE")]
+                            BASICCERTIFICATE = 0,
+
+                            /// <summary>
+                            /// The information from BASIC_CERTIFICATE, plus detailed information on the domain mappings
+                            /// that have this certificate mapped.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL_CERTIFICATE")]
+                            FULLCERTIFICATE = 1,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Updates the specified SSL certificate. To renew a certificate and maintain its existing domain
+                    /// mappings, update certificate_data with a new certificate. The new certificate must be applicable
+                    /// to the same domains as the original certificate. The certificate display_name may also be
+                    /// updated.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="projectsId">
+                    /// Part of `name`. Name of the resource to update. Example:
+                    /// apps/myapp/authorizedCertificates/12345.
+                    /// </param>
+                    /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="authorizedCertificatesId">
+                    /// Part of `name`. See documentation of `projectsId`.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate body, string projectsId, string locationsId, string applicationsId, string authorizedCertificatesId)
+                    {
+                        return new PatchRequest(this.service, body, projectsId, locationsId, applicationsId, authorizedCertificatesId);
+                    }
+
+                    /// <summary>
+                    /// Updates the specified SSL certificate. To renew a certificate and maintain its existing domain
+                    /// mappings, update certificate_data with a new certificate. The new certificate must be applicable
+                    /// to the same domains as the original certificate. The certificate display_name may also be
+                    /// updated.
+                    /// </summary>
+                    public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate body, string projectsId, string locationsId, string applicationsId, string authorizedCertificatesId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            ApplicationsId = applicationsId;
+                            AuthorizedCertificatesId = authorizedCertificatesId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Part of `name`. Name of the resource to update. Example:
+                        /// apps/myapp/authorizedCertificates/12345.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ApplicationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("authorizedCertificatesId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AuthorizedCertificatesId { get; private set; }
+
+                        /// <summary>
+                        /// Standard field mask for the set of fields to be updated. Updates are only supported on the
+                        /// certificate_raw_data and display_name fields.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("authorizedCertificatesId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "authorizedCertificatesId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the AuthorizedDomains resource.</summary>
