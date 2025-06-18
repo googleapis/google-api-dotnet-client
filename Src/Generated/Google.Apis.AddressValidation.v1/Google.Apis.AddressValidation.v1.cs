@@ -519,8 +519,8 @@ namespace Google.Apis.AddressValidation.v1.Data
     }
 
     /// <summary>
-    /// The metadata for the address. `metadata` is not guaranteed to be fully populated for every address sent to the
-    /// Address Validation API.
+    /// The metadata for the post-processed address. `metadata` is not guaranteed to be fully populated for every
+    /// address sent to the Address Validation API.
     /// </summary>
     public class GoogleMapsAddressvalidationV1AddressMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1125,8 +1125,8 @@ namespace Google.Apis.AddressValidation.v1.Data
     public class GoogleMapsAddressvalidationV1Verdict : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The address is considered complete if there are no unresolved tokens, no unexpected or missing address
-        /// components. If unset, indicates that the value is `false`. See `missing_component_types`,
+        /// The post-processed address is considered complete if there are no unresolved tokens, no unexpected or
+        /// missing address components. If unset, indicates that the value is `false`. See `missing_component_types`,
         /// `unresolved_tokens` or `unexpected` fields for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressComplete")]
@@ -1157,6 +1157,13 @@ namespace Google.Apis.AddressValidation.v1.Data
         public virtual System.Nullable<bool> HasReplacedComponents { get; set; }
 
         /// <summary>
+        /// At least one address component was spell-corrected, see
+        /// [google.maps.addressvalidation.v1.Address.address_components] for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasSpellCorrectedComponents")]
+        public virtual System.Nullable<bool> HasSpellCorrectedComponents { get; set; }
+
+        /// <summary>
         /// At least one address component cannot be categorized or validated, see
         /// [google.maps.addressvalidation.v1.Address.address_components] for details.
         /// </summary>
@@ -1168,13 +1175,28 @@ namespace Google.Apis.AddressValidation.v1.Data
         /// any validation signals. For validation signals, refer to `validation_granularity` below. For example, if the
         /// input address includes a specific apartment number, then the `input_granularity` here will be `SUB_PREMISE`.
         /// If we cannot match the apartment number in the databases or the apartment number is invalid, the
-        /// `validation_granularity` will likely be `PREMISE` or worse.
+        /// `validation_granularity` will likely be `PREMISE` or more coarse.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputGranularity")]
         public virtual string InputGranularity { get; set; }
 
         /// <summary>
-        /// The granularity level that the API can fully **validate** the address to. For example, an
+        /// Preview: This feature is in Preview (pre-GA). Pre-GA products and features might have limited support, and
+        /// changes to pre-GA products and features might not be compatible with other pre-GA versions. Pre-GA Offerings
+        /// are covered by the [Google Maps Platform Service Specific
+        /// Terms](https://cloud.google.com/maps-platform/terms/maps-service-terms). For more information, see the
+        /// [launch stage descriptions](https://developers.google.com/maps/launch-stages). Offers an interpretive
+        /// summary of the API response, intended to assist in determining a potential subsequent action to take. This
+        /// field is derived from other fields in the API response and should not be considered as a guarantee of
+        /// address accuracy or deliverability. See [Build your validation
+        /// logic](https://developers.google.com/maps/documentation/address-validation/build-validation-logic) for more
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("possibleNextAction")]
+        public virtual string PossibleNextAction { get; set; }
+
+        /// <summary>
+        /// The level of granularity for the post-processed address that the API can fully validate. For example, a
         /// `validation_granularity` of `PREMISE` indicates all address components at the level of `PREMISE` or more
         /// coarse can be validated. Per address component validation result can be found in
         /// [google.maps.addressvalidation.v1.Address.address_components].
@@ -1206,13 +1228,13 @@ namespace Google.Apis.AddressValidation.v1.Data
     }
 
     /// <summary>
-    /// Represents a postal address (for example, for postal delivery or payments addresses). Given a postal address, a
-    /// postal service can deliver items to a premise, P.O. box or similar. It is not intended to model geographical
-    /// locations (roads, towns, mountains). In typical usage, an address would be created by user input or from
-    /// importing existing data, depending on the type of process. Advice on address input or editing: - Use an
-    /// internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not
-    /// be presented with UI elements for input or editing of fields outside countries where that field is used. For
-    /// more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478.
+    /// Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal
+    /// service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model
+    /// geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user
+    /// input or from importing existing data, depending on the type of process. Advice on address input or editing: -
+    /// Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users
+    /// should not be presented with UI elements for input or editing of fields outside countries where that field is
+    /// used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478.
     /// </summary>
     public class GoogleTypePostalAddress : Google.Apis.Requests.IDirectResponseSchema
     {
