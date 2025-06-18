@@ -5533,8 +5533,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// Optional. Name of the allocated IP range for the private IP AlloyDB instance, for example:
         /// "google-managed-services-default". If set, the instance IPs will be created from this allocated range and
         /// will override the IP range used by the parent cluster. The range name must comply with [RFC
-        /// 1035](http://go/rfc/1035). Specifically, the name must be 1-63 characters long and match the regular
-        /// expression [a-z]([-a-z0-9]*[a-z0-9])?.
+        /// 1035](http://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and
+        /// match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allocatedIpRangeOverride")]
         public virtual string AllocatedIpRangeOverride { get; set; }
@@ -6792,7 +6792,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
 
     /// <summary>
     /// DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into
-    /// Condor platform.
+    /// Condor platform. Next ID: 8
     /// </summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6986,13 +6986,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ProviderDescription { get; set; }
 
         /// <summary>
-        /// Required. The type of resource this ID is identifying. Ex redis.googleapis.com/Instance,
-        /// redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance,
-        /// spanner.googleapis.com/Instance, spanner.googleapis.com/Database, firestore.googleapis.com/Database,
-        /// sqladmin.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster,
-        /// bigtableadmin.googleapis.com/Instance oracledatabase.googleapis.com/cloudExadataInfrastructures
-        /// oracledatabase.googleapis.com/cloudVmClusters oracledatabase.googleapis.com/autonomousDatabases REQUIRED
-        /// Please refer go/condor-common-datamodel
+        /// Required. The type of resource this ID is identifying. Ex go/keep-sorted start
+        /// alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster,
+        /// bigtableadmin.googleapis.com/Instance compute.googleapis.com/Instance firestore.googleapis.com/Database,
+        /// redis.googleapis.com/Instance, redis.googleapis.com/Cluster,
+        /// oracledatabase.googleapis.com/cloudExadataInfrastructures oracledatabase.googleapis.com/cloudVmClusters
+        /// oracledatabase.googleapis.com/autonomousDatabases spanner.googleapis.com/Instance,
+        /// spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance, go/keep-sorted end REQUIRED Please refer
+        /// go/condor-common-datamodel
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
