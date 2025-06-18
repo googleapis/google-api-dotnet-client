@@ -805,6 +805,163 @@ namespace Google.Apis.Backupdr.v1
                 public BackupPlansResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Revisions = new RevisionsResource(service);
+                }
+
+                /// <summary>Gets the Revisions resource.</summary>
+                public virtual RevisionsResource Revisions { get; }
+
+                /// <summary>The "revisions" collection of methods.</summary>
+                public class RevisionsResource
+                {
+                    private const string Resource = "revisions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public RevisionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets details of a single BackupPlanRevision.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the `BackupPlanRevision` to retrieve. Format:
+                    /// `projects/{project}/locations/{location}/backupPlans/{backup_plan}/revisions/{revision}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets details of a single BackupPlanRevision.</summary>
+                    public class GetRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.BackupPlanRevision>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the `BackupPlanRevision` to retrieve. Format:
+                        /// `projects/{project}/locations/{location}/backupPlans/{backup_plan}/revisions/{revision}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupPlans/[^/]+/revisions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists BackupPlanRevisions in a given project and location.</summary>
+                    /// <param name="parent">
+                    /// Required. The project and location for which to retrieve `BackupPlanRevisions` information.
+                    /// Format: `projects/{project}/locations/{location}/backupPlans/{backup_plan}`. In Cloud BackupDR,
+                    /// locations map to GCP regions, for e.g. **us-central1**.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists BackupPlanRevisions in a given project and location.</summary>
+                    public class ListRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.ListBackupPlanRevisionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The project and location for which to retrieve `BackupPlanRevisions` information.
+                        /// Format: `projects/{project}/locations/{location}/backupPlans/{backup_plan}`. In Cloud
+                        /// BackupDR, locations map to GCP regions, for e.g. **us-central1**.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of `BackupPlans` to return in a single response. If not
+                        /// specified, a default value will be chosen by the service. Note that the response may include
+                        /// a partial list and a caller should only rely on the response's next_page_token to determine
+                        /// if there are more instances left to be queried.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The value of next_page_token received from a previous `ListBackupPlans` call.
+                        /// Provide this to retrieve the subsequent page in a multi-page list of results. When
+                        /// paginating, all other parameters provided to `ListBackupPlans` must match the call that
+                        /// provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/revisions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupPlans/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Create a BackupPlan</summary>
@@ -1131,6 +1288,105 @@ namespace Google.Apis.Backupdr.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a BackupPlan</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Identifier. The resource name of the `BackupPlan`. Format:
+                /// `projects/{project}/locations/{location}/backupPlans/{backup_plan}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Backupdr.v1.Data.BackupPlan body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a BackupPlan</summary>
+                public class PatchRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.BackupPlan body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Identifier. The resource name of the `BackupPlan`. Format:
+                    /// `projects/{project}/locations/{location}/backupPlans/{backup_plan}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and t he request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. The list of fields to update. Field mask is used to specify the fields to be
+                    /// overwritten in the BackupPlan resource by the update. The fields specified in the update_mask
+                    /// are relative to the resource, not the full request. A field will be overwritten if it is in the
+                    /// mask. If the user does not provide a mask then the request will fail. Currently, these fields
+                    /// are supported in update: description, schedules, retention period, adding and removing Backup
+                    /// Rules.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Backupdr.v1.Data.BackupPlan Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backupPlans/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5487,6 +5743,19 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
+        /// <summary>
+        /// Output only. The user friendly revision ID of the `BackupPlanRevision`. Example: v0, v1, v2, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
+        /// <summary>
+        /// Output only. The resource id of the `BackupPlanRevision`. Format:
+        /// `projects/{project}/locations/{location}/backupPlans/{backup_plan}/revisions/{revision_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionName")]
+        public virtual string RevisionName { get; set; }
+
         /// <summary>Output only. The `State` for the `BackupPlan`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -5545,6 +5814,19 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupPlan")]
         public virtual string BackupPlan { get; set; }
+
+        /// <summary>
+        /// Output only. The user friendly revision ID of the `BackupPlanRevision`. Example: v0, v1, v2, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanRevisionId")]
+        public virtual string BackupPlanRevisionId { get; set; }
+
+        /// <summary>
+        /// Output only. The resource id of the `BackupPlanRevision`. Format:
+        /// `projects/{project}/locations/{location}/backupPlans/{backup_plan}/revisions/{revision_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanRevisionName")]
+        public virtual string BackupPlanRevisionName { get; set; }
 
         private string _createTimeRaw;
 
@@ -5649,6 +5931,71 @@ namespace Google.Apis.Backupdr.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`BackupPlanRevision` represents a snapshot of a `BackupPlan` at a point in time.</summary>
+    public class BackupPlanRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Backup Plan being encompassed by this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanSnapshot")]
+        public virtual BackupPlan BackupPlanSnapshot { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp that the revision was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Identifier. The resource name of the `BackupPlanRevision`. Format:
+        /// `projects/{project}/locations/{location}/backupPlans/{backup_plan}/revisions/{revision}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The user friendly revision ID of the `BackupPlanRevision`. Example: v0, v1, v2, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
+        /// <summary>Output only. Resource State</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7057,6 +7404,21 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string BackupPlan { get; set; }
 
         /// <summary>
+        /// The user friendly id of the backup plan revision which triggered this backup in case of scheduled backup or
+        /// used for on demand backup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanRevisionId")]
+        public virtual string BackupPlanRevisionId { get; set; }
+
+        /// <summary>
+        /// Resource name of the backup plan revision which triggered this backup in case of scheduled backup or used
+        /// for on demand backup. Format:
+        /// projects/{project}/locations/{location}/backupPlans/{backupPlanId}/revisions/{revisionId}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanRevisionName")]
+        public virtual string BackupPlanRevisionName { get; set; }
+
+        /// <summary>
         /// The rule id of the backup plan which triggered this backup in case of scheduled backup or used for
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupPlanRuleId")]
@@ -7083,6 +7445,14 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>The description of the backup plan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupPlanDescription")]
         public virtual string BackupPlanDescription { get; set; }
+
+        /// <summary>The user friendly id of the backup plan revision. E.g. v0, v1 etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanRevisionId")]
+        public virtual string BackupPlanRevisionId { get; set; }
+
+        /// <summary>The name of the backup plan revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanRevisionName")]
+        public virtual string BackupPlanRevisionName { get; set; }
 
         /// <summary>The names of the backup plan rules which point to this backupvault</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupPlanRules")]
@@ -7234,6 +7604,33 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual System.Collections.Generic.IList<BackupPlanAssociation> BackupPlanAssociations { get; set; }
 
         /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for getting a list of `BackupPlanRevision`.</summary>
+    public class ListBackupPlanRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of `BackupPlanRevisions` in the project for the specified location. If the `{location}` value in
+        /// the request is "-", the response contains a list of resources from all locations. In case any location is
+        /// unreachable, the response will only return backup plans in reachable locations and the 'unreachable' field
+        /// will be populated with a list of unreachable locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanRevisions")]
+        public virtual System.Collections.Generic.IList<BackupPlanRevision> BackupPlanRevisions { get; set; }
+
+        /// <summary>
+        /// A token which may be sent as page_token in a subsequent `ListBackupPlanRevisions` call to retrieve the next
+        /// page of results. If this field is omitted or empty, then there are no more results to return.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
