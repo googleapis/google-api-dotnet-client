@@ -8810,9 +8810,9 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual GoogleTypeDate EffectiveInvoiceMonth { get; set; }
 
         /// <summary>
-        /// Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using
-        /// RepricingConfig.EntitlementGranularity becomes effective, then no existing or future
-        /// RepricingConfig.ChannelPartnerGranularity will apply to the
+        /// Required. Applies the repricing configuration at the entitlement level. Note: If a
+        /// ChannelPartnerRepricingConfig using RepricingConfig.EntitlementGranularity becomes effective, then no
+        /// existing or future RepricingConfig.ChannelPartnerGranularity will apply to the
         /// RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both
         /// CustomerRepricingConfig and ChannelPartnerRepricingConfig.
         /// </summary>
@@ -10417,13 +10417,13 @@ namespace Google.Apis.Cloudchannel.v1.Data
     }
 
     /// <summary>
-    /// Represents a postal address (for example, for postal delivery or payments addresses). Given a postal address, a
-    /// postal service can deliver items to a premise, P.O. box or similar. It is not intended to model geographical
-    /// locations (roads, towns, mountains). In typical usage, an address would be created by user input or from
-    /// importing existing data, depending on the type of process. Advice on address input or editing: - Use an
-    /// internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not
-    /// be presented with UI elements for input or editing of fields outside countries where that field is used. For
-    /// more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478.
+    /// Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal
+    /// service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model
+    /// geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user
+    /// input or from importing existing data, depending on the type of process. Advice on address input or editing: -
+    /// Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users
+    /// should not be presented with UI elements for input or editing of fields outside countries where that field is
+    /// used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478.
     /// </summary>
     public class GoogleTypePostalAddress : Google.Apis.Requests.IDirectResponseSchema
     {
