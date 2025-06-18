@@ -732,8 +732,8 @@ namespace Google.Apis.FirebaseML.v2beta.Data
 
         /// <summary>
         /// Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs. This field is
-        /// only returned in PromptMessage for prompt management. It is not currently used in the Gemini GenerateContent
-        /// calls.
+        /// only returned in PromptMessage for prompt management. It is currently used in the Gemini GenerateContent
+        /// calls only when server side tools (code_execution, google_search, and url_context) are enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -1065,8 +1065,9 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     {
         /// <summary>
         /// Optional. Display name of the file data. Used to provide a label or filename to distinguish file datas. This
-        /// field is only returned in PromptMessage for prompt management. It is not currently used in the Gemini
-        /// GenerateContent calls.
+        /// field is only returned in PromptMessage for prompt management. It is currently used in the Gemini
+        /// GenerateContent calls only when server side tools (code_execution, google_search, and url_context) are
+        /// enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -2081,6 +2082,14 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Output only. Harm category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
+
+        /// <summary>
+        /// Output only. The overwritten threshold for the safety category of Gemini 2.0 image out. If minors are
+        /// detected in the output image, the threshold of each safety category will be overwritten if user sets a lower
+        /// threshold.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overwrittenThreshold")]
+        public virtual string OverwrittenThreshold { get; set; }
 
         /// <summary>Output only. Harm probability levels in the content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("probability")]
