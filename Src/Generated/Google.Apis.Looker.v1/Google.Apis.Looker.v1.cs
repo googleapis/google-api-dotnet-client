@@ -2507,11 +2507,18 @@ namespace Google.Apis.Looker.v1.Data
         public virtual string ConnectionStatus { get; set; }
 
         /// <summary>
-        /// Required. Fully qualified domain name that will be used in the private DNS record created for the service
+        /// Optional. Fully qualified domain name that will be used in the private DNS record created for the service
         /// attachment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localFqdn")]
         public virtual string LocalFqdn { get; set; }
+
+        /// <summary>
+        /// Optional. List of fully qualified domain names that will be used in the private DNS record created for the
+        /// service attachment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localFqdns")]
+        public virtual System.Collections.Generic.IList<string> LocalFqdns { get; set; }
 
         /// <summary>
         /// Required. URI of the service attachment to connect to. Format:
