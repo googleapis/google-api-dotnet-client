@@ -1879,7 +1879,11 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual string DataSource { get; set; }
 
-        /// <summary>Output only. The feed label for the product.</summary>
+        /// <summary>
+        /// Output only. The feed label lets you categorize and identify your products. The maximum allowed characters
+        /// is 20 and the supported characters are`A-Z`, `0-9`, hyphen and underscore. The feed label must not include
+        /// any spaces. For more information, see [Using feed labels](//support.google.com/merchants/answer/14994087)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
         public virtual string FeedLabel { get; set; }
 
