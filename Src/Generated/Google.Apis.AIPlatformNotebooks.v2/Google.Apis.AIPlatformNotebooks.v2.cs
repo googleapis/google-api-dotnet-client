@@ -606,22 +606,14 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                     }
                 }
 
-                /// <summary>
-                /// Gets general backend configurations that might also affect the frontend. Location is required by
-                /// CCFE. Although we could bypass it to send location- less request directly to the backend job, we
-                /// would need CPE (go/cloud-cpe). Having the location might also be useful depending on the query.
-                /// </summary>
+                /// <summary>Returns various configuration parameters.</summary>
                 /// <param name="name">Required. Format: `projects/{project_id}/locations/{location}`</param>
                 public virtual GetConfigRequest GetConfig(string name)
                 {
                     return new GetConfigRequest(this.service, name);
                 }
 
-                /// <summary>
-                /// Gets general backend configurations that might also affect the frontend. Location is required by
-                /// CCFE. Although we could bypass it to send location- less request directly to the backend job, we
-                /// would need CPE (go/cloud-cpe). Having the location might also be useful depending on the query.
-                /// </summary>
+                /// <summary>Returns various configuration parameters.</summary>
                 public class GetConfigRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Config>
                 {
                     /// <summary>Constructs a new GetConfig request.</summary>
