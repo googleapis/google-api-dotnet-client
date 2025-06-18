@@ -3074,6 +3074,17 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration options for Cluster HTTP Gateway.</summary>
+    public class GatewayConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether HTTP/2 is enabled for this workstation cluster. Defaults to false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("http2Enabled")]
+        public virtual System.Nullable<bool> Http2Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A set of Compute Engine Confidential VM instance options.</summary>
     public class GceConfidentialInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4426,6 +4437,10 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>Optional. Configuration options for Cluster HTTP Gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayConfig")]
+        public virtual GatewayConfig GatewayConfig { get; set; }
 
         /// <summary>
         /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the
