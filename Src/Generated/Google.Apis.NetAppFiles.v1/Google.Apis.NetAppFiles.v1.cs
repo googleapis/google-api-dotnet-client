@@ -6887,6 +6887,14 @@ namespace Google.Apis.NetAppFiles.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>
+        /// Optional. Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it
+        /// hits 100%. Default is true. The increment will kick in only if the new size after increment is still less
+        /// than or equal to storage pool size.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableHotTierAutoResize")]
+        public virtual System.Nullable<bool> EnableHotTierAutoResize { get; set; }
+
         /// <summary>Output only. Specifies the current pool encryption key source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionType")]
         public virtual string EncryptionType { get; set; }
@@ -6894,6 +6902,14 @@ namespace Google.Apis.NetAppFiles.v1.Data
         /// <summary>Deprecated. Used to allow SO pool to access AD or DNS server from other regions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("globalAccessAllowed")]
         public virtual System.Nullable<bool> GlobalAccessAllowed { get; set; }
+
+        /// <summary>
+        /// Optional. Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level. It
+        /// should be less than the minimum storage pool size and cannot be more than the current storage pool size. It
+        /// cannot be decreased once set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hotTierSizeGib")]
+        public virtual System.Nullable<long> HotTierSizeGib { get; set; }
 
         /// <summary>Optional. Specifies the KMS config to be used for volume encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsConfig")]
@@ -6993,6 +7009,13 @@ namespace Google.Apis.NetAppFiles.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coolingThresholdDays")]
         public virtual System.Nullable<int> CoolingThresholdDays { get; set; }
+
+        /// <summary>
+        /// Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false. This is only
+        /// applicable to Flex service level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hotTierBypassModeEnabled")]
+        public virtual System.Nullable<bool> HotTierBypassModeEnabled { get; set; }
 
         /// <summary>
         /// Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
