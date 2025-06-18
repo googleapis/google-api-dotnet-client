@@ -3607,7 +3607,7 @@ namespace Google.Apis.CloudRedis.v1.Data
 
     /// <summary>
     /// DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into
-    /// Condor platform.
+    /// Condor platform. Next ID: 8
     /// </summary>
     public class DatabaseResourceFeed : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3738,6 +3738,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalUri")]
         public virtual string ExternalUri { get; set; }
 
+        /// <summary>This is used to identify the location of the resource. Example: "us-central1"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
         /// <summary>Required. The name of the signal, ex: PUBLIC_SQL_INSTANCE, SQL_LOG_ERROR_VERBOSITY etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3801,13 +3805,14 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ProviderDescription { get; set; }
 
         /// <summary>
-        /// Required. The type of resource this ID is identifying. Ex redis.googleapis.com/Instance,
-        /// redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance,
-        /// spanner.googleapis.com/Instance, spanner.googleapis.com/Database, firestore.googleapis.com/Database,
-        /// sqladmin.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster,
-        /// bigtableadmin.googleapis.com/Instance oracledatabase.googleapis.com/cloudExadataInfrastructures
-        /// oracledatabase.googleapis.com/cloudVmClusters oracledatabase.googleapis.com/autonomousDatabases REQUIRED
-        /// Please refer go/condor-common-datamodel
+        /// Required. The type of resource this ID is identifying. Ex go/keep-sorted start
+        /// alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster,
+        /// bigtableadmin.googleapis.com/Instance compute.googleapis.com/Instance firestore.googleapis.com/Database,
+        /// redis.googleapis.com/Instance, redis.googleapis.com/Cluster,
+        /// oracledatabase.googleapis.com/cloudExadataInfrastructures oracledatabase.googleapis.com/cloudVmClusters
+        /// oracledatabase.googleapis.com/autonomousDatabases spanner.googleapis.com/Instance,
+        /// spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance, go/keep-sorted end REQUIRED Please refer
+        /// go/condor-common-datamodel
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
@@ -5717,7 +5722,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>Output only. The port number of the exposed discovery endpoint.</summary>
+        /// <summary>Output only. port will only be set for Primary/Reader or Discovery endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
 
