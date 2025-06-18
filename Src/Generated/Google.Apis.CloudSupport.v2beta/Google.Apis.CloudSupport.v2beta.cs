@@ -3081,26 +3081,4 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
-
-    /// <summary>Metadata about the operation. Used to lookup the current status.</summary>
-    public class WorkflowOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The namespace that the job was scheduled in. Must be included in the workflow metadata so the workflow
-        /// status can be retrieved.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
-        public virtual string Namespace__ { get; set; }
-
-        /// <summary>The type of action the operation is classified as.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("operationAction")]
-        public virtual string OperationAction { get; set; }
-
-        /// <summary>Which version of the workflow service this operation came from.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("workflowOperationType")]
-        public virtual string WorkflowOperationType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
 }
