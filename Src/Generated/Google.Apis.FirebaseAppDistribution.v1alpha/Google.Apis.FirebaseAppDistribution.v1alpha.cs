@@ -1885,6 +1885,25 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Rectangle for describing bounding boxes</summary>
+    public class AndroidxCrawlerOutputRectangle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("bottom")]
+        public virtual System.Nullable<int> Bottom { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("left")]
+        public virtual System.Nullable<int> Left { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("right")]
+        public virtual System.Nullable<int> Right { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("top")]
+        public virtual System.Nullable<int> Top { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A release of a Firebase app.</summary>
     public class GoogleFirebaseAppdistroV1Release : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2274,6 +2293,14 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     /// <summary>An interaction with the device, such as a tap, text entry, wait, etc.</summary>
     public class GoogleFirebaseAppdistroV1alphaDeviceInteraction : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. A text entry action, that enters text into a particular text field, clearing any existing text
+        /// in the field. Unlike `text_input` this action does not require any other actions such as a tap to be
+        /// performed before it can enter the text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterText")]
+        public virtual GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText EnterText { get; set; }
+
         /// <summary>Output only. Key code for a key event action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyCode")]
         public virtual string KeyCode { get; set; }
@@ -2293,13 +2320,34 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tap")]
         public virtual AndroidxCrawlerOutputPoint Tap { get; set; }
 
-        /// <summary>Output only. Text entered for a text entry action.</summary>
+        /// <summary>
+        /// Output only. A text input action, that types some text into whatever field is currently focused, if any.
+        /// Unlike `enter_text` this action requires that the field be brought into focus first, for example by emitting
+        /// a tap action before this one.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
         public virtual string TextInput { get; set; }
 
         /// <summary>Output only. A wait action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wait")]
         public virtual GoogleFirebaseAppdistroV1alphaDeviceInteractionWait Wait { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A text entry action, that enters text into a particular text field, clearing any existing text in the field.
+    /// </summary>
+    public class GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The visible bounds of the element to enter text into.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elementBounds")]
+        public virtual AndroidxCrawlerOutputRectangle ElementBounds { get; set; }
+
+        /// <summary>Output only. The text to enter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
