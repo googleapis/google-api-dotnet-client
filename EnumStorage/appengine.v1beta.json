@@ -53,5 +53,18 @@
   "Google.Apis.Appengine.v1beta.AppsResource+ServicesResource+VersionsResource+ListRequest.ViewEnum": [
     "BASIC",
     "FULL"
+  ],
+  "Google.Apis.Appengine.v1beta.ProjectsResource+LocationsResource+ApplicationsResource+AuthorizedCertificatesResource+GetRequest.ViewEnum": [
+    "BASIC_CERTIFICATE",
+    "FULL_CERTIFICATE"
+  ],
+  "Google.Apis.Appengine.v1beta.ProjectsResource+LocationsResource+ApplicationsResource+AuthorizedCertificatesResource+ListRequest.ViewEnum": [
+    "BASIC_CERTIFICATE",
+    "FULL_CERTIFICATE"
+  ],
+  "Google.Apis.Appengine.v1beta.ProjectsResource+LocationsResource+ApplicationsResource+DomainMappingsResource+CreateRequest.OverrideStrategyEnum": [
+    "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY",
+    "STRICT",
+    "OVERRIDE"
   ]
 }
