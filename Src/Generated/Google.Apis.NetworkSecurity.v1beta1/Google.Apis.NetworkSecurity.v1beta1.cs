@@ -10343,7 +10343,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1
 
                 /// <summary>Creates a new SACAttachment in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. The parent, in the form `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.SACAttachment body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -10360,7 +10362,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>Required. The parent, in the form `projects/{project}/locations/{location}`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -10378,8 +10380,11 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and
-                    /// sac_attachment_id from the method_signature of Create RPC
+                    /// Required. ID of the created attachment. The ID must be 1-63 characters long, and comply with
+                    /// RFC1035. Specifically, it must be 1-63 characters long and match the regular expression
+                    /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all
+                    /// following characters must be a dash, lowercase letter, or digit, except the last character,
+                    /// which cannot be a dash.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("sacAttachmentId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string SacAttachmentId { get; set; }
@@ -10430,14 +10435,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Deletes a single SACAttachment.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Deletes the specified attachment.</summary>
+                /// <param name="name">
+                /// Required. Name of the resource, in the form
+                /// `projects/{project}/locations/{location}/sacAttachments/{sac_attachment}`.
+                /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single SACAttachment.</summary>
+                /// <summary>Deletes the specified attachment.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -10447,7 +10455,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>
+                    /// Required. Name of the resource, in the form
+                    /// `projects/{project}/locations/{location}/sacAttachments/{sac_attachment}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -10496,14 +10507,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Gets details of a single SACAttachment.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Returns the specified attachment.</summary>
+                /// <param name="name">
+                /// Required. Name of the resource, in the form
+                /// `projects/{project}/locations/{location}/sacAttachments/{sac_attachment}`.
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single SACAttachment.</summary>
+                /// <summary>Returns the specified attachment.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.SACAttachment>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -10513,7 +10527,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>
+                    /// Required. Name of the resource, in the form
+                    /// `projects/{project}/locations/{location}/sacAttachments/{sac_attachment}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -10542,7 +10559,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 }
 
                 /// <summary>Lists SACAttachments in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListSACAttachmentsRequest</param>
+                /// <param name="parent">
+                /// Required. The parent, in the form `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -10558,15 +10577,15 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListSACAttachmentsRequest</summary>
+                    /// <summary>Required. The parent, in the form `projects/{project}/locations/{location}`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. An expression that filters the list of results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>Optional. Sort the results by a certain order.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -10657,7 +10676,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1
 
                 /// <summary>Creates a new SACRealm in a given project.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. The parent, in the form `projects/{project}/locations/global`.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.SACRealm body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -10674,7 +10695,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>Required. The parent, in the form `projects/{project}/locations/global`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -10692,8 +10713,11 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and
-                    /// sac_realm_id from the method_signature of Create RPC
+                    /// Required. ID of the created realm. The ID must be 1-63 characters long, and comply with RFC1035.
+                    /// Specifically, it must be 1-63 characters long and match the regular expression
+                    /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all
+                    /// following characters must be a dash, lowercase letter, or digit, except the last character,
+                    /// which cannot be a dash.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("sacRealmId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string SacRealmId { get; set; }
@@ -10744,14 +10768,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Deletes a single SACRealm.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Deletes the specified realm.</summary>
+                /// <param name="name">
+                /// Required. Name of the resource, in the form
+                /// `projects/{project}/locations/global/sacRealms/{sacRealm}`.
+                /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single SACRealm.</summary>
+                /// <summary>Deletes the specified realm.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -10761,7 +10788,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>
+                    /// Required. Name of the resource, in the form
+                    /// `projects/{project}/locations/global/sacRealms/{sacRealm}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -10810,14 +10840,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Gets details of a single SACRealm.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Returns the specified realm.</summary>
+                /// <param name="name">
+                /// Required. Name of the resource, in the form
+                /// `projects/{project}/locations/global/sacRealms/{sacRealm}`.
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single SACRealm.</summary>
+                /// <summary>Returns the specified realm.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.SACRealm>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -10827,7 +10860,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>
+                    /// Required. Name of the resource, in the form
+                    /// `projects/{project}/locations/global/sacRealms/{sacRealm}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -10856,7 +10892,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 }
 
                 /// <summary>Lists SACRealms in a given project.</summary>
-                /// <param name="parent">Required. Parent value for ListSACRealmsRequest</param>
+                /// <param name="parent">
+                /// Required. The parent, in the form `projects/{project}/locations/global`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -10872,15 +10910,15 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListSACRealmsRequest</summary>
+                    /// <summary>Required. The parent, in the form `projects/{project}/locations/global`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. An expression that filters the list of results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>Optional. Sort the results by a certain order.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -15417,14 +15455,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing SACAttachments</summary>
+    /// <summary>Response for `ListSACAttachments` method.</summary>
     public class ListSACAttachmentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A token identifying a page of results the server should return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The list of SACAttachments</summary>
+        /// <summary>The list of SACAttachments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sacAttachments")]
         public virtual System.Collections.Generic.IList<SACAttachment> SacAttachments { get; set; }
 
@@ -15436,14 +15474,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing SACRealms</summary>
+    /// <summary>Response for `ListSACRealms` method.</summary>
     public class ListSACRealmsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A token identifying a page of results the server should return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The list of SACRealms</summary>
+        /// <summary>The list of SACRealms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sacRealms")]
         public virtual System.Collections.Generic.IList<SACRealm> SacRealms { get; set; }
 
@@ -16476,13 +16514,15 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for an attachment within a SAC realm.</summary>
+    /// <summary>
+    /// Represents a Secure Access Connect (SAC) Attachment resource. A Secure Access Connect attachment enables NCC
+    /// Gateway to process traffic with an SSE product.
+    /// </summary>
     public class SACAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. ISO-3166 alpha 2 country code used for localization. Only used for Symantec's API today, and is
-        /// optional even for gateways connected to Symantec, since Symantec applies a default if we don't specify it.
-        /// Not case-sensitive, since it will be upper-cased when sending to Symantec API.
+        /// Optional. Case-insensitive ISO-3166 alpha-2 country code used for localization. Only valid for Symantec
+        /// attachments.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
@@ -16491,7 +16531,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Timestamp when the attachment was created.</summary>
+        /// <summary>Output only. Timestamp when the attachment was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -16536,31 +16576,29 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. Name of the NCC Gateway which connects to the attachment. ID or full URI can be specified. Full
-        /// URI is stored either way，in the form `projects/{project}/locations/{location}/spokes/{ncc_gateway}`.
+        /// Required. NCC Gateway associated with the attachment. This can be input as an ID or a full resource name.
+        /// The output always has the form `projects/{project_number}/locations/{location}/spokes/{ncc_gateway}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nccGateway")]
         public virtual string NccGateway { get; set; }
 
         /// <summary>
-        /// Required. Name of the SAC Realm which owns the attachment. The input can be either an ID for a full name.
-        /// The output will always be the full name using project number instead of project ID. The format is
-        /// `projects/{project_number}/locations/{location}/sacRealms/{sac_realm}`.
+        /// Required. SAC Realm which owns the attachment. This can be input as an ID or a full resource name. The
+        /// output always has the form `projects/{project_number}/locations/{location}/sacRealms/{sac_realm}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sacRealm")]
         public virtual string SacRealm { get; set; }
 
-        /// <summary>Output only. [Output only] State of the attachment.</summary>
+        /// <summary>Output only. State of the attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Optional. Required iff the associated realm is of type SYMANTEC_CLOUD_SWG.</summary>
+        /// <summary>Optional. Configuration required for Symantec attachments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symantecOptions")]
         public virtual SACAttachmentSACAttachmentSymantecOptions SymantecOptions { get; set; }
 
         /// <summary>
-        /// Optional. tzinfo identifier used for localization. Only used for Symantec's API today, and is optional even
-        /// for gateways connected to Symantec, since Symantec applies a default if we don't specify it. Case sensitive.
+        /// Optional. Case-sensitive tzinfo identifier used for localization. Only valid for Symantec attachments.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
@@ -16569,7 +16607,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Timestamp when the attachment was last updated.</summary>
+        /// <summary>Output only. Timestamp when the attachment was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -16606,20 +16644,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Fields specific to SSEGWs connecting to Symantec Cloud SWG.</summary>
+    /// <summary>Fields specific to attachments associated with Symantec Cloud SWG.</summary>
     public class SACAttachmentSACAttachmentSymantecOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. Name to be used for when creating a Location on the customer's behalf in Symantec's Location API.
-        /// Required iff sac_realm uses SYMANTEC_CLOUD_SWG. Not to be confused with GCP locations.
+        /// Immutable. Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not
+        /// to be confused with GCP locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symantecLocationName")]
         public virtual string SymantecLocationName { get; set; }
 
-        /// <summary>
-        /// Immutable. Symantec data center identifier that this Attachment will connect to. Required iff sac_realm uses
-        /// SYMANTEC_CLOUD_SWG.
-        /// </summary>
+        /// <summary>Immutable. Symantec data center identifier that this attachment will connect to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symantecSite")]
         public virtual string SymantecSite { get; set; }
 
@@ -16627,14 +16662,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing SACRealm object</summary>
+    /// <summary>
+    /// Represents a Secure Access Connect (SAC) Realm resource. A Secure Access Connect realm establishes a connection
+    /// between your Google Cloud project and an SSE service.
+    /// </summary>
     public class SACRealm : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>Output only. Timestamp when the realm was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -16667,32 +16705,29 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. Optional list of labels applied to the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Identifier. Resource name. It matches the pattern
-        /// `projects/{project}/locations/{location}/sacRealms/{sacRealm}`
+        /// Identifier. Resource name, in the form `projects/{project}/locations/global/sacRealms/{sacRealm}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Output only. [Output only] Key to be shared with SSE service provider to establish global handshake
-        /// </summary>
+        /// <summary>Output only. Key to be shared with SSE service provider during pairing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairingKey")]
         public virtual SACRealmPairingKey PairingKey { get; set; }
 
-        /// <summary>Immutable. SSE service provider</summary>
+        /// <summary>Immutable. SSE service provider associated with the realm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityService")]
         public virtual string SecurityService { get; set; }
 
-        /// <summary>Output only. [Output only] State of the realm</summary>
+        /// <summary>Output only. State of the realm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Optional. Required only if using SYMANTEC_CLOUD_SWG.</summary>
+        /// <summary>Optional. Configuration required for Symantec realms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symantecOptions")]
         public virtual SACRealmSACRealmSymantecOptions SymantecOptions { get; set; }
 
@@ -16700,7 +16735,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>Output only. Timestamp when the realm was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -16737,14 +16772,16 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Key to be shared with SSE service provider to establish global handshake</summary>
+    /// <summary>Key to be shared with SSE service provider to establish global handshake.</summary>
     public class SACRealmPairingKey : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _expireTimeRaw;
 
         private object _expireTime;
 
-        /// <summary>Output only. Timestamp in UTC of when this resource is considered expired.</summary>
+        /// <summary>
+        /// Output only. Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw
         {
@@ -16777,7 +16814,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The name of the key. It expires 7 days after creation.</summary>
+        /// <summary>Output only. Key value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
@@ -16785,23 +16822,23 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Fields specific to realms using SYMANTEC_CLOUD_SWG.</summary>
+    /// <summary>Fields specific to realms using Symantec Cloud SWG.</summary>
     public class SACRealmSACRealmSymantecOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Symantec site IDs that the user can choose to connect to.</summary>
+        /// <summary>Output only. Symantec site IDs which the user can choose to connect to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableSymantecSites")]
         public virtual System.Collections.Generic.IList<string> AvailableSymantecSites { get; set; }
 
         /// <summary>
-        /// Optional. API Key used to call Symantec APIs on the user's behalf. Required if using SYMANTEC_CLOUD_SWG.
+        /// Optional. API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG.
         /// P4SA account needs permissions granted to read this secret. A secret ID, secret name, or secret URI can be
-        /// specified, but it will be parsed and stored as secret URI in the format of
-        /// "projects/{PROJECT_NUMBER}/secrets/my-secret".
+        /// specified, but it will be parsed and stored as a secret URI in the form
+        /// `projects/{project_number}/secrets/my-secret`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretPath")]
         public virtual string SecretPath { get; set; }
 
-        /// <summary>Output only. [Output only] Connection status to Symantec API.</summary>
+        /// <summary>Output only. Connection status to Symantec API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symantecConnectionState")]
         public virtual string SymantecConnectionState { get; set; }
 
