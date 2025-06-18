@@ -515,8 +515,8 @@ namespace Google.Apis.DataCatalog.v1
             }
 
             /// <summary>
-            /// Retrieves the configuration related to the migration from Data Catalog to Dataplex for a specific
-            /// organization, including all the projects under it which have a separate configuration set.
+            /// Retrieves the configuration related to the migration from Data Catalog to Dataplex Universal Catalog for
+            /// a specific organization, including all the projects under it which have a separate configuration set.
             /// </summary>
             /// <param name="name">Required. The organization whose config is being retrieved.</param>
             public virtual RetrieveConfigRequest RetrieveConfig(string name)
@@ -525,8 +525,8 @@ namespace Google.Apis.DataCatalog.v1
             }
 
             /// <summary>
-            /// Retrieves the configuration related to the migration from Data Catalog to Dataplex for a specific
-            /// organization, including all the projects under it which have a separate configuration set.
+            /// Retrieves the configuration related to the migration from Data Catalog to Dataplex Universal Catalog for
+            /// a specific organization, including all the projects under it which have a separate configuration set.
             /// </summary>
             public class RetrieveConfigRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1OrganizationConfig>
             {
@@ -566,10 +566,10 @@ namespace Google.Apis.DataCatalog.v1
             }
 
             /// <summary>
-            /// Retrieves the effective configuration related to the migration from Data Catalog to Dataplex for a
-            /// specific organization or project. If there is no specific configuration set for the resource, the
-            /// setting is checked hierarchicahlly through the ancestors of the resource, starting from the resource
-            /// itself.
+            /// Retrieves the effective configuration related to the migration from Data Catalog to Dataplex Universal
+            /// Catalog for a specific organization or project. If there is no specific configuration set for the
+            /// resource, the setting is checked hierarchicahlly through the ancestors of the resource, starting from
+            /// the resource itself.
             /// </summary>
             /// <param name="name">Required. The resource whose effective config is being retrieved.</param>
             public virtual RetrieveEffectiveConfigRequest RetrieveEffectiveConfig(string name)
@@ -578,10 +578,10 @@ namespace Google.Apis.DataCatalog.v1
             }
 
             /// <summary>
-            /// Retrieves the effective configuration related to the migration from Data Catalog to Dataplex for a
-            /// specific organization or project. If there is no specific configuration set for the resource, the
-            /// setting is checked hierarchicahlly through the ancestors of the resource, starting from the resource
-            /// itself.
+            /// Retrieves the effective configuration related to the migration from Data Catalog to Dataplex Universal
+            /// Catalog for a specific organization or project. If there is no specific configuration set for the
+            /// resource, the setting is checked hierarchicahlly through the ancestors of the resource, starting from
+            /// the resource itself.
             /// </summary>
             public class RetrieveEffectiveConfigRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1MigrationConfig>
             {
@@ -621,7 +621,8 @@ namespace Google.Apis.DataCatalog.v1
             }
 
             /// <summary>
-            /// Sets the configuration related to the migration to Dataplex for an organization or project.
+            /// Sets the configuration related to the migration to Dataplex Universal Catalog for an organization or
+            /// project.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. The organization or project whose config is being specified.</param>
@@ -631,7 +632,8 @@ namespace Google.Apis.DataCatalog.v1
             }
 
             /// <summary>
-            /// Sets the configuration related to the migration to Dataplex for an organization or project.
+            /// Sets the configuration related to the migration to Dataplex Universal Catalog for an organization or
+            /// project.
             /// </summary>
             public class SetConfigRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1MigrationConfig>
             {
@@ -5327,10 +5329,10 @@ namespace Google.Apis.DataCatalog.v1
             }
 
             /// <summary>
-            /// Retrieves the effective configuration related to the migration from Data Catalog to Dataplex for a
-            /// specific organization or project. If there is no specific configuration set for the resource, the
-            /// setting is checked hierarchicahlly through the ancestors of the resource, starting from the resource
-            /// itself.
+            /// Retrieves the effective configuration related to the migration from Data Catalog to Dataplex Universal
+            /// Catalog for a specific organization or project. If there is no specific configuration set for the
+            /// resource, the setting is checked hierarchicahlly through the ancestors of the resource, starting from
+            /// the resource itself.
             /// </summary>
             /// <param name="name">Required. The resource whose effective config is being retrieved.</param>
             public virtual RetrieveEffectiveConfigRequest RetrieveEffectiveConfig(string name)
@@ -5339,10 +5341,10 @@ namespace Google.Apis.DataCatalog.v1
             }
 
             /// <summary>
-            /// Retrieves the effective configuration related to the migration from Data Catalog to Dataplex for a
-            /// specific organization or project. If there is no specific configuration set for the resource, the
-            /// setting is checked hierarchicahlly through the ancestors of the resource, starting from the resource
-            /// itself.
+            /// Retrieves the effective configuration related to the migration from Data Catalog to Dataplex Universal
+            /// Catalog for a specific organization or project. If there is no specific configuration set for the
+            /// resource, the setting is checked hierarchicahlly through the ancestors of the resource, starting from
+            /// the resource itself.
             /// </summary>
             public class RetrieveEffectiveConfigRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1MigrationConfig>
             {
@@ -5382,7 +5384,8 @@ namespace Google.Apis.DataCatalog.v1
             }
 
             /// <summary>
-            /// Sets the configuration related to the migration to Dataplex for an organization or project.
+            /// Sets the configuration related to the migration to Dataplex Universal Catalog for an organization or
+            /// project.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. The organization or project whose config is being specified.</param>
@@ -5392,7 +5395,8 @@ namespace Google.Apis.DataCatalog.v1
             }
 
             /// <summary>
-            /// Sets the configuration related to the migration to Dataplex for an organization or project.
+            /// Sets the configuration related to the migration to Dataplex Universal Catalog for an organization or
+            /// project.
             /// </summary>
             public class SetConfigRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1MigrationConfig>
             {
@@ -5951,7 +5955,8 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec DatabaseViewSpec { get; set; }
 
         /// <summary>
-        /// Output only. Fields specific to a Dataplex table and present only in the Dataplex table entries.
+        /// Output only. Fields specific to a Dataplex Universal Catalog table and present only in the Dataplex
+        /// Universal Catalog table entries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataplexTable")]
         public virtual GoogleCloudDatacatalogV1DataplexTableSpec DataplexTable { get; set; }
@@ -5984,10 +5989,10 @@ namespace Google.Apis.DataCatalog.v1.Data
     }
 
     /// <summary>
-    /// External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other
-    /// systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into
-    /// the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name
-    /// et cetera) within the Data Catalog.
+    /// External table registered by Dataplex Universal Catalog. Dataplex Universal Catalog publishes data discovered
+    /// from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables".
+    /// External tables are also synced into the Data Catalog. This message contains pointers to those external tables
+    /// (fully qualified name, resource name et cetera) within the Data Catalog.
     /// </summary>
     public class GoogleCloudDatacatalogV1DataplexExternalTable : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6011,10 +6016,10 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Entry specyfication for a Dataplex fileset.</summary>
+    /// <summary>Entry specification for a Dataplex Universal Catalog fileset.</summary>
     public class GoogleCloudDatacatalogV1DataplexFilesetSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Common Dataplex fields.</summary>
+        /// <summary>Common Dataplex Universal Catalog fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataplexSpec")]
         public virtual GoogleCloudDatacatalogV1DataplexSpec DataplexSpec { get; set; }
 
@@ -6022,12 +6027,12 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common Dataplex fields.</summary>
+    /// <summary>Common Dataplex Universal Catalog fields.</summary>
     public class GoogleCloudDatacatalogV1DataplexSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage
-        /// bucket or BigQuery dataset) of the entity is attached.
+        /// Fully qualified resource name of an asset in Dataplex Universal Catalog, to which the underlying data source
+        /// (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asset")]
         public virtual string Asset { get; set; }
@@ -6042,7 +6047,7 @@ namespace Google.Apis.DataCatalog.v1.Data
 
         /// <summary>
         /// Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as
-        /// the correspondingly Dataplex lake / zone / asset.
+        /// the corresponding Dataplex Universal Catalog lake / zone / asset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -6051,16 +6056,16 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Entry specification for a Dataplex table.</summary>
+    /// <summary>Entry specification for a Dataplex Universal Catalog table.</summary>
     public class GoogleCloudDatacatalogV1DataplexTableSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Common Dataplex fields.</summary>
+        /// <summary>Common Dataplex Universal Catalog fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataplexSpec")]
         public virtual GoogleCloudDatacatalogV1DataplexSpec DataplexSpec { get; set; }
 
         /// <summary>
-        /// List of external tables registered by Dataplex in other systems based on the same underlying data. External
-        /// tables allow to query this data in those systems.
+        /// List of external tables registered by Dataplex Universal Catalog in other systems based on the same
+        /// underlying data. External tables allow to query this data in those systems.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalTables")]
         public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1DataplexExternalTable> ExternalTables { get; set; }
@@ -6331,7 +6336,7 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. When set to [true], it means DataCatalog EntryGroup was transferred to Dataplex Catalog Service.
+        /// Optional. When set to [true], it means DataCatalog EntryGroup was transferred to Dataplex Universal Catalog.
         /// It makes EntryGroup and its Entries to be read-only in DataCatalog. However, new Tags on EntryGroup and its
         /// Entries can be created. After setting the flag to [true] it cannot be unset.
         /// </summary>
@@ -6425,7 +6430,10 @@ namespace Google.Apis.DataCatalog.v1.Data
     /// <summary>Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.</summary>
     public class GoogleCloudDatacatalogV1FilesetSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.</summary>
+        /// <summary>
+        /// Fields specific to a Dataplex Universal Catalog fileset and present only in the Dataplex Universal Catalog
+        /// fileset entries.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataplexFileset")]
         public virtual GoogleCloudDatacatalogV1DataplexFilesetSpec DataplexFileset { get; set; }
 
@@ -6509,7 +6517,8 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string GcsBucketPath { get; set; }
 
         /// <summary>
-        /// Optional. (Optional) Dataplex task job id, if specified will be used as part of ImportEntries LRO ID
+        /// Optional. (Optional) Dataplex Universal Catalog task job id, if specified will be used as part of
+        /// ImportEntries LRO ID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; }
@@ -6686,16 +6695,16 @@ namespace Google.Apis.DataCatalog.v1.Data
     }
 
     /// <summary>
-    /// The configuration related to the migration to Dataplex applied to an organization or project. It is the response
-    /// message for SetConfig and RetrieveEffectiveConfig.
+    /// The configuration related to the migration to Dataplex Universal Catalog applied to an organization or project.
+    /// It is the response message for SetConfig and RetrieveEffectiveConfig.
     /// </summary>
     public class GoogleCloudDatacatalogV1MigrationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Opt-in status for the UI switch to Dataplex.</summary>
+        /// <summary>Opt-in status for the UI switch to Dataplex Universal Catalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catalogUiExperience")]
         public virtual string CatalogUiExperience { get; set; }
 
-        /// <summary>Opt-in status for the migration of Tag Templates to Dataplex.</summary>
+        /// <summary>Opt-in status for the migration of Tag Templates to Dataplex Universal Catalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagTemplateMigration")]
         public virtual string TagTemplateMigration { get; set; }
 
@@ -6779,8 +6788,8 @@ namespace Google.Apis.DataCatalog.v1.Data
     }
 
     /// <summary>
-    /// The configuration related to the migration from Data Catalog to Dataplex that has been applied to an
-    /// organization and any projects under it. It is the response message for RetrieveConfig.
+    /// The configuration related to the migration from Data Catalog to Dataplex Universal Catalog that has been applied
+    /// to an organization and any projects under it. It is the response message for RetrieveConfig.
     /// </summary>
     public class GoogleCloudDatacatalogV1OrganizationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7460,11 +7469,11 @@ namespace Google.Apis.DataCatalog.v1.Data
     /// <summary>Request message for SetConfig.</summary>
     public class GoogleCloudDatacatalogV1SetConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Opt-in status for the UI switch to Dataplex.</summary>
+        /// <summary>Opt-in status for the UI switch to Dataplex Universal Catalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catalogUiExperience")]
         public virtual string CatalogUiExperience { get; set; }
 
-        /// <summary>Opt-in status for the migration of Tag Templates to Dataplex.</summary>
+        /// <summary>Opt-in status for the migration of Tag Templates to Dataplex Universal Catalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagTemplateMigration")]
         public virtual string TagTemplateMigration { get; set; }
 
