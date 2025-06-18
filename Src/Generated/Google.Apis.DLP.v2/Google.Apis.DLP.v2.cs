@@ -16620,7 +16620,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Match file stores (e.g. buckets) using regex filters.</summary>
+    /// <summary>Match file stores (e.g. buckets) using filters.</summary>
     public class GooglePrivacyDlpV2FileStoreCollection : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. A collection of regular expressions to match a file store against.</summary>
