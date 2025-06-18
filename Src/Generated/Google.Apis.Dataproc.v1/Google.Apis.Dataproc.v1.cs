@@ -12745,6 +12745,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auxiliaryNodeGroups")]
         public virtual System.Collections.Generic.IList<AuxiliaryNodeGroup> AuxiliaryNodeGroups { get; set; }
 
+        /// <summary>Optional. The tier of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterTier")]
+        public virtual string ClusterTier { get; set; }
+
         /// <summary>Optional. The type of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterType")]
         public virtual string ClusterType { get; set; }
