@@ -1853,8 +1853,9 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
             /// <summary>Activates a data segment.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. Name of data segment to activate. Format:
-            /// `buyers/{accountId}/dataSegments/{curatorDataSegmentId}`
+            /// Required. Name of data segment to activate. v1alpha format:
+            /// `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format:
+            /// `curators/{accountId}/dataSegments/{curatorDataSegmentId}`
             /// </param>
             public virtual ActivateRequest Activate(Google.Apis.AuthorizedBuyersMarketplace.v1alpha.Data.ActivateDataSegmentRequest body, string name)
             {
@@ -1873,8 +1874,9 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
                 }
 
                 /// <summary>
-                /// Required. Name of data segment to activate. Format:
-                /// `buyers/{accountId}/dataSegments/{curatorDataSegmentId}`
+                /// Required. Name of data segment to activate. v1alpha format:
+                /// `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format:
+                /// `curators/{accountId}/dataSegments/{curatorDataSegmentId}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1916,7 +1918,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The parent resource where this data segment will be created. Format: `buyers/{accountId}`
+            /// Required. The parent resource where this data segment will be created. v1alpha format:
+            /// `buyers/{accountId}` v1beta format: `curators/{accountId}`
             /// </param>
             public virtual CreateRequest Create(Google.Apis.AuthorizedBuyersMarketplace.v1alpha.Data.DataSegment body, string parent)
             {
@@ -1939,7 +1942,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
                 }
 
                 /// <summary>
-                /// Required. The parent resource where this data segment will be created. Format: `buyers/{accountId}`
+                /// Required. The parent resource where this data segment will be created. v1alpha format:
+                /// `buyers/{accountId}` v1beta format: `curators/{accountId}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1977,8 +1981,9 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
             /// <summary>Deactivates a data segment.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. Name of data segment to deactivate. Format:
-            /// `buyers/{accountId}/dataSegments/{curatorDataSegmentId}`
+            /// Required. Name of data segment to deactivate. v1alpha format:
+            /// `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format:
+            /// `curators/{accountId}/dataSegments/{curatorDataSegmentId}`
             /// </param>
             public virtual DeactivateRequest Deactivate(Google.Apis.AuthorizedBuyersMarketplace.v1alpha.Data.DeactivateDataSegmentRequest body, string name)
             {
@@ -1997,8 +2002,9 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
                 }
 
                 /// <summary>
-                /// Required. Name of data segment to deactivate. Format:
-                /// `buyers/{accountId}/dataSegments/{curatorDataSegmentId}`
+                /// Required. Name of data segment to deactivate. v1alpha format:
+                /// `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format:
+                /// `curators/{accountId}/dataSegments/{curatorDataSegmentId}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2035,7 +2041,9 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
 
             /// <summary>Gets a data segment given its name.</summary>
             /// <param name="name">
-            /// Required. Name of data segment to get. Format: `buyers/{accountId}/dataSegments/{curatorDataSegmentId}`
+            /// Required. Name of data segment to get. v1alpha format:
+            /// `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format:
+            /// `curators/{accountId}/dataSegments/{curatorDataSegmentId}`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -2053,8 +2061,9 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
                 }
 
                 /// <summary>
-                /// Required. Name of data segment to get. Format:
-                /// `buyers/{accountId}/dataSegments/{curatorDataSegmentId}`
+                /// Required. Name of data segment to get. v1alpha format:
+                /// `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format:
+                /// `curators/{accountId}/dataSegments/{curatorDataSegmentId}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2085,7 +2094,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
 
             /// <summary>List the data segments owned by a curator.</summary>
             /// <param name="parent">
-            /// Required. Name of the parent buyer that can access the data segment. Format: `buyers/{accountId}`
+            /// Required. Name of the parent curator that can access the data segment. v1alpha format:
+            /// `buyers/{accountId}` v1beta format: `curators/{accountId}`
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2103,7 +2113,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
                 }
 
                 /// <summary>
-                /// Required. Name of the parent buyer that can access the data segment. Format: `buyers/{accountId}`
+                /// Required. Name of the parent curator that can access the data segment. v1alpha format:
+                /// `buyers/{accountId}` v1beta format: `curators/{accountId}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2163,7 +2174,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Immutable. Identifier. The unique identifier for the data segment. Account ID corresponds to the account
-            /// ID that created the segment. Format: `buyers/{accountId}/dataSegments/{curatorDataSegmentId}`
+            /// ID that created the segment. v1alpha format: `buyers/{accountId}/dataSegments/{curatorDataSegmentId}`
+            /// v1beta format: `curators/{curatorAccountId}/dataSegments/{curatorDataSegmentId}`
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AuthorizedBuyersMarketplace.v1alpha.Data.DataSegment body, string name)
             {
@@ -2183,8 +2195,9 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
 
                 /// <summary>
                 /// Immutable. Identifier. The unique identifier for the data segment. Account ID corresponds to the
-                /// account ID that created the segment. Format:
-                /// `buyers/{accountId}/dataSegments/{curatorDataSegmentId}`
+                /// account ID that created the segment. v1alpha format:
+                /// `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format:
+                /// `curators/{curatorAccountId}/dataSegments/{curatorDataSegmentId}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -4150,7 +4163,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha.Data
 
         /// <summary>
         /// Immutable. Identifier. The unique identifier for the data segment. Account ID corresponds to the account ID
-        /// that created the segment. Format: `buyers/{accountId}/dataSegments/{curatorDataSegmentId}`
+        /// that created the segment. v1alpha format: `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta
+        /// format: `curators/{curatorAccountId}/dataSegments/{curatorDataSegmentId}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
