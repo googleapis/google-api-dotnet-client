@@ -1040,7 +1040,11 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 this.service = service;
             }
 
-            /// <summary>Link the specified merchant to a GBP account for all countries.</summary>
+            /// <summary>
+            /// Link the specified merchant to a GBP account for all countries. To run this method, you must have admin
+            /// access to the Merchant Center account. If you don't have admin access, the request fails with the error
+            /// message `User is not an administrator of account {ACCOUNT_ID}`.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The name of the parent resource to which the GBP account is linked. Format:
@@ -1051,7 +1055,11 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 return new LinkGbpAccountRequest(this.service, body, parent);
             }
 
-            /// <summary>Link the specified merchant to a GBP account for all countries.</summary>
+            /// <summary>
+            /// Link the specified merchant to a GBP account for all countries. To run this method, you must have admin
+            /// access to the Merchant Center account. If you don't have admin access, the request fails with the error
+            /// message `User is not an administrator of account {ACCOUNT_ID}`.
+            /// </summary>
             public class LinkGbpAccountRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.LinkGbpAccountResponse>
             {
                 /// <summary>Constructs a new LinkGbpAccount request.</summary>
@@ -3805,7 +3813,11 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 }
             }
 
-            /// <summary>Retrieves the state of the agreement for the application terms of service.</summary>
+            /// <summary>
+            /// Retrieves the state of the agreement for the application terms of service. Application terms of service
+            /// covers permissions related to the usage of data provided through Merchant Center, CSS Center,
+            /// Manufacturer Center, and more.
+            /// </summary>
             /// <param name="parent">
             /// Required. The account for which to get a TermsOfServiceAgreementState Format: `accounts/{account}`
             /// </param>
@@ -3814,7 +3826,11 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 return new RetrieveForApplicationRequest(this.service, parent);
             }
 
-            /// <summary>Retrieves the state of the agreement for the application terms of service.</summary>
+            /// <summary>
+            /// Retrieves the state of the agreement for the application terms of service. Application terms of service
+            /// covers permissions related to the usage of data provided through Merchant Center, CSS Center,
+            /// Manufacturer Center, and more.
+            /// </summary>
             public class RetrieveForApplicationRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.TermsOfServiceAgreementState>
             {
                 /// <summary>Constructs a new RetrieveForApplication request.</summary>
@@ -4380,14 +4396,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
         }
 
         /// <summary>
-        /// Lists accounts accessible to the calling user and matching the constraints of the request such as page size
-        /// or filters. This is not just listing the sub-accounts of an advanced account, but all accounts the calling
-        /// user has access to including other advanced accounts, linked accounts, standalone accounts and so on. If no
-        /// filter is provided, then it returns all the accounts the user has access to. This method is eventually
-        /// consistent, meaning changes such as creating, updating an account or a change of relationships between
-        /// accounts may not show up in the results immediately. Instead, these changes propagate over a short period,
-        /// after which the updated information can match the associated predicates. That means, that searching by
-        /// account name might not return a recently changed account even though it satisfies the predicate.
+        /// Note: For the `accounts.list` method, quota and limits usage are charged for each user, and not for the
+        /// Merchant Center ID or the advanced account ID. To list several sub-accounts, you should use the
+        /// `accounts.listSubaccounts` method, which is more suitable for advanced accounts use case.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -4395,14 +4406,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
         }
 
         /// <summary>
-        /// Lists accounts accessible to the calling user and matching the constraints of the request such as page size
-        /// or filters. This is not just listing the sub-accounts of an advanced account, but all accounts the calling
-        /// user has access to including other advanced accounts, linked accounts, standalone accounts and so on. If no
-        /// filter is provided, then it returns all the accounts the user has access to. This method is eventually
-        /// consistent, meaning changes such as creating, updating an account or a change of relationships between
-        /// accounts may not show up in the results immediately. Instead, these changes propagate over a short period,
-        /// after which the updated information can match the associated predicates. That means, that searching by
-        /// account name might not return a recently changed account even though it satisfies the predicate.
+        /// Note: For the `accounts.list` method, quota and limits usage are charged for each user, and not for the
+        /// Merchant Center ID or the advanced account ID. To list several sub-accounts, you should use the
+        /// `accounts.listSubaccounts` method, which is more suitable for advanced accounts use case.
         /// </summary>
         public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListAccountsResponse>
         {
@@ -4888,20 +4894,20 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     public class Accepted : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The account where the acceptance was recorded. This can be the account itself or, in the case of
+        /// Required. The account where the acceptance was recorded. This can be the account itself or, in the case of
         /// subaccounts, the advanced account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceptedBy")]
         public virtual string AcceptedBy { get; set; }
 
-        /// <summary>The accepted termsOfService.</summary>
+        /// <summary>Required. The accepted termsOfService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("termsOfService")]
         public virtual string TermsOfService { get; set; }
 
         /// <summary>
-        /// When set, it states that the accepted `TermsOfService` is only valid until the end of this date (in UTC). A
-        /// new one must be accepted before then. The information of the required `TermsOfService` is found in the
-        /// `Required` message.
+        /// Optional. When set, it states that the accepted `TermsOfService` is only valid until the end of this date
+        /// (in UTC). A new one must be accepted before then. The information of the required `TermsOfService` is found
+        /// in the `Required` message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validUntil")]
         public virtual Date ValidUntil { get; set; }
@@ -6740,7 +6746,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         /// The phone number, represented as a leading plus sign ('+'), followed by a phone number that uses a relaxed
         /// ITU E.164 format consisting of the country calling code (1 to 3 digits) and the subscriber number, with no
         /// additional spaces or formatting. For example: - correct: "+15552220123" - incorrect: "+1 (555) 222-01234
-        /// x123". The ITU E.164 format limits the latter to 12 digits, but in practice not all countries respect that,
+        /// x123" The ITU E.164 format limits the latter to 12 digits, but in practice not all countries respect that,
         /// so we relax that restriction here. National-only numbers are not allowed. References: -
         /// https://www.itu.int/rec/T-REC-E.164-201011-I - https://en.wikipedia.org/wiki/E.164. -
         /// https://en.wikipedia.org/wiki/List_of_country_calling_codes
@@ -6758,7 +6764,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("extension")]
         public virtual string Extension { get; set; }
 
-        /// <summary>A short code. Reference(s): - https://en.wikipedia.org/wiki/Short_code</summary>
+        /// <summary>A short code. Reference(s): - https://wikipedia.org/wiki/Short_code</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortCode")]
         public virtual ShortCode ShortCode { get; set; }
 
@@ -6803,13 +6809,13 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     }
 
     /// <summary>
-    /// Represents a postal address (for example, for postal delivery or payments addresses). Given a postal address, a
-    /// postal service can deliver items to a premise, P.O. box or similar. It is not intended to model geographical
-    /// locations (roads, towns, mountains). In typical usage, an address would be created by user input or from
-    /// importing existing data, depending on the type of process. Advice on address input or editing: - Use an
-    /// internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not
-    /// be presented with UI elements for input or editing of fields outside countries where that field is used. For
-    /// more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478.
+    /// Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal
+    /// service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model
+    /// geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user
+    /// input or from importing existing data, depending on the type of process. Advice on address input or editing: -
+    /// Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users
+    /// should not be presented with UI elements for input or editing of fields outside countries where that field is
+    /// used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478.
     /// </summary>
     public class PostalAddress : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7320,13 +7326,13 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     /// <summary>Describes the terms of service which are required to be accepted.</summary>
     public class Required : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The `TermsOfService` that need to be accepted.</summary>
+        /// <summary>Required. The `TermsOfService` that need to be accepted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("termsOfService")]
         public virtual string TermsOfService { get; set; }
 
         /// <summary>
-        /// Full URL to the terms of service file. This field is the same as `TermsOfService.file_uri`, it is added here
-        /// for convenience only.
+        /// Required. Full URL to the terms of service file. This field is the same as `TermsOfService.file_uri`, it is
+        /// added here for convenience only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tosFileUri")]
         public virtual string TosFileUri { get; set; }
@@ -7514,13 +7520,14 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     public class ShippingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. This field is used for avoid async issue. Make sure shipping setting data didn't change between
-        /// get call and insert call. The user should do following steps： 1. Set etag field as empty string for initial
-        /// shipping setting creation. 2. After initial creation, call get method to obtain an etag and current shipping
-        /// setting data before call insert. 3. Modify to wanted shipping setting information. 4. Call insert method
-        /// with the wanted shipping setting information with the etag obtained from step 2. 5. If shipping setting data
-        /// changed between step 2 and step 4. Insert request will fail because the etag changes every time the shipping
-        /// setting data changes. User should repeate step 2-4 with the new etag.
+        /// Required. This field helps avoid async issues. It ensures that the shipping setting data doesn't change
+        /// between the `get` call and the `insert` call. The user should follow these steps: 1. Set the etag field as
+        /// an empty string for the initial shipping setting creation. 2. After the initial creation, call the `get`
+        /// method to obtain an etag and the current shipping setting data before calling `insert`. 3. Modify the
+        /// shipping setting information. 4. Call the `insert` method with the shipping setting information and the etag
+        /// obtained in step 2. 5. If the shipping setting data changes between step 2 and step 4, the insert request
+        /// will fail because the etag changes every time the shipping setting data changes. In this case, the user
+        /// should repeat steps 2-4 with the new etag.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -7705,7 +7712,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     /// </summary>
     public class TermsOfServiceAgreementState : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The accepted terms of service of this kind and for the associated region_code</summary>
+        /// <summary>Optional. The accepted terms of service of this kind and for the associated region_code</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accepted")]
         public virtual Accepted Accepted { get; set; }
 
@@ -7719,16 +7726,17 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Region code as defined by https://cldr.unicode.org/. This is the country the current state applies to.
+        /// Required. Region code as defined by https://cldr.unicode.org/. This is the country the current state applies
+        /// to.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
-        /// <summary>The required terms of service</summary>
+        /// <summary>Optional. The required terms of service</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
         public virtual Required Required { get; set; }
 
-        /// <summary>Terms of Service kind associated with the particular version.</summary>
+        /// <summary>Required. Terms of Service kind associated with the particular version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("termsOfServiceKind")]
         public virtual string TermsOfServiceKind { get; set; }
 
