@@ -4952,6 +4952,16 @@ namespace Google.Apis.GKEOnPrem.v1
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
 
+                    /// <summary>
+                    /// Optional. If set to true, the unenrollment of a vmware admin cluster resource will succeed even
+                    /// if errors occur during unenrollment. This parameter can be used when you want to unenroll admin
+                    /// cluster resource and the on-prem admin cluster is disconnected / unreachable. WARNING: Using
+                    /// this parameter when your admin cluster still exists may result in a deleted GCP admin cluster
+                    /// but existing resourcelink in on-prem admin cluster and membership.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("ignoreErrors", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IgnoreErrors { get; set; }
+
                     /// <summary>Validate the request without actually doing any updates.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -4988,6 +4998,14 @@ namespace Google.Apis.GKEOnPrem.v1
                         RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
                         {
                             Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("ignoreErrors", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ignoreErrors",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
