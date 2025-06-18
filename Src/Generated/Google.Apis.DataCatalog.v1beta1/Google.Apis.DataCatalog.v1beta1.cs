@@ -4930,7 +4930,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec DatabaseViewSpec { get; set; }
 
         /// <summary>
-        /// Output only. Fields specific to a Dataplex table and present only in the Dataplex table entries.
+        /// Output only. Fields specific to a Dataplex Universal Catalog table and present only in the Dataplex
+        /// Universal Catalog table entries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataplexTable")]
         public virtual GoogleCloudDatacatalogV1DataplexTableSpec DataplexTable { get; set; }
@@ -4963,10 +4964,10 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
     }
 
     /// <summary>
-    /// External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other
-    /// systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into
-    /// the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name
-    /// et cetera) within the Data Catalog.
+    /// External table registered by Dataplex Universal Catalog. Dataplex Universal Catalog publishes data discovered
+    /// from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables".
+    /// External tables are also synced into the Data Catalog. This message contains pointers to those external tables
+    /// (fully qualified name, resource name et cetera) within the Data Catalog.
     /// </summary>
     public class GoogleCloudDatacatalogV1DataplexExternalTable : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4990,10 +4991,10 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Entry specyfication for a Dataplex fileset.</summary>
+    /// <summary>Entry specification for a Dataplex Universal Catalog fileset.</summary>
     public class GoogleCloudDatacatalogV1DataplexFilesetSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Common Dataplex fields.</summary>
+        /// <summary>Common Dataplex Universal Catalog fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataplexSpec")]
         public virtual GoogleCloudDatacatalogV1DataplexSpec DataplexSpec { get; set; }
 
@@ -5001,12 +5002,12 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common Dataplex fields.</summary>
+    /// <summary>Common Dataplex Universal Catalog fields.</summary>
     public class GoogleCloudDatacatalogV1DataplexSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage
-        /// bucket or BigQuery dataset) of the entity is attached.
+        /// Fully qualified resource name of an asset in Dataplex Universal Catalog, to which the underlying data source
+        /// (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asset")]
         public virtual string Asset { get; set; }
@@ -5021,7 +5022,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
 
         /// <summary>
         /// Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as
-        /// the correspondingly Dataplex lake / zone / asset.
+        /// the corresponding Dataplex Universal Catalog lake / zone / asset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -5030,16 +5031,16 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Entry specification for a Dataplex table.</summary>
+    /// <summary>Entry specification for a Dataplex Universal Catalog table.</summary>
     public class GoogleCloudDatacatalogV1DataplexTableSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Common Dataplex fields.</summary>
+        /// <summary>Common Dataplex Universal Catalog fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataplexSpec")]
         public virtual GoogleCloudDatacatalogV1DataplexSpec DataplexSpec { get; set; }
 
         /// <summary>
-        /// List of external tables registered by Dataplex in other systems based on the same underlying data. External
-        /// tables allow to query this data in those systems.
+        /// List of external tables registered by Dataplex Universal Catalog in other systems based on the same
+        /// underlying data. External tables allow to query this data in those systems.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalTables")]
         public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1DataplexExternalTable> ExternalTables { get; set; }
@@ -5307,7 +5308,10 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
     /// <summary>Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.</summary>
     public class GoogleCloudDatacatalogV1FilesetSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.</summary>
+        /// <summary>
+        /// Fields specific to a Dataplex Universal Catalog fileset and present only in the Dataplex Universal Catalog
+        /// fileset entries.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataplexFileset")]
         public virtual GoogleCloudDatacatalogV1DataplexFilesetSpec DataplexFileset { get; set; }
 
