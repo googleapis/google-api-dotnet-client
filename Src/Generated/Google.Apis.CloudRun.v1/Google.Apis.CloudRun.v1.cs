@@ -8579,8 +8579,8 @@ namespace Google.Apis.CloudRun.v1.Data
     public class GoogleDevtoolsCloudbuildV1GitSourceRepository : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Developer Connect Git repository link or the url that matches a repository link in the current project,
-        /// formatted as `projects/*/locations/*/connections/*/gitRepositoryLink/*`
+        /// The Developer Connect Git repository link formatted as
+        /// `projects/*/locations/*/connections/*/gitRepositoryLink/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerConnect")]
         public virtual string DeveloperConnect { get; set; }
@@ -11114,7 +11114,8 @@ namespace Google.Apis.CloudRun.v1.Data
     {
         /// <summary>
         /// Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with
-        /// a code due to some other failure. See status field for possible failure details.
+        /// a code due to some other failure. See status field for possible failure details. At most one of exit_code or
+        /// term_signal will be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exitCode")]
         public virtual System.Nullable<int> ExitCode { get; set; }
@@ -11124,6 +11125,13 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>
+        /// Optional. Termination signal of the container. This is set to non-zero if the container is terminated by the
+        /// system. At most one of exit_code or term_signal will be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("termSignal")]
+        public virtual System.Nullable<int> TermSignal { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
