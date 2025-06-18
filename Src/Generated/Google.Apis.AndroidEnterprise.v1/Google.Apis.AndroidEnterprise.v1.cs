@@ -1149,7 +1149,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>
         /// Generates an enterprise upgrade URL to upgrade an existing managed Google Play Accounts enterprise to a
-        /// managed Google domain. **Note:** This feature is not generally available.
+        /// managed Google domain. See the guide to upgrading an enterprise for more details.
         /// </summary>
         /// <param name="enterpriseId">Required. The ID of the enterprise.</param>
         public virtual GenerateEnterpriseUpgradeUrlRequest GenerateEnterpriseUpgradeUrl(string enterpriseId)
@@ -1159,7 +1159,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>
         /// Generates an enterprise upgrade URL to upgrade an existing managed Google Play Accounts enterprise to a
-        /// managed Google domain. **Note:** This feature is not generally available.
+        /// managed Google domain. See the guide to upgrading an enterprise for more details.
         /// </summary>
         public class GenerateEnterpriseUpgradeUrlRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.GenerateEnterpriseUpgradeUrlResponse>
         {
@@ -6732,7 +6732,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
     /// <summary>
     /// Response message for generating a URL to upgrade an existing managed Google Play Accounts enterprise to a
-    /// managed Google domain. **Note:** This feature is not generally available.
+    /// managed Google domain.
     /// </summary>
     public class GenerateEnterpriseUpgradeUrlResponse : Google.Apis.Requests.IDirectResponseSchema
     {
