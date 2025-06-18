@@ -9864,7 +9864,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 this.service = service;
             }
 
-            /// <summary>Lookup for a single Subproperty Sync Config.</summary>
+            /// <summary>Lookup for a single `SubpropertySyncConfig`.</summary>
             /// <param name="name">
             /// Required. Resource name of the SubpropertySyncConfig to lookup. Format:
             /// properties/{ordinary_property_id}/subpropertySyncConfigs/{subproperty_id} Example:
@@ -9875,7 +9875,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 return new GetRequest(this.service, name);
             }
 
-            /// <summary>Lookup for a single Subproperty Sync Config.</summary>
+            /// <summary>Lookup for a single `SubpropertySyncConfig`.</summary>
             public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertySyncConfig>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -9917,7 +9917,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
             }
 
-            /// <summary>List all Subproperty Sync Configs on a property.</summary>
+            /// <summary>List all `SubpropertySyncConfig` resources for a property.</summary>
             /// <param name="parent">
             /// Required. Resource name of the property. Format: properties/property_id Example: properties/123
             /// </param>
@@ -9926,7 +9926,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 return new ListRequest(this.service, parent);
             }
 
-            /// <summary>List all Subproperty Sync Configs on a property.</summary>
+            /// <summary>List all `SubpropertySyncConfig` resources for a property.</summary>
             public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -9998,7 +9998,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
             }
 
-            /// <summary>Updates a Subproperty Sync Config.</summary>
+            /// <summary>Updates a `SubpropertySyncConfig`.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Output only. Identifier. Format:
@@ -10010,7 +10010,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 return new PatchRequest(this.service, body, name);
             }
 
-            /// <summary>Updates a Subproperty Sync Config.</summary>
+            /// <summary>Updates a `SubpropertySyncConfig`.</summary>
             public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertySyncConfig>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -15033,7 +15033,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>List of Subproperty Sync Configs.</summary>
+        /// <summary>List of `SubpropertySyncConfig` resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subpropertySyncConfigs")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaSubpropertySyncConfig> SubpropertySyncConfigs { get; set; }
 
@@ -16122,14 +16122,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// </summary>
     public class GoogleAnalyticsAdminV1alphaSubpropertySyncConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Immutable. Resource name of the Subproperty that these settings apply to.</summary>
+        /// <summary>Output only. Immutable. Resource name of the subproperty that these settings apply to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applyToProperty")]
         public virtual string ApplyToProperty { get; set; }
 
         /// <summary>
-        /// Required. Specifies the Custom Dimension / Metric synchronization mode for the Subproperty. If set to ALL,
+        /// Required. Specifies the Custom Dimension / Metric synchronization mode for the subproperty. If set to ALL,
         /// Custom Dimension / Metric synchronization will be immediately enabled. Local configuration of Custom
-        /// Dimensions / Metrics will not be allowed on the Subproperty so long as the synchronization mode is set to
+        /// Dimensions / Metrics will not be allowed on the subproperty so long as the synchronization mode is set to
         /// ALL. If set to NONE, Custom Dimensions / Metric synchronization is disabled. Custom Dimensions / Metrics
         /// must be configured explicitly on the Subproperty.
         /// </summary>
