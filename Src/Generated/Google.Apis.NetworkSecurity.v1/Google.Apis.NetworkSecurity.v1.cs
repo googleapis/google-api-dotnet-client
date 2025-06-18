@@ -2427,6 +2427,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 AddressGroups = new AddressGroupsResource(service);
                 AuthorizationPolicies = new AuthorizationPoliciesResource(service);
                 AuthzPolicies = new AuthzPoliciesResource(service);
+                BackendAuthenticationConfigs = new BackendAuthenticationConfigsResource(service);
                 ClientTlsPolicies = new ClientTlsPoliciesResource(service);
                 FirewallEndpointAssociations = new FirewallEndpointAssociationsResource(service);
                 GatewaySecurityPolicies = new GatewaySecurityPoliciesResource(service);
@@ -4557,6 +4558,378 @@ namespace Google.Apis.NetworkSecurity.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/authzPolicies/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the BackendAuthenticationConfigs resource.</summary>
+            public virtual BackendAuthenticationConfigsResource BackendAuthenticationConfigs { get; }
+
+            /// <summary>The "backendAuthenticationConfigs" collection of methods.</summary>
+            public class BackendAuthenticationConfigsResource
+            {
+                private const string Resource = "backendAuthenticationConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BackendAuthenticationConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new BackendAuthenticationConfig in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the BackendAuthenticationConfig. Must be in the format
+                /// `projects/*/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.BackendAuthenticationConfig body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new BackendAuthenticationConfig in a given project and location.</summary>
+                public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1.Data.BackendAuthenticationConfig body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the BackendAuthenticationConfig. Must be in the format
+                    /// `projects/*/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. Short name of the BackendAuthenticationConfig resource to be created. This value
+                    /// should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and
+                    /// should not start with a number. E.g. "backend-auth-config".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("backendAuthenticationConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string BackendAuthenticationConfigId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1.Data.BackendAuthenticationConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/backendAuthenticationConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("backendAuthenticationConfigId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "backendAuthenticationConfigId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single BackendAuthenticationConfig to BackendAuthenticationConfig.</summary>
+                /// <param name="name">
+                /// Required. A name of the BackendAuthenticationConfig to delete. Must be in the format
+                /// `projects/*/locations/{location}/backendAuthenticationConfigs/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single BackendAuthenticationConfig to BackendAuthenticationConfig.</summary>
+                public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the BackendAuthenticationConfig to delete. Must be in the format
+                    /// `projects/*/locations/{location}/backendAuthenticationConfigs/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Etag of the resource. If this is provided, it must match the server's etag.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backendAuthenticationConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets details of a single BackendAuthenticationConfig to BackendAuthenticationConfig.
+                /// </summary>
+                /// <param name="name">
+                /// Required. A name of the BackendAuthenticationConfig to get. Must be in the format
+                /// `projects/*/locations/{location}/backendAuthenticationConfigs/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Gets details of a single BackendAuthenticationConfig to BackendAuthenticationConfig.
+                /// </summary>
+                public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.BackendAuthenticationConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the BackendAuthenticationConfig to get. Must be in the format
+                    /// `projects/*/locations/{location}/backendAuthenticationConfigs/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backendAuthenticationConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists BackendAuthenticationConfigs in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the BackendAuthenticationConfigs should be listed,
+                /// specified in the format `projects/*/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists BackendAuthenticationConfigs in a given project and location.</summary>
+                public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListBackendAuthenticationConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the BackendAuthenticationConfigs should be listed,
+                    /// specified in the format `projects/*/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of BackendAuthenticationConfigs to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListBackendAuthenticationConfigsResponse` Indicates that this is
+                    /// a continuation of a prior `ListBackendAuthenticationConfigs` call, and that the system should
+                    /// return the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/backendAuthenticationConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates the parameters of a single BackendAuthenticationConfig to BackendAuthenticationConfig.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the BackendAuthenticationConfig resource. It matches the pattern
+                /// `projects/*/locations/{location}/backendAuthenticationConfigs/{backend_authentication_config}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.BackendAuthenticationConfig body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the parameters of a single BackendAuthenticationConfig to BackendAuthenticationConfig.
+                /// </summary>
+                public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1.Data.BackendAuthenticationConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the BackendAuthenticationConfig resource. It matches the pattern
+                    /// `projects/*/locations/{location}/backendAuthenticationConfigs/{backend_authentication_config}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the
+                    /// BackendAuthenticationConfig resource by the update. The fields specified in the update_mask are
+                    /// relative to the resource, not the full request. A field will be overwritten if it is in the
+                    /// mask. If the user does not provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1.Data.BackendAuthenticationConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backendAuthenticationConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -12134,6 +12507,134 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// BackendAuthenticationConfig message groups the TrustConfig together with other settings that control how the
+    /// load balancer authenticates, and expresses its identity to, the backend: * `trustConfig` is the attached
+    /// TrustConfig. * `wellKnownRoots` indicates whether the load balance should trust backend server certificates that
+    /// are issued by public certificate authorities, in addition to certificates trusted by the TrustConfig. *
+    /// `clientCertificate` is a client certificate that the load balancer uses to express its identity to the backend,
+    /// if the connection to the backend uses mTLS. You can attach the BackendAuthenticationConfig to the load
+    /// balancer’s BackendService directly determining how that BackendService negotiates TLS.
+    /// </summary>
+    public class BackendAuthenticationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A reference to a certificatemanager.googleapis.com.Certificate resource. This is a relative
+        /// resource path following the form "projects/{project}/locations/{location}/certificates/{certificate}". Used
+        /// by a BackendService to negotiate mTLS when the backend connection uses TLS and the backend requests a client
+        /// certificate. Must have a CLIENT_AUTH scope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
+        public virtual string ClientCertificate { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Free-text description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Etag of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Set of label tags associated with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. Name of the BackendAuthenticationConfig resource. It matches the pattern
+        /// `projects/*/locations/{location}/backendAuthenticationConfigs/{backend_authentication_config}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. A reference to a TrustConfig resource from the certificatemanager.googleapis.com namespace. This
+        /// is a relative resource path following the form
+        /// "projects/{project}/locations/{location}/trustConfigs/{trust_config}". A BackendService uses the chain of
+        /// trust represented by this TrustConfig, if specified, to validate the server certificates presented by the
+        /// backend. Required unless wellKnownRoots is set to PUBLIC_ROOTS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustConfig")]
+        public virtual string TrustConfig { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Well known roots to use for server certificate validation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wellKnownRoots")]
+        public virtual string WellKnownRoots { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13971,6 +14472,28 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual System.Collections.Generic.IList<AuthzPolicy> AuthzPolicies { get; set; }
 
         /// <summary>A token identifying a page of results that the server returns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned by the ListBackendAuthenticationConfigs method.</summary>
+    public class ListBackendAuthenticationConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of BackendAuthenticationConfig resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendAuthenticationConfigs")]
+        public virtual System.Collections.Generic.IList<BackendAuthenticationConfig> BackendAuthenticationConfigs { get; set; }
+
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
