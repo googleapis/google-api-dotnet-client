@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -650,6 +650,20 @@ namespace Google.Apis.SubscriptionLinking.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The SwG publication id that the reader's subscription linking was originating from.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originatingPublicationId")]
+        public virtual string OriginatingPublicationId { get; set; }
+
+        /// <summary>Output only. The publisher provided id of the reader.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ppid")]
+        public virtual string Ppid { get; set; }
+
+        /// <summary>Output only. The SwG publication id that the reader has linked their subscription to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicationId")]
+        public virtual string PublicationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
