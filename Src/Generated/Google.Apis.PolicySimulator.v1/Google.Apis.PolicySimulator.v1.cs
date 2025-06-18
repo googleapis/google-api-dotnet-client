@@ -2587,7 +2587,7 @@ namespace Google.Apis.PolicySimulator.v1.Data
 
         /// <summary>
         /// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be
-        /// set only in policies for boolean constraints.
+        /// set in policies for boolean constraints, custom constraints and managed constraints.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforce")]
         public virtual System.Nullable<bool> Enforce { get; set; }
