@@ -3465,8 +3465,11 @@ namespace Google.Apis.Dataform.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. If set to true, any child resources of this repository will also be deleted.
-                    /// (Otherwise, the request will only succeed if the repository has no child resources.)
+                    /// Optional. If set to true, child resources of this repository (compilation results and workflow
+                    /// invocations) will also be deleted. Otherwise, the request will only succeed if the repository
+                    /// has no child resources. **Note:** *This flag doesn't support deletion of workspaces, release
+                    /// configs or workflow configs. If any of such resources exists in the repository, the request will
+                    /// fail.*.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Force { get; set; }
