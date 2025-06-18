@@ -391,8 +391,8 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Data { get; set; }
 
         /// <summary>
-        /// If set to true, messages will be allowed to be delivered to the app while the device is in direct boot mode.
-        /// See [Support Direct Boot mode](https://developer.android.com/training/articles/direct-boot).
+        /// Optional. If set to true, messages will be allowed to be delivered to the app while the device is in direct
+        /// boot mode. See [Support Direct Boot mode](https://developer.android.com/training/articles/direct-boot).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directBootOk")]
         public virtual System.Nullable<bool> DirectBootOk { get; set; }
@@ -417,6 +417,16 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedPackageName")]
         public virtual string RestrictedPackageName { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, messages will be allowed to be delivered to the app while the device is connected
+        /// over a restricted satellite network. This should only be enabled for messages that can be handled over a
+        /// restricted satellite network and only for apps that are allowed to work over a restricted satellite network.
+        /// Note that the ability of the app to connect to a restricted satellite network is dependent on the carrier's
+        /// settings and the device model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedSatelliteOk")]
+        public virtual System.Nullable<bool> RestrictedSatelliteOk { get; set; }
 
         /// <summary>
         /// How long (in seconds) the message should be kept in FCM storage if the device is offline. The maximum time
