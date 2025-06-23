@@ -9358,6 +9358,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
         public virtual TableStats Stats { get; set; }
 
+        /// <summary>
+        /// Rules to specify what data is stored in each storage tier. Different tiers store data differently, providing
+        /// different trade-offs between cost and performance. Different parts of a table can be stored separately on
+        /// different tiers. If a config is specified, tiered storage is enabled for this table. Otherwise, tiered
+        /// storage is disabled. Only SSD instances can configure tiered storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tieredStorageConfig")]
+        public virtual TieredStorageConfig TieredStorageConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9445,6 +9454,37 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Config for tiered storage. A valid config must have a valid TieredStorageRule. Otherwise the whole
+    /// TieredStorageConfig must be unset. By default all data is stored in the SSD tier (only SSD instances can
+    /// configure tiered storage).
+    /// </summary>
+    public class TieredStorageConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Rule to specify what data is stored in the infrequent access(IA) tier. The IA tier allows storing more data
+        /// per node with reduced performance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infrequentAccess")]
+        public virtual TieredStorageRule InfrequentAccess { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rule to specify what data is stored in a storage tier.</summary>
+    public class TieredStorageRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Include cells older than the given age. For the infrequent access tier, this value must be at least 30 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeIfOlderThan")]
+        public virtual object IncludeIfOlderThan { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
