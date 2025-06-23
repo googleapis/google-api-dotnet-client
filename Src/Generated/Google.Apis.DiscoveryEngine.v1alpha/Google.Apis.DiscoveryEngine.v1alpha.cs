@@ -40039,7 +40039,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// predicted conversion rate adjustment as a rank use predicted Click-through rate (pCTR) to gauge the
         /// relevance and attractiveness of a search result from a user's perspective. A higher pCTR suggests that the
         /// result is more likely to satisfy the user's query and intent, making it a valuable signal for ranking. *
-        /// `freshness_rank`: freshness adjustment as a rank * `base_rank`: the default rank of the result
+        /// `freshness_rank`: freshness adjustment as a rank * `topicality_rank`: topicality adjustment as a rank. Uses
+        /// proprietary Google model to determine the keyword-based overlap between the query and the document. *
+        /// `base_rank`: the default rank of the result
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
         public virtual string RankingExpression { get; set; }
@@ -41947,6 +41949,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual GoogleCloudDiscoveryengineV1alphaQuery Query { get; set; }
+
+        /// <summary>
+        /// Optional. Represents metadata related to the query config, for example LLM model and version used, model
+        /// parameters (temperature, grounding parameters, etc.). The prefix "google." is reserved for Google-developed
+        /// functionality.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryConfig")]
+        public virtual System.Collections.Generic.IDictionary<string, string> QueryConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -48754,7 +48764,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// predicted conversion rate adjustment as a rank use predicted Click-through rate (pCTR) to gauge the
         /// relevance and attractiveness of a search result from a user's perspective. A higher pCTR suggests that the
         /// result is more likely to satisfy the user's query and intent, making it a valuable signal for ranking. *
-        /// `freshness_rank`: freshness adjustment as a rank * `base_rank`: the default rank of the result
+        /// `freshness_rank`: freshness adjustment as a rank * `topicality_rank`: topicality adjustment as a rank. Uses
+        /// proprietary Google model to determine the keyword-based overlap between the query and the document. *
+        /// `base_rank`: the default rank of the result
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
         public virtual string RankingExpression { get; set; }
