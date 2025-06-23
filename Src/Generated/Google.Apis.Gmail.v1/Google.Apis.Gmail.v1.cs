@@ -3471,7 +3471,15 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>
                     /// Creates and configures a client-side encryption identity that's authorized to send mail from the
                     /// user account. Google publishes the S/MIME certificate to a shared domain-wide directory so that
-                    /// people within a Google Workspace organization can encrypt and send mail to the identity.
+                    /// people within a Google Workspace organization can encrypt and send mail to the identity. For
+                    /// administrators managing identities and keypairs for users in their organization, requests
+                    /// require authorization with a [service
+                    /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has
+                    /// [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="userId">
@@ -3486,7 +3494,15 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>
                     /// Creates and configures a client-side encryption identity that's authorized to send mail from the
                     /// user account. Google publishes the S/MIME certificate to a shared domain-wide directory so that
-                    /// people within a Google Workspace organization can encrypt and send mail to the identity.
+                    /// people within a Google Workspace organization can encrypt and send mail to the identity. For
+                    /// administrators managing identities and keypairs for users in their organization, requests
+                    /// require authorization with a [service
+                    /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has
+                    /// [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
                     /// </summary>
                     public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseIdentity>
                     {
@@ -3538,7 +3554,15 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>
                     /// Deletes a client-side encryption identity. The authenticated user can no longer use the identity
                     /// to send encrypted messages. You cannot restore the identity after you delete it. Instead, use
-                    /// the CreateCseIdentity method to create another identity with the same configuration.
+                    /// the CreateCseIdentity method to create another identity with the same configuration. For
+                    /// administrators managing identities and keypairs for users in their organization, requests
+                    /// require authorization with a [service
+                    /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has
+                    /// [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
                     /// </summary>
                     /// <param name="userId">
                     /// The requester's primary email address. To indicate the authenticated user, you can use the
@@ -3556,7 +3580,15 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>
                     /// Deletes a client-side encryption identity. The authenticated user can no longer use the identity
                     /// to send encrypted messages. You cannot restore the identity after you delete it. Instead, use
-                    /// the CreateCseIdentity method to create another identity with the same configuration.
+                    /// the CreateCseIdentity method to create another identity with the same configuration. For
+                    /// administrators managing identities and keypairs for users in their organization, requests
+                    /// require authorization with a [service
+                    /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has
+                    /// [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
                     /// </summary>
                     public class DeleteRequest : GmailBaseServiceRequest<string>
                     {
@@ -3614,7 +3646,16 @@ namespace Google.Apis.Gmail.v1
                         }
                     }
 
-                    /// <summary>Retrieves a client-side encryption identity configuration.</summary>
+                    /// <summary>
+                    /// Retrieves a client-side encryption identity configuration. For administrators managing
+                    /// identities and keypairs for users in their organization, requests require authorization with a
+                    /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that
+                    /// has [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+                    /// </summary>
                     /// <param name="userId">
                     /// The requester's primary email address. To indicate the authenticated user, you can use the
                     /// special value `me`.
@@ -3628,7 +3669,16 @@ namespace Google.Apis.Gmail.v1
                         return new GetRequest(this.service, userId, cseEmailAddress);
                     }
 
-                    /// <summary>Retrieves a client-side encryption identity configuration.</summary>
+                    /// <summary>
+                    /// Retrieves a client-side encryption identity configuration. For administrators managing
+                    /// identities and keypairs for users in their organization, requests require authorization with a
+                    /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that
+                    /// has [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+                    /// </summary>
                     public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseIdentity>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -3685,7 +3735,16 @@ namespace Google.Apis.Gmail.v1
                         }
                     }
 
-                    /// <summary>Lists the client-side encrypted identities for an authenticated user.</summary>
+                    /// <summary>
+                    /// Lists the client-side encrypted identities for an authenticated user. For administrators
+                    /// managing identities and keypairs for users in their organization, requests require authorization
+                    /// with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+                    /// that has [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+                    /// </summary>
                     /// <param name="userId">
                     /// The requester's primary email address. To indicate the authenticated user, you can use the
                     /// special value `me`.
@@ -3695,7 +3754,16 @@ namespace Google.Apis.Gmail.v1
                         return new ListRequest(this.service, userId);
                     }
 
-                    /// <summary>Lists the client-side encrypted identities for an authenticated user.</summary>
+                    /// <summary>
+                    /// Lists the client-side encrypted identities for an authenticated user. For administrators
+                    /// managing identities and keypairs for users in their organization, requests require authorization
+                    /// with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+                    /// that has [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+                    /// </summary>
                     public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListCseIdentitiesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -3769,7 +3837,14 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>
                     /// Associates a different key pair with an existing client-side encryption identity. The updated
                     /// key pair must validate against Google's [S/MIME certificate
-                    /// profiles](https://support.google.com/a/answer/7300887).
+                    /// profiles](https://support.google.com/a/answer/7300887). For administrators managing identities
+                    /// and keypairs for users in their organization, requests require authorization with a [service
+                    /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has
+                    /// [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="userId">
@@ -3787,7 +3862,14 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>
                     /// Associates a different key pair with an existing client-side encryption identity. The updated
                     /// key pair must validate against Google's [S/MIME certificate
-                    /// profiles](https://support.google.com/a/answer/7300887).
+                    /// profiles](https://support.google.com/a/answer/7300887). For administrators managing identities
+                    /// and keypairs for users in their organization, requests require authorization with a [service
+                    /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has
+                    /// [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
                     /// </summary>
                     public class PatchRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseIdentity>
                     {
@@ -3869,7 +3951,14 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>
                     /// Creates and uploads a client-side encryption S/MIME public key certificate chain and private key
-                    /// metadata for the authenticated user.
+                    /// metadata for the authenticated user. For administrators managing identities and keypairs for
+                    /// users in their organization, requests require authorization with a [service
+                    /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has
+                    /// [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="userId">
@@ -3883,7 +3972,14 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>
                     /// Creates and uploads a client-side encryption S/MIME public key certificate chain and private key
-                    /// metadata for the authenticated user.
+                    /// metadata for the authenticated user. For administrators managing identities and keypairs for
+                    /// users in their organization, requests require authorization with a [service
+                    /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has
+                    /// [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
                     /// </summary>
                     public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseKeyPair>
                     {
@@ -3936,7 +4032,14 @@ namespace Google.Apis.Gmail.v1
                     /// Turns off a client-side encryption key pair. The authenticated user can no longer use the key
                     /// pair to decrypt incoming CSE message texts or sign outgoing CSE mail. To regain access, use the
                     /// EnableCseKeyPair to turn on the key pair. After 30 days, you can permanently delete the key pair
-                    /// by using the ObliterateCseKeyPair method.
+                    /// by using the ObliterateCseKeyPair method. For administrators managing identities and keypairs
+                    /// for users in their organization, requests require authorization with a [service
+                    /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has
+                    /// [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="userId">
@@ -3953,7 +4056,14 @@ namespace Google.Apis.Gmail.v1
                     /// Turns off a client-side encryption key pair. The authenticated user can no longer use the key
                     /// pair to decrypt incoming CSE message texts or sign outgoing CSE mail. To regain access, use the
                     /// EnableCseKeyPair to turn on the key pair. After 30 days, you can permanently delete the key pair
-                    /// by using the ObliterateCseKeyPair method.
+                    /// by using the ObliterateCseKeyPair method. For administrators managing identities and keypairs
+                    /// for users in their organization, requests require authorization with a [service
+                    /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has
+                    /// [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
                     /// </summary>
                     public class DisableRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseKeyPair>
                     {
@@ -4017,7 +4127,14 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>
                     /// Turns on a client-side encryption key pair that was turned off. The key pair becomes active
-                    /// again for any associated client-side encryption identities.
+                    /// again for any associated client-side encryption identities. For administrators managing
+                    /// identities and keypairs for users in their organization, requests require authorization with a
+                    /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that
+                    /// has [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="userId">
@@ -4032,7 +4149,14 @@ namespace Google.Apis.Gmail.v1
 
                     /// <summary>
                     /// Turns on a client-side encryption key pair that was turned off. The key pair becomes active
-                    /// again for any associated client-side encryption identities.
+                    /// again for any associated client-side encryption identities. For administrators managing
+                    /// identities and keypairs for users in their organization, requests require authorization with a
+                    /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that
+                    /// has [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
                     /// </summary>
                     public class EnableRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseKeyPair>
                     {
@@ -4094,7 +4218,16 @@ namespace Google.Apis.Gmail.v1
                         }
                     }
 
-                    /// <summary>Retrieves an existing client-side encryption key pair.</summary>
+                    /// <summary>
+                    /// Retrieves an existing client-side encryption key pair. For administrators managing identities
+                    /// and keypairs for users in their organization, requests require authorization with a [service
+                    /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has
+                    /// [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+                    /// </summary>
                     /// <param name="userId">
                     /// The requester's primary email address. To indicate the authenticated user, you can use the
                     /// special value `me`.
@@ -4105,7 +4238,16 @@ namespace Google.Apis.Gmail.v1
                         return new GetRequest(this.service, userId, keyPairId);
                     }
 
-                    /// <summary>Retrieves an existing client-side encryption key pair.</summary>
+                    /// <summary>
+                    /// Retrieves an existing client-side encryption key pair. For administrators managing identities
+                    /// and keypairs for users in their organization, requests require authorization with a [service
+                    /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has
+                    /// [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+                    /// </summary>
                     public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.CseKeyPair>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -4159,7 +4301,16 @@ namespace Google.Apis.Gmail.v1
                         }
                     }
 
-                    /// <summary>Lists client-side encryption key pairs for an authenticated user.</summary>
+                    /// <summary>
+                    /// Lists client-side encryption key pairs for an authenticated user. For administrators managing
+                    /// identities and keypairs for users in their organization, requests require authorization with a
+                    /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that
+                    /// has [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+                    /// </summary>
                     /// <param name="userId">
                     /// The requester's primary email address. To indicate the authenticated user, you can use the
                     /// special value `me`.
@@ -4169,7 +4320,16 @@ namespace Google.Apis.Gmail.v1
                         return new ListRequest(this.service, userId);
                     }
 
-                    /// <summary>Lists client-side encryption key pairs for an authenticated user.</summary>
+                    /// <summary>
+                    /// Lists client-side encryption key pairs for an authenticated user. For administrators managing
+                    /// identities and keypairs for users in their organization, requests require authorization with a
+                    /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that
+                    /// has [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+                    /// </summary>
                     public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListCseKeyPairsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -4245,7 +4405,14 @@ namespace Google.Apis.Gmail.v1
                     /// delete key pairs that have been turned off for more than 30 days. To turn off a key pair, use
                     /// the DisableCseKeyPair method. Gmail can't restore or decrypt any messages that were encrypted by
                     /// an obliterated key. Authenticated users and Google Workspace administrators lose access to
-                    /// reading the encrypted messages.
+                    /// reading the encrypted messages. For administrators managing identities and keypairs for users in
+                    /// their organization, requests require authorization with a [service
+                    /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has
+                    /// [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="userId">
@@ -4263,7 +4430,14 @@ namespace Google.Apis.Gmail.v1
                     /// delete key pairs that have been turned off for more than 30 days. To turn off a key pair, use
                     /// the DisableCseKeyPair method. Gmail can't restore or decrypt any messages that were encrypted by
                     /// an obliterated key. Authenticated users and Google Workspace administrators lose access to
-                    /// reading the encrypted messages.
+                    /// reading the encrypted messages. For administrators managing identities and keypairs for users in
+                    /// their organization, requests require authorization with a [service
+                    /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has
+                    /// [domain-wide delegation
+                    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+                    /// to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For
+                    /// users managing their own identities and keypairs, requests require [hardware key
+                    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
                     /// </summary>
                     public class ObliterateRequest : GmailBaseServiceRequest<string>
                     {
@@ -7347,7 +7521,13 @@ namespace Google.Apis.Gmail.v1.Data
     /// <summary>
     /// The client-side encryption (CSE) configuration for the email address of an authenticated user. Gmail uses CSE
     /// configurations to save drafts of client-side encrypted email messages, and to sign and send encrypted email
-    /// messages.
+    /// messages. For administrators managing identities and keypairs for users in their organization, requests require
+    /// authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+    /// that has [domain-wide delegation
+    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to
+    /// impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing
+    /// their own identities and keypairs, requests require [hardware key
+    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
     /// </summary>
     public class CseIdentity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7376,7 +7556,13 @@ namespace Google.Apis.Gmail.v1.Data
     /// A client-side encryption S/MIME key pair, which is comprised of a public key, its certificate chain, and
     /// metadata for its paired private key. Gmail uses the key pair to complete the following tasks: - Sign outgoing
     /// client-side encrypted messages. - Save and reopen drafts of client-side encrypted messages. - Save and reopen
-    /// sent messages. - Decrypt incoming or archived S/MIME messages.
+    /// sent messages. - Decrypt incoming or archived S/MIME messages. For administrators managing identities and
+    /// keypairs for users in their organization, requests require authorization with a [service
+    /// account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation
+    /// authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to
+    /// impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing
+    /// their own identities and keypairs, requests require [hardware key
+    /// encryption](https://support.google.com/a/answer/14153163) turned on and configured.
     /// </summary>
     public class CseKeyPair : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7635,7 +7821,12 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for hardware keys.</summary>
+    /// <summary>
+    /// Metadata for hardware keys. If [hardware key encryption](https://support.google.com/a/answer/14153163) is set up
+    /// for the Google Workspace organization, users can optionally store their private key on their smart card and use
+    /// it to sign and decrypt email messages in Gmail by inserting their smart card into a reader attached to their
+    /// Windows device.
+    /// </summary>
     public class HardwareKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Description about the hardware key.</summary>
