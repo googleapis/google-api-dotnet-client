@@ -1139,7 +1139,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     /// <summary>Get a single RouteView of a Gateway.</summary>
                     /// <param name="name">
                     /// Required. Name of the GatewayRouteView resource. Formats:
-                    /// projects/{project_number}/locations/{location}/gateways/{gateway_name}/routeViews/{route_view_name}
+                    /// projects/{project_number}/locations/{location}/gateways/{gateway}/routeViews/{route_view}
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -1158,7 +1158,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                         /// <summary>
                         /// Required. Name of the GatewayRouteView resource. Formats:
-                        /// projects/{project_number}/locations/{location}/gateways/{gateway_name}/routeViews/{route_view_name}
+                        /// projects/{project_number}/locations/{location}/gateways/{gateway}/routeViews/{route_view}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1190,7 +1190,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     /// <summary>Lists RouteViews</summary>
                     /// <param name="parent">
                     /// Required. The Gateway to which a Route is associated. Formats:
-                    /// projects/{project_number}/locations/{location}/gateways/{gateway_name}
+                    /// projects/{project_number}/locations/{location}/gateways/{gateway}
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1209,7 +1209,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                         /// <summary>
                         /// Required. The Gateway to which a Route is associated. Formats:
-                        /// projects/{project_number}/locations/{location}/gateways/{gateway_name}
+                        /// projects/{project_number}/locations/{location}/gateways/{gateway}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -3635,7 +3635,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     /// <summary>Get a single RouteView of a Mesh.</summary>
                     /// <param name="name">
                     /// Required. Name of the MeshRouteView resource. Format:
-                    /// projects/{project_number}/locations/{location}/meshes/{mesh_name}/routeViews/{route_view_name}
+                    /// projects/{project_number}/locations/{location}/meshes/{mesh}/routeViews/{route_view}
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -3654,7 +3654,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                         /// <summary>
                         /// Required. Name of the MeshRouteView resource. Format:
-                        /// projects/{project_number}/locations/{location}/meshes/{mesh_name}/routeViews/{route_view_name}
+                        /// projects/{project_number}/locations/{location}/meshes/{mesh}/routeViews/{route_view}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -3686,7 +3686,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     /// <summary>Lists RouteViews</summary>
                     /// <param name="parent">
                     /// Required. The Mesh to which a Route is associated. Format:
-                    /// projects/{project_number}/locations/{location}/meshes/{mesh_name}
+                    /// projects/{project_number}/locations/{location}/meshes/{mesh}
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -3705,7 +3705,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                         /// <summary>
                         /// Required. The Mesh to which a Route is associated. Format:
-                        /// projects/{project_number}/locations/{location}/meshes/{mesh_name}
+                        /// projects/{project_number}/locations/{location}/meshes/{mesh}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -7325,7 +7325,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     {
         /// <summary>
         /// Output only. Identifier. Full path name of the GatewayRouteView resource. Format:
-        /// projects/{project_number}/locations/{location}/gateways/{gateway_name}/routeViews/{route_view_name}
+        /// projects/{project_number}/locations/{location}/gateways/{gateway}/routeViews/{route_view}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -9507,7 +9507,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     {
         /// <summary>
         /// Output only. Identifier. Full path name of the MeshRouteView resource. Format:
-        /// projects/{project_number}/locations/{location}/meshes/{mesh_name}/routeViews/{route_view_name}
+        /// projects/{project_number}/locations/{location}/meshes/{mesh}/routeViews/{route_view}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
