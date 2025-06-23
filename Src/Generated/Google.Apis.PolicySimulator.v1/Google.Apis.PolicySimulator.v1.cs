@@ -3348,6 +3348,389 @@ namespace Google.Apis.PolicySimulator.v1.Data
     }
 
     /// <summary>
+    /// CreateOrgPolicyViolationsPreviewOperationMetadata is metadata about an OrgPolicyViolationsPreview generations
+    /// operation.
+    /// </summary>
+    public class GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _requestTimeRaw;
+
+        private object _requestTime;
+
+        /// <summary>Time when the request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
+        public virtual string RequestTimeRaw
+        {
+            get => _requestTimeRaw;
+            set
+            {
+                _requestTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _requestTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RequestTimeDateTimeOffset instead.")]
+        public virtual object RequestTime
+        {
+            get => _requestTime;
+            set
+            {
+                _requestTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _requestTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Total number of resources that need scanning. Should equal resource_scanned + resources_pending
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcesFound")]
+        public virtual System.Nullable<int> ResourcesFound { get; set; }
+
+        /// <summary>Number of resources still to scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcesPending")]
+        public virtual System.Nullable<int> ResourcesPending { get; set; }
+
+        /// <summary>Number of resources already scanned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcesScanned")]
+        public virtual System.Nullable<int> ResourcesScanned { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Time when the request started processing, i.e., when the state was set to RUNNING.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The current state of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// GenerateOrgPolicyViolationsPreviewOperationMetadata is metadata about an OrgPolicyViolationsPreview generations
+    /// operation.
+    /// </summary>
+    public class GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _requestTimeRaw;
+
+        private object _requestTime;
+
+        /// <summary>Time when the request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
+        public virtual string RequestTimeRaw
+        {
+            get => _requestTimeRaw;
+            set
+            {
+                _requestTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _requestTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RequestTimeDateTimeOffset instead.")]
+        public virtual object RequestTime
+        {
+            get => _requestTime;
+            set
+            {
+                _requestTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _requestTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Total number of resources that need scanning. Should equal resource_scanned + resources_pending
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcesFound")]
+        public virtual System.Nullable<int> ResourcesFound { get; set; }
+
+        /// <summary>Number of resources still to scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcesPending")]
+        public virtual System.Nullable<int> ResourcesPending { get; set; }
+
+        /// <summary>Number of resources already scanned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcesScanned")]
+        public virtual System.Nullable<int> ResourcesScanned { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Time when the request started processing, i.e. when the state was set to RUNNING.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The current state of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The proposed changes to OrgPolicy.</summary>
+    public class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints
+        /// with the same name will be overridden in the simulation. That is, violations will be determined as if all
+        /// custom constraints in the overlay were instantiated. Only a single custom_constraint is supported in the
+        /// overlay at a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview`
+        /// requests are made, where each request evaluates a single constraint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay> CustomConstraints { get; set; }
+
+        /// <summary>
+        /// Optional. The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will
+        /// be overridden in the simulation. That is, violations will be determined as if all policies in the overlay
+        /// were created or updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policies")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay> Policies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A change to an OrgPolicy custom constraint.</summary>
+    public class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The new or updated custom constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraint")]
+        public virtual GoogleCloudOrgpolicyV2CustomConstraint CustomConstraint { get; set; }
+
+        /// <summary>Optional. Resource the constraint is attached to. Example: "organization/987654"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraintParent")]
+        public virtual string CustomConstraintParent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A change to an OrgPolicy.</summary>
+    public class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The new or updated OrgPolicy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual GoogleCloudOrgpolicyV2Policy Policy { get; set; }
+
+        /// <summary>Optional. The parent of the policy we are attaching to. Example: "projects/123456"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyParent")]
+        public virtual string PolicyParent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// OrgPolicyViolationsPreview is a resource providing a preview of the violations that will exist if an OrgPolicy
+    /// change is made. The list of violations are modeled as child resources and retrieved via a
+    /// ListOrgPolicyViolations API call. There are potentially more OrgPolicyViolations than could fit in an embedded
+    /// field. Thus, the use of a child resource instead of a field.
+    /// </summary>
+    public class GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when this `OrgPolicyViolationsPreview` was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The names of the constraints against which all `OrgPolicyViolations` were evaluated. If
+        /// `OrgPolicyOverlay` only contains `PolicyOverlay` then it contains the name of the configured custom
+        /// constraint, applicable to the specified policies. Otherwise it contains the name of the constraint specified
+        /// in `CustomConstraintOverlay`. Format:
+        /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example:
+        /// `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraints")]
+        public virtual System.Collections.Generic.IList<string> CustomConstraints { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the `OrgPolicyViolationsPreview`. It has the following format:
+        /// `organizations/{organization}/locations/{location}/orgPolicyViolationsPreviews/{orgPolicyViolationsPreview}`
+        /// Example: `organizations/my-example-org/locations/global/orgPolicyViolationsPreviews/506a5f7f`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The proposed changes we are previewing violations for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overlay")]
+        public virtual GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay Overlay { get; set; }
+
+        /// <summary>
+        /// Output only. A summary of the state of all resources scanned for compliance with the changed OrgPolicy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceCounts")]
+        public virtual GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts ResourceCounts { get; set; }
+
+        /// <summary>Output only. The state of the `OrgPolicyViolationsPreview`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The number of OrgPolicyViolations in this `OrgPolicyViolationsPreview`. This count may differ
+        /// from `resource_summary.noncompliant_count` because each OrgPolicyViolation is specific to a resource **and**
+        /// constraint. If there are multiple constraints being evaluated (i.e. multiple policies in the overlay), a
+        /// single resource may violate multiple constraints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violationsCount")]
+        public virtual System.Nullable<int> ViolationsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A summary of the state of all resources scanned for compliance with the changed OrgPolicy.</summary>
+    public class GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Number of scanned resources with zero violations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compliant")]
+        public virtual System.Nullable<int> Compliant { get; set; }
+
+        /// <summary>Output only. Number of resources that returned an error when scanned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Nullable<int> Errors { get; set; }
+
+        /// <summary>Output only. Number of scanned resources with at least one violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noncompliant")]
+        public virtual System.Nullable<int> Noncompliant { get; set; }
+
+        /// <summary>
+        /// Output only. Number of resources checked for compliance. Must equal: unenforced + noncompliant + compliant +
+        /// error
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanned")]
+        public virtual System.Nullable<int> Scanned { get; set; }
+
+        /// <summary>
+        /// Output only. Number of resources where the constraint was not enforced, i.e. the Policy set `enforced:
+        /// false` for that resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unenforced")]
+        public virtual System.Nullable<int> Unenforced { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
     /// there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used
