@@ -5893,7 +5893,7 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentName")]
         public virtual string DeploymentName { get; set; }
 
-        /// <summary>Required. The namespace of the deployment resource to be overridden..</summary>
+        /// <summary>Required. The namespace of the deployment resource to be overridden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentNamespace")]
         public virtual string DeploymentNamespace { get; set; }
 
