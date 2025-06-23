@@ -1138,7 +1138,7 @@ namespace Google.Apis.Merchant.inventories_v1beta.Data
         private object _expirationTime;
 
         /// <summary>
-        /// Optional. The product expiration time. This field will not bet set if the notification is sent for a product
+        /// Optional. The product expiration time. This field will not be set if the notification is sent for a product
         /// deletion event.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
