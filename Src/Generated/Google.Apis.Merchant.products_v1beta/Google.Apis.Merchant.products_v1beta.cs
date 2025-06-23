@@ -367,9 +367,12 @@ namespace Google.Apis.Merchant.products_v1beta
             }
 
             /// <summary>
-            /// Uploads a product input to your Merchant Center account. If an input with the same contentLanguage,
-            /// offerId, and dataSource already exists, this method replaces that entry. After inserting, updating, or
-            /// deleting a product input, it may take several minutes before the processed product can be retrieved.
+            /// [Uploads a product input to your Merchant Center
+            /// account](/merchant/api/guides/products/overview#upload-product-input). You must have a products data
+            /// source to be able to insert a product. The unique identifier of the data source is passed as a query
+            /// parameter in the request URL. If an input with the same contentLanguage, offerId, and dataSource already
+            /// exists, this method replaces that entry. After inserting, updating, or deleting a product input, it may
+            /// take several minutes before the processed product can be retrieved.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -381,9 +384,12 @@ namespace Google.Apis.Merchant.products_v1beta
             }
 
             /// <summary>
-            /// Uploads a product input to your Merchant Center account. If an input with the same contentLanguage,
-            /// offerId, and dataSource already exists, this method replaces that entry. After inserting, updating, or
-            /// deleting a product input, it may take several minutes before the processed product can be retrieved.
+            /// [Uploads a product input to your Merchant Center
+            /// account](/merchant/api/guides/products/overview#upload-product-input). You must have a products data
+            /// source to be able to insert a product. The unique identifier of the data source is passed as a query
+            /// parameter in the request URL. If an input with the same contentLanguage, offerId, and dataSource already
+            /// exists, this method replaces that entry. After inserting, updating, or deleting a product input, it may
+            /// take several minutes before the processed product can be retrieved.
             /// </summary>
             public class InsertRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.products_v1beta.Data.ProductInput>
             {
@@ -2289,7 +2295,7 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         private object _expirationTime;
 
         /// <summary>
-        /// Optional. The product expiration time. This field will not bet set if the notification is sent for a product
+        /// Optional. The product expiration time. This field will not be set if the notification is sent for a product
         /// deletion event.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
