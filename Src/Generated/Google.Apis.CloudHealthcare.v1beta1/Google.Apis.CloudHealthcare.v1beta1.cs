@@ -17293,15 +17293,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class GoogleCloudHealthcareV1beta1DicomBigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Setting this field will enable BigQuery's Change Data Capture (CDC) on the destination tables. Set
-        /// this field if you want to only keep the latest version of each instance. Updates and deletes to an existing'
-        /// instance will overwrite the corresponding row. See
-        /// https://cloud.google.com/bigquery/docs/change-data-capture for details.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("changeDataCaptureConfig")]
-        public virtual GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig ChangeDataCaptureConfig { get; set; }
-
-        /// <summary>
         /// Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false
         /// is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to
         /// write_disposition=WRITE_TRUNCATE.
@@ -17322,13 +17313,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
         public virtual string WriteDisposition { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>BigQuery Change Data Capture configuration.</summary>
-    public class GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
