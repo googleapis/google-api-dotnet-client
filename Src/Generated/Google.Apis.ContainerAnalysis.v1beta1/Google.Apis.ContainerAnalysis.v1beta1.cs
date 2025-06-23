@@ -770,6 +770,13 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// If set, the request will return all reachable Notes and report all unreachable regions in the
+                    /// `unreachable` field in the response. Only applicable for requests in the global region.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -810,6 +817,14 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1436,6 +1451,14 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
+                    /// <summary>
+                    /// If set, the request will return all reachable occurrence summaries and report all unreachable
+                    /// regions in the `unreachable` field in the response. Only applicable for requests in the global
+                    /// region.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getVulnerabilitySummary";
 
@@ -1460,6 +1483,14 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1509,6 +1540,13 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// If set, the request will return all reachable Occurrences and report all unreachable regions in
+                    /// the `unreachable` field in the response. Only applicable for requests in the global region.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -1549,6 +1587,14 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2378,6 +2424,13 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>
+                /// If set, the request will return all reachable Notes and report all unreachable regions in the
+                /// `unreachable` field in the response. Only applicable for requests in the global region.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -2418,6 +2471,14 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "returnPartialSuccess",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3038,6 +3099,14 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
+                /// <summary>
+                /// If set, the request will return all reachable occurrence summaries and report all unreachable
+                /// regions in the `unreachable` field in the response. Only applicable for requests in the global
+                /// region.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getVulnerabilitySummary";
 
@@ -3062,6 +3131,14 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "returnPartialSuccess",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3110,6 +3187,13 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>
+                /// If set, the request will return all reachable Occurrences and report all unreachable regions in the
+                /// `unreachable` field in the response. Only applicable for requests in the global region.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -3150,6 +3234,14 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "returnPartialSuccess",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -7607,6 +7699,13 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual System.Collections.Generic.IList<Note> Notes { get; set; }
 
+        /// <summary>
+        /// Unordered list. Unreachable regions. Populated for requests from the global region when
+        /// `return_partial_success` is set. Format: projects//locations/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7624,6 +7723,13 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>The occurrences requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("occurrences")]
         public virtual System.Collections.Generic.IList<Occurrence> Occurrences { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable regions. Populated for requests from the global region when
+        /// `return_partial_success` is set. Format: projects//locations/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9369,6 +9475,13 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>A listing by resource of the number of fixable and total vulnerabilities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("counts")]
         public virtual System.Collections.Generic.IList<FixableTotalByDigest> Counts { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable regions. Populated for requests from the global region when
+        /// `return_partial_success` is set. Format: projects//locations/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
