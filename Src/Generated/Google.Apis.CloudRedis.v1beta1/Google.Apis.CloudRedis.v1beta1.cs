@@ -3218,6 +3218,10 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
         public virtual System.Nullable<int> ShardCount { get; set; }
 
+        /// <summary>Optional. Input only. Simulate a maintenance event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("simulateMaintenanceEvent")]
+        public virtual System.Nullable<bool> SimulateMaintenanceEvent { get; set; }
+
         /// <summary>
         /// Output only. Redis memory size in GB for the entire cluster rounded up to the next integer.
         /// </summary>
@@ -3809,8 +3813,8 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster,
         /// bigtableadmin.googleapis.com/Instance compute.googleapis.com/Instance firestore.googleapis.com/Database,
         /// redis.googleapis.com/Instance, redis.googleapis.com/Cluster,
-        /// oracledatabase.googleapis.com/cloudExadataInfrastructures oracledatabase.googleapis.com/cloudVmClusters
-        /// oracledatabase.googleapis.com/autonomousDatabases spanner.googleapis.com/Instance,
+        /// oracledatabase.googleapis.com/CloudExadataInfrastructure oracledatabase.googleapis.com/CloudVmCluster
+        /// oracledatabase.googleapis.com/AutonomousDatabase spanner.googleapis.com/Instance,
         /// spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance, go/keep-sorted end REQUIRED Please refer
         /// go/condor-common-datamodel
         /// </summary>
@@ -4722,6 +4726,13 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>Optional. reasons that causes instance in "SUSPENDED" state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReasons")]
         public virtual System.Collections.Generic.IList<string> SuspensionReasons { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// "123/environment": "production", "123/costCenter": "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
 
         /// <summary>Required. The service tier of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
