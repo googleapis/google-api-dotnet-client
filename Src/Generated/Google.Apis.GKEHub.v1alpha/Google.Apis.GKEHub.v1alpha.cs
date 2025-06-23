@@ -6412,7 +6412,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentName")]
         public virtual string DeploymentName { get; set; }
 
-        /// <summary>Required. The namespace of the deployment resource to be overridden..</summary>
+        /// <summary>Required. The namespace of the deployment resource to be overridden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentNamespace")]
         public virtual string DeploymentNamespace { get; set; }
 
@@ -10996,7 +10996,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceStateDetails")]
         public virtual System.Collections.Generic.IDictionary<string, WorkloadIdentityNamespaceStateDetail> NamespaceStateDetails { get; set; }
 
-        /// <summary>Deprecated, will erase after code is changed to use the new field.</summary>
+        /// <summary>Deprecated, this field will be erased after code is changed to use the new field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceStates")]
         public virtual System.Collections.Generic.IDictionary<string, string> NamespaceStates { get; set; }
 
@@ -11019,7 +11019,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>**WorkloadIdentity**: The membership-specific state for WorkloadIdentity feature.</summary>
     public class WorkloadIdentityMembershipState : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated, will erase after code is changed to use the new field.</summary>
+        /// <summary>Deprecated, this field will be erased after code is changed to use the new field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
