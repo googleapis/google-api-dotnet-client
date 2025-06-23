@@ -15880,7 +15880,10 @@ namespace Google.Apis.CloudDataplex.v1
                 [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Scope { get; set; }
 
-                /// <summary>Optional. Internal only.</summary>
+                /// <summary>
+                /// Optional. Specifies whether the search should understand the meaning and intent behind the query,
+                /// rather than just matching keywords.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("semanticSearch", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> SemanticSearch { get; set; }
 
@@ -18418,8 +18421,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported
-        /// dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
+        /// Required. The dimension a rule belongs to. Results are also aggregated at the dimension level. Custom
+        /// dimension name is supported with all uppercase letters and maximum length of 30 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
         public virtual string Dimension { get; set; }
@@ -18922,7 +18925,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// (such as null percent, cardinality, min/max/mean, etc). For more information, see About data profiling
     /// (https://cloud.google.com/dataplex/docs/data-profiling-overview). Data discovery: scans data in Cloud Storage
     /// buckets to extract and then catalog metadata. For more information, see Discover and catalog Cloud Storage data
-    /// (https://cloud.google.com/bigquery/docs/automatic-discovery).
+    /// (https://cloud.google.com/bigquery/docs/automatic-discovery). LINT.IfChange
     /// </summary>
     public class GoogleCloudDataplexV1DataScan : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19709,7 +19712,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan
-        /// against. The field could be: BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format:
+        /// against. The field could eitherbe: Cloud Storage bucket for DataDiscoveryScan Format:
+        /// //storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID or BigQuery table of type "TABLE" for
+        /// DataProfileScan/DataQualityScan Format:
         /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
