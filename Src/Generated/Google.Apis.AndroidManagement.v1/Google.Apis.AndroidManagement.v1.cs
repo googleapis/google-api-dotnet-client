@@ -1653,6 +1653,65 @@ namespace Google.Apis.AndroidManagement.v1
                 }
             }
 
+            /// <summary>Updates or creates applications in a policy.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the Policy containing the ApplicationPolicy objects to be updated, in the form
+            /// enterprises/{enterpriseId}/policies/{policyId}.
+            /// </param>
+            public virtual ModifyPolicyApplicationsRequest ModifyPolicyApplications(Google.Apis.AndroidManagement.v1.Data.ModifyPolicyApplicationsRequest body, string name)
+            {
+                return new ModifyPolicyApplicationsRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates or creates applications in a policy.</summary>
+            public class ModifyPolicyApplicationsRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.ModifyPolicyApplicationsResponse>
+            {
+                /// <summary>Constructs a new ModifyPolicyApplications request.</summary>
+                public ModifyPolicyApplicationsRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidManagement.v1.Data.ModifyPolicyApplicationsRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Policy containing the ApplicationPolicy objects to be updated, in the form
+                /// enterprises/{enterpriseId}/policies/{policyId}.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidManagement.v1.Data.ModifyPolicyApplicationsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "modifyPolicyApplications";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:modifyPolicyApplications";
+
+                /// <summary>Initializes ModifyPolicyApplications parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^enterprises/[^/]+/policies/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Updates or creates a policy.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -1720,6 +1779,65 @@ namespace Google.Apis.AndroidManagement.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Removes applications in a policy.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the policy containing the ApplicationPolicy objects to be removed, in the form
+            /// enterprises/{enterpriseId}/policies/{policyId}.
+            /// </param>
+            public virtual RemovePolicyApplicationsRequest RemovePolicyApplications(Google.Apis.AndroidManagement.v1.Data.RemovePolicyApplicationsRequest body, string name)
+            {
+                return new RemovePolicyApplicationsRequest(this.service, body, name);
+            }
+
+            /// <summary>Removes applications in a policy.</summary>
+            public class RemovePolicyApplicationsRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.RemovePolicyApplicationsResponse>
+            {
+                /// <summary>Constructs a new RemovePolicyApplications request.</summary>
+                public RemovePolicyApplicationsRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidManagement.v1.Data.RemovePolicyApplicationsRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the policy containing the ApplicationPolicy objects to be removed, in the form
+                /// enterprises/{enterpriseId}/policies/{policyId}.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidManagement.v1.Data.RemovePolicyApplicationsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "removePolicyApplications";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:removePolicyApplications";
+
+                /// <summary>Initializes RemovePolicyApplications parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^enterprises/[^/]+/policies/[^/]+$",
                     });
                 }
             }
@@ -3520,6 +3638,27 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workProfileWidgets")]
         public virtual string WorkProfileWidgets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A change to be made to a single ApplicationPolicy object.</summary>
+    public class ApplicationPolicyChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If ApplicationPolicy.packageName matches an existing ApplicationPolicy object within the Policy being
+        /// modified, then that object will be updated. Otherwise, it will be added to the end of the
+        /// Policy.applications.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("application")]
+        public virtual ApplicationPolicy Application { get; set; }
+
+        /// <summary>
+        /// The field mask indicating the fields to update. If omitted, all modifiable fields are updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6303,6 +6442,31 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to update or create ApplicationPolicy objects in the given Policy.</summary>
+    public class ModifyPolicyApplicationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The changes to be made to the ApplicationPolicy objects. There must be at least one
+        /// ApplicationPolicyChange.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changes")]
+        public virtual System.Collections.Generic.IList<ApplicationPolicyChange> Changes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to a request to update or create ApplicationPolicy objects in the given policy.</summary>
+    public class ModifyPolicyApplicationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Device network info.</summary>
     public class NetworkInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7604,6 +7768,31 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Required. ICC ID of the eSIM profile to be deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iccId")]
         public virtual string IccId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to remove ApplicationPolicy objects in the given policy.</summary>
+    public class RemovePolicyApplicationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Package names to be removed. Entries that are not found are ignored. There must be at least one
+        /// entry in package_names.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageNames")]
+        public virtual System.Collections.Generic.IList<string> PackageNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to a request to remove ApplicationPolicy objects in the given policy.</summary>
+    public class RemovePolicyApplicationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated policy after ApplicationPolicy objects have been removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
