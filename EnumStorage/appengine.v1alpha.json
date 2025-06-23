@@ -28,5 +28,10 @@
   "Google.Apis.Appengine.v1alpha.ProjectsResource+LocationsResource+ApplicationsResource+AuthorizedCertificatesResource+ListRequest.ViewEnum": [
     "BASIC_CERTIFICATE",
     "FULL_CERTIFICATE"
+  ],
+  "Google.Apis.Appengine.v1alpha.ProjectsResource+LocationsResource+ApplicationsResource+DomainMappingsResource+CreateRequest.OverrideStrategyEnum": [
+    "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY",
+    "STRICT",
+    "OVERRIDE"
   ]
 }

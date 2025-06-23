@@ -2384,6 +2384,158 @@ namespace Google.Apis.Appengine.v1alpha
                         this.service = service;
                     }
 
+                    /// <summary>
+                    /// Maps a domain to an application. A user must be authorized to administer a domain in order to
+                    /// map it to an application. For a list of available authorized domains, see
+                    /// AuthorizedDomains.ListAuthorizedDomains.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="projectsId">
+                    /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                    /// </param>
+                    /// <param name="locationsId">Part of `parent`. See documentation of `projectsId`.</param>
+                    /// <param name="applicationsId">Part of `parent`. See documentation of `projectsId`.</param>
+                    public virtual CreateRequest Create(Google.Apis.Appengine.v1alpha.Data.DomainMapping body, string projectsId, string locationsId, string applicationsId)
+                    {
+                        return new CreateRequest(this.service, body, projectsId, locationsId, applicationsId);
+                    }
+
+                    /// <summary>
+                    /// Maps a domain to an application. A user must be authorized to administer a domain in order to
+                    /// map it to an application. For a list of available authorized domains, see
+                    /// AuthorizedDomains.ListAuthorizedDomains.
+                    /// </summary>
+                    public class CreateRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1alpha.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1alpha.Data.DomainMapping body, string projectsId, string locationsId, string applicationsId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            ApplicationsId = applicationsId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+                        /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+                        /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ApplicationsId { get; private set; }
+
+                        /// <summary>
+                        /// Whether a managed certificate should be provided by App Engine. If true, a certificate ID
+                        /// must be manaually set in the DomainMapping resource to configure SSL for this domain. If
+                        /// false, a managed certificate will be provisioned and a certificate ID will be automatically
+                        /// populated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("noManagedCertificate", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> NoManagedCertificate { get; set; }
+
+                        /// <summary>
+                        /// Whether the domain creation should override any existing mappings for this domain. By
+                        /// default, overrides are rejected.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("overrideStrategy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<OverrideStrategyEnum> OverrideStrategy { get; set; }
+
+                        /// <summary>
+                        /// Whether the domain creation should override any existing mappings for this domain. By
+                        /// default, overrides are rejected.
+                        /// </summary>
+                        public enum OverrideStrategyEnum
+                        {
+                            /// <summary>Strategy unspecified. Defaults to STRICT.</summary>
+                            [Google.Apis.Util.StringValueAttribute("UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY")]
+                            UNSPECIFIEDDOMAINOVERRIDESTRATEGY = 0,
+
+                            /// <summary>
+                            /// Overrides not allowed. If a mapping already exists for the specified domain, the request
+                            /// will return an ALREADY_EXISTS (409).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("STRICT")]
+                            STRICT = 1,
+
+                            /// <summary>
+                            /// Overrides allowed. If a mapping already exists for the specified domain, the request
+                            /// will overwrite it. Note that this might stop another Google product from serving. For
+                            /// example, if the domain is mapped to another App Engine application, that app will no
+                            /// longer serve from that domain.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("OVERRIDE")]
+                            OVERRIDE__ = 2,
+                        }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Appengine.v1alpha.Data.DomainMapping Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("noManagedCertificate", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "noManagedCertificate",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("overrideStrategy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "overrideStrategy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Gets the specified domain mapping.</summary>
                     /// <param name="projectsId">
                     /// Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
