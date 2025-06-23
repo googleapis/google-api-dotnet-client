@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Merchant.accounts_v1beta Client Library</Title>
-    <Version>1.70.0.3816</Version>
+    <Version>1.70.0.3821</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
