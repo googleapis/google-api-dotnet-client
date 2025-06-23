@@ -7863,7 +7863,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
 
         /// <summary>
         /// Optional. The network interfaces to create with the instance created by the machine image. Internal and
-        /// external IP addresses are ignored for machine image import.
+        /// external IP addresses, and network tiers are ignored for machine image import.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; }
