@@ -2417,13 +2417,17 @@ namespace Google.Apis.APIhub.v1
                     /// attributes/user-defined-attribute-id.json_values.values` - The allowed value of the user defined
                     /// JSON attribute associated with the Resource. Allowed comparison operator is `:`. Here
                     /// user-defined-attribute-json is a placeholder that can be replaced with any user defined JSON
-                    /// attribute name. Expressions are combined with either `AND` logic operator or `OR` logical
-                    /// operator but not both of them together i.e. only one of the `AND` or `OR` operator can be used
-                    /// throughout the filter string and both the operators cannot be used together. No other logical
-                    /// operators are supported. At most three filter fields are allowed in the filter string and if
-                    /// provided more than that then `INVALID_ARGUMENT` error is returned by the API. Here are a few
-                    /// examples: * `owner.email = \"apihub@google.com\"` - - The owner team email is
-                    /// _apihub@google.com_. * `owner.email = \"apihub@google.com\" AND create_time &amp;lt;
+                    /// attribute name. A filter function is also supported in the filter string. The filter function is
+                    /// `id(name)`. The `id(name)` function returns the id of the resource name. For example, `id(name)
+                    /// = \"api-1\"` is equivalent to `name =
+                    /// \"projects/test-project-id/locations/test-location-id/apis/api-1\"` provided the parent is
+                    /// `projects/test-project-id/locations/test-location-id`. Expressions are combined with either
+                    /// `AND` logic operator or `OR` logical operator but not both of them together i.e. only one of the
+                    /// `AND` or `OR` operator can be used throughout the filter string and both the operators cannot be
+                    /// used together. No other logical operators are supported. At most three filter fields are allowed
+                    /// in the filter string and if provided more than that then `INVALID_ARGUMENT` error is returned by
+                    /// the API. Here are a few examples: * `owner.email = \"apihub@google.com\"` - - The owner team
+                    /// email is _apihub@google.com_. * `owner.email = \"apihub@google.com\" AND create_time &amp;lt;
                     /// \"2021-08-15T14:50:00Z\" AND create_time &amp;gt; \"2021-08-10T12:00:00Z\"` - The owner team
                     /// email is _apihub@google.com_ and the api was created before _2021-08-15 14:50:00 UTC_ and after
                     /// _2021-08-10 12:00:00 UTC_. * `owner.email = \"apihub@google.com\" OR team.enum_values.values.id:
@@ -4064,22 +4068,26 @@ namespace Google.Apis.APIhub.v1
                     /// attributes/user-defined-attribute-id.json_values.values` - The allowed value of the user defined
                     /// JSON attribute associated with the Resource. Allowed comparison operator is `:`. Here
                     /// user-defined-attribute-json is a placeholder that can be replaced with any user defined JSON
-                    /// attribute name. Expressions are combined with either `AND` logic operator or `OR` logical
-                    /// operator but not both of them together i.e. only one of the `AND` or `OR` operator can be used
-                    /// throughout the filter string and both the operators cannot be used together. No other logical
-                    /// operators are supported. At most three filter fields are allowed in the filter string and if
-                    /// provided more than that then `INVALID_ARGUMENT` error is returned by the API. Here are a few
-                    /// examples: * `environment.enum_values.values.id: staging-id` - The allowed value id of the
-                    /// environment attribute associated with the Deployment is _staging-id_. *
-                    /// `environment.enum_values.values.display_name: \"Staging Deployment\"` - The allowed value
-                    /// display name of the environment attribute associated with the Deployment is `Staging
-                    /// Deployment`. * `environment.enum_values.values.id: production-id AND create_time &amp;lt;
-                    /// \"2021-08-15T14:50:00Z\" AND create_time &amp;gt; \"2021-08-10T12:00:00Z\"` - The allowed value
-                    /// id of the environment attribute associated with the Deployment is _production-id_ and Deployment
-                    /// was created before _2021-08-15 14:50:00 UTC_ and after _2021-08-10 12:00:00 UTC_. *
-                    /// `environment.enum_values.values.id: production-id OR slo.string_values.values: \"99.99%\"` - The
-                    /// allowed value id of the environment attribute Deployment is _production-id_ or string value of
-                    /// the slo attribute is _99.99%_. * `environment.enum_values.values.id: staging-id AND
+                    /// attribute name. A filter function is also supported in the filter string. The filter function is
+                    /// `id(name)`. The `id(name)` function returns the id of the resource name. For example, `id(name)
+                    /// = \"deployment-1\"` is equivalent to `name =
+                    /// \"projects/test-project-id/locations/test-location-id/deployments/deployment-1\"` provided the
+                    /// parent is `projects/test-project-id/locations/test-location-id`. Expressions are combined with
+                    /// either `AND` logic operator or `OR` logical operator but not both of them together i.e. only one
+                    /// of the `AND` or `OR` operator can be used throughout the filter string and both the operators
+                    /// cannot be used together. No other logical operators are supported. At most three filter fields
+                    /// are allowed in the filter string and if provided more than that then `INVALID_ARGUMENT` error is
+                    /// returned by the API. Here are a few examples: * `environment.enum_values.values.id: staging-id`
+                    /// - The allowed value id of the environment attribute associated with the Deployment is
+                    /// _staging-id_. * `environment.enum_values.values.display_name: \"Staging Deployment\"` - The
+                    /// allowed value display name of the environment attribute associated with the Deployment is
+                    /// `Staging Deployment`. * `environment.enum_values.values.id: production-id AND create_time
+                    /// &amp;lt; \"2021-08-15T14:50:00Z\" AND create_time &amp;gt; \"2021-08-10T12:00:00Z\"` - The
+                    /// allowed value id of the environment attribute associated with the Deployment is _production-id_
+                    /// and Deployment was created before _2021-08-15 14:50:00 UTC_ and after _2021-08-10 12:00:00 UTC_.
+                    /// * `environment.enum_values.values.id: production-id OR slo.string_values.values: \"99.99%\"` -
+                    /// The allowed value id of the environment attribute Deployment is _production-id_ or string value
+                    /// of the slo attribute is _99.99%_. * `environment.enum_values.values.id: staging-id AND
                     /// attributes.projects/test-project-id/locations/test-location-id/
                     /// attributes/17650f90-4a29-4971-b3c0-d5532da3764b.string_values.values: test` - The filter string
                     /// specifies that the allowed value id of the environment attribute associated with the Deployment
@@ -4155,7 +4163,8 @@ namespace Google.Apis.APIhub.v1
                 /// <summary>
                 /// Update a deployment resource in the API hub. The following fields in the deployment resource can be
                 /// updated: * display_name * description * documentation * deployment_type * resource_uri * endpoints *
-                /// slo * environment * attributes The update_mask should be used to specify the fields being updated.
+                /// slo * environment * attributes * source_project * source_environment * management_url * source_uri
+                /// The update_mask should be used to specify the fields being updated.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -4170,7 +4179,8 @@ namespace Google.Apis.APIhub.v1
                 /// <summary>
                 /// Update a deployment resource in the API hub. The following fields in the deployment resource can be
                 /// updated: * display_name * description * documentation * deployment_type * resource_uri * endpoints *
-                /// slo * environment * attributes The update_mask should be used to specify the fields being updated.
+                /// slo * environment * attributes * source_project * source_environment * management_url * source_uri
+                /// The update_mask should be used to specify the fields being updated.
                 /// </summary>
                 public class PatchRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1Deployment>
                 {
@@ -5565,9 +5575,15 @@ namespace Google.Apis.APIhub.v1
                         /// be a string. The comparison operator must be one of: `&amp;lt;`, `&amp;gt;` or `=`. Filters
                         /// are not case sensitive. The following fields in the `PluginInstances` are eligible for
                         /// filtering: * `state` - The state of the Plugin Instance. Allowed comparison operators: `=`.
-                        /// Expressions are combined with either `AND` logic operator or `OR` logical operator but not
-                        /// both of them together i.e. only one of the `AND` or `OR` operator can be used throughout the
-                        /// filter string and both the operators cannot be used together. No other logical operators are
+                        /// A filter function is also supported in the filter string. The filter function is `id(name)`.
+                        /// The `id(name)` function returns the id of the resource name. For example, `id(name) =
+                        /// \"plugin-instance-1\"` is equivalent to `name =
+                        /// \"projects/test-project-id/locations/test-location-id/plugins/plugin-1/instances/plugin-instance-1\"`
+                        /// provided the parent is
+                        /// `projects/test-project-id/locations/test-location-id/plugins/plugin-1`. Expressions are
+                        /// combined with either `AND` logic operator or `OR` logical operator but not both of them
+                        /// together i.e. only one of the `AND` or `OR` operator can be used throughout the filter
+                        /// string and both the operators cannot be used together. No other logical operators are
                         /// supported. At most three filter fields are allowed in the filter string and if provided more
                         /// than that then `INVALID_ARGUMENT` error is returned by the API. Here are a few examples: *
                         /// `state = ENABLED` - The plugin instance is in enabled state.
