@@ -2609,7 +2609,8 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
     public class SearchGoogleLocationsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Location to search for. If provided, will find locations which match the provided location details.
+        /// Location to search for. If provided, will find locations which match the provided location details, which
+        /// must include a value for the title.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual Location Location { get; set; }
