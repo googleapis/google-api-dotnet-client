@@ -6923,6 +6923,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalUri")]
         public virtual string ExternalUri { get; set; }
 
+        /// <summary>This is used to identify the location of the resource. Example: "us-central1"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
         /// <summary>Required. The name of the signal, ex: PUBLIC_SQL_INSTANCE, SQL_LOG_ERROR_VERBOSITY etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6990,8 +6994,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster,
         /// bigtableadmin.googleapis.com/Instance compute.googleapis.com/Instance firestore.googleapis.com/Database,
         /// redis.googleapis.com/Instance, redis.googleapis.com/Cluster,
-        /// oracledatabase.googleapis.com/cloudExadataInfrastructures oracledatabase.googleapis.com/cloudVmClusters
-        /// oracledatabase.googleapis.com/autonomousDatabases spanner.googleapis.com/Instance,
+        /// oracledatabase.googleapis.com/CloudExadataInfrastructure oracledatabase.googleapis.com/CloudVmCluster
+        /// oracledatabase.googleapis.com/AutonomousDatabase spanner.googleapis.com/Instance,
         /// spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance, go/keep-sorted end REQUIRED Please refer
         /// go/condor-common-datamodel
         /// </summary>
