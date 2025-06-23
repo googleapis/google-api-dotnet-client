@@ -4671,7 +4671,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
     /// <summary>Configuration for Managed Connection Pool (MCP).</summary>
     public class ConnectionPoolConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Deprecated. Use 'flags' instead. The default pool size. Defaults to 20.</summary>
+        /// <summary>
+        /// Optional. Deprecated. Use 'flags' instead. The default pool size. Defaults to 20. Note: This field should
+        /// not be added to client libraries if not present already.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPoolSize")]
         public virtual string DefaultPoolSize { get; set; }
 
@@ -4689,13 +4692,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         /// <summary>
         /// Optional. Deprecated. Use 'flags' instead. The list of startup parameters to ignore. Defaults to
-        /// ["extra_float_digits"]
+        /// ["extra_float_digits"] Note: This field should not be added to client libraries if not present already.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreStartupParameters")]
         public virtual System.Collections.Generic.IList<string> IgnoreStartupParameters { get; set; }
 
         /// <summary>
-        /// Optional. Deprecated. Use 'flags' instead. The maximum number of client connections allowed.
+        /// Optional. Deprecated. Use 'flags' instead. The maximum number of client connections allowed. Note: This
+        /// field should not be added to client libraries if not present already.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxClientConn")]
         public virtual string MaxClientConn { get; set; }
@@ -4704,17 +4708,21 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// Optional. Deprecated. Use 'flags' instead. The maximum number of prepared statements allowed. MCP makes sure
         /// that any statement prepared by a client, up to this limit, is available on the backing server connection in
         /// transaction and statement pooling mode. Even if the statement was originally prepared on another server
-        /// connection. Defaults to 0.
+        /// connection. Defaults to 0. Note: This field should not be added to client libraries if not present already.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxPreparedStatements")]
         public virtual string MaxPreparedStatements { get; set; }
 
-        /// <summary>Optional. Deprecated. Use 'flags' instead. The minimum pool size. Defaults to 0.</summary>
+        /// <summary>
+        /// Optional. Deprecated. Use 'flags' instead. The minimum pool size. Defaults to 0. Note: This field should not
+        /// be added to client libraries if not present already.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minPoolSize")]
         public virtual string MinPoolSize { get; set; }
 
         /// <summary>
-        /// Optional. Deprecated. Use 'flags' instead. The pool mode. Defaults to `POOL_MODE_TRANSACTION`.
+        /// Optional. Deprecated. Use 'flags' instead. The pool mode. Defaults to `POOL_MODE_TRANSACTION`. Note: This
+        /// field should not be added to client libraries if not present already.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("poolMode")]
         public virtual string PoolMode { get; set; }
@@ -4726,21 +4734,23 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>
         /// Optional. Deprecated. Use 'flags' instead. The maximum number of seconds queries are allowed to spend
         /// waiting for execution. If the query is not assigned to a server during that time, the client is
-        /// disconnected. 0 disables.
+        /// disconnected. 0 disables. Note: This field should not be added to client libraries if not present already.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryWaitTimeout")]
         public virtual string QueryWaitTimeout { get; set; }
 
         /// <summary>
         /// Optional. Deprecated. Use 'flags' instead. The maximum number of seconds a server is allowed to be idle
-        /// before it is disconnected. 0 disables.
+        /// before it is disconnected. 0 disables. Note: This field should not be added to client libraries if not
+        /// present already.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverIdleTimeout")]
         public virtual string ServerIdleTimeout { get; set; }
 
         /// <summary>
         /// Optional. Deprecated. Use 'flags' instead. The list of users that are allowed to connect to the MCP stats
-        /// console. The users must exist in the database.
+        /// console. The users must exist in the database. Note: This field should not be added to client libraries if
+        /// not present already.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statsUsers")]
         public virtual System.Collections.Generic.IList<string> StatsUsers { get; set; }
@@ -5153,7 +5163,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Deprecated and unused. This field will be removed in the near future.</summary>
+    /// <summary>Deprecated and unused. This message will be removed in the near future.</summary>
     public class GeminiClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Deprecated and unused. This field will be removed in the near future.</summary>
@@ -5164,7 +5174,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Deprecated and unused. This field will be removed in the near future.</summary>
+    /// <summary>Deprecated and unused. This message will be removed in the near future.</summary>
     public class GeminiInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Deprecated and unused. This field will be removed in the near future.</summary>
@@ -7051,6 +7061,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalUri")]
         public virtual string ExternalUri { get; set; }
 
+        /// <summary>This is used to identify the location of the resource. Example: "us-central1"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
         /// <summary>Required. The name of the signal, ex: PUBLIC_SQL_INSTANCE, SQL_LOG_ERROR_VERBOSITY etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7118,8 +7132,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster,
         /// bigtableadmin.googleapis.com/Instance compute.googleapis.com/Instance firestore.googleapis.com/Database,
         /// redis.googleapis.com/Instance, redis.googleapis.com/Cluster,
-        /// oracledatabase.googleapis.com/cloudExadataInfrastructures oracledatabase.googleapis.com/cloudVmClusters
-        /// oracledatabase.googleapis.com/autonomousDatabases spanner.googleapis.com/Instance,
+        /// oracledatabase.googleapis.com/CloudExadataInfrastructure oracledatabase.googleapis.com/CloudVmCluster
+        /// oracledatabase.googleapis.com/AutonomousDatabase spanner.googleapis.com/Instance,
         /// spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance, go/keep-sorted end REQUIRED Please refer
         /// go/condor-common-datamodel
         /// </summary>
