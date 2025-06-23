@@ -61,6 +61,18 @@ namespace Google.Apis.WorkspaceEvents.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Google Workspace Events API.</summary>
         public class Scope
         {
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see, add, update, and remove members from conversations and
+            /// spaces
+            /// </summary>
+            public static string ChatAppMemberships = "https://www.googleapis.com/auth/chat.app.memberships";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can create conversations and spaces and see or update their
+            /// metadata (including history settings and access settings)
+            /// </summary>
+            public static string ChatAppSpaces = "https://www.googleapis.com/auth/chat.app.spaces";
+
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public static string ChatBot = "https://www.googleapis.com/auth/chat.bot";
 
@@ -125,6 +137,18 @@ namespace Google.Apis.WorkspaceEvents.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Workspace Events API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see, add, update, and remove members from conversations and
+            /// spaces
+            /// </summary>
+            public const string ChatAppMemberships = "https://www.googleapis.com/auth/chat.app.memberships";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can create conversations and spaces and see or update their
+            /// metadata (including history settings and access settings)
+            /// </summary>
+            public const string ChatAppSpaces = "https://www.googleapis.com/auth/chat.app.spaces";
+
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public const string ChatBot = "https://www.googleapis.com/auth/chat.bot";
 
