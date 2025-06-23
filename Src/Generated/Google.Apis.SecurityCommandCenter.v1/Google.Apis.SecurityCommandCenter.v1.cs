@@ -16046,6 +16046,20 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The destination big query dataset to export findings to.</summary>
+    public class BigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The relative resource name of the destination dataset, in the form
+        /// projects/{projectId}/datasets/{datasetId}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16997,7 +17011,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Resource name of dataset, e.g. projects/{project}/locations/{location}/datasets/2094040236064505856
+        /// Resource name of the dataset, e.g. projects/{project}/locations/{location}/datasets/2094040236064505856
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -17338,6 +17352,63 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalExfiltratedBytes")]
         public virtual System.Nullable<long> TotalExfiltratedBytes { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The LRO metadata for a ExportFindings request.</summary>
+    public class ExportFindingsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The destination big query dataset to export findings to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigQueryDestination")]
+        public virtual BigQueryDestination BigQueryDestination { get; set; }
+
+        private string _exportStartTimeRaw;
+
+        private object _exportStartTime;
+
+        /// <summary>Optional. Timestamp at which export was started</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportStartTime")]
+        public virtual string ExportStartTimeRaw
+        {
+            get => _exportStartTimeRaw;
+            set
+            {
+                _exportStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _exportStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExportStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExportStartTimeDateTimeOffset instead.")]
+        public virtual object ExportStartTime
+        {
+            get => _exportStartTime;
+            set
+            {
+                _exportStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _exportStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExportStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExportStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExportStartTimeRaw);
+            set => ExportStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to a ExportFindings request. Contains the LRO information.</summary>
+    public class ExportFindingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -20913,12 +20984,12 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Resource name of dataset, e.g. projects/{project}/locations/{location}/datasets/2094040236064505856
+        /// Resource name of the dataset, e.g. projects/{project}/locations/{location}/datasets/2094040236064505856
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Data source, such as BigQuery source URI, e.g. bq://scc-nexus-test.AIPPtest.gsod</summary>
+        /// <summary>Data source, such as a BigQuery source URI, e.g. bq://scc-nexus-test.AIPPtest.gsod</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
 
@@ -23041,12 +23112,12 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>Vertex AI training pipeline associated with the finding.</summary>
     public class GoogleCloudSecuritycenterV2Pipeline : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The user defined display name of pipeline, e.g. plants-classification</summary>
+        /// <summary>The user-defined display name of pipeline, e.g. plants-classification</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Resource name of pipeline, e.g.
+        /// Resource name of the pipeline, e.g.
         /// projects/{project}/locations/{location}/trainingPipelines/5253428229225578496
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -25405,7 +25476,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Resource name of pipeline, e.g.
+        /// Resource name of the pipeline, e.g.
         /// projects/{project}/locations/{location}/trainingPipelines/5253428229225578496
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
