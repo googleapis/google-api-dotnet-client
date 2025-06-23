@@ -6667,10 +6667,6 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outOfDiskReport")]
         public virtual SqlOutOfDiskReport OutOfDiskReport { get; set; }
 
-        /// <summary>Input only. PITR related fields added for Instance Independent PITR.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pitrFields")]
-        public virtual PITRFields PitrFields { get; set; }
-
         /// <summary>Output only. DEPRECATED: please use write_endpoint instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryDnsName")]
         public virtual string PrimaryDnsName { get; set; }
@@ -8906,29 +8902,6 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>PITR related fields include enablement settings, archiving settings, and the bucket name.</summary>
-    public class PITRFields : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The enablement setting for PITR for MySQL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableBinLog")]
-        public virtual System.Nullable<bool> EnableBinLog { get; set; }
-
-        /// <summary>The enablement setting for PITR for PostgreSQL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("replicationLogArchivingEnabled")]
-        public virtual System.Nullable<bool> ReplicationLogArchivingEnabled { get; set; }
-
-        /// <summary>The enablement setting for PITR for SQL Server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sqlserverPitrEnabled")]
-        public virtual System.Nullable<bool> SqlserverPitrEnabled { get; set; }
-
-        /// <summary>The number of transaction log days to retain for PITR</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("transactionLogRetentionDays")]
-        public virtual System.Nullable<int> TransactionLogRetentionDays { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
