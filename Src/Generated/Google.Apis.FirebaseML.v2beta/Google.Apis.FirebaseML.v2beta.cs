@@ -1616,9 +1616,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeThoughts")]
         public virtual System.Nullable<bool> IncludeThoughts { get; set; }
 
-        /// <summary>
-        /// Optional. Indicates the thinking budget in tokens. This is only applied when enable_thinking is true.
-        /// </summary>
+        /// <summary>Optional. Indicates the thinking budget in tokens.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thinkingBudget")]
         public virtual System.Nullable<int> ThinkingBudget { get; set; }
 
