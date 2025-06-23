@@ -3517,6 +3517,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningModel")]
         public virtual string ProvisioningModel { get; set; }
 
+        /// <summary>Optional. Name of the reservation in which the node should be provisioned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationName")]
+        public virtual string ReservationName { get; set; }
+
         /// <summary>Whether the node is created under a reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reserved")]
         public virtual System.Nullable<bool> Reserved { get; set; }
