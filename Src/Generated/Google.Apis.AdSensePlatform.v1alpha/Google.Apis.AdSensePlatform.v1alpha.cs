@@ -422,9 +422,9 @@ namespace Google.Apis.AdSensePlatform.v1alpha
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// Optional. A page token, received from a previous `ListPlatformChildren` call. Provide this
+                        /// Optional. A page token, received from a previous `ListPlatformChildSites` call. Provide this
                         /// to retrieve the subsequent page. When paginating, all other parameters provided to
-                        /// `ListPlatformChildren` must match the call that provided the page token.
+                        /// `ListPlatformChildSites` must match the call that provided the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
