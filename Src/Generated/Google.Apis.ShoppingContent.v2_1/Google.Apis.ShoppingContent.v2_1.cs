@@ -16286,6 +16286,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxHandlingTime")]
         public virtual System.Nullable<long> MaxHandlingTime { get; set; }
 
+        /// <summary>Maximum retail price (MRP) of the item. Applicable to India only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumRetailPrice")]
+        public virtual Price MaximumRetailPrice { get; set; }
+
         /// <summary>The energy efficiency class as defined in EU directive 2010/30/EU.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minEnergyEfficiencyClass")]
         public virtual string MinEnergyEfficiencyClass { get; set; }
@@ -17761,6 +17765,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("couponValueType")]
         public virtual string CouponValueType { get; set; }
 
+        /// <summary>
+        /// The custom redemption restriction for the promotion. If the `redemption_restriction` field is set to
+        /// `CUSTOM`, this field must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRedemptionRestriction")]
+        public virtual string CustomRedemptionRestriction { get; set; }
+
         /// <summary>Free gift description for the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeGiftDescription")]
         public virtual string FreeGiftDescription { get; set; }
@@ -17817,6 +17828,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Required. Long title for the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longTitle")]
         public virtual string LongTitle { get; set; }
+
+        /// <summary>
+        /// The maximum monetary discount a customer can receive for the promotion. This field is only supported with
+        /// the `Percent off` coupon value type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDiscountAmount")]
+        public virtual PriceAmount MaxDiscountAmount { get; set; }
 
         /// <summary>Minimum purchase amount for the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumPurchaseAmount")]
@@ -17904,6 +17922,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Required. Redemption channel for the promotion. At least one channel is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redemptionChannel")]
         public virtual System.Collections.Generic.IList<string> RedemptionChannel { get; set; }
+
+        /// <summary>The redemption restriction for the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redemptionRestriction")]
+        public virtual string RedemptionRestriction { get; set; }
 
         /// <summary>Shipping service names for the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingServiceNames")]
