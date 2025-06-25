@@ -2983,8 +2983,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// mmsProxyPort, mmsc, mvnoType, protocol, roamingProtocol. If some of the APN settings result in
         /// non-compliance of INVALID_VALUE , they will be ignored. This can be set on fully managed devices on Android
         /// 10 and above. This can also be set on work profiles on Android 13 and above and only with ApnSetting's with
-        /// ENTERPRISE APN type. A nonComplianceDetail with API_LEVEL is reported if the Android version is less than
-        /// 10. A nonComplianceDetail with MANAGEMENT_MODE is reported for work profiles on Android versions less than
+        /// ENTERPRISE APN type. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than
+        /// 10. A NonComplianceDetail with MANAGEMENT_MODE is reported for work profiles on Android versions less than
         /// 13.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apnSettings")]
@@ -3023,10 +3023,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>
         /// Required. Usage categories for the APN. Policy will be rejected if this field is empty or contains
         /// APN_TYPE_UNSPECIFIED or duplicates. Multiple APN types can be set on fully managed devices. ENTERPRISE is
-        /// the only allowed APN type on work profiles. A nonComplianceDetail with MANAGEMENT_MODE is reported for any
+        /// the only allowed APN type on work profiles. A NonComplianceDetail with MANAGEMENT_MODE is reported for any
         /// other value on work profiles. APN types that are not supported on the device or management mode will be
         /// ignored. If this results in the empty list, the APN setting will be ignored, because apnTypes is a required
-        /// field. A nonComplianceDetail with INVALID_VALUE is reported if none of the APN types are supported on the
+        /// field. A NonComplianceDetail with INVALID_VALUE is reported if none of the APN types are supported on the
         /// device or management mode.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apnTypes")]
@@ -3069,7 +3069,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>
         /// Optional. The default MTU (Maximum Transmission Unit) size in bytes of the IPv4 routes brought up by this
         /// APN setting. A value of 0 (default) means not set and negative values are rejected. Supported on Android 13
-        /// and above. A nonComplianceDetail with API_LEVEL is reported if the Android version is less than 13.
+        /// and above. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 13.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mtuV4")]
         public virtual System.Nullable<int> MtuV4 { get; set; }
@@ -3077,7 +3077,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>
         /// Optional. The MTU (Maximum Transmission Unit) size of the IPv6 mobile interface to which the APN connected.
         /// A value of 0 (default) means not set and negative values are rejected. Supported on Android 13 and above. A
-        /// nonComplianceDetail with API_LEVEL is reported if the Android version is less than 13.
+        /// NonComplianceDetail with API_LEVEL is reported if the Android version is less than 13.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mtuV6")]
         public virtual System.Nullable<int> MtuV6 { get; set; }
@@ -3545,7 +3545,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// Policy offline.This field can be set for at most one app.The signing key certificate fingerprint of the app
         /// on the device must match one of the entries in signingKeyFingerprintsSha256 or the signing key certificate
         /// fingerprints obtained from Play Store for the app to be able to communicate with Android Device Policy. If
-        /// the app is not on Play Store and signingKeyFingerprintsSha256 is not set, a nonComplianceDetail with
+        /// the app is not on Play Store and signingKeyFingerprintsSha256 is not set, a NonComplianceDetail with
         /// INVALID_VALUE is reported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensionConfig")]
@@ -4278,7 +4278,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
     /// <summary>
     /// Controls the data from the work profile that can be accessed from the personal profile and vice versa. A
-    /// nonComplianceDetail with MANAGEMENT_MODE is reported if the device does not have a work profile.
+    /// NonComplianceDetail with MANAGEMENT_MODE is reported if the device does not have a work profile.
     /// </summary>
     public class CrossProfilePolicies : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4303,7 +4303,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED. In this case, these exemptions act as an allowlist.
         /// SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED_EXCEPT_SYSTEM. In this case, these exemptions act as an
         /// allowlist, in addition to the already allowlisted system apps.Supported on Android 14 and above. A
-        /// nonComplianceDetail with API_LEVEL is reported if the Android version is less than 14.
+        /// NonComplianceDetail with API_LEVEL is reported if the Android version is less than 14.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptionsToShowWorkContactsInPersonalProfile")]
         public virtual PackageNameList ExemptionsToShowWorkContactsInPersonalProfile { get; set; }
@@ -5299,7 +5299,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// Hex-encoded SHA-256 hashes of the signing key certificates of the extension app. Only hexadecimal string
         /// representations of 64 characters are valid.The signing key certificate fingerprints are always obtained from
         /// the Play Store and this field is used to provide additional signing key certificate fingerprints. However,
-        /// if the application is not available on the Play Store, this field needs to be set. A nonComplianceDetail
+        /// if the application is not available on the Play Store, this field needs to be set. A NonComplianceDetail
         /// with INVALID_VALUE is reported if this field is not set when the application is not available on the Play
         /// Store.The signing key certificate fingerprint of the extension app on the device must match one of the
         /// signing key certificate fingerprints obtained from the Play Store or the ones provided in this field for the
@@ -8860,8 +8860,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>
         /// Optional. List of Wi-Fi SSIDs that should be applied in the policy. This field must be non-empty when
         /// WifiSsidPolicyType is set to WIFI_SSID_ALLOWLIST. If this is set to a non-empty list, then a
-        /// nonComplianceDetail detail with API_LEVEL is reported if the Android version is less than 13 and a
-        /// nonComplianceDetail with MANAGEMENT_MODE is reported for non-company-owned devices.
+        /// NonComplianceDetail detail with API_LEVEL is reported if the Android version is less than 13 and a
+        /// NonComplianceDetail with MANAGEMENT_MODE is reported for non-company-owned devices.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiSsids")]
         public virtual System.Collections.Generic.IList<WifiSsid> WifiSsids { get; set; }
