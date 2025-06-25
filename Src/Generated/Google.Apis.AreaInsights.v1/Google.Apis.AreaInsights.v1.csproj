@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.AreaInsights.v1 Client Library</Title>
-    <Version>1.69.0.3793</Version>
+    <Version>1.70.0.3825</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Areainsights v1.
 
       Product documentation is available at:
-      https://g3doc.corp.google.com/geo/platform/area_insights/README.md?cl=head
+      https://developers.google.com/maps/documentation/places-aggregate/overview
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.AreaInsights.v1/latest/api/Google.Apis.AreaInsights.v1.html
@@ -59,8 +59,8 @@
   <!-- common dependencies -->
   <ItemGroup>
     <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="5.0.0" PrivateAssets="All" />
-    <PackageReference Include="Google.Apis" Version="1.69.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.69.0" />
+    <PackageReference Include="Google.Apis" Version="1.70.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.70.0" />
   </ItemGroup>
 
 </Project>
