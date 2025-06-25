@@ -1311,7 +1311,9 @@ namespace Google.Apis.Merchant.reviews_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cons")]
         public virtual System.Collections.Generic.IList<string> Cons { get; set; }
 
-        /// <summary>Required. The content of the review.</summary>
+        /// <summary>
+        /// Optional. The content of the review. If empty, the content might still get populated from pros and cons.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
