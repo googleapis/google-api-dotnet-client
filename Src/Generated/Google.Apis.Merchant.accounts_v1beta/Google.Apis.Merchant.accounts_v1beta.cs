@@ -4435,9 +4435,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>
-            /// Optional. A page token, received from a previous `ListAccounts` call. Provide this to retrieve the
-            /// subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call
-            /// that provided the page token.
+            /// Optional. A page token, received from a previous `accounts.list` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided in the `accounts.list` request must
+            /// match the call that provided the page token.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -4483,8 +4483,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
         }
 
         /// <summary>
-        /// List all sub-accounts for a given multi client account. This is a convenience wrapper for the more powerful
-        /// `ListAccounts` method. This method will produce the same results as calling `ListsAccounts` with the
+        /// List all sub-accounts for a given advanced account. This is a convenience wrapper for the more powerful
+        /// `accounts.list` method. This method will produce the same results as calling `ListsAccounts` with the
         /// following filter: `relationship(providerId={parent} AND service(type="ACCOUNT_AGGREGATION"))`
         /// </summary>
         /// <param name="provider">Required. The aggregation service provider. Format: `accounts/{accountId}`</param>
@@ -4494,8 +4494,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
         }
 
         /// <summary>
-        /// List all sub-accounts for a given multi client account. This is a convenience wrapper for the more powerful
-        /// `ListAccounts` method. This method will produce the same results as calling `ListsAccounts` with the
+        /// List all sub-accounts for a given advanced account. This is a convenience wrapper for the more powerful
+        /// `accounts.list` method. This method will produce the same results as calling `ListsAccounts` with the
         /// following filter: `relationship(providerId={parent} AND service(type="ACCOUNT_AGGREGATION"))`
         /// </summary>
         public class ListSubaccountsRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListSubAccountsResponse>
@@ -4520,9 +4520,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>
-            /// Optional. A page token, received from a previous `ListAccounts` call. Provide this to retrieve the
-            /// subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call
-            /// that provided the page token.
+            /// Optional. A page token, received from a previous `accounts.list` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided in the `accounts.list` request must
+            /// match the call that provided the page token.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -6327,7 +6327,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for the `ListAccounts` method.</summary>
+    /// <summary>Response message for the `accounts.list` method.</summary>
     public class ListAccountsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The accounts matching the `ListAccountsRequest`.</summary>
