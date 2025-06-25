@@ -409,9 +409,10 @@ namespace Google.Apis.Merchant.products_v1beta
 
                 /// <summary>
                 /// Required. The primary or supplemental product data source name. If the product already exists and
-                /// data source provided is different, then the product will be moved to a new data source. Only API
-                /// data sources are supported. Format: `accounts/{account}/dataSources/{datasource}`. For example,
-                /// `accounts/123456/dataSources/104628`.
+                /// data source provided is different, then the product will be moved to a new data source. For more
+                /// information, see [Overview of Data sources sub-API](/merchant/api/guides/data-sources/overview).
+                /// Only API data sources are supported. Format: `accounts/{account}/dataSources/{datasource}`. For
+                /// example, `accounts/123456/dataSources/104628`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dataSource", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DataSource { get; set; }
@@ -1137,6 +1138,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         /// <summary>Maximal product handling time (in business days).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxHandlingTime")]
         public virtual System.Nullable<long> MaxHandlingTime { get; set; }
+
+        /// <summary>Maximum retail price (MRP) of the item. Applicable to India only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumRetailPrice")]
+        public virtual Price MaximumRetailPrice { get; set; }
 
         /// <summary>The energy efficiency class as defined in EU directive 2010/30/EU.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minEnergyEfficiencyClass")]
