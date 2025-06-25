@@ -20014,6 +20014,20 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Collection of findings saved to a Cloud Storage bucket. This is used as the proto schema for textproto files
+    /// created when specifying a cloud storage path to save Inspect findings.
+    /// </summary>
+    public class GooglePrivacyDlpV2SaveToGcsFindingsOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of findings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findings")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Finding> Findings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Schedule for inspect job triggers.</summary>
     public class GooglePrivacyDlpV2Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
