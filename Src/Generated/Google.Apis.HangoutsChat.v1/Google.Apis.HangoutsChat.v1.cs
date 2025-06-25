@@ -7395,7 +7395,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// creates a date time picker to schedule an appointment:
         /// ```
         /// "dateTimePicker": { "name": "appointment_time",
-        /// "label": "Book your appointment at:", "type": "DATE_AND_TIME", "valueMsEpoch": "796435200000" }
+        /// "label": "Book your appointment at:", "type": "DATE_AND_TIME", "valueMsEpoch": 796435200000 }
         /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateTimePicker")]
