@@ -22006,7 +22006,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
-        /// `people-search-org-chart` * `bi-directional-audio` * `feedback`
+        /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -24631,7 +24631,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Output only. License assignment state of the user. If the user is assigned with a license config, the user
-        /// loggin will be assigned with the license; If the user's license assignment state is unassigned or
+        /// login will be assigned with the license; If the user's license assignment state is unassigned or
         /// unspecified, no license config will be associated to the user;
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseAssignmentState")]
@@ -26894,6 +26894,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("actionConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaActionConfig ActionConfig { get; set; }
 
+        /// <summary>
+        /// Output only. State of the action connector. This reflects whether the action connector is initializing,
+        /// active or has encountered errors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionState")]
+        public virtual string ActionState { get; set; }
+
         /// <summary>Optional. The connector level alert config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alertPolicyConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig> AlertPolicyConfigs { get; set; }
@@ -27010,14 +27017,16 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// Optional. The refresh interval specifically for incremental data syncs. If unset, incremental syncs will use
         /// the default from env, set to 3hrs. The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
-        /// connectors.
+        /// connectors. When the refresh interval is set to the same value as the incremental refresh interval,
+        /// incremental sync will be disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("incrementalRefreshInterval")]
         public virtual object IncrementalRefreshInterval { get; set; }
 
         /// <summary>
         /// Optional. Indicates whether incremental syncs are paused for this connector. This is independent of
-        /// auto_run_disabled. Applicable to only 3P connectors.
+        /// auto_run_disabled. Applicable to only 3P connectors. When the refresh interval is set to the same value as
+        /// the incremental refresh interval, incremental sync will be disabled, i.e. set to true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("incrementalSyncDisabled")]
         public virtual System.Nullable<bool> IncrementalSyncDisabled { get; set; }
@@ -27168,7 +27177,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Required. The refresh interval for data sync. If duration is set to 0, the data will be synced in real time.
-        /// The streaming feature is not supported yet. The minimum is 30 minutes and maximum is 7 days.
+        /// The streaming feature is not supported yet. The minimum is 30 minutes and maximum is 7 days. When the
+        /// refresh interval is set to the same value as the incremental refresh interval, incremental sync will be
+        /// disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refreshInterval")]
         public virtual object RefreshInterval { get; set; }
@@ -28790,7 +28801,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
-        /// `people-search-org-chart` * `bi-directional-audio` * `feedback`
+        /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -33779,7 +33790,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Output only. License assignment state of the user. If the user is assigned with a license config, the user
-        /// loggin will be assigned with the license; If the user's license assignment state is unassigned or
+        /// login will be assigned with the license; If the user's license assignment state is unassigned or
         /// unspecified, no license config will be associated to the user;
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseAssignmentState")]
@@ -39306,7 +39317,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
-        /// `people-search-org-chart` * `bi-directional-audio` * `feedback`
+        /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -46306,7 +46317,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Output only. License assignment state of the user. If the user is assigned with a license config, the user
-        /// loggin will be assigned with the license; If the user's license assignment state is unassigned or
+        /// login will be assigned with the license; If the user's license assignment state is unassigned or
         /// unspecified, no license config will be associated to the user;
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseAssignmentState")]
