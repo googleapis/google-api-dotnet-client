@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Merchant.accounts_v1beta Client Library</Title>
-    <Version>1.70.0.3821</Version>
+    <Version>1.70.0.3824</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Merchantapi accounts_v1beta.
 
       Product documentation is available at:
-      https://developers.devsite.corp.google.com/merchant/api
+      https://developers.google.com/merchant/api
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.Merchant.accounts_v1beta/latest/api/Google.Apis.Merchant.accounts_v1beta.html
