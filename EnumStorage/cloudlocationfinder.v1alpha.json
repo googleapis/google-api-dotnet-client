@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudLocationFinder.v1alpha.CloudLocationFinderBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudLocationFinder.v1alpha.CloudLocationFinderBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
