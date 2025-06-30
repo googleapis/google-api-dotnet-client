@@ -10222,6 +10222,14 @@ namespace Google.Apis.Container.v1.Data
         public virtual System.Nullable<long> PodPidsLimit { get; set; }
 
         /// <summary>
+        /// Optional. Defines whether to enable single process OOM killer. If true, will prevent the memory.oom.group
+        /// flag from being set for container cgroups in cgroups v2. This causes processes in the container to be OOM
+        /// killed individually instead of as a group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleProcessOomKill")]
+        public virtual System.Nullable<bool> SingleProcessOomKill { get; set; }
+
+        /// <summary>
         /// Optional. Controls Topology Manager configuration on the node. For more information, see:
         /// https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/
         /// </summary>
@@ -10346,6 +10354,15 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podRange")]
         public virtual string PodRange { get; set; }
+
+        /// <summary>
+        /// Output only. The subnetwork path for the node pool. Format:
+        /// projects/{project}/regions/{region}/subnetworks/{subnetwork} If the cluster is associated with multiple
+        /// subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool
+        /// creation and is immutable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12132,6 +12149,13 @@ namespace Google.Apis.Container.v1.Data
     /// </summary>
     public class SoleTenantConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
+        /// This field can only be set if the node pool is created in a shared sole-tenant node group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minNodeCpus")]
+        public virtual System.Nullable<int> MinNodeCpus { get; set; }
+
         /// <summary>NodeAffinities used to match to a shared sole tenant node group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeAffinities")]
         public virtual System.Collections.Generic.IList<NodeAffinity> NodeAffinities { get; set; }
