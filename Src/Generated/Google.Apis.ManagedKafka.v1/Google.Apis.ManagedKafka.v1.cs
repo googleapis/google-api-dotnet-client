@@ -7138,6 +7138,21 @@ namespace Google.Apis.ManagedKafka.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A configuration for the Google Certificate Authority Service.</summary>
+    public class CertificateAuthorityServiceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the CA pool to pull CA certificates from. Structured like:
+        /// projects/{project}/locations/{location}/caPools/{ca_pool}. The CA pool does not need to be in the same
+        /// project or location as the Kafka cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caPool")]
+        public virtual string CaPool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for CheckCompatibility.</summary>
     public class CheckCompatibilityRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7253,6 +7268,10 @@ namespace Google.Apis.ManagedKafka.v1.Data
         /// <summary>Output only. The current state of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>Optional. TLS configuration for the Kafka cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tlsConfig")]
+        public virtual TlsConfig TlsConfig { get; set; }
 
         private string _updateTimeRaw;
 
@@ -8227,16 +8246,15 @@ namespace Google.Apis.ManagedKafka.v1.Data
 
     /// <summary>
     /// SchemaMode represents the mode of a schema registry or a specific subject. Four modes are supported: * NONE:
-    /// This is the default mode for a subject and essentially means that the subject does not have any mode set. This
-    /// means the subject will follow the schema registry's mode. * READONLY: The schema registry is in read-only mode.
-    /// * READWRITE: The schema registry is in read-write mode, which allows limited write operations on the schema. *
-    /// IMPORT: The schema registry is in import mode, which allows more editing operations on the schema for data
-    /// importing purposes.
+    /// deprecated. This was the default mode for a subject, but now the default is unset (which means use the global
+    /// schema registry setting) * READONLY: The schema registry is in read-only mode. * READWRITE: The schema registry
+    /// is in read-write mode, which allows limited write operations on the schema. * IMPORT: The schema registry is in
+    /// import mode, which allows more editing operations on the schema for data importing purposes.
     /// </summary>
     public class SchemaMode : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The mode type of a schema registry (READWRITE by default) or of a subject (NONE by default, which
+        /// Required. The mode type of a schema registry (READWRITE by default) or of a subject (unset by default, which
         /// means use the global schema registry setting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
@@ -8386,6 +8404,29 @@ namespace Google.Apis.ManagedKafka.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The TLS configuration for the Kafka cluster.</summary>
+    public class TlsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of rules for mapping from SSL principal names to short names. These are applied in order by
+        /// Kafka. Refer to the Apache Kafka documentation for `ssl.principal.mapping.rules` for the precise formatting
+        /// details and syntax. Example: "RULE:^CN=(.*?),OU=ServiceUsers.*$/$1@example.com/,DEFAULT" This is a static
+        /// Kafka broker configuration. Setting or modifying this field will trigger a rolling restart of the Kafka
+        /// brokers to apply the change. An empty string means no rules are applied (Kafka default).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslPrincipalMappingRules")]
+        public virtual string SslPrincipalMappingRules { get; set; }
+
+        /// <summary>
+        /// Optional. The configuration of the broker truststore. If specified, clients can use mTLS for authentication.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustConfig")]
+        public virtual TrustConfig TrustConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Kafka topic in a given cluster.</summary>
     public class Topic : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8417,6 +8458,17 @@ namespace Google.Apis.ManagedKafka.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationFactor")]
         public virtual System.Nullable<int> ReplicationFactor { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Sources of CA certificates to install in the broker's truststore.</summary>
+    public class TrustConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for the Google Certificate Authority Service. Maximum 10.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("casConfigs")]
+        public virtual System.Collections.Generic.IList<CertificateAuthorityServiceConfig> CasConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
