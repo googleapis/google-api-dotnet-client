@@ -7793,6 +7793,12 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual GoogleCloudEventarcV1PipelineRetryPolicy RetryPolicy { get; set; }
 
         /// <summary>
+        /// Output only. Whether or not this Pipeline satisfies the requirements of physical zone separation
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
+        /// <summary>
         /// Output only. Server-assigned unique identifier for the Pipeline. The value is a UUID4 string and guaranteed
         /// to remain unchanged until the resource is deleted.
         /// </summary>
