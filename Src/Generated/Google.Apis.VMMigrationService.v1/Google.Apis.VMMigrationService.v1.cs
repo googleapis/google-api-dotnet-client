@@ -5905,6 +5905,17 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("computeScheduling")]
         public virtual ComputeScheduling ComputeScheduling { get; set; }
 
+        /// <summary>
+        /// Optional. Additional replica zones of the target regional disks. If this list is not empty a regional disk
+        /// will be created. The first supported zone would be the one stated in the zone field. The rest are taken from
+        /// this list. Please refer to the [regional disk creation
+        /// API](https://cloud.google.com/compute/docs/regions-zones/global-regional-zonal-resources) for further
+        /// details about regional vs zonal disks. If not specified, a zonal disk will be created in the same zone the
+        /// VM is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskReplicaZones")]
+        public virtual System.Collections.Generic.IList<string> DiskReplicaZones { get; set; }
+
         /// <summary>The disk type to use in the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
@@ -6017,6 +6028,17 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>Compute instance scheduling information (if empty default is used).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeScheduling")]
         public virtual ComputeScheduling ComputeScheduling { get; set; }
+
+        /// <summary>
+        /// Optional. Additional replica zones of the target regional disks. If this list is not empty a regional disk
+        /// will be created. The first supported zone would be the one stated in the zone field. The rest are taken from
+        /// this list. Please refer to the [regional disk creation
+        /// API](https://cloud.google.com/compute/docs/regions-zones/global-regional-zonal-resources) for further
+        /// details about regional vs zonal disks. If not specified, a zonal disk will be created in the same zone the
+        /// VM is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskReplicaZones")]
+        public virtual System.Collections.Generic.IList<string> DiskReplicaZones { get; set; }
 
         /// <summary>The disk type to use in the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
@@ -7843,7 +7865,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Immutable. The encryption to apply to the machine image.</summary>
+        /// <summary>
+        /// Immutable. The encryption to apply to the machine image. If the Image Import resource has an encryption,
+        /// this field must be set to the same encryption key.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
         public virtual Encryption Encryption { get; set; }
 
