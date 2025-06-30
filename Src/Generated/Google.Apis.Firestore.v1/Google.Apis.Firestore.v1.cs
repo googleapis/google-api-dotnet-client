@@ -3588,6 +3588,79 @@ namespace Google.Apis.Firestore.v1
                 }
             }
 
+            /// <summary>
+            /// Creates a new database by cloning an existing one. The new database must be in the same cloud region or
+            /// multi-region location as the existing database. This behaves similar to FirestoreAdmin.CreateDatabase
+            /// except instead of creating a new empty database, a new database is created with the database type, index
+            /// configuration, and documents from an existing database. The long-running operation can be used to track
+            /// the progress of the clone, with the Operation's metadata field type being the CloneDatabaseMetadata. The
+            /// response type is the Database if the clone was successful. The new database is not readable or writeable
+            /// until the LRO has completed.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The project to clone the database in. Format is `projects/{project_id}`.
+            /// </param>
+            public virtual CloneRequest Clone(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1CloneDatabaseRequest body, string parent)
+            {
+                return new CloneRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a new database by cloning an existing one. The new database must be in the same cloud region or
+            /// multi-region location as the existing database. This behaves similar to FirestoreAdmin.CreateDatabase
+            /// except instead of creating a new empty database, a new database is created with the database type, index
+            /// configuration, and documents from an existing database. The long-running operation can be used to track
+            /// the progress of the clone, with the Operation's metadata field type being the CloneDatabaseMetadata. The
+            /// response type is the Database if the clone was successful. The new database is not readable or writeable
+            /// until the LRO has completed.
+            /// </summary>
+            public class CloneRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new Clone request.</summary>
+                public CloneRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1CloneDatabaseRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project to clone the database in. Format is `projects/{project_id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1CloneDatabaseRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "clone";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/databases:clone";
+
+                /// <summary>Initializes Clone parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Create a database.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. A parent name of the form `projects/{project_id}`</param>
@@ -5941,6 +6014,140 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for the long-running operation from the CloneDatabase request.</summary>
+    public class GoogleFirestoreAdminV1CloneDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the database being cloned to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time the clone finished, unset for ongoing clones.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The operation state of the clone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationState")]
+        public virtual string OperationState { get; set; }
+
+        /// <summary>The snapshot from which this database was cloned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pitrSnapshot")]
+        public virtual GoogleFirestoreAdminV1PitrSnapshot PitrSnapshot { get; set; }
+
+        /// <summary>How far along the clone is as an estimated percentage of remaining time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressPercentage")]
+        public virtual GoogleFirestoreAdminV1Progress ProgressPercentage { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>The time the clone was started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for FirestoreAdmin.CloneDatabase.</summary>
+    public class GoogleFirestoreAdminV1CloneDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The ID to use for the database, which will become the final component of the database's resource
+        /// name. This database ID must not be associated with an existing database. This value should be 4-63
+        /// characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number.
+        /// Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database ID is also valid.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
+        /// <summary>
+        /// Optional. Encryption configuration for the cloned database. If this field is not specified, the cloned
+        /// database will use the same encryption configuration as the source database, namely use_source_encryption.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual GoogleFirestoreAdminV1EncryptionConfig EncryptionConfig { get; set; }
+
+        /// <summary>
+        /// Required. Specification of the PITR data to clone from. The source database must exist. The cloned database
+        /// will be created in the same location as the source database.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pitrSnapshot")]
+        public virtual GoogleFirestoreAdminV1PitrSnapshot PitrSnapshot { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Tags to be bound to the cloned database. The tags should be provided in the format of
+        /// `tagKeys/{tag_key_id} -&amp;gt; tagValues/{tag_value_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The CMEK (Customer Managed Encryption Key) configuration for a Firestore database. If not present, the database
     /// is secured by the default Google encryption key.
@@ -7185,6 +7392,65 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>The metadata message for google.cloud.location.Location.metadata.</summary>
     public class GoogleFirestoreAdminV1LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A consistent snapshot of a database at a specific point in time. A PITR (Point-in-time recovery) snapshot with
+    /// previous versions of a database's data is available for every minute up to the associated database's data
+    /// retention period. If the PITR feature is enabled, the retention period is 7 days; otherwise, it is one hour.
+    /// </summary>
+    public class GoogleFirestoreAdminV1PitrSnapshot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the database that this was a snapshot of. Format:
+        /// `projects/{project}/databases/{database}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Output only. Public UUID of the database the snapshot was associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseUid")]
+        public virtual string DatabaseUid { get; set; }
+
+        private string _snapshotTimeRaw;
+
+        private object _snapshotTime;
+
+        /// <summary>Required. Snapshot time of the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
+        public virtual string SnapshotTimeRaw
+        {
+            get => _snapshotTimeRaw;
+            set
+            {
+                _snapshotTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _snapshotTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SnapshotTimeDateTimeOffset instead.")]
+        public virtual object SnapshotTime
+        {
+            get => _snapshotTime;
+            set
+            {
+                _snapshotTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _snapshotTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SnapshotTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SnapshotTimeRaw);
+            set => SnapshotTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
