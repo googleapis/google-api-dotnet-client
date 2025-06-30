@@ -2080,7 +2080,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDataset")]
         public virtual BigQueryDatasetSource BigqueryDataset { get; set; }
 
-        /// <summary>Optional. Categories of the listing. Up to two categories are allowed.</summary>
+        /// <summary>Optional. Categories of the listing. Up to five categories are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
         public virtual System.Collections.Generic.IList<string> Categories { get; set; }
 
