@@ -303,6 +303,7 @@ namespace Google.Apis.BigQueryReservation.v1
             {
                 this.service = service;
                 CapacityCommitments = new CapacityCommitmentsResource(service);
+                ReservationGroups = new ReservationGroupsResource(service);
                 Reservations = new ReservationsResource(service);
             }
 
@@ -821,6 +822,276 @@ namespace Google.Apis.BigQueryReservation.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/capacityCommitments/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the ReservationGroups resource.</summary>
+            public virtual ReservationGroupsResource ReservationGroups { get; }
+
+            /// <summary>The "reservationGroups" collection of methods.</summary>
+            public class ReservationGroupsResource
+            {
+                private const string Resource = "reservationGroups";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ReservationGroupsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new reservation group.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Project, location. E.g., `projects/myproject/locations/US`</param>
+                public virtual CreateRequest Create(Google.Apis.BigQueryReservation.v1.Data.ReservationGroup body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new reservation group.</summary>
+                public class CreateRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1.Data.ReservationGroup>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryReservation.v1.Data.ReservationGroup body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Project, location. E.g., `projects/myproject/locations/US`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The reservation group ID. It must only contain lower case alphanumeric characters or
+                    /// dashes. It must start with a letter and must not end with a dash. Its maximum length is 64
+                    /// characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("reservationGroupId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ReservationGroupId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigQueryReservation.v1.Data.ReservationGroup Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/reservationGroups";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("reservationGroupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "reservationGroupId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a reservation. Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has
+                /// assignments.
+                /// </summary>
+                /// <param name="name">
+                /// Required. Resource name of the reservation group to retrieve. E.g.,
+                /// `projects/myproject/locations/US/reservationGroups/team1-prod`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Deletes a reservation. Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has
+                /// assignments.
+                /// </summary>
+                public class DeleteRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the reservation group to retrieve. E.g.,
+                    /// `projects/myproject/locations/US/reservationGroups/team1-prod`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/reservationGroups/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Returns information about the reservation group.</summary>
+                /// <param name="name">
+                /// Required. Resource name of the reservation group to retrieve. E.g.,
+                /// `projects/myproject/locations/US/reservationGroups/team1-prod`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Returns information about the reservation group.</summary>
+                public class GetRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1.Data.ReservationGroup>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the reservation group to retrieve. E.g.,
+                    /// `projects/myproject/locations/US/reservationGroups/team1-prod`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/reservationGroups/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all the reservation groups for the project in the specified location.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource name containing project and location, e.g.:
+                /// `projects/myproject/locations/US`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all the reservation groups for the project in the specified location.</summary>
+                public class ListRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1.Data.ListReservationGroupsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource name containing project and location, e.g.:
+                    /// `projects/myproject/locations/US`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The maximum number of items to return per page.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/reservationGroups";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -2971,6 +3242,23 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response for ReservationService.ListReservationGroups.</summary>
+    public class ListReservationGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of reservations visible to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationGroups")]
+        public virtual System.Collections.Generic.IList<ReservationGroup> ReservationGroups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response for ReservationService.ListReservations.</summary>
     public class ListReservationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3319,7 +3607,7 @@ namespace Google.Apis.BigQueryReservation.v1.Data
 
         /// <summary>
         /// Optional. The labels associated with this reservation. You can use these to organize and group your
-        /// reservations. You can set this property when inserting or updating a reservation.
+        /// reservations. You can set this property when you create or update a reservation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -3395,6 +3683,14 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual ReplicationStatus ReplicationStatus { get; set; }
 
         /// <summary>
+        /// Optional. The reservation group that this reservation belongs to. You can set this property when you create
+        /// or update a reservation. Reservations do not need to belong to a reservation group. Format:
+        /// projects/{project}/locations/{location}/reservationGroups/{reservation_group} or just {reservation_group}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationGroup")]
+        public virtual string ReservationGroup { get; set; }
+
+        /// <summary>
         /// Optional. The scaling mode for the reservation. If the field is present but max_slots is not present,
         /// requests will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.
         /// </summary>
@@ -3459,6 +3755,22 @@ namespace Google.Apis.BigQueryReservation.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A reservation group is a container for reservations.</summary>
+    public class ReservationGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The resource name of the reservation group, e.g.,
+        /// `projects/*/locations/*/reservationGroups/team1-prod`. The reservation_group_id must only contain lower case
+        /// alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum
+        /// length is 64 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
