@@ -3628,7 +3628,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>
         /// Optional. Specifies whether user control is permitted for the app. User control includes user actions like
-        /// force-stopping and clearing app data. Supported on Android 11 and above.
+        /// force-stopping and clearing app data. Certain types of apps have special treatment, see
+        /// USER_CONTROL_SETTINGS_UNSPECIFIED and USER_CONTROL_ALLOWED for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userControlSettings")]
         public virtual string UserControlSettings { get; set; }
@@ -4133,6 +4134,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userName")]
         public virtual string UserName { get; set; }
 
+        /// <summary>
+        /// Optional. Parameters for the WIPE command to wipe the device. If this is set, then it is suggested that type
+        /// should not be set. In this case, the server automatically sets it to WIPE. It is also acceptable to
+        /// explicitly set type to WIPE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wipeParams")]
+        public virtual WipeParams WipeParams { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4282,6 +4291,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// </summary>
     public class CrossProfilePolicies : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Controls whether personal profile apps can invoke app functions exposed by apps in the work
+        /// profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossProfileAppFunctions")]
+        public virtual string CrossProfileAppFunctions { get; set; }
+
         /// <summary>
         /// Whether text copied from one profile (personal or work) can be pasted in the other profile.
         /// </summary>
@@ -6961,6 +6977,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appAutoUpdatePolicy")]
         public virtual string AppAutoUpdatePolicy { get; set; }
 
+        /// <summary>
+        /// Optional. Controls whether apps on the device for fully managed devices or in the work profile for devices
+        /// with work profiles are allowed to expose app functions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appFunctions")]
+        public virtual string AppFunctions { get; set; }
+
         /// <summary>Policy applied to apps. This can have at most 3,000 elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applications")]
         public virtual System.Collections.Generic.IList<ApplicationPolicy> Applications { get; set; }
@@ -8899,6 +8922,24 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// </summary>
     public class WipeFailureEvent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters associated with the WIPE command to wipe the device.</summary>
+    public class WipeParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Flags to determine what data to wipe.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wipeDataFlags")]
+        public virtual System.Collections.Generic.IList<string> WipeDataFlags { get; set; }
+
+        /// <summary>
+        /// Optional. A short message displayed to the user before wiping the work profile on personal devices. This has
+        /// no effect on company owned devices. The maximum message length is 200 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wipeReason")]
+        public virtual UserFacingMessage WipeReason { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
