@@ -37671,6 +37671,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. The name of the second voice (non-English) if language detection is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondLanguageModel")]
+        public virtual string SecondLanguageModel { get; set; }
+
         /// <summary>
         /// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other
         /// parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice
