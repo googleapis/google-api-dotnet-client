@@ -3528,6 +3528,103 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for the long-running operation from the CloneDatabase request.</summary>
+    public class GoogleFirestoreAdminV1CloneDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the database being cloned to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time the clone finished, unset for ongoing clones.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The operation state of the clone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationState")]
+        public virtual string OperationState { get; set; }
+
+        /// <summary>The snapshot from which this database was cloned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pitrSnapshot")]
+        public virtual GoogleFirestoreAdminV1PitrSnapshot PitrSnapshot { get; set; }
+
+        /// <summary>How far along the clone is as an estimated percentage of remaining time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressPercentage")]
+        public virtual GoogleFirestoreAdminV1Progress ProgressPercentage { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>The time the clone was started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata related to the create database operation.</summary>
     public class GoogleFirestoreAdminV1CreateDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3538,6 +3635,65 @@ namespace Google.Apis.Firestore.v1beta1.Data
     /// <summary>Metadata related to the delete database operation.</summary>
     public class GoogleFirestoreAdminV1DeleteDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A consistent snapshot of a database at a specific point in time. A PITR (Point-in-time recovery) snapshot with
+    /// previous versions of a database's data is available for every minute up to the associated database's data
+    /// retention period. If the PITR feature is enabled, the retention period is 7 days; otherwise, it is one hour.
+    /// </summary>
+    public class GoogleFirestoreAdminV1PitrSnapshot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the database that this was a snapshot of. Format:
+        /// `projects/{project}/databases/{database}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Output only. Public UUID of the database the snapshot was associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseUid")]
+        public virtual string DatabaseUid { get; set; }
+
+        private string _snapshotTimeRaw;
+
+        private object _snapshotTime;
+
+        /// <summary>Required. Snapshot time of the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
+        public virtual string SnapshotTimeRaw
+        {
+            get => _snapshotTimeRaw;
+            set
+            {
+                _snapshotTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _snapshotTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SnapshotTimeDateTimeOffset instead.")]
+        public virtual object SnapshotTime
+        {
+            get => _snapshotTime;
+            set
+            {
+                _snapshotTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _snapshotTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SnapshotTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SnapshotTimeRaw);
+            set => SnapshotTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
