@@ -494,18 +494,18 @@ namespace Google.Apis.Bigquery.v2
                 DATASETVIEWUNSPECIFIED = 0,
 
                 /// <summary>
-                /// Updates metadata information for the dataset, such as friendlyName, description, labels, etc.
+                /// View metadata information for the dataset, such as friendlyName, description, labels, etc.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("METADATA")]
                 METADATA = 1,
 
                 /// <summary>
-                /// Updates ACL information for the dataset, which defines dataset access for one or more entities.
+                /// View ACL information for the dataset, which defines dataset access for one or more entities.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("ACL")]
                 ACL = 2,
 
-                /// <summary>Updates both dataset metadata and ACL information.</summary>
+                /// <summary>View both dataset metadata and ACL information.</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL = 3,
             }
@@ -2909,6 +2909,75 @@ namespace Google.Apis.Bigquery.v2
             public override string RestPath => "{+resource}:setIamPolicy";
 
             /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/datasets/[^/]+/routines/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Returns permissions that a caller has on the specified resource. If the resource does not exist, this will
+        /// return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for
+        /// building permission-aware UIs and command-line tools, not for authorization checking. This operation may
+        /// "fail open" without warning.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+        /// </param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest body, string resource)
+        {
+            return new TestIamPermissionsRequest(this.service, body, resource);
+        }
+
+        /// <summary>
+        /// Returns permissions that a caller has on the specified resource. If the resource does not exist, this will
+        /// return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for
+        /// building permission-aware UIs and command-line tools, not for authorization checking. This operation may
+        /// "fail open" without warning.
+        /// </summary>
+        public class TestIamPermissionsRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.TestIamPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "testIamPermissions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+resource}:testIamPermissions";
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -7180,6 +7249,48 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Options for the runtime of the external system.</summary>
+    public class ExternalRuntimeOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Amount of CPU provisioned for the container instance. If not specified, the default value is 0.33
+        /// vCPUs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerCpu")]
+        public virtual System.Nullable<double> ContainerCpu { get; set; }
+
+        /// <summary>
+        /// Optional. Amount of memory provisioned for the container instance. Format: {number}{unit} where unit is one
+        /// of "M", "G", "Mi" and "Gi" (e.g. 1G, 512Mi). If not specified, the default value is 512Mi.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerMemory")]
+        public virtual string ContainerMemory { get; set; }
+
+        /// <summary>
+        /// Optional. Maximum number of rows in each batch sent to the external runtime. If absent or if 0, BigQuery
+        /// dynamically decides the number of rows in a batch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxBatchingRows")]
+        public virtual System.Nullable<long> MaxBatchingRows { get; set; }
+
+        /// <summary>
+        /// Optional. Fully qualified name of the connection whose service account will be used to execute the code in
+        /// the container. Format:
+        /// ```
+        /// "projects/{project_id}/locations/{location_id}/connections/{connection_id}"
+        /// ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeConnection")]
+        public virtual string RuntimeConnection { get; set; }
+
+        /// <summary>Optional. Language runtime version (e.g. python-3.11).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
+        public virtual string RuntimeVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The external service cost is a portion of the total cost, these costs are not additive with total_bytes_billed.
     /// Moreover, this field only track external service costs that will show up as BigQuery costs (e.g. training
@@ -7810,10 +7921,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>
-        /// Output only. The reason why a Job was created.
-        /// [Preview](https://cloud.google.com/products/#product-launch-stages)
-        /// </summary>
+        /// <summary>Output only. The reason why a Job was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobCreationReason")]
         public virtual JobCreationReason JobCreationReason { get; set; }
 
@@ -8678,7 +8786,7 @@ namespace Google.Apis.Bigquery.v2.Data
     /// [`jobs.query`](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query) method when used with
     /// `JOB_CREATION_OPTIONAL` Job creation mode. For
     /// [`jobs.insert`](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/insert) method calls it will
-    /// always be `REQUESTED`. [Preview](https://cloud.google.com/products/#product-launch-stages)
+    /// always be `REQUESTED`.
     /// </summary>
     public class JobCreationReason : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10244,6 +10352,24 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Options for a user-defined Python function.</summary>
+    public class PythonOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The entry point function in the user's Python code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryPoint")]
+        public virtual string EntryPoint { get; set; }
+
+        /// <summary>
+        /// Optional. A list of package names along with versions to be installed. Follows requirements.txt syntax (e.g.
+        /// numpy==2.0, permutation, urllib3&amp;lt;2.2.1)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packages")]
+        public virtual System.Collections.Generic.IList<string> Packages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Query optimization information for a QUERY job.</summary>
     public class QueryInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10385,7 +10511,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Optional. If not set, jobs are always required. If set, the query request will follow the behavior described
-        /// JobCreationMode. [Preview](https://cloud.google.com/products/#product-launch-stages)
+        /// JobCreationMode.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobCreationMode")]
         public virtual string JobCreationMode { get; set; }
@@ -10569,7 +10695,6 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// Optional. The reason why a Job was created. Only relevant when a job_reference is present in the response.
         /// If job_reference is not present it will always be unset.
-        /// [Preview](https://cloud.google.com/products/#product-launch-stages)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobCreationReason")]
         public virtual JobCreationReason JobCreationReason { get; set; }
@@ -10612,9 +10737,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
-        /// <summary>
-        /// Auto-generated ID for the query. [Preview](https://cloud.google.com/products/#product-launch-stages)
-        /// </summary>
+        /// <summary>Auto-generated ID for the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryId")]
         public virtual string QueryId { get; set; }
 
@@ -10968,6 +11091,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
+        /// Optional. Options for the runtime of the external system executing the routine. This field is only
+        /// applicable for Python UDFs. [Preview](https://cloud.google.com/products/#product-launch-stages)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalRuntimeOptions")]
+        public virtual ExternalRuntimeOptions ExternalRuntimeOptions { get; set; }
+
+        /// <summary>
         /// Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importedLibraries")]
@@ -10984,6 +11114,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
         public virtual System.Nullable<long> LastModifiedTime { get; set; }
+
+        /// <summary>
+        /// Optional. Options for Python UDF. [Preview](https://cloud.google.com/products/#product-launch-stages)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pythonOptions")]
+        public virtual PythonOptions PythonOptions { get; set; }
 
         /// <summary>Optional. Remote function specific options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteFunctionOptions")]
