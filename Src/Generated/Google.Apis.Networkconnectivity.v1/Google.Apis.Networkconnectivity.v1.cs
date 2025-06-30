@@ -9130,7 +9130,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Nullable<long> Limit { get; set; }
 
         /// <summary>
-        /// Required. ProducerInstanceLocation is used to specify which authorization mechanism to use to determine
+        /// Optional. ProducerInstanceLocation is used to specify which authorization mechanism to use to determine
         /// which projects the Producer instance can be within.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerInstanceLocation")]
