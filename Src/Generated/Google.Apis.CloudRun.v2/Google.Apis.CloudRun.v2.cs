@@ -5654,6 +5654,21 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings for multi-region deployment.</summary>
+    public class GoogleCloudRunV2MultiRegionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. System-generated unique id for the multi-region Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiRegionId")]
+        public virtual string MultiRegionId { get; set; }
+
+        /// <summary>Required. List of regions to deploy to, including primary region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual System.Collections.Generic.IList<string> Regions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an NFS mount.</summary>
     public class GoogleCloudRunV2NFSVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6629,6 +6644,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
         public virtual string LaunchStage { get; set; }
+
+        /// <summary>Optional. Settings for multi-region deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiRegionSettings")]
+        public virtual GoogleCloudRunV2MultiRegionSettings MultiRegionSettings { get; set; }
 
         /// <summary>
         /// The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead
