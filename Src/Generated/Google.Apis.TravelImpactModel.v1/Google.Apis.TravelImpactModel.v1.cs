@@ -460,6 +460,34 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata about the EASA Flight Emissions Label.</summary>
+    public class EasaLabelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The date when the label expires. The label can be displayed until the end of this date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelExpiryDate")]
+        public virtual Date LabelExpiryDate { get; set; }
+
+        /// <summary>The date when the label was issued.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelIssueDate")]
+        public virtual Date LabelIssueDate { get; set; }
+
+        /// <summary>Version of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelVersion")]
+        public virtual string LabelVersion { get; set; }
+
+        /// <summary>
+        /// Sustainable Aviation Fuel (SAF) emissions discount percentage applied to the label. It is a percentage as a
+        /// decimal. The values are in the interval [0,1]. For example, 0.0021 means 0.21%. This discount and reduction
+        /// in emissions are reported by the EASA label but they are not included in the CO2e estimates distributed by
+        /// this API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safDiscountPercentage")]
+        public virtual System.Nullable<double> SafDiscountPercentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Grouped emissions per seating class results.</summary>
     public class EmissionsGramsPerPax : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -529,6 +557,18 @@ namespace Google.Apis.TravelImpactModel.v1.Data
     public class FlightWithEmissions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The significance of contrails warming impact compared to the total CO2e emissions impact.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contrailsImpactBucket")]
+        public virtual string ContrailsImpactBucket { get; set; }
+
+        /// <summary>
+        /// Optional. Metadata about the EASA Flight Emissions Label. Only set when the emissions data source is EASA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("easaLabelMetadata")]
+        public virtual EasaLabelMetadata EasaLabelMetadata { get; set; }
+
+        /// <summary>
         /// Optional. Per-passenger emission estimate numbers. Will not be present if emissions could not be computed.
         /// For the list of reasons why emissions could not be computed, see ComputeFlightEmissions.
         /// </summary>
@@ -540,6 +580,10 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flight")]
         public virtual Flight Flight { get; set; }
+
+        /// <summary>Optional. The source of the emissions data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
