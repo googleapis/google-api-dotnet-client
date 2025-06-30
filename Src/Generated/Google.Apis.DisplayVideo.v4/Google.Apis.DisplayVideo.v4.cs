@@ -5214,10 +5214,10 @@ namespace Google.Apis.DisplayVideo.v4
                     /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
                     /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` *
                     /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
-                    /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
-                    /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
-                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE`
-                    /// line items)
+                    /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` *
+                    /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE`
+                    /// line items) * `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
+                    /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
                     /// </param>
                     /// <param name="assignedTargetingOptionId">
                     /// Required. An identifier unique to the targeting type in this line item that identifies the
@@ -5273,7 +5273,8 @@ namespace Google.Apis.DisplayVideo.v4
                         /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
                         /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` *
                         /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
-                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` *
+                        /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
                         /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
@@ -5303,7 +5304,8 @@ namespace Google.Apis.DisplayVideo.v4
                         /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
                         /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` *
                         /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
-                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` *
+                        /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
                         /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
@@ -5647,10 +5649,10 @@ namespace Google.Apis.DisplayVideo.v4
                     /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
                     /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` *
                     /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
-                    /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
-                    /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
-                    /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE`
-                    /// line items)
+                    /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` *
+                    /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE`
+                    /// line items) * `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
+                    /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
                     /// </param>
                     public virtual ListRequest List(long advertiserId, long lineItemId, ListRequest.TargetingTypeEnum targetingType)
                     {
@@ -5700,7 +5702,8 @@ namespace Google.Apis.DisplayVideo.v4
                         /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
                         /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` *
                         /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
-                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` *
+                        /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
                         /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
@@ -5731,7 +5734,8 @@ namespace Google.Apis.DisplayVideo.v4
                         /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` *
                         /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` *
                         /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
-                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
+                        /// `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_INVENTORY_MODE` *
+                        /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
                         /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
                         /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
@@ -8541,7 +8545,8 @@ namespace Google.Apis.DisplayVideo.v4
                 /// <param name="targetingType">
                 /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                 /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID`
-                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
+                /// `TARGETING_TYPE_INVENTORY_MODE`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DisplayVideo.v4.Data.AssignedTargetingOption body, long advertiserId, CreateRequest.TargetingTypeEnum targetingType)
                 {
@@ -8570,6 +8575,7 @@ namespace Google.Apis.DisplayVideo.v4
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
                     /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+                    /// * `TARGETING_TYPE_INVENTORY_MODE`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual TargetingTypeEnum TargetingType { get; private set; }
@@ -8578,6 +8584,7 @@ namespace Google.Apis.DisplayVideo.v4
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
                     /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+                    /// * `TARGETING_TYPE_INVENTORY_MODE`
                     /// </summary>
                     public enum TargetingTypeEnum
                     {
@@ -8875,7 +8882,8 @@ namespace Google.Apis.DisplayVideo.v4
                 /// <param name="targetingType">
                 /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                 /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID`
-                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
+                /// `TARGETING_TYPE_INVENTORY_MODE`
                 /// </param>
                 /// <param name="assignedTargetingOptionId">
                 /// Required. The ID of the assigned targeting option to delete.
@@ -8905,6 +8913,7 @@ namespace Google.Apis.DisplayVideo.v4
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
                     /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+                    /// * `TARGETING_TYPE_INVENTORY_MODE`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual TargetingTypeEnum TargetingType { get; private set; }
@@ -8913,6 +8922,7 @@ namespace Google.Apis.DisplayVideo.v4
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
                     /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+                    /// * `TARGETING_TYPE_INVENTORY_MODE`
                     /// </summary>
                     public enum TargetingTypeEnum
                     {
@@ -21202,7 +21212,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// The assigned targeting options to create in batch, specified as a list of
         /// `CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
         /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createRequests")]
         public virtual System.Collections.Generic.IList<CreateAssignedTargetingOptionsRequest> CreateRequests { get; set; }
@@ -21211,7 +21221,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// The assigned targeting options to delete in batch, specified as a list of
         /// `DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
         /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteRequests")]
         public virtual System.Collections.Generic.IList<DeleteAssignedTargetingOptionsRequest> DeleteRequests { get; set; }
@@ -28360,7 +28370,9 @@ namespace Google.Apis.DisplayVideo.v4.Data
     {
         /// <summary>
         /// Optional. The third-party vendors measuring brand lift. The following third-party vendors are applicable: *
-        /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR`
+        /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_KANTAR_MILLWARD_BROWN` *
+        /// `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `THIRD_PARTY_VENDOR_INTAGE` * `THIRD_PARTY_VENDOR_NIELSEN` *
+        /// `THIRD_PARTY_VENDOR_MACROMILL`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandLiftVendorConfigs")]
         public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> BrandLiftVendorConfigs { get; set; }
@@ -28368,13 +28380,17 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>
         /// Optional. The third-party vendors measuring brand safety. The following third-party vendors are applicable:
         /// * `THIRD_PARTY_VENDOR_ZERF` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE`
+        /// * `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `THIRD_PARTY_VENDOR_ZEFR`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandSafetyVendorConfigs")]
         public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> BrandSafetyVendorConfigs { get; set; }
 
         /// <summary>
         /// Optional. The third-party vendors measuring reach. The following third-party vendors are applicable: *
-        /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_KANTAR`
+        /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_KANTAR` *
+        /// `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `THIRD_PARTY_VENDOR_KANTAR_MILLWARD_BROWN` *
+        /// `THIRD_PARTY_VENDOR_VIDEO_RESEARCH` * `THIRD_PARTY_VENDOR_MEDIA_SCOPE` *
+        /// `THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` * `THIRD_PARTY_VENDOR_VIDEO_AMP` * `THIRD_PARTY_VENDOR_ISPOT_TV`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reachVendorConfigs")]
         public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> ReachVendorConfigs { get; set; }
@@ -28382,7 +28398,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>
         /// Optional. The third-party vendors measuring viewability. The following third-party vendors are applicable: *
         /// `THIRD_PARTY_VENDOR_MOAT` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` *
-        /// `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_TELEMETRY` * `THIRD_PARTY_VENDOR_MEETRICS`
+        /// `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_TELEMETRY` * `THIRD_PARTY_VENDOR_MEETRICS` *
+        /// `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewabilityVendorConfigs")]
         public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> ViewabilityVendorConfigs { get; set; }
@@ -29018,19 +29035,16 @@ namespace Google.Apis.DisplayVideo.v4.Data
     public class YoutubeAndPartnersSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The kind of content on which the YouTube and Partners ads will be shown. *Warning*: Starting **June 12,
-        /// 2025**, this setting will no longer be editable. This field will eventually be removed. [Read more about
-        /// this announced change](/display-video/api/deprecations#features.li_yt_content_category)
+        /// Output only. The kind of content on which the YouTube and Partners ads will be shown. *Warning*: This field
+        /// will be removed in the near future. Use effective_content_category instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentCategory")]
         public virtual string ContentCategory { get; set; }
 
         /// <summary>
         /// Output only. The content category which takes effect when serving the line item. When content category is
-        /// set in both line item and advertiser, the stricter one will take effect when serving the line item.
-        /// *Warning*: Starting **June 12, 2025**, this field will only reflect the advertiser level setting for new
-        /// line items. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.li_yt_content_category)
+        /// set in both line item and advertiser, the stricter one will take effect when serving the line item. New line
+        /// items will only inherit the advertiser level setting.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveContentCategory")]
         public virtual string EffectiveContentCategory { get; set; }
