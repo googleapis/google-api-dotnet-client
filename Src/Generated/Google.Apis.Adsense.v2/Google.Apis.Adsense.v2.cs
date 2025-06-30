@@ -2949,37 +2949,44 @@ namespace Google.Apis.Adsense.v2
                     CLICKS = 7,
 
                     /// <summary>
-                    /// Fraction of page views considered to be spam. Only available to premium accounts.
+                    /// Fraction of page views considered to be spam. Only available to [premium
+                    /// accounts](https://developers.google.com/adsense/management/reference/rest/v2/accounts#Account.FIELDS.premium).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PAGE_VIEWS_SPAM_RATIO")]
                     PAGEVIEWSSPAMRATIO = 8,
 
                     /// <summary>
-                    /// Fraction of ad requests considered to be spam. Only available to premium accounts.
+                    /// Fraction of ad requests considered to be spam. Only available to [premium
+                    /// accounts](https://developers.google.com/adsense/management/reference/rest/v2/accounts#Account.FIELDS.premium).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("AD_REQUESTS_SPAM_RATIO")]
                     ADREQUESTSSPAMRATIO = 9,
 
                     /// <summary>
-                    /// Fraction of ad requests that returned ads considered to be spam. Only available to premium
-                    /// accounts.
+                    /// Fraction of ad requests that returned ads considered to be spam. Only available to [premium
+                    /// accounts](https://developers.google.com/adsense/management/reference/rest/v2/accounts#Account.FIELDS.premium).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("MATCHED_AD_REQUESTS_SPAM_RATIO")]
                     MATCHEDADREQUESTSSPAMRATIO = 10,
 
                     /// <summary>
-                    /// Fraction of impressions considered to be spam. Only available to premium accounts.
+                    /// Fraction of impressions considered to be spam. Only available to [premium
+                    /// accounts](https://developers.google.com/adsense/management/reference/rest/v2/accounts#Account.FIELDS.premium).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("IMPRESSIONS_SPAM_RATIO")]
                     IMPRESSIONSSPAMRATIO = 11,
 
                     /// <summary>
-                    /// Fraction of ad impressions considered to be spam. Only available to premium accounts.
+                    /// Fraction of ad impressions considered to be spam. Only available to [premium
+                    /// accounts](https://developers.google.com/adsense/management/reference/rest/v2/accounts#Account.FIELDS.premium).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("INDIVIDUAL_AD_IMPRESSIONS_SPAM_RATIO")]
                     INDIVIDUALADIMPRESSIONSSPAMRATIO = 12,
 
-                    /// <summary>Fraction of clicks considered to be spam. Only available to premium accounts.</summary>
+                    /// <summary>
+                    /// Fraction of clicks considered to be spam. Only available to [premium
+                    /// accounts](https://developers.google.com/adsense/management/reference/rest/v2/accounts#Account.FIELDS.premium).
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("CLICKS_SPAM_RATIO")]
                     CLICKSSPAMRATIO = 13,
 
@@ -3791,37 +3798,44 @@ namespace Google.Apis.Adsense.v2
                     CLICKS = 7,
 
                     /// <summary>
-                    /// Fraction of page views considered to be spam. Only available to premium accounts.
+                    /// Fraction of page views considered to be spam. Only available to [premium
+                    /// accounts](https://developers.google.com/adsense/management/reference/rest/v2/accounts#Account.FIELDS.premium).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PAGE_VIEWS_SPAM_RATIO")]
                     PAGEVIEWSSPAMRATIO = 8,
 
                     /// <summary>
-                    /// Fraction of ad requests considered to be spam. Only available to premium accounts.
+                    /// Fraction of ad requests considered to be spam. Only available to [premium
+                    /// accounts](https://developers.google.com/adsense/management/reference/rest/v2/accounts#Account.FIELDS.premium).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("AD_REQUESTS_SPAM_RATIO")]
                     ADREQUESTSSPAMRATIO = 9,
 
                     /// <summary>
-                    /// Fraction of ad requests that returned ads considered to be spam. Only available to premium
-                    /// accounts.
+                    /// Fraction of ad requests that returned ads considered to be spam. Only available to [premium
+                    /// accounts](https://developers.google.com/adsense/management/reference/rest/v2/accounts#Account.FIELDS.premium).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("MATCHED_AD_REQUESTS_SPAM_RATIO")]
                     MATCHEDADREQUESTSSPAMRATIO = 10,
 
                     /// <summary>
-                    /// Fraction of impressions considered to be spam. Only available to premium accounts.
+                    /// Fraction of impressions considered to be spam. Only available to [premium
+                    /// accounts](https://developers.google.com/adsense/management/reference/rest/v2/accounts#Account.FIELDS.premium).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("IMPRESSIONS_SPAM_RATIO")]
                     IMPRESSIONSSPAMRATIO = 11,
 
                     /// <summary>
-                    /// Fraction of ad impressions considered to be spam. Only available to premium accounts.
+                    /// Fraction of ad impressions considered to be spam. Only available to [premium
+                    /// accounts](https://developers.google.com/adsense/management/reference/rest/v2/accounts#Account.FIELDS.premium).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("INDIVIDUAL_AD_IMPRESSIONS_SPAM_RATIO")]
                     INDIVIDUALADIMPRESSIONSSPAMRATIO = 12,
 
-                    /// <summary>Fraction of clicks considered to be spam. Only available to premium accounts.</summary>
+                    /// <summary>
+                    /// Fraction of clicks considered to be spam. Only available to [premium
+                    /// accounts](https://developers.google.com/adsense/management/reference/rest/v2/accounts#Account.FIELDS.premium).
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("CLICKS_SPAM_RATIO")]
                     CLICKSSPAMRATIO = 13,
 
@@ -4642,7 +4656,10 @@ namespace Google.Apis.Adsense.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pendingTasks")]
         public virtual System.Collections.Generic.IList<string> PendingTasks { get; set; }
 
-        /// <summary>Output only. Whether this account is premium.</summary>
+        /// <summary>
+        /// Output only. Whether this account is premium. Premium accounts have access to additional spam-related
+        /// metrics.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("premium")]
         public virtual System.Nullable<bool> Premium { get; set; }
 
