@@ -3338,6 +3338,14 @@ namespace Google.Apis.SecretManager.v1beta2.Data
         public virtual Rotation Rotation { get; set; }
 
         /// <summary>
+        /// Optional. Input only. Immutable. Mapping of Tag keys/values directly bound to this resource. For example:
+        /// "123/environment": "production", "123/costCenter": "marketing" Tags are used to organize and group
+        /// resources. Tags can be used to control policy evaluation for the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
         /// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations
         /// are called on the secret or its versions.
         /// </summary>
