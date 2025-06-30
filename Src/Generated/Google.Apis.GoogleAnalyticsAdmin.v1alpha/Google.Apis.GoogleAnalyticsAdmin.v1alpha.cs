@@ -10667,6 +10667,57 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
+        /// <summary>Returns the singleton data retention settings for this property.</summary>
+        /// <param name="name">
+        /// Required. The name of the settings to lookup. Format: properties/{property}/reportingIdentitySettings
+        /// Example: "properties/1000/reportingIdentitySettings"
+        /// </param>
+        public virtual GetReportingIdentitySettingsRequest GetReportingIdentitySettings(string name)
+        {
+            return new GetReportingIdentitySettingsRequest(this.service, name);
+        }
+
+        /// <summary>Returns the singleton data retention settings for this property.</summary>
+        public class GetReportingIdentitySettingsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaReportingIdentitySettings>
+        {
+            /// <summary>Constructs a new GetReportingIdentitySettings request.</summary>
+            public GetReportingIdentitySettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the settings to lookup. Format: properties/{property}/reportingIdentitySettings
+            /// Example: "properties/1000/reportingIdentitySettings"
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getReportingIdentitySettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+name}";
+
+            /// <summary>Initializes GetReportingIdentitySettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^properties/[^/]+/reportingIdentitySettings$",
+                });
+            }
+        }
+
         /// <summary>
         /// Returns child Properties under the specified parent Account. Properties will be excluded if the caller does
         /// not have access. Soft-deleted (ie: "trashed") properties are excluded by default. Returns an empty list if
@@ -12724,6 +12775,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>A snapshot of a ReportingDataAnnotation resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportingDataAnnotation")]
         public virtual GoogleAnalyticsAdminV1alphaReportingDataAnnotation ReportingDataAnnotation { get; set; }
+
+        /// <summary>A snapshot of a ReportingIdentitySettings resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingIdentitySettings")]
+        public virtual GoogleAnalyticsAdminV1alphaReportingIdentitySettings ReportingIdentitySettings { get; set; }
 
         /// <summary>A snapshot of a SearchAds360Link resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchAds360Link")]
@@ -15552,6 +15607,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual GoogleTypeDate StartDate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource containing settings related to reporting identity.</summary>
+    public class GoogleAnalyticsAdminV1alphaReportingIdentitySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Identifier. Resource name for this reporting identity settings singleton resource. Format:
+        /// properties/{property_id}/reportingIdentitySettings Example: "properties/1234/reportingIdentitySettings"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The strategy used for identifying user identities in reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingIdentity")]
+        public virtual string ReportingIdentity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
