@@ -302,6 +302,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                 IssueModels = new IssueModelsResource(service);
                 Operations = new OperationsResource(service);
                 PhraseMatchers = new PhraseMatchersResource(service);
+                QaQuestionTags = new QaQuestionTagsResource(service);
                 QaScorecards = new QaScorecardsResource(service);
                 Views = new ViewsResource(service);
             }
@@ -3326,6 +3327,75 @@ namespace Google.Apis.Contactcenterinsights.v1
                             RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Generates a summary of predefined performance metrics for a set of conversations. Conversations
+                    /// can be specified by specifying a time window and an agent id, for now. The summary includes a
+                    /// comparison of metrics computed for conversations in the previous time period, and also a
+                    /// comparison with peers in the same time period.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource of the conversations to derive performance stats from.
+                    /// "projects/{project}/locations/{location}"
+                    /// </param>
+                    public virtual QueryPerformanceOverviewRequest QueryPerformanceOverview(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest body, string parent)
+                    {
+                        return new QueryPerformanceOverviewRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Generates a summary of predefined performance metrics for a set of conversations. Conversations
+                    /// can be specified by specifying a time window and an agent id, for now. The summary includes a
+                    /// comparison of metrics computed for conversations in the previous time period, and also a
+                    /// comparison with peers in the same time period.
+                    /// </summary>
+                    public class QueryPerformanceOverviewRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new QueryPerformanceOverview request.</summary>
+                        public QueryPerformanceOverviewRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource of the conversations to derive performance stats from.
+                        /// "projects/{project}/locations/{location}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "queryPerformanceOverview";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}:queryPerformanceOverview";
+
+                        /// <summary>Initializes QueryPerformanceOverview parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -8837,6 +8907,324 @@ namespace Google.Apis.Contactcenterinsights.v1
                 }
             }
 
+            /// <summary>Gets the QaQuestionTags resource.</summary>
+            public virtual QaQuestionTagsResource QaQuestionTags { get; }
+
+            /// <summary>The "qaQuestionTags" collection of methods.</summary>
+            public class QaQuestionTagsResource
+            {
+                private const string Resource = "qaQuestionTags";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public QaQuestionTagsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a QaQuestionTag.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource of the QaQuestionTag.</param>
+                public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestionTag body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a QaQuestionTag.</summary>
+                public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestionTag>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestionTag body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource of the QaQuestionTag.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A unique ID for the new QaQuestionTag. This ID will become the final component of the
+                    /// QaQuestionTag's resource name. If no ID is specified, a server-generated ID will be used. This
+                    /// value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid
+                    /// characters are `a-z-`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("qaQuestionTagId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string QaQuestionTagId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestionTag Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/qaQuestionTags";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("qaQuestionTagId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "qaQuestionTagId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a QaQuestionTag.</summary>
+                /// <param name="name">Required. The name of the QaQuestionTag to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a QaQuestionTag.</summary>
+                public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the QaQuestionTag to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/qaQuestionTags/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a QaQuestionTag.</summary>
+                /// <param name="name">Required. The name of the QaQuestionTag to get.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a QaQuestionTag.</summary>
+                public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestionTag>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the QaQuestionTag to get.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/qaQuestionTags/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists the question tags.</summary>
+                /// <param name="parent">Required. The parent resource of the QaQuestionTags.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists the question tags.</summary>
+                public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource of the QaQuestionTags.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and
+                    /// conjunctions (AND). Supported fields include the following: * `project_id` - id of the project
+                    /// to list tags for * `qa_scorecard_revision_id` - id of the scorecard revision to list tags for *
+                    /// `qa_question_id - id of the question to list tags for`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/qaQuestionTags";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a QaQuestionTag.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Resource name for the QaQuestionTag Format
+                /// projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag} In the above format, the
+                /// last segment, i.e., qa_question_tag, is a server-generated ID corresponding to the tag resource.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestionTag body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a QaQuestionTag.</summary>
+                public class PatchRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestionTag body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Resource name for the QaQuestionTag Format
+                    /// projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag} In the above format,
+                    /// the last segment, i.e., qa_question_tag, is a server-generated ID corresponding to the tag
+                    /// resource.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The list of fields to be updated. All possible fields can be updated by passing `*`,
+                    /// or a subset of the following updateable fields can be provided: * `qa_question_tag_name` - the
+                    /// name of the tag * `qa_question_ids` - the list of questions the tag applies to
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestionTag Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/qaQuestionTags/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the QaScorecards resource.</summary>
             public virtual QaScorecardsResource QaScorecards { get; }
 
@@ -10682,6 +11070,75 @@ namespace Google.Apis.Contactcenterinsights.v1
                     RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
                     {
                         Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Generates a summary of predefined performance metrics for a set of conversations. Conversations can be
+            /// specified by specifying a time window and an agent id, for now. The summary includes a comparison of
+            /// metrics computed for conversations in the previous time period, and also a comparison with peers in the
+            /// same time period.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent resource of the conversations to derive performance stats from.
+            /// "projects/{project}/locations/{location}"
+            /// </param>
+            public virtual QueryPerformanceOverviewRequest QueryPerformanceOverview(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest body, string parent)
+            {
+                return new QueryPerformanceOverviewRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Generates a summary of predefined performance metrics for a set of conversations. Conversations can be
+            /// specified by specifying a time window and an agent id, for now. The summary includes a comparison of
+            /// metrics computed for conversations in the previous time period, and also a comparison with peers in the
+            /// same time period.
+            /// </summary>
+            public class QueryPerformanceOverviewRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new QueryPerformanceOverview request.</summary>
+                public QueryPerformanceOverviewRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource of the conversations to derive performance stats from.
+                /// "projects/{project}/locations/{location}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "queryPerformanceOverview";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}:queryPerformanceOverview";
+
+                /// <summary>Initializes QueryPerformanceOverview parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -13581,6 +14038,102 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The metadata for deleting a QaQuestionTag Resource.</summary>
+    public class GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The original request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for deleting a QaQuestionTag.</summary>
+    public class GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the QaQuestionTag to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for deploying an issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14755,6 +15308,16 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Configuration for Cloud Storage bucket sources.</summary>
     public class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The Cloud Storage path to the conversation audio file if already transcribed. Note that: [1] Don't
+        /// set this field if the audio is not transcribed. [2] Audio files and transcript files must be in separate
+        /// buckets / folders. [3] A source file and its corresponding audio file must share the same name to be
+        /// properly ingested, E.g. `gs://bucket/transcript/conversation1.json` and
+        /// `gs://bucket/audio/conversation1.mp3`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioBucketUri")]
+        public virtual string AudioBucketUri { get; set; }
+
         /// <summary>Optional. Specifies the type of the objects in `bucket_uri`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketObjectType")]
         public virtual string BucketObjectType { get; set; }
@@ -14772,9 +15335,9 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
         /// <summary>
         /// Optional. The Cloud Storage path to the conversation metadata. Note that: [1] Metadata files are expected to
-        /// be in JSON format. [2] Metadata and source files (transcripts or audio) must be in separate buckets. [3] A
-        /// source file and its corresponding metadata file must share the same name to be properly ingested, E.g.
-        /// `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`.
+        /// be in JSON format. [2] Metadata and source files (transcripts or audio) must be in separate buckets /
+        /// folders. [3] A source file and its corresponding metadata file must share the same name to be properly
+        /// ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataBucketUri")]
         public virtual string MetadataBucketUri { get; set; }
@@ -15500,6 +16063,24 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The phrase matchers that match the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchers")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1PhraseMatcher> PhraseMatchers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response from a ListQaQuestionTags request.</summary>
+    public class GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The parent resource of the questions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionTags")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QaQuestionTag> QaQuestionTags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16245,6 +16826,110 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     }
 
     /// <summary>
+    /// A tag is a resource which aims to categorize a set of questions across multiple scorecards, e.g., "Customer
+    /// Satisfaction","Billing", etc.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1QaQuestionTag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which the question tag was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. A user-specified display name for the tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name for the QaQuestionTag Format
+        /// projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag} In the above format, the last
+        /// segment, i.e., qa_question_tag, is a server-generated ID corresponding to the tag resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The list of Scorecard Question IDs that the tag applies to. Each QaQuestionId is represented as a
+        /// full resource name containing the Question ID. Lastly, Since a tag may not necessarily be referenced by any
+        /// Scorecard Questions, we treat this field as optional.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionIds")]
+        public virtual System.Collections.Generic.IList<string> QaQuestionIds { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The most recent time at which the question tag was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata about the tuning operation for the question. Will only be set if a scorecard containing this question
     /// has been tuned.
     /// </summary>
@@ -16584,6 +17269,87 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A time window for querying conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1QueryInterval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Required. The end time of the time window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Required. The start time of the time window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The metadata from querying metrics.</summary>
     public class GoogleCloudContactcenterinsightsV1QueryMetricsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16827,6 +17593,47 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>The metadata for querying performance overview.</summary>
     public class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The request for summarizing performance according to different metrics for conversations over a specified time
+    /// window.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Conversations are from a single agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentPerformanceSource")]
+        public virtual GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource AgentPerformanceSource { get; set; }
+
+        /// <summary>The time window of the conversations to compare the performance to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparisonQueryInterval")]
+        public virtual GoogleCloudContactcenterinsightsV1QueryInterval ComparisonQueryInterval { get; set; }
+
+        /// <summary>
+        /// Optional. Filter to select a subset of conversations to compute the performance overview. Supports the same
+        /// filters as the filter field in QueryMetricsRequest. The source and query interval/comparison query interval
+        /// should not be included here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Required. The time window of the conversations to derive performance stats from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryInterval")]
+        public virtual GoogleCloudContactcenterinsightsV1QueryInterval QueryInterval { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The entity whose performance is being queried is a single agent.</summary>
+    public class GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Agent id to query performance overview for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -17671,6 +18478,110 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>The request to undeploy a QaScorecardRevision</summary>
     public class GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for updating a QaQuestionTag Resource.</summary>
+    public class GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The original request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for updating a QaQuestionTag.</summary>
+    public class GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The QaQuestionTag to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionTag")]
+        public virtual GoogleCloudContactcenterinsightsV1QaQuestionTag QaQuestionTag { get; set; }
+
+        /// <summary>
+        /// Optional. The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset
+        /// of the following updateable fields can be provided: * `qa_question_tag_name` - the name of the tag *
+        /// `qa_question_ids` - the list of questions the tag applies to
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -19748,6 +20659,102 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The metadata for deleting a QaQuestionTag Resource.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The original request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for deleting a QaQuestionTag.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the QaQuestionTag to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for deploying an issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20895,6 +21902,16 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Configuration for Cloud Storage bucket sources.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The Cloud Storage path to the conversation audio file if already transcribed. Note that: [1] Don't
+        /// set this field if the audio is not transcribed. [2] Audio files and transcript files must be in separate
+        /// buckets / folders. [3] A source file and its corresponding audio file must share the same name to be
+        /// properly ingested, E.g. `gs://bucket/transcript/conversation1.json` and
+        /// `gs://bucket/audio/conversation1.mp3`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioBucketUri")]
+        public virtual string AudioBucketUri { get; set; }
+
         /// <summary>Optional. Specifies the type of the objects in `bucket_uri`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketObjectType")]
         public virtual string BucketObjectType { get; set; }
@@ -20912,9 +21929,9 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
         /// <summary>
         /// Optional. The Cloud Storage path to the conversation metadata. Note that: [1] Metadata files are expected to
-        /// be in JSON format. [2] Metadata and source files (transcripts or audio) must be in separate buckets. [3] A
-        /// source file and its corresponding metadata file must share the same name to be properly ingested, E.g.
-        /// `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`.
+        /// be in JSON format. [2] Metadata and source files (transcripts or audio) must be in separate buckets /
+        /// folders. [3] A source file and its corresponding metadata file must share the same name to be properly
+        /// ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataBucketUri")]
         public virtual string MetadataBucketUri { get; set; }
@@ -21569,6 +22586,110 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>String value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strValue")]
         public virtual string StrValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A tag is a resource which aims to categorize a set of questions across multiple scorecards, e.g., "Customer
+    /// Satisfaction","Billing", etc.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which the question tag was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. A user-specified display name for the tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name for the QaQuestionTag Format
+        /// projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag} In the above format, the last
+        /// segment, i.e., qa_question_tag, is a server-generated ID corresponding to the tag resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The list of Scorecard Question IDs that the tag applies to. Each QaQuestionId is represented as a
+        /// full resource name containing the Question ID. Lastly, Since a tag may not necessarily be referenced by any
+        /// Scorecard Questions, we treat this field as optional.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionIds")]
+        public virtual System.Collections.Generic.IList<string> QaQuestionIds { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The most recent time at which the question tag was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22458,6 +23579,110 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>The response to undeploy an issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for updating a QaQuestionTag Resource.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The original request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for updating a QaQuestionTag.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The QaQuestionTag to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionTag")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag QaQuestionTag { get; set; }
+
+        /// <summary>
+        /// Optional. The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset
+        /// of the following updateable fields can be provided: * `qa_question_tag_name` - the name of the tag *
+        /// `qa_question_ids` - the list of questions the tag applies to
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
