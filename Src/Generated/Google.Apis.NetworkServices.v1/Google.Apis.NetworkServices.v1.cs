@@ -7458,7 +7458,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>
         /// Required. A set of extensions to execute for the matching request. At least one extension is required. Up to
         /// 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension`
-        /// chains are limited to 1 extension per extension chain.
+        /// and `LbEdgeExtension` chains are limited to 1 extension per extension chain.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
         public virtual System.Collections.Generic.IList<ExtensionChainExtension> Extensions { get; set; }
@@ -7545,15 +7545,17 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// resource](https://cloud.google.com/service-extensions/docs/reference/rest/v1beta1/projects.locations.wasmPlugins)
         /// in the format: `projects/{project}/locations/{location}/wasmPlugins/{plugin}` or
         /// `//networkservices.googleapis.com/projects/{project}/locations/{location}/wasmPlugins/{wasmPlugin}`. Plugin
-        /// extensions are currently supported for the `LbTrafficExtension` and the `LbRouteExtension` resources.
+        /// extensions are currently supported for the `LbTrafficExtension`, the `LbRouteExtension`, and the
+        /// `LbEdgeExtension` resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
 
         /// <summary>
-        /// Optional. A set of events during request or response processing for which this extension is called. This
-        /// field is required for the `LbTrafficExtension` resource. It is optional for the `LbRouteExtension` resource.
-        /// If unspecified `REQUEST_HEADERS` event is assumed as supported.
+        /// Optional. A set of events during request or response processing for which this extension is called. For the
+        /// `LbTrafficExtension` resource, this field is required. For the `LbRouteExtension` resource, this field is
+        /// optional. If unspecified, `REQUEST_HEADERS` event is assumed as supported. For the `LbEdgeExtension`
+        /// resource, this field is required and must only contain `REQUEST_HEADERS` event.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedEvents")]
         public virtual System.Collections.Generic.IList<string> SupportedEvents { get; set; }
