@@ -640,11 +640,6 @@ namespace Google.Apis.Merchant.promotions_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minimumPurchaseAmount")]
         public virtual Price MinimumPurchaseAmount { get; set; }
 
-        /// <summary>
-        /// Optional. [Minimum purchase
-        /// quantity](https://support.google.com/merchants/answer/13838182?ref_topic=13773355&amp;amp;sjid=17642868584668136159-NC)
-        /// for the promotion.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumPurchaseQuantity")]
         public virtual System.Nullable<long> MinimumPurchaseQuantity { get; set; }
 
