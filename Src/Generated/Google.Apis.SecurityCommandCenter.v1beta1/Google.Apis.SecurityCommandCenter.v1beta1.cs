@@ -10150,6 +10150,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("script")]
         public virtual GoogleCloudSecuritycenterV2File Script { get; set; }
 
+        /// <summary>
+        /// The ID of the user that executed the process. E.g. If this is the root user this will always be 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual System.Nullable<long> UserId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12227,6 +12233,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("script")]
         public virtual File Script { get; set; }
+
+        /// <summary>
+        /// The ID of the user that executed the process. E.g. If this is the root user this will always be 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual System.Nullable<long> UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
