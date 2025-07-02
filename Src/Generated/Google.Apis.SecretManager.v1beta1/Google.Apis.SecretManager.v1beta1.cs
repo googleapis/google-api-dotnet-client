@@ -1949,6 +1949,14 @@ namespace Google.Apis.SecretManager.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replication")]
         public virtual Replication Replication { get; set; }
 
+        /// <summary>
+        /// Optional. Input only. Immutable. Mapping of Tag keys/values directly bound to this resource. For example:
+        /// "123/environment": "production", "123/costCenter": "marketing" Tags are used to organize and group
+        /// resources. Tags can be used to control policy evaluation for the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
