@@ -9283,6 +9283,40 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual QuorumType QuorumType { get; set; }
     }
 
+    /// <summary>
+    /// Spanner Change Streams enable customers to capture and stream out changes to their Spanner databases in
+    /// real-time. A change stream can be created with option partition_mode='IMMUTABLE_KEY_RANGE' or
+    /// partition_mode='MUTABLE_KEY_RANGE'. This message is only used in Change Streams created with the option
+    /// partition_mode='MUTABLE_KEY_RANGE'. Spanner automatically creates a special Table-Valued Function (TVF) along
+    /// with each Change Streams. The function provides access to the change stream's records. The function is named
+    /// READ_ (where is the name of the change stream), and it returns a table with only one column called ChangeRecord.
+    /// </summary>
+    public class ChangeStreamRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data change record describing a data change for a change stream partition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataChangeRecord")]
+        public virtual DataChangeRecord DataChangeRecord { get; set; }
+
+        /// <summary>Heartbeat record describing a heartbeat for a change stream partition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("heartbeatRecord")]
+        public virtual HeartbeatRecord HeartbeatRecord { get; set; }
+
+        /// <summary>Partition end record describing a terminated change stream partition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionEndRecord")]
+        public virtual PartitionEndRecord PartitionEndRecord { get; set; }
+
+        /// <summary>Partition event record describing key range changes for a change stream partition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionEventRecord")]
+        public virtual PartitionEventRecord PartitionEventRecord { get; set; }
+
+        /// <summary>Partition start record describing a new change stream partition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionStartRecord")]
+        public virtual PartitionStartRecord PartitionStartRecord { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata associated with a parent-child relationship appearing in a PlanNode.</summary>
     public class ChildLink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9307,6 +9341,32 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variable")]
         public virtual string Variable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for a column.</summary>
+    public class ColumnMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates whether the column is a primary key column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPrimaryKey")]
+        public virtual System.Nullable<bool> IsPrimaryKey { get; set; }
+
+        /// <summary>Name of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Ordinal position of the column based on the original table definition in the schema starting with a value of
+        /// 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ordinalPosition")]
+        public virtual System.Nullable<long> OrdinalPosition { get; set; }
+
+        /// <summary>Type of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual Type Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10224,6 +10284,135 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A data change record contains a set of changes to a table with the same modification type (insert, update, or
+    /// delete) committed at the same commit timestamp in one change stream partition for the same transaction. Multiple
+    /// data change records can be returned for the same transaction across multiple change stream partitions.
+    /// </summary>
+    public class DataChangeRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Provides metadata describing the columns associated with the mods listed below.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnMetadata")]
+        public virtual System.Collections.Generic.IList<ColumnMetadata> ColumnMetadata { get; set; }
+
+        private string _commitTimestampRaw;
+
+        private object _commitTimestamp;
+
+        /// <summary>
+        /// Indicates the timestamp in which the change was committed. DataChangeRecord.commit_timestamps,
+        /// PartitionStartRecord.start_timestamps, PartitionEventRecord.commit_timestamps, and
+        /// PartitionEndRecord.end_timestamps can have the same value in the same partition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitTimestamp")]
+        public virtual string CommitTimestampRaw
+        {
+            get => _commitTimestampRaw;
+            set
+            {
+                _commitTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _commitTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CommitTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CommitTimestampDateTimeOffset instead.")]
+        public virtual object CommitTimestamp
+        {
+            get => _commitTimestamp;
+            set
+            {
+                _commitTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _commitTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CommitTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CommitTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommitTimestampRaw);
+            set => CommitTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Indicates whether this is the last record for a transaction in the current partition. Clients can use this
+        /// field to determine when all records for a transaction in the current partition have been received.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isLastRecordInTransactionInPartition")]
+        public virtual System.Nullable<bool> IsLastRecordInTransactionInPartition { get; set; }
+
+        /// <summary>
+        /// Indicates whether the transaction is a system transaction. System transactions include those issued by
+        /// time-to-live (TTL), column backfill, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isSystemTransaction")]
+        public virtual System.Nullable<bool> IsSystemTransaction { get; set; }
+
+        /// <summary>Describes the type of change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modType")]
+        public virtual string ModType { get; set; }
+
+        /// <summary>Describes the changes that were made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mods")]
+        public virtual System.Collections.Generic.IList<Mod> Mods { get; set; }
+
+        /// <summary>
+        /// Indicates the number of partitions that return data change records for this transaction. This value can be
+        /// helpful in assembling all records associated with a particular transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberOfPartitionsInTransaction")]
+        public virtual System.Nullable<int> NumberOfPartitionsInTransaction { get; set; }
+
+        /// <summary>
+        /// Indicates the number of data change records that are part of this transaction across all change stream
+        /// partitions. This value can be used to assemble all the records associated with a particular transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberOfRecordsInTransaction")]
+        public virtual System.Nullable<int> NumberOfRecordsInTransaction { get; set; }
+
+        /// <summary>
+        /// Record sequence numbers are unique and monotonically increasing (but not necessarily contiguous) for a
+        /// specific timestamp across record types in the same partition. To guarantee ordered processing, the reader
+        /// should process records (of potentially different types) in record_sequence order for a specific timestamp in
+        /// the same partition. The record sequence number ordering across partitions is only meaningful in the context
+        /// of a specific transaction. Record sequence numbers are unique across partitions for a specific transaction.
+        /// Sort the DataChangeRecords for the same server_transaction_id by record_sequence to reconstruct the ordering
+        /// of the changes within the transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordSequence")]
+        public virtual string RecordSequence { get; set; }
+
+        /// <summary>
+        /// Provides a globally unique string that represents the transaction in which the change was committed.
+        /// Multiple transactions can have the same commit timestamp, but each transaction has a unique
+        /// server_transaction_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverTransactionId")]
+        public virtual string ServerTransactionId { get; set; }
+
+        /// <summary>Name of the table affected by the change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
+        /// <summary>Indicates the transaction tag associated with this transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionTag")]
+        public virtual string TransactionTag { get; set; }
+
+        /// <summary>
+        /// Describes the value capture type that was specified in the change stream configuration when this change was
+        /// captured.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueCaptureType")]
+        public virtual string ValueCaptureType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Cloud Spanner database.</summary>
     public class Database : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11049,6 +11238,57 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A heartbeat record is returned as a progress indicator, when there are no data changes or any other partition
+    /// record types in the change stream partition.
+    /// </summary>
+    public class HeartbeatRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _timestampRaw;
+
+        private object _timestamp;
+
+        /// <summary>
+        /// Indicates the timestamp at which the query has returned all the records in the change stream partition with
+        /// timestamp &amp;lt;= heartbeat timestamp. The heartbeat timestamp will not be the same as the timestamps of
+        /// other record types in the same partition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string TimestampRaw
+        {
+            get => _timestampRaw;
+            set
+            {
+                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
+        public virtual object Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12279,6 +12519,68 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A mod describes all data changes in a watched table row.</summary>
+    public class Mod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Returns the value of the primary key of the modified row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keys")]
+        public virtual System.Collections.Generic.IList<ModValue> Keys { get; set; }
+
+        /// <summary>
+        /// Returns the new values after the change for the modified columns. Always empty for DELETE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newValues")]
+        public virtual System.Collections.Generic.IList<ModValue> NewValues { get; set; }
+
+        /// <summary>
+        /// Returns the old values before the change for the modified columns. Always empty for INSERT, or if old values
+        /// are not being captured specified by value_capture_type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldValues")]
+        public virtual System.Collections.Generic.IList<ModValue> OldValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Returns the value and associated metadata for a particular field of the Mod.</summary>
+    public class ModValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Index within the repeated column_metadata field, to obtain the column metadata for the column that was
+        /// modified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnMetadataIndex")]
+        public virtual System.Nullable<int> ColumnMetadataIndex { get; set; }
+
+        /// <summary>The value of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual object Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Describes move-in of the key ranges into the change stream partition identified by partition_token. To maintain
+    /// processing the changes for a particular key in timestamp order, the query processing the change stream partition
+    /// identified by partition_token should not advance beyond the partition event record commit timestamp until the
+    /// queries processing the source change stream partitions have processed all change stream records with timestamps
+    /// &amp;lt;= the partition event record commit timestamp.
+    /// </summary>
+    public class MoveInEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An unique partition identifier describing the source change stream partition that recorded changes for the
+        /// key range that is moving into this partition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourcePartitionToken")]
+        public virtual string SourcePartitionToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for MoveInstance.</summary>
     public class MoveInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12292,6 +12594,25 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Optional. The configuration for each database in the target instance configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetDatabaseMoveConfigs")]
         public virtual System.Collections.Generic.IList<DatabaseMoveConfig> TargetDatabaseMoveConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Describes move-out of the key ranges out of the change stream partition identified by partition_token. To
+    /// maintain processing the changes for a particular key in timestamp order, the query processing the MoveOutEvent
+    /// in the partition identified by partition_token should inform the queries processing the destination partitions
+    /// that they can unblock and proceed processing records past the commit_timestamp.
+    /// </summary>
+    public class MoveOutEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An unique partition identifier describing the destination change stream partition that will record changes
+        /// for the key range that is moving out of this partition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationPartitionToken")]
+        public virtual string DestinationPartitionToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12626,6 +12947,181 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A partition end record serves as a notification that the client should stop reading the partition. No further
+    /// records are expected to be retrieved on it.
+    /// </summary>
+    public class PartitionEndRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimestampRaw;
+
+        private object _endTimestamp;
+
+        /// <summary>
+        /// End timestamp at which the change stream partition is terminated. All changes generated by this partition
+        /// will have timestamps &amp;lt;= end_timestamp. DataChangeRecord.commit_timestamps,
+        /// PartitionStartRecord.start_timestamps, PartitionEventRecord.commit_timestamps, and
+        /// PartitionEndRecord.end_timestamps can have the same value in the same partition. PartitionEndRecord is the
+        /// last record returned for a partition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTimestamp")]
+        public virtual string EndTimestampRaw
+        {
+            get => _endTimestampRaw;
+            set
+            {
+                _endTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimestampDateTimeOffset instead.")]
+        public virtual object EndTimestamp
+        {
+            get => _endTimestamp;
+            set
+            {
+                _endTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTimestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimestampRaw);
+            set => EndTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Unique partition identifier describing the terminated change stream partition. partition_token is equal to
+        /// the partition token of the change stream partition currently queried to return this PartitionEndRecord.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionToken")]
+        public virtual string PartitionToken { get; set; }
+
+        /// <summary>
+        /// Record sequence numbers are unique and monotonically increasing (but not necessarily contiguous) for a
+        /// specific timestamp across record types in the same partition. To guarantee ordered processing, the reader
+        /// should process records (of potentially different types) in record_sequence order for a specific timestamp in
+        /// the same partition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordSequence")]
+        public virtual string RecordSequence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A partition event record describes key range changes for a change stream partition. The changes to a row defined
+    /// by its primary key can be captured in one change stream partition for a specific time range, and then be
+    /// captured in a different change stream partition for a different time range. This movement of key ranges across
+    /// change stream partitions is a reflection of activities, such as Spanner's dynamic splitting and load balancing,
+    /// etc. Processing this event is needed if users want to guarantee processing of the changes for any key in
+    /// timestamp order. If time ordered processing of changes for a primary key is not needed, this event can be
+    /// ignored. To guarantee time ordered processing for each primary key, if the event describes move-ins, the reader
+    /// of this partition needs to wait until the readers of the source partitions have processed all records with
+    /// timestamps &amp;lt;= this PartitionEventRecord.commit_timestamp, before advancing beyond this
+    /// PartitionEventRecord. If the event describes move-outs, the reader can notify the readers of the destination
+    /// partitions that they can continue processing.
+    /// </summary>
+    public class PartitionEventRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _commitTimestampRaw;
+
+        private object _commitTimestamp;
+
+        /// <summary>
+        /// Indicates the commit timestamp at which the key range change occurred. DataChangeRecord.commit_timestamps,
+        /// PartitionStartRecord.start_timestamps, PartitionEventRecord.commit_timestamps, and
+        /// PartitionEndRecord.end_timestamps can have the same value in the same partition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitTimestamp")]
+        public virtual string CommitTimestampRaw
+        {
+            get => _commitTimestampRaw;
+            set
+            {
+                _commitTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _commitTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CommitTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CommitTimestampDateTimeOffset instead.")]
+        public virtual object CommitTimestamp
+        {
+            get => _commitTimestamp;
+            set
+            {
+                _commitTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _commitTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CommitTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CommitTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommitTimestampRaw);
+            set => CommitTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Set when one or more key ranges are moved into the change stream partition identified by partition_token.
+        /// Example: Two key ranges are moved into partition (P1) from partition (P2) and partition (P3) in a single
+        /// transaction at timestamp T. The PartitionEventRecord returned in P1 will reflect the move as:
+        /// PartitionEventRecord { commit_timestamp: T partition_token: "P1" move_in_events { source_partition_token:
+        /// "P2" } move_in_events { source_partition_token: "P3" } } The PartitionEventRecord returned in P2 will
+        /// reflect the move as: PartitionEventRecord { commit_timestamp: T partition_token: "P2" move_out_events {
+        /// destination_partition_token: "P1" } } The PartitionEventRecord returned in P3 will reflect the move as:
+        /// PartitionEventRecord { commit_timestamp: T partition_token: "P3" move_out_events {
+        /// destination_partition_token: "P1" } }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moveInEvents")]
+        public virtual System.Collections.Generic.IList<MoveInEvent> MoveInEvents { get; set; }
+
+        /// <summary>
+        /// Set when one or more key ranges are moved out of the change stream partition identified by partition_token.
+        /// Example: Two key ranges are moved out of partition (P1) to partition (P2) and partition (P3) in a single
+        /// transaction at timestamp T. The PartitionEventRecord returned in P1 will reflect the move as:
+        /// PartitionEventRecord { commit_timestamp: T partition_token: "P1" move_out_events {
+        /// destination_partition_token: "P2" } move_out_events { destination_partition_token: "P3" } } The
+        /// PartitionEventRecord returned in P2 will reflect the move as: PartitionEventRecord { commit_timestamp: T
+        /// partition_token: "P2" move_in_events { source_partition_token: "P1" } } The PartitionEventRecord returned in
+        /// P3 will reflect the move as: PartitionEventRecord { commit_timestamp: T partition_token: "P3" move_in_events
+        /// { source_partition_token: "P1" } }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moveOutEvents")]
+        public virtual System.Collections.Generic.IList<MoveOutEvent> MoveOutEvents { get; set; }
+
+        /// <summary>
+        /// Unique partition identifier describing the partition this event occurred on. partition_token is equal to the
+        /// partition token of the change stream partition currently queried to return this PartitionEventRecord.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionToken")]
+        public virtual string PartitionToken { get; set; }
+
+        /// <summary>
+        /// Record sequence numbers are unique and monotonically increasing (but not necessarily contiguous) for a
+        /// specific timestamp across record types in the same partition. To guarantee ordered processing, the reader
+        /// should process records (of potentially different types) in record_sequence order for a specific timestamp in
+        /// the same partition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordSequence")]
+        public virtual string RecordSequence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Options for a `PartitionQueryRequest` and `PartitionReadRequest`.</summary>
     public class PartitionOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12749,6 +13245,73 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Transaction created by this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual Transaction Transaction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A partition start record serves as a notification that the client should schedule the partitions to be queried.
+    /// PartitionStartRecord returns information about one or more partitions.
+    /// </summary>
+    public class PartitionStartRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique partition identifiers to be used in queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionTokens")]
+        public virtual System.Collections.Generic.IList<string> PartitionTokens { get; set; }
+
+        /// <summary>
+        /// Record sequence numbers are unique and monotonically increasing (but not necessarily contiguous) for a
+        /// specific timestamp across record types in the same partition. To guarantee ordered processing, the reader
+        /// should process records (of potentially different types) in record_sequence order for a specific timestamp in
+        /// the same partition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordSequence")]
+        public virtual string RecordSequence { get; set; }
+
+        private string _startTimestampRaw;
+
+        private object _startTimestamp;
+
+        /// <summary>
+        /// Start timestamp at which the partitions should be queried to return change stream records with timestamps
+        /// &amp;gt;= start_timestamp. DataChangeRecord.commit_timestamps, PartitionStartRecord.start_timestamps,
+        /// PartitionEventRecord.commit_timestamps, and PartitionEndRecord.end_timestamps can have the same value in the
+        /// same partition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimestamp")]
+        public virtual string StartTimestampRaw
+        {
+            get => _startTimestampRaw;
+            set
+            {
+                _startTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimestampDateTimeOffset instead.")]
+        public virtual object StartTimestamp
+        {
+            get => _startTimestamp;
+            set
+            {
+                _startTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimestampRaw);
+            set => StartTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14255,142 +14818,7 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Transactions: Each session can have at most one active transaction at a time (note that standalone reads and
-    /// queries use a transaction internally and do count towards the one transaction limit). After the active
-    /// transaction is completed, the session can immediately be re-used for the next transaction. It is not necessary
-    /// to create a new session for each transaction. Transaction modes: Cloud Spanner supports three transaction modes:
-    /// 1. Locking read-write. This type of transaction is the only way to write data into Cloud Spanner. These
-    /// transactions rely on pessimistic locking and, if necessary, two-phase commit. Locking read-write transactions
-    /// may abort, requiring the application to retry. 2. Snapshot read-only. Snapshot read-only transactions provide
-    /// guaranteed consistency across several reads, but do not allow writes. Snapshot read-only transactions can be
-    /// configured to read at timestamps in the past, or configured to perform a strong read (where Spanner selects a
-    /// timestamp such that the read is guaranteed to see the effects of all transactions that have committed before the
-    /// start of the read). Snapshot read-only transactions do not need to be committed. Queries on change streams must
-    /// be performed with the snapshot read-only transaction mode, specifying a strong read. See
-    /// TransactionOptions.ReadOnly.strong for more details. 3. Partitioned DML. This type of transaction is used to
-    /// execute a single Partitioned DML statement. Partitioned DML partitions the key space and runs the DML statement
-    /// over each partition in parallel using separate, internal transactions that commit independently. Partitioned DML
-    /// transactions do not need to be committed. For transactions that only read, snapshot read-only transactions
-    /// provide simpler semantics and are almost always faster. In particular, read-only transactions do not take locks,
-    /// so they do not conflict with read-write transactions. As a consequence of not taking locks, they also do not
-    /// abort, so retry loops are not needed. Transactions may only read-write data in a single database. They may,
-    /// however, read-write data in different tables within that database. Locking read-write transactions: Locking
-    /// transactions may be used to atomically read-modify-write data anywhere in a database. This type of transaction
-    /// is externally consistent. Clients should attempt to minimize the amount of time a transaction is active. Faster
-    /// transactions commit with higher probability and cause less contention. Cloud Spanner attempts to keep read locks
-    /// active as long as the transaction continues to do reads, and the transaction has not been terminated by Commit
-    /// or Rollback. Long periods of inactivity at the client may cause Cloud Spanner to release a transaction's locks
-    /// and abort it. Conceptually, a read-write transaction consists of zero or more reads or SQL statements followed
-    /// by Commit. At any time before Commit, the client can send a Rollback request to abort the transaction.
-    /// Semantics: Cloud Spanner can commit the transaction if all read locks it acquired are still valid at commit
-    /// time, and it is able to acquire write locks for all writes. Cloud Spanner can abort the transaction for any
-    /// reason. If a commit attempt returns `ABORTED`, Cloud Spanner guarantees that the transaction has not modified
-    /// any user data in Cloud Spanner. Unless the transaction commits, Cloud Spanner makes no guarantees about how long
-    /// the transaction's locks were held for. It is an error to use Cloud Spanner locks for any sort of mutual
-    /// exclusion other than between Cloud Spanner transactions themselves. Retrying aborted transactions: When a
-    /// transaction aborts, the application can choose to retry the whole transaction again. To maximize the chances of
-    /// successfully committing the retry, the client should execute the retry in the same session as the original
-    /// attempt. The original session's lock priority increases with each consecutive abort, meaning that each attempt
-    /// has a slightly better chance of success than the previous. Note that the lock priority is preserved per session
-    /// (not per transaction). Lock priority is set by the first read or write in the first attempt of a read-write
-    /// transaction. If the application starts a new session to retry the whole transaction, the transaction loses its
-    /// original lock priority. Moreover, the lock priority is only preserved if the transaction fails with an `ABORTED`
-    /// error. Under some circumstances (for example, many transactions attempting to modify the same row(s)), a
-    /// transaction can abort many times in a short period before successfully committing. Thus, it is not a good idea
-    /// to cap the number of retries a transaction can attempt; instead, it is better to limit the total amount of time
-    /// spent retrying. Idle transactions: A transaction is considered idle if it has no outstanding reads or SQL
-    /// queries and has not started a read or SQL query within the last 10 seconds. Idle transactions can be aborted by
-    /// Cloud Spanner so that they don't hold on to locks indefinitely. If an idle transaction is aborted, the commit
-    /// fails with error `ABORTED`. If this behavior is undesirable, periodically executing a simple SQL query in the
-    /// transaction (for example, `SELECT 1`) prevents the transaction from becoming idle. Snapshot read-only
-    /// transactions: Snapshot read-only transactions provides a simpler method than locking read-write transactions for
-    /// doing several consistent reads. However, this type of transaction does not support writes. Snapshot transactions
-    /// do not take locks. Instead, they work by choosing a Cloud Spanner timestamp, then executing all reads at that
-    /// timestamp. Since they do not acquire locks, they do not block concurrent read-write transactions. Unlike locking
-    /// read-write transactions, snapshot read-only transactions never abort. They can fail if the chosen read timestamp
-    /// is garbage collected; however, the default garbage collection policy is generous enough that most applications
-    /// do not need to worry about this in practice. Snapshot read-only transactions do not need to call Commit or
-    /// Rollback (and in fact are not permitted to do so). To execute a snapshot transaction, the client specifies a
-    /// timestamp bound, which tells Cloud Spanner how to choose a read timestamp. The types of timestamp bound are: -
-    /// Strong (the default). - Bounded staleness. - Exact staleness. If the Cloud Spanner database to be read is
-    /// geographically distributed, stale read-only transactions can execute more quickly than strong or read-write
-    /// transactions, because they are able to execute far from the leader replica. Each type of timestamp bound is
-    /// discussed in detail below. Strong: Strong reads are guaranteed to see the effects of all transactions that have
-    /// committed before the start of the read. Furthermore, all rows yielded by a single read are consistent with each
-    /// other -- if any part of the read observes a transaction, all parts of the read see the transaction. Strong reads
-    /// are not repeatable: two consecutive strong read-only transactions might return inconsistent results if there are
-    /// concurrent writes. If consistency across reads is required, the reads should be executed within a transaction or
-    /// at an exact read timestamp. Queries on change streams (see below for more details) must also specify the strong
-    /// read timestamp bound. See TransactionOptions.ReadOnly.strong. Exact staleness: These timestamp bounds execute
-    /// reads at a user-specified timestamp. Reads at a timestamp are guaranteed to see a consistent prefix of the
-    /// global transaction history: they observe modifications done by all transactions with a commit timestamp less
-    /// than or equal to the read timestamp, and observe none of the modifications done by transactions with a larger
-    /// commit timestamp. They block until all conflicting transactions that can be assigned commit timestamps &amp;lt;=
-    /// the read timestamp have finished. The timestamp can either be expressed as an absolute Cloud Spanner commit
-    /// timestamp or a staleness relative to the current time. These modes do not require a "negotiation phase" to pick
-    /// a timestamp. As a result, they execute slightly faster than the equivalent boundedly stale concurrency modes. On
-    /// the other hand, boundedly stale reads usually return fresher results. See
-    /// TransactionOptions.ReadOnly.read_timestamp and TransactionOptions.ReadOnly.exact_staleness. Bounded staleness:
-    /// Bounded staleness modes allow Cloud Spanner to pick the read timestamp, subject to a user-provided staleness
-    /// bound. Cloud Spanner chooses the newest timestamp within the staleness bound that allows execution of the reads
-    /// at the closest available replica without blocking. All rows yielded are consistent with each other -- if any
-    /// part of the read observes a transaction, all parts of the read see the transaction. Boundedly stale reads are
-    /// not repeatable: two stale reads, even if they use the same staleness bound, can execute at different timestamps
-    /// and thus return inconsistent results. Boundedly stale reads execute in two phases: the first phase negotiates a
-    /// timestamp among all replicas needed to serve the read. In the second phase, reads are executed at the negotiated
-    /// timestamp. As a result of the two phase execution, bounded staleness reads are usually a little slower than
-    /// comparable exact staleness reads. However, they are typically able to return fresher results, and are more
-    /// likely to execute at the closest replica. Because the timestamp negotiation requires up-front knowledge of which
-    /// rows are read, it can only be used with single-use read-only transactions. See
-    /// TransactionOptions.ReadOnly.max_staleness and TransactionOptions.ReadOnly.min_read_timestamp. Old read
-    /// timestamps and garbage collection: Cloud Spanner continuously garbage collects deleted and overwritten data in
-    /// the background to reclaim storage space. This process is known as "version GC". By default, version GC reclaims
-    /// versions after they are one hour old. Because of this, Cloud Spanner can't perform reads at read timestamps more
-    /// than one hour in the past. This restriction also applies to in-progress reads and/or SQL queries whose timestamp
-    /// become too old while executing. Reads and SQL queries with too-old read timestamps fail with the error
-    /// `FAILED_PRECONDITION`. You can configure and extend the `VERSION_RETENTION_PERIOD` of a database up to a period
-    /// as long as one week, which allows Cloud Spanner to perform reads up to one week in the past. Querying change
-    /// Streams: A Change Stream is a schema object that can be configured to watch data changes on the entire database,
-    /// a set of tables, or a set of columns in a database. When a change stream is created, Spanner automatically
-    /// defines a corresponding SQL Table-Valued Function (TVF) that can be used to query the change records in the
-    /// associated change stream using the ExecuteStreamingSql API. The name of the TVF for a change stream is generated
-    /// from the name of the change stream: READ_. All queries on change stream TVFs must be executed using the
-    /// ExecuteStreamingSql API with a single-use read-only transaction with a strong read-only timestamp_bound. The
-    /// change stream TVF allows users to specify the start_timestamp and end_timestamp for the time range of interest.
-    /// All change records within the retention period is accessible using the strong read-only timestamp_bound. All
-    /// other TransactionOptions are invalid for change stream queries. In addition, if
-    /// TransactionOptions.read_only.return_read_timestamp is set to true, a special value of 2^63 - 2 is returned in
-    /// the Transaction message that describes the transaction, instead of a valid read timestamp. This special value
-    /// should be discarded and not used for any subsequent queries. Please see
-    /// https://cloud.google.com/spanner/docs/change-streams for more details on how to query the change stream TVFs.
-    /// Partitioned DML transactions: Partitioned DML transactions are used to execute DML statements with a different
-    /// execution strategy that provides different, and often better, scalability properties for large, table-wide
-    /// operations than DML in a ReadWrite transaction. Smaller scoped statements, such as an OLTP workload, should
-    /// prefer using ReadWrite transactions. Partitioned DML partitions the keyspace and runs the DML statement on each
-    /// partition in separate, internal transactions. These transactions commit automatically when complete, and run
-    /// independently from one another. To reduce lock contention, this execution strategy only acquires read locks on
-    /// rows that match the WHERE clause of the statement. Additionally, the smaller per-partition transactions hold
-    /// locks for less time. That said, Partitioned DML is not a drop-in replacement for standard DML used in ReadWrite
-    /// transactions. - The DML statement must be fully-partitionable. Specifically, the statement must be expressible
-    /// as the union of many statements which each access only a single row of the table. - The statement is not applied
-    /// atomically to all rows of the table. Rather, the statement is applied atomically to partitions of the table, in
-    /// independent transactions. Secondary index rows are updated atomically with the base table rows. - Partitioned
-    /// DML does not guarantee exactly-once execution semantics against a partition. The statement is applied at least
-    /// once to each partition. It is strongly recommended that the DML statement should be idempotent to avoid
-    /// unexpected results. For instance, it is potentially dangerous to run a statement such as `UPDATE table SET
-    /// column = column + 1` as it could be run multiple times against some rows. - The partitions are committed
-    /// automatically - there is no support for Commit or Rollback. If the call returns an error, or if the client
-    /// issuing the ExecuteSql call dies, it is possible that some rows had the statement executed on them successfully.
-    /// It is also possible that statement was never executed against other rows. - Partitioned DML transactions may
-    /// only contain the execution of a single DML statement via ExecuteSql or ExecuteStreamingSql. - If any error is
-    /// encountered during the execution of the partitioned DML operation (for instance, a UNIQUE INDEX violation,
-    /// division by zero, or a value that can't be stored due to schema constraints), then the operation is stopped at
-    /// that point and an error is returned. It is possible that at this point, some partitions have been committed (or
-    /// even committed multiple times), and other partitions have not been run at all. Given the above, Partitioned DML
-    /// is good fit for large, database-wide, operations that are idempotent, such as deleting old rows from a very
-    /// large table.
-    /// </summary>
+    /// <summary>Options to use for transactions.</summary>
     public class TransactionOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
