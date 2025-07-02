@@ -16515,7 +16515,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     }
 
     /// <summary>
-    /// Represents a Secure Access Connect (SAC) Attachment resource. A Secure Access Connect attachment enables NCC
+    /// Represents a Secure Access Connect (SAC) attachment resource. A Secure Access Connect attachment enables NCC
     /// Gateway to process traffic with an SSE product.
     /// </summary>
     public class SACAttachment : Google.Apis.Requests.IDirectResponseSchema
@@ -16649,7 +16649,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     {
         /// <summary>
         /// Immutable. Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not
-        /// to be confused with GCP locations.
+        /// to be confused with Google Cloud locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symantecLocationName")]
         public virtual string SymantecLocationName { get; set; }
@@ -16663,7 +16663,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     }
 
     /// <summary>
-    /// Represents a Secure Access Connect (SAC) Realm resource. A Secure Access Connect realm establishes a connection
+    /// Represents a Secure Access Connect (SAC) realm resource. A Secure Access Connect realm establishes a connection
     /// between your Google Cloud project and an SSE service.
     /// </summary>
     public class SACRealm : Google.Apis.Requests.IDirectResponseSchema
