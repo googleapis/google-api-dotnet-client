@@ -9791,6 +9791,7 @@ namespace Google.Apis.AndroidPublisher.v3
         {
             this.service = service;
             Products = new ProductsResource(service);
+            Productsv2 = new Productsv2Resource(service);
             Subscriptions = new SubscriptionsResource(service);
             Subscriptionsv2 = new Subscriptionsv2Resource(service);
             Voidedpurchases = new VoidedpurchasesResource(service);
@@ -10042,6 +10043,89 @@ namespace Google.Apis.AndroidPublisher.v3
                     RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "productId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Productsv2 resource.</summary>
+        public virtual Productsv2Resource Productsv2 { get; }
+
+        /// <summary>The "productsv2" collection of methods.</summary>
+        public class Productsv2Resource
+        {
+            private const string Resource = "productsv2";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public Productsv2Resource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Checks the purchase and consumption status of an inapp item.</summary>
+            /// <param name="packageName">
+            /// The package name of the application the inapp product was sold in (for example, 'com.some.thing').
+            /// </param>
+            /// <param name="token">
+            /// The token provided to the user's device when the inapp product was purchased.
+            /// </param>
+            public virtual Getproductpurchasev2Request Getproductpurchasev2(string packageName, string token)
+            {
+                return new Getproductpurchasev2Request(this.service, packageName, token);
+            }
+
+            /// <summary>Checks the purchase and consumption status of an inapp item.</summary>
+            public class Getproductpurchasev2Request : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ProductPurchaseV2>
+            {
+                /// <summary>Constructs a new Getproductpurchasev2 request.</summary>
+                public Getproductpurchasev2Request(Google.Apis.Services.IClientService service, string packageName, string token) : base(service)
+                {
+                    PackageName = packageName;
+                    Token = token;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The package name of the application the inapp product was sold in (for example, 'com.some.thing').
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>The token provided to the user's device when the inapp product was purchased.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Token { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getproductpurchasev2";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/productsv2/tokens/{token}";
+
+                /// <summary>Initializes Getproductpurchasev2 parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -15557,6 +15641,65 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains item-level info for a ProductPurchaseV2.</summary>
+    public class ProductLineItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The purchased product ID (for example, 'monthly001').</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>The offer details for this item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productOfferDetails")]
+        public virtual ProductOfferDetails ProductOfferDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Offer details information related to a purchase line item.</summary>
+    public class ProductOfferDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The consumption state of the purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumptionState")]
+        public virtual string ConsumptionState { get; set; }
+
+        /// <summary>The offer ID. Only present for offers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>
+        /// The latest offer tags associated with the offer. It includes tags inherited from the purchase option.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerTags")]
+        public virtual System.Collections.Generic.IList<string> OfferTags { get; set; }
+
+        /// <summary>The per-transaction offer token used to make this purchase line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerToken")]
+        public virtual string OfferToken { get; set; }
+
+        /// <summary>The purchase option ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOptionId")]
+        public virtual string PurchaseOptionId { get; set; }
+
+        /// <summary>The quantity associated with the purchase of the inapp product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<int> Quantity { get; set; }
+
+        /// <summary>
+        /// The quantity eligible for refund, i.e. quantity that hasn't been refunded. The value reflects quantity-based
+        /// partial refunds and full refunds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refundableQuantity")]
+        public virtual System.Nullable<int> RefundableQuantity { get; set; }
+
+        /// <summary>Offer details about rent offers. This will only be set for rental line items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rentOfferDetails")]
+        public virtual RentOfferDetails RentOfferDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A ProductPurchase resource indicates the status of a user's inapp product purchase.</summary>
     public class ProductPurchase : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15649,12 +15792,123 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A ProductPurchaseV2 resource indicates the status of a user's inapp product purchase.</summary>
+    public class ProductPurchaseV2 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The acknowledgement state of the purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementState")]
+        public virtual string AcknowledgementState { get; set; }
+
+        /// <summary>This kind represents a ProductPurchaseV2 object in the androidpublisher service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// An obfuscated version of the id that is uniquely associated with the user's account in your app. Only
+        /// present if specified using
+        /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid
+        /// when the purchase was made.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalAccountId")]
+        public virtual string ObfuscatedExternalAccountId { get; set; }
+
+        /// <summary>
+        /// An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only
+        /// present if specified using
+        /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid
+        /// when the purchase was made.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalProfileId")]
+        public virtual string ObfuscatedExternalProfileId { get; set; }
+
+        /// <summary>
+        /// The order id associated with the purchase of the inapp product. May not be set if there is no order
+        /// associated with the purchase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
+        public virtual string OrderId { get; set; }
+
+        /// <summary>Contains item-level info for a ProductPurchaseV2.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productLineItem")]
+        public virtual System.Collections.Generic.IList<ProductLineItem> ProductLineItem { get; set; }
+
+        private string _purchaseCompletionTimeRaw;
+
+        private object _purchaseCompletionTime;
+
+        /// <summary>
+        /// The time when the purchase was successful, i.e., when the PurchaseState has changed to PURCHASED. This field
+        /// will not be present until the payment is complete. For example, if the user initiated a pending transaction
+        /// (https://developer.android.com/google/play/billing/integrate#pending), this field will not be populated
+        /// until the user successfully completes the steps required to complete the transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseCompletionTime")]
+        public virtual string PurchaseCompletionTimeRaw
+        {
+            get => _purchaseCompletionTimeRaw;
+            set
+            {
+                _purchaseCompletionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _purchaseCompletionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PurchaseCompletionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PurchaseCompletionTimeDateTimeOffset instead.")]
+        public virtual object PurchaseCompletionTime
+        {
+            get => _purchaseCompletionTime;
+            set
+            {
+                _purchaseCompletionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _purchaseCompletionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="PurchaseCompletionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PurchaseCompletionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PurchaseCompletionTimeRaw);
+            set => PurchaseCompletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Information about the purchase state of the purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseStateContext")]
+        public virtual PurchaseStateContext PurchaseStateContext { get; set; }
+
+        /// <summary>ISO 3166-1 alpha-2 billing region code of the user at the time the product was granted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>Information related to test purchases. This will only be set for test purchases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testPurchaseContext")]
+        public virtual TestPurchaseContext TestPurchaseContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for the product.purchases.acknowledge API.</summary>
     public class ProductPurchasesAcknowledgeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Payload to attach to the purchase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerPayload")]
         public virtual string DeveloperPayload { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Context about the purchase state.</summary>
+    public class PurchaseStateContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The purchase state of the purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseState")]
+        public virtual string PurchaseState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16083,6 +16337,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
         public virtual System.Nullable<long> VersionCode { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Offer details information related to a rental line item.</summary>
+    public class RentOfferDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -17515,6 +17776,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Whether this subscription purchase is a test purchase.</summary>
     public class TestPurchase : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Context about a test purchase.</summary>
+    public class TestPurchaseContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fop type of the test purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fopType")]
+        public virtual string FopType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
