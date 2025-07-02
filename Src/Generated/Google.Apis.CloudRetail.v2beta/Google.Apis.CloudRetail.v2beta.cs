@@ -10374,6 +10374,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("example")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaIntentClassificationConfigExample> Example { get; set; }
 
+        /// <summary>Optional. Inline source for intent classifications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
+        public virtual GoogleCloudRetailV2betaIntentClassificationConfigInlineSource InlineSource { get; set; }
+
         /// <summary>
         /// Optional. Customers can use the preamble to specify any requirements for blocklisting intent classification.
         /// This preamble will be added to the blocklisting intent classification model prompt.
@@ -10388,6 +10392,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     /// <summary>An example for intent classification.</summary>
     public class GoogleCloudRetailV2betaIntentClassificationConfigExample : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. Whether the example is classified positively.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classifiedPositive")]
+        public virtual System.Nullable<bool> ClassifiedPositive { get; set; }
+
         /// <summary>
         /// Optional. The intent_type must match one of the predefined intent types defined at
         /// https://cloud.google.com/retail/docs/reference/rpc/google.cloud.retail.v2alpha#querytype
@@ -10405,6 +10413,39 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An inline force intent classification configuration.</summary>
+    public class GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The intent_type must match one of the predefined intent types defined at
+        /// https://cloud.google.com/retail/docs/reference/rpc/google.cloud.retail.v2alpha#querytype
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentType")]
+        public virtual string IntentType { get; set; }
+
+        /// <summary>Optional. The operation to perform for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>Optional. A example query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Inline source for intent classifications.</summary>
+    public class GoogleCloudRetailV2betaIntentClassificationConfigInlineSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of inline force intent classifications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineForceIntents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaIntentClassificationConfigInlineForceIntent> InlineForceIntents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12937,6 +12978,15 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tileNavigationSpec")]
         public virtual GoogleCloudRetailV2betaSearchRequestTileNavigationSpec TileNavigationSpec { get; set; }
 
+        /// <summary>
+        /// Optional. The user attributes that could be used for personalization of search results. * Populate at most
+        /// 100 key-value pairs per query. * Only supports string keys and repeated string values. * Duplcate keys are
+        /// not allowed within a single query. Example: user_attributes: [ { key: "pets" value { values: "dog" values:
+        /// "cat" } }, { key: "state" value { values: "CA" } } ]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAttributes")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2betaStringList> UserAttributes { get; set; }
+
         /// <summary>User information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
         public virtual GoogleCloudRetailV2betaUserInfo UserInfo { get; set; }
@@ -13949,6 +13999,17 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     /// </summary>
     public class GoogleCloudRetailV2betaSetInventoryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of string values.</summary>
+    public class GoogleCloudRetailV2betaStringList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>String values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
