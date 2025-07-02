@@ -2466,6 +2466,264 @@ namespace Google.Apis.Merchant.accounts_v1beta
             public ProgramsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                CheckoutSettings = new CheckoutSettingsResource(service);
+            }
+
+            /// <summary>Gets the CheckoutSettings resource.</summary>
+            public virtual CheckoutSettingsResource CheckoutSettings { get; }
+
+            /// <summary>The "checkoutSettings" collection of methods.</summary>
+            public class CheckoutSettingsResource
+            {
+                private const string Resource = "checkoutSettings";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CheckoutSettingsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates `CheckoutSettings` for the given merchant.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The merchant account for which the `CheckoutSettings` will be created.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Merchant.accounts_v1beta.Data.CheckoutSettings body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates `CheckoutSettings` for the given merchant.</summary>
+                public class CreateRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.CheckoutSettings>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.CheckoutSettings body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The merchant account for which the `CheckoutSettings` will be created.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Merchant.accounts_v1beta.Data.CheckoutSettings Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "accounts/v1beta/{+parent}/checkoutSettings";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/programs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes `CheckoutSettings` and unenrolls merchant from `Checkout` program.</summary>
+                /// <param name="name">
+                /// Required. The name/identifier of the merchant account. Format:
+                /// `accounts/{account}/programs/{program}/checkoutSettings`
+                /// </param>
+                public virtual DeleteCheckoutSettingsRequest DeleteCheckoutSettings(string name)
+                {
+                    return new DeleteCheckoutSettingsRequest(this.service, name);
+                }
+
+                /// <summary>Deletes `CheckoutSettings` and unenrolls merchant from `Checkout` program.</summary>
+                public class DeleteCheckoutSettingsRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Empty>
+                {
+                    /// <summary>Constructs a new DeleteCheckoutSettings request.</summary>
+                    public DeleteCheckoutSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name/identifier of the merchant account. Format:
+                    /// `accounts/{account}/programs/{program}/checkoutSettings`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "deleteCheckoutSettings";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "accounts/v1beta/{+name}";
+
+                    /// <summary>Initializes DeleteCheckoutSettings parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/programs/[^/]+/checkoutSettings$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets `CheckoutSettings` for the given merchant. This includes information about review state,
+                /// enrollment state and URL settings.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The name/identifier of the merchant account. Format:
+                /// `accounts/{account}/programs/{program}/checkoutSettings`
+                /// </param>
+                public virtual GetCheckoutSettingsRequest GetCheckoutSettings(string name)
+                {
+                    return new GetCheckoutSettingsRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Gets `CheckoutSettings` for the given merchant. This includes information about review state,
+                /// enrollment state and URL settings.
+                /// </summary>
+                public class GetCheckoutSettingsRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.CheckoutSettings>
+                {
+                    /// <summary>Constructs a new GetCheckoutSettings request.</summary>
+                    public GetCheckoutSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name/identifier of the merchant account. Format:
+                    /// `accounts/{account}/programs/{program}/checkoutSettings`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getCheckoutSettings";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "accounts/v1beta/{+name}";
+
+                    /// <summary>Initializes GetCheckoutSettings parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/programs/[^/]+/checkoutSettings$",
+                        });
+                    }
+                }
+
+                /// <summary>Updates `CheckoutSettings` for the given merchant.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the program configuration settings. Format:
+                /// `accounts/{account}/programs/{program}/checkoutSettings`
+                /// </param>
+                public virtual UpdateCheckoutSettingsRequest UpdateCheckoutSettings(Google.Apis.Merchant.accounts_v1beta.Data.CheckoutSettings body, string name)
+                {
+                    return new UpdateCheckoutSettingsRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates `CheckoutSettings` for the given merchant.</summary>
+                public class UpdateCheckoutSettingsRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.CheckoutSettings>
+                {
+                    /// <summary>Constructs a new UpdateCheckoutSettings request.</summary>
+                    public UpdateCheckoutSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.CheckoutSettings body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the program configuration settings. Format:
+                    /// `accounts/{account}/programs/{program}/checkoutSettings`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. List of fields being updated. The following fields are supported (in both `snake_case`
+                    /// and `lowerCamelCase`): - `eligible_destinations` - `uri_settings`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Merchant.accounts_v1beta.Data.CheckoutSettings Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateCheckoutSettings";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "accounts/v1beta/{+name}";
+
+                    /// <summary>Initializes UpdateCheckoutSettings parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/programs/[^/]+/checkoutSettings$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Disable participation in the specified program for the account.</summary>
@@ -5589,6 +5847,71 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// [CheckoutSettings](https://support.google.com/merchants/answer/13945960) for a specific merchant.
+    /// </summary>
+    public class CheckoutSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The effective value of enrollment_state for a given merchant ID. If account level settings are
+        /// present then this value will be a copy of the account level settings. Otherwise, it will have the value of
+        /// the parent account (for only marketplace sellers).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveEnrollmentState")]
+        public virtual string EffectiveEnrollmentState { get; set; }
+
+        /// <summary>
+        /// Output only. The effective value of `review_state` for a given merchant ID. If account level settings are
+        /// present then this value will be a copy of the account level settings. Otherwise, it will have the value of
+        /// the parent account (for only marketplace sellers).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveReviewState")]
+        public virtual string EffectiveReviewState { get; set; }
+
+        /// <summary>
+        /// Output only. The effective value of `uri_settings` for a given merchant. If account level settings are
+        /// present then this value will be a copy of url settings. Otherwise, it will have the value of the parent
+        /// account (for only marketplace sellers).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveUriSettings")]
+        public virtual UriSettings EffectiveUriSettings { get; set; }
+
+        /// <summary>
+        /// Optional. The destinations to which the checkout program applies, valid destination values are
+        /// `SHOPPING_ADS`, `FREE_LISTINGS`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligibleDestinations")]
+        public virtual System.Collections.Generic.IList<string> EligibleDestinations { get; set; }
+
+        /// <summary>Output only. Reflects the merchant enrollment state in `Checkout` program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollmentState")]
+        public virtual string EnrollmentState { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the program configuration settings. Format:
+        /// `accounts/{account}/programs/{program}/checkoutSettings`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Reflects the merchant review state in `Checkout` program. This is set based on the data quality
+        /// reviews of the URL provided by the merchant. A merchant with enrollment state as `ENROLLED` can be in the
+        /// following review states: `IN_REVIEW`, `APPROVED` or `DISAPPROVED`. A merchant must be in an
+        /// `enrollment_state` of `ENROLLED` before a review can begin for the merchant.For more details, check the help
+        /// center doc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewState")]
+        public virtual string ReviewState { get; set; }
+
+        /// <summary>URI settings for cart or checkout URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriSettings")]
+        public virtual UriSettings UriSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for the `ClaimHomepage` method.</summary>
     public class ClaimHomepageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7827,6 +8150,29 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     /// <summary>Request message for the `UnclaimHomepage` method.</summary>
     public class UnclaimHomepageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>URL settings for cart or checkout URL.</summary>
+    public class UriSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Cart URL template. When the placeholders are expanded will redirect the buyer to the cart page on the
+        /// merchant website with the selected item in cart. For more details, check the [help center
+        /// doc](https://support.google.com/merchants/answer/13945960#method1&amp;amp;zippy=%2Cproduct-level-url-formatting%2Caccount-level-url-formatting)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cartUriTemplate")]
+        public virtual string CartUriTemplate { get; set; }
+
+        /// <summary>
+        /// Checkout URL template. When the placeholders are expanded will redirect the buyer to the merchant checkout
+        /// page with the item in the cart. For more details, check the [help center
+        /// doc](https://support.google.com/merchants/answer/13945960#method1&amp;amp;zippy=%2Cproduct-level-url-formatting%2Caccount-level-url-formatting)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkoutUriTemplate")]
+        public virtual string CheckoutUriTemplate { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
