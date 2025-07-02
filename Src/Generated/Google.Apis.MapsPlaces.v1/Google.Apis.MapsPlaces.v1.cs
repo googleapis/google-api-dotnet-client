@@ -1725,10 +1725,12 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual GoogleMapsPlacesV1PriceRange PriceRange { get; set; }
 
         /// <summary>
-        /// The primary type of the given result. This type must one of the Places API supported types. For example,
+        /// The primary type of the given result. This type must be one of the Places API supported types. For example,
         /// "restaurant", "cafe", "airport", etc. A place can only have a single primary type. For the complete list of
         /// possible values, see Table A and Table B at
-        /// https://developers.google.com/maps/documentation/places/web-service/place-types
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types. The primary type may be
+        /// missing if the place's primary type is not a supported type. When a primary type is present, it is always
+        /// one of the types in the `types` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryType")]
         public virtual string PrimaryType { get; set; }
@@ -1736,7 +1738,8 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>
         /// The display name of the primary type, localized to the request language if applicable. For the complete list
         /// of possible values, see Table A and Table B at
-        /// https://developers.google.com/maps/documentation/places/web-service/place-types
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types. The primary type may be
+        /// missing if the place's primary type is not a supported type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryTypeDisplayName")]
         public virtual GoogleTypeLocalizedText PrimaryTypeDisplayName { get; set; }
@@ -2180,8 +2183,13 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual System.Nullable<bool> OpenNow { get; set; }
 
         /// <summary>
-        /// NOTE: The ordering of the `periods` array is independent of the ordering of the `weekday_descriptions`
-        /// array. Do not assume they will begin on the same day.
+        /// The periods that this place is open during the week. The periods are in chronological order, in the
+        /// place-local timezone. An empty (but not absent) value indicates a place that is never open, e.g. because it
+        /// is closed temporarily for renovations. The starting day of `periods` is NOT fixed and should not be assumed
+        /// to be Sunday. The API determines the start day based on a variety of factors. For example, for a 24/7
+        /// business, the first period may begin on the day of the request. For other businesses, it might be the first
+        /// day of the week that they are open. NOTE: The ordering of the `periods` array is independent of the ordering
+        /// of the `weekday_descriptions` array. Do not assume they will begin on the same day.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periods")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceOpeningHoursPeriod> Periods { get; set; }
