@@ -10724,6 +10724,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("example")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaIntentClassificationConfigExample> Example { get; set; }
 
+        /// <summary>Optional. Inline source for intent classifications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
+        public virtual GoogleCloudRetailV2alphaIntentClassificationConfigInlineSource InlineSource { get; set; }
+
         /// <summary>
         /// Optional. Customers can use the preamble to specify any requirements for blocklisting intent classification.
         /// This preamble will be added to the blocklisting intent classification model prompt.
@@ -10738,6 +10742,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     /// <summary>An example for intent classification.</summary>
     public class GoogleCloudRetailV2alphaIntentClassificationConfigExample : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. Whether the example is classified positively.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classifiedPositive")]
+        public virtual System.Nullable<bool> ClassifiedPositive { get; set; }
+
         /// <summary>
         /// Optional. The intent_type must match one of the predefined intent types defined at
         /// https://cloud.google.com/retail/docs/reference/rpc/google.cloud.retail.v2alpha#querytype
@@ -10755,6 +10763,39 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An inline force intent classification configuration.</summary>
+    public class GoogleCloudRetailV2alphaIntentClassificationConfigInlineForceIntent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The intent_type must match one of the predefined intent types defined at
+        /// https://cloud.google.com/retail/docs/reference/rpc/google.cloud.retail.v2alpha#querytype
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentType")]
+        public virtual string IntentType { get; set; }
+
+        /// <summary>Optional. The operation to perform for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>Optional. A example query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Inline source for intent classifications.</summary>
+    public class GoogleCloudRetailV2alphaIntentClassificationConfigInlineSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of inline force intent classifications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineForceIntents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaIntentClassificationConfigInlineForceIntent> InlineForceIntents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
