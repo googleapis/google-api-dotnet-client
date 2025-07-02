@@ -29338,7 +29338,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Represents an entity that was synced in this ConnectorRun.</summary>
     public class GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRun : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of documents deleted.</summary>
+        /// <summary>Optional. The number of documents deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedRecordCount")]
         public virtual System.Nullable<long> DeletedRecordCount { get; set; }
 
@@ -29346,7 +29346,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entityName")]
         public virtual string EntityName { get; set; }
 
-        /// <summary>The total number of documents failed at sync at any stage (extraction, indexing, etc).</summary>
+        /// <summary>Optional. The total number of documents failed at sync at indexing stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorRecordCount")]
         public virtual System.Nullable<long> ErrorRecordCount { get; set; }
 
@@ -29357,11 +29357,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Errors { get; set; }
 
-        /// <summary>The number of documents extracted from connector source, ready to be ingested to VAIS.</summary>
+        /// <summary>
+        /// Optional. The number of documents extracted from connector source, ready to be ingested to VAIS.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractedRecordCount")]
         public virtual System.Nullable<long> ExtractedRecordCount { get; set; }
 
-        /// <summary>The number of documents indexed.</summary>
+        /// <summary>Optional. The number of documents indexed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexedRecordCount")]
         public virtual System.Nullable<long> IndexedRecordCount { get; set; }
 
@@ -29370,13 +29372,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress Progress { get; set; }
 
         /// <summary>
-        /// The number of documents scheduled to be crawled/extracted from connector source. This only applies to third
-        /// party connectors.
+        /// Optional. The number of documents scheduled to be crawled/extracted from connector source. This only applies
+        /// to third party connectors.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledRecordCount")]
         public virtual System.Nullable<long> ScheduledRecordCount { get; set; }
 
-        /// <summary>The number of requests sent to 3p API.</summary>
+        /// <summary>Optional. The number of requests sent to 3p API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceApiRequestCount")]
         public virtual System.Nullable<long> SourceApiRequestCount { get; set; }
 
@@ -30559,6 +30561,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Optional. Any authentication parameters specific to EUA connectors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authParams")]
         public virtual System.Collections.Generic.IDictionary<string, object> AuthParams { get; set; }
+
+        /// <summary>Optional. The tenant project the connector is connected to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
+        public virtual GoogleCloudDiscoveryengineV1alphaTenant Tenant { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -36490,6 +36496,33 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalRequiredQuota")]
         public virtual System.Nullable<long> TotalRequiredQuota { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Tenant information for a connector source. This includes some of the same information stored in the Credential
+    /// message, but is limited to only what is needed to provide a list of accessible tenants to the user.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaTenant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional display name for the tenant, e.g. "My Slack Team".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The tenant's instance ID. Examples: Jira ("8594f221-9797-5f78-1fa4-485e198d7cd0"), Slack ("T123456").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// The URI of the tenant, if applicable. For example, the URI of a Jira instance is
+        /// https://my-jira-instance.atlassian.net, and a Slack tenant does not have a URI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
