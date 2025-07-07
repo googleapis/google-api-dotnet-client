@@ -7613,7 +7613,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to
         /// them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups
         /// have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud
-        /// Search have a label with a key of `system/groups/external` and an empty value. (Beta) Google Groups can be
+        /// Search have a label with a key of `system/groups/external` and an empty value. Google Groups can be
         /// [locked](https://support.google.com/a?p=locked-groups). To lock a group, add a label with a key of
         /// `cloudidentity.googleapis.com/groups.locked` and an empty value. Doing so locks the group. To unlock the
         /// group, remove this label.
