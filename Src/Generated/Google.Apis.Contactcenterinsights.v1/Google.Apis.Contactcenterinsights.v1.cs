@@ -11959,7 +11959,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// (read/write) could be applied to the subset of conversations. If conversation_filter is empty, there is no
         /// restriction on the conversations that the AuthorizedView can access. Having *authorizedViews.get* access to
         /// the AuthorizedView means having the same read/write access to the Conversations (as well as
-        /// metadata/annotations liked to the conversation) that this AuthorizedView has.
+        /// metadata/annotations linked to the conversation) that this AuthorizedView has.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversationFilter")]
         public virtual string ConversationFilter { get; set; }
