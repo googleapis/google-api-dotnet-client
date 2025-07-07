@@ -789,7 +789,7 @@ namespace Google.Apis.CloudAsset.v1p7beta1.Data
         /// <summary>
         /// If the destination table already exists and this flag is `TRUE`, the table will be overwritten by the
         /// contents of assets snapshot. If the flag is `FALSE` or unset and the destination table already exists, the
-        /// export call returns an INVALID_ARGUMEMT error.
+        /// export call returns an INVALID_ARGUMENT error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
         public virtual System.Nullable<bool> Force { get; set; }
