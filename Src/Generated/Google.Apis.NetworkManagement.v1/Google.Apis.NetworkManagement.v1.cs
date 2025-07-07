@@ -1786,15 +1786,16 @@ namespace Google.Apis.NetworkManagement.v1
                 /// <summary>
                 /// Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists
                 /// (even if the ID is different), the creation fails. Notes: 1. Creating a configuration with
-                /// state=DISABLED will fail 2. The following fields are not considered as `settings` for the purpose of
+                /// `state=DISABLED` will fail 2. The following fields are not considered as settings for the purpose of
                 /// the check mentioned above, therefore - creating another configuration with the same fields but
                 /// different values for the following fields will fail as well: * name * create_time * update_time *
                 /// labels * description
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource of the VPC Flow Logs configuration to create:
-                /// `projects/{project_id}/locations/global` `organizations/{organization_id}/locations/global`
+                /// Required. The parent resource of the VpcFlowLogsConfig to create, in one of the following formats: -
+                /// For project-level resources: `projects/{project_id}/locations/global` - For organization-level
+                /// resources: `organizations/{organization_id}/locations/global`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig body, string parent)
                 {
@@ -1804,7 +1805,7 @@ namespace Google.Apis.NetworkManagement.v1
                 /// <summary>
                 /// Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists
                 /// (even if the ID is different), the creation fails. Notes: 1. Creating a configuration with
-                /// state=DISABLED will fail 2. The following fields are not considered as `settings` for the purpose of
+                /// `state=DISABLED` will fail 2. The following fields are not considered as settings for the purpose of
                 /// the check mentioned above, therefore - creating another configuration with the same fields but
                 /// different values for the following fields will fail as well: * name * create_time * update_time *
                 /// labels * description
@@ -1820,8 +1821,9 @@ namespace Google.Apis.NetworkManagement.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource of the VPC Flow Logs configuration to create:
-                    /// `projects/{project_id}/locations/global` `organizations/{organization_id}/locations/global`
+                    /// Required. The parent resource of the VpcFlowLogsConfig to create, in one of the following
+                    /// formats: - For project-level resources: `projects/{project_id}/locations/global` - For
+                    /// organization-level resources: `organizations/{organization_id}/locations/global`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1870,9 +1872,11 @@ namespace Google.Apis.NetworkManagement.v1
 
                 /// <summary>Deletes a specific `VpcFlowLogsConfig`.</summary>
                 /// <param name="name">
-                /// Required. `VpcFlowLogsConfig` resource name using one of the form:
-                /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}
-                /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
+                /// Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For a
+                /// project-level resource:
+                /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For an
+                /// organization-level resource:
+                /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1890,9 +1894,11 @@ namespace Google.Apis.NetworkManagement.v1
                     }
 
                     /// <summary>
-                    /// Required. `VpcFlowLogsConfig` resource name using one of the form:
-                    /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}
-                    /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
+                    /// Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For a
+                    /// project-level resource:
+                    /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For an
+                    /// organization-level resource:
+                    /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1923,9 +1929,11 @@ namespace Google.Apis.NetworkManagement.v1
 
                 /// <summary>Gets the details of a specific `VpcFlowLogsConfig`.</summary>
                 /// <param name="name">
-                /// Required. `VpcFlowLogsConfig` resource name using the form:
-                /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
-                /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
+                /// Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For
+                /// project-level resources:
+                /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For
+                /// organization-level resources:
+                /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1943,9 +1951,11 @@ namespace Google.Apis.NetworkManagement.v1
                     }
 
                     /// <summary>
-                    /// Required. `VpcFlowLogsConfig` resource name using the form:
-                    /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
-                    /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
+                    /// Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For
+                    /// project-level resources:
+                    /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For
+                    /// organization-level resources:
+                    /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1976,7 +1986,8 @@ namespace Google.Apis.NetworkManagement.v1
 
                 /// <summary>Lists all `VpcFlowLogsConfigs` in a given project.</summary>
                 /// <param name="parent">
-                /// Required. The parent resource of the VpcFlowLogsConfig: `projects/{project_id}/locations/global`
+                /// Required. The parent resource of the VpcFlowLogsConfig, in one of the following formats: - For
+                /// project-level resourcs: `projects/{project_id}/locations/global` - For organization-level resources:
                 /// `organizations/{organization_id}/locations/global`
                 /// </param>
                 public virtual ListRequest List(string parent)
@@ -1995,8 +2006,9 @@ namespace Google.Apis.NetworkManagement.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource of the VpcFlowLogsConfig: `projects/{project_id}/locations/global`
-                    /// `organizations/{organization_id}/locations/global`
+                    /// Required. The parent resource of the VpcFlowLogsConfig, in one of the following formats: - For
+                    /// project-level resourcs: `projects/{project_id}/locations/global` - For organization-level
+                    /// resources: `organizations/{organization_id}/locations/global`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2080,16 +2092,18 @@ namespace Google.Apis.NetworkManagement.v1
                 /// <summary>
                 /// Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact same settings already
                 /// exists (even if the ID is different), the creation fails. Notes: 1. Updating a configuration with
-                /// state=DISABLED will fail. 2. The following fields are not considered as `settings` for the purpose
+                /// `state=DISABLED` will fail. 2. The following fields are not considered as settings for the purpose
                 /// of the check mentioned above, therefore - updating another configuration with the same fields but
                 /// different values for the following fields will fail as well: * name * create_time * update_time *
                 /// labels * description
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Identifier. Unique name of the configuration using one of the forms:
-                /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
-                /// `organizations/{organization_number}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+                /// Identifier. Unique name of the configuration. The name can have one of the following forms: - For
+                /// project-level configurations:
+                /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For
+                /// organization-level configurations:
+                /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig body, string name)
                 {
@@ -2099,7 +2113,7 @@ namespace Google.Apis.NetworkManagement.v1
                 /// <summary>
                 /// Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact same settings already
                 /// exists (even if the ID is different), the creation fails. Notes: 1. Updating a configuration with
-                /// state=DISABLED will fail. 2. The following fields are not considered as `settings` for the purpose
+                /// `state=DISABLED` will fail. 2. The following fields are not considered as settings for the purpose
                 /// of the check mentioned above, therefore - updating another configuration with the same fields but
                 /// different values for the following fields will fail as well: * name * create_time * update_time *
                 /// labels * description
@@ -2115,15 +2129,20 @@ namespace Google.Apis.NetworkManagement.v1
                     }
 
                     /// <summary>
-                    /// Identifier. Unique name of the configuration using one of the forms:
-                    /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
-                    /// `organizations/{organization_number}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+                    /// Identifier. Unique name of the configuration. The name can have one of the following forms: -
+                    /// For project-level configurations:
+                    /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For
+                    /// organization-level configurations:
+                    /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. Mask of fields to update. At least one path must be supplied in this field.
+                    /// Required. Mask of fields to update. At least one path must be supplied in this field. For
+                    /// example, to change the state of the configuration to ENABLED, specify `update_mask` = `"state"`,
+                    /// and the `vpc_flow_logs_config` would be: `vpc_flow_logs_config = { name =
+                    /// "projects/my-project/locations/global/vpcFlowLogsConfigs/my-config" state = "ENABLED" }`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -4754,9 +4773,11 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual System.Collections.Generic.IList<string> MetadataFields { get; set; }
 
         /// <summary>
-        /// Identifier. Unique name of the configuration using one of the forms:
-        /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
-        /// `organizations/{organization_number}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+        /// Identifier. Unique name of the configuration. The name can have one of the following forms: - For
+        /// project-level configurations:
+        /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For
+        /// organization-level configurations:
+        /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4769,8 +4790,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// Output only. A diagnostic bit - describes the state of the configured target resource for diagnostic
-        /// purposes.
+        /// Output only. Describes the state of the configured target resource for diagnostic purposes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetResourceState")]
         public virtual string TargetResourceState { get; set; }
