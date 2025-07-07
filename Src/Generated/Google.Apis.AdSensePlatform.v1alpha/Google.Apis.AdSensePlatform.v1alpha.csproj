@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.AdSensePlatform.v1alpha Client Library</Title>
-    <Version>1.70.0.3826</Version>
+    <Version>1.70.0.3836</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
