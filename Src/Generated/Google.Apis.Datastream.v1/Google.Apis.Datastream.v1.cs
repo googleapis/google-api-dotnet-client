@@ -5397,6 +5397,13 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datasetTemplate")]
         public virtual DatasetTemplate DatasetTemplate { get; set; }
 
+        /// <summary>
+        /// Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the
+        /// stream resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
