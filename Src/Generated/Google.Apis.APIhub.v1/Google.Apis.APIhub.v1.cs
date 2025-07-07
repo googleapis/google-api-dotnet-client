@@ -5654,6 +5654,87 @@ namespace Google.Apis.APIhub.v1
                             });
                         }
                     }
+
+                    /// <summary>
+                    /// Updates a plugin instance in the API hub. The following fields in the plugin_instance can be
+                    /// updated currently: * display_name * schedule_cron_expression The update_mask should be used to
+                    /// specify the fields being updated. To update the auth_config and additional_config of the plugin
+                    /// instance, use the ApplyPluginInstanceConfig method.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Identifier. The unique name of the plugin instance resource. Format:
+                    /// `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1PluginInstance body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Updates a plugin instance in the API hub. The following fields in the plugin_instance can be
+                    /// updated currently: * display_name * schedule_cron_expression The update_mask should be used to
+                    /// specify the fields being updated. To update the auth_config and additional_config of the plugin
+                    /// instance, use the ApplyPluginInstanceConfig method.
+                    /// </summary>
+                    public class PatchRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1PluginInstance>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1PluginInstance body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Identifier. The unique name of the plugin instance resource. Format:
+                        /// `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. The list of fields to update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1PluginInstance Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/plugins/[^/]+/instances/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the StyleGuide resource.</summary>
@@ -8593,6 +8674,15 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual GoogleCloudApihubV1AttributeValues Environment { get; set; }
 
         /// <summary>
+        /// Optional. The uri where users can navigate to for the management of the deployment. This maps to the
+        /// following system defined attribute:
+        /// `projects/{project}/locations/{location}/attributes/system-management-url` The number of values for this
+        /// attribute will be based on the cardinality of the attribute. The same can be retrieved via GetAttribute API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementUrl")]
+        public virtual GoogleCloudApihubV1AttributeValues ManagementUrl { get; set; }
+
+        /// <summary>
         /// Identifier. The name of the deployment. Format:
         /// `projects/{project}/locations/{location}/deployments/{deployment}`
         /// </summary>
@@ -8616,9 +8706,31 @@ namespace Google.Apis.APIhub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("slo")]
         public virtual GoogleCloudApihubV1AttributeValues Slo { get; set; }
 
+        /// <summary>
+        /// Optional. The environment at source for the deployment. For example: prod, dev, staging, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceEnvironment")]
+        public virtual string SourceEnvironment { get; set; }
+
         /// <summary>Output only. The list of sources and metadata from the sources of the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceMetadata")]
         public virtual System.Collections.Generic.IList<GoogleCloudApihubV1SourceMetadata> SourceMetadata { get; set; }
+
+        /// <summary>
+        /// Optional. The project to which the deployment belongs. For GCP gateways, this will refer to the project
+        /// identifier. For others like Edge/OPDK, this will refer to the org identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceProject")]
+        public virtual string SourceProject { get; set; }
+
+        /// <summary>
+        /// Optional. The uri where additional source specific information for this deployment can be found. This maps
+        /// to the following system defined attribute:
+        /// `projects/{project}/locations/{location}/attributes/system-source-uri` The number of values for this
+        /// attribute will be based on the cardinality of the attribute. The same can be retrieved via GetAttribute API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceUri")]
+        public virtual GoogleCloudApihubV1AttributeValues SourceUri { get; set; }
 
         private string _updateTimeRaw;
 
@@ -9850,6 +9962,10 @@ namespace Google.Apis.APIhub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
         public virtual GoogleCloudApihubV1Documentation Documentation { get; set; }
 
+        /// <summary>Optional. The type of the gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayType")]
+        public virtual string GatewayType { get; set; }
+
         /// <summary>
         /// Optional. This field is optional. It is used to notify the plugin hosting service for any lifecycle changes
         /// of the plugin instance and trigger execution of plugin instance actions in case of API hub managed actions.
@@ -10043,6 +10159,13 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of
+        /// gcp based plugins and org id in case of non gcp based plugins. This is a required field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceProjectId")]
+        public virtual string SourceProjectId { get; set; }
+
+        /// <summary>
         /// Output only. The current state of the plugin instance (e.g., enabled, disabled, provisioning).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -10113,6 +10236,13 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual GoogleCloudApihubV1ExecutionStatus HubInstanceAction { get; set; }
 
         /// <summary>
+        /// Output only. The configuration of resources created for a given plugin instance action. Note these will be
+        /// returned only in case of Non-GCP plugins like OPDK.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceConfig")]
+        public virtual GoogleCloudApihubV1ResourceConfig ResourceConfig { get; set; }
+
+        /// <summary>
         /// Optional. The schedule for this plugin instance action. This can only be set if the plugin supports
         /// API_HUB_SCHEDULE_TRIGGER mode for this action.
         /// </summary>
@@ -10124,6 +10254,13 @@ namespace Google.Apis.APIhub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTimeZone")]
         public virtual string ScheduleTimeZone { get; set; }
+
+        /// <summary>
+        /// Optional. The service account used to publish data. Note, the service account will only be accepted for non
+        /// GCP plugins like OPDK.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>Output only. The current state of the plugin action in the plugin instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -10197,6 +10334,23 @@ namespace Google.Apis.APIhub.v1.Data
         /// <summary>Required. Start of the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("start")]
         public virtual GoogleCloudApihubV1Point Start { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration of resources created for a given plugin instance action.</summary>
+    public class GoogleCloudApihubV1ResourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The type of the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
+        public virtual string ActionType { get; set; }
+
+        /// <summary>
+        /// Output only. The pubsub topic to publish the data to. Format is projects/{project}/topics/{topic}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
+        public virtual string PubsubTopic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
