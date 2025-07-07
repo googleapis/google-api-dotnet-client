@@ -2772,6 +2772,20 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("poolSize")]
         public virtual System.Nullable<int> PoolSize { get; set; }
 
+        /// <summary>
+        /// Optional. [ReservationAffinity](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+        /// specifies a reservation that can be consumed to create boost VM instances. If SPECIFIC_RESERVATION is
+        /// specified, Cloud Workstations will only create VMs in the zone where the reservation is located. This would
+        /// affect availability since the service will no longer be resilient to zonal outages. If ANY_RESERVATION is
+        /// specified, creating reservations in both zones that the config creates VMs in will ensure higher
+        /// availability. **Important Considerations for Reservation Affinity:** * This feature is intended for advanced
+        /// users and requires familiarity with Google Compute Engine reservations. * Using reservations incurs charges,
+        /// regardless of utilization. * The resources in the pool will consume the specified reservation. Take this
+        /// into account when setting the pool size.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
+        public virtual ReservationAffinity ReservationAffinity { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3025,6 +3039,20 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pooledInstances")]
         public virtual System.Nullable<int> PooledInstances { get; set; }
+
+        /// <summary>
+        /// Optional. [ReservationAffinity](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+        /// specifies a reservation that can be consumed to create boost VM instances. If SPECIFIC_RESERVATION is
+        /// specified, Cloud Workstations will only create VMs in the zone where the reservation is located. This would
+        /// affect availability since the service will no longer be resilient to zonal outages. If ANY_RESERVATION is
+        /// specified, creating reservations in both zones that the config creates VMs in will ensure higher
+        /// availability. **Important Considerations for Reservation Affinity:** * This feature is intended for advanced
+        /// users and requires familiarity with Google Compute Engine reservations. * Using reservations incurs charges,
+        /// regardless of utilization. * The resources in the pool will consume the specified reservation. Take this
+        /// into account when setting the pool size.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
+        public virtual ReservationAffinity ReservationAffinity { get; set; }
 
         /// <summary>
         /// Optional. The email address of the service account for Cloud Workstations VMs created with this
@@ -3790,6 +3818,31 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// <summary>Optional. Port to which the request should be sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ReservationAffinity is the configuration of the desired reservation from which instances can consume resources.
+    /// </summary>
+    public class ReservationAffinity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Corresponds to the type of reservation consumption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumeReservationType")]
+        public virtual string ConsumeReservationType { get; set; }
+
+        /// <summary>Optional. Corresponds to the label key of reservation resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// Optional. Corresponds to the label values of reservation resources. Valid values are either a name to a
+        /// reservation in the same project or "projects/{project}/reservations/{reservation}" to target a shared
+        /// reservation in the same zone but in a different project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
