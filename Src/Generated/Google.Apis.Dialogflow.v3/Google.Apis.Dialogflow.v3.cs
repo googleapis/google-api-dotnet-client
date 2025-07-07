@@ -13265,6 +13265,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentUri")]
         public virtual string DocumentUri { get; set; }
 
+        /// <summary>Metadata associated with the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
         /// <summary>Text included in the prompt.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -19695,10 +19699,6 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>Optional. The name of the second voice (non-English) if language detection is supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secondLanguageModel")]
-        public virtual string SecondLanguageModel { get; set; }
 
         /// <summary>
         /// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other
