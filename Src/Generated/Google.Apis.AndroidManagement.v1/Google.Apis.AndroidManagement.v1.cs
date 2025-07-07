@@ -5306,7 +5306,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
     {
         /// <summary>
         /// Fully qualified class name of the receiver service class for Android Device Policy to notify the extension
-        /// app of any local command status updates.
+        /// app of any local command status updates. The service must be exported in the extension app's
+        /// AndroidManifest.xml and extend NotificationReceiverService
+        /// (https://developers.google.com/android/management/reference/amapi/com/google/android/managementapi/notification/NotificationReceiverService)
+        /// (see Integrate with the AMAPI SDK (https://developers.google.com/android/management/sdk-integration) guide
+        /// for more details).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationReceiver")]
         public virtual string NotificationReceiver { get; set; }
