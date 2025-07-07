@@ -16308,6 +16308,21 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A domain represents a thematic category that a data profile can fall under.</summary>
+    public class GooglePrivacyDlpV2Domain : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A domain category that this profile is related to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>The collection of signals that influenced selection of the category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signals")]
+        public virtual System.Collections.Generic.IList<string> Signals { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An entity in a dataset is a field or set of fields that correspond to a single person. For example, in medical
     /// records the `EntityId` might be a patient identifier, or for financial records it might be an account
@@ -16693,6 +16708,10 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStorageLocations")]
         public virtual System.Collections.Generic.IList<string> DataStorageLocations { get; set; }
+
+        /// <summary>Domains associated with the profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Domain> Domains { get; set; }
 
         /// <summary>FileClusterSummary per each cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileClusterSummaries")]
@@ -20516,6 +20535,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datasetProjectId")]
         public virtual string DatasetProjectId { get; set; }
 
+        /// <summary>Domains associated with the profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Domain> Domains { get; set; }
+
         /// <summary>How the table is encrypted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionStatus")]
         public virtual string EncryptionStatus { get; set; }
@@ -20701,7 +20724,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
         public virtual GooglePrivacyDlpV2SensitivityScore SensitivityScore { get; set; }
 
-        /// <summary>State of a profile.</summary>
+        /// <summary>
+        /// State of a profile. This will always be set to DONE when the table data profile is written to another
+        /// service like BigQuery or Pub/Sub.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
