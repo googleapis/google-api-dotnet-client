@@ -6895,6 +6895,13 @@ namespace Google.Apis.Storage.v1
             public virtual string EndOffset { get; set; }
 
             /// <summary>
+            /// Filter the returned objects. Currently only supported for the contexts field. If delimiter is set, the
+            /// returned prefixes are exempt from this filter.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
             /// Only applicable if delimiter is set to '/'. If true, will also include folders and managed folders
             /// (besides objects) in the returned prefixes.
             /// </summary>
@@ -7004,6 +7011,14 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("endOffset", new Google.Apis.Discovery.Parameter
                 {
                     Name = "endOffset",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -11599,6 +11614,13 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string ContentType { get; set; }
 
         /// <summary>
+        /// User-defined or system-defined object contexts. Each object context is a key-payload pair, where the key
+        /// provides the identification and the payload holds the associated value and additional metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
+        public virtual ContextsData Contexts { get; set; }
+
+        /// <summary>
         /// CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte order. For
         /// more information about using the CRC32c checksum, see [Data Validation and Change
         /// Detection](https://cloud.google.com/storage/docs/data-validation).
@@ -11930,6 +11952,17 @@ namespace Google.Apis.Storage.v1.Data
             set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
+        /// <summary>
+        /// User-defined or system-defined object contexts. Each object context is a key-payload pair, where the key
+        /// provides the identification and the payload holds the associated value and additional metadata.
+        /// </summary>
+        public class ContextsData
+        {
+            /// <summary>User-defined object contexts.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("custom")]
+            public virtual System.Collections.Generic.IDictionary<string, ObjectCustomContextPayload> Custom { get; set; }
+        }
+
         /// <summary>Metadata of customer-supplied encryption key, if the object is encrypted by such a key.</summary>
         public class CustomerEncryptionData
         {
@@ -12075,6 +12108,59 @@ namespace Google.Apis.Storage.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The payload of a single user-defined object context.</summary>
+    public class ObjectCustomContextPayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which the object context was created in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? CreateTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The time at which the object context was last updated in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? UpdateTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The value of the object context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
