@@ -7321,6 +7321,27 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Download restrictions applied to the file.</summary>
+    public class DownloadRestrictionsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The effective download restriction applied to this file. This considers all restriction settings and DLP
+        /// rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveDownloadRestrictionWithContext")]
+        public virtual DownloadRestriction EffectiveDownloadRestrictionWithContext { get; set; }
+
+        /// <summary>
+        /// The download restriction of the file applied directly by the owner or organizer. This does not take into
+        /// account shared drive settings or DLP rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemDownloadRestriction")]
+        public virtual DownloadRestriction ItemDownloadRestriction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Representation of a shared drive. Some resource methods (such as `drives.update`) require a `driveId`. Use the
     /// `drives.list` method to retrieve the ID for a shared drive.
@@ -7476,6 +7497,13 @@ namespace Google.Apis.Drive.v3.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeDomainUsersOnlyRestriction")]
             public virtual System.Nullable<bool> CanChangeDomainUsersOnlyRestriction { get; set; }
+
+            /// <summary>
+            /// Output only. Whether the current user can change organizer-applied download restrictions of this shared
+            /// drive.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canChangeDownloadRestriction")]
+            public virtual System.Nullable<bool> CanChangeDownloadRestriction { get; set; }
 
             /// <summary>Output only. Whether the current user can change the background of this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeDriveBackground")]
@@ -7709,6 +7737,10 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>A short description of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>Download restrictions applied on the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadRestrictions")]
+        public virtual DownloadRestrictionsMetadata DownloadRestrictions { get; set; }
 
         /// <summary>
         /// Output only. ID of the shared drive the file resides in. Only populated for items in shared drives.
@@ -8180,6 +8212,12 @@ namespace Google.Apis.Drive.v3.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeCopyRequiresWriterPermission")]
             public virtual System.Nullable<bool> CanChangeCopyRequiresWriterPermission { get; set; }
+
+            /// <summary>
+            /// Output only. Whether the current user can change the owner-applied download restrictions of the file.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canChangeItemDownloadRestriction")]
+            public virtual System.Nullable<bool> CanChangeItemDownloadRestriction { get; set; }
 
             /// <summary>
             /// Output only. Whether the current user can change the securityUpdateEnabled field on link share metadata.
@@ -9610,6 +9648,12 @@ namespace Google.Apis.Drive.v3.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeDomainUsersOnlyRestriction")]
             public virtual System.Nullable<bool> CanChangeDomainUsersOnlyRestriction { get; set; }
+
+            /// <summary>
+            /// Whether the current user can change organizer-applied download restrictions of this shared drive.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canChangeDownloadRestriction")]
+            public virtual System.Nullable<bool> CanChangeDownloadRestriction { get; set; }
 
             /// <summary>
             /// Whether the current user can change the `sharingFoldersRequiresOrganizerPermission` restriction of this
