@@ -31201,8 +31201,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfoMimeContent> ExtraMimeContents { get; set; }
 
         /// <summary>
-        /// Optional. SDP of the call. It's initially the SDP answer to the endpoint, but maybe later updated for the
-        /// purpose of making the link active, etc.
+        /// Optional. SDP of the call. It's initially the SDP answer to the incoming call, but maybe later updated for
+        /// the purpose of making the link active, etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdp")]
         public virtual string Sdp { get; set; }
@@ -32530,8 +32530,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     public class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article
-        /// Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+        /// Version of current baseline model. It will be ignored if model is set. Valid versions are: - Article
+        /// Suggestion baseline model: - 0.9 - 1.0 (default) - Summarization baseline model: - 1.0
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baselineModelVersion")]
         public virtual string BaselineModelVersion { get; set; }
@@ -37670,10 +37670,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>Optional. The name of the second voice (non-English) if language detection is supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secondLanguageModel")]
-        public virtual string SecondLanguageModel { get; set; }
 
         /// <summary>
         /// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other
