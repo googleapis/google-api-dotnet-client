@@ -8501,8 +8501,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     }
 
     /// <summary>
-    /// `LbEdgeExtension` is a resource that lets the extension service influence the Backend Service selection or Cloud
-    /// CDN cache keys by modifying the request headers.
+    /// `LbEdgeExtension` is a resource that lets the extension service influence the selection of backend services and
+    /// Cloud CDN cache keys by modifying request headers.
     /// </summary>
     public class LbEdgeExtension : Google.Apis.Requests.IDirectResponseSchema
     {
