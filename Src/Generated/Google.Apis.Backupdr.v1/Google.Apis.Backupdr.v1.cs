@@ -295,6 +295,7 @@ namespace Google.Apis.Backupdr.v1
                 BackupPlanAssociations = new BackupPlanAssociationsResource(service);
                 BackupPlans = new BackupPlansResource(service);
                 BackupVaults = new BackupVaultsResource(service);
+                DataSourceReferences = new DataSourceReferencesResource(service);
                 ManagementServers = new ManagementServersResource(service);
                 Operations = new OperationsResource(service);
                 ResourceBackupConfigs = new ResourceBackupConfigsResource(service);
@@ -479,6 +480,132 @@ namespace Google.Apis.Backupdr.v1
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>List BackupPlanAssociations for a given resource type.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource name. Format: projects/{project}/locations/{location}
+                /// </param>
+                public virtual FetchForResourceTypeRequest FetchForResourceType(string parent)
+                {
+                    return new FetchForResourceTypeRequest(this.service, parent);
+                }
+
+                /// <summary>List BackupPlanAssociations for a given resource type.</summary>
+                public class FetchForResourceTypeRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.FetchBackupPlanAssociationsForResourceTypeResponse>
+                {
+                    /// <summary>Constructs a new FetchForResourceType request.</summary>
+                    public FetchForResourceTypeRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource name. Format: projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A filter expression that filters the results fetched in the response. The expression
+                    /// must specify the field name, a comparison operator, and the value that you want to use for
+                    /// filtering. Supported fields: * resource * backup_plan * state * data_source *
+                    /// cloud_sql_instance_backup_plan_association_properties.instance_create_time
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
+                    /// after a field name for descending. Supported fields: * name
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of BackupPlanAssociations to return. The service may return fewer
+                    /// than this value. If unspecified, at most 50 BackupPlanAssociations will be returned. The maximum
+                    /// value is 100; values above 100 will be coerced to 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous call of
+                    /// `FetchBackupPlanAssociationsForResourceType`. Provide this to retrieve the subsequent page. When
+                    /// paginating, all other parameters provided to `FetchBackupPlanAssociationsForResourceType` must
+                    /// match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Required. The type of the GCP resource. Ex: sql.googleapis.com/Instance</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resourceType", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ResourceType { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetchForResourceType";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/backupPlanAssociations:fetchForResourceType";
+
+                    /// <summary>Initializes FetchForResourceType parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("resourceType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceType",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3335,6 +3462,205 @@ namespace Google.Apis.Backupdr.v1
                 }
             }
 
+            /// <summary>Gets the DataSourceReferences resource.</summary>
+            public virtual DataSourceReferencesResource DataSourceReferences { get; }
+
+            /// <summary>The "dataSourceReferences" collection of methods.</summary>
+            public class DataSourceReferencesResource
+            {
+                private const string Resource = "dataSourceReferences";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DataSourceReferencesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Fetch DataSourceReferences for a given project, location and resource type.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource name. Format: projects/{project}/locations/{location}
+                /// </param>
+                public virtual FetchForResourceTypeRequest FetchForResourceType(string parent)
+                {
+                    return new FetchForResourceTypeRequest(this.service, parent);
+                }
+
+                /// <summary>Fetch DataSourceReferences for a given project, location and resource type.</summary>
+                public class FetchForResourceTypeRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.FetchDataSourceReferencesForResourceTypeResponse>
+                {
+                    /// <summary>Constructs a new FetchForResourceType request.</summary>
+                    public FetchForResourceTypeRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource name. Format: projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A filter expression that filters the results fetched in the response. The expression
+                    /// must specify the field name, a comparison operator, and the value that you want to use for
+                    /// filtering. Supported fields: * data_source * data_source_gcp_resource_info.gcp_resourcename *
+                    /// data_source_backup_config_state * data_source_backup_count *
+                    /// data_source_backup_config_info.last_backup_state *
+                    /// data_source_gcp_resource_info.gcp_resourcename * data_source_gcp_resource_info.type *
+                    /// data_source_gcp_resource_info.location *
+                    /// data_source_gcp_resource_info.cloud_sql_instance_properties.instance_create_time
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
+                    /// after a field name for descending. Supported fields: * name
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of DataSourceReferences to return. The service may return fewer
+                    /// than this value. If unspecified, at most 50 DataSourceReferences will be returned. The maximum
+                    /// value is 100; values above 100 will be coerced to 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous call of
+                    /// `FetchDataSourceReferencesForResourceType`. Provide this to retrieve the subsequent page. When
+                    /// paginating, all other parameters provided to `FetchDataSourceReferencesForResourceType` must
+                    /// match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Required. The type of the GCP resource. Ex: sql.googleapis.com/Instance</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resourceType", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ResourceType { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetchForResourceType";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/dataSourceReferences:fetchForResourceType";
+
+                    /// <summary>Initializes FetchForResourceType parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("resourceType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceType",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single DataSourceReference.</summary>
+                /// <param name="name">
+                /// Required. The name of the DataSourceReference to retrieve. Format:
+                /// projects/{project}/locations/{location}/dataSourceReferences/{data_source_reference}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single DataSourceReference.</summary>
+                public class GetRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.DataSourceReference>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the DataSourceReference to retrieve. Format:
+                    /// projects/{project}/locations/{location}/dataSourceReferences/{data_source_reference}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataSourceReferences/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the ManagementServers resource.</summary>
             public virtual ManagementServersResource ManagementServers { get; }
 
@@ -4827,6 +5153,10 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupType")]
         public virtual string BackupType { get; set; }
 
+        /// <summary>Output only. Cloud SQL specific backup properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstanceBackupProperties")]
+        public virtual CloudSqlInstanceBackupProperties CloudSqlInstanceBackupProperties { get; set; }
+
         /// <summary>Output only. Compute Engine specific backup properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeInstanceBackupProperties")]
         public virtual ComputeInstanceBackupProperties ComputeInstanceBackupProperties { get; set; }
@@ -5733,6 +6063,14 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
+        /// Optional. Required for CloudSQL resource_type Configures how long logs will be stored. It is defined in
+        /// “days”. This value should be greater than or equal to minimum enforced log retention duration of the backup
+        /// vault.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logRetentionDays")]
+        public virtual System.Nullable<long> LogRetentionDays { get; set; }
+
+        /// <summary>
         /// Output only. Identifier. The resource name of the `BackupPlan`. Format:
         /// `projects/{project}/locations/{location}/backupPlans/{backup_plan}`
         /// </summary>
@@ -5827,6 +6165,10 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupPlanRevisionName")]
         public virtual string BackupPlanRevisionName { get; set; }
+
+        /// <summary>Output only. Cloud SQL instance's backup plan association properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstanceBackupPlanAssociationProperties")]
+        public virtual CloudSqlInstanceBackupPlanAssociationProperties CloudSqlInstanceBackupPlanAssociationProperties { get; set; }
 
         private string _createTimeRaw;
 
@@ -6012,10 +6354,8 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>
         /// Required. Configures the duration for which backup data will be kept. It is defined in “days”. The value
         /// should be greater than or equal to minimum enforced retention of the backup vault. Minimum value is 1 and
-        /// maximum value is 36159 for custom retention on-demand backup. Minimum value is 1 and maximum value is 90 for
-        /// hourly backups. Minimum value is 1 and maximum value is 186 for daily backups. Minimum value is 7 and
-        /// maximum value is 366 for weekly backups. Minimum value is 30 and maximum value is 732 for monthly backups.
-        /// Minimum value is 365 and maximum value is 36159 for yearly backups.
+        /// maximum value is 36159 for custom retention on-demand backup. Minimum and maximum values are workload
+        /// specific for all other rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRetentionDays")]
         public virtual System.Nullable<int> BackupRetentionDays { get; set; }
@@ -6325,6 +6665,220 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cloud SQL instance's BPA properties.</summary>
+    public class CloudSqlInstanceBackupPlanAssociationProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _instanceCreateTimeRaw;
+
+        private object _instanceCreateTime;
+
+        /// <summary>Output only. The time when the instance was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceCreateTime")]
+        public virtual string InstanceCreateTimeRaw
+        {
+            get => _instanceCreateTimeRaw;
+            set
+            {
+                _instanceCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _instanceCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InstanceCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InstanceCreateTimeDateTimeOffset instead.")]
+        public virtual object InstanceCreateTime
+        {
+            get => _instanceCreateTime;
+            set
+            {
+                _instanceCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _instanceCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="InstanceCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InstanceCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InstanceCreateTimeRaw);
+            set => InstanceCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CloudSqlInstanceBackupProperties represents Cloud SQL Instance Backup properties. .</summary>
+    public class CloudSqlInstanceBackupProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The installed database version of the Cloud SQL instance when the backup was taken.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseInstalledVersion")]
+        public virtual string DatabaseInstalledVersion { get; set; }
+
+        /// <summary>Output only. Whether the backup is a final backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalBackup")]
+        public virtual System.Nullable<bool> FinalBackup { get; set; }
+
+        /// <summary>Output only. The tier (or machine type) for this instance. Example: `db-custom-1-3840`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceTier")]
+        public virtual string InstanceTier { get; set; }
+
+        /// <summary>
+        /// Output only. The source instance of the backup. Format: projects/{project}/instances/{instance}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceInstance")]
+        public virtual string SourceInstance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CloudSqlInstanceDataSourceProperties represents the properties of a Cloud SQL resource that are stored in the
+    /// DataSource. .
+    /// </summary>
+    public class CloudSqlInstanceDataSourceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The installed database version of the Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseInstalledVersion")]
+        public virtual string DatabaseInstalledVersion { get; set; }
+
+        private string _instanceCreateTimeRaw;
+
+        private object _instanceCreateTime;
+
+        /// <summary>Output only. The instance creation timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceCreateTime")]
+        public virtual string InstanceCreateTimeRaw
+        {
+            get => _instanceCreateTimeRaw;
+            set
+            {
+                _instanceCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _instanceCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InstanceCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InstanceCreateTimeDateTimeOffset instead.")]
+        public virtual object InstanceCreateTime
+        {
+            get => _instanceCreateTime;
+            set
+            {
+                _instanceCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _instanceCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="InstanceCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InstanceCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InstanceCreateTimeRaw);
+            set => InstanceCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The tier (or machine type) for this instance. Example: `db-custom-1-3840`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceTier")]
+        public virtual string InstanceTier { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the Cloud SQL instance backed up by the datasource. Format:
+        /// projects/{project}/instances/{instance}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CloudSqlInstanceDataSourceReferenceProperties represents the properties of a Cloud SQL resource that are stored
+    /// in the DataSourceReference. .
+    /// </summary>
+    public class CloudSqlInstanceDataSourceReferenceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The installed database version of the Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseInstalledVersion")]
+        public virtual string DatabaseInstalledVersion { get; set; }
+
+        private string _instanceCreateTimeRaw;
+
+        private object _instanceCreateTime;
+
+        /// <summary>Output only. The instance creation timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceCreateTime")]
+        public virtual string InstanceCreateTimeRaw
+        {
+            get => _instanceCreateTimeRaw;
+            set
+            {
+                _instanceCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _instanceCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InstanceCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InstanceCreateTimeDateTimeOffset instead.")]
+        public virtual object InstanceCreateTime
+        {
+            get => _instanceCreateTime;
+            set
+            {
+                _instanceCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _instanceCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="InstanceCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InstanceCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InstanceCreateTimeRaw);
+            set => InstanceCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The tier (or machine type) for this instance. Example: `db-custom-1-3840`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceTier")]
+        public virtual string InstanceTier { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the Cloud SQL instance backed up by the datasource. Format:
+        /// projects/{project}/instances/{instance}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CloudSqlInstanceInitializationConfig contains the configuration for initializing a Cloud SQL instance.
+    /// </summary>
+    public class CloudSqlInstanceInitializationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The edition of the Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6827,12 +7381,72 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information of backup configuration on the DataSource.</summary>
+    public class DataSourceBackupConfigInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The status of the last backup in this DataSource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastBackupState")]
+        public virtual string LastBackupState { get; set; }
+
+        private string _lastSuccessfulBackupConsistencyTimeRaw;
+
+        private object _lastSuccessfulBackupConsistencyTime;
+
+        /// <summary>Output only. Timestamp of the last successful backup to this DataSource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSuccessfulBackupConsistencyTime")]
+        public virtual string LastSuccessfulBackupConsistencyTimeRaw
+        {
+            get => _lastSuccessfulBackupConsistencyTimeRaw;
+            set
+            {
+                _lastSuccessfulBackupConsistencyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastSuccessfulBackupConsistencyTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="LastSuccessfulBackupConsistencyTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSuccessfulBackupConsistencyTimeDateTimeOffset instead.")]
+        public virtual object LastSuccessfulBackupConsistencyTime
+        {
+            get => _lastSuccessfulBackupConsistencyTime;
+            set
+            {
+                _lastSuccessfulBackupConsistencyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastSuccessfulBackupConsistencyTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="LastSuccessfulBackupConsistencyTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastSuccessfulBackupConsistencyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSuccessfulBackupConsistencyTimeRaw);
+            set => LastSuccessfulBackupConsistencyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// DataSourceGcpResource is used for protected resources that are Google Cloud Resources. This name is easeier to
     /// understand than GcpResourceDataSource or GcpDataSourceResource
     /// </summary>
     public class DataSourceGcpResource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. CloudSqlInstanceDataSourceProperties has a subset of Cloud SQL Instance properties that are
+        /// useful at the Datasource level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstanceDatasourceProperties")]
+        public virtual CloudSqlInstanceDataSourceProperties CloudSqlInstanceDatasourceProperties { get; set; }
+
         /// <summary>
         /// ComputeInstanceDataSourceProperties has a subset of Compute Instance properties that are useful at the
         /// Datasource level.
@@ -6859,6 +7473,105 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The GCP resource that the DataSource is associated with.</summary>
+    public class DataSourceGcpResourceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The properties of the Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstanceProperties")]
+        public virtual CloudSqlInstanceDataSourceReferenceProperties CloudSqlInstanceProperties { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the GCP resource. Ex: projects/{project}/zones/{zone}/instances/{instance}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpResourcename")]
+        public virtual string GcpResourcename { get; set; }
+
+        /// <summary>Output only. The location of the GCP resource. Ex: //"global"/"unspecified"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Output only. The type of the GCP resource. Ex: compute.googleapis.com/Instance</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DataSourceReference is a reference to a DataSource resource.</summary>
+    public class DataSourceReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the DataSourceReference was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The resource name of the DataSource. Format:
+        /// projects/{project}/locations/{location}/backupVaults/{backupVault}/dataSources/{dataSource}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual string DataSource { get; set; }
+
+        /// <summary>Output only. Information of backup configuration on the DataSource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceBackupConfigInfo")]
+        public virtual DataSourceBackupConfigInfo DataSourceBackupConfigInfo { get; set; }
+
+        /// <summary>Output only. The backup configuration state of the DataSource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceBackupConfigState")]
+        public virtual string DataSourceBackupConfigState { get; set; }
+
+        /// <summary>Output only. Number of backups in the DataSource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceBackupCount")]
+        public virtual System.Nullable<long> DataSourceBackupCount { get; set; }
+
+        /// <summary>Output only. The GCP resource that the DataSource is associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceGcpResourceInfo")]
+        public virtual DataSourceGcpResourceInfo DataSourceGcpResourceInfo { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the DataSourceReference. Format:
+        /// projects/{project}/locations/{location}/dataSourceReferences/{data_source_reference}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7211,6 +7924,42 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for the FetchBackupPlanAssociationsForResourceType method.</summary>
+    public class FetchBackupPlanAssociationsForResourceTypeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The BackupPlanAssociations from the specified parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanAssociations")]
+        public virtual System.Collections.Generic.IList<BackupPlanAssociation> BackupPlanAssociations { get; set; }
+
+        /// <summary>
+        /// Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the FetchDataSourceReferencesForResourceType method.</summary>
+    public class FetchDataSourceReferencesForResourceTypeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The DataSourceReferences from the specified parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceReferences")]
+        public virtual System.Collections.Generic.IList<DataSourceReference> DataSourceReferences { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for fetching usable BackupVaults.</summary>
     public class FetchUsableBackupVaultsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7520,6 +8269,10 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>Request message for initializing the service.</summary>
     public class InitializeServiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The configuration for initializing a Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstanceInitializationConfig")]
+        public virtual CloudSqlInstanceInitializationConfig CloudSqlInstanceInitializationConfig { get; set; }
+
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
         /// your request, the server will know to ignore the request if it has already been completed. The server will
