@@ -822,8 +822,8 @@ namespace Google.Apis.WorkspaceEvents.v1
             /// Optional. The field to update. If omitted, updates any fields included in the request. You can update
             /// one of the following fields in a subscription: * `expire_time`: The timestamp when the subscription
             /// expires. * `ttl`: The time-to-live (TTL) or duration of the subscription. * `event_types`: The list of
-            /// event types to receive about the target resource. To fully replace the subscription (the equivalent of
-            /// `PUT`), use `*`. Any omitted fields are updated with empty values.
+            /// event types to receive about the target resource. When using the `*` wildcard (equivalent to `PUT`),
+            /// omitted fields are set to empty values and rejected if they're invalid.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
