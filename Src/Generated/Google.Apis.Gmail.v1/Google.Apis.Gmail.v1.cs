@@ -2878,7 +2878,10 @@ namespace Google.Apis.Gmail.v1
                 }
             }
 
-            /// <summary>Lists the messages in the user's mailbox.</summary>
+            /// <summary>
+            /// Lists the messages in the user's mailbox. For example usage, see [List Gmail
+            /// messages](https://developers.google.com/workspace/gmail/api/guides/list-messages).
+            /// </summary>
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
             /// </param>
@@ -2887,7 +2890,10 @@ namespace Google.Apis.Gmail.v1
                 return new ListRequest(this.service, userId);
             }
 
-            /// <summary>Lists the messages in the user's mailbox.</summary>
+            /// <summary>
+            /// Lists the messages in the user's mailbox. For example usage, see [List Gmail
+            /// messages](https://developers.google.com/workspace/gmail/api/guides/list-messages).
+            /// </summary>
             public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListMessagesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
