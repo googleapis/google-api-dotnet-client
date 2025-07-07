@@ -4655,6 +4655,12 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     [Google.Apis.Util.RequestParameterAttribute("skipValidation", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> SkipValidation { get; set; }
 
+                    /// <summary>
+                    /// Optional. For PSC Interface only - get the tenant project before creating the resource.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.DatabaseMigrationService.v1.Data.PrivateConnection Body { get; set; }
 
@@ -4701,6 +4707,14 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         RequestParameters.Add("skipValidation", new Google.Apis.Discovery.Parameter
                         {
                             Name = "skipValidation",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -8822,6 +8836,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>PSC Interface configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscInterfaceConfig")]
+        public virtual PscInterfaceConfig PscInterfaceConfig { get; set; }
+
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
@@ -8913,6 +8931,23 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Optional. The object filter to apply to the migration job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectsFilter")]
         public virtual MigrationJobObjectsConfig ObjectsFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The PSC Interface configuration is used to create PSC Interface between DMS's internal VPC and the consumer's
+    /// PSC.
+    /// </summary>
+    public class PscInterfaceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Fully qualified name of the Network Attachment that DMS will connect to. Format:
+        /// `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
