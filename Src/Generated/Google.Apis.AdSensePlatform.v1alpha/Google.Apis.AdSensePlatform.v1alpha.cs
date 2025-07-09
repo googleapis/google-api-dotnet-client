@@ -2038,7 +2038,7 @@ namespace Google.Apis.AdSensePlatform.v1alpha.Data
     /// <summary>Representation of a Transparent Platform Group.</summary>
     public class PlatformGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Description of the PlatformGroup.</summary>
+        /// <summary>Required. Description of the PlatformGroup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -2046,7 +2046,7 @@ namespace Google.Apis.AdSensePlatform.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The revenue share of the PlatformGroup, in millipercent (e.g. 15000 = 15%).</summary>
+        /// <summary>Output only. The revenue share of the PlatformGroup, in millipercent (e.g. 15000 = 15%).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revshareMillipercent")]
         public virtual Decimal RevshareMillipercent { get; set; }
 
