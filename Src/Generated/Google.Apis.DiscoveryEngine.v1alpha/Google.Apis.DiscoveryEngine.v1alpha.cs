@@ -1099,6 +1099,75 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
                     }
 
+                    /// <summary>
+                    /// Uses the per-user refresh token minted with AcquireAndStoreRefreshToken to generate and return a
+                    /// new access token and its details. Takes the access token from cache if available. Rotates the
+                    /// stored refresh token if needed. Uses the end user identity to return the user specific access
+                    /// token. Does *not* return the credentials configured by the administrator. Used by Agentspace
+                    /// action execution and Agentspace UI.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the connector for which a token is queried.
+                    /// </param>
+                    public virtual AcquireAccessTokenRequest AcquireAccessToken(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest body, string name)
+                    {
+                        return new AcquireAccessTokenRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Uses the per-user refresh token minted with AcquireAndStoreRefreshToken to generate and return a
+                    /// new access token and its details. Takes the access token from cache if available. Rotates the
+                    /// stored refresh token if needed. Uses the end user identity to return the user specific access
+                    /// token. Does *not* return the credentials configured by the administrator. Used by Agentspace
+                    /// action execution and Agentspace UI.
+                    /// </summary>
+                    public class AcquireAccessTokenRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse>
+                    {
+                        /// <summary>Constructs a new AcquireAccessToken request.</summary>
+                        public AcquireAccessTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the connector for which a token is queried.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "acquireAccessToken";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}:acquireAccessToken";
+
+                        /// <summary>Initializes AcquireAccessToken parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataConnector$",
+                            });
+                        }
+                    }
+
                     /// <summary>Get the secret for the associated connector.</summary>
                     /// <param name="name">Required. The full resource name of the associated data connector.</param>
                     public virtual GetConnectorSecretRequest GetConnectorSecret(string name)
@@ -5280,7 +5349,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                             /// <summary>
                             /// A filter to apply on the list results. The supported features are: user_pseudo_id,
-                            /// state. Example: "user_pseudo_id = some_id"
+                            /// state, starred. Examples: "user_pseudo_id = some_id" "starred = true"
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -7374,6 +7443,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             [Google.Apis.Util.RequestParameterAttribute("acceptCache", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> AcceptCache { get; set; }
 
+                            /// <summary>
+                            /// Optional. Whether to turn off collection_components in WidgetConfig to reduce latency
+                            /// and data transmission.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("getWidgetConfigRequestOption.turnOffCollectionComponents", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> GetWidgetConfigRequestOptionTurnOffCollectionComponents { get; set; }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "get";
 
@@ -7398,6 +7474,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 RequestParameters.Add("acceptCache", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "acceptCache",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("getWidgetConfigRequestOption.turnOffCollectionComponents", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "getWidgetConfigRequestOption.turnOffCollectionComponents",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -10287,7 +10371,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                             /// <summary>
                             /// A filter to apply on the list results. The supported features are: user_pseudo_id,
-                            /// state. Example: "user_pseudo_id = some_id"
+                            /// state, starred. Examples: "user_pseudo_id = some_id" "starred = true"
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -10506,6 +10590,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             [Google.Apis.Util.RequestParameterAttribute("acceptCache", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> AcceptCache { get; set; }
 
+                            /// <summary>
+                            /// Optional. Whether to turn off collection_components in WidgetConfig to reduce latency
+                            /// and data transmission.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("getWidgetConfigRequestOption.turnOffCollectionComponents", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> GetWidgetConfigRequestOptionTurnOffCollectionComponents { get; set; }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "get";
 
@@ -10530,6 +10621,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 RequestParameters.Add("acceptCache", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "acceptCache",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("getWidgetConfigRequestOption.turnOffCollectionComponents", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "getWidgetConfigRequestOption.turnOffCollectionComponents",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -15478,8 +15577,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// A filter to apply on the list results. The supported features are: user_pseudo_id, state.
-                        /// Example: "user_pseudo_id = some_id"
+                        /// A filter to apply on the list results. The supported features are: user_pseudo_id, state,
+                        /// starred. Examples: "user_pseudo_id = some_id" "starred = true"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -16977,6 +17076,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("acceptCache", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> AcceptCache { get; set; }
 
+                        /// <summary>
+                        /// Optional. Whether to turn off collection_components in WidgetConfig to reduce latency and
+                        /// data transmission.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("getWidgetConfigRequestOption.turnOffCollectionComponents", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> GetWidgetConfigRequestOptionTurnOffCollectionComponents { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
@@ -17001,6 +17107,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             RequestParameters.Add("acceptCache", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "acceptCache",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("getWidgetConfigRequestOption.turnOffCollectionComponents", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "getWidgetConfigRequestOption.turnOffCollectionComponents",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -28195,6 +28309,28 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the DataConnectorService.AcquireAccessToken method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the DataConnectorService.AcquireAccessToken method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAcquireAccessTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The created access token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Info about the stored refresh token used to create the access token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshTokenInfo")]
+        public virtual GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo RefreshTokenInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Informations to support actions on the connector.</summary>
     public class GoogleCloudDiscoveryengineV1alphaActionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -33107,9 +33243,28 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("realtimeSyncSecret")]
         public virtual string RealtimeSyncSecret { get; set; }
 
+        /// <summary>Optional. Streaming error details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingError")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError StreamingError { get; set; }
+
         /// <summary>Optional. Webhook url for the connector to specify additional params for realtime sync.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookUri")]
         public virtual string WebhookUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Streaming error details.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Error details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>Optional. Streaming error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingErrorReason")]
+        public virtual string StreamingErrorReason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -37490,8 +37645,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaListSessionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A filter to apply on the list results. The supported features are: user_pseudo_id, state. Example:
-        /// "user_pseudo_id = some_id"
+        /// A filter to apply on the list results. The supported features are: user_pseudo_id, state, starred. Examples:
+        /// "user_pseudo_id = some_id" "starred = true"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -39128,6 +39283,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes a refresh token.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The connection for which this token applies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The list of scopes for this token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the CrawlRateManagementService.RemoveDedicatedCrawlRate operation. This will
     /// be returned by the google.longrunning.Operation.metadata field.
@@ -40057,9 +40227,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// predicted conversion rate adjustment as a rank use predicted Click-through rate (pCTR) to gauge the
         /// relevance and attractiveness of a search result from a user's perspective. A higher pCTR suggests that the
         /// result is more likely to satisfy the user's query and intent, making it a valuable signal for ranking. *
-        /// `freshness_rank`: freshness adjustment as a rank * `topicality_rank`: topicality adjustment as a rank. Uses
-        /// proprietary Google model to determine the keyword-based overlap between the query and the document. *
-        /// `base_rank`: the default rank of the result
+        /// `freshness_rank`: freshness adjustment as a rank * `document_age`: The time in hours elapsed since the
+        /// document was last updated, a floating-point number (e.g., 0.25 means 15 minutes). * `topicality_rank`:
+        /// topicality adjustment as a rank. Uses proprietary Google model to determine the keyword-based overlap
+        /// between the query and the document. * `base_rank`: the default rank of the result
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
         public virtual string RankingExpression { get; set; }
@@ -48813,9 +48984,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// predicted conversion rate adjustment as a rank use predicted Click-through rate (pCTR) to gauge the
         /// relevance and attractiveness of a search result from a user's perspective. A higher pCTR suggests that the
         /// result is more likely to satisfy the user's query and intent, making it a valuable signal for ranking. *
-        /// `freshness_rank`: freshness adjustment as a rank * `topicality_rank`: topicality adjustment as a rank. Uses
-        /// proprietary Google model to determine the keyword-based overlap between the query and the document. *
-        /// `base_rank`: the default rank of the result
+        /// `freshness_rank`: freshness adjustment as a rank * `document_age`: The time in hours elapsed since the
+        /// document was last updated, a floating-point number (e.g., 0.25 means 15 minutes). * `topicality_rank`:
+        /// topicality adjustment as a rank. Uses proprietary Google model to determine the keyword-based overlap
+        /// between the query and the document. * `base_rank`: the default rank of the result
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
         public virtual string RankingExpression { get; set; }
