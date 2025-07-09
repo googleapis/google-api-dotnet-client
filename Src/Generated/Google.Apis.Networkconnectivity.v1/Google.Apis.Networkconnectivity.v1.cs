@@ -8104,8 +8104,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class LinkedInterconnectAttachments : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. IP ranges allowed to be included during import from hub (does not control transit connectivity).
-        /// The only allowed value for now is "ALL_IPV4_RANGES".
+        /// Optional. Hub routes fully encompassed by include import ranges are included during import from hub.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeImportRanges")]
         public virtual System.Collections.Generic.IList<string> IncludeImportRanges { get; set; }
@@ -8183,8 +8182,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class LinkedRouterApplianceInstances : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. IP ranges allowed to be included during import from hub (does not control transit connectivity).
-        /// The only allowed value for now is "ALL_IPV4_RANGES".
+        /// Optional. Hub routes fully encompassed by include import ranges are included during import from hub.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeImportRanges")]
         public virtual System.Collections.Generic.IList<string> IncludeImportRanges { get; set; }
@@ -8258,8 +8256,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class LinkedVpnTunnels : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. IP ranges allowed to be included during import from hub (does not control transit connectivity).
-        /// The only allowed value for now is "ALL_IPV4_RANGES".
+        /// Optional. Hub routes fully encompassed by include import ranges are included during import from hub.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeImportRanges")]
         public virtual System.Collections.Generic.IList<string> IncludeImportRanges { get; set; }
