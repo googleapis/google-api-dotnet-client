@@ -4303,7 +4303,7 @@ namespace Google.Apis.DiscoveryEngine.v1
 
                             /// <summary>
                             /// A filter to apply on the list results. The supported features are: user_pseudo_id,
-                            /// state. Example: "user_pseudo_id = some_id"
+                            /// state, starred. Examples: "user_pseudo_id = some_id" "starred = true"
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -8750,7 +8750,7 @@ namespace Google.Apis.DiscoveryEngine.v1
 
                             /// <summary>
                             /// A filter to apply on the list results. The supported features are: user_pseudo_id,
-                            /// state. Example: "user_pseudo_id = some_id"
+                            /// state, starred. Examples: "user_pseudo_id = some_id" "starred = true"
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -12728,8 +12728,8 @@ namespace Google.Apis.DiscoveryEngine.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// A filter to apply on the list results. The supported features are: user_pseudo_id, state.
-                        /// Example: "user_pseudo_id = some_id"
+                        /// A filter to apply on the list results. The supported features are: user_pseudo_id, state,
+                        /// starred. Examples: "user_pseudo_id = some_id" "starred = true"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -30577,9 +30577,28 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("realtimeSyncSecret")]
         public virtual string RealtimeSyncSecret { get; set; }
 
+        /// <summary>Optional. Streaming error details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingError")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError StreamingError { get; set; }
+
         /// <summary>Optional. Webhook url for the connector to specify additional params for realtime sync.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookUri")]
         public virtual string WebhookUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Streaming error details.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfigStreamingError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Error details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>Optional. Streaming error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingErrorReason")]
+        public virtual string StreamingErrorReason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -33663,8 +33682,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     public class GoogleCloudDiscoveryengineV1alphaListSessionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A filter to apply on the list results. The supported features are: user_pseudo_id, state. Example:
-        /// "user_pseudo_id = some_id"
+        /// A filter to apply on the list results. The supported features are: user_pseudo_id, state, starred. Examples:
+        /// "user_pseudo_id = some_id" "starred = true"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -35087,9 +35106,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// predicted conversion rate adjustment as a rank use predicted Click-through rate (pCTR) to gauge the
         /// relevance and attractiveness of a search result from a user's perspective. A higher pCTR suggests that the
         /// result is more likely to satisfy the user's query and intent, making it a valuable signal for ranking. *
-        /// `freshness_rank`: freshness adjustment as a rank * `topicality_rank`: topicality adjustment as a rank. Uses
-        /// proprietary Google model to determine the keyword-based overlap between the query and the document. *
-        /// `base_rank`: the default rank of the result
+        /// `freshness_rank`: freshness adjustment as a rank * `document_age`: The time in hours elapsed since the
+        /// document was last updated, a floating-point number (e.g., 0.25 means 15 minutes). * `topicality_rank`:
+        /// topicality adjustment as a rank. Uses proprietary Google model to determine the keyword-based overlap
+        /// between the query and the document. * `base_rank`: the default rank of the result
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
         public virtual string RankingExpression { get; set; }
@@ -41629,9 +41649,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// predicted conversion rate adjustment as a rank use predicted Click-through rate (pCTR) to gauge the
         /// relevance and attractiveness of a search result from a user's perspective. A higher pCTR suggests that the
         /// result is more likely to satisfy the user's query and intent, making it a valuable signal for ranking. *
-        /// `freshness_rank`: freshness adjustment as a rank * `topicality_rank`: topicality adjustment as a rank. Uses
-        /// proprietary Google model to determine the keyword-based overlap between the query and the document. *
-        /// `base_rank`: the default rank of the result
+        /// `freshness_rank`: freshness adjustment as a rank * `document_age`: The time in hours elapsed since the
+        /// document was last updated, a floating-point number (e.g., 0.25 means 15 minutes). * `topicality_rank`:
+        /// topicality adjustment as a rank. Uses proprietary Google model to determine the keyword-based overlap
+        /// between the query and the document. * `base_rank`: the default rank of the result
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
         public virtual string RankingExpression { get; set; }
