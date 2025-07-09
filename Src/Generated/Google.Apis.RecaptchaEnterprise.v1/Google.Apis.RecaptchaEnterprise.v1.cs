@@ -3044,7 +3044,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Risk analysis result for an event.</summary>
     public class GoogleCloudRecaptchaenterpriseV1RiskAnalysis : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Challenge information for SCORE_AND_CHALLENGE and INVISIBLE keys</summary>
+        /// <summary>Output only. Challenge information for POLICY_BASED_CHALLENGE and INVISIBLE keys</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
         public virtual string Challenge { get; set; }
 
@@ -3662,14 +3662,54 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
 
         /// <summary>
         /// Optional. Settings for the frequency and difficulty at which this key triggers captcha challenges. This
-        /// should only be specified for IntegrationTypes CHECKBOX and INVISIBLE and SCORE_AND_CHALLENGE.
+        /// should only be specified for `IntegrationType` CHECKBOX, INVISIBLE or POLICY_BASED_CHALLENGE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("challengeSecurityPreference")]
         public virtual string ChallengeSecurityPreference { get; set; }
 
+        /// <summary>Optional. Challenge settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("challengeSettings")]
+        public virtual GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings ChallengeSettings { get; set; }
+
         /// <summary>Required. Describes how this key is integrated with the website.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrationType")]
         public virtual string IntegrationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Per-action challenge settings.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A challenge is triggered if the end-user score is below that threshold. Value must be between 0
+        /// and 1 (inclusive).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scoreThreshold")]
+        public virtual System.Nullable<float> ScoreThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The action to score threshold map. The action name should be the same as the action name passed in
+        /// the `data-action` attribute (see https://cloud.google.com/recaptcha/docs/actions-website). Action names are
+        /// case-insensitive. There is a maximum of 100 action settings. An action name has a maximum length of 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionSettings")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings> ActionSettings { get; set; }
+
+        /// <summary>
+        /// Required. Defines when a challenge is triggered (unless the default threshold is overridden for the given
+        /// action, see `action_settings`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultSettings")]
+        public virtual GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings DefaultSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
