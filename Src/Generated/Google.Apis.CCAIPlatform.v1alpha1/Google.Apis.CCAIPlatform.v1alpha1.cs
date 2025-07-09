@@ -1327,6 +1327,10 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateComponents")]
         public virtual System.Collections.Generic.IList<string> PrivateComponents { get; set; }
 
+        /// <summary>Output only. UJET release version, unique for each new release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseVersion")]
+        public virtual string ReleaseVersion { get; set; }
+
         /// <summary>Optional. Params that sets up Google as IdP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("samlParams")]
         public virtual SAMLParams SamlParams { get; set; }
