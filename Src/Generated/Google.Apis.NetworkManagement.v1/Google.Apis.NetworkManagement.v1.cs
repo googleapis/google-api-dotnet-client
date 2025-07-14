@@ -757,6 +757,7 @@ namespace Google.Apis.NetworkManagement.v1
             {
                 this.service = service;
                 Global = new GlobalResource(service);
+                NetworkMonitoringProviders = new NetworkMonitoringProvidersResource(service);
                 VpcFlowLogsConfigs = new VpcFlowLogsConfigsResource(service);
             }
 
@@ -1762,6 +1763,742 @@ namespace Google.Apis.NetworkManagement.v1
                                 Pattern = null,
                             });
                         }
+                    }
+                }
+            }
+
+            /// <summary>Gets the NetworkMonitoringProviders resource.</summary>
+            public virtual NetworkMonitoringProvidersResource NetworkMonitoringProviders { get; }
+
+            /// <summary>The "networkMonitoringProviders" collection of methods.</summary>
+            public class NetworkMonitoringProvidersResource
+            {
+                private const string Resource = "networkMonitoringProviders";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NetworkMonitoringProvidersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    MonitoringPoints = new MonitoringPointsResource(service);
+                    NetworkPaths = new NetworkPathsResource(service);
+                    WebPaths = new WebPathsResource(service);
+                }
+
+                /// <summary>Gets the MonitoringPoints resource.</summary>
+                public virtual MonitoringPointsResource MonitoringPoints { get; }
+
+                /// <summary>The "monitoringPoints" collection of methods.</summary>
+                public class MonitoringPointsResource
+                {
+                    private const string Resource = "monitoringPoints";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public MonitoringPointsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets the MonitoringPoint resource.</summary>
+                    /// <param name="name">
+                    /// Required. Name of the resource. Format:
+                    /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/monitoringPoints/{monitoring_point}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets the MonitoringPoint resource.</summary>
+                    public class GetRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.MonitoringPoint>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the resource. Format:
+                        /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/monitoringPoints/{monitoring_point}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/networkMonitoringProviders/[^/]+/monitoringPoints/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists MonitoringPoints for a given network monitoring provider.</summary>
+                    /// <param name="parent">
+                    /// Required. Parent value for ListMonitoringPointsRequest. Format:
+                    /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists MonitoringPoints for a given network monitoring provider.</summary>
+                    public class ListRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.ListMonitoringPointsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Parent value for ListMonitoringPointsRequest. Format:
+                        /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of monitoring points to return. The service may return fewer
+                        /// than this value. If unspecified, at most 20 monitoring points will be returned. The maximum
+                        /// value is 1000; values above 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListMonitoringPoints` call. Provide this
+                        /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListMonitoringPoints` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/monitoringPoints";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/networkMonitoringProviders/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the NetworkPaths resource.</summary>
+                public virtual NetworkPathsResource NetworkPaths { get; }
+
+                /// <summary>The "networkPaths" collection of methods.</summary>
+                public class NetworkPathsResource
+                {
+                    private const string Resource = "networkPaths";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public NetworkPathsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets the NetworkPath resource.</summary>
+                    /// <param name="name">
+                    /// Required. Name of the resource. Format:
+                    /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/networkPaths/{network_path}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets the NetworkPath resource.</summary>
+                    public class GetRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.NetworkPath>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the resource. Format:
+                        /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/networkPaths/{network_path}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/networkMonitoringProviders/[^/]+/networkPaths/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists NetworkPaths for a given network monitoring provider.</summary>
+                    /// <param name="parent">
+                    /// Required. Parent value for ListNetworkPathsRequest. Format:
+                    /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists NetworkPaths for a given network monitoring provider.</summary>
+                    public class ListRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.ListNetworkPathsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Parent value for ListNetworkPathsRequest. Format:
+                        /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of network paths to return. The service may return fewer than
+                        /// this value. If unspecified, at most 20 network pathswill be returned. The maximum value is
+                        /// 1000; values above 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListNetworkPaths` call. Provide this to
+                        /// retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListNetworkPaths` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/networkPaths";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/networkMonitoringProviders/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the WebPaths resource.</summary>
+                public virtual WebPathsResource WebPaths { get; }
+
+                /// <summary>The "webPaths" collection of methods.</summary>
+                public class WebPathsResource
+                {
+                    private const string Resource = "webPaths";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public WebPathsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets the WebPath resource.</summary>
+                    /// <param name="name">
+                    /// Required. Name of the resource.. Format:
+                    /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/webPaths/{web_path}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets the WebPath resource.</summary>
+                    public class GetRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.WebPath>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the resource.. Format:
+                        /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/webPaths/{web_path}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/networkMonitoringProviders/[^/]+/webPaths/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists WebPaths for a given network monitoring provider.</summary>
+                    /// <param name="parent">
+                    /// Required. Parent value for ListWebPathsRequest. Format:
+                    /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists WebPaths for a given network monitoring provider.</summary>
+                    public class ListRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.ListWebPathsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Parent value for ListWebPathsRequest. Format:
+                        /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of web paths to return. The service may return fewer than this
+                        /// value. If unspecified, at most 20 web paths will be returned. The maximum value is 1000;
+                        /// values above 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListWebPaths` call. Provide this to
+                        /// retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListWebPaths` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/webPaths";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/networkMonitoringProviders/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a NetworkMonitoringProvider resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Parent value for CreateNetworkMonitoringProviderRequest. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkManagement.v1.Data.NetworkMonitoringProvider body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a NetworkMonitoringProvider resource.</summary>
+                public class CreateRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkManagement.v1.Data.NetworkMonitoringProvider body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent value for CreateNetworkMonitoringProviderRequest. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for the NetworkMonitoringProvider resource, which will become the final
+                    /// component of the NetworkMonitoringProvider resource's name.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("networkMonitoringProviderId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string NetworkMonitoringProviderId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkManagement.v1.Data.NetworkMonitoringProvider Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/networkMonitoringProviders";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("networkMonitoringProviderId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "networkMonitoringProviderId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a NetworkMonitoringProvider resource and all of its child resources.</summary>
+                /// <param name="name">
+                /// Required. Name of the resource. Format:
+                /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a NetworkMonitoringProvider resource and all of its child resources.</summary>
+                public class DeleteRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the resource. Format:
+                    /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/networkMonitoringProviders/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets the NetworkMonitoringProvider resource.</summary>
+                /// <param name="name">
+                /// Required. Name of the resource. Format:
+                /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets the NetworkMonitoringProvider resource.</summary>
+                public class GetRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.NetworkMonitoringProvider>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the resource. Format:
+                    /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/networkMonitoringProviders/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists NetworkMonitoringProviders for a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. Parent value for ListNetworkMonitoringProvidersRequest. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists NetworkMonitoringProviders for a given project and location.</summary>
+                public class ListRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.ListNetworkMonitoringProvidersResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent value for ListNetworkMonitoringProvidersRequest. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of monitoring points to return. The service may return fewer than
+                    /// this value. If unspecified, at most 20 monitoring points will be returned. The maximum value is
+                    /// 1000; values above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListMonitoringPoints` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListMonitoringPoints` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/networkMonitoringProviders";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
                 }
             }
@@ -3315,6 +4052,41 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message describing information about the host.</summary>
+    public class Host : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The cloud instance id of the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudInstanceId")]
+        public virtual string CloudInstanceId { get; set; }
+
+        /// <summary>Output only. The cloud project id of the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudProjectId")]
+        public virtual string CloudProjectId { get; set; }
+
+        /// <summary>Output only. The cloud provider of the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
+        public virtual string CloudProvider { get; set; }
+
+        /// <summary>Output only. The cloud region of the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRegion")]
+        public virtual string CloudRegion { get; set; }
+
+        /// <summary>Output only. The id of Virtual Private Cloud (VPC) of the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudVpcId")]
+        public virtual string CloudVpcId { get; set; }
+
+        /// <summary>Output only. The cloud zone of the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudZone")]
+        public virtual string CloudZone { get; set; }
+
+        /// <summary>Output only. The operating system of the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("os")]
+        public virtual string Os { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>For display only. Metadata associated with a Compute Engine instance.</summary>
     public class InstanceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3431,6 +4203,51 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for response to listing MonitoringPoints</summary>
+    public class ListMonitoringPointsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of MonitoringPoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringPoints")]
+        public virtual System.Collections.Generic.IList<MonitoringPoint> MonitoringPoints { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing NetworkMonitoringProviders</summary>
+    public class ListNetworkMonitoringProvidersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of NetworkMonitoringProvider</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkMonitoringProviders")]
+        public virtual System.Collections.Generic.IList<NetworkMonitoringProvider> NetworkMonitoringProviders { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing NetworkPaths</summary>
+    public class ListNetworkPathsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of NetworkPath</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPaths")]
+        public virtual System.Collections.Generic.IList<NetworkPath> NetworkPaths { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3460,6 +4277,21 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>List of VPC Flow Log configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcFlowLogsConfigs")]
         public virtual System.Collections.Generic.IList<VpcFlowLogsConfig> VpcFlowLogsConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing WebPaths</summary>
+    public class ListWebPathsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of WebPath.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webPaths")]
+        public virtual System.Collections.Generic.IList<WebPath> WebPaths { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3611,6 +4443,151 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message describing MonitoringPoint resource.</summary>
+    public class MonitoringPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Indicates if automaitic geographic location is enabled for the MonitoringPoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoGeoLocationEnabled")]
+        public virtual System.Nullable<bool> AutoGeoLocationEnabled { get; set; }
+
+        /// <summary>Output only. Connection status of the MonitoringPoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionStatus")]
+        public virtual string ConnectionStatus { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the MonitoringPoint was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Display name of the MonitoringPoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The codes of errors detected in the MonitoringPoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<string> Errors { get; set; }
+
+        /// <summary>
+        /// Output only. The geographical location of the MonitoringPoint. Examples: - "New York, NY, USA" - "Berlin,
+        /// Germany"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoLocation")]
+        public virtual string GeoLocation { get; set; }
+
+        /// <summary>Output only. The host information of the MonitoringPoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual Host Host { get; set; }
+
+        /// <summary>Output only. The hostname of the MonitoringPoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the resource. Format:
+        /// `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/monitoringPoints/{monitoring_point}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The network interfaces of the MonitoringPoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
+        public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; }
+
+        /// <summary>Output only. IP address visible when MonitoringPoint connects to the provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originatingIp")]
+        public virtual string OriginatingIp { get; set; }
+
+        /// <summary>Output only. The provider tags of the MonitoringPoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerTags")]
+        public virtual System.Collections.Generic.IList<ProviderTag> ProviderTags { get; set; }
+
+        /// <summary>Output only. Deployment type of the MonitoringPoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the MonitoringPoint was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The type of upgrade available for the MonitoringPoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeType")]
+        public virtual string UpgradeType { get; set; }
+
+        /// <summary>Output only. Version of the software running on the MonitoringPoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>For display only. Metadata associated with NAT.</summary>
     public class NatInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3692,6 +4669,286 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>URI of a Compute Engine network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing network interfaces.</summary>
+    public class NetworkInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The description of the interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adapterDescription")]
+        public virtual string AdapterDescription { get; set; }
+
+        /// <summary>
+        /// Output only. The IP address of the interface and subnet mask in CIDR format. Examples: 192.168.1.0/24,
+        /// 2001:db8::/32
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cidr")]
+        public virtual string Cidr { get; set; }
+
+        /// <summary>Output only. The name of the network interface. Examples: eth0, eno1</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interfaceName")]
+        public virtual string InterfaceName { get; set; }
+
+        /// <summary>Output only. The IP address of the interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>Output only. The MAC address of the interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("macAddress")]
+        public virtual string MacAddress { get; set; }
+
+        /// <summary>Output only. Speed of the interface in millions of bits per second.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speed")]
+        public virtual System.Nullable<long> Speed { get; set; }
+
+        /// <summary>Output only. The id of the VLAN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vlanId")]
+        public virtual System.Nullable<long> VlanId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing NetworkMonitoringProvider resource.</summary>
+    public class NetworkMonitoringProvider : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the NetworkMonitoringProvider was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Identifier. Name of the resource. Format:
+        /// `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Type of the NetworkMonitoringProvider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerType")]
+        public virtual string ProviderType { get; set; }
+
+        /// <summary>Output only. Link to the provider's UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerUri")]
+        public virtual string ProviderUri { get; set; }
+
+        /// <summary>Output only. State of the NetworkMonitoringProvider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the NetworkMonitoringProvider was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing NetworkPath resource.</summary>
+    public class NetworkPath : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the NetworkPath was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. IP address or hostname of the network path destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; }
+
+        /// <summary>Output only. Geographical location of the destination MonitoringPoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationGeoLocation")]
+        public virtual string DestinationGeoLocation { get; set; }
+
+        /// <summary>Output only. The display name of the network path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates if the network path is dual ended. When true, the network path is measured both: from
+        /// both source to destination, and from destination to source. When false, the network path is measured from
+        /// the source through the destination back to the source (round trip measurement).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dualEnded")]
+        public virtual System.Nullable<bool> DualEnded { get; set; }
+
+        /// <summary>Output only. Is monitoring enabled for the network path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringEnabled")]
+        public virtual System.Nullable<bool> MonitoringEnabled { get; set; }
+
+        /// <summary>Output only. Display name of the monitoring policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringPolicyDisplayName")]
+        public virtual string MonitoringPolicyDisplayName { get; set; }
+
+        /// <summary>Output only. ID of monitoring policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringPolicyId")]
+        public virtual string MonitoringPolicyId { get; set; }
+
+        /// <summary>Output only. The monitoring status of the network path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringStatus")]
+        public virtual string MonitoringStatus { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the resource. Format:
+        /// `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/networkPaths/{network_path}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The network protocol of the network path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkProtocol")]
+        public virtual string NetworkProtocol { get; set; }
+
+        /// <summary>Output only. The provider tags of the network path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerTags")]
+        public virtual System.Collections.Generic.IList<ProviderTag> ProviderTags { get; set; }
+
+        /// <summary>Output only. Link to provider's UI; link shows the NetworkPath.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerUiUri")]
+        public virtual string ProviderUiUri { get; set; }
+
+        /// <summary>
+        /// Output only. Provider's UUID of the source MonitoringPoint. This id may not point to a resource in the GCP.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMonitoringPointId")]
+        public virtual string SourceMonitoringPointId { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the NetworkPath was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4007,6 +5264,25 @@ namespace Google.Apis.NetworkManagement.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VerifyTimeRaw);
             set => VerifyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing the provider tag.</summary>
+    public class ProviderTag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The category of the provider tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Output only. The resource type of the provider tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>Output only. The value of the provider tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4914,6 +6190,142 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>URI of a VPN tunnel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing WebPath resource.</summary>
+    public class WebPath : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the WebPath was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Web monitoring target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; }
+
+        /// <summary>Output only. Display name of the WebPath.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. Monitoring interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual object Interval { get; set; }
+
+        /// <summary>Output only. Is monitoring enabled for the WebPath.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringEnabled")]
+        public virtual System.Nullable<bool> MonitoringEnabled { get; set; }
+
+        /// <summary>Output only. Display name of the monitoring policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringPolicyDisplayName")]
+        public virtual string MonitoringPolicyDisplayName { get; set; }
+
+        /// <summary>Output only. ID of the monitoring policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringPolicyId")]
+        public virtual string MonitoringPolicyId { get; set; }
+
+        /// <summary>Output only. The monitoring status of the WebPath.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringStatus")]
+        public virtual string MonitoringStatus { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the resource. Format:
+        /// `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/webPaths/{web_path}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The provider tags of the web path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerTags")]
+        public virtual System.Collections.Generic.IList<ProviderTag> ProviderTags { get; set; }
+
+        /// <summary>Output only. Link to provider's UI; link shows the WebPath.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerUiUri")]
+        public virtual string ProviderUiUri { get; set; }
+
+        /// <summary>Output only. Provider's UUID of the related NetworkPath.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedNetworkPathId")]
+        public virtual string RelatedNetworkPathId { get; set; }
+
+        /// <summary>Output only. ID of the source MonitoringPoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMonitoringPointId")]
+        public virtual string SourceMonitoringPointId { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the WebPath was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The workflow type of the WebPath.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workflowType")]
+        public virtual string WorkflowType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
