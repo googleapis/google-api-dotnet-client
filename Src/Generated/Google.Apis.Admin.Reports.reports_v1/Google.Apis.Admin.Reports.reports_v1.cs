@@ -985,11 +985,12 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual string Filters { get; set; }
 
             /// <summary>
-            /// Comma separated group ids (obfuscated) on which user activities are filtered, i.e. the response will
-            /// contain activities for only those users that are a part of at least one of the group ids mentioned here.
-            /// Format: "id:abc123,id:xyz456" *Important:* To filter by groups, you must explicitly add the groups to
-            /// your filtering groups allowlist. For more information about adding groups to filtering groups allowlist,
-            /// see [Filter results by Google Group](https://support.google.com/a/answer/11482175)
+            /// `Deprecated`. This field is deprecated and is no longer supported. Comma separated group ids
+            /// (obfuscated) on which user activities are filtered, i.e. the response will contain activities for only
+            /// those users that are a part of at least one of the group ids mentioned here. Format:
+            /// "id:abc123,id:xyz456" *Important:* To filter by groups, you must explicitly add the groups to your
+            /// filtering groups allowlist. For more information about adding groups to filtering groups allowlist, see
+            /// [Filter results by Google Group](https://support.google.com/a/answer/11482175)
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("groupIdFilter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string GroupIdFilter { get; set; }
@@ -1819,6 +1820,10 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>Network information of the user doing the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkInfo")]
+        public virtual ActivityNetworkInfo NetworkInfo { get; set; }
+
         /// <summary>
         /// This is the domain that is affected by the report's event. For example domain of Admin console or the Drive
         /// application's document owner.
@@ -2016,6 +2021,25 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("uniqueQualifier")]
             public virtual System.Nullable<long> UniqueQualifier { get; set; }
         }
+    }
+
+    /// <summary>Network information of the user doing the action.</summary>
+    public class ActivityNetworkInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>IP Address of the user doing the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAsn")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> IpAsn { get; set; }
+
+        /// <summary>ISO 3166-1 alpha-2 region code of the user doing the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>ISO 3166-2 region code (states and provinces) for countries of the user doing the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subdivisionCode")]
+        public virtual string SubdivisionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Details of the label applied on the resource.</summary>
@@ -2359,7 +2383,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         /// <summary>
         /// Output only. Parameter value pairs for various applications. For the Entity Usage Report parameters and
         /// values, see [the Entity Usage parameters
-        /// reference](/admin-sdk/reports/v1/reference/usage-ref-appendix-a/entities).
+        /// reference](https://developers.google.com/workspace/admin/reports/v1/reference/usage-ref-appendix-a/entities).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<ParametersData> Parameters { get; set; }
@@ -2394,7 +2418,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         /// <summary>
         /// Output only. Parameter value pairs for various applications. For the Entity Usage Report parameters and
         /// values, see [the Entity Usage parameters
-        /// reference](/admin-sdk/reports/v1/reference/usage-ref-appendix-a/entities).
+        /// reference](https://developers.google.com/workspace/admin/reports/v1/reference/usage-ref-appendix-a/entities).
         /// </summary>
         public class ParametersData
         {
