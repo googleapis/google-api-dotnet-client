@@ -2981,8 +2981,11 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         public virtual string Code { get; set; }
 
         /// <summary>
-        /// More detailed error message to assist debugging. In the backend, only include it in admin authenticated API
-        /// like ExecuteGraphql. In the emulator, always include it to assist debugging.
+        /// More detailed error message to assist debugging. It contains application business logic that are
+        /// inappropriate to leak publicly. In the emulator, Data Connect API always includes it to assist local
+        /// development and debugging. In the backend, ConnectorService always hides it. GraphqlService without
+        /// impersonation always include it. GraphqlService with impersonation includes it only if explicitly opted-in
+        /// with `include_debug_details` in `GraphqlRequestExtensions`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugDetails")]
         public virtual string DebugDetails { get; set; }
@@ -3086,6 +3089,10 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authClaims")]
         public virtual System.Collections.Generic.IDictionary<string, object> AuthClaims { get; set; }
+
+        /// <summary>Optional. If set, include debug details in GraphQL error extensions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeDebugDetails")]
+        public virtual System.Nullable<bool> IncludeDebugDetails { get; set; }
 
         /// <summary>Evaluate the auth policy as an unauthenticated request. Can only be set to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unauthenticated")]
