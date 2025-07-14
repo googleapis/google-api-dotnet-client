@@ -7336,6 +7336,10 @@ namespace Google.Apis.Connectors.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. VPCSC config for the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcscConfig")]
+        public virtual VpcscConfig VpcscConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12095,6 +12099,21 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Error message. The spec is valid if the error message is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This configuration provides VPCSC config for a connector.</summary>
+    public class VpcscConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of allowlisted FQDNs for VPCSC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultAllowlistedHost")]
+        public virtual System.Collections.Generic.IList<string> DefaultAllowlistedHost { get; set; }
+
+        /// <summary>Whether to disable firewall VPCSC flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableFirewallVpcscFlow")]
+        public virtual System.Nullable<bool> DisableFirewallVpcscFlow { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
