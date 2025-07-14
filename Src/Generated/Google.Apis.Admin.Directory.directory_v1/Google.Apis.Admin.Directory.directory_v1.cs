@@ -776,7 +776,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>
         /// Use
-        /// [BatchChangeChromeOsDeviceStatus](/admin-sdk/directory/reference/rest/v1/customer.devices.chromeos/batchChangeStatus)
+        /// [BatchChangeChromeOsDeviceStatus](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customer.devices.chromeos/batchChangeStatus)
         /// instead. Takes an action that affects a Chrome OS Device. This includes deprovisioning, disabling, and
         /// re-enabling devices. *Warning:* * Deprovisioning a device will stop device policy syncing and remove
         /// device-level printers. After a device is deprovisioned, it must be wiped before it can be re-enrolled. *
@@ -789,11 +789,12 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
-        /// the [Users resource](/admin-sdk/directory/v1/reference/users).
+        /// the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
         /// </param>
         /// <param name="resourceId">
         /// The unique ID of the device. The `resourceId`s are returned in the response from the
-        /// [chromeosdevices.list](/admin-sdk/directory/v1/reference/chromeosdevices/list) method.
+        /// [chromeosdevices.list](https://developers.google.com/workspace/admin/directory/v1/reference/chromeosdevices/list)
+        /// method.
         /// </param>
         public virtual ActionRequest Action(Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDeviceAction body, string customerId, string resourceId)
         {
@@ -802,7 +803,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>
         /// Use
-        /// [BatchChangeChromeOsDeviceStatus](/admin-sdk/directory/reference/rest/v1/customer.devices.chromeos/batchChangeStatus)
+        /// [BatchChangeChromeOsDeviceStatus](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customer.devices.chromeos/batchChangeStatus)
         /// instead. Takes an action that affects a Chrome OS Device. This includes deprovisioning, disabling, and
         /// re-enabling devices. *Warning:* * Deprovisioning a device will stop device policy syncing and remove
         /// device-level printers. After a device is deprovisioned, it must be wiped before it can be re-enrolled. *
@@ -825,14 +826,16 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
             /// the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as
-            /// part of the [Users resource](/admin-sdk/directory/v1/reference/users).
+            /// part of the [Users
+            /// resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
             /// <summary>
             /// The unique ID of the device. The `resourceId`s are returned in the response from the
-            /// [chromeosdevices.list](/admin-sdk/directory/v1/reference/chromeosdevices/list) method.
+            /// [chromeosdevices.list](https://developers.google.com/workspace/admin/directory/v1/reference/chromeosdevices/list)
+            /// method.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceId { get; private set; }
@@ -879,11 +882,12 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
-        /// the [Users resource](/admin-sdk/directory/v1/reference/users).
+        /// the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
         /// </param>
         /// <param name="deviceId">
         /// The unique ID of the device. The `deviceId`s are returned in the response from the
-        /// [chromeosdevices.list](/admin-sdk/directory/v1/reference/chromeosdevices/list) method.
+        /// [chromeosdevices.list](https://developers.google.com/workspace/admin/directory/v1/reference/chromeosdevices/list)
+        /// method.
         /// </param>
         public virtual GetRequest Get(string customerId, string deviceId)
         {
@@ -904,14 +908,16 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
             /// the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as
-            /// part of the [Users resource](/admin-sdk/directory/v1/reference/users).
+            /// part of the [Users
+            /// resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
             /// <summary>
             /// The unique ID of the device. The `deviceId`s are returned in the response from the
-            /// [chromeosdevices.list](/admin-sdk/directory/v1/reference/chromeosdevices/list) method.
+            /// [chromeosdevices.list](https://developers.google.com/workspace/admin/directory/v1/reference/chromeosdevices/list)
+            /// method.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DeviceId { get; private set; }
@@ -982,7 +988,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
-        /// the [Users resource](/admin-sdk/directory/v1/reference/users).
+        /// the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
         /// </param>
         public virtual ListRequest List(string customerId)
         {
@@ -1002,7 +1008,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
             /// the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as
-            /// part of the [Users resource](/admin-sdk/directory/v1/reference/users).
+            /// part of the [Users
+            /// resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -1050,7 +1057,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
                 /// <summary>
                 /// Chrome device status. For more information, see the &amp;lt;a
-                /// [chromeosdevices](/admin-sdk/directory/v1/reference/chromeosdevices.html).
+                /// [chromeosdevices](https://developers.google.com/workspace/admin/directory/v1/reference/chromeosdevices.html).
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("status")]
                 Status = 5,
@@ -1091,7 +1098,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>
             /// Search string in the format given at
-            /// https://developers.google.com/admin-sdk/directory/v1/list-query-operators
+            /// https://developers.google.com/workspace/admin/directory/v1/list-query-operators
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -1280,17 +1287,18 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <summary>
         /// Updates a device's updatable properties, such as `annotatedUser`, `annotatedLocation`, `notes`,
         /// `orgUnitPath`, or `annotatedAssetId`. This method supports [patch
-        /// semantics](/admin-sdk/directory/v1/guides/performance#patch).
+        /// semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
-        /// the [Users resource](/admin-sdk/directory/v1/reference/users).
+        /// the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
         /// </param>
         /// <param name="deviceId">
         /// The unique ID of the device. The `deviceId`s are returned in the response from the
-        /// [chromeosdevices.list](/admin-sdk/v1/reference/chromeosdevices/list) method.
+        /// [chromeosdevices.list](https://developers.google.com/workspace/admin/v1/reference/chromeosdevices/list)
+        /// method.
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice body, string customerId, string deviceId)
         {
@@ -1300,7 +1308,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <summary>
         /// Updates a device's updatable properties, such as `annotatedUser`, `annotatedLocation`, `notes`,
         /// `orgUnitPath`, or `annotatedAssetId`. This method supports [patch
-        /// semantics](/admin-sdk/directory/v1/guides/performance#patch).
+        /// semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch).
         /// </summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice>
         {
@@ -1316,14 +1324,16 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
             /// the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as
-            /// part of the [Users resource](/admin-sdk/directory/v1/reference/users).
+            /// part of the [Users
+            /// resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
             /// <summary>
             /// The unique ID of the device. The `deviceId`s are returned in the response from the
-            /// [chromeosdevices.list](/admin-sdk/v1/reference/chromeosdevices/list) method.
+            /// [chromeosdevices.list](https://developers.google.com/workspace/admin/v1/reference/chromeosdevices/list)
+            /// method.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DeviceId { get; private set; }
@@ -1404,11 +1414,12 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
-        /// the [Users resource](/admin-sdk/directory/v1/reference/users).
+        /// the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
         /// </param>
         /// <param name="deviceId">
         /// The unique ID of the device. The `deviceId`s are returned in the response from the
-        /// [chromeosdevices.list](/admin-sdk/v1/reference/chromeosdevices/list) method.
+        /// [chromeosdevices.list](https://developers.google.com/workspace/admin/v1/reference/chromeosdevices/list)
+        /// method.
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice body, string customerId, string deviceId)
         {
@@ -1433,14 +1444,16 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
             /// the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as
-            /// part of the [Users resource](/admin-sdk/directory/v1/reference/users).
+            /// part of the [Users
+            /// resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
             /// <summary>
             /// The unique ID of the device. The `deviceId`s are returned in the response from the
-            /// [chromeosdevices.list](/admin-sdk/v1/reference/chromeosdevices/list) method.
+            /// [chromeosdevices.list](https://developers.google.com/workspace/admin/v1/reference/chromeosdevices/list)
+            /// method.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DeviceId { get; private set; }
@@ -1842,8 +1855,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The [unique
-                /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the customer's
-                /// Google Workspace account. Format: `customers/{id}`
+                /// ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the
+                /// customer's Google Workspace account. Format: `customers/{id}`
                 /// </param>
                 public virtual BatchCreatePrintServersRequest BatchCreatePrintServers(Google.Apis.Admin.Directory.directory_v1.Data.BatchCreatePrintServersRequest body, string parent)
                 {
@@ -1863,7 +1876,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
                     /// <summary>
                     /// Required. The [unique
-                    /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the
+                    /// ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the
                     /// customer's Google Workspace account. Format: `customers/{id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1903,8 +1916,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The [unique
-                /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the customer's
-                /// Google Workspace account. Format: `customers/{customer.id}`
+                /// ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the
+                /// customer's Google Workspace account. Format: `customers/{customer.id}`
                 /// </param>
                 public virtual BatchDeletePrintServersRequest BatchDeletePrintServers(Google.Apis.Admin.Directory.directory_v1.Data.BatchDeletePrintServersRequest body, string parent)
                 {
@@ -1924,7 +1937,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
                     /// <summary>
                     /// Required. The [unique
-                    /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the
+                    /// ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the
                     /// customer's Google Workspace account. Format: `customers/{customer.id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1964,8 +1977,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The [unique
-                /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the customer's
-                /// Google Workspace account. Format: `customers/{id}`
+                /// ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the
+                /// customer's Google Workspace account. Format: `customers/{id}`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Admin.Directory.directory_v1.Data.PrintServer body, string parent)
                 {
@@ -1985,7 +1998,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
                     /// <summary>
                     /// Required. The [unique
-                    /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the
+                    /// ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the
                     /// customer's Google Workspace account. Format: `customers/{id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2075,8 +2088,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <summary>Returns a print server's configuration.</summary>
                 /// <param name="name">
                 /// Required. The [unique
-                /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the customer's
-                /// Google Workspace account. Format: `customers/{id}`
+                /// ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the
+                /// customer's Google Workspace account. Format: `customers/{id}`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -2095,7 +2108,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
                     /// <summary>
                     /// Required. The [unique
-                    /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the
+                    /// ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the
                     /// customer's Google Workspace account. Format: `customers/{id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2128,8 +2141,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <summary>Lists print server configurations.</summary>
                 /// <param name="parent">
                 /// Required. The [unique
-                /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the customer's
-                /// Google Workspace account. Format: `customers/{id}`
+                /// ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the
+                /// customer's Google Workspace account. Format: `customers/{id}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2148,7 +2161,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
                     /// <summary>
                     /// Required. The [unique
-                    /// ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of the
+                    /// ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the
                     /// customer's Google Workspace account. Format: `customers/{id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -3148,8 +3161,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
         /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
         /// represent your account's `customerId`. The `customerId` is also returned as part of the
-        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-        /// `domain` parameter.
+        /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+        /// provide either the `customer` or the `domain` parameter.
         /// </param>
         /// <param name="domainAliasName">Name of domain alias to be retrieved.</param>
         public virtual GetRequest Get(string customer, string domainAliasName)
@@ -3172,8 +3185,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
             /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
             /// to represent your account's `customerId`. The `customerId` is also returned as part of the
-            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-            /// `domain` parameter.
+            /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+            /// provide either the `customer` or the `domain` parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
@@ -3272,8 +3285,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
         /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
         /// represent your account's `customerId`. The `customerId` is also returned as part of the
-        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-        /// `domain` parameter.
+        /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+        /// provide either the `customer` or the `domain` parameter.
         /// </param>
         public virtual ListRequest List(string customer)
         {
@@ -3294,8 +3307,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
             /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
             /// to represent your account's `customerId`. The `customerId` is also returned as part of the
-            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-            /// `domain` parameter.
+            /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+            /// provide either the `customer` or the `domain` parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
@@ -3415,8 +3428,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
         /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
         /// represent your account's `customerId`. The `customerId` is also returned as part of the
-        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-        /// `domain` parameter.
+        /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+        /// provide either the `customer` or the `domain` parameter.
         /// </param>
         /// <param name="domainName">Name of domain to be retrieved</param>
         public virtual GetRequest Get(string customer, string domainName)
@@ -3439,8 +3452,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
             /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
             /// to represent your account's `customerId`. The `customerId` is also returned as part of the
-            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-            /// `domain` parameter.
+            /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+            /// provide either the `customer` or the `domain` parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
@@ -3539,8 +3552,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
         /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
         /// represent your account's `customerId`. The `customerId` is also returned as part of the
-        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-        /// `domain` parameter.
+        /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+        /// provide either the `customer` or the `domain` parameter.
         /// </param>
         public virtual ListRequest List(string customer)
         {
@@ -3561,8 +3574,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
             /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
             /// to represent your account's `customerId`. The `customerId` is also returned as part of the
-            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-            /// `domain` parameter.
+            /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+            /// provide either the `customer` or the `domain` parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
@@ -3960,8 +3973,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
             /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
             /// to represent your account's `customerId`. The `customerId` is also returned as part of the
-            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-            /// `domain` parameter.
+            /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+            /// provide either the `customer` or the `domain` parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Customer { get; set; }
@@ -4110,7 +4123,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>
         /// Updates a group's properties. This method supports [patch
-        /// semantics](/admin-sdk/directory/v1/guides/performance#patch).
+        /// semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="groupKey">
@@ -4124,7 +4137,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>
         /// Updates a group's properties. This method supports [patch
-        /// semantics](/admin-sdk/directory/v1/guides/performance#patch).
+        /// semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch).
         /// </summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Group>
         {
@@ -4534,7 +4547,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <summary>
         /// Retrieves a paginated list of all members in a group. This method times out after 60 minutes. For more
         /// information, see [Troubleshoot error
-        /// codes](https://developers.google.com/admin-sdk/directory/v1/guides/troubleshoot-error-codes).
+        /// codes](https://developers.google.com/workspace/admin/directory/v1/guides/troubleshoot-error-codes).
         /// </summary>
         /// <param name="groupKey">
         /// Identifies the group in the API request. The value can be the group's email address, group alias, or the
@@ -4548,7 +4561,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <summary>
         /// Retrieves a paginated list of all members in a group. This method times out after 60 minutes. For more
         /// information, see [Troubleshoot error
-        /// codes](https://developers.google.com/admin-sdk/directory/v1/guides/troubleshoot-error-codes).
+        /// codes](https://developers.google.com/workspace/admin/directory/v1/guides/troubleshoot-error-codes).
         /// </summary>
         public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Members>
         {
@@ -4643,7 +4656,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>
         /// Updates the membership properties of a user in the specified group. This method supports [patch
-        /// semantics](/admin-sdk/directory/v1/guides/performance#patch).
+        /// semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="groupKey">
@@ -4661,7 +4674,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>
         /// Updates the membership properties of a user in the specified group. This method supports [patch
-        /// semantics](/admin-sdk/directory/v1/guides/performance#patch).
+        /// semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch).
         /// </summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Member>
         {
@@ -4825,7 +4838,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
-        /// the [Users resource](/admin-sdk/directory/v1/reference/users).
+        /// the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
         /// </param>
         /// <param name="resourceId">The unique ID the API service uses to identify the mobile device.</param>
         public virtual ActionRequest Action(Google.Apis.Admin.Directory.directory_v1.Data.MobileDeviceAction body, string customerId, string resourceId)
@@ -4848,7 +4861,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
             /// the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as
-            /// part of the [Users resource](/admin-sdk/directory/v1/reference/users).
+            /// part of the [Users
+            /// resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -4899,7 +4913,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
-        /// the [Users resource](/admin-sdk/directory/v1/reference/users).
+        /// the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
         /// </param>
         /// <param name="resourceId">The unique ID the API service uses to identify the mobile device.</param>
         public virtual DeleteRequest Delete(string customerId, string resourceId)
@@ -4921,7 +4935,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
             /// the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as
-            /// part of the [Users resource](/admin-sdk/directory/v1/reference/users).
+            /// part of the [Users
+            /// resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -4966,7 +4981,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
-        /// the [Users resource](/admin-sdk/directory/v1/reference/users).
+        /// the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
         /// </param>
         /// <param name="resourceId">The unique ID the API service uses to identify the mobile device.</param>
         public virtual GetRequest Get(string customerId, string resourceId)
@@ -4988,7 +5003,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
             /// the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as
-            /// part of the [Users resource](/admin-sdk/directory/v1/reference/users).
+            /// part of the [Users
+            /// resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -5060,12 +5076,12 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// company-owned devices, use the Cloud Identity [Devices
         /// API](https://cloud.google.com/identity/docs/concepts/overview-devices) instead. This method times out after
         /// 60 minutes. For more information, see [Troubleshoot error
-        /// codes](https://developers.google.com/admin-sdk/directory/v1/guides/troubleshoot-error-codes).
+        /// codes](https://developers.google.com/workspace/admin/directory/v1/guides/troubleshoot-error-codes).
         /// </summary>
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
-        /// the [Users resource](/admin-sdk/directory/v1/reference/users).
+        /// the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
         /// </param>
         public virtual ListRequest List(string customerId)
         {
@@ -5077,7 +5093,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// company-owned devices, use the Cloud Identity [Devices
         /// API](https://cloud.google.com/identity/docs/concepts/overview-devices) instead. This method times out after
         /// 60 minutes. For more information, see [Troubleshoot error
-        /// codes](https://developers.google.com/admin-sdk/directory/v1/guides/troubleshoot-error-codes).
+        /// codes](https://developers.google.com/workspace/admin/directory/v1/guides/troubleshoot-error-codes).
         /// </summary>
         public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.MobileDevices>
         {
@@ -5091,7 +5107,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
             /// the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as
-            /// part of the [Users resource](/admin-sdk/directory/v1/reference/users).
+            /// part of the [Users
+            /// resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -5167,7 +5184,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>
             /// Search string in the format given at
-            /// https://developers.google.com/admin-sdk/directory/v1/search-operators
+            /// https://developers.google.com/workspace/admin/directory/v1/search-operators
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -5283,7 +5300,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
-        /// the [Users resource](/admin-sdk/directory/v1/reference/users).
+        /// the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
         /// </param>
         /// <param name="orgUnitPath">
         /// The full path of the organizational unit (minus the leading `/`) or its unique ID.
@@ -5307,7 +5324,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
             /// the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as
-            /// part of the [Users resource](/admin-sdk/directory/v1/reference/users).
+            /// part of the [Users
+            /// resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -5352,7 +5370,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
-        /// the [Users resource](/admin-sdk/directory/v1/reference/users).
+        /// the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
         /// </param>
         /// <param name="orgUnitPath">
         /// The full path of the organizational unit (minus the leading `/`) or its unique ID.
@@ -5376,7 +5394,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
             /// the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as
-            /// part of the [Users resource](/admin-sdk/directory/v1/reference/users).
+            /// part of the [Users
+            /// resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -5422,7 +5441,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
-        /// the [Users resource](/admin-sdk/directory/v1/reference/users).
+        /// the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId)
         {
@@ -5443,7 +5462,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
             /// the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as
-            /// part of the [Users resource](/admin-sdk/directory/v1/reference/users).
+            /// part of the [Users
+            /// resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -5482,7 +5502,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
-        /// the [Users resource](/admin-sdk/directory/v1/reference/users).
+        /// the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
         /// </param>
         public virtual ListRequest List(string customerId)
         {
@@ -5502,7 +5522,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
             /// the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as
-            /// part of the [Users resource](/admin-sdk/directory/v1/reference/users).
+            /// part of the [Users
+            /// resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -5578,13 +5599,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>
         /// Updates an organizational unit. This method supports [patch
-        /// semantics](/admin-sdk/directory/v1/guides/performance#patch)
+        /// semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch)
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
-        /// the [Users resource](/admin-sdk/directory/v1/reference/users).
+        /// the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
         /// </param>
         /// <param name="orgUnitPath">
         /// The full path of the organizational unit (minus the leading `/`) or its unique ID.
@@ -5596,7 +5617,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>
         /// Updates an organizational unit. This method supports [patch
-        /// semantics](/admin-sdk/directory/v1/guides/performance#patch)
+        /// semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch)
         /// </summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit>
         {
@@ -5612,7 +5633,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
             /// the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as
-            /// part of the [Users resource](/admin-sdk/directory/v1/reference/users).
+            /// part of the [Users
+            /// resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -5664,7 +5686,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="customerId">
         /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the
         /// `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of
-        /// the [Users resource](/admin-sdk/directory/v1/reference/users).
+        /// the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
         /// </param>
         /// <param name="orgUnitPath">
         /// The full path of the organizational unit (minus the leading `/`) or its unique ID.
@@ -5689,7 +5711,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
             /// the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as
-            /// part of the [Users resource](/admin-sdk/directory/v1/reference/users).
+            /// part of the [Users
+            /// resource](https://developers.google.com/workspace/admin/directory/v1/reference/users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -5756,8 +5779,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
         /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
         /// represent your account's `customerId`. The `customerId` is also returned as part of the
-        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-        /// `domain` parameter.
+        /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+        /// provide either the `customer` or the `domain` parameter.
         /// </param>
         public virtual ListRequest List(string customer)
         {
@@ -5778,8 +5801,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
             /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
             /// to represent your account's `customerId`. The `customerId` is also returned as part of the
-            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-            /// `domain` parameter.
+            /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+            /// provide either the `customer` or the `domain` parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
@@ -7399,8 +7422,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
         /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
         /// represent your account's `customerId`. The `customerId` is also returned as part of the
-        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-        /// `domain` parameter.
+        /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+        /// provide either the `customer` or the `domain` parameter.
         /// </param>
         /// <param name="roleAssignmentId">Immutable ID of the role assignment.</param>
         public virtual GetRequest Get(string customer, string roleAssignmentId)
@@ -7423,8 +7446,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
             /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
             /// to represent your account's `customerId`. The `customerId` is also returned as part of the
-            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-            /// `domain` parameter.
+            /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+            /// provide either the `customer` or the `domain` parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
@@ -7523,8 +7546,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
         /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
         /// represent your account's `customerId`. The `customerId` is also returned as part of the
-        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-        /// `domain` parameter.
+        /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+        /// provide either the `customer` or the `domain` parameter.
         /// </param>
         public virtual ListRequest List(string customer)
         {
@@ -7545,8 +7568,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
             /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
             /// to represent your account's `customerId`. The `customerId` is also returned as part of the
-            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-            /// `domain` parameter.
+            /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+            /// provide either the `customer` or the `domain` parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
@@ -7724,8 +7747,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
         /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
         /// represent your account's `customerId`. The `customerId` is also returned as part of the
-        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-        /// `domain` parameter.
+        /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+        /// provide either the `customer` or the `domain` parameter.
         /// </param>
         /// <param name="roleId">Immutable ID of the role.</param>
         public virtual GetRequest Get(string customer, string roleId)
@@ -7748,8 +7771,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
             /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
             /// to represent your account's `customerId`. The `customerId` is also returned as part of the
-            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-            /// `domain` parameter.
+            /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+            /// provide either the `customer` or the `domain` parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
@@ -7848,8 +7871,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
         /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
         /// represent your account's `customerId`. The `customerId` is also returned as part of the
-        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-        /// `domain` parameter.
+        /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+        /// provide either the `customer` or the `domain` parameter.
         /// </param>
         public virtual ListRequest List(string customer)
         {
@@ -7870,8 +7893,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
             /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
             /// to represent your account's `customerId`. The `customerId` is also returned as part of the
-            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-            /// `domain` parameter.
+            /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+            /// provide either the `customer` or the `domain` parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
@@ -8137,8 +8160,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
         /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
         /// represent your account's `customerId`. The `customerId` is also returned as part of the
-        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-        /// `domain` parameter.
+        /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+        /// provide either the `customer` or the `domain` parameter.
         /// </param>
         /// <param name="schemaKey">Name or immutable ID of the schema.</param>
         public virtual GetRequest Get(string customerId, string schemaKey)
@@ -8161,8 +8184,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
             /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
             /// to represent your account's `customerId`. The `customerId` is also returned as part of the
-            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-            /// `domain` parameter.
+            /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+            /// provide either the `customer` or the `domain` parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -8261,8 +8284,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all
         /// groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to
         /// represent your account's `customerId`. The `customerId` is also returned as part of the
-        /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-        /// `domain` parameter.
+        /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+        /// provide either the `customer` or the `domain` parameter.
         /// </param>
         public virtual ListRequest List(string customerId)
         {
@@ -8283,8 +8306,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
             /// all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
             /// to represent your account's `customerId`. The `customerId` is also returned as part of the
-            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-            /// `domain` parameter.
+            /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+            /// provide either the `customer` or the `domain` parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
@@ -9141,7 +9164,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>
             /// Adds a photo for the user. This method supports [patch
-            /// semantics](/admin-sdk/directory/v1/guides/performance#patch).
+            /// semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userKey">
@@ -9155,7 +9178,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>
             /// Adds a photo for the user. This method supports [patch
-            /// semantics](/admin-sdk/directory/v1/guides/performance#patch).
+            /// semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch).
             /// </summary>
             public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto>
             {
@@ -9372,7 +9395,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// Whether to fetch the administrator-only or domain-wide public view of the user. For more information,
             /// see [Retrieve a user as a
-            /// non-administrator](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin).
+            /// non-administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("viewType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewTypeEnum> ViewType { get; set; }
@@ -9380,7 +9403,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// Whether to fetch the administrator-only or domain-wide public view of the user. For more information,
             /// see [Retrieve a user as a
-            /// non-administrator](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin).
+            /// non-administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin).
             /// </summary>
             public enum ViewTypeEnum
             {
@@ -9539,8 +9562,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch
             /// all users for a customer, use this field instead of `domain`. You can also use the `my_customer` alias
             /// to represent your account's `customerId`. The `customerId` is also returned as part of the
-            /// [Users](/admin-sdk/directory/v1/reference/users) resource. You must provide either the `customer` or the
-            /// `domain` parameter.
+            /// [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must
+            /// provide either the `customer` or the `domain` parameter.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Customer { get; set; }
@@ -9631,7 +9654,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>
             /// Query string for searching user fields. For more information on constructing user queries, see [Search
-            /// for Users](/admin-sdk/directory/v1/guides/search-users).
+            /// for Users](https://developers.google.com/workspace/admin/directory/v1/guides/search-users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -9659,7 +9682,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// Whether to fetch the administrator-only or domain-wide public view of the user. For more information,
             /// see [Retrieve a user as a
-            /// non-administrator](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin).
+            /// non-administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("viewType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewTypeEnum> ViewType { get; set; }
@@ -9667,7 +9690,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// Whether to fetch the administrator-only or domain-wide public view of the user. For more information,
             /// see [Retrieve a user as a
-            /// non-administrator](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin).
+            /// non-administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin).
             /// </summary>
             public enum ViewTypeEnum
             {
@@ -9856,9 +9879,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <summary>
         /// Updates a user using patch semantics. The update method should be used instead, because it also supports
         /// patch semantics and has better performance. If you're mapping an external identity to a Google identity, use
-        /// the [`update`](https://developers.google.com/admin-sdk/directory/v1/reference/users/update) method instead
-        /// of the `patch` method. This method is unable to clear fields that contain repeated objects (`addresses`,
-        /// `phones`, etc). Use the update method instead.
+        /// the [`update`](https://developers.google.com/workspace/admin/directory/v1/reference/users/update) method
+        /// instead of the `patch` method. This method is unable to clear fields that contain repeated objects
+        /// (`addresses`, `phones`, etc). Use the update method instead.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="userKey">
@@ -9873,9 +9896,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <summary>
         /// Updates a user using patch semantics. The update method should be used instead, because it also supports
         /// patch semantics and has better performance. If you're mapping an external identity to a Google identity, use
-        /// the [`update`](https://developers.google.com/admin-sdk/directory/v1/reference/users/update) method instead
-        /// of the `patch` method. This method is unable to clear fields that contain repeated objects (`addresses`,
-        /// `phones`, etc). Use the update method instead.
+        /// the [`update`](https://developers.google.com/workspace/admin/directory/v1/reference/users/update) method
+        /// instead of the `patch` method. This method is unable to clear fields that contain repeated objects
+        /// (`addresses`, `phones`, etc). Use the update method instead.
         /// </summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.User>
         {
@@ -10039,8 +10062,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// wish to update. Fields that are not present in the request will be preserved, and fields set to `null` will
         /// be cleared. For repeating fields that contain arrays, individual items in the array can't be patched
         /// piecemeal; they must be supplied in the request body with the desired values for all items. See the [user
-        /// accounts guide](https://developers.google.com/admin-sdk/directory/v1/guides/manage-users#update_user) for
-        /// more information.
+        /// accounts guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#update_user)
+        /// for more information.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="userKey">
@@ -10057,8 +10080,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// wish to update. Fields that are not present in the request will be preserved, and fields set to `null` will
         /// be cleared. For repeating fields that contain arrays, individual items in the array can't be patched
         /// piecemeal; they must be supplied in the request body with the desired values for all items. See the [user
-        /// accounts guide](https://developers.google.com/admin-sdk/directory/v1/guides/manage-users#update_user) for
-        /// more information.
+        /// accounts guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#update_user)
+        /// for more information.
         /// </summary>
         public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.User>
         {
@@ -10251,7 +10274,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// Whether to fetch the administrator-only or domain-wide public view of the user. For more information,
             /// see [Retrieve a user as a
-            /// non-administrator](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin).
+            /// non-administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("viewType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewTypeEnum> ViewType { get; set; }
@@ -10259,7 +10282,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>
             /// Whether to fetch the administrator-only or domain-wide public view of the user. For more information,
             /// see [Retrieve a user as a
-            /// non-administrator](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin).
+            /// non-administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin).
             /// </summary>
             public enum ViewTypeEnum
             {
@@ -11165,7 +11188,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     /// <summary>
     /// Google Chrome devices run on the [Chrome OS](https://support.google.com/chromeos). For more information about
-    /// common API tasks, see the [Developer's Guide](/admin-sdk/directory/v1/guides/manage-chrome-devices).
+    /// common API tasks, see the [Developer's
+    /// Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-chrome-devices).
     /// </summary>
     public class ChromeOsDevice : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11381,7 +11405,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// mobile card in a mobile device. A MEID/IMEI is typically used when adding a device to a wireless carrier's
         /// post-pay service plan. If the device does not have this information, this property is not included in the
         /// response. For more information on how to export a MEID/IMEI list, see the [Developer's
-        /// Guide](/admin-sdk/directory/v1/guides/manage-chrome-devices.html#export_meid).
+        /// Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-chrome-devices.html#export_meid).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meid")]
         public virtual string Meid { get; set; }
@@ -11396,8 +11420,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>
         /// Notes about this device added by the administrator. This property can be
         /// [searched](https://support.google.com/chrome/a/answer/1698333) with the
-        /// [list](/admin-sdk/directory/v1/reference/chromeosdevices/list) method's `query` parameter. Maximum length is
-        /// 500 characters. Empty values are allowed.
+        /// [list](https://developers.google.com/workspace/admin/directory/v1/reference/chromeosdevices/list) method's
+        /// `query` parameter. Maximum length is 500 characters. Empty values are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
@@ -11412,9 +11436,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// The unique ID of the organizational unit. orgUnitPath is the human readable version of orgUnitId. While
         /// orgUnitPath may change by renaming an organizational unit within the path, orgUnitId is unchangeable for one
         /// organizational unit. This property can be
-        /// [updated](/admin-sdk/directory/v1/guides/manage-chrome-devices#move_chrome_devices_to_ou) using the API. For
-        /// more information about how to create an organizational structure for your device, see the [administration
-        /// help center](https://support.google.com/a/answer/182433).
+        /// [updated](https://developers.google.com/workspace/admin/directory/v1/guides/manage-chrome-devices#move_chrome_devices_to_ou)
+        /// using the API. For more information about how to create an organizational structure for your device, see the
+        /// [administration help center](https://support.google.com/a/answer/182433).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
         public virtual string OrgUnitId { get; set; }
@@ -11423,9 +11447,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// The full parent path with the organizational unit's name associated with the device. Path names are case
         /// insensitive. If the parent organizational unit is the top-level organization, it is represented as a forward
         /// slash, `/`. This property can be
-        /// [updated](/admin-sdk/directory/v1/guides/manage-chrome-devices#move_chrome_devices_to_ou) using the API. For
-        /// more information about how to create an organizational structure for your device, see the [administration
-        /// help center](https://support.google.com/a/answer/182433).
+        /// [updated](https://developers.google.com/workspace/admin/directory/v1/guides/manage-chrome-devices#move_chrome_devices_to_ou)
+        /// using the API. For more information about how to create an organizational structure for your device, see the
+        /// [administration help center](https://support.google.com/a/answer/182433).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitPath")]
         public virtual string OrgUnitPath { get; set; }
@@ -11866,8 +11890,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     public class CreatePrintServerRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The [unique ID](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers) of
-        /// the customer's Google Workspace account. Format: `customers/{id}`
+        /// Required. The [unique
+        /// ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the customer's
+        /// Google Workspace account. Format: `customers/{id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
@@ -11876,7 +11901,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// Required. A print server to create. If you want to place the print server under a specific organizational
         /// unit (OU), then populate the `org_unit_id`. Otherwise the print server is created under the root OU. The
         /// `org_unit_id` can be retrieved using the [Directory
-        /// API](https://developers.google.com/admin-sdk/directory/v1/guides/manage-org-units).
+        /// API](https://developers.google.com/workspace/admin/directory/v1/guides/manage-org-units).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("printServer")]
         public virtual PrintServer PrintServer { get; set; }
@@ -11956,9 +11981,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// The customer's ISO 639-2 language code. See the [Language Codes](/admin-sdk/directory/v1/languages) page for
-        /// the list of supported codes. Valid language codes outside the supported set will be accepted by the API but
-        /// may lead to unexpected behavior. The default value is `en`.
+        /// The customer's ISO 639-2 language code. See the [Language
+        /// Codes](https://developers.google.com/workspace/admin/directory/v1/languages) page for the list of supported
+        /// codes. Valid language codes outside the supported set will be accepted by the API but may lead to unexpected
+        /// behavior. The default value is `en`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
@@ -12454,12 +12480,12 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>
     /// Google Groups provide your users the ability to send messages to groups of people using the group's email
     /// address. For more information about common tasks, see the [Developer's
-    /// Guide](https://developers.google.com/admin-sdk/directory/v1/guides/manage-groups). For information about other
-    /// types of groups, see the [Cloud Identity Groups API
+    /// Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-groups). For information about
+    /// other types of groups, see the [Cloud Identity Groups API
     /// documentation](https://cloud.google.com/identity/docs/groups). Note: The user calling the API (or being
     /// impersonated by a service account) must have an assigned
-    /// [role](https://developers.google.com/admin-sdk/directory/v1/guides/manage-roles) that includes Admin API Groups
-    /// permissions, such as Super Admin or Groups Admin.
+    /// [role](https://developers.google.com/workspace/admin/directory/v1/guides/manage-roles) that includes Admin API
+    /// Groups permissions, such as Super Admin or Groups Admin.
     /// </summary>
     public class Group : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12634,7 +12660,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>
     /// A Google Groups member can be a user or another group. This member can be inside or outside of your account's
     /// domains. For more information about common group member tasks, see the [Developer's
-    /// Guide](/admin-sdk/directory/v1/guides/manage-group-members).
+    /// Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-group-members).
     /// </summary>
     public class Member : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12721,7 +12747,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>
     /// Google Workspace Mobile Management includes Android, [Google Sync](https://support.google.com/a/answer/135937),
     /// and iOS devices. For more information about common group mobile device API tasks, see the [Developer's
-    /// Guide](/admin-sdk/directory/v1/guides/manage-mobile-devices.html).
+    /// Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-mobile-devices.html).
     /// </summary>
     public class MobileDevice : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12780,8 +12806,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>
         /// The list of the owner's email addresses. If your application needs the current list of user emails, use the
-        /// [get](/admin-sdk/directory/v1/reference/mobiledevices/get.html) method. For additional information, see the
-        /// [retrieve a user](/admin-sdk/directory/v1/guides/manage-users#get_user) method.
+        /// [get](https://developers.google.com/workspace/admin/directory/v1/reference/mobiledevices/get.html) method.
+        /// For additional information, see the [retrieve a
+        /// user](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#get_user) method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual System.Collections.Generic.IList<string> Email { get; set; }
@@ -12882,17 +12909,18 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>
         /// The mobile device's model name, for example Nexus S. This property can be
-        /// [updated](/admin-sdk/directory/v1/reference/mobiledevices/update.html). For more information, see the
-        /// [Developer's Guide](/admin-sdk/directory/v1/guides/manage-mobile=devices#update_mobile_device).
+        /// [updated](https://developers.google.com/workspace/admin/directory/v1/reference/mobiledevices/update.html).
+        /// For more information, see the [Developer's
+        /// Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-mobile=devices#update_mobile_device).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
 
         /// <summary>
         /// The list of the owner's user names. If your application needs the current list of device owner names, use
-        /// the [get](/admin-sdk/directory/v1/reference/mobiledevices/get.html) method. For more information about
-        /// retrieving mobile device user information, see the [Developer's
-        /// Guide](/admin-sdk/directory/v1/guides/manage-users#get_user).
+        /// the [get](https://developers.google.com/workspace/admin/directory/v1/reference/mobiledevices/get.html)
+        /// method. For more information about retrieving mobile device user information, see the [Developer's
+        /// Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#get_user).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual System.Collections.Generic.IList<string> Name { get; set; }
@@ -12903,8 +12931,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>
         /// The mobile device's operating system, for example IOS 4.3 or Android 2.3.5. This property can be
-        /// [updated](/admin-sdk/directory/v1/reference/mobiledevices/update.html). For more information, see the
-        /// [Developer's Guide](/admin-sdk/directory/v1/guides/manage-mobile-devices#update_mobile_device).
+        /// [updated](https://developers.google.com/workspace/admin/directory/v1/reference/mobiledevices/update.html).
+        /// For more information, see the [Developer's
+        /// Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-mobile-devices#update_mobile_device).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("os")]
         public virtual string Os { get; set; }
@@ -12951,8 +12980,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>
         /// Gives information about the device such as `os` version. This property can be
-        /// [updated](/admin-sdk/directory/v1/reference/mobiledevices/update.html). For more information, see the
-        /// [Developer's Guide](/admin-sdk/directory/v1/guides/manage-mobile-devices#update_mobile_device).
+        /// [updated](https://developers.google.com/workspace/admin/directory/v1/reference/mobiledevices/update.html).
+        /// For more information, see the [Developer's
+        /// Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-mobile-devices#update_mobile_device).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
         public virtual string UserAgent { get; set; }
@@ -13029,8 +13059,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>
     /// Managing your account's organizational units allows you to configure your users' access to services and custom
     /// settings. For more information about common organizational unit tasks, see the [Developer's
-    /// Guide](/admin-sdk/directory/v1/guides/manage-org-units.html). The customer's organizational unit hierarchy is
-    /// limited to 35 levels of depth.
+    /// Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-org-units.html). The customer's
+    /// organizational unit hierarchy is limited to 35 levels of depth.
     /// </summary>
     public class OrgUnit : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13072,7 +13102,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// to a new organization, the user's access changes. For more information about organization structures, see
         /// the [administration help center](https://support.google.com/a/answer/4352075). For more information about
         /// moving a user to a different organization, see [Update a
-        /// user](/admin-sdk/directory/v1/guides/manage-users.html#update_user).
+        /// user](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users.html#update_user).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitPath")]
         public virtual string OrgUnitPath { get; set; }
@@ -13205,7 +13235,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>
         /// ID of the organization unit (OU) that owns this print server. This value can only be set when the print
         /// server is initially created. If it's not populated, the print server is placed under the root OU. The
-        /// `org_unit_id` can be retrieved using the [Directory API](/admin-sdk/directory/reference/rest/v1/orgunits).
+        /// `org_unit_id` can be retrieved using the [Directory
+        /// API](https://developers.google.com/workspace/admin/directory/reference/rest/v1/orgunits).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
         public virtual string OrgUnitId { get; set; }
@@ -13377,7 +13408,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>
         /// The obfuscated ID of the service this privilege is for. This value is returned with
-        /// [`Privileges.list()`](/admin-sdk/directory/v1/reference/privileges/list).
+        /// [`Privileges.list()`](https://developers.google.com/workspace/admin/directory/v1/reference/privileges/list).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceId")]
         public virtual string ServiceId { get; set; }
@@ -13445,7 +13476,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
             /// <summary>
             /// The obfuscated ID of the service this privilege is for. This value is returned with
-            /// [`Privileges.list()`](/admin-sdk/directory/v1/reference/privileges/list).
+            /// [`Privileges.list()`](https://developers.google.com/workspace/admin/directory/v1/reference/privileges/list).
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("serviceId")]
             public virtual string ServiceId { get; set; }
@@ -13482,9 +13513,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// &amp;amp;&amp;amp; resource.type == 'cloudidentity.googleapis.com/Group'` Currently, the condition strings
         /// have to be verbatim and they only work with the following [pre-built administrator
         /// roles](https://support.google.com/a/answer/2405986): - Groups Editor - Groups Reader The condition follows
-        /// [Cloud IAM condition syntax](https://cloud.google.com/iam/docs/conditions-overview). Additional conditions
-        /// related to Locked Groups are available under Open Beta. - To make the `RoleAssignment` not applicable to
-        /// [Locked Groups](https://cloud.google.com/identity/docs/groups#group_types):
+        /// [Cloud IAM condition syntax](https://cloud.google.com/iam/docs/conditions-overview). - To make the
+        /// `RoleAssignment` not applicable to [Locked
+        /// Groups](https://cloud.google.com/identity/docs/groups#group_types):
         /// `!api.getAttribute('cloudidentity.googleapis.com/groups.labels', []).hasAny(['groups.locked'])
         /// &amp;amp;&amp;amp; resource.type == 'cloudidentity.googleapis.com/Group'` This condition can also be used in
         /// conjunction with a Security-related condition.
@@ -13590,7 +13621,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>
     /// You can use schemas to add custom fields to user profiles. You can use these fields to store information such as
     /// the projects your users work on, their physical locations, their hire dates, or whatever else fits your business
-    /// needs. For more information, see [Custom User Fields](/admin-sdk/directory/v1/guides/manage-schemas).
+    /// needs. For more information, see [Custom User
+    /// Fields](https://developers.google.com/workspace/admin/directory/v1/guides/manage-schemas).
     /// </summary>
     public class SchemaFieldSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13637,8 +13669,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>
         /// Specifies who can view values of this field. See [Retrieve users as a
-        /// non-administrator](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin) for more
-        /// information. Note: It may take up to 24 hours for changes to this field to be reflected.
+        /// non-administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin)
+        /// for more information. Note: It may take up to 24 hours for changes to this field to be reflected.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readAccessType")]
         public virtual string ReadAccessType { get; set; }
@@ -13771,8 +13803,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>
     /// The Directory API allows you to create and manage your account's users, user aliases, and user Google profile
     /// photos. For more information about common tasks, see the [User Accounts Developer's
-    /// Guide](/admin-sdk/directory/v1/guides/manage-users.html) and the [User Aliases Developer's
-    /// Guide](/admin-sdk/directory/v1/guides/manage-user-aliases.html).
+    /// Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users.html) and the [User
+    /// Aliases Developer's
+    /// Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-user-aliases.html).
     /// </summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13831,10 +13864,11 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>
         /// Output only. The customer ID to [retrieve all account
-        /// users](/admin-sdk/directory/v1/guides/manage-users.html#get_all_users). You can use the alias `my_customer`
-        /// to represent your account's `customerId`. As a reseller administrator, you can use the resold customer
-        /// account's `customerId`. To get a `customerId`, use the account's primary domain in the `domain` parameter of
-        /// a [users.list](/admin-sdk/directory/v1/reference/users/list) request.
+        /// users](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users.html#get_all_users).
+        /// You can use the alias `my_customer` to represent your account's `customerId`. As a reseller administrator,
+        /// you can use the resold customer account's `customerId`. To get a `customerId`, use the account's primary
+        /// domain in the `domain` parameter of a
+        /// [users.list](https://developers.google.com/workspace/admin/directory/v1/reference/users/list) request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual string CustomerId { get; set; }
@@ -13919,12 +13953,15 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual System.Nullable<bool> IpWhitelisted { get; set; }
 
         /// <summary>
-        /// Output only. Indicates a user with super admininistrator privileges. The `isAdmin` property can only be
-        /// edited in the [Make a user an administrator](/admin-sdk/directory/v1/guides/manage-users.html#make_admin)
-        /// operation ( [makeAdmin](/admin-sdk/directory/v1/reference/users/makeAdmin.html) method). If edited in the
-        /// user [insert](/admin-sdk/directory/v1/reference/users/insert.html) or
-        /// [update](/admin-sdk/directory/v1/reference/users/update.html) methods, the edit is ignored by the API
-        /// service.
+        /// Output only. Indicates a user with super administrator privileges. The `isAdmin` property can only be edited
+        /// in the [Make a user an
+        /// administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users.html#make_admin)
+        /// operation (
+        /// [makeAdmin](https://developers.google.com/workspace/admin/directory/v1/reference/users/makeAdmin.html)
+        /// method). If edited in the user
+        /// [insert](https://developers.google.com/workspace/admin/directory/v1/reference/users/insert.html) or
+        /// [update](https://developers.google.com/workspace/admin/directory/v1/reference/users/update.html) methods,
+        /// the edit is ignored by the API service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAdmin")]
         public virtual System.Nullable<bool> IsAdmin { get; set; }
