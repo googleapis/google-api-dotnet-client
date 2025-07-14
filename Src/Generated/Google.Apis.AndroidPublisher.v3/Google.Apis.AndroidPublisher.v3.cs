@@ -14975,9 +14975,21 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
         public virtual string OfferId { get; set; }
 
+        /// <summary>
+        /// ID of the purchase option. This field is set for both purchase options and variant offers. For purchase
+        /// options, this ID identifies the purchase option itself. For variant offers, this ID refers to the associated
+        /// purchase option, and in conjunction with offer_id it identifies the variant offer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOptionId")]
+        public virtual string PurchaseOptionId { get; set; }
+
         /// <summary>The number of items purchased (for multi-quantity item purchases).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<int> Quantity { get; set; }
+
+        /// <summary>The details of a rent purchase. Only set if it is a rent purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rentalDetails")]
+        public virtual RentalDetails RentalDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16343,6 +16355,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
     /// <summary>Offer details information related to a rental line item.</summary>
     public class RentOfferDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a rental purchase.</summary>
+    public class RentalDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
