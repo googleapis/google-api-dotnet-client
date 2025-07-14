@@ -1135,7 +1135,10 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The local inventory data source.</summary>
+    /// <summary>
+    /// The local inventory data source type is only available for file inputs and can't be used to create API local
+    /// inventory data sources.
+    /// </summary>
     public class LocalInventoryDataSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1402,7 +1405,6 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The regional inventory data source.</summary>
     public class RegionalInventoryDataSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
