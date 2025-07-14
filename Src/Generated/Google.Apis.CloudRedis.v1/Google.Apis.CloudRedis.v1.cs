@@ -3480,11 +3480,11 @@ namespace Google.Apis.CloudRedis.v1.Data
     /// <summary>Time window specified for weekly operations.</summary>
     public class ClusterWeeklyMaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Allows to define schedule that runs specified day of the week.</summary>
+        /// <summary>Optional. Allows to define schedule that runs specified day of the week.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual string Day { get; set; }
 
-        /// <summary>Start time of the window in UTC.</summary>
+        /// <summary>Optional. Start time of the window in UTC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual TimeOfDay StartTime { get; set; }
 
@@ -3502,6 +3502,71 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Version of the standard or benchmark, for example, 1.1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Config based signal data. This is used to send signals to Condor which are based on the DB level configurations.
+    /// These will be used to send signals for self managed databases.
+    /// </summary>
+    public class ConfigBasedSignalData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Full Resource name of the source resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
+        public virtual string FullResourceName { get; set; }
+
+        private string _lastRefreshTimeRaw;
+
+        private object _lastRefreshTime;
+
+        /// <summary>Required. Last time signal was refreshed</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
+        public virtual string LastRefreshTimeRaw
+        {
+            get => _lastRefreshTimeRaw;
+            set
+            {
+                _lastRefreshTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastRefreshTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastRefreshTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastRefreshTimeDateTimeOffset instead.")]
+        public virtual object LastRefreshTime
+        {
+            get => _lastRefreshTime;
+            set
+            {
+                _lastRefreshTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastRefreshTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastRefreshTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastRefreshTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRefreshTimeRaw);
+            set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Database resource id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual DatabaseResourceId ResourceId { get; set; }
+
+        /// <summary>Signal data for boolean signals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalBoolValue")]
+        public virtual System.Nullable<bool> SignalBoolValue { get; set; }
+
+        /// <summary>Required. Signal type of the signal</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalType")]
+        public virtual string SignalType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3529,7 +3594,7 @@ namespace Google.Apis.CloudRedis.v1.Data
     /// <summary>Cross cluster replication config.</summary>
     public class CrossClusterReplicationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The role of the cluster in cross cluster replication.</summary>
+        /// <summary>Output only. The role of the cluster in cross cluster replication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterRole")]
         public virtual string ClusterRole { get; set; }
 
@@ -3619,10 +3684,17 @@ namespace Google.Apis.CloudRedis.v1.Data
 
     /// <summary>
     /// DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into
-    /// Condor platform. Next ID: 8
+    /// Condor platform. Next ID: 9
     /// </summary>
     public class DatabaseResourceFeed : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Config based signal data is used to ingest signals that are generated based on the configuration of the
+        /// database resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configBasedSignalData")]
+        public virtual ConfigBasedSignalData ConfigBasedSignalData { get; set; }
+
         private string _feedTimestampRaw;
 
         private object _feedTimestamp;
@@ -5633,6 +5705,13 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("engine")]
         public virtual string Engine { get; set; }
 
+        /// <summary>
+        /// Minor version of the underlying database engine. Example values: For MySQL, it could be "8.0.32", "5.7.32"
+        /// etc.. For Postgres, it could be "14.3", "15.3" etc..
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minorVersion")]
+        public virtual string MinorVersion { get; set; }
+
         /// <summary>Type of specific database product. It could be CloudSQL, AlloyDB etc..</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -5865,7 +5944,7 @@ namespace Google.Apis.CloudRedis.v1.Data
     public class RemoteCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The full resource path of the remote cluster in the format: projects//locations//clusters/
+        /// Output only. The full resource path of the remote cluster in the format: projects//locations//clusters/
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
