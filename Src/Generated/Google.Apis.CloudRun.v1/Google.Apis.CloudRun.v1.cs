@@ -6864,7 +6864,7 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
         public virtual System.Collections.Generic.IList<ContainerPort> Ports { get; set; }
 
-        /// <summary>Readiness probe to be used for health checks. Not supported by Cloud Run.</summary>
+        /// <summary>Readiness probe to be used for health checks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readinessProbe")]
         public virtual Probe ReadinessProbe { get; set; }
 
