@@ -1399,7 +1399,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>Intent for entitling the previously provisioned subscription to an end user.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The name of the subscription resource that is entitled to the current end user.</summary>
+        /// <summary>
+        /// Required. The name of the subscription resource that is entitled to the current end user. It is in the
+        /// format of "partners/{partner_id}/subscriptions/{subscriptionId}".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2815,7 +2818,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// if necessary, regardless of the previous tokens being expired or not. You don't need to worry about multiple
     /// sessions resulting in duplicate fulfillments as guaranteed by the same subscription id. Please refer to the
     /// [Google Managed
-    /// Signup](/payments/reseller/subscription/reference/index/User.Signup.Integration/Google.Managed.Signup.\(In.Preview\))
+    /// Signup](/payments/reseller/subscription/reference/index/User.Signup.Integration/Google.Managed.Signup)
     /// documentation for additional integration details.
     /// </summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1UserSession : Google.Apis.Requests.IDirectResponseSchema
