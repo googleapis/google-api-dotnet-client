@@ -314,115 +314,6 @@ namespace Google.Apis.WorkloadManager.v1
                 public DiscoveredprofilesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-                    Healthes = new HealthesResource(service);
-                }
-
-                /// <summary>Gets the Healthes resource.</summary>
-                public virtual HealthesResource Healthes { get; }
-
-                /// <summary>The "healthes" collection of methods.</summary>
-                public class HealthesResource
-                {
-                    private const string Resource = "healthes";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public HealthesResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>Get the health of a discovered workload profile.</summary>
-                    /// <param name="name">Required. The resource name</param>
-                    public virtual GetRequest Get(string name)
-                    {
-                        return new GetRequest(this.service, name);
-                    }
-
-                    /// <summary>Get the health of a discovered workload profile.</summary>
-                    public class GetRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.WorkloadProfileHealth>
-                    {
-                        /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. The resource name</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "get";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}";
-
-                        /// <summary>Initializes Get parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/discoveredprofiles/[^/]+/healthes/[^/]+$",
-                            });
-                        }
-                    }
-                }
-
-                /// <summary>Gets details of a discovered workload profile.</summary>
-                /// <param name="name">Required. Name of the resource</param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(this.service, name);
-                }
-
-                /// <summary>Gets details of a discovered workload profile.</summary>
-                public class GetRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.WorkloadProfile>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Name of the resource</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/discoveredprofiles/[^/]+$",
-                        });
-                    }
                 }
 
                 /// <summary>List discovered workload profiles</summary>
@@ -1873,7 +1764,7 @@ namespace Google.Apis.WorkloadManager.v1
                         [Google.Apis.Util.StringValueAttribute("OTHER")]
                         OTHER = 3,
 
-                        /// <summary>SCC IaC (Infra as Code) best practices</summary>
+                        /// <summary>SCC IaC (Infra as Code) best practices.</summary>
                         [Google.Apis.Util.StringValueAttribute("SCC_IAC")]
                         SCCIAC = 4,
                     }
@@ -2373,40 +2264,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>HealthCondition contains the detailed health check of each component.</summary>
-    public class ComponentHealth : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The component of a workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("component")]
-        public virtual string Component { get; set; }
-
-        /// <summary>The detailed health checks of the component.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("componentHealthChecks")]
-        public virtual System.Collections.Generic.IList<HealthCheck> ComponentHealthChecks { get; set; }
-
-        /// <summary>Output only. The type of the component health.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("componentHealthType")]
-        public virtual string ComponentHealthType { get; set; }
-
-        /// <summary>Output only. The requirement of the component.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isRequired")]
-        public virtual System.Nullable<bool> IsRequired { get; set; }
-
-        /// <summary>Output only. The health state of the component.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("subComponentHealthes")]
-        public virtual System.Collections.Generic.IList<ComponentHealth> SubComponentHealthes { get; set; }
-
-        /// <summary>Sub component health.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subComponentsHealth")]
-        public virtual System.Collections.Generic.IList<ComponentHealth> SubComponentsHealth { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Database Properties.</summary>
     public class DatabaseProperties : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2800,33 +2657,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Service account of compute engine</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<string> ServiceAccounts { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>HealthCheck contains the detailed health check of a component based on asource.</summary>
-    public class HealthCheck : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The message of the health check.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; }
-
-        /// <summary>Output only. The health check source metric name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
-        public virtual string Metric { get; set; }
-
-        /// <summary>Output only. The resource the check performs on.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual CloudResource Resource { get; set; }
-
-        /// <summary>Output only. The source of the health check.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; }
-
-        /// <summary>Output only. The state of the health check.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4371,61 +4201,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Required. The type of the workload</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadType")]
         public virtual string WorkloadType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>WorkloadProfileHealth contains the detailed health check of workload.</summary>
-    public class WorkloadProfileHealth : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _checkTimeRaw;
-
-        private object _checkTime;
-
-        /// <summary>The time when the health check was performed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("checkTime")]
-        public virtual string CheckTimeRaw
-        {
-            get => _checkTimeRaw;
-            set
-            {
-                _checkTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _checkTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CheckTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CheckTimeDateTimeOffset instead.")]
-        public virtual object CheckTime
-        {
-            get => _checkTime;
-            set
-            {
-                _checkTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _checkTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CheckTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CheckTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CheckTimeRaw);
-            set => CheckTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("componentHealthes")]
-        public virtual System.Collections.Generic.IList<ComponentHealth> ComponentHealthes { get; set; }
-
-        /// <summary>The detailed condition reports of each component.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("componentsHealth")]
-        public virtual System.Collections.Generic.IList<ComponentHealth> ComponentsHealth { get; set; }
-
-        /// <summary>Output only. The health state of the workload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
