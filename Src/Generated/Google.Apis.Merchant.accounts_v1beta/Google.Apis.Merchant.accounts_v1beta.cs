@@ -276,6 +276,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
             AutomaticImprovements = new AutomaticImprovementsResource(service);
             BusinessIdentity = new BusinessIdentityResource(service);
             BusinessInfo = new BusinessInfoResource(service);
+            DeveloperRegistration = new DeveloperRegistrationResource(service);
             EmailPreferences = new EmailPreferencesResource(service);
             GbpAccounts = new GbpAccountsResource(service);
             Homepage = new HomepageResource(service);
@@ -856,6 +857,156 @@ namespace Google.Apis.Merchant.accounts_v1beta
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the DeveloperRegistration resource.</summary>
+        public virtual DeveloperRegistrationResource DeveloperRegistration { get; }
+
+        /// <summary>The "developerRegistration" collection of methods.</summary>
+        public class DeveloperRegistrationResource
+        {
+            private const string Resource = "developerRegistration";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DeveloperRegistrationResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Registers the GCP used for the API call to the shopping account passed in the request. Will create a
+            /// user with an "API developer" and add the "developer_email" as a contact with "API notifications" email
+            /// preference on.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the developer registration to be created for the merchant account that the GCP
+            /// will be registered with. Format: `accounts/{account}/developerRegistration`
+            /// </param>
+            public virtual RegisterGcpRequest RegisterGcp(Google.Apis.Merchant.accounts_v1beta.Data.RegisterGCPRequest body, string name)
+            {
+                return new RegisterGcpRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Registers the GCP used for the API call to the shopping account passed in the request. Will create a
+            /// user with an "API developer" and add the "developer_email" as a contact with "API notifications" email
+            /// preference on.
+            /// </summary>
+            public class RegisterGcpRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.DeveloperRegistration>
+            {
+                /// <summary>Constructs a new RegisterGcp request.</summary>
+                public RegisterGcpRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.RegisterGCPRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the developer registration to be created for the merchant account that the GCP
+                /// will be registered with. Format: `accounts/{account}/developerRegistration`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.RegisterGCPRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "registerGcp";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}:registerGcp";
+
+                /// <summary>Initializes RegisterGcp parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/developerRegistration$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Unregister the calling GCP from the calling shopping account. Note that the GCP will still be able to
+            /// access the API for at most 1 day from the unregister succussful call.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the developer registration to be created for the merchant account that the GCP
+            /// will be registered with. Format: `accounts/{account}/developerRegistration`
+            /// </param>
+            public virtual UnregisterGcpRequest UnregisterGcp(Google.Apis.Merchant.accounts_v1beta.Data.UnregisterGCPRequest body, string name)
+            {
+                return new UnregisterGcpRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Unregister the calling GCP from the calling shopping account. Note that the GCP will still be able to
+            /// access the API for at most 1 day from the unregister succussful call.
+            /// </summary>
+            public class UnregisterGcpRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Empty>
+            {
+                /// <summary>Constructs a new UnregisterGcp request.</summary>
+                public UnregisterGcpRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.UnregisterGCPRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the developer registration to be created for the merchant account that the GCP
+                /// will be registered with. Format: `accounts/{account}/developerRegistration`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.UnregisterGCPRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "unregisterGcp";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}:unregisterGcp";
+
+                /// <summary>Initializes UnregisterGcp parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/developerRegistration$",
                     });
                 }
             }
@@ -2404,10 +2555,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. List of fields being updated. The following fields are supported (in both `snake_case` and
-                /// `lowerCamelCase`): - `accept_defective_only` - `accept_exchange` - `item_conditions` - `policy` -
-                /// `process_refund_days` - `restocking_fee` - `return_methods` - `return_policy_uri` -
-                /// `return_shipping_fee`
+                /// Optional. Only support updating the entire OnlineReturnPolicy message. For update_mask, always use
+                /// `*`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -4653,6 +4802,51 @@ namespace Google.Apis.Merchant.accounts_v1beta
             }
         }
 
+        /// <summary>Retrieves a developer registration for a merchant.</summary>
+        /// <param name="name">Required. The `name` (ID) of the developer registration.</param>
+        public virtual GetDeveloperRegistrationRequest GetDeveloperRegistration(string name)
+        {
+            return new GetDeveloperRegistrationRequest(this.service, name);
+        }
+
+        /// <summary>Retrieves a developer registration for a merchant.</summary>
+        public class GetDeveloperRegistrationRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.DeveloperRegistration>
+        {
+            /// <summary>Constructs a new GetDeveloperRegistration request.</summary>
+            public GetDeveloperRegistrationRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. The `name` (ID) of the developer registration.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getDeveloperRegistration";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/{+name}";
+
+            /// <summary>Initializes GetDeveloperRegistration parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^accounts/[^/]+/developerRegistration$",
+                });
+            }
+        }
+
         /// <summary>
         /// Note: For the `accounts.list` method, quota and limits usage are charged for each user, and not for the
         /// Merchant Center ID or the advanced account ID. To list several sub-accounts, you should use the
@@ -6153,6 +6347,25 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a developer registration owned by a Merchant account.</summary>
+    public class DeveloperRegistration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The GCP ids attached to this developer registration</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpIds")]
+        public virtual System.Collections.Generic.IList<string> GcpIds { get; set; }
+
+        /// <summary>
+        /// Identifier. The `name` (ID) of the developer registration. Generated by the Content API upon creation of a
+        /// new `DeveloperRegistration`. The `account` represents the merchant ID of the merchant that owns the
+        /// registration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for the DisableProgram method.</summary>
     public class DisableProgramRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6979,12 +7192,12 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual System.Collections.Generic.IList<string> ItemConditions { get; set; }
 
         /// <summary>
-        /// Required. Immutable. This field represents the unique user-defined label of the return policy. It is
-        /// important to note that the same label cannot be used in different return policies for the same country.
-        /// Unless a product specifies a specific label attribute, policies will be automatically labeled as 'default'.
-        /// To assign a custom return policy to certain product groups, follow the instructions provided in the [Return
-        /// policy label] (https://support.google.com/merchants/answer/9445425). The label can contain up to 50
-        /// characters.
+        /// Optional. Immutable. This field represents the unique user-defined label of the return policy for the given
+        /// country. It is important to note that the same label cannot be used in different return policies for the
+        /// same country. If not given, policies will be automatically treated as the 'default' for the country. When
+        /// using label, you are creating an exception policy in that country to assign a custom return policy to
+        /// certain product groups, follow the instructions provided in the [Return policy label]
+        /// (https://support.google.com/merchants/answer/9445425). The label can contain up to 50 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
@@ -7621,6 +7834,23 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the RegisterGCP method.</summary>
+    public class RegisterGCPRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. If the developer email provided is associated with a user in the merchant account provided, the
+        /// user will be updated to have "API developer" access type and the email preference corresponding to that user
+        /// will be updated to have the new "API notifications" preference. If the developer email provided is not
+        /// associated with any user we will just add it as a contact. The email preference corresponding to that
+        /// contact will have the new "API notifications" preference
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerEmail")]
+        public virtual string DeveloperEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request to reject an account service.</summary>
     public class RejectAccountServiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8149,6 +8379,13 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
 
     /// <summary>Request message for the `UnclaimHomepage` method.</summary>
     public class UnclaimHomepageRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the UnregisterGCP method.</summary>
+    public class UnregisterGCPRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
