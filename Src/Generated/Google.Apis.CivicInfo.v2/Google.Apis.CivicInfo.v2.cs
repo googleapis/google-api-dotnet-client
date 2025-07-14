@@ -1219,6 +1219,9 @@ namespace Google.Apis.CivicInfo.v2.Data
     /// <summary>A simple representation of an address.</summary>
     public class CivicinfoSchemaV2SimpleAddressType : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("addressLine")]
+        public virtual System.Collections.Generic.IList<string> AddressLine { get; set; }
+
         /// <summary>The city or town for the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("city")]
         public virtual string City { get; set; }
