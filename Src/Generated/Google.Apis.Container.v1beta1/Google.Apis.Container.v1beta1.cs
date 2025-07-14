@@ -6737,6 +6737,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kubernetesDashboard")]
         public virtual KubernetesDashboard KubernetesDashboard { get; set; }
 
+        /// <summary>Configuration for the Lustre CSI driver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lustreCsiDriverConfig")]
+        public virtual LustreCsiDriverConfig LustreCsiDriverConfig { get; set; }
+
         /// <summary>
         /// Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does
         /// not track whether network policy is enabled for the nodes.
@@ -7205,6 +7209,29 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Standard policy for the blue-green upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standardRolloutPolicy")]
         public virtual StandardRolloutPolicy StandardRolloutPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BootDisk specifies the boot disk configuration for nodepools.</summary>
+    public class BootDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Disk type of the boot disk. (i.e. Hyperdisk-Balanced, PD-Balanced, etc.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>For Hyperdisk-Balanced only, the provisioned IOPS config value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedIops")]
+        public virtual System.Nullable<long> ProvisionedIops { get; set; }
+
+        /// <summary>For Hyperdisk-Balanced only, the provisioned throughput config value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedThroughput")]
+        public virtual System.Nullable<long> ProvisionedThroughput { get; set; }
+
+        /// <summary>Disk size in GB. Replaces NodeConfig.disk_size_gb</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<long> SizeGb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8856,6 +8883,180 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Eviction grace periods are grace periods for each eviction signal.</summary>
+    public class EvictionGracePeriod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Grace period for eviction due to imagefs available signal. Sample format: "10s". Must be &amp;gt;=
+        /// 0. See https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imagefsAvailable")]
+        public virtual string ImagefsAvailable { get; set; }
+
+        /// <summary>
+        /// Optional. Grace period for eviction due to imagefs inodes free signal. Sample format: "10s". Must be
+        /// &amp;gt;= 0. See
+        /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imagefsInodesFree")]
+        public virtual string ImagefsInodesFree { get; set; }
+
+        /// <summary>
+        /// Optional. Grace period for eviction due to memory available signal. Sample format: "10s". Must be &amp;gt;=
+        /// 0. See https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryAvailable")]
+        public virtual string MemoryAvailable { get; set; }
+
+        /// <summary>
+        /// Optional. Grace period for eviction due to nodefs available signal. Sample format: "10s". Must be &amp;gt;=
+        /// 0. See https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodefsAvailable")]
+        public virtual string NodefsAvailable { get; set; }
+
+        /// <summary>
+        /// Optional. Grace period for eviction due to nodefs inodes free signal. Sample format: "10s". Must be
+        /// &amp;gt;= 0. See
+        /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodefsInodesFree")]
+        public virtual string NodefsInodesFree { get; set; }
+
+        /// <summary>
+        /// Optional. Grace period for eviction due to pid available signal. Sample format: "10s". Must be &amp;gt;= 0.
+        /// See https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pidAvailable")]
+        public virtual string PidAvailable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Eviction minimum reclaims are the resource amounts of minimum reclaims for each eviction signal.
+    /// </summary>
+    public class EvictionMinimumReclaim : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Minimum reclaim for eviction due to imagefs available signal. Only take percentage value for now.
+        /// Sample format: "10%". Must be &amp;lt;=10%. See
+        /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imagefsAvailable")]
+        public virtual string ImagefsAvailable { get; set; }
+
+        /// <summary>
+        /// Optional. Minimum reclaim for eviction due to imagefs inodes free signal. Only take percentage value for
+        /// now. Sample format: "10%". Must be &amp;lt;=10%. See
+        /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imagefsInodesFree")]
+        public virtual string ImagefsInodesFree { get; set; }
+
+        /// <summary>
+        /// Optional. Minimum reclaim for eviction due to memory available signal. Only take percentage value for now.
+        /// Sample format: "10%". Must be &amp;lt;=10%. See
+        /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryAvailable")]
+        public virtual string MemoryAvailable { get; set; }
+
+        /// <summary>
+        /// Optional. Minimum reclaim for eviction due to nodefs available signal. Only take percentage value for now.
+        /// Sample format: "10%". Must be &amp;lt;=10%. See
+        /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodefsAvailable")]
+        public virtual string NodefsAvailable { get; set; }
+
+        /// <summary>
+        /// Optional. Minimum reclaim for eviction due to nodefs inodes free signal. Only take percentage value for now.
+        /// Sample format: "10%". Must be &amp;lt;=10%. See
+        /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodefsInodesFree")]
+        public virtual string NodefsInodesFree { get; set; }
+
+        /// <summary>
+        /// Optional. Minimum reclaim for eviction due to pid available signal. Only take percentage value for now.
+        /// Sample format: "10%". Must be &amp;lt;=10%. See
+        /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pidAvailable")]
+        public virtual string PidAvailable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Eviction signals are the current state of a particular resource at a specific point in time. The kubelet uses
+    /// eviction signals to make eviction decisions by comparing the signals to eviction thresholds, which are the
+    /// minimum amount of the resource that should be available on the node.
+    /// </summary>
+    public class EvictionSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Amount of storage available on filesystem that container runtime uses for storing images layers.
+        /// If the container filesystem and image filesystem are not separate, then imagefs can store both image layers
+        /// and writeable layers. Defines the amount of "imagefs.available" signal in kubelet. Default is unset, if not
+        /// specified in the kubelet config. Sample format: "30%". Must be &amp;gt;= 15%. See
+        /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imagefsAvailable")]
+        public virtual string ImagefsAvailable { get; set; }
+
+        /// <summary>
+        /// Optional. Amount of inodes available on filesystem that container runtime uses for storing images layers.
+        /// Defines the amount of "imagefs.inodesFree" signal in kubelet. Default is unset, if not specified in the
+        /// kubelet config. Linux only. Sample format: "30%". Must be &amp;gt;= 5%. See
+        /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imagefsInodesFree")]
+        public virtual string ImagefsInodesFree { get; set; }
+
+        /// <summary>
+        /// Optional. Memory available (i.e. capacity - workingSet), in bytes. Defines the amount of "memory.available"
+        /// signal in kubelet. Default is unset, if not specified in the kubelet config. Format: positive number + unit,
+        /// e.g. 100Ki, 10Mi, 5Gi. Valid units are Ki, Mi, Gi. Must be &amp;gt;= 100Mi and &amp;lt;= 50% of the node's
+        /// memory. See https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryAvailable")]
+        public virtual string MemoryAvailable { get; set; }
+
+        /// <summary>
+        /// Optional. Amount of storage available on filesystem that kubelet uses for volumes, daemon logs, etc. Defines
+        /// the amount of "nodefs.available" signal in kubelet. Default is unset, if not specified in the kubelet
+        /// config. Sample format: "30%". Must be &amp;gt;= 10%. See
+        /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodefsAvailable")]
+        public virtual string NodefsAvailable { get; set; }
+
+        /// <summary>
+        /// Optional. Amount of inodes available on filesystem that kubelet uses for volumes, daemon logs, etc. Defines
+        /// the amount of "nodefs.inodesFree" signal in kubelet. Default is unset, if not specified in the kubelet
+        /// config. Linux only. It takses percentage value for now. Sample format: "30%". Must be &amp;gt;= 5% and
+        /// &amp;lt;= 50%. See
+        /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodefsInodesFree")]
+        public virtual string NodefsInodesFree { get; set; }
+
+        /// <summary>
+        /// Optional. Amount of PID available for pod allocation. Defines the amount of "pid.available" signal in
+        /// kubelet. Default is unset, if not specified in the kubelet config. Sample format: "30%". Must be &amp;gt;=
+        /// 10%. See https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pidAvailable")]
+        public virtual string PidAvailable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration of Fast Socket feature.</summary>
     public class FastSocket : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9571,13 +9772,34 @@ namespace Google.Apis.Container.v1beta1.Data
         /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following
         /// parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog
         /// net.core.rmem_max net.core.rmem_default net.core.wmem_default net.core.wmem_max net.core.optmem_max
-        /// net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse net.netfilter.nf_conntrack_max
-        /// net.netfilter.nf_conntrack_buckets net.netfilter.nf_conntrack_tcp_timeout_close_wait
-        /// net.netfilter.nf_conntrack_tcp_timeout_time_wait net.netfilter.nf_conntrack_tcp_timeout_established
-        /// net.netfilter.nf_conntrack_acct kernel.shmmni kernel.shmmax kernel.shmall vm.max_map_count
+        /// net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse net.ipv4.tcp_max_orphans
+        /// net.netfilter.nf_conntrack_max net.netfilter.nf_conntrack_buckets
+        /// net.netfilter.nf_conntrack_tcp_timeout_close_wait net.netfilter.nf_conntrack_tcp_timeout_time_wait
+        /// net.netfilter.nf_conntrack_tcp_timeout_established net.netfilter.nf_conntrack_acct kernel.shmmni
+        /// kernel.shmmax kernel.shmall fs.aio-max-nr fs.file-max fs.inotify.max_user_instances
+        /// fs.inotify.max_user_watches fs.nr_open vm.dirty_background_ratio vm.dirty_expire_centisecs vm.dirty_ratio
+        /// vm.dirty_writeback_centisecs vm.max_map_count vm.overcommit_memory vm.overcommit_ratio vm.vfs_cache_pressure
+        /// vm.swappiness vm.watermark_scale_factor vm.min_free_kbytes
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sysctls")]
         public virtual System.Collections.Generic.IDictionary<string, string> Sysctls { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the transparent hugepage defrag configuration on the node. VM hugepage allocation can be
+        /// managed by either limiting defragmentation for delayed allocation or skipping it entirely for immediate
+        /// allocation only. See https://docs.kernel.org/admin-guide/mm/transhuge.html for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transparentHugepageDefrag")]
+        public virtual string TransparentHugepageDefrag { get; set; }
+
+        /// <summary>
+        /// Optional. Transparent hugepage support for anonymous memory can be entirely disabled (mostly for debugging
+        /// purposes) or only enabled inside MADV_HUGEPAGE regions (to avoid the risk of consuming more memory
+        /// resources) or enabled system wide. See https://docs.kernel.org/admin-guide/mm/transhuge.html for more
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transparentHugepageEnabled")]
+        public virtual string TransparentHugepageEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9739,6 +9961,21 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Logging variant deployed on nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variant")]
         public virtual string Variant { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the Lustre CSI driver.</summary>
+    public class LustreCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set to true, the Lustre CSI driver will install Lustre kernel modules using port 6988.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLegacyLustrePort")]
+        public virtual System.Nullable<bool> EnableLegacyLustrePort { get; set; }
+
+        /// <summary>Whether the Lustre CSI driver is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10207,6 +10444,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advancedMachineFeatures")]
         public virtual AdvancedMachineFeatures AdvancedMachineFeatures { get; set; }
 
+        /// <summary>Boot disk configuration for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDisk")]
+        public virtual BootDisk BootDisk { get; set; }
+
         /// <summary>
         ///  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
         /// This should be of the form
@@ -10228,9 +10469,8 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual ContainerdConfig ContainerdConfig { get; set; }
 
         /// <summary>
-        /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
-        /// TODO(b/395671893) - Deprecate disk_size_gb and disk_type fields. If unspecified, the default disk size is
-        /// 100GB.
+        /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If
+        /// unspecified, the default disk size is 100GB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<int> DiskSizeGb { get; set; }
@@ -10577,6 +10817,37 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string CpuManagerPolicy { get; set; }
 
         /// <summary>
+        /// Optional. eviction_max_pod_grace_period_seconds is the maximum allowed grace period (in seconds) to use when
+        /// terminating pods in response to a soft eviction threshold being met. This value effectively caps the Pod's
+        /// terminationGracePeriodSeconds value during soft evictions. Default: 0. Range: [0, 300].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evictionMaxPodGracePeriodSeconds")]
+        public virtual System.Nullable<int> EvictionMaxPodGracePeriodSeconds { get; set; }
+
+        /// <summary>
+        /// Optional. eviction_minimum_reclaim is a map of signal names to quantities that defines minimum reclaims,
+        /// which describe the minimum amount of a given resource the kubelet will reclaim when performing a pod
+        /// eviction while that resource is under pressure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evictionMinimumReclaim")]
+        public virtual EvictionMinimumReclaim EvictionMinimumReclaim { get; set; }
+
+        /// <summary>
+        /// Optional. eviction_soft is a map of signal names to quantities that defines soft eviction thresholds. Each
+        /// signal is compared to its corresponding threshold to determine if a pod eviction should occur.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evictionSoft")]
+        public virtual EvictionSignals EvictionSoft { get; set; }
+
+        /// <summary>
+        /// Optional. eviction_soft_grace_period is a map of signal names to quantities that defines grace periods for
+        /// each soft eviction signal. The grace period is the amount of time that a pod must be under pressure before
+        /// an eviction occurs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evictionSoftGracePeriod")]
+        public virtual EvictionGracePeriod EvictionSoftGracePeriod { get; set; }
+
+        /// <summary>
         /// Optional. Defines the percent of disk usage after which image garbage collection is always run. The percent
         /// is calculated as this field value out of 100. The value must be between 10 and 85, inclusive and greater
         /// than image_gc_low_threshold_percent. The default value is 85 if unspecified.
@@ -10615,6 +10886,14 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Enable or disable Kubelet read only port.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insecureKubeletReadonlyPortEnabled")]
         public virtual System.Nullable<bool> InsecureKubeletReadonlyPortEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the maximum number of image pulls in parallel. The range is 2 to 5, inclusive. The default
+        /// value is 2 or 3 depending on the disk type. See
+        /// https://kubernetes.io/docs/concepts/containers/images/#maximum-parallel-image-pulls for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxParallelImagePulls")]
+        public virtual System.Nullable<int> MaxParallelImagePulls { get; set; }
 
         /// <summary>
         /// Optional. Controls NUMA-aware Memory Manager configuration on the node. For more information, see:
@@ -13049,6 +13328,13 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; }
+
+        /// <summary>
+        /// The desired boot disk config for nodes in the node pool. Initiates an upgrade operation that migrates the
+        /// nodes in the node pool to the specified boot disk config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDisk")]
+        public virtual BootDisk BootDisk { get; set; }
 
         /// <summary>
         /// Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the name
