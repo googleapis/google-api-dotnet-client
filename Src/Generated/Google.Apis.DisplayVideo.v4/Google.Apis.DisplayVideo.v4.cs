@@ -28789,6 +28789,25 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The video ad inventory control used in certain YouTube line item types.</summary>
+    public class VideoAdInventoryControl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether ads can serve as in-feed format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowInFeed")]
+        public virtual System.Nullable<bool> AllowInFeed { get; set; }
+
+        /// <summary>Optional. Whether ads can serve as in-stream format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowInStream")]
+        public virtual System.Nullable<bool> AllowInStream { get; set; }
+
+        /// <summary>Optional. Whether ads can serve as shorts format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowShorts")]
+        public virtual System.Nullable<bool> AllowShorts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Settings related to VideoAdSequence.</summary>
     public class VideoAdSequenceSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -29078,6 +29097,10 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>Optional. The third-party measurement configs of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyMeasurementConfigs")]
         public virtual ThirdPartyMeasurementConfigs ThirdPartyMeasurementConfigs { get; set; }
+
+        /// <summary>Optional. The settings to control which inventory is allowed for this line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoAdInventoryControl")]
+        public virtual VideoAdInventoryControl VideoAdInventoryControl { get; set; }
 
         /// <summary>Optional. The settings related to VideoAdSequence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoAdSequenceSettings")]
