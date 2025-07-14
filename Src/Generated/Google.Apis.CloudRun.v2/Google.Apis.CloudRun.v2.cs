@@ -7407,6 +7407,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("executionEnvironment")]
         public virtual string ExecutionEnvironment { get; set; }
 
+        /// <summary>Optional. True if GPU zonal redundancy is disabled on this task template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuZonalRedundancyDisabled")]
+        public virtual System.Nullable<bool> GpuZonalRedundancyDisabled { get; set; }
+
         /// <summary>Number of retries allowed per Task, before marking this Task failed. Defaults to 3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetries")]
         public virtual System.Nullable<int> MaxRetries { get; set; }
