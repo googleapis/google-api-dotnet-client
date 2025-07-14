@@ -66,6 +66,11 @@ namespace Google.Apis.CloudDataplex.v1
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
+            public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Dataplex API.</summary>
@@ -76,6 +81,11 @@ namespace Google.Apis.CloudDataplex.v1
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
+            public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
 
         /// <summary>Gets the Organizations resource.</summary>
@@ -1081,19 +1091,19 @@ namespace Google.Apis.CloudDataplex.v1
                 /// method, it returns UNIMPLEMENTED.
                 /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
-                public virtual ListOperationsRequest ListOperations(string name)
+                public virtual ListRequest List(string name)
                 {
-                    return new ListOperationsRequest(this.service, name);
+                    return new ListRequest(this.service, name);
                 }
 
                 /// <summary>
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
                 /// method, it returns UNIMPLEMENTED.
                 /// </summary>
-                public class ListOperationsRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningListOperationsResponse>
+                public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningListOperationsResponse>
                 {
-                    /// <summary>Constructs a new ListOperations request.</summary>
-                    public ListOperationsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1116,15 +1126,15 @@ namespace Google.Apis.CloudDataplex.v1
                     public virtual string PageToken { get; set; }
 
                     /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "listOperations";
+                    public override string MethodName => "list";
 
                     /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}";
+                    public override string RestPath => "v1/{+name}/operations";
 
-                    /// <summary>Initializes ListOperations parameter list.</summary>
+                    /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -1134,7 +1144,7 @@ namespace Google.Apis.CloudDataplex.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+/operations/[^/]+$",
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
                         });
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
@@ -2587,7 +2597,8 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <param name="name">
                     /// Required. The resource name of the DataScanJob:
                     /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}/jobs/{data_scan_job_id}
-                    /// where project refers to a project_id or project_number and location_id refers to a GCP region.
+                    /// where project refers to a project_id or project_number and location_id refers to a Google Cloud
+                    /// region.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -2607,8 +2618,8 @@ namespace Google.Apis.CloudDataplex.v1
                         /// <summary>
                         /// Required. The resource name of the DataScanJob:
                         /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}/jobs/{data_scan_job_id}
-                        /// where project refers to a project_id or project_number and location_id refers to a GCP
-                        /// region.
+                        /// where project refers to a project_id or project_number and location_id refers to a Google
+                        /// Cloud region.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2669,7 +2680,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <param name="parent">
                     /// Required. The resource name of the parent environment:
                     /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where project refers to a
-                    /// project_id or project_number and location_id refers to a GCP region.
+                    /// project_id or project_number and location_id refers to a Google Cloud region.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -2689,7 +2700,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// <summary>
                         /// Required. The resource name of the parent environment:
                         /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where project refers to
-                        /// a project_id or project_number and location_id refers to a GCP region.
+                        /// a project_id or project_number and location_id refers to a Google Cloud region.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -2775,7 +2786,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The resource name of the parent location: projects/{project}/locations/{location_id} where
-                /// project refers to a project_id or project_number and location_id refers to a GCP region.
+                /// project refers to a project_id or project_number and location_id refers to a Google Cloud region.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataScan body, string parent)
                 {
@@ -2795,7 +2806,8 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the parent location: projects/{project}/locations/{location_id}
-                    /// where project refers to a project_id or project_number and location_id refers to a GCP region.
+                    /// where project refers to a project_id or project_number and location_id refers to a Google Cloud
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2864,7 +2876,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <param name="name">
                 /// Required. The resource name of the dataScan:
                 /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where project refers to a
-                /// project_id or project_number and location_id refers to a GCP region.
+                /// project_id or project_number and location_id refers to a Google Cloud region.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -2884,7 +2896,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>
                     /// Required. The resource name of the dataScan:
                     /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where project refers to a
-                    /// project_id or project_number and location_id refers to a GCP region.
+                    /// project_id or project_number and location_id refers to a Google Cloud region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2999,7 +3011,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <param name="name">
                 /// Required. The resource name of the dataScan:
                 /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where project refers to a
-                /// project_id or project_number and location_id refers to a GCP region.
+                /// project_id or project_number and location_id refers to a Google Cloud region.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -3019,7 +3031,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>
                     /// Required. The resource name of the dataScan:
                     /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where project refers to a
-                    /// project_id or project_number and location_id refers to a GCP region.
+                    /// project_id or project_number and location_id refers to a Google Cloud region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3157,7 +3169,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <summary>Lists DataScans.</summary>
                 /// <param name="parent">
                 /// Required. The resource name of the parent location: projects/{project}/locations/{location_id} where
-                /// project refers to a project_id or project_number and location_id refers to a GCP region.
+                /// project refers to a project_id or project_number and location_id refers to a Google Cloud region.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -3176,7 +3188,8 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the parent location: projects/{project}/locations/{location_id}
-                    /// where project refers to a project_id or project_number and location_id refers to a GCP region.
+                    /// where project refers to a project_id or project_number and location_id refers to a Google Cloud
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3269,7 +3282,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <param name="name">
                 /// Output only. Identifier. The relative resource name of the scan, of the form:
                 /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where project refers to a
-                /// project_id or project_number and location_id refers to a GCP region.
+                /// project_id or project_number and location_id refers to a Google Cloud region.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataScan body, string name)
                 {
@@ -3290,7 +3303,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>
                     /// Output only. Identifier. The relative resource name of the scan, of the form:
                     /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where project refers to a
-                    /// project_id or project_number and location_id refers to a GCP region.
+                    /// project_id or project_number and location_id refers to a Google Cloud region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3356,8 +3369,8 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <param name="name">
                 /// Required. The resource name of the DataScan:
                 /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}. where project refers to a
-                /// project_id or project_number and location_id refers to a GCP region.Only OnDemand data scans are
-                /// allowed.
+                /// project_id or project_number and location_id refers to a Google Cloud region.Only OnDemand data
+                /// scans are allowed.
                 /// </param>
                 public virtual RunRequest Run(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RunDataScanRequest body, string name)
                 {
@@ -3378,8 +3391,8 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>
                     /// Required. The resource name of the DataScan:
                     /// projects/{project}/locations/{location_id}/dataScans/{data_scan_id}. where project refers to a
-                    /// project_id or project_number and location_id refers to a GCP region.Only OnDemand data scans are
-                    /// allowed.
+                    /// project_id or project_number and location_id refers to a Google Cloud region.Only OnDemand data
+                    /// scans are allowed.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4477,7 +4490,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <summary>Lists DataTaxonomy resources in a project and location.</summary>
                 /// <param name="parent">
                 /// Required. The resource name of the DataTaxonomy location, of the form:
-                /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud region.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -4496,7 +4509,8 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the DataTaxonomy location, of the form:
-                    /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                    /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -5529,7 +5543,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The resource name of the entryGroup, of the form:
-                /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud region.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EntryGroup body, string parent)
                 {
@@ -5549,7 +5563,8 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the entryGroup, of the form:
-                    /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                    /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -7041,7 +7056,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <param name="parent">
                     /// Required. The parent resource where this GlossaryCategory will be created. Format:
                     /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where
-                    /// locationId refers to a GCP region.
+                    /// locationId refers to a Google Cloud region.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1GlossaryCategory body, string parent)
                     {
@@ -7062,7 +7077,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// <summary>
                         /// Required. The parent resource where this GlossaryCategory will be created. Format:
                         /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where
-                        /// locationId refers to a GCP region.
+                        /// locationId refers to a Google Cloud region.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -7302,7 +7317,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <param name="parent">
                     /// Required. The parent, which has this collection of GlossaryCategories. Format:
                     /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} Location is the
-                    /// GCP region.
+                    /// Google Cloud region.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -7322,7 +7337,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// <summary>
                         /// Required. The parent, which has this collection of GlossaryCategories. Format:
                         /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} Location is
-                        /// the GCP region.
+                        /// the Google Cloud region.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -7648,7 +7663,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <param name="parent">
                     /// Required. The parent resource where the GlossaryTerm will be created. Format:
                     /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where
-                    /// location_id refers to a GCP region.
+                    /// location_id refers to a Google Cloud region.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1GlossaryTerm body, string parent)
                     {
@@ -7669,7 +7684,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// <summary>
                         /// Required. The parent resource where the GlossaryTerm will be created. Format:
                         /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where
-                        /// location_id refers to a GCP region.
+                        /// location_id refers to a Google Cloud region.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -7901,7 +7916,7 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <param name="parent">
                     /// Required. The parent, which has this collection of GlossaryTerms. Format:
                     /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where
-                    /// location_id refers to a GCP region.
+                    /// location_id refers to a Google Cloud region.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -7921,7 +7936,7 @@ namespace Google.Apis.CloudDataplex.v1
                         /// <summary>
                         /// Required. The parent, which has this collection of GlossaryTerms. Format:
                         /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where
-                        /// location_id refers to a GCP region.
+                        /// location_id refers to a Google Cloud region.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -8228,7 +8243,8 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource where this Glossary will be created. Format:
-                /// projects/{project_id_or_number}/locations/{location_id} where location_id refers to a GCP region.
+                /// projects/{project_id_or_number}/locations/{location_id} where location_id refers to a Google Cloud
+                /// region.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Glossary body, string parent)
                 {
@@ -8248,8 +8264,8 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The parent resource where this Glossary will be created. Format:
-                    /// projects/{project_id_or_number}/locations/{location_id} where location_id refers to a GCP
-                    /// region.
+                    /// projects/{project_id_or_number}/locations/{location_id} where location_id refers to a Google
+                    /// Cloud region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -8515,7 +8531,8 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <summary>Lists Glossary resources in a project and location.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which has this collection of Glossaries. Format:
-                /// projects/{project_id_or_number}/locations/{location_id} where location_id refers to a GCP region.
+                /// projects/{project_id_or_number}/locations/{location_id} where location_id refers to a Google Cloud
+                /// region.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -8534,8 +8551,8 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The parent, which has this collection of Glossaries. Format:
-                    /// projects/{project_id_or_number}/locations/{location_id} where location_id refers to a GCP
-                    /// region.
+                    /// projects/{project_id_or_number}/locations/{location_id} where location_id refers to a Google
+                    /// Cloud region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -14315,7 +14332,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The resource name of the lake location, of the form:
-                /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud region.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Lake body, string parent)
                 {
@@ -14335,7 +14352,8 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the lake location, of the form:
-                    /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                    /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -14588,7 +14606,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <summary>Lists lake resources in a project and location.</summary>
                 /// <param name="parent">
                 /// Required. The resource name of the lake location, of the form:
-                /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud region.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -14607,7 +14625,8 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the lake location, of the form:
-                    /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                    /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -18925,7 +18944,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// (such as null percent, cardinality, min/max/mean, etc). For more information, see About data profiling
     /// (https://cloud.google.com/dataplex/docs/data-profiling-overview). Data discovery: scans data in Cloud Storage
     /// buckets to extract and then catalog metadata. For more information, see Discover and catalog Cloud Storage data
-    /// (https://cloud.google.com/bigquery/docs/automatic-discovery). LINT.IfChange
+    /// (https://cloud.google.com/bigquery/docs/automatic-discovery).
     /// </summary>
     public class GoogleCloudDataplexV1DataScan : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19019,7 +19038,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>
         /// Output only. Identifier. The relative resource name of the scan, of the form:
         /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where project refers to a project_id or
-        /// project_number and location_id refers to a GCP region.
+        /// project_number and location_id refers to a Google Cloud region.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -19641,7 +19660,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>
         /// Output only. Identifier. The relative resource name of the DataScanJob, of the form:
         /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}/jobs/{job_id}, where project refers to a
-        /// project_id or project_number and location_id refers to a GCP region.
+        /// project_id or project_number and location_id refers to a Google Cloud region.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -19712,7 +19731,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan
-        /// against. The field could eitherbe: Cloud Storage bucket for DataDiscoveryScan Format:
+        /// against. The field could either be: Cloud Storage bucket for DataDiscoveryScan Format:
         /// //storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID or BigQuery table of type "TABLE" for
         /// DataProfileScan/DataQualityScan Format:
         /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
@@ -21276,7 +21295,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
     /// <summary>
     /// A Glossary represents a collection of GlossaryCategories and GlossaryTerms defined by the user. Glossary is a
-    /// top level resource and is the GCP parent resource of all the GlossaryCategories and GlossaryTerms within it.
+    /// top level resource and is the Google Cloud parent resource of all the GlossaryCategories and GlossaryTerms
+    /// within it.
     /// </summary>
     public class GoogleCloudDataplexV1Glossary : Google.Apis.Requests.IDirectResponseSchema
     {
