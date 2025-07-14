@@ -4729,6 +4729,65 @@ namespace Google.Apis.NetAppFiles.v1beta1
                     }
                 }
 
+                /// <summary>Restore files from a backup to a volume.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The volume resource name, in the format
+                /// `projects/{project_id}/locations/{location}/volumes/{volume_id}`
+                /// </param>
+                public virtual RestoreRequest Restore(Google.Apis.NetAppFiles.v1beta1.Data.RestoreBackupFilesRequest body, string name)
+                {
+                    return new RestoreRequest(this.service, body, name);
+                }
+
+                /// <summary>Restore files from a backup to a volume.</summary>
+                public class RestoreRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Restore request.</summary>
+                    public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.NetAppFiles.v1beta1.Data.RestoreBackupFilesRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The volume resource name, in the format
+                    /// `projects/{project_id}/locations/{location}/volumes/{volume_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetAppFiles.v1beta1.Data.RestoreBackupFilesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "restore";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:restore";
+
+                    /// <summary>Initializes Restore parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Revert an existing volume to a specified snapshot. Warning! This operation will permanently revert
                 /// all changes made after the snapshot was created.
@@ -6562,6 +6621,30 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// <summary>Output only. Replication transfer statistics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferStats")]
         public virtual TransferStats TransferStats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RestoreBackupFilesRequest restores files from a backup to a volume.</summary>
+    public class RestoreBackupFilesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The backup resource name, in the format
+        /// `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; }
+
+        /// <summary>
+        /// Required. List of files to be restored in the form of their absolute path as in source volume.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileList")]
+        public virtual System.Collections.Generic.IList<string> FileList { get; set; }
+
+        /// <summary>Required. Absolute directory path in the destination volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreDestinationPath")]
+        public virtual string RestoreDestinationPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
