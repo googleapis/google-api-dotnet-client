@@ -2862,6 +2862,13 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
         /// <summary>
+        /// Optional. A field that, if true, indicates that incoming request logs are disabled for this backend.
+        /// Incoming request logs are enabled by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestLogsDisabled")]
+        public virtual System.Nullable<bool> RequestLogsDisabled { get; set; }
+
+        /// <summary>
         /// Required. The name of the service account used for Cloud Build and Cloud Run. Should have the role
         /// roles/firebaseapphosting.computeRunner or equivalent permissions.
         /// </summary>
