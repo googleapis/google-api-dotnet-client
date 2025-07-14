@@ -24,6 +24,11 @@
     "INCOMING",
     "OUTGOING"
   ],
+  "Google.Apis.Compute.v1.ReservationBlocksResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "BLOCK_VIEW_UNSPECIFIED",
+    "FULL"
+  ],
   "Google.Apis.Compute.v1.RoutersResource+ListBgpRoutesRequest.AddressFamilyEnum": [
     "IPV4",
     "IPV6",
