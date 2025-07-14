@@ -13387,6 +13387,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationModel")]
         public virtual string ConversationModel { get; set; }
 
+        /// <summary>Agent Assist generator ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorId")]
+        public virtual string GeneratorId { get; set; }
+
         /// <summary>
         /// A map that contains metadata about the summarization and the document from which it originates.
         /// </summary>
@@ -16710,9 +16714,20 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("order")]
         public virtual System.Nullable<int> Order { get; set; }
 
+        /// <summary>
+        /// The configuration of the predefined question. This field will only be set if the Question Type is
+        /// predefined.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predefinedQuestionConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig PredefinedQuestionConfig { get; set; }
+
         /// <summary>Question text. E.g., "Did the agent greet the customer?"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("questionBody")]
         public virtual string QuestionBody { get; set; }
+
+        /// <summary>The type of question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionType")]
+        public virtual string QuestionType { get; set; }
 
         /// <summary>
         /// Questions are tagged for categorization and scoring. Tags can either be: - Default Tags: These are
@@ -16820,6 +16835,19 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accuracy")]
         public virtual System.Nullable<double> Accuracy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for a predefined question. This field will only be set if the Question Type is predefined.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the predefined question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17000,6 +17028,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The user-specified display name of the scorecard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Whether the scorecard is the default one for the project. A default scorecard cannot be deleted and will
+        /// always appear first in scorecard selector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; }
 
         /// <summary>
         /// Identifier. The scorecard name. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
@@ -20007,6 +20042,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversationModel")]
         public virtual string ConversationModel { get; set; }
+
+        /// <summary>Agent Assist generator ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorId")]
+        public virtual string GeneratorId { get; set; }
 
         /// <summary>
         /// A map that contains metadata about the summarization and the document from which it originates.
