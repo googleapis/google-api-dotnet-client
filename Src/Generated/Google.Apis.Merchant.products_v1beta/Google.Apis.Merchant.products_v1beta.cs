@@ -1053,10 +1053,17 @@ namespace Google.Apis.Merchant.products_v1beta.Data
 
         /// <summary>
         /// Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the item. You
-        /// can provide up to 10 GTINs.
+        /// can provide up to 10 GTINs. Deprecated: Use `gtins` instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
         public virtual System.Collections.Generic.IList<string> Gtin { get; set; }
+
+        /// <summary>
+        /// Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the item. You
+        /// can provide up to 10 GTINs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtins")]
+        public virtual System.Collections.Generic.IList<string> Gtins { get; set; }
 
         /// <summary>
         /// Set this value to false when the item does not have unique product identifiers appropriate to its category,
