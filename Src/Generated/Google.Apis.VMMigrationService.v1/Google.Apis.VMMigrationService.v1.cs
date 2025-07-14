@@ -5263,7 +5263,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("committedStorageMb")]
         public virtual System.Nullable<long> CommittedStorageMb { get; set; }
 
-        /// <summary>The number of cpus the VM has.</summary>
+        /// <summary>The number of CPU cores the VM has.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
 
@@ -5306,6 +5306,12 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>The tags of the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// The number of vCPUs the VM has. It is calculated as the number of CPU cores * threads per CPU the VM has.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
+        public virtual System.Nullable<int> VcpuCount { get; set; }
 
         /// <summary>The virtualization type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virtualizationType")]
