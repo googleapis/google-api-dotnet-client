@@ -17983,8 +17983,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     }
 
     /// <summary>
-    /// GCP metadata associated with the resource, only applicable if the finding's cloud provider is Google Cloud
-    /// Platform.
+    /// Google Cloud metadata associated with the resource. Only applicable if the finding's cloud provider is Google
+    /// Cloud.
     /// </summary>
     public class GcpMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
