@@ -457,8 +457,9 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         }
 
         /// <summary>
-        /// Inserts a data transfer request. See the [Transfer parameters](/admin-sdk/data-transfer/v1/parameters)
-        /// reference for specific application requirements.
+        /// Inserts a data transfer request. See the [Transfer
+        /// parameters](https://developers.google.com/workspace/admin/data-transfer/v1/parameters) reference for
+        /// specific application requirements.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfer body)
@@ -467,8 +468,9 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         }
 
         /// <summary>
-        /// Inserts a data transfer request. See the [Transfer parameters](/admin-sdk/data-transfer/v1/parameters)
-        /// reference for specific application requirements.
+        /// Inserts a data transfer request. See the [Transfer
+        /// parameters](https://developers.google.com/workspace/admin/data-transfer/v1/parameters) reference for
+        /// specific application requirements.
         /// </summary>
         public class InsertRequest : DataTransferBaseServiceRequest<Google.Apis.Admin.DataTransfer.datatransfer_v1.Data.DataTransfer>
         {
@@ -619,7 +621,8 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
 
         /// <summary>
         /// The application's ID. Retrievable by using the
-        /// [`applications.list()`](/admin-sdk/data-transfer/reference/rest/v1/applications/list) method.
+        /// [`applications.list()`](https://developers.google.com/workspace/admin/data-transfer/reference/rest/v1/applications/list)
+        /// method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; }
@@ -650,7 +653,8 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         /// <summary>
         /// The transfer parameters for the application. These parameters are used to select the data which will get
         /// transferred in context of this application. For more information about the specific values available for
-        /// each application, see the [Transfer parameters](/admin-sdk/data-transfer/v1/parameters) reference.
+        /// each application, see the [Transfer
+        /// parameters](https://developers.google.com/workspace/admin/data-transfer/v1/parameters) reference.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationTransferParams")]
         public virtual System.Collections.Generic.IList<ApplicationTransferParam> ApplicationTransferParams { get; set; }
