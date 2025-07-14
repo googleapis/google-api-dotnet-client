@@ -882,6 +882,205 @@ namespace Google.Apis.ChromeManagement.v1
             public ProfilesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Commands = new CommandsResource(service);
+            }
+
+            /// <summary>Gets the Commands resource.</summary>
+            public virtual CommandsResource Commands { get; }
+
+            /// <summary>The "commands" collection of methods.</summary>
+            public class CommandsResource
+            {
+                private const string Resource = "commands";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CommandsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a Chrome browser profile remote command.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Format: customers/{customer_id}/profiles/{profile_permanent_id}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a Chrome browser profile remote command.</summary>
+                public class CreateRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Format: customers/{customer_id}/profiles/{profile_permanent_id}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/commands";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/profiles/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a Chrome browser profile remote command.</summary>
+                /// <param name="name">
+                /// Required. Format: customers/{customer_id}/profiles/{profile_permanent_id}/commands/{command_id}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a Chrome browser profile remote command.</summary>
+                public class GetRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: customers/{customer_id}/profiles/{profile_permanent_id}/commands/{command_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/profiles/[^/]+/commands/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists remote commands of a Chrome browser profile.</summary>
+                /// <param name="parent">
+                /// Required. Format: customers/{customer_id}/profiles/{profile_permanent_id}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists remote commands of a Chrome browser profile.</summary>
+                public class ListRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Format: customers/{customer_id}/profiles/{profile_permanent_id}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of commands to return. The default page size is 100 if page_size is
+                    /// unspecified, and the maximum page size allowed is 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The page token used to retrieve a specific page of the listing request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/commands";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/profiles/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Deletes the data collected from a Chrome browser profile.</summary>
@@ -3775,6 +3974,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kioskEnabled")]
         public virtual System.Nullable<bool> KioskEnabled { get; set; }
 
+        /// <summary>Output only. The version of this extension's manifest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manifestVersion")]
+        public virtual System.Nullable<long> ManifestVersion { get; set; }
+
         /// <summary>Output only. The minimum number of users using this app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minUserCount")]
         public virtual System.Nullable<int> MinUserCount { get; set; }
@@ -4483,6 +4686,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayWidthMm")]
         public virtual System.Nullable<int> DisplayWidthMm { get; set; }
 
+        /// <summary>Output only. EDID version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edidVersion")]
+        public virtual string EdidVersion { get; set; }
+
         /// <summary>Output only. Is display internal or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internal")]
         public virtual System.Nullable<bool> Internal__ { get; set; }
@@ -4499,6 +4706,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
         public virtual System.Nullable<int> ModelId { get; set; }
 
+        /// <summary>Output only. Serial number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual System.Nullable<int> SerialNumber { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4513,6 +4724,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. Display device name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. EDID version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edidVersion")]
+        public virtual string EdidVersion { get; set; }
 
         /// <summary>Output only. Indicates if display is internal or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isInternal")]
@@ -4529,6 +4744,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. Resolution width in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolutionWidth")]
         public virtual System.Nullable<int> ResolutionWidth { get; set; }
+
+        /// <summary>Output only. Serial number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual System.Nullable<int> SerialNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7182,6 +7401,135 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string UserId { get; set; }
     }
 
+    /// <summary>A representation of a remote command for a Chrome browser profile.</summary>
+    public class GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Result of the remote command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commandResult")]
+        public virtual GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult CommandResult { get; set; }
+
+        /// <summary>Output only. State of the remote command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commandState")]
+        public virtual string CommandState { get; set; }
+
+        /// <summary>
+        /// Required. Type of the remote command. The only supported command_type is "clearBrowsingData".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commandType")]
+        public virtual string CommandType { get; set; }
+
+        private string _issueTimeRaw;
+
+        private object _issueTime;
+
+        /// <summary>Output only. Timestamp of the issurance of the remote command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueTime")]
+        public virtual string IssueTimeRaw
+        {
+            get => _issueTimeRaw;
+            set
+            {
+                _issueTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _issueTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="IssueTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IssueTimeDateTimeOffset instead.")]
+        public virtual object IssueTime
+        {
+            get => _issueTime;
+            set
+            {
+                _issueTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _issueTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="IssueTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? IssueTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IssueTimeRaw);
+            set => IssueTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. Format: customers/{customer_id}/profiles/{profile_permanent_id}/commands/{command_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Payload of the remote command. The payload for "clearBrowsingData" command supports: - fields
+        /// "clearCache" and "clearCookies" - values of boolean type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
+
+        /// <summary>Output only. Valid duration of the remote command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validDuration")]
+        public virtual object ValidDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Result of the execution of a command.</summary>
+    public class GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _clientExecutionTimeRaw;
+
+        private object _clientExecutionTime;
+
+        /// <summary>Output only. Timestamp of the client execution of the remote command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientExecutionTime")]
+        public virtual string ClientExecutionTimeRaw
+        {
+            get => _clientExecutionTimeRaw;
+            set
+            {
+                _clientExecutionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _clientExecutionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ClientExecutionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ClientExecutionTimeDateTimeOffset instead.")]
+        public virtual object ClientExecutionTime
+        {
+            get => _clientExecutionTime;
+            set
+            {
+                _clientExecutionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _clientExecutionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ClientExecutionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ClientExecutionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ClientExecutionTimeRaw);
+            set => ClientExecutionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Result code that indicates the type of error or success of the command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultCode")]
+        public virtual string ResultCode { get; set; }
+
+        /// <summary>Output only. Result type of the remote command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultType")]
+        public virtual string ResultType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes the ChromeOS device that a `CertificateProvisioningProcess` belongs to.</summary>
     public class GoogleChromeManagementVersionsV1ChromeOsDevice : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7280,6 +7628,25 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileAdapterConfigReference")]
         public virtual string ProfileAdapterConfigReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to ListChromeBrowserProfileCommands method.</summary>
+    public class GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of commands returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chromeBrowserProfileCommands")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand> ChromeBrowserProfileCommands { get; set; }
+
+        /// <summary>The pagination token that can be used to list the next page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Total size represents an estimated number of resources returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<long> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
