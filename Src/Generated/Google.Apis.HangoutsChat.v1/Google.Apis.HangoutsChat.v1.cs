@@ -5515,12 +5515,16 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A Google Chat app interaction event that represents and contains data about a user's interaction with a Chat
+    ///  A Google Chat app interaction event that represents and contains data about a user's interaction with a Chat
     /// app. To configure your Chat app to receive interaction events, see [Receive and respond to user
     /// interactions](https://developers.google.com/workspace/chat/receive-respond-interactions). In addition to
     /// receiving events from user interactions, Chat apps can receive events about changes to spaces, such as when a
     /// new member is added to a space. To learn about space events, see [Work with events from Google
-    /// Chat](https://developers.google.com/workspace/chat/events-overview).
+    /// Chat](https://developers.google.com/workspace/chat/events-overview). Note: This event is only used for [Chat
+    /// interaction events](https://developers.google.com/workspace/chat/receive-respond-interactions). If your Chat app
+    /// is built as a [Google Workspace add-on](https://developers.google.com/workspace/add-ons/chat/build), see [Chat
+    /// event objects](https://developers.google.com/workspace/add-ons/concepts/event-objects#chat-event-object) in the
+    /// add-ons documentation.
     /// </summary>
     public class DeprecatedEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7005,6 +7009,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>An external data source, such as a relational database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalDataSource")]
         public virtual GoogleAppsCardV1Action ExternalDataSource { get; set; }
+
+        /// <summary>
+        /// Optional. Text that appears below the selection input field meant to assist users by prompting them to enter
+        /// a certain value. This text is always visible. Only supported by Google Workspace Workflows, but not Google
+        /// Chat API or Google Workspace Add-ons.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hintText")]
+        public virtual string HintText { get; set; }
 
         /// <summary>
         /// An array of selectable items. For example, an array of radio buttons or checkboxes. Supports up to 100
