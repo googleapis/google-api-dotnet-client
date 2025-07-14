@@ -1324,9 +1324,17 @@ namespace Google.Apis.Merchant.reviews_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gtins")]
         public virtual System.Collections.Generic.IList<string> Gtins { get; set; }
 
+        /// <summary>Optional. Indicates whether the review is incentivized.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isIncentivizedReview")]
+        public virtual System.Nullable<bool> IsIncentivizedReview { get; set; }
+
         /// <summary>Optional. Indicates whether the review is marked as spam in the publisher's system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isSpam")]
         public virtual System.Nullable<bool> IsSpam { get; set; }
+
+        /// <summary>Optional. Indicates whether the reviewer's purchase is verified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isVerifiedPurchase")]
+        public virtual System.Nullable<bool> IsVerifiedPurchase { get; set; }
 
         /// <summary>
         /// Optional. The maximum possible number for the rating. The value of the max rating must be greater than the
