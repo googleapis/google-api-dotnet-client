@@ -1,0 +1,16 @@
+{
+  "Google.Apis.ParameterManager.v1.ParameterManagerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ParameterManager.v1.ParameterManagerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.ParameterManager.v1.ProjectsResource+LocationsResource+ParametersResource+VersionsResource+GetRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ]
+}
