@@ -974,7 +974,7 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
         /// <summary>
         /// Immutable. The Pub/Sub topic that receives events for the subscription. Format:
         /// `projects/{project}/topics/{topic}` You must create the topic in the same Google Cloud project where you
-        /// create this subscription. Note: The Workspace Events API uses [ordering
+        /// create this subscription. Note: The Google Workspace Events API uses [ordering
         /// keys](https://cloud.google.com/pubsub/docs/ordering) for the benefit of sequential events. If the Cloud
         /// Pub/Sub topic has a [message storage
         /// policy](https://cloud.google.com/pubsub/docs/resource-location-restriction#exceptions) configured to exclude
@@ -1033,7 +1033,7 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
     }
 
     /// <summary>
-    /// Options about what data to include in the event payload. Only supported for Google Chat events.
+    /// Options about what data to include in the event payload. Only supported for Google Chat and Google Drive events.
     /// </summary>
     public class PayloadOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1218,7 +1218,8 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
         public virtual NotificationEndpoint NotificationEndpoint { get; set; }
 
         /// <summary>
-        /// Optional. Options about what data to include in the event payload. Only supported for Google Chat events.
+        /// Optional. Options about what data to include in the event payload. Only supported for Google Chat and Google
+        /// Drive events.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payloadOptions")]
         public virtual PayloadOptions PayloadOptions { get; set; }
