@@ -144,6 +144,18 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             new ConfigurationBuilder().AddJsonStream(new MemoryStream(Encoding.UTF8.GetBytes(JToken.Parse(json).ToString()))).Build();
 
         [Fact]
+        public void FromProgrammaticExternalAccountCredential()
+        {
+            var credential = new ProgrammaticExternalAccountCredential(new ProgrammaticExternalAccountCredential.Initializer(
+                "STS_TOKEN_URL", "AUDIENCE", "SUBJECT_TOKEN_TYPE", new ProgrammaticExternalAccountCredentialTest.FakeSubjectTokenProvider()));
+
+            var gCredential = GoogleCredential.FromProgrammaticExternalAccountCredential(credential);
+
+            var pCred = Assert.IsType<ProgrammaticExternalAccountCredential>(gCredential.UnderlyingCredential);
+            Assert.Same(credential, pCred);
+        }
+
+        [Fact]
         public void FromConfig_UserCredential()
         {
             IConfiguration config = BuildConfigurationForCredential(FakeUserCredentialConfigContents);

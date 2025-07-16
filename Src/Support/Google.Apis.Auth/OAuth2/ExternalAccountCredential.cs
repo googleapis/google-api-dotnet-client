@@ -46,26 +46,26 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>
         /// Initializer for <see cref="ExternalAccountCredential"/>.
         /// </summary>
-        new internal abstract class Initializer : ServiceCredential.Initializer
+        new public class Initializer : ServiceCredential.Initializer
         {
             /// <summary>
             /// The STS audience which contains the resource name for the
             /// workload identity pool or the workforce pool
             /// and the provider identifier in that pool.
             /// </summary>
-            internal string Audience { get; }
+            public string Audience { get; }
 
             /// <summary>
             /// The STS subject token type based on the OAuth 2.0 token exchange spec.
             /// </summary>
-            internal string SubjectTokenType { get; }
+            public string SubjectTokenType { get; }
 
             /// <summary>
             /// This is the URL for the service account impersonation request.
             /// If this is not set, the STS-returned access token
             /// should be directly used without impersonation.
             /// </summary>
-            internal string ServiceAccountImpersonationUrl { get; set; }
+            public string ServiceAccountImpersonationUrl { get; set; }
 
             /// <summary>
             /// The GCP project number to be used for Workforce Identity Pools
@@ -76,7 +76,7 @@ namespace Google.Apis.Auth.OAuth2
             /// enabled identity and this values is not specified, then an API key needs to be
             /// used alongside this credential to call Google APIs.
             /// </remarks>
-            internal string WorkforcePoolUserProject { get; set; }
+            public string WorkforcePoolUserProject { get; set; }
 
             /// <summary>
             /// The Client ID.
@@ -87,7 +87,7 @@ namespace Google.Apis.Auth.OAuth2
             /// When provided, STS will be called with additional basic authentication using
             /// ClientId as username and ClientSecret as password.
             /// </remarks>
-            internal string ClientId { get; set; }
+            public string ClientId { get; set; }
 
             /// <summary>
             /// The client secret.
@@ -98,13 +98,13 @@ namespace Google.Apis.Auth.OAuth2
             /// When provided, STS will be called with additional basic authentication using
             /// ClientId as username and ClientSecret as password.
             /// </remarks>
-            internal string ClientSecret { get; set; }
+            public string ClientSecret { get; set; }
 
             /// <summary>
             /// The universe domain this credential belongs to.
             /// May be null, in which case the default universe domain will be used.
             /// </summary>
-            internal string UniverseDomain { get; set; }
+            public string UniverseDomain { get; set; }
 
             internal Initializer(string tokenUrl, string audience, string subjectTokenType) : base(tokenUrl)
             {
