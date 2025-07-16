@@ -10616,10 +10616,6 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
         public virtual System.Nullable<long> DataSourceId { get; set; }
 
-        /// <summary>Merchant Center primary feed ID. Deprecated: use data_source_id instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedId")]
-        public virtual System.Nullable<long> PrimaryFeedId { get; set; }
-
         /// <summary>Merchant Center primary feed name. The name is used for the display purposes only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedName")]
         public virtual string PrimaryFeedName { get; set; }
