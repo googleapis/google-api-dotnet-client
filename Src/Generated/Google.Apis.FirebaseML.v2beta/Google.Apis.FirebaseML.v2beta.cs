@@ -1624,6 +1624,21 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Tool to retrieve public maps data for grounding, powered by Google.</summary>
+    public class GoogleCloudAiplatformV1beta1GoogleMaps : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The authentication config to access the API. Deprecated. Please use auth_config instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiAuth")]
+        public virtual GoogleCloudAiplatformV1beta1ApiAuth ApiAuth { get; set; }
+
+        /// <summary>The authentication config to access the API. Only API key is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authConfig")]
+        public virtual GoogleCloudAiplatformV1beta1AuthConfig AuthConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Tool to retrieve public web data for grounding, powered by Google.</summary>
     public class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1638,6 +1653,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Grounding chunk.</summary>
     public class GoogleCloudAiplatformV1beta1GroundingChunk : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Grounding chunk from Google Maps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maps")]
+        public virtual GoogleCloudAiplatformV1beta1GroundingChunkMaps Maps { get; set; }
+
         /// <summary>Grounding chunk from context retrieved by the retrieval tools.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrievedContext")]
         public virtual GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext RetrievedContext { get; set; }
@@ -1645,6 +1664,31 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Grounding chunk from the web.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("web")]
         public virtual GoogleCloudAiplatformV1beta1GroundingChunkWeb Web { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Chunk from Google Maps.</summary>
+    public class GoogleCloudAiplatformV1beta1GroundingChunkMaps : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This Place's resource name, in `places/{place_id}` format. Can be used to look up the Place.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
+        public virtual string PlaceId { get; set; }
+
+        /// <summary>Text of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>Title of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>URI reference of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1697,6 +1741,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Metadata returned to client when grounding is enabled.</summary>
     public class GoogleCloudAiplatformV1beta1GroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Output only. Resource name of the Google Maps widget context token to be used with the
+        /// PlacesContextElement widget to render contextual data. This is populated only for Google Maps grounding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleMapsWidgetContextToken")]
+        public virtual string GoogleMapsWidgetContextToken { get; set; }
+
         /// <summary>List of supporting references retrieved from specified grounding source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingChunks")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1GroundingChunk> GroundingChunks { get; set; }
@@ -2358,6 +2409,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionDeclarations")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1FunctionDeclaration> FunctionDeclarations { get; set; }
+
+        /// <summary>Optional. GoogleMaps tool type. Tool to support Google Maps in Model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleMaps")]
+        public virtual GoogleCloudAiplatformV1beta1GoogleMaps GoogleMaps { get; set; }
 
         /// <summary>
         /// Optional. GoogleSearch tool type. Tool to support Google Search in Model. Powered by Google.
