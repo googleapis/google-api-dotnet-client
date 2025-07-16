@@ -5521,6 +5521,25 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Contains metadata about the IAM policy override for a given Dataform resource. If is_active is true, this the
+    /// policy encoded in iam_policy_name is the source of truth for this resource. Will be provided in internal ESV2
+    /// views for: Workspaces, Repositories, Folders, TeamFolders.
+    /// </summary>
+    public class IamPolicyOverrideView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IAM policy name for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamPolicyName")]
+        public virtual PolicyName IamPolicyName { get; set; }
+
+        /// <summary>Whether the IAM policy encoded in this view is active.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isActive")]
+        public virtual System.Nullable<bool> IsActive { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Load definition for incremental load modes</summary>
     public class IncrementalLoadMode : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6255,6 +6274,39 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>
+    /// An internal name for an IAM policy, based on the resource to which the policy applies. Not to be confused with a
+    /// resource's external full resource name. For more information on this distinction, see
+    /// go/iam-full-resource-names.
+    /// </summary>
+    public class PolicyName : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifies an instance of the type. ID format varies by type. The ID format is defined in the IAM .service
+        /// file that defines the type, either in path_mapping or in a comment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// For Cloud IAM: The location of the Policy. Must be empty or "global" for Policies owned by global IAM. Must
+        /// name a region from prodspec/cloud-iam-cloudspec for Regional IAM Policies, see
+        /// go/iam-faq#where-is-iam-currently-deployed. For Local IAM: This field should be set to "local".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>
+        /// Resource type. Types are defined in IAM's .service files. Valid values for type might be 'storage_buckets',
+        /// 'compute_instances', 'resourcemanager_customers', 'billing_accounts', etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>`PullGitCommits` request message.</summary>
