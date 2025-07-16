@@ -1327,6 +1327,39 @@ namespace Google.Apis.SearchConsole.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An object that may be returned with your query results, providing context about the state of the data. When you
+    /// request recent data (using `all` or `hourly_all` for `dataState`), some of the rows returned may represent data
+    /// that is incomplete, which means that the data is still being collected and processed. This metadata object helps
+    /// you identify exactly when this starts and ends. All dates and times provided in this object are in the
+    /// `America/Los_Angeles` time zone. The specific field returned within this object depends on how you've grouped
+    /// your data in the request. See details in inner fields.
+    /// </summary>
+    public class Metadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The first date for which the data is still being collected and processed, presented in `YYYY-MM-DD` format
+        /// (ISO-8601 extended local date format). This field is populated only when the request's `dataState` is
+        /// "`all`", data is grouped by "`DATE`", and the requested date range contains incomplete data points. All
+        /// values after the `first_incomplete_date` may still change noticeably.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstIncompleteDate")]
+        public virtual string FirstIncompleteDate { get; set; }
+
+        /// <summary>
+        /// The first hour for which the data is still being collected and processed, presented in
+        /// `YYYY-MM-DDThh:mm:ss[+|-]hh:mm` format (ISO-8601 extended offset date-time format). This field is populated
+        /// only when the request's `dataState` is "`hourly_all`", data is grouped by "`HOUR`" and the requested date
+        /// range contains incomplete data points. All values after the `first_incomplete_hour` may still change
+        /// noticeably.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstIncompleteHour")]
+        public virtual string FirstIncompleteHour { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Mobile-friendly issue.</summary>
     public class MobileFriendlyIssue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1545,6 +1578,13 @@ namespace Google.Apis.SearchConsole.v1.Data
     /// </summary>
     public class SearchAnalyticsQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// An object that may be returned with your query results, providing context about the state of the data. See
+        /// details in Metadata object documentation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual Metadata Metadata { get; set; }
+
         /// <summary>How the results were aggregated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseAggregationType")]
         public virtual string ResponseAggregationType { get; set; }
