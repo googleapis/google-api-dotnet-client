@@ -9070,6 +9070,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuArchitecture")]
         public virtual string CpuArchitecture { get; set; }
 
+        /// <summary>Optional. CPU manufacturer, e.g., "Intel", "AMD".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuManufacturer")]
+        public virtual string CpuManufacturer { get; set; }
+
         /// <summary>CPU name, e.g., "Intel Xeon E5-2690", "AMD EPYC 7571" etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuName")]
         public virtual string CpuName { get; set; }
