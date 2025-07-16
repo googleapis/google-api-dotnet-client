@@ -10812,6 +10812,161 @@ namespace Google.Apis.YouTube.v3
             public V3Resource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                LiveChat = new LiveChatResource(service);
+            }
+
+            /// <summary>Gets the LiveChat resource.</summary>
+            public virtual LiveChatResource LiveChat { get; }
+
+            /// <summary>The "liveChat" collection of methods.</summary>
+            public class LiveChatResource
+            {
+                private const string Resource = "liveChat";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LiveChatResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Messages = new MessagesResource(service);
+                }
+
+                /// <summary>Gets the Messages resource.</summary>
+                public virtual MessagesResource Messages { get; }
+
+                /// <summary>The "messages" collection of methods.</summary>
+                public class MessagesResource
+                {
+                    private const string Resource = "messages";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public MessagesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Allows a user to load live chat through a server-streamed RPC.</summary>
+                    public virtual StreamRequest Stream()
+                    {
+                        return new StreamRequest(this.service);
+                    }
+
+                    /// <summary>Allows a user to load live chat through a server-streamed RPC.</summary>
+                    public class StreamRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.LiveChatMessageListResponse>
+                    {
+                        /// <summary>Constructs a new Stream request.</summary>
+                        public StreamRequest(Google.Apis.Services.IClientService service) : base(service)
+                        {
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Specifies the localization language in which the system messages should be returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("hl", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Hl { get; set; }
+
+                        /// <summary>The id of the live chat for which comments should be returned.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("liveChatId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LiveChatId { get; set; }
+
+                        /// <summary>
+                        /// The *maxResults* parameter specifies the maximum number of items that should be returned in
+                        /// the result set. Not used in the streaming RPC.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> MaxResults { get; set; }
+
+                        /// <summary>
+                        /// The *pageToken* parameter identifies a specific page in the result set that should be
+                        /// returned. In an API response, the nextPageToken property identify other pages that could be
+                        /// retrieved.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>
+                        /// The *part* parameter specifies the liveChatComment resource parts that the API response will
+                        /// include. Supported values are id, snippet, and authorDetails.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> Part { get; set; }
+
+                        /// <summary>
+                        /// Specifies the size of the profile image that should be returned for each user.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("profileImageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> ProfileImageSize { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "stream";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "youtube/v3/liveChat/messages/stream";
+
+                        /// <summary>Initializes Stream parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("hl", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "hl",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("liveChatId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "liveChatId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "maxResults",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = "500",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("part", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "part",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("profileImageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "profileImageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
             }
 
             /// <summary>Updates an existing resource.</summary>
