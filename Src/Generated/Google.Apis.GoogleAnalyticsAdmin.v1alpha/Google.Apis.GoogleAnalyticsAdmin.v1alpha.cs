@@ -10176,51 +10176,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
-        /// <summary>
-        /// Creates a connected site tag for a Universal Analytics property. You can create a maximum of 20 connected
-        /// site tags per property. Note: This API cannot be used on GA4 properties.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual CreateConnectedSiteTagRequest CreateConnectedSiteTag(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest body)
-        {
-            return new CreateConnectedSiteTagRequest(this.service, body);
-        }
-
-        /// <summary>
-        /// Creates a connected site tag for a Universal Analytics property. You can create a maximum of 20 connected
-        /// site tags per property. Note: This API cannot be used on GA4 properties.
-        /// </summary>
-        public class CreateConnectedSiteTagRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse>
-        {
-            /// <summary>Constructs a new CreateConnectedSiteTag request.</summary>
-            public CreateConnectedSiteTagRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "createConnectedSiteTag";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/properties:createConnectedSiteTag";
-
-            /// <summary>Initializes CreateConnectedSiteTag parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
-
         /// <summary>Create a roll-up property and all roll-up property source links.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRollupPropertyRequest CreateRollupProperty(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest body)
@@ -10319,147 +10274,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^properties/[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>
-        /// Deletes a connected site tag for a Universal Analytics property. Note: this has no effect on GA4 properties.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual DeleteConnectedSiteTagRequest DeleteConnectedSiteTag(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest body)
-        {
-            return new DeleteConnectedSiteTagRequest(this.service, body);
-        }
-
-        /// <summary>
-        /// Deletes a connected site tag for a Universal Analytics property. Note: this has no effect on GA4 properties.
-        /// </summary>
-        public class DeleteConnectedSiteTagRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
-        {
-            /// <summary>Constructs a new DeleteConnectedSiteTag request.</summary>
-            public DeleteConnectedSiteTagRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "deleteConnectedSiteTag";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/properties:deleteConnectedSiteTag";
-
-            /// <summary>Initializes DeleteConnectedSiteTag parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
-
-        /// <summary>
-        /// Fetches the opt out status for the automated GA4 setup process for a UA property. Note: this has no effect
-        /// on GA4 property.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual FetchAutomatedGa4ConfigurationOptOutRequest FetchAutomatedGa4ConfigurationOptOut(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest body)
-        {
-            return new FetchAutomatedGa4ConfigurationOptOutRequest(this.service, body);
-        }
-
-        /// <summary>
-        /// Fetches the opt out status for the automated GA4 setup process for a UA property. Note: this has no effect
-        /// on GA4 property.
-        /// </summary>
-        public class FetchAutomatedGa4ConfigurationOptOutRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse>
-        {
-            /// <summary>Constructs a new FetchAutomatedGa4ConfigurationOptOut request.</summary>
-            public FetchAutomatedGa4ConfigurationOptOutRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "fetchAutomatedGa4ConfigurationOptOut";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/properties:fetchAutomatedGa4ConfigurationOptOut";
-
-            /// <summary>Initializes FetchAutomatedGa4ConfigurationOptOut parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
-
-        /// <summary>
-        /// Given a specified UA property, looks up the GA4 property connected to it. Note: this cannot be used with GA4
-        /// properties.
-        /// </summary>
-        public virtual FetchConnectedGa4PropertyRequest FetchConnectedGa4Property()
-        {
-            return new FetchConnectedGa4PropertyRequest(this.service);
-        }
-
-        /// <summary>
-        /// Given a specified UA property, looks up the GA4 property connected to it. Note: this cannot be used with GA4
-        /// properties.
-        /// </summary>
-        public class FetchConnectedGa4PropertyRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse>
-        {
-            /// <summary>Constructs a new FetchConnectedGa4Property request.</summary>
-            public FetchConnectedGa4PropertyRequest(Google.Apis.Services.IClientService service) : base(service)
-            {
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The UA property for which to look up the connected GA4 property. Note this request uses the
-            /// internal property ID, not the tracking ID of the form UA-XXXXXX-YY. Format:
-            /// properties/{internal_web_property_id} Example: properties/1234
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("property", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Property { get; set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "fetchConnectedGa4Property";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/properties:fetchConnectedGa4Property";
-
-            /// <summary>Initializes FetchConnectedGa4Property parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("property", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "property",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
                 });
             }
         }
@@ -10828,51 +10642,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
-        /// <summary>
-        /// Lists the connected site tags for a Universal Analytics property. A maximum of 20 connected site tags will
-        /// be returned. Note: this has no effect on GA4 property.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual ListConnectedSiteTagsRequest ListConnectedSiteTags(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest body)
-        {
-            return new ListConnectedSiteTagsRequest(this.service, body);
-        }
-
-        /// <summary>
-        /// Lists the connected site tags for a Universal Analytics property. A maximum of 20 connected site tags will
-        /// be returned. Note: this has no effect on GA4 property.
-        /// </summary>
-        public class ListConnectedSiteTagsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse>
-        {
-            /// <summary>Constructs a new ListConnectedSiteTags request.</summary>
-            public ListConnectedSiteTagsRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "listConnectedSiteTags";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/properties:listConnectedSiteTags";
-
-            /// <summary>Initializes ListConnectedSiteTags parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
-
         /// <summary>Updates a property.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -11077,51 +10846,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     DefaultValue = null,
                     Pattern = @"^properties/[^/]+$",
                 });
-            }
-        }
-
-        /// <summary>
-        /// Sets the opt out status for the automated GA4 setup process for a UA property. Note: this has no effect on
-        /// GA4 property.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual SetAutomatedGa4ConfigurationOptOutRequest SetAutomatedGa4ConfigurationOptOut(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest body)
-        {
-            return new SetAutomatedGa4ConfigurationOptOutRequest(this.service, body);
-        }
-
-        /// <summary>
-        /// Sets the opt out status for the automated GA4 setup process for a UA property. Note: this has no effect on
-        /// GA4 property.
-        /// </summary>
-        public class SetAutomatedGa4ConfigurationOptOutRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse>
-        {
-            /// <summary>Constructs a new SetAutomatedGa4ConfigurationOptOut request.</summary>
-            public SetAutomatedGa4ConfigurationOptOutRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "setAutomatedGa4ConfigurationOptOut";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/properties:setAutomatedGa4ConfigurationOptOut";
-
-            /// <summary>Initializes SetAutomatedGa4ConfigurationOptOut parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
             }
         }
 
@@ -13007,26 +12731,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for a specific Connected Site Tag.</summary>
-    public class GoogleAnalyticsAdminV1alphaConnectedSiteTag : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. User-provided display name for the connected site tag. Must be less than 256 characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>
-        /// Required. "Tag ID to forward events to. Also known as the Measurement ID, or the "G-ID" (For example:
-        /// G-12345).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tagId")]
-        public virtual string TagId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A conversion event in a Google Analytics property.</summary>
     public class GoogleAnalyticsAdminV1alphaConversionEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13180,31 +12884,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for CreateConnectedSiteTag RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The tag to add to the Universal Analytics property</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("connectedSiteTag")]
-        public virtual GoogleAnalyticsAdminV1alphaConnectedSiteTag ConnectedSiteTag { get; set; }
-
-        /// <summary>
-        /// The Universal Analytics property to create connected site tags for. This API does not support GA4
-        /// properties. Format: properties/{universalAnalyticsPropertyId} Example: properties/1234
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("property")]
-        public virtual string Property { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for CreateConnectedSiteTag RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -13642,26 +13321,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for DeleteConnectedSiteTag RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The Universal Analytics property to delete connected site tags for. This API does not support GA4
-        /// properties. Format: properties/{universalAnalyticsPropertyId} Example: properties/1234
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("property")]
-        public virtual string Property { get; set; }
-
-        /// <summary>
-        /// Tag ID to forward events to. Also known as the Measurement ID, or the "G-ID" (For example: G-12345).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tagId")]
-        public virtual string TagId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14175,46 +13834,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request for fetching the opt out status for the automated GA4 setup process.</summary>
-    public class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The UA property to get the opt out status. Note this request uses the internal property ID, not
-        /// the tracking ID of the form UA-XXXXXX-YY. Format: properties/{internalWebPropertyId} Example:
-        /// properties/1234
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("property")]
-        public virtual string Property { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for fetching the opt out status for the automated GA4 setup process.</summary>
-    public class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The opt out status for the UA property.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("optOut")]
-        public virtual System.Nullable<bool> OptOut { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for looking up GA4 property connected to a UA property.</summary>
-    public class GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The GA4 property connected to the UA property. An empty string is returned when there is no connected GA4
-        /// property. Format: properties/{property_id} Example: properties/1234
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("property")]
-        public virtual string Property { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A link between a Google Analytics property and a Firebase project.</summary>
     public class GoogleAnalyticsAdminV1alphaFirebaseLink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14702,33 +14321,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for ListConnectedSiteTags RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The Universal Analytics property to fetch connected site tags for. This does not work on GA4 properties. A
-        /// maximum of 20 connected site tags will be returned. Example Format: `properties/1234`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("property")]
-        public virtual string Property { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for ListConnectedSiteTags RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The site tags for the Universal Analytics property. A maximum of 20 connected site tags will be returned.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("connectedSiteTags")]
-        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaConnectedSiteTag> ConnectedSiteTags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16037,32 +15629,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request for setting the opt out status for the automated GA4 setup process.</summary>
-    public class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The status to set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("optOut")]
-        public virtual System.Nullable<bool> OptOut { get; set; }
-
-        /// <summary>
-        /// Required. The UA property to set the opt out status. Note this request uses the internal property ID, not
-        /// the tracking ID of the form UA-XXXXXX-YY. Format: properties/{internalWebPropertyId} Example:
-        /// properties/1234
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("property")]
-        public virtual string Property { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for setting the opt out status for the automated GA4 setup process.</summary>
-    public class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
