@@ -1692,7 +1692,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>[Preview only] Request to generate a user session.</summary>
+    /// <summary>Request to generate a user session.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The user intent to generate the user session.</summary>
@@ -1703,7 +1703,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>[Preview only] Response that contains the details for generated user session.</summary>
+    /// <summary>Response that contains the details for generated user session.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
