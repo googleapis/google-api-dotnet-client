@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using Google.Apis.Http;
+using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -245,6 +246,16 @@ namespace Google.Apis.Auth.OAuth2
         /// <returns>A <see cref="GoogleCredential"/> with an underlying <see cref="ComputeCredential"/>.</returns>
         public static GoogleCredential FromComputeCredential(ComputeCredential computeCredential = null) =>
             new GoogleCredential(computeCredential ?? new ComputeCredential());
+
+        /// <summary>
+        /// Create a <see cref="GoogleCredential"/> from a <see cref="ProgrammaticExternalAccountCredential"/>.
+        /// </summary>
+        /// <param name="credential">
+        /// The credential to use in the returned <see cref="GoogleCredential"/>.
+        /// Must not be null.
+        /// </param>
+        public static GoogleCredential FromProgrammaticExternalAccountCredential(ProgrammaticExternalAccountCredential credential) =>
+            new GoogleCredential(credential.ThrowIfNull(nameof(credential)));
 
         /// <summary>
         /// <para>

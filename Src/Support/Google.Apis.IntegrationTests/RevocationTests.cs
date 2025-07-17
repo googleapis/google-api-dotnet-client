@@ -40,7 +40,7 @@ namespace IntegrationTests
                 var ex = await Assert.ThrowsAsync<TokenResponseException>(
                     () => f.RevokeTokenAsync("fake-user", "fake-token", default));
                 Assert.Equal(HttpStatusCode.BadRequest, ex.StatusCode);
-                Assert.Equal("invalid_request", ex.Error.Error);
+                Assert.Equal("invalid_token", ex.Error.Error);
             }
         }
 
