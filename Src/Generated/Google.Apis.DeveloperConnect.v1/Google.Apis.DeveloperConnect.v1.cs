@@ -3683,7 +3683,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleArtifactAnalysis")]
         public virtual GoogleArtifactAnalysis GoogleArtifactAnalysis { get; set; }
 
-        /// <summary>Optional. Set if the artifact is stored in Artifact regsitry.</summary>
+        /// <summary>Optional. Set if the artifact is stored in Artifact registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleArtifactRegistry")]
         public virtual GoogleArtifactRegistry GoogleArtifactRegistry { get; set; }
 
