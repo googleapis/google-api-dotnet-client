@@ -66,12 +66,6 @@ namespace Google.Apis.DataPortability.v1
             /// <summary>Move a copy of the Google Alerts subscriptions you created</summary>
             public static string DataportabilityAlertsSubscriptions = "https://www.googleapis.com/auth/dataportability.alerts.subscriptions";
 
-            /// <summary>
-            /// Move a copy of messages between you and the businesses you have conversations with across Google
-            /// services
-            /// </summary>
-            public static string DataportabilityBusinessmessagingConversations = "https://www.googleapis.com/auth/dataportability.businessmessaging.conversations";
-
             /// <summary>Move a copy of the information you entered into online forms in Chrome</summary>
             public static string DataportabilityChromeAutofill = "https://www.googleapis.com/auth/dataportability.chrome.autofill";
 
@@ -282,12 +276,6 @@ namespace Google.Apis.DataPortability.v1
         {
             /// <summary>Move a copy of the Google Alerts subscriptions you created</summary>
             public const string DataportabilityAlertsSubscriptions = "https://www.googleapis.com/auth/dataportability.alerts.subscriptions";
-
-            /// <summary>
-            /// Move a copy of messages between you and the businesses you have conversations with across Google
-            /// services
-            /// </summary>
-            public const string DataportabilityBusinessmessagingConversations = "https://www.googleapis.com/auth/dataportability.businessmessaging.conversations";
 
             /// <summary>Move a copy of the information you entered into online forms in Chrome</summary>
             public const string DataportabilityChromeAutofill = "https://www.googleapis.com/auth/dataportability.chrome.autofill";
