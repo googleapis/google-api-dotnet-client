@@ -313,6 +313,71 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                     this.service = service;
                 }
 
+                /// <summary>
+                /// Initiated by Cloud Console for Oauth consent flow for Workbench Instances. Do not use this method
+                /// directly. Design doc: go/wbi-euc:auth-dd
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Notebook Instance resource. Format:
+                /// `projects/{project}/locations/{location}/instances/{instance}`
+                /// </param>
+                public virtual CheckAuthorizationRequest CheckAuthorization(Google.Apis.AIPlatformNotebooks.v2.Data.CheckAuthorizationRequest body, string name)
+                {
+                    return new CheckAuthorizationRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Initiated by Cloud Console for Oauth consent flow for Workbench Instances. Do not use this method
+                /// directly. Design doc: go/wbi-euc:auth-dd
+                /// </summary>
+                public class CheckAuthorizationRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.CheckAuthorizationResponse>
+                {
+                    /// <summary>Constructs a new CheckAuthorization request.</summary>
+                    public CheckAuthorizationRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v2.Data.CheckAuthorizationRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Notebook Instance resource. Format:
+                    /// `projects/{project}/locations/{location}/instances/{instance}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v2.Data.CheckAuthorizationRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "checkAuthorization";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:checkAuthorization";
+
+                    /// <summary>Initializes CheckAuthorization parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Checks whether a notebook instance is upgradable.</summary>
                 /// <param name="notebookInstance">
                 /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
@@ -543,6 +608,69 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                     public override string RestPath => "v2/{+name}:diagnose";
 
                     /// <summary>Initializes Diagnose parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Called by VM to return an EUC for the instance owner. Do not use this method directly. Design doc:
+                /// go/wbi-euc:dd
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual GenerateAccessTokenRequest GenerateAccessToken(Google.Apis.AIPlatformNotebooks.v2.Data.GenerateAccessTokenRequest body, string name)
+                {
+                    return new GenerateAccessTokenRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Called by VM to return an EUC for the instance owner. Do not use this method directly. Design doc:
+                /// go/wbi-euc:dd
+                /// </summary>
+                public class GenerateAccessTokenRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.GenerateAccessTokenResponse>
+                {
+                    /// <summary>Constructs a new GenerateAccessToken request.</summary>
+                    public GenerateAccessTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v2.Data.GenerateAccessTokenRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v2.Data.GenerateAccessTokenRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generateAccessToken";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:generateAccessToken";
+
+                    /// <summary>Initializes GenerateAccessToken parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -2161,6 +2289,77 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for checking authorization for the instance owner.</summary>
+    public class CheckAuthorizationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The details of the OAuth authorization response. This may include additional params such as
+        /// dry_run, version_info, origin, propagate, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationDetails")]
+        public virtual System.Collections.Generic.IDictionary<string, string> AuthorizationDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for checking authorization for the instance owner.</summary>
+    public class CheckAuthorizationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when this Authorization request was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// If the user has not completed OAuth consent, then the oauth_url is returned. Otherwise, this field is not
+        /// set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth_uri")]
+        public virtual string OauthUri { get; set; }
+
+        /// <summary>
+        /// Success indicates that the user completed OAuth consent and access tokens can be generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("success")]
+        public virtual System.Nullable<bool> Success { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for checking if a notebook instance is upgradeable.</summary>
     public class CheckInstanceUpgradabilityResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2569,6 +2768,49 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for generating an EUC for the instance owner.</summary>
+    public class GenerateAccessTokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The VM identity token (a JWT) for authenticating the VM.
+        /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmToken")]
+        public virtual string VmToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for generating an EUC for the instance owner.</summary>
+    public class GenerateAccessTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Short-lived access token string which may be used to access Google APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("access_token")]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>The time in seconds when the access token expires. Typically that's 3600.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expires_in")]
+        public virtual System.Nullable<int> ExpiresIn { get; set; }
+
+        /// <summary>
+        /// Space-separated list of scopes contained in the returned token.
+        /// https://cloud.google.com/docs/authentication/token-types#access-contents
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>
+        /// Type of the returned access token (e.g. "Bearer"). It specifies how the token must be used. Bearer tokens
+        /// may be used by any entity without proof of identity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token_type")]
+        public virtual string TokenType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ConfigImage represents an image release available to create a WbI</summary>
     public class ImageRelease : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2638,6 +2880,10 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableDeletionProtection")]
         public virtual System.Nullable<bool> EnableDeletionProtection { get; set; }
+
+        /// <summary>Optional. Flag to enable managed end user credentials for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableManagedEuc")]
+        public virtual System.Nullable<bool> EnableManagedEuc { get; set; }
 
         /// <summary>
         /// Optional. Flag that specifies that a notebook can be accessed with third party identity provider.
