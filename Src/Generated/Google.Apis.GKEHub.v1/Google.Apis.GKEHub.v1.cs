@@ -8258,6 +8258,10 @@ namespace Google.Apis.GKEHub.v1.Data
             set => LastConnectionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. The type of the membership.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipType")]
+        public virtual string MembershipType { get; set; }
+
         /// <summary>Optional. The monitoring config information for this membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringConfig")]
         public virtual MonitoringConfig MonitoringConfig { get; set; }
