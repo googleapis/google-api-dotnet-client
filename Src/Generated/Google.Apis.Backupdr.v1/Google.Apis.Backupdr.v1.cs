@@ -4078,6 +4078,67 @@ namespace Google.Apis.Backupdr.v1
                     }
                 }
 
+                /// <summary>Returns the Assured Workloads compliance metadata for a given project.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The project and location to be used to check CSS metadata for target project information,
+                /// in the format 'projects/{project_id}/locations/{location}'. In Cloud BackupDR, locations map to
+                /// Google Cloud regions, for example **us-central1**.
+                /// </param>
+                public virtual MsComplianceMetadataRequest MsComplianceMetadata(Google.Apis.Backupdr.v1.Data.FetchMsComplianceMetadataRequest body, string parent)
+                {
+                    return new MsComplianceMetadataRequest(this.service, body, parent);
+                }
+
+                /// <summary>Returns the Assured Workloads compliance metadata for a given project.</summary>
+                public class MsComplianceMetadataRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.FetchMsComplianceMetadataResponse>
+                {
+                    /// <summary>Constructs a new MsComplianceMetadata request.</summary>
+                    public MsComplianceMetadataRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.FetchMsComplianceMetadataRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location to be used to check CSS metadata for target project
+                    /// information, in the format 'projects/{project_id}/locations/{location}'. In Cloud BackupDR,
+                    /// locations map to Google Cloud regions, for example **us-central1**.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Backupdr.v1.Data.FetchMsComplianceMetadataRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "msComplianceMetadata";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}:msComplianceMetadata";
+
+                    /// <summary>Initializes MsComplianceMetadata parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/managementServers$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
                 /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -7044,7 +7105,7 @@ namespace Google.Apis.Backupdr.v1.Data
 
         /// <summary>
         /// Optional. Array of disks associated with this instance. Persistent disks must be created before you can
-        /// assign them.
+        /// assign them. Source regional persistent disks will be restored with default replica zones if not specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<AttachedDisk> Disks { get; set; }
@@ -7096,7 +7157,7 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>
         /// Optional. An array of network configurations for this instance. These specify how interfaces are configured
         /// to interact with other network services, such as connecting to the internet. Multiple interfaces are
-        /// supported per instance.
+        /// supported per instance. Required to restore in different project or region.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; }
@@ -7122,7 +7183,9 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
         public virtual AllocationAffinity ReservationAffinity { get; set; }
 
-        /// <summary>Optional. Resource policies applied to this instance.</summary>
+        /// <summary>
+        /// Optional. Resource policies applied to this instance. By default, no resource policies will be applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicies")]
         public virtual System.Collections.Generic.IList<string> ResourcePolicies { get; set; }
 
@@ -7955,6 +8018,31 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for GetMsComplianceMetadata</summary>
+    public class FetchMsComplianceMetadataRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The project id of the target project</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for GetMsComplianceMetadata</summary>
+    public class FetchMsComplianceMetadataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The ms compliance metadata of the target project, if the project is an assured workloads project, values
+        /// will be true, otherwise false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAssuredWorkload")]
+        public virtual System.Nullable<bool> IsAssuredWorkload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
