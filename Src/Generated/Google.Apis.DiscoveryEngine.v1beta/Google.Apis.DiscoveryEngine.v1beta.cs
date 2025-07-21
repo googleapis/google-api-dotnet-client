@@ -65,6 +65,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>Search your organization's data in the Cloud Search index</summary>
+            public static string CloudSearchQuery = "https://www.googleapis.com/auth/cloud_search.query";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Discovery Engine API.</summary>
@@ -75,6 +78,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>Search your organization's data in the Cloud Search index</summary>
+            public const string CloudSearchQuery = "https://www.googleapis.com/auth/cloud_search.query";
         }
 
         /// <summary>Gets the Projects resource.</summary>
@@ -7135,12 +7141,90 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     public EnginesResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Assistants = new AssistantsResource(service);
                         CompletionConfig = new CompletionConfigResource(service);
                         Controls = new ControlsResource(service);
                         Conversations = new ConversationsResource(service);
                         Operations = new OperationsResource(service);
                         ServingConfigs = new ServingConfigsResource(service);
                         Sessions = new SessionsResource(service);
+                    }
+
+                    /// <summary>Gets the Assistants resource.</summary>
+                    public virtual AssistantsResource Assistants { get; }
+
+                    /// <summary>The "assistants" collection of methods.</summary>
+                    public class AssistantsResource
+                    {
+                        private const string Resource = "assistants";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public AssistantsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Assists the user with a query in a streaming fashion.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The resource name of the Assistant. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                        /// </param>
+                        public virtual StreamAssistRequest StreamAssist(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaStreamAssistRequest body, string name)
+                        {
+                            return new StreamAssistRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Assists the user with a query in a streaming fashion.</summary>
+                        public class StreamAssistRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaStreamAssistResponse>
+                        {
+                            /// <summary>Constructs a new StreamAssist request.</summary>
+                            public StreamAssistRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaStreamAssistRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the Assistant. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaStreamAssistRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "streamAssist";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+name}:streamAssist";
+
+                            /// <summary>Initializes StreamAssist parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Gets the CompletionConfig resource.</summary>
@@ -21784,6 +21868,12 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>The layout parsing configurations for documents.</summary>
     public class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. If true, the processed document will be made available for the GetProcessedDocument API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableGetProcessedDocument")]
+        public virtual System.Nullable<bool> EnableGetProcessedDocument { get; set; }
+
         /// <summary>Optional. If true, the LLM based annotation is added to the image during parsing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableImageAnnotation")]
         public virtual System.Nullable<bool> EnableImageAnnotation { get; set; }
@@ -22006,7 +22096,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
-        /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing`
+        /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
+        /// `personalization-memory` - Enables personalization based on user preferences.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -28604,6 +28695,12 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>The layout parsing configurations for documents.</summary>
     public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. If true, the processed document will be made available for the GetProcessedDocument API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableGetProcessedDocument")]
+        public virtual System.Nullable<bool> EnableGetProcessedDocument { get; set; }
+
         /// <summary>Optional. If true, the LLM based annotation is added to the image during parsing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableImageAnnotation")]
         public virtual System.Nullable<bool> EnableImageAnnotation { get; set; }
@@ -28826,7 +28923,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
-        /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing`
+        /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
+        /// `personalization-memory` - Enables personalization based on user preferences.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -31850,17 +31948,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// The session resource name. Optional. Session allows users to do multi-turn /search API calls or coordination
-        /// between /search API calls and /answer API calls. Example #1 (multi-turn /search API calls): 1. Call /search
-        /// API with the auto-session mode (see below). 2. Call /search API with the session ID generated in the first
-        /// call. Here, the previous search query gets considered in query standing. I.e., if the first query is "How
-        /// did Alphabet do in 2022?" and the current query is "How about 2023?", the current query will be interpreted
-        /// as "How did Alphabet do in 2023?". Example #2 (coordination between /search API calls and /answer API
-        /// calls): 1. Call /search API with the auto-session mode (see below). 2. Call /answer API with the session ID
-        /// generated in the first call. Here, the answer generation happens in the context of the search results from
-        /// the first search call. Auto-session mode: when `projects/.../sessions/-` is used, a new session gets
-        /// automatically created. Otherwise, users can use the create-session API to create a session manually.
-        /// Multi-turn Search feature is currently at private GA stage. Please use v1alpha or v1beta version instead
-        /// before we launch this feature to public GA. Or ask for allowlisting through Google Support team.
+        /// between /search API calls and /answer API calls. Example #1 (multi-turn /search API calls): Call /search API
+        /// with the session ID generated in the first call. Here, the previous search query gets considered in query
+        /// standing. I.e., if the first query is "How did Alphabet do in 2022?" and the current query is "How about
+        /// 2023?", the current query will be interpreted as "How did Alphabet do in 2023?". Example #2 (coordination
+        /// between /search API calls and /answer API calls): Call /answer API with the session ID generated in the
+        /// first call. Here, the answer generation happens in the context of the search results from the first search
+        /// call. Multi-turn Search feature is currently at private GA stage. Please use v1alpha or v1beta version
+        /// instead before we launch this feature to public GA. Or ask for allowlisting through Google Support team.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual string Session { get; set; }
@@ -35546,6 +35641,255 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>AssistAnswer resource, main part of AssistResponse.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAssistAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reasons for not answering the assist call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assistSkippedReasons")]
+        public virtual System.Collections.Generic.IList<string> AssistSkippedReasons { get; set; }
+
+        /// <summary>Replies of the assistant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replies")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaAssistAnswerReply> Replies { get; set; }
+
+        /// <summary>State of the answer generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>One part of the multi-part response of the assist call.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAssistAnswerReply : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Possibly grounded response text or media from the assistant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundedContent")]
+        public virtual GoogleCloudDiscoveryengineV1betaAssistantGroundedContent GroundedContent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>User metadata of the request.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAssistUserMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Preferred language to be used for answering if language detection fails. Also used as the language
+        /// of error messages created by actions, regardless of language detection results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredLanguageCode")]
+        public virtual string PreferredLanguageCode { get; set; }
+
+        /// <summary>Optional. IANA time zone, e.g. Europe/Budapest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Multi-modal content.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAssistantContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Result of executing an ExecutableCode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeExecutionResult")]
+        public virtual GoogleCloudDiscoveryengineV1betaAssistantContentCodeExecutionResult CodeExecutionResult { get; set; }
+
+        /// <summary>Code generated by the model that is meant to be executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executableCode")]
+        public virtual GoogleCloudDiscoveryengineV1betaAssistantContentExecutableCode ExecutableCode { get; set; }
+
+        /// <summary>A file, e.g., an audio summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("file")]
+        public virtual GoogleCloudDiscoveryengineV1betaAssistantContentFile File { get; set; }
+
+        /// <summary>Inline binary data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineData")]
+        public virtual GoogleCloudDiscoveryengineV1betaAssistantContentBlob InlineData { get; set; }
+
+        /// <summary>The producer of the content. Can be "model" or "user".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>Inline text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>Optional. Indicates if the part is thought from the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thought")]
+        public virtual System.Nullable<bool> Thought { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Inline blob.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAssistantContentBlob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Raw bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>Required. The media type (MIME type) of the generated data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Result of executing ExecutableCode.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAssistantContentCodeExecutionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Outcome of the code execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outcome")]
+        public virtual string Outcome { get; set; }
+
+        /// <summary>
+        /// Optional. Contains stdout when code execution is successful, stderr or other description otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("output")]
+        public virtual string Output { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Code generated by the model that is meant to be executed by the model.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAssistantContentExecutableCode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The code content. Currently only supports Python.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A file, e.g., an audio summary.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAssistantContentFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The file ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
+        public virtual string FileId { get; set; }
+
+        /// <summary>Required. The media type (MIME type) of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A piece of content and possibly its grounding information. Not all content needs grounding. Phrases like "Of
+    /// course, I will gladly search it for you." do not need grounding.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaAssistantGroundedContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual GoogleCloudDiscoveryengineV1betaAssistantContent Content { get; set; }
+
+        /// <summary>Metadata for grounding based on text sources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textGroundingMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadata TextGroundingMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding details for text sources.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>References for the grounded text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReference> References { get; set; }
+
+        /// <summary>Grounding information for parts of the text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataSegment> Segments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Referenced content and related document metadata.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Referenced text content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Document metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadata DocumentMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Document metadata.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Document resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual string Document { get; set; }
+
+        /// <summary>
+        /// Domain name from the document URI. Note that the `uri` field may contain a URL that redirects to the actual
+        /// website, in which case this will contain the domain name of the target site.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>Page identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageIdentifier")]
+        public virtual string PageIdentifier { get; set; }
+
+        /// <summary>Title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>URI for the document. It may contain a URL that redirects to the actual website.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding information for a segment of the text.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>End of the segment, exclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<long> EndIndex { get; set; }
+
+        /// <summary>Score for the segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingScore")]
+        public virtual System.Nullable<float> GroundingScore { get; set; }
+
+        /// <summary>References for the segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> ReferenceIndices { get; set; }
+
+        /// <summary>
+        /// Zero-based index indicating the start of the segment, measured in bytes of a UTF-8 string (i.e. characters
+        /// encoded on multiple bytes have a length of more than one).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<long> StartIndex { get; set; }
+
+        /// <summary>The text segment itself.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.BatchCreateTargetSites operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
@@ -39119,6 +39463,12 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>The layout parsing configurations for documents.</summary>
     public class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. If true, the processed document will be made available for the GetProcessedDocument API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableGetProcessedDocument")]
+        public virtual System.Nullable<bool> EnableGetProcessedDocument { get; set; }
+
         /// <summary>Optional. If true, the LLM based annotation is added to the image during parsing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableImageAnnotation")]
         public virtual System.Nullable<bool> EnableImageAnnotation { get; set; }
@@ -39370,7 +39720,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
-        /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing`
+        /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
+        /// `personalization-memory` - Enables personalization based on user preferences.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -40445,7 +40796,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// unset, a default value `_id` is used when importing from the allowed data sources. Supported data sources: *
         /// GcsSource. GcsSource.data_schema must be `custom` or `csv`. Otherwise, an INVALID_ARGUMENT error is thrown.
         /// * BigQuerySource. BigQuerySource.data_schema must be `custom` or `csv`. Otherwise, an INVALID_ARGUMENT error
-        /// is thrown. * SpannerSource. * CloudSqlSource. * FirestoreSource. * BigtableSource.
+        /// is thrown. * SpannerSource. * CloudSqlSource. * BigtableSource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idField")]
         public virtual string IdField { get; set; }
@@ -43297,17 +43648,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// The session resource name. Optional. Session allows users to do multi-turn /search API calls or coordination
-        /// between /search API calls and /answer API calls. Example #1 (multi-turn /search API calls): 1. Call /search
-        /// API with the auto-session mode (see below). 2. Call /search API with the session ID generated in the first
-        /// call. Here, the previous search query gets considered in query standing. I.e., if the first query is "How
-        /// did Alphabet do in 2022?" and the current query is "How about 2023?", the current query will be interpreted
-        /// as "How did Alphabet do in 2023?". Example #2 (coordination between /search API calls and /answer API
-        /// calls): 1. Call /search API with the auto-session mode (see below). 2. Call /answer API with the session ID
-        /// generated in the first call. Here, the answer generation happens in the context of the search results from
-        /// the first search call. Auto-session mode: when `projects/.../sessions/-` is used, a new session gets
-        /// automatically created. Otherwise, users can use the create-session API to create a session manually.
-        /// Multi-turn Search feature is currently at private GA stage. Please use v1alpha or v1beta version instead
-        /// before we launch this feature to public GA. Or ask for allowlisting through Google Support team.
+        /// between /search API calls and /answer API calls. Example #1 (multi-turn /search API calls): Call /search API
+        /// with the session ID generated in the first call. Here, the previous search query gets considered in query
+        /// standing. I.e., if the first query is "How did Alphabet do in 2022?" and the current query is "How about
+        /// 2023?", the current query will be interpreted as "How did Alphabet do in 2023?". Example #2 (coordination
+        /// between /search API calls and /answer API calls): Call /answer API with the session ID generated in the
+        /// first call. Here, the answer generation happens in the context of the search results from the first search
+        /// call. Multi-turn Search feature is currently at private GA stage. Please use v1alpha or v1beta version
+        /// instead before we launch this feature to public GA. Or ask for allowlisting through Google Support team.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual string Session { get; set; }
@@ -45451,6 +45799,196 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Required. The table name of the Spanner database that needs to be imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the AssistantService.StreamAssist method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaStreamAssistRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specification of the generation configuration for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaStreamAssistRequestGenerationSpec GenerationSpec { get; set; }
+
+        /// <summary>
+        /// Optional. Current user query. Empty query is only supported if `file_ids` are provided. In this case, the
+        /// answer will be generated based on those context files.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual GoogleCloudDiscoveryengineV1betaQuery Query { get; set; }
+
+        /// <summary>
+        /// Optional. The session to use for the request. If specified, the assistant has access to the session history,
+        /// and the query and the answer are stored there. If `-` is specified as the session ID, or it is left empty,
+        /// then a new session is created with an automatically generated ID. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("session")]
+        public virtual string Session { get; set; }
+
+        /// <summary>Optional. Specification of tools that are used to serve the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolsSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpec ToolsSpec { get; set; }
+
+        /// <summary>Optional. Information about the user initiating the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1betaAssistUserMetadata UserMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Assistant generation specification for the request. This allows to override the default generation configuration
+    /// at the engine level.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaStreamAssistRequestGenerationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The Vertex AI model_id used for the generative model. If not set, the default Assistant model will
+        /// be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of tools that are used to serve the request.</summary>
+    public class GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specification of the image generation tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageGenerationSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecImageGenerationSpec ImageGenerationSpec { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the tool registry to use. Format:
+        /// `projects/{project}/locations/{location}/toolRegistries/{tool_registry}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolRegistry")]
+        public virtual string ToolRegistry { get; set; }
+
+        /// <summary>Optional. Specification of the Vertex AI Search tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexAiSearchSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecVertexAiSearchSpec VertexAiSearchSpec { get; set; }
+
+        /// <summary>Optional. Specification of the video generation tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoGenerationSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecVideoGenerationSpec VideoGenerationSpec { get; set; }
+
+        /// <summary>
+        /// Optional. Specification of the web grounding tool. If field is present, enables grounding with web search.
+        /// Works only if Assistant.web_grounding_type is WEB_GROUNDING_TYPE_GOOGLE_SEARCH or
+        /// WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webGroundingSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecWebGroundingSpec WebGroundingSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of the image generation tool.</summary>
+    public class GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecImageGenerationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of the Vertex AI Search tool.</summary>
+    public class GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecVertexAiSearchSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specs defining DataStores to filter on in a search call and configurations for those data stores.
+        /// This is only considered for Engines with multiple data stores.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated. Please refrain from using this field. Whether the Vertex AI Search tool is disabled.
+        /// Default value is false, the tool is enabled by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>
+        /// Optional. The filter syntax consists of an expression language for constructing a predicate from one or more
+        /// fields of the documents being filtered. Filter expression is case-sensitive. If this field is
+        /// unrecognizable, an `INVALID_ARGUMENT` is returned. Filtering in Vertex AI Search is done by mapping the LHS
+        /// filter key to a key property defined in the Vertex AI Search backend -- this mapping is defined by the
+        /// customer in their schema. For example a media customer might have a field 'name' in their schema. In this
+        /// case the filter would look like this: filter --&amp;gt; name:'ANY("king kong")' For more information about
+        /// filtering including syntax and filter operators, see
+        /// [Filter](https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of the video generation tool.</summary>
+    public class GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecVideoGenerationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of the web grounding tool.</summary>
+    public class GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecWebGroundingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Deprecated. Please refrain from using this field. Whether the web grounding tool is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the AssistantService.StreamAssist method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaStreamAssistResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Assist answer resource object containing parts of the assistant's final answer for the user's query. Not
+        /// present if the current response doesn't add anything to previously sent AssistAnswer.replies. Observe
+        /// AssistAnswer.state to see if more parts are to be expected. While the state is `IN_PROGRESS`, the
+        /// AssistAnswer.replies field in each response will contain replies (reply fragments) to be appended to the
+        /// ones received in previous responses. AssistAnswer.name won't be filled. If the state is `SUCCEEDED`,
+        /// `FAILED` or `SKIPPED`, the response is the last response and AssistAnswer.name will have a value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
+        public virtual GoogleCloudDiscoveryengineV1betaAssistAnswer Answer { get; set; }
+
+        /// <summary>
+        /// A global unique ID that identifies the current pair of request and stream of responses. Used for feedback
+        /// and support.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assistToken")]
+        public virtual string AssistToken { get; set; }
+
+        /// <summary>Session information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
+        public virtual GoogleCloudDiscoveryengineV1betaStreamAssistResponseSessionInfo SessionInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the session.</summary>
+    public class GoogleCloudDiscoveryengineV1betaStreamAssistResponseSessionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Name of the newly generated or continued session. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("session")]
+        public virtual string Session { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
