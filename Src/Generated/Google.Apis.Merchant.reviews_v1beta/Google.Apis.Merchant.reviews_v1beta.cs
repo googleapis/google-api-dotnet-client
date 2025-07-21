@@ -884,10 +884,6 @@ namespace Google.Apis.Merchant.reviews_v1beta.Data
     /// </summary>
     public class MerchantReview : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A list of merchant review attributes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
-        public virtual MerchantReviewAttributes Attributes { get; set; }
-
         /// <summary>
         /// Optional. A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute
         /// of the data specification in its generic form (for example, `{ "name": "size type", "value": "regular" }`).
@@ -902,6 +898,10 @@ namespace Google.Apis.Merchant.reviews_v1beta.Data
         /// <summary>Output only. The primary data source of the merchant review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual string DataSource { get; set; }
+
+        /// <summary>Optional. A list of merchant review attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantReviewAttributes")]
+        public virtual MerchantReviewAttributes MerchantReviewAttributes { get; set; }
 
         /// <summary>Required. The user provided merchant review ID to uniquely identify the merchant review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantReviewId")]
@@ -1243,10 +1243,6 @@ namespace Google.Apis.Merchant.reviews_v1beta.Data
     /// </summary>
     public class ProductReview : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A list of product review attributes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
-        public virtual ProductReviewAttributes Attributes { get; set; }
-
         /// <summary>Optional. A list of custom (merchant-provided) attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributes")]
         public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; }
@@ -1261,6 +1257,10 @@ namespace Google.Apis.Merchant.reviews_v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. A list of product review attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productReviewAttributes")]
+        public virtual ProductReviewAttributes ProductReviewAttributes { get; set; }
 
         /// <summary>
         /// Required. The permanent, unique identifier for the product review in the publisher’s system.
