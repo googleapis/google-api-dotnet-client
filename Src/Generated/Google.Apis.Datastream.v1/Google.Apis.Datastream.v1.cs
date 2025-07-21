@@ -4698,6 +4698,15 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("caCertificateSet")]
         public virtual System.Nullable<bool> CaCertificateSet { get; set; }
 
+        /// <summary>
+        /// Optional. The distinguished name (DN) mentioned in the server certificate. This corresponds to
+        /// SSL_SERVER_CERT_DN sqlnet parameter. Refer
+        /// https://docs.oracle.com/en/database/oracle/oracle-database/19/netrf/local-naming-parameters-in-tns-ora-file.html#GUID-70AB0695-A9AA-4A94-B141-4C605236EEB7
+        /// If this field is not provided, the DN matching is not enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCertificateDistinguishedName")]
+        public virtual string ServerCertificateDistinguishedName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5318,6 +5327,13 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
         public virtual string ClientKey { get; set; }
 
+        /// <summary>
+        /// Optional. The hostname mentioned in the Subject or SAN extension of the server certificate. If this field is
+        /// not provided, the hostname in the server certificate is not validated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCertificateHostname")]
+        public virtual string ServerCertificateHostname { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5331,6 +5347,13 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Required. Input only. PEM-encoded server root CA certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caCertificate")]
         public virtual string CaCertificate { get; set; }
+
+        /// <summary>
+        /// Optional. The hostname mentioned in the Subject or SAN extension of the server certificate. If this field is
+        /// not provided, the hostname in the server certificate is not validated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCertificateHostname")]
+        public virtual string ServerCertificateHostname { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
