@@ -457,21 +457,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Status of exporting annotation response to user specified `output_uri`.</summary>
-    public class GoogleCloudVideointelligenceV1ExportToOutputUriStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. State of the `output_uri` export.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>Output only. Only set if state is FAILED.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual GoogleRpcStatus Status { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Deprecated. No effect.</summary>
     public class GoogleCloudVideointelligenceV1FaceAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -931,13 +916,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Status of exporting annotation response to user specified `output_uri`. Only set if `output_uri` is set in
-        /// the request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exportStatus")]
-        public virtual GoogleCloudVideointelligenceV1ExportToOutputUriStatus ExportStatus { get; set; }
-
         /// <summary>Specifies which feature is being tracked if the request contains more than one feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feature")]
         public virtual string Feature { get; set; }
@@ -1385,21 +1363,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeOffset")]
         public virtual object TimeOffset { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Status of exporting annotation response to user specified `output_uri`.</summary>
-    public class GoogleCloudVideointelligenceV1beta2ExportToOutputUriStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. State of the `output_uri` export.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>Output only. Only set if state is FAILED.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual GoogleRpcStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2103,13 +2066,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Status of exporting annotation response to user specified `output_uri`. Only set if `output_uri` is set in
-        /// the request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exportStatus")]
-        public virtual GoogleCloudVideointelligenceV1beta2ExportToOutputUriStatus ExportStatus { get; set; }
-
         /// <summary>Specifies which feature is being tracked if the request contains more than one feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feature")]
         public virtual string Feature { get; set; }
@@ -2538,21 +2494,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeOffset")]
         public virtual object TimeOffset { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Status of exporting annotation response to user specified `output_uri`.</summary>
-    public class GoogleCloudVideointelligenceV1p1beta1ExportToOutputUriStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. State of the `output_uri` export.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>Output only. Only set if state is FAILED.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual GoogleRpcStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3017,13 +2958,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Status of exporting annotation response to user specified `output_uri`. Only set if `output_uri` is set in
-        /// the request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exportStatus")]
-        public virtual GoogleCloudVideointelligenceV1p1beta1ExportToOutputUriStatus ExportStatus { get; set; }
-
         /// <summary>Specifies which feature is being tracked if the request contains more than one feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feature")]
         public virtual string Feature { get; set; }
@@ -3406,21 +3340,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeOffset")]
         public virtual object TimeOffset { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Status of exporting annotation response to user specified `output_uri`.</summary>
-    public class GoogleCloudVideointelligenceV1p2beta1ExportToOutputUriStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. State of the `output_uri` export.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>Output only. Only set if state is FAILED.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual GoogleRpcStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3885,13 +3804,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Status of exporting annotation response to user specified `output_uri`. Only set if `output_uri` is set in
-        /// the request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exportStatus")]
-        public virtual GoogleCloudVideointelligenceV1p2beta1ExportToOutputUriStatus ExportStatus { get; set; }
-
         /// <summary>Specifies which feature is being tracked if the request contains more than one feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feature")]
         public virtual string Feature { get; set; }
@@ -4332,21 +4244,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeOffset")]
         public virtual object TimeOffset { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Status of exporting annotation response to user specified `output_uri`.</summary>
-    public class GoogleCloudVideointelligenceV1p3beta1ExportToOutputUriStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. State of the `output_uri` export.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>Output only. Only set if state is FAILED.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual GoogleRpcStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4881,13 +4778,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Status of exporting annotation response to user specified `output_uri`. Only set if `output_uri` is set in
-        /// the request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exportStatus")]
-        public virtual GoogleCloudVideointelligenceV1p3beta1ExportToOutputUriStatus ExportStatus { get; set; }
-
         /// <summary>Specifies which feature is being tracked if the request contains more than one feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feature")]
         public virtual string Feature { get; set; }
