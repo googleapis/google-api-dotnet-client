@@ -878,6 +878,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     /// </summary>
     public class Api : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The source edition string, only valid when syntax is SYNTAX_EDITIONS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
         /// <summary>The methods of this interface, in unspecified order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("methods")]
         public virtual System.Collections.Generic.IList<Method> Methods { get; set; }
@@ -1165,6 +1169,7 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("overridesByRequestProtocol")]
         public virtual System.Collections.Generic.IDictionary<string, BackendRule> OverridesByRequestProtocol { get; set; }
 
+        /// <summary>no-lint</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathTranslation")]
         public virtual string PathTranslation { get; set; }
 
@@ -2161,7 +2166,7 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
 
         /// <summary>
         /// Map of service names to renamed services. Keys are the package relative service names and values are the
-        /// name to be used for the service client and call options. publishing: go_settings: renamed_services:
+        /// name to be used for the service client and call options. Example: publishing: go_settings: renamed_services:
         /// Publisher: TopicAdmin
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renamedServices")]
@@ -2656,6 +2661,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     /// <summary>Method represents a method of an API interface.</summary>
     public class Method : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The source edition string, only valid when syntax is SYNTAX_EDITIONS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
         /// <summary>The simple name of this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
