@@ -368,11 +368,12 @@ namespace Google.Apis.Merchant.products_v1beta
 
             /// <summary>
             /// [Uploads a product input to your Merchant Center
-            /// account](/merchant/api/guides/products/overview#upload-product-input). You must have a products data
-            /// source to be able to insert a product. The unique identifier of the data source is passed as a query
-            /// parameter in the request URL. If an input with the same contentLanguage, offerId, and dataSource already
-            /// exists, this method replaces that entry. After inserting, updating, or deleting a product input, it may
-            /// take several minutes before the processed product can be retrieved.
+            /// account](/merchant/api/guides/products/overview#upload-product-input). You must have a products [data
+            /// source](/merchant/api/guides/data-sources/overview) to be able to insert a product. The unique
+            /// identifier of the data source is passed as a query parameter in the request URL. If a product input with
+            /// the same contentLanguage, offerId, and dataSource already exists, then the product input inserted by
+            /// this method replaces that entry. After inserting, updating, or deleting a product input, it may take
+            /// several minutes before the processed product can be retrieved.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -385,11 +386,12 @@ namespace Google.Apis.Merchant.products_v1beta
 
             /// <summary>
             /// [Uploads a product input to your Merchant Center
-            /// account](/merchant/api/guides/products/overview#upload-product-input). You must have a products data
-            /// source to be able to insert a product. The unique identifier of the data source is passed as a query
-            /// parameter in the request URL. If an input with the same contentLanguage, offerId, and dataSource already
-            /// exists, this method replaces that entry. After inserting, updating, or deleting a product input, it may
-            /// take several minutes before the processed product can be retrieved.
+            /// account](/merchant/api/guides/products/overview#upload-product-input). You must have a products [data
+            /// source](/merchant/api/guides/data-sources/overview) to be able to insert a product. The unique
+            /// identifier of the data source is passed as a query parameter in the request URL. If a product input with
+            /// the same contentLanguage, offerId, and dataSource already exists, then the product input inserted by
+            /// this method replaces that entry. After inserting, updating, or deleting a product input, it may take
+            /// several minutes before the processed product can be retrieved.
             /// </summary>
             public class InsertRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.products_v1beta.Data.ProductInput>
             {
@@ -673,8 +675,8 @@ namespace Google.Apis.Merchant.products_v1beta
 
                 /// <summary>
                 /// The maximum number of products to return. The service may return fewer than this value. The maximum
-                /// value is 1000; values above 1000 will be coerced to 1000. If unspecified, the maximum number of
-                /// products will be returned.
+                /// value is 1000; values above 1000 will be coerced to 1000. If unspecified, the default page size of
+                /// 25 products will be returned.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -739,7 +741,7 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual System.Collections.Generic.IList<string> AdditionalImageLinks { get; set; }
 
         /// <summary>
-        /// Used to group items in an arbitrary way. Only for CPA%, discouraged otherwise. For more information, see
+        /// Used to group items in an arbitrary way. Only for CPA, discouraged otherwise. For more information, see
         /// [Display ads attribute](https://support.google.com/merchants/answer/6069387).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adsGrouping")]
@@ -764,9 +766,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual string AgeGroup { get; set; }
 
         /// <summary>
-        /// A safeguard in the [automated discounts] (https://support.google.com/merchants/answer/10295759) and "Dynamic
-        /// Promotions" (https://support.google.com/merchants/answer/13949249) projects, ensuring that discounts on
-        /// business offers do not fall below this value, thereby preserving the offer's value and profitability.
+        /// A safeguard in the [automated discounts] (https://support.google.com/merchants/answer/10295759) and
+        /// ["dynamic promotions"](https://support.google.com/merchants/answer/13949249) projects, ensuring that
+        /// discounts on business offers do not fall below this value, thereby preserving the offer's value and
+        /// profitability.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoPricingMinPrice")]
         public virtual Price AutoPricingMinPrice { get; set; }
@@ -1059,8 +1062,8 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual System.Collections.Generic.IList<string> Gtin { get; set; }
 
         /// <summary>
-        /// Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the item. You
-        /// can provide up to 10 GTINs.
+        /// A list of Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the
+        /// item. You can provide up to 10 GTINs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtins")]
         public virtual System.Collections.Generic.IList<string> Gtins { get; set; }
@@ -2062,7 +2065,7 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The label that lets you categorize and identify your products. The maximum allowed
+        /// Required. Immutable. The feed label that lets you categorize and identify your products. The maximum allowed
         /// characters are 20, and the supported characters are `A-Z`, `0-9`, hyphen, and underscore. The feed label
         /// must not include any spaces. For more information, see [Using feed
         /// labels](//support.google.com/merchants/answer/14994087).
