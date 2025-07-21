@@ -3351,6 +3351,10 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ancestors")]
         public virtual System.Collections.Generic.IList<string> Ancestors { get; set; }
 
+        /// <summary>The exceptions of a resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetExceptions")]
+        public virtual System.Collections.Generic.IList<AssetException> AssetExceptions { get; set; }
+
         /// <summary>
         /// The type of the asset. Example: `compute.googleapis.com/Disk` See [Supported asset
         /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.
@@ -3468,6 +3472,21 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceOwners")]
         public virtual ResourceOwners ResourceOwners { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An exception of an asset.</summary>
+    public class AssetException : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The details of the exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>The type of exception.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exceptionType")]
+        public virtual string ExceptionType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
