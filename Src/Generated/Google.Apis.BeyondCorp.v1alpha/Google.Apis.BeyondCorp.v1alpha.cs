@@ -11896,6 +11896,47 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Which upstream resources to forward traffic to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upstreams")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstream> Upstreams { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Which upstream resource to forward traffic to.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstream : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Routing policy information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressPolicy")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1alphaEgressPolicy EgressPolicy { get; set; }
+
+        /// <summary>Network to forward traffic to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamNetwork Network { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Network to forward traffic to.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Network name is of the format: `projects/{project}/global/networks/{network}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Routing policy information.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaEgressPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. List of the regions where the application sends traffic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual System.Collections.Generic.IList<string> Regions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12018,6 +12059,12 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Output only. Service account used for operations that involve resources in consumer projects.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delegatingServiceAccount")]
+        public virtual string DelegatingServiceAccount { get; set; }
 
         /// <summary>
         /// Optional. An arbitrary user-provided name for the SecurityGateway. Cannot exceed 64 characters.
