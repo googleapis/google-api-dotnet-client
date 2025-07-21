@@ -3588,7 +3588,115 @@ namespace Google.Apis.CloudHealthcare.v1
                                 public InstancesResource(Google.Apis.Services.IClientService service)
                                 {
                                     this.service = service;
+                                    Bulkdata = new BulkdataResource(service);
                                     Frames = new FramesResource(service);
+                                }
+
+                                /// <summary>Gets the Bulkdata resource.</summary>
+                                public virtual BulkdataResource Bulkdata { get; }
+
+                                /// <summary>The "bulkdata" collection of methods.</summary>
+                                public class BulkdataResource
+                                {
+                                    private const string Resource = "bulkdata";
+
+                                    /// <summary>The service which this resource belongs to.</summary>
+                                    private readonly Google.Apis.Services.IClientService service;
+
+                                    /// <summary>Constructs a new resource.</summary>
+                                    public BulkdataResource(Google.Apis.Services.IClientService service)
+                                    {
+                                        this.service = service;
+                                    }
+
+                                    /// <summary>
+                                    /// Returns uncompressed, unencoded bytes representing the referenced bulkdata tag
+                                    /// from an instance. See [Retrieve Transaction]
+                                    /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4){:
+                                    /// .external}. For details on the implementation of RetrieveBulkdata, see [Bulkdata
+                                    /// resources](https://cloud.google.com/healthcare/docs/dicom#bulkdata-resources) in
+                                    /// the Cloud Healthcare API conformance statement. For samples that show how to
+                                    /// call RetrieveBulkdata, see [Retrieve
+                                    /// bulkdata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-bulkdata).
+                                    /// </summary>
+                                    /// <param name="parent">
+                                    /// Required. The name of the DICOM store that is being accessed. For example,
+                                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+                                    /// </param>
+                                    /// <param name="dicomWebPath">
+                                    /// Required. The path for the `RetrieveBulkdata` DICOMweb request. For example,
+                                    /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/bukdata/{bulkdata_uri}`.
+                                    /// </param>
+                                    public virtual RetrieveBulkdataRequest RetrieveBulkdata(string parent, string dicomWebPath)
+                                    {
+                                        return new RetrieveBulkdataRequest(this.service, parent, dicomWebPath);
+                                    }
+
+                                    /// <summary>
+                                    /// Returns uncompressed, unencoded bytes representing the referenced bulkdata tag
+                                    /// from an instance. See [Retrieve Transaction]
+                                    /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4){:
+                                    /// .external}. For details on the implementation of RetrieveBulkdata, see [Bulkdata
+                                    /// resources](https://cloud.google.com/healthcare/docs/dicom#bulkdata-resources) in
+                                    /// the Cloud Healthcare API conformance statement. For samples that show how to
+                                    /// call RetrieveBulkdata, see [Retrieve
+                                    /// bulkdata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-bulkdata).
+                                    /// </summary>
+                                    public class RetrieveBulkdataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
+                                    {
+                                        /// <summary>Constructs a new RetrieveBulkdata request.</summary>
+                                        public RetrieveBulkdataRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
+                                        {
+                                            Parent = parent;
+                                            DicomWebPath = dicomWebPath;
+                                            InitParameters();
+                                        }
+
+                                        /// <summary>
+                                        /// Required. The name of the DICOM store that is being accessed. For example,
+                                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string Parent { get; private set; }
+
+                                        /// <summary>
+                                        /// Required. The path for the `RetrieveBulkdata` DICOMweb request. For example,
+                                        /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/bukdata/{bulkdata_uri}`.
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string DicomWebPath { get; private set; }
+
+                                        /// <summary>Gets the method name.</summary>
+                                        public override string MethodName => "retrieveBulkdata";
+
+                                        /// <summary>Gets the HTTP method.</summary>
+                                        public override string HttpMethod => "GET";
+
+                                        /// <summary>Gets the REST path.</summary>
+                                        public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
+
+                                        /// <summary>Initializes RetrieveBulkdata parameter list.</summary>
+                                        protected override void InitParameters()
+                                        {
+                                            base.InitParameters();
+                                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "parent",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                            });
+                                            RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "dicomWebPath",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+/bulkdata/[^/]+/.*$",
+                                            });
+                                        }
+                                    }
                                 }
 
                                 /// <summary>Gets the Frames resource.</summary>
@@ -8762,9 +8870,10 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// JSON-encoded representation of the updated resource, including the server-assigned version
                         /// ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource
                         /// describing the reason for the error. If the request cannot be mapped to a valid API method
-                        /// on a FHIR store, a generic GCP error might be returned instead. In R5, the conditional
-                        /// update interaction If-None-Match is supported, including the wildcard behaviour. For samples
-                        /// that show how to call `update`, see [Updating a FHIR
+                        /// on a FHIR store, a generic GCP error might be returned instead. The conditional update
+                        /// interaction If-None-Match is supported, including the wildcard behaviour, as defined by the
+                        /// R5 spec. This functionality is supported in R4 and R5. For samples that show how to call
+                        /// `update`, see [Updating a FHIR
                         /// resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
@@ -8791,9 +8900,10 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// JSON-encoded representation of the updated resource, including the server-assigned version
                         /// ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource
                         /// describing the reason for the error. If the request cannot be mapped to a valid API method
-                        /// on a FHIR store, a generic GCP error might be returned instead. In R5, the conditional
-                        /// update interaction If-None-Match is supported, including the wildcard behaviour. For samples
-                        /// that show how to call `update`, see [Updating a FHIR
+                        /// on a FHIR store, a generic GCP error might be returned instead. The conditional update
+                        /// interaction If-None-Match is supported, including the wildcard behaviour, as defined by the
+                        /// R5 spec. This functionality is supported in R4 and R5. For samples that show how to call
+                        /// `update`, see [Updating a FHIR
                         /// resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
                         /// </summary>
                         public class UpdateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
@@ -14365,6 +14475,40 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains the configuration for DICOM notifications.</summary>
+    public class DicomNotificationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are
+        /// published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: *
+        /// `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification.
+        /// It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message
+        /// was published. * `PubsubMessage.Attributes` contains the following attributes: * `action`: The name of the
+        /// endpoint that generated the notification. Possible values are `StoreInstances`, `SetBlobSettings`,
+        /// `ImportDicomData`, etc. * `lastUpdatedTime`: The latest timestamp when the DICOM instance was updated. *
+        /// `storeName`: The resource name of the DICOM store, of the form
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. *
+        /// `studyInstanceUID`: The study UID of the DICOM instance that was changed. * `seriesInstanceUID`: The series
+        /// UID of the DICOM instance that was changed. * `sopInstanceUID`: The instance UID of the DICOM instance that
+        /// was changed. * `versionId`: The version ID of the DICOM instance that was changed. * `modality`: The
+        /// modality tag of the DICOM instance that was changed. * `previousStorageClass`: The storage class where the
+        /// DICOM instance was previously stored if the storage class was changed. * `storageClass`: The storage class
+        /// where the DICOM instance is currently stored. Note that notifications are only sent if the topic is
+        /// non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project.
+        /// The Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have the
+        /// `pubsub.topics.publish` permission (which is typically included in `roles/pubsub.publisher` role) on the
+        /// given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail
+        /// (https://cloud.google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions).
+        /// If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information,
+        /// see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
+        public virtual string PubsubTopic { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a DICOM store.</summary>
     public class DicomStore : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14388,6 +14532,12 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>Optional. Notification destination for new DICOM instances. Supplied by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual NotificationConfig NotificationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies where and whether to send notifications upon changes to a DICOM store.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationConfigs")]
+        public virtual System.Collections.Generic.IList<DicomNotificationConfig> NotificationConfigs { get; set; }
 
         /// <summary>
         /// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM
