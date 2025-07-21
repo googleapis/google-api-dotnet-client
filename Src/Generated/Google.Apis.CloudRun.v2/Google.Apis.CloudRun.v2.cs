@@ -3151,8 +3151,8 @@ namespace Google.Apis.CloudRun.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The location and project in which this worker pool should be created. Format:
-                /// projects/{project}/locations/{location}, where {project} can be project id or number. Only lowercase
-                /// characters, digits, and hyphens.
+                /// `projects/{project}/locations/{location}`, where `{project}` can be project id or number. Only
+                /// lowercase characters, digits, and hyphens.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2WorkerPool body, string parent)
                 {
@@ -3172,7 +3172,7 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The location and project in which this worker pool should be created. Format:
-                    /// projects/{project}/locations/{location}, where {project} can be project id or number. Only
+                    /// `projects/{project}/locations/{location}`, where `{project}` can be project id or number. Only
                     /// lowercase characters, digits, and hyphens.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -3188,7 +3188,7 @@ namespace Google.Apis.CloudRun.v2
                     /// <summary>
                     /// Required. The unique identifier for the WorkerPool. It must begin with letter, and cannot end
                     /// with hyphen; must contain fewer than 50 characters. The name of the worker pool becomes
-                    /// {parent}/workerPools/{worker_pool_id}.
+                    /// `{parent}/workerPools/{worker_pool_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("workerPoolId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string WorkerPoolId { get; set; }
@@ -3242,8 +3242,8 @@ namespace Google.Apis.CloudRun.v2
                 /// <summary>Deletes a WorkerPool.</summary>
                 /// <param name="name">
                 /// Required. The full name of the WorkerPool. Format:
-                /// projects/{project}/locations/{location}/workerPools/{worker_pool}, where {project} can be project id
-                /// or number.
+                /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`, where `{project}` can be
+                /// project id or number.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -3262,7 +3262,7 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The full name of the WorkerPool. Format:
-                    /// projects/{project}/locations/{location}/workerPools/{worker_pool}, where {project} can be
+                    /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`, where `{project}` can be
                     /// project id or number.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3325,8 +3325,8 @@ namespace Google.Apis.CloudRun.v2
                 /// <summary>Gets information about a WorkerPool.</summary>
                 /// <param name="name">
                 /// Required. The full name of the WorkerPool. Format:
-                /// projects/{project}/locations/{location}/workerPools/{worker_pool}, where {project} can be project id
-                /// or number.
+                /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`, where `{project}` can be
+                /// project id or number.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -3345,7 +3345,7 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The full name of the WorkerPool. Format:
-                    /// projects/{project}/locations/{location}/workerPools/{worker_pool}, where {project} can be
+                    /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`, where `{project}` can be
                     /// project id or number.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3458,8 +3458,8 @@ namespace Google.Apis.CloudRun.v2
                 /// <summary>Lists WorkerPools. Results are sorted by creation time, descending.</summary>
                 /// <param name="parent">
                 /// Required. The location and project to list resources on. Location must be a valid Google Cloud
-                /// region, and cannot be the "-" wildcard. Format: projects/{project}/locations/{location}, where
-                /// {project} can be project id or number.
+                /// region, and cannot be the "-" wildcard. Format: `projects/{project}/locations/{location}`, where
+                /// `{project}` can be project id or number.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -3478,8 +3478,8 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The location and project to list resources on. Location must be a valid Google Cloud
-                    /// region, and cannot be the "-" wildcard. Format: projects/{project}/locations/{location}, where
-                    /// {project} can be project id or number.
+                    /// region, and cannot be the "-" wildcard. Format: `projects/{project}/locations/{location}`, where
+                    /// `{project}` can be project id or number.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3551,7 +3551,7 @@ namespace Google.Apis.CloudRun.v2
                 /// <param name="name">
                 /// The fully qualified name of this WorkerPool. In CreateWorkerPoolRequest, this field is ignored, and
                 /// instead composed from CreateWorkerPoolRequest.parent and CreateWorkerPoolRequest.worker_id. Format:
-                /// projects/{project}/locations/{location}/workerPools/{worker_id}
+                /// `projects/{project}/locations/{location}/workerPools/{worker_id}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2WorkerPool body, string name)
                 {
@@ -3572,7 +3572,7 @@ namespace Google.Apis.CloudRun.v2
                     /// <summary>
                     /// The fully qualified name of this WorkerPool. In CreateWorkerPoolRequest, this field is ignored,
                     /// and instead composed from CreateWorkerPoolRequest.parent and CreateWorkerPoolRequest.worker_id.
-                    /// Format: projects/{project}/locations/{location}/workerPools/{worker_id}
+                    /// Format: `projects/{project}/locations/{location}/workerPools/{worker_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -7864,7 +7864,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>
         /// The fully qualified name of this WorkerPool. In CreateWorkerPoolRequest, this field is ignored, and instead
         /// composed from CreateWorkerPoolRequest.parent and CreateWorkerPoolRequest.worker_id. Format:
-        /// projects/{project}/locations/{location}/workerPools/{worker_id}
+        /// `projects/{project}/locations/{location}/workerPools/{worker_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7997,6 +7997,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionKeyShutdownDuration")]
         public virtual object EncryptionKeyShutdownDuration { get; set; }
+
+        /// <summary>Optional. True if GPU zonal redundancy is disabled on this worker pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuZonalRedundancyDisabled")]
+        public virtual System.Nullable<bool> GpuZonalRedundancyDisabled { get; set; }
 
         /// <summary>
         /// Optional. Unstructured key value map that can be used to organize and categorize objects. User-provided
