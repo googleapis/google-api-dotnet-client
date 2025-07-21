@@ -390,73 +390,6 @@ namespace Google.Apis.Dataflow.v1b3
                     }
                 }
 
-                /// <summary>Get worker stacktraces from debug capture.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">The project id.</param>
-                /// <param name="jobId">The job for which to get stacktraces.</param>
-                public virtual GetWorkerStacktracesRequest GetWorkerStacktraces(Google.Apis.Dataflow.v1b3.Data.GetWorkerStacktracesRequest body, string projectId, string jobId)
-                {
-                    return new GetWorkerStacktracesRequest(this.service, body, projectId, jobId);
-                }
-
-                /// <summary>Get worker stacktraces from debug capture.</summary>
-                public class GetWorkerStacktracesRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.GetWorkerStacktracesResponse>
-                {
-                    /// <summary>Constructs a new GetWorkerStacktraces request.</summary>
-                    public GetWorkerStacktracesRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.GetWorkerStacktracesRequest body, string projectId, string jobId) : base(service)
-                    {
-                        ProjectId = projectId;
-                        JobId = jobId;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>The project id.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ProjectId { get; private set; }
-
-                    /// <summary>The job for which to get stacktraces.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string JobId { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dataflow.v1b3.Data.GetWorkerStacktracesRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "getWorkerStacktraces";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1b3/projects/{projectId}/jobs/{jobId}/debug/getWorkerStacktraces";
-
-                    /// <summary>Initializes GetWorkerStacktraces parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
                 /// <summary>Send encoded debug capture data for component.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">The project id.</param>
@@ -2126,6 +2059,93 @@ namespace Google.Apis.Dataflow.v1b3
                         public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/getConfig";
 
                         /// <summary>Initializes GetConfig parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Get worker stacktraces from debug capture.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="projectId">The project id.</param>
+                    /// <param name="location">
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                    /// that contains the job specified by job_id.
+                    /// </param>
+                    /// <param name="jobId">The job for which to get stacktraces.</param>
+                    public virtual GetWorkerStacktracesRequest GetWorkerStacktraces(Google.Apis.Dataflow.v1b3.Data.GetWorkerStacktracesRequest body, string projectId, string location, string jobId)
+                    {
+                        return new GetWorkerStacktracesRequest(this.service, body, projectId, location, jobId);
+                    }
+
+                    /// <summary>Get worker stacktraces from debug capture.</summary>
+                    public class GetWorkerStacktracesRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.GetWorkerStacktracesResponse>
+                    {
+                        /// <summary>Constructs a new GetWorkerStacktraces request.</summary>
+                        public GetWorkerStacktracesRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.GetWorkerStacktracesRequest body, string projectId, string location, string jobId) : base(service)
+                        {
+                            ProjectId = projectId;
+                            Location = location;
+                            JobId = jobId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>The project id.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectId { get; private set; }
+
+                        /// <summary>
+                        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                        /// that contains the job specified by job_id.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Location { get; private set; }
+
+                        /// <summary>The job for which to get stacktraces.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string JobId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dataflow.v1b3.Data.GetWorkerStacktracesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getWorkerStacktraces";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/getWorkerStacktraces";
+
+                        /// <summary>Initializes GetWorkerStacktraces parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
