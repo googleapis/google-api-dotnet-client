@@ -66,11 +66,6 @@ namespace Google.Apis.CloudDataplex.v1
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
-            /// <summary>
-            /// View your data across Google Cloud services and see the email address of your Google Account
-            /// </summary>
-            public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Dataplex API.</summary>
@@ -81,11 +76,6 @@ namespace Google.Apis.CloudDataplex.v1
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
-            /// <summary>
-            /// View your data across Google Cloud services and see the email address of your Google Account
-            /// </summary>
-            public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
 
         /// <summary>Gets the Organizations resource.</summary>
@@ -20622,8 +20612,11 @@ namespace Google.Apis.CloudDataplex.v1.Data
         }
 
         /// <summary>
-        /// Required. Immutable. Relative resource name of the Entry Link Type used to create this Entry Link, of the
-        /// form: `projects/{project_id_or_number}/locations/{location_id}/entryLinkTypes/{entry_link_type_id}.
+        /// Required. Immutable. Relative resource name of the Entry Link Type used to create this Entry Link. For
+        /// example: Entry link between synonym terms in a glossary:
+        /// projects/dataplex-types/locations/global/entryLinkTypes/synonym Entry link between related terms in a
+        /// glossary: projects/dataplex-types/locations/global/entryLinkTypes/related Entry link between glossary terms
+        /// and data assets: projects/dataplex-types/locations/global/entryLinkTypes/definition
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryLinkType")]
         public virtual string EntryLinkType { get; set; }
