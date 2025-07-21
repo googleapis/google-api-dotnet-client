@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Datastream.v1 Client Library</Title>
-    <Version>1.70.0.3830</Version>
+    <Version>1.70.0.3847</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
