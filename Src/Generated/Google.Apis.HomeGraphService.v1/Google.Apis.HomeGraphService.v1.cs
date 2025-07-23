@@ -703,7 +703,11 @@ namespace Google.Apis.HomeGraphService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultNames")]
         public virtual System.Collections.Generic.IList<string> DefaultNames { get; set; }
 
-        /// <summary>Primary name of the device, generally provided by the user.</summary>
+        /// <summary>
+        /// Primary name of the device, generally provided by the user. Names will be truncated if over the 60 Unicode
+        /// code point (character) limit and no errors will be thrown. Developers are responsible for handling long
+        /// names.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
