@@ -9482,6 +9482,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
 
+        /// <summary>Optional. The safety settings to be applied to the generated content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetySettings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaSafetySetting> SafetySettings { get; set; }
+
         /// <summary>Optional. Search parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchParams")]
         public virtual GoogleCloudRetailV2alphaConversationalSearchRequestSearchParams SearchParams { get; set; }
@@ -11191,6 +11195,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
         public virtual System.Nullable<long> DataSourceId { get; set; }
 
+        /// <summary>Merchant Center primary feed ID. Deprecated: use data_source_id instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedId")]
+        public virtual System.Nullable<long> PrimaryFeedId { get; set; }
+
         /// <summary>Merchant Center primary feed name. The name is used for the display purposes only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedName")]
         public virtual string PrimaryFeedName { get; set; }
@@ -11667,6 +11675,43 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>The Google Cloud Storage location where the result is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsResult")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaGcsOutputResult> GcsResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Detailed panel information associated with a user event.</summary>
+    public class GoogleCloudRetailV2alphaPanelInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The attribution token of the panel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributionToken")]
+        public virtual string AttributionToken { get; set; }
+
+        /// <summary>Optional. The display name of the panel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Required. The panel ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("panelId")]
+        public virtual string PanelId { get; set; }
+
+        /// <summary>
+        /// Optional. The ordered position of the panel, if shown to the user with other panels. If set, then
+        /// total_panels must also be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("panelPosition")]
+        public virtual System.Nullable<int> PanelPosition { get; set; }
+
+        /// <summary>Optional. The product details associated with the panel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaProductDetail> ProductDetails { get; set; }
+
+        /// <summary>
+        /// Optional. The total number of panels, including this one, shown to the user. Must be set if panel_position
+        /// is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalPanels")]
+        public virtual System.Nullable<int> TotalPanels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13449,6 +13494,28 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Safety settings.</summary>
+    public class GoogleCloudRetailV2alphaSafetySetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Harm category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>
+        /// Optional. Specify if the threshold is used for probability or severity score. If not specified, the
+        /// threshold is used for probability score.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; }
+
+        /// <summary>The harm block threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual string Threshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for SearchService.Search method.</summary>
     public class GoogleCloudRetailV2alphaSearchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14939,6 +15006,12 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageViewId")]
         public virtual string PageViewId { get; set; }
+
+        /// <summary>
+        /// Optional. List of panels associated with this event. Used for panel-level impression data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("panels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaPanelInfo> Panels { get; set; }
 
         /// <summary>
         /// The main product details related to the event. This field is optional except for the following event types:
