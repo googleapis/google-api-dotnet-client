@@ -1673,6 +1673,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GoogleCloudAiplatformV1beta1GroundingChunkMaps : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Sources used to generate the place answer. This includes review snippets and photos that were used to
+        /// generate the answer, as well as uris to flag content.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeAnswerSources")]
+        public virtual GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSources PlaceAnswerSources { get; set; }
+
+        /// <summary>
         /// This Place's resource name, in `places/{place_id}` format. Can be used to look up the Place.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
@@ -1689,6 +1696,72 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>URI reference of the chunk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Sources used to generate the place answer.</summary>
+    public class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A link where users can flag a problem with the generated answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagContentUri")]
+        public virtual string FlagContentUri { get; set; }
+
+        /// <summary>Snippets of reviews that are used to generate the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewSnippets")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet> ReviewSnippets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Author attribution for a photo or review.</summary>
+    public class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the author of the Photo or Review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Profile photo URI of the author of the Photo or Review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("photoUri")]
+        public virtual string PhotoUri { get; set; }
+
+        /// <summary>URI of the author of the Photo or Review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encapsulates a review snippet.</summary>
+    public class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This review's author.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorAttribution")]
+        public virtual GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution AuthorAttribution { get; set; }
+
+        /// <summary>A link where users can flag a problem with the review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagContentUri")]
+        public virtual string FlagContentUri { get; set; }
+
+        /// <summary>A link to show the review on Google Maps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleMapsUri")]
+        public virtual string GoogleMapsUri { get; set; }
+
+        /// <summary>
+        /// A string of formatted recent time, expressing the review time relative to the current time in a form
+        /// appropriate for the language and country.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativePublishTimeDescription")]
+        public virtual string RelativePublishTimeDescription { get; set; }
+
+        /// <summary>
+        /// A reference representing this place review which may be used to look up this place review again.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("review")]
+        public virtual string Review { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
