@@ -5292,7 +5292,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. Name of the ClientTlsPolicy resource. It matches the pattern
-                /// `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
+                /// `projects/{project}/locations/{location}/clientTlsPolicies/{client_tls_policy}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.ClientTlsPolicy body, string name)
                 {
@@ -5312,7 +5312,7 @@ namespace Google.Apis.NetworkSecurity.v1
 
                     /// <summary>
                     /// Required. Name of the ClientTlsPolicy resource. It matches the pattern
-                    /// `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
+                    /// `projects/{project}/locations/{location}/clientTlsPolicies/{client_tls_policy}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -12233,10 +12233,21 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     public class AuthzPolicyAuthzRuleFromRequestSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A list of IPs or CIDRs to match against the source IP of a request. Limited to 5 ip_blocks.
+        /// Optional. A list of IP addresses or IP address ranges to match against the source IP address of the request.
+        /// Limited to 5 ip_blocks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipBlocks")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleIpBlock> IpBlocks { get; set; }
+
+        /// <summary>
+        /// Optional. A list of identities derived from the client's certificate. This field will not match on a request
+        /// unless frontend mutual TLS is enabled for the forwarding rule or Gateway and the client certificate has been
+        /// successfully validated by mTLS. Each identity is a string whose value is matched against a list of URI SANs,
+        /// DNS Name SANs, or the common name in the client's certificate. A match happens when any principal matches
+        /// with the rule. Limited to 5 principals.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principals")]
+        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRulePrincipal> Principals { get; set; }
 
         /// <summary>
         /// Optional. A list of resources to match against the resource of the source VM of a request. Limited to 5
@@ -12274,6 +12285,28 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         /// <summary>Required. The address prefix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
         public virtual string Prefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the properties of a principal to be matched against.</summary>
+    public class AuthzPolicyAuthzRulePrincipal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A non-empty string whose value is matched against the principal value based on the
+        /// principal_selector. Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN,
+        /// CLIENT_CERT_COMMON_NAME selectors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principal")]
+        public virtual AuthzPolicyAuthzRuleStringMatch Principal { get; set; }
+
+        /// <summary>
+        /// Optional. An enum to decide what principal value the principal rule will match against. If not specified,
+        /// the PrincipalSelector is CLIENT_CERT_URI_SAN.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalSelector")]
+        public virtual string PrincipalSelector { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12514,7 +12547,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     /// are issued by public certificate authorities, in addition to certificates trusted by the TrustConfig. *
     /// `clientCertificate` is a client certificate that the load balancer uses to express its identity to the backend,
     /// if the connection to the backend uses mTLS. You can attach the BackendAuthenticationConfig to the load
-    /// balancer’s BackendService directly determining how that BackendService negotiates TLS.
+    /// balancer's BackendService directly determining how that BackendService negotiates TLS.
     /// </summary>
     public class BackendAuthenticationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12720,7 +12753,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
 
         /// <summary>
         /// Required. Name of the ClientTlsPolicy resource. It matches the pattern
-        /// `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
+        /// `projects/{project}/locations/{location}/clientTlsPolicies/{client_tls_policy}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
