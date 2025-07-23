@@ -5885,7 +5885,7 @@ namespace Google.Apis.Document.v1.Data
 
         private object _createTime;
 
-        /// <summary>The time the processor was created.</summary>
+        /// <summary>Output only. The time the processor was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -6039,7 +6039,7 @@ namespace Google.Apis.Document.v1.Data
 
         private object _createTime;
 
-        /// <summary>The time the processor version was created.</summary>
+        /// <summary>Output only. The time the processor version was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -6072,7 +6072,7 @@ namespace Google.Apis.Document.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>If set, information about the eventual deprecation of this version.</summary>
+        /// <summary>Output only. If set, information about the eventual deprecation of this version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprecationInfo")]
         public virtual GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo DeprecationInfo { get; set; }
 
@@ -6080,7 +6080,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The schema of the processor version. Describes the output.</summary>
+        /// <summary>Output only. The schema of the processor version. Describes the output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentSchema")]
         public virtual GoogleCloudDocumentaiV1DocumentSchema DocumentSchema { get; set; }
 
@@ -6092,15 +6092,15 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleManaged")]
         public virtual System.Nullable<bool> GoogleManaged { get; set; }
 
-        /// <summary>The KMS key name used for encryption.</summary>
+        /// <summary>Output only. The KMS key name used for encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
 
-        /// <summary>The KMS key version with which data is encrypted.</summary>
+        /// <summary>Output only. The KMS key version with which data is encrypted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
         public virtual string KmsKeyVersionName { get; set; }
 
-        /// <summary>The most recently invoked evaluation for the processor version.</summary>
+        /// <summary>Output only. The most recently invoked evaluation for the processor version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestEvaluation")]
         public virtual GoogleCloudDocumentaiV1EvaluationReference LatestEvaluation { get; set; }
 
