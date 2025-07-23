@@ -7052,7 +7052,1640 @@ namespace Google.Apis.AndroidPublisher.v3
         public MonetizationResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Onetimeproducts = new OnetimeproductsResource(service);
             Subscriptions = new SubscriptionsResource(service);
+        }
+
+        /// <summary>Gets the Onetimeproducts resource.</summary>
+        public virtual OnetimeproductsResource Onetimeproducts { get; }
+
+        /// <summary>The "onetimeproducts" collection of methods.</summary>
+        public class OnetimeproductsResource
+        {
+            private const string Resource = "onetimeproducts";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public OnetimeproductsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                PurchaseOptions = new PurchaseOptionsResource(service);
+            }
+
+            /// <summary>Gets the PurchaseOptions resource.</summary>
+            public virtual PurchaseOptionsResource PurchaseOptions { get; }
+
+            /// <summary>The "purchaseOptions" collection of methods.</summary>
+            public class PurchaseOptionsResource
+            {
+                private const string Resource = "purchaseOptions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PurchaseOptionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Offers = new OffersResource(service);
+                }
+
+                /// <summary>Gets the Offers resource.</summary>
+                public virtual OffersResource Offers { get; }
+
+                /// <summary>The "offers" collection of methods.</summary>
+                public class OffersResource
+                {
+                    private const string Resource = "offers";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OffersResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Activates a one-time product offer.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) of the offer to activate.
+                    /// </param>
+                    /// <param name="productId">
+                    /// Required. The parent one-time product (ID) of the offer to activate.
+                    /// </param>
+                    /// <param name="purchaseOptionId">
+                    /// Required. The parent purchase option (ID) of the offer to activate.
+                    /// </param>
+                    /// <param name="offerId">Required. The offer ID of the offer to activate.</param>
+                    public virtual ActivateRequest Activate(Google.Apis.AndroidPublisher.v3.Data.ActivateOneTimeProductOfferRequest body, string packageName, string productId, string purchaseOptionId, string offerId)
+                    {
+                        return new ActivateRequest(this.service, body, packageName, productId, purchaseOptionId, offerId);
+                    }
+
+                    /// <summary>Activates a one-time product offer.</summary>
+                    public class ActivateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.OneTimeProductOffer>
+                    {
+                        /// <summary>Constructs a new Activate request.</summary>
+                        public ActivateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ActivateOneTimeProductOfferRequest body, string packageName, string productId, string purchaseOptionId, string offerId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            PurchaseOptionId = purchaseOptionId;
+                            OfferId = offerId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent app (package name) of the offer to activate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>Required. The parent one-time product (ID) of the offer to activate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>Required. The parent purchase option (ID) of the offer to activate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("purchaseOptionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PurchaseOptionId { get; private set; }
+
+                        /// <summary>Required. The offer ID of the offer to activate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("offerId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string OfferId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AndroidPublisher.v3.Data.ActivateOneTimeProductOfferRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "activate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:activate";
+
+                        /// <summary>Initializes Activate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("purchaseOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "purchaseOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("offerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "offerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes one or more one-time product offers.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) of the offers to delete. Must be equal to the
+                    /// package_name field on all the OneTimeProductOffer resources.
+                    /// </param>
+                    /// <param name="productId">
+                    /// Required. The product ID of the parent one-time product, if all offers to delete belong to the
+                    /// same product. If this request spans multiple one-time products, set this field to "-".
+                    /// </param>
+                    /// <param name="purchaseOptionId">
+                    /// Required. The parent purchase option (ID) for which the offers should be deleted. May be
+                    /// specified as '-' to update offers from multiple purchase options.
+                    /// </param>
+                    public virtual BatchDeleteRequest BatchDelete(Google.Apis.AndroidPublisher.v3.Data.BatchDeleteOneTimeProductOffersRequest body, string packageName, string productId, string purchaseOptionId)
+                    {
+                        return new BatchDeleteRequest(this.service, body, packageName, productId, purchaseOptionId);
+                    }
+
+                    /// <summary>Deletes one or more one-time product offers.</summary>
+                    public class BatchDeleteRequest : AndroidPublisherBaseServiceRequest<string>
+                    {
+                        /// <summary>Constructs a new BatchDelete request.</summary>
+                        public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.BatchDeleteOneTimeProductOffersRequest body, string packageName, string productId, string purchaseOptionId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            PurchaseOptionId = purchaseOptionId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent app (package name) of the offers to delete. Must be equal to the
+                        /// package_name field on all the OneTimeProductOffer resources.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>
+                        /// Required. The product ID of the parent one-time product, if all offers to delete belong to
+                        /// the same product. If this request spans multiple one-time products, set this field to "-".
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The parent purchase option (ID) for which the offers should be deleted. May be
+                        /// specified as '-' to update offers from multiple purchase options.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("purchaseOptionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PurchaseOptionId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AndroidPublisher.v3.Data.BatchDeleteOneTimeProductOffersRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchDelete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchDelete";
+
+                        /// <summary>Initializes BatchDelete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("purchaseOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "purchaseOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Reads one or more one-time product offers.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) of the updated offers. Must be equal to the package_name
+                    /// field on all the updated OneTimeProductOffer resources.
+                    /// </param>
+                    /// <param name="productId">
+                    /// Required. The product ID of the parent one-time product, if all updated offers belong to the
+                    /// same product. If this request spans multiple one-time products, set this field to "-".
+                    /// </param>
+                    /// <param name="purchaseOptionId">
+                    /// Required. The parent purchase option (ID) for which the offers should be updated. May be
+                    /// specified as '-' to update offers from multiple purchase options.
+                    /// </param>
+                    public virtual BatchGetRequest BatchGet(Google.Apis.AndroidPublisher.v3.Data.BatchGetOneTimeProductOffersRequest body, string packageName, string productId, string purchaseOptionId)
+                    {
+                        return new BatchGetRequest(this.service, body, packageName, productId, purchaseOptionId);
+                    }
+
+                    /// <summary>Reads one or more one-time product offers.</summary>
+                    public class BatchGetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.BatchGetOneTimeProductOffersResponse>
+                    {
+                        /// <summary>Constructs a new BatchGet request.</summary>
+                        public BatchGetRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.BatchGetOneTimeProductOffersRequest body, string packageName, string productId, string purchaseOptionId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            PurchaseOptionId = purchaseOptionId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent app (package name) of the updated offers. Must be equal to the
+                        /// package_name field on all the updated OneTimeProductOffer resources.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>
+                        /// Required. The product ID of the parent one-time product, if all updated offers belong to the
+                        /// same product. If this request spans multiple one-time products, set this field to "-".
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The parent purchase option (ID) for which the offers should be updated. May be
+                        /// specified as '-' to update offers from multiple purchase options.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("purchaseOptionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PurchaseOptionId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AndroidPublisher.v3.Data.BatchGetOneTimeProductOffersRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchGet";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchGet";
+
+                        /// <summary>Initializes BatchGet parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("purchaseOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "purchaseOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Creates or updates one or more one-time product offers.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) of the updated offers. Must be equal to the package_name
+                    /// field on all the updated OneTimeProductOffer resources.
+                    /// </param>
+                    /// <param name="productId">
+                    /// Required. The product ID of the parent one-time product, if all updated offers belong to the
+                    /// same product. If this request spans multiple one-time products, set this field to "-".
+                    /// </param>
+                    /// <param name="purchaseOptionId">
+                    /// Required. The parent purchase option (ID) for which the offers should be updated. May be
+                    /// specified as '-' to update offers from multiple purchase options.
+                    /// </param>
+                    public virtual BatchUpdateRequest BatchUpdate(Google.Apis.AndroidPublisher.v3.Data.BatchUpdateOneTimeProductOffersRequest body, string packageName, string productId, string purchaseOptionId)
+                    {
+                        return new BatchUpdateRequest(this.service, body, packageName, productId, purchaseOptionId);
+                    }
+
+                    /// <summary>Creates or updates one or more one-time product offers.</summary>
+                    public class BatchUpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.BatchUpdateOneTimeProductOffersResponse>
+                    {
+                        /// <summary>Constructs a new BatchUpdate request.</summary>
+                        public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.BatchUpdateOneTimeProductOffersRequest body, string packageName, string productId, string purchaseOptionId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            PurchaseOptionId = purchaseOptionId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent app (package name) of the updated offers. Must be equal to the
+                        /// package_name field on all the updated OneTimeProductOffer resources.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>
+                        /// Required. The product ID of the parent one-time product, if all updated offers belong to the
+                        /// same product. If this request spans multiple one-time products, set this field to "-".
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The parent purchase option (ID) for which the offers should be updated. May be
+                        /// specified as '-' to update offers from multiple purchase options.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("purchaseOptionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PurchaseOptionId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AndroidPublisher.v3.Data.BatchUpdateOneTimeProductOffersRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchUpdate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchUpdate";
+
+                        /// <summary>Initializes BatchUpdate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("purchaseOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "purchaseOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates a batch of one-time product offer states.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) of the updated one-time product offers.
+                    /// </param>
+                    /// <param name="productId">
+                    /// Required. The product ID of the parent one-time product, if all updated offers belong to the
+                    /// same one-time product. If this batch update spans multiple one-time products, set this field to
+                    /// "-".
+                    /// </param>
+                    /// <param name="purchaseOptionId">
+                    /// Required. The purchase option ID of the parent purchase option, if all updated offers belong to
+                    /// the same purchase option. If this batch update spans multiple purchase options, set this field
+                    /// to "-".
+                    /// </param>
+                    public virtual BatchUpdateStatesRequest BatchUpdateStates(Google.Apis.AndroidPublisher.v3.Data.BatchUpdateOneTimeProductOfferStatesRequest body, string packageName, string productId, string purchaseOptionId)
+                    {
+                        return new BatchUpdateStatesRequest(this.service, body, packageName, productId, purchaseOptionId);
+                    }
+
+                    /// <summary>Updates a batch of one-time product offer states.</summary>
+                    public class BatchUpdateStatesRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.BatchUpdateOneTimeProductOfferStatesResponse>
+                    {
+                        /// <summary>Constructs a new BatchUpdateStates request.</summary>
+                        public BatchUpdateStatesRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.BatchUpdateOneTimeProductOfferStatesRequest body, string packageName, string productId, string purchaseOptionId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            PurchaseOptionId = purchaseOptionId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent app (package name) of the updated one-time product offers.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>
+                        /// Required. The product ID of the parent one-time product, if all updated offers belong to the
+                        /// same one-time product. If this batch update spans multiple one-time products, set this field
+                        /// to "-".
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The purchase option ID of the parent purchase option, if all updated offers belong
+                        /// to the same purchase option. If this batch update spans multiple purchase options, set this
+                        /// field to "-".
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("purchaseOptionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PurchaseOptionId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AndroidPublisher.v3.Data.BatchUpdateOneTimeProductOfferStatesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchUpdateStates";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchUpdateStates";
+
+                        /// <summary>Initializes BatchUpdateStates parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("purchaseOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "purchaseOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Cancels a one-time product offer.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) of the offer to cancel.
+                    /// </param>
+                    /// <param name="productId">
+                    /// Required. The parent one-time product (ID) of the offer to cancel.
+                    /// </param>
+                    /// <param name="purchaseOptionId">
+                    /// Required. The parent purchase option (ID) of the offer to cancel.
+                    /// </param>
+                    /// <param name="offerId">Required. The offer ID of the offer to cancel.</param>
+                    public virtual CancelRequest Cancel(Google.Apis.AndroidPublisher.v3.Data.CancelOneTimeProductOfferRequest body, string packageName, string productId, string purchaseOptionId, string offerId)
+                    {
+                        return new CancelRequest(this.service, body, packageName, productId, purchaseOptionId, offerId);
+                    }
+
+                    /// <summary>Cancels a one-time product offer.</summary>
+                    public class CancelRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.OneTimeProductOffer>
+                    {
+                        /// <summary>Constructs a new Cancel request.</summary>
+                        public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.CancelOneTimeProductOfferRequest body, string packageName, string productId, string purchaseOptionId, string offerId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            PurchaseOptionId = purchaseOptionId;
+                            OfferId = offerId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent app (package name) of the offer to cancel.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>Required. The parent one-time product (ID) of the offer to cancel.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>Required. The parent purchase option (ID) of the offer to cancel.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("purchaseOptionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PurchaseOptionId { get; private set; }
+
+                        /// <summary>Required. The offer ID of the offer to cancel.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("offerId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string OfferId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AndroidPublisher.v3.Data.CancelOneTimeProductOfferRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "cancel";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:cancel";
+
+                        /// <summary>Initializes Cancel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("purchaseOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "purchaseOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("offerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "offerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deactivates a one-time product offer.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) of the offer to deactivate.
+                    /// </param>
+                    /// <param name="productId">
+                    /// Required. The parent one-time product (ID) of the offer to deactivate.
+                    /// </param>
+                    /// <param name="purchaseOptionId">
+                    /// Required. The parent purchase option (ID) of the offer to deactivate.
+                    /// </param>
+                    /// <param name="offerId">Required. The offer ID of the offer to deactivate.</param>
+                    public virtual DeactivateRequest Deactivate(Google.Apis.AndroidPublisher.v3.Data.DeactivateOneTimeProductOfferRequest body, string packageName, string productId, string purchaseOptionId, string offerId)
+                    {
+                        return new DeactivateRequest(this.service, body, packageName, productId, purchaseOptionId, offerId);
+                    }
+
+                    /// <summary>Deactivates a one-time product offer.</summary>
+                    public class DeactivateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.OneTimeProductOffer>
+                    {
+                        /// <summary>Constructs a new Deactivate request.</summary>
+                        public DeactivateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.DeactivateOneTimeProductOfferRequest body, string packageName, string productId, string purchaseOptionId, string offerId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            PurchaseOptionId = purchaseOptionId;
+                            OfferId = offerId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent app (package name) of the offer to deactivate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>Required. The parent one-time product (ID) of the offer to deactivate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>Required. The parent purchase option (ID) of the offer to deactivate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("purchaseOptionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PurchaseOptionId { get; private set; }
+
+                        /// <summary>Required. The offer ID of the offer to deactivate.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("offerId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string OfferId { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AndroidPublisher.v3.Data.DeactivateOneTimeProductOfferRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "deactivate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:deactivate";
+
+                        /// <summary>Initializes Deactivate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("purchaseOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "purchaseOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("offerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "offerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all offers under a given app, product, or purchase option.</summary>
+                    /// <param name="packageName">
+                    /// Required. The parent app (package name) for which the offers should be read.
+                    /// </param>
+                    /// <param name="productId">
+                    /// Required. The parent one-time product (ID) for which the offers should be read. May be specified
+                    /// as '-' to read all offers under an app.
+                    /// </param>
+                    /// <param name="purchaseOptionId">
+                    /// Required. The parent purchase option (ID) for which the offers should be read. May be specified
+                    /// as '-' to read all offers under a one-time product or an app. Must be specified as '-' if
+                    /// product_id is specified as '-'.
+                    /// </param>
+                    public virtual ListRequest List(string packageName, string productId, string purchaseOptionId)
+                    {
+                        return new ListRequest(this.service, packageName, productId, purchaseOptionId);
+                    }
+
+                    /// <summary>Lists all offers under a given app, product, or purchase option.</summary>
+                    public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ListOneTimeProductOffersResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string packageName, string productId, string purchaseOptionId) : base(service)
+                        {
+                            PackageName = packageName;
+                            ProductId = productId;
+                            PurchaseOptionId = purchaseOptionId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent app (package name) for which the offers should be read.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PackageName { get; private set; }
+
+                        /// <summary>
+                        /// Required. The parent one-time product (ID) for which the offers should be read. May be
+                        /// specified as '-' to read all offers under an app.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProductId { get; private set; }
+
+                        /// <summary>
+                        /// Required. The parent purchase option (ID) for which the offers should be read. May be
+                        /// specified as '-' to read all offers under a one-time product or an app. Must be specified as
+                        /// '-' if product_id is specified as '-'.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("purchaseOptionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string PurchaseOptionId { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of offers to return. The service may return fewer than this
+                        /// value. If unspecified, at most 50 offers will be returned. The maximum value is 1000; values
+                        /// above 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListOneTimeProductsOffers` call. Provide
+                        /// this to retrieve the subsequent page. When paginating, product_id, package_name and
+                        /// purchase_option_id provided to `ListOneTimeProductsOffersRequest` must match the call that
+                        /// provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "packageName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("purchaseOptionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "purchaseOptionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>
+                /// Deletes purchase options across one or multiple one-time products. By default this operation will
+                /// fail if there are any existing offers under the deleted purchase options. Use the force parameter to
+                /// override the default behavior.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="packageName">
+                /// Required. The parent app (package name) of the purchase options to delete.
+                /// </param>
+                /// <param name="productId">
+                /// Required. The product ID of the parent one-time product, if all purchase options to delete belong to
+                /// the same one-time product. If this batch delete spans multiple one-time products, set this field to
+                /// "-".
+                /// </param>
+                public virtual BatchDeleteRequest BatchDelete(Google.Apis.AndroidPublisher.v3.Data.BatchDeletePurchaseOptionsRequest body, string packageName, string productId)
+                {
+                    return new BatchDeleteRequest(this.service, body, packageName, productId);
+                }
+
+                /// <summary>
+                /// Deletes purchase options across one or multiple one-time products. By default this operation will
+                /// fail if there are any existing offers under the deleted purchase options. Use the force parameter to
+                /// override the default behavior.
+                /// </summary>
+                public class BatchDeleteRequest : AndroidPublisherBaseServiceRequest<string>
+                {
+                    /// <summary>Constructs a new BatchDelete request.</summary>
+                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.BatchDeletePurchaseOptionsRequest body, string packageName, string productId) : base(service)
+                    {
+                        PackageName = packageName;
+                        ProductId = productId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent app (package name) of the purchase options to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string PackageName { get; private set; }
+
+                    /// <summary>
+                    /// Required. The product ID of the parent one-time product, if all purchase options to delete
+                    /// belong to the same one-time product. If this batch delete spans multiple one-time products, set
+                    /// this field to "-".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProductId { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AndroidPublisher.v3.Data.BatchDeletePurchaseOptionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchDelete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions:batchDelete";
+
+                    /// <summary>Initializes BatchDelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Activates or deactivates purchase options across one or multiple one-time products.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="packageName">
+                /// Required. The parent app (package name) of the updated purchase options.
+                /// </param>
+                /// <param name="productId">
+                /// Required. The product ID of the parent one-time product, if all updated purchase options belong to
+                /// the same one-time product. If this batch update spans multiple one-time products, set this field to
+                /// "-".
+                /// </param>
+                public virtual BatchUpdateStatesRequest BatchUpdateStates(Google.Apis.AndroidPublisher.v3.Data.BatchUpdatePurchaseOptionStatesRequest body, string packageName, string productId)
+                {
+                    return new BatchUpdateStatesRequest(this.service, body, packageName, productId);
+                }
+
+                /// <summary>
+                /// Activates or deactivates purchase options across one or multiple one-time products.
+                /// </summary>
+                public class BatchUpdateStatesRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.BatchUpdatePurchaseOptionStatesResponse>
+                {
+                    /// <summary>Constructs a new BatchUpdateStates request.</summary>
+                    public BatchUpdateStatesRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.BatchUpdatePurchaseOptionStatesRequest body, string packageName, string productId) : base(service)
+                    {
+                        PackageName = packageName;
+                        ProductId = productId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent app (package name) of the updated purchase options.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string PackageName { get; private set; }
+
+                    /// <summary>
+                    /// Required. The product ID of the parent one-time product, if all updated purchase options belong
+                    /// to the same one-time product. If this batch update spans multiple one-time products, set this
+                    /// field to "-".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProductId { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AndroidPublisher.v3.Data.BatchUpdatePurchaseOptionStatesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchUpdateStates";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions:batchUpdateStates";
+
+                    /// <summary>Initializes BatchUpdateStates parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Deletes one or more one-time products.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">
+            /// Required. The parent app (package name) for which the one-time products should be deleted. Must be equal
+            /// to the package_name field on all the OneTimeProduct resources.
+            /// </param>
+            public virtual BatchDeleteRequest BatchDelete(Google.Apis.AndroidPublisher.v3.Data.BatchDeleteOneTimeProductsRequest body, string packageName)
+            {
+                return new BatchDeleteRequest(this.service, body, packageName);
+            }
+
+            /// <summary>Deletes one or more one-time products.</summary>
+            public class BatchDeleteRequest : AndroidPublisherBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new BatchDelete request.</summary>
+                public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.BatchDeleteOneTimeProductsRequest body, string packageName) : base(service)
+                {
+                    PackageName = packageName;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent app (package name) for which the one-time products should be deleted. Must be
+                /// equal to the package_name field on all the OneTimeProduct resources.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.BatchDeleteOneTimeProductsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchDelete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts:batchDelete";
+
+                /// <summary>Initializes BatchDelete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Reads one or more one-time products.</summary>
+            /// <param name="packageName">
+            /// Required. The parent app (package name) for which the products should be retrieved. Must be equal to the
+            /// package_name field on all requests.
+            /// </param>
+            public virtual BatchGetRequest BatchGet(string packageName)
+            {
+                return new BatchGetRequest(this.service, packageName);
+            }
+
+            /// <summary>Reads one or more one-time products.</summary>
+            public class BatchGetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.BatchGetOneTimeProductsResponse>
+            {
+                /// <summary>Constructs a new BatchGet request.</summary>
+                public BatchGetRequest(Google.Apis.Services.IClientService service, string packageName) : base(service)
+                {
+                    PackageName = packageName;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent app (package name) for which the products should be retrieved. Must be equal to
+                /// the package_name field on all requests.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>Required. A list of up to 100 product IDs to retrieve. All IDs must be different.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("productIds", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ProductIds { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchGet";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts:batchGet";
+
+                /// <summary>Initializes BatchGet parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("productIds", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productIds",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Creates or updates one or more one-time products.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">
+            /// Required. The parent app (package name) for which the one-time products should be updated. Must be equal
+            /// to the package_name field on all the OneTimeProduct resources.
+            /// </param>
+            public virtual BatchUpdateRequest BatchUpdate(Google.Apis.AndroidPublisher.v3.Data.BatchUpdateOneTimeProductsRequest body, string packageName)
+            {
+                return new BatchUpdateRequest(this.service, body, packageName);
+            }
+
+            /// <summary>Creates or updates one or more one-time products.</summary>
+            public class BatchUpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.BatchUpdateOneTimeProductsResponse>
+            {
+                /// <summary>Constructs a new BatchUpdate request.</summary>
+                public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.BatchUpdateOneTimeProductsRequest body, string packageName) : base(service)
+                {
+                    PackageName = packageName;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent app (package name) for which the one-time products should be updated. Must be
+                /// equal to the package_name field on all the OneTimeProduct resources.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.BatchUpdateOneTimeProductsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchUpdate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts:batchUpdate";
+
+                /// <summary>Initializes BatchUpdate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Deletes a one-time product.</summary>
+            /// <param name="packageName">
+            /// Required. The parent app (package name) of the one-time product to delete.
+            /// </param>
+            /// <param name="productId">Required. The one-time product ID of the one-time product to delete.</param>
+            public virtual DeleteRequest Delete(string packageName, string productId)
+            {
+                return new DeleteRequest(this.service, packageName, productId);
+            }
+
+            /// <summary>Deletes a one-time product.</summary>
+            public class DeleteRequest : AndroidPublisherBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string packageName, string productId) : base(service)
+                {
+                    PackageName = packageName;
+                    ProductId = productId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent app (package name) of the one-time product to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>Required. The one-time product ID of the one-time product to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProductId { get; private set; }
+
+                /// <summary>
+                /// Optional. The latency tolerance for the propagation of this product update. Defaults to
+                /// latency-sensitive.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("latencyTolerance", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<LatencyToleranceEnum> LatencyTolerance { get; set; }
+
+                /// <summary>
+                /// Optional. The latency tolerance for the propagation of this product update. Defaults to
+                /// latency-sensitive.
+                /// </summary>
+                public enum LatencyToleranceEnum
+                {
+                    /// <summary>Defaults to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.</summary>
+                    [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED")]
+                    PRODUCTUPDATELATENCYTOLERANCEUNSPECIFIED = 0,
+
+                    /// <summary>
+                    /// The update will propagate to clients within several minutes on average and up to a few hours in
+                    /// rare cases. Throughput is limited to 7,200 updates per app per hour.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE")]
+                    PRODUCTUPDATELATENCYTOLERANCELATENCYSENSITIVE = 1,
+
+                    /// <summary>
+                    /// The update will propagate to clients within 24 hours. Supports high throughput of up to 720,000
+                    /// updates per app per hour using batch modification methods.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT")]
+                    PRODUCTUPDATELATENCYTOLERANCELATENCYTOLERANT = 2,
+                }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("latencyTolerance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "latencyTolerance",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Reads a single one-time product.</summary>
+            /// <param name="packageName">Required. The parent app (package name) of the product to retrieve.</param>
+            /// <param name="productId">Required. The product ID of the product to retrieve.</param>
+            public virtual GetRequest Get(string packageName, string productId)
+            {
+                return new GetRequest(this.service, packageName, productId);
+            }
+
+            /// <summary>Reads a single one-time product.</summary>
+            public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.OneTimeProduct>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string productId) : base(service)
+                {
+                    PackageName = packageName;
+                    ProductId = productId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent app (package name) of the product to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>Required. The product ID of the product to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProductId { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Lists all one-time products under a given app.</summary>
+            /// <param name="packageName">
+            /// Required. The parent app (package name) for which the one-time product should be read.
+            /// </param>
+            public virtual ListRequest List(string packageName)
+            {
+                return new ListRequest(this.service, packageName);
+            }
+
+            /// <summary>Lists all one-time products under a given app.</summary>
+            public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ListOneTimeProductsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string packageName) : base(service)
+                {
+                    PackageName = packageName;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent app (package name) for which the one-time product should be read.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of one-time product to return. The service may return fewer than this
+                /// value. If unspecified, at most 50 one-time products will be returned. The maximum value is 1000;
+                /// values above 1000 will be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListOneTimeProducts` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListOneTimeProducts` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/oneTimeProducts";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Creates or updates a one-time product.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">Required. Immutable. Package name of the parent app.</param>
+            /// <param name="productId">
+            /// Required. Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must
+            /// start with a number or lowercase letter, and can contain numbers (0-9), lowercase letters (a-z),
+            /// underscores (_), and periods (.).
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.OneTimeProduct body, string packageName, string productId)
+            {
+                return new PatchRequest(this.service, body, packageName, productId);
+            }
+
+            /// <summary>Creates or updates a one-time product.</summary>
+            public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.OneTimeProduct>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.OneTimeProduct body, string packageName, string productId) : base(service)
+                {
+                    PackageName = packageName;
+                    ProductId = productId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Immutable. Package name of the parent app.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>
+                /// Required. Immutable. Unique product ID of the product. Unique within the parent app. Product IDs
+                /// must start with a number or lowercase letter, and can contain numbers (0-9), lowercase letters
+                /// (a-z), underscores (_), and periods (.).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProductId { get; private set; }
+
+                /// <summary>
+                /// Optional. If set to true, and the one-time product with the given package_name and product_id
+                /// doesn't exist, the one-time product will be created. If a new one-time product is created,
+                /// update_mask is ignored.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                /// <summary>
+                /// Optional. The latency tolerance for the propagation of this product upsert. Defaults to
+                /// latency-sensitive.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("latencyTolerance", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<LatencyToleranceEnum> LatencyTolerance { get; set; }
+
+                /// <summary>
+                /// Optional. The latency tolerance for the propagation of this product upsert. Defaults to
+                /// latency-sensitive.
+                /// </summary>
+                public enum LatencyToleranceEnum
+                {
+                    /// <summary>Defaults to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.</summary>
+                    [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED")]
+                    PRODUCTUPDATELATENCYTOLERANCEUNSPECIFIED = 0,
+
+                    /// <summary>
+                    /// The update will propagate to clients within several minutes on average and up to a few hours in
+                    /// rare cases. Throughput is limited to 7,200 updates per app per hour.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE")]
+                    PRODUCTUPDATELATENCYTOLERANCELATENCYSENSITIVE = 1,
+
+                    /// <summary>
+                    /// The update will propagate to clients within 24 hours. Supports high throughput of up to 720,000
+                    /// updates per app per hour using batch modification methods.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT")]
+                    PRODUCTUPDATELATENCYTOLERANCELATENCYTOLERANT = 2,
+                }
+
+                /// <summary>
+                /// Required. A string representing the version of available regions being used for the specified
+                /// resource. Regional prices and latest supported version for the resource have to be specified
+                /// according to the information published in [this
+                /// article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the
+                /// supported locations substantially change, the version will be incremented. Using this field will
+                /// ensure that creating and updating the resource with an older region's version and set of regional
+                /// prices and currencies will succeed even though a new version is available.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("regionsVersion.version", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RegionsVersionVersion { get; set; }
+
+                /// <summary>Required. The list of fields to be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.OneTimeProduct Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/onetimeproducts/{productId}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "allowMissing",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("latencyTolerance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "latencyTolerance",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("regionsVersion.version", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "regionsVersion.version",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Subscriptions resource.</summary>
@@ -12022,6 +13655,60 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ActivateOneTimeProductOffer.</summary>
+    public class ActivateOneTimeProductOfferRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The offer ID of the offer to activate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>Required. The parent app (package name) of the offer to activate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required. The parent one-time product (ID) of the offer to activate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>Required. The parent purchase option (ID) of the offer to activate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOptionId")]
+        public virtual string PurchaseOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UpdatePurchaseOptionState.</summary>
+    public class ActivatePurchaseOptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The parent app (package name) of the purchase option to activate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required. The parent one-time product (ID) of the purchase option to activate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>Required. The purchase option ID of the purchase option to activate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOptionId")]
+        public virtual string PurchaseOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for ActivateSubscriptionOffer.</summary>
     public class ActivateSubscriptionOfferRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12686,6 +14373,82 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for BatchDeleteOneTimeProductOffers.</summary>
+    public class BatchDeleteOneTimeProductOffersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of update requests of up to 100 elements. All requests must correspond to different offers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<DeleteOneTimeProductOfferRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for BatchDeleteOneTimeProduct.</summary>
+    public class BatchDeleteOneTimeProductsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of delete requests of up to 100 elements. All requests must delete different one-time
+        /// products.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<DeleteOneTimeProductRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for BatchDeletePurchaseOption.</summary>
+    public class BatchDeletePurchaseOptionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of delete requests of up to 100 elements. All requests must delete purchase options from
+        /// different one-time products.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<DeletePurchaseOptionRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the BatchGetOneTimeProductOffers endpoint.</summary>
+    public class BatchGetOneTimeProductOffersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of get requests of up to 100 elements. All requests must retrieve different offers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<GetOneTimeProductOfferRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the BatchGetOneTimeProductOffers endpoint.</summary>
+    public class BatchGetOneTimeProductOffersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of updated one-time product offers, in the same order as the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimeProductOffers")]
+        public virtual System.Collections.Generic.IList<OneTimeProductOffer> OneTimeProductOffers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the BatchGetOneTimeProducts endpoint.</summary>
+    public class BatchGetOneTimeProductsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of requested one-time products, in the same order as the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimeProducts")]
+        public virtual System.Collections.Generic.IList<OneTimeProduct> OneTimeProducts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for the orders.batchGet API.</summary>
     public class BatchGetOrdersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12776,6 +14539,106 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
         public virtual System.Collections.Generic.IList<Subscription> Subscriptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for BatchUpdateOneTimeProductOfferStates.</summary>
+    public class BatchUpdateOneTimeProductOfferStatesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The update request list of up to 100 elements. All requests must update different offers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<UpdateOneTimeProductOfferStateRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BatchUpdateOneTimeProductOfferStates.</summary>
+    public class BatchUpdateOneTimeProductOfferStatesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated one-time product offers list, in the same order as the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimeProductOffers")]
+        public virtual System.Collections.Generic.IList<OneTimeProductOffer> OneTimeProductOffers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for BatchUpdateOneTimeProductOffers.</summary>
+    public class BatchUpdateOneTimeProductOffersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of update requests of up to 100 elements. All requests must update different offers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<UpdateOneTimeProductOfferRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BatchUpdateOneTimeProductOffers.</summary>
+    public class BatchUpdateOneTimeProductOffersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of updated one-time product offers, in the same order as the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimeProductOffers")]
+        public virtual System.Collections.Generic.IList<OneTimeProductOffer> OneTimeProductOffers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for BatchUpdateOneTimeProduct.</summary>
+    public class BatchUpdateOneTimeProductsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of update requests of up to 100 elements. All requests must update different one-time
+        /// products.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<UpdateOneTimeProductRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BatchUpdateOneTimeProduct.</summary>
+    public class BatchUpdateOneTimeProductsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of updated one-time products list, in the same order as the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimeProducts")]
+        public virtual System.Collections.Generic.IList<OneTimeProduct> OneTimeProducts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for BatchUpdatePurchaseOptionStates.</summary>
+    public class BatchUpdatePurchaseOptionStatesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The update request list of up to 100 elements. All requests must update different purchase
+        /// options.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<UpdatePurchaseOptionStateRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BatchUpdatePurchaseOptionStates.</summary>
+    public class BatchUpdatePurchaseOptionStatesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of updated one-time products. This list will match the requests one to one, in the same order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimeProducts")]
+        public virtual System.Collections.Generic.IList<OneTimeProduct> OneTimeProducts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12931,6 +14794,35 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Response message for CancelAppRecovery.</summary>
     public class CancelAppRecoveryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for CancelOneTimeProductOffer.</summary>
+    public class CancelOneTimeProductOfferRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The offer ID of the offer to cancel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>Required. The parent app (package name) of the offer to cancel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required. The parent one-time product (ID) of the offer to cancel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>Required. The parent purchase option (ID) of the offer to cancel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOptionId")]
+        public virtual string PurchaseOptionId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -13167,6 +15059,60 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for DeactivateOneTimeProductOffer.</summary>
+    public class DeactivateOneTimeProductOfferRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The offer ID of the offer to deactivate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>Required. The parent app (package name) of the offer to deactivate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required. The parent one-time product (ID) of the offer to deactivate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>Required. The parent purchase option (ID) of the offer to deactivate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOptionId")]
+        public virtual string PurchaseOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UpdatePurchaseOptionState.</summary>
+    public class DeactivatePurchaseOptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The parent app (package name) of the purchase option to deactivate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required. The parent one-time product (ID) of the purchase option to deactivate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>Required. The purchase option ID of the purchase option to deactivate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOptionId")]
+        public virtual string PurchaseOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for DeactivateSubscriptionOffer.</summary>
     public class DeactivateSubscriptionOfferRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13202,6 +15148,89 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The product_id going to replace the existing product_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for deleting an one-time product offer.</summary>
+    public class DeleteOneTimeProductOfferRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The unique offer ID of the offer to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>Required. The parent app (package name) of the offer to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required. The parent one-time product (ID) of the offer to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>Required. The parent purchase option (ID) of the offer to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOptionId")]
+        public virtual string PurchaseOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for deleting a one-time product.</summary>
+    public class DeleteOneTimeProductRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The parent app (package name) of the one-time product to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required. The one-time product ID of the one-time product to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for deleting a purchase option.</summary>
+    public class DeletePurchaseOptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. This field has no effect for purchase options with no offers under them. For purchase options with
+        /// associated offers: * If `force` is set to false (default), an error will be returned. * If `force` is set to
+        /// true, any associated offers under the purchase option will be deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The parent app (package name) of the purchase option to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required. The parent one-time product (ID) of the purchase option to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>Required. The purchase option ID of the purchase option to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOptionId")]
+        public virtual string PurchaseOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14042,6 +16071,29 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for GetOneTimeProductOffers.</summary>
+    public class GetOneTimeProductOfferRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The unique offer ID of the offer to get.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>Required. The parent app (package name) of the offer to get.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required. The parent one-time product (ID) of the offer to get.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>Required. The parent purchase option (ID) of the offer to get.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOptionId")]
+        public virtual string PurchaseOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for GetSubscriptionOffer.</summary>
     public class GetSubscriptionOfferRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14617,6 +16669,42 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListOneTimeProductOffers.</summary>
+    public class ListOneTimeProductOffersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The one_time_product offers from the specified request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimeProductOffers")]
+        public virtual System.Collections.Generic.IList<OneTimeProductOffer> OneTimeProductOffers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListOneTimeProducts.</summary>
+    public class ListOneTimeProductsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The one-time products from the specified app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimeProducts")]
+        public virtual System.Collections.Generic.IList<OneTimeProduct> OneTimeProducts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListSubscriptionOffers.</summary>
     public class ListSubscriptionOffersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14963,6 +17051,562 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalTransactionToken")]
         public virtual string ExternalTransactionToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single one-time product for an app.</summary>
+    public class OneTimeProduct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Set of localized title and description data. Must not have duplicate entries with the same
+        /// language_code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listings")]
+        public virtual System.Collections.Generic.IList<OneTimeProductListing> Listings { get; set; }
+
+        /// <summary>
+        /// Optional. List of up to 20 custom tags specified for this one-time product, and returned to the app through
+        /// the billing library. Purchase options and offers for this product will also receive these tags in the
+        /// billing library.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerTags")]
+        public virtual System.Collections.Generic.IList<OfferTag> OfferTags { get; set; }
+
+        /// <summary>Required. Immutable. Package name of the parent app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must start
+        /// with a number or lowercase letter, and can contain numbers (0-9), lowercase letters (a-z), underscores (_),
+        /// and periods (.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>Required. The set of purchase options for this one-time product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOptions")]
+        public virtual System.Collections.Generic.IList<OneTimeProductPurchaseOption> PurchaseOptions { get; set; }
+
+        /// <summary>
+        /// Output only. The version of the regions configuration that was used to generate the one-time product.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionsVersion")]
+        public virtual RegionsVersion RegionsVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Countries where the purchase of this one-time product is restricted to payment methods registered
+        /// in the same country. If empty, no payment location restrictions are imposed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedPaymentCountries")]
+        public virtual RestrictedPaymentCountries RestrictedPaymentCountries { get; set; }
+
+        /// <summary>Details about taxes and legal compliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxAndComplianceSettings")]
+        public virtual OneTimeProductTaxAndComplianceSettings TaxAndComplianceSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A purchase option that can be bought.</summary>
+    public class OneTimeProductBuyPurchaseOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether this purchase option will be available in legacy PBL flows that do not support one-time
+        /// products model. Up to one "buy" purchase option can be marked as backwards compatible.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacyCompatible")]
+        public virtual System.Nullable<bool> LegacyCompatible { get; set; }
+
+        /// <summary>
+        /// Optional. Whether this purchase option allows multi-quantity. Multi-quantity allows buyer to purchase more
+        /// than one item in a single checkout.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiQuantityEnabled")]
+        public virtual System.Nullable<bool> MultiQuantityEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration specific to discounted offers.</summary>
+    public class OneTimeProductDiscountedOffer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Time when the offer will stop being available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The number of times this offer can be redeemed. If unset or set to 0, allows for unlimited offer
+        /// redemptions. Otherwise must be a number between 1 and 50 inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redemptionLimit")]
+        public virtual System.Nullable<long> RedemptionLimit { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Time when the offer will start being available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Regional store listing for a one-time product.</summary>
+    public class OneTimeProductListing : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The description of this product in the language of this listing. The maximum length is 200
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The language of this listing, as defined by BCP-47, e.g., "en-US".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// Required. The title of this product in the language of this listing. The maximum length is 55 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single offer for a one-time product.</summary>
+    public class OneTimeProductOffer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A discounted offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discountedOffer")]
+        public virtual OneTimeProductDiscountedOffer DiscountedOffer { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The ID of this product offer. Must be unique within the purchase option. It must start
+        /// with a number or lower-case letter, and can only contain lower-case letters (a-z), numbers (0-9), and
+        /// hyphens (-). The maximum length is 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>
+        /// Optional. List of up to 20 custom tags specified for this offer, and returned to the app through the billing
+        /// library.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerTags")]
+        public virtual System.Collections.Generic.IList<OfferTag> OfferTags { get; set; }
+
+        /// <summary>Required. Immutable. The package name of the app the parent product belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>A pre-order offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preOrderOffer")]
+        public virtual OneTimeProductPreOrderOffer PreOrderOffer { get; set; }
+
+        /// <summary>Required. Immutable. The ID of the parent product this offer belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>Required. Immutable. The ID of the purchase option to which this offer is an extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOptionId")]
+        public virtual string PurchaseOptionId { get; set; }
+
+        /// <summary>
+        /// Set of regional pricing and availability information for this offer. Must not have duplicate entries with
+        /// the same region_code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalPricingAndAvailabilityConfigs")]
+        public virtual System.Collections.Generic.IList<OneTimeProductOfferRegionalPricingAndAvailabilityConfig> RegionalPricingAndAvailabilityConfigs { get; set; }
+
+        /// <summary>
+        /// Output only. The version of the regions configuration that was used to generate the one-time product offer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionsVersion")]
+        public virtual RegionsVersion RegionsVersion { get; set; }
+
+        /// <summary>
+        /// Output only. The current state of this offer. This field cannot be changed by updating the resource. Use the
+        /// dedicated endpoints instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options for one-time product offers without a regional price override.</summary>
+    public class OneTimeProductOfferNoPriceOverrideOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Regional pricing and availability configuration for a one-time product offer.</summary>
+    public class OneTimeProductOfferRegionalPricingAndAvailabilityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The absolute value of the discount that is subtracted from the purchase option price. It should be between 0
+        /// and the purchase option price.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("absoluteDiscount")]
+        public virtual Money AbsoluteDiscount { get; set; }
+
+        /// <summary>Required. The availability for this region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availability")]
+        public virtual string Availability { get; set; }
+
+        /// <summary>The price defined in the purchase option for this region will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noOverride")]
+        public virtual OneTimeProductOfferNoPriceOverrideOptions NoOverride { get; set; }
+
+        /// <summary>
+        /// Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g., "US".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>
+        /// The fraction of the purchase option price that the user pays for this offer. For example, if the purchase
+        /// option price for this region is $12, then a 50% discount would correspond to a price of $6. The discount
+        /// must be specified as a fraction strictly larger than 0 and strictly smaller than 1. The resulting price will
+        /// be rounded to the nearest billable unit (e.g. cents for USD). The relative discount is considered invalid if
+        /// the discounted price ends up being smaller than the minimum price allowed in this region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativeDiscount")]
+        public virtual System.Nullable<double> RelativeDiscount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration specific to pre-order offers.</summary>
+    public class OneTimeProductPreOrderOffer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Required. Time when the pre-order will stop being available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. Immutable. Specifies how price changes affect pre-existing pre-orders.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceChangeBehavior")]
+        public virtual string PriceChangeBehavior { get; set; }
+
+        private string _releaseTimeRaw;
+
+        private object _releaseTime;
+
+        /// <summary>
+        /// Required. Time on which the product associated with the pre-order will be released and the pre-order orders
+        /// fulfilled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseTime")]
+        public virtual string ReleaseTimeRaw
+        {
+            get => _releaseTimeRaw;
+            set
+            {
+                _releaseTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _releaseTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReleaseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReleaseTimeDateTimeOffset instead.")]
+        public virtual object ReleaseTime
+        {
+            get => _releaseTime;
+            set
+            {
+                _releaseTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _releaseTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReleaseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReleaseTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReleaseTimeRaw);
+            set => ReleaseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Required. Time when the pre-order will start being available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single purchase option for a one-time product.</summary>
+    public class OneTimeProductPurchaseOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A purchase option that can be bought.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyOption")]
+        public virtual OneTimeProductBuyPurchaseOption BuyOption { get; set; }
+
+        /// <summary>
+        /// Pricing information for any new locations Play may launch in the future. If omitted, the purchase option
+        /// will not be automatically available in any new locations Play may launch in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newRegionsConfig")]
+        public virtual OneTimeProductPurchaseOptionNewRegionsConfig NewRegionsConfig { get; set; }
+
+        /// <summary>
+        /// Optional. List of up to 20 custom tags specified for this purchase option, and returned to the app through
+        /// the billing library. Offers for this purchase option will also receive these tags in the billing library.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerTags")]
+        public virtual System.Collections.Generic.IList<OfferTag> OfferTags { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The unique identifier of this purchase option. Must be unique within the one-time
+        /// product. It must start with a number or lower-case letter, and can only contain lower-case letters (a-z),
+        /// numbers (0-9), and hyphens (-). The maximum length is 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOptionId")]
+        public virtual string PurchaseOptionId { get; set; }
+
+        /// <summary>Regional pricing and availability information for this purchase option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalPricingAndAvailabilityConfigs")]
+        public virtual System.Collections.Generic.IList<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig> RegionalPricingAndAvailabilityConfigs { get; set; }
+
+        /// <summary>A purchase option that can be rented.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rentOption")]
+        public virtual OneTimeProductRentPurchaseOption RentOption { get; set; }
+
+        /// <summary>
+        /// Output only. The state of the purchase option, i.e., whether it's active. This field cannot be changed by
+        /// updating the resource. Use the dedicated endpoints instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Optional. Details about taxes and legal compliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxAndComplianceSettings")]
+        public virtual PurchaseOptionTaxAndComplianceSettings TaxAndComplianceSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Pricing information for any new regions Play may launch in the future.</summary>
+    public class OneTimeProductPurchaseOptionNewRegionsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The regional availability for the new regions config. When set to AVAILABLE, the pricing
+        /// information will be used for any new regions Play may launch in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availability")]
+        public virtual string Availability { get; set; }
+
+        /// <summary>Required. Price in EUR to use for any new regions Play may launch in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eurPrice")]
+        public virtual Money EurPrice { get; set; }
+
+        /// <summary>Required. Price in USD to use for any new regions Play may launch in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usdPrice")]
+        public virtual Money UsdPrice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Regional pricing and availability configuration for a purchase option.</summary>
+    public class OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The availability of the purchase option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availability")]
+        public virtual string Availability { get; set; }
+
+        /// <summary>
+        /// The price of the purchase option in the specified region. Must be set in the currency that is linked to the
+        /// specified region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Money Price { get; set; }
+
+        /// <summary>
+        /// Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g., "US".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A purchase option that can be rented.</summary>
+    public class OneTimeProductRentPurchaseOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The amount of time the user has after starting consuming the entitlement before it is revoked.
+        /// Specified in ISO 8601 format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationPeriod")]
+        public virtual string ExpirationPeriod { get; set; }
+
+        /// <summary>
+        /// Required. The amount of time a user has the entitlement for. Starts at purchase flow completion. Specified
+        /// in ISO 8601 format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rentalPeriod")]
+        public virtual string RentalPeriod { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about taxation, Google Play policy and legal compliance for one-time products.</summary>
+    public class OneTimeProductTaxAndComplianceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether this one-time product is declared as a product representing a tokenized digital asset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isTokenizedDigitalAsset")]
+        public virtual System.Nullable<bool> IsTokenizedDigitalAsset { get; set; }
+
+        /// <summary>Regional tax configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalTaxConfigs")]
+        public virtual System.Collections.Generic.IList<RegionalTaxConfig> RegionalTaxConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15915,6 +18559,23 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Details about taxation, Google Play policy and legal compliance for one-time product purchase options.
+    /// </summary>
+    public class PurchaseOptionTaxAndComplianceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Digital content or service classification for products distributed to users in eligible regions.
+        /// If unset, it defaults to `WITHDRAWAL_RIGHT_DIGITAL_CONTENT`. Refer to the [Help Center
+        /// article](https://support.google.com/googleplay/android-developer/answer/10463498) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("withdrawalRightType")]
+        public virtual string WithdrawalRightType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Context about the purchase state.</summary>
     public class PurchaseStateContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16241,6 +18902,39 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Represents the free price override configuration for a single phase of a subscription offer</summary>
     public class RegionalSubscriptionOfferPhaseFreePriceOverride : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about taxation in a given geographical region.</summary>
+    public class RegionalTaxConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// You must tell us if your app contains streaming products to correctly charge US state and local sales tax.
+        /// Field only supported in the United States.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligibleForStreamingServiceTaxRate")]
+        public virtual System.Nullable<bool> EligibleForStreamingServiceTaxRate { get; set; }
+
+        /// <summary>Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>
+        /// To collect communications or amusement taxes in the United States, choose the appropriate tax category.
+        /// [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498#streaming_tax).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingTaxType")]
+        public virtual string StreamingTaxType { get; set; }
+
+        /// <summary>
+        /// Tax tier to specify reduced tax rate. Developers who sell digital news, magazines, newspapers, books, or
+        /// audiobooks in various regions may be eligible for reduced tax rates. [Learn
+        /// more](https://support.google.com/googleplay/android-developer/answer/10463498).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxTier")]
+        public virtual string TaxTier { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -18055,6 +20749,114 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deactivateBasePlanRequest")]
         public virtual DeactivateBasePlanRequest DeactivateBasePlanRequest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UpdateOneTimeProductOffer.</summary>
+    public class UpdateOneTimeProductOfferRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set to true, and the offer with the given package_name, product_id, purchase_option_id and
+        /// offer_id doesn't exist, an offer will be created. If a new offer is created, the update_mask is ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
+        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this offer update. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The one-time product offer to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimeProductOffer")]
+        public virtual OneTimeProductOffer OneTimeProductOffer { get; set; }
+
+        /// <summary>Required. The version of the available regions being used for the offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionsVersion")]
+        public virtual RegionsVersion RegionsVersion { get; set; }
+
+        /// <summary>Required. The list of fields to be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message to update the state of a one-time product offer.</summary>
+    public class UpdateOneTimeProductOfferStateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Activates an offer. Once activated, the offer is available to users, as long as its conditions are met.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activateOneTimeProductOfferRequest")]
+        public virtual ActivateOneTimeProductOfferRequest ActivateOneTimeProductOfferRequest { get; set; }
+
+        /// <summary>
+        /// Cancels an offer. Once cancelled, the offer is not available to users. Any pending orders related to this
+        /// offer will be cancelled. This state transition is specific to pre-orders.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelOneTimeProductOfferRequest")]
+        public virtual CancelOneTimeProductOfferRequest CancelOneTimeProductOfferRequest { get; set; }
+
+        /// <summary>
+        /// Deactivates an offer. Once deactivated, the offer is no longer available to users. This state transition is
+        /// specific to discounted offers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deactivateOneTimeProductOfferRequest")]
+        public virtual DeactivateOneTimeProductOfferRequest DeactivateOneTimeProductOfferRequest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UpdateOneTimeProduct.</summary>
+    public class UpdateOneTimeProductRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set to true, and the one-time product with the given package_name and product_id doesn't exist,
+        /// the one-time product will be created. If a new one-time product is created, update_mask is ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
+        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+        /// <summary>
+        /// Optional. The latency tolerance for the propagation of this product upsert. Defaults to latency-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTolerance")]
+        public virtual string LatencyTolerance { get; set; }
+
+        /// <summary>Required. The one-time product to upsert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimeProduct")]
+        public virtual OneTimeProduct OneTimeProduct { get; set; }
+
+        /// <summary>Required. The version of the available regions being used for the one-time product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionsVersion")]
+        public virtual RegionsVersion RegionsVersion { get; set; }
+
+        /// <summary>Required. The list of fields to be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message to update the state of a one-time product purchase option.</summary>
+    public class UpdatePurchaseOptionStateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Activates a purchase option. Once activated, the purchase option will be available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activatePurchaseOptionRequest")]
+        public virtual ActivatePurchaseOptionRequest ActivatePurchaseOptionRequest { get; set; }
+
+        /// <summary>
+        /// Deactivates a purchase option. Once deactivated, the purchase option will become unavailable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deactivatePurchaseOptionRequest")]
+        public virtual DeactivatePurchaseOptionRequest DeactivatePurchaseOptionRequest { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

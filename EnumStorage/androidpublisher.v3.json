@@ -176,6 +176,16 @@
     "1",
     "2"
   ],
+  "Google.Apis.AndroidPublisher.v3.MonetizationResource+OnetimeproductsResource+DeleteRequest.LatencyToleranceEnum": [
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED",
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE",
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+  ],
+  "Google.Apis.AndroidPublisher.v3.MonetizationResource+OnetimeproductsResource+PatchRequest.LatencyToleranceEnum": [
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED",
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE",
+    "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
+  ],
   "Google.Apis.AndroidPublisher.v3.MonetizationResource+SubscriptionsResource+BasePlansResource+OffersResource+PatchRequest.LatencyToleranceEnum": [
     "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED",
     "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE",
