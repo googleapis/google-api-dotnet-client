@@ -512,6 +512,7 @@ namespace Google.Apis.Iam.v1
                     this.service = service;
                     Keys = new KeysResource(service);
                     Operations = new OperationsResource(service);
+                    ScimTenants = new ScimTenantsResource(service);
                 }
 
                 /// <summary>Gets the Keys resource.</summary>
@@ -986,6 +987,897 @@ namespace Google.Apis.Iam.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the ScimTenants resource.</summary>
+                public virtual ScimTenantsResource ScimTenants { get; }
+
+                /// <summary>The "scimTenants" collection of methods.</summary>
+                public class ScimTenantsResource
+                {
+                    private const string Resource = "scimTenants";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ScimTenantsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Tokens = new TokensResource(service);
+                    }
+
+                    /// <summary>Gets the Tokens resource.</summary>
+                    public virtual TokensResource Tokens { get; }
+
+                    /// <summary>The "tokens" collection of methods.</summary>
+                    public class TokensResource
+                    {
+                        private const string Resource = "tokens";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public TokensResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Creates a new WorkforcePoolProviderScimToken in a WorkforcePoolProviderScimTenant. You
+                        /// cannot reuse the name of a deleted SCIM token until 30 days after deletion.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The parent tenant to create scim token. Format:
+                        /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}'
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken body, string parent)
+                        {
+                            return new CreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Creates a new WorkforcePoolProviderScimToken in a WorkforcePoolProviderScimTenant. You
+                        /// cannot reuse the name of a deleted SCIM token until 30 days after deletion.
+                        /// </summary>
+                        public class CreateRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent tenant to create scim token. Format:
+                            /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}'
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Required. The ID to use for the scim token, which becomes the final component of the
+                            /// resource name. This value should be 4-32 characters and follow this pattern:
+                            /// "([a-z]([a-z0-9\\-]{2,30}[a-z0-9]))"
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("workforcePoolProviderScimTokenId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string WorkforcePoolProviderScimTokenId { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/tokens";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/scimTenants/[^/]+$",
+                                });
+                                RequestParameters.Add("workforcePoolProviderScimTokenId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "workforcePoolProviderScimTokenId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Deletes a WorkforcePoolProviderScimToken. You can undelete a scim token for 30 days. After
+                        /// 30 days, deletion is permanent. You cannot update deleted scim tokens. However, you can view
+                        /// and list them.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The name of the scim token to delete. Format:
+                        /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Deletes a WorkforcePoolProviderScimToken. You can undelete a scim token for 30 days. After
+                        /// 30 days, deletion is permanent. You cannot update deleted scim tokens. However, you can view
+                        /// and list them.
+                        /// </summary>
+                        public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the scim token to delete. Format:
+                            /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/scimTenants/[^/]+/tokens/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Gets an individual WorkforcePoolProviderScimToken.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the scim token to retrieve. Format:
+                        /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets an individual WorkforcePoolProviderScimToken.</summary>
+                        public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the scim token to retrieve. Format:
+                            /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/scimTenants/[^/]+/tokens/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Lists all non-deleted WorkforcePoolProviderScimTokenss in a WorkforcePoolProviderScimTenant.
+                        /// If `show_deleted` is set to `true`, then deleted SCIM tokens are also listed.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. The parent to list scim tokens. Format:
+                        /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}'
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>
+                        /// Lists all non-deleted WorkforcePoolProviderScimTokenss in a WorkforcePoolProviderScimTenant.
+                        /// If `show_deleted` is set to `true`, then deleted SCIM tokens are also listed.
+                        /// </summary>
+                        public class ListRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ListWorkforcePoolProviderScimTokensResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent to list scim tokens. Format:
+                            /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}'
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. The maximum number of scim tokens to return. If unspecified, at most 2 scim
+                            /// tokens will be returned.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. A page token, received from a previous `ListWorkforcePoolProviderScimTokens`
+                            /// call. Provide this to retrieve the subsequent page.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Optional. Whether to return soft-deleted scim tokens.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/tokens";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/scimTenants/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "showDeleted",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Updates an existing WorkforcePoolProviderScimToken.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Identifier. The resource name of the SCIM Token. Format:
+                        /// `locations/{location}/workforcePools/{workforce_pool}/providers/
+                        /// {workforce_pool_provider}/scimTenants/{scim_tenant}/tokens/{token}`
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken body, string name)
+                        {
+                            return new PatchRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Updates an existing WorkforcePoolProviderScimToken.</summary>
+                        public class PatchRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Identifier. The resource name of the SCIM Token. Format:
+                            /// `locations/{location}/workforcePools/{workforce_pool}/providers/
+                            /// {workforce_pool_provider}/scimTenants/{scim_tenant}/tokens/{token}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Optional. The list of fields to update.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/scimTenants/[^/]+/tokens/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Undeletes a WorkforcePoolProviderScimToken, as long as it was deleted fewer than 30 days
+                        /// ago.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The name of the scim token to undelete. Format:
+                        /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
+                        /// </param>
+                        public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderScimTokenRequest body, string name)
+                        {
+                            return new UndeleteRequest(this.service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Undeletes a WorkforcePoolProviderScimToken, as long as it was deleted fewer than 30 days
+                        /// ago.
+                        /// </summary>
+                        public class UndeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken>
+                        {
+                            /// <summary>Constructs a new Undelete request.</summary>
+                            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderScimTokenRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the scim token to undelete. Format:
+                            /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderScimTokenRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "undelete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:undelete";
+
+                            /// <summary>Initializes Undelete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/scimTenants/[^/]+/tokens/[^/]+$",
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>
+                    /// Creates a new WorkforcePoolProviderScimTenant in a WorkforcePoolProvider. You cannot reuse the
+                    /// name of a deleted scim tenant until 30 days after deletion.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent to create scim tenant. Format:
+                    /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}'
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a new WorkforcePoolProviderScimTenant in a WorkforcePoolProvider. You cannot reuse the
+                    /// name of a deleted scim tenant until 30 days after deletion.
+                    /// </summary>
+                    public class CreateRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent to create scim tenant. Format:
+                        /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}'
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the scim tenant, which becomes the final component of the
+                        /// resource name. This value should be 4-32 characters, and may contain the characters
+                        /// [a-z0-9-].
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("workforcePoolProviderScimTenantId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string WorkforcePoolProviderScimTenantId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/scimTenants";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+$",
+                            });
+                            RequestParameters.Add("workforcePoolProviderScimTenantId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "workforcePoolProviderScimTenantId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a WorkforcePoolProviderScimTenant. You can undelete a scim tenant for 30 days. After 30
+                    /// days, deletion is permanent. You cannot update deleted scim tenants. However, you can view and
+                    /// list them.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The name of the scim tenant to delete. Format:
+                    /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a WorkforcePoolProviderScimTenant. You can undelete a scim tenant for 30 days. After 30
+                    /// days, deletion is permanent. You cannot update deleted scim tenants. However, you can view and
+                    /// list them.
+                    /// </summary>
+                    public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the scim tenant to delete. Format:
+                        /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/scimTenants/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets an individual WorkforcePoolProviderScimTenant.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the scim tenant to retrieve. Format:
+                    /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets an individual WorkforcePoolProviderScimTenant.</summary>
+                    public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the scim tenant to retrieve. Format:
+                        /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/scimTenants/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists all non-deleted WorkforcePoolProviderScimTenants in a WorkforcePoolProvider. If
+                    /// `show_deleted` is set to `true`, then deleted scim tenants are also listed.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. The parent to list scim tenants. Format:
+                    /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}'
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists all non-deleted WorkforcePoolProviderScimTenants in a WorkforcePoolProvider. If
+                    /// `show_deleted` is set to `true`, then deleted scim tenants are also listed.
+                    /// </summary>
+                    public class ListRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ListWorkforcePoolProviderScimTenantsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent to list scim tenants. Format:
+                        /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}'
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of scim tenants to return. If unspecified, at most 1 scim
+                        /// tenant will be returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListScimTenants` call. Provide this to
+                        /// retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Optional. Whether to return soft-deleted scim tenants.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/scimTenants";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "showDeleted",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates an existing WorkforcePoolProviderScimTenant.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Identifier. The resource name of the SCIM Tenant. Format:
+                    /// `locations/{location}/workforcePools/{workforce_pool}/providers/
+                    /// {workforce_pool_provider}/scimTenants/{scim_tenant}`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates an existing WorkforcePoolProviderScimTenant.</summary>
+                    public class PatchRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Identifier. The resource name of the SCIM Tenant. Format:
+                        /// `locations/{location}/workforcePools/{workforce_pool}/providers/
+                        /// {workforce_pool_provider}/scimTenants/{scim_tenant}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. The list of fields to update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/scimTenants/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Undeletes a WorkforcePoolProviderScimTenant, as long as it was deleted fewer than 30 days ago.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the scim tenant to undelete. Format:
+                    /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
+                    /// </param>
+                    public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderScimTenantRequest body, string name)
+                    {
+                        return new UndeleteRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Undeletes a WorkforcePoolProviderScimTenant, as long as it was deleted fewer than 30 days ago.
+                    /// </summary>
+                    public class UndeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant>
+                    {
+                        /// <summary>Constructs a new Undelete request.</summary>
+                        public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderScimTenantRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the scim tenant to undelete. Format:
+                        /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderScimTenantRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "undelete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:undelete";
+
+                        /// <summary>Initializes Undelete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/scimTenants/[^/]+$",
                             });
                         }
                     }
@@ -10282,6 +11174,42 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListWorkforcePoolProviderScimTenants.</summary>
+    public class ListWorkforcePoolProviderScimTenantsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. A list of scim tenants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workforcePoolProviderScimTenants")]
+        public virtual System.Collections.Generic.IList<WorkforcePoolProviderScimTenant> WorkforcePoolProviderScimTenants { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListWorkforcePoolProviderScimTokens.</summary>
+    public class ListWorkforcePoolProviderScimTokensResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. A list of scim tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workforcePoolProviderScimTokens")]
+        public virtual System.Collections.Generic.IList<WorkforcePoolProviderScimToken> WorkforcePoolProviderScimTokens { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListWorkforcePoolProviders.</summary>
     public class ListWorkforcePoolProvidersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11614,6 +12542,20 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for UndeleteWorkforcePoolProviderScimTenant.</summary>
+    public class UndeleteWorkforcePoolProviderScimTenantRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UndeleteWorkforcePoolProviderScimToken.</summary>
+    public class UndeleteWorkforcePoolProviderScimTokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for UndeleteWorkforcePool.</summary>
     public class UndeleteWorkforcePoolRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11898,6 +12840,18 @@ namespace Google.Apis.Iam.v1.Data
         }
 
         /// <summary>
+        /// Optional. The configuration for OAuth 2.0 client used to get the extended group memberships for user
+        /// identities. Only the `AZURE_AD_GROUPS_ID` attribute type is supported. Extended groups supports a subset of
+        /// Google Cloud services. When the user accesses these services, extended group memberships override the mapped
+        /// `google.groups` attribute. Extended group memberships cannot be used in attribute mapping or attribute
+        /// condition expressions. To keep extended group memberships up to date, extended groups are retrieved when the
+        /// user signs in and at regular intervals during the user's active session. Each user identity in the workforce
+        /// identity pool must map to a specific, unique Microsoft Entra ID user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedAttributesOauth2Client")]
+        public virtual GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client ExtendedAttributesOauth2Client { get; set; }
+
+        /// <summary>
         /// Optional. The configuration for OAuth 2.0 client used to get the additional user attributes. This should be
         /// used when users can't get the desired claims in authentication credentials. Currently this configuration is
         /// only supported with OIDC protocol.
@@ -11993,6 +12947,120 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>Required. The purpose of the key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("use")]
         public virtual string Use { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a scim tenant. Used for provisioning and managing identity data (such as Users and Groups) in
+    /// cross-domain environments.
+    /// </summary>
+    public class WorkforcePoolProviderScimTenant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Represents the base URI as defined in [RFC 7644, Section
+        /// 1.3](https://datatracker.ietf.org/doc/html/rfc7644#section-1.3). Clients must use this as the root address
+        /// for managing resources under the tenant. Format: https://iamscim.googleapis.com/{version}/{tenant_id}/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseUri")]
+        public virtual string BaseUri { get; set; }
+
+        /// <summary>Optional. Maps BYOID claims to SCIM claims.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("claimMapping")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ClaimMapping { get; set; }
+
+        /// <summary>
+        /// Optional. The user-specified description of the scim tenant. Cannot exceed 256 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. The user-specified display name of the scim tenant. Cannot exceed 32 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the SCIM Tenant. Format:
+        /// `locations/{location}/workforcePools/{workforce_pool}/providers/
+        /// {workforce_pool_provider}/scimTenants/{scim_tenant}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _purgeTimeRaw;
+
+        private object _purgeTime;
+
+        /// <summary>Output only. The timestamp when the scim tenant is going to be purged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeTime")]
+        public virtual string PurgeTimeRaw
+        {
+            get => _purgeTimeRaw;
+            set
+            {
+                _purgeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _purgeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PurgeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PurgeTimeDateTimeOffset instead.")]
+        public virtual object PurgeTime
+        {
+            get => _purgeTime;
+            set
+            {
+                _purgeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _purgeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PurgeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PurgeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PurgeTimeRaw);
+            set => PurgeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The state of the tenant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a token for the WorkforcePoolProviderScimTenant. Used for authenticating SCIM Provisioning requests.
+    /// </summary>
+    public class WorkforcePoolProviderScimToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The user-specified display name of the scim token. Cannot exceed 32 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the SCIM Token. Format:
+        /// `locations/{location}/workforcePools/{workforce_pool}/providers/
+        /// {workforce_pool_provider}/scimTenants/{scim_tenant}/tokens/{token}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The token string. Provide this to the IdP for authentication. Will be set only during creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityToken")]
+        public virtual string SecurityToken { get; set; }
+
+        /// <summary>Output only. The state of the token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
