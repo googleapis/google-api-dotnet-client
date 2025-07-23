@@ -10616,6 +10616,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
         public virtual System.Nullable<long> DataSourceId { get; set; }
 
+        /// <summary>Merchant Center primary feed ID. Deprecated: use data_source_id instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedId")]
+        public virtual System.Nullable<long> PrimaryFeedId { get; set; }
+
         /// <summary>Merchant Center primary feed name. The name is used for the display purposes only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedName")]
         public virtual string PrimaryFeedName { get; set; }
@@ -11019,6 +11023,43 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>The Google Cloud Storage location where the result is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsResult")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaGcsOutputResult> GcsResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Detailed panel information associated with a user event.</summary>
+    public class GoogleCloudRetailV2betaPanelInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The attribution token of the panel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributionToken")]
+        public virtual string AttributionToken { get; set; }
+
+        /// <summary>Optional. The display name of the panel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Required. The panel ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("panelId")]
+        public virtual string PanelId { get; set; }
+
+        /// <summary>
+        /// Optional. The ordered position of the panel, if shown to the user with other panels. If set, then
+        /// total_panels must also be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("panelPosition")]
+        public virtual System.Nullable<int> PanelPosition { get; set; }
+
+        /// <summary>Optional. The product details associated with the panel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaProductDetail> ProductDetails { get; set; }
+
+        /// <summary>
+        /// Optional. The total number of panels, including this one, shown to the user. Must be set if panel_position
+        /// is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalPanels")]
+        public virtual System.Nullable<int> TotalPanels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14243,6 +14284,12 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageViewId")]
         public virtual string PageViewId { get; set; }
+
+        /// <summary>
+        /// Optional. List of panels associated with this event. Used for panel-level impression data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("panels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaPanelInfo> Panels { get; set; }
 
         /// <summary>
         /// The main product details related to the event. This field is optional except for the following event types:
