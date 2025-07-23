@@ -879,6 +879,51 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 this.service = service;
             }
 
+            /// <summary>Retrieves a developer registration for a merchant.</summary>
+            /// <param name="name">Required. The `name` (ID) of the developer registration.</param>
+            public virtual GetDeveloperRegistrationRequest GetDeveloperRegistration(string name)
+            {
+                return new GetDeveloperRegistrationRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves a developer registration for a merchant.</summary>
+            public class GetDeveloperRegistrationRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.DeveloperRegistration>
+            {
+                /// <summary>Constructs a new GetDeveloperRegistration request.</summary>
+                public GetDeveloperRegistrationRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The `name` (ID) of the developer registration.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getDeveloperRegistration";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes GetDeveloperRegistration parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/developerRegistration$",
+                    });
+                }
+            }
+
             /// <summary>
             /// Registers the GCP used for the API call to the shopping account passed in the request. Will create a
             /// user with an "API developer" and add the "developer_email" as a contact with "API notifications" email
@@ -889,7 +934,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
             /// Required. The name of the developer registration to be created for the merchant account that the GCP
             /// will be registered with. Format: `accounts/{account}/developerRegistration`
             /// </param>
-            public virtual RegisterGcpRequest RegisterGcp(Google.Apis.Merchant.accounts_v1beta.Data.RegisterGCPRequest body, string name)
+            public virtual RegisterGcpRequest RegisterGcp(Google.Apis.Merchant.accounts_v1beta.Data.RegisterGcpRequest body, string name)
             {
                 return new RegisterGcpRequest(this.service, body, name);
             }
@@ -902,7 +947,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
             public class RegisterGcpRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.DeveloperRegistration>
             {
                 /// <summary>Constructs a new RegisterGcp request.</summary>
-                public RegisterGcpRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.RegisterGCPRequest body, string name) : base(service)
+                public RegisterGcpRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.RegisterGcpRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -917,7 +962,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 public virtual string Name { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Merchant.accounts_v1beta.Data.RegisterGCPRequest Body { get; set; }
+                Google.Apis.Merchant.accounts_v1beta.Data.RegisterGcpRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -955,7 +1000,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
             /// Required. The name of the developer registration to be created for the merchant account that the GCP
             /// will be registered with. Format: `accounts/{account}/developerRegistration`
             /// </param>
-            public virtual UnregisterGcpRequest UnregisterGcp(Google.Apis.Merchant.accounts_v1beta.Data.UnregisterGCPRequest body, string name)
+            public virtual UnregisterGcpRequest UnregisterGcp(Google.Apis.Merchant.accounts_v1beta.Data.UnregisterGcpRequest body, string name)
             {
                 return new UnregisterGcpRequest(this.service, body, name);
             }
@@ -967,7 +1012,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
             public class UnregisterGcpRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Empty>
             {
                 /// <summary>Constructs a new UnregisterGcp request.</summary>
-                public UnregisterGcpRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.UnregisterGCPRequest body, string name) : base(service)
+                public UnregisterGcpRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.UnregisterGcpRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -982,7 +1027,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 public virtual string Name { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Merchant.accounts_v1beta.Data.UnregisterGCPRequest Body { get; set; }
+                Google.Apis.Merchant.accounts_v1beta.Data.UnregisterGcpRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -4802,51 +4847,6 @@ namespace Google.Apis.Merchant.accounts_v1beta
             }
         }
 
-        /// <summary>Retrieves a developer registration for a merchant.</summary>
-        /// <param name="name">Required. The `name` (ID) of the developer registration.</param>
-        public virtual GetDeveloperRegistrationRequest GetDeveloperRegistration(string name)
-        {
-            return new GetDeveloperRegistrationRequest(this.service, name);
-        }
-
-        /// <summary>Retrieves a developer registration for a merchant.</summary>
-        public class GetDeveloperRegistrationRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.DeveloperRegistration>
-        {
-            /// <summary>Constructs a new GetDeveloperRegistration request.</summary>
-            public GetDeveloperRegistrationRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-            /// <summary>Required. The `name` (ID) of the developer registration.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "getDeveloperRegistration";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "accounts/v1beta/{+name}";
-
-            /// <summary>Initializes GetDeveloperRegistration parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^accounts/[^/]+/developerRegistration$",
-                });
-            }
-        }
-
         /// <summary>
         /// Note: For the `accounts.list` method, quota and limits usage are charged for each user, and not for the
         /// Merchant Center ID or the advanced account ID. To list several sub-accounts, you should use the
@@ -7835,7 +7835,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     }
 
     /// <summary>Request message for the RegisterGCP method.</summary>
-    public class RegisterGCPRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class RegisterGcpRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Immutable. If the developer email provided is associated with a user in the merchant account provided, the
@@ -8385,7 +8385,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     }
 
     /// <summary>Request message for the UnregisterGCP method.</summary>
-    public class UnregisterGCPRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class UnregisterGcpRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
