@@ -10226,11 +10226,157 @@ namespace Google.Apis.Storage.v1.Data
         public class EncryptionData
         {
             /// <summary>
+            /// If set, the new objects created in this bucket must comply with this enforcement config. Changing this
+            /// has no effect on existing objects; it applies to new objects only. If omitted, the new objects are
+            /// allowed to be encrypted with Customer Managed Encryption type by default.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("customerManagedEncryptionEnforcementConfig")]
+            public virtual CustomerManagedEncryptionEnforcementConfigData CustomerManagedEncryptionEnforcementConfig { get; set; }
+
+            /// <summary>
+            /// If set, the new objects created in this bucket must comply with this enforcement config. Changing this
+            /// has no effect on existing objects; it applies to new objects only. If omitted, the new objects are
+            /// allowed to be encrypted with Customer Supplied Encryption type by default.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("customerSuppliedEncryptionEnforcementConfig")]
+            public virtual CustomerSuppliedEncryptionEnforcementConfigData CustomerSuppliedEncryptionEnforcementConfig { get; set; }
+
+            /// <summary>
             /// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method
             /// is specified.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("defaultKmsKeyName")]
             public virtual string DefaultKmsKeyName { get; set; }
+
+            /// <summary>
+            /// If set, the new objects created in this bucket must comply with this enforcement config. Changing this
+            /// has no effect on existing objects; it applies to new objects only. If omitted, the new objects are
+            /// allowed to be encrypted with Google Managed Encryption type by default.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("googleManagedEncryptionEnforcementConfig")]
+            public virtual GoogleManagedEncryptionEnforcementConfigData GoogleManagedEncryptionEnforcementConfig { get; set; }
+
+            /// <summary>
+            /// If set, the new objects created in this bucket must comply with this enforcement config. Changing this
+            /// has no effect on existing objects; it applies to new objects only. If omitted, the new objects are
+            /// allowed to be encrypted with Customer Managed Encryption type by default.
+            /// </summary>
+            public class CustomerManagedEncryptionEnforcementConfigData
+            {
+                /// <summary>
+                /// Server-determined value that indicates the time from which configuration was enforced and effective.
+                /// This value is in RFC 3339 format.
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("effectiveTime")]
+                public virtual string EffectiveTimeRaw { get; set; }
+
+                /// <summary>
+                /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EffectiveTimeRaw"/>.
+                /// </summary>
+                [Newtonsoft.Json.JsonIgnoreAttribute]
+                public virtual System.DateTimeOffset? EffectiveTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(EffectiveTimeRaw);
+                    set => EffectiveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+                }
+
+                /// <summary>
+                /// <seealso cref="System.DateTime"/> representation of <see cref="EffectiveTimeRaw"/>.
+                /// </summary>
+                [Newtonsoft.Json.JsonIgnoreAttribute]
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EffectiveTimeDateTimeOffset instead.")]
+                public virtual System.DateTime? EffectiveTime
+                {
+                    get => Google.Apis.Util.Utilities.GetDateTimeFromString(EffectiveTimeRaw);
+                    set => EffectiveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+                }
+
+                /// <summary>Restriction mode for Customer-Managed Encryption Keys. Defaults to NotRestricted.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("restrictionMode")]
+                public virtual string RestrictionMode { get; set; }
+            }
+
+            /// <summary>
+            /// If set, the new objects created in this bucket must comply with this enforcement config. Changing this
+            /// has no effect on existing objects; it applies to new objects only. If omitted, the new objects are
+            /// allowed to be encrypted with Customer Supplied Encryption type by default.
+            /// </summary>
+            public class CustomerSuppliedEncryptionEnforcementConfigData
+            {
+                /// <summary>
+                /// Server-determined value that indicates the time from which configuration was enforced and effective.
+                /// This value is in RFC 3339 format.
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("effectiveTime")]
+                public virtual string EffectiveTimeRaw { get; set; }
+
+                /// <summary>
+                /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EffectiveTimeRaw"/>.
+                /// </summary>
+                [Newtonsoft.Json.JsonIgnoreAttribute]
+                public virtual System.DateTimeOffset? EffectiveTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(EffectiveTimeRaw);
+                    set => EffectiveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+                }
+
+                /// <summary>
+                /// <seealso cref="System.DateTime"/> representation of <see cref="EffectiveTimeRaw"/>.
+                /// </summary>
+                [Newtonsoft.Json.JsonIgnoreAttribute]
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EffectiveTimeDateTimeOffset instead.")]
+                public virtual System.DateTime? EffectiveTime
+                {
+                    get => Google.Apis.Util.Utilities.GetDateTimeFromString(EffectiveTimeRaw);
+                    set => EffectiveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+                }
+
+                /// <summary>
+                /// Restriction mode for Customer-Supplied Encryption Keys. Defaults to NotRestricted.
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("restrictionMode")]
+                public virtual string RestrictionMode { get; set; }
+            }
+
+            /// <summary>
+            /// If set, the new objects created in this bucket must comply with this enforcement config. Changing this
+            /// has no effect on existing objects; it applies to new objects only. If omitted, the new objects are
+            /// allowed to be encrypted with Google Managed Encryption type by default.
+            /// </summary>
+            public class GoogleManagedEncryptionEnforcementConfigData
+            {
+                /// <summary>
+                /// Server-determined value that indicates the time from which configuration was enforced and effective.
+                /// This value is in RFC 3339 format.
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("effectiveTime")]
+                public virtual string EffectiveTimeRaw { get; set; }
+
+                /// <summary>
+                /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EffectiveTimeRaw"/>.
+                /// </summary>
+                [Newtonsoft.Json.JsonIgnoreAttribute]
+                public virtual System.DateTimeOffset? EffectiveTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(EffectiveTimeRaw);
+                    set => EffectiveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+                }
+
+                /// <summary>
+                /// <seealso cref="System.DateTime"/> representation of <see cref="EffectiveTimeRaw"/>.
+                /// </summary>
+                [Newtonsoft.Json.JsonIgnoreAttribute]
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EffectiveTimeDateTimeOffset instead.")]
+                public virtual System.DateTime? EffectiveTime
+                {
+                    get => Google.Apis.Util.Utilities.GetDateTimeFromString(EffectiveTimeRaw);
+                    set => EffectiveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+                }
+
+                /// <summary>Restriction mode for Google-Managed Encryption Keys. Defaults to NotRestricted.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("restrictionMode")]
+                public virtual string RestrictionMode { get; set; }
+            }
         }
 
         /// <summary>The bucket's hierarchical namespace configuration.</summary>
