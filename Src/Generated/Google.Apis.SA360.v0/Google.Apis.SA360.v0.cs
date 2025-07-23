@@ -2772,6 +2772,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationError")]
         public virtual string AuthorizationError { get; set; }
 
+        /// <summary>The reasons for the conversion custom variable error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionCustomVariableError")]
+        public virtual string ConversionCustomVariableError { get; set; }
+
         /// <summary>The reasons for the custom column error</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customColumnError")]
         public virtual string CustomColumnError { get; set; }
@@ -3166,8 +3170,7 @@ namespace Google.Apis.SA360.v0.Data
 
         /// <summary>
         /// Immutable. The name of the ad. This is only used to be able to identify the ad. It does not need to be
-        /// unique and does not affect the served ad. The name field is currently only supported for DisplayUploadAd,
-        /// ImageAd, ShoppingComparisonListingAd and VideoAd.
+        /// unique and does not affect the served ad.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
