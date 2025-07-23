@@ -16297,6 +16297,24 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configure document processing to fall back to the configured processing option below if document processing is
+    /// unavailable in the original request location.
+    /// </summary>
+    public class GooglePrivacyDlpV2DocumentFallbackLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Processing will happen in the global region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalProcessing")]
+        public virtual GooglePrivacyDlpV2GlobalProcessing GlobalProcessing { get; set; }
+
+        /// <summary>Processing will happen in a multi-region that contains the current region if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiRegionProcessing")]
+        public virtual GooglePrivacyDlpV2MultiRegionProcessing MultiRegionProcessing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Location of a finding within a document.</summary>
     public class GooglePrivacyDlpV2DocumentLocation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19163,6 +19181,10 @@ namespace Google.Apis.DLP.v2.Data
     /// </summary>
     public class GooglePrivacyDlpV2ProcessingLocation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Document processing will fall back using this configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentFallbackLocation")]
+        public virtual GooglePrivacyDlpV2DocumentFallbackLocation DocumentFallbackLocation { get; set; }
+
         /// <summary>Image processing will fall back using this configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageFallbackLocation")]
         public virtual GooglePrivacyDlpV2ImageFallbackLocation ImageFallbackLocation { get; set; }
