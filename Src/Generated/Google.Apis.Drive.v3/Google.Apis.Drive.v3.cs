@@ -4447,118 +4447,6 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
-        /// operation, but success is not guaranteed. If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
-        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
-        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-        /// </summary>
-        /// <param name="name">The name of the operation resource to be cancelled.</param>
-        public virtual CancelRequest Cancel(string name)
-        {
-            return new CancelRequest(this.service, name);
-        }
-
-        /// <summary>
-        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
-        /// operation, but success is not guaranteed. If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
-        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
-        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-        /// </summary>
-        public class CancelRequest : DriveBaseServiceRequest<string>
-        {
-            /// <summary>Constructs a new Cancel request.</summary>
-            public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-            /// <summary>The name of the operation resource to be cancelled.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "cancel";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "operations/{name}:cancel";
-
-            /// <summary>Initializes Cancel parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>
-        /// Deletes a long-running operation. This method indicates that the client is no longer interested in the
-        /// operation result. It does not cancel the operation. If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.
-        /// </summary>
-        /// <param name="name">The name of the operation resource to be deleted.</param>
-        public virtual DeleteRequest Delete(string name)
-        {
-            return new DeleteRequest(this.service, name);
-        }
-
-        /// <summary>
-        /// Deletes a long-running operation. This method indicates that the client is no longer interested in the
-        /// operation result. It does not cancel the operation. If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.
-        /// </summary>
-        public class DeleteRequest : DriveBaseServiceRequest<string>
-        {
-            /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-            /// <summary>The name of the operation resource to be deleted.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "delete";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "DELETE";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "operations/{name}";
-
-            /// <summary>Initializes Delete parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>
         /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation result
         /// at intervals as recommended by the API service.
         /// </summary>
@@ -4603,91 +4491,6 @@ namespace Google.Apis.Drive.v3
                     Name = "name",
                     IsRequired = true,
                     ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>
-        /// Lists operations that match the specified filter in the request. If the server doesn't support this method,
-        /// it returns `UNIMPLEMENTED`.
-        /// </summary>
-        public virtual ListRequest List()
-        {
-            return new ListRequest(this.service);
-        }
-
-        /// <summary>
-        /// Lists operations that match the specified filter in the request. If the server doesn't support this method,
-        /// it returns `UNIMPLEMENTED`.
-        /// </summary>
-        public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ListOperationsResponse>
-        {
-            /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
-            {
-                InitParameters();
-            }
-
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
-            /// <summary>The name of the operation's parent resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Name { get; set; }
-
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "list";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "operations";
-
-            /// <summary>Initializes List parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "filter",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "pageSize",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -7325,8 +7128,8 @@ namespace Google.Apis.Drive.v3.Data
     public class DownloadRestrictionsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The effective download restriction applied to this file. This considers all restriction settings and DLP
-        /// rules.
+        /// Output only. The effective download restriction applied to this file. This considers all restriction
+        /// settings and DLP rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveDownloadRestrictionWithContext")]
         public virtual DownloadRestriction EffectiveDownloadRestrictionWithContext { get; set; }
@@ -8214,7 +8017,8 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanChangeCopyRequiresWriterPermission { get; set; }
 
             /// <summary>
-            /// Output only. Whether the current user can change the owner-applied download restrictions of the file.
+            /// Output only. Whether the current user can change the owner or organizer-applied download restrictions of
+            /// the file.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeItemDownloadRestriction")]
             public virtual System.Nullable<bool> CanChangeItemDownloadRestriction { get; set; }
@@ -8864,21 +8668,6 @@ namespace Google.Apis.Drive.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The response message for Operations.ListOperations.</summary>
-    public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The standard List next-page token.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>A list of operations that matches the specified filter in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
