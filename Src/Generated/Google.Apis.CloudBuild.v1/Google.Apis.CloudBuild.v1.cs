@@ -8887,8 +8887,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>
         /// Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the
         /// private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public
-        /// Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC
-        /// interface.
+        /// Internet. If false, Only route RFC 1918 (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16) and RFC 6598
+        /// (100.64.0.0/10) through PSC interface.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routeAllTraffic")]
         public virtual System.Nullable<bool> RouteAllTraffic { get; set; }
