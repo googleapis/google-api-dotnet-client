@@ -9849,7 +9849,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
 
         /// <summary>Output only. File size in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSizeBytes")]
-        public virtual System.Nullable<int> FileSizeBytes { get; set; }
+        public virtual System.Nullable<long> FileSizeBytes { get; set; }
 
         /// <summary>Output only. XLSX output file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xlsxOutputFile")]
