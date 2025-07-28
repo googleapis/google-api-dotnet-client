@@ -7302,6 +7302,13 @@ namespace Google.Apis.Bigquery.v2.Data
     /// </summary>
     public class ExternalServiceCost : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The billing method used for the external job. This field is only used when billed on the services sku, set
+        /// to "SERVICES_SKU". Otherwise, it is unspecified for backward compatibility.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingMethod")]
+        public virtual string BillingMethod { get; set; }
+
         /// <summary>External service cost in terms of bigquery bytes billed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesBilled")]
         public virtual System.Nullable<long> BytesBilled { get; set; }
@@ -9327,6 +9334,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalPartitionsProcessed")]
         public virtual System.Nullable<long> TotalPartitionsProcessed { get; set; }
+
+        /// <summary>
+        /// Output only. Total slot-milliseconds for the job that run on external services and billed on the service
+        /// SKU. This field is only populated for jobs that have external service costs, and is the total of the usage
+        /// for costs whose billing method is "SERVICES_SKU".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalServicesSkuSlotMs")]
+        public virtual System.Nullable<long> TotalServicesSkuSlotMs { get; set; }
 
         /// <summary>Output only. Slot-milliseconds for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSlotMs")]
