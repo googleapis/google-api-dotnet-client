@@ -5799,6 +5799,13 @@ namespace Google.Apis.Contactcenterinsights.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. Defaults to false. If set to true, and the conversation is not found, a new
+                    /// conversation will be created. In this situation, `update_mask` is ignored.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
                     /// The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset
                     /// of the following updateable fields can be provided: * `agent_id` * `language_code` * `labels` *
                     /// `metadata` * `quality_metadata` * `call_metadata` * `start_time` * `expire_time` or `ttl` *
@@ -5833,6 +5840,14 @@ namespace Google.Apis.Contactcenterinsights.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -15313,20 +15328,25 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     public class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The Cloud Storage path to the conversation audio file if already transcribed. Note that: [1] Don't
-        /// set this field if the audio is not transcribed. [2] Audio files and transcript files must be in separate
-        /// buckets / folders. [3] A source file and its corresponding audio file must share the same name to be
-        /// properly ingested, E.g. `gs://bucket/transcript/conversation1.json` and
-        /// `gs://bucket/audio/conversation1.mp3`.
+        /// Optional. The Cloud Storage path to the conversation audio file. Note that: [1] Audio files will be
+        /// transcribed if not already. [2] Audio files and transcript files must be in separate buckets / folders. [3]
+        /// A source file and its corresponding audio file must share the same name to be properly ingested, E.g.
+        /// `gs://bucket/transcript/conversation1.json` and `gs://bucket/audio/conversation1.mp3`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioBucketUri")]
         public virtual string AudioBucketUri { get; set; }
 
-        /// <summary>Optional. Specifies the type of the objects in `bucket_uri`.</summary>
+        /// <summary>
+        /// Optional. Specifies the type of the objects in `bucket_uri`. Avoid passing this. This is inferred from the
+        /// `transcript_bucket_uri`, `audio_bucket_uri`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketObjectType")]
         public virtual string BucketObjectType { get; set; }
 
-        /// <summary>Required. The Cloud Storage bucket containing source objects.</summary>
+        /// <summary>
+        /// Optional. The Cloud Storage bucket containing source objects. Avoid passing this. Pass this through one of
+        /// `transcript_bucket_uri` or `audio_bucket_uri`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketUri")]
         public virtual string BucketUri { get; set; }
 
@@ -15345,6 +15365,15 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataBucketUri")]
         public virtual string MetadataBucketUri { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud Storage path to the conversation transcripts. Note that: [1] Transcript files are
+        /// expected to be in JSON format. [2] Transcript, audio, metadata files must be in separate buckets / folders.
+        /// [3] A source file and its corresponding metadata file must share the same name to be properly ingested, E.g.
+        /// `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcriptBucketUri")]
+        public virtual string TranscriptBucketUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21942,20 +21971,25 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     public class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The Cloud Storage path to the conversation audio file if already transcribed. Note that: [1] Don't
-        /// set this field if the audio is not transcribed. [2] Audio files and transcript files must be in separate
-        /// buckets / folders. [3] A source file and its corresponding audio file must share the same name to be
-        /// properly ingested, E.g. `gs://bucket/transcript/conversation1.json` and
-        /// `gs://bucket/audio/conversation1.mp3`.
+        /// Optional. The Cloud Storage path to the conversation audio file. Note that: [1] Audio files will be
+        /// transcribed if not already. [2] Audio files and transcript files must be in separate buckets / folders. [3]
+        /// A source file and its corresponding audio file must share the same name to be properly ingested, E.g.
+        /// `gs://bucket/transcript/conversation1.json` and `gs://bucket/audio/conversation1.mp3`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioBucketUri")]
         public virtual string AudioBucketUri { get; set; }
 
-        /// <summary>Optional. Specifies the type of the objects in `bucket_uri`.</summary>
+        /// <summary>
+        /// Optional. Specifies the type of the objects in `bucket_uri`. Avoid passing this. This is inferred from the
+        /// `transcript_bucket_uri`, `audio_bucket_uri`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketObjectType")]
         public virtual string BucketObjectType { get; set; }
 
-        /// <summary>Required. The Cloud Storage bucket containing source objects.</summary>
+        /// <summary>
+        /// Optional. The Cloud Storage bucket containing source objects. Avoid passing this. Pass this through one of
+        /// `transcript_bucket_uri` or `audio_bucket_uri`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketUri")]
         public virtual string BucketUri { get; set; }
 
@@ -21974,6 +22008,15 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataBucketUri")]
         public virtual string MetadataBucketUri { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud Storage path to the conversation transcripts. Note that: [1] Transcript files are
+        /// expected to be in JSON format. [2] Transcript, audio, metadata files must be in separate buckets / folders.
+        /// [3] A source file and its corresponding metadata file must share the same name to be properly ingested, E.g.
+        /// `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcriptBucketUri")]
+        public virtual string TranscriptBucketUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
