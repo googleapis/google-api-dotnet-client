@@ -3247,7 +3247,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("conversionSourceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ConversionSourceId { get; private set; }
 
-            /// <summary>Optional. List of fields being updated.</summary>
+            /// <summary>
+            /// Optional. List of fields being updated. The following fields can be updated: `attribution_settings`,
+            /// `display_name`, `currency_code`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
