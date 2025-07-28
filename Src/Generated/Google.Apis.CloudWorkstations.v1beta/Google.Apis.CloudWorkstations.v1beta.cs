@@ -4237,6 +4237,10 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
+        /// <summary>Output only. Whether or not the current workstation is actively boosted with this id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("running")]
+        public virtual System.Nullable<bool> Running { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
