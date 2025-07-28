@@ -5351,7 +5351,7 @@ namespace Google.Apis.CloudRun.v2.Data
         }
 
         /// <summary>
-        /// Output only. A system-generated fingerprint for this version of the resource. May be used to detect
+        /// Optional. A system-generated fingerprint for this version of the resource. May be used to detect
         /// modification conflict during updates.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -6535,7 +6535,7 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Output only. A system-generated fingerprint for this version of the resource. May be used to detect
+        /// Optional. A system-generated fingerprint for this version of the resource. May be used to detect
         /// modification conflict during updates.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -7753,7 +7753,7 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Output only. A system-generated fingerprint for this version of the resource. May be used to detect
+        /// Optional. A system-generated fingerprint for this version of the resource. May be used to detect
         /// modification conflict during updates.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
