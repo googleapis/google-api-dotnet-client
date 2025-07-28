@@ -372,7 +372,8 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     {
         /// <summary>
         /// Optional. If set to true, messages will be allowed to be delivered to the app while the device is in
-        /// bandwidth constrained mode.
+        /// bandwidth constrained mode. This should only be enabled when the app has been tested to properly handle
+        /// messages in bandwidth constrained mode.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandwidthConstrainedOk")]
         public virtual System.Nullable<bool> BandwidthConstrainedOk { get; set; }
@@ -421,7 +422,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// <summary>
         /// Optional. If set to true, messages will be allowed to be delivered to the app while the device is connected
         /// over a restricted satellite network. This should only be enabled for messages that can be handled over a
-        /// restricted satellite network and only for apps that are allowed to work over a restricted satellite network.
+        /// restricted satellite network and only for apps that are enabled to work over a restricted satellite network.
         /// Note that the ability of the app to connect to a restricted satellite network is dependent on the carrier's
         /// settings and the device model.
         /// </summary>
