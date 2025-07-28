@@ -10849,6 +10849,59 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
+        /// <summary>Submits a request for user deletion for a property.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Required. The name of the property to submit user deletion for.</param>
+        public virtual SubmitUserDeletionRequest SubmitUserDeletion(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest body, string name)
+        {
+            return new SubmitUserDeletionRequest(this.service, body, name);
+        }
+
+        /// <summary>Submits a request for user deletion for a property.</summary>
+        public class SubmitUserDeletionRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse>
+        {
+            /// <summary>Constructs a new SubmitUserDeletion request.</summary>
+            public SubmitUserDeletionRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the property to submit user deletion for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "submitUserDeletion";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+name}:submitUserDeletion";
+
+            /// <summary>Initializes SubmitUserDeletion parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^properties/[^/]+$",
+                });
+            }
+        }
+
         /// <summary>Updates attribution settings on a property.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -15628,6 +15681,86 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for SubmitUserDeletion RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Firebase [application instance
+        /// ID](https://firebase.google.com/docs/reference/android/com/google/firebase/analytics/FirebaseAnalytics.html#getAppInstanceId).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appInstanceId")]
+        public virtual string AppInstanceId { get; set; }
+
+        /// <summary>Google Analytics [client ID](https://support.google.com/analytics/answer/11593727).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Google Analytics [user ID](https://firebase.google.com/docs/analytics/userid).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>
+        /// [User-provided data](https://support.google.com/analytics/answer/14077171). May contain either one email
+        /// address or one phone number. Email addresses should be normalized as such: * lowercase * remove periods
+        /// before @ for gmail.com/googlemail.com addresses * remove all spaces Phone numbers should be normalized as
+        /// such: * remove all non digit characters * add + prefix
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProvidedData")]
+        public virtual string UserProvidedData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SubmitUserDeletion RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _deletionRequestTimeRaw;
+
+        private object _deletionRequestTime;
+
+        /// <summary>
+        /// Marks the moment for which all visitor data before this point should be deleted. This is set to the time at
+        /// which the deletion request was received.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionRequestTime")]
+        public virtual string DeletionRequestTimeRaw
+        {
+            get => _deletionRequestTimeRaw;
+            set
+            {
+                _deletionRequestTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deletionRequestTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeletionRequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeletionRequestTimeDateTimeOffset instead.")]
+        public virtual object DeletionRequestTime
+        {
+            get => _deletionRequestTime;
+            set
+            {
+                _deletionRequestTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deletionRequestTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DeletionRequestTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeletionRequestTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeletionRequestTimeRaw);
+            set => DeletionRequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
