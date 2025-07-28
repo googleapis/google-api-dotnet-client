@@ -2050,6 +2050,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("installedVersion")]
         public virtual string InstalledVersion { get; set; }
 
+        /// <summary>Output only. The URI of the instance. Format: projects//zones//instances/</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceUri")]
+        public virtual string InstanceUri { get; set; }
+
         /// <summary>Output only. The kernel version of the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kernelVersion")]
         public virtual SapDiscoveryResourceInstancePropertiesKernelVersion KernelVersion { get; set; }
