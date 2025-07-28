@@ -2461,13 +2461,6 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual GoogleCloudAiplatformV1beta1ToolCodeExecution CodeExecution { get; set; }
 
         /// <summary>
-        /// Optional. Tool to support the model interacting directly with the computer. If enabled, it automatically
-        /// populates computer-use specific Function Declarations.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("computerUse")]
-        public virtual GoogleCloudAiplatformV1beta1ToolComputerUse ComputerUse { get; set; }
-
-        /// <summary>
         /// Optional. Tool to support searching public web data, powered by Vertex AI Search and Sec4 compliance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseWebSearch")]
@@ -2520,17 +2513,6 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// </summary>
     public class GoogleCloudAiplatformV1beta1ToolCodeExecution : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Tool to support computer use.</summary>
-    public class GoogleCloudAiplatformV1beta1ToolComputerUse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The environment being operated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
-        public virtual string Environment { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2725,6 +2707,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. The end offset of the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
         public virtual object EndOffset { get; set; }
+
+        /// <summary>
+        /// Optional. The frame rate of the video sent to the model. If not specified, the default value will be 1.0.
+        /// The fps range is (0.0, 24.0].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fps")]
+        public virtual System.Nullable<double> Fps { get; set; }
 
         /// <summary>Optional. The start offset of the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
