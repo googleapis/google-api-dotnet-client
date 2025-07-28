@@ -5791,6 +5791,29 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CloudControl associated with the finding.</summary>
+    public class CloudControl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the CloudControl associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudControlName")]
+        public virtual string CloudControlName { get; set; }
+
+        /// <summary>Policy type of the CloudControl</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyType")]
+        public virtual string PolicyType { get; set; }
+
+        /// <summary>Type of cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Version of the Cloud Control</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The [data profile](https://cloud.google.com/dlp/docs/data-profiles) associated with the finding.
     /// </summary>
@@ -5920,6 +5943,28 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Version of the standard or benchmark, for example, 1.1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Compliance Details associated with the finding.</summary>
+    public class ComplianceDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CloudControl associated with the finding</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudControl")]
+        public virtual CloudControl CloudControl { get; set; }
+
+        /// <summary>
+        /// Cloud Control Deployments associated with the finding. For example,
+        /// organizations/123/locations/global/cloudControlDeployments/deploymentIdentifier
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudControlDeploymentNames")]
+        public virtual System.Collections.Generic.IList<string> CloudControlDeploymentNames { get; set; }
+
+        /// <summary>Details of Frameworks associated with the finding</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameworks")]
+        public virtual System.Collections.Generic.IList<Framework> Frameworks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6126,6 +6171,21 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Compliance control associated with the finding.</summary>
+    public class Control : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the Control</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlName")]
+        public virtual string ControlName { get; set; }
+
+        /// <summary>Display name of the control. For example, AU-02.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7174,6 +7234,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudDlpInspection")]
         public virtual CloudDlpInspection CloudDlpInspection { get; set; }
 
+        /// <summary>Details about the compliance implications of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceDetails")]
+        public virtual ComplianceDetails ComplianceDetails { get; set; }
+
         /// <summary>Contains compliance information for security standards associated to the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compliances")]
         public virtual System.Collections.Generic.IList<Compliance> Compliances { get; set; }
@@ -7560,6 +7624,41 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The user defined display name for this folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceFolderDisplayName")]
         public virtual string ResourceFolderDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Compliance framework associated with the finding.</summary>
+    public class Framework : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Category of the framework associated with the finding. E.g. Security Benchmark, or Assured Workloads
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual System.Collections.Generic.IList<string> Category { get; set; }
+
+        /// <summary>The controls associated with the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controls")]
+        public virtual System.Collections.Generic.IList<Control> Controls { get; set; }
+
+        /// <summary>
+        /// Display name of the framework. For a standard framework, this will look like e.g. PCI DSS 3.2.1, whereas for
+        /// a custom framework it can be a user defined string like MyFramework
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Name of the framework associated with the finding</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Type of the framework associated with the finding, to specify whether the framework is built-in (pre-defined
+        /// and immutable) or a custom framework defined by the customer (equivalent to security posture)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9819,6 +9918,29 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CloudControl associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2CloudControl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the CloudControl associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudControlName")]
+        public virtual string CloudControlName { get; set; }
+
+        /// <summary>Policy type of the CloudControl</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyType")]
+        public virtual string PolicyType { get; set; }
+
+        /// <summary>Type of cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Version of the Cloud Control</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The [data profile](https://cloud.google.com/dlp/docs/data-profiles) associated with the finding.
     /// </summary>
@@ -9953,6 +10075,28 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Compliance Details associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2ComplianceDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CloudControl associated with the finding</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudControl")]
+        public virtual GoogleCloudSecuritycenterV2CloudControl CloudControl { get; set; }
+
+        /// <summary>
+        /// Cloud Control Deployments associated with the finding. For example,
+        /// organizations/123/locations/global/cloudControlDeployments/deploymentIdentifier
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudControlDeploymentNames")]
+        public virtual System.Collections.Generic.IList<string> CloudControlDeploymentNames { get; set; }
+
+        /// <summary>Details of Frameworks associated with the finding</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameworks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2Framework> Frameworks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains information about the IP connection associated with the finding.</summary>
     public class GoogleCloudSecuritycenterV2Connection : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10063,6 +10207,21 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Compliance control associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2Control : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the Control</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlName")]
+        public virtual string ControlName { get; set; }
+
+        /// <summary>Display name of the control. For example, AU-02.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11063,6 +11222,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudDlpInspection")]
         public virtual GoogleCloudSecuritycenterV2CloudDlpInspection CloudDlpInspection { get; set; }
 
+        /// <summary>Details about the compliance implications of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceDetails")]
+        public virtual GoogleCloudSecuritycenterV2ComplianceDetails ComplianceDetails { get; set; }
+
         /// <summary>Contains compliance information for security standards associated to the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compliances")]
         public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2Compliance> Compliances { get; set; }
@@ -11458,6 +11621,41 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The user defined display name for this folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceFolderDisplayName")]
         public virtual string ResourceFolderDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Compliance framework associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2Framework : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Category of the framework associated with the finding. E.g. Security Benchmark, or Assured Workloads
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual System.Collections.Generic.IList<string> Category { get; set; }
+
+        /// <summary>The controls associated with the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controls")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2Control> Controls { get; set; }
+
+        /// <summary>
+        /// Display name of the framework. For a standard framework, this will look like e.g. PCI DSS 3.2.1, whereas for
+        /// a custom framework it can be a user defined string like MyFramework
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Name of the framework associated with the finding</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Type of the framework associated with the finding, to specify whether the framework is built-in (pre-defined
+        /// and immutable) or a custom framework defined by the customer (equivalent to security posture)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12889,7 +13087,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The GCP metadata associated with the finding.</summary>
+        /// <summary>The Google Cloud metadata associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpMetadata")]
         public virtual GcpMetadata GcpMetadata { get; set; }
 
