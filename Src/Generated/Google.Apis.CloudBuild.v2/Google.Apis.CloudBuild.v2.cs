@@ -2208,21 +2208,6 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Capabilities adds and removes POSIX capabilities from running containers.</summary>
-    public class Capabilities : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Added capabilities +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("add")]
-        public virtual System.Collections.Generic.IList<string> Add { get; set; }
-
-        /// <summary>Optional. Removed capabilities +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("drop")]
-        public virtual System.Collections.Generic.IList<string> Drop { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// ChildStatusReference is used to point to the statuses of individual TaskRuns and Runs within this PipelineRun.
     /// </summary>
@@ -4231,10 +4216,6 @@ namespace Google.Apis.CloudBuild.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowPrivilegeEscalation")]
         public virtual System.Nullable<bool> AllowPrivilegeEscalation { get; set; }
-
-        /// <summary>Optional. Adds and removes POSIX capabilities from running containers.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
-        public virtual Capabilities Capabilities { get; set; }
 
         /// <summary>Run container in privileged mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privileged")]
