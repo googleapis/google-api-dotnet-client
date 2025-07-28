@@ -4528,8 +4528,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// A filter to apply on the list results. The supported features are: user_pseudo_id,
-                            /// state, starred. Examples: "user_pseudo_id = some_id" "starred = true"
+                            /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields
+                            /// are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels`
+                            /// * `create_time` * `update_time` Examples: "user_pseudo_id = some_id" "display_name =
+                            /// \"some_name\"" "starred = true" "is_pinned=true AND (NOT labels:hidden)" "create_time
+                            /// &amp;gt; \"1970-01-01T12:00:00Z\""
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -7167,6 +7170,130 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             this.service = service;
                         }
 
+                        /// <summary>Gets an Assistant.</summary>
+                        /// <param name="name">
+                        /// Required. Resource name of Assistant. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets an Assistant.</summary>
+                        public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAssistant>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Resource name of Assistant. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Updates an Assistant</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Immutable. Resource name of the assistant. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                        /// It must be a UTF-8 encoded string with a length limit of 1024 characters.
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAssistant body, string name)
+                        {
+                            return new PatchRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Updates an Assistant</summary>
+                        public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAssistant>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAssistant body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Immutable. Resource name of the assistant. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                            /// It must be a UTF-8 encoded string with a length limit of 1024 characters.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>The list of fields to update.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAssistant Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
                         /// <summary>Assists the user with a query in a streaming fashion.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
@@ -9273,8 +9400,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// A filter to apply on the list results. The supported features are: user_pseudo_id,
-                            /// state, starred. Examples: "user_pseudo_id = some_id" "starred = true"
+                            /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields
+                            /// are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels`
+                            /// * `create_time` * `update_time` Examples: "user_pseudo_id = some_id" "display_name =
+                            /// \"some_name\"" "starred = true" "is_pinned=true AND (NOT labels:hidden)" "create_time
+                            /// &amp;gt; \"1970-01-01T12:00:00Z\""
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -13663,8 +13793,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// A filter to apply on the list results. The supported features are: user_pseudo_id, state,
-                        /// starred. Examples: "user_pseudo_id = some_id" "starred = true"
+                        /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: *
+                        /// `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` *
+                        /// `create_time` * `update_time` Examples: "user_pseudo_id = some_id" "display_name =
+                        /// \"some_name\"" "starred = true" "is_pinned=true AND (NOT labels:hidden)" "create_time
+                        /// &amp;gt; \"1970-01-01T12:00:00Z\""
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -19757,6 +19890,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Discovery Engine Assistant resource.</summary>
+    public class GoogleCloudDiscoveryengineV1Assistant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Resource name of the assistant. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+        /// It must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.BatchCreateTargetSites operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
@@ -19967,14 +20115,15 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Nullable<bool> IsDefault { get; set; }
 
         /// <summary>
-        /// KMS key resource name which will be used to encrypt resources
+        /// Required. KMS key resource name which will be used to encrypt resources
         /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
 
         /// <summary>
-        /// KMS key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`.
+        /// Output only. KMS key version resource name which will be used to encrypt resources
+        /// `/cryptoKeyVersions/{keyVersion}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
         public virtual string KmsKeyVersion { get; set; }
@@ -25692,14 +25841,15 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Nullable<bool> IsDefault { get; set; }
 
         /// <summary>
-        /// KMS key resource name which will be used to encrypt resources
+        /// Required. KMS key resource name which will be used to encrypt resources
         /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
 
         /// <summary>
-        /// KMS key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`.
+        /// Output only. KMS key version resource name which will be used to encrypt resources
+        /// `/cryptoKeyVersions/{keyVersion}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
         public virtual string KmsKeyVersion { get; set; }
@@ -30472,8 +30622,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1alphaListSessionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A filter to apply on the list results. The supported features are: user_pseudo_id, state, starred. Examples:
-        /// "user_pseudo_id = some_id" "starred = true"
+        /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id`
+        /// * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples:
+        /// "user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "is_pinned=true AND (NOT
+        /// labels:hidden)" "create_time &amp;gt; \"1970-01-01T12:00:00Z\""
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -35648,6 +35800,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assistSkippedReasons")]
         public virtual System.Collections.Generic.IList<string> AssistSkippedReasons { get; set; }
 
+        /// <summary>
+        /// Immutable. Identifier. Resource name of the `AssistAnswer`. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/assistAnswers/{assist_answer}`
+        /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>Replies of the assistant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replies")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaAssistAnswerReply> Replies { get; set; }
@@ -35684,6 +35844,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Optional. IANA time zone, e.g. Europe/Budapest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Discovery Engine Assistant resource.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAssistant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Resource name of the assistant. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+        /// It must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -36774,14 +36949,15 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Nullable<bool> IsDefault { get; set; }
 
         /// <summary>
-        /// KMS key resource name which will be used to encrypt resources
+        /// Required. KMS key resource name which will be used to encrypt resources
         /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
 
         /// <summary>
-        /// KMS key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`.
+        /// Output only. KMS key version resource name which will be used to encrypt resources
+        /// `/cryptoKeyVersions/{keyVersion}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
         public virtual string KmsKeyVersion { get; set; }
@@ -42154,6 +42330,24 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataUseTermsVersion")]
         public virtual string DataUseTermsVersion { get; set; }
 
+        /// <summary>Optional. Parameters for Agentspace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saasParams")]
+        public virtual GoogleCloudDiscoveryengineV1betaProvisionProjectRequestSaasParams SaasParams { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters for Agentspace.</summary>
+    public class GoogleCloudDiscoveryengineV1betaProvisionProjectRequestSaasParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Set to `true` to specify that caller has read and would like to give consent to the [Terms for
+        /// Agent Space quality of service].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptBizQos")]
+        public virtual System.Nullable<bool> AcceptBizQos { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -42636,7 +42830,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
 
-        /// <summary>Required. A list of records to rank. At most 200 records to rank.</summary>
+        /// <summary>Required. A list of records to rank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("records")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaRankingRecord> Records { get; set; }
 
@@ -45863,13 +46057,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageGenerationSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecImageGenerationSpec ImageGenerationSpec { get; set; }
 
-        /// <summary>
-        /// Optional. The name of the tool registry to use. Format:
-        /// `projects/{project}/locations/{location}/toolRegistries/{tool_registry}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("toolRegistry")]
-        public virtual string ToolRegistry { get; set; }
-
         /// <summary>Optional. Specification of the Vertex AI Search tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexAiSearchSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecVertexAiSearchSpec VertexAiSearchSpec { get; set; }
@@ -45908,13 +46095,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
 
         /// <summary>
-        /// Optional. Deprecated. Please refrain from using this field. Whether the Vertex AI Search tool is disabled.
-        /// Default value is false, the tool is enabled by default.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; }
-
-        /// <summary>
         /// Optional. The filter syntax consists of an expression language for constructing a predicate from one or more
         /// fields of the documents being filtered. Filter expression is case-sensitive. If this field is
         /// unrecognizable, an `INVALID_ARGUMENT` is returned. Filtering in Vertex AI Search is done by mapping the LHS
@@ -45941,12 +46121,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Specification of the web grounding tool.</summary>
     public class GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecWebGroundingSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Deprecated. Please refrain from using this field. Whether the web grounding tool is enabled.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
