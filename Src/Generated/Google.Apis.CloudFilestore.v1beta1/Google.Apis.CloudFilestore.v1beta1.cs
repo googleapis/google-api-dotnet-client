@@ -4194,6 +4194,45 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateReasons")]
         public virtual System.Collections.Generic.IList<string> StateReasons { get; set; }
 
+        private string _stateUpdateTimeRaw;
+
+        private object _stateUpdateTime;
+
+        /// <summary>Output only. The time when the replica state was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateUpdateTime")]
+        public virtual string StateUpdateTimeRaw
+        {
+            get => _stateUpdateTimeRaw;
+            set
+            {
+                _stateUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _stateUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StateUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StateUpdateTimeDateTimeOffset instead.")]
+        public virtual object StateUpdateTime
+        {
+            get => _stateUpdateTime;
+            set
+            {
+                _stateUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _stateUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StateUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StateUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateUpdateTimeRaw);
+            set => StateUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
