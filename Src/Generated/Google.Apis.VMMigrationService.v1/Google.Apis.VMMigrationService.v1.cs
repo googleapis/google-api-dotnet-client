@@ -5983,7 +5983,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secureBoot")]
         public virtual System.Nullable<bool> SecureBoot { get; set; }
 
-        /// <summary>The service account to associate the VM with.</summary>
+        /// <summary>Optional. The service account to associate the VM with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
