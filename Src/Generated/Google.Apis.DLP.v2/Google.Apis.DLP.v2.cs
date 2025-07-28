@@ -16298,16 +16298,16 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Configure document processing to fall back to the configured processing option below if document processing is
+    /// Configure document processing to fall back to any of the following processing options if document processing is
     /// unavailable in the original request location.
     /// </summary>
     public class GooglePrivacyDlpV2DocumentFallbackLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Processing will happen in the global region.</summary>
+        /// <summary>Processing occurs in the global region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("globalProcessing")]
         public virtual GooglePrivacyDlpV2GlobalProcessing GlobalProcessing { get; set; }
 
-        /// <summary>Processing will happen in a multi-region that contains the current region if available.</summary>
+        /// <summary>Processing occurs in a multi-region that contains the current region if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiRegionProcessing")]
         public virtual GooglePrivacyDlpV2MultiRegionProcessing MultiRegionProcessing { get; set; }
 
@@ -17172,7 +17172,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Processing will happen in the global region.</summary>
+    /// <summary>Processing occurs in the global region.</summary>
     public class GooglePrivacyDlpV2GlobalProcessing : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -17365,16 +17365,16 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Configure image processing to fall back to the configured processing option below if unavailable in the request
-    /// location.
+    /// Configure image processing to fall back to any of the following processing options if image processing is
+    /// unavailable in the original request location.
     /// </summary>
     public class GooglePrivacyDlpV2ImageFallbackLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Processing will happen in the global region.</summary>
+        /// <summary>Processing occurs in the global region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("globalProcessing")]
         public virtual GooglePrivacyDlpV2GlobalProcessing GlobalProcessing { get; set; }
 
-        /// <summary>Processing will happen in a multi-region that contains the current region if available.</summary>
+        /// <summary>Processing occurs in a multi-region that contains the current region if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiRegionProcessing")]
         public virtual GooglePrivacyDlpV2MultiRegionProcessing MultiRegionProcessing { get; set; }
 
@@ -18803,7 +18803,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Processing will happen in a multi-region that contains the current region if available.</summary>
+    /// <summary>Processing occurs in a multi-region that contains the current region if available.</summary>
     public class GooglePrivacyDlpV2MultiRegionProcessing : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -19181,11 +19181,11 @@ namespace Google.Apis.DLP.v2.Data
     /// </summary>
     public class GooglePrivacyDlpV2ProcessingLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Document processing will fall back using this configuration.</summary>
+        /// <summary>Document processing falls back using this configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentFallbackLocation")]
         public virtual GooglePrivacyDlpV2DocumentFallbackLocation DocumentFallbackLocation { get; set; }
 
-        /// <summary>Image processing will fall back using this configuration.</summary>
+        /// <summary>Image processing falls back using this configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageFallbackLocation")]
         public virtual GooglePrivacyDlpV2ImageFallbackLocation ImageFallbackLocation { get; set; }
 
@@ -19502,7 +19502,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>
         /// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that
-        /// contains statistical information on the possible values of this column (below).
+        /// contains statistical information on the possible values of this column.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
         public virtual string CustomTag { get; set; }
@@ -19557,7 +19557,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>
         /// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that
-        /// contains statistical information on the possible values of this column (below).
+        /// contains statistical information on the possible values of this column.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
         public virtual string CustomTag { get; set; }
@@ -19979,7 +19979,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>All result fields mentioned below are updated while the job is processing.</summary>
+    /// <summary>All Result fields are updated while the job is processing.</summary>
     public class GooglePrivacyDlpV2Result : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Statistics related to the processing of hybrid inspect.</summary>
@@ -20927,7 +20927,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>
         /// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that
-        /// contains statistical information on the possible values of this column (below).
+        /// contains statistical information on the possible values of this column.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
         public virtual string CustomTag { get; set; }
