@@ -6704,12 +6704,177 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Timing information for the stage execution.</summary>
+    public class StageSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _actualEndTimeRaw;
+
+        private object _actualEndTime;
+
+        /// <summary>Actual end time of the stage. Set only if the stage has completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actualEndTime")]
+        public virtual string ActualEndTimeRaw
+        {
+            get => _actualEndTimeRaw;
+            set
+            {
+                _actualEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _actualEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ActualEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ActualEndTimeDateTimeOffset instead.")]
+        public virtual object ActualEndTime
+        {
+            get => _actualEndTime;
+            set
+            {
+                _actualEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _actualEndTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ActualEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ActualEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ActualEndTimeRaw);
+            set => ActualEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _actualStartTimeRaw;
+
+        private object _actualStartTime;
+
+        /// <summary>Actual start time of the stage. Set only if the stage has started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actualStartTime")]
+        public virtual string ActualStartTimeRaw
+        {
+            get => _actualStartTimeRaw;
+            set
+            {
+                _actualStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _actualStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ActualStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ActualStartTimeDateTimeOffset instead.")]
+        public virtual object ActualStartTime
+        {
+            get => _actualStartTime;
+            set
+            {
+                _actualStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _actualStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ActualStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ActualStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ActualStartTimeRaw);
+            set => ActualStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _estimatedEndTimeRaw;
+
+        private object _estimatedEndTime;
+
+        /// <summary>When the stage is expected to end. Set only if the stage has not completed yet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedEndTime")]
+        public virtual string EstimatedEndTimeRaw
+        {
+            get => _estimatedEndTimeRaw;
+            set
+            {
+                _estimatedEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _estimatedEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EstimatedEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EstimatedEndTimeDateTimeOffset instead.")]
+        public virtual object EstimatedEndTime
+        {
+            get => _estimatedEndTime;
+            set
+            {
+                _estimatedEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _estimatedEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EstimatedEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EstimatedEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EstimatedEndTimeRaw);
+            set => EstimatedEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _estimatedStartTimeRaw;
+
+        private object _estimatedStartTime;
+
+        /// <summary>When the stage is expected to start. Set only if the stage has not started yet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedStartTime")]
+        public virtual string EstimatedStartTimeRaw
+        {
+            get => _estimatedStartTimeRaw;
+            set
+            {
+                _estimatedStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _estimatedStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EstimatedStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EstimatedStartTimeDateTimeOffset instead.")]
+        public virtual object EstimatedStartTime
+        {
+            get => _estimatedStartTime;
+            set
+            {
+                _estimatedStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _estimatedStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EstimatedStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EstimatedStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EstimatedStartTimeRaw);
+            set => EstimatedStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Status of an upgrade stage.</summary>
     public class StageStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Read pool instances upgrade metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readPoolInstancesUpgrade")]
         public virtual ReadPoolInstancesUpgradeStageStatus ReadPoolInstancesUpgrade { get; set; }
+
+        /// <summary>Output only. Timing information for the stage execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
+        public virtual StageSchedule Schedule { get; set; }
 
         /// <summary>Upgrade stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stage")]
@@ -6831,6 +6996,19 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// BackupDRConfiguration to capture the backup and disaster recovery details of database resource.
+    /// </summary>
+    public class StorageDatabasecenterPartnerapiV1mainBackupDRConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates if the resource is managed by BackupDR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupdrManaged")]
+        public virtual System.Nullable<bool> BackupdrManaged { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A backup run.</summary>
     public class StorageDatabasecenterPartnerapiV1mainBackupRun : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6939,6 +7117,71 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     }
 
     /// <summary>
+    /// Config based signal data. This is used to send signals to Condor which are based on the DB level configurations.
+    /// These will be used to send signals for self managed databases.
+    /// </summary>
+    public class StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Full Resource name of the source resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
+        public virtual string FullResourceName { get; set; }
+
+        private string _lastRefreshTimeRaw;
+
+        private object _lastRefreshTime;
+
+        /// <summary>Required. Last time signal was refreshed</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
+        public virtual string LastRefreshTimeRaw
+        {
+            get => _lastRefreshTimeRaw;
+            set
+            {
+                _lastRefreshTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastRefreshTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastRefreshTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastRefreshTimeDateTimeOffset instead.")]
+        public virtual object LastRefreshTime
+        {
+            get => _lastRefreshTime;
+            set
+            {
+                _lastRefreshTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastRefreshTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastRefreshTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastRefreshTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRefreshTimeRaw);
+            set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Database resource id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId ResourceId { get; set; }
+
+        /// <summary>Signal data for boolean signals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalBoolValue")]
+        public virtual System.Nullable<bool> SignalBoolValue { get; set; }
+
+        /// <summary>Required. Signal type of the signal</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalType")]
+        public virtual string SignalType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Any custom metadata associated with the resource. e.g. A spanner instance can have multiple databases with its
     /// own unique metadata. Information for these individual databases can be captured in custom metadata data
     /// </summary>
@@ -6957,10 +7200,17 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
 
     /// <summary>
     /// DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into
-    /// Condor platform. Next ID: 8
+    /// Condor platform. Next ID: 9
     /// </summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Config based signal data is used to ingest signals that are generated based on the configuration of the
+        /// database resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configBasedSignalData")]
+        public virtual StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData ConfigBasedSignalData { get; set; }
+
         private string _feedTimestampRaw;
 
         private object _feedTimestamp;
@@ -7178,7 +7428,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 25</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 26</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -7192,6 +7442,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// <summary>Latest backup run information for this instance</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
         public virtual StorageDatabasecenterPartnerapiV1mainBackupRun BackupRun { get; set; }
+
+        /// <summary>Optional. BackupDR Configuration for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupdrConfiguration")]
+        public virtual StorageDatabasecenterPartnerapiV1mainBackupDRConfiguration BackupdrConfiguration { get; set; }
 
         private string _creationTimeRaw;
 
@@ -7718,6 +7972,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// <summary>The specific engine that the underlying database is running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("engine")]
         public virtual string Engine { get; set; }
+
+        /// <summary>
+        /// Minor version of the underlying database engine. Example values: For MySQL, it could be "8.0.32", "5.7.32"
+        /// etc.. For Postgres, it could be "14.3", "15.3" etc..
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minorVersion")]
+        public virtual string MinorVersion { get; set; }
 
         /// <summary>Type of specific database product. It could be CloudSQL, AlloyDB etc..</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
