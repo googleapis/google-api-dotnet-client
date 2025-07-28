@@ -1789,6 +1789,10 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adminSettings")]
         public virtual AdminSettings AdminSettings { get; set; }
 
+        /// <summary>Optional. Storage class of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classType")]
+        public virtual string ClassType { get; set; }
+
         /// <summary>
         /// Network name in the consumer project. Format: `projects/{project}/global/networks/{network}`. Note that the
         /// consumer network may be in a different GCP project than the consumer project that is hosting the Looker
