@@ -975,8 +975,9 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual string EnergyEfficiencyClass { get; set; }
 
         /// <summary>
-        /// The list of destinations to exclude for this target (corresponds to unchecked check boxes in Merchant
-        /// Center). For more information, see [Excluded
+        /// Destinations also known as [Marketing methods](https://support.google.com/merchants/answer/15130232)
+        /// selections. The list of destinations to exclude for this target (corresponds to unchecked check boxes in
+        /// Merchant Center). For more information, see [Excluded
         /// destination](https://support.google.com/merchants/answer/6324486). Note: We recommend setting destinations
         /// on datasources level for most use cases. Use this field within products to only setup exceptions.
         /// </summary>
@@ -1080,11 +1081,12 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual string ImageLink { get; set; }
 
         /// <summary>
-        /// The list of destinations to include for this target (corresponds to checked check boxes in Merchant Center).
-        /// Default destinations are always included unless provided in `excludedDestinations`. For more information,
-        /// see [Included destination](https://support.google.com/merchants/answer/7501026). Note: We recommend setting
-        /// destinations on datasources level for most use cases. Use this field within products to only setup
-        /// exceptions.
+        /// Destinations also known as [Marketing methods](https://support.google.com/merchants/answer/15130232)
+        /// selections. The list of destinations to include for this target (corresponds to checked check boxes in
+        /// Merchant Center). Default destinations are always included unless provided in `excludedDestinations`. For
+        /// more information, see [Included destination](https://support.google.com/merchants/answer/7501026). Note: We
+        /// recommend setting destinations on datasources level for most use cases. Use this field within products to
+        /// only setup exceptions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedDestinations")]
         public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; }
