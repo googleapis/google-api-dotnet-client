@@ -4957,9 +4957,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Output only. Annotations associated with the plain-text body of the message. To add basic formatting to a text
-    /// message, see [Format text messages](https://developers.google.com/workspace/chat/format-messages). Example
-    /// plain-text message body:
+    /// Annotations can be associated with the plain-text body of the message or with chips that link to Google
+    /// Workspace resources like Google Docs or Sheets with a `start_index` and `length` of 0. To add basic formatting
+    /// to a text message, see [Format text messages](https://developers.google.com/workspace/chat/format-messages).
+    /// Example plain-text message body:
     /// ```
     /// Hello @FooBot how are you!"
     /// ```
@@ -4976,7 +4977,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customEmojiMetadata")]
         public virtual CustomEmojiMetadata CustomEmojiMetadata { get; set; }
 
-        /// <summary>Length of the substring in the plain-text message body this annotation corresponds to.</summary>
+        /// <summary>
+        /// Length of the substring in the plain-text message body this annotation corresponds to. If not present,
+        /// indicates a length of 0.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("length")]
         public virtual System.Nullable<int> Length { get; set; }
 
@@ -5116,6 +5120,27 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>A button with text and `onclick` action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textButton")]
         public virtual TextButton TextButton { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data for Calendar event links.</summary>
+    public class CalendarEventLinkData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The [Calendar identifier](https://developers.google.com/workspace/calendar/api/v3/reference/calendars) of
+        /// the linked Calendar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calendarId")]
+        public virtual string CalendarId { get; set; }
+
+        /// <summary>
+        /// The [Event identifier](https://developers.google.com/workspace/calendar/api/v3/reference/events) of the
+        /// linked Calendar event.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7931,6 +7956,28 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Data for Meet space links.</summary>
+    public class MeetSpaceLinkData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Output only. If the Meet is a Huddle, indicates the status of the huddle. Otherwise, this is
+        /// unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("huddleStatus")]
+        public virtual string HuddleStatus { get; set; }
+
+        /// <summary>Meeting code of the linked Meet space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meetingCode")]
+        public virtual string MeetingCode { get; set; }
+
+        /// <summary>Indicates the type of the Meet space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a membership relation in Google Chat, such as whether a user or Chat app is invited to, part of, or
     /// absent from a space.
@@ -8170,7 +8217,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("actionResponse")]
         public virtual ActionResponse ActionResponse { get; set; }
 
-        /// <summary>Output only. Annotations associated with the `text` in this message.</summary>
+        /// <summary>
+        /// Output only. Annotations can be associated with the plain-text body of the message or with chips that link
+        /// to Google Workspace resources like Google Docs or Sheets with a `start_index` and `length` of 0.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IList<Annotation> Annotations { get; set; }
 
@@ -8744,9 +8794,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A rich link to a resource.</summary>
+    /// <summary>
+    /// A rich link to a resource. Rich links can be associated with the plain-text body of the message or represent
+    /// chips that link to Google Workspace resources like Google Docs or Sheets with a with `start_index` and `length`
+    /// of 0.
+    /// </summary>
     public class RichLinkMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Data for a calendar event link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calendarEventLinkData")]
+        public virtual CalendarEventLinkData CalendarEventLinkData { get; set; }
+
         /// <summary>Data for a chat space link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chatSpaceLinkData")]
         public virtual ChatSpaceLinkData ChatSpaceLinkData { get; set; }
@@ -8754,6 +8812,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Data for a drive link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveLinkData")]
         public virtual DriveLinkData DriveLinkData { get; set; }
+
+        /// <summary>Data for a meet space link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meetSpaceLinkData")]
+        public virtual MeetSpaceLinkData MeetSpaceLinkData { get; set; }
 
         /// <summary>The rich link type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("richLinkType")]
