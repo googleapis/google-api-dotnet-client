@@ -2877,6 +2877,19 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// BackupDRConfiguration to capture the backup and disaster recovery details of database resource.
+    /// </summary>
+    public class BackupDRConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates if the resource is managed by BackupDR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupdrManaged")]
+        public virtual System.Nullable<bool> BackupdrManaged { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Backup is consisted of multiple backup files.</summary>
     public class BackupFile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3221,6 +3234,14 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Optional. The number of replica nodes per shard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicaCount")]
         public virtual System.Nullable<int> ReplicaCount { get; set; }
+
+        /// <summary>Optional. Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Optional. Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Optional. Number of shards for the Redis cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
@@ -3912,7 +3933,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 25</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 26</summary>
     public class DatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -3926,6 +3947,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Latest backup run information for this instance</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
         public virtual BackupRun BackupRun { get; set; }
+
+        /// <summary>Optional. BackupDR Configuration for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupdrConfiguration")]
+        public virtual BackupDRConfiguration BackupdrConfiguration { get; set; }
 
         private string _creationTimeRaw;
 
