@@ -4071,9 +4071,9 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRegion")]
         public virtual string CloudRegion { get; set; }
 
-        /// <summary>Output only. The id of Virtual Private Cloud (VPC) of the host.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cloudVpcId")]
-        public virtual string CloudVpcId { get; set; }
+        /// <summary>Output only. The ids of cloud virtual networks of the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudVirtualNetworkIds")]
+        public virtual System.Collections.Generic.IList<string> CloudVirtualNetworkIds { get; set; }
 
         /// <summary>Output only. The cloud zone of the host.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudZone")]
