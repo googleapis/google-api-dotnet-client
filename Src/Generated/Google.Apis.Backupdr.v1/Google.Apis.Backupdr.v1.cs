@@ -5831,48 +5831,6 @@ namespace Google.Apis.Backupdr.v1.Data
             set => LastSuccessfulBackupConsistencyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        private string _lastSuccessfulLogBackupConsistencyTimeRaw;
-
-        private object _lastSuccessfulLogBackupConsistencyTime;
-
-        /// <summary>Output only. If the last log backup were successful, this field has the consistency date.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastSuccessfulLogBackupConsistencyTime")]
-        public virtual string LastSuccessfulLogBackupConsistencyTimeRaw
-        {
-            get => _lastSuccessfulLogBackupConsistencyTimeRaw;
-            set
-            {
-                _lastSuccessfulLogBackupConsistencyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _lastSuccessfulLogBackupConsistencyTimeRaw = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="object"/> representation of <see cref="LastSuccessfulLogBackupConsistencyTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSuccessfulLogBackupConsistencyTimeDateTimeOffset instead.")]
-        public virtual object LastSuccessfulLogBackupConsistencyTime
-        {
-            get => _lastSuccessfulLogBackupConsistencyTime;
-            set
-            {
-                _lastSuccessfulLogBackupConsistencyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _lastSuccessfulLogBackupConsistencyTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of
-        /// <see cref="LastSuccessfulLogBackupConsistencyTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LastSuccessfulLogBackupConsistencyTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSuccessfulLogBackupConsistencyTimeRaw);
-            set => LastSuccessfulLogBackupConsistencyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6044,7 +6002,8 @@ namespace Google.Apis.Backupdr.v1.Data
     public class BackupPlan : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The backup rules for this `BackupPlan`. There must be at least one `BackupRule` message.
+        /// Optional. The backup rules for this `BackupPlan`. There must be at least one `BackupRule` message if
+        /// on_demand_retention_limit_days is not set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRules")]
         public virtual System.Collections.Generic.IList<BackupRule> BackupRules { get; set; }
