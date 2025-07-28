@@ -874,7 +874,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     /// services" in some contexts, such as by the "service" keyword in a .proto file, but they are different from API
     /// Services, which represent a concrete implementation of an interface as opposed to simply a description of
     /// methods and bindings. They are also sometimes simply referred to as "APIs" in other contexts, such as the name
-    /// of this message itself. See https://cloud.google.com/apis/design/glossary for detailed terminology.
+    /// of this message itself. See https://cloud.google.com/apis/design/glossary for detailed terminology. New usages
+    /// of this message as an alternative to ServiceDescriptorProto are strongly discouraged. This message does not
+    /// reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of
+    /// FileDescriptorSet which preserves the necessary information.
     /// </summary>
     public class Api : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1986,7 +1989,11 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Enum type definition.</summary>
+    /// <summary>
+    /// Enum type definition. New usages of this message as an alternative to EnumDescriptorProto are strongly
+    /// discouraged. This message does not reliability preserve all information necessary to model the schema and
+    /// preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information.
+    /// </summary>
     public class Enum : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The source edition string, only valid when syntax is SYNTAX_EDITIONS.</summary>
@@ -2017,7 +2024,11 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Enum value definition.</summary>
+    /// <summary>
+    /// Enum value definition. New usages of this message as an alternative to EnumValueDescriptorProto are strongly
+    /// discouraged. This message does not reliability preserve all information necessary to model the schema and
+    /// preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information.
+    /// </summary>
     public class EnumValue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Enum value name.</summary>
@@ -2070,7 +2081,11 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A single field of a message type.</summary>
+    /// <summary>
+    /// A single field of a message type. New usages of this message as an alternative to FieldDescriptorProto are
+    /// strongly discouraged. This message does not reliability preserve all information necessary to model the schema
+    /// and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information.
+    /// </summary>
     public class Field : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The field cardinality.</summary>
@@ -2658,10 +2673,18 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Method represents a method of an API interface.</summary>
+    /// <summary>
+    /// Method represents a method of an API interface. New usages of this message as an alternative to
+    /// MethodDescriptorProto are strongly discouraged. This message does not reliability preserve all information
+    /// necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the
+    /// necessary information.
+    /// </summary>
     public class Method : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The source edition string, only valid when syntax is SYNTAX_EDITIONS.</summary>
+        /// <summary>
+        /// The source edition string, only valid when syntax is SYNTAX_EDITIONS. This field should be ignored, instead
+        /// the edition should be inherited from Api. This is similar to Field and EnumValue.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edition")]
         public virtual string Edition { get; set; }
 
@@ -2689,7 +2712,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responseTypeUrl")]
         public virtual string ResponseTypeUrl { get; set; }
 
-        /// <summary>The source syntax of this method.</summary>
+        /// <summary>
+        /// The source syntax of this method. This field should be ignored, instead the syntax should be inherited from
+        /// Api. This is similar to Field and EnumValue.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syntax")]
         public virtual string Syntax { get; set; }
 
@@ -3159,7 +3185,11 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A protocol buffer option, which can be attached to a message, field, enumeration, etc.</summary>
+    /// <summary>
+    /// A protocol buffer option, which can be attached to a message, field, enumeration, etc. New usages of this
+    /// message as an alternative to FileOptions, MessageOptions, FieldOptions, EnumOptions, EnumValueOptions,
+    /// ServiceOptions, or MethodOptions are strongly discouraged.
+    /// </summary>
     public class Option : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4005,7 +4035,11 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A protocol buffer message type.</summary>
+    /// <summary>
+    /// A protocol buffer message type. New usages of this message as an alternative to DescriptorProto are strongly
+    /// discouraged. This message does not reliability preserve all information necessary to model the schema and
+    /// preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information.
+    /// </summary>
     public class Type : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The source edition string, only valid when syntax is SYNTAX_EDITIONS.</summary>
