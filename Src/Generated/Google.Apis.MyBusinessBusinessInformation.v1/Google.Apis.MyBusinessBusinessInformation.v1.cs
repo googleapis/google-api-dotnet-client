@@ -2245,6 +2245,10 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hasVoiceOfMerchant")]
         public virtual System.Nullable<bool> HasVoiceOfMerchant { get; set; }
 
+        /// <summary>Output only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isParticularlyPersonalPlace")]
+        public virtual System.Nullable<bool> IsParticularlyPersonalPlace { get; set; }
+
         /// <summary>Output only. A link to the location on Maps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapsUri")]
         public virtual string MapsUri { get; set; }
