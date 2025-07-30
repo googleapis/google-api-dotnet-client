@@ -268,22 +268,22 @@ namespace Google.Apis.Merchant.ordertracking_v1beta
         public AccountsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-            Ordertrackingsignals = new OrdertrackingsignalsResource(service);
+            OrderTrackingSignals = new OrderTrackingSignalsResource(service);
         }
 
-        /// <summary>Gets the Ordertrackingsignals resource.</summary>
-        public virtual OrdertrackingsignalsResource Ordertrackingsignals { get; }
+        /// <summary>Gets the OrderTrackingSignals resource.</summary>
+        public virtual OrderTrackingSignalsResource OrderTrackingSignals { get; }
 
-        /// <summary>The "ordertrackingsignals" collection of methods.</summary>
-        public class OrdertrackingsignalsResource
+        /// <summary>The "orderTrackingSignals" collection of methods.</summary>
+        public class OrderTrackingSignalsResource
         {
-            private const string Resource = "ordertrackingsignals";
+            private const string Resource = "orderTrackingSignals";
 
             /// <summary>The service which this resource belongs to.</summary>
             private readonly Google.Apis.Services.IClientService service;
 
             /// <summary>Constructs a new resource.</summary>
-            public OrdertrackingsignalsResource(Google.Apis.Services.IClientService service)
+            public OrderTrackingSignalsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
             }
@@ -333,7 +333,7 @@ namespace Google.Apis.Merchant.ordertracking_v1beta
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "ordertracking/v1beta/{+parent}/ordertrackingsignals";
+                public override string RestPath => "ordertracking/v1beta/{+parent}/orderTrackingSignals";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
