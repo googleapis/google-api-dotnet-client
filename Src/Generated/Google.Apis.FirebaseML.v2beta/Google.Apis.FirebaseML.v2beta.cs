@@ -971,6 +971,12 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Tool to search public web data, powered by Vertex AI Search and Sec4 compliance.</summary>
     public class GoogleCloudAiplatformV1beta1EnterpriseWebSearch : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeDomains")]
+        public virtual System.Collections.Generic.IList<string> ExcludeDomains { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2535,6 +2541,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>GoogleSearch tool type. Tool to support Google Search in Model. Powered by Google.</summary>
     public class GoogleCloudAiplatformV1beta1ToolGoogleSearch : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
+        /// Example: ["amazon.com", "facebook.com"].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeDomains")]
+        public virtual System.Collections.Generic.IList<string> ExcludeDomains { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
