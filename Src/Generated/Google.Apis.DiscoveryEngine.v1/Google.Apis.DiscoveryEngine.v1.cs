@@ -34,6 +34,7 @@ namespace Google.Apis.DiscoveryEngine.v1
         /// <param name="initializer">The service initializer.</param>
         public DiscoveryEngineService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Media = new MediaResource(this);
             Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://discoveryengine.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://discoveryengine.googleapis.com/batch");
@@ -82,6 +83,9 @@ namespace Google.Apis.DiscoveryEngine.v1
             /// <summary>Search your organization's data in the Cloud Search index</summary>
             public const string CloudSearchQuery = "https://www.googleapis.com/auth/cloud_search.query";
         }
+
+        /// <summary>Gets the Media resource.</summary>
+        public virtual MediaResource Media { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -265,6 +269,182 @@ namespace Google.Apis.DiscoveryEngine.v1
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "media" collection of methods.</summary>
+    public class MediaResource
+    {
+        private const string Resource = "media";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public MediaResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Downloads a file from the session.</summary>
+        /// <param name="name">
+        /// Required. The resource name of the Session. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
+        /// </param>
+        public virtual DownloadRequest Download(string name)
+        {
+            return new DownloadRequest(this.service, name);
+        }
+
+        /// <summary>Downloads a file from the session.</summary>
+        public class DownloadRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GdataMedia>
+        {
+            /// <summary>Constructs a new Download request.</summary>
+            public DownloadRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                MediaDownloader = new Google.Apis.Download.MediaDownloader(service);
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the Session. Format:
+            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. The ID of the file to be downloaded.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string FileId { get; set; }
+
+            /// <summary>Optional. The ID of the view to be downloaded.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ViewId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "download";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}:downloadFile";
+
+            /// <summary>Initializes Download parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+$",
+                });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("viewId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "viewId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <summary>Gets the media downloader.</summary>
+            public Google.Apis.Download.IMediaDownloader MediaDownloader { get; private set; }
+
+            /// <summary>
+            /// <para>Synchronously download the media into the given stream.</para>
+            /// <para>
+            /// Warning: This method hides download errors; use <see cref="DownloadWithStatus(System.IO.Stream)"/>
+            /// instead.
+            /// </para>
+            /// </summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual void Download(System.IO.Stream stream)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = null;
+                mediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Synchronously download the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            /// <returns>The final status of the download; including whether the download succeeded or failed.</returns>
+            public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = null;
+                return mediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = null;
+                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream,
+                System.Threading.CancellationToken cancellationToken)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = null;
+                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+            }
+
+            /// <summary>Synchronously download a range of the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual Google.Apis.Download.IDownloadProgress DownloadRange(System.IO.Stream stream, System.Net.Http.Headers.RangeHeaderValue range)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = range;
+                return mediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download a range of the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadRangeAsync(System.IO.Stream stream,
+                System.Net.Http.Headers.RangeHeaderValue range,
+                System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = range;
+                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+            }
         }
     }
 
@@ -4392,9 +4572,9 @@ namespace Google.Apis.DiscoveryEngine.v1
                             /// <summary>
                             /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields
                             /// are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels`
-                            /// * `create_time` * `update_time` Examples: "user_pseudo_id = some_id" "display_name =
-                            /// \"some_name\"" "starred = true" "is_pinned=true AND (NOT labels:hidden)" "create_time
-                            /// &amp;gt; \"1970-01-01T12:00:00Z\""
+                            /// * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name =
+                            /// "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` *
+                            /// `create_time &amp;gt; "1970-01-01T12:00:00Z"`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -9126,9 +9306,9 @@ namespace Google.Apis.DiscoveryEngine.v1
                             /// <summary>
                             /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields
                             /// are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels`
-                            /// * `create_time` * `update_time` Examples: "user_pseudo_id = some_id" "display_name =
-                            /// \"some_name\"" "starred = true" "is_pinned=true AND (NOT labels:hidden)" "create_time
-                            /// &amp;gt; \"1970-01-01T12:00:00Z\""
+                            /// * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name =
+                            /// "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` *
+                            /// `create_time &amp;gt; "1970-01-01T12:00:00Z"`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -13190,9 +13370,9 @@ namespace Google.Apis.DiscoveryEngine.v1
                         /// <summary>
                         /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: *
                         /// `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` *
-                        /// `create_time` * `update_time` Examples: "user_pseudo_id = some_id" "display_name =
-                        /// \"some_name\"" "starred = true" "is_pinned=true AND (NOT labels:hidden)" "create_time
-                        /// &amp;gt; \"1970-01-01T12:00:00Z\""
+                        /// `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name =
+                        /// "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time
+                        /// &amp;gt; "1970-01-01T12:00:00Z"`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -17211,6 +17391,479 @@ namespace Google.Apis.DiscoveryEngine.v1
 }
 namespace Google.Apis.DiscoveryEngine.v1.Data
 {
+    /// <summary>Information to read/write to blobstore2.</summary>
+    public class GdataBlobstore2Info : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The blob generation id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobGeneration")]
+        public virtual System.Nullable<long> BlobGeneration { get; set; }
+
+        /// <summary>The blob id, e.g., /blobstore/prod/playground/scotty</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobId")]
+        public virtual string BlobId { get; set; }
+
+        /// <summary>
+        /// Read handle passed from Bigstore -&amp;gt; Scotty for a GCS download. This is a signed, serialized
+        /// blobstore2.ReadHandle proto which must never be set outside of Bigstore, and is not applicable to non-GCS
+        /// media downloads.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadReadHandle")]
+        public virtual string DownloadReadHandle { get; set; }
+
+        /// <summary>
+        /// The blob read token. Needed to read blobs that have not been replicated. Might not be available until the
+        /// final call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readToken")]
+        public virtual string ReadToken { get; set; }
+
+        /// <summary>
+        /// Metadata passed from Blobstore -&amp;gt; Scotty for a new GCS upload. This is a signed, serialized
+        /// blobstore2.BlobMetadataContainer proto which must never be consumed outside of Bigstore, and is not
+        /// applicable to non-GCS media uploads.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadMetadataContainer")]
+        public virtual string UploadMetadataContainer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A sequence of media data references representing composite data. Introduced to support Bigstore composite
+    /// objects. For details, visit http://go/bigstore-composites.
+    /// </summary>
+    public class GdataCompositeMedia : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Blobstore v1 reference, set if reference_type is BLOBSTORE_REF This should be the byte representation of a
+        /// blobstore.BlobRef. Since Blobstore is deprecating v1, use blobstore2_info instead. For now, any v2 blob will
+        /// also be represented in this field as v1 BlobRef.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobRef")]
+        public virtual string BlobRef { get; set; }
+
+        /// <summary>Blobstore v2 info, set if reference_type is BLOBSTORE_REF and it refers to a v2 blob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobstore2Info")]
+        public virtual GdataBlobstore2Info Blobstore2Info { get; set; }
+
+        /// <summary>
+        /// A binary data reference for a media download. Serves as a technology-agnostic binary reference in some
+        /// Google infrastructure. This value is a serialized storage_cosmo.BinaryReference proto. Storing it as bytes
+        /// is a hack to get around the fact that the cosmo proto (as well as others it includes) doesn't support
+        /// JavaScript. This prevents us from including the actual type of this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cosmoBinaryReference")]
+        public virtual string CosmoBinaryReference { get; set; }
+
+        /// <summary>crc32.c hash for the payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crc32cHash")]
+        public virtual System.Nullable<long> Crc32cHash { get; set; }
+
+        /// <summary>Media data, set if reference_type is INLINE</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inline")]
+        public virtual string Inline { get; set; }
+
+        /// <summary>Size of the data, in bytes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual System.Nullable<long> Length { get; set; }
+
+        /// <summary>MD5 hash for the payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("md5Hash")]
+        public virtual string Md5Hash { get; set; }
+
+        /// <summary>Reference to a TI Blob, set if reference_type is BIGSTORE_REF.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual GdataObjectId ObjectId { get; set; }
+
+        /// <summary>Path to the data, set if reference_type is PATH</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Describes what the field reference contains.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceType")]
+        public virtual string ReferenceType { get; set; }
+
+        /// <summary>SHA-1 hash for the payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha1Hash")]
+        public virtual string Sha1Hash { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Detailed Content-Type information from Scotty. The Content-Type of the media will typically be filled in by the
+    /// header or Scotty's best_guess, but this extended information provides the backend with more information so that
+    /// it can make a better decision if needed. This is only used on media upload requests from Scotty.
+    /// </summary>
+    public class GdataContentTypeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Scotty's best guess of what the content type of the file is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bestGuess")]
+        public virtual string BestGuess { get; set; }
+
+        /// <summary>
+        /// The content type of the file derived by looking at specific bytes (i.e. "magic bytes") of the actual file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromBytes")]
+        public virtual string FromBytes { get; set; }
+
+        /// <summary>
+        /// The content type of the file derived from the file extension of the original file name used by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromFileName")]
+        public virtual string FromFileName { get; set; }
+
+        /// <summary>
+        /// The content type of the file as specified in the request headers, multipart headers, or RUPIO start request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromHeader")]
+        public virtual string FromHeader { get; set; }
+
+        /// <summary>
+        /// The content type of the file derived from the file extension of the URL path. The URL path is assumed to
+        /// represent a file name (which is typically only true for agents that are providing a REST API).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromUrlPath")]
+        public virtual string FromUrlPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Backend response for a Diff get checksums response. For details on the Scotty Diff protocol, visit
+    /// http://go/scotty-diff-protocol.
+    /// </summary>
+    public class GdataDiffChecksumsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Exactly one of these fields must be populated. If checksums_location is filled, the server will return the
+        /// corresponding contents to the user. If object_location is filled, the server will calculate the checksums
+        /// based on the content there and return that to the user. For details on the format of the checksums, see
+        /// http://go/scotty-diff-protocol.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checksumsLocation")]
+        public virtual GdataCompositeMedia ChecksumsLocation { get; set; }
+
+        /// <summary>The chunk size of checksums. Must be a multiple of 256KB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkSizeBytes")]
+        public virtual System.Nullable<long> ChunkSizeBytes { get; set; }
+
+        /// <summary>If set, calculate the checksums based on the contents and return them to the caller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectLocation")]
+        public virtual GdataCompositeMedia ObjectLocation { get; set; }
+
+        /// <summary>The total size of the server object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectSizeBytes")]
+        public virtual System.Nullable<long> ObjectSizeBytes { get; set; }
+
+        /// <summary>The object version of the object the checksums are being returned for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
+        public virtual string ObjectVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Backend response for a Diff download response. For details on the Scotty Diff protocol, visit
+    /// http://go/scotty-diff-protocol.
+    /// </summary>
+    public class GdataDiffDownloadResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The original object location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectLocation")]
+        public virtual GdataCompositeMedia ObjectLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A Diff upload request. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol.
+    /// </summary>
+    public class GdataDiffUploadRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The location of the checksums for the new object. Agents must clone the object located here, as the upload
+        /// server will delete the contents once a response is received. For details on the format of the checksums, see
+        /// http://go/scotty-diff-protocol.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checksumsInfo")]
+        public virtual GdataCompositeMedia ChecksumsInfo { get; set; }
+
+        /// <summary>
+        /// The location of the new object. Agents must clone the object located here, as the upload server will delete
+        /// the contents once a response is received.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectInfo")]
+        public virtual GdataCompositeMedia ObjectInfo { get; set; }
+
+        /// <summary>
+        /// The object version of the object that is the base version the incoming diff script will be applied to. This
+        /// field will always be filled in.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
+        public virtual string ObjectVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Backend response for a Diff upload request. For details on the Scotty Diff protocol, visit
+    /// http://go/scotty-diff-protocol.
+    /// </summary>
+    public class GdataDiffUploadResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The object version of the object at the server. Must be included in the end notification response. The
+        /// version in the end notification response must correspond to the new version of the object that is now stored
+        /// at the server, after the upload.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
+        public virtual string ObjectVersion { get; set; }
+
+        /// <summary>
+        /// The location of the original file for a diff upload request. Must be filled in if responding to an upload
+        /// start notification.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalObject")]
+        public virtual GdataCompositeMedia OriginalObject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Backend response for a Diff get version response. For details on the Scotty Diff protocol, visit
+    /// http://go/scotty-diff-protocol.
+    /// </summary>
+    public class GdataDiffVersionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total size of the server object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectSizeBytes")]
+        public virtual System.Nullable<long> ObjectSizeBytes { get; set; }
+
+        /// <summary>The version of the object stored at the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
+        public virtual string ObjectVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters specific to media downloads.</summary>
+    public class GdataDownloadParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A boolean to be returned in the response to Scotty. Allows/disallows gzip encoding of the payload content
+        /// when the server thinks it's advantageous (hence, does not guarantee compression) which allows Scotty to GZip
+        /// the response to the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowGzipCompression")]
+        public virtual System.Nullable<bool> AllowGzipCompression { get; set; }
+
+        /// <summary>
+        /// Determining whether or not Apiary should skip the inclusion of any Content-Range header on its response to
+        /// Scotty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreRange")]
+        public virtual System.Nullable<bool> IgnoreRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A reference to data stored on the filesystem, on GFS or in blobstore.</summary>
+    public class GdataMedia : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Deprecated, use one of explicit hash type fields instead. Algorithm used for calculating the hash. As of
+        /// 2011/01/21, "MD5" is the only possible value for this field. New values may be added at any time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
+        public virtual string Algorithm { get; set; }
+
+        /// <summary>Use object_id instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigstoreObjectRef")]
+        public virtual string BigstoreObjectRef { get; set; }
+
+        /// <summary>
+        /// Blobstore v1 reference, set if reference_type is BLOBSTORE_REF This should be the byte representation of a
+        /// blobstore.BlobRef. Since Blobstore is deprecating v1, use blobstore2_info instead. For now, any v2 blob will
+        /// also be represented in this field as v1 BlobRef.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobRef")]
+        public virtual string BlobRef { get; set; }
+
+        /// <summary>Blobstore v2 info, set if reference_type is BLOBSTORE_REF and it refers to a v2 blob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobstore2Info")]
+        public virtual GdataBlobstore2Info Blobstore2Info { get; set; }
+
+        /// <summary>
+        /// A composite media composed of one or more media objects, set if reference_type is COMPOSITE_MEDIA. The media
+        /// length field must be set to the sum of the lengths of all composite media objects. Note: All composite media
+        /// must have length specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compositeMedia")]
+        public virtual System.Collections.Generic.IList<GdataCompositeMedia> CompositeMedia { get; set; }
+
+        /// <summary>MIME type of the data</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; }
+
+        /// <summary>Extended content type information provided for Scotty uploads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentTypeInfo")]
+        public virtual GdataContentTypeInfo ContentTypeInfo { get; set; }
+
+        /// <summary>
+        /// A binary data reference for a media download. Serves as a technology-agnostic binary reference in some
+        /// Google infrastructure. This value is a serialized storage_cosmo.BinaryReference proto. Storing it as bytes
+        /// is a hack to get around the fact that the cosmo proto (as well as others it includes) doesn't support
+        /// JavaScript. This prevents us from including the actual type of this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cosmoBinaryReference")]
+        public virtual string CosmoBinaryReference { get; set; }
+
+        /// <summary>
+        /// For Scotty Uploads: Scotty-provided hashes for uploads For Scotty Downloads: (WARNING: DO NOT USE WITHOUT
+        /// PERMISSION FROM THE SCOTTY TEAM.) A Hash provided by the agent to be used to verify the data being
+        /// downloaded. Currently only supported for inline payloads. Further, only crc32c_hash is currently supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crc32cHash")]
+        public virtual System.Nullable<long> Crc32cHash { get; set; }
+
+        /// <summary>Set if reference_type is DIFF_CHECKSUMS_RESPONSE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffChecksumsResponse")]
+        public virtual GdataDiffChecksumsResponse DiffChecksumsResponse { get; set; }
+
+        /// <summary>Set if reference_type is DIFF_DOWNLOAD_RESPONSE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffDownloadResponse")]
+        public virtual GdataDiffDownloadResponse DiffDownloadResponse { get; set; }
+
+        /// <summary>Set if reference_type is DIFF_UPLOAD_REQUEST.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffUploadRequest")]
+        public virtual GdataDiffUploadRequest DiffUploadRequest { get; set; }
+
+        /// <summary>Set if reference_type is DIFF_UPLOAD_RESPONSE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffUploadResponse")]
+        public virtual GdataDiffUploadResponse DiffUploadResponse { get; set; }
+
+        /// <summary>Set if reference_type is DIFF_VERSION_RESPONSE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffVersionResponse")]
+        public virtual GdataDiffVersionResponse DiffVersionResponse { get; set; }
+
+        /// <summary>Parameters for a media download.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadParameters")]
+        public virtual GdataDownloadParameters DownloadParameters { get; set; }
+
+        /// <summary>Original file name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
+        public virtual string Filename { get; set; }
+
+        /// <summary>
+        /// Deprecated, use one of explicit hash type fields instead. These two hash related fields will only be
+        /// populated on Scotty based media uploads and will contain the content of the hash group in the
+        /// NotificationRequest:
+        /// http://cs/#google3/blobstore2/api/scotty/service/proto/upload_listener.proto&amp;amp;q=class:Hash Hex
+        /// encoded hash value of the uploaded media.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hash")]
+        public virtual string Hash { get; set; }
+
+        /// <summary>
+        /// For Scotty uploads only. If a user sends a hash code and the backend has requested that Scotty verify the
+        /// upload against the client hash, Scotty will perform the check on behalf of the backend and will reject it if
+        /// the hashes don't match. This is set to true if Scotty performed this verification.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashVerified")]
+        public virtual System.Nullable<bool> HashVerified { get; set; }
+
+        /// <summary>Media data, set if reference_type is INLINE</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inline")]
+        public virtual string Inline { get; set; }
+
+        /// <summary>
+        /// |is_potential_retry| is set false only when Scotty is certain that it has not sent the request before. When
+        /// a client resumes an upload, this field must be set true in agent calls, because Scotty cannot be certain
+        /// that it has never sent the request before due to potential failure in the session state persistence.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPotentialRetry")]
+        public virtual System.Nullable<bool> IsPotentialRetry { get; set; }
+
+        /// <summary>Size of the data, in bytes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual System.Nullable<long> Length { get; set; }
+
+        /// <summary>Scotty-provided MD5 hash for an upload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("md5Hash")]
+        public virtual string Md5Hash { get; set; }
+
+        /// <summary>Media id to forward to the operation GetMedia. Can be set if reference_type is GET_MEDIA.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaId")]
+        public virtual string MediaId { get; set; }
+
+        /// <summary>Reference to a TI Blob, set if reference_type is BIGSTORE_REF.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual GdataObjectId ObjectId { get; set; }
+
+        /// <summary>Path to the data, set if reference_type is PATH</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Describes what the field reference contains.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceType")]
+        public virtual string ReferenceType { get; set; }
+
+        /// <summary>Scotty-provided SHA1 hash for an upload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha1Hash")]
+        public virtual string Sha1Hash { get; set; }
+
+        /// <summary>Scotty-provided SHA256 hash for an upload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha256Hash")]
+        public virtual string Sha256Hash { get; set; }
+
+        /// <summary>Time at which the media data was last updated, in milliseconds since UNIX epoch</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual System.Nullable<ulong> Timestamp { get; set; }
+
+        /// <summary>A unique fingerprint/version id for the media data</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This is a copy of the tech.blob.ObjectId proto, which could not be used directly here due to transitive closure
+    /// issues with JavaScript support; see http://b/8801763.
+    /// </summary>
+    public class GdataObjectId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the bucket to which this object belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
+        public virtual string BucketName { get; set; }
+
+        /// <summary>
+        /// Generation of the object. Generations are monotonically increasing across writes, allowing them to be be
+        /// compared to determine which generation is newer. If this is omitted in a request, then you are requesting
+        /// the live object. See http://go/bigstore-versions
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>The name of the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectName")]
+        public virtual string ObjectName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// `Distribution` contains summary statistics for a population of values. It optionally contains a histogram
     /// representing the distribution of those values across a set of buckets. The summary statistics are the count,
@@ -34047,6 +34700,100 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the Export operation. This is returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaExportMetricsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the ExportMetricsRequest. If the long running operation was successful, then this message is
+    /// returned by the google.longrunning.Operations.response field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaExportMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Configurations for fields of a schema. For example, configuring a field is indexable, or searchable.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaFieldConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -34941,9 +35688,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     {
         /// <summary>
         /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id`
-        /// * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples:
-        /// "user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "is_pinned=true AND (NOT
-        /// labels:hidden)" "create_time &amp;gt; \"1970-01-01T12:00:00Z\""
+        /// * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: *
+        /// `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT
+        /// labels:hidden)` * `create_time &amp;gt; "1970-01-01T12:00:00Z"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -36253,8 +37000,11 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string LanguageCode { get; set; }
 
         /// <summary>
-        /// If `naturalLanguageQueryUnderstandingSpec` is not specified, no additional natural language query
-        /// understanding will be done.
+        /// Config for natural language query understanding capabilities, such as extracting structured field filters
+        /// from the query. Refer to [this
+        /// documentation](https://cloud.google.com/generative-ai-app-builder/docs/natural-language-queries) for more
+        /// information. If `naturalLanguageQueryUnderstandingSpec` is not specified, no additional natural language
+        /// query understanding will be done.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("naturalLanguageQueryUnderstandingSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec NaturalLanguageQueryUnderstandingSpec { get; set; }
@@ -37080,6 +37830,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Specification to enable natural language understanding capabilities for search requests.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Controls behavior of how extracted filters are applied to the search. The default behavior depends
+        /// on the request. For single datastore structured search, the default is `HARD_FILTER`. For multi-datastore
+        /// search, the default behavior is `SOFT_BOOST`. Location-based filters are always applied as hard filters, and
+        /// the `SOFT_BOOST` setting will not affect them. This field is only used if
+        /// SearchRequest.natural_language_query_understanding_spec.filter_extraction_condition is set to
+        /// FilterExtractionCondition.ENABLED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extractedFilterBehavior")]
+        public virtual string ExtractedFilterBehavior { get; set; }
+
         /// <summary>
         /// The condition under which filter extraction should occur. Server behavior defaults to `DISABLED`.
         /// </summary>
@@ -42801,8 +43562,11 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string LanguageCode { get; set; }
 
         /// <summary>
-        /// If `naturalLanguageQueryUnderstandingSpec` is not specified, no additional natural language query
-        /// understanding will be done.
+        /// Config for natural language query understanding capabilities, such as extracting structured field filters
+        /// from the query. Refer to [this
+        /// documentation](https://cloud.google.com/generative-ai-app-builder/docs/natural-language-queries) for more
+        /// information. If `naturalLanguageQueryUnderstandingSpec` is not specified, no additional natural language
+        /// query understanding will be done.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("naturalLanguageQueryUnderstandingSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec NaturalLanguageQueryUnderstandingSpec { get; set; }
@@ -43620,6 +44384,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Specification to enable natural language understanding capabilities for search requests.</summary>
     public class GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Controls behavior of how extracted filters are applied to the search. The default behavior depends
+        /// on the request. For single datastore structured search, the default is `HARD_FILTER`. For multi-datastore
+        /// search, the default behavior is `SOFT_BOOST`. Location-based filters are always applied as hard filters, and
+        /// the `SOFT_BOOST` setting will not affect them. This field is only used if
+        /// SearchRequest.natural_language_query_understanding_spec.filter_extraction_condition is set to
+        /// FilterExtractionCondition.ENABLED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extractedFilterBehavior")]
+        public virtual string ExtractedFilterBehavior { get; set; }
+
         /// <summary>
         /// The condition under which filter extraction should occur. Server behavior defaults to `DISABLED`.
         /// </summary>
