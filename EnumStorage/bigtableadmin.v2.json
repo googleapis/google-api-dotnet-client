@@ -37,5 +37,11 @@
     "FULL",
     "ENCRYPTION_VIEW",
     "STATS_VIEW"
+  ],
+  "Google.Apis.BigtableAdmin.v2.ProjectsResource+InstancesResource+TablesResource+SchemaBundlesResource+ListRequest.ViewEnum": [
+    "SCHEMA_BUNDLE_VIEW_UNSPECIFIED",
+    "NAME_ONLY",
+    "BASIC",
+    "FULL"
   ]
 }
