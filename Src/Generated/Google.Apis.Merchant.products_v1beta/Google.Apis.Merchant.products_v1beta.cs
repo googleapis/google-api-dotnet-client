@@ -295,9 +295,9 @@ namespace Google.Apis.Merchant.products_v1beta
             /// </summary>
             /// <param name="name">
             /// Required. The name of the product input resource to delete. Format:
-            /// `accounts/{account}/productInputs/{product}` where the last section `product` consists of 4 parts:
-            /// `channel~content_language~feed_label~offer_id` example for product name is
-            /// `accounts/123/productInputs/online~en~US~sku123`.
+            /// `accounts/{account}/productInputs/{product}` where the last section `product` consists of:
+            /// `content_language~feed_label~offer_id` example for product name is
+            /// `accounts/123/productInputs/en~US~sku123`.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -319,9 +319,9 @@ namespace Google.Apis.Merchant.products_v1beta
 
                 /// <summary>
                 /// Required. The name of the product input resource to delete. Format:
-                /// `accounts/{account}/productInputs/{product}` where the last section `product` consists of 4 parts:
-                /// `channel~content_language~feed_label~offer_id` example for product name is
-                /// `accounts/123/productInputs/online~en~US~sku123`.
+                /// `accounts/{account}/productInputs/{product}` where the last section `product` consists of:
+                /// `content_language~feed_label~offer_id` example for product name is
+                /// `accounts/123/productInputs/en~US~sku123`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -464,9 +464,11 @@ namespace Google.Apis.Merchant.products_v1beta
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Identifier. The name of the product input. Format: `accounts/{account}/productInputs/{productinput}`
-            /// where the last section `productinput` consists of 4 parts:
-            /// `channel~content_language~feed_label~offer_id` example for product input name is
-            /// `accounts/123/productInputs/online~en~US~sku123`
+            /// where the last section `productinput` consists of: `content_language~feed_label~offer_id` example for
+            /// product input name is `accounts/123/productInputs/en~US~sku123`. A legacy local product input name would
+            /// be `accounts/123/productInputs/local~en~US~sku123`. Note: For calls to the v1beta version, the
+            /// `productInput` section consists of: `channel~content_language~feed_label~offer_id`, for example:
+            /// `accounts/123/productInputs/online~en~US~sku123`.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Merchant.products_v1beta.Data.ProductInput body, string name)
             {
@@ -489,9 +491,11 @@ namespace Google.Apis.Merchant.products_v1beta
 
                 /// <summary>
                 /// Identifier. The name of the product input. Format: `accounts/{account}/productInputs/{productinput}`
-                /// where the last section `productinput` consists of 4 parts:
-                /// `channel~content_language~feed_label~offer_id` example for product input name is
-                /// `accounts/123/productInputs/online~en~US~sku123`
+                /// where the last section `productinput` consists of: `content_language~feed_label~offer_id` example
+                /// for product input name is `accounts/123/productInputs/en~US~sku123`. A legacy local product input
+                /// name would be `accounts/123/productInputs/local~en~US~sku123`. Note: For calls to the v1beta
+                /// version, the `productInput` section consists of: `channel~content_language~feed_label~offer_id`, for
+                /// example: `accounts/123/productInputs/online~en~US~sku123`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -585,8 +589,11 @@ namespace Google.Apis.Merchant.products_v1beta
             /// </summary>
             /// <param name="name">
             /// Required. The name of the product to retrieve. Format: `accounts/{account}/products/{product}` where the
-            /// last section `product` consists of 4 parts: `channel~content_language~feed_label~offer_id` example for
-            /// product name is `accounts/123/products/online~en~US~sku123`
+            /// last section `product` consists of: `content_language~feed_label~offer_id` example for product name is
+            /// `accounts/123/products/en~US~sku123`. A legacy local product name would be
+            /// `accounts/123/products/local~en~US~sku123`. Note: For calls to the v1beta version, the `product` section
+            /// consists of: `channel~content_language~feed_label~offer_id`, for example:
+            /// `accounts/123/products/online~en~US~sku123`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -608,8 +615,11 @@ namespace Google.Apis.Merchant.products_v1beta
 
                 /// <summary>
                 /// Required. The name of the product to retrieve. Format: `accounts/{account}/products/{product}` where
-                /// the last section `product` consists of 4 parts: `channel~content_language~feed_label~offer_id`
-                /// example for product name is `accounts/123/products/online~en~US~sku123`
+                /// the last section `product` consists of: `content_language~feed_label~offer_id` example for product
+                /// name is `accounts/123/products/en~US~sku123`. A legacy local product name would be
+                /// `accounts/123/products/local~en~US~sku123`. Note: For calls to the v1beta version, the `product`
+                /// section consists of: `channel~content_language~feed_label~offer_id`, for example:
+                /// `accounts/123/products/online~en~US~sku123`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1912,8 +1922,11 @@ namespace Google.Apis.Merchant.products_v1beta.Data
 
         /// <summary>
         /// The name of the product. Format: `accounts/{account}/products/{product}` where the last section `product`
-        /// consists of 4 parts: `channel~content_language~feed_label~offer_id` example for product name is
-        /// `accounts/123/products/online~en~US~sku123`
+        /// consists of: `content_language~feed_label~offer_id` example for product name is
+        /// `accounts/123/products/en~US~sku123`. A legacy local product name would be
+        /// `accounts/123/products/local~en~US~sku123`. Note: For calls to the v1beta version, the `product` section
+        /// consists of: `channel~content_language~feed_label~offer_id`, for example:
+        /// `accounts/123/products/online~en~US~sku123`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2077,8 +2090,11 @@ namespace Google.Apis.Merchant.products_v1beta.Data
 
         /// <summary>
         /// Identifier. The name of the product input. Format: `accounts/{account}/productInputs/{productinput}` where
-        /// the last section `productinput` consists of 4 parts: `channel~content_language~feed_label~offer_id` example
-        /// for product input name is `accounts/123/productInputs/online~en~US~sku123`
+        /// the last section `productinput` consists of: `content_language~feed_label~offer_id` example for product
+        /// input name is `accounts/123/productInputs/en~US~sku123`. A legacy local product input name would be
+        /// `accounts/123/productInputs/local~en~US~sku123`. Note: For calls to the v1beta version, the `productInput`
+        /// section consists of: `channel~content_language~feed_label~offer_id`, for example:
+        /// `accounts/123/productInputs/online~en~US~sku123`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
