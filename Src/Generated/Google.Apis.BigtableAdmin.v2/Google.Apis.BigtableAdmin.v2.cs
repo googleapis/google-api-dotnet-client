@@ -4447,6 +4447,39 @@ namespace Google.Apis.BigtableAdmin.v2
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// Optional. The resource_view to be applied to the returned SchemaBundles' fields. Defaults to
+                        /// NAME_ONLY.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. The resource_view to be applied to the returned SchemaBundles' fields. Defaults to
+                        /// NAME_ONLY.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>Uses the default view for each method as documented in the request.</summary>
+                            [Google.Apis.Util.StringValueAttribute("SCHEMA_BUNDLE_VIEW_UNSPECIFIED")]
+                            SCHEMABUNDLEVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Only populates `name`.</summary>
+                            [Google.Apis.Util.StringValueAttribute("NAME_ONLY")]
+                            NAMEONLY = 1,
+
+                            /// <summary>
+                            /// Only populates the SchemaBundle's basic metadata. This includes: name, etag,
+                            /// create_time, update_time.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 2,
+
+                            /// <summary>Populates every field.</summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL = 3,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -4479,6 +4512,14 @@ namespace Google.Apis.BigtableAdmin.v2
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -8527,6 +8568,24 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A protobuf enum type. Values of type `Enum` are stored in `Value.int_value`.</summary>
+    public class GoogleBigtableAdminV2TypeEnum : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fully qualified name of the protobuf enum message, including package. In the format of
+        /// "foo.bar.EnumMessage".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumName")]
+        public virtual string EnumName { get; set; }
+
+        /// <summary>The ID of the schema bundle that this enum is defined in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaBundleId")]
+        public virtual string SchemaBundleId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Float32 Values of type `Float32` are stored in `Value.float_value`.</summary>
     public class GoogleBigtableAdminV2TypeFloat32 : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8607,6 +8666,23 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>The type of the values in a map.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual Type ValueType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A protobuf message type. Values of type `Proto` are stored in `Value.bytes_value`.</summary>
+    public class GoogleBigtableAdminV2TypeProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fully qualified name of the protobuf message, including package. In the format of "foo.bar.Message".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageName")]
+        public virtual string MessageName { get; set; }
+
+        /// <summary>The ID of the schema bundle that this proto is defined in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaBundleId")]
+        public virtual string SchemaBundleId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10250,6 +10326,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dateType")]
         public virtual GoogleBigtableAdminV2TypeDate DateType { get; set; }
 
+        /// <summary>Enum</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumType")]
+        public virtual GoogleBigtableAdminV2TypeEnum EnumType { get; set; }
+
         /// <summary>Float32</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("float32Type")]
         public virtual GoogleBigtableAdminV2TypeFloat32 Float32Type { get; set; }
@@ -10265,6 +10345,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Map</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapType")]
         public virtual GoogleBigtableAdminV2TypeMap MapType { get; set; }
+
+        /// <summary>Proto</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protoType")]
+        public virtual GoogleBigtableAdminV2TypeProto ProtoType { get; set; }
 
         /// <summary>String</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringType")]
