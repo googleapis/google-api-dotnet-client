@@ -5307,9 +5307,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <summary>
                             /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields
                             /// are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels`
-                            /// * `create_time` * `update_time` Examples: "user_pseudo_id = some_id" "display_name =
-                            /// \"some_name\"" "starred = true" "is_pinned=true AND (NOT labels:hidden)" "create_time
-                            /// &amp;gt; \"1970-01-01T12:00:00Z\""
+                            /// * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name =
+                            /// "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` *
+                            /// `create_time &amp;gt; "1970-01-01T12:00:00Z"`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -8275,6 +8275,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     public EnginesResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Analytics = new AnalyticsResource(service);
                         Assistants = new AssistantsResource(service);
                         CompletionConfig = new CompletionConfigResource(service);
                         Controls = new ControlsResource(service);
@@ -8283,6 +8284,85 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         ServingConfigs = new ServingConfigsResource(service);
                         Sessions = new SessionsResource(service);
                         WidgetConfigs = new WidgetConfigsResource(service);
+                    }
+
+                    /// <summary>Gets the Analytics resource.</summary>
+                    public virtual AnalyticsResource Analytics { get; }
+
+                    /// <summary>The "analytics" collection of methods.</summary>
+                    public class AnalyticsResource
+                    {
+                        private const string Resource = "analytics";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public AnalyticsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Exports metrics.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="analytics">
+                        /// Required. The analytics resource name under the engine where the metrics are created. The
+                        /// format is
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/analytics`.
+                        /// </param>
+                        public virtual ExportMetricsRequest ExportMetrics(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaExportMetricsRequest body, string analytics)
+                        {
+                            return new ExportMetricsRequest(this.service, body, analytics);
+                        }
+
+                        /// <summary>Exports metrics.</summary>
+                        public class ExportMetricsRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new ExportMetrics request.</summary>
+                            public ExportMetricsRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaExportMetricsRequest body, string analytics) : base(service)
+                            {
+                                Analytics = analytics;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The analytics resource name under the engine where the metrics are created.
+                            /// The format is
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/analytics`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("analytics", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Analytics { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaExportMetricsRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "exportMetrics";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+analytics}:exportMetrics";
+
+                            /// <summary>Initializes ExportMetrics parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("analytics", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "analytics",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/analytics$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Gets the Assistants resource.</summary>
@@ -10660,9 +10740,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <summary>
                             /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields
                             /// are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels`
-                            /// * `create_time` * `update_time` Examples: "user_pseudo_id = some_id" "display_name =
-                            /// \"some_name\"" "starred = true" "is_pinned=true AND (NOT labels:hidden)" "create_time
-                            /// &amp;gt; \"1970-01-01T12:00:00Z\""
+                            /// * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name =
+                            /// "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` *
+                            /// `create_time &amp;gt; "1970-01-01T12:00:00Z"`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -15870,9 +15950,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <summary>
                         /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: *
                         /// `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` *
-                        /// `create_time` * `update_time` Examples: "user_pseudo_id = some_id" "display_name =
-                        /// \"some_name\"" "starred = true" "is_pinned=true AND (NOT labels:hidden)" "create_time
-                        /// &amp;gt; \"1970-01-01T12:00:00Z\""
+                        /// `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name =
+                        /// "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time
+                        /// &amp;gt; "1970-01-01T12:00:00Z"`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -31089,6 +31169,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The BigQuery output destination configuration.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaBigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ID of a BigQuery Dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; }
+
+        /// <summary>Required. The table_id of exported BigQuery table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>BigQuery source import data from.</summary>
     public class GoogleCloudDiscoveryengineV1alphaBigQuerySource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -36580,6 +36675,111 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the Export operation. This is returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaExportMetricsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the `ExportMetrics` method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaExportMetricsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The output location of the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaOutputConfig OutputConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the ExportMetricsRequest. If the long running operation was successful, then this message is
+    /// returned by the google.longrunning.Operations.response field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaExportMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Fact Chunk.</summary>
     public class GoogleCloudDiscoveryengineV1alphaFactChunk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -38649,9 +38849,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     {
         /// <summary>
         /// A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id`
-        /// * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples:
-        /// "user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "is_pinned=true AND (NOT
-        /// labels:hidden)" "create_time &amp;gt; \"1970-01-01T12:00:00Z\""
+        /// * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: *
+        /// `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT
+        /// labels:hidden)` * `create_time &amp;gt; "1970-01-01T12:00:00Z"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -38845,6 +39045,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexAiOrganicCrawlRate")]
         public virtual GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries VertexAiOrganicCrawlRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The output configuration setting.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaOutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BigQuery location where the output is to be written to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
+        public virtual GoogleCloudDiscoveryengineV1alphaBigQueryDestination BigqueryDestination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -41137,8 +41348,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string LanguageCode { get; set; }
 
         /// <summary>
-        /// If `naturalLanguageQueryUnderstandingSpec` is not specified, no additional natural language query
-        /// understanding will be done.
+        /// Config for natural language query understanding capabilities, such as extracting structured field filters
+        /// from the query. Refer to [this
+        /// documentation](https://cloud.google.com/generative-ai-app-builder/docs/natural-language-queries) for more
+        /// information. If `naturalLanguageQueryUnderstandingSpec` is not specified, no additional natural language
+        /// query understanding will be done.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("naturalLanguageQueryUnderstandingSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec NaturalLanguageQueryUnderstandingSpec { get; set; }
@@ -41964,6 +42178,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Specification to enable natural language understanding capabilities for search requests.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Controls behavior of how extracted filters are applied to the search. The default behavior depends
+        /// on the request. For single datastore structured search, the default is `HARD_FILTER`. For multi-datastore
+        /// search, the default behavior is `SOFT_BOOST`. Location-based filters are always applied as hard filters, and
+        /// the `SOFT_BOOST` setting will not affect them. This field is only used if
+        /// SearchRequest.natural_language_query_understanding_spec.filter_extraction_condition is set to
+        /// FilterExtractionCondition.ENABLED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extractedFilterBehavior")]
+        public virtual string ExtractedFilterBehavior { get; set; }
+
         /// <summary>
         /// The condition under which filter extraction should occur. Server behavior defaults to `DISABLED`.
         /// </summary>
@@ -50139,8 +50364,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string LanguageCode { get; set; }
 
         /// <summary>
-        /// If `naturalLanguageQueryUnderstandingSpec` is not specified, no additional natural language query
-        /// understanding will be done.
+        /// Config for natural language query understanding capabilities, such as extracting structured field filters
+        /// from the query. Refer to [this
+        /// documentation](https://cloud.google.com/generative-ai-app-builder/docs/natural-language-queries) for more
+        /// information. If `naturalLanguageQueryUnderstandingSpec` is not specified, no additional natural language
+        /// query understanding will be done.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("naturalLanguageQueryUnderstandingSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec NaturalLanguageQueryUnderstandingSpec { get; set; }
@@ -50958,6 +51186,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Specification to enable natural language understanding capabilities for search requests.</summary>
     public class GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Controls behavior of how extracted filters are applied to the search. The default behavior depends
+        /// on the request. For single datastore structured search, the default is `HARD_FILTER`. For multi-datastore
+        /// search, the default behavior is `SOFT_BOOST`. Location-based filters are always applied as hard filters, and
+        /// the `SOFT_BOOST` setting will not affect them. This field is only used if
+        /// SearchRequest.natural_language_query_understanding_spec.filter_extraction_condition is set to
+        /// FilterExtractionCondition.ENABLED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extractedFilterBehavior")]
+        public virtual string ExtractedFilterBehavior { get; set; }
+
         /// <summary>
         /// The condition under which filter extraction should occur. Server behavior defaults to `DISABLED`.
         /// </summary>
