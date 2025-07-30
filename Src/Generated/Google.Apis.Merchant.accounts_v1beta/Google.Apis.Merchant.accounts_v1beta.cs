@@ -6071,8 +6071,9 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual UriSettings EffectiveUriSettings { get; set; }
 
         /// <summary>
-        /// Optional. The destinations to which the checkout program applies, valid destination values are
-        /// `SHOPPING_ADS`, `FREE_LISTINGS`
+        /// Optional. The destinations (also known as [Marketing
+        /// methods](https://support.google.com/merchants/answer/15130232)) to which the checkout program applies, valid
+        /// destination values are `SHOPPING_ADS`, `FREE_LISTINGS`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibleDestinations")]
         public virtual System.Collections.Generic.IList<string> EligibleDestinations { get; set; }
