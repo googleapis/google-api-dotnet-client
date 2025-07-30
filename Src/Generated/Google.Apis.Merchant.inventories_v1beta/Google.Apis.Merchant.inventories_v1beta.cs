@@ -991,7 +991,7 @@ namespace Google.Apis.Merchant.inventories_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pickupSla")]
         public virtual string PickupSla { get; set; }
 
-        /// <summary>Price of the product at this store.</summary>
+        /// <summary>Optional. Price of the product at this store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; }
 
@@ -1000,12 +1000,12 @@ namespace Google.Apis.Merchant.inventories_v1beta.Data
         public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>
-        /// Sale price of the product at this store. Mandatory if `salePriceEffectiveDate` is defined.
+        /// Optional. Sale price of the product at this store. Mandatory if `salePriceEffectiveDate` is defined.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePrice")]
         public virtual Price SalePrice { get; set; }
 
-        /// <summary>The `TimePeriod` of the sale at this store.</summary>
+        /// <summary>Optional. The `TimePeriod` of the sale at this store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePriceEffectiveDate")]
         public virtual Interval SalePriceEffectiveDate { get; set; }
 
@@ -1232,7 +1232,7 @@ namespace Google.Apis.Merchant.inventories_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Price of the product in this region.</summary>
+        /// <summary>Optional. Price of the product in this region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; }
 
@@ -1244,12 +1244,12 @@ namespace Google.Apis.Merchant.inventories_v1beta.Data
         public virtual string Region { get; set; }
 
         /// <summary>
-        /// Sale price of the product in this region. Mandatory if `salePriceEffectiveDate` is defined.
+        /// Optional. Sale price of the product in this region. Mandatory if `salePriceEffectiveDate` is defined.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePrice")]
         public virtual Price SalePrice { get; set; }
 
-        /// <summary>The `TimePeriod` of the sale price in this region.</summary>
+        /// <summary>Optional. The `TimePeriod` of the sale price in this region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePriceEffectiveDate")]
         public virtual Interval SalePriceEffectiveDate { get; set; }
 
