@@ -8308,7 +8308,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
         public virtual string InternalIp { get; set; }
 
-        /// <summary>The network to connect the NIC to.</summary>
+        /// <summary>Optional. The network to connect the NIC to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
