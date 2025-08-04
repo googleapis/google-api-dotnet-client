@@ -1828,6 +1828,10 @@ namespace Google.Apis.Transcoder.v1.Data
     /// <summary>Input asset.</summary>
     public class Input : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Input Attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual InputAttributes Attributes { get; set; }
+
         /// <summary>
         /// A unique key for this input. Must be specified when using advanced mapping and edit lists.
         /// </summary>
@@ -1846,6 +1850,17 @@ namespace Google.Apis.Transcoder.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Input attributes that provide additional information about the input asset.</summary>
+    public class InputAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of track definitions for the input asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackDefinitions")]
+        public virtual System.Collections.Generic.IList<TrackDefinition> TrackDefinitions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2585,6 +2600,41 @@ namespace Google.Apis.Transcoder.v1.Data
         /// <summary>The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapping")]
         public virtual System.Collections.Generic.IList<TextMapping> Mapping { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Track definition for the input asset.</summary>
+    public class TrackDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether to automatically detect the languages present in the track. If true, the system will
+        /// attempt to identify all the languages present in the track and populate the languages field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectLanguages")]
+        public virtual System.Nullable<bool> DetectLanguages { get; set; }
+
+        /// <summary>
+        /// Output only. A list of languages detected in the input asset, represented by a BCP 47 language code, such as
+        /// "en-US" or "sr-Latn". For more information, see
+        /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. This field is only populated if the
+        /// detect_languages field is set to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguages")]
+        public virtual System.Collections.Generic.IList<string> DetectedLanguages { get; set; }
+
+        /// <summary>The input track.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputTrack")]
+        public virtual System.Nullable<int> InputTrack { get; set; }
+
+        /// <summary>
+        /// Optional. A list of languages spoken in the input asset, represented by a BCP 47 language code, such as
+        /// "en-US" or "sr-Latn". For more information, see
+        /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languages")]
+        public virtual System.Collections.Generic.IList<string> Languages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
