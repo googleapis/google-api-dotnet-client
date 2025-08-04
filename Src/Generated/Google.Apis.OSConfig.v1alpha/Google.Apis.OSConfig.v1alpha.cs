@@ -4264,6 +4264,12 @@ namespace Google.Apis.OSConfig.v1alpha.Data
     public class VulnerabilityReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. Highest level of severity among all the upgradable vulnerabilities with CVEs attached.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highestUpgradableCveSeverity")]
+        public virtual string HighestUpgradableCveSeverity { get; set; }
+
+        /// <summary>
         /// Output only. The `vulnerabilityReport` API resource name. Format:
         /// `projects/{project_number}/locations/{location}/instances/{instance_id}/vulnerabilityReport`
         /// </summary>
