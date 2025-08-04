@@ -63,6 +63,8 @@ namespace Google.Apis.Dfareporting.v4
             Creatives = new CreativesResource(this);
             DimensionValues = new DimensionValuesResource(this);
             DirectorySites = new DirectorySitesResource(this);
+            DynamicFeeds = new DynamicFeedsResource(this);
+            DynamicProfiles = new DynamicProfilesResource(this);
             DynamicTargetingKeys = new DynamicTargetingKeysResource(this);
             EventTags = new EventTagsResource(this);
             Files = new FilesResource(this);
@@ -233,6 +235,12 @@ namespace Google.Apis.Dfareporting.v4
 
         /// <summary>Gets the DirectorySites resource.</summary>
         public virtual DirectorySitesResource DirectorySites { get; }
+
+        /// <summary>Gets the DynamicFeeds resource.</summary>
+        public virtual DynamicFeedsResource DynamicFeeds { get; }
+
+        /// <summary>Gets the DynamicProfiles resource.</summary>
+        public virtual DynamicProfilesResource DynamicProfiles { get; }
 
         /// <summary>Gets the DynamicTargetingKeys resource.</summary>
         public virtual DynamicTargetingKeysResource DynamicTargetingKeys { get; }
@@ -9239,6 +9247,243 @@ namespace Google.Apis.Dfareporting.v4
                     DefaultValue = "ASCENDING",
                     Pattern = null,
                 });
+            }
+        }
+    }
+
+    /// <summary>The "dynamicFeeds" collection of methods.</summary>
+    public class DynamicFeedsResource
+    {
+        private const string Resource = "dynamicFeeds";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public DynamicFeedsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Gets a dynamic feed by ID.</summary>
+        /// <param name="dynamicFeedId">Required. Dynamic feed ID.</param>
+        public virtual GetRequest Get(long dynamicFeedId)
+        {
+            return new GetRequest(this.service, dynamicFeedId);
+        }
+
+        /// <summary>Gets a dynamic feed by ID.</summary>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.DynamicFeed>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long dynamicFeedId) : base(service)
+            {
+                DynamicFeedId = dynamicFeedId;
+                InitParameters();
+            }
+
+            /// <summary>Required. Dynamic feed ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dynamicFeedId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long DynamicFeedId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "studio/dynamicFeeds/{+dynamicFeedId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("dynamicFeedId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dynamicFeedId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Inserts a new dynamic feed.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.DynamicFeedsInsertRequest body)
+        {
+            return new InsertRequest(this.service, body);
+        }
+
+        /// <summary>Inserts a new dynamic feed.</summary>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.DynamicFeed>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.DynamicFeedsInsertRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dfareporting.v4.Data.DynamicFeedsInsertRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "studio/dynamicFeeds";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+    }
+
+    /// <summary>The "dynamicProfiles" collection of methods.</summary>
+    public class DynamicProfilesResource
+    {
+        private const string Resource = "dynamicProfiles";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public DynamicProfilesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Gets a dynamic profile by ID.</summary>
+        /// <param name="dynamicProfileId">Required. Dynamic profile ID.</param>
+        public virtual GetRequest Get(long dynamicProfileId)
+        {
+            return new GetRequest(this.service, dynamicProfileId);
+        }
+
+        /// <summary>Gets a dynamic profile by ID.</summary>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.DynamicProfile>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long dynamicProfileId) : base(service)
+            {
+                DynamicProfileId = dynamicProfileId;
+                InitParameters();
+            }
+
+            /// <summary>Required. Dynamic profile ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dynamicProfileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long DynamicProfileId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "studio/dynamicProfiles/{+dynamicProfileId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("dynamicProfileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dynamicProfileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Inserts a new dynamic profile.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v4.Data.DynamicProfile body)
+        {
+            return new InsertRequest(this.service, body);
+        }
+
+        /// <summary>Inserts a new dynamic profile.</summary>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.DynamicProfile>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.DynamicProfile body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dfareporting.v4.Data.DynamicProfile Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "studio/dynamicProfiles";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>Updates an existing dynamic profile.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v4.Data.DynamicProfile body)
+        {
+            return new UpdateRequest(this.service, body);
+        }
+
+        /// <summary>Updates an existing dynamic profile.</summary>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.DynamicProfile>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.DynamicProfile body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dfareporting.v4.Data.DynamicProfile Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "update";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PUT";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "studio/dynamicProfiles";
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
             }
         }
     }
@@ -22011,6 +22256,67 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains the content source of the dynamic feed.</summary>
+    public class ContentSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of the content source. It is defaulted to content source file name if not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentSourceName")]
+        public virtual string ContentSourceName { get; set; }
+
+        /// <summary>Output only. The creation timestamp of the content source. This is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createInfo")]
+        public virtual LastModifiedInfo CreateInfo { get; set; }
+
+        /// <summary>
+        /// Output only. The last modified timestamp of the content source. This is a read-only field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedInfo")]
+        public virtual LastModifiedInfo LastModifiedInfo { get; set; }
+
+        /// <summary>
+        /// Output only. Metadata of the content source. It contains the number of rows and the column names from
+        /// resource link. This is a read-only field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metaData")]
+        public virtual ContentSourceMetaData MetaData { get; set; }
+
+        /// <summary>Required. The link to the file of the content source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
+
+        /// <summary>Required. The resource type of the content source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the meta data of the content source. This is a read-only field.</summary>
+    public class ContentSourceMetaData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The charset of the content source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("charset")]
+        public virtual string Charset { get; set; }
+
+        /// <summary>Output only. The list of column names in the content source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldNames")]
+        public virtual System.Collections.Generic.IList<string> FieldNames { get; set; }
+
+        /// <summary>Output only. The number of rows in the content source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowNumber")]
+        public virtual System.Nullable<int> RowNumber { get; set; }
+
+        /// <summary>Output only. The separator of the content source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("separator")]
+        public virtual string Separator { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A Conversion represents when a user successfully performs a desired action after seeing an ad.
     /// </summary>
@@ -23918,6 +24224,40 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains custom rule information.</summary>
+    public class CustomRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Name of this custom rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Priority of the custom rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<int> Priority { get; set; }
+
+        /// <summary>Optional. A list of field filter, the custom rule will apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleBlocks")]
+        public virtual System.Collections.Generic.IList<RuleBlock> RuleBlocks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains custom value field information.</summary>
+    public class CustomValueField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Field ID in the element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
+        public virtual System.Nullable<int> FieldId { get; set; }
+
+        /// <summary>Optional. Custom key used to match for auto filtering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestKey")]
+        public virtual string RequestKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Custom Viewability Metric</summary>
     public class CustomViewabilityMetric : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -24106,6 +24446,21 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual string Priority { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains dependent field value information.</summary>
+    public class DependentFieldValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The ID of the element that value's field will match against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elementId")]
+        public virtual System.Nullable<long> ElementId { get; set; }
+
+        /// <summary>Optional. The field id of the dependent field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
+        public virtual System.Nullable<int> FieldId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24362,6 +24717,244 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains dynamic feed information.</summary>
+    public class DynamicFeed : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The content source of the dynamic feed. This is a required field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentSource")]
+        public virtual ContentSource ContentSource { get; set; }
+
+        /// <summary>Output only. The creation timestamp of the dynamic feed. This is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createInfo")]
+        public virtual LastModifiedInfo CreateInfo { get; set; }
+
+        /// <summary>Output only. Unique ID of this dynamic feed. This is a read-only, auto-generated field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicFeedId")]
+        public virtual System.Nullable<long> DynamicFeedId { get; set; }
+
+        /// <summary>
+        /// Optional. Name of this dynamic feed. It is defaulted to content source file name if not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicFeedName")]
+        public virtual string DynamicFeedName { get; set; }
+
+        /// <summary>
+        /// Required. The element of the dynamic feed that is to specify the schema of the feed. This is a required
+        /// field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("element")]
+        public virtual Element Element { get; set; }
+
+        /// <summary>Output only. The ingestion status of the dynamic feed. This is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedIngestionStatus")]
+        public virtual FeedIngestionStatus FeedIngestionStatus { get; set; }
+
+        /// <summary>Optional. The schedule of the dynamic feed. It can be set if the feed is published.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedSchedule")]
+        public virtual FeedSchedule FeedSchedule { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates whether the dynamic feed has a published version. This is a read-only field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasPublished")]
+        public virtual System.Nullable<bool> HasPublished { get; set; }
+
+        /// <summary>Output only. The last modified timestamp of the dynamic feed. This is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedInfo")]
+        public virtual LastModifiedInfo LastModifiedInfo { get; set; }
+
+        /// <summary>
+        /// Output only. The status of the feed. It is a read-only field that depends on the the feed ingestion status.
+        /// The default value is INACTIVE, and it will be updated to ACTIVE once the feed is ingested successfully.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>Required. Advertiser ID of this dynamic feed. This is a required field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studioAdvertiserId")]
+        public virtual System.Nullable<long> StudioAdvertiserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Dynamic profile ID is required for dynamic feed insert as the current GPA API only can create a dynamic feed
+    /// under profile context,even though the dynnamic feed itself don't need the dynamic profile id. See
+    /// go/cm3-dco-display-api-interface
+    /// </summary>
+    public class DynamicFeedsInsertRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Dynamic feed to insert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicFeed")]
+        public virtual DynamicFeed DynamicFeed { get; set; }
+
+        /// <summary>Required. Dynamic profile ID of the inserted dynamic feed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicProfileId")]
+        public virtual System.Nullable<long> DynamicProfileId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains dynamic profile information.</summary>
+    public class DynamicProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Active version of the dynamic profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("active")]
+        public virtual DynamicProfileVersion Active { get; set; }
+
+        /// <summary>Optional. Archive status of this dynamic profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveStatus")]
+        public virtual string ArchiveStatus { get; set; }
+
+        /// <summary>Output only. The creation timestamp of the dynamic profile. This is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createInfo")]
+        public virtual LastModifiedInfo CreateInfo { get; set; }
+
+        /// <summary>Optional. Description of this dynamic profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Draft version of the dynamic profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("draft")]
+        public virtual DynamicProfileVersion Draft { get; set; }
+
+        /// <summary>
+        /// Output only. Unique ID of this dynamic profile. This is a read-only, auto-generated field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicProfileId")]
+        public virtual System.Nullable<long> DynamicProfileId { get; set; }
+
+        /// <summary>
+        /// Output only. Identifies what kind of resource this is. Value: the fixed string
+        /// "dfareporting#dynamicProfile".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Output only. The last modified timestamp of the dynamic profile. This is a read-only field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedInfo")]
+        public virtual LastModifiedInfo LastModifiedInfo { get; set; }
+
+        /// <summary>
+        /// Required. Identifier. Name of this dynamic profile. This is a required field and must be less than 256
+        /// characters long.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Status of this dynamic profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>Required. Advertiser ID of this dynamic profile. This is a required field on insertion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studioAdvertiserId")]
+        public virtual System.Nullable<long> StudioAdvertiserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains dynamic profile specific settings for an associated dynamic feed.</summary>
+    public class DynamicProfileFeedSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Dynamic feed ID associated with dynamic profile version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicFeedId")]
+        public virtual System.Nullable<long> DynamicFeedId { get; set; }
+
+        /// <summary>
+        /// Optional. Dynamic rules for row selection for the given dynamic feed in the given dynamic profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicRules")]
+        public virtual DynamicRules DynamicRules { get; set; }
+
+        /// <summary>
+        /// Optional. The number of this dynamic feed rows needed by the dynamic profile, default value is 1. Acceptable
+        /// values are between 1 to 99, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<int> Quantity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains dynamic profile version information.</summary>
+    public class DynamicProfileVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Associated dynamic feeds and their settings (including dynamic rules) for this dynamic profile
+        /// version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicProfileFeedSettings")]
+        public virtual System.Collections.Generic.IList<DynamicProfileFeedSettings> DynamicProfileFeedSettings { get; set; }
+
+        /// <summary>
+        /// Output only. Version ID of this dynamic profile version. This is a read-only, auto-generated field. -1 for
+        /// draft version, 0+ for published versions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
+        public virtual System.Nullable<long> VersionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains dynamic rules information.</summary>
+    public class DynamicRules : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. List of field IDs in this element that should be auto-targeted. Applicable when rule type is AUTO.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoTargetedFieldIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> AutoTargetedFieldIds { get; set; }
+
+        /// <summary>Optional. The custom rules of the dynamic feed, only applicable when rule type is CUSTOM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRules")]
+        public virtual System.Collections.Generic.IList<CustomRule> CustomRules { get; set; }
+
+        /// <summary>
+        /// Optional. Mapping between field ID and custom key that are used to match for auto filtering.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customValueFields")]
+        public virtual System.Collections.Generic.IList<CustomValueField> CustomValueFields { get; set; }
+
+        /// <summary>
+        /// Optional. The proximity targeting rules of the dynamic feed, only applicable when rule type is
+        /// PROXIMITY_TARGETING.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proximityFilter")]
+        public virtual ProximityFilter ProximityFilter { get; set; }
+
+        /// <summary>Optional. The link between an element field ID and a list of user attribute IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remarketingValueAttributes")]
+        public virtual System.Collections.Generic.IList<RemarketingValueAttribute> RemarketingValueAttributes { get; set; }
+
+        /// <summary>
+        /// Optional. The rotation type to select from eligible rows. Rotation type only apply when the filtering rule
+        /// results in more than one eligible rows.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotationType")]
+        public virtual string RotationType { get; set; }
+
+        /// <summary>Optional. The type of the rule, the default value is OPEN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleType")]
+        public virtual string RuleType { get; set; }
+
+        /// <summary>
+        /// Optional. The field ID for the feed that will be used for weighted rotation, only applicable when rotation
+        /// type is WEIGHTED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weightFieldId")]
+        public virtual System.Nullable<int> WeightFieldId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Contains properties of a dynamic targeting key. Dynamic targeting keys are unique, user-friendly labels, created
     /// at the advertiser level in DCM, that can be assigned to ads, creatives, and placements and used for targeting
@@ -24408,6 +25001,80 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the element of the dynamic feed.</summary>
+    public class Element : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The field ID to specify the active field in the feed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeFieldId")]
+        public virtual System.Nullable<int> ActiveFieldId { get; set; }
+
+        /// <summary>Output only. The creation timestamp of the element. This is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createInfo")]
+        public virtual LastModifiedInfo CreateInfo { get; set; }
+
+        /// <summary>
+        /// Optional. The field ID to specify the field that represents the default field in the feed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultFieldId")]
+        public virtual System.Nullable<int> DefaultFieldId { get; set; }
+
+        /// <summary>Optional. The name of the element. It is defaulted to resource file name if not provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elementName")]
+        public virtual string ElementName { get; set; }
+
+        /// <summary>
+        /// Optional. The field ID to specify the field that represents the end timestamp. Only applicable if you're
+        /// planning to use scheduling in your dynamic creative.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTimestampFieldId")]
+        public virtual System.Nullable<int> EndTimestampFieldId { get; set; }
+
+        /// <summary>
+        /// Required. The field ID to specify the field used for uniquely identifying the feed row. This is a required
+        /// field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIdFieldId")]
+        public virtual System.Nullable<int> ExternalIdFieldId { get; set; }
+
+        /// <summary>
+        /// Required. The list of fields of the element. The field order and name should match the meta data in the
+        /// content source source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedFields")]
+        public virtual System.Collections.Generic.IList<FeedField> FeedFields { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the start and end timestamp is local timestamp. The default value is false which means
+        /// start and end timestamp is in UTC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isLocalTimestamp")]
+        public virtual System.Nullable<bool> IsLocalTimestamp { get; set; }
+
+        /// <summary>Output only. The last modified timestamp of the element. This is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedInfo")]
+        public virtual LastModifiedInfo LastModifiedInfo { get; set; }
+
+        /// <summary>Optional. The field ID that specify field used for proximity targeting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proximityTargetingFieldId")]
+        public virtual System.Nullable<int> ProximityTargetingFieldId { get; set; }
+
+        /// <summary>
+        /// Required. The field ID to specify the field used for dynamic reporting in Campaign Manager 360.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingLabelFieldId")]
+        public virtual System.Nullable<int> ReportingLabelFieldId { get; set; }
+
+        /// <summary>
+        /// Optional. The field ID to specify the field that represents the start timestamp. Only applicable if you're
+        /// planning to use scheduling in your dynamic creative.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimestampFieldId")]
+        public virtual System.Nullable<int> StartTimestampFieldId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24581,6 +25248,184 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Each field of the element. This is a required field.</summary>
+    public class FeedField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The default value of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
+        public virtual string DefaultValue { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the field is filterable. Could be set as true when the field type is any of the following
+        /// and is not renderable: - STRING - BOOL - COUNTRY_CODE_ISO - CM360_SITE_ID - CM360_KEYWORD -
+        /// CM360_CREATIVE_ID - CM360_PLACEMENT_ID - CM360_AD_ID - CM360_ADVERTISER_ID - CM360_CAMPAIGN_ID - CITY -
+        /// REGION - POSTAL_CODE - METRO - CUSTOM_VALUE - REMARKETING_VALUE - GEO_CANONICAL - STRING_LIST -
+        /// CREATIVE_DIMENSION - USERLIST_ID - CM360_DYNAMIC_TARGETING_KEY - DV360_LINE_ITEM_ID
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterable")]
+        public virtual System.Nullable<bool> Filterable { get; set; }
+
+        /// <summary>
+        /// Required. The ID of the field. The ID is based on the column index starting from 0, and it should match the
+        /// column index in the resource link.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<int> Id { get; set; }
+
+        /// <summary>Required. The name of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the field is able to display. Could be set as true when the field type is not in any of
+        /// the following and the field is not filterable: - COUNTRY_CODE_ISO - CITY - REGION - POSTAL_CODE - METRO -
+        /// GEO_CANONICAL - USERLIST_ID - CONTEXTUAL_KEYWORD - CM360_DYNAMIC_TARGETING_KEY - WEIGHT
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renderable")]
+        public virtual System.Nullable<bool> Renderable { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the field is required and should not be empty in the feed. Could be set as true when the
+        /// field type is any of the following: - GPA_SERVED_IMAGE_URL - GPA_SERVED_ASSET_URL - ASSET_LIBRARY_HANDLE -
+        /// ASSET_LIBRARY_VIDEO_HANDLE - ASSET_LIBRARY_DIRECTORY_HANDLE
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("required")]
+        public virtual System.Nullable<bool> Required { get; set; }
+
+        /// <summary>Required. The type of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains the ingestion status of the dynamic feed. Feed ingestion is an asynchronous process. If the feed create
+    /// request is successful, feed ingestion will be processed in the background, including validation, assets
+    /// retrieval, and saving the data from the resource link. The processing time is dependent on the data size in the
+    /// resource link. This read-only status field contains the current stage of that processing and its ingestion
+    /// state.
+    /// </summary>
+    public class FeedIngestionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The ingestion error records of the feed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestionErrorRecords")]
+        public virtual System.Collections.Generic.IList<IngestionErrorRecord> IngestionErrorRecords { get; set; }
+
+        /// <summary>Output only. The ingestion status of the feed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestionStatus")]
+        public virtual IngestionStatus IngestionStatus { get; set; }
+
+        /// <summary>Output only. The processing state of the feed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the schedule of the dynamic feed.</summary>
+    public class FeedSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The number of times the feed retransforms within one day. This is a required field if the schedule
+        /// is enabled. Acceptable values are between 1 to 6, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repeatValue")]
+        public virtual System.Nullable<long> RepeatValue { get; set; }
+
+        /// <summary>Optional. Whether the schedule is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleEnabled")]
+        public virtual System.Nullable<bool> ScheduleEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. The hour of the day to start the feed. It is applicable if the repeat value is equal to 1. Default
+        /// value is 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startHour")]
+        public virtual string StartHour { get; set; }
+
+        /// <summary>
+        /// Optional. The minute of the hour to start the feed. It is applicable if the repeat value is equal to 1.
+        /// Default value is 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startMinute")]
+        public virtual string StartMinute { get; set; }
+
+        /// <summary>
+        /// Optional. The time zone to schedule the feed. It is applicable if the repeat value is equal to 1. Default
+        /// value is "America/Los_Angeles".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the field error of the dynamic feed.</summary>
+    public class FieldError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The ID of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
+        public virtual System.Nullable<int> FieldId { get; set; }
+
+        /// <summary>Output only. The name of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>Output only. The list of values of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldValues")]
+        public virtual System.Collections.Generic.IList<string> FieldValues { get; set; }
+
+        /// <summary>Output only. The ingestion error of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestionError")]
+        public virtual string IngestionError { get; set; }
+
+        /// <summary>Output only. Incidcates whether the field has error or warning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isError")]
+        public virtual System.Nullable<bool> IsError { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains field filter information.</summary>
+    public class FieldFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The boolean values, only applicable when rhs_value_type is BOOL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>Optional. The dependent values, only applicable when rhs_value_type is DEPENDENT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependentFieldValue")]
+        public virtual DependentFieldValue DependentFieldValue { get; set; }
+
+        /// <summary>Optional. The field ID on the left hand side of the expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
+        public virtual System.Nullable<int> FieldId { get; set; }
+
+        /// <summary>Optional. Left hand side of the expression match type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchType")]
+        public virtual string MatchType { get; set; }
+
+        /// <summary>Optional. The request value, only applicable when rhs_value_type is REQUEST.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestValue")]
+        public virtual RequestValue RequestValue { get; set; }
+
+        /// <summary>Optional. The string value, only applicable when rhs_value_type is STRING.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>Optional. Right hand side of the expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
+        public virtual string ValueType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25289,6 +26134,48 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
         public virtual System.Collections.Generic.IList<Region> Regions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the ingestion error record of the dynamic feed. limited to 100 records.</summary>
+    public class IngestionErrorRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The list of field errors of the ingestion error record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<FieldError> Errors { get; set; }
+
+        /// <summary>Output only. The record ID of the ingestion error record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordId")]
+        public virtual string RecordId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the ingestion status of the dynamic feed.</summary>
+    public class IngestionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The number of active rows in the feed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numActiveRows")]
+        public virtual System.Nullable<long> NumActiveRows { get; set; }
+
+        /// <summary>Output only. The number of rows processed in the feed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numRowsProcessed")]
+        public virtual System.Nullable<long> NumRowsProcessed { get; set; }
+
+        /// <summary>Output only. The total number of rows in the feed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numRowsTotal")]
+        public virtual System.Nullable<long> NumRowsTotal { get; set; }
+
+        /// <summary>Output only. The number of rows with errors in the feed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numRowsWithErrors")]
+        public virtual System.Nullable<long> NumRowsWithErrors { get; set; }
+
+        /// <summary>Output only. The total number of warnings in the feed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numWarningsTotal")]
+        public virtual System.Nullable<long> NumWarningsTotal { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27374,6 +28261,29 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains proximity filter information.</summary>
+    public class ProximityFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Field ID in the element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
+        public virtual System.Nullable<int> FieldId { get; set; }
+
+        /// <summary>Optional. The radius bucket type of the proximity filter</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("radiusBucketType")]
+        public virtual string RadiusBucketType { get; set; }
+
+        /// <summary>Optional. The units of the radius value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("radiusUnitType")]
+        public virtual string RadiusUnitType { get; set; }
+
+        /// <summary>Optional. Radius length in units defined by radius_units.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("radiusValue")]
+        public virtual System.Nullable<int> RadiusValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents fields that are compatible to be selected for a report of type "REACH".</summary>
     public class ReachReportCompatibleFields : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -27605,6 +28515,21 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// <summary>Remarketing list collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remarketingLists")]
         public virtual System.Collections.Generic.IList<RemarketingList> RemarketingLists { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains remarketing value attribute information.</summary>
+    public class RemarketingValueAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Field ID in the element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
+        public virtual System.Nullable<int> FieldId { get; set; }
+
+        /// <summary>Optional. Remarketing user attribute IDs for auto filtering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAttributeIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> UserAttributeIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28153,6 +29078,31 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains request value information.</summary>
+    public class RequestValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. User attribute IDs in the request that should be excluded. Used only when the field type is
+        /// REMARKETING_VALUE or USER_ATTRIBUTE_ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeFromUserAttributeIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ExcludeFromUserAttributeIds { get; set; }
+
+        /// <summary>Optional. Custom key in the request. Used only when the field type is CUSTOM_VALUE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// Optional. User attribute IDs in the request. Used only when the field type is REMARKETING_VALUE or
+        /// USER_ATTRIBUTE_ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAttributeIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> UserAttributeIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Rich Media Exit Override.</summary>
     public class RichMediaExitOverride : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -28197,6 +29147,17 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingTemplateId")]
         public virtual System.Nullable<long> TargetingTemplateId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains a list of field filters that the given custom rule will apply.</summary>
+    public class RuleBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of non-auto field filters</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldFilter")]
+        public virtual System.Collections.Generic.IList<FieldFilter> FieldFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
