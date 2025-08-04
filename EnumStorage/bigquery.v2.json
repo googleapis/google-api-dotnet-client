@@ -26,6 +26,12 @@
     "UPDATE_ACL",
     "UPDATE_FULL"
   ],
+  "Google.Apis.Bigquery.v2.JobsResource+GetQueryResultsRequest.FormatOptionsTimestampOutputFormatEnum": [
+    "TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED",
+    "FLOAT64",
+    "INT64",
+    "ISO8601_STRING"
+  ],
   "Google.Apis.Bigquery.v2.JobsResource+InsertMediaUpload.AltEnum": [
     "json",
     "media",
@@ -43,6 +49,12 @@
     "done",
     "pending",
     "running"
+  ],
+  "Google.Apis.Bigquery.v2.TabledataResource+ListRequest.FormatOptionsTimestampOutputFormatEnum": [
+    "TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED",
+    "FLOAT64",
+    "INT64",
+    "ISO8601_STRING"
   ],
   "Google.Apis.Bigquery.v2.TablesResource+GetRequest.ViewEnum": [
     "BASIC",
