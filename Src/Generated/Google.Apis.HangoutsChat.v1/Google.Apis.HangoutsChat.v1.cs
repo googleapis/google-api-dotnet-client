@@ -1234,8 +1234,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// creating a membership adds the member directly to the specified space. Supports the following types of
             /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-            /// Preview](https://developers.google.com/workspace/preview) and the authorization scope: -
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and the authorization scope: -
             /// `https://www.googleapis.com/auth/chat.app.memberships` - [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
             /// of the following authorization scopes: - `https://www.googleapis.com/auth/chat.memberships` -
@@ -1268,8 +1267,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// creating a membership adds the member directly to the specified space. Supports the following types of
             /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-            /// Preview](https://developers.google.com/workspace/preview) and the authorization scope: -
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and the authorization scope: -
             /// `https://www.googleapis.com/auth/chat.app.memberships` - [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
             /// of the following authorization scopes: - `https://www.googleapis.com/auth/chat.memberships` -
@@ -1357,8 +1355,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// space](https://developers.google.com/workspace/chat/delete-members). Supports the following types of
             /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-            /// Preview](https://developers.google.com/workspace/preview) and the authorization scope: -
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and the authorization scope: -
             /// `https://www.googleapis.com/auth/chat.app.memberships` - [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
             /// of the following authorization scopes: - `https://www.googleapis.com/auth/chat.memberships` -
@@ -1395,8 +1392,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// space](https://developers.google.com/workspace/chat/delete-members). Supports the following types of
             /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-            /// Preview](https://developers.google.com/workspace/preview) and the authorization scope: -
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and the authorization scope: -
             /// `https://www.googleapis.com/auth/chat.app.memberships` - [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
             /// of the following authorization scopes: - `https://www.googleapis.com/auth/chat.memberships` -
@@ -1798,8 +1794,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// space](https://developers.google.com/workspace/chat/update-members). Supports the following types of
             /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-            /// Preview](https://developers.google.com/workspace/preview) and the authorization scope: -
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and the authorization scope: -
             /// `https://www.googleapis.com/auth/chat.app.memberships` (only in spaces the app created) - [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
             /// of the following authorization scopes: - `https://www.googleapis.com/auth/chat.memberships` -
@@ -1822,8 +1817,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// space](https://developers.google.com/workspace/chat/update-members). Supports the following types of
             /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-            /// Preview](https://developers.google.com/workspace/preview) and the authorization scope: -
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and the authorization scope: -
             /// `https://www.googleapis.com/auth/chat.app.memberships` (only in spaces the app created) - [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
             /// of the following authorization scopes: - `https://www.googleapis.com/auth/chat.memberships` -
@@ -3462,11 +3456,11 @@ namespace Google.Apis.HangoutsChat.v1
         /// [Create a space](https://developers.google.com/workspace/chat/create-spaces). Supports the following types
         /// of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-        /// Preview](https://developers.google.com/workspace/preview) and one of the following authorization scopes: -
-        /// `https://www.googleapis.com/auth/chat.app.spaces.create` - `https://www.googleapis.com/auth/chat.app.spaces`
-        /// - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
-        /// one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.create` -
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and one of the following
+        /// authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces.create` -
+        /// `https://www.googleapis.com/auth/chat.app.spaces` - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of
+        /// the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.create` -
         /// `https://www.googleapis.com/auth/chat.spaces` - `https://www.googleapis.com/auth/chat.import` (import mode
         /// spaces only) When authenticating as an app, the `space.customer` field must be set in the request. When
         /// authenticating as an app, the Chat app is added as a member of the space. However, unlike human
@@ -3490,11 +3484,11 @@ namespace Google.Apis.HangoutsChat.v1
         /// [Create a space](https://developers.google.com/workspace/chat/create-spaces). Supports the following types
         /// of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-        /// Preview](https://developers.google.com/workspace/preview) and one of the following authorization scopes: -
-        /// `https://www.googleapis.com/auth/chat.app.spaces.create` - `https://www.googleapis.com/auth/chat.app.spaces`
-        /// - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
-        /// one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.create` -
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and one of the following
+        /// authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces.create` -
+        /// `https://www.googleapis.com/auth/chat.app.spaces` - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of
+        /// the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.create` -
         /// `https://www.googleapis.com/auth/chat.spaces` - `https://www.googleapis.com/auth/chat.import` (import mode
         /// spaces only) When authenticating as an app, the `space.customer` field must be set in the request. When
         /// authenticating as an app, the Chat app is added as a member of the space. However, unlike human
@@ -3560,8 +3554,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// space](https://developers.google.com/workspace/chat/delete-spaces). Supports the following types of
         /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-        /// Preview](https://developers.google.com/workspace/preview) and the authorization scope: -
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and the authorization scope: -
         /// `https://www.googleapis.com/auth/chat.app.delete` (only in spaces the app created) - [User
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of
         /// the following authorization scopes: - `https://www.googleapis.com/auth/chat.delete` -
@@ -3581,8 +3574,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// space](https://developers.google.com/workspace/chat/delete-spaces). Supports the following types of
         /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-        /// Preview](https://developers.google.com/workspace/preview) and the authorization scope: -
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and the authorization scope: -
         /// `https://www.googleapis.com/auth/chat.app.delete` (only in spaces the app created) - [User
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of
         /// the following authorization scopes: - `https://www.googleapis.com/auth/chat.delete` -
@@ -3942,9 +3934,8 @@ namespace Google.Apis.HangoutsChat.v1
         /// within the Google Workspace organization might already use this display name. Supports the following types
         /// of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-        /// Preview](https://developers.google.com/workspace/preview) and one of the following authorization scopes: -
-        /// `https://www.googleapis.com/auth/chat.app.spaces` - [User
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and one of the following
+        /// authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces` - [User
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of
         /// the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces` -
         /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only) - User authentication grants
@@ -3974,9 +3965,8 @@ namespace Google.Apis.HangoutsChat.v1
         /// within the Google Workspace organization might already use this display name. Supports the following types
         /// of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
-        /// Preview](https://developers.google.com/workspace/preview) and one of the following authorization scopes: -
-        /// `https://www.googleapis.com/auth/chat.app.spaces` - [User
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and one of the following
+        /// authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces` - [User
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of
         /// the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces` -
         /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only) - User authentication grants
@@ -4858,9 +4848,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// `audiences/default`. Reading the target audience supports: - [User
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) - [App
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
-        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) with the `chat.app.spaces` scope in
-        /// [Developer Preview](https://developers.google.com/workspace/preview). This field is not populated when using
-        /// the `chat.bot` scope with [app
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) with the `chat.app.spaces` scope.
+        /// This field is not populated when using the `chat.bot` scope with [app
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). Setting the
         /// target audience requires [user
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
@@ -8456,8 +8445,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual User PrivateMessageViewer { get; set; }
 
         /// <summary>
-        /// Output only. Information about a message that's quoted by a Google Chat user in a space. Google Chat users
-        /// can quote a message to reply to it.
+        /// Optional. Information about a message that's quoted by a Google Chat user in a space. Google Chat users can
+        /// quote a message to reply to it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotedMessageMetadata")]
         public virtual QuotedMessageMetadata QuotedMessageMetadata { get; set; }
@@ -8678,7 +8667,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         private object _lastUpdateTime;
 
         /// <summary>
-        /// Output only. The timestamp when the quoted message was created or when the quoted message was last updated.
+        /// Required. The timestamp when the quoted message was created or when the quoted message was last updated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
         public virtual string LastUpdateTimeRaw
@@ -8715,7 +8704,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         }
 
         /// <summary>
-        /// Output only. Resource name of the quoted message. Format: `spaces/{space}/messages/{message}`
+        /// Required. Resource name of the message that is quoted. Format: `spaces/{space}/messages/{message}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -9046,7 +9035,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// is the `id` from the [Admin SDK customer resource](
         /// https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers). Private apps can also use
         /// the `customers/my_customer` alias to create the space in the same Google Workspace organization as the app.
-        /// For DMs, this field isn't populated. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// For DMs, this field isn't populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
@@ -9182,8 +9171,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Optional. Space permission settings for existing spaces. Input for updating exact space permission settings,
         /// where existing permission settings are replaced. Output lists current permission settings. Reading and
-        /// updating permission settings supports: - In [Developer
-        /// Preview](https://developers.google.com/workspace/preview), [App
+        /// updating permission settings supports: - [App
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
         /// [administrator approval](https://support.google.com/a?p=chat-app-auth) with the `chat.app.spaces` scope.
         /// Only populated and settable when the Chat app created the space. - [User
@@ -9195,8 +9183,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Optional. Input only. Predefined space permission settings, input only when creating a space. If the field
         /// is not set, a collaboration space is created. After you create the space, settings are populated in the
-        /// `PermissionSettings` field. Setting predefined permission settings supports: - In [Developer
-        /// Preview](https://developers.google.com/workspace/preview), [App
+        /// `PermissionSettings` field. Setting predefined permission settings supports: - [App
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
         /// [administrator approval](https://support.google.com/a?p=chat-app-auth) with the `chat.app.spaces` or
         /// `chat.app.spaces.create` scopes. - [User
