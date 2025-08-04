@@ -1,0 +1,11 @@
+{
+  "Google.Apis.SecureSourceManager.v1.SecureSourceManagerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.SecureSourceManager.v1.SecureSourceManagerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
