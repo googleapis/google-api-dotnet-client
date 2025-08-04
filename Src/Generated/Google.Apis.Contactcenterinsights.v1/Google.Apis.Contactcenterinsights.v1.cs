@@ -2959,7 +2959,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                         /// Optional. A unique ID for the new AuthorizedView. This ID will become the final component of
                         /// the AuthorizedView's resource name. If no ID is specified, a server-generated ID will be
                         /// used. This value should be 4-64 characters and must match the regular expression
-                        /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See go/aip/122#resource-id-segments
+                        /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See aip.dev/122#resource-id-segments
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("authorizedViewId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string AuthorizedViewId { get; set; }
@@ -3541,7 +3541,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                     /// Optional. A unique ID for the new AuthorizedViewSet. This ID will become the final component of
                     /// the AuthorizedViewSet's resource name. If no ID is specified, a server-generated ID will be
                     /// used. This value should be 4-64 characters and must match the regular expression
-                    /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See go/aip/122#resource-id-segments
+                    /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See aip.dev/122#resource-id-segments
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("authorizedViewSetId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AuthorizedViewSetId { get; set; }
