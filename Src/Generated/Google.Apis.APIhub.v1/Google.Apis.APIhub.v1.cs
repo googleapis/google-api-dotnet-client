@@ -298,6 +298,7 @@ namespace Google.Apis.APIhub.v1
                 Curations = new CurationsResource(service);
                 Dependencies = new DependenciesResource(service);
                 Deployments = new DeploymentsResource(service);
+                DiscoveredApiObservations = new DiscoveredApiObservationsResource(service);
                 ExternalApis = new ExternalApisResource(service);
                 HostProjectRegistrations = new HostProjectRegistrationsResource(service);
                 Operations = new OperationsResource(service);
@@ -4042,9 +4043,12 @@ namespace Google.Apis.APIhub.v1
                     /// (RFC3339)[https://tools.ietf.org/html/rfc3339] format. Allowed comparison operators: `&amp;gt;`
                     /// and `&amp;lt;`. * `resource_uri` - A URI to the deployment resource. Allowed comparison
                     /// operators: `=`. * `api_versions` - The API versions linked to this deployment. Allowed
-                    /// comparison operators: `:`. * `deployment_type.enum_values.values.id` - The allowed value id of
-                    /// the deployment_type attribute associated with the Deployment. Allowed comparison operators: `:`.
-                    /// * `deployment_type.enum_values.values.display_name` - The allowed value display name of the
+                    /// comparison operators: `:`. * `source_project` - The project/organization at source for the
+                    /// deployment. Allowed comparison operators: `=`. * `source_environment` - The environment at
+                    /// source for the deployment. Allowed comparison operators: `=`. *
+                    /// `deployment_type.enum_values.values.id` - The allowed value id of the deployment_type attribute
+                    /// associated with the Deployment. Allowed comparison operators: `:`. *
+                    /// `deployment_type.enum_values.values.display_name` - The allowed value display name of the
                     /// deployment_type attribute associated with the Deployment. Allowed comparison operators: `:`. *
                     /// `slo.string_values.values` -The allowed string value of the slo attribute associated with the
                     /// deployment. Allowed comparison operators: `:`. * `environment.enum_values.values.id` - The
@@ -4233,6 +4237,318 @@ namespace Google.Apis.APIhub.v1
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the DiscoveredApiObservations resource.</summary>
+            public virtual DiscoveredApiObservationsResource DiscoveredApiObservations { get; }
+
+            /// <summary>The "discoveredApiObservations" collection of methods.</summary>
+            public class DiscoveredApiObservationsResource
+            {
+                private const string Resource = "discoveredApiObservations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DiscoveredApiObservationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    DiscoveredApiOperations = new DiscoveredApiOperationsResource(service);
+                }
+
+                /// <summary>Gets the DiscoveredApiOperations resource.</summary>
+                public virtual DiscoveredApiOperationsResource DiscoveredApiOperations { get; }
+
+                /// <summary>The "discoveredApiOperations" collection of methods.</summary>
+                public class DiscoveredApiOperationsResource
+                {
+                    private const string Resource = "discoveredApiOperations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DiscoveredApiOperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets a DiscoveredAPIOperation in a given project, location, ApiObservation and ApiOperation.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The name of the DiscoveredApiOperation to retrieve. Format:
+                    /// projects/{project}/locations/{location}/discoveredApiObservations/{discovered_api_observation}/discoveredApiOperations/{discovered_api_operation}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets a DiscoveredAPIOperation in a given project, location, ApiObservation and ApiOperation.
+                    /// </summary>
+                    public class GetRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1DiscoveredApiOperation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the DiscoveredApiOperation to retrieve. Format:
+                        /// projects/{project}/locations/{location}/discoveredApiObservations/{discovered_api_observation}/discoveredApiOperations/{discovered_api_operation}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/discoveredApiObservations/[^/]+/discoveredApiOperations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists all the DiscoveredAPIOperations in a given project, location and ApiObservation.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. The parent, which owns this collection of DiscoveredApiOperations. Format:
+                    /// projects/{project}/locations/{location}/discoveredApiObservations/{discovered_api_observation}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists all the DiscoveredAPIOperations in a given project, location and ApiObservation.
+                    /// </summary>
+                    public class ListRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ListDiscoveredApiOperationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent, which owns this collection of DiscoveredApiOperations. Format:
+                        /// projects/{project}/locations/{location}/discoveredApiObservations/{discovered_api_observation}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. DiscoveredApiOperations will be returned. The maximum value is 1000; values above
+                        /// 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListDiscoveredApiApiOperations` call.
+                        /// Provide this to retrieve the subsequent page. When paginating, all other parameters provided
+                        /// to `ListDiscoveredApiApiOperations` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/discoveredApiOperations";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/discoveredApiObservations/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets a DiscoveredAPIObservation in a given project, location and ApiObservation.</summary>
+                /// <param name="name">
+                /// Required. The name of the DiscoveredApiObservation to retrieve. Format:
+                /// projects/{project}/locations/{location}/discoveredApiObservations/{discovered_api_observation}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a DiscoveredAPIObservation in a given project, location and ApiObservation.</summary>
+                public class GetRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1DiscoveredApiObservation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the DiscoveredApiObservation to retrieve. Format:
+                    /// projects/{project}/locations/{location}/discoveredApiObservations/{discovered_api_observation}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/discoveredApiObservations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all the DiscoveredAPIObservations in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of ApiObservations. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all the DiscoveredAPIObservations in a given project and location.</summary>
+                public class ListRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ListDiscoveredApiObservationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of ApiObservations. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of ApiObservations to return. The service may return fewer than
+                    /// this value. If unspecified, at most 10 ApiObservations will be returned. The maximum value is
+                    /// 1000; values above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListApiObservations` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListApiObservations` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/discoveredApiObservations";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -8678,6 +8994,7 @@ namespace Google.Apis.APIhub.v1.Data
         /// following system defined attribute:
         /// `projects/{project}/locations/{location}/attributes/system-management-url` The number of values for this
         /// attribute will be based on the cardinality of the attribute. The same can be retrieved via GetAttribute API.
+        /// The value of the attribute should be a valid URL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementUrl")]
         public virtual GoogleCloudApihubV1AttributeValues ManagementUrl { get; set; }
@@ -8690,9 +9007,10 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. A uri that uniquely identfies the deployment within a particular gateway. For example, if the
-        /// runtime resource is of type APIGEE_PROXY, then this field will be a combination of org, proxy name and
-        /// environment.
+        /// Required. The resource URI identifies the deployment within its gateway. For Apigee gateways, its
+        /// recommended to use the format: organizations/{org}/environments/{env}/apis/{api}. For ex: if a proxy with
+        /// name `orders` is deployed in `staging` environment of `cymbal` organization, the resource URI would be:
+        /// `organizations/cymbal/environments/staging/apis/orders`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
@@ -8728,6 +9046,8 @@ namespace Google.Apis.APIhub.v1.Data
         /// to the following system defined attribute:
         /// `projects/{project}/locations/{location}/attributes/system-source-uri` The number of values for this
         /// attribute will be based on the cardinality of the attribute. The same can be retrieved via GetAttribute API.
+        /// The value of the attribute should be a valid URI, and in case of Cloud Storage URI, it should point to a
+        /// Cloud Storage object, not a directory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUri")]
         public virtual GoogleCloudApihubV1AttributeValues SourceUri { get; set; }
@@ -8885,6 +9205,364 @@ namespace Google.Apis.APIhub.v1.Data
     /// <summary>The DisablePlugin method's request.</summary>
     public class GoogleCloudApihubV1DisablePluginRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Respresents an API Observation observed in one of the sources.</summary>
+    public class GoogleCloudApihubV1DiscoveredApiObservation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The number of observed API Operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiOperationCount")]
+        public virtual System.Nullable<long> ApiOperationCount { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time stamp of the observation in API Hub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The hostname of requests processed for this Observation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>Output only. The number of known API Operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knownOperationsCount")]
+        public virtual System.Nullable<long> KnownOperationsCount { get; set; }
+
+        private string _lastEventDetectedTimeRaw;
+
+        private object _lastEventDetectedTime;
+
+        /// <summary>Optional. Last event detected time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastEventDetectedTime")]
+        public virtual string LastEventDetectedTimeRaw
+        {
+            get => _lastEventDetectedTimeRaw;
+            set
+            {
+                _lastEventDetectedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastEventDetectedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastEventDetectedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastEventDetectedTimeDateTimeOffset instead.")]
+        public virtual object LastEventDetectedTime
+        {
+            get => _lastEventDetectedTime;
+            set
+            {
+                _lastEventDetectedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastEventDetectedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastEventDetectedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastEventDetectedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastEventDetectedTimeRaw);
+            set => LastEventDetectedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The name of the discovered API Observation. Format:
+        /// `projects/{project}/locations/{location}/discoveredApiObservations/{discovered_api_observation}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. For an observation pushed from a gcp resource, this would be the gcp project id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("origin")]
+        public virtual string Origin { get; set; }
+
+        /// <summary>
+        /// Optional. The IP address (IPv4 or IPv6) of the origin server that the request was sent to. This field can
+        /// include port information. Examples: `"192.168.1.1"`, `"10.0.0.1:80"`, `"FE80::0202:B3FF:FE1E:8329"`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverIps")]
+        public virtual System.Collections.Generic.IList<string> ServerIps { get; set; }
+
+        /// <summary>Optional. The location of the observation source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceLocations")]
+        public virtual System.Collections.Generic.IList<string> SourceLocations { get; set; }
+
+        /// <summary>Output only. The metadata of the source from which the observation was collected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMetadata")]
+        public virtual GoogleCloudApihubV1SourceMetadata SourceMetadata { get; set; }
+
+        /// <summary>Optional. The type of the source from which the observation was collected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTypes")]
+        public virtual System.Collections.Generic.IList<string> SourceTypes { get; set; }
+
+        /// <summary>Optional. Style of ApiObservation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("style")]
+        public virtual string Style { get; set; }
+
+        /// <summary>Output only. The number of unknown API Operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unknownOperationsCount")]
+        public virtual System.Nullable<long> UnknownOperationsCount { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Update time stamp of the observation in API Hub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DiscoveredApiOperation represents an API Operation observed in one of the sources.</summary>
+    public class GoogleCloudApihubV1DiscoveredApiOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The classification of the discovered API operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classification")]
+        public virtual string Classification { get; set; }
+
+        /// <summary>Optional. The number of occurrences of this API Operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time stamp of the discovered API operation in API Hub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _firstSeenTimeRaw;
+
+        private object _firstSeenTime;
+
+        /// <summary>Optional. First seen time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstSeenTime")]
+        public virtual string FirstSeenTimeRaw
+        {
+            get => _firstSeenTimeRaw;
+            set
+            {
+                _firstSeenTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _firstSeenTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FirstSeenTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FirstSeenTimeDateTimeOffset instead.")]
+        public virtual object FirstSeenTime
+        {
+            get => _firstSeenTime;
+            set
+            {
+                _firstSeenTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _firstSeenTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="FirstSeenTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FirstSeenTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstSeenTimeRaw);
+            set => FirstSeenTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. An HTTP Operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpOperation")]
+        public virtual GoogleCloudApihubV1HttpOperationDetails HttpOperation { get; set; }
+
+        private string _lastSeenTimeRaw;
+
+        private object _lastSeenTime;
+
+        /// <summary>Optional. Last seen time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSeenTime")]
+        public virtual string LastSeenTimeRaw
+        {
+            get => _lastSeenTimeRaw;
+            set
+            {
+                _lastSeenTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastSeenTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastSeenTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSeenTimeDateTimeOffset instead.")]
+        public virtual object LastSeenTime
+        {
+            get => _lastSeenTime;
+            set
+            {
+                _lastSeenTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastSeenTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastSeenTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastSeenTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSeenTimeRaw);
+            set => LastSeenTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The list of matched results for the discovered API operation. This will be populated only if
+        /// the classification is known. The current usecase is for a single match. Keeping it repeated to support
+        /// multiple matches in future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudApihubV1MatchResult> MatchResults { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the discovered API Operation. Format:
+        /// `projects/{project}/locations/{location}/discoveredApiObservations/{discovered_api_observation}/discoveredApiOperations/{discovered_api_operation}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The metadata of the source from which the api operation was collected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMetadata")]
+        public virtual GoogleCloudApihubV1SourceMetadata SourceMetadata { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Update time stamp of the discovered API operation in API Hub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9106,6 +9784,25 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An aggregation of HTTP header occurrences.</summary>
+    public class GoogleCloudApihubV1Header : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of occurrences of this Header across transactions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>Data type of header</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual string DataType { get; set; }
+
+        /// <summary>Header name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Host project registration refers to the registration of a Google cloud project with Api Hub as a host project.
     /// This is the project where Api Hub is provisioned. It acts as the consumer project for the Api Hub instance
@@ -9203,6 +9900,59 @@ namespace Google.Apis.APIhub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual GoogleCloudApihubV1Path Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An HTTP-based API Operation, sometimes called a "REST" Operation.</summary>
+    public class GoogleCloudApihubV1HttpOperationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. An HTTP Operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpOperation")]
+        public virtual GoogleCloudApihubV1HttpOperation HttpOperation { get; set; }
+
+        /// <summary>Optional. Path params of HttpOperation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pathParams")]
+        public virtual System.Collections.Generic.IList<GoogleCloudApihubV1PathParam> PathParams { get; set; }
+
+        /// <summary>Optional. Query params of HttpOperation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryParams")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudApihubV1QueryParam> QueryParams { get; set; }
+
+        /// <summary>Optional. Request metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudApihubV1HttpRequest Request { get; set; }
+
+        /// <summary>Optional. Response metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual GoogleCloudApihubV1HttpResponse Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An aggregation of HTTP requests.</summary>
+    public class GoogleCloudApihubV1HttpRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Unordered map from header name to header metadata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudApihubV1Header> Headers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An aggregation of HTTP responses.</summary>
+    public class GoogleCloudApihubV1HttpResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Unordered map from header name to header metadata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudApihubV1Header> Headers { get; set; }
+
+        /// <summary>Optional. Map of status code to observed count</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseCodes")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> ResponseCodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9505,6 +10255,44 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for response to listing DiscoveredApiObservations</summary>
+    public class GoogleCloudApihubV1ListDiscoveredApiObservationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The DiscoveredApiObservation from the specified project and location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveredApiObservations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudApihubV1DiscoveredApiObservation> DiscoveredApiObservations { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing DiscoveredApiOperations</summary>
+    public class GoogleCloudApihubV1ListDiscoveredApiOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The DiscoveredApiOperations from the specified project, location and DiscoveredApiObservation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveredApiOperations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudApihubV1DiscoveredApiOperation> DiscoveredApiOperations { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The ListExternalApis method's response.</summary>
     public class GoogleCloudApihubV1ListExternalApisResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9648,6 +10436,22 @@ namespace Google.Apis.APIhub.v1.Data
         /// <summary>Runtime project attachment for a project if exists, empty otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeProjectAttachment")]
         public virtual GoogleCloudApihubV1RuntimeProjectAttachment RuntimeProjectAttachment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// MatchResult represents the result of matching a discovered API operation with a catalog API operation.
+    /// </summary>
+    public class GoogleCloudApihubV1MatchResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The name of the matched API Operation. Format:
+        /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9898,10 +10702,25 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>HTTP Path parameter.</summary>
+    public class GoogleCloudApihubV1PathParam : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Data type of path param</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual string DataType { get; set; }
+
+        /// <summary>Optional. Segment location in the path, 1-indexed</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("position")]
+        public virtual System.Nullable<int> Position { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A plugin resource in the API Hub.</summary>
     public class GoogleCloudApihubV1Plugin : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The configuration of actions supported by the plugin.</summary>
+        /// <summary>Required. The configuration of actions supported by the plugin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionsConfig")]
         public virtual System.Collections.Generic.IList<GoogleCloudApihubV1PluginActionConfig> ActionsConfig { get; set; }
 
@@ -10160,7 +10979,8 @@ namespace Google.Apis.APIhub.v1.Data
 
         /// <summary>
         /// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of
-        /// gcp based plugins and org id in case of non gcp based plugins. This is a required field.
+        /// gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for
+        /// Google provided on-ramp plugins.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProjectId")]
         public virtual string SourceProjectId { get; set; }
@@ -10319,6 +11139,25 @@ namespace Google.Apis.APIhub.v1.Data
         /// <summary>Required. Line number (zero-indexed).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("line")]
         public virtual System.Nullable<int> Line { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An aggregation of HTTP query parameter occurrences.</summary>
+    public class GoogleCloudApihubV1QueryParam : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The number of occurrences of this query parameter across transactions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>Optional. Data type of path param</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual string DataType { get; set; }
+
+        /// <summary>Required. Name of query param</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
