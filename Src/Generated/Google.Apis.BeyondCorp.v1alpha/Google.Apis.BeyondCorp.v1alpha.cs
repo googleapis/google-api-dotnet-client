@@ -7313,14 +7313,14 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         }
                     }
 
-                    /// <summary>Deletes a single Application.</summary>
+                    /// <summary>Deletes a single application.</summary>
                     /// <param name="name">Required. Name of the resource.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(this.service, name);
                     }
 
-                    /// <summary>Deletes a single Application.</summary>
+                    /// <summary>Deletes a single application.</summary>
                     public class DeleteRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -7869,7 +7869,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     }
                 }
 
-                /// <summary>Creates a new SecurityGateway in a given project and location.</summary>
+                /// <summary>Creates a new Security Gateway in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The resource project name of the SecurityGateway location using the form:
@@ -7880,7 +7880,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new SecurityGateway in a given project and location.</summary>
+                /// <summary>Creates a new Security Gateway in a given project and location.</summary>
                 public class CreateRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -7900,7 +7900,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore request if it has already been
+                    /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -11799,7 +11799,7 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Beyondcorp Application resource information.</summary>
+    /// <summary>The information about an application resource.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -11840,17 +11840,18 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         }
 
         /// <summary>
-        /// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+        /// Optional. An arbitrary user-provided name for the application resource. Cannot exceed 64 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
         /// Required. Endpoint matchers associated with an application. A combination of hostname and ports as endpoint
-        /// matcher is used to match the application. Match conditions for OR logic. An array of match conditions to
-        /// allow for multiple matching criteria. The rule is considered a match if one the conditions are met. The
-        /// conditions can be one of the following combination (Hostname), (Hostname &amp;amp; Ports) EXAMPLES: Hostname
-        /// - ("*.abc.com"), ("xyz.abc.com") Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
+        /// matchers is used to match the application. Match conditions for OR logic. An array of match conditions to
+        /// allow for multiple matching criteria. The rule is considered a match if one of the conditions is met. The
+        /// conditions can be one of the following combinations (Hostname), (Hostname &amp;amp; Ports) EXAMPLES:
+        /// Hostname - ("*.example.com"), ("xyz.example.com") Hostname and Ports - ("example.com" and "22"),
+        /// ("example.com" and "22,33") etc
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointMatchers")]
         public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher> EndpointMatchers { get; set; }
@@ -12020,7 +12021,7 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about a BeyondCorp SecurityGateway resource.</summary>
+    /// <summary>The information about a security gateway resource.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
