@@ -3004,6 +3004,16 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Message to represent the option where Datastream will enforce encryption without authenticating server identity.
+    /// Server certificates will be trusted by default.
+    /// </summary>
+    public class BasicEncryption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>BigQuery destination configuration</summary>
     public class BigQueryDestinationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3413,6 +3423,43 @@ namespace Google.Apis.Datastream.v1.Data
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message to represent the option where Datastream will enforce encryption and authenticate server identity.
+    /// ca_certificate must be set if user selects this option.
+    /// </summary>
+    public class EncryptionAndServerValidation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Input only. PEM-encoded certificate of the CA that signed the source database server's
+        /// certificate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caCertificate")]
+        public virtual string CaCertificate { get; set; }
+
+        /// <summary>
+        /// Optional. The hostname mentioned in the Subject or SAN extension of the server certificate. This field is
+        /// used for bypassing the hostname validation while verifying server certificate. This is required for
+        /// scenarios where the host name that datastream connects to is different from the certificate's subject. This
+        /// specifically happens for private connectivity. It could also happen when the customer provides a public IP
+        /// in connection profile but the same is not present in the server certificate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCertificateHostname")]
+        public virtual string ServerCertificateHostname { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message to represent the option where encryption is not enforced. An empty message right now to allow future
+    /// extensibility.
+    /// </summary>
+    public class EncryptionNotEnforced : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5586,6 +5633,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secretManagerStoredPassword")]
         public virtual string SecretManagerStoredPassword { get; set; }
 
+        /// <summary>Optional. SSL configuration for the SQLServer connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslConfig")]
+        public virtual SqlServerSslConfig SslConfig { get; set; }
+
         /// <summary>Required. Username for the SQLServer connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
@@ -5646,6 +5697,31 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>CDC reader reads from transaction logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionLogs")]
         public virtual SqlServerTransactionLogs TransactionLogs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SQL Server SSL configuration information.</summary>
+    public class SqlServerSslConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If set, Datastream will enforce encryption without authenticating server identity. Server certificates will
+        /// be trusted by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basicEncryption")]
+        public virtual BasicEncryption BasicEncryption { get; set; }
+
+        /// <summary>If set, Datastream will enforce encryption and authenticate server identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionAndServerValidation")]
+        public virtual EncryptionAndServerValidation EncryptionAndServerValidation { get; set; }
+
+        /// <summary>
+        /// If set, Datastream will not enforce encryption. If the DB server mandates encryption, then connection will
+        /// be encrypted but server identity will not be authenticated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionNotEnforced")]
+        public virtual EncryptionNotEnforced EncryptionNotEnforced { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
