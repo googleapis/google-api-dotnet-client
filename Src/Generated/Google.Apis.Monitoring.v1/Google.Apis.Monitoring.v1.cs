@@ -2396,7 +2396,11 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A single field of a message type.</summary>
+    /// <summary>
+    /// A single field of a message type.New usages of this message as an alternative to FieldDescriptorProto are
+    /// strongly discouraged. This message does not reliability preserve all information necessary to model the schema
+    /// and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information.
+    /// </summary>
     public class Field : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The field cardinality.</summary>
@@ -3059,7 +3063,11 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A protocol buffer option, which can be attached to a message, field, enumeration, etc.</summary>
+    /// <summary>
+    /// A protocol buffer option, which can be attached to a message, field, enumeration, etc.New usages of this message
+    /// as an alternative to FileOptions, MessageOptions, FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions,
+    /// or MethodOptions are strongly discouraged.
+    /// </summary>
     public class Option : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3995,7 +4003,11 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A protocol buffer message type.</summary>
+    /// <summary>
+    /// A protocol buffer message type.New usages of this message as an alternative to DescriptorProto are strongly
+    /// discouraged. This message does not reliability preserve all information necessary to model the schema and
+    /// preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information.
+    /// </summary>
     public class Type : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The source edition string, only valid when syntax is SYNTAX_EDITIONS.</summary>
