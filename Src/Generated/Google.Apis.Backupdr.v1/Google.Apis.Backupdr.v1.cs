@@ -759,7 +759,7 @@ namespace Google.Apis.Backupdr.v1
                     }
                 }
 
-                /// <summary>Update a BackupPlanAssociation</summary>
+                /// <summary>Update a BackupPlanAssociation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. Identifier. The resource name of BackupPlanAssociation in below format Format :
@@ -770,7 +770,7 @@ namespace Google.Apis.Backupdr.v1
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Update a BackupPlanAssociation</summary>
+                /// <summary>Update a BackupPlanAssociation.</summary>
                 public class PatchRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -1423,7 +1423,7 @@ namespace Google.Apis.Backupdr.v1
                     }
                 }
 
-                /// <summary>Update a BackupPlan</summary>
+                /// <summary>Update a BackupPlan.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. Identifier. The resource name of the `BackupPlan`. Format:
@@ -1434,7 +1434,7 @@ namespace Google.Apis.Backupdr.v1
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Update a BackupPlan</summary>
+                /// <summary>Update a BackupPlan.</summary>
                 public class PatchRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -6001,10 +6001,7 @@ namespace Google.Apis.Backupdr.v1.Data
     /// </summary>
     public class BackupPlan : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. The backup rules for this `BackupPlan`. There must be at least one `BackupRule` message if
-        /// on_demand_retention_limit_days is not set.
-        /// </summary>
+        /// <summary>Optional. The backup rules for this `BackupPlan`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRules")]
         public virtual System.Collections.Generic.IList<BackupRule> BackupRules { get; set; }
 
@@ -6083,9 +6080,9 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. Required for CloudSQL resource_type Configures how long logs will be stored. It is defined in
-        /// “days”. This value should be greater than or equal to minimum enforced log retention duration of the backup
-        /// vault.
+        /// Optional. Applicable only for CloudSQL resource_type. Configures how long logs will be stored. It is defined
+        /// in “days”. This value should be greater than or equal to minimum enforced log retention duration of the
+        /// backup vault.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logRetentionDays")]
         public virtual System.Nullable<long> LogRetentionDays { get; set; }
@@ -6097,7 +6094,11 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. </summary>
+        /// <summary>
+        /// Required. The resource type to which the `BackupPlan` will be applied. Examples include,
+        /// "compute.googleapis.com/Instance", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster",
+        /// "compute.googleapis.com/Disk".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
@@ -6250,7 +6251,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
 
-        /// <summary>Required. Immutable. </summary>
+        /// <summary>Required. Immutable. Resource type of workload on which backupplan is applied</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
@@ -6735,7 +6736,7 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>CloudSqlInstanceBackupProperties represents Cloud SQL Instance Backup properties. .</summary>
+    /// <summary>CloudSqlInstanceBackupProperties represents Cloud SQL Instance Backup properties.</summary>
     public class CloudSqlInstanceBackupProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6764,7 +6765,7 @@ namespace Google.Apis.Backupdr.v1.Data
 
     /// <summary>
     /// CloudSqlInstanceDataSourceProperties represents the properties of a Cloud SQL resource that are stored in the
-    /// DataSource. .
+    /// DataSource.
     /// </summary>
     public class CloudSqlInstanceDataSourceProperties : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6828,7 +6829,7 @@ namespace Google.Apis.Backupdr.v1.Data
 
     /// <summary>
     /// CloudSqlInstanceDataSourceReferenceProperties represents the properties of a Cloud SQL resource that are stored
-    /// in the DataSourceReference. .
+    /// in the DataSourceReference.
     /// </summary>
     public class CloudSqlInstanceDataSourceReferenceProperties : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7725,7 +7726,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; }
 
-        /// <summary>Required. Name of the disk..</summary>
+        /// <summary>Required. Name of the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -9754,7 +9755,10 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
-        /// <summary>Required. backup rule_id for which a backup needs to be triggered.</summary>
+        /// <summary>
+        /// Optional. backup rule_id for which a backup needs to be triggered. If not specified, on-demand backup with
+        /// custom retention will be triggered.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
         public virtual string RuleId { get; set; }
 
