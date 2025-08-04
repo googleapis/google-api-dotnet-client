@@ -1381,6 +1381,36 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobId { get; private set; }
 
+            /// <summary>
+            /// Optional. The API output format for a timestamp. This offers more explicit control over the timestamp
+            /// output format as compared to the existing `use_int64_timestamp` option.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("formatOptions.timestampOutputFormat", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<FormatOptionsTimestampOutputFormatEnum> FormatOptionsTimestampOutputFormat { get; set; }
+
+            /// <summary>
+            /// Optional. The API output format for a timestamp. This offers more explicit control over the timestamp
+            /// output format as compared to the existing `use_int64_timestamp` option.
+            /// </summary>
+            public enum FormatOptionsTimestampOutputFormatEnum
+            {
+                /// <summary>Corresponds to default API output behavior, which is FLOAT64.</summary>
+                [Google.Apis.Util.StringValueAttribute("TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED")]
+                TIMESTAMPOUTPUTFORMATUNSPECIFIED = 0,
+
+                /// <summary>Timestamp is output as float64 seconds since Unix epoch.</summary>
+                [Google.Apis.Util.StringValueAttribute("FLOAT64")]
+                FLOAT64 = 1,
+
+                /// <summary>Timestamp is output as int64 microseconds since Unix epoch.</summary>
+                [Google.Apis.Util.StringValueAttribute("INT64")]
+                INT64 = 2,
+
+                /// <summary>Timestamp is output as ISO 8601 String ("YYYY-MM-DDTHH:MM:SS.FFFFFFFFFFFFZ").</summary>
+                [Google.Apis.Util.StringValueAttribute("ISO8601_STRING")]
+                ISO8601STRING = 3,
+            }
+
             /// <summary>Optional. Output timestamp as usec int64. Default is false.</summary>
             [Google.Apis.Util.RequestParameterAttribute("formatOptions.useInt64Timestamp", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FormatOptionsUseInt64Timestamp { get; set; }
@@ -1447,6 +1477,14 @@ namespace Google.Apis.Bigquery.v2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("formatOptions.timestampOutputFormat", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "formatOptions.timestampOutputFormat",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("formatOptions.useInt64Timestamp", new Google.Apis.Discovery.Parameter
                 {
@@ -3901,6 +3939,36 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TableId { get; private set; }
 
+            /// <summary>
+            /// Optional. The API output format for a timestamp. This offers more explicit control over the timestamp
+            /// output format as compared to the existing `use_int64_timestamp` option.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("formatOptions.timestampOutputFormat", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<FormatOptionsTimestampOutputFormatEnum> FormatOptionsTimestampOutputFormat { get; set; }
+
+            /// <summary>
+            /// Optional. The API output format for a timestamp. This offers more explicit control over the timestamp
+            /// output format as compared to the existing `use_int64_timestamp` option.
+            /// </summary>
+            public enum FormatOptionsTimestampOutputFormatEnum
+            {
+                /// <summary>Corresponds to default API output behavior, which is FLOAT64.</summary>
+                [Google.Apis.Util.StringValueAttribute("TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED")]
+                TIMESTAMPOUTPUTFORMATUNSPECIFIED = 0,
+
+                /// <summary>Timestamp is output as float64 seconds since Unix epoch.</summary>
+                [Google.Apis.Util.StringValueAttribute("FLOAT64")]
+                FLOAT64 = 1,
+
+                /// <summary>Timestamp is output as int64 microseconds since Unix epoch.</summary>
+                [Google.Apis.Util.StringValueAttribute("INT64")]
+                INT64 = 2,
+
+                /// <summary>Timestamp is output as ISO 8601 String ("YYYY-MM-DDTHH:MM:SS.FFFFFFFFFFFFZ").</summary>
+                [Google.Apis.Util.StringValueAttribute("ISO8601_STRING")]
+                ISO8601STRING = 3,
+            }
+
             /// <summary>Optional. Output timestamp as usec int64. Default is false.</summary>
             [Google.Apis.Util.RequestParameterAttribute("formatOptions.useInt64Timestamp", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FormatOptionsUseInt64Timestamp { get; set; }
@@ -3962,6 +4030,14 @@ namespace Google.Apis.Bigquery.v2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("formatOptions.timestampOutputFormat", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "formatOptions.timestampOutputFormat",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("formatOptions.useInt64Timestamp", new Google.Apis.Discovery.Parameter
                 {
@@ -5957,6 +6033,13 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>Options for data format adjustments.</summary>
     public class DataFormatOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The API output format for a timestamp. This offers more explicit control over the timestamp output
+        /// format as compared to the existing `use_int64_timestamp` option.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampOutputFormat")]
+        public virtual string TimestampOutputFormat { get; set; }
+
         /// <summary>Optional. Output timestamp as usec int64. Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useInt64Timestamp")]
         public virtual System.Nullable<bool> UseInt64Timestamp { get; set; }
@@ -7253,15 +7336,18 @@ namespace Google.Apis.Bigquery.v2.Data
     public class ExternalRuntimeOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Amount of CPU provisioned for the container instance. If not specified, the default value is 0.33
-        /// vCPUs.
+        /// Optional. Amount of CPU provisioned for a Python UDF container instance. For more information, see
+        /// [Configure container limits for Python
+        /// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerCpu")]
         public virtual System.Nullable<double> ContainerCpu { get; set; }
 
         /// <summary>
-        /// Optional. Amount of memory provisioned for the container instance. Format: {number}{unit} where unit is one
-        /// of "M", "G", "Mi" and "Gi" (e.g. 1G, 512Mi). If not specified, the default value is 512Mi.
+        /// Optional. Amount of memory provisioned for a Python UDF container instance. Format: {number}{unit} where
+        /// unit is one of "M", "G", "Mi" and "Gi" (e.g. 1G, 512Mi). If not specified, the default value is 512Mi. For
+        /// more information, see [Configure container limits for Python
+        /// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerMemory")]
         public virtual string ContainerMemory { get; set; }
@@ -7283,7 +7369,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeConnection")]
         public virtual string RuntimeConnection { get; set; }
 
-        /// <summary>Optional. Language runtime version (e.g. python-3.11).</summary>
+        /// <summary>Optional. Language runtime version. Example: `python-3.11`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
         public virtual string RuntimeVersion { get; set; }
 
@@ -10370,13 +10456,16 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>Options for a user-defined Python function.</summary>
     public class PythonOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The entry point function in the user's Python code.</summary>
+        /// <summary>
+        /// Required. The name of the function defined in Python code as the entry point when the Python UDF is invoked.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryPoint")]
         public virtual string EntryPoint { get; set; }
 
         /// <summary>
-        /// Optional. A list of package names along with versions to be installed. Follows requirements.txt syntax (e.g.
-        /// numpy==2.0, permutation, urllib3&amp;lt;2.2.1)
+        /// Optional. A list of Python package names along with versions to be installed. Example:
+        /// ["pandas&amp;gt;=2.1", "google-cloud-translate==3.11"]. For more information, see [Use third-party
+        /// packages](https://cloud.google.com/bigquery/docs/user-defined-functions-python#third-party-packages).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packages")]
         public virtual System.Collections.Generic.IList<string> Packages { get; set; }
@@ -10431,6 +10520,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Optional. The types of the fields of this struct, in order, if this is a struct.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structTypes")]
         public virtual System.Collections.Generic.IList<StructTypesData> StructTypes { get; set; }
+
+        /// <summary>
+        /// Optional. Precision (maximum number of total digits in base 10) for seconds of TIMESTAMP type. Possible
+        /// values include: * 6 (Default, for TIMESTAMP type with microsecond precision) * 12 (For TIMESTAMP type with
+        /// picosecond precision)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampPrecision")]
+        public virtual System.Nullable<long> TimestampPrecision { get; set; }
 
         /// <summary>Required. The top level type of this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -11131,7 +11228,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> LastModifiedTime { get; set; }
 
         /// <summary>
-        /// Optional. Options for Python UDF. [Preview](https://cloud.google.com/products/#product-launch-stages)
+        /// Optional. Options for the Python UDF. [Preview](https://cloud.google.com/products/#product-launch-stages)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonOptions")]
         public virtual PythonOptions PythonOptions { get; set; }
