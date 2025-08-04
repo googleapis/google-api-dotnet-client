@@ -314,6 +314,7 @@ namespace Google.Apis.ChromeManagement.v1
             Profiles = new ProfilesResource(service);
             Reports = new ReportsResource(service);
             Telemetry = new TelemetryResource(service);
+            ThirdPartyProfileUsers = new ThirdPartyProfileUsersResource(service);
         }
 
         /// <summary>Gets the Apps resource.</summary>
@@ -3243,6 +3244,87 @@ namespace Google.Apis.ChromeManagement.v1
                             Pattern = null,
                         });
                     }
+                }
+            }
+        }
+
+        /// <summary>Gets the ThirdPartyProfileUsers resource.</summary>
+        public virtual ThirdPartyProfileUsersResource ThirdPartyProfileUsers { get; }
+
+        /// <summary>The "thirdPartyProfileUsers" collection of methods.</summary>
+        public class ThirdPartyProfileUsersResource
+        {
+            private const string Resource = "thirdPartyProfileUsers";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ThirdPartyProfileUsersResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Moves a third party chrome profile user to a destination OU. All profiles associated to that user will
+            /// be moved to the destination OU.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. Format: customers/{customer_id}/thirdPartyProfileUsers/{third_party_profile_user_id}
+            /// </param>
+            public virtual MoveRequest Move(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest body, string name)
+            {
+                return new MoveRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Moves a third party chrome profile user to a destination OU. All profiles associated to that user will
+            /// be moved to the destination OU.
+            /// </summary>
+            public class MoveRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse>
+            {
+                /// <summary>Constructs a new Move request.</summary>
+                public MoveRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Format: customers/{customer_id}/thirdPartyProfileUsers/{third_party_profile_user_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "move";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:move";
+
+                /// <summary>Initializes Move parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/thirdPartyProfileUsers/[^/]+$",
+                    });
                 }
             }
         }
@@ -7674,6 +7756,30 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to MoveThirdPartyProfileUser method.</summary>
+    public class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Destination organizational unit where the third party chrome profile user will be moved to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationOrgUnit")]
+        public virtual string DestinationOrgUnit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for MoveThirdPartyProfileUser method.</summary>
+    public class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The moved third party profile user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyProfileUser")]
+        public virtual GoogleChromeManagementVersionsV1ThirdPartyProfileUser ThirdPartyProfileUser { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Reporting data of a Chrome browser profile.</summary>
     public class GoogleChromeManagementVersionsV1ReportingData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7873,6 +7979,25 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateProvisioningProcess")]
         public virtual GoogleChromeManagementVersionsV1CertificateProvisioningProcess CertificateProvisioningProcess { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A representation of non-Google (third party) user that is associated with a managed Chrome profile.
+    /// </summary>
+    public class GoogleChromeManagementVersionsV1ThirdPartyProfileUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. Format: customers/{customer_id}/thirdPartyProfileUsers/{third_party_profile_user_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The ID of the organizational unit assigned to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
+        public virtual string OrgUnitId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
