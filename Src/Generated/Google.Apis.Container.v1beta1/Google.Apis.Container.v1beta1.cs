@@ -6845,6 +6845,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>AutoIpamConfig contains all information related to Auto IPAM</summary>
     public class AutoIpamConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The flag that enables Auto IPAM on this cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6892,6 +6896,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Enable Autopilot</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>PrivilegedAdmissionConfig is the configuration related to privileged admission control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privilegedAdmissionConfig")]
+        public virtual PrivilegedAdmissionConfig PrivilegedAdmissionConfig { get; set; }
 
         /// <summary>WorkloadPolicyConfig is the configuration related to GCW workload policy</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadPolicyConfig")]
@@ -7078,16 +7086,6 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Autoscaled rollout policy uses cluster autoscaler during blue-green upgrades to scale both the green and blue
-    /// pools.
-    /// </summary>
-    public class AutoscaledRolloutPolicy : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Deprecated.</summary>
     public class AvailableVersion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7196,10 +7194,6 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Settings for blue-green upgrade.</summary>
     public class BlueGreenSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Autoscaled policy for cluster autoscaler enabled blue-green upgrade.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("autoscaledRolloutPolicy")]
-        public virtual AutoscaledRolloutPolicy AutoscaledRolloutPolicy { get; set; }
-
         /// <summary>
         /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
         /// </summary>
@@ -7894,6 +7888,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Defines autoscaling behaviour.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscalingProfile")]
         public virtual string AutoscalingProfile { get; set; }
+
+        /// <summary>Default compute class is a configuration for default compute class.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultComputeClassConfig")]
+        public virtual DefaultComputeClassConfig DefaultComputeClassConfig { get; set; }
 
         /// <summary>Enables automatic node pool creation and deletion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableNodeAutoprovisioning")]
@@ -8753,6 +8751,17 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>DefaultComputeClassConfig defines default compute class configuration.</summary>
+    public class DefaultComputeClassConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enables default compute class.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster.
     /// </summary>
@@ -9092,6 +9101,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membership")]
         public virtual string Membership { get; set; }
+
+        /// <summary>The type of the cluster's fleet membership.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipType")]
+        public virtual string MembershipType { get; set; }
 
         /// <summary>Output only. Whether the cluster has been registered through the fleet API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preRegistered")]
@@ -11777,6 +11790,23 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Private registry access is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PrivilegedAdmissionConfig stores the list of authorized allowlist paths for the cluster.</summary>
+    public class PrivilegedAdmissionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The customer allowlist Cloud Storage paths for the cluster. These paths are used with the
+        /// `--autopilot-privileged-admission` flag to authorize privileged workloads in Autopilot clusters. Paths can
+        /// be GKE-owned, in the format `gke:////`, or customer-owned, in the format `gs:///`. Wildcards (`*`) are
+        /// supported to authorize all allowlists under specific paths or directories. Example: `gs://my-bucket/*` will
+        /// authorize all allowlists under the `my-bucket` bucket.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowlistPaths")]
+        public virtual System.Collections.Generic.IList<string> AllowlistPaths { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
