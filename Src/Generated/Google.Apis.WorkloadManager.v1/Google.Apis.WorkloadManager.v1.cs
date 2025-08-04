@@ -2019,6 +2019,21 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Agent status.</summary>
+    public class AgentStates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The available version of the agent in artifact registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableVersion")]
+        public virtual string AvailableVersion { get; set; }
+
+        /// <summary>Optional. The installed version of the agent on the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installedVersion")]
+        public virtual string InstalledVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The schema of agent status data.</summary>
     public class AgentStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2349,6 +2364,13 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Evaluation type</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationType")]
         public virtual string EvaluationType { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Customer-managed encryption key name, in the format
+        /// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
 
         /// <summary>Labels as key value pairs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -3794,6 +3816,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>SAP instance properties.</summary>
     public class SapInstanceProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Sap Instance Agent status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentStates")]
+        public virtual AgentStates AgentStates { get; set; }
+
         /// <summary>Optional. SAP Instance numbers. They are from '00' to '99'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numbers")]
         public virtual System.Collections.Generic.IList<string> Numbers { get; set; }
