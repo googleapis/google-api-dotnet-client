@@ -5604,6 +5604,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string StateReason { get; set; }
 
         /// <summary>
+        /// Output only. Information about the troubleshooting steps which will provide debugging information to the end
+        /// users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("troubleshootingInfo")]
+        public virtual TroubleshootingInfo TroubleshootingInfo { get; set; }
+
+        /// <summary>
         /// Output only. Server generated global unique identifier of
         /// [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier)
         /// </summary>
@@ -7563,6 +7570,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string StateReason { get; set; }
 
         /// <summary>
+        /// Output only. Information about the troubleshooting steps which will provide debugging information to the end
+        /// users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("troubleshootingInfo")]
+        public virtual TroubleshootingInfo TroubleshootingInfo { get; set; }
+
+        /// <summary>
         /// Output only. Server generated global unique identifier of
         /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
         /// </summary>
@@ -8499,6 +8513,30 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Stores information about troubleshooting doc for debugging a particular state of an operation (eg -
+    /// backup/restore). This will be used by the end user to debug their operation failure scenario easily.
+    /// </summary>
+    public class TroubleshootingInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Unique code for each backup/restore operation failure message which helps user identify the
+        /// failure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateReasonCode")]
+        public virtual string StateReasonCode { get; set; }
+
+        /// <summary>
+        /// Output only. URL for the troubleshooting doc which will help the user fix the failing backup/restore
+        /// operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateReasonUri")]
+        public virtual string StateReasonUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
