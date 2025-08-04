@@ -3042,9 +3042,9 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
 
         /// <summary>
         /// Optional. [ReservationAffinity](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
-        /// specifies a reservation that can be consumed to create boost VM instances. If SPECIFIC_RESERVATION is
-        /// specified, Cloud Workstations will only create VMs in the zone where the reservation is located. This would
-        /// affect availability since the service will no longer be resilient to zonal outages. If ANY_RESERVATION is
+        /// specifies a reservation that can be consumed to create VM instances. If SPECIFIC_RESERVATION is specified,
+        /// Cloud Workstations will only create VMs in the zone where the reservation is located. This would affect
+        /// availability since the service will no longer be resilient to zonal outages. If ANY_RESERVATION is
         /// specified, creating reservations in both zones that the config creates VMs in will ensure higher
         /// availability. **Important Considerations for Reservation Affinity:** * This feature is intended for advanced
         /// users and requires familiarity with Google Compute Engine reservations. * Using reservations incurs charges,
@@ -3837,7 +3837,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string Key { get; set; }
 
         /// <summary>
-        /// Optional. Corresponds to the label values of reservation resources. Valid values are either a name to a
+        /// Optional. Corresponds to the label values of reservation resources. Valid values are either the name of a
         /// reservation in the same project or "projects/{project}/reservations/{reservation}" to target a shared
         /// reservation in the same zone but in a different project.
         /// </summary>
