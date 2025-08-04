@@ -5341,7 +5341,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
 
     /// <summary>
     /// Describes the [accepted terms of
-    /// service](/merchant/api/guides/accounts/create-and-configure#accept_the_merchant_center_terms_of_service).
+    /// service](https://developers.google.com/merchant/api/guides/accounts/create-and-configure#accept_the_merchant_center_terms_of_service).
     /// </summary>
     public class Accepted : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8541,10 +8541,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("carrierService")]
         public virtual string CarrierService { get; set; }
 
-        /// <summary>
-        /// Required. Warehouse name. This should match
-        /// [warehouse](/merchant/api/reference/rest/accounts_v1beta/accounts.shippingSettings#warehouse)
-        /// </summary>
+        /// <summary>Required. Warehouse name. This should match warehouse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warehouse")]
         public virtual string Warehouse { get; set; }
 
