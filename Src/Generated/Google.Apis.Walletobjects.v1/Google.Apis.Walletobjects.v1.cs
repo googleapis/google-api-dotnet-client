@@ -9881,7 +9881,17 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The URI for the image.</summary>
+        /// <summary>
+        /// An ID for an already uploaded private image. Either this or source_uri should be set. Requests setting both
+        /// or neither will be rejected. Please contact support to use private images.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateImageId")]
+        public virtual string PrivateImageId { get; set; }
+
+        /// <summary>
+        /// A URI for the image. Either this or private_image_id should be set. Requests setting both or neither will be
+        /// rejected.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUri")]
         public virtual ImageUri SourceUri { get; set; }
 
@@ -13209,6 +13219,24 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>Indicates if the object needs to have upcoming notification enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableNotification")]
         public virtual System.Nullable<bool> EnableNotification { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to upload a private image to use in a pass.</summary>
+    public class UploadPrivateImageRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for uploading the private image.</summary>
+    public class UploadPrivateImageResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique ID of the uploaded image to be referenced later in Image.private_image_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateImageId")]
+        public virtual string PrivateImageId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
