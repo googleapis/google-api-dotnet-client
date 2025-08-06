@@ -9032,10 +9032,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// Optional. Immutable. The customer id of the domain of the space. Required only when creating a space with
         /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and
         /// `SpaceType` is `SPACE`, otherwise should not be set. In the format `customers/{customer}`, where `customer`
-        /// is the `id` from the [Admin SDK customer resource](
-        /// https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers). Private apps can also use
-        /// the `customers/my_customer` alias to create the space in the same Google Workspace organization as the app.
-        /// For DMs, this field isn't populated.
+        /// is the `id` from the [Admin SDK customer
+        /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers). Private apps can
+        /// also use the `customers/my_customer` alias to create the space in the same Google Workspace organization as
+        /// the app. For DMs, this field isn't populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
