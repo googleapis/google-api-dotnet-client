@@ -5312,7 +5312,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
 {
     /// <summary>
     /// Collection of information related to the about page
-    /// ([impressum](https://support.google.com/merchants/answer/14675634?hl=en&amp;amp;ref_topic=15145634&amp;amp;sjid=6892280366904591178-NC)).
+    /// ([impressum](https://support.google.com/merchants/answer/14675634?ref_topic=15145634&amp;amp;sjid=6892280366904591178-NC)).
     /// </summary>
     public class About : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6663,7 +6663,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
 
     /// <summary>
     /// Collection of information related to [inventory
-    /// verification](https://support.google.com/merchants/answer/14684499?hl=en&amp;amp;ref_topic=15145634&amp;amp;sjid=6892280366904591178-NC).
+    /// verification](https://support.google.com/merchants/answer/14684499?ref_topic=15145634&amp;amp;sjid=6892280366904591178-NC).
     /// </summary>
     public class InventoryVerification : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7148,7 +7148,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
 
     /// <summary>
     /// Collection of information related to the on display to order
-    /// ([ODO](https://support.google.com/merchants/answer/14615056?hl=en&amp;amp;ref_topic=15145747&amp;amp;sjid=6892280366904591178-NC)).
+    /// ([ODO](https://support.google.com/merchants/answer/14615056?ref_topic=15145747&amp;amp;sjid=6892280366904591178-NC)).
     /// </summary>
     public class OnDisplayToOrder : Google.Apis.Requests.IDirectResponseSchema
     {
