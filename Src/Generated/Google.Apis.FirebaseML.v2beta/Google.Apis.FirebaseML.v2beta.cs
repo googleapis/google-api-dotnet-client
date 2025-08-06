@@ -1267,6 +1267,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
+        /// Optional. Settings for prompt and response sanitization using the Model Armor service. If supplied,
+        /// safety_settings must not be supplied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelArmorConfig")]
+        public virtual GoogleCloudAiplatformV1beta1ModelArmorConfig ModelArmorConfig { get; set; }
+
+        /// <summary>
         /// Optional. Per request settings for blocking unsafe content. Enforced on GenerateContentResponse.candidates.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safetySettings")]
@@ -1939,6 +1946,21 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Number of tokens.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenCount")]
         public virtual System.Nullable<int> TokenCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Model Armor integrations of prompt and responses.</summary>
+    public class GoogleCloudAiplatformV1beta1ModelArmorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The name of the Model Armor template to use for prompt sanitization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptTemplateName")]
+        public virtual string PromptTemplateName { get; set; }
+
+        /// <summary>Optional. The name of the Model Armor template to use for response sanitization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseTemplateName")]
+        public virtual string ResponseTemplateName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
