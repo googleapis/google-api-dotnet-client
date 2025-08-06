@@ -1110,6 +1110,12 @@ namespace Google.Apis.MyBusinessVerifications.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual VerificationToken Token { get; set; }
 
+        /// <summary>
+        /// The input for TRUSTED_PARTNER method The verification token that is associated to the location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustedPartnerToken")]
+        public virtual string TrustedPartnerToken { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
