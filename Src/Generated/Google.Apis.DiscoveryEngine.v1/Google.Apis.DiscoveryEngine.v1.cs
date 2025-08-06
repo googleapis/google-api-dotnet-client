@@ -20071,6 +20071,25 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Discovery Engine Assistant resource.</summary>
     public class GoogleCloudDiscoveryengineV1Assistant : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Customer policy for the assistant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1AssistantCustomerPolicy CustomerPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. Note: not implemented yet. Use enabled_actions instead. The enabled tools on this assistant. The
+        /// keys are connector name, for example
+        /// "projects/{projectId}/locations/{locationId}/collections/{collectionId}/dataconnector The values consist of
+        /// admin enabled tools towards the connector instance. Admin can selectively enable multiple tools on any of
+        /// the connector instances that they created in the project. For example {"jira1ConnectorName": [(toolId1,
+        /// "createTicket"), (toolId2, "transferTicket")], "gmail1ConnectorName": [(toolId3, "sendEmail"),..] }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledTools")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1AssistantToolList> EnabledTools { get; set; }
+
+        /// <summary>Optional. Configuration for the generation of the assistant response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationConfig")]
+        public virtual GoogleCloudDiscoveryengineV1AssistantGenerationConfig GenerationConfig { get; set; }
+
         /// <summary>
         /// Immutable. Resource name of the assistant. Format:
         /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
@@ -20078,6 +20097,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. The type of web grounding to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webGroundingType")]
+        public virtual string WebGroundingType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20171,6 +20194,76 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Required. The media type (MIME type) of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Customer-defined policy for the assistant.</summary>
+    public class GoogleCloudDiscoveryengineV1AssistantCustomerPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of banned phrases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bannedPhrases")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase> BannedPhrases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Definition of a customer-defined banned phrase. A banned phrase is not allowed to appear in the user query or
+    /// the LLM response, or else the answer will be refused.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If true, diacritical marks (e.g., accents, umlauts) are ignored when matching banned phrases. For
+        /// example, "cafe" would match "café".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreDiacritics")]
+        public virtual System.Nullable<bool> IgnoreDiacritics { get; set; }
+
+        /// <summary>Optional. Match type for the banned phrase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchType")]
+        public virtual string MatchType { get; set; }
+
+        /// <summary>Required. The raw string content to be banned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phrase")]
+        public virtual string Phrase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the generation of the assistant response.</summary>
+    public class GoogleCloudDiscoveryengineV1AssistantGenerationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The default language to use for the generation of the assistant response. Use an ISO 639-1 language code
+        /// such as `en`. If not specified, the language will be automatically detected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguage")]
+        public virtual string DefaultLanguage { get; set; }
+
+        /// <summary>
+        /// System instruction, also known as the prompt preamble for LLM calls. See also
+        /// https://cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/system-instructions
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemInstruction")]
+        public virtual GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction SystemInstruction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>System instruction, also known as the prompt preamble for LLM calls.</summary>
+    public class GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Additional system instruction that will be added to the default system instruction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalSystemInstruction")]
+        public virtual string AdditionalSystemInstruction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20279,6 +20372,35 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>The text segment itself.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information to identify a tool.</summary>
+    public class GoogleCloudDiscoveryengineV1AssistantToolInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolDisplayName")]
+        public virtual string ToolDisplayName { get; set; }
+
+        /// <summary>
+        /// The name of the tool as defined by DataConnectorService.QueryAvailableActions. Note: it's using `action` in
+        /// the DataConnectorService apis, but they are the same as the `tool` here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolName")]
+        public virtual string ToolName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The enabled tools on a connector</summary>
+    public class GoogleCloudDiscoveryengineV1AssistantToolList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of tools with corresponding tool information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1AssistantToolInfo> ToolInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21063,6 +21185,12 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Document metadata contains the information of the document of the current chunk.</summary>
     public class GoogleCloudDiscoveryengineV1ChunkDocumentMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The mime type of the document. https://www.iana.org/assignments/media-types/media-types.xhtml.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
         /// <summary>
         /// Data representation. The structured JSON data for the document. It should conform to the registered Schema
         /// or an `INVALID_ARGUMENT` error is thrown.
