@@ -851,7 +851,10 @@ namespace Google.Apis.AndroidManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The requested page size. The actual page size may be fixed to a min or max value.</summary>
+                /// <summary>
+                /// The requested page size. If unspecified, at most 10 devices will be returned. The maximum value is
+                /// 100; values above 100 will be coerced to 100. The limits can change over time.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
