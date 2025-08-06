@@ -1129,7 +1129,7 @@ namespace Google.Apis.Merchant.lfp_v1beta.Data
     public class LfpStore : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. [Google My Business category id](https://gcid-explorer.corp.google.com/static/gcid.html).
+        /// Optional. [Google My Business category id](https://support.google.com/business/answer/7249669).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcidCategory")]
         public virtual System.Collections.Generic.IList<string> GcidCategory { get; set; }
