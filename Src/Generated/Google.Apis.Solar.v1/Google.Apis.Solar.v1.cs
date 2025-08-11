@@ -378,11 +378,7 @@ namespace Google.Apis.Solar.v1
                 [Google.Apis.Util.StringValueAttribute("LOW")]
                 LOW = 3,
 
-                /// <summary>
-                /// Solar data is derived from enhanced satellite imagery processed at 0.25 m/pixel. **Note:** This enum
-                /// is only available if `experiments=EXPANDED_COVERAGE` is set in the request. For more information,
-                /// see [Expanded Coverage](https://developers.google.com/maps/documentation/solar/expanded-coverage).
-                /// </summary>
+                /// <summary>Solar data is derived from enhanced satellite imagery processed at 0.25 m/pixel.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASE")]
                 BASE__ = 4,
             }
@@ -572,11 +568,7 @@ namespace Google.Apis.Solar.v1
                 [Google.Apis.Util.StringValueAttribute("LOW")]
                 LOW = 3,
 
-                /// <summary>
-                /// Solar data is derived from enhanced satellite imagery processed at 0.25 m/pixel. **Note:** This enum
-                /// is only available if `experiments=EXPANDED_COVERAGE` is set in the request. For more information,
-                /// see [Expanded Coverage](https://developers.google.com/maps/documentation/solar/expanded-coverage).
-                /// </summary>
+                /// <summary>Solar data is derived from enhanced satellite imagery processed at 0.25 m/pixel.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASE")]
                 BASE__ = 4,
             }
