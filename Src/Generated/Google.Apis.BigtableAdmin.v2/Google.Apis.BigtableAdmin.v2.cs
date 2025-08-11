@@ -9069,6 +9069,16 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// "123/environment": "production", "123/costCenter": "marketing" Tags and Labels (above) are both used to bind
+        /// metadata to resources, with different use-cases. See
+        /// https://cloud.google.com/resource-manager/docs/tags/tags-overview for an in-depth overview on the difference
+        /// between tags and labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
         /// <summary>The type of the instance. Defaults to `PRODUCTION`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
