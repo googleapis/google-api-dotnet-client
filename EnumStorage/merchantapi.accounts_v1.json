@@ -1,0 +1,15 @@
+{
+  "Google.Apis.Merchant.accounts_v1.MerchantBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Merchant.accounts_v1.MerchantBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Merchant.accounts_v1.TermsOfServiceResource+RetrieveLatestRequest.KindEnum": [
+    "TERMS_OF_SERVICE_KIND_UNSPECIFIED",
+    "MERCHANT_CENTER"
+  ]
+}
