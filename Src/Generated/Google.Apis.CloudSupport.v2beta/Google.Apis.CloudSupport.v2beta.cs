@@ -455,6 +455,87 @@ namespace Google.Apis.CloudSupport.v2beta
             }
 
             /// <summary>
+            /// Retrieve an attachment associated with a support case. EXAMPLES: cURL:
+            /// ```
+            /// shell
+            /// attachment="projects/some-project/cases/23598314/attachments/0684M00000P3h1fQAB" curl \ --header
+            /// "Authorization: Bearer $(gcloud auth print-access-token)" \
+            /// "https://cloudsupport.googleapis.com/v2/$attachment"
+            /// ```
+            /// Python:
+            /// ```
+            /// python import
+            /// googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
+            /// serviceName="cloudsupport", version=api_version,
+            /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
+            /// request = ( supportApiService.cases() .attachments()
+            /// .get(name="projects/some-project/cases/43595344/attachments/0684M00000P3h1fQAB") )
+            /// print(request.execute())
+            /// ```
+            /// </summary>
+            /// <param name="name">Required. The name of the attachment to get.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Retrieve an attachment associated with a support case. EXAMPLES: cURL:
+            /// ```
+            /// shell
+            /// attachment="projects/some-project/cases/23598314/attachments/0684M00000P3h1fQAB" curl \ --header
+            /// "Authorization: Bearer $(gcloud auth print-access-token)" \
+            /// "https://cloudsupport.googleapis.com/v2/$attachment"
+            /// ```
+            /// Python:
+            /// ```
+            /// python import
+            /// googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
+            /// serviceName="cloudsupport", version=api_version,
+            /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
+            /// request = ( supportApiService.cases() .attachments()
+            /// .get(name="projects/some-project/cases/43595344/attachments/0684M00000P3h1fQAB") )
+            /// print(request.execute())
+            /// ```
+            /// </summary>
+            public class GetRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Attachment>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The name of the attachment to get.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/cases/[^/]+/attachments/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// List all the attachments associated with a support case. EXAMPLES: cURL:
             /// ```
             /// shell
@@ -661,6 +742,81 @@ namespace Google.Apis.CloudSupport.v2beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^[^/]+/[^/]+/cases/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Retrieve a comment. EXAMPLES: cURL:
+            /// ```
+            /// shell
+            /// comment="projects/some-project/cases/43595344/comments/234567890" curl \ --header "Authorization: Bearer
+            /// $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$comment"
+            /// ```
+            /// Python:
+            /// ```
+            /// python import googleapiclient.discovery api_version = "v2beta" supportApiService =
+            /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
+            /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
+            /// request = supportApiService.cases().comments().get(
+            /// name="projects/some-project/cases/43595344/comments/234567890", ) print(request.execute())
+            /// ```
+            /// </summary>
+            /// <param name="name">Required. The name of the comment to retrieve.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Retrieve a comment. EXAMPLES: cURL:
+            /// ```
+            /// shell
+            /// comment="projects/some-project/cases/43595344/comments/234567890" curl \ --header "Authorization: Bearer
+            /// $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$comment"
+            /// ```
+            /// Python:
+            /// ```
+            /// python import googleapiclient.discovery api_version = "v2beta" supportApiService =
+            /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
+            /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
+            /// request = supportApiService.cases().comments().get(
+            /// name="projects/some-project/cases/43595344/comments/234567890", ) print(request.execute())
+            /// ```
+            /// </summary>
+            public class GetRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Comment>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The name of the comment to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/cases/[^/]+/comments/[^/]+$",
                     });
                 }
             }
