@@ -15471,8 +15471,8 @@ namespace Google.Apis.CloudDataplex.v1
                 }
 
                 /// <summary>
-                /// Creates a metadata job. For example, use a metadata job to import Dataplex Catalog entries and
-                /// aspects from a third-party system into Dataplex.
+                /// Creates a metadata job. For example, use a metadata job to import metadata from a third-party system
+                /// into Dataplex Universal Catalog.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -15485,8 +15485,8 @@ namespace Google.Apis.CloudDataplex.v1
                 }
 
                 /// <summary>
-                /// Creates a metadata job. For example, use a metadata job to import Dataplex Catalog entries and
-                /// aspects from a third-party system into Dataplex.
+                /// Creates a metadata job. For example, use a metadata job to import metadata from a third-party system
+                /// into Dataplex Universal Catalog.
                 /// </summary>
                 public class CreateRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
@@ -16341,7 +16341,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                 /// <summary>
                 /// Required. The query against which entries in scope should be matched. The query syntax is defined in
-                /// Search syntax for Dataplex Catalog (https://cloud.google.com/dataplex/docs/search-syntax).
+                /// Search syntax for Dataplex Universal Catalog (https://cloud.google.com/dataplex/docs/search-syntax).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
@@ -17005,7 +17005,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     {
         /// <summary>
         /// Immutable. The IAM permission grantable on the EntryGroup to allow access to instantiate Aspects of Dataplex
-        /// owned AspectTypes, only settable for Dataplex owned Types.
+        /// Universal Catalog owned AspectTypes, only settable for Dataplex Universal Catalog owned Types.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternateUsePermission")]
         public virtual string AlternateUsePermission { get; set; }
@@ -18501,8 +18501,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>
         /// The data type retrieved from the schema of the data source. For instance, for a BigQuery native table, it is
         /// the BigQuery Table Schema
-        /// (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#tablefieldschema). For a Dataplex Entity,
-        /// it is the Entity Schema
+        /// (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#tablefieldschema). For a Dataplex Universal
+        /// Catalog Entity, it is the Entity Schema
         /// (https://cloud.google.com/dataplex/docs/reference/rpc/google.cloud.dataplex.v1#type_3).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -18809,7 +18809,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>The output of a DataQualityScan.</summary>
     public class GoogleCloudDataplexV1DataQualityResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The status of publishing the data scan to Catalog.</summary>
+        /// <summary>
+        /// Output only. The status of publishing the data scan as Dataplex Universal Catalog metadata.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catalogPublishingStatus")]
         public virtual GoogleCloudDataplexV1DataScanCatalogPublishingStatus CatalogPublishingStatus { get; set; }
 
@@ -19263,7 +19265,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>DataQualityScan related setting.</summary>
     public class GoogleCloudDataplexV1DataQualitySpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. If set, the latest DataScan job result will be published to Dataplex Catalog.</summary>
+        /// <summary>
+        /// Optional. If set, the latest DataScan job result will be published as Dataplex Universal Catalog metadata.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catalogPublishingEnabled")]
         public virtual System.Nullable<bool> CatalogPublishingEnabled { get; set; }
 
@@ -19554,7 +19558,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The status of publishing the data scan result to Catalog.</summary>
+    /// <summary>The status of publishing the data scan result as Dataplex Universal Catalog metadata.</summary>
     public class GoogleCloudDataplexV1DataScanCatalogPublishingStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Execution state for catalog publishing.</summary>
@@ -19570,7 +19574,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// </summary>
     public class GoogleCloudDataplexV1DataScanEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status of publishing the data scan to Catalog.</summary>
+        /// <summary>The status of publishing the data scan as Dataplex Universal Catalog metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catalogPublishingStatus")]
         public virtual GoogleCloudDataplexV1DataScanCatalogPublishingStatus CatalogPublishingStatus { get; set; }
 
@@ -20177,8 +20181,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1DataSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the
-        /// form:
+        /// Immutable. The Dataplex Universal Catalog entity that represents the data source (e.g. BigQuery table) for
+        /// DataScan, of the form:
         /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
@@ -20809,7 +20813,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. The time when the entry was created in Dataplex.</summary>
+        /// <summary>Output only. The time when the entry was created in Dataplex Universal Catalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -20881,7 +20885,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. The time when the entry was last updated in Dataplex.</summary>
+        /// <summary>Output only. The time when the entry was last updated in Dataplex Universal Catalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -21476,7 +21480,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     {
         /// <summary>
         /// Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Entries of
-        /// Dataplex owned Entry Types, only settable for Dataplex owned Types.
+        /// Dataplex Universal Catalog owned Entry Types, only settable for Dataplex Universal Catalog owned Types.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternateUsePermission")]
         public virtual string AlternateUsePermission { get; set; }
@@ -21666,7 +21670,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Software Runtime Configuration to run Analyze.</summary>
     public class GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Dataplex Image version.</summary>
+        /// <summary>Required. Dataplex Universal Catalog Image version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
         public virtual string ImageVersion { get; set; }
 
@@ -21742,7 +21746,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1GenerateDataQualityRulesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The data quality rules that Dataplex generates based on the results of a data profiling scan.
+        /// The data quality rules that Dataplex Universal Catalog generates based on the results of a data profiling
+        /// scan.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rule")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityRule> Rule { get; set; }
@@ -22174,7 +22179,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// {aspect_type_reference} with a reference to the aspect type, in the format
         /// {project_id_or_number}.{location_id}.{aspect_type_id}.In FULL entry sync mode, if you leave this field
         /// empty, it is treated as specifying exactly those aspects that are present within the specified entry.
-        /// Dataplex implicitly adds the keys for all of the required aspects of an entry.
+        /// Dataplex Universal Catalog implicitly adds the keys for all of the required aspects of an entry.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspectKeys")]
         public virtual System.Collections.Generic.IList<string> AspectKeys { get; set; }
@@ -22192,14 +22197,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// The fields to update, in paths that are relative to the Entry resource. Separate each field with a comma.In
-        /// FULL entry sync mode, Dataplex includes the paths of all of the fields for an entry that can be modified,
-        /// including aspects. This means that Dataplex replaces the existing entry with the entry in the metadata
-        /// import file. All modifiable fields are updated, regardless of the fields that are listed in the update mask,
-        /// and regardless of whether a field is present in the entry object.The update_mask field is ignored when an
-        /// entry is created or re-created.In an aspect-only metadata job (when entry sync mode is NONE), set this value
-        /// to aspects.Dataplex also determines which entries and aspects to modify by comparing the values and
-        /// timestamps that you provide in the metadata import file with the values and timestamps that exist in your
-        /// project. For more information, see Comparison logic
+        /// FULL entry sync mode, Dataplex Universal Catalog includes the paths of all of the fields for an entry that
+        /// can be modified, including aspects. This means that Dataplex Universal Catalog replaces the existing entry
+        /// with the entry in the metadata import file. All modifiable fields are updated, regardless of the fields that
+        /// are listed in the update mask, and regardless of whether a field is present in the entry object.The
+        /// update_mask field is ignored when an entry is created or re-created.In an aspect-only metadata job (when
+        /// entry sync mode is NONE), set this value to aspects.Dataplex Universal Catalog also determines which entries
+        /// and aspects to modify by comparing the values and timestamps that you provide in the metadata import file
+        /// with the values and timestamps that exist in your project. For more information, see Comparison logic
         /// (https://cloud.google.com/dataplex/docs/import-metadata#data-modification-logic).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
@@ -23288,9 +23293,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>
         /// Required. The root path of the Cloud Storage bucket to export the metadata to, in the format gs://{bucket}/.
         /// You can optionally specify a custom prefix after the bucket name, in the format gs://{bucket}/{prefix}/. The
-        /// maximum length of the custom prefix is 128 characters. Dataplex constructs the object path for the exported
-        /// files by using the bucket name and prefix that you provide, followed by a system-generated path.The bucket
-        /// must be in the same VPC Service Controls perimeter as the job.
+        /// maximum length of the custom prefix is 128 characters. Dataplex Universal Catalog constructs the object path
+        /// for the exported files by using the bucket name and prefix that you provide, followed by a system-generated
+        /// path.The bucket must be in the same VPC Service Controls perimeter as the job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputPath")]
         public virtual string OutputPath { get; set; }
@@ -23909,12 +23914,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string PartitionStyle { get; set; }
 
         /// <summary>
-        /// Required. Set to true if user-managed or false if managed by Dataplex. The default is false (managed by
-        /// Dataplex). Set to falseto enable Dataplex discovery to update the schema. including new data discovery,
-        /// schema inference, and schema evolution. Users retain the ability to input and edit the schema. Dataplex
-        /// treats schema input by the user as though produced by a previous Dataplex discovery operation, and it will
-        /// evolve the schema and take action based on that treatment. Set to true to fully manage the entity schema.
-        /// This setting guarantees that Dataplex will not change schema fields.
+        /// Required. Set to true if user-managed or false if managed by Dataplex Universal Catalog. The default is
+        /// false (managed by Dataplex Universal Catalog). Set to falseto enable Dataplex Universal Catalog discovery to
+        /// update the schema. including new data discovery, schema inference, and schema evolution. Users retain the
+        /// ability to input and edit the schema. Dataplex Universal Catalog treats schema input by the user as though
+        /// produced by a previous Dataplex Universal Catalog discovery operation, and it will evolve the schema and
+        /// take action based on that treatment. Set to true to fully manage the entity schema. This setting guarantees
+        /// that Dataplex Universal Catalog will not change schema fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userManaged")]
         public virtual System.Nullable<bool> UserManaged { get; set; }
