@@ -5893,8 +5893,8 @@ namespace Google.Apis.Eventarc.v1.Data
         }
 
         /// <summary>
-        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must
-        /// match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data.
+        /// It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
         public virtual string CryptoKeyName { get; set; }
