@@ -12018,9 +12018,17 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flowInvocation")]
         public virtual GoogleCloudDialogflowCxV3FlowInvocation FlowInvocation { get; set; }
 
+        /// <summary>Optional. Action performed on behalf of the agent by transitioning to a target CX flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowTransition")]
+        public virtual GoogleCloudDialogflowCxV3FlowTransition FlowTransition { get; set; }
+
         /// <summary>Optional. Action performed on behalf of the agent by invoking a child playbook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playbookInvocation")]
         public virtual GoogleCloudDialogflowCxV3PlaybookInvocation PlaybookInvocation { get; set; }
+
+        /// <summary>Optional. Action performed on behalf of the agent by transitioning to a target playbook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbookTransition")]
+        public virtual GoogleCloudDialogflowCxV3PlaybookTransition PlaybookTransition { get; set; }
 
         /// <summary>Optional. Action performed on behalf of the agent by calling a plugin tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolUse")]
@@ -14692,6 +14700,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventHandlers")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3EventHandler> EventHandlers { get; set; }
 
+        /// <summary>Optional. Defined structured input parameters for this flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputParameterDefinitions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ParameterDefinition> InputParameterDefinitions { get; set; }
+
         /// <summary>Optional. Knowledge connector configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("knowledgeConnectorSettings")]
         public virtual GoogleCloudDialogflowCxV3KnowledgeConnectorSettings KnowledgeConnectorSettings { get; set; }
@@ -14714,6 +14726,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>NLU related settings of the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nluSettings")]
         public virtual GoogleCloudDialogflowCxV3NluSettings NluSettings { get; set; }
+
+        /// <summary>Optional. Defined structured output parameters for this flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputParameterDefinitions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ParameterDefinition> OutputParameterDefinitions { get; set; }
 
         /// <summary>
         /// A flow's transition route group serve two purposes: * They are responsible for matching the user's first
@@ -14796,6 +14812,24 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedResponseLanguageCodes")]
         public virtual System.Collections.Generic.IList<string> SupportedResponseLanguageCodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Stores metadata of the transition to a target CX flow. Flow transition actions exit the caller playbook and
+    /// enter the child flow.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3FlowTransition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The display name of the flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Required. The unique identifier of the flow. Format: `projects//locations//agents/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flow")]
+        public virtual string Flow { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15712,6 +15746,21 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Output only. The uncompressed byte content for the objects. Only populated in responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A type schema object that's specified inline.</summary>
+    public class GoogleCloudDialogflowCxV3InlineSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Schema of the elements if this is an ARRAY type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual GoogleCloudDialogflowCxV3TypeSchema Items { get; set; }
+
+        /// <summary>Data type of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16881,6 +16930,32 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Defines the properties of a parameter. Used to define parameters used in the agent and the input / output
+    /// parameters for each fulfillment.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3ParameterDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Human-readable description of the parameter. Limited to 300 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. Name of parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Type of parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Optional. Type schema of parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typeSchema")]
+        public virtual GoogleCloudDialogflowCxV3TypeSchema TypeSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Text input which can be used for prompt or banned phrases.</summary>
     public class GoogleCloudDialogflowCxV3Phrase : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16952,6 +17027,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("handlers")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3Handler> Handlers { get; set; }
 
+        /// <summary>Optional. Defined structured input parameters for this playbook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputParameterDefinitions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ParameterDefinition> InputParameterDefinitions { get; set; }
+
         /// <summary>Instruction to accomplish target goal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instruction")]
         public virtual GoogleCloudDialogflowCxV3PlaybookInstruction Instruction { get; set; }
@@ -16963,6 +17042,14 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>The unique identifier of the playbook. Format: `projects//locations//agents//playbooks/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. Defined structured output parameters for this playbook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputParameterDefinitions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ParameterDefinition> OutputParameterDefinitions { get; set; }
+
+        /// <summary>Optional. Type of the playbook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbookType")]
+        public virtual string PlaybookType { get; set; }
 
         /// <summary>
         /// Output only. The resource name of flows referenced by the current playbook in the instructions.
@@ -17138,6 +17225,26 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Step instruction in text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Stores metadata of the transition to another target playbook. Playbook transition actions exit the caller
+    /// playbook and enter the target playbook.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3PlaybookTransition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The display name of the playbook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. The unique identifier of the playbook. Format: `projects//locations//agents//playbooks/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbook")]
+        public virtual string Playbook { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19471,6 +19578,41 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Human-readable statuses of the webhooks triggered during this turn.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookStatuses")]
         public virtual System.Collections.Generic.IList<string> WebhookStatuses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Encapsulates different type schema variations: either a reference to an a schema that's already defined by a
+    /// tool, or an inline definition.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3TypeSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set if this is an inline schema definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineSchema")]
+        public virtual GoogleCloudDialogflowCxV3InlineSchema InlineSchema { get; set; }
+
+        /// <summary>Set if this is a schema reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaReference")]
+        public virtual GoogleCloudDialogflowCxV3TypeSchemaSchemaReference SchemaReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A reference to the schema of an existing tool.</summary>
+    public class GoogleCloudDialogflowCxV3TypeSchemaSchemaReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>
+        /// The tool that contains this schema definition. Format: `projects//locations//agents//tools/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual string Tool { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
