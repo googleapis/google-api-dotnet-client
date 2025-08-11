@@ -6982,6 +6982,74 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// BackupDRMetadata contains information about the backup and disaster recovery metadata of a database resource.
+    /// </summary>
+    public class StorageDatabasecenterPartnerapiV1mainBackupDRMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Backup configuration for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConfiguration")]
+        public virtual StorageDatabasecenterPartnerapiV1mainBackupConfiguration BackupConfiguration { get; set; }
+
+        /// <summary>Latest backup run information for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
+        public virtual StorageDatabasecenterPartnerapiV1mainBackupRun BackupRun { get; set; }
+
+        /// <summary>BackupDR configuration for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupdrConfiguration")]
+        public virtual StorageDatabasecenterPartnerapiV1mainBackupDRConfiguration BackupdrConfiguration { get; set; }
+
+        /// <summary>Required. Full resource name of this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
+        public virtual string FullResourceName { get; set; }
+
+        private string _lastRefreshTimeRaw;
+
+        private object _lastRefreshTime;
+
+        /// <summary>Required. Last time backup configuration was refreshed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
+        public virtual string LastRefreshTimeRaw
+        {
+            get => _lastRefreshTimeRaw;
+            set
+            {
+                _lastRefreshTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastRefreshTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastRefreshTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastRefreshTimeDateTimeOffset instead.")]
+        public virtual object LastRefreshTime
+        {
+            get => _lastRefreshTime;
+            set
+            {
+                _lastRefreshTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastRefreshTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastRefreshTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastRefreshTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRefreshTimeRaw);
+            set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. Database resource id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId ResourceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A backup run.</summary>
     public class StorageDatabasecenterPartnerapiV1mainBackupRun : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7173,10 +7241,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
     /// <summary>
     /// DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into
-    /// Condor platform. Next ID: 9
+    /// Condor platform. Next ID: 10
     /// </summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>BackupDR metadata is used to ingest metadata from BackupDR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupdrMetadata")]
+        public virtual StorageDatabasecenterPartnerapiV1mainBackupDRMetadata BackupdrMetadata { get; set; }
+
         /// <summary>
         /// Config based signal data is used to ingest signals that are generated based on the configuration of the
         /// database resource.
