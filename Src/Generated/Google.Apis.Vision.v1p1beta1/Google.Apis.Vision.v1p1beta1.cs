@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2475,8 +2475,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
 
         /// <summary>
         /// Model to use for the feature. Supported values: "builtin/stable" (the default if unset) and
-        /// "builtin/latest". `DOCUMENT_TEXT_DETECTION` and `TEXT_DETECTION` also support "builtin/weekly" for the
-        /// bleeding edge release updated weekly.
+        /// "builtin/latest". `DOCUMENT_TEXT_DETECTION` and `TEXT_DETECTION` also support "builtin/rc" for the latest
+        /// release candidate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
