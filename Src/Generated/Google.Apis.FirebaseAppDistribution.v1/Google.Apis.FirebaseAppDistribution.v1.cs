@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -285,7 +285,9 @@ namespace Google.Apis.FirebaseAppDistribution.v1
         /// release, or a no-op if a release with the same binary already exists.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="app">The name of the app resource. Format: `projects/{project_number}/apps/{app_id}`</param>
+        /// <param name="app">
+        /// Required. The name of the app resource. Format: `projects/{project_number}/apps/{app_id}`
+        /// </param>
         public virtual UploadRequest Upload(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1UploadReleaseRequest body, string app)
         {
             return new UploadRequest(this.service, body, app);
@@ -305,7 +307,9 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                 InitParameters();
             }
 
-            /// <summary>The name of the app resource. Format: `projects/{project_number}/apps/{app_id}`</summary>
+            /// <summary>
+            /// Required. The name of the app resource. Format: `projects/{project_number}/apps/{app_id}`
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string App { get; private set; }
 
@@ -361,7 +365,9 @@ namespace Google.Apis.FirebaseAppDistribution.v1
         /// </list>
         /// </remarks>
         /// <param name="body">The body of the request.</param>
-        /// <param name="app">The name of the app resource. Format: `projects/{project_number}/apps/{app_id}`</param>
+        /// <param name="app">
+        /// Required. The name of the app resource. Format: `projects/{project_number}/apps/{app_id}`
+        /// </param>
         /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual UploadMediaUpload Upload(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1UploadReleaseRequest body, string app, System.IO.Stream stream, string contentType)
@@ -450,7 +456,9 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UploadProtocol { get; set; }
 
-            /// <summary>The name of the app resource. Format: `projects/{project_number}/apps/{app_id}`</summary>
+            /// <summary>
+            /// Required. The name of the app resource. Format: `projects/{project_number}/apps/{app_id}`
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string App { get; private set; }
 
@@ -687,17 +695,17 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The maximum number of feedback reports to return. The service may return fewer than this
-                        /// value. The valid range is [1-100]; If unspecified (0), at most 25 feedback reports are
-                        /// returned. Values above 100 are coerced to 100.
+                        /// Output only. The maximum number of feedback reports to return. The service may return fewer
+                        /// than this value. The valid range is [1-100]; If unspecified (0), at most 25 feedback reports
+                        /// are returned. Values above 100 are coerced to 100.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// A page token, received from a previous `ListFeedbackReports` call. Provide this to retrieve
-                        /// the subsequent page. When paginating, all other parameters provided to `ListFeedbackReports`
-                        /// must match the call that provided the page token.
+                        /// Output only. A page token, received from a previous `ListFeedbackReports` call. Provide this
+                        /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListFeedbackReports` must match the call that provided the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -1297,37 +1305,37 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// The expression to filter releases listed in the response. To learn more about filtering, refer
-                    /// to [Google's AIP-160 standard](http://aip.dev/160). Supported fields: - `releaseNotes.text`
-                    /// supports `=` (can contain a wildcard character (`*`) at the beginning or end of the string) -
-                    /// `createTime` supports `&amp;lt;`, `&amp;lt;=`, `&amp;gt;` and `&amp;gt;=`, and expects an
-                    /// RFC-3339 formatted string Examples: - `createTime &amp;lt;= "2021-09-08T00:00:00+04:00"` -
-                    /// `releaseNotes.text="fixes" AND createTime &amp;gt;= "2021-09-08T00:00:00.0Z"` -
-                    /// `releaseNotes.text="*v1.0.0-rc*"`
+                    /// Optional. The expression to filter releases listed in the response. To learn more about
+                    /// filtering, refer to [Google's AIP-160 standard](http://aip.dev/160). Supported fields: -
+                    /// `releaseNotes.text` supports `=` (can contain a wildcard character (`*`) at the beginning or end
+                    /// of the string) - `createTime` supports `&amp;lt;`, `&amp;lt;=`, `&amp;gt;` and `&amp;gt;=`, and
+                    /// expects an RFC-3339 formatted string Examples: - `createTime &amp;lt;=
+                    /// "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND createTime &amp;gt;=
+                    /// "2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// The fields used to order releases. Supported fields: - `createTime` To specify descending order
-                    /// for a field, append a "desc" suffix, for example, `createTime desc`. If this parameter is not
-                    /// set, releases are ordered by `createTime` in descending order.
+                    /// Optional. The fields used to order releases. Supported fields: - `createTime` To specify
+                    /// descending order for a field, append a "desc" suffix, for example, `createTime desc`. If this
+                    /// parameter is not set, releases are ordered by `createTime` in descending order.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// The maximum number of releases to return. The service may return fewer than this value. The
-                    /// valid range is [1-100]; If unspecified (0), at most 25 releases are returned. Values above 100
-                    /// are coerced to 100.
+                    /// Optional. The maximum number of releases to return. The service may return fewer than this
+                    /// value. The valid range is [1-100]; If unspecified (0), at most 25 releases are returned. Values
+                    /// above 100 are coerced to 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// A page token, received from a previous `ListReleases` call. Provide this to retrieve the
-                    /// subsequent page. When paginating, all other parameters provided to `ListReleases` must match the
-                    /// call that provided the page token.
+                    /// Optional. A page token, received from a previous `ListReleases` call. Provide this to retrieve
+                    /// the subsequent page. When paginating, all other parameters provided to `ListReleases` must match
+                    /// the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1417,7 +1425,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The list of fields to update.</summary>
+                    /// <summary>Optional. The list of fields to update.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -1945,7 +1953,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The list of fields to update.</summary>
+                /// <summary>Optional. The list of fields to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -2262,7 +2270,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The list of fields to update.</summary>
+                /// <summary>Optional. The list of fields to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -2905,14 +2913,14 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
     public class GoogleFirebaseAppdistroV1DistributeReleaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of group aliases (IDs) to be given access to this release. A combined maximum of 999 `testerEmails`
-        /// and `groupAliases` can be specified in a single request.
+        /// Optional. A list of group aliases (IDs) to be given access to this release. A combined maximum of 999
+        /// `testerEmails` and `groupAliases` can be specified in a single request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupAliases")]
         public virtual System.Collections.Generic.IList<string> GroupAliases { get; set; }
 
         /// <summary>
-        /// A list of tester email addresses to be given access to this release. A combined maximum of 999
+        /// Optional. A list of tester email addresses to be given access to this release. A combined maximum of 999
         /// `testerEmails` and `groupAliases` can be specified in a single request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testerEmails")]
