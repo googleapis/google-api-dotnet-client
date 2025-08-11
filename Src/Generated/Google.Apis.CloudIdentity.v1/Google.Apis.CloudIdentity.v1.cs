@@ -37,6 +37,7 @@ namespace Google.Apis.CloudIdentity.v1
             Customers = new CustomersResource(this);
             Devices = new DevicesResource(this);
             Groups = new GroupsResource(this);
+            InboundOidcSsoProfiles = new InboundOidcSsoProfilesResource(this);
             InboundSamlSsoProfiles = new InboundSamlSsoProfilesResource(this);
             InboundSsoAssignments = new InboundSsoAssignmentsResource(this);
             Policies = new PoliciesResource(this);
@@ -166,6 +167,9 @@ namespace Google.Apis.CloudIdentity.v1
 
         /// <summary>Gets the Groups resource.</summary>
         public virtual GroupsResource Groups { get; }
+
+        /// <summary>Gets the InboundOidcSsoProfiles resource.</summary>
+        public virtual InboundOidcSsoProfilesResource InboundOidcSsoProfiles { get; }
 
         /// <summary>Gets the InboundSamlSsoProfiles resource.</summary>
         public virtual InboundSamlSsoProfilesResource InboundSamlSsoProfiles { get; }
@@ -3903,6 +3907,332 @@ namespace Google.Apis.CloudIdentity.v1
         }
     }
 
+    /// <summary>The "inboundOidcSsoProfiles" collection of methods.</summary>
+    public class InboundOidcSsoProfilesResource
+    {
+        private const string Resource = "inboundOidcSsoProfiles";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public InboundOidcSsoProfilesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Creates an InboundOidcSsoProfile for a customer. When the target customer has enabled [Multi-party approval
+        /// for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will
+        /// have `"done": false`, it will not have a response, and the metadata will have `"state":
+        /// "awaiting-multi-party-approval"`.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1.Data.InboundOidcSsoProfile body)
+        {
+            return new CreateRequest(this.service, body);
+        }
+
+        /// <summary>
+        /// Creates an InboundOidcSsoProfile for a customer. When the target customer has enabled [Multi-party approval
+        /// for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will
+        /// have `"done": false`, it will not have a response, and the metadata will have `"state":
+        /// "awaiting-multi-party-approval"`.
+        /// </summary>
+        public class CreateRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1.Data.InboundOidcSsoProfile body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudIdentity.v1.Data.InboundOidcSsoProfile Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/inboundOidcSsoProfiles";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>Deletes an InboundOidcSsoProfile.</summary>
+        /// <param name="name">
+        /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// InboundOidcSsoProfile to delete. Format: `inboundOidcSsoProfiles/{sso_profile_id}`
+        /// </param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(this.service, name);
+        }
+
+        /// <summary>Deletes an InboundOidcSsoProfile.</summary>
+        public class DeleteRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+            /// InboundOidcSsoProfile to delete. Format: `inboundOidcSsoProfiles/{sso_profile_id}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^inboundOidcSsoProfiles/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Gets an InboundOidcSsoProfile.</summary>
+        /// <param name="name">
+        /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// InboundOidcSsoProfile to get. Format: `inboundOidcSsoProfiles/{sso_profile_id}`
+        /// </param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(this.service, name);
+        }
+
+        /// <summary>Gets an InboundOidcSsoProfile.</summary>
+        public class GetRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.InboundOidcSsoProfile>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+            /// InboundOidcSsoProfile to get. Format: `inboundOidcSsoProfiles/{sso_profile_id}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^inboundOidcSsoProfiles/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Lists InboundOidcSsoProfile objects for a Google enterprise customer.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(this.service);
+        }
+
+        /// <summary>Lists InboundOidcSsoProfile objects for a Google enterprise customer.</summary>
+        public class ListRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.ListInboundOidcSsoProfilesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// A [Common Expression Language](https://github.com/google/cel-spec) expression to filter the results. The
+            /// only supported filter is filtering by customer. For example: `customer=="customers/C0123abc"`. Omitting
+            /// the filter or specifying a filter of `customer=="customers/my_customer"` will return the profiles for
+            /// the customer that the caller (authenticated user) belongs to. Specifying a filter of `customer==""` will
+            /// return the global shared OIDC profiles.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of InboundOidcSsoProfiles to return. The service may return fewer than this value. If
+            /// omitted (or defaulted to zero) the server will use a sensible default. This default may change over
+            /// time. The maximum allowed value is 100. Requests with page_size greater than that will be silently
+            /// interpreted as having this maximum value.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A page token, received from a previous `ListInboundOidcSsoProfiles` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided to `ListInboundOidcSsoProfiles` must
+            /// match the call that provided the page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/inboundOidcSsoProfiles";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates an InboundOidcSsoProfile. When the target customer has enabled [Multi-party approval for sensitive
+        /// actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done":
+        /// false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the OIDC SSO profile.
+        /// </param>
+        public virtual PatchRequest Patch(Google.Apis.CloudIdentity.v1.Data.InboundOidcSsoProfile body, string name)
+        {
+            return new PatchRequest(this.service, body, name);
+        }
+
+        /// <summary>
+        /// Updates an InboundOidcSsoProfile. When the target customer has enabled [Multi-party approval for sensitive
+        /// actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done":
+        /// false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`.
+        /// </summary>
+        public class PatchRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1.Data.InboundOidcSsoProfile body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the OIDC SSO
+            /// profile.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. The list of fields to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudIdentity.v1.Data.InboundOidcSsoProfile Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^inboundOidcSsoProfiles/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "inboundSamlSsoProfiles" collection of methods.</summary>
     public class InboundSamlSsoProfilesResource
     {
@@ -5036,6 +5366,21 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>LRO response metadata for InboundOidcSsoProfilesService.CreateInboundOidcSsoProfile.</summary>
+    public class CreateInboundOidcSsoProfileOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// State of this Operation Will be "awaiting-multi-party-approval" when the operation is deferred due to the
+        /// target customer having enabled [Multi-party approval for sensitive
+        /// actions](https://support.google.com/a/answer/13790448).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>LRO response metadata for InboundSamlSsoProfilesService.CreateInboundSamlSsoProfile.</summary>
     public class CreateInboundSamlSsoProfileOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5074,6 +5419,13 @@ namespace Google.Apis.CloudIdentity.v1.Data
 
     /// <summary>LRO response metadata for InboundSamlSsoProfilesService.DeleteIdpCredential.</summary>
     public class DeleteIdpCredentialOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LRO response metadata for InboundOidcSsoProfilesService.DeleteInboundOidcSsoProfile.</summary>
+    public class DeleteInboundOidcSsoProfileOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6813,6 +7165,41 @@ namespace Google.Apis.CloudIdentity.v1.Data
     }
 
     /// <summary>
+    /// An [OIDC](https://openid.net/developers/how-connect-works/) federation between a Google enterprise customer and
+    /// an OIDC identity provider.
+    /// </summary>
+    public class InboundOidcSsoProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The customer. For example: `customers/C0123abc`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
+        /// <summary>Human-readable name of the OIDC SSO profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>OIDC identity provider configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
+        public virtual OidcIdpConfig IdpConfig { get; set; }
+
+        /// <summary>
+        /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the OIDC SSO profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// OIDC relying party (RP) configuration for this OIDC SSO profile. These are the RP details provided by Google
+        /// that should be configured on the corresponding identity provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rpConfig")]
+        public virtual OidcRpConfig RpConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A [SAML 2.0](https://www.oasis-open.org/standards#samlv2.0) federation between a Google enterprise customer and
     /// a SAML identity provider.
     /// </summary>
@@ -6860,6 +7247,10 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>OpenID Connect SSO details. Must be set if and only if `sso_mode` is set to `OIDC_SSO`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oidcSsoInfo")]
+        public virtual OidcSsoInfo OidcSsoInfo { get; set; }
 
         /// <summary>
         /// Must be zero (which is the default value so it can be omitted) for assignments with `target_org_unit` set
@@ -6929,6 +7320,24 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// <summary>The IdpCredentials from the specified InboundSamlSsoProfile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idpCredentials")]
         public virtual System.Collections.Generic.IList<IdpCredential> IdpCredentials { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response of the InboundOidcSsoProfilesService.ListInboundOidcSsoProfiles method.</summary>
+    public class ListInboundOidcSsoProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of InboundOidcSsoProfiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inboundOidcSsoProfiles")]
+        public virtual System.Collections.Generic.IList<InboundOidcSsoProfile> InboundOidcSsoProfiles { get; set; }
 
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
@@ -7358,6 +7767,62 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>OIDC IDP (identity provider) configuration.</summary>
+    public class OidcIdpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their
+        /// passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at
+        /// customer-level. Must use `HTTPS`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changePasswordUri")]
+        public virtual string ChangePasswordUri { get; set; }
+
+        /// <summary>
+        /// Required. The Issuer identifier for the IdP. Must be a URL. The discovery URL will be derived from this as
+        /// described in Section 4 of [the OIDC
+        /// specification](https://openid.net/specs/openid-connect-discovery-1_0.html).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuerUri")]
+        public virtual string IssuerUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>OIDC RP (relying party) configuration.</summary>
+    public class OidcRpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>OAuth2 client ID for OIDC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Input only. OAuth2 client secret for OIDC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>Output only. The URL(s) that this client may use in authentication requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectUris")]
+        public virtual System.Collections.Generic.IList<string> RedirectUris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details that are applicable when `sso_mode` is set to `OIDC_SSO`.</summary>
+    public class OidcSsoInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Name of the `InboundOidcSsoProfile` to use. Must be of the form
+        /// `inboundOidcSsoProfiles/{inbound_oidc_sso_profile}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inboundOidcSsoProfile")]
+        public virtual string InboundOidcSsoProfile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7746,6 +8211,21 @@ namespace Google.Apis.CloudIdentity.v1.Data
     /// <summary>Metadata for UpdateGroup LRO.</summary>
     public class UpdateGroupMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LRO response metadata for InboundOidcSsoProfilesService.UpdateInboundOidcSsoProfile.</summary>
+    public class UpdateInboundOidcSsoProfileOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// State of this Operation Will be "awaiting-multi-party-approval" when the operation is deferred due to the
+        /// target customer having enabled [Multi-party approval for sensitive
+        /// actions](https://support.google.com/a/answer/13790448).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
