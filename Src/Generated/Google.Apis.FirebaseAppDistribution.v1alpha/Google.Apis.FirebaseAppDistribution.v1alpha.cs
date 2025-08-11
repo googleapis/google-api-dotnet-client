@@ -303,10 +303,11 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
             /// <summary>GET Release by binary upload hash</summary>
             /// <param name="mobilesdkAppId">
-            /// Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)}
-            /// Example: 1:581234567376:android:aa0a3c7b135e90289
+            /// Required. Unique id for a Firebase app of the format:
+            /// {version}:{project_number}:{platform}:{hash(bundle_id)} Example:
+            /// 1:581234567376:android:aa0a3c7b135e90289
             /// </param>
-            /// <param name="uploadHash">The hash for the upload</param>
+            /// <param name="uploadHash">Required. The hash for the upload</param>
             public virtual GetRequest Get(string mobilesdkAppId, string uploadHash)
             {
                 return new GetRequest(this.service, mobilesdkAppId, uploadHash);
@@ -324,13 +325,14 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 }
 
                 /// <summary>
-                /// Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)}
-                /// Example: 1:581234567376:android:aa0a3c7b135e90289
+                /// Required. Unique id for a Firebase app of the format:
+                /// {version}:{project_number}:{platform}:{hash(bundle_id)} Example:
+                /// 1:581234567376:android:aa0a3c7b135e90289
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("mobilesdkAppId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MobilesdkAppId { get; private set; }
 
-                /// <summary>The hash for the upload</summary>
+                /// <summary>Required. The hash for the upload</summary>
                 [Google.Apis.Util.RequestParameterAttribute("uploadHash", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UploadHash { get; private set; }
 
@@ -405,10 +407,11 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 /// <summary>Create release notes on a release.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="mobilesdkAppId">
-                /// Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)}
-                /// Example: 1:581234567376:android:aa0a3c7b135e90289
+                /// Required. Unique id for a Firebase app of the format:
+                /// {version}:{project_number}:{platform}:{hash(bundle_id)} Example:
+                /// 1:581234567376:android:aa0a3c7b135e90289
                 /// </param>
-                /// <param name="releaseId">Release identifier</param>
+                /// <param name="releaseId">Required. Release identifier</param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest body, string mobilesdkAppId, string releaseId)
                 {
                     return new CreateRequest(this.service, body, mobilesdkAppId, releaseId);
@@ -427,14 +430,14 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                     }
 
                     /// <summary>
-                    /// Unique id for a Firebase app of the format:
+                    /// Required. Unique id for a Firebase app of the format:
                     /// {version}:{project_number}:{platform}:{hash(bundle_id)} Example:
                     /// 1:581234567376:android:aa0a3c7b135e90289
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("mobilesdkAppId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string MobilesdkAppId { get; private set; }
 
-                    /// <summary>Release identifier</summary>
+                    /// <summary>Required. Release identifier</summary>
                     [Google.Apis.Util.RequestParameterAttribute("releaseId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ReleaseId { get; private set; }
 
@@ -480,10 +483,11 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
             /// <summary>Enable access on a release for testers.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="mobilesdkAppId">
-            /// Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)}
-            /// Example: 1:581234567376:android:aa0a3c7b135e90289
+            /// Required. Unique id for a Firebase app of the format:
+            /// {version}:{project_number}:{platform}:{hash(bundle_id)} Example:
+            /// 1:581234567376:android:aa0a3c7b135e90289
             /// </param>
-            /// <param name="releaseId">Release identifier</param>
+            /// <param name="releaseId">Required. Release identifier</param>
             public virtual EnableAccessRequest EnableAccess(Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest body, string mobilesdkAppId, string releaseId)
             {
                 return new EnableAccessRequest(this.service, body, mobilesdkAppId, releaseId);
@@ -502,13 +506,14 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 }
 
                 /// <summary>
-                /// Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)}
-                /// Example: 1:581234567376:android:aa0a3c7b135e90289
+                /// Required. Unique id for a Firebase app of the format:
+                /// {version}:{project_number}:{platform}:{hash(bundle_id)} Example:
+                /// 1:581234567376:android:aa0a3c7b135e90289
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("mobilesdkAppId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MobilesdkAppId { get; private set; }
 
-                /// <summary>Release identifier</summary>
+                /// <summary>Required. Release identifier</summary>
                 [Google.Apis.Util.RequestParameterAttribute("releaseId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ReleaseId { get; private set; }
 
@@ -653,10 +658,11 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
             /// <summary>GET Binary upload status by token</summary>
             /// <param name="mobilesdkAppId">
-            /// Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)}
-            /// Example: 1:581234567376:android:aa0a3c7b135e90289
+            /// Required. Unique id for a Firebase app of the format:
+            /// {version}:{project_number}:{platform}:{hash(bundle_id)} Example:
+            /// 1:581234567376:android:aa0a3c7b135e90289
             /// </param>
-            /// <param name="uploadToken">The token for the upload</param>
+            /// <param name="uploadToken">Required. The token for the upload</param>
             public virtual GetRequest Get(string mobilesdkAppId, string uploadToken)
             {
                 return new GetRequest(this.service, mobilesdkAppId, uploadToken);
@@ -674,13 +680,14 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 }
 
                 /// <summary>
-                /// Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)}
-                /// Example: 1:581234567376:android:aa0a3c7b135e90289
+                /// Required. Unique id for a Firebase app of the format:
+                /// {version}:{project_number}:{platform}:{hash(bundle_id)} Example:
+                /// 1:581234567376:android:aa0a3c7b135e90289
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("mobilesdkAppId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MobilesdkAppId { get; private set; }
 
-                /// <summary>The token for the upload</summary>
+                /// <summary>Required. The token for the upload</summary>
                 [Google.Apis.Util.RequestParameterAttribute("uploadToken", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UploadToken { get; private set; }
 
@@ -804,8 +811,8 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
         /// <summary>Get a JWT token</summary>
         /// <param name="mobilesdkAppId">
-        /// Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example:
-        /// 1:581234567376:android:aa0a3c7b135e90289
+        /// Required. Unique id for a Firebase app of the format:
+        /// {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289
         /// </param>
         public virtual GetJwtRequest GetJwt(string mobilesdkAppId)
         {
@@ -823,8 +830,9 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
             }
 
             /// <summary>
-            /// Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)}
-            /// Example: 1:581234567376:android:aa0a3c7b135e90289
+            /// Required. Unique id for a Firebase app of the format:
+            /// {version}:{project_number}:{platform}:{hash(bundle_id)} Example:
+            /// 1:581234567376:android:aa0a3c7b135e90289
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("mobilesdkAppId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MobilesdkAppId { get; private set; }
@@ -2969,6 +2977,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Other test cases that depend on this test cse as a prerequisite.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependentTestCases")]
+        public virtual System.Collections.Generic.IList<string> DependentTestCases { get; set; }
+
         /// <summary>Required. Display name of the test case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -2979,6 +2991,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. Test case that must be run before this test case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prerequisiteTestCase")]
+        public virtual string PrerequisiteTestCase { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
