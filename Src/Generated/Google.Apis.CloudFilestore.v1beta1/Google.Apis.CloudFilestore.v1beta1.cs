@@ -3264,6 +3264,13 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Immutable. Designates the backend type of this instance. Intended to be used by internal tests and
+        /// allowed customers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendType")]
+        public virtual string BackendType { get; set; }
+
+        /// <summary>
         /// The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to
         /// `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
         /// </summary>
