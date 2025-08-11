@@ -445,6 +445,10 @@ namespace Google.Apis.Merchant.ordertracking_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
         public virtual string Gtin { get; set; }
 
+        /// <summary>Optional. The Global Trade Item Numbers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtins")]
+        public virtual System.Collections.Generic.IList<string> Gtins { get; set; }
+
         /// <summary>Required. The ID for this line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual string LineItemId { get; set; }
