@@ -322,14 +322,14 @@ namespace Google.Apis.DriveLabels.v2
                 this.service = service;
             }
 
-            /// <summary>Lists the LabelLocks on a Label.</summary>
-            /// <param name="parent">Required. Label on which Locks are applied. Format: labels/{label}</param>
+            /// <summary>Lists the label locks on a label.</summary>
+            /// <param name="parent">Required. Label on which locks are applied. Format: `labels/{label}`.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(this.service, parent);
             }
 
-            /// <summary>Lists the LabelLocks on a Label.</summary>
+            /// <summary>Lists the label locks on a label.</summary>
             public class ListRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2ListLabelLocksResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -339,11 +339,11 @@ namespace Google.Apis.DriveLabels.v2
                     InitParameters();
                 }
 
-                /// <summary>Required. Label on which Locks are applied. Format: labels/{label}</summary>
+                /// <summary>Required. Label on which locks are applied. Format: `labels/{label}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Maximum number of Locks to return per page. Default: 100. Max: 200.</summary>
+                /// <summary>Maximum number of locks to return per page. Default: 100. Max: 200.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -410,14 +410,14 @@ namespace Google.Apis.DriveLabels.v2
             }
 
             /// <summary>
-            /// Deletes Label permissions. Permissions affect the Label resource as a whole, are not revisioned, and do
-            /// not require publishing.
+            /// Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and
+            /// don't require publishing.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The parent Label resource name shared by all permissions being deleted. Format: labels/{label}
-            /// If this is set, the parent field in the UpdateLabelPermissionRequest messages must either be empty or
-            /// match this field.
+            /// Required. The parent label resource name shared by all permissions being deleted. Format:
+            /// `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must
+            /// either be empty or match this field.
             /// </param>
             public virtual BatchDeleteRequest BatchDelete(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest body, string parent)
             {
@@ -425,8 +425,8 @@ namespace Google.Apis.DriveLabels.v2
             }
 
             /// <summary>
-            /// Deletes Label permissions. Permissions affect the Label resource as a whole, are not revisioned, and do
-            /// not require publishing.
+            /// Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and
+            /// don't require publishing.
             /// </summary>
             public class BatchDeleteRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleProtobufEmpty>
             {
@@ -439,9 +439,9 @@ namespace Google.Apis.DriveLabels.v2
                 }
 
                 /// <summary>
-                /// Required. The parent Label resource name shared by all permissions being deleted. Format:
-                /// labels/{label} If this is set, the parent field in the UpdateLabelPermissionRequest messages must
-                /// either be empty or match this field.
+                /// Required. The parent label resource name shared by all permissions being deleted. Format:
+                /// `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages
+                /// must either be empty or match this field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -477,15 +477,15 @@ namespace Google.Apis.DriveLabels.v2
             }
 
             /// <summary>
-            /// Updates Label permissions. If a permission for the indicated principal doesn't exist, a new Label
-            /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label
-            /// resource as a whole, are not revisioned, and do not require publishing.
+            /// Updates label permissions. If a permission for the indicated principal doesn't exist, a label permission
+            /// is created, otherwise the existing permission is updated. Permissions affect the label resource as a
+            /// whole, aren't revisioned, and don't require publishing.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The parent Label resource name shared by all permissions being updated. Format: labels/{label}
-            /// If this is set, the parent field in the UpdateLabelPermissionRequest messages must either be empty or
-            /// match this field.
+            /// Required. The parent label resource name shared by all permissions being updated. Format:
+            /// `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must
+            /// either be empty or match this field.
             /// </param>
             public virtual BatchUpdateRequest BatchUpdate(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest body, string parent)
             {
@@ -493,9 +493,9 @@ namespace Google.Apis.DriveLabels.v2
             }
 
             /// <summary>
-            /// Updates Label permissions. If a permission for the indicated principal doesn't exist, a new Label
-            /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label
-            /// resource as a whole, are not revisioned, and do not require publishing.
+            /// Updates label permissions. If a permission for the indicated principal doesn't exist, a label permission
+            /// is created, otherwise the existing permission is updated. Permissions affect the label resource as a
+            /// whole, aren't revisioned, and don't require publishing.
             /// </summary>
             public class BatchUpdateRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse>
             {
@@ -508,9 +508,9 @@ namespace Google.Apis.DriveLabels.v2
                 }
 
                 /// <summary>
-                /// Required. The parent Label resource name shared by all permissions being updated. Format:
-                /// labels/{label} If this is set, the parent field in the UpdateLabelPermissionRequest messages must
-                /// either be empty or match this field.
+                /// Required. The parent label resource name shared by all permissions being updated. Format:
+                /// `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages
+                /// must either be empty or match this field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -546,13 +546,13 @@ namespace Google.Apis.DriveLabels.v2
             }
 
             /// <summary>
-            /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label
-            /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label
-            /// resource as a whole, are not revisioned, and do not require publishing.
+            /// Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label
+            /// permission is created, otherwise the existing permission is updated. Permissions affect the label
+            /// resource as a whole, aren't revisioned, and don't require publishing.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The parent Label resource name on the Label Permission is created. Format: labels/{label}
+            /// Required. The parent label resource name on the label permission is created. Format: `labels/{label}`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2LabelPermission body, string parent)
             {
@@ -560,9 +560,9 @@ namespace Google.Apis.DriveLabels.v2
             }
 
             /// <summary>
-            /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label
-            /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label
-            /// resource as a whole, are not revisioned, and do not require publishing.
+            /// Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label
+            /// permission is created, otherwise the existing permission is updated. Permissions affect the label
+            /// resource as a whole, aren't revisioned, and don't require publishing.
             /// </summary>
             public class CreateRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2LabelPermission>
             {
@@ -575,14 +575,15 @@ namespace Google.Apis.DriveLabels.v2
                 }
 
                 /// <summary>
-                /// Required. The parent Label resource name on the Label Permission is created. Format: labels/{label}
+                /// Required. The parent label resource name on the label permission is created. Format:
+                /// `labels/{label}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
                 /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an
-                /// admin for the Label before allowing access.
+                /// admin for the label before allowing access.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UseAdminAccess { get; set; }
@@ -626,18 +627,18 @@ namespace Google.Apis.DriveLabels.v2
             }
 
             /// <summary>
-            /// Deletes a Label's permission. Permissions affect the Label resource as a whole, are not revisioned, and
-            /// do not require publishing.
+            /// Deletes a label's permission. Permissions affect the label resource as a whole, aren't revisioned, and
+            /// don't require publishing.
             /// </summary>
-            /// <param name="name">Required. Label Permission resource name.</param>
+            /// <param name="name">Required. Label permission resource name.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(this.service, name);
             }
 
             /// <summary>
-            /// Deletes a Label's permission. Permissions affect the Label resource as a whole, are not revisioned, and
-            /// do not require publishing.
+            /// Deletes a label's permission. Permissions affect the label resource as a whole, aren't revisioned, and
+            /// don't require publishing.
             /// </summary>
             public class DeleteRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleProtobufEmpty>
             {
@@ -648,13 +649,13 @@ namespace Google.Apis.DriveLabels.v2
                     InitParameters();
                 }
 
-                /// <summary>Required. Label Permission resource name.</summary>
+                /// <summary>Required. Label permission resource name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
                 /// <summary>
                 /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an
-                /// admin for the Label before allowing access.
+                /// admin for the label before allowing access.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UseAdminAccess { get; set; }
@@ -691,16 +692,17 @@ namespace Google.Apis.DriveLabels.v2
                 }
             }
 
-            /// <summary>Lists a Label's permissions.</summary>
+            /// <summary>Lists a label's permissions.</summary>
             /// <param name="parent">
-            /// Required. The parent Label resource name on which Label Permission are listed. Format: labels/{label}
+            /// Required. The parent label resource name on which label permissions are listed. Format:
+            /// `labels/{label}`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(this.service, parent);
             }
 
-            /// <summary>Lists a Label's permissions.</summary>
+            /// <summary>Lists a label's permissions.</summary>
             public class ListRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -711,8 +713,8 @@ namespace Google.Apis.DriveLabels.v2
                 }
 
                 /// <summary>
-                /// Required. The parent Label resource name on which Label Permission are listed. Format:
-                /// labels/{label}
+                /// Required. The parent label resource name on which label permissions are listed. Format:
+                /// `labels/{label}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -727,7 +729,7 @@ namespace Google.Apis.DriveLabels.v2
 
                 /// <summary>
                 /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an
-                /// admin for the Label before allowing access.
+                /// admin for the label before allowing access.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UseAdminAccess { get; set; }
@@ -817,14 +819,14 @@ namespace Google.Apis.DriveLabels.v2
                     this.service = service;
                 }
 
-                /// <summary>Lists the LabelLocks on a Label.</summary>
-                /// <param name="parent">Required. Label on which Locks are applied. Format: labels/{label}</param>
+                /// <summary>Lists the label locks on a label.</summary>
+                /// <param name="parent">Required. Label on which locks are applied. Format: `labels/{label}`.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists the LabelLocks on a Label.</summary>
+                /// <summary>Lists the label locks on a label.</summary>
                 public class ListRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2ListLabelLocksResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -834,11 +836,11 @@ namespace Google.Apis.DriveLabels.v2
                         InitParameters();
                     }
 
-                    /// <summary>Required. Label on which Locks are applied. Format: labels/{label}</summary>
+                    /// <summary>Required. Label on which locks are applied. Format: `labels/{label}`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Maximum number of Locks to return per page. Default: 100. Max: 200.</summary>
+                    /// <summary>Maximum number of locks to return per page. Default: 100. Max: 200.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -905,14 +907,14 @@ namespace Google.Apis.DriveLabels.v2
                 }
 
                 /// <summary>
-                /// Deletes Label permissions. Permissions affect the Label resource as a whole, are not revisioned, and
-                /// do not require publishing.
+                /// Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and
+                /// don't require publishing.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent Label resource name shared by all permissions being deleted. Format:
-                /// labels/{label} If this is set, the parent field in the UpdateLabelPermissionRequest messages must
-                /// either be empty or match this field.
+                /// Required. The parent label resource name shared by all permissions being deleted. Format:
+                /// `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages
+                /// must either be empty or match this field.
                 /// </param>
                 public virtual BatchDeleteRequest BatchDelete(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest body, string parent)
                 {
@@ -920,8 +922,8 @@ namespace Google.Apis.DriveLabels.v2
                 }
 
                 /// <summary>
-                /// Deletes Label permissions. Permissions affect the Label resource as a whole, are not revisioned, and
-                /// do not require publishing.
+                /// Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and
+                /// don't require publishing.
                 /// </summary>
                 public class BatchDeleteRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleProtobufEmpty>
                 {
@@ -934,9 +936,9 @@ namespace Google.Apis.DriveLabels.v2
                     }
 
                     /// <summary>
-                    /// Required. The parent Label resource name shared by all permissions being deleted. Format:
-                    /// labels/{label} If this is set, the parent field in the UpdateLabelPermissionRequest messages
-                    /// must either be empty or match this field.
+                    /// Required. The parent label resource name shared by all permissions being deleted. Format:
+                    /// `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest`
+                    /// messages must either be empty or match this field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -972,15 +974,15 @@ namespace Google.Apis.DriveLabels.v2
                 }
 
                 /// <summary>
-                /// Updates Label permissions. If a permission for the indicated principal doesn't exist, a new Label
-                /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label
-                /// resource as a whole, are not revisioned, and do not require publishing.
+                /// Updates label permissions. If a permission for the indicated principal doesn't exist, a label
+                /// permission is created, otherwise the existing permission is updated. Permissions affect the label
+                /// resource as a whole, aren't revisioned, and don't require publishing.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent Label resource name shared by all permissions being updated. Format:
-                /// labels/{label} If this is set, the parent field in the UpdateLabelPermissionRequest messages must
-                /// either be empty or match this field.
+                /// Required. The parent label resource name shared by all permissions being updated. Format:
+                /// `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages
+                /// must either be empty or match this field.
                 /// </param>
                 public virtual BatchUpdateRequest BatchUpdate(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest body, string parent)
                 {
@@ -988,9 +990,9 @@ namespace Google.Apis.DriveLabels.v2
                 }
 
                 /// <summary>
-                /// Updates Label permissions. If a permission for the indicated principal doesn't exist, a new Label
-                /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label
-                /// resource as a whole, are not revisioned, and do not require publishing.
+                /// Updates label permissions. If a permission for the indicated principal doesn't exist, a label
+                /// permission is created, otherwise the existing permission is updated. Permissions affect the label
+                /// resource as a whole, aren't revisioned, and don't require publishing.
                 /// </summary>
                 public class BatchUpdateRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse>
                 {
@@ -1003,9 +1005,9 @@ namespace Google.Apis.DriveLabels.v2
                     }
 
                     /// <summary>
-                    /// Required. The parent Label resource name shared by all permissions being updated. Format:
-                    /// labels/{label} If this is set, the parent field in the UpdateLabelPermissionRequest messages
-                    /// must either be empty or match this field.
+                    /// Required. The parent label resource name shared by all permissions being updated. Format:
+                    /// `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest`
+                    /// messages must either be empty or match this field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1041,13 +1043,14 @@ namespace Google.Apis.DriveLabels.v2
                 }
 
                 /// <summary>
-                /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new
-                /// Label Permission is created, otherwise the existing permission is updated. Permissions affect the
-                /// Label resource as a whole, are not revisioned, and do not require publishing.
+                /// Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label
+                /// permission is created, otherwise the existing permission is updated. Permissions affect the label
+                /// resource as a whole, aren't revisioned, and don't require publishing.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent Label resource name on the Label Permission is created. Format: labels/{label}
+                /// Required. The parent label resource name on the label permission is created. Format:
+                /// `labels/{label}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2LabelPermission body, string parent)
                 {
@@ -1055,9 +1058,9 @@ namespace Google.Apis.DriveLabels.v2
                 }
 
                 /// <summary>
-                /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new
-                /// Label Permission is created, otherwise the existing permission is updated. Permissions affect the
-                /// Label resource as a whole, are not revisioned, and do not require publishing.
+                /// Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label
+                /// permission is created, otherwise the existing permission is updated. Permissions affect the label
+                /// resource as a whole, aren't revisioned, and don't require publishing.
                 /// </summary>
                 public class CreateRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2LabelPermission>
                 {
@@ -1070,15 +1073,15 @@ namespace Google.Apis.DriveLabels.v2
                     }
 
                     /// <summary>
-                    /// Required. The parent Label resource name on the Label Permission is created. Format:
-                    /// labels/{label}
+                    /// Required. The parent label resource name on the label permission is created. Format:
+                    /// `labels/{label}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
                     /// Set to `true` in order to use the user's admin credentials. The server will verify the user is
-                    /// an admin for the Label before allowing access.
+                    /// an admin for the label before allowing access.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> UseAdminAccess { get; set; }
@@ -1122,18 +1125,18 @@ namespace Google.Apis.DriveLabels.v2
                 }
 
                 /// <summary>
-                /// Deletes a Label's permission. Permissions affect the Label resource as a whole, are not revisioned,
-                /// and do not require publishing.
+                /// Deletes a label's permission. Permissions affect the label resource as a whole, aren't revisioned,
+                /// and don't require publishing.
                 /// </summary>
-                /// <param name="name">Required. Label Permission resource name.</param>
+                /// <param name="name">Required. Label permission resource name.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
-                /// Deletes a Label's permission. Permissions affect the Label resource as a whole, are not revisioned,
-                /// and do not require publishing.
+                /// Deletes a label's permission. Permissions affect the label resource as a whole, aren't revisioned,
+                /// and don't require publishing.
                 /// </summary>
                 public class DeleteRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleProtobufEmpty>
                 {
@@ -1144,13 +1147,13 @@ namespace Google.Apis.DriveLabels.v2
                         InitParameters();
                     }
 
-                    /// <summary>Required. Label Permission resource name.</summary>
+                    /// <summary>Required. Label permission resource name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
                     /// Set to `true` in order to use the user's admin credentials. The server will verify the user is
-                    /// an admin for the Label before allowing access.
+                    /// an admin for the label before allowing access.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> UseAdminAccess { get; set; }
@@ -1187,17 +1190,17 @@ namespace Google.Apis.DriveLabels.v2
                     }
                 }
 
-                /// <summary>Lists a Label's permissions.</summary>
+                /// <summary>Lists a label's permissions.</summary>
                 /// <param name="parent">
-                /// Required. The parent Label resource name on which Label Permission are listed. Format:
-                /// labels/{label}
+                /// Required. The parent label resource name on which label permissions are listed. Format:
+                /// `labels/{label}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists a Label's permissions.</summary>
+                /// <summary>Lists a label's permissions.</summary>
                 public class ListRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1208,8 +1211,8 @@ namespace Google.Apis.DriveLabels.v2
                     }
 
                     /// <summary>
-                    /// Required. The parent Label resource name on which Label Permission are listed. Format:
-                    /// labels/{label}
+                    /// Required. The parent label resource name on which label permissions are listed. Format:
+                    /// `labels/{label}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1224,7 +1227,7 @@ namespace Google.Apis.DriveLabels.v2
 
                     /// <summary>
                     /// Set to `true` in order to use the user's admin credentials. The server will verify the user is
-                    /// an admin for the Label before allowing access.
+                    /// an admin for the label before allowing access.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> UseAdminAccess { get; set; }
@@ -1279,21 +1282,21 @@ namespace Google.Apis.DriveLabels.v2
             }
 
             /// <summary>
-            /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label
-            /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label
-            /// resource as a whole, are not revisioned, and do not require publishing.
+            /// Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label
+            /// permission is created, otherwise the existing permission is updated. Permissions affect the label
+            /// resource as a whole, aren't revisioned, and don't require publishing.
             /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent Label resource name.</param>
+            /// <param name="parent">Required. The parent label resource name.</param>
             public virtual UpdatePermissionsRequest UpdatePermissions(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2LabelPermission body, string parent)
             {
                 return new UpdatePermissionsRequest(this.service, body, parent);
             }
 
             /// <summary>
-            /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label
-            /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label
-            /// resource as a whole, are not revisioned, and do not require publishing.
+            /// Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label
+            /// permission is created, otherwise the existing permission is updated. Permissions affect the label
+            /// resource as a whole, aren't revisioned, and don't require publishing.
             /// </summary>
             public class UpdatePermissionsRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2LabelPermission>
             {
@@ -1305,13 +1308,13 @@ namespace Google.Apis.DriveLabels.v2
                     InitParameters();
                 }
 
-                /// <summary>Required. The parent Label resource name.</summary>
+                /// <summary>Required. The parent label resource name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
                 /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an
-                /// admin for the Label before allowing access.
+                /// admin for the label before allowing access.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UseAdminAccess { get; set; }
@@ -1355,14 +1358,20 @@ namespace Google.Apis.DriveLabels.v2
             }
         }
 
-        /// <summary>Creates a new Label.</summary>
+        /// <summary>
+        /// Creates a label. For more information, see [Create and publish a
+        /// label](https://developers.google.com/workspace/drive/labels/guides/create-label).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2Label body)
         {
             return new CreateRequest(this.service, body);
         }
 
-        /// <summary>Creates a new Label.</summary>
+        /// <summary>
+        /// Creates a label. For more information, see [Create and publish a
+        /// label](https://developers.google.com/workspace/drive/labels/guides/create-label).
+        /// </summary>
         public class CreateRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2Label>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1373,7 +1382,7 @@ namespace Google.Apis.DriveLabels.v2
             }
 
             /// <summary>
-            /// The BCP-47 language code to use for evaluating localized Field labels in response. When not specified,
+            /// The BCP-47 language code to use for evaluating localized field labels in response. When not specified,
             /// values in the default configured language will be used.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
@@ -1425,8 +1434,10 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Permanently deletes a Label and related metadata on Drive Items. Once deleted, the Label and related Drive
-        /// item metadata will be deleted. Only draft Labels, and disabled Labels may be deleted.
+        /// Permanently deletes a label and related metadata on Drive items. For more information, see [Disable, enable,
+        /// and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). Once
+        /// deleted, the label and related Drive item metadata will be deleted. Only draft labels and disabled labels
+        /// may be deleted.
         /// </summary>
         /// <param name="name">Required. Label resource name.</param>
         public virtual DeleteRequest Delete(string name)
@@ -1435,8 +1446,10 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Permanently deletes a Label and related metadata on Drive Items. Once deleted, the Label and related Drive
-        /// item metadata will be deleted. Only draft Labels, and disabled Labels may be deleted.
+        /// Permanently deletes a label and related metadata on Drive items. For more information, see [Disable, enable,
+        /// and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). Once
+        /// deleted, the label and related Drive item metadata will be deleted. Only draft labels and disabled labels
+        /// may be deleted.
         /// </summary>
         public class DeleteRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleProtobufEmpty>
         {
@@ -1453,13 +1466,13 @@ namespace Google.Apis.DriveLabels.v2
 
             /// <summary>
             /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin
-            /// for the Label before allowing access.
+            /// for the label before allowing access.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseAdminAccess { get; set; }
 
             /// <summary>
-            /// The revision_id of the label that the write request will be applied to. If this is not the latest
+            /// The revision ID of the label that the write request will be applied to. If this isn't the latest
             /// revision of the label, the request will not be processed and will return a 400 Bad Request error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("writeControl.requiredRevisionId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1506,21 +1519,23 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Updates a single Label by applying a set of update requests resulting in a new draft revision. The batch
-        /// update is all-or-nothing: If any of the update requests are invalid, no changes are applied. The resulting
-        /// draft revision must be published before the changes may be used with Drive Items.
+        /// Updates a single label by applying a set of update requests resulting in a new draft revision. For more
+        /// information, see [Update a label](https://developers.google.com/workspace/drive/labels/guides/update-label).
+        /// The batch update is all-or-nothing: If any of the update requests are invalid, no changes are applied. The
+        /// resulting draft revision must be published before the changes may be used with Drive items.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">Required. The resource name of the Label to update.</param>
+        /// <param name="name">Required. The resource name of the label to update.</param>
         public virtual DeltaRequest Delta(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest body, string name)
         {
             return new DeltaRequest(this.service, body, name);
         }
 
         /// <summary>
-        /// Updates a single Label by applying a set of update requests resulting in a new draft revision. The batch
-        /// update is all-or-nothing: If any of the update requests are invalid, no changes are applied. The resulting
-        /// draft revision must be published before the changes may be used with Drive Items.
+        /// Updates a single label by applying a set of update requests resulting in a new draft revision. For more
+        /// information, see [Update a label](https://developers.google.com/workspace/drive/labels/guides/update-label).
+        /// The batch update is all-or-nothing: If any of the update requests are invalid, no changes are applied. The
+        /// resulting draft revision must be published before the changes may be used with Drive items.
         /// </summary>
         public class DeltaRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse>
         {
@@ -1532,7 +1547,7 @@ namespace Google.Apis.DriveLabels.v2
                 InitParameters();
             }
 
-            /// <summary>Required. The resource name of the Label to update.</summary>
+            /// <summary>Required. The resource name of the label to update.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1567,10 +1582,11 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Disable a published Label. Disabling a Label will result in a new disabled published revision based on the
-        /// current published revision. If there is a draft revision, a new disabled draft revision will be created
-        /// based on the latest draft revision. Older draft revisions will be deleted. Once disabled, a label may be
-        /// deleted with `DeleteLabel`.
+        /// Disable a published label. For more information, see [Disable, enable, and delete a
+        /// label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). Disabling a label
+        /// will result in a new disabled published revision based on the current published revision. If there's a draft
+        /// revision, a new disabled draft revision will be created based on the latest draft revision. Older draft
+        /// revisions will be deleted. Once disabled, a label may be deleted with `DeleteLabel`.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required. Label resource name.</param>
@@ -1580,10 +1596,11 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Disable a published Label. Disabling a Label will result in a new disabled published revision based on the
-        /// current published revision. If there is a draft revision, a new disabled draft revision will be created
-        /// based on the latest draft revision. Older draft revisions will be deleted. Once disabled, a label may be
-        /// deleted with `DeleteLabel`.
+        /// Disable a published label. For more information, see [Disable, enable, and delete a
+        /// label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). Disabling a label
+        /// will result in a new disabled published revision based on the current published revision. If there's a draft
+        /// revision, a new disabled draft revision will be created based on the latest draft revision. Older draft
+        /// revisions will be deleted. Once disabled, a label may be deleted with `DeleteLabel`.
         /// </summary>
         public class DisableRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2Label>
         {
@@ -1630,9 +1647,10 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Enable a disabled Label and restore it to its published state. This will result in a new published revision
-        /// based on the current disabled published revision. If there is an existing disabled draft revision, a new
-        /// revision will be created based on that draft and will be enabled.
+        /// Enable a disabled label and restore it to its published state. For more information, see [Disable, enable,
+        /// and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). This
+        /// will result in a new published revision based on the current disabled published revision. If there's an
+        /// existing disabled draft revision, a new revision will be created based on that draft and will be enabled.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required. Label resource name.</param>
@@ -1642,9 +1660,10 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Enable a disabled Label and restore it to its published state. This will result in a new published revision
-        /// based on the current disabled published revision. If there is an existing disabled draft revision, a new
-        /// revision will be created based on that draft and will be enabled.
+        /// Enable a disabled label and restore it to its published state. For more information, see [Disable, enable,
+        /// and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). This
+        /// will result in a new published revision based on the current disabled published revision. If there's an
+        /// existing disabled draft revision, a new revision will be created based on that draft and will be enabled.
         /// </summary>
         public class EnableRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2Label>
         {
@@ -1691,10 +1710,11 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Get a label by its resource name. Resource name may be any of: * `labels/{id}` - See `labels/{id}@latest` *
-        /// `labels/{id}@latest` - Gets the latest revision of the label. * `labels/{id}@published` - Gets the current
-        /// published revision of the label. * `labels/{id}@{revision_id}` - Gets the label at the specified revision
-        /// ID.
+        /// Get a label by its resource name. For more information, see [Search for
+        /// labels](https://developers.google.com/workspace/drive/labels/guides/search-label). Resource name may be any
+        /// of: * `labels/{id}` - See `labels/{id}@latest` * `labels/{id}@latest` - Gets the latest revision of the
+        /// label. * `labels/{id}@published` - Gets the current published revision of the label. *
+        /// `labels/{id}@{revision_id}` - Gets the label at the specified revision ID.
         /// </summary>
         /// <param name="name">
         /// Required. Label resource name. May be any of: * `labels/{id}` (equivalent to labels/{id}@latest) *
@@ -1706,10 +1726,11 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Get a label by its resource name. Resource name may be any of: * `labels/{id}` - See `labels/{id}@latest` *
-        /// `labels/{id}@latest` - Gets the latest revision of the label. * `labels/{id}@published` - Gets the current
-        /// published revision of the label. * `labels/{id}@{revision_id}` - Gets the label at the specified revision
-        /// ID.
+        /// Get a label by its resource name. For more information, see [Search for
+        /// labels](https://developers.google.com/workspace/drive/labels/guides/search-label). Resource name may be any
+        /// of: * `labels/{id}` - See `labels/{id}@latest` * `labels/{id}@latest` - Gets the latest revision of the
+        /// label. * `labels/{id}@published` - Gets the current published revision of the label. *
+        /// `labels/{id}@{revision_id}` - Gets the label at the specified revision ID.
         /// </summary>
         public class GetRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2Label>
         {
@@ -1805,13 +1826,19 @@ namespace Google.Apis.DriveLabels.v2
             }
         }
 
-        /// <summary>List labels.</summary>
+        /// <summary>
+        /// List labels. For more information, see [Search for
+        /// labels](https://developers.google.com/workspace/drive/labels/guides/search-label).
+        /// </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(this.service);
         }
 
-        /// <summary>List labels.</summary>
+        /// <summary>
+        /// List labels. For more information, see [Search for
+        /// labels](https://developers.google.com/workspace/drive/labels/guides/search-label).
+        /// </summary>
         public class ListRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2ListLabelsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1821,7 +1848,7 @@ namespace Google.Apis.DriveLabels.v2
             }
 
             /// <summary>
-            /// The customer to scope this list request to. For example: "customers/abcd1234". If unset, will return all
+            /// The customer to scope this list request to. For example: `customers/abcd1234`. If unset, will return all
             /// labels within the current customer.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
@@ -1835,14 +1862,14 @@ namespace Google.Apis.DriveLabels.v2
             public virtual string LanguageCode { get; set; }
 
             /// <summary>
-            /// Specifies the level of access the user must have on the returned Labels. The minimum role a user must
+            /// Specifies the level of access the user must have on the returned labels. The minimum role a user must
             /// have on a label. Defaults to `READER`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("minimumRole", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<MinimumRoleEnum> MinimumRole { get; set; }
 
             /// <summary>
-            /// Specifies the level of access the user must have on the returned Labels. The minimum role a user must
+            /// Specifies the level of access the user must have on the returned labels. The minimum role a user must
             /// have on a label. Defaults to `READER`.
             /// </summary>
             public enum MinimumRoleEnum
@@ -1895,7 +1922,7 @@ namespace Google.Apis.DriveLabels.v2
             public virtual System.Nullable<bool> PublishedOnly { get; set; }
 
             /// <summary>
-            /// Set to `true` in order to use the user's admin credentials. This will return all Labels within the
+            /// Set to `true` in order to use the user's admin credentials. This will return all labels within the
             /// customer.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
@@ -1998,15 +2025,17 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Publish all draft changes to the Label. Once published, the Label may not return to its draft state. See
-        /// `google.apps.drive.labels.v2.Lifecycle` for more information. Publishing a Label will result in a new
-        /// published revision. All previous draft revisions will be deleted. Previous published revisions will be kept
-        /// but are subject to automated deletion as needed. Once published, some changes are no longer permitted.
-        /// Generally, any change that would invalidate or cause new restrictions on existing metadata related to the
-        /// Label will be rejected. For example, the following changes to a Label will be rejected after the Label is
-        /// published: * The label cannot be directly deleted. It must be disabled first, then deleted. *
-        /// Field.FieldType cannot be changed. * Changes to Field validation options cannot reject something that was
-        /// previously accepted. * Reducing the max entries.
+        /// Publish all draft changes to the label. Once published, the label may not return to its draft state. For
+        /// more information, see [Create and publish a
+        /// label](https://developers.google.com/workspace/drive/labels/guides/create-label). Publishing a label will
+        /// result in a new published revision. All previous draft revisions will be deleted. Previous published
+        /// revisions will be kept but are subject to automated deletion as needed. For more information, see [Label
+        /// lifecycle](https://developers.google.com/workspace/drive/labels/guides/label-lifecycle). Once published,
+        /// some changes are no longer permitted. Generally, any change that would invalidate or cause new restrictions
+        /// on existing metadata related to the label will be rejected. For example, the following changes to a label
+        /// will be rejected after the label is published: * The label cannot be directly deleted. It must be disabled
+        /// first, then deleted. * `Field.FieldType` cannot be changed. * Changes to field validation options cannot
+        /// reject something that was previously accepted. * Reducing the maximum entries.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required. Label resource name.</param>
@@ -2016,15 +2045,17 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Publish all draft changes to the Label. Once published, the Label may not return to its draft state. See
-        /// `google.apps.drive.labels.v2.Lifecycle` for more information. Publishing a Label will result in a new
-        /// published revision. All previous draft revisions will be deleted. Previous published revisions will be kept
-        /// but are subject to automated deletion as needed. Once published, some changes are no longer permitted.
-        /// Generally, any change that would invalidate or cause new restrictions on existing metadata related to the
-        /// Label will be rejected. For example, the following changes to a Label will be rejected after the Label is
-        /// published: * The label cannot be directly deleted. It must be disabled first, then deleted. *
-        /// Field.FieldType cannot be changed. * Changes to Field validation options cannot reject something that was
-        /// previously accepted. * Reducing the max entries.
+        /// Publish all draft changes to the label. Once published, the label may not return to its draft state. For
+        /// more information, see [Create and publish a
+        /// label](https://developers.google.com/workspace/drive/labels/guides/create-label). Publishing a label will
+        /// result in a new published revision. All previous draft revisions will be deleted. Previous published
+        /// revisions will be kept but are subject to automated deletion as needed. For more information, see [Label
+        /// lifecycle](https://developers.google.com/workspace/drive/labels/guides/label-lifecycle). Once published,
+        /// some changes are no longer permitted. Generally, any change that would invalidate or cause new restrictions
+        /// on existing metadata related to the label will be rejected. For example, the following changes to a label
+        /// will be rejected after the label is published: * The label cannot be directly deleted. It must be disabled
+        /// first, then deleted. * `Field.FieldType` cannot be changed. * Changes to field validation options cannot
+        /// reject something that was previously accepted. * Reducing the maximum entries.
         /// </summary>
         public class PublishRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2Label>
         {
@@ -2071,18 +2102,18 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Updates a Label's `CopyMode`. Changes to this policy are not revisioned, do not require publishing, and take
+        /// Updates a label's `CopyMode`. Changes to this policy aren't revisioned, don't require publishing, and take
         /// effect immediately.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">Required. The resource name of the Label to update.</param>
+        /// <param name="name">Required. The resource name of the label to update.</param>
         public virtual UpdateLabelCopyModeRequest UpdateLabelCopyMode(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest body, string name)
         {
             return new UpdateLabelCopyModeRequest(this.service, body, name);
         }
 
         /// <summary>
-        /// Updates a Label's `CopyMode`. Changes to this policy are not revisioned, do not require publishing, and take
+        /// Updates a label's `CopyMode`. Changes to this policy aren't revisioned, don't require publishing, and take
         /// effect immediately.
         /// </summary>
         public class UpdateLabelCopyModeRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2Label>
@@ -2095,7 +2126,7 @@ namespace Google.Apis.DriveLabels.v2
                 InitParameters();
             }
 
-            /// <summary>Required. The resource name of the Label to update.</summary>
+            /// <summary>Required. The resource name of the label to update.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -2130,12 +2161,12 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Updates a Label's EabledAppSettings. Enabling a Label in a Workspace Application allows it to be used in
-        /// that application. This change is not revisioned, does not require publishing, and takes effect immediately.
+        /// Updates a label's `EnabledAppSettings`. Enabling a label in a Google Workspace app allows it to be used in
+        /// that app. This change isn't revisioned, doesn't require publishing, and takes effect immediately.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Required. The resource name of the Label to update. The resource name of the Label to update.
+        /// Required. The resource name of the label to update. The resource name of the label to update.
         /// </param>
         public virtual UpdateLabelEnabledAppSettingsRequest UpdateLabelEnabledAppSettings(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest body, string name)
         {
@@ -2143,8 +2174,8 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Updates a Label's EabledAppSettings. Enabling a Label in a Workspace Application allows it to be used in
-        /// that application. This change is not revisioned, does not require publishing, and takes effect immediately.
+        /// Updates a label's `EnabledAppSettings`. Enabling a label in a Google Workspace app allows it to be used in
+        /// that app. This change isn't revisioned, doesn't require publishing, and takes effect immediately.
         /// </summary>
         public class UpdateLabelEnabledAppSettingsRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2Label>
         {
@@ -2157,7 +2188,7 @@ namespace Google.Apis.DriveLabels.v2
             }
 
             /// <summary>
-            /// Required. The resource name of the Label to update. The resource name of the Label to update.
+            /// Required. The resource name of the label to update. The resource name of the label to update.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -2193,21 +2224,21 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label
-        /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label resource
-        /// as a whole, are not revisioned, and do not require publishing.
+        /// Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission
+        /// is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole,
+        /// aren't revisioned, and don't require publishing.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="parent">Required. The parent Label resource name.</param>
+        /// <param name="parent">Required. The parent label resource name.</param>
         public virtual UpdatePermissionsRequest UpdatePermissions(Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2LabelPermission body, string parent)
         {
             return new UpdatePermissionsRequest(this.service, body, parent);
         }
 
         /// <summary>
-        /// Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label
-        /// Permission is created, otherwise the existing permission is updated. Permissions affect the Label resource
-        /// as a whole, are not revisioned, and do not require publishing.
+        /// Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission
+        /// is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole,
+        /// aren't revisioned, and don't require publishing.
         /// </summary>
         public class UpdatePermissionsRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2LabelPermission>
         {
@@ -2219,13 +2250,13 @@ namespace Google.Apis.DriveLabels.v2
                 InitParameters();
             }
 
-            /// <summary>Required. The parent Label resource name.</summary>
+            /// <summary>Required. The parent label resource name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
             /// <summary>
             /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin
-            /// for the Label before allowing access.
+            /// for the label before allowing access.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseAdminAccess { get; set; }
@@ -2284,7 +2315,7 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Get the constraints on the structure of a Label; such as, the maximum number of Fields allowed and maximum
+        /// Get the constraints on the structure of a label; such as, the maximum number of fields allowed and maximum
         /// length of the label title.
         /// </summary>
         public virtual GetLabelRequest GetLabel()
@@ -2293,7 +2324,7 @@ namespace Google.Apis.DriveLabels.v2
         }
 
         /// <summary>
-        /// Get the constraints on the structure of a Label; such as, the maximum number of Fields allowed and maximum
+        /// Get the constraints on the structure of a label; such as, the maximum number of fields allowed and maximum
         /// length of the label title.
         /// </summary>
         public class GetLabelRequest : DriveLabelsBaseServiceRequest<Google.Apis.DriveLabels.v2.Data.GoogleAppsDriveLabelsV2LabelLimits>
@@ -2304,7 +2335,7 @@ namespace Google.Apis.DriveLabels.v2
                 InitParameters();
             }
 
-            /// <summary>Required. Label revision resource name Must be: "limits/label"</summary>
+            /// <summary>Required. Label revision resource name must be: "limits/label".</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
 
@@ -2371,8 +2402,8 @@ namespace Google.Apis.DriveLabels.v2
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// The customer to scope this request to. For example: "customers/abcd1234". If unset, will return settings
-            /// within the current customer.
+            /// The customer to scope this request to. For example: `customers/abcd1234`. If unset, it will return
+            /// settings within the current customer.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Customer { get; set; }
@@ -2452,7 +2483,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Deletes one of more Label Permissions.</summary>
+    /// <summary>Deletes one or more label permissions.</summary>
     public class GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The request message specifying the resources to update.</summary>
@@ -2461,8 +2492,8 @@ namespace Google.Apis.DriveLabels.v2.Data
 
         /// <summary>
         /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for
-        /// the Label before allowing access. If this is set, the use_admin_access field in the
-        /// DeleteLabelPermissionRequest messages must either be empty or match this field.
+        /// the label before allowing access. If this is set, the `use_admin_access` field in the
+        /// `DeleteLabelPermissionRequest` messages must either be empty or match this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAdminAccess")]
         public virtual System.Nullable<bool> UseAdminAccess { get; set; }
@@ -2471,7 +2502,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Updates one or more Label Permissions.</summary>
+    /// <summary>Updates one or more label permissions.</summary>
     public class GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The request message specifying the resources to update.</summary>
@@ -2480,8 +2511,8 @@ namespace Google.Apis.DriveLabels.v2.Data
 
         /// <summary>
         /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for
-        /// the Label before allowing access. If this is set, the use_admin_access field in the
-        /// UpdateLabelPermissionRequest messages must either be empty or match this field.
+        /// the label before allowing access. If this is set, the `use_admin_access` field in the
+        /// `UpdateLabelPermissionRequest` messages must either be empty or match this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAdminAccess")]
         public virtual System.Nullable<bool> UseAdminAccess { get; set; }
@@ -2490,7 +2521,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for updating one or more Label Permissions.</summary>
+    /// <summary>Response for updating one or more label permissions.</summary>
     public class GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Permissions updated.</summary>
@@ -2501,14 +2532,14 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Limits for date Field type.</summary>
+    /// <summary>Limits for date field type.</summary>
     public class GoogleAppsDriveLabelsV2DateLimits : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Maximum value for the date Field type.</summary>
+        /// <summary>Maximum value for the date field type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
         public virtual GoogleTypeDate MaxValue { get; set; }
 
-        /// <summary>Minimum value for the date Field type.</summary>
+        /// <summary>Minimum value for the date field type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
         public virtual GoogleTypeDate MinValue { get; set; }
 
@@ -2517,18 +2548,18 @@ namespace Google.Apis.DriveLabels.v2.Data
     }
 
     /// <summary>
-    /// Deletes a Label Permission. Permissions affect the Label resource as a whole, are not revisioned, and do not
+    /// Deletes a label permission. Permissions affect the label resource as a whole, aren't revisioned, and don't
     /// require publishing.
     /// </summary>
     public class GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Label Permission resource name.</summary>
+        /// <summary>Required. Label permission resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
         /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for
-        /// the Label before allowing access.
+        /// the label before allowing access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAdminAccess")]
         public virtual System.Nullable<bool> UseAdminAccess { get; set; }
@@ -2538,26 +2569,26 @@ namespace Google.Apis.DriveLabels.v2.Data
     }
 
     /// <summary>
-    /// The set of requests for updating aspects of a Label. If any request is not valid, no requests will be applied.
+    /// The set of requests for updating aspects of a label. If any request isn't valid, no requests will be applied.
     /// </summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The BCP-47 language code to use for evaluating localized Field labels when `include_label_in_response` is
+        /// The BCP-47 language code to use for evaluating localized field labels when `include_label_in_response` is
         /// `true`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
         /// <summary>
-        /// A list of updates to apply to the Label. Requests will be applied in the order they are specified.
+        /// A list of updates to apply to the label. Requests will be applied in the order they are specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest> Requests { get; set; }
 
         /// <summary>
         /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for
-        /// the Label before allowing access.
+        /// the label before allowing access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAdminAccess")]
         public virtual System.Nullable<bool> UseAdminAccess { get; set; }
@@ -2574,7 +2605,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to create a Field within a Label.</summary>
+    /// <summary>Request to create a field within a label.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Field to create.</summary>
@@ -2585,14 +2616,14 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to create a Selection Choice.</summary>
+    /// <summary>Request to create a selection choice.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The Choice to create.</summary>
+        /// <summary>Required. The choice to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("choice")]
         public virtual GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice Choice { get; set; }
 
-        /// <summary>Required. The Selection Field in which a Choice will be created.</summary>
+        /// <summary>Required. The selection field in which a choice will be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
         public virtual string FieldId { get; set; }
 
@@ -2600,10 +2631,10 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to delete the Field.</summary>
+    /// <summary>Request to delete the field.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. ID of the Field to delete.</summary>
+        /// <summary>Required. ID of the field to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -2611,10 +2642,10 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to delete a Choice.</summary>
+    /// <summary>Request to delete a choice.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The Selection Field from which a Choice will be deleted.</summary>
+        /// <summary>Required. The selection field from which a choice will be deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
         public virtual string FieldId { get; set; }
 
@@ -2626,20 +2657,20 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to disable the Field.</summary>
+    /// <summary>Request to disable the field.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Field Disabled Policy.</summary>
+        /// <summary>Required. Field disabled policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledPolicy")]
         public virtual GoogleAppsDriveLabelsV2LifecycleDisabledPolicy DisabledPolicy { get; set; }
 
-        /// <summary>Required. Key of the Field to disable.</summary>
+        /// <summary>Required. Key of the field to disable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
         /// <summary>
         /// The fields that should be updated. At least one field must be specified. The root `disabled_policy` is
-        /// implied and should not be specified. A single `*` can be used as short-hand for updating every field.
+        /// implied and should not be specified. A single `*` can be used as a short-hand for updating every field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
@@ -2648,14 +2679,14 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to disable a Choice.</summary>
+    /// <summary>Request to disable a choice.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The disabled policy to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledPolicy")]
         public virtual GoogleAppsDriveLabelsV2LifecycleDisabledPolicy DisabledPolicy { get; set; }
 
-        /// <summary>Required. The Selection Field in which a Choice will be disabled.</summary>
+        /// <summary>Required. The selection field in which a choice will be disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
         public virtual string FieldId { get; set; }
 
@@ -2665,7 +2696,7 @@ namespace Google.Apis.DriveLabels.v2.Data
 
         /// <summary>
         /// The fields that should be updated. At least one field must be specified. The root `disabled_policy` is
-        /// implied and should not be specified. A single `*` can be used as short-hand for updating every field.
+        /// implied and should not be specified. A single `*` can be used as a short-hand for updating every field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
@@ -2674,10 +2705,10 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to enable the Field.</summary>
+    /// <summary>Request to enable the field.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. ID of the Field to enable.</summary>
+        /// <summary>Required. ID of the field to enable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -2685,10 +2716,10 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to enable a Choice.</summary>
+    /// <summary>Request to enable a choice.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The Selection Field in which a Choice will be enabled.</summary>
+        /// <summary>Required. The selection field in which a choice will be enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
         public virtual string FieldId { get; set; }
 
@@ -2700,54 +2731,54 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A single kind of update to apply to a Label.</summary>
+    /// <summary>A single kind of update to apply to a label.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Creates a new Field.</summary>
+        /// <summary>Creates a field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createField")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest CreateField { get; set; }
 
-        /// <summary>Creates Choice within a Selection field.</summary>
+        /// <summary>Create a choice within a selection field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createSelectionChoice")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest CreateSelectionChoice { get; set; }
 
-        /// <summary>Deletes a Field from the label.</summary>
+        /// <summary>Deletes a field from the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteField")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest DeleteField { get; set; }
 
-        /// <summary>Delete a Choice within a Selection Field.</summary>
+        /// <summary>Delete a choice within a selection field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteSelectionChoice")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest DeleteSelectionChoice { get; set; }
 
-        /// <summary>Disables the Field.</summary>
+        /// <summary>Disables the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableField")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest DisableField { get; set; }
 
-        /// <summary>Disable a Choice within a Selection Field.</summary>
+        /// <summary>Disable a choice within a selection field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableSelectionChoice")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest DisableSelectionChoice { get; set; }
 
-        /// <summary>Enables the Field.</summary>
+        /// <summary>Enables the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableField")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest EnableField { get; set; }
 
-        /// <summary>Enable a Choice within a Selection Field.</summary>
+        /// <summary>Enable a choice within a selection field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSelectionChoice")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest EnableSelectionChoice { get; set; }
 
-        /// <summary>Updates basic properties of a Field.</summary>
+        /// <summary>Updates basic properties of a field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateField")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest UpdateField { get; set; }
 
-        /// <summary>Update Field type and/or type options.</summary>
+        /// <summary>Update field type and/or type options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateFieldType")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest UpdateFieldType { get; set; }
 
-        /// <summary>Updates the Label properties.</summary>
+        /// <summary>Updates the label properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateLabel")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest UpdateLabel { get; set; }
 
-        /// <summary>Update a Choice properties within a Selection Field.</summary>
+        /// <summary>Update a choice property within a selection field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateSelectionChoiceProperties")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest UpdateSelectionChoiceProperties { get; set; }
 
@@ -2755,20 +2786,20 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to update Field properties.</summary>
+    /// <summary>Request to update field properties.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The Field to update.</summary>
+        /// <summary>Required. The field to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Required. Basic Field properties.</summary>
+        /// <summary>Required. Basic field properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual GoogleAppsDriveLabelsV2FieldProperties Properties { get; set; }
 
         /// <summary>
         /// The fields that should be updated. At least one field must be specified. The root `properties` is implied
-        /// and should not be specified. A single `*` can be used as short-hand for updating every field.
+        /// and should not be specified. A single `*` can be used as a short-hand for updating every field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
@@ -2777,14 +2808,14 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to change the type of a Field.</summary>
+    /// <summary>Request to change the type of a field.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Update field to Date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateOptions")]
         public virtual GoogleAppsDriveLabelsV2FieldDateOptions DateOptions { get; set; }
 
-        /// <summary>Required. The Field to update.</summary>
+        /// <summary>Required. The field to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -2802,7 +2833,7 @@ namespace Google.Apis.DriveLabels.v2.Data
 
         /// <summary>
         /// The fields that should be updated. At least one field must be specified. The root of `type_options` is
-        /// implied and should not be specified. A single `*` can be used as short-hand for updating every field.
+        /// implied and should not be specified. A single `*` can be used as a short-hand for updating every field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
@@ -2815,7 +2846,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Updates basic properties of a Label.</summary>
+    /// <summary>Updates basic properties of a label.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Label properties to update.</summary>
@@ -2824,7 +2855,7 @@ namespace Google.Apis.DriveLabels.v2.Data
 
         /// <summary>
         /// The fields that should be updated. At least one field must be specified. The root `label_properties` is
-        /// implied and should not be specified. A single `*` can be used as short-hand for updating every field.
+        /// implied and should not be specified. A single `*` can be used as a short-hand for updating every field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
@@ -2833,24 +2864,24 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to update a Choice properties.</summary>
+    /// <summary>Request to update a choice property.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The Selection Field to update.</summary>
+        /// <summary>Required. The selection field to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
         public virtual string FieldId { get; set; }
 
-        /// <summary>Required. The Choice to update.</summary>
+        /// <summary>Required. The choice to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Required. The Choice properties to update.</summary>
+        /// <summary>Required. The choice properties to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties Properties { get; set; }
 
         /// <summary>
         /// The fields that should be updated. At least one field must be specified. The root `properties` is implied
-        /// and should not be specified. A single `*` can be used as short-hand for updating every field.
+        /// and should not be specified. A single `*` can be used as a short-hand for updating every field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
@@ -2859,7 +2890,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for Label update.</summary>
+    /// <summary>Response for label update.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2869,8 +2900,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual System.Collections.Generic.IList<GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse> Responses { get; set; }
 
         /// <summary>
-        /// The label after updates were applied. This is only set if
-        /// [BatchUpdateLabelResponse2.include_label_in_response] is `true` and there were no errors.
+        /// The label after updates were applied. This is only set if `include_label_in_response` is `true` and there
+        /// were no errors.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedLabel")]
         public virtual GoogleAppsDriveLabelsV2Label UpdatedLabel { get; set; }
@@ -2879,7 +2910,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response following Field create.</summary>
+    /// <summary>Response following field create.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2900,14 +2931,14 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response following Selection Choice create.</summary>
+    /// <summary>Response following selection choice create.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The server-generated id of the field.</summary>
+        /// <summary>The server-generated ID of the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
         public virtual string FieldId { get; set; }
 
-        /// <summary>The server-generated ID of the created choice within the Field</summary>
+        /// <summary>The server-generated ID of the created choice within the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -2915,42 +2946,42 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response following Field delete.</summary>
+    /// <summary>Response following field delete.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response following Choice delete.</summary>
+    /// <summary>Response following choice delete.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response following Field disable.</summary>
+    /// <summary>Response following field disable.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response following Choice disable.</summary>
+    /// <summary>Response following choice disable.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response following Field enable.</summary>
+    /// <summary>Response following field enable.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response following Choice enable.</summary>
+    /// <summary>Response following choice enable.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2960,51 +2991,51 @@ namespace Google.Apis.DriveLabels.v2.Data
     /// <summary>A single response from an update.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Creates a new Field.</summary>
+        /// <summary>Creates a field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createField")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse CreateField { get; set; }
 
-        /// <summary>Creates a new selection list option to add to a Selection Field.</summary>
+        /// <summary>Creates a selection list option to add to a selection field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createSelectionChoice")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse CreateSelectionChoice { get; set; }
 
-        /// <summary>Deletes a Field from the label.</summary>
+        /// <summary>Deletes a field from the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteField")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse DeleteField { get; set; }
 
-        /// <summary>Deletes a Choice from a Selection Field.</summary>
+        /// <summary>Deletes a choice from a selection field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteSelectionChoice")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse DeleteSelectionChoice { get; set; }
 
-        /// <summary>Disables Field.</summary>
+        /// <summary>Disables field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableField")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse DisableField { get; set; }
 
-        /// <summary>Disables a Choice within a Selection Field.</summary>
+        /// <summary>Disables a choice within a selection field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableSelectionChoice")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse DisableSelectionChoice { get; set; }
 
-        /// <summary>Enables Field.</summary>
+        /// <summary>Enables field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableField")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse EnableField { get; set; }
 
-        /// <summary>Enables a Choice within a Selection Field.</summary>
+        /// <summary>Enables a choice within a selection field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSelectionChoice")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse EnableSelectionChoice { get; set; }
 
-        /// <summary>Updates basic properties of a Field.</summary>
+        /// <summary>Updates basic properties of a field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateField")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse UpdateField { get; set; }
 
-        /// <summary>Update Field type and/or type options.</summary>
+        /// <summary>Updates field type and/or type options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateFieldType")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse UpdateFieldType { get; set; }
 
-        /// <summary>Updated basic properties of a Label.</summary>
+        /// <summary>Updates basic properties of a label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateLabel")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse UpdateLabel { get; set; }
 
-        /// <summary>Updates a Choice within a Selection Field.</summary>
+        /// <summary>Updates a choice within a selection field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateSelectionChoiceProperties")]
         public virtual GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse UpdateSelectionChoiceProperties { get; set; }
 
@@ -3012,7 +3043,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response following update to Field properties.</summary>
+    /// <summary>Response following update to field properties.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3026,21 +3057,21 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response following update to Field type.</summary>
+    /// <summary>Response following update to field type.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response following update to Label properties.</summary>
+    /// <summary>Response following update to label properties.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response following update to Selection Choice properties.</summary>
+    /// <summary>Response following update to selection choice properties.</summary>
     public class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3054,7 +3085,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to deprecate a published Label.</summary>
+    /// <summary>Request to deprecate a published label.</summary>
     public class GoogleAppsDriveLabelsV2DisableLabelRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Disabled policy to use.</summary>
@@ -3070,20 +3101,20 @@ namespace Google.Apis.DriveLabels.v2.Data
 
         /// <summary>
         /// The fields that should be updated. At least one field must be specified. The root `disabled_policy` is
-        /// implied and should not be specified. A single `*` can be used as short-hand for updating every field.
+        /// implied and should not be specified. A single `*` can be used as a short-hand for updating every field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
 
         /// <summary>
         /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for
-        /// the Label before allowing access.
+        /// the label before allowing access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAdminAccess")]
         public virtual System.Nullable<bool> UseAdminAccess { get; set; }
 
         /// <summary>
-        /// Provides control over how write requests are executed. Defaults to unset, which means last write wins.
+        /// Provides control over how write requests are executed. Defaults to unset, which means the last write wins.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeControl")]
         public virtual GoogleAppsDriveLabelsV2WriteControl WriteControl { get; set; }
@@ -3104,13 +3135,13 @@ namespace Google.Apis.DriveLabels.v2.Data
 
         /// <summary>
         /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for
-        /// the Label before allowing access.
+        /// the label before allowing access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAdminAccess")]
         public virtual System.Nullable<bool> UseAdminAccess { get; set; }
 
         /// <summary>
-        /// Provides control over how write requests are executed. Defaults to unset, which means last write wins.
+        /// Provides control over how write requests are executed. Defaults to unset, which means the last write wins.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeControl")]
         public virtual GoogleAppsDriveLabelsV2WriteControl WriteControl { get; set; }
@@ -3228,7 +3259,7 @@ namespace Google.Apis.DriveLabels.v2.Data
 
         /// <summary>
         /// Output only. The key of a field, unique within a label or library. This value is autogenerated. Matches the
-        /// regex: `([a-zA-Z0-9])+`
+        /// regex: `([a-zA-Z0-9])+`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -3241,7 +3272,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycle")]
         public virtual GoogleAppsDriveLabelsV2Lifecycle Lifecycle { get; set; }
 
-        /// <summary>Output only. The LockStatus of this field.</summary>
+        /// <summary>Output only. The `LockStatus` of this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lockStatus")]
         public virtual GoogleAppsDriveLabelsV2LockStatus LockStatus { get; set; }
 
@@ -3406,44 +3437,44 @@ namespace Google.Apis.DriveLabels.v2.Data
     }
 
     /// <summary>
-    /// Field constants governing the structure of a Field; such as, the maximum title length, minimum and maximum field
+    /// Field constants governing the structure of a field; such as, the maximum title length, minimum and maximum field
     /// values or length, etc.
     /// </summary>
     public class GoogleAppsDriveLabelsV2FieldLimits : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Date Field limits.</summary>
+        /// <summary>Date field limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateLimits")]
         public virtual GoogleAppsDriveLabelsV2DateLimits DateLimits { get; set; }
 
-        /// <summary>Integer Field limits.</summary>
+        /// <summary>Integer field limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integerLimits")]
         public virtual GoogleAppsDriveLabelsV2IntegerLimits IntegerLimits { get; set; }
 
-        /// <summary>Long text Field limits.</summary>
+        /// <summary>Long text field limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longTextLimits")]
         public virtual GoogleAppsDriveLabelsV2LongTextLimits LongTextLimits { get; set; }
 
-        /// <summary>Limits for Field description, also called help text.</summary>
+        /// <summary>Limits for field description, also called help text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDescriptionLength")]
         public virtual System.Nullable<int> MaxDescriptionLength { get; set; }
 
-        /// <summary>Limits for Field title.</summary>
+        /// <summary>Limits for field title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDisplayNameLength")]
         public virtual System.Nullable<int> MaxDisplayNameLength { get; set; }
 
-        /// <summary>Max length for the id.</summary>
+        /// <summary>Maximum length for the id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxIdLength")]
         public virtual System.Nullable<int> MaxIdLength { get; set; }
 
-        /// <summary>Selection Field limits.</summary>
+        /// <summary>Selection field limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectionLimits")]
         public virtual GoogleAppsDriveLabelsV2SelectionLimits SelectionLimits { get; set; }
 
-        /// <summary>The relevant limits for the specified Field.Type. Text Field limits.</summary>
+        /// <summary>The relevant limits for the specified Field.Type. Text field limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textLimits")]
         public virtual GoogleAppsDriveLabelsV2TextLimits TextLimits { get; set; }
 
-        /// <summary>User Field limits.</summary>
+        /// <summary>User field limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLimits")]
         public virtual GoogleAppsDriveLabelsV2UserLimits UserLimits { get; set; }
 
@@ -3642,7 +3673,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycle")]
         public virtual GoogleAppsDriveLabelsV2Lifecycle Lifecycle { get; set; }
 
-        /// <summary>Output only. The LockStatus of this choice.</summary>
+        /// <summary>Output only. The `LockStatus` of this choice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lockStatus")]
         public virtual GoogleAppsDriveLabelsV2LockStatus LockStatus { get; set; }
 
@@ -3886,14 +3917,14 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Limits for integer Field type.</summary>
+    /// <summary>Limits for integer field type.</summary>
     public class GoogleAppsDriveLabelsV2IntegerLimits : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Maximum value for an integer Field type.</summary>
+        /// <summary>Maximum value for an integer field type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
         public virtual System.Nullable<long> MaxValue { get; set; }
 
-        /// <summary>Minimum value for an integer Field type.</summary>
+        /// <summary>Minimum value for an integer field type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
         public virtual System.Nullable<long> MinValue { get; set; }
 
@@ -3957,7 +3988,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual GoogleAppsDriveLabelsV2UserInfo Creator { get; set; }
 
-        /// <summary>Output only. The customer this label belongs to. For example: "customers/123abc789."</summary>
+        /// <summary>Output only. The customer this label belongs to. For example: `customers/123abc789`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
 
@@ -3966,7 +3997,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         private object _disableTime;
 
         /// <summary>
-        /// Output only. The time this label was disabled. This value has no meaning when the label is not disabled.
+        /// Output only. The time this label was disabled. This value has no meaning when the label isn't disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableTime")]
         public virtual string DisableTimeRaw
@@ -4001,7 +4032,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         }
 
         /// <summary>
-        /// Output only. The user who disabled this label. This value has no meaning when the label is not disabled.
+        /// Output only. The user who disabled this label. This value has no meaning when the label isn't disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabler")]
         public virtual GoogleAppsDriveLabelsV2UserInfo Disabler { get; set; }
@@ -4010,7 +4041,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayHints")]
         public virtual GoogleAppsDriveLabelsV2LabelDisplayHints DisplayHints { get; set; }
 
-        /// <summary>Optional. The EnabledAppSettings for this Label.</summary>
+        /// <summary>Optional. The `EnabledAppSettings` for this Label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledAppSettings")]
         public virtual GoogleAppsDriveLabelsV2LabelEnabledAppSettings EnabledAppSettings { get; set; }
 
@@ -4020,7 +4051,7 @@ namespace Google.Apis.DriveLabels.v2.Data
 
         /// <summary>
         /// Output only. Globally unique identifier of this label. ID makes up part of the label `name`, but unlike
-        /// `name`, ID is consistent between revisions. Matches the regex: `([a-zA-Z0-9])+`
+        /// `name`, ID is consistent between revisions. Matches the regex: `([a-zA-Z0-9])+`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -4042,7 +4073,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycle")]
         public virtual GoogleAppsDriveLabelsV2Lifecycle Lifecycle { get; set; }
 
-        /// <summary>Output only. The LockStatus of this label.</summary>
+        /// <summary>Output only. The `LockStatus` of this label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lockStatus")]
         public virtual GoogleAppsDriveLabelsV2LockStatus LockStatus { get; set; }
 
@@ -4062,7 +4093,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         private object _publishTime;
 
         /// <summary>
-        /// Output only. The time this label was published. This value has no meaning when the label is not published.
+        /// Output only. The time this label was published. This value has no meaning when the label isn't published.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
         public virtual string PublishTimeRaw
@@ -4097,7 +4128,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         }
 
         /// <summary>
-        /// Output only. The user who published this label. This value has no meaning when the label is not published.
+        /// Output only. The user who published this label. This value has no meaning when the label isn't
+        /// published.&amp;gt;&amp;gt;
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
         public virtual GoogleAppsDriveLabelsV2UserInfo Publisher { get; set; }
@@ -4148,7 +4180,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         /// <summary>
         /// Output only. Revision ID of the label. Revision ID might be part of the label `name` depending on the
         /// request issued. A new revision is created whenever revisioned properties of a label are changed. Matches the
-        /// regex: `([a-zA-Z0-9])+`
+        /// regex: `([a-zA-Z0-9])+`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
@@ -4193,7 +4225,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>UI display hints for rendering the label.</summary>
+    /// <summary>The UI display hints for rendering the label.</summary>
     public class GoogleAppsDriveLabelsV2LabelDisplayHints : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the label should be shown in the UI as disabled.</summary>
@@ -4204,7 +4236,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenInSearch")]
         public virtual System.Nullable<bool> HiddenInSearch { get; set; }
 
-        /// <summary>Order to display label in a list.</summary>
+        /// <summary>The order to display labels in a list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<long> Priority { get; set; }
 
@@ -4216,10 +4248,10 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Describes the Workspace apps in which the Label can be used.</summary>
+    /// <summary>Describes the Google Workspace apps in which the label can be used.</summary>
     public class GoogleAppsDriveLabelsV2LabelEnabledAppSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The list of Apps where the Label can be used.</summary>
+        /// <summary>Optional. The list of apps where the label can be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledApps")]
         public virtual System.Collections.Generic.IList<GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp> EnabledApps { get; set; }
 
@@ -4227,10 +4259,10 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An App where the Label can be used.</summary>
+    /// <summary>An app where the label can be used.</summary>
     public class GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The name of the App.</summary>
+        /// <summary>Optional. The name of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("app")]
         public virtual string App { get; set; }
 
@@ -4239,16 +4271,16 @@ namespace Google.Apis.DriveLabels.v2.Data
     }
 
     /// <summary>
-    /// Label constraints governing the structure of a Label; such as, the maximum number of Fields allowed and maximum
+    /// Label constraints governing the structure of a label; such as, the maximum number of fields allowed and maximum
     /// length of the label title.
     /// </summary>
     public class GoogleAppsDriveLabelsV2LabelLimits : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The limits for Fields.</summary>
+        /// <summary>The limits for fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldLimits")]
         public virtual GoogleAppsDriveLabelsV2FieldLimits FieldLimits { get; set; }
 
-        /// <summary>The maximum number of published Fields that can be deleted.</summary>
+        /// <summary>The maximum number of published fields that can be deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDeletedFields")]
         public virtual System.Nullable<int> MaxDeletedFields { get; set; }
 
@@ -4260,7 +4292,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxDraftRevisions")]
         public virtual System.Nullable<int> MaxDraftRevisions { get; set; }
 
-        /// <summary>The maximum number of Fields allowed within the label.</summary>
+        /// <summary>The maximum number of fields allowed within the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFields")]
         public virtual System.Nullable<int> MaxFields { get; set; }
 
@@ -4276,15 +4308,15 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Lock that can be applied to a Label, Field, or Choice.</summary>
+    /// <summary>A lock that can be applied to a label, field, or choice.</summary>
     public class GoogleAppsDriveLabelsV2LabelLock : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The user's capabilities on this LabelLock.</summary>
+        /// <summary>Output only. The user's capabilities on this label lock.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
         public virtual GoogleAppsDriveLabelsV2LabelLockCapabilities Capabilities { get; set; }
 
         /// <summary>
-        /// The ID of the Selection Field Choice that should be locked. If present, `field_id` must also be present.
+        /// The ID of the selection field choice that should be locked. If present, `field_id` must also be present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("choiceId")]
         public virtual string ChoiceId { get; set; }
@@ -4293,7 +4325,7 @@ namespace Google.Apis.DriveLabels.v2.Data
 
         private object _createTime;
 
-        /// <summary>Output only. The time this LabelLock was created.</summary>
+        /// <summary>Output only. The time this label lock was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -4327,8 +4359,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         }
 
         /// <summary>
-        /// Output only. The user whose credentials were used to create the LabelLock. This will not be present if no
-        /// user was responsible for creating the LabelLock.
+        /// Output only. The user whose credentials were used to create the label lock. Not present if no user was
+        /// responsible for creating the label lock.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual GoogleAppsDriveLabelsV2UserInfo Creator { get; set; }
@@ -4338,8 +4370,8 @@ namespace Google.Apis.DriveLabels.v2.Data
         private object _deleteTime;
 
         /// <summary>
-        /// Output only. A timestamp indicating when this LabelLock was scheduled for deletion. This will be present
-        /// only if this LabelLock is in the DELETING state.
+        /// Output only. A timestamp indicating when this label lock was scheduled for deletion. Present only if this
+        /// label lock is in the `DELETING` state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
         public virtual string DeleteTimeRaw
@@ -4373,15 +4405,15 @@ namespace Google.Apis.DriveLabels.v2.Data
             set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The ID of the Field that should be locked. Empty if the whole Label should be locked.</summary>
+        /// <summary>The ID of the field that should be locked. Empty if the whole label should be locked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
         public virtual string FieldId { get; set; }
 
-        /// <summary>Output only. Resource name of this LabelLock.</summary>
+        /// <summary>Output only. Resource name of this label lock.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. This LabelLock's state.</summary>
+        /// <summary>Output only. This label lock's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -4389,7 +4421,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A description of a user's capabilities on a LabelLock.</summary>
+    /// <summary>A description of a user's capabilities on a label lock.</summary>
     public class GoogleAppsDriveLabelsV2LabelLockCapabilities : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>True if the user is authorized to view the policy.</summary>
@@ -4405,14 +4437,14 @@ namespace Google.Apis.DriveLabels.v2.Data
     {
         /// <summary>
         /// Audience to grant a role to. The magic value of `audiences/default` may be used to apply the role to the
-        /// default audience in the context of the organization that owns the Label.
+        /// default audience in the context of the organization that owns the label.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
         public virtual string Audience { get; set; }
 
         /// <summary>
-        /// Specifies the email address for a user or group pricinpal. Not populated for audience principals. User and
-        /// Group permissions may only be inserted using email address. On update requests, if email address is
+        /// Specifies the email address for a user or group principal. Not populated for audience principals. User and
+        /// group permissions may only be inserted using an email address. On update requests, if email address is
         /// specified, no principal should be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
@@ -4484,14 +4516,15 @@ namespace Google.Apis.DriveLabels.v2.Data
     }
 
     /// <summary>
-    /// The lifecycle state of an object, such as label, field, or choice. The lifecycle enforces the following
-    /// transitions: * `UNPUBLISHED_DRAFT` (starting state) * `UNPUBLISHED_DRAFT` -&amp;gt; `PUBLISHED` *
+    /// The lifecycle state of an object, such as label, field, or choice. For more information, see [Label
+    /// lifecycle](https://developers.google.com/workspace/drive/labels/guides/label-lifecycle). The lifecycle enforces
+    /// the following transitions: * `UNPUBLISHED_DRAFT` (starting state) * `UNPUBLISHED_DRAFT` -&amp;gt; `PUBLISHED` *
     /// `UNPUBLISHED_DRAFT` -&amp;gt; (Deleted) * `PUBLISHED` -&amp;gt; `DISABLED` * `DISABLED` -&amp;gt; `PUBLISHED` *
     /// `DISABLED` -&amp;gt; (Deleted) The published and disabled states have some distinct characteristics: *
-    /// Published—Some kinds of changes might be made to an object in this state, in which case
-    /// `has_unpublished_changes` will be true. Also, some kinds of changes are not permitted. Generally, any change
-    /// that would invalidate or cause new restrictions on existing metadata related to the label are rejected. *
-    /// Disabled—When disabled, the configured `DisabledPolicy` takes effect.
+    /// `Published`: Some kinds of changes might be made to an object in this state, in which case
+    /// `has_unpublished_changes` will be true. Also, some kinds of changes aren't permitted. Generally, any change that
+    /// would invalidate or cause new restrictions on existing metadata related to the label are rejected. * `Disabled`:
+    /// When disabled, the configured `DisabledPolicy` takes effect.
     /// </summary>
     public class GoogleAppsDriveLabelsV2Lifecycle : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4536,10 +4569,10 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response to a ListLabelLocksRequest.</summary>
+    /// <summary>The response to a `ListLabelLocksRequest`.</summary>
     public class GoogleAppsDriveLabelsV2ListLabelLocksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>LabelLocks.</summary>
+        /// <summary>Label locks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelLocks")]
         public virtual System.Collections.Generic.IList<GoogleAppsDriveLabelsV2LabelLock> LabelLocks { get; set; }
 
@@ -4551,7 +4584,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for listing the permissions on a Label.</summary>
+    /// <summary>Response for listing the permissions on a label.</summary>
     public class GoogleAppsDriveLabelsV2ListLabelPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Label permissions.</summary>
@@ -4566,7 +4599,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for listing Labels.</summary>
+    /// <summary>Response for listing labels.</summary>
     public class GoogleAppsDriveLabelsV2ListLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Labels.</summary>
@@ -4581,10 +4614,10 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Limits for list-variant of a Field type.</summary>
+    /// <summary>Limits for list-variant of a field type.</summary>
     public class GoogleAppsDriveLabelsV2ListLimits : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Maximum number of values allowed for the Field type.</summary>
+        /// <summary>Maximum number of values allowed for the field type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxEntries")]
         public virtual System.Nullable<int> MaxEntries { get; set; }
 
@@ -4596,9 +4629,9 @@ namespace Google.Apis.DriveLabels.v2.Data
     public class GoogleAppsDriveLabelsV2LockStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Indicates whether this label component is the (direct) target of a LabelLock. A label component
-        /// can be implicitly locked even if it's not the direct target of a LabelLock, in which case this field is set
-        /// to false.
+        /// Output only. Indicates whether this label component is the (direct) target of a label lock. A label
+        /// component can be implicitly locked even if it's not the direct target of a label lock, in which case this
+        /// field is set to false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locked")]
         public virtual System.Nullable<bool> Locked { get; set; }
@@ -4607,14 +4640,14 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Limits for long text Field type.</summary>
+    /// <summary>Limits for long text field type.</summary>
     public class GoogleAppsDriveLabelsV2LongTextLimits : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Maximum length allowed for a long text Field type.</summary>
+        /// <summary>Maximum length allowed for a long text field type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxLength")]
         public virtual System.Nullable<int> MaxLength { get; set; }
 
-        /// <summary>Minimum length allowed for a long text Field type.</summary>
+        /// <summary>Minimum length allowed for a long text field type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minLength")]
         public virtual System.Nullable<int> MinLength { get; set; }
 
@@ -4634,13 +4667,13 @@ namespace Google.Apis.DriveLabels.v2.Data
 
         /// <summary>
         /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for
-        /// the Label before allowing access.
+        /// the label before allowing access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAdminAccess")]
         public virtual System.Nullable<bool> UseAdminAccess { get; set; }
 
         /// <summary>
-        /// Provides control over how write requests are executed. Defaults to unset, which means last write wins.
+        /// Provides control over how write requests are executed. Defaults to unset, which means the last write wins.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeControl")]
         public virtual GoogleAppsDriveLabelsV2WriteControl WriteControl { get; set; }
@@ -4649,14 +4682,14 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Limits for selection Field type.</summary>
+    /// <summary>Limits for selection field type.</summary>
     public class GoogleAppsDriveLabelsV2SelectionLimits : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Limits for list-variant of a Field type.</summary>
+        /// <summary>Limits for list-variant of a field type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listLimits")]
         public virtual GoogleAppsDriveLabelsV2ListLimits ListLimits { get; set; }
 
-        /// <summary>The max number of choices.</summary>
+        /// <summary>Maximum number of choices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxChoices")]
         public virtual System.Nullable<int> MaxChoices { get; set; }
 
@@ -4668,7 +4701,7 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxDisplayNameLength")]
         public virtual System.Nullable<int> MaxDisplayNameLength { get; set; }
 
-        /// <summary>Maximum ID length for a selection options.</summary>
+        /// <summary>Maximum ID length for a selection option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxIdLength")]
         public virtual System.Nullable<int> MaxIdLength { get; set; }
 
@@ -4676,14 +4709,14 @@ namespace Google.Apis.DriveLabels.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Limits for text Field type.</summary>
+    /// <summary>Limits for text field type.</summary>
     public class GoogleAppsDriveLabelsV2TextLimits : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Maximum length allowed for a text Field type.</summary>
+        /// <summary>Maximum length allowed for a text field type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxLength")]
         public virtual System.Nullable<int> MaxLength { get; set; }
 
-        /// <summary>Minimum length allowed for a text Field type.</summary>
+        /// <summary>Minimum length allowed for a text field type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minLength")]
         public virtual System.Nullable<int> MinLength { get; set; }
 
@@ -4692,13 +4725,13 @@ namespace Google.Apis.DriveLabels.v2.Data
     }
 
     /// <summary>
-    /// Request to update the `CopyMode` of the given Label. Changes to this policy are not revisioned, do not require
+    /// Request to update the `CopyMode` of the given label. Changes to this policy aren't revisioned, don't require
     /// publishing, and take effect immediately. \
     /// </summary>
     public class GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Indicates how the applied Label, and Field values should be copied when a Drive item is copied.
+        /// Required. Indicates how the applied label and field values should be copied when a Drive item is copied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("copyMode")]
         public virtual string CopyMode { get; set; }
@@ -4712,7 +4745,7 @@ namespace Google.Apis.DriveLabels.v2.Data
 
         /// <summary>
         /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for
-        /// the Label before allowing access.
+        /// the label before allowing access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAdminAccess")]
         public virtual System.Nullable<bool> UseAdminAccess { get; set; }
@@ -4726,12 +4759,12 @@ namespace Google.Apis.DriveLabels.v2.Data
     }
 
     /// <summary>
-    /// Request to update the `EnabledAppSettings` of the given Label. This change is not revisioned, does not require
+    /// Request to update the `EnabledAppSettings` of the given label. This change is not revisioned, doesn't require
     /// publishing, and takes effect immediately. \
     /// </summary>
     public class GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The new `EnabledAppSettings` value for the Label.</summary>
+        /// <summary>Required. The new `EnabledAppSettings` value for the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledAppSettings")]
         public virtual GoogleAppsDriveLabelsV2LabelEnabledAppSettings EnabledAppSettings { get; set; }
 
@@ -4744,7 +4777,7 @@ namespace Google.Apis.DriveLabels.v2.Data
 
         /// <summary>
         /// Optional. Set to `true` in order to use the user's admin credentials. The server will verify the user is an
-        /// admin for the Label before allowing access.
+        /// admin for the label before allowing access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAdminAccess")]
         public virtual System.Nullable<bool> UseAdminAccess { get; set; }
@@ -4760,22 +4793,22 @@ namespace Google.Apis.DriveLabels.v2.Data
     }
 
     /// <summary>
-    /// Updates a Label Permission. Permissions affect the Label resource as a whole, are not revisioned, and do not
+    /// Updates a label permission. Permissions affect the label resource as a whole, aren't revisioned, and don't
     /// require publishing.
     /// </summary>
     public class GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The permission to create or update on the Label.</summary>
+        /// <summary>Required. The permission to create or update on the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelPermission")]
         public virtual GoogleAppsDriveLabelsV2LabelPermission LabelPermission { get; set; }
 
-        /// <summary>Required. The parent Label resource name.</summary>
+        /// <summary>Required. The parent label resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
         /// <summary>
         /// Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for
-        /// the Label before allowing access.
+        /// the label before allowing access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAdminAccess")]
         public virtual System.Nullable<bool> UseAdminAccess { get; set; }
@@ -4795,11 +4828,11 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("canAdministrateLabels")]
         public virtual System.Nullable<bool> CanAdministrateLabels { get; set; }
 
-        /// <summary>Output only. Whether the user is allowed to create new admin labels.</summary>
+        /// <summary>Output only. Whether the user is allowed to create admin labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canCreateAdminLabels")]
         public virtual System.Nullable<bool> CanCreateAdminLabels { get; set; }
 
-        /// <summary>Output only. Whether the user is allowed to create new shared labels.</summary>
+        /// <summary>Output only. Whether the user is allowed to create shared labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canCreateSharedLabels")]
         public virtual System.Nullable<bool> CanCreateSharedLabels { get; set; }
 
@@ -4815,8 +4848,8 @@ namespace Google.Apis.DriveLabels.v2.Data
     public class GoogleAppsDriveLabelsV2UserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The identifier for this user that can be used with the People API to get more information. For example,
-        /// people/12345678.
+        /// The identifier for this user that can be used with the [People API](https://developers.google.com/people) to
+        /// get more information. For example, `people/12345678`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("person")]
         public virtual string Person { get; set; }
@@ -4828,7 +4861,7 @@ namespace Google.Apis.DriveLabels.v2.Data
     /// <summary>Limits for Field.Type.USER.</summary>
     public class GoogleAppsDriveLabelsV2UserLimits : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Limits for list-variant of a Field type.</summary>
+        /// <summary>Limits for list-variant of a field type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listLimits")]
         public virtual GoogleAppsDriveLabelsV2ListLimits ListLimits { get; set; }
 
@@ -4842,8 +4875,8 @@ namespace Google.Apis.DriveLabels.v2.Data
     public class GoogleAppsDriveLabelsV2WriteControl : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The revision_id of the label that the write request will be applied to. If this is not the latest revision
-        /// of the label, the request will not be processed and will return a 400 Bad Request error.
+        /// The revision ID of the label that the write request will be applied to. If this isn't the latest revision of
+        /// the label, the request will not be processed and will return a 400 Bad Request error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredRevisionId")]
         public virtual string RequiredRevisionId { get; set; }
