@@ -9447,14 +9447,14 @@ namespace Google.Apis.CloudRun.v1.Data
     public class InstanceSplit : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Uses the "status.latestReadyRevisionName" to determine the traffic target. When it changes, traffic will
-        /// automatically migrate from the prior "latest ready" revision to the new one.
+        /// Uses the "status.latestReadyRevisionName" to determine the instance split target. When it changes, workloads
+        /// will automatically migrate from the prior "latest ready" revision to the new one.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestRevision")]
         public virtual System.Nullable<bool> LatestRevision { get; set; }
 
         /// <summary>
-        /// Specifies percent of the instance split to this Revision. This defaults to zero if unspecified.
+        /// Optional. Specifies percent of the instance split to this Revision. This defaults to zero if unspecified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percent")]
         public virtual System.Nullable<int> Percent { get; set; }
@@ -11510,7 +11510,7 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRunV1Condition> Conditions { get; set; }
 
         /// <summary>
-        /// Holds the configured traffic distribution. These entries will always contain RevisionName references. When
+        /// Holds the configured workload distribution. These entries will always contain RevisionName references. When
         /// ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceSplits")]
