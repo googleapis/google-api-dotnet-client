@@ -11462,6 +11462,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
         public virtual string OsVersion { get; set; }
 
+        /// <summary>Output only. Compliance status of the OS version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersionCompliance")]
+        public virtual string OsVersionCompliance { get; set; }
+
         /// <summary>The Chrome device's platform version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformVersion")]
         public virtual string PlatformVersion { get; set; }
