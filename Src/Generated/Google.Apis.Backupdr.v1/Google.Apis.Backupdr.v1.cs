@@ -7603,6 +7603,10 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>DiskBackupProperties represents the properties of a Disk backup.</summary>
     public class DiskBackupProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The access mode of the source disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessMode")]
+        public virtual string AccessMode { get; set; }
+
         /// <summary>The architecture of the source disk. Valid values are ARM64 or X86_64.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
         public virtual string Architecture { get; set; }
@@ -7611,9 +7615,17 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Indicates whether the source disk is using confidential compute mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
+        public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
+
         /// <summary>A list of guest OS features that are applicable to this backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeature")]
         public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeature { get; set; }
+
+        /// <summary>The labels of the source disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// A list of publicly available licenses that are applicable to this backup. This is applicable if the original
@@ -7621,6 +7633,18 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; }
+
+        /// <summary>The physical block size of the source disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("physicalBlockSizeBytes")]
+        public virtual System.Nullable<long> PhysicalBlockSizeBytes { get; set; }
+
+        /// <summary>The number of IOPS provisioned for the source disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedIops")]
+        public virtual System.Nullable<long> ProvisionedIops { get; set; }
+
+        /// <summary>The number of throughput provisioned for the source disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedThroughput")]
+        public virtual System.Nullable<long> ProvisionedThroughput { get; set; }
 
         /// <summary>Region and zone are mutually exclusive fields. The URL of the region of the source disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
@@ -7637,6 +7661,10 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>The source disk used to create this backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDisk")]
         public virtual string SourceDisk { get; set; }
+
+        /// <summary>The storage pool of the source disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePool")]
+        public virtual string StoragePool { get; set; }
 
         /// <summary>The URL of the type of the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -8643,6 +8671,15 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("unsupportedFeatures")]
+        public virtual System.Collections.Generic.IList<string> UnsupportedFeatures { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
