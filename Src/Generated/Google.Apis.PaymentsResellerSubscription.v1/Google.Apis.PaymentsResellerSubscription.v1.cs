@@ -307,7 +307,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// Currently, it doesn't support **YouTube** products. Retrieves the products that can be resold by the
             /// partner. It should be autenticated with a service account.
             /// </summary>
-            public class ListRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse>
+            public class ListRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.ListProductsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -423,7 +423,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// <param name="parent">
             /// Required. The parent, the partner that can resell. Format: partners/{partner}
             /// </param>
-            public virtual FindEligibleRequest FindEligible(Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest body, string parent)
+            public virtual FindEligibleRequest FindEligible(Google.Apis.PaymentsResellerSubscription.v1.Data.FindEligiblePromotionsRequest body, string parent)
             {
                 return new FindEligibleRequest(this.service, body, parent);
             }
@@ -433,10 +433,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// requires user authorization via OAuth. The bare minimum oauth scope `openid` is sufficient, which will
             /// skip the consent screen.
             /// </summary>
-            public class FindEligibleRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse>
+            public class FindEligibleRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.FindEligiblePromotionsResponse>
             {
                 /// <summary>Constructs a new FindEligible request.</summary>
-                public FindEligibleRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest body, string parent) : base(service)
+                public FindEligibleRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.FindEligiblePromotionsRequest body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -448,7 +448,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest Body { get; set; }
+                Google.Apis.PaymentsResellerSubscription.v1.Data.FindEligiblePromotionsRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -493,7 +493,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// Currently, it doesn't support **YouTube** promotions. Retrieves the promotions, such as free trial, that
             /// can be used by the partner. It should be autenticated with a service account.
             /// </summary>
-            public class ListRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse>
+            public class ListRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.ListPromotionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -610,7 +610,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// Required. The name of the subscription resource to be cancelled. It will have the format of
             /// "partners/{partner_id}/subscriptions/{subscription_id}"
             /// </param>
-            public virtual CancelRequest Cancel(Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest body, string name)
+            public virtual CancelRequest Cancel(Google.Apis.PaymentsResellerSubscription.v1.Data.CancelSubscriptionRequest body, string name)
             {
                 return new CancelRequest(this.service, body, name);
             }
@@ -619,10 +619,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// Cancels a subscription service either immediately or by the end of the current billing cycle for their
             /// customers. It should be called directly by the partner using service accounts.
             /// </summary>
-            public class CancelRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse>
+            public class CancelRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.CancelSubscriptionResponse>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
-                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest body, string name) : base(service)
+                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.CancelSubscriptionRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -637,7 +637,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest Body { get; set; }
+                Google.Apis.PaymentsResellerSubscription.v1.Data.CancelSubscriptionRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -676,7 +676,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// Required. The parent resource name, which is the identifier of the partner. It will have the format of
             /// "partners/{partner_id}".
             /// </param>
-            public virtual CreateRequest Create(Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1Subscription body, string parent)
+            public virtual CreateRequest Create(Google.Apis.PaymentsResellerSubscription.v1.Data.Subscription body, string parent)
             {
                 return new CreateRequest(this.service, body, parent);
             }
@@ -686,10 +686,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// with the end user inferred from the end user credentials. This API must be authorized by the end user
             /// using OAuth.
             /// </summary>
-            public class CreateRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1Subscription>
+            public class CreateRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.Subscription>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1Subscription body, string parent) : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.Subscription body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -712,7 +712,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 public virtual string SubscriptionId { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1Subscription Body { get; set; }
+                Google.Apis.PaymentsResellerSubscription.v1.Data.Subscription Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -759,7 +759,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// Required. The name of the subscription resource that is entitled to the current end user. It will have
             /// the format of "partners/{partner_id}/subscriptions/{subscription_id}"
             /// </param>
-            public virtual EntitleRequest Entitle(Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest body, string name)
+            public virtual EntitleRequest Entitle(Google.Apis.PaymentsResellerSubscription.v1.Data.EntitleSubscriptionRequest body, string name)
             {
                 return new EntitleRequest(this.service, body, name);
             }
@@ -769,10 +769,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// inferred from the authorized credential of the request. This API must be authorized by the end user
             /// using OAuth.
             /// </summary>
-            public class EntitleRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse>
+            public class EntitleRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.EntitleSubscriptionResponse>
             {
                 /// <summary>Constructs a new Entitle request.</summary>
-                public EntitleRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest body, string name) : base(service)
+                public EntitleRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.EntitleSubscriptionRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -787,7 +787,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest Body { get; set; }
+                Google.Apis.PaymentsResellerSubscription.v1.Data.EntitleSubscriptionRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -826,7 +826,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// Required. The name of the subscription resource to be extended. It will have the format of
             /// "partners/{partner_id}/subscriptions/{subscription_id}".
             /// </param>
-            public virtual ExtendRequest Extend(Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest body, string name)
+            public virtual ExtendRequest Extend(Google.Apis.PaymentsResellerSubscription.v1.Data.ExtendSubscriptionRequest body, string name)
             {
                 return new ExtendRequest(this.service, body, name);
             }
@@ -836,10 +836,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// their customers on an ongoing basis for the subscription to remain active and renewable. It should be
             /// called directly by the partner using service accounts.
             /// </summary>
-            public class ExtendRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse>
+            public class ExtendRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.ExtendSubscriptionResponse>
             {
                 /// <summary>Constructs a new Extend request.</summary>
-                public ExtendRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest body, string name) : base(service)
+                public ExtendRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.ExtendSubscriptionRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -854,7 +854,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest Body { get; set; }
+                Google.Apis.PaymentsResellerSubscription.v1.Data.ExtendSubscriptionRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -898,7 +898,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// <summary>
             /// Gets a subscription by id. It should be called directly by the partner using service accounts.
             /// </summary>
-            public class GetRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1Subscription>
+            public class GetRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.Subscription>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -949,7 +949,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// Required. The parent resource name, which is the identifier of the partner. It will have the format of
             /// "partners/{partner_id}".
             /// </param>
-            public virtual ProvisionRequest Provision(Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1Subscription body, string parent)
+            public virtual ProvisionRequest Provision(Google.Apis.PaymentsResellerSubscription.v1.Data.Subscription body, string parent)
             {
                 return new ProvisionRequest(this.service, body, parent);
             }
@@ -960,10 +960,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// order for the end user account to be associated with the subscription. It should be called directly by
             /// the partner using service accounts.
             /// </summary>
-            public class ProvisionRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1Subscription>
+            public class ProvisionRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.Subscription>
             {
                 /// <summary>Constructs a new Provision request.</summary>
-                public ProvisionRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1Subscription body, string parent) : base(service)
+                public ProvisionRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.Subscription body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -986,7 +986,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 public virtual string SubscriptionId { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1Subscription Body { get; set; }
+                Google.Apis.PaymentsResellerSubscription.v1.Data.Subscription Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -1032,7 +1032,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// Required. The name of the subscription resource to be resumed. It will have the format of
             /// "partners/{partner_id}/subscriptions/{subscription_id}"
             /// </param>
-            public virtual ResumeRequest Resume(Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest body, string name)
+            public virtual ResumeRequest Resume(Google.Apis.PaymentsResellerSubscription.v1.Data.ResumeSubscriptionRequest body, string name)
             {
                 return new ResumeRequest(this.service, body, name);
             }
@@ -1041,10 +1041,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// Resumes a suspended subscription. The new billing cycle will start at the time of the request. It should
             /// be called directly by the partner using service accounts.
             /// </summary>
-            public class ResumeRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse>
+            public class ResumeRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.ResumeSubscriptionResponse>
             {
                 /// <summary>Constructs a new Resume request.</summary>
-                public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest body, string name) : base(service)
+                public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.ResumeSubscriptionRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -1059,7 +1059,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest Body { get; set; }
+                Google.Apis.PaymentsResellerSubscription.v1.Data.ResumeSubscriptionRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -1097,7 +1097,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// Required. The name of the subscription resource to be suspended. It will have the format of
             /// "partners/{partner_id}/subscriptions/{subscription_id}"
             /// </param>
-            public virtual SuspendRequest Suspend(Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest body, string name)
+            public virtual SuspendRequest Suspend(Google.Apis.PaymentsResellerSubscription.v1.Data.SuspendSubscriptionRequest body, string name)
             {
                 return new SuspendRequest(this.service, body, name);
             }
@@ -1106,10 +1106,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// Suspends a subscription. Contract terms may dictate if a prorated refund will be issued upon suspension.
             /// It should be called directly by the partner using service accounts.
             /// </summary>
-            public class SuspendRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse>
+            public class SuspendRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.SuspendSubscriptionResponse>
             {
                 /// <summary>Constructs a new Suspend request.</summary>
-                public SuspendRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest body, string name) : base(service)
+                public SuspendRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.SuspendSubscriptionRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -1124,7 +1124,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest Body { get; set; }
+                Google.Apis.PaymentsResellerSubscription.v1.Data.SuspendSubscriptionRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -1163,7 +1163,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// Required. The name of the subscription resource whose pending cancellation needs to be undone. It will
             /// have the format of "partners/{partner_id}/subscriptions/{subscription_id}"
             /// </param>
-            public virtual UndoCancelRequest UndoCancel(Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest body, string name)
+            public virtual UndoCancelRequest UndoCancel(Google.Apis.PaymentsResellerSubscription.v1.Data.UndoCancelSubscriptionRequest body, string name)
             {
                 return new UndoCancelRequest(this.service, body, name);
             }
@@ -1173,10 +1173,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// subscription, which is currently in `STATE_CANCEL_AT_END_OF_CYCLE` state. If the subscription is already
             /// cancelled, the request will fail. It should be called directly by the partner using service accounts.
             /// </summary>
-            public class UndoCancelRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse>
+            public class UndoCancelRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.UndoCancelSubscriptionResponse>
             {
                 /// <summary>Constructs a new UndoCancel request.</summary>
-                public UndoCancelRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest body, string name) : base(service)
+                public UndoCancelRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.UndoCancelSubscriptionRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -1191,7 +1191,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest Body { get; set; }
+                Google.Apis.PaymentsResellerSubscription.v1.Data.UndoCancelSubscriptionRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -1249,7 +1249,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// <param name="parent">
             /// Required. The parent, the partner that can resell. Format: partners/{partner}
             /// </param>
-            public virtual GenerateRequest Generate(Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest body, string parent)
+            public virtual GenerateRequest Generate(Google.Apis.PaymentsResellerSubscription.v1.Data.GenerateUserSessionRequest body, string parent)
             {
                 return new GenerateRequest(this.service, body, parent);
             }
@@ -1261,10 +1261,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             /// regardless of the previous tokens being expired or not. By default, the session token is valid for 1
             /// hour.
             /// </summary>
-            public class GenerateRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse>
+            public class GenerateRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GenerateUserSessionResponse>
             {
                 /// <summary>Constructs a new Generate request.</summary>
-                public GenerateRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest body, string parent) : base(service)
+                public GenerateRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.GenerateUserSessionRequest body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -1276,7 +1276,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest Body { get; set; }
+                Google.Apis.PaymentsResellerSubscription.v1.Data.GenerateUserSessionRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -1310,7 +1310,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 namespace Google.Apis.PaymentsResellerSubscription.v1.Data
 {
     /// <summary>Describes the amount unit including the currency code.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1Amount : Google.Apis.Requests.IDirectResponseSchema
+    public class Amount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Amount in micros (1_000_000 micros = 1 currency unit)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountMicros")]
@@ -1328,7 +1328,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Request to cancel a subscription.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class CancelSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. If true, Google will cancel the subscription immediately, and may or may not (based on the
@@ -1348,18 +1348,18 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Response that contains the cancelled subscription resource.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class CancelSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The cancelled subscription resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1Subscription Subscription { get; set; }
+        public virtual Subscription Subscription { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Intent message for creating a Subscription resource.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent : Google.Apis.Requests.IDirectResponseSchema
+    public class CreateSubscriptionIntent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The parent resource name, which is the identifier of the partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
@@ -1367,7 +1367,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
 
         /// <summary>Required. The Subscription to be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1Subscription Subscription { get; set; }
+        public virtual Subscription Subscription { get; set; }
 
         /// <summary>
         /// Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII
@@ -1382,7 +1382,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Describes the length of a period of a time.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1Duration : Google.Apis.Requests.IDirectResponseSchema
+    public class Duration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>number of duration units to be included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
@@ -1397,7 +1397,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Intent for entitling the previously provisioned subscription to an end user.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent : Google.Apis.Requests.IDirectResponseSchema
+    public class EntitleSubscriptionIntent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. The name of the subscription resource that is entitled to the current end user. It is in the
@@ -1414,18 +1414,18 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// Partner request for entitling the previously provisioned subscription to an end user. The end user identity is
     /// inferred from the request OAuth context.
     /// </summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class EntitleSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The line items to be entitled. If unspecified, all line items will be entitled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemEntitlementDetails")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails> LineItemEntitlementDetails { get; set; }
+        public virtual System.Collections.Generic.IList<EntitleSubscriptionRequestLineItemEntitlementDetails> LineItemEntitlementDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>The details of the line item to be entitled.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails : Google.Apis.Requests.IDirectResponseSchema
+    public class EntitleSubscriptionRequestLineItemEntitlementDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The index of the line item to be entitled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemIndex")]
@@ -1444,11 +1444,11 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Response that contains the entitled subscription resource.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class EntitleSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The subscription that has user linked to it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1Subscription Subscription { get; set; }
+        public virtual Subscription Subscription { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1458,14 +1458,14 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// Request message for extending a Subscription resource. A new recurrence will be made based on the subscription
     /// schedule defined by the original product.
     /// </summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class ExtendSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. Specifies details of the extension. Currently, the duration of the extension must be exactly one
         /// billing cycle of the original subscription.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extension")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1Extension Extension { get; set; }
+        public virtual Extension Extension { get; set; }
 
         /// <summary>
         /// Required. Restricted to 36 ASCII characters. A random UUID is recommended. The idempotency key for the
@@ -1480,7 +1480,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Response that contains the timestamps after the extension.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class ExtendSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _cycleEndTimeRaw;
 
@@ -1612,11 +1612,11 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Describes the details of an extension request.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1Extension : Google.Apis.Requests.IDirectResponseSchema
+    public class Extension : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Specifies the period of access the subscription should grant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1Duration Duration { get; set; }
+        public virtual Duration Duration { get; set; }
 
         /// <summary>Required. Identifier of the end-user in partner’s system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerUserToken")]
@@ -1627,7 +1627,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Request to find eligible promotions for the current user.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class FindEligiblePromotionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. Specifies the filters for the promotion results. The syntax is defined in
@@ -1662,7 +1662,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Response containing the found promotions for the current user.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class FindEligiblePromotionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no
@@ -1673,14 +1673,14 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
 
         /// <summary>The promotions for the current user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1Promotion> Promotions { get; set; }
+        public virtual System.Collections.Generic.IList<Promotion> Promotions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Details for a subscriptiin line item with finite billing cycles.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails : Google.Apis.Requests.IDirectResponseSchema
+    public class FiniteBillingCycleDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. The number of a subscription line item billing cycles after which billing will stop automatically.
@@ -1693,37 +1693,41 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Request to generate a user session.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class GenerateUserSessionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The user intent to generate the user session.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intentPayload")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1IntentPayload IntentPayload { get; set; }
+        public virtual IntentPayload IntentPayload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Response that contains the details for generated user session.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class GenerateUserSessionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The generated user session. The token size is proportional to the size of the intent payload.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userSession")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1UserSession UserSession { get; set; }
+        public virtual UserSession UserSession { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Payload specific for Google Home products.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleHomePayload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Output only. This identifies whether the subscription is attached to a Google Home structure.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachedToGoogleStructure")]
         public virtual System.Nullable<bool> AttachedToGoogleStructure { get; set; }
+
+        /// <summary>Optional. Structure identifier on Google side.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleStructureId")]
+        public virtual string GoogleStructureId { get; set; }
 
         /// <summary>
         /// Optional. This identifies the structure ID on partner side that the subscription should be applied to. Only
@@ -1737,7 +1741,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Payload specific to Google One products.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleOnePayload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Campaign attributed to sales of this subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaigns")]
@@ -1759,23 +1763,41 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Localized variant of a text in a particular language.</summary>
+    public class GoogleTypeLocalizedText : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The text's BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Localized string in the language corresponding to language_code below.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The payload that describes the user intent.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1IntentPayload : Google.Apis.Requests.IDirectResponseSchema
+    public class IntentPayload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The request to create a subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createIntent")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent CreateIntent { get; set; }
+        public virtual CreateSubscriptionIntent CreateIntent { get; set; }
 
         /// <summary>The request to entitle a subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitleIntent")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent EntitleIntent { get; set; }
+        public virtual EntitleSubscriptionIntent EntitleIntent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Response that contains the products.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class ListProductsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no
@@ -1786,14 +1808,14 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
 
         /// <summary>The products for the specified partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("products")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1Product> Products { get; set; }
+        public virtual System.Collections.Generic.IList<Product> Products { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Response that contains the promotions.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class ListPromotionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no
@@ -1804,14 +1826,14 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
 
         /// <summary>The promotions for the specified partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1Promotion> Promotions { get; set; }
+        public virtual System.Collections.Generic.IList<Promotion> Promotions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Describes a location of an end user.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1Location : Google.Apis.Requests.IDirectResponseSchema
+    public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The postal code this location refers to. Ex. "94043"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
@@ -1829,7 +1851,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>A Product resource that defines a subscription service that can be resold.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1Product : Google.Apis.Requests.IDirectResponseSchema
+    public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Specifies the details for a bundle product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundleDetails")]
@@ -1840,7 +1862,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// charged indefinitely.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finiteBillingCycleDetails")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails FiniteBillingCycleDetails { get; set; }
+        public virtual FiniteBillingCycleDetails FiniteBillingCycleDetails { get; set; }
 
         /// <summary>
         /// Identifier. Response only. Resource name of the product. It will have the format of
@@ -1851,7 +1873,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
 
         /// <summary>Output only. Price configs for the product in the available regions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceConfigs")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig> PriceConfigs { get; set; }
+        public virtual System.Collections.Generic.IList<ProductPriceConfig> PriceConfigs { get; set; }
 
         /// <summary>Output only. Specifies the type of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productType")]
@@ -1866,7 +1888,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
 
         /// <summary>Output only. Specifies the length of the billing cycle of the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionBillingCycleDuration")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1Duration SubscriptionBillingCycleDuration { get; set; }
+        public virtual Duration SubscriptionBillingCycleDuration { get; set; }
 
         /// <summary>Output only. Localized human readable name of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titles")]
@@ -1876,8 +1898,23 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details for a bundle product.</summary>
+    public class ProductBundleDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The individual products that are included in the bundle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleElements")]
+        public virtual System.Collections.Generic.IList<ProductBundleDetailsBundleElement> BundleElements { get; set; }
+
+        /// <summary>The entitlement mode of the bundle product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlementMode")]
+        public virtual string EntitlementMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The individual product that is included in the bundle.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement : Google.Apis.Requests.IDirectResponseSchema
+    public class ProductBundleDetailsBundleElement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. Output only. Product resource name that identifies the bundle element. The format is
@@ -1891,30 +1928,30 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Specifies product specific payload.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload : Google.Apis.Requests.IDirectResponseSchema
+    public class ProductPayload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Payload specific to Google Home products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleHomePayload")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload GoogleHomePayload { get; set; }
+        public virtual GoogleHomePayload GoogleHomePayload { get; set; }
 
         /// <summary>Product-specific payloads. Payload specific to Google One products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleOnePayload")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload GoogleOnePayload { get; set; }
+        public virtual GoogleOnePayload GoogleOnePayload { get; set; }
 
         /// <summary>Payload specific to Youtube products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("youtubePayload")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload YoutubePayload { get; set; }
+        public virtual YoutubePayload YoutubePayload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Configs the prices in an available region.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig : Google.Apis.Requests.IDirectResponseSchema
+    public class ProductPriceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The price in the region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1Amount Amount { get; set; }
+        public virtual Amount Amount { get; set; }
 
         /// <summary>Output only. 2-letter ISO region code where the product is available in. Ex. "US".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
@@ -1925,7 +1962,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>A Promotion resource that defines a promotion for a subscription that can be resold.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1Promotion : Google.Apis.Requests.IDirectResponseSchema
+    public class Promotion : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The product ids this promotion can be applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicableProducts")]
@@ -1976,14 +2013,14 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// PROMOTION_TYPE_FREE_TRIAL
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeTrialDuration")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1Duration FreeTrialDuration { get; set; }
+        public virtual Duration FreeTrialDuration { get; set; }
 
         /// <summary>
         /// Optional. Specifies the introductory pricing details when the promotion_type is
         /// PROMOTION_TYPE_INTRODUCTORY_PRICING.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPricingDetails")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails IntroductoryPricingDetails { get; set; }
+        public virtual PromotionIntroductoryPricingDetails IntroductoryPricingDetails { get; set; }
 
         /// <summary>
         /// Identifier. Response only. Resource name of the subscription promotion. It will have the format of
@@ -2051,22 +2088,22 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>The details of a introductory pricing promotion.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails : Google.Apis.Requests.IDirectResponseSchema
+    public class PromotionIntroductoryPricingDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Specifies the introductory pricing periods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPricingSpecs")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec> IntroductoryPricingSpecs { get; set; }
+        public virtual System.Collections.Generic.IList<PromotionIntroductoryPricingDetailsIntroductoryPricingSpec> IntroductoryPricingSpecs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>The duration of an introductory pricing promotion.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec : Google.Apis.Requests.IDirectResponseSchema
+    public class PromotionIntroductoryPricingDetailsIntroductoryPricingSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The discount amount. The value is positive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discountAmount")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1Amount DiscountAmount { get; set; }
+        public virtual Amount DiscountAmount { get; set; }
 
         /// <summary>Output only. The discount percentage in micros. For example, 50,000 represents 5%.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discountRatioMicros")]
@@ -2085,18 +2122,18 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Request to resume a suspended subscription.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class ResumeSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Response that contains the resumed subscription.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class ResumeSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resumed subscription resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1Subscription Subscription { get; set; }
+        public virtual Subscription Subscription { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2105,7 +2142,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>
     /// A description of what time period or moment in time the product or service is being delivered over.
     /// </summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod : Google.Apis.Requests.IDirectResponseSchema
+    public class ServicePeriod : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _endTimeRaw;
 
@@ -2193,14 +2230,14 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// even if the subscription has been immediately canceled. However, other services may not do the same. To fully
     /// understand the specific details, please consult the relevant contract or product policy.
     /// </summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1Subscription : Google.Apis.Requests.IDirectResponseSchema
+    public class Subscription : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Output only. Describes the details of a cancelled subscription. Only applicable to subscription of state
         /// `STATE_CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancellationDetails")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails CancellationDetails { get; set; }
+        public virtual SubscriptionCancellationDetails CancellationDetails { get; set; }
 
         private string _createTimeRaw;
 
@@ -2327,14 +2364,14 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
 
         /// <summary>Required. The line items of the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem> LineItems { get; set; }
+        public virtual System.Collections.Generic.IList<SubscriptionLineItem> LineItems { get; set; }
 
         /// <summary>
         /// Output only. Describes the details of the migrated subscription. Only populated if this subscription is
         /// migrated from another system.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migrationDetails")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails MigrationDetails { get; set; }
+        public virtual SubscriptionMigrationDetails MigrationDetails { get; set; }
 
         /// <summary>
         /// Identifier. Resource name of the subscription. It will have the format of
@@ -2371,7 +2408,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// only when used as input.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionSpecs")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec> PromotionSpecs { get; set; }
+        public virtual System.Collections.Generic.IList<SubscriptionPromotionSpec> PromotionSpecs { get; set; }
 
         /// <summary>
         /// Optional. Deprecated: consider using the top-level `promotion_specs` as the input. Optional. Resource name
@@ -2473,7 +2510,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
 
         /// <summary>Required. The location that the service is provided as indicated by the partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceLocation")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1Location ServiceLocation { get; set; }
+        public virtual Location ServiceLocation { get; set; }
 
         /// <summary>
         /// Output only. Describes the state of the subscription. See more details at [the lifecycle of a
@@ -2526,14 +2563,14 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// populated if this subscription is an upgrade/downgrade from another subscription.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeDowngradeDetails")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails UpgradeDowngradeDetails { get; set; }
+        public virtual SubscriptionUpgradeDowngradeDetails UpgradeDowngradeDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Describes the details of a cancelled or cancelling subscription.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails : Google.Apis.Requests.IDirectResponseSchema
+    public class SubscriptionCancellationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The reason of the cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
@@ -2544,14 +2581,14 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Individual line item definition of a subscription.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem : Google.Apis.Requests.IDirectResponseSchema
+    public class SubscriptionLineItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Output only. The price of the product/service in this line item. The amount could be the wholesale price, or
         /// it can include a cost of sale based on the contract.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1Amount Amount { get; set; }
+        public virtual Amount Amount { get; set; }
 
         /// <summary>
         /// Output only. The bundle details for the line item. Only populated if the line item corresponds to a hard
@@ -2569,7 +2606,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// charged indefinitely. Used only with LINE_ITEM_RECURRENCE_TYPE_PERIODIC.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finiteBillingCycleDetails")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails FiniteBillingCycleDetails { get; set; }
+        public virtual FiniteBillingCycleDetails FiniteBillingCycleDetails { get; set; }
 
         private string _lineItemFreeTrialEndTimeRaw;
 
@@ -2624,11 +2661,11 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// Create or Provision API, specify its resource name only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemPromotionSpecs")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec> LineItemPromotionSpecs { get; set; }
+        public virtual System.Collections.Generic.IList<SubscriptionPromotionSpec> LineItemPromotionSpecs { get; set; }
 
         /// <summary>Output only. Details only set for a ONE_TIME recurrence line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oneTimeRecurrenceDetails")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails OneTimeRecurrenceDetails { get; set; }
+        public virtual SubscriptionLineItemOneTimeRecurrenceDetails OneTimeRecurrenceDetails { get; set; }
 
         /// <summary>
         /// Required. Product resource name that identifies one the line item The format is
@@ -2639,7 +2676,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
 
         /// <summary>Optional. Product specific payload for this line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productPayload")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1ProductPayload ProductPayload { get; set; }
+        public virtual ProductPayload ProductPayload { get; set; }
 
         /// <summary>Output only. The recurrence type of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurrenceType")]
@@ -2653,8 +2690,19 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The bundle details for a line item corresponding to a hard bundle.</summary>
+    public class SubscriptionLineItemBundleDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The details for each element in the hard bundle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleElementDetails")]
+        public virtual System.Collections.Generic.IList<SubscriptionLineItemBundleDetailsBundleElementDetails> BundleElementDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The details for an element in the hard bundle.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails : Google.Apis.Requests.IDirectResponseSchema
+    public class SubscriptionLineItemBundleDetailsBundleElementDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Output only. Product resource name that identifies the bundle element. The format is
@@ -2707,18 +2755,18 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Details for a ONE_TIME recurrence line item.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails : Google.Apis.Requests.IDirectResponseSchema
+    public class SubscriptionLineItemOneTimeRecurrenceDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The service period of the ONE_TIME line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePeriod")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod ServicePeriod { get; set; }
+        public virtual ServicePeriod ServicePeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Describes the details of the migrated subscription.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails : Google.Apis.Requests.IDirectResponseSchema
+    public class SubscriptionMigrationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The migrated subscription id in the legacy system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migratedSubscriptionId")]
@@ -2729,17 +2777,17 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Describes the spec for one promotion.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec : Google.Apis.Requests.IDirectResponseSchema
+    public class SubscriptionPromotionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The duration of the free trial if the promotion is of type FREE_TRIAL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeTrialDuration")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1Duration FreeTrialDuration { get; set; }
+        public virtual Duration FreeTrialDuration { get; set; }
 
         /// <summary>
         /// Output only. The details of the introductory pricing spec if the promotion is of type INTRODUCTORY_PRICING.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPricingDetails")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails IntroductoryPricingDetails { get; set; }
+        public virtual PromotionIntroductoryPricingDetails IntroductoryPricingDetails { get; set; }
 
         /// <summary>
         /// Required. Promotion resource name that identifies a promotion. The format is
@@ -2757,7 +2805,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Details about the previous subscription that this new subscription upgrades/downgrades from.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails : Google.Apis.Requests.IDirectResponseSchema
+    public class SubscriptionUpgradeDowngradeDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Specifies the billing cycle spec for the new upgraded/downgraded subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingCycleSpec")]
@@ -2775,36 +2823,36 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Request to suspend a subscription.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class SuspendSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Response that contains the suspended subscription.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class SuspendSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The suspended subscription resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1Subscription Subscription { get; set; }
+        public virtual Subscription Subscription { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Request to revoke a cancellation request.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class UndoCancelSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Response that contains the updated subscription resource.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class UndoCancelSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The updated subscription resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1Subscription Subscription { get; set; }
+        public virtual Subscription Subscription { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2821,7 +2869,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// Signup](/payments/reseller/subscription/reference/index/User.Signup.Integration/Google.Managed.Signup)
     /// documentation for additional integration details.
     /// </summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1UserSession : Google.Apis.Requests.IDirectResponseSchema
+    public class UserSession : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _expireTimeRaw;
 
@@ -2872,7 +2920,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>Payload specific to Youtube products.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload : Google.Apis.Requests.IDirectResponseSchema
+    public class YoutubePayload : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _accessEndTimeRaw;
 
@@ -2918,50 +2966,6 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>Optional. Specifies the plan type offered to the end user by the partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerPlanType")]
         public virtual string PartnerPlanType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Localized variant of a text in a particular language.</summary>
-    public class GoogleTypeLocalizedText : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The text's BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
-        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; }
-
-        /// <summary>Localized string in the language corresponding to language_code below.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details for a bundle product.</summary>
-    public class ProductBundleDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The individual products that are included in the bundle.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bundleElements")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement> BundleElements { get; set; }
-
-        /// <summary>The entitlement mode of the bundle product.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entitlementMode")]
-        public virtual string EntitlementMode { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The bundle details for a line item corresponding to a hard bundle.</summary>
-    public class SubscriptionLineItemBundleDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The details for each element in the hard bundle.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bundleElementDetails")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails> BundleElementDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
