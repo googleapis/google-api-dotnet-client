@@ -321,7 +321,7 @@ namespace Google.Apis.Appengine.v1alpha
             /// <summary>Uploads the specified SSL certificate.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="appsId">
-            /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+            /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate body, string appsId)
             {
@@ -339,7 +339,9 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-                /// <summary>Part of `parent`. Name of the parent Application resource. Example: apps/myapp.</summary>
+                /// <summary>
+                /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
@@ -375,7 +377,8 @@ namespace Google.Apis.Appengine.v1alpha
 
             /// <summary>Deletes the specified SSL certificate.</summary>
             /// <param name="appsId">
-            /// Part of `name`. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345.
+            /// Part of `name`. Required. Name of the resource to delete. Example:
+            /// apps/myapp/authorizedCertificates/12345.
             /// </param>
             /// <param name="authorizedCertificatesId">Part of `name`. See documentation of `appsId`.</param>
             public virtual DeleteRequest Delete(string appsId, string authorizedCertificatesId)
@@ -395,7 +398,8 @@ namespace Google.Apis.Appengine.v1alpha
                 }
 
                 /// <summary>
-                /// Part of `name`. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345.
+                /// Part of `name`. Required. Name of the resource to delete. Example:
+                /// apps/myapp/authorizedCertificates/12345.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
@@ -438,7 +442,8 @@ namespace Google.Apis.Appengine.v1alpha
 
             /// <summary>Gets the specified SSL certificate.</summary>
             /// <param name="appsId">
-            /// Part of `name`. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345.
+            /// Part of `name`. Required. Name of the resource requested. Example:
+            /// apps/myapp/authorizedCertificates/12345.
             /// </param>
             /// <param name="authorizedCertificatesId">Part of `name`. See documentation of `appsId`.</param>
             public virtual GetRequest Get(string appsId, string authorizedCertificatesId)
@@ -458,7 +463,8 @@ namespace Google.Apis.Appengine.v1alpha
                 }
 
                 /// <summary>
-                /// Part of `name`. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345.
+                /// Part of `name`. Required. Name of the resource requested. Example:
+                /// apps/myapp/authorizedCertificates/12345.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
@@ -530,7 +536,7 @@ namespace Google.Apis.Appengine.v1alpha
 
             /// <summary>Lists all SSL certificates the user is authorized to administer.</summary>
             /// <param name="appsId">
-            /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+            /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
             /// </param>
             public virtual ListRequest List(string appsId)
             {
@@ -547,7 +553,9 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-                /// <summary>Part of `parent`. Name of the parent Application resource. Example: apps/myapp.</summary>
+                /// <summary>
+                /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
@@ -635,7 +643,8 @@ namespace Google.Apis.Appengine.v1alpha
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="appsId">
-            /// Part of `name`. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345.
+            /// Part of `name`. Required. Name of the resource to update. Example:
+            /// apps/myapp/authorizedCertificates/12345.
             /// </param>
             /// <param name="authorizedCertificatesId">Part of `name`. See documentation of `appsId`.</param>
             public virtual PatchRequest Patch(Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate body, string appsId, string authorizedCertificatesId)
@@ -660,7 +669,8 @@ namespace Google.Apis.Appengine.v1alpha
                 }
 
                 /// <summary>
-                /// Part of `name`. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345.
+                /// Part of `name`. Required. Name of the resource to update. Example:
+                /// apps/myapp/authorizedCertificates/12345.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
@@ -742,7 +752,7 @@ namespace Google.Apis.Appengine.v1alpha
 
             /// <summary>Lists all domains the user is authorized to administer.</summary>
             /// <param name="appsId">
-            /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+            /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
             /// </param>
             public virtual ListRequest List(string appsId)
             {
@@ -759,7 +769,9 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-                /// <summary>Part of `parent`. Name of the parent Application resource. Example: apps/myapp.</summary>
+                /// <summary>
+                /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
@@ -835,7 +847,7 @@ namespace Google.Apis.Appengine.v1alpha
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="appsId">
-            /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+            /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Appengine.v1alpha.Data.DomainMapping body, string appsId)
             {
@@ -856,7 +868,9 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-                /// <summary>Part of `parent`. Name of the parent Application resource. Example: apps/myapp.</summary>
+                /// <summary>
+                /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
@@ -953,7 +967,8 @@ namespace Google.Apis.Appengine.v1alpha
             /// order to delete a DomainMapping resource.
             /// </summary>
             /// <param name="appsId">
-            /// Part of `name`. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com.
+            /// Part of `name`. Required. Name of the resource to delete. Example:
+            /// apps/myapp/domainMappings/example.com.
             /// </param>
             /// <param name="domainMappingsId">Part of `name`. See documentation of `appsId`.</param>
             public virtual DeleteRequest Delete(string appsId, string domainMappingsId)
@@ -976,7 +991,8 @@ namespace Google.Apis.Appengine.v1alpha
                 }
 
                 /// <summary>
-                /// Part of `name`. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com.
+                /// Part of `name`. Required. Name of the resource to delete. Example:
+                /// apps/myapp/domainMappings/example.com.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
@@ -1019,7 +1035,8 @@ namespace Google.Apis.Appengine.v1alpha
 
             /// <summary>Gets the specified domain mapping.</summary>
             /// <param name="appsId">
-            /// Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
+            /// Part of `name`. Required. Name of the resource requested. Example:
+            /// apps/myapp/domainMappings/example.com.
             /// </param>
             /// <param name="domainMappingsId">Part of `name`. See documentation of `appsId`.</param>
             public virtual GetRequest Get(string appsId, string domainMappingsId)
@@ -1039,7 +1056,8 @@ namespace Google.Apis.Appengine.v1alpha
                 }
 
                 /// <summary>
-                /// Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
+                /// Part of `name`. Required. Name of the resource requested. Example:
+                /// apps/myapp/domainMappings/example.com.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
@@ -1082,7 +1100,7 @@ namespace Google.Apis.Appengine.v1alpha
 
             /// <summary>Lists the domain mappings on an application.</summary>
             /// <param name="appsId">
-            /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+            /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
             /// </param>
             public virtual ListRequest List(string appsId)
             {
@@ -1099,7 +1117,9 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-                /// <summary>Part of `parent`. Name of the parent Application resource. Example: apps/myapp.</summary>
+                /// <summary>
+                /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
@@ -1158,7 +1178,8 @@ namespace Google.Apis.Appengine.v1alpha
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="appsId">
-            /// Part of `name`. Name of the resource to update. Example: apps/myapp/domainMappings/example.com.
+            /// Part of `name`. Required. Name of the resource to update. Example:
+            /// apps/myapp/domainMappings/example.com.
             /// </param>
             /// <param name="domainMappingsId">Part of `name`. See documentation of `appsId`.</param>
             public virtual PatchRequest Patch(Google.Apis.Appengine.v1alpha.Data.DomainMapping body, string appsId, string domainMappingsId)
@@ -1183,7 +1204,8 @@ namespace Google.Apis.Appengine.v1alpha
                 }
 
                 /// <summary>
-                /// Part of `name`. Name of the resource to update. Example: apps/myapp/domainMappings/example.com.
+                /// Part of `name`. Required. Name of the resource to update. Example:
+                /// apps/myapp/domainMappings/example.com.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
@@ -1688,7 +1710,7 @@ namespace Google.Apis.Appengine.v1alpha
                     /// <summary>Uploads the specified SSL certificate.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectsId">
-                    /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                    /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
                     /// </param>
                     /// <param name="locationsId">Part of `parent`. See documentation of `projectsId`.</param>
                     /// <param name="applicationsId">Part of `parent`. See documentation of `projectsId`.</param>
@@ -1711,7 +1733,7 @@ namespace Google.Apis.Appengine.v1alpha
                         }
 
                         /// <summary>
-                        /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                        /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectsId { get; private set; }
@@ -1772,7 +1794,7 @@ namespace Google.Apis.Appengine.v1alpha
 
                     /// <summary>Deletes the specified SSL certificate.</summary>
                     /// <param name="projectsId">
-                    /// Part of `name`. Name of the resource to delete. Example:
+                    /// Part of `name`. Required. Name of the resource to delete. Example:
                     /// apps/myapp/authorizedCertificates/12345.
                     /// </param>
                     /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
@@ -1799,7 +1821,7 @@ namespace Google.Apis.Appengine.v1alpha
                         }
 
                         /// <summary>
-                        /// Part of `name`. Name of the resource to delete. Example:
+                        /// Part of `name`. Required. Name of the resource to delete. Example:
                         /// apps/myapp/authorizedCertificates/12345.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
@@ -1867,7 +1889,7 @@ namespace Google.Apis.Appengine.v1alpha
 
                     /// <summary>Gets the specified SSL certificate.</summary>
                     /// <param name="projectsId">
-                    /// Part of `name`. Name of the resource requested. Example:
+                    /// Part of `name`. Required. Name of the resource requested. Example:
                     /// apps/myapp/authorizedCertificates/12345.
                     /// </param>
                     /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
@@ -1894,7 +1916,7 @@ namespace Google.Apis.Appengine.v1alpha
                         }
 
                         /// <summary>
-                        /// Part of `name`. Name of the resource requested. Example:
+                        /// Part of `name`. Required. Name of the resource requested. Example:
                         /// apps/myapp/authorizedCertificates/12345.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
@@ -1991,7 +2013,7 @@ namespace Google.Apis.Appengine.v1alpha
 
                     /// <summary>Lists all SSL certificates the user is authorized to administer.</summary>
                     /// <param name="projectsId">
-                    /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                    /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
                     /// </param>
                     /// <param name="locationsId">Part of `parent`. See documentation of `projectsId`.</param>
                     /// <param name="applicationsId">Part of `parent`. See documentation of `projectsId`.</param>
@@ -2013,7 +2035,7 @@ namespace Google.Apis.Appengine.v1alpha
                         }
 
                         /// <summary>
-                        /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                        /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectsId { get; private set; }
@@ -2127,7 +2149,7 @@ namespace Google.Apis.Appengine.v1alpha
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectsId">
-                    /// Part of `name`. Name of the resource to update. Example:
+                    /// Part of `name`. Required. Name of the resource to update. Example:
                     /// apps/myapp/authorizedCertificates/12345.
                     /// </param>
                     /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
@@ -2160,7 +2182,7 @@ namespace Google.Apis.Appengine.v1alpha
                         }
 
                         /// <summary>
-                        /// Part of `name`. Name of the resource to update. Example:
+                        /// Part of `name`. Required. Name of the resource to update. Example:
                         /// apps/myapp/authorizedCertificates/12345.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
@@ -2267,7 +2289,7 @@ namespace Google.Apis.Appengine.v1alpha
 
                     /// <summary>Lists all domains the user is authorized to administer.</summary>
                     /// <param name="projectsId">
-                    /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                    /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
                     /// </param>
                     /// <param name="locationsId">Part of `parent`. See documentation of `projectsId`.</param>
                     /// <param name="applicationsId">Part of `parent`. See documentation of `projectsId`.</param>
@@ -2289,7 +2311,7 @@ namespace Google.Apis.Appengine.v1alpha
                         }
 
                         /// <summary>
-                        /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                        /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectsId { get; private set; }
@@ -2391,7 +2413,7 @@ namespace Google.Apis.Appengine.v1alpha
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectsId">
-                    /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                    /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
                     /// </param>
                     /// <param name="locationsId">Part of `parent`. See documentation of `projectsId`.</param>
                     /// <param name="applicationsId">Part of `parent`. See documentation of `projectsId`.</param>
@@ -2418,7 +2440,7 @@ namespace Google.Apis.Appengine.v1alpha
                         }
 
                         /// <summary>
-                        /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                        /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectsId { get; private set; }
@@ -2538,7 +2560,8 @@ namespace Google.Apis.Appengine.v1alpha
 
                     /// <summary>Gets the specified domain mapping.</summary>
                     /// <param name="projectsId">
-                    /// Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
+                    /// Part of `name`. Required. Name of the resource requested. Example:
+                    /// apps/myapp/domainMappings/example.com.
                     /// </param>
                     /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
                     /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
@@ -2562,7 +2585,7 @@ namespace Google.Apis.Appengine.v1alpha
                         }
 
                         /// <summary>
-                        /// Part of `name`. Name of the resource requested. Example:
+                        /// Part of `name`. Required. Name of the resource requested. Example:
                         /// apps/myapp/domainMappings/example.com.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
