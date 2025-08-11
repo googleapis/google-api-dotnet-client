@@ -1744,13 +1744,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>An entry describing an error that has occurred.</summary>
     public class ErrorLogEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of messages that carry the error details.</summary>
+        /// <summary>Optional. A list of messages that carry the error details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorDetails")]
         public virtual System.Collections.Generic.IList<string> ErrorDetails { get; set; }
 
         /// <summary>
-        /// Required. A URL that refers to the target (a data source, a data sink, or an object) with which the error is
-        /// associated.
+        /// Output only. A URL that refers to the target (a data source, a data sink, or an object) with which the error
+        /// is associated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
@@ -3098,23 +3098,23 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>Configuration for running a transfer.</summary>
     public class TransferSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An AWS S3 compatible data source.</summary>
+        /// <summary>Optional. An AWS S3 compatible data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsS3CompatibleDataSource")]
         public virtual AwsS3CompatibleData AwsS3CompatibleDataSource { get; set; }
 
-        /// <summary>An AWS S3 data source.</summary>
+        /// <summary>Optional. An AWS S3 data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsS3DataSource")]
         public virtual AwsS3Data AwsS3DataSource { get; set; }
 
-        /// <summary>An Azure Blob Storage data source.</summary>
+        /// <summary>Optional. An Azure Blob Storage data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("azureBlobStorageDataSource")]
         public virtual AzureBlobStorageData AzureBlobStorageDataSource { get; set; }
 
-        /// <summary>A Cloud Storage data sink.</summary>
+        /// <summary>Optional. A Cloud Storage data sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDataSink")]
         public virtual GcsData GcsDataSink { get; set; }
 
-        /// <summary>A Cloud Storage data source.</summary>
+        /// <summary>Optional. A Cloud Storage data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDataSource")]
         public virtual GcsData GcsDataSource { get; set; }
 
@@ -3126,11 +3126,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsIntermediateDataLocation")]
         public virtual GcsData GcsIntermediateDataLocation { get; set; }
 
-        /// <summary>An HDFS cluster data source.</summary>
+        /// <summary>Optional. An HDFS cluster data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hdfsDataSource")]
         public virtual HdfsData HdfsDataSource { get; set; }
 
-        /// <summary>An HTTP URL data source.</summary>
+        /// <summary>Optional. An HTTP URL data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpDataSource")]
         public virtual HttpData HttpDataSource { get; set; }
 
@@ -3141,11 +3141,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectConditions")]
         public virtual ObjectConditions ObjectConditions { get; set; }
 
-        /// <summary>A POSIX Filesystem data sink.</summary>
+        /// <summary>Optional. A POSIX Filesystem data sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posixDataSink")]
         public virtual PosixFilesystem PosixDataSink { get; set; }
 
-        /// <summary>A POSIX Filesystem data source.</summary>
+        /// <summary>Optional. A POSIX Filesystem data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posixDataSource")]
         public virtual PosixFilesystem PosixDataSource { get; set; }
 
