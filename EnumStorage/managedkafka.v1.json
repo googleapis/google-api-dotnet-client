@@ -7,5 +7,10 @@
   "Google.Apis.ManagedKafka.v1.ManagedKafkaBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.ManagedKafka.v1.ProjectsResource+LocationsResource+SchemaRegistriesResource+ListRequest.ViewEnum": [
+    "SCHEMA_REGISTRY_VIEW_UNSPECIFIED",
+    "SCHEMA_REGISTRY_VIEW_BASIC",
+    "SCHEMA_REGISTRY_VIEW_FULL"
   ]
 }
