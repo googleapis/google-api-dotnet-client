@@ -6820,6 +6820,37 @@ namespace Google.Apis.ManagedKafka.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>
+                    /// Optional. Specifies the view to return for the schema registry instances. If not specified, the
+                    /// default view is SCHEMA_REGISTRY_VIEW_BASIC.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// Optional. Specifies the view to return for the schema registry instances. If not specified, the
+                    /// default view is SCHEMA_REGISTRY_VIEW_BASIC.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>The unset value. The API will default to SCHEMA_REGISTRY_VIEW_BASIC.</summary>
+                        [Google.Apis.Util.StringValueAttribute("SCHEMA_REGISTRY_VIEW_UNSPECIFIED")]
+                        SCHEMAREGISTRYVIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// If SchemaRegistryView is not specified, this is the default value. Returns only the name of
+                        /// the schema registry. The contexts associated with it are not included.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("SCHEMA_REGISTRY_VIEW_BASIC")]
+                        SCHEMAREGISTRYVIEWBASIC = 1,
+
+                        /// <summary>
+                        /// Returns the name of the schema registry and all the contexts associated with it.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("SCHEMA_REGISTRY_VIEW_FULL")]
+                        SCHEMAREGISTRYVIEWFULL = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -6840,6 +6871,14 @@ namespace Google.Apis.ManagedKafka.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
