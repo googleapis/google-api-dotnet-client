@@ -26047,6 +26047,12 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sharedAdvertiserIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> SharedAdvertiserIds { get; set; }
 
+        /// <summary>
+        /// Optional. Immutable. Designates the third party optimization partner that manages this algorithm.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyOptimizationPartner")]
+        public virtual string ThirdPartyOptimizationPartner { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
