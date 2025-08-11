@@ -443,17 +443,17 @@ namespace Google.Apis.Merchant.promotions_v1beta
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Output only. The maximum number of promotions to return. The service may return fewer than this
-                /// value. The maximum value is 250; values above 250 will be coerced to 250. If unspecified, the
-                /// maximum number of promotions will be returned.
+                /// Optional. The maximum number of promotions to return. The service may return fewer than this value.
+                /// The maximum value is 250; values above 250 will be coerced to 250. If unspecified, the maximum
+                /// number of promotions will be returned.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Output only. A page token, received from a previous `ListPromotions` call. Provide this to retrieve
-                /// the subsequent page. When paginating, all other parameters provided to `ListPromotions` must match
-                /// the call that provided the page token.
+                /// Optional. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the
+                /// call that provided the page token.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
