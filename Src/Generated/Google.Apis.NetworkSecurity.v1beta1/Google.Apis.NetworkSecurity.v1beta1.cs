@@ -13224,7 +13224,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     {
         /// <summary>
         /// Optional. A list of IP addresses or IP address ranges to match against the source IP address of the request.
-        /// Limited to 5 ip_blocks.
+        /// Limited to 10 ip_blocks per Authorization Policy
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipBlocks")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleIpBlock> IpBlocks { get; set; }
@@ -13234,14 +13234,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// unless frontend mutual TLS is enabled for the forwarding rule or Gateway and the client certificate has been
         /// successfully validated by mTLS. Each identity is a string whose value is matched against a list of URI SANs,
         /// DNS Name SANs, or the common name in the client's certificate. A match happens when any principal matches
-        /// with the rule. Limited to 5 principals.
+        /// with the rule. Limited to 50 principals per Authorization Policy for Regional Internal Application Load
+        /// Balancer, Regional External Application Load Balancer, Cross-region Internal Application Load Balancer, and
+        /// Cloud Service Mesh. Limited to 25 principals per Authorization Policy for Global External Application Load
+        /// Balancer.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principals")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRulePrincipal> Principals { get; set; }
 
         /// <summary>
-        /// Optional. A list of resources to match against the resource of the source VM of a request. Limited to 5
-        /// resources.
+        /// Optional. A list of resources to match against the resource of the source VM of a request. Limited to 10
+        /// resources per Authorization Policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleRequestResource> Resources { get; set; }
@@ -13333,7 +13336,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>
         /// Required. A list of resource tag value permanent IDs to match against the resource manager tags value
         /// associated with the source VM of a request. The match follows AND semantics which means all the ids must
-        /// match. Limited to 5 matches.
+        /// match. Limited to 5 ids in the Tag value id set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ids")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> Ids { get; set; }
@@ -13417,23 +13420,25 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         /// <summary>
         /// Optional. A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains
-        /// (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+        /// (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 10 hosts per
+        /// Authorization Policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hosts")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleStringMatch> Hosts { get; set; }
 
         /// <summary>
         /// Optional. A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT,
-        /// POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
+        /// POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive. Limited to 10
+        /// methods per Authorization Policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("methods")]
         public virtual System.Collections.Generic.IList<string> Methods { get; set; }
 
         /// <summary>
         /// Optional. A list of paths to match against. The match can be one of exact, prefix, suffix, or contains
-        /// (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
-        /// Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified
-        /// name of the form /package.service/method.
+        /// (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 10 paths per
+        /// Authorization Policy. Note that this path match includes the query parameters. For gRPC services, this
+        /// should be a fully-qualified name of the form /package.service/method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleStringMatch> Paths { get; set; }
@@ -13448,7 +13453,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>
         /// Required. A list of headers to match against in http header. The match can be one of exact, prefix, suffix,
         /// or contains (substring match). The match follows AND semantics which means all the headers must match.
-        /// Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
+        /// Matches are always case sensitive unless the ignoreCase is set. Limited to 10 headers per Authorization
+        /// Policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleHeaderMatch> Headers { get; set; }
@@ -13895,7 +13901,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing DnsThreatDetector object</summary>
+    /// <summary>Message describing DnsThreatDetector object.</summary>
     public class DnsThreatDetector : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -15646,7 +15652,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing DnsThreatDetectors</summary>
+    /// <summary>Message for response to listing DnsThreatDetectors.</summary>
     public class ListDnsThreatDetectorsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of DnsThreatDetector resources.</summary>
