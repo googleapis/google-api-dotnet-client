@@ -9855,10 +9855,9 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Collections.Generic.IList<Aggregation> Aggregations { get; set; }
 
         /// <summary>
-        /// The amount of time that a time series must fail to report new data to be considered failing. The minimum
-        /// value of this field is 120 seconds. Larger values that are a multiple of a minute--for example, 240 or 300
-        /// seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is
-        /// ignored.
+        /// Required. The amount of time that a time series must fail to report new data to be considered failing. The
+        /// minimum value of this field is 120 seconds. Larger values that are a multiple of a minute--for example, 240
+        /// or 300 seconds--are supported. If an invalid value is given, an error will be returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; }
@@ -10093,12 +10092,12 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string DenominatorFilter { get; set; }
 
         /// <summary>
-        /// The amount of time that a time series must violate the threshold to be considered failing. Currently, only
-        /// values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value
-        /// is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of
-        /// the underlying time series data (which may also be affected by any alignments specified in the aggregations
-        /// field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short
-        /// enough that unhealthy states are detected and alerted on quickly.
+        /// Required. The amount of time that a time series must violate the threshold to be considered failing.
+        /// Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If
+        /// an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind
+        /// the frequency of the underlying time series data (which may also be affected by any alignments specified in
+        /// the aggregations field); a good duration is long enough so that a single outlier does not generate spurious
+        /// alerts, but short enough that unhealthy states are detected and alerted on quickly.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; }
@@ -10279,12 +10278,13 @@ namespace Google.Apis.Monitoring.v3.Data
     public class MonitoringQueryLanguageCondition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The amount of time that a time series must violate the threshold to be considered failing. Currently, only
-        /// values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value
-        /// is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of
-        /// the underlying time series data (which may also be affected by any alignments specified in the aggregations
-        /// field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short
-        /// enough that unhealthy states are detected and alerted on quickly.
+        /// Optional. The amount of time that a time series must violate the threshold to be considered failing.
+        /// Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If
+        /// an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind
+        /// the frequency of the underlying time series data (which may also be affected by any alignments specified in
+        /// the aggregations field); a good duration is long enough so that a single outlier does not generate spurious
+        /// alerts, but short enough that unhealthy states are detected and alerted on quickly. The default value is
+        /// zero.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; }
