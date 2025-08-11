@@ -457,6 +457,7 @@ namespace Google.Apis.AnalyticsHub.v1
                 {
                     this.service = service;
                     Listings = new ListingsResource(service);
+                    QueryTemplates = new QueryTemplatesResource(service);
                 }
 
                 /// <summary>Gets the Listings resource.</summary>
@@ -1159,6 +1160,473 @@ namespace Google.Apis.AnalyticsHub.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/dataExchanges/[^/]+/listings/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the QueryTemplates resource.</summary>
+                public virtual QueryTemplatesResource QueryTemplates { get; }
+
+                /// <summary>The "queryTemplates" collection of methods.</summary>
+                public class QueryTemplatesResource
+                {
+                    private const string Resource = "queryTemplates";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public QueryTemplatesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Approves a query template.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource path of the QueryTemplate. e.g.
+                    /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+                    /// </param>
+                    public virtual ApproveRequest Approve(Google.Apis.AnalyticsHub.v1.Data.ApproveQueryTemplateRequest body, string name)
+                    {
+                        return new ApproveRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Approves a query template.</summary>
+                    public class ApproveRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.QueryTemplate>
+                    {
+                        /// <summary>Constructs a new Approve request.</summary>
+                        public ApproveRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsHub.v1.Data.ApproveQueryTemplateRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource path of the QueryTemplate. e.g.
+                        /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AnalyticsHub.v1.Data.ApproveQueryTemplateRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "approve";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:approve";
+
+                        /// <summary>Initializes Approve parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataExchanges/[^/]+/queryTemplates/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Creates a new QueryTemplate</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource path of the QueryTemplate. e.g.
+                    /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myQueryTemplate`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.AnalyticsHub.v1.Data.QueryTemplate body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a new QueryTemplate</summary>
+                    public class CreateRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.QueryTemplate>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsHub.v1.Data.QueryTemplate body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource path of the QueryTemplate. e.g.
+                        /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myQueryTemplate`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID of the QueryTemplate to create. Must contain only Unicode letters, numbers
+                        /// (0-9), underscores (_). Max length: 100 bytes.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("queryTemplateId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string QueryTemplateId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AnalyticsHub.v1.Data.QueryTemplate Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/queryTemplates";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataExchanges/[^/]+$",
+                            });
+                            RequestParameters.Add("queryTemplateId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "queryTemplateId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a query template.</summary>
+                    /// <param name="name">
+                    /// Required. The resource path of the QueryTemplate. e.g.
+                    /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a query template.</summary>
+                    public class DeleteRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource path of the QueryTemplate. e.g.
+                        /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataExchanges/[^/]+/queryTemplates/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a QueryTemplate</summary>
+                    /// <param name="name">
+                    /// Required. The parent resource path of the QueryTemplate. e.g.
+                    /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets a QueryTemplate</summary>
+                    public class GetRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.QueryTemplate>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource path of the QueryTemplate. e.g.
+                        /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataExchanges/[^/]+/queryTemplates/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all QueryTemplates in a given project and location.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent resource path of the QueryTemplates. e.g.
+                    /// `projects/myproject/locations/us/dataExchanges/123`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all QueryTemplates in a given project and location.</summary>
+                    public class ListRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.ListQueryTemplatesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource path of the QueryTemplates. e.g.
+                        /// `projects/myproject/locations/us/dataExchanges/123`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of results to return in a single response page. Leverage the
+                        /// page tokens to iterate through the entire collection.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. Page token, returned by a previous call, to request the next page of results.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/queryTemplates";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataExchanges/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates an existing QueryTemplate</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Output only. The resource name of the QueryTemplate. e.g.
+                    /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/456`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.AnalyticsHub.v1.Data.QueryTemplate body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates an existing QueryTemplate</summary>
+                    public class PatchRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.QueryTemplate>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsHub.v1.Data.QueryTemplate body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Output only. The resource name of the QueryTemplate. e.g.
+                        /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/456`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Field mask specifies the fields to update in the query template resource. The
+                        /// fields specified in the `updateMask` are relative to the resource and are not a full
+                        /// request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AnalyticsHub.v1.Data.QueryTemplate Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataExchanges/[^/]+/queryTemplates/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Submits a query template for approval.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource path of the QueryTemplate. e.g.
+                    /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+                    /// </param>
+                    public virtual SubmitRequest Submit(Google.Apis.AnalyticsHub.v1.Data.SubmitQueryTemplateRequest body, string name)
+                    {
+                        return new SubmitRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Submits a query template for approval.</summary>
+                    public class SubmitRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.QueryTemplate>
+                    {
+                        /// <summary>Constructs a new Submit request.</summary>
+                        public SubmitRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsHub.v1.Data.SubmitQueryTemplateRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource path of the QueryTemplate. e.g.
+                        /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AnalyticsHub.v1.Data.SubmitQueryTemplateRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "submit";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:submit";
+
+                        /// <summary>Initializes Submit parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataExchanges/[^/]+/queryTemplates/[^/]+$",
                             });
                         }
                     }
@@ -2292,6 +2760,13 @@ namespace Google.Apis.AnalyticsHub.v1
 }
 namespace Google.Apis.AnalyticsHub.v1.Data
 {
+    /// <summary>Message for approving a QueryTemplate.</summary>
+    public class ApproveQueryTemplateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -3216,6 +3691,21 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for response to the list of QueryTemplates.</summary>
+    public class ListQueryTemplatesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token to request the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of QueryTemplates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryTemplates")]
+        public virtual System.Collections.Generic.IList<QueryTemplate> QueryTemplates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for response to the listing of shared resource subscriptions.</summary>
     public class ListSharedResourceSubscriptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3746,6 +4236,137 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A query template is a container for sharing table-valued functions defined by contributors in a data clean room.
+    /// </summary>
+    public class QueryTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when the QueryTemplate was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Short description of the QueryTemplate. The description must not contain Unicode non-characters
+        /// and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        /// Default value is an empty string. Max length: 2000 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. Human-readable display name of the QueryTemplate. The display name must contain only Unicode
+        /// letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;amp;) and can't start or
+        /// end with spaces. Default value is an empty string. Max length: 63 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. Documentation describing the QueryTemplate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
+        public virtual string Documentation { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the QueryTemplate. e.g.
+        /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/456`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Email or URL of the primary point of contact of the QueryTemplate. Max Length: 1000 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryContact")]
+        public virtual string PrimaryContact { get; set; }
+
+        /// <summary>
+        /// Optional. Will be deprecated. Email or URL of the primary point of contact of the QueryTemplate. Max Length:
+        /// 1000 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposer")]
+        public virtual string Proposer { get; set; }
+
+        /// <summary>Optional. The routine associated with the QueryTemplate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routine")]
+        public virtual Routine Routine { get; set; }
+
+        /// <summary>Output only. The QueryTemplate lifecycle state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when the QueryTemplate was last modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for refreshing a subscription.</summary>
     public class RefreshSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3858,6 +4479,21 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a bigquery routine.</summary>
+    public class Routine : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The definition body of the routine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("definitionBody")]
+        public virtual string DefinitionBody { get; set; }
+
+        /// <summary>Required. The type of routine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routineType")]
+        public virtual string RoutineType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Resource in this dataset that is selectively shared.</summary>
     public class SelectedResource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3944,6 +4580,13 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for submitting a QueryTemplate.</summary>
+    public class SubmitQueryTemplateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
