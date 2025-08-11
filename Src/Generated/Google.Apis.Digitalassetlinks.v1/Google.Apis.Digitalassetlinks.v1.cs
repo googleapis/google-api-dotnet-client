@@ -839,7 +839,12 @@ namespace Google.Apis.Digitalassetlinks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("debugString")]
         public virtual string DebugString { get; set; }
 
-        /// <summary>Error codes that describe the result of the Check operation.</summary>
+        /// <summary>
+        /// Error codes that describe the result of the Check operation. NOTE: Error codes may be populated even when
+        /// `linked` is true. The error codes do not necessarily imply that the request failed, but rather, specify any
+        /// errors encountered in the statements file(s) which may or may not impact whether the server determines the
+        /// requested source and target to be linked.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
         public virtual System.Collections.Generic.IList<string> ErrorCode { get; set; }
 
