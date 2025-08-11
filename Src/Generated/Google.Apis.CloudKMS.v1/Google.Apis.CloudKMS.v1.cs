@@ -2030,6 +2030,69 @@ namespace Google.Apis.CloudKMS.v1
                         }
 
                         /// <summary>
+                        /// Decapsulates data that was encapsulated with a public key retrieved from GetPublicKey
+                        /// corresponding to a CryptoKeyVersion with CryptoKey.purpose KEY_ENCAPSULATION.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The resource name of the CryptoKeyVersion to use for decapsulation.
+                        /// </param>
+                        public virtual DecapsulateRequest Decapsulate(Google.Apis.CloudKMS.v1.Data.DecapsulateRequest body, string name)
+                        {
+                            return new DecapsulateRequest(this.service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Decapsulates data that was encapsulated with a public key retrieved from GetPublicKey
+                        /// corresponding to a CryptoKeyVersion with CryptoKey.purpose KEY_ENCAPSULATION.
+                        /// </summary>
+                        public class DecapsulateRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.DecapsulateResponse>
+                        {
+                            /// <summary>Constructs a new Decapsulate request.</summary>
+                            public DecapsulateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.DecapsulateRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the CryptoKeyVersion to use for decapsulation.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudKMS.v1.Data.DecapsulateRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "decapsulate";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:decapsulate";
+
+                            /// <summary>Initializes Decapsulate parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Schedule a CryptoKeyVersion for destruction. Upon calling this method,
                         /// CryptoKeyVersion.state will be set to DESTROY_SCHEDULED, and destroy_time will be set to the
                         /// time destroy_scheduled_duration in the future. At that time, the state will automatically
@@ -2203,11 +2266,25 @@ namespace Google.Apis.CloudKMS.v1
                                 PEM = 1,
 
                                 /// <summary>
+                                /// The returned public key will be encoded in DER format (the PrivateKeyInfo structure
+                                /// from RFC 5208).
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("DER")]
+                                DER = 3,
+
+                                /// <summary>
                                 /// This is supported only for PQC algorithms. The key material is returned in the
                                 /// format defined by NIST PQC standards (FIPS 203, FIPS 204, and FIPS 205).
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("NIST_PQC")]
                                 NISTPQC = 2,
+
+                                /// <summary>
+                                /// The returned public key is in raw bytes format defined in its standard
+                                /// https://datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("XWING_RAW_BYTES")]
+                                XWINGRAWBYTES = 4,
                             }
 
                             /// <summary>Gets the method name.</summary>
@@ -6146,6 +6223,77 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
         public virtual string ProtectionLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for KeyManagementService.Decapsulate.</summary>
+    public class DecapsulateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The ciphertext produced from encapsulation with the named CryptoKeyVersion public key(s).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ciphertext")]
+        public virtual string Ciphertext { get; set; }
+
+        /// <summary>
+        /// Optional. A CRC32C checksum of the DecapsulateRequest.ciphertext. If specified, KeyManagementService will
+        /// verify the integrity of the received DecapsulateRequest.ciphertext using this checksum. KeyManagementService
+        /// will report an error if the checksum verification fails. If you receive a checksum error, your client should
+        /// verify that CRC32C(DecapsulateRequest.ciphertext) is equal to DecapsulateRequest.ciphertext_crc32c, and if
+        /// so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of
+        /// the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different
+        /// languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely
+        /// downconverted to uint32 in languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ciphertextCrc32c")]
+        public virtual System.Nullable<long> CiphertextCrc32c { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for KeyManagementService.Decapsulate.</summary>
+    public class DecapsulateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the CryptoKeyVersion used for decapsulation. Check this field to verify that the
+        /// intended resource was used for decapsulation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ProtectionLevel of the CryptoKeyVersion used in decapsulation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
+        public virtual string ProtectionLevel { get; set; }
+
+        /// <summary>The decapsulated shared_secret originally encapsulated with the matching public key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedSecret")]
+        public virtual string SharedSecret { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A CRC32C checksum of the returned DecapsulateResponse.shared_secret. An
+        /// integrity check of DecapsulateResponse.shared_secret can be performed by computing the CRC32C checksum of
+        /// DecapsulateResponse.shared_secret and comparing your results to this field. Discard the response in case of
+        /// non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an
+        /// issue in your computation of the CRC32C checksum. Note: receiving this response message indicates that
+        /// KeyManagementService is able to successfully decrypt the ciphertext. Note: This field is defined as int64
+        /// for reasons of compatibility across different languages. However, it is a non-negative integer, which will
+        /// never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedSecretCrc32c")]
+        public virtual System.Nullable<long> SharedSecretCrc32c { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A flag indicating whether DecapsulateRequest.ciphertext_crc32c was received by
+        /// KeyManagementService and used for the integrity verification of the ciphertext. A false value of this field
+        /// indicates either that DecapsulateRequest.ciphertext_crc32c was left unset or that it was not delivered to
+        /// KeyManagementService. If you've set DecapsulateRequest.ciphertext_crc32c but this field is still false,
+        /// discard the response and perform a limited number of retries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedCiphertextCrc32c")]
+        public virtual System.Nullable<bool> VerifiedCiphertextCrc32c { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
