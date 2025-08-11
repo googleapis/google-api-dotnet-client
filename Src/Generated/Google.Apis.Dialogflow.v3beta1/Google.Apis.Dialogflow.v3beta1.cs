@@ -18494,6 +18494,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventHandlers")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EventHandler> EventHandlers { get; set; }
 
+        /// <summary>Optional. Defined structured input parameters for this flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputParameterDefinitions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ParameterDefinition> InputParameterDefinitions { get; set; }
+
         /// <summary>Optional. Knowledge connector configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("knowledgeConnectorSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings KnowledgeConnectorSettings { get; set; }
@@ -18516,6 +18520,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>NLU related settings of the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nluSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1NluSettings NluSettings { get; set; }
+
+        /// <summary>Optional. Defined structured output parameters for this flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputParameterDefinitions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ParameterDefinition> OutputParameterDefinitions { get; set; }
 
         /// <summary>
         /// A flow's transition route group serve two purposes: * They are responsible for matching the user's first
