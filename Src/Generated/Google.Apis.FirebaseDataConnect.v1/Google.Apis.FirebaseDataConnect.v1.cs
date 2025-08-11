@@ -3404,6 +3404,16 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
 
+        /// <summary>
+        /// Output only. Ephemeral is true if this data connect service is served from in-memory emulation of Postgres.
+        /// Data Connect service will transfer the data on a best-effort basis to the Cloud SQL instance once it's
+        /// provisioned and linked. WARNING: When `ephemeral=true`, mutations to the database are not guaranteed to be
+        /// durably persisted, even if an OK status code is returned. All or parts of the data may be lost or reverted
+        /// to earlier versions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ephemeral")]
+        public virtual System.Nullable<bool> Ephemeral { get; set; }
+
         /// <summary>Optional. Configure how to perform Postgresql schema migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaMigration")]
         public virtual string SchemaMigration { get; set; }
