@@ -10125,6 +10125,13 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual System.Nullable<long> DiskSizeGb { get; set; }
 
         /// <summary>
+        /// Optional. Enable nested virtualization on the worker, if supported by the machine type. By default, nested
+        /// virtualization is disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableNestedVirtualization")]
+        public virtual System.Nullable<bool> EnableNestedVirtualization { get; set; }
+
+        /// <summary>
         /// Optional. Machine type of a worker, such as `e2-medium`. See [Worker pool config
         /// file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank,
         /// Cloud Build will use a sensible default.
