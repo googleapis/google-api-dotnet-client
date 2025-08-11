@@ -11,7 +11,9 @@
   "Google.Apis.CloudKMS.v1.ProjectsResource+LocationsResource+KeyRingsResource+CryptoKeysResource+CryptoKeyVersionsResource+GetPublicKeyRequest.PublicKeyFormatEnum": [
     "PUBLIC_KEY_FORMAT_UNSPECIFIED",
     "PEM",
-    "NIST_PQC"
+    "NIST_PQC",
+    "DER",
+    "XWING_RAW_BYTES"
   ],
   "Google.Apis.CloudKMS.v1.ProjectsResource+LocationsResource+KeyRingsResource+CryptoKeysResource+CryptoKeyVersionsResource+ListRequest.ViewEnum": [
     "CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED",
