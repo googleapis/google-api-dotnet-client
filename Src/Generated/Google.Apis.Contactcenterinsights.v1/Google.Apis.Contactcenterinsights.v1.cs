@@ -13333,6 +13333,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerSatisfactionRating")]
         public virtual System.Nullable<int> CustomerSatisfactionRating { get; set; }
 
+        /// <summary>Input only. The feedback labels associated with the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedbackLabels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1FeedbackLabel> FeedbackLabels { get; set; }
+
         /// <summary>An arbitrary string value specifying the menu path the customer took.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("menuPath")]
         public virtual string MenuPath { get; set; }
@@ -20002,6 +20006,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>An arbitrary integer value indicating the customer's satisfaction rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerSatisfactionRating")]
         public virtual System.Nullable<int> CustomerSatisfactionRating { get; set; }
+
+        /// <summary>Input only. The feedback labels associated with the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedbackLabels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel> FeedbackLabels { get; set; }
 
         /// <summary>An arbitrary string value specifying the menu path the customer took.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("menuPath")]
