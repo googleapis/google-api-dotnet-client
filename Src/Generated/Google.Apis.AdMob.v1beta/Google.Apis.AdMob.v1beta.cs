@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2828,7 +2828,7 @@ namespace Google.Apis.AdMob.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("idfaTargeting")]
         public virtual string IdfaTargeting { get; set; }
 
-        /// <summary>Describes the platform of the app. Examples: "IOS", "Android".</summary>
+        /// <summary>Describes the platform of the app. Examples: "IOS", "ANDROID".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
         public virtual string Platform { get; set; }
 
