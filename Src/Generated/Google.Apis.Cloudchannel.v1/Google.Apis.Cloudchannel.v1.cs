@@ -7218,6 +7218,27 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a single component of the total discount applicable on a Price.</summary>
+    public class GoogleCloudChannelV1DiscountComponent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fixed value discount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discountAbsolute")]
+        public virtual GoogleTypeMoney DiscountAbsolute { get; set; }
+
+        /// <summary>
+        /// Discount percentage, represented as decimal. For example, a 20% discount will be represented as 0.2.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discountPercentage")]
+        public virtual System.Nullable<double> DiscountPercentage { get; set; }
+
+        /// <summary>Type of the discount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discountType")]
+        public virtual string DiscountType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Required Edu Attributes</summary>
     public class GoogleCloudChannelV1EduData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8304,6 +8325,12 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("discount")]
         public virtual System.Nullable<double> Discount { get; set; }
 
+        /// <summary>
+        /// Breakdown of the discount into its components. This will be empty if there is no discount present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discountComponents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudChannelV1DiscountComponent> DiscountComponents { get; set; }
+
         /// <summary>Effective Price after applying the discounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectivePrice")]
         public virtual GoogleTypeMoney EffectivePrice { get; set; }
@@ -8311,6 +8338,13 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>Link to external price list, such as link to Google Voice rate card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalPriceUri")]
         public virtual string ExternalPriceUri { get; set; }
+
+        /// <summary>
+        /// The time period with respect to which base and effective prices are defined. Example: 1 month, 6 months, 1
+        /// year, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pricePeriod")]
+        public virtual GoogleCloudChannelV1Period PricePeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
