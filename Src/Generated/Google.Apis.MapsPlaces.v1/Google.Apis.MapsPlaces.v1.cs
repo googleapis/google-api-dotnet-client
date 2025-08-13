@@ -2005,7 +2005,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restaurant")]
         public virtual GoogleMapsPlacesV1ContentBlock Restaurant { get; set; }
 
-        /// <summary>A summary of the nearby gas stations.</summary>
+        /// <summary>A summary of the nearby stores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("store")]
         public virtual GoogleMapsPlacesV1ContentBlock Store { get; set; }
 
