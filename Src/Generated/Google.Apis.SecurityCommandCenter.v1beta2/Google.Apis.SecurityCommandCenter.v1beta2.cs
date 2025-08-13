@@ -9733,6 +9733,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         }
 
         /// <summary>
+        /// Output only. The resource name of the Cloud KMS `CryptoKey` used to protect this configuration's data, if
+        /// configured during Security Command Center activation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
+        public virtual string CryptoKeyName { get; set; }
+
+        /// <summary>
         /// The dataset to write findings' updates to. Its format is
         /// "projects/[project_id]/datasets/[bigquery_dataset_id]". BigQuery dataset unique ID must contain only letters
         /// (a-z, A-Z), numbers (0-9), or underscores (_).
@@ -11287,6 +11294,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. The name of the Cloud KMS key used to encrypt this finding, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
+        public virtual string CryptoKeyName { get; set; }
+
         /// <summary>Data access events associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataAccessEvents")]
         public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2DataAccessEvent> DataAccessEvents { get; set; }
@@ -12515,6 +12526,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Output only. The resource name of the Cloud KMS `CryptoKey` used to encrypt this configuration data, if CMEK
+        /// was enabled during Security Command Center activation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
+        public virtual string CryptoKeyName { get; set; }
 
         /// <summary>A description of the mute config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -14720,6 +14738,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     /// <summary>Resource capturing the settings for Security Center.</summary>
     public class SecurityCenterSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The KMS key name used for CMEK encryption. Format:
+        /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key_name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
+        public virtual string CryptoKeyName { get; set; }
+
         /// <summary>
         /// The resource name of the project to send logs to. This project must be part of the organization this
         /// resource resides in. The format is `projects/{project_id}`. An empty value disables logging. This value is
