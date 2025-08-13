@@ -6937,6 +6937,10 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowAutoTiering")]
         public virtual System.Nullable<bool> AllowAutoTiering { get; set; }
 
+        /// <summary>Output only. Available throughput of the storage pool (in MiB/s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableThroughputMibps")]
+        public virtual System.Nullable<double> AvailableThroughputMibps { get; set; }
+
         /// <summary>Required. Capacity in GIB of the pool</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityGib")]
         public virtual System.Nullable<long> CapacityGib { get; set; }
@@ -7035,6 +7039,10 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// <summary>Optional. This field is not implemented. The values provided in this field are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("psaRange")]
         public virtual string PsaRange { get; set; }
+
+        /// <summary>Optional. QoS (Quality of Service) Type of the storage pool</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qosType")]
+        public virtual string QosType { get; set; }
 
         /// <summary>Optional. Specifies the replica zone for regional storagePool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicaZone")]
@@ -7477,6 +7485,10 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// <summary>Required. StoragePool name of the volume</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storagePool")]
         public virtual string StoragePool { get; set; }
+
+        /// <summary>Optional. Throughput of the volume (in MiB/s)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("throughputMibps")]
+        public virtual System.Nullable<double> ThroughputMibps { get; set; }
 
         /// <summary>Tiering policy for the volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tieringPolicy")]
