@@ -963,6 +963,13 @@ namespace Google.Apis.VersionHistory.v1.Data
         public virtual System.Nullable<bool> Pinnable { get; set; }
 
         /// <summary>
+        /// Rollout-related metadata. Some releases are part of one or more A/B rollouts. This field contains the names
+        /// and data describing this release's role in any rollouts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutData")]
+        public virtual System.Collections.Generic.IList<RolloutData> RolloutData { get; set; }
+
+        /// <summary>
         /// Timestamp interval of when the release was live. If end_time is unspecified, the release is currently live.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serving")]
@@ -971,6 +978,24 @@ namespace Google.Apis.VersionHistory.v1.Data
         /// <summary>String containing just the version number. e.g. "84.0.4147.38"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rollout-related metadata for a release.</summary>
+    public class RolloutData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutName")]
+        public virtual string RolloutName { get; set; }
+
+        /// <summary>
+        /// Tags associated with a release's role in a rollout. Most rollouts will have at least one release with a
+        /// "rollout" tag and another release with a "control" tag. Some rollouts may have additional named arms.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual System.Collections.Generic.IList<string> Tag { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
