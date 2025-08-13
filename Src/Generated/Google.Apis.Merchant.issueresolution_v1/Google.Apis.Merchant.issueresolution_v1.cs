@@ -912,7 +912,7 @@ namespace Google.Apis.Merchant.issueresolution_v1.Data
     /// Action that is implemented and performed in (your) third-party application. The application needs to show an
     /// additional content and input form to the business. They can start the action only when they provided all
     /// required inputs. The application will request processing of the action by calling the [triggeraction
-    /// method](https://developers.google.com/merchant/api/reference/rest/issueresolution_v1beta/issueresolution/triggeraction).
+    /// method](https://developers.google.com/merchant/api/reference/rest/issueresolution_v1/issueresolution/triggeraction).
     /// </summary>
     public class BuiltInUserInputAction : Google.Apis.Requests.IDirectResponseSchema
     {
