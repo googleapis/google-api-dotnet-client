@@ -2301,6 +2301,14 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     /// <summary>An interaction with the device, such as a tap, text entry, wait, etc.</summary>
     public class GoogleFirebaseAppdistroV1alphaDeviceInteraction : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. A back action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backAction")]
+        public virtual GoogleFirebaseAppdistroV1alphaDeviceInteractionBack BackAction { get; set; }
+
+        /// <summary>Output only. A drag and drop action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dragAndDrop")]
+        public virtual GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop DragAndDrop { get; set; }
+
         /// <summary>
         /// Output only. A text entry action, that enters text into a particular text field, clearing any existing text
         /// in the field. Unlike `text_input` this action does not require any other actions such as a tap to be
@@ -2312,6 +2320,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         /// <summary>Output only. Key code for a key event action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyCode")]
         public virtual string KeyCode { get; set; }
+
+        /// <summary>Output only. A long press (tap and hold) action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longPress")]
+        public virtual AndroidxCrawlerOutputPoint LongPress { get; set; }
 
         /// <summary>
         /// Output only. The screenshot used in the context of this action. The screen may have changed before the
@@ -2339,6 +2351,28 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         /// <summary>Output only. A wait action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wait")]
         public virtual GoogleFirebaseAppdistroV1alphaDeviceInteractionWait Wait { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A back action.</summary>
+    public class GoogleFirebaseAppdistroV1alphaDeviceInteractionBack : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A drag and drop action.</summary>
+    public class GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The end point of the drag and drop.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual AndroidxCrawlerOutputPoint End { get; set; }
+
+        /// <summary>Output only. The start point of the drag and drop.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual AndroidxCrawlerOutputPoint Start { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
