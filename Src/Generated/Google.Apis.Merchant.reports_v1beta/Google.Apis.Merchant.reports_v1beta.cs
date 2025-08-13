@@ -1825,7 +1825,7 @@ namespace Google.Apis.Merchant.reports_v1beta.Data
         /// <summary>
         /// Required. Query that defines a report to be retrieved. For details on how to construct your query, see the
         /// [Query Language guide](/merchant/api/guides/reports/query-language). For the full list of available tables
-        /// and fields, see the [Available fields](/merchant/api/reference/rest/reports_v1beta/accounts.reports).
+        /// and fields, see the [Available fields](/merchant/api/reference/rest/reports_{api_version}/accounts.reports).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
