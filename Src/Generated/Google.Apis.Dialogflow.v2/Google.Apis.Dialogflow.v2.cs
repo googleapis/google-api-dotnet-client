@@ -26797,6 +26797,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("faqAnswer")]
         public virtual GoogleCloudDialogflowV2FaqAnswer FaqAnswer { get; set; }
 
+        /// <summary>Output only. The generator suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestion")]
+        public virtual GoogleCloudDialogflowV2GeneratorSuggestion GeneratorSuggestion { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
