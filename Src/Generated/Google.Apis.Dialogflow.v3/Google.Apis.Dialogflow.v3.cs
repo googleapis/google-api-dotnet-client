@@ -18346,7 +18346,11 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>Settings for exporting audio.</summary>
     public class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Filename pattern for exported audio.</summary>
+        /// <summary>
+        /// Filename pattern for exported audio. {conversation} and {timestamp} are placeholders that will be replaced
+        /// with the conversation ID and epoch micros of the conversation. For example,
+        /// "{conversation}/recording_{timestamp}.mulaw".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioExportPattern")]
         public virtual string AudioExportPattern { get; set; }
 
