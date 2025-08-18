@@ -495,6 +495,13 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("gemini_in_workspace_apps")]
                 GeminiInWorkspaceApps = 24,
+
+                /// <summary>
+                /// The Classroom activity reports return information about different types of [Classroom activity
+                /// events](https://developers.google.com/workspace/admin/reports/v1/appendix/activity/classroom).
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("classroom")]
+                Classroom = 25,
             }
 
             /// <summary>
@@ -638,7 +645,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = @"(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)",
+                    Pattern = @"(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(classroom)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)",
                 });
                 RequestParameters.Add("actorIpAddress", new Google.Apis.Discovery.Parameter
                 {
@@ -911,6 +918,13 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("keep")]
                 Keep = 21,
+
+                /// <summary>
+                /// The Classroom activity reports return information about different types of [Classroom activity
+                /// events](https://developers.google.com/workspace/admin/reports/v1/appendix/activity/classroom).
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("classroom")]
+                Classroom = 22,
             }
 
             /// <summary>
@@ -1062,7 +1076,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = @"(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)",
+                    Pattern = @"(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(classroom)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)",
                 });
                 RequestParameters.Add("actorIpAddress", new Google.Apis.Discovery.Parameter
                 {

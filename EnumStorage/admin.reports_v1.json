@@ -24,7 +24,8 @@
     "keep",
     "vault",
     "gemini_for_workspace",
-    "gemini_in_workspace_apps"
+    "gemini_in_workspace_apps",
+    "classroom"
   ],
   "Google.Apis.Admin.Reports.reports_v1.ActivitiesResource+WatchRequest.ApplicationNameEnum": [
     "application_name_unspecified",
@@ -48,7 +49,8 @@
     "context_aware_access",
     "chrome",
     "data_studio",
-    "keep"
+    "keep",
+    "classroom"
   ],
   "Google.Apis.Admin.Reports.reports_v1.EntityUsageReportsResource+GetRequest.EntityKeyEnum": [
     "entityKeyUndefined",
