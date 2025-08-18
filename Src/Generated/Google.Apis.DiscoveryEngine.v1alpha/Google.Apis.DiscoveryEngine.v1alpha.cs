@@ -5317,8 +5317,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <summary>
                             /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
                             /// after a field name for descending. Supported fields: * `update_time` * `create_time` *
-                            /// `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned
-                            /// desc,update_time desc": list sessions by is_pinned first, then by update_time.
+                            /// `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned
+                            /// desc,update_time desc`: list sessions by is_pinned first, then by update_time.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
@@ -10750,8 +10750,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <summary>
                             /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
                             /// after a field name for descending. Supported fields: * `update_time` * `create_time` *
-                            /// `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned
-                            /// desc,update_time desc": list sessions by is_pinned first, then by update_time.
+                            /// `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned
+                            /// desc,update_time desc`: list sessions by is_pinned first, then by update_time.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
@@ -15960,8 +15960,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <summary>
                         /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a
                         /// field name for descending. Supported fields: * `update_time` * `create_time` *
-                        /// `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned
-                        /// desc,update_time desc": list sessions by is_pinned first, then by update_time.
+                        /// `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned
+                        /// desc,update_time desc`: list sessions by is_pinned first, then by update_time.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
@@ -29012,6 +29012,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; }
 
+        /// <summary>
+        /// Optional. Whether to use static secrets for the connector. If true, the secrets provided in the
+        /// action_params will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useStaticSecrets")]
+        public virtual System.Nullable<bool> UseStaticSecrets { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -39109,7 +39116,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for
         /// descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: *
-        /// "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first,
+        /// `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first,
         /// then by update_time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
@@ -45905,6 +45912,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaWidgetConfigAssistantSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. This field controls the default web grounding toggle for end users if `web_grounding_type` is
+        /// set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`. By default, this
+        /// field is set to false. If `web_grounding_type` is `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or
+        /// `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web grounding enabled by default on UI. If
+        /// true, grounding toggle will be disabled by default on UI. End users can still enable web grounding in the UI
+        /// if web grounding is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultWebGroundingToggleOff")]
+        public virtual System.Nullable<bool> DefaultWebGroundingToggleOff { get; set; }
+
+        /// <summary>
         /// Whether or not the Google search grounding toggle is shown. Deprecated. Use web_grounding_type instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleSearchGroundingEnabled")]
@@ -52446,6 +52464,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Customer-managed encryption configuration for Notebooks.</summary>
+    public class GoogleCloudNotebooklmV1alphaCmekConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. KMS key resource name which will be used to encrypt resources
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for NotebookService.ListRecentlyViewedNotebooks method.</summary>
     public class GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -52466,6 +52498,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudNotebooklmV1alphaNotebook : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. CMEK-related information for the Notebook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
+        public virtual GoogleCloudNotebooklmV1alphaCmekConfig CmekConfig { get; set; }
+
         /// <summary>Output only. The emoji of the notebook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emoji")]
         public virtual string Emoji { get; set; }
