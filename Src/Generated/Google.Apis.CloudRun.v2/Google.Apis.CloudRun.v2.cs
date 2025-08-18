@@ -7595,6 +7595,13 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. Path within the volume from which the container's volume should be mounted. Defaults to ""
+        /// (volume's root).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subPath")]
+        public virtual string SubPath { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
