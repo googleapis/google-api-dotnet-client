@@ -2812,8 +2812,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string BillingCycleSpec { get; set; }
 
         /// <summary>
-        /// Required. The previous subscription id to be replaced. This is not the full resource name, use the
-        /// subscription_id segment only.
+        /// Required. The previous subscription id to be replaced. The format can be one of the following: 1.
+        /// `subscription_id`: the old subscription id under the same partner_id. 2.
+        /// `partners/{partner_id}/subscriptions/{subscription_id}`. A different partner_id is allowed. But they must be
+        /// under the same partner group.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousSubscriptionId")]
         public virtual string PreviousSubscriptionId { get; set; }
