@@ -9621,7 +9621,12 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>Configuration for the Lustre CSI driver.</summary>
     public class LustreCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set to true, the Lustre CSI driver will install Lustre kernel modules using port 6988.</summary>
+        /// <summary>
+        /// If set to true, the Lustre CSI driver will install Lustre kernel modules using port 6988. This serves as a
+        /// workaround for a port conflict with the gke-metadata-server. This field is required ONLY under the following
+        /// conditions: 1. The GKE node version is older than 1.33.2-gke.4655000. 2. You're connecting to a Lustre
+        /// instance that has the 'gke-support-enabled' flag.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableLegacyLustrePort")]
         public virtual System.Nullable<bool> EnableLegacyLustrePort { get; set; }
 
@@ -11713,6 +11718,21 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>RotationConfig is config for secret manager auto rotation.</summary>
+    public class RotationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the rotation is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The interval between two consecutive rotations. Default rotation interval is 2 minutes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotationInterval")]
+        public virtual object RotationInterval { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>SandboxConfig contains configurations of the sandbox to use for the node.</summary>
     public class SandboxConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11757,6 +11777,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Enable/Disable Secret Manager Config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Rotation config for secret manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotationConfig")]
+        public virtual RotationConfig RotationConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
