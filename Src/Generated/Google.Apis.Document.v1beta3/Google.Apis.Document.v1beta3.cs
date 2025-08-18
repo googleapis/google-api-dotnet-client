@@ -4958,6 +4958,13 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
+        /// <summary>
+        /// The output of the validation given the document and the validation rules. The output is appended to the
+        /// document in the processing order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationOutputs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentValidationOutput> ValidationOutputs { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5375,6 +5382,10 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
+
+        /// <summary>Optional. Specifies how the entity's value is obtained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; }
 
         /// <summary>
         /// Optional. Normalized entity value. Absent if the extracted value could not be converted or the type (e.g.
@@ -6684,6 +6695,47 @@ namespace Google.Apis.Document.v1beta3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textAnchor")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentTextAnchor TextAnchor { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The output of the validation given the document and the validation rules.</summary>
+    public class GoogleCloudDocumentaiV1beta3DocumentValidationOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The overall result of the validation, true if all applicable rules are valid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passAllRules")]
+        public virtual System.Nullable<bool> PassAllRules { get; set; }
+
+        /// <summary>The result of each validation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentValidationOutputValidationResult> ValidationResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Validation result for a single validation rule.</summary>
+    public class GoogleCloudDocumentaiV1beta3DocumentValidationOutputValidationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The description of the validation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleDescription")]
+        public virtual string RuleDescription { get; set; }
+
+        /// <summary>The name of the validation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleName")]
+        public virtual string RuleName { get; set; }
+
+        /// <summary>
+        /// The detailed information of the running the validation process using the entity from the document based on
+        /// the validation rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationDetails")]
+        public virtual string ValidationDetails { get; set; }
+
+        /// <summary>The result of the validation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationResultType")]
+        public virtual string ValidationResultType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
