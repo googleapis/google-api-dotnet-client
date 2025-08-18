@@ -8542,8 +8542,8 @@ namespace Google.Apis.Classroom.v1
         /// `PERMISSION_DENIED` if the requesting user is not permitted to create courses or for access errors. *
         /// `NOT_FOUND` if the primary teacher is not a valid user. * `FAILED_PRECONDITION` if the course owner's
         /// account is disabled or for the following request errors: * UserCannotOwnCourse *
-        /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if an alias was specified in the `id` and already
-        /// exists.
+        /// UserGroupsMembershipLimitReached * CourseTitleCannotContainUrl * `ALREADY_EXISTS` if an alias was specified
+        /// in the `id` and already exists.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.Course body)
@@ -8558,8 +8558,8 @@ namespace Google.Apis.Classroom.v1
         /// `PERMISSION_DENIED` if the requesting user is not permitted to create courses or for access errors. *
         /// `NOT_FOUND` if the primary teacher is not a valid user. * `FAILED_PRECONDITION` if the course owner's
         /// account is disabled or for the following request errors: * UserCannotOwnCourse *
-        /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if an alias was specified in the `id` and already
-        /// exists.
+        /// UserGroupsMembershipLimitReached * CourseTitleCannotContainUrl * `ALREADY_EXISTS` if an alias was specified
+        /// in the `id` and already exists.
         /// </summary>
         public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Course>
         {
@@ -8947,7 +8947,7 @@ namespace Google.Apis.Classroom.v1
         /// if the requesting user is not permitted to modify the requested course or for access errors. * `NOT_FOUND`
         /// if no course exists with the requested ID. * `INVALID_ARGUMENT` if invalid fields are specified in the
         /// update mask or if no update mask is supplied. * `FAILED_PRECONDITION` for the following request errors: *
-        /// CourseNotModifiable * InactiveCourseOwner * IneligibleOwner
+        /// CourseNotModifiable * InactiveCourseOwner * IneligibleOwner * CourseTitleCannotContainUrl
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="id">
@@ -8964,7 +8964,7 @@ namespace Google.Apis.Classroom.v1
         /// if the requesting user is not permitted to modify the requested course or for access errors. * `NOT_FOUND`
         /// if no course exists with the requested ID. * `INVALID_ARGUMENT` if invalid fields are specified in the
         /// update mask or if no update mask is supplied. * `FAILED_PRECONDITION` for the following request errors: *
-        /// CourseNotModifiable * InactiveCourseOwner * IneligibleOwner
+        /// CourseNotModifiable * InactiveCourseOwner * IneligibleOwner * CourseTitleCannotContainUrl
         /// </summary>
         public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Course>
         {
@@ -9035,7 +9035,8 @@ namespace Google.Apis.Classroom.v1
         /// <summary>
         /// Updates a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
         /// user is not permitted to modify the requested course or for access errors. * `NOT_FOUND` if no course exists
-        /// with the requested ID. * `FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable
+        /// with the requested ID. * `FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable *
+        /// CourseTitleCannotContainUrl
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="id">
@@ -9050,7 +9051,8 @@ namespace Google.Apis.Classroom.v1
         /// <summary>
         /// Updates a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
         /// user is not permitted to modify the requested course or for access errors. * `NOT_FOUND` if no course exists
-        /// with the requested ID. * `FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable
+        /// with the requested ID. * `FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable *
+        /// CourseTitleCannotContainUrl
         /// </summary>
         public class UpdateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Course>
         {
