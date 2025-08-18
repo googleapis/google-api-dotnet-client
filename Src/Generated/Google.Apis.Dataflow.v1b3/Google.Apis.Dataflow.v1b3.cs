@@ -1078,11 +1078,10 @@ namespace Google.Apis.Dataflow.v1b3
             }
 
             /// <summary>
-            /// A Job is a multi-stage computation graph run by the Cloud Dataflow service. Creates a Cloud Dataflow
-            /// job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint]
-            /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is
-            /// not recommended, as your job will always start in `us-central1`. Do not enter confidential information
-            /// when you supply string values using the API.
+            /// Creates a Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a
+            /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+            /// `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not enter
+            /// confidential information when you supply string values using the API.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
@@ -1092,11 +1091,10 @@ namespace Google.Apis.Dataflow.v1b3
             }
 
             /// <summary>
-            /// A Job is a multi-stage computation graph run by the Cloud Dataflow service. Creates a Cloud Dataflow
-            /// job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint]
-            /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is
-            /// not recommended, as your job will always start in `us-central1`. Do not enter confidential information
-            /// when you supply string values using the API.
+            /// Creates a Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a
+            /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+            /// `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not enter
+            /// confidential information when you supply string values using the API.
             /// </summary>
             public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
@@ -3054,11 +3052,10 @@ namespace Google.Apis.Dataflow.v1b3
                 }
 
                 /// <summary>
-                /// A Job is a multi-stage computation graph run by the Cloud Dataflow service. Creates a Cloud Dataflow
-                /// job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint]
-                /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create`
-                /// is not recommended, as your job will always start in `us-central1`. Do not enter confidential
-                /// information when you supply string values using the API.
+                /// Creates a Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a
+                /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+                /// `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not
+                /// enter confidential information when you supply string values using the API.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
@@ -3072,11 +3069,10 @@ namespace Google.Apis.Dataflow.v1b3
                 }
 
                 /// <summary>
-                /// A Job is a multi-stage computation graph run by the Cloud Dataflow service. Creates a Cloud Dataflow
-                /// job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint]
-                /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create`
-                /// is not recommended, as your job will always start in `us-central1`. Do not enter confidential
-                /// information when you supply string values using the API.
+                /// Creates a Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a
+                /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+                /// `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not
+                /// enter confidential information when you supply string values using the API.
                 /// </summary>
                 public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
