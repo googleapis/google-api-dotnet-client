@@ -312,6 +312,7 @@ namespace Google.Apis.Connectors.v2
                     this.service = service;
                     Actions = new ActionsResource(service);
                     EntityTypes = new EntityTypesResource(service);
+                    Tools = new ToolsResource(service);
                 }
 
                 /// <summary>Gets the Actions resource.</summary>
@@ -1184,6 +1185,12 @@ namespace Google.Apis.Connectors.v2
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>
+                        /// Context metadata for request could be used to fetch customization of entity type schema.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("contextMetadata", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ContextMetadata { get; set; }
+
                         /// <summary>Specifies view for entity type schema.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1224,6 +1231,14 @@ namespace Google.Apis.Connectors.v2
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/entityTypes/[^/]+$",
+                            });
+                            RequestParameters.Add("contextMetadata", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "contextMetadata",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
                             {
@@ -1334,6 +1349,158 @@ namespace Google.Apis.Connectors.v2
                             RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Tools resource.</summary>
+                public virtual ToolsResource Tools { get; }
+
+                /// <summary>The "tools" collection of methods.</summary>
+                public class ToolsResource
+                {
+                    private const string Resource = "tools";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ToolsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Executes a specific tool.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Resource name of the Tool. Format:
+                    /// projects/{project}/locations/{location}/connections/{connection}/tools/{tool}
+                    /// </param>
+                    public virtual ExecuteRequest Execute(Google.Apis.Connectors.v2.Data.ExecuteToolRequest body, string name)
+                    {
+                        return new ExecuteRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Executes a specific tool.</summary>
+                    public class ExecuteRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v2.Data.ExecuteToolResponse>
+                    {
+                        /// <summary>Constructs a new Execute request.</summary>
+                        public ExecuteRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v2.Data.ExecuteToolRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the Tool. Format:
+                        /// projects/{project}/locations/{location}/connections/{connection}/tools/{tool}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Connectors.v2.Data.ExecuteToolRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "execute";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}:execute";
+
+                        /// <summary>Initializes Execute parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/tools/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all available tools.</summary>
+                    /// <param name="parent">
+                    /// Required. Resource name of the Connection. Format:
+                    /// projects/{project}/locations/{location}/connections/{connection}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all available tools.</summary>
+                    public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v2.Data.ListToolsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the Connection. Format:
+                        /// projects/{project}/locations/{location}/connections/{connection}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/tools";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1677,6 +1844,10 @@ namespace Google.Apis.Connectors.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputParameters")]
         public virtual System.Collections.Generic.IList<InputParameter> InputParameters { get; set; }
 
+        /// <summary>Metadata like service latency, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
+
         /// <summary>Name of the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1738,6 +1909,10 @@ namespace Google.Apis.Connectors.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>Metadata like service latency, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
 
         /// <summary>State of the connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -1845,6 +2020,10 @@ namespace Google.Apis.Connectors.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IDictionary<string, object> Fields { get; set; }
 
+        /// <summary>Metadata like service latency, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
+
         /// <summary>
         /// Output only. Resource name of the Entity. Format:
         /// projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id}
@@ -1861,6 +2040,9 @@ namespace Google.Apis.Connectors.v2.Data
     /// </summary>
     public class EntityType : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultSortBy")]
+        public virtual string DefaultSortBy { get; set; }
+
         /// <summary>List containing metadata information about each field of the entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<Field> Fields { get; set; }
@@ -1868,6 +2050,10 @@ namespace Google.Apis.Connectors.v2.Data
         /// <summary>JsonSchema representation of this entity's schema</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
         public virtual JsonSchema JsonSchema { get; set; }
+
+        /// <summary>Metadata like service latency, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
 
         /// <summary>The name of the entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -1900,6 +2086,10 @@ namespace Google.Apis.Connectors.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessCredentials")]
         public virtual AccessCredentials AccessCredentials { get; set; }
 
+        /// <summary>Metadata like service latency, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1920,6 +2110,10 @@ namespace Google.Apis.Connectors.v2.Data
     /// <summary>Response message for ActionService.ExecuteAction</summary>
     public class ExecuteActionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata like service latency, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
+
         /// <summary>
         /// In the case of successful invocation of the specified action, the results Struct contains values based on
         /// the response of the action invoked. 1. If the action execution produces any entities as a result, they are
@@ -1958,6 +2152,28 @@ namespace Google.Apis.Connectors.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ConnectorAgentService.ExecuteTool</summary>
+    public class ExecuteToolRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Input parameters for the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ConnectorAgentService.ExecuteTool</summary>
+    public class ExecuteToolResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output from the tool execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Result { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2343,6 +2559,10 @@ namespace Google.Apis.Connectors.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("actions")]
         public virtual System.Collections.Generic.IList<Action> Actions { get; set; }
 
+        /// <summary>Metadata like service latency, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
+
         /// <summary>Next page token if more actions available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -2364,6 +2584,10 @@ namespace Google.Apis.Connectors.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<Entity> Entities { get; set; }
 
+        /// <summary>Metadata like service latency, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
+
         /// <summary>Next page token if more records are available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -2375,6 +2599,10 @@ namespace Google.Apis.Connectors.v2.Data
     /// <summary>Response message for EntityService.ListEntityTypes</summary>
     public class ListEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata like service latency, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
+
         /// <summary>Next page token if more entity types available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -2388,6 +2616,21 @@ namespace Google.Apis.Connectors.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unsupportedTypeNames")]
         public virtual System.Collections.Generic.IList<string> UnsupportedTypeNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ConnectorAgentService.ListTools</summary>
+    public class ListToolsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of available tools.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tools")]
+        public virtual System.Collections.Generic.IList<Tool> Tools { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2845,6 +3088,10 @@ namespace Google.Apis.Connectors.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessCredentials")]
         public virtual AccessCredentials AccessCredentials { get; set; }
 
+        /// <summary>Metadata like service latency, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2986,9 +3233,36 @@ namespace Google.Apis.Connectors.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message representing a single tool.</summary>
+    public class Tool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>JSON schema for the input parameters of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputSchema")]
+        public virtual JsonSchema InputSchema { get; set; }
+
+        /// <summary>Name of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>JSON schema for the output of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputSchema")]
+        public virtual JsonSchema OutputSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for EntityService.UpdateEntitiesWithConditions</summary>
     public class UpdateEntitiesWithConditionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata like service latency, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
+
         /// <summary>Response returned by the external system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
