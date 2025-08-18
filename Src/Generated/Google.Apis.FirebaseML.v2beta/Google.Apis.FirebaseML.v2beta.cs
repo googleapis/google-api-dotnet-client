@@ -1640,14 +1640,6 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Tool to retrieve public maps data for grounding, powered by Google.</summary>
     public class GoogleCloudAiplatformV1beta1GoogleMaps : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The authentication config to access the API. Deprecated. Please use auth_config instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiAuth")]
-        public virtual GoogleCloudAiplatformV1beta1ApiAuth ApiAuth { get; set; }
-
-        /// <summary>The authentication config to access the API. Only API key is supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("authConfig")]
-        public virtual GoogleCloudAiplatformV1beta1AuthConfig AuthConfig { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1783,6 +1775,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Chunk from context retrieved by the retrieval tools.</summary>
     public class GoogleCloudAiplatformV1beta1GroundingChunkRetrievedContext : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The full document name for the referenced Vertex AI Search document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentName")]
+        public virtual string DocumentName { get; set; }
+
         /// <summary>
         /// Additional context for the RAG retrieval result. This is only populated when using the RAG retrieval tool.
         /// </summary>
