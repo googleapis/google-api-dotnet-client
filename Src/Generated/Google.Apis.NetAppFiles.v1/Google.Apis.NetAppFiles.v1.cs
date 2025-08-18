@@ -4862,8 +4862,8 @@ namespace Google.Apis.NetAppFiles.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -7201,7 +7201,7 @@ namespace Google.Apis.NetAppFiles.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("capacityGib")]
         public virtual System.Nullable<long> CapacityGib { get; set; }
 
-        /// <summary>Output only. Size of the volume cold tier data in GiB.</summary>
+        /// <summary>Output only. Size of the volume cold tier data rounded down to the nearest GiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coldTierSizeGib")]
         public virtual System.Nullable<long> ColdTierSizeGib { get; set; }
 
