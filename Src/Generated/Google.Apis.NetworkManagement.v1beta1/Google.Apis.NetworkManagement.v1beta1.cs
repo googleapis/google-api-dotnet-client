@@ -3410,6 +3410,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cause")]
         public virtual string Cause { get; set; }
 
+        /// <summary>Geolocation (region code) of the destination IP address (if relevant).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationGeolocationCode")]
+        public virtual string DestinationGeolocationCode { get; set; }
+
         /// <summary>Destination IP address of the dropped packet (if relevant).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationIp")]
         public virtual string DestinationIp { get; set; }
@@ -3421,6 +3425,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>URI of the resource that caused the drop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
+
+        /// <summary>Geolocation (region code) of the source IP address (if relevant).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceGeolocationCode")]
+        public virtual string SourceGeolocationCode { get; set; }
 
         /// <summary>Source IP address of the dropped packet (if relevant).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceIp")]
@@ -3731,6 +3739,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetTags")]
         public virtual System.Collections.Generic.IList<string> TargetTags { get; set; }
 
+        /// <summary>Target type of the firewall rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetType")]
+        public virtual string TargetType { get; set; }
+
         /// <summary>The URI of the firewall rule. This field is not applicable to implied VPC firewall rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -3904,6 +3916,33 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string Status { get; set; }
 
         /// <summary>URI of a Compute Engine instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>For display only. Metadata associated with an Interconnect attachment.</summary>
+    public class InterconnectAttachmentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URI of the Cloud Router to be used for dynamic routing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRouterUri")]
+        public virtual string CloudRouterUri { get; set; }
+
+        /// <summary>Name of an Interconnect attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>URI of the Interconnect where the Interconnect attachment is configured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interconnectUri")]
+        public virtual string InterconnectUri { get; set; }
+
+        /// <summary>Name of a Google Cloud region where the Interconnect attachment is configured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>URI of an Interconnect attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -5079,6 +5118,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>Display information of a Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual InstanceInfo Instance { get; set; }
+
+        /// <summary>Display information of an interconnect attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interconnectAttachment")]
+        public virtual InterconnectAttachmentInfo InterconnectAttachment { get; set; }
 
         /// <summary>
         /// Display information of the load balancers. Deprecated in favor of the `load_balancer_backend_info` field,
