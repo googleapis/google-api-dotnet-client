@@ -4582,8 +4582,8 @@ namespace Google.Apis.DiscoveryEngine.v1
                             /// <summary>
                             /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
                             /// after a field name for descending. Supported fields: * `update_time` * `create_time` *
-                            /// `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned
-                            /// desc,update_time desc": list sessions by is_pinned first, then by update_time.
+                            /// `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned
+                            /// desc,update_time desc`: list sessions by is_pinned first, then by update_time.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
@@ -9316,8 +9316,8 @@ namespace Google.Apis.DiscoveryEngine.v1
                             /// <summary>
                             /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
                             /// after a field name for descending. Supported fields: * `update_time` * `create_time` *
-                            /// `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned
-                            /// desc,update_time desc": list sessions by is_pinned first, then by update_time.
+                            /// `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned
+                            /// desc,update_time desc`: list sessions by is_pinned first, then by update_time.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
@@ -13380,8 +13380,8 @@ namespace Google.Apis.DiscoveryEngine.v1
                         /// <summary>
                         /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a
                         /// field name for descending. Supported fields: * `update_time` * `create_time` *
-                        /// `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned
-                        /// desc,update_time desc": list sessions by is_pinned first, then by update_time.
+                        /// `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned
+                        /// desc,update_time desc`: list sessions by is_pinned first, then by update_time.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
@@ -30109,6 +30109,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; }
 
+        /// <summary>
+        /// Optional. Whether to use static secrets for the connector. If true, the secrets provided in the
+        /// action_params will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useStaticSecrets")]
+        public virtual System.Nullable<bool> UseStaticSecrets { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -35826,7 +35833,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>
         /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for
         /// descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: *
-        /// "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first,
+        /// `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first,
         /// then by update_time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
