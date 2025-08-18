@@ -2026,9 +2026,25 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availableVersion")]
         public virtual string AvailableVersion { get; set; }
 
+        /// <summary>Optional. HANA monitoring metrics of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hanaMonitoring")]
+        public virtual ServiceStates HanaMonitoring { get; set; }
+
         /// <summary>Optional. The installed version of the agent on the host.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installedVersion")]
         public virtual string InstalledVersion { get; set; }
+
+        /// <summary>Optional. Whether the agent is fully enabled. If false, the agent is has some issues.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isFullyEnabled")]
+        public virtual System.Nullable<bool> IsFullyEnabled { get; set; }
+
+        /// <summary>Optional. The Process metrics of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processMetrics")]
+        public virtual ServiceStates ProcessMetrics { get; set; }
+
+        /// <summary>Optional. The System discovery metrics of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemDiscovery")]
+        public virtual ServiceStates SystemDiscovery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2487,6 +2503,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Engine</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engine")]
+        public virtual string Engine { get; set; }
+
         /// <summary>Output only. [Output only] Evaluation ID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationId")]
         public virtual string EvaluationId { get; set; }
@@ -2683,6 +2703,21 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Service account of compute engine</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<string> ServiceAccounts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The IAM permission status.</summary>
+    public class IAMPermission : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Whether the permission is granted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("granted")]
+        public virtual System.Nullable<bool> Granted { get; set; }
+
+        /// <summary>Output only. The name of the permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3903,6 +3938,21 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>resource type</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The state of the service.</summary>
+    public class ServiceStates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Output only. The IAM permissions for the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamPermissions")]
+        public virtual System.Collections.Generic.IList<IAMPermission> IamPermissions { get; set; }
+
+        /// <summary>Output only. The overall state of the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
