@@ -7846,7 +7846,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("verticalPodAutoscaling")]
         public virtual VerticalPodAutoscaling VerticalPodAutoscaling { get; set; }
 
-        /// <summary>Configuration for direct-path (via ALTS) with workload identity.</summary>
+        /// <summary>
+        /// Configuration for direct-path (via ALTS) with workload identity. This feature is not officially supported
+        /// for external customers in Kubernetes Engine when using Workload Identity.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadAltsConfig")]
         public virtual WorkloadALTSConfig WorkloadAltsConfig { get; set; }
 
@@ -8310,7 +8313,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredVerticalPodAutoscaling")]
         public virtual VerticalPodAutoscaling DesiredVerticalPodAutoscaling { get; set; }
 
-        /// <summary>Configuration for direct-path (via ALTS) with workload identity.</summary>
+        /// <summary>
+        /// Configuration for direct-path (via ALTS) with workload identity. This feature is not officially supported
+        /// for external customers in Kubernetes Engine when using Workload Identity.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredWorkloadAltsConfig")]
         public virtual WorkloadALTSConfig DesiredWorkloadAltsConfig { get; set; }
 
@@ -9982,7 +9988,12 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Configuration for the Lustre CSI driver.</summary>
     public class LustreCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set to true, the Lustre CSI driver will install Lustre kernel modules using port 6988.</summary>
+        /// <summary>
+        /// If set to true, the Lustre CSI driver will install Lustre kernel modules using port 6988. This serves as a
+        /// workaround for a port conflict with the gke-metadata-server. This field is required ONLY under the following
+        /// conditions: 1. The GKE node version is older than 1.33.2-gke.4655000. 2. You're connecting to a Lustre
+        /// instance that has the 'gke-support-enabled' flag.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableLegacyLustrePort")]
         public virtual System.Nullable<bool> EnableLegacyLustrePort { get; set; }
 
@@ -14187,7 +14198,10 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for direct-path (via ALTS) with workload identity.</summary>
+    /// <summary>
+    /// Configuration for direct-path (via ALTS) with workload identity. This feature is not officially supported for
+    /// external customers in Kubernetes Engine when using Workload Identity.
+    /// </summary>
     public class WorkloadALTSConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
