@@ -11012,6 +11012,52 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("copySourceAcl")]
         public virtual System.Nullable<bool> CopySourceAcl { get; set; }
 
+        /// <summary>Restores only the objects that were created after this time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdAfterTime")]
+        public virtual string CreatedAfterTimeRaw { get; set; }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CreatedAfterTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreatedAfterTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedAfterTimeRaw);
+            set => CreatedAfterTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedAfterTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreatedAfterTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? CreatedAfterTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedAfterTimeRaw);
+            set => CreatedAfterTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>Restores only the objects that were created before this time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdBeforeTime")]
+        public virtual string CreatedBeforeTimeRaw { get; set; }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CreatedBeforeTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreatedBeforeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreatedBeforeTimeRaw);
+            set => CreatedBeforeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedBeforeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreatedBeforeTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? CreatedBeforeTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedBeforeTimeRaw);
+            set => CreatedBeforeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
         /// <summary>
         /// Restores only the objects matching any of the specified glob(s). If this parameter is not specified, all
         /// objects will be restored within the specified time range.
