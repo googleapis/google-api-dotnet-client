@@ -7241,7 +7241,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
     /// <summary>
     /// DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into
-    /// Condor platform. Next ID: 10
+    /// Condor platform. Next ID: 11
     /// </summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7314,6 +7314,15 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("resourceMetadata")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata ResourceMetadata { get; set; }
+
+        /// <summary>
+        /// Optional. If true, the feed won't be ingested by DB Center. This indicates that the feed is intentionally
+        /// skipped. For example, BackupDR feeds are only needed for resources integrated with DB Center (e.g.,
+        /// CloudSQL, AlloyDB). Feeds for non-integrated resources (e.g., Compute Engine, Persistent Disk) can be
+        /// skipped.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipIngestion")]
+        public virtual System.Nullable<bool> SkipIngestion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
