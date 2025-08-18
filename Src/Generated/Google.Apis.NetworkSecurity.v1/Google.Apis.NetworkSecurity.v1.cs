@@ -1300,7 +1300,7 @@ namespace Google.Apis.NetworkSecurity.v1
 
                 /// <summary>Update a single Endpoint.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Immutable. Identifier. name of resource</param>
+                /// <param name="name">Immutable. Identifier. Name of resource.</param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.FirewallEndpoint body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -1317,7 +1317,7 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. name of resource</summary>
+                    /// <summary>Immutable. Identifier. Name of resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -12966,7 +12966,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing Endpoint object</summary>
+    /// <summary>Message describing Endpoint object.</summary>
     public class FirewallEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -12992,7 +12992,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. Create time stamp</summary>
+        /// <summary>Output only. Create time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -13033,7 +13033,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Immutable. Identifier. name of resource</summary>
+        /// <summary>Immutable. Identifier. Name of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
