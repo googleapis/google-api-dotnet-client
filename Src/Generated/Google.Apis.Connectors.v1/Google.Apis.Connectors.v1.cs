@@ -5959,8 +5959,8 @@ namespace Google.Apis.Connectors.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -7146,9 +7146,9 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("migrateTls")]
         public virtual System.Nullable<bool> MigrateTls { get; set; }
 
-        /// <summary>Indicate whether connector is being migrated to use direct VPC egress.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkEgressMode")]
-        public virtual string NetworkEgressMode { get; set; }
+        /// <summary>Network egress mode override to migrate to direct VPC egress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkEgressModeOverride")]
+        public virtual NetworkEgressModeOverride NetworkEgressModeOverride { get; set; }
 
         /// <summary>Indicate whether cloud spanner is required for connector job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisionCloudSpanner")]
@@ -10482,6 +10482,31 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Optional. Egress mode for the network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egressMode")]
         public virtual string EgressMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>NetworkEgressModeOverride provides the network egress mode override for a connector.</summary>
+    public class NetworkEgressModeOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// boolean should be set to true to make sure only eventing enabled connections are migrated to direct vpc
+        /// egress.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isEventingOverrideEnabled")]
+        public virtual System.Nullable<bool> IsEventingOverrideEnabled { get; set; }
+
+        /// <summary>
+        /// boolean should be set to true to make sure only async operations enabled connections are migrated to direct
+        /// vpc egress.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isJobsOverrideEnabled")]
+        public virtual System.Nullable<bool> IsJobsOverrideEnabled { get; set; }
+
+        /// <summary>Determines the VPC Egress mode for the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkEgressMode")]
+        public virtual string NetworkEgressMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
