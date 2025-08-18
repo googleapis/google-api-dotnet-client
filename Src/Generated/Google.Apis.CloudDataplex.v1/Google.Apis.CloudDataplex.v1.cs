@@ -18427,15 +18427,15 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postScanActionsResult")]
         public virtual GoogleCloudDataplexV1DataProfileResultPostScanActionsResult PostScanActionsResult { get; set; }
 
-        /// <summary>The profile information per field.</summary>
+        /// <summary>Output only. The profile information per field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profile")]
         public virtual GoogleCloudDataplexV1DataProfileResultProfile Profile { get; set; }
 
-        /// <summary>The count of rows scanned.</summary>
+        /// <summary>Output only. The count of rows scanned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<long> RowCount { get; set; }
 
-        /// <summary>The data scanned for this result.</summary>
+        /// <summary>Output only. The data scanned for this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scannedData")]
         public virtual GoogleCloudDataplexV1ScannedData ScannedData { get; set; }
 
@@ -18472,7 +18472,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Contains name, type, mode and field type specific profile information.</summary>
     public class GoogleCloudDataplexV1DataProfileResultProfile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of fields with structural and profile information for each field.</summary>
+        /// <summary>Output only. List of fields with structural and profile information for each field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataProfileResultProfileField> Fields { get; set; }
 
@@ -18484,23 +18484,23 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1DataProfileResultProfileField : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The mode of the field. Possible values include: REQUIRED, if it is a required field. NULLABLE, if it is an
-        /// optional field. REPEATED, if it is a repeated field.
+        /// Output only. The mode of the field. Possible values include: REQUIRED, if it is a required field. NULLABLE,
+        /// if it is an optional field. REPEATED, if it is a repeated field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
 
-        /// <summary>The name of the field.</summary>
+        /// <summary>Output only. The name of the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Profile information for the corresponding field.</summary>
+        /// <summary>Output only. Profile information for the corresponding field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profile")]
         public virtual GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo Profile { get; set; }
 
         /// <summary>
-        /// The data type retrieved from the schema of the data source. For instance, for a BigQuery native table, it is
-        /// the BigQuery Table Schema
+        /// Output only. The data type retrieved from the schema of the data source. For instance, for a BigQuery native
+        /// table, it is the BigQuery Table Schema
         /// (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#tablefieldschema). For a Dataplex Universal
         /// Catalog Entity, it is the Entity Schema
         /// (https://cloud.google.com/dataplex/docs/reference/rpc/google.cloud.dataplex.v1#type_3).
@@ -18516,8 +18516,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field
-        /// type, including RECORD, ARRAY, GEOGRAPHY, and JSON, as well as fields with REPEATABLE mode.
+        /// Output only. Ratio of rows with distinct values against total scanned rows. Not available for complex
+        /// non-groupable field type, including RECORD, ARRAY, GEOGRAPHY, and JSON, as well as fields with REPEATABLE
+        /// mode.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distinctRatio")]
         public virtual System.Nullable<double> DistinctRatio { get; set; }
@@ -18530,7 +18531,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("integerProfile")]
         public virtual GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo IntegerProfile { get; set; }
 
-        /// <summary>Ratio of rows with null value against total scanned rows.</summary>
+        /// <summary>Output only. Ratio of rows with null value against total scanned rows.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullRatio")]
         public virtual System.Nullable<double> NullRatio { get; set; }
 
@@ -18539,10 +18540,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo StringProfile { get; set; }
 
         /// <summary>
-        /// The list of top N non-null values, frequency and ratio with which they occur in the scanned data. N is 10 or
-        /// equal to the number of distinct values in the field, whichever is smaller. Not available for complex
-        /// non-groupable field type, including RECORD, ARRAY, GEOGRAPHY, and JSON, as well as fields with REPEATABLE
-        /// mode.
+        /// Output only. The list of top N non-null values, frequency and ratio with which they occur in the scanned
+        /// data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available
+        /// for complex non-groupable field type, including RECORD, ARRAY, GEOGRAPHY, and JSON, as well as fields with
+        /// REPEATABLE mode.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topNValues")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue> TopNValues { get; set; }
@@ -18554,31 +18555,33 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>The profile information for a double type field.</summary>
     public class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Average of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
+        /// <summary>Output only. Average of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("average")]
         public virtual System.Nullable<double> Average { get; set; }
 
-        /// <summary>Maximum of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
+        /// <summary>Output only. Maximum of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("max")]
         public virtual System.Nullable<double> Max { get; set; }
 
-        /// <summary>Minimum of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
+        /// <summary>Output only. Minimum of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("min")]
         public virtual System.Nullable<double> Min { get; set; }
 
         /// <summary>
-        /// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three
-        /// main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It
-        /// is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second
-        /// quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile
-        /// (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical
-        /// quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of
-        /// quartile values for the scanned data, occurring in order Q1, median, Q3.
+        /// Output only. A quartile divides the number of data points into four parts, or quarters, of more-or-less
+        /// equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from
+        /// the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this
+        /// point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The
+        /// third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th
+        /// empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered
+        /// list of quartile values for the scanned data, occurring in order Q1, median, Q3.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quartiles")]
         public virtual System.Collections.Generic.IList<System.Nullable<double>> Quartiles { get; set; }
 
-        /// <summary>Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
+        /// <summary>
+        /// Output only. Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standardDeviation")]
         public virtual System.Nullable<double> StandardDeviation { get; set; }
 
@@ -18589,31 +18592,33 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>The profile information for an integer type field.</summary>
     public class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Average of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
+        /// <summary>Output only. Average of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("average")]
         public virtual System.Nullable<double> Average { get; set; }
 
-        /// <summary>Maximum of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
+        /// <summary>Output only. Maximum of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("max")]
         public virtual System.Nullable<long> Max { get; set; }
 
-        /// <summary>Minimum of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
+        /// <summary>Output only. Minimum of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("min")]
         public virtual System.Nullable<long> Min { get; set; }
 
         /// <summary>
-        /// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three
-        /// main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It
-        /// is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second
-        /// quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile
-        /// (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical
-        /// quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of
-        /// approximate quartile values for the scanned data, occurring in order Q1, median, Q3.
+        /// Output only. A quartile divides the number of data points into four parts, or quarters, of more-or-less
+        /// equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from
+        /// the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this
+        /// point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The
+        /// third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th
+        /// empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered
+        /// list of approximate quartile values for the scanned data, occurring in order Q1, median, Q3.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quartiles")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> Quartiles { get; set; }
 
-        /// <summary>Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.</summary>
+        /// <summary>
+        /// Output only. Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standardDeviation")]
         public virtual System.Nullable<double> StandardDeviation { get; set; }
 
@@ -18624,15 +18629,15 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>The profile information for a string type field.</summary>
     public class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Average length of non-null values in the scanned data.</summary>
+        /// <summary>Output only. Average length of non-null values in the scanned data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageLength")]
         public virtual System.Nullable<double> AverageLength { get; set; }
 
-        /// <summary>Maximum length of non-null values in the scanned data.</summary>
+        /// <summary>Output only. Maximum length of non-null values in the scanned data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxLength")]
         public virtual System.Nullable<long> MaxLength { get; set; }
 
-        /// <summary>Minimum length of non-null values in the scanned data.</summary>
+        /// <summary>Output only. Minimum length of non-null values in the scanned data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minLength")]
         public virtual System.Nullable<long> MinLength { get; set; }
 
@@ -18643,17 +18648,18 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Top N non-null values in the scanned data.</summary>
     public class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Count of the corresponding value in the scanned data.</summary>
+        /// <summary>Output only. Count of the corresponding value in the scanned data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>
-        /// Ratio of the corresponding value in the field against the total number of rows in the scanned data.
+        /// Output only. Ratio of the corresponding value in the field against the total number of rows in the scanned
+        /// data.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ratio")]
         public virtual System.Nullable<double> Ratio { get; set; }
 
-        /// <summary>String value of a top N non-null value.</summary>
+        /// <summary>Output only. String value of a top N non-null value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -18684,9 +18690,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL
-        /// expression for a WHERE clause in GoogleSQL syntax
-        /// (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#where_clause).Example: col1
-        /// &amp;gt;= 0 AND col2 &amp;lt; 10
+        /// expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &amp;gt;= 0 AND col2 &amp;lt;
+        /// 10
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowFilter")]
         public virtual string RowFilter { get; set; }
@@ -18719,8 +18724,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     {
         /// <summary>
         /// Optional. The BigQuery table to export DataProfileScan results to. Format:
-        /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID or
-        /// projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultsTable")]
         public virtual string ResultsTable { get; set; }
@@ -18774,7 +18778,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1DataQualityDimension : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The dimension name a rule belongs to. Custom dimension name is supported with all uppercase
+        /// Output only. The dimension name a rule belongs to. Custom dimension name is supported with all uppercase
         /// letters and maximum length of 30 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -23874,17 +23878,18 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>A data range denoted by a pair of start/end values of a field.</summary>
     public class GoogleCloudDataplexV1ScannedDataIncrementalField : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Value that marks the end of the range.</summary>
+        /// <summary>Output only. Value that marks the end of the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
         public virtual string End { get; set; }
 
         /// <summary>
-        /// The field that contains values which monotonically increases over time (e.g. a timestamp column).
+        /// Output only. The field that contains values which monotonically increases over time (e.g. a timestamp
+        /// column).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
 
-        /// <summary>Value that marks the start of the range.</summary>
+        /// <summary>Output only. Value that marks the start of the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("start")]
         public virtual string Start { get; set; }
 
