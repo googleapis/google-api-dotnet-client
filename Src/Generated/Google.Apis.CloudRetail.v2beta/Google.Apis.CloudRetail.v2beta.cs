@@ -9438,13 +9438,6 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>
-        /// A facet specification to perform faceted search. Note that this field is deprecated and will throw
-        /// NOT_IMPLEMENTED if used for creating a control.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("facetSpec")]
-        public virtual GoogleCloudRetailV2betaSearchRequestFacetSpec FacetSpec { get; set; }
-
         /// <summary>Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
