@@ -3608,6 +3608,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cause")]
         public virtual string Cause { get; set; }
 
+        /// <summary>Geolocation (region code) of the destination IP address (if relevant).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationGeolocationCode")]
+        public virtual string DestinationGeolocationCode { get; set; }
+
         /// <summary>Destination IP address of the dropped packet (if relevant).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationIp")]
         public virtual string DestinationIp { get; set; }
@@ -3619,6 +3623,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>URI of the resource that caused the drop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
+
+        /// <summary>Geolocation (region code) of the source IP address (if relevant).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceGeolocationCode")]
+        public virtual string SourceGeolocationCode { get; set; }
 
         /// <summary>Source IP address of the dropped packet (if relevant).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceIp")]
@@ -3925,6 +3933,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetTags")]
         public virtual System.Collections.Generic.IList<string> TargetTags { get; set; }
 
+        /// <summary>Target type of the firewall rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetType")]
+        public virtual string TargetType { get; set; }
+
         /// <summary>The URI of the firewall rule. This field is not applicable to implied VPC firewall rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -4028,6 +4040,21 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Internal IP address of a GKE cluster control plane.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
         public virtual string InternalIp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The geographical location of the MonitoringPoint.</summary>
+    public class GeoLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; }
+
+        /// <summary>Formatted address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formattedAddress")]
+        public virtual string FormattedAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4137,6 +4164,33 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string Status { get; set; }
 
         /// <summary>URI of a Compute Engine instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>For display only. Metadata associated with an Interconnect attachment.</summary>
+    public class InterconnectAttachmentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URI of the Cloud Router to be used for dynamic routing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRouterUri")]
+        public virtual string CloudRouterUri { get; set; }
+
+        /// <summary>Name of an Interconnect attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>URI of the Interconnect where the Interconnect attachment is configured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interconnectUri")]
+        public virtual string InterconnectUri { get; set; }
+
+        /// <summary>Name of a Google Cloud region where the Interconnect attachment is configured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>URI of an Interconnect attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -4505,12 +4559,9 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<string> Errors { get; set; }
 
-        /// <summary>
-        /// Output only. The geographical location of the MonitoringPoint. Examples: - "New York, NY, USA" - "Berlin,
-        /// Germany"
-        /// </summary>
+        /// <summary>Output only. The geographical location of the MonitoringPoint. ;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoLocation")]
-        public virtual string GeoLocation { get; set; }
+        public virtual GeoLocation GeoLocation { get; set; }
 
         /// <summary>Output only. The host information of the MonitoringPoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
@@ -4579,6 +4630,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Output only. Indicates if an upgrade is available for the MonitoringPoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeAvailable")]
+        public virtual System.Nullable<bool> UpgradeAvailable { get; set; }
 
         /// <summary>Output only. The type of upgrade available for the MonitoringPoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeType")]
@@ -4756,6 +4811,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. The list of error messages detected for the NetworkMonitoringProvider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<string> Errors { get; set; }
+
         /// <summary>
         /// Output only. Identifier. Name of the resource. Format:
         /// `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}`
@@ -4860,9 +4919,9 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; }
 
-        /// <summary>Output only. Geographical location of the destination MonitoringPoint.</summary>
+        /// <summary>Output only. Geographical location of the destination MonitoringPoint. ;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationGeoLocation")]
-        public virtual string DestinationGeoLocation { get; set; }
+        public virtual GeoLocation DestinationGeoLocation { get; set; }
 
         /// <summary>Output only. The display name of the network path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -5797,6 +5856,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Display information of a Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual InstanceInfo Instance { get; set; }
+
+        /// <summary>Display information of an interconnect attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interconnectAttachment")]
+        public virtual InterconnectAttachmentInfo InterconnectAttachment { get; set; }
 
         /// <summary>
         /// Display information of the load balancers. Deprecated in favor of the `load_balancer_backend_info` field,
