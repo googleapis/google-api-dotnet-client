@@ -9377,13 +9377,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>
-        /// A facet specification to perform faceted search. Note that this field is deprecated and will throw
-        /// NOT_IMPLEMENTED if used for creating a control.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("facetSpec")]
-        public virtual GoogleCloudRetailV2alphaSearchRequestFacetSpec FacetSpec { get; set; }
-
         /// <summary>Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -9658,10 +9651,11 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// The types Retail classifies the search query as. Supported values are: - "ADVERSARIAL" - "CHITCHAT" -
-        /// "JAILBREAK" - "ORDER_SUPPORT" - "SIMPLE_PRODUCT_SEARCH" - "INTENT_REFINEMENT" - "PRODUCT_DETAILS" -
-        /// "PRODUCT_COMPARISON" - "DEALS_AND_COUPONS" - "STORE_RELEVANT" - "BLOCKLISTED" - "BEST_PRODUCT" -
-        /// "RETAIL_SUPPORT" - "DISABLED" clang-format off clang-format on
+        /// LINT.IfChange(query_types_proto) The types Retail classifies the search query as. Supported values are: -
+        /// "ADVERSARIAL" - "CHITCHAT" - "JAILBREAK" - "ORDER_SUPPORT" - "SIMPLE_PRODUCT_SEARCH" - "INTENT_REFINEMENT" -
+        /// "PRODUCT_DETAILS" - "PRODUCT_COMPARISON" - "DEALS_AND_COUPONS" - "STORE_RELEVANT" - "BLOCKLISTED" -
+        /// "BEST_PRODUCT" - "RETAIL_SUPPORT" - "DISABLED"
+        /// LINT.ThenChange(//depot/google3/cloud/console/web/ai/retail/service/conversational_search_customization_config.ts:intent_types_ts)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userQueryTypes")]
         public virtual System.Collections.Generic.IList<string> UserQueryTypes { get; set; }
