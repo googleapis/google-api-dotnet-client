@@ -2456,6 +2456,73 @@ namespace Google.Apis.SQLAdmin.v1
             }
         }
 
+        /// <summary>Execute SQL statements.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Required. Project ID of the project that contains the instance.</param>
+        /// <param name="instance">Required. Database instance ID. This does not include the project ID.</param>
+        public virtual ExecuteSqlRequest ExecuteSql(Google.Apis.SQLAdmin.v1.Data.ExecuteSqlPayload body, string project, string instance)
+        {
+            return new ExecuteSqlRequest(this.service, body, project, instance);
+        }
+
+        /// <summary>Execute SQL statements.</summary>
+        public class ExecuteSqlRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.SqlInstancesExecuteSqlResponse>
+        {
+            /// <summary>Constructs a new ExecuteSql request.</summary>
+            public ExecuteSqlRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1.Data.ExecuteSqlPayload body, string project, string instance) : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Required. Database instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1.Data.ExecuteSqlPayload Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "executeSql";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/projects/{project}/instances/{instance}/executeSql";
+
+            /// <summary>Initializes ExecuteSql parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>
         /// Exports data from a Cloud SQL instance to a Cloud Storage bucket as a SQL dump or CSV file.
         /// </summary>
@@ -4237,6 +4304,39 @@ namespace Google.Apis.SQLAdmin.v1
                 [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Instance { get; private set; }
 
+                private object _sourceInstanceDeletionTime;
+
+                /// <summary>
+                /// String representation of <see cref="SourceInstanceDeletionTimeDateTimeOffset"/>, formatted for
+                /// inclusion in the HTTP request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("sourceInstanceDeletionTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string SourceInstanceDeletionTimeRaw { get; private set; }
+
+                /// <summary>
+                /// <seealso cref="object"/> representation of <see cref="SourceInstanceDeletionTimeRaw"/>.
+                /// </summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SourceInstanceDeletionTimeDateTimeOffset instead.")]
+                public virtual object SourceInstanceDeletionTime
+                {
+                    get => _sourceInstanceDeletionTime;
+                    set
+                    {
+                        SourceInstanceDeletionTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _sourceInstanceDeletionTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? SourceInstanceDeletionTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SourceInstanceDeletionTimeRaw);
+                    set
+                    {
+                        SourceInstanceDeletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _sourceInstanceDeletionTime = value;
+                    }
+                }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getLatestRecoveryTime";
 
@@ -4263,6 +4363,14 @@ namespace Google.Apis.SQLAdmin.v1
                         Name = "instance",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("sourceInstanceDeletionTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sourceInstanceDeletionTime",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -6271,6 +6379,63 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("preferredZone")]
         public virtual string PreferredZone { get; set; }
 
+        private string _sourceInstanceDeletionTimeRaw;
+
+        private object _sourceInstanceDeletionTime;
+
+        /// <summary>
+        /// The timestamp used to identify the time when the source instance is deleted. If this instance is deleted,
+        /// then you must set the timestamp.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceInstanceDeletionTime")]
+        public virtual string SourceInstanceDeletionTimeRaw
+        {
+            get => _sourceInstanceDeletionTimeRaw;
+            set
+            {
+                _sourceInstanceDeletionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _sourceInstanceDeletionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SourceInstanceDeletionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SourceInstanceDeletionTimeDateTimeOffset instead.")]
+        public virtual object SourceInstanceDeletionTime
+        {
+            get => _sourceInstanceDeletionTime;
+            set
+            {
+                _sourceInstanceDeletionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _sourceInstanceDeletionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SourceInstanceDeletionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SourceInstanceDeletionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SourceInstanceDeletionTimeRaw);
+            set => SourceInstanceDeletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the name and datatype of a column.</summary>
+    public class Column : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Datatype of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6341,6 +6506,15 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>
+        /// Optional. Output only. mdx_protocol_support controls how the client uses metadata exchange when connecting
+        /// to the instance. The values in the list representing parts of the MDX protocol that are supported by this
+        /// instance. When the list is empty, the instance does not support MDX, so the client must not send an MDX
+        /// request. The default is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mdxProtocolSupport")]
+        public virtual System.Collections.Generic.IList<string> MdxProtocolSupport { get; set; }
+
         /// <summary>The number of read pool nodes in a read pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
@@ -6382,6 +6556,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Optional. List of connection pool configuration flags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flags")]
         public virtual System.Collections.Generic.IList<ConnectionPoolFlags> Flags { get; set; }
+
+        /// <summary>Output only. Number of connection poolers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("poolerCount")]
+        public virtual System.Nullable<int> PoolerCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6496,10 +6674,6 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backendType")]
         public virtual string BackendType { get; set; }
-
-        /// <summary>Clears private network settings when the instance is restored.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clearNetwork")]
-        public virtual System.Nullable<bool> ClearNetwork { get; set; }
 
         /// <summary>Connection name of the Cloud SQL instance used in connection strings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionName")]
@@ -7029,6 +7203,35 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request payload used to execute SQL statements.</summary>
+    public class ExecuteSqlPayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. When set to true, the API caller identity associated with the request is used for database
+        /// authentication. The API caller must be an IAM user in the database.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoIamAuthn")]
+        public virtual System.Nullable<bool> AutoIamAuthn { get; set; }
+
+        /// <summary>Optional. Name of the database on which the statement will be executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Optional. The maximum number of rows returned per SQL statement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowLimit")]
+        public virtual System.Nullable<long> RowLimit { get; set; }
+
+        /// <summary>
+        /// Required. SQL statements to run on the database. It can be a single statement or a sequence of statements
+        /// separated by semicolons.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlStatement")]
+        public virtual string SqlStatement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Database instance export context.</summary>
     public class ExportContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7344,6 +7547,24 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settingsVersion")]
         public virtual System.Nullable<long> SettingsVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config used to determine the final backup settings for the instance.</summary>
+    public class FinalBackupConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the final backup is enabled for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// The number of days to retain the final backup after the instance deletion. The final backup will be purged
+        /// at (time_of_instance_deletion + retention_days).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionDays")]
+        public virtual System.Nullable<int> RetentionDays { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8039,6 +8260,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual RestoreBackupContext RestoreBackupContext { get; set; }
 
         /// <summary>
+        /// Optional. This field has the same purpose as restore_instance_settings, changes any instance settings stored
+        /// in the backup you are restoring from. With the difference that these fields are cleared in the settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreInstanceClearOverridesFieldNames")]
+        public virtual System.Collections.Generic.IList<string> RestoreInstanceClearOverridesFieldNames { get; set; }
+
+        /// <summary>
         /// Optional. By using this parameter, Cloud SQL overrides any instance settings stored in the backup you are
         /// restoring from. You can't change the instance's major database version and you can only increase the disk
         /// size. You can use this field to restore new instances only. This field is not applicable for restore to
@@ -8402,6 +8630,17 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTrack")]
         public virtual string UpdateTrack { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The additional metadata information regarding the execution of the SQL statements.</summary>
+    public class Metadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time taken to execute the SQL statements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlStatementExecutionTime")]
+        public virtual object SqlStatementExecutionTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9006,7 +9245,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// "google-managed-services-default". If you set this, then Cloud SQL creates the IP address for the cloned
         /// instance in the allocated range. This range must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035)
         /// standards. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// [a-z]([-a-z0-9]*[a-z0-9])?. Reserved for future use. http://go/speckle-subnet-picker-clone
+        /// [a-z]([-a-z0-9]*[a-z0-9])?. Reserved for future use.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allocatedIpRange")]
         public virtual string AllocatedIpRange { get; set; }
@@ -9183,6 +9422,29 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Whether PSC connectivity is enabled for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
         public virtual System.Nullable<bool> PscEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>QueryResult contains the result of executing a single SQL statement.</summary>
+    public class QueryResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of columns included in the result. This also includes the data type of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<Column> Columns { get; set; }
+
+        /// <summary>Message related to the SQL execution result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Set to true if the SQL execution's result is truncated due to size limits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialResult")]
+        public virtual System.Nullable<bool> PartialResult { get; set; }
+
+        /// <summary>Rows returned by the SQL statement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<Row> Rows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9372,6 +9634,17 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains the values for a row.</summary>
+    public class Row : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The values for the row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<Value> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A list of objects that the user selects for replication from an external source instance.</summary>
     public class SelectedObjects : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9514,6 +9787,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableGoogleMlIntegration")]
         public virtual System.Nullable<bool> EnableGoogleMlIntegration { get; set; }
 
+        /// <summary>Optional. The final backup configuration for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalBackupConfig")]
+        public virtual FinalBackupConfig FinalBackupConfig { get; set; }
+
         /// <summary>Insights configuration, for now relevant only for Postgres.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insightsConfig")]
         public virtual InsightsConfig InsightsConfig { get; set; }
@@ -9621,6 +9898,17 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// <summary>Active Directory configuration, relevant only for Cloud SQL for SQL Server.</summary>
     public class SqlActiveDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The secret manager key storing the administrator credential. (e.g.,
+        /// projects/{project}/secrets/{secret}).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminCredentialSecretName")]
+        public virtual string AdminCredentialSecretName { get; set; }
+
+        /// <summary>Optional. Domain controller IPv4 addresses used to bootstrap Active Directory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsServers")]
+        public virtual System.Collections.Generic.IList<string> DnsServers { get; set; }
+
         /// <summary>The name of the domain (e.g., mydomain.com).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
@@ -9628,6 +9916,17 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>This is always sql#activeDirectoryConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>Optional. The mode of the Active Directory configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>
+        /// Optional. The organizational unit distinguished name. This is the full hierarchical path to the
+        /// organizational unit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationalUnit")]
+        public virtual string OrganizationalUnit { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9658,6 +9957,21 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>The unique identifier for this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Execute SQL statements response.</summary>
+    public class SqlInstancesExecuteSqlResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The additional metadata information regarding the execution of the SQL statements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual Metadata Metadata { get; set; }
+
+        /// <summary>The list of results after executing all the SQL statements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<QueryResult> Results { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9775,6 +10089,14 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>MySQL-specific settings for start external sync.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlSyncConfig")]
         public virtual MySqlSyncConfig MysqlSyncConfig { get; set; }
+
+        /// <summary>
+        /// Optional. MySQL only. True if end-user has confirmed that this SES call will wipe replica databases
+        /// overlapping with the proposed selected_objects. If this field is not set and there are both overlapping and
+        /// additional databases proposed, an error will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaOverwriteEnabled")]
+        public virtual System.Nullable<bool> ReplicaOverwriteEnabled { get; set; }
 
         /// <summary>Whether to skip the verification step (VESS).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipVerification")]
@@ -10418,6 +10740,21 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Unused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The cell value of the table.</summary>
+    public class Value : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If cell value is null, then this flag will be set to true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullValue")]
+        public virtual System.Nullable<bool> NullValue { get; set; }
+
+        /// <summary>The cell value in string format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string ValueValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
