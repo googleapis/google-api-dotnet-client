@@ -23386,7 +23386,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
 
         /// <summary>
         /// Required. A field mask identifying which fields to update. Only the following fields are currently
-        /// supported: * entityStatus
+        /// supported: * entityStatus * containsEuPoliticalAdvertising
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
