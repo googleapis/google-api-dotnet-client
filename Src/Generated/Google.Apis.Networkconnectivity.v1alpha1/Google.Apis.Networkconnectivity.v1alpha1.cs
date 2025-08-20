@@ -2532,8 +2532,8 @@ namespace Google.Apis.Networkconnectivity.v1alpha1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -3150,8 +3150,10 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
 
         /// <summary>
         /// Optional. Can be set to narrow down or pick a different address space while searching for a free range. If
-        /// not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address
-        /// spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
+        /// not set, defaults to the ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"] address space (for auto-mode
+        /// networks, the "10.0.0.0/9" range is used instead of "10.0.0.0/8"). This can be used to target the search in
+        /// other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used
+        /// in the VPC.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCidrRange")]
         public virtual System.Collections.Generic.IList<string> TargetCidrRange { get; set; }
