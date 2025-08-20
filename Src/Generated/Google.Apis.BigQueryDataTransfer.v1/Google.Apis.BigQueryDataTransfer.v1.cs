@@ -2004,8 +2004,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -3461,6 +3461,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// <summary>Cannot be changed after initial creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("immutable")]
         public virtual System.Nullable<bool> Immutable { get; set; }
+
+        /// <summary>For list parameters, the max size of the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxListSize")]
+        public virtual System.Nullable<long> MaxListSize { get; set; }
 
         /// <summary>For integer and double values specifies maximum allowed value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
