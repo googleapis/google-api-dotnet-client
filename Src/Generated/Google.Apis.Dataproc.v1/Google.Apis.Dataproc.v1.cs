@@ -3904,7 +3904,7 @@ namespace Google.Apis.Dataproc.v1
 
                 /// <summary>Updates the session template synchronously.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. The resource name of the session template.</param>
+                /// <param name="name">Required. Identifier. The resource name of the session template.</param>
                 public virtual PatchRequest Patch(Google.Apis.Dataproc.v1.Data.SessionTemplate body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -3921,7 +3921,7 @@ namespace Google.Apis.Dataproc.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The resource name of the session template.</summary>
+                    /// <summary>Required. Identifier. The resource name of the session template.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -11821,6 +11821,13 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
+        /// <summary>
+        /// Optional. The requestor ID is used to identify if the request comes from a GCA investigation or the old Ask
+        /// Gemini Experience.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestorId")]
+        public virtual string RequestorId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12769,7 +12776,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auxiliaryNodeGroups")]
         public virtual System.Collections.Generic.IList<AuxiliaryNodeGroup> AuxiliaryNodeGroups { get; set; }
 
-        /// <summary>Optional. The tier of the cluster.</summary>
+        /// <summary>Optional. The cluster tier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterTier")]
         public virtual string ClusterTier { get; set; }
 
@@ -17834,7 +17841,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Required. The resource name of the session template.</summary>
+        /// <summary>Required. Identifier. The resource name of the session template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
