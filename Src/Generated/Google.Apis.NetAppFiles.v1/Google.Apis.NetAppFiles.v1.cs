@@ -5739,9 +5739,17 @@ namespace Google.Apis.NetAppFiles.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Optional. Type of the hybrid replication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridReplicationType")]
+        public virtual string HybridReplicationType { get; set; }
+
         /// <summary>Optional. Labels to be added to the replication as the key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Optional. Constituent volume count for large volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("largeVolumeConstituentCount")]
+        public virtual System.Nullable<int> LargeVolumeConstituentCount { get; set; }
 
         /// <summary>
         /// Required. Name of the user's local source cluster to be peered with the destination cluster.
@@ -5768,6 +5776,10 @@ namespace Google.Apis.NetAppFiles.v1.Data
         /// <summary>Required. Desired name for the replication of this volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replication")]
         public virtual string Replication { get; set; }
+
+        /// <summary>Optional. Replication Schedule for the replication created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicationSchedule")]
+        public virtual string ReplicationSchedule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6503,6 +6515,12 @@ namespace Google.Apis.NetAppFiles.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hybridReplicationType")]
         public virtual string HybridReplicationType { get; set; }
 
+        /// <summary>
+        /// Output only. Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridReplicationUserCommands")]
+        public virtual UserCommands HybridReplicationUserCommands { get; set; }
+
         /// <summary>Resource labels to represent user provided metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -7140,6 +7158,17 @@ namespace Google.Apis.NetAppFiles.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>UserCommands contains the commands to be executed by the customer.</summary>
+    public class UserCommands : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of commands to be executed by the customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commands")]
+        public virtual System.Collections.Generic.IList<string> Commands { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
