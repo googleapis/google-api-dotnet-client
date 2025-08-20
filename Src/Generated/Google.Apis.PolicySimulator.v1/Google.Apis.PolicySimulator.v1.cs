@@ -2862,7 +2862,10 @@ namespace Google.Apis.PolicySimulator.v1.Data
         /// <summary>
         /// Optional. Required for managed constraints if parameters are defined. Passes parameter values when policy
         /// enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition.
-        /// For example: { "allowedLocations" : ["us-east1", "us-west1"], "allowAll" : true }
+        /// For example:
+        /// ```
+        /// { "allowedLocations" : ["us-east1", "us-west1"], "allowAll" : true }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
