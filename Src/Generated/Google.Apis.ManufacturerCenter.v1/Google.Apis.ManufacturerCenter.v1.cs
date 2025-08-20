@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1374,7 +1374,7 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authority")]
         public virtual string Authority { get; set; }
 
-        /// <summary>Required. A unique code to identify the certification.</summary>
+        /// <summary>Optional. A unique code to identify the certification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 
@@ -1504,13 +1504,29 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authority")]
         public virtual string Authority { get; set; }
 
-        /// <summary>Required. A unique code to identify the certification.</summary>
+        /// <summary>Optional. A unique code to identify the certification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
+
+        /// <summary>Optional. A URL link to the certification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual string Link { get; set; }
+
+        /// <summary>Optional. A URL link to the certification logo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logo")]
+        public virtual string Logo { get; set; }
 
         /// <summary>Required. Name of the certification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. The expiration date (UTC).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validUntil")]
+        public virtual string ValidUntil { get; set; }
+
+        /// <summary>Optional. A custom value of the certification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
