@@ -651,6 +651,17 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains the account information such as the licensing status for the user in the scope.</summary>
+    public class PcAccountDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Details about the licensing status of the user for the app in the scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appLicensingVerdict")]
+        public virtual string AppLicensingVerdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains the device attestation information.</summary>
     public class PcDeviceIntegrity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -720,6 +731,10 @@ namespace Google.Apis.PlayIntegrity.v1.Data
     /// <summary>Contains PC device attestation details.</summary>
     public class PcTokenPayloadExternal : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Details about the account information such as the licensing status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountDetails")]
+        public virtual PcAccountDetails AccountDetails { get; set; }
+
         /// <summary>Required. Details about the device integrity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIntegrity")]
         public virtual PcDeviceIntegrity DeviceIntegrity { get; set; }
