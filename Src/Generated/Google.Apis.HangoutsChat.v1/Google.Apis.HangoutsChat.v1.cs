@@ -2930,7 +2930,8 @@ namespace Google.Apis.HangoutsChat.v1
                 /// field paths. Currently supported field paths: - `text` - `attachment` - `cards` (Requires [app
                 /// authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (Requires [app
                 /// authentication](/chat/api/guides/auth/service-accounts).) - `accessory_widgets` (Requires [app
-                /// authentication](/chat/api/guides/auth/service-accounts).)
+                /// authentication](/chat/api/guides/auth/service-accounts).) - `quoted_message_metadata` (Only allows
+                /// removal of the quoted message.)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -3058,7 +3059,8 @@ namespace Google.Apis.HangoutsChat.v1
                 /// field paths. Currently supported field paths: - `text` - `attachment` - `cards` (Requires [app
                 /// authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (Requires [app
                 /// authentication](/chat/api/guides/auth/service-accounts).) - `accessory_widgets` (Requires [app
-                /// authentication](/chat/api/guides/auth/service-accounts).)
+                /// authentication](/chat/api/guides/auth/service-accounts).) - `quoted_message_metadata` (Only allows
+                /// removal of the quoted message.)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -8649,8 +8651,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual User PrivateMessageViewer { get; set; }
 
         /// <summary>
-        /// Optional. Information about a message that's quoted by a Google Chat user in a space. Google Chat users can
-        /// quote a message to reply to it.
+        /// Optional. Information about a message that another message quotes. When you create a message, you can quote
+        /// messages within the same thread, or quote a root message to create a new root message. However, you can't
+        /// quote a message reply from a different thread. When you update a message, you can't add or replace the
+        /// `quotedMessageMetadata` field, but you can remove it. For example usage, see [Quote another
+        /// message](https://developers.google.com/workspace/chat/create-messages#quote-a-message).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotedMessageMetadata")]
         public virtual QuotedMessageMetadata QuotedMessageMetadata { get; set; }
@@ -8863,7 +8868,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about a quoted message.</summary>
+    /// <summary>
+    /// Information about a message that another message quotes. When you create a message, you can quote messages
+    /// within the same thread, or quote a root message to create a new root message. However, you can't quote a message
+    /// reply from a different thread. When you update a message, you can't add or replace the `quotedMessageMetadata`
+    /// field, but you can remove it. For example usage, see [Quote another
+    /// message](https://developers.google.com/workspace/chat/create-messages#quote-a-message).
+    /// </summary>
     public class QuotedMessageMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _lastUpdateTimeRaw;
@@ -8871,7 +8882,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         private object _lastUpdateTime;
 
         /// <summary>
-        /// Required. The timestamp when the quoted message was created or when the quoted message was last updated.
+        /// Required. The timestamp when the quoted message was created or when the quoted message was last updated. If
+        /// the message was edited, use this field, `last_update_time`. If the message was never edited, use
+        /// `create_time`. If `last_update_time` doesn't match the latest version of the quoted message, the request
+        /// fails.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
         public virtual string LastUpdateTimeRaw
