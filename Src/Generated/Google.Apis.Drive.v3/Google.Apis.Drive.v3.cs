@@ -1846,7 +1846,10 @@ namespace Google.Apis.Drive.v3
             this.service = service;
         }
 
-        /// <summary>Creates a shared drive.</summary>
+        /// <summary>
+        /// Creates a shared drive. For more information, see [Manage shared
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="requestId">
         /// Required. An ID, such as a random UUID, which uniquely identifies this user's request for idempotent
@@ -1859,7 +1862,10 @@ namespace Google.Apis.Drive.v3
             return new CreateRequest(this.service, body, requestId);
         }
 
-        /// <summary>Creates a shared drive.</summary>
+        /// <summary>
+        /// Creates a shared drive. For more information, see [Manage shared
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
+        /// </summary>
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1911,7 +1917,8 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Permanently deletes a shared drive for which the user is an `organizer`. The shared drive cannot contain any
-        /// untrashed items.
+        /// untrashed items. For more information, see [Manage shared
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
         /// </summary>
         /// <param name="driveId">The ID of the shared drive.</param>
         public virtual DeleteRequest Delete(string driveId)
@@ -1921,7 +1928,8 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Permanently deletes a shared drive for which the user is an `organizer`. The shared drive cannot contain any
-        /// untrashed items.
+        /// untrashed items. For more information, see [Manage shared
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
         /// </summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
@@ -1990,14 +1998,20 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Gets a shared drive's metadata by ID.</summary>
+        /// <summary>
+        /// Gets a shared drive's metadata by ID. For more information, see [Manage shared
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
+        /// </summary>
         /// <param name="driveId">The ID of the shared drive.</param>
         public virtual GetRequest Get(string driveId)
         {
             return new GetRequest(this.service, driveId);
         }
 
-        /// <summary>Gets a shared drive's metadata by ID.</summary>
+        /// <summary>
+        /// Gets a shared drive's metadata by ID. For more information, see [Manage shared
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
+        /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2050,14 +2064,20 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Hides a shared drive from the default view.</summary>
+        /// <summary>
+        /// Hides a shared drive from the default view. For more information, see [Manage shared
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
+        /// </summary>
         /// <param name="driveId">The ID of the shared drive.</param>
         public virtual HideRequest Hide(string driveId)
         {
             return new HideRequest(this.service, driveId);
         }
 
-        /// <summary>Hides a shared drive from the default view.</summary>
+        /// <summary>
+        /// Hides a shared drive from the default view. For more information, see [Manage shared
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
+        /// </summary>
         public class HideRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
         {
             /// <summary>Constructs a new Hide request.</summary>
@@ -2185,14 +2205,20 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Restores a shared drive to the default view.</summary>
+        /// <summary>
+        /// Restores a shared drive to the default view. For more information, see [Manage shared
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
+        /// </summary>
         /// <param name="driveId">The ID of the shared drive.</param>
         public virtual UnhideRequest Unhide(string driveId)
         {
             return new UnhideRequest(this.service, driveId);
         }
 
-        /// <summary>Restores a shared drive to the default view.</summary>
+        /// <summary>
+        /// Restores a shared drive to the default view. For more information, see [Manage shared
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
+        /// </summary>
         public class UnhideRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
         {
             /// <summary>Constructs a new Unhide request.</summary>
@@ -2230,7 +2256,10 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Updates the metadata for a shared drive.</summary>
+        /// <summary>
+        /// Updates the metadata for a shared drive. For more information, see [Manage shared
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="driveId">The ID of the shared drive.</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v3.Data.Drive body, string driveId)
@@ -2238,7 +2267,10 @@ namespace Google.Apis.Drive.v3
             return new UpdateRequest(this.service, body, driveId);
         }
 
-        /// <summary>Updates the metadata for a shared drive.</summary>
+        /// <summary>
+        /// Updates the metadata for a shared drive. For more information, see [Manage shared
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
+        /// </summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -5632,7 +5664,8 @@ namespace Google.Apis.Drive.v3
         /// <summary>
         /// Permanently deletes a file version. You can only delete revisions for files with binary content in Google
         /// Drive, like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining
-        /// file version can't be deleted.
+        /// file version can't be deleted. For more information, see [Manage file
+        /// revisions](https://developers.google.com/drive/api/guides/manage-revisions).
         /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="revisionId">The ID of the revision.</param>
@@ -5644,7 +5677,8 @@ namespace Google.Apis.Drive.v3
         /// <summary>
         /// Permanently deletes a file version. You can only delete revisions for files with binary content in Google
         /// Drive, like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining
-        /// file version can't be deleted.
+        /// file version can't be deleted. For more information, see [Manage file
+        /// revisions](https://developers.google.com/drive/api/guides/manage-revisions).
         /// </summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
@@ -5696,7 +5730,10 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Gets a revision's metadata or content by ID.</summary>
+        /// <summary>
+        /// Gets a revision's metadata or content by ID. For more information, see [Manage file
+        /// revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
+        /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="revisionId">The ID of the revision.</param>
         public virtual GetRequest Get(string fileId, string revisionId)
@@ -5704,7 +5741,10 @@ namespace Google.Apis.Drive.v3
             return new GetRequest(this.service, fileId, revisionId);
         }
 
-        /// <summary>Gets a revision's metadata or content by ID.</summary>
+        /// <summary>
+        /// Gets a revision's metadata or content by ID. For more information, see [Manage file
+        /// revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
+        /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Revision>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -5857,14 +5897,20 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Lists a file's revisions.</summary>
+        /// <summary>
+        /// Lists a file's revisions. For more information, see [Manage file
+        /// revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
+        /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         public virtual ListRequest List(string fileId)
         {
             return new ListRequest(this.service, fileId);
         }
 
-        /// <summary>Lists a file's revisions.</summary>
+        /// <summary>
+        /// Lists a file's revisions. For more information, see [Manage file
+        /// revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
+        /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.RevisionList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -5929,7 +5975,10 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Updates a revision with patch semantics.</summary>
+        /// <summary>
+        /// Updates a revision with patch semantics. For more information, see [Manage file
+        /// revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="revisionId">The ID of the revision.</param>
@@ -5938,7 +5987,10 @@ namespace Google.Apis.Drive.v3
             return new UpdateRequest(this.service, body, fileId, revisionId);
         }
 
-        /// <summary>Updates a revision with patch semantics.</summary>
+        /// <summary>
+        /// Updates a revision with patch semantics. For more information, see [Manage file
+        /// revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
+        /// </summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Revision>
         {
             /// <summary>Constructs a new Update request.</summary>
