@@ -3433,7 +3433,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A step in the build pipeline. Next ID: 22</summary>
+    /// <summary>A step in the build pipeline. Next ID: 23</summary>
     public class BuildStep : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3519,6 +3519,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pullTiming")]
         public virtual TimeSpan PullTiming { get; set; }
 
+        /// <summary>Remote configuration for the build step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteConfig")]
+        public virtual string RemoteConfig { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<StepResult> Results { get; set; }
 
@@ -3598,6 +3602,22 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CISAKnownExploitedVulnerabilities provides information about whether the vulnerability is known to have been
+    /// leveraged as part of a ransomware campaign.
+    /// </summary>
+    public class CISAKnownExploitedVulnerabilities : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether the vulnerability is known to have been leveraged as part of a ransomware campaign.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knownRansomwareCampaignUse")]
+        public virtual string KnownRansomwareCampaignUse { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6077,6 +6097,29 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     }
 
     /// <summary>
+    /// ExploitPredictionScoringSystem provides information about the Exploit Prediction Scoring System (EPSS) score and
+    /// percentile.
+    /// </summary>
+    public class ExploitPredictionScoringSystem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The percentile of the current score, the proportion of all scored vulnerabilities with the same or
+        /// a lower EPSS score
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentile")]
+        public virtual System.Nullable<double> Percentile { get; set; }
+
+        /// <summary>
+        /// Optional. The EPSS score representing the probability [0-1] of exploitation in the wild in the next 30 days
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
     /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
@@ -8325,6 +8368,26 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The Risk message provides information about the risk of a vulnerability.</summary>
+    public class Risk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. CISA maintains the authoritative source of vulnerabilities that have been exploited in the wild.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cisaKev")]
+        public virtual CISAKnownExploitedVulnerabilities CisaKev { get; set; }
+
+        /// <summary>
+        /// Optional. The Exploit Prediction Scoring System (EPSS) estimates the likelihood (probability) that a
+        /// software vulnerability will be exploited in the wild.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("epss")]
+        public virtual ExploitPredictionScoringSystem Epss { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class RunDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("builder")]
@@ -9536,6 +9599,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageIssue")]
         public virtual System.Collections.Generic.IList<PackageIssue> PackageIssue { get; set; }
+
+        /// <summary>Risk information about the vulnerability, such as CISA, EPSS, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("risk")]
+        public virtual Risk Risk { get; set; }
 
         /// <summary>Output only. The note provider assigned Severity of the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
