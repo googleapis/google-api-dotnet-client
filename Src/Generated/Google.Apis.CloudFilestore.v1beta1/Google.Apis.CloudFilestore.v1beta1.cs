@@ -1844,6 +1844,73 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     }
                 }
 
+                /// <summary>
+                /// Pause the standby instance (replica). WARNING: This operation makes the standby instance's NFS
+                /// filesystem writable. Any data written to the standby instance while paused will be lost when the
+                /// replica is resumed or promoted.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the instance, in the format
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+                /// </param>
+                public virtual PauseReplicaRequest PauseReplica(Google.Apis.CloudFilestore.v1beta1.Data.PauseReplicaRequest body, string name)
+                {
+                    return new PauseReplicaRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Pause the standby instance (replica). WARNING: This operation makes the standby instance's NFS
+                /// filesystem writable. Any data written to the standby instance while paused will be lost when the
+                /// replica is resumed or promoted.
+                /// </summary>
+                public class PauseReplicaRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new PauseReplica request.</summary>
+                    public PauseReplicaRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.PauseReplicaRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the instance, in the format
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFilestore.v1beta1.Data.PauseReplicaRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "pauseReplica";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:pauseReplica";
+
+                    /// <summary>Initializes PauseReplica parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Promote the standby instance (replica).</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -3369,6 +3436,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxShareCount")]
         public virtual System.Nullable<long> MaxShareCount { get; set; }
 
+        /// <summary>Output only. The min capacity of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minCapacityGb")]
+        public virtual System.Nullable<long> MinCapacityGb { get; set; }
+
         /// <summary>
         /// Indicates whether this instance uses a multi-share configuration with which it can have more than one
         /// file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
@@ -4050,6 +4121,13 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PauseReplicaRequest pauses a Filestore standby instance (replica).</summary>
+    public class PauseReplicaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
