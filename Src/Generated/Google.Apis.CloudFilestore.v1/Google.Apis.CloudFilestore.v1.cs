@@ -2877,6 +2877,10 @@ namespace Google.Apis.CloudFilestore.v1.Data
     /// <summary>A Filestore instance.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The increase/decrease capacity step size in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityStepSizeGb")]
+        public virtual System.Nullable<long> CapacityStepSizeGb { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -2952,6 +2956,14 @@ namespace Google.Apis.CloudFilestore.v1.Data
         /// <summary>Resource labels to represent user provided metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. The max capacity of the instance in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxCapacityGb")]
+        public virtual System.Nullable<long> MaxCapacityGb { get; set; }
+
+        /// <summary>Output only. The min capacity of the instance in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minCapacityGb")]
+        public virtual System.Nullable<long> MinCapacityGb { get; set; }
 
         /// <summary>
         /// Output only. The resource name of the instance, in the format
