@@ -6354,8 +6354,8 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -6613,7 +6613,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>
         /// stores driver specific attributes. For Google Cloud Storage volumes, the following attributes are supported:
         /// * bucketName: the name of the Cloud Storage bucket to mount. The Cloud Run Service identity must have access
-        /// to this bucket.
+        /// to this bucket. * mountOptions: comma-separated list of mount options to pass to the gcsfuse.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeAttributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> VolumeAttributes { get; set; }

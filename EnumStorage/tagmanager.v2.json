@@ -118,7 +118,10 @@
     "serverPageLocationUrl",
     "serverPageLocationPath",
     "serverPageLocationHostname",
-    "visitorRegion"
+    "visitorRegion",
+    "analyticsClientId",
+    "analyticsSessionId",
+    "analyticsSessionNumber"
   ],
   "Google.Apis.TagManager.v2.AccountsResource+ContainersResource+WorkspacesResource+BuiltInVariablesResource+DeleteRequest.TypeEnum": [
     "builtInVariableTypeUnspecified",
@@ -234,7 +237,10 @@
     "serverPageLocationUrl",
     "serverPageLocationPath",
     "serverPageLocationHostname",
-    "visitorRegion"
+    "visitorRegion",
+    "analyticsClientId",
+    "analyticsSessionId",
+    "analyticsSessionNumber"
   ],
   "Google.Apis.TagManager.v2.AccountsResource+ContainersResource+WorkspacesResource+BuiltInVariablesResource+RevertRequest.TypeEnum": [
     "builtInVariableTypeUnspecified",
@@ -350,7 +356,10 @@
     "serverPageLocationUrl",
     "serverPageLocationPath",
     "serverPageLocationHostname",
-    "visitorRegion"
+    "visitorRegion",
+    "analyticsClientId",
+    "analyticsSessionId",
+    "analyticsSessionNumber"
   ],
   "Google.Apis.TagManager.v2.TagManagerBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",

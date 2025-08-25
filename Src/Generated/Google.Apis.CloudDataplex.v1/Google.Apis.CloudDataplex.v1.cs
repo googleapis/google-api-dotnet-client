@@ -16073,8 +16073,8 @@ namespace Google.Apis.CloudDataplex.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -16319,8 +16319,8 @@ namespace Google.Apis.CloudDataplex.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Specifies the ordering of results. Supported values are: relevance (default)
-                /// last_modified_timestamp last_modified_timestamp asc
+                /// Optional. Specifies the ordering of results. Supported values are: relevance last_modified_timestamp
+                /// last_modified_timestamp asc
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }

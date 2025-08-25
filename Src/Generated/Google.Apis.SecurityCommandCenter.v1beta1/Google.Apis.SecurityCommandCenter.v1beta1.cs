@@ -3012,7 +3012,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The destination big query dataset to export findings to.</summary>
+    /// <summary>The destination BigQuery dataset to export findings to.</summary>
     public class BigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4147,7 +4147,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
     /// <summary>The LRO metadata for a ExportFindings request.</summary>
     public class ExportFindingsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The destination big query dataset to export findings to.</summary>
+        /// <summary>Required. The destination BigQuery dataset to export findings to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigQueryDestination")]
         public virtual BigQueryDestination BigQueryDestination { get; set; }
 

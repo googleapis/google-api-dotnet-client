@@ -21800,6 +21800,16 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
+        /// <summary>
+        /// Optional. Whether this advertiser contains line items that serve European Union political ads. If this field
+        /// is set to `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING`, then the following will happen: * Any new line items
+        /// created under this advertiser will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if not otherwise
+        /// specified. * Any existing line items under this advertiser that do not have a set value be updated to
+        /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` within a day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containsEuPoliticalAds")]
+        public virtual string ContainsEuPoliticalAds { get; set; }
+
         /// <summary>Required. Creative related settings of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeConfig")]
         public virtual AdvertiserCreativeConfig CreativeConfig { get; set; }
@@ -23386,7 +23396,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
 
         /// <summary>
         /// Required. A field mask identifying which fields to update. Only the following fields are currently
-        /// supported: * entityStatus * containsEuPoliticalAdvertising
+        /// supported: * entityStatus * containsEuPoliticalAds
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
@@ -25352,6 +25362,17 @@ namespace Google.Apis.DisplayVideo.v2.Data
     public class DuplicateLineItemRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Whether this line item will serve European Union political ads. If contains_eu_political_ads has been set to
+        /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then this field will be assigned
+        /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if not otherwise specified. This field can then be updated using
+        /// the UI, API, or Structured Data Files. *Warning*: Starting **September 8, 2025**, this field must be set. If
+        /// not, either the value `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` will be assigned to the line item if the
+        /// parent advertiser has declared that it does not serve EU political ads, or **the request will fail**.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containsEuPoliticalAds")]
+        public virtual string ContainsEuPoliticalAds { get; set; }
+
+        /// <summary>
         /// The display name of the new line item. Must be UTF-8 encoded with a maximum size of 240 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetDisplayName")]
@@ -25795,6 +25816,17 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Request message for LineItemService.GenerateDefaultLineItem.</summary>
     public class GenerateDefaultLineItemRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Whether this line item will serve European Union political ads. If contains_eu_political_ads has been set to
+        /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then this field will be assigned
+        /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if not otherwise specified. This field can then be updated using
+        /// the UI, API, or Structured Data Files. *Warning*: Starting **September 8, 2025**, this field must be set. If
+        /// not, either the value `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` will be assigned to the line item if the
+        /// parent advertiser has declared that it does not serve EU political ads, or **the request will fail**.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containsEuPoliticalAds")]
+        public virtual string ContainsEuPoliticalAds { get; set; }
+
         /// <summary>
         /// Required. The display name of the line item. Must be UTF-8 encoded with a maximum size of 240 bytes.
         /// </summary>
@@ -27017,6 +27049,18 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>Output only. The unique ID of the campaign that the line item belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
         public virtual System.Nullable<long> CampaignId { get; set; }
+
+        /// <summary>
+        /// Whether this line item will serve European Union political ads. If contains_eu_political_ads has been set to
+        /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then this field will be assigned
+        /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if not otherwise specified. This field can then be updated using
+        /// the UI, API, or Structured Data Files. *Warning*: Starting **September 8, 2025**, this field must be set
+        /// when creating a new line item. If not, either the value `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` will be
+        /// assigned if the parent advertiser has declared that it does not serve EU political ads, or **the
+        /// `advertisers.lineItems.create` request will fail**.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containsEuPoliticalAds")]
+        public virtual string ContainsEuPoliticalAds { get; set; }
 
         /// <summary>The conversion tracking setting of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionCounting")]
@@ -30468,8 +30512,9 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// The value used by the bidding strategy. When the bidding strategy is assigned at the line item level, this
         /// field is only applicable for the following strategy types: *
         /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
-        /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` When the bidding strategy is assigned at the ad
-        /// group level, this field is only applicable for the following strategy types: *
+        /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` *
+        /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_SHARE_OF_VOICE` When the bidding strategy is assigned at
+        /// the ad group level, this field is only applicable for the following strategy types: *
         /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` *
         /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` *
         /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` *

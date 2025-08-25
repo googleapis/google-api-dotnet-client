@@ -462,7 +462,7 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// <summary>
         /// A set of features that Security Token Service supports, in addition to the standard OAuth 2.0 token
         /// exchange, formatted as a serialized JSON object of Options. The size of the parameter value must not exceed
-        /// 4096 characters.
+        /// 4 * 1024 * 1024 characters (4 MB).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual string Options { get; set; }

@@ -10481,7 +10481,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
-        /// <summary>Returns the singleton data retention settings for this property.</summary>
+        /// <summary>Returns the reporting identity settings for this property.</summary>
         /// <param name="name">
         /// Required. The name of the settings to lookup. Format: properties/{property}/reportingIdentitySettings
         /// Example: "properties/1000/reportingIdentitySettings"
@@ -10491,7 +10491,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             return new GetReportingIdentitySettingsRequest(this.service, name);
         }
 
-        /// <summary>Returns the singleton data retention settings for this property.</summary>
+        /// <summary>Returns the reporting identity settings for this property.</summary>
         public class GetReportingIdentitySettingsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaReportingIdentitySettings>
         {
             /// <summary>Constructs a new GetReportingIdentitySettings request.</summary>

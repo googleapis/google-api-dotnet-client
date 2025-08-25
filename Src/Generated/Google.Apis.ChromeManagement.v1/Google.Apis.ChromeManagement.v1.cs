@@ -7116,6 +7116,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningProfileId")]
         public virtual string ProvisioningProfileId { get; set; }
 
+        /// <summary>Output only. The CA connection is a SCEP CA connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scepCaConnection")]
+        public virtual GoogleChromeManagementVersionsV1ScepCaConnection ScepCaConnection { get; set; }
+
+        /// <summary>Output only. The profile is a SCEP certificate provisioning profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scepProfile")]
+        public virtual GoogleChromeManagementVersionsV1ScepProfile ScepProfile { get; set; }
+
         /// <summary>
         /// Output only. The data that the client was asked to sign. This field is only present after the `SignData`
         /// operation has been initiated.
@@ -7924,6 +7932,66 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes a SCEP Certificate Authority Connection.</summary>
+    public class GoogleChromeManagementVersionsV1ScepCaConnection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. A string that references the administrator-provided configuration for the certification
+        /// authority service. This field can be missing if no configuration was given.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caConnectionAdapterConfigReference")]
+        public virtual string CaConnectionAdapterConfigReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a SCEP certificate provisioning profile.</summary>
+    public class GoogleChromeManagementVersionsV1ScepProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The certificate template name as defined by the admin on their on-prem infrastructure. This is
+        /// identifiable by the customer's CA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateTemplateName")]
+        public virtual string CertificateTemplateName { get; set; }
+
+        /// <summary>Output only. The country of the subject.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; }
+
+        /// <summary>Output only. The allowed key usages for certificate's key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyUsages")]
+        public virtual System.Collections.Generic.IList<string> KeyUsages { get; set; }
+
+        /// <summary>Output only. The locality of the subject.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locality")]
+        public virtual string Locality { get; set; }
+
+        /// <summary>Output only. The name of the organization the subject belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; }
+
+        /// <summary>Output only. The organizational units of the subject.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationalUnits")]
+        public virtual System.Collections.Generic.IList<string> OrganizationalUnits { get; set; }
+
+        /// <summary>Output only. The state of the subject.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The subject alternative names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subjectAltNames")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1SubjectAltName> SubjectAltNames { get; set; }
+
+        /// <summary>Output only. The common name of the subject.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subjectCommonName")]
+        public virtual string SubjectCommonName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for the long-running operation returned by signData.</summary>
     public class GoogleChromeManagementVersionsV1SignDataMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7979,6 +8047,21 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateProvisioningProcess")]
         public virtual GoogleChromeManagementVersionsV1CertificateProvisioningProcess CertificateProvisioningProcess { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a subject alternative name.</summary>
+    public class GoogleChromeManagementVersionsV1SubjectAltName : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The type of the SubjectAltName extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. The value of the subject alternative name with respoect to the `type`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

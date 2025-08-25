@@ -7029,6 +7029,75 @@ namespace Google.Apis.VMwareEngine.v1
                     }
                 }
 
+                /// <summary>
+                /// Accelerates the deletion of a private cloud that is currently in soft deletion A `PrivateCloud`
+                /// resource in soft deletion has `PrivateCloud.state` set to `SOFT_DELETED` and
+                /// `PrivateCloud.expireTime` set to the time when deletion can no longer be reversed.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the private cloud in softdeletion. Resource names are schemeless URIs
+                /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                /// </param>
+                public virtual PrivateCloudDeletionNowRequest PrivateCloudDeletionNow(Google.Apis.VMwareEngine.v1.Data.AcceleratePrivateCloudDeletionRequest body, string name)
+                {
+                    return new PrivateCloudDeletionNowRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Accelerates the deletion of a private cloud that is currently in soft deletion A `PrivateCloud`
+                /// resource in soft deletion has `PrivateCloud.state` set to `SOFT_DELETED` and
+                /// `PrivateCloud.expireTime` set to the time when deletion can no longer be reversed.
+                /// </summary>
+                public class PrivateCloudDeletionNowRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new PrivateCloudDeletionNow request.</summary>
+                    public PrivateCloudDeletionNowRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.AcceleratePrivateCloudDeletionRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the private cloud in softdeletion. Resource names are schemeless
+                    /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                    /// example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.AcceleratePrivateCloudDeletionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "privateCloudDeletionNow";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:privateCloudDeletionNow";
+
+                    /// <summary>Initializes PrivateCloudDeletionNow parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Resets credentials of the NSX appliance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="privateCloud">
@@ -8941,6 +9010,25 @@ namespace Google.Apis.VMwareEngine.v1
 }
 namespace Google.Apis.VMwareEngine.v1.Data
 {
+    /// <summary>Request message for VmwareEngine.AcceleratePrivateCloudDeletion</summary>
+    public class AcceleratePrivateCloudDeletionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Checksum used to ensure that the user-provided value is up to date before the server processes the
+        /// request. The server compares provided checksum with the current checksum of the resource. If the
+        /// user-provided value is out of date, this request returns an `ABORTED` error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported
+        /// (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+    }
+
     /// <summary>Announcement for the resources of Vmware Engine.</summary>
     public class Announcement : Google.Apis.Requests.IDirectResponseSchema
     {

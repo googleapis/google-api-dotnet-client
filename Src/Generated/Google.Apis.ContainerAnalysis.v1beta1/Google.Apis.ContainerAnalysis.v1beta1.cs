@@ -4228,7 +4228,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A step in the build pipeline. Next ID: 22</summary>
+    /// <summary>A step in the build pipeline. Next ID: 23</summary>
     public class BuildStep : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4313,6 +4313,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>Output only. Stores timing information for pulling this build step's builder image only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pullTiming")]
         public virtual TimeSpan PullTiming { get; set; }
+
+        /// <summary>Remote configuration for the build step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteConfig")]
+        public virtual string RemoteConfig { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<StepResult> Results { get; set; }
@@ -7701,7 +7705,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>
         /// Unordered list. Unreachable regions. Populated for requests from the global region when
-        /// `return_partial_success` is set. Format: projects//locations/
+        /// `return_partial_success` is set. Format: `projects/[PROJECT_ID]/locations/[LOCATION]`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -7726,7 +7730,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>
         /// Unordered list. Unreachable regions. Populated for requests from the global region when
-        /// `return_partial_success` is set. Format: projects//locations/
+        /// `return_partial_success` is set. Format: `projects/[PROJECT_ID]/locations/[LOCATION]`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -9478,7 +9482,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>
         /// Unordered list. Unreachable regions. Populated for requests from the global region when
-        /// `return_partial_success` is set. Format: projects//locations/
+        /// `return_partial_success` is set. Format: `projects/[PROJECT_ID]/locations/[LOCATION]`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }

@@ -394,7 +394,8 @@ namespace Google.Apis.CloudKMS.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`.
+        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`
+        /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
         /// </param>
         public virtual UpdateAutokeyConfigRequest UpdateAutokeyConfig(Google.Apis.CloudKMS.v1.Data.AutokeyConfig body, string name)
         {
@@ -418,7 +419,8 @@ namespace Google.Apis.CloudKMS.v1
             }
 
             /// <summary>
-            /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`.
+            /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`
+            /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -4840,8 +4842,8 @@ namespace Google.Apis.CloudKMS.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -5487,7 +5489,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Cloud KMS Autokey configuration for a folder.</summary>
+    /// <summary>Cloud KMS Autokey configuration for a folder or project.</summary>
     public class AutokeyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5510,7 +5512,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string KeyProject { get; set; }
 
         /// <summary>
-        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`.
+        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`
+        /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

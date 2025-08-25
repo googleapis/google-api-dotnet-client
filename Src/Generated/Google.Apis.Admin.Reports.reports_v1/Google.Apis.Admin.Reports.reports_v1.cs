@@ -383,6 +383,13 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 Gcp = 6,
 
                 /// <summary>
+                /// The Gmail application's activity reports return information about various [Gmail activity
+                /// events](/admin-sdk/reports/v1/appendix/activity/gmail).
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("gmail")]
+                Gmail = 26,
+
+                /// <summary>
                 /// The Google+ application's activity reports return information about various Google+ activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("gplus")]
@@ -528,7 +535,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// example, the timespan of events summarized in a report can start in April and end in May. The report
             /// itself can be requested in August. If the `endTime` is not specified, the report returns all activities
             /// from the `startTime` until the current time or the most recent 180 days if the `startTime` is more than
-            /// 180 days in the past.
+            /// 180 days in the past. For Gmail requests, `startTime` and `endTime` must be provided and the difference
+            /// must not be greater than 30 days.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EndTime { get; set; }
@@ -613,7 +621,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// Sets the beginning of the range of time shown in the report. The date is in the RFC 3339 format, for
             /// example 2010-10-28T10:26:35.000Z. The report returns all activities from `startTime` until `endTime`.
             /// The `startTime` must be before the `endTime` (if specified) and the current time when the request is
-            /// made, or the API returns an error.
+            /// made, or the API returns an error. For Gmail requests, `startTime` and `endTime` must be provided and
+            /// the difference must not be greater than 30 days.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string StartTime { get; set; }
@@ -645,7 +654,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = @"(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(classroom)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)",
+                    Pattern = @"(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(classroom)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gmail)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)",
                 });
                 RequestParameters.Add("actorIpAddress", new Google.Apis.Discovery.Parameter
                 {

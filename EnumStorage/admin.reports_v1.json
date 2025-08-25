@@ -25,7 +25,8 @@
     "vault",
     "gemini_for_workspace",
     "gemini_in_workspace_apps",
-    "classroom"
+    "classroom",
+    "gmail"
   ],
   "Google.Apis.Admin.Reports.reports_v1.ActivitiesResource+WatchRequest.ApplicationNameEnum": [
     "application_name_unspecified",

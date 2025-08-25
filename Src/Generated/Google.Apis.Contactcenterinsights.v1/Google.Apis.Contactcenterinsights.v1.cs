@@ -9340,10 +9340,10 @@ namespace Google.Apis.Contactcenterinsights.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and
-                    /// conjunctions (AND). Supported fields include the following: * `project_id` - id of the project
-                    /// to list tags for * `qa_scorecard_revision_id` - id of the scorecard revision to list tags for *
-                    /// `qa_question_id - id of the question to list tags for`
+                    /// Optional. A filter to reduce results to a specific subset. Supports conjunctions (ie. AND
+                    /// operators). Supported fields include the following: * `project_id` - id of the project to list
+                    /// tags for * `qa_scorecard_id` - id of the scorecard to list tags for * `revision_id` - id of the
+                    /// scorecard revision to list tags for` * `qa_question_id - id of the question to list tags for`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -10106,6 +10106,55 @@ namespace Google.Apis.Contactcenterinsights.v1
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// Optional. The source of scorecards are based on how those Scorecards were created, e.g., a
+                        /// customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve
+                        /// Scorecards Revisions from Scorecards of one or more sources.
+                        /// </summary>
+                        /// <remarks>
+                        /// Use this property to set a single value for the parameter, or
+                        /// <see cref="QaScorecardSourcesList"/> to set multiple values. Do not set both properties.
+                        /// </remarks>
+                        [Google.Apis.Util.RequestParameterAttribute("qaScorecardSources", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<QaScorecardSourcesEnum> QaScorecardSources { get; set; }
+
+                        /// <summary>
+                        /// Optional. The source of scorecards are based on how those Scorecards were created, e.g., a
+                        /// customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve
+                        /// Scorecards Revisions from Scorecards of one or more sources.
+                        /// </summary>
+                        /// <remarks>
+                        /// Use this property to set one or more values for the parameter. Do not set both this property
+                        /// and <see cref="QaScorecardSources"/>.
+                        /// </remarks>
+                        [Google.Apis.Util.RequestParameterAttribute("qaScorecardSources", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<QaScorecardSourcesEnum> QaScorecardSourcesList { get; set; }
+
+                        /// <summary>
+                        /// Optional. The source of scorecards are based on how those Scorecards were created, e.g., a
+                        /// customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve
+                        /// Scorecards Revisions from Scorecards of one or more sources.
+                        /// </summary>
+                        public enum QaScorecardSourcesEnum
+                        {
+                            /// <summary>
+                            /// The source of the scorecard is unspecified. Default to
+                            /// QA_SCORECARD_SOURCE_CUSTOMER_DEFINED.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("QA_SCORECARD_SOURCE_UNSPECIFIED")]
+                            QASCORECARDSOURCEUNSPECIFIED = 0,
+
+                            /// <summary>The scorecard is a custom scorecard created by the user.</summary>
+                            [Google.Apis.Util.StringValueAttribute("QA_SCORECARD_SOURCE_CUSTOMER_DEFINED")]
+                            QASCORECARDSOURCECUSTOMERDEFINED = 1,
+
+                            /// <summary>
+                            /// The scorecard is a scorecard created through discovery engine deployment.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("QA_SCORECARD_SOURCE_DISCOVERY_ENGINE")]
+                            QASCORECARDSOURCEDISCOVERYENGINE = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -10146,6 +10195,14 @@ namespace Google.Apis.Contactcenterinsights.v1
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("qaScorecardSources", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "qaScorecardSources",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -10473,6 +10530,52 @@ namespace Google.Apis.Contactcenterinsights.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. The source of scorecards are based on how those Scorecards were created, e.g., a
+                    /// customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve
+                    /// Scorecards of one or more sources.
+                    /// </summary>
+                    /// <remarks>
+                    /// Use this property to set a single value for the parameter, or
+                    /// <see cref="QaScorecardSourcesList"/> to set multiple values. Do not set both properties.
+                    /// </remarks>
+                    [Google.Apis.Util.RequestParameterAttribute("qaScorecardSources", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<QaScorecardSourcesEnum> QaScorecardSources { get; set; }
+
+                    /// <summary>
+                    /// Optional. The source of scorecards are based on how those Scorecards were created, e.g., a
+                    /// customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve
+                    /// Scorecards of one or more sources.
+                    /// </summary>
+                    /// <remarks>
+                    /// Use this property to set one or more values for the parameter. Do not set both this property and
+                    /// <see cref="QaScorecardSources"/>.
+                    /// </remarks>
+                    [Google.Apis.Util.RequestParameterAttribute("qaScorecardSources", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<QaScorecardSourcesEnum> QaScorecardSourcesList { get; set; }
+
+                    /// <summary>
+                    /// Optional. The source of scorecards are based on how those Scorecards were created, e.g., a
+                    /// customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve
+                    /// Scorecards of one or more sources.
+                    /// </summary>
+                    public enum QaScorecardSourcesEnum
+                    {
+                        /// <summary>
+                        /// The source of the scorecard is unspecified. Default to QA_SCORECARD_SOURCE_CUSTOMER_DEFINED.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("QA_SCORECARD_SOURCE_UNSPECIFIED")]
+                        QASCORECARDSOURCEUNSPECIFIED = 0,
+
+                        /// <summary>The scorecard is a custom scorecard created by the user.</summary>
+                        [Google.Apis.Util.StringValueAttribute("QA_SCORECARD_SOURCE_CUSTOMER_DEFINED")]
+                        QASCORECARDSOURCECUSTOMERDEFINED = 1,
+
+                        /// <summary>The scorecard is a scorecard created through discovery engine deployment.</summary>
+                        [Google.Apis.Util.StringValueAttribute("QA_SCORECARD_SOURCE_DISCOVERY_ENGINE")]
+                        QASCORECARDSOURCEDISCOVERYENGINE = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -10505,6 +10608,14 @@ namespace Google.Apis.Contactcenterinsights.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("qaScorecardSources", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "qaScorecardSources",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -16884,6 +16995,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<double> Score { get; set; }
 
+        /// <summary>
+        /// Output only. A value of "Skip". If provided, this field may only be set to `true`. If a question receives
+        /// this answer, it will be excluded from any score calculations. This would mean that the question was not
+        /// evaluated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipValue")]
+        public virtual System.Nullable<bool> SkipValue { get; set; }
+
         /// <summary>String value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strValue")]
         public virtual string StrValue { get; set; }
@@ -17293,6 +17412,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. The source of the scorecard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
 
         private string _updateTimeRaw;
 
@@ -22891,6 +23014,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Output only. Numerical score of the answer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>
+        /// Output only. A value of "Skip". If provided, this field may only be set to `true`. If a question receives
+        /// this answer, it will be excluded from any score calculations. This would mean that the question was not
+        /// evaluated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipValue")]
+        public virtual System.Nullable<bool> SkipValue { get; set; }
 
         /// <summary>String value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strValue")]

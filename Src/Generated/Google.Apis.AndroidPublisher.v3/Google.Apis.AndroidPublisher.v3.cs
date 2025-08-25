@@ -14309,7 +14309,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>
         /// The current recurring price of the auto renewing plan. Note that the price does not take into account
-        /// discounts and taxes, call orders.get API instead if transaction details are needed.
+        /// discounts and does not include taxes for tax-exclusive pricing, please call orders.get API instead if
+        /// transaction details are needed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurringPrice")]
         public virtual Money RecurringPrice { get; set; }
@@ -20676,7 +20677,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>A release within a track.</summary>
     public class TrackRelease : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Restricts a release to a specific set of countries.</summary>
+        /// <summary>
+        /// Restricts a release to a specific set of countries. Note this is only allowed to be set for inProgress
+        /// releases in the production track.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryTargeting")]
         public virtual CountryTargeting CountryTargeting { get; set; }
 

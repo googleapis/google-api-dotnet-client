@@ -7108,6 +7108,13 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>
+        /// Optional. Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique
+        /// across documents.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unique")]
+        public virtual System.Nullable<bool> Unique { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

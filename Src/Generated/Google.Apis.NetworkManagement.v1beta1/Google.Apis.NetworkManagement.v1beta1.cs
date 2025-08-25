@@ -1084,8 +1084,8 @@ namespace Google.Apis.NetworkManagement.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2792,8 +2792,8 @@ namespace Google.Apis.NetworkManagement.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -3499,8 +3499,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud
         /// load balancer. Forwarding rules are also used for protocol forwarding, Private Service Connect and other
         /// network services to provide forwarding information in the control plane. Applicable only to destination
-        /// endpoint. Format: projects/{project}/global/forwardingRules/{id} or
-        /// projects/{project}/regions/{region}/forwardingRules/{id}
+        /// endpoint. Format: `projects/{project}/global/forwardingRules/{id}` or
+        /// `projects/{project}/regions/{region}/forwardingRules/{id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
         public virtual string ForwardingRule { get; set; }

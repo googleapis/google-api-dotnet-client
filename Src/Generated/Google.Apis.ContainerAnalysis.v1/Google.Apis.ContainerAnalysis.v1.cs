@@ -4103,7 +4103,7 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A step in the build pipeline. Next ID: 22</summary>
+    /// <summary>A step in the build pipeline. Next ID: 23</summary>
     public class BuildStep : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4189,6 +4189,10 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pullTiming")]
         public virtual TimeSpan PullTiming { get; set; }
 
+        /// <summary>Remote configuration for the build step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteConfig")]
+        public virtual string RemoteConfig { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<StepResult> Results { get; set; }
 
@@ -4248,6 +4252,18 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CISAKnownExploitedVulnerabilities : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the vulnerability is known to have been leveraged as part of a ransomware campaign.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knownRansomwareCampaignUse")]
+        public virtual string KnownRansomwareCampaignUse { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6676,6 +6692,25 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ExploitPredictionScoringSystem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The percentile of the current score, the proportion of all scored vulnerabilities with the same or a lower
+        /// EPSS score
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentile")]
+        public virtual System.Nullable<double> Percentile { get; set; }
+
+        /// <summary>
+        /// The EPSS score representing the probability [0-1] of exploitation in the wild in the next 30 days
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request to generate and export SBOM. Target must be specified for the request.</summary>
     public class ExportSBOMRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7487,7 +7522,7 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable regions. Populated for requests from the global region when
-        /// `return_partial_success` is set. Format: projects//locations/
+        /// `return_partial_success` is set. Format: `projects/[PROJECT_ID]/locations/[LOCATION]`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -7512,7 +7547,7 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable regions. Populated for requests from the global region when
-        /// `return_partial_success` is set. Format: projects//locations/
+        /// `return_partial_success` is set. Format: `projects/[PROJECT_ID]/locations/[LOCATION]`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -8493,6 +8528,25 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Risk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// CISA maintains the authoritative source of vulnerabilities that have been exploited in the wild.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cisaKev")]
+        public virtual CISAKnownExploitedVulnerabilities CisaKev { get; set; }
+
+        /// <summary>
+        /// The Exploit Prediction Scoring System (EPSS) estimates the likelihood (probability) that a software
+        /// vulnerability will be exploited in the wild.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("epss")]
+        public virtual ExploitPredictionScoringSystem Epss { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9632,6 +9686,10 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relatedUrls")]
         public virtual System.Collections.Generic.IList<RelatedUrl> RelatedUrls { get; set; }
 
+        /// <summary>Risk information about the vulnerability, such as CISA, EPSS, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("risk")]
+        public virtual Risk Risk { get; set; }
+
         /// <summary>Output only. The note provider assigned severity of this vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
@@ -9662,7 +9720,7 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
 
         /// <summary>
         /// Unordered list. Unreachable regions. Populated for requests from the global region when
-        /// `return_partial_success` is set. Format: projects//locations/
+        /// `return_partial_success` is set. Format: `projects/[PROJECT_ID]/locations/[LOCATION]`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }

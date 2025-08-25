@@ -2475,8 +2475,8 @@ namespace Google.Apis.CloudRedis.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2843,9 +2843,56 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
 
+        private string _lastBackupTimeRaw;
+
+        private object _lastBackupTime;
+
+        /// <summary>Output only. The last time a backup was created in the backup collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastBackupTime")]
+        public virtual string LastBackupTimeRaw
+        {
+            get => _lastBackupTimeRaw;
+            set
+            {
+                _lastBackupTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastBackupTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastBackupTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastBackupTimeDateTimeOffset instead.")]
+        public virtual object LastBackupTime
+        {
+            get => _lastBackupTime;
+            set
+            {
+                _lastBackupTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastBackupTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastBackupTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastBackupTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastBackupTimeRaw);
+            set => LastBackupTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Identifier. Full resource path of the backup collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Total number of backups in the backup collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBackupCount")]
+        public virtual System.Nullable<long> TotalBackupCount { get; set; }
+
+        /// <summary>Output only. Total size of all backups in the backup collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBackupSizeBytes")]
+        public virtual System.Nullable<long> TotalBackupSizeBytes { get; set; }
 
         /// <summary>Output only. System assigned unique identifier of the backup collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]

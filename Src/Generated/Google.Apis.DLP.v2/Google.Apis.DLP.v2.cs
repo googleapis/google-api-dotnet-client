@@ -17527,6 +17527,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("example")]
         public virtual string Example { get; set; }
 
+        /// <summary>Locations at which this feature can be used. May change over time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationSupport")]
+        public virtual GooglePrivacyDlpV2LocationSupport LocationSupport { get; set; }
+
         /// <summary>Internal name of the infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -18776,6 +18780,24 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLocations")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ContentLocation> ContentLocations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Locations at which a feature can be used.</summary>
+    public class GooglePrivacyDlpV2LocationSupport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specific locations where the feature may be used. Examples: us-central1, us, asia, global If scope is
+        /// ANY_LOCATION, no regions will be listed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; }
+
+        /// <summary>The current scope for location on this feature. This may expand over time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalizationScope")]
+        public virtual string RegionalizationScope { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
