@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1540,9 +1540,9 @@ namespace Google.Apis.Fitness.v1
                 public virtual Google.Apis.Util.Repeatable<string> ActivityType { get; set; }
 
                 /// <summary>
-                /// An RFC3339 timestamp. Only sessions ending between the start and end times will be included in the
-                /// response. If this time is omitted but startTime is specified, all sessions from startTime to the end
-                /// of time will be returned.
+                /// An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to
+                /// (endTime + 1 day) will be included in the response. If this time is omitted but startTime is
+                /// specified, all sessions ending after startTime to the end of time will be returned.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string EndTime { get; set; }
@@ -1563,9 +1563,10 @@ namespace Google.Apis.Fitness.v1
                 public virtual string PageToken { get; set; }
 
                 /// <summary>
-                /// An RFC3339 timestamp. Only sessions ending between the start and end times will be included in the
-                /// response. If this time is omitted but endTime is specified, all sessions from the start of time up
-                /// to endTime will be returned.
+                /// An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to
+                /// (endTime + 1 day) will be included in the response. If this time is omitted but endTime is
+                /// specified, all sessions starting before endTime and ending after the start of time up to (endTime +
+                /// 1 day) will be returned.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string StartTime { get; set; }
@@ -2270,7 +2271,10 @@ namespace Google.Apis.Fitness.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Sessions with an end time that is between startTime and endTime of the request.</summary>
+        /// <summary>
+        /// Sessions starting before endTime of the request and ending after startTime of the request up to (endTime of
+        /// the request + 1 day).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual System.Collections.Generic.IList<Session> Session { get; set; }
 
