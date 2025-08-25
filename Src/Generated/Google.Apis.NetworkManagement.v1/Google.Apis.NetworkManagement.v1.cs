@@ -642,8 +642,8 @@ namespace Google.Apis.NetworkManagement.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2371,7 +2371,7 @@ namespace Google.Apis.NetworkManagement.v1
                 /// <summary>Gets the NetworkMonitoringProvider resource.</summary>
                 /// <param name="name">
                 /// Required. Name of the resource. Format:
-                /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+                /// `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -2390,7 +2390,7 @@ namespace Google.Apis.NetworkManagement.v1
 
                     /// <summary>
                     /// Required. Name of the resource. Format:
-                    /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+                    /// `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2422,7 +2422,7 @@ namespace Google.Apis.NetworkManagement.v1
                 /// <summary>Lists NetworkMonitoringProviders for a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. Parent value for ListNetworkMonitoringProvidersRequest. Format:
-                /// projects/{project}/locations/{location}
+                /// `projects/{project}/locations/{location}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2441,7 +2441,7 @@ namespace Google.Apis.NetworkManagement.v1
 
                     /// <summary>
                     /// Required. Parent value for ListNetworkMonitoringProvidersRequest. Format:
-                    /// projects/{project}/locations/{location}
+                    /// `projects/{project}/locations/{location}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2990,8 +2990,8 @@ namespace Google.Apis.NetworkManagement.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -3693,8 +3693,8 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud
         /// load balancer. Forwarding rules are also used for protocol forwarding, Private Service Connect and other
         /// network services to provide forwarding information in the control plane. Applicable only to destination
-        /// endpoint. Format: projects/{project}/global/forwardingRules/{id} or
-        /// projects/{project}/regions/{region}/forwardingRules/{id}
+        /// endpoint. Format: `projects/{project}/global/forwardingRules/{id}` or
+        /// `projects/{project}/regions/{region}/forwardingRules/{id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
         public virtual string ForwardingRule { get; set; }
