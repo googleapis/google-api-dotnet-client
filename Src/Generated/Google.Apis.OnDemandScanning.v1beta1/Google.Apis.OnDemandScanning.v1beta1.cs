@@ -1403,6 +1403,18 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class CISAKnownExploitedVulnerabilities : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the vulnerability is known to have been leveraged as part of a ransomware campaign.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knownRansomwareCampaignUse")]
+        public virtual string KnownRansomwareCampaignUse { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is
     /// a message we will try to use for storing various versions of CVSS rather than making a separate proto for
@@ -1868,6 +1880,25 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("sig")]
         public virtual string Sig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ExploitPredictionScoringSystem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The percentile of the current score, the proportion of all scored vulnerabilities with the same or a lower
+        /// EPSS score
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentile")]
+        public virtual System.Nullable<double> Percentile { get; set; }
+
+        /// <summary>
+        /// The EPSS score representing the probability [0-1] of exploitation in the wild in the next 30 days
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3273,6 +3304,25 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class Risk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// CISA maintains the authoritative source of vulnerabilities that have been exploited in the wild.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cisaKev")]
+        public virtual CISAKnownExploitedVulnerabilities CisaKev { get; set; }
+
+        /// <summary>
+        /// The Exploit Prediction Scoring System (EPSS) estimates the likelihood (probability) that a software
+        /// vulnerability will be exploited in the wild.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("epss")]
+        public virtual ExploitPredictionScoringSystem Epss { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class RunDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("builder")]
@@ -4072,6 +4122,10 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         /// <summary>Output only. URLs related to this vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedUrls")]
         public virtual System.Collections.Generic.IList<RelatedUrl> RelatedUrls { get; set; }
+
+        /// <summary>Risk information about the vulnerability, such as CISA, EPSS, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("risk")]
+        public virtual Risk Risk { get; set; }
 
         /// <summary>Output only. The note provider assigned severity of this vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
