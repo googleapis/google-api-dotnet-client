@@ -5303,8 +5303,8 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -7234,6 +7234,17 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for heterogeneous migration jobs objects.</summary>
+    public class HeterogeneousMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of unsupported events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unsupportedEventsCount")]
+        public virtual System.Nullable<long> UnsupportedEventsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for 'ImportMappingRules' request.</summary>
     public class ImportMappingRulesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8091,6 +8102,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Output only. The error details in case of failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
+
+        /// <summary>Output only. Metadata for heterogeneous migration jobs objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("heterogeneousMetadata")]
+        public virtual HeterogeneousMetadata HeterogeneousMetadata { get; set; }
 
         /// <summary>The object's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
