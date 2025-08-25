@@ -10458,6 +10458,23 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 public virtual string Filter { get; set; }
 
                                 /// <summary>
+                                /// Optional. Specifies the order in which files are returned. The value is a
+                                /// comma-separated string of fields to sort by. For ascending order - just the field
+                                /// name is used. For descending order - the field name is suffixed with ` desc`.
+                                /// Sorting is stable and applied sequentially according to the order of fields provided
+                                /// in the string. Supported fields for ordering: * `upload_time`: The time the file was
+                                /// uploaded. * `file_name`: The name of the file. * `mime_type`: The MIME type of the
+                                /// file. * `session_name`: The name of the session the file belongs to. Default
+                                /// Behavior: If the `order_by` field is not specified, files will be returned sorted by
+                                /// creation time in descending order. Examples: 1. Sort by file name in ascending
+                                /// order: `file_name` 2. Sort by upload time in descending order: `upload_time desc` 3.
+                                /// Sort by file name (ascending), then by content type (MIME type) (descending), and
+                                /// finally by upload time (ascending): `file_name, mime_type desc, upload_time`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string OrderBy { get; set; }
+
+                                /// <summary>
                                 /// Optional. The maximum number of files to return. The service may return fewer than
                                 /// this value. If unspecified, at most 100 files will be returned. The maximum value is
                                 /// 1000; values above 1000 will be coerced to 1000. If user specifies a value less than
@@ -10499,6 +10516,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "filter",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "orderBy",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -34053,6 +34078,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Errors { get; set; }
 
         /// <summary>
+        /// Optional. If the connector is a hybrid connector, determines whether ingestion is enabled and appropriate
+        /// resources are provisioned during connector creation. If the connector is not a hybrid connector, this field
+        /// is ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridIngestionDisabled")]
+        public virtual System.Nullable<bool> HybridIngestionDisabled { get; set; }
+
+        /// <summary>
         /// The refresh interval to sync the Access Control List information for the documents ingested by this
         /// connector. If not set, the access control list will be refreshed at the default interval of 30 minutes. The
         /// identity refresh interval can be at least 30 minutes and at most 7 days.
@@ -42245,7 +42278,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// Required. Full resource name of DataStore, such as
-        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. The path
+        /// must include the project number, project id is not supported for this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
         public virtual string DataStore { get; set; }
@@ -42983,6 +43017,68 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Output only. Google provided available scores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelScores")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaDoubleList> ModelScores { get; set; }
+
+        /// <summary>Optional. A set of ranking signals associated with the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankSignals")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignals RankSignals { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A set of ranking signals.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Combined custom boosts for a doc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostingFactor")]
+        public virtual System.Nullable<float> BoostingFactor { get; set; }
+
+        /// <summary>Optional. A list of custom clearbox signals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customSignals")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignalsCustomSignal> CustomSignals { get; set; }
+
+        /// <summary>Optional. The default rank of the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultRank")]
+        public virtual System.Nullable<float> DefaultRank { get; set; }
+
+        /// <summary>Optional. Age of the document in hours.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentAge")]
+        public virtual System.Nullable<float> DocumentAge { get; set; }
+
+        /// <summary>Optional. Keyword matching adjustment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keywordSimilarityScore")]
+        public virtual System.Nullable<float> KeywordSimilarityScore { get; set; }
+
+        /// <summary>Optional. Predicted conversion rate adjustment as a rank.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pctrRank")]
+        public virtual System.Nullable<float> PctrRank { get; set; }
+
+        /// <summary>Optional. Semantic relevance adjustment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceScore")]
+        public virtual System.Nullable<float> RelevanceScore { get; set; }
+
+        /// <summary>Optional. Semantic similarity adjustment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("semanticSimilarityScore")]
+        public virtual System.Nullable<float> SemanticSimilarityScore { get; set; }
+
+        /// <summary>Optional. Topicality adjustment as a rank.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicalityRank")]
+        public virtual System.Nullable<float> TopicalityRank { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Custom clearbox signal represented by name and value pair.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignalsCustomSignal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Name of the signal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Float value representing the ranking signal (e.g. 1.25 for BM25).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<float> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -51264,7 +51360,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// Required. Full resource name of DataStore, such as
-        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. The path
+        /// must include the project number, project id is not supported for this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
         public virtual string DataStore { get; set; }
