@@ -3094,8 +3094,8 @@ namespace Google.Apis.Config.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -3461,6 +3461,10 @@ namespace Google.Apis.Config.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. This field specifies the provider configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerConfig")]
+        public virtual ProviderConfig ProviderConfig { get; set; }
 
         /// <summary>
         /// Optional. Input to control quota checks for resources in terraform configuration files. There are limited
@@ -4334,6 +4338,10 @@ namespace Google.Apis.Config.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("previewMode")]
         public virtual string PreviewMode { get; set; }
 
+        /// <summary>Optional. This field specifies the provider configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerConfig")]
+        public virtual ProviderConfig ProviderConfig { get; set; }
+
         /// <summary>
         /// Required. User-specified Service Account (SA) credentials to be used when previewing resources. Format:
         /// `projects/{projectID}/serviceAccounts/{serviceAccount}`
@@ -4487,6 +4495,17 @@ namespace Google.Apis.Config.v1.Data
         /// <summary>Output only. The path of the property drift.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ProviderConfig contains the provider configurations.</summary>
+    public class ProviderConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. ProviderSource specifies the source type of the provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
+        public virtual string SourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4742,6 +4761,10 @@ namespace Google.Apis.Config.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. This field specifies the provider configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerConfig")]
+        public virtual ProviderConfig ProviderConfig { get; set; }
 
         /// <summary>
         /// Optional. Input to control quota checks for resources in terraform configuration files. There are limited
