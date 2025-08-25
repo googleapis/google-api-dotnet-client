@@ -8163,6 +8163,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNetworkPerformanceConfig")]
         public virtual ClusterNetworkPerformanceConfig DesiredNetworkPerformanceConfig { get; set; }
 
+        /// <summary>The desired network tier configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredNetworkTierConfig")]
+        public virtual NetworkTierConfig DesiredNetworkTierConfig { get; set; }
+
         /// <summary>The desired node kubelet config for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNodeKubeletConfig")]
         public virtual NodeKubeletConfig DesiredNodeKubeletConfig { get; set; }
@@ -9493,6 +9497,13 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipv6AccessType")]
         public virtual string Ipv6AccessType { get; set; }
 
+        /// <summary>
+        /// Cluster-level network tier configuration is used to determine the default network tier for external IP
+        /// addresses on cluster resources, such as node pools and load balancers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTierConfig")]
+        public virtual NetworkTierConfig NetworkTierConfig { get; set; }
+
         /// <summary>This field is deprecated, use node_ipv4_cidr_block.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIpv4Cidr")]
         public virtual string NodeIpv4Cidr { get; set; }
@@ -10428,6 +10439,17 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>NetworkTierConfig contains network tier information.</summary>
+    public class NetworkTierConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Network tier configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
+        public virtual string NetworkTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the NodeAffinity key, values, and affinity operator according to [shared sole tenant node group
     /// affinities](https://{$universe.dns_names.final_documentation_domain}/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
@@ -11023,6 +11045,13 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Network bandwidth tier configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkPerformanceConfig")]
         public virtual NetworkPerformanceConfig NetworkPerformanceConfig { get; set; }
+
+        /// <summary>
+        /// Output only. The network tier configuration for the node pool inherits from the cluster-level configuration
+        /// and remains immutable throughout the node pool's lifecycle, including during upgrades.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTierConfig")]
+        public virtual NetworkTierConfig NetworkTierConfig { get; set; }
 
         /// <summary>
         /// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the nodepool. Pod CIDR size per node depends on
