@@ -28025,6 +28025,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Errors { get; set; }
 
         /// <summary>
+        /// Optional. If the connector is a hybrid connector, determines whether ingestion is enabled and appropriate
+        /// resources are provisioned during connector creation. If the connector is not a hybrid connector, this field
+        /// is ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridIngestionDisabled")]
+        public virtual System.Nullable<bool> HybridIngestionDisabled { get; set; }
+
+        /// <summary>
         /// The refresh interval to sync the Access Control List information for the documents ingested by this
         /// connector. If not set, the access control list will be refreshed at the default interval of 30 minutes. The
         /// identity refresh interval can be at least 30 minutes and at most 7 days.
@@ -33451,7 +33459,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Required. Full resource name of DataStore, such as
-        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. The path
+        /// must include the project number, project id is not supported for this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
         public virtual string DataStore { get; set; }
@@ -45327,7 +45336,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Required. Full resource name of DataStore, such as
-        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. The path
+        /// must include the project number, project id is not supported for this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
         public virtual string DataStore { get; set; }
@@ -46065,6 +46075,68 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Output only. Google provided available scores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelScores")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1betaDoubleList> ModelScores { get; set; }
+
+        /// <summary>Optional. A set of ranking signals associated with the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankSignals")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignals RankSignals { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A set of ranking signals.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Combined custom boosts for a doc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostingFactor")]
+        public virtual System.Nullable<float> BoostingFactor { get; set; }
+
+        /// <summary>Optional. A list of custom clearbox signals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customSignals")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignalsCustomSignal> CustomSignals { get; set; }
+
+        /// <summary>Optional. The default rank of the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultRank")]
+        public virtual System.Nullable<float> DefaultRank { get; set; }
+
+        /// <summary>Optional. Age of the document in hours.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentAge")]
+        public virtual System.Nullable<float> DocumentAge { get; set; }
+
+        /// <summary>Optional. Keyword matching adjustment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keywordSimilarityScore")]
+        public virtual System.Nullable<float> KeywordSimilarityScore { get; set; }
+
+        /// <summary>Optional. Predicted conversion rate adjustment as a rank.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pctrRank")]
+        public virtual System.Nullable<float> PctrRank { get; set; }
+
+        /// <summary>Optional. Semantic relevance adjustment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceScore")]
+        public virtual System.Nullable<float> RelevanceScore { get; set; }
+
+        /// <summary>Optional. Semantic similarity adjustment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("semanticSimilarityScore")]
+        public virtual System.Nullable<float> SemanticSimilarityScore { get; set; }
+
+        /// <summary>Optional. Topicality adjustment as a rank.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicalityRank")]
+        public virtual System.Nullable<float> TopicalityRank { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Custom clearbox signal represented by name and value pair.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignalsCustomSignal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Name of the signal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Float value representing the ranking signal (e.g. 1.25 for BM25).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<float> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
