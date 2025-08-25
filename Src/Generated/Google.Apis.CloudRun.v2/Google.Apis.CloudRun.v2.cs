@@ -6875,6 +6875,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
+        /// <summary>Optional. The release track of the client that initiated the build request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseTrack")]
+        public virtual string ReleaseTrack { get; set; }
+
         /// <summary>
         /// Optional. The service account to use for the build. If not set, the default Cloud Build service account for
         /// the project will be used.
