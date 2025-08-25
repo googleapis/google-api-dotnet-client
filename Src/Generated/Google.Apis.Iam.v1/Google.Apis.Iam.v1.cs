@@ -5307,7 +5307,7 @@ namespace Google.Apis.Iam.v1
                         /// Updates an existing WorkloadIdentityPoolManagedIdentity in a WorkloadIdentityPoolNamespace.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="name">Output only. The resource name of the managed identity.</param>
+                        /// <param name="name">Identifier. The resource name of the managed identity.</param>
                         public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkloadIdentityPoolManagedIdentity body, string name)
                         {
                             return new PatchRequest(this.service, body, name);
@@ -5326,7 +5326,7 @@ namespace Google.Apis.Iam.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Output only. The resource name of the managed identity.</summary>
+                            /// <summary>Identifier. The resource name of the managed identity.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -6850,7 +6850,7 @@ namespace Google.Apis.Iam.v1
 
                     /// <summary>Updates an existing WorkloadIdentityPoolProvider.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Output only. The resource name of the provider.</param>
+                    /// <param name="name">Identifier. The resource name of the provider.</param>
                     public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkloadIdentityPoolProvider body, string name)
                     {
                         return new PatchRequest(this.service, body, name);
@@ -6867,7 +6867,7 @@ namespace Google.Apis.Iam.v1
                             InitParameters();
                         }
 
-                        /// <summary>Output only. The resource name of the provider.</summary>
+                        /// <summary>Identifier. The resource name of the provider.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -13156,13 +13156,13 @@ namespace Google.Apis.Iam.v1.Data
     /// <summary>Represents a managed identity for a workload identity pool namespace.</summary>
     public class WorkloadIdentityPoolManagedIdentity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A description of the managed identity. Cannot exceed 256 characters.</summary>
+        /// <summary>Optional. A description of the managed identity. Cannot exceed 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for the identity,
-        /// however existing credentials will still be accepted until they expire.
+        /// Optional. Whether the managed identity is disabled. If disabled, credentials may no longer be issued for the
+        /// identity, however existing credentials will still be accepted until they expire.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
@@ -13206,7 +13206,7 @@ namespace Google.Apis.Iam.v1.Data
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The resource name of the managed identity.</summary>
+        /// <summary>Identifier. The resource name of the managed identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -13223,13 +13223,13 @@ namespace Google.Apis.Iam.v1.Data
     /// </summary>
     public class WorkloadIdentityPoolNamespace : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A description of the namespace. Cannot exceed 256 characters.</summary>
+        /// <summary>Optional. A description of the namespace. Cannot exceed 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Whether the namespace is disabled. If disabled, credentials may no longer be issued for identities within
-        /// this namespace, however existing credentials will still be accepted until they expire.
+        /// Optional. Whether the namespace is disabled. If disabled, credentials may no longer be issued for identities
+        /// within this namespace, however existing credentials will still be accepted until they expire.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
@@ -13415,7 +13415,7 @@ namespace Google.Apis.Iam.v1.Data
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The resource name of the provider.</summary>
+        /// <summary>Identifier. The resource name of the provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
