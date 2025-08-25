@@ -2199,8 +2199,8 @@ namespace Google.Apis.Document.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2354,6 +2354,142 @@ namespace Google.Apis.Document.v1
 }
 namespace Google.Apis.Document.v1.Data
 {
+    /// <summary>
+    /// Definition of the validation rules. Those are the input to the validator logic and they are used to validate a
+    /// document.
+    /// </summary>
+    public class CloudAiDocumentaiLabHifiaToolsValidationValidatorInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("validationRules")]
+        public virtual System.Collections.Generic.IList<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule> ValidationRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the validation rule. This has no use but for documentation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldOccurrences")]
+        public virtual CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences FieldOccurrences { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldRegex")]
+        public virtual CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex FieldRegex { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("formValidation")]
+        public virtual CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation FormValidation { get; set; }
+
+        /// <summary>Name of the validation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The constant value used in the validation rules.</summary>
+    public class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("floatValue")]
+        public virtual System.Nullable<float> FloatValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Default value to use if the field is not present. If the field is missing and the default value is not set,
+        /// the validation run as if the field is not present in the validation logic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
+        public virtual CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant DefaultValue { get; set; }
+
+        /// <summary>
+        /// The field name to validate. This can be a simple field name or a nested field one using the ':' (meant as an
+        /// aggregator) or '*' (meant as foreach) operators.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField Field { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("maxOccurrences")]
+        public virtual System.Nullable<long> MaxOccurrences { get; set; }
+
+        /// <summary>
+        /// Min and max occurrences of the field. If not set, there is limit set. The defined interval is a
+        /// closed-closed interval, i.e. [min, max].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minOccurrences")]
+        public virtual System.Nullable<long> MinOccurrences { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField Field { get; set; }
+
+        /// <summary>Python regex to validate the field values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
+        public virtual string Pattern { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("leftOperand")]
+        public virtual CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation LeftOperand { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rightOperand")]
+        public virtual CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation RightOperand { get; set; }
+
+        /// <summary>The relational operator to be applied to the operands.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationOperator")]
+        public virtual string ValidationOperator { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of constants to be used as operands.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constants")]
+        public virtual System.Collections.Generic.IList<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant> Constants { get; set; }
+
+        /// <summary>A list of fields to be used as operands.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField> Fields { get; set; }
+
+        /// <summary>The operation type to be applied to all the operands.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; }
+
+        /// <summary>A list of recursive operations to be used as operands.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata of the auto-labeling documents operation.</summary>
     public class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3703,13 +3839,6 @@ namespace Google.Apis.Document.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
-
-        /// <summary>
-        /// The output of the validation given the document and the validation rules. The output is appended to the
-        /// document in the processing order.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("validationOutputs")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentValidationOutput> ValidationOutputs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5202,47 +5331,6 @@ namespace Google.Apis.Document.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textAnchor")]
         public virtual GoogleCloudDocumentaiV1DocumentTextAnchor TextAnchor { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The output of the validation given the document and the validation rules.</summary>
-    public class GoogleCloudDocumentaiV1DocumentValidationOutput : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The overall result of the validation, true if all applicable rules are valid.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("passAllRules")]
-        public virtual System.Nullable<bool> PassAllRules { get; set; }
-
-        /// <summary>The result of each validation rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("validationResults")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentValidationOutputValidationResult> ValidationResults { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Validation result for a single validation rule.</summary>
-    public class GoogleCloudDocumentaiV1DocumentValidationOutputValidationResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The description of the validation rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ruleDescription")]
-        public virtual string RuleDescription { get; set; }
-
-        /// <summary>The name of the validation rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ruleName")]
-        public virtual string RuleName { get; set; }
-
-        /// <summary>
-        /// The detailed information of the running the validation process using the entity from the document based on
-        /// the validation rule.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("validationDetails")]
-        public virtual string ValidationDetails { get; set; }
-
-        /// <summary>The result of the validation rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("validationResultType")]
-        public virtual string ValidationResultType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
