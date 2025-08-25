@@ -1916,6 +1916,18 @@ namespace Google.Apis.TagManager.v2
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("visitorRegion")]
                             VisitorRegion = 113,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("analyticsClientId")]
+                            AnalyticsClientId = 114,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("analyticsSessionId")]
+                            AnalyticsSessionId = 115,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("analyticsSessionNumber")]
+                            AnalyticsSessionNumber = 116,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -2445,6 +2457,18 @@ namespace Google.Apis.TagManager.v2
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("visitorRegion")]
                             VisitorRegion = 113,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("analyticsClientId")]
+                            AnalyticsClientId = 114,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("analyticsSessionId")]
+                            AnalyticsSessionId = 115,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("analyticsSessionNumber")]
+                            AnalyticsSessionNumber = 116,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -3019,6 +3043,18 @@ namespace Google.Apis.TagManager.v2
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("visitorRegion")]
                             VisitorRegion = 113,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("analyticsClientId")]
+                            AnalyticsClientId = 114,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("analyticsSessionId")]
+                            AnalyticsSessionId = 115,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("analyticsSessionNumber")]
+                            AnalyticsSessionNumber = 116,
                         }
 
                         /// <summary>Gets the method name.</summary>
