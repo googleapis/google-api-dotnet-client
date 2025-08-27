@@ -2156,6 +2156,13 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("successCriteria")]
         public virtual string SuccessCriteria { get; set; }
 
+        /// <summary>
+        /// Output only. The test case that contained this step. Note: The test case may have changed or been deleted
+        /// since this step was created. Format: `projects/{project_number}/apps/{app}/testCases/{test_case}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCase")]
+        public virtual string TestCase { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2888,7 +2895,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The results of running an automated test on a release.</summary>
+    /// <summary>Instance of an automated test for a release.</summary>
     public class GoogleFirebaseAppdistroV1alphaReleaseTest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Instructions for AI driven test.</summary>
