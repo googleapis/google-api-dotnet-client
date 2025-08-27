@@ -3113,6 +3113,191 @@ namespace Google.Apis.Merchant.accounts_v1
             }
 
             /// <summary>
+            /// Creates one or more regions in your Merchant Center account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The account to create one or more regions for. Format: `accounts/{account}`
+            /// </param>
+            public virtual BatchCreateRequest BatchCreate(Google.Apis.Merchant.accounts_v1.Data.BatchCreateRegionsRequest body, string parent)
+            {
+                return new BatchCreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates one or more regions in your Merchant Center account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            public class BatchCreateRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.BatchCreateRegionsResponse>
+            {
+                /// <summary>Constructs a new BatchCreate request.</summary>
+                public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1.Data.BatchCreateRegionsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The account to create one or more regions for. Format: `accounts/{account}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1.Data.BatchCreateRegionsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchCreate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1/{+parent}/regions:batchCreate";
+
+                /// <summary>Initializes BatchCreate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes multiple regions by name from your Merchant Center account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The account to create a region for. Format: `accounts/{account}`</param>
+            public virtual BatchDeleteRequest BatchDelete(Google.Apis.Merchant.accounts_v1.Data.BatchDeleteRegionsRequest body, string parent)
+            {
+                return new BatchDeleteRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Deletes multiple regions by name from your Merchant Center account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            public class BatchDeleteRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.Empty>
+            {
+                /// <summary>Constructs a new BatchDelete request.</summary>
+                public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1.Data.BatchDeleteRegionsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The account to create a region for. Format: `accounts/{account}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1.Data.BatchDeleteRegionsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchDelete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1/{+parent}/regions:batchDelete";
+
+                /// <summary>Initializes BatchDelete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates one or more regions in your Merchant Center account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The account to update one or more regions for. Format: `accounts/{account}`
+            /// </param>
+            public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Merchant.accounts_v1.Data.BatchUpdateRegionsRequest body, string parent)
+            {
+                return new BatchUpdateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Updates one or more regions in your Merchant Center account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            public class BatchUpdateRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.BatchUpdateRegionsResponse>
+            {
+                /// <summary>Constructs a new BatchUpdate request.</summary>
+                public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1.Data.BatchUpdateRegionsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The account to update one or more regions for. Format: `accounts/{account}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1.Data.BatchUpdateRegionsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchUpdate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1/{+parent}/regions:batchUpdate";
+
+                /// <summary>Initializes BatchUpdate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Creates a region definition in your Merchant Center account. Executing this method requires admin
             /// access.
             /// </summary>
@@ -5804,6 +5989,67 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the `BatchCreateRegions` method.</summary>
+    public class BatchCreateRegionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The region(s) to create. The maximum number of regions that can be created in a batch is 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<CreateRegionRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the `BatchCreateRegions` method.</summary>
+    public class BatchCreateRegionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The created region(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual System.Collections.Generic.IList<Region> Regions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the `BatchDeleteRegions` method.</summary>
+    public class BatchDeleteRegionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The names of the regions to delete. A maximum of 1000 regions can be deleted in a batch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<DeleteRegionRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the `BatchUpdateRegions` method.</summary>
+    public class BatchUpdateRegionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The region(s) to update. The maximum number of regions that can be updated in a batch is 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<UpdateRegionRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the `BatchUpdateRegions` method.</summary>
+    public class BatchUpdateRegionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated region(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual System.Collections.Generic.IList<Region> Regions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Business days of the warehouse.</summary>
     public class BusinessDayConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6072,6 +6318,25 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the `CreateRegion` method.</summary>
+    public class CreateRegionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The account to create a region for. Format: `accounts/{account}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>Required. The region to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual Region Region { get; set; }
+
+        /// <summary>Required. The identifier for the region, unique over all regions of the same account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionId")]
+        public virtual string RegionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Customer service information.</summary>
     public class CustomerService : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6170,6 +6435,17 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the `DeleteRegion` method.</summary>
+    public class DeleteRegionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the region to delete. Format: `accounts/{account}/regions/{region}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8282,6 +8558,24 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     /// <summary>Request message for the UnregisterGCP method.</summary>
     public class UnregisterGcpRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the `UpdateRegion` method.</summary>
+    public class UpdateRegionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The updated region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual Region Region { get; set; }
+
+        /// <summary>
+        /// Optional. The comma-separated field mask indicating the fields to update. Example:
+        /// `"displayName,postalCodeArea.regionCode"`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
