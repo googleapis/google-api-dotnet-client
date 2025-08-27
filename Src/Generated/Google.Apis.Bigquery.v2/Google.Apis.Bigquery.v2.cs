@@ -6059,7 +6059,10 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Data policy option proto, it currently supports name only, will support precedence later.</summary>
+    /// <summary>
+    /// Data policy option. For more information, see [Mask data by applying data policies to a
+    /// column](https://cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column/).
+    /// </summary>
     public class DataPolicyOption : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -8113,6 +8116,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Pick one] Configures a load job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("load")]
         public virtual JobConfigurationLoad Load { get; set; }
+
+        /// <summary>
+        /// Optional. INTERNAL: DO NOT USE. The maximum rate of slot consumption to allow for this job. If set, the
+        /// number of slots used to execute the job will be throttled to try and keep its slot consumption below the
+        /// requested rate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSlots")]
+        public virtual System.Nullable<int> MaxSlots { get; set; }
 
         /// <summary>[Pick one] Configures a query job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
@@ -10667,6 +10678,14 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> MaxResults { get; set; }
 
         /// <summary>
+        /// Optional. INTERNAL: DO NOT USE. The maximum rate of slot consumption to allow for this job. If set, the
+        /// number of slots used to execute the job will be throttled to try and keep its slot consumption below the
+        /// requested rate. This limit is best effort.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSlots")]
+        public virtual System.Nullable<int> MaxSlots { get; set; }
+
+        /// <summary>
         /// Optional. Limits the bytes billed for this query. Queries with bytes billed above this limit will fail
         /// (without incurring a charge). If unspecified, the project default is used.
         /// </summary>
@@ -11179,13 +11198,14 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string DataGovernanceType { get; set; }
 
         /// <summary>
-        /// Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL,
-        /// it is the substring inside (but excluding) the parentheses. For example, for the function created with the
-        /// following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The
-        /// definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is
-        /// the evaluated string in the AS clause. For example, for the function created with the following statement:
-        /// `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n`
-        /// Note that both \n are replaced with linebreaks.
+        /// Required. The body of the routine. For functions, this is the expression in the AS clause. If `language =
+        /// "SQL"`, it is the substring inside (but excluding) the parentheses. For example, for the function created
+        /// with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The
+        /// definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If `language="JAVASCRIPT"`, it
+        /// is the evaluated string in the AS clause. For example, for the function created with the following
+        /// statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is
+        /// `return "\n";\n` Note that both \n are replaced with linebreaks. If `definition_body` references another
+        /// routine, then that routine must be fully qualified with its project ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("definitionBody")]
         public virtual string DefinitionBody { get; set; }
@@ -12592,7 +12612,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("collation")]
         public virtual string Collation { get; set; }
 
-        /// <summary>Optional. Data policy options, will replace the data_policies.</summary>
+        /// <summary>Optional. Data policies attached to this field, used for field-level access control.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataPolicies")]
         public virtual System.Collections.Generic.IList<DataPolicyOption> DataPolicies { get; set; }
 
