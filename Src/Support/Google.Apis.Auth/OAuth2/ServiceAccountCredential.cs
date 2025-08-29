@@ -564,7 +564,7 @@ namespace Google.Apis.Auth.OAuth2
             return new GoogleJsonWebSignature.Payload()
             {
                 Issuer = Id,
-                Audience = TokenServerUrl,
+                Audience = GoogleAuthConsts.OidcTokenUrl,
                 IssuedAtTimeSeconds = issued,
                 ExpirationTimeSeconds = issued + 3600,
                 Subject = User,
