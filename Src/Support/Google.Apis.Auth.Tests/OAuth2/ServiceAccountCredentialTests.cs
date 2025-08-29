@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2017 Google LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -846,6 +846,32 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             var encodedPayload = assertion.Split('.')[1];
 
             Assert.Contains(urlSafeEncodedExpectedPayload, encodedPayload);
+        }
+
+        [Fact]
+        public async Task RequestAccessTokenAsync_AudienceIsGoogleOidcTokenUrl()
+        {
+            var handler = new FetchesTokenMessageHandler();
+            var initializer = new ServiceAccountCredential.Initializer("some-id", "https://my-custom-token.endpoint.com/token")
+            {
+                Clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc)),
+                // Force access token fetching from server by providing a scope.
+                Scopes = new[] { "scope1" },
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            }.FromPrivateKey(PrivateKey);
+            var cred = new ServiceAccountCredential(initializer);
+
+            await cred.RequestAccessTokenAsync(System.Threading.CancellationToken.None);
+
+            // We need to get the assertion from the request content.
+            // The content is url-encoded.
+            var assertion = handler.LatestRequestContent.Split('&')
+                .Single(part => part.StartsWith("assertion="))
+                .Split('=')[1];
+
+            var payload = SignedToken<Header, GoogleJsonWebSignature.Payload>.FromSignedToken(assertion).Payload;
+
+            Assert.Equal(GoogleAuthConsts.OidcTokenUrl, payload.Audience);
         }
 
         private static string GetContents(string fileName)
