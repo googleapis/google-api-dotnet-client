@@ -14328,8 +14328,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2PublishToChronicle PublishToChronicle { get; set; }
 
         /// <summary>
-        /// Publishes a portion of each profile to Dataplex Catalog with the aspect type Sensitive Data Protection
-        /// Profile.
+        /// Publishes a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data
+        /// Protection Profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishToDataplexCatalog")]
         public virtual GooglePrivacyDlpV2PublishToDataplexCatalog PublishToDataplexCatalog { get; set; }
@@ -19461,16 +19461,16 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Create Dataplex Catalog aspects for profiled resources with the aspect type Sensitive Data Protection Profile.
-    /// To learn more about aspects, see https://cloud.google.com/sensitive-data-protection/docs/add-aspects.
+    /// Create Dataplex Universal Catalog aspects for profiled resources with the aspect type Sensitive Data Protection
+    /// Profile. To learn more about aspects, see https://cloud.google.com/sensitive-data-protection/docs/add-aspects.
     /// </summary>
     public class GooglePrivacyDlpV2PublishToDataplexCatalog : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether creating a Dataplex Catalog aspect for a profiled resource should lower the risk of the profile for
-        /// that resource. This also lowers the data risk of resources at the lower levels of the resource hierarchy.
-        /// For example, reducing the data risk of a table data profile also reduces the data risk of the constituent
-        /// column data profiles.
+        /// Whether creating a Dataplex Universal Catalog aspect for a profiled resource should lower the risk of the
+        /// profile for that resource. This also lowers the data risk of resources at the lower levels of the resource
+        /// hierarchy. For example, reducing the data risk of a table data profile also reduces the data risk of the
+        /// constituent column data profiles.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowerDataRiskToLow")]
         public virtual System.Nullable<bool> LowerDataRiskToLow { get; set; }
@@ -20861,8 +20861,8 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// The namespaced name for the tag value to attach to Google Cloud resources. Must be in the format
-        /// `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod". This is only set
-        /// for Google Cloud resources.
+        /// `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod" for an organization
+        /// parent, or "my-project/environment/prod" for a project parent. This is only set for Google Cloud resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespacedTagValue")]
         public virtual string NamespacedTagValue { get; set; }
@@ -20935,7 +20935,8 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>
         /// The namespaced name for the tag value to attach to resources. Must be in the format
-        /// `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod".
+        /// `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod" for an organization
+        /// parent, or "my-project/environment/prod" for a project parent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespacedValue")]
         public virtual string NamespacedValue { get; set; }
