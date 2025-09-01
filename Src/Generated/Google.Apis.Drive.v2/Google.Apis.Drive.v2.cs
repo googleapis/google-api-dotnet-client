@@ -9170,26 +9170,21 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A comment on a file in Google Drive. Some resource methods (such as `comments.update`) require a `commentId`.
-    /// Use the `comments.list` method to retrieve the ID for a comment in a file.
-    /// </summary>
+    /// <summary>A comment on a file in Google Drive.</summary>
     public class Comment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// A region of the document represented as a JSON string. For details on defining anchor properties, refer to
-        /// [Add comments and replies](https://developers.google.com/workspace/drive/api/v2/manage-comments).
+        /// [Manage comments and replies](https://developers.google.com/workspace/drive/api/v3/manage-comments).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anchor")]
         public virtual string Anchor { get; set; }
 
-        /// <summary>
-        /// Output only. The author of the comment. The author's email address and permission ID will not be populated.
-        /// </summary>
+        /// <summary>The user who wrote this comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
         public virtual User Author { get; set; }
 
-        /// <summary>Output only. The ID of the comment.</summary>
+        /// <summary>The ID of the comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commentId")]
         public virtual string CommentId { get; set; }
 
@@ -9200,7 +9195,7 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
-        /// <summary>The context of the file which is being commented on.</summary>
+        /// <summary>Context of a file which is being commented on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual ContextData Context { get; set; }
 
@@ -9226,25 +9221,25 @@ namespace Google.Apis.Drive.v2.Data
         }
 
         /// <summary>
-        /// Output only. Whether this comment has been deleted. If a comment has been deleted the content will be
-        /// cleared and this will only represent a comment that once existed.
+        /// Whether this comment has been deleted. If a comment has been deleted the content will be cleared and this
+        /// will only represent a comment that once existed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; }
 
-        /// <summary>Output only. The file which this comment is addressing.</summary>
+        /// <summary>The file which this comment is addressing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
         public virtual string FileId { get; set; }
 
-        /// <summary>Output only. The title of the file which this comment is addressing.</summary>
+        /// <summary>The title of the file which this comment is addressing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileTitle")]
         public virtual string FileTitle { get; set; }
 
-        /// <summary>Output only. HTML formatted content for this comment.</summary>
+        /// <summary>HTML formatted content for this comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlContent")]
         public virtual string HtmlContent { get; set; }
 
-        /// <summary>Output only. This is always `drive#comment`.</summary>
+        /// <summary>This is always drive#comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -9269,18 +9264,18 @@ namespace Google.Apis.Drive.v2.Data
             set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
-        /// <summary>Output only. Replies to this post.</summary>
+        /// <summary>Replies to this post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replies")]
         public virtual System.Collections.Generic.IList<CommentReply> Replies { get; set; }
 
-        /// <summary>Output only. A link back to this comment.</summary>
+        /// <summary>A link back to this comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
         /// <summary>
-        /// Output only. The status of this comment. Status can be changed by posting a reply to a comment with the
-        /// desired status. * `open` - The comment is still open. * `resolved` - The comment has been resolved by one of
-        /// its replies.
+        /// The status of this comment. Status can be changed by posting a reply to a comment with the desired status.
+        /// Possible values are: * `open` - The comment is still open. * `resolved` - The comment has been resolved by
+        /// one of its replies.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
@@ -9288,7 +9283,7 @@ namespace Google.Apis.Drive.v2.Data
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
 
-        /// <summary>The context of the file which is being commented on.</summary>
+        /// <summary>Context of a file which is being commented on.</summary>
         public class ContextData
         {
             /// <summary>The MIME type of the context snippet.</summary>
@@ -9314,7 +9309,7 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Comment> Items { get; set; }
 
-        /// <summary>This is always `drive#commentList`.</summary>
+        /// <summary>This is always drive#commentList.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -9338,15 +9333,10 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A comment on a file in Google Drive. Some resource methods (such as `replies.update`) require a `replyId`. Use
-    /// the `replies.list` method to retrieve the ID for a reply.
-    /// </summary>
+    /// <summary>A reply to a comment on a file in Google Drive.</summary>
     public class CommentReply : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. The author of the reply. The author's email address and permission ID will not be populated.
-        /// </summary>
+        /// <summary>The user who wrote this reply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
         public virtual User Author { get; set; }
 
@@ -9380,17 +9370,17 @@ namespace Google.Apis.Drive.v2.Data
         }
 
         /// <summary>
-        /// Output only. Whether this reply has been deleted. If a reply has been deleted the content will be cleared
-        /// and this will only represent a reply that once existed.
+        /// Whether this reply has been deleted. If a reply has been deleted the content will be cleared and this will
+        /// only represent a reply that once existed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; }
 
-        /// <summary>Output only. HTML formatted content for this reply.</summary>
+        /// <summary>HTML formatted content for this reply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlContent")]
         public virtual string HtmlContent { get; set; }
 
-        /// <summary>Output only. This is always `drive#commentReply`.</summary>
+        /// <summary>This is always drive#commentReply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -9415,13 +9405,13 @@ namespace Google.Apis.Drive.v2.Data
             set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
-        /// <summary>Output only. The ID of the reply.</summary>
+        /// <summary>The ID of the reply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replyId")]
         public virtual string ReplyId { get; set; }
 
         /// <summary>
         /// The action this reply performed to the parent comment. When creating a new reply this is the action to be
-        /// perform to the parent comment. Possible values are: * `resolve` - To resolve a comment. * `reopen` - To
+        /// perform tSo the parent comment. Possible values are: * `resolve` - To resolve a comment. * `reopen` - To
         /// reopen (un-resolve) a comment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
