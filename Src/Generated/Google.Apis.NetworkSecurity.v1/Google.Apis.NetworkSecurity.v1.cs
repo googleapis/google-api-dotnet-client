@@ -11692,8 +11692,8 @@ namespace Google.Apis.NetworkSecurity.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -12530,14 +12530,16 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     {
         /// <summary>
         /// Required. All gateways and forwarding rules referenced by this policy and extensions must share the same
-        /// load balancing scheme. Supported values: `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more information,
-        /// refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
+        /// load balancing scheme. Supported values: `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, and
+        /// `EXTERNAL_MANAGED`. For more information, refer to [Backend services
+        /// overview](https://cloud.google.com/load-balancing/docs/backend-service).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; }
 
         /// <summary>
-        /// Required. A list of references to the Forwarding Rules on which this policy will be applied.
+        /// Required. A list of references to the Forwarding Rules on which this policy will be applied. For policies
+        /// created for Cloudrun, this field will reference the Cloud Run services.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
@@ -13029,6 +13031,10 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Optional. Settings for the endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointSettings")]
+        public virtual FirewallEndpointEndpointSettings EndpointSettings { get; set; }
+
         /// <summary>Optional. Labels as key value pairs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -13231,6 +13237,13 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for the endpoint.</summary>
+    public class FirewallEndpointEndpointSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
