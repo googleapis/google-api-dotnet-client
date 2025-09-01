@@ -2818,8 +2818,7 @@ namespace Google.Apis.Iam.v1
                 public virtual string Location { get; private set; }
 
                 /// <summary>
-                /// The maximum number of pools to return. If unspecified, at most 50 pools will be returned. The
-                /// maximum value is 1000; values above 1000 are truncated to 1000.
+                /// The maximum number of pools to return. The default value is 50. The maximum value is 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -12846,7 +12845,7 @@ namespace Google.Apis.Iam.v1.Data
         /// `google.groups` attribute. Extended group memberships cannot be used in attribute mapping or attribute
         /// condition expressions. To keep extended group memberships up to date, extended groups are retrieved when the
         /// user signs in and at regular intervals during the user's active session. Each user identity in the workforce
-        /// identity pool must map to a specific, unique Microsoft Entra ID user.
+        /// identity pool must map to a unique Microsoft Entra ID user.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extendedAttributesOauth2Client")]
         public virtual GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client ExtendedAttributesOauth2Client { get; set; }
