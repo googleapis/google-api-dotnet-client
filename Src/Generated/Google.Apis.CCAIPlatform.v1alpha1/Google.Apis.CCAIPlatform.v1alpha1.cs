@@ -1044,8 +1044,8 @@ namespace Google.Apis.CCAIPlatform.v1alpha1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -1299,6 +1299,10 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("early")]
         public virtual Early Early { get; set; }
 
+        /// <summary>Optional. Feature configuration to populate the feature flags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureConfig")]
+        public virtual FeatureConfig FeatureConfig { get; set; }
+
         /// <summary>The configuration of this instance, it is currently immutable once created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceConfig")]
         public virtual InstanceConfig InstanceConfig { get; set; }
@@ -1439,6 +1443,16 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class FeatureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If true - enables the agent desktop feature. Default is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDesktopEnabled")]
+        public virtual System.Nullable<bool> AgentDesktopEnabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
