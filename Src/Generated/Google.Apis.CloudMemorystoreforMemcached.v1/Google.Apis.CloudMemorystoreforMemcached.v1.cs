@@ -1280,8 +1280,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -1475,6 +1475,39 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for GetTags.</summary>
+    public class GetTagsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The full One Platform resource name of the service resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for GetTags.</summary>
+    public class GetTagsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The full One Platform resource name of the service resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Tag keys/values directly bound to this resource. Each item in the map must be expressed as " : ".
+        /// For example: "123/environment" : "production", "123/costCenter" : "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>A checksum based on the current bindings. This field is always set in server responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagsEtag")]
+        public virtual string TagsEtag { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3069,6 +3102,61 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         /// <summary>Time within the window to start the operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual TimeOfDay StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for SetTags.</summary>
+    public class SetTagsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The full One Platform resource name of the service resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. A unique identifier for this request. Must be a valid UUID. This request is only idempotent if a
+        /// `request_id` is provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Required. These bindings will override any bindings previously set and will be effective immediately. Each
+        /// item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter"
+        /// : "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Optional. A checksum based on the current bindings which can be passed to prevent race conditions. If not
+        /// passed, etag check would be skipped.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagsEtag")]
+        public virtual string TagsEtag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SetTags.</summary>
+    public class SetTagsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The full One Platform resource name of the service resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Tag keys/values directly bound to this resource. Each item in the map must be expressed as " : ".
+        /// For example: "123/environment" : "production", "123/costCenter" : "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>A checksum based on the current bindings. This field is always set in server responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagsEtag")]
+        public virtual string TagsEtag { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
