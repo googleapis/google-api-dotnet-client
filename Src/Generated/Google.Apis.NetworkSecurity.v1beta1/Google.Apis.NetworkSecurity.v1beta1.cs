@@ -5525,7 +5525,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
 
                 /// <summary>Creates a new DnsThreatDetector in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent of the DnsThreatDetector resource.</param>
+                /// <param name="parent">Required. The value for the parent of the DnsThreatDetector resource.</param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.DnsThreatDetector body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -5542,13 +5542,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent of the DnsThreatDetector resource.</summary>
+                    /// <summary>Required. The value for the parent of the DnsThreatDetector resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Id of the requesting DnsThreatDetector object. If this field is not supplied, the
-                    /// service will generate an identifier.
+                    /// Optional. The ID of the requesting DnsThreatDetector object. If this field is not supplied, the
+                    /// service generates an identifier.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dnsThreatDetectorId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DnsThreatDetectorId { get; set; }
@@ -5636,14 +5636,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Gets details of a single DnsThreatDetector.</summary>
-                /// <param name="name">Required. Name of the DnsThreatDetector resource</param>
+                /// <summary>Gets the details of a single DnsThreatDetector.</summary>
+                /// <param name="name">Required. Name of the DnsThreatDetector resource.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single DnsThreatDetector.</summary>
+                /// <summary>Gets the details of a single DnsThreatDetector.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.DnsThreatDetector>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -5653,7 +5653,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the DnsThreatDetector resource</summary>
+                    /// <summary>Required. Name of the DnsThreatDetector resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -5682,7 +5682,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 }
 
                 /// <summary>Lists DnsThreatDetectors in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListDnsThreatDetectorsRequest</param>
+                /// <param name="parent">Required. The parent value for `ListDnsThreatDetectorsRequest`.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -5698,19 +5698,19 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListDnsThreatDetectorsRequest</summary>
+                    /// <summary>Required. The parent value for `ListDnsThreatDetectorsRequest`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
+                    /// Optional. The requested page size. The server may return fewer items than requested. If
+                    /// unspecified, the server picks an appropriate default.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Optional. A page token, received from a previous `ListDnsThreatDetectorsRequest` call. Provide
+                    /// Optional. A page token received from a previous `ListDnsThreatDetectorsRequest` call. Provide
                     /// this to retrieve the subsequent page.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -5756,7 +5756,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Updates the parameters of a single DnsThreatDetector.</summary>
+                /// <summary>Updates a single DnsThreatDetector.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Immutable. Identifier. Name of the DnsThreatDetector resource.</param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.DnsThreatDetector body, string name)
@@ -5764,7 +5764,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates the parameters of a single DnsThreatDetector.</summary>
+                /// <summary>Updates a single DnsThreatDetector.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.DnsThreatDetector>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -5780,10 +5780,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. Field mask is used to specify the fields to be overwritten in the DnsThreatDetector
-                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
-                    /// not the full request. A field will be overwritten if it is in the mask. If the mask is not
-                    /// provided then all fields present in the request will be overwritten.
+                    /// Optional. The field mask is used to specify the fields to be overwritten in the
+                    /// DnsThreatDetector resource by the update. The fields specified in the update_mask are relative
+                    /// to the resource, not the full request. A field will be overwritten if it is in the mask. If the
+                    /// mask is not provided then all fields present in the request will be overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -12682,8 +12682,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -13520,14 +13520,16 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     {
         /// <summary>
         /// Required. All gateways and forwarding rules referenced by this policy and extensions must share the same
-        /// load balancing scheme. Supported values: `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more information,
-        /// refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
+        /// load balancing scheme. Supported values: `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, and
+        /// `EXTERNAL_MANAGED`. For more information, refer to [Backend services
+        /// overview](https://cloud.google.com/load-balancing/docs/backend-service).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; }
 
         /// <summary>
-        /// Required. A list of references to the Forwarding Rules on which this policy will be applied.
+        /// Required. A list of references to the Forwarding Rules on which this policy will be applied. For policies
+        /// created for Cloudrun, this field will reference the Cloud Run services.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
@@ -13901,14 +13903,18 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing DnsThreatDetector object.</summary>
+    /// <summary>
+    /// A DNS threat detector sends DNS query logs to a _provider_ that then analyzes the logs to identify malicious
+    /// activity in the DNS queries. By default, all VPC networks in your projects are included. You can exclude
+    /// specific networks by supplying `excluded_networks`.
+    /// </summary>
     public class DnsThreatDetector : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>Output only. Create time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -13942,13 +13948,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         }
 
         /// <summary>
-        /// Optional. A list of Network resource names which are exempt from the configuration in this
-        /// DnsThreatDetector. Example: `projects/PROJECT_ID/global/networks/NETWORK_NAME`.
+        /// Optional. A list of network resource names which aren't monitored by this DnsThreatDetector. Example:
+        /// `projects/PROJECT_ID/global/networks/NETWORK_NAME`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedNetworks")]
         public virtual System.Collections.Generic.IList<string> ExcludedNetworks { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. Any labels associated with the DnsThreatDetector, listed as key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -13964,7 +13970,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>Output only. Update time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -14118,6 +14124,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>Optional. Description of the firewall endpoint. Max length 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>Optional. Settings for the endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointSettings")]
+        public virtual FirewallEndpointEndpointSettings EndpointSettings { get; set; }
 
         /// <summary>Optional. Labels as key value pairs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -14321,6 +14331,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for the endpoint.</summary>
+    public class FirewallEndpointEndpointSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -15652,14 +15669,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing DnsThreatDetectors.</summary>
+    /// <summary>The response message to requesting a list of DnsThreatDetectors.</summary>
     public class ListDnsThreatDetectorsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of DnsThreatDetector resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsThreatDetectors")]
         public virtual System.Collections.Generic.IList<DnsThreatDetector> DnsThreatDetectors { get; set; }
 
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page.</summary>
+        /// <summary>A token, which can be sent as `page_token`, to retrieve the next page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
