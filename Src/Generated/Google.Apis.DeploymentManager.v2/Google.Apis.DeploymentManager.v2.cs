@@ -3647,6 +3647,10 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("zonalIgmIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> ZonalIgmIds { get; set; }
 
+        /// <summary>Map of zone to an ID of the zonal IGM belonging to the RMIG.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneToIgmIds")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> ZoneToIgmIds { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
