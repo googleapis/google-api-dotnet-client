@@ -10460,7 +10460,7 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeSelector")]
         public virtual System.Collections.Generic.IDictionary<string, string> NodeSelector { get; set; }
 
-        /// <summary>Runtime. Leave unset for default.</summary>
+        /// <summary>Optional. Runtime. Leave unset for default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeClassName")]
         public virtual string RuntimeClassName { get; set; }
 
