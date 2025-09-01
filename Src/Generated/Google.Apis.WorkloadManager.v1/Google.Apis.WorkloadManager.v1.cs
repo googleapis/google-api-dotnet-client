@@ -2272,11 +2272,14 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceProperties")]
         public virtual InstanceProperties InstanceProperties { get; set; }
 
-        /// <summary>Output only. ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.</summary>
+        /// <summary>Output only. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Output only. resource name</summary>
+        /// <summary>
+        /// Output only. resource name Example:
+        /// compute.googleapis.com/projects/wlm-obs-dev/zones/us-central1-a/instances/sap-pri
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3256,6 +3259,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Output only. the version of the rule</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
+
+        /// <summary>The type of the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleType")]
+        public virtual string RuleType { get; set; }
 
         /// <summary>the secondary category</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryCategory")]
