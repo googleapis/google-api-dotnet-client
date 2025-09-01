@@ -2901,7 +2901,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>
         /// Controls access to developer settings: developer options and safe boot. Replaces safeBootDisabled
-        /// (deprecated) and debuggingFeaturesAllowed (deprecated).
+        /// (deprecated) and debuggingFeaturesAllowed (deprecated). On personally-owned devices with a work profile,
+        /// setting this policy will not disable safe boot. In this case, a NonComplianceDetail with MANAGEMENT_MODE is
+        /// reported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerSettings")]
         public virtual string DeveloperSettings { get; set; }
@@ -3525,6 +3527,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string CredentialProviderPolicy { get; set; }
 
         /// <summary>
+        /// Optional. Configuration for this custom app.install_type must be set to CUSTOM for this to be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customAppConfig")]
+        public virtual CustomAppConfig CustomAppConfig { get; set; }
+
+        /// <summary>
         /// The default policy for all permissions requested by the app. If specified, this overrides the policy-level
         /// default_permission_policy which applies to all apps. It does not override the permission_grants which
         /// applies to all apps.
@@ -3546,10 +3554,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>
         /// Configuration to enable this app as an extension app, with the capability of interacting with Android Device
         /// Policy offline.This field can be set for at most one app.The signing key certificate fingerprint of the app
-        /// on the device must match one of the entries in signingKeyFingerprintsSha256 or the signing key certificate
-        /// fingerprints obtained from Play Store for the app to be able to communicate with Android Device Policy. If
-        /// the app is not on Play Store and signingKeyFingerprintsSha256 is not set, a NonComplianceDetail with
-        /// INVALID_VALUE is reported.
+        /// on the device must match one of the entries in ApplicationPolicy.signingKeyCerts or
+        /// ExtensionConfig.signingKeyFingerprintsSha256 (deprecated) or the signing key certificate fingerprints
+        /// obtained from Play Store for the app to be able to communicate with Android Device Policy. If the app is not
+        /// on Play Store and if ApplicationPolicy.signingKeyCerts and ExtensionConfig.signingKeyFingerprintsSha256
+        /// (deprecated) are not set, a NonComplianceDetail with INVALID_VALUE is reported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensionConfig")]
         public virtual ExtensionConfig ExtensionConfig { get; set; }
@@ -3628,6 +3637,19 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferentialNetworkId")]
         public virtual string PreferentialNetworkId { get; set; }
+
+        /// <summary>
+        /// Optional. Signing key certificates of the app.This field is required in the following cases: The app has
+        /// installType set to CUSTOM (i.e. a custom app). The app has extensionConfig set (i.e. an extension app) but
+        /// ExtensionConfig.signingKeyFingerprintsSha256 (deprecated) is not set and the app does not exist on the Play
+        /// Store.If this field is not set for a custom app, the policy is rejected. If it is not set when required for
+        /// a non-custom app, a NonComplianceDetail with INVALID_VALUE is reported.For other cases, this field is
+        /// optional and the signing key certificates obtained from Play Store are used.See following policy settings to
+        /// see how this field is used: choosePrivateKeyRules ApplicationPolicy.InstallType.CUSTOM
+        /// ApplicationPolicy.extensionConfig
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signingKeyCerts")]
+        public virtual System.Collections.Generic.IList<ApplicationSigningKeyCert> SigningKeyCerts { get; set; }
 
         /// <summary>
         /// Optional. Specifies whether user control is permitted for the app. User control includes user actions like
@@ -3738,6 +3760,20 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Whether removed apps are included in application reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeRemovedApps")]
         public virtual System.Nullable<bool> IncludeRemovedApps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The application signing key certificate.</summary>
+    public class ApplicationSigningKeyCert : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The SHA-256 hash value of the signing key certificate of the app. This must be a valid SHA-256
+        /// hash value, i.e. 32 bytes. Otherwise, the policy is rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signingKeyCertFingerprintSha256")]
+        public virtual string SigningKeyCertFingerprintSha256 { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3928,9 +3964,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
     public class ChoosePrivateKeyRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The package names to which this rule applies. The hash of the signing certificate for each app is verified
-        /// against the hash provided by Play. If no package names are specified, then the alias is provided to all apps
-        /// that call KeyChain.choosePrivateKeyAlias
+        /// The package names to which this rule applies. The signing key certificate fingerprint of the app is verified
+        /// against the signing key certificate fingerprints provided by Play Store and
+        /// ApplicationPolicy.signingKeyCerts . If no package names are specified, then the alias is provided to all
+        /// apps that call KeyChain.choosePrivateKeyAlias
         /// (https://developer.android.com/reference/android/security/KeyChain#choosePrivateKeyAlias%28android.app.Activity,%20android.security.KeyChainAliasCallback,%20java.lang.String[],%20java.security.Principal[],%20java.lang.String,%20int,%20java.lang.String%29)
         /// or any overloads (but not without calling KeyChain.choosePrivateKeyAlias, even on Android 11 and above). Any
         /// app with the same Android UID as a package specified here will have access when they call
@@ -4354,6 +4391,17 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Whether the test succeeded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("success")]
         public virtual System.Nullable<bool> Success { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a custom app.</summary>
+    public class CustomAppConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. User uninstall settings of the custom app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userUninstallSettings")]
+        public virtual string UserUninstallSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
