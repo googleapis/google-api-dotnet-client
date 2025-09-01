@@ -2037,6 +2037,71 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     }
                 }
 
+                /// <summary>
+                /// Resume the standby instance (replica). WARNING: Any data written to the standby instance while
+                /// paused will be lost when the replica is resumed.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the instance, in the format
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+                /// </param>
+                public virtual ResumeReplicaRequest ResumeReplica(Google.Apis.CloudFilestore.v1beta1.Data.ResumeReplicaRequest body, string name)
+                {
+                    return new ResumeReplicaRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Resume the standby instance (replica). WARNING: Any data written to the standby instance while
+                /// paused will be lost when the replica is resumed.
+                /// </summary>
+                public class ResumeReplicaRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new ResumeReplica request.</summary>
+                    public ResumeReplicaRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.ResumeReplicaRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the instance, in the format
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFilestore.v1beta1.Data.ResumeReplicaRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "resumeReplica";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:resumeReplica";
+
+                    /// <summary>Initializes ResumeReplica parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Revert an existing instance's file system to a specified snapshot.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2440,8 +2505,8 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -4363,6 +4428,13 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
         public virtual string SourceSnapshot { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ResumeReplicaRequest resumes a Filestore standby instance (replica).</summary>
+    public class ResumeReplicaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
