@@ -11887,7 +11887,8 @@ namespace Google.Apis.AndroidPublisher.v3
             }
 
             /// <summary>
-            /// Cancels a user's subscription purchase. The subscription remains valid until its expiration time.
+            /// Cancels a user's subscription purchase. The subscription remains valid until its expiration time. Newer
+            /// version is available at purchases.subscriptionsv2.cancel for better client library support.
             /// </summary>
             /// <param name="packageName">
             /// The package name of the application for which this subscription was purchased (for example,
@@ -11904,7 +11905,8 @@ namespace Google.Apis.AndroidPublisher.v3
             }
 
             /// <summary>
-            /// Cancels a user's subscription purchase. The subscription remains valid until its expiration time.
+            /// Cancels a user's subscription purchase. The subscription remains valid until its expiration time. Newer
+            /// version is available at purchases.subscriptionsv2.cancel for better client library support.
             /// </summary>
             public class CancelRequest : AndroidPublisherBaseServiceRequest<string>
             {
