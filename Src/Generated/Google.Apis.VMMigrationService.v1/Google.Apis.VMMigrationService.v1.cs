@@ -1647,6 +1647,7 @@ namespace Google.Apis.VMMigrationService.v1
                 {
                     this.service = service;
                     DatacenterConnectors = new DatacenterConnectorsResource(service);
+                    DiskMigrationJobs = new DiskMigrationJobsResource(service);
                     MigratingVms = new MigratingVmsResource(service);
                     UtilizationReports = new UtilizationReportsResource(service);
                 }
@@ -2029,6 +2030,507 @@ namespace Google.Apis.VMMigrationService.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/datacenterConnectors/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the DiskMigrationJobs resource.</summary>
+                public virtual DiskMigrationJobsResource DiskMigrationJobs { get; }
+
+                /// <summary>The "diskMigrationJobs" collection of methods.</summary>
+                public class DiskMigrationJobsResource
+                {
+                    private const string Resource = "diskMigrationJobs";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DiskMigrationJobsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Cancels the disk migration job.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the DiskMigrationJob.</param>
+                    public virtual CancelRequest Cancel(Google.Apis.VMMigrationService.v1.Data.CancelDiskMigrationJobRequest body, string name)
+                    {
+                        return new CancelRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Cancels the disk migration job.</summary>
+                    public class CancelRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Cancel request.</summary>
+                        public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.VMMigrationService.v1.Data.CancelDiskMigrationJobRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the DiskMigrationJob.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMMigrationService.v1.Data.CancelDiskMigrationJobRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "cancel";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:cancel";
+
+                        /// <summary>Initializes Cancel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/diskMigrationJobs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Creates a new disk migration job in a given Source.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The DiskMigrationJob's parent.</param>
+                    public virtual CreateRequest Create(Google.Apis.VMMigrationService.v1.Data.DiskMigrationJob body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a new disk migration job in a given Source.</summary>
+                    public class CreateRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.VMMigrationService.v1.Data.DiskMigrationJob body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The DiskMigrationJob's parent.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The DiskMigrationJob identifier. The maximum length of this value is 63
+                        /// characters. Valid characters are lower case Latin letters, digits and hyphen. It must start
+                        /// with a Latin letter and must not end with a hyphen.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("diskMigrationJobId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string DiskMigrationJobId { get; set; }
+
+                        /// <summary>
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server will know to ignore the request if it has already been
+                        /// completed. The server will guarantee that for at least 60 minutes since the first request.
+                        /// For example, consider a situation where you make an initial request and the request timed
+                        /// out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMMigrationService.v1.Data.DiskMigrationJob Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/diskMigrationJobs";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+$",
+                            });
+                            RequestParameters.Add("diskMigrationJobId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "diskMigrationJobId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a single DiskMigrationJob.</summary>
+                    /// <param name="name">Required. The name of the DiskMigrationJob.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a single DiskMigrationJob.</summary>
+                    public class DeleteRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the DiskMigrationJob.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/diskMigrationJobs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a single DiskMigrationJob.</summary>
+                    /// <param name="name">Required. The name of the DiskMigrationJob.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets details of a single DiskMigrationJob.</summary>
+                    public class GetRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1.Data.DiskMigrationJob>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the DiskMigrationJob.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/diskMigrationJobs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists DiskMigrationJobs in a given Source.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent, which owns this collection of DiskMigrationJobs.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists DiskMigrationJobs in a given Source.</summary>
+                    public class ListRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1.Data.ListDiskMigrationJobsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent, which owns this collection of DiskMigrationJobs.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The filter request (according to AIP-160).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. Ordering of the result list.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of disk migration jobs to return. The service may return fewer
+                        /// than this value. If unspecified, at most 500 disk migration jobs will be returned. The
+                        /// maximum value is 1000; values above 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListDiskMigrationJobs` call. Provide this
+                        /// to retrieve the subsequent page. When paginating, all parameters provided to
+                        /// `ListDiskMigrationJobs` except `page_size` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/diskMigrationJobs";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the parameters of a single DiskMigrationJob.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Output only. Identifier. The identifier of the DiskMigrationJob.</param>
+                    public virtual PatchRequest Patch(Google.Apis.VMMigrationService.v1.Data.DiskMigrationJob body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates the parameters of a single DiskMigrationJob.</summary>
+                    public class PatchRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.VMMigrationService.v1.Data.DiskMigrationJob body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Output only. Identifier. The identifier of the DiskMigrationJob.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server will know to ignore the request if it has already been
+                        /// completed. The server will guarantee that for at least 60 minutes since the first request.
+                        /// For example, consider a situation where you make an initial request and the request timed
+                        /// out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>
+                        /// Optional. Field mask is used to specify the fields to be overwritten in the DiskMigrationJob
+                        /// resource by the update. The fields specified in the update_mask are relative to the
+                        /// resource, not the full request. A field will be overwritten if it is in the mask. If the
+                        /// user does not provide a mask, then a mask equivalent to all fields that are populated (have
+                        /// a non-empty value), will be implied.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMMigrationService.v1.Data.DiskMigrationJob Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/diskMigrationJobs/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Runs the disk migration job.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the DiskMigrationJob.</param>
+                    public virtual RunRequest Run(Google.Apis.VMMigrationService.v1.Data.RunDiskMigrationJobRequest body, string name)
+                    {
+                        return new RunRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Runs the disk migration job.</summary>
+                    public class RunRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Run request.</summary>
+                        public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.VMMigrationService.v1.Data.RunDiskMigrationJobRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the DiskMigrationJob.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMMigrationService.v1.Data.RunDiskMigrationJobRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "run";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:run";
+
+                        /// <summary>Initializes Run parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/diskMigrationJobs/[^/]+$",
                             });
                         }
                     }
@@ -4215,6 +4717,134 @@ namespace Google.Apis.VMMigrationService.v1
                     }
                 }
 
+                /// <summary>
+                /// List remote source's inventory of storage resources. The remote source is another cloud vendor (e.g.
+                /// AWS, Azure). The inventory describes the list of existing storage resources in that source. Note
+                /// that this operation lists the resources on the remote source, as opposed to listing the MigratingVms
+                /// resources in the vmmigration service.
+                /// </summary>
+                /// <param name="source">Required. The name of the Source.</param>
+                public virtual FetchStorageInventoryRequest FetchStorageInventory(string source)
+                {
+                    return new FetchStorageInventoryRequest(this.service, source);
+                }
+
+                /// <summary>
+                /// List remote source's inventory of storage resources. The remote source is another cloud vendor (e.g.
+                /// AWS, Azure). The inventory describes the list of existing storage resources in that source. Note
+                /// that this operation lists the resources on the remote source, as opposed to listing the MigratingVms
+                /// resources in the vmmigration service.
+                /// </summary>
+                public class FetchStorageInventoryRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1.Data.FetchStorageInventoryResponse>
+                {
+                    /// <summary>Constructs a new FetchStorageInventory request.</summary>
+                    public FetchStorageInventoryRequest(Google.Apis.Services.IClientService service, string source) : base(service)
+                    {
+                        Source = source;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the Source.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Source { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If this flag is set to true, the source will be queried instead of using cached
+                    /// results. Using this flag will make the call slower.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("forceRefresh", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ForceRefresh { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of VMs to return. The service may return fewer than this value.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `FetchStorageInventory` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `FetchStorageInventory` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Required. The type of the storage inventory to fetch.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+                    /// <summary>Required. The type of the storage inventory to fetch.</summary>
+                    public enum TypeEnum
+                    {
+                        /// <summary>The type is unspecified.</summary>
+                        [Google.Apis.Util.StringValueAttribute("STORAGE_TYPE_UNSPECIFIED")]
+                        STORAGETYPEUNSPECIFIED = 0,
+
+                        /// <summary>The type is disks.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DISKS")]
+                        DISKS = 1,
+
+                        /// <summary>The type is snapshots.</summary>
+                        [Google.Apis.Util.StringValueAttribute("SNAPSHOTS")]
+                        SNAPSHOTS = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetchStorageInventory";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+source}:fetchStorageInventory";
+
+                    /// <summary>Initializes FetchStorageInventory parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "source",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+$",
+                        });
+                        RequestParameters.Add("forceRefresh", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "forceRefresh",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "type",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Gets details of a single Source.</summary>
                 /// <param name="name">Required. The Source name.</param>
                 public virtual GetRequest Get(string name)
@@ -5221,6 +5851,29 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the source AWS Disk details.</summary>
+    public class AwsSourceDiskDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Output only. Disk type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>Output only. Size in GiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGib")]
+        public virtual System.Nullable<long> SizeGib { get; set; }
+
+        /// <summary>Optional. Output only. A map of AWS volume tags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>Required. AWS volume ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeId")]
+        public virtual string VolumeId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represent the source AWS VM details.</summary>
     public class AwsSourceVmDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5552,6 +6205,13 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for 'CancelDiskMigrationJob' request.</summary>
+    public class CancelDiskMigrationJobRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for 'CancelImageImportJob' request.</summary>
     public class CancelImageImportJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5825,6 +6485,39 @@ namespace Google.Apis.VMMigrationService.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Compute Engine disk target details.</summary>
+    public class ComputeEngineDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Target Compute Engine Disk ID. This is the resource ID segment of the Compute Engine Disk to
+        /// create. In the resource name compute/v1/projects/{project}/zones/{zone}/disks/disk1 "disk1" is the resource
+        /// ID for the disk.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskId")]
+        public virtual string DiskId { get; set; }
+
+        /// <summary>Required. The disk type to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>
+        /// Optional. Replication zones of the regional disk. Should be of the form:
+        /// projects/{target-project}/locations/{replica-zone} Currently only one replica zone is supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaZones")]
+        public virtual System.Collections.Generic.IList<string> ReplicaZones { get; set; }
+
+        /// <summary>
+        /// Required. The Compute Engine zone in which to create the disk. Should be of the form:
+        /// projects/{target-project}/locations/{zone}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6159,8 +6852,22 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CopyingSourceDiskSnapshotStep contains specific step details.</summary>
+    public class CopyingSourceDiskSnapshotStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>CreatingImageStep contains specific step details.</summary>
     public class CreatingImageStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CreatingSourceDiskSnapshotStep contains specific step details.</summary>
+    public class CreatingSourceDiskSnapshotStep : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6803,6 +7510,238 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Describes the disk which will be migrated from the source environment. The source disk has to be unattached.
+    /// </summary>
+    public class DiskMigrationJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details of the unattached AWS source disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsSourceDiskDetails")]
+        public virtual AwsSourceDiskDetails AwsSourceDiskDetails { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the DiskMigrationJob resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Provides details on the errors that led to the disk migration job's state in case of an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<Status> Errors { get; set; }
+
+        /// <summary>Output only. Identifier. The identifier of the DiskMigrationJob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the DiskMigrationJob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The disk migration steps list representing its progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<DiskMigrationStep> Steps { get; set; }
+
+        /// <summary>Required. Details of the target Disk in Compute Engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetDetails")]
+        public virtual DiskMigrationJobTargetDetails TargetDetails { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The last time the DiskMigrationJob resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the target disk in Compute Engine.</summary>
+    public class DiskMigrationJobTargetDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The encryption to apply to the disk. If the DiskMigrationJob parent Source resource has an
+        /// encryption, this field must be set to the same encryption key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
+        public virtual Encryption Encryption { get; set; }
+
+        /// <summary>Optional. A map of labels to associate with the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Required. The target disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetDisk")]
+        public virtual ComputeEngineDisk TargetDisk { get; set; }
+
+        /// <summary>
+        /// Required. The name of the resource of type TargetProject which represents the Compute Engine project in
+        /// which to create the disk. Should be of the form:
+        /// projects/{project}/locations/global/targetProjects/{target-project}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetProject")]
+        public virtual string TargetProject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DiskMigrationStep holds information about the disk migration step progress.</summary>
+    public class DiskMigrationStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Copying source disk snapshot step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("copyingSourceDiskSnapshot")]
+        public virtual CopyingSourceDiskSnapshotStep CopyingSourceDiskSnapshot { get; set; }
+
+        /// <summary>Creating source disk snapshot step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatingSourceDiskSnapshot")]
+        public virtual CreatingSourceDiskSnapshotStep CreatingSourceDiskSnapshot { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the step has ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Creating target disk step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisioningTargetDisk")]
+        public virtual ProvisioningTargetDiskStep ProvisioningTargetDisk { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. The time the step has started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details for a disk only migration.</summary>
     public class DisksMigrationDisksTargetDefaults : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7043,6 +7982,63 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>The description of the VMs in a Source of type Vmware.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmwareVms")]
         public virtual VmwareVmsDetails VmwareVms { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for fetchStorageInventory.</summary>
+    public class FetchStorageInventoryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of storage resources in the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<SourceStorageResource> Resources { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the source was last queried (if the result is from the cache).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7562,6 +8558,28 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>
         /// Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
         /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for 'ListDiskMigrationJobs' request.</summary>
+    public class ListDiskMigrationJobsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The list of the disk migration jobs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskMigrationJobs")]
+        public virtual System.Collections.Generic.IList<DiskMigrationJob> DiskMigrationJobs { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field
+        /// is omitted, there are no subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -8587,6 +9605,13 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ProvisioningTargetDiskStep contains specific step details.</summary>
+    public class ProvisioningTargetDiskStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for 'RemoveMigration' request.</summary>
     public class RemoveGroupMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8783,6 +9808,13 @@ namespace Google.Apis.VMMigrationService.v1.Data
 
     /// <summary>Request message for 'ResumeMigration' request.</summary>
     public class ResumeMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for 'RunDiskMigrationJobRequest' request.</summary>
+    public class RunDiskMigrationJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8992,6 +10024,17 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>Vmware type source details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmware")]
         public virtual VmwareSourceDetails Vmware { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SourceStorageResource describes a storage resource in the source.</summary>
+    public class SourceStorageResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Source AWS volume details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsDiskDetails")]
+        public virtual AwsSourceDiskDetails AwsDiskDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
