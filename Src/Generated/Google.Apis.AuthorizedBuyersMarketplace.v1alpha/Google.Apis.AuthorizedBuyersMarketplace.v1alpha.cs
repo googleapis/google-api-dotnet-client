@@ -5619,7 +5619,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("geoTargeting")]
         public virtual CriteriaTargeting GeoTargeting { get; set; }
 
-        /// <summary>Inventory sizes to be targeted.</summary>
+        /// <summary>Inventory sizes to be targeted. Only PIXEL inventory size type is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySizeTargeting")]
         public virtual InventorySizeTargeting InventorySizeTargeting { get; set; }
 
