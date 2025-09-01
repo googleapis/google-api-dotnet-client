@@ -4805,7 +4805,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entitlementId")]
         public virtual string EntitlementId { get; set; }
 
-        /// <summary>Optional. Google Cloud Platform location where Oracle Exadata is hosted.</summary>
+        /// <summary>
+        /// Optional. The GCP Oracle zone where Oracle Exadata Infrastructure is hosted. Example: us-east4-b-r2. If not
+        /// specified, the system will pick a zone based on availability.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
         public virtual string GcpOracleZone { get; set; }
 
@@ -5123,8 +5126,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ExadataInfrastructure { get; set; }
 
         /// <summary>
-        /// Output only. Google Cloud Platform location where Oracle Exadata is hosted. It is same as Google Cloud
-        /// Platform Oracle zone of Exadata infrastructure.
+        /// Output only. The GCP Oracle zone where Oracle CloudVmCluster is hosted. This will be the same as the
+        /// gcp_oracle_zone of the CloudExadataInfrastructure. Example: us-east4-b-r2.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
         public virtual string GcpOracleZone { get; set; }
