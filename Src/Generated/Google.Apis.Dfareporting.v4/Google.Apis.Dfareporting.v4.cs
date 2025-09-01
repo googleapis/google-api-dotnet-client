@@ -21031,6 +21031,10 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultEmail")]
         public virtual string DefaultEmail { get; set; }
 
+        /// <summary>Optional. Whether the advertiser plans to serve EU political ads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("euPoliticalAdsDeclaration")]
+        public virtual string EuPoliticalAdsDeclaration { get; set; }
+
         /// <summary>
         /// Floodlight configuration ID of this advertiser. The floodlight configuration ID will be created
         /// automatically, so on insert this field should be left blank. This field can be set to another advertiser's
@@ -21634,6 +21638,13 @@ namespace Google.Apis.Dfareporting.v4.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual string EndDate { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the campaign has EU political ads. Campaign Manager 360 doesn't allow campaigns with EU
+        /// political ads to serve in the EU. They can still serve in other regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("euPoliticalAdsDeclaration")]
+        public virtual string EuPoliticalAdsDeclaration { get; set; }
 
         /// <summary>Overrides that can be used to activate or deactivate advertiser event tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTagOverrides")]
