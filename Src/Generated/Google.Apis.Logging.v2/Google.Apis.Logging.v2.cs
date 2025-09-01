@@ -3050,8 +3050,8 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -7898,8 +7898,8 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -10834,8 +10834,8 @@ namespace Google.Apis.Logging.v2
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// Optional. A list of extra location types that should be used as conditions for controlling the
-            /// visibility of the locations.
+            /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+            /// otherwise. This is primarily for internal usage.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -14464,8 +14464,8 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -18944,8 +18944,8 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -24310,7 +24310,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual LoggingQuery LoggingQuery { get; set; }
 
         /// <summary>
-        /// Optional. Resource name of the recent query.In the format:
+        /// Output only. Resource name of the recent query.In the format:
         /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/recentQueries/[QUERY_ID]" For a list of supported locations,
         /// see Supported Regions (https://cloud.google.com/logging/docs/region-support)The QUERY_ID is a system
         /// generated alphanumeric ID.
