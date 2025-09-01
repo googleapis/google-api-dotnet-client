@@ -298,11 +298,13 @@ namespace Google.Apis.Networkconnectivity.v1
                 MulticloudDataTransferSupportedServices = new MulticloudDataTransferSupportedServicesResource(service);
                 Operations = new OperationsResource(service);
                 RegionalEndpoints = new RegionalEndpointsResource(service);
+                RemoteTransportProfiles = new RemoteTransportProfilesResource(service);
                 ServiceClasses = new ServiceClassesResource(service);
                 ServiceConnectionMaps = new ServiceConnectionMapsResource(service);
                 ServiceConnectionPolicies = new ServiceConnectionPoliciesResource(service);
                 ServiceConnectionTokens = new ServiceConnectionTokensResource(service);
                 Spokes = new SpokesResource(service);
+                Transports = new TransportsResource(service);
             }
 
             /// <summary>Gets the Global resource.</summary>
@@ -3450,15 +3452,15 @@ namespace Google.Apis.Networkconnectivity.v1
                         this.service = service;
                     }
 
-                    /// <summary>Creates a Destination in a given project and location.</summary>
+                    /// <summary>Creates a `Destination` resource in a specified project and location.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. The parent resource's name</param>
+                    /// <param name="parent">Required. The name of the parent resource.</param>
                     public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.Destination body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
                     }
 
-                    /// <summary>Creates a Destination in a given project and location.</summary>
+                    /// <summary>Creates a `Destination` resource in a specified project and location.</summary>
                     public class CreateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -3469,27 +3471,27 @@ namespace Google.Apis.Networkconnectivity.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The parent resource's name</summary>
+                        /// <summary>Required. The name of the parent resource.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Required. The ID to use for the Destination, which will become the final component of the
-                        /// Destination's resource name.
+                        /// Required. The ID to use for the `Destination` resource, which becomes the final component of
+                        /// the `Destination` resource name.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("destinationId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string DestinationId { get; set; }
 
                         /// <summary>
-                        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
-                        /// if you must retry your request, the server will know to ignore the request if it has already
-                        /// been completed. The server will guarantee that for at least 60 minutes since the first
-                        /// request. For example, consider a situation where you make an initial request and the request
-                        /// times out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. This prevents clients from accidentally creating duplicate Destinations. The
-                        /// request ID must be a valid UUID with the exception that zero UUID is not supported
-                        /// (00000000-0000-0000-0000-000000000000).
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server can ignore the request if it has already been completed. The
+                        /// server waits for at least 60 minutes since the first request. For example, consider a
+                        /// situation where you make an initial request and the request times out. If you make the
+                        /// request again with the same request ID, the server can check if original operation with the
+                        /// same request ID was received, and if so, can ignore the second request. This prevents
+                        /// clients from accidentally creating duplicate `Destination` resources. The request ID must be
+                        /// a valid UUID with the exception that zero UUID (00000000-0000-0000-0000-000000000000) isn't
+                        /// supported.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
@@ -3540,14 +3542,14 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
                     }
 
-                    /// <summary>Deletes a single Destination.</summary>
-                    /// <param name="name">Required. The name of the Destination resource to delete.</param>
+                    /// <summary>Deletes a `Destination` resource.</summary>
+                    /// <param name="name">Required. The name of the `Destination` resource to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(this.service, name);
                     }
 
-                    /// <summary>Deletes a single Destination.</summary>
+                    /// <summary>Deletes a `Destination` resource.</summary>
                     public class DeleteRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -3557,26 +3559,26 @@ namespace Google.Apis.Networkconnectivity.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The name of the Destination resource to delete.</summary>
+                        /// <summary>Required. The name of the `Destination` resource to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Optional. The etag is computed by the server, and may be sent on update and delete requests
-                        /// to ensure the client has an up-to-date value before proceeding.
+                        /// Optional. The etag is computed by the server, and might be sent with update and delete
+                        /// requests so that the client has an up-to-date value before proceeding.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Etag { get; set; }
 
                         /// <summary>
-                        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
-                        /// if you must retry your request, the server will know to ignore the request if it has already
-                        /// been completed. The server will guarantee that for at least 60 minutes since the first
-                        /// request. For example, consider a situation where you make an initial request and the request
-                        /// times out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. The request ID must be a valid UUID with the exception that zero UUID is not
-                        /// supported (00000000-0000-0000-0000-000000000000).
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server can ignore the request if it has already been completed. The
+                        /// server waits for at least 60 minutes since the first request. For example, consider a
+                        /// situation where you make an initial request and the request times out. If you make the
+                        /// request again with the same request ID, the server can check if original operation with the
+                        /// same request ID was received, and if so, can ignore the second request. The request ID must
+                        /// be a valid UUID with the exception that zero UUID (00000000-0000-0000-0000-000000000000)
+                        /// isn't supported.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
@@ -3621,14 +3623,14 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
                     }
 
-                    /// <summary>Gets details of a single Destination.</summary>
-                    /// <param name="name">Required. Name of the Destination to get.</param>
+                    /// <summary>Gets the details of a `Destination` resource.</summary>
+                    /// <param name="name">Required. The name of the `Destination` resource to get.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>Gets details of a single Destination.</summary>
+                    /// <summary>Gets the details of a `Destination` resource.</summary>
                     public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Destination>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -3638,7 +3640,7 @@ namespace Google.Apis.Networkconnectivity.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Name of the Destination to get.</summary>
+                        /// <summary>Required. The name of the `Destination` resource to get.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -3666,14 +3668,14 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
                     }
 
-                    /// <summary>Lists Destinations in a given project and location.</summary>
-                    /// <param name="parent">Required. The parent resource's name</param>
+                    /// <summary>Lists the `Destination` resources in a specified project and location.</summary>
+                    /// <param name="parent">Required. The name of the parent resource.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>Lists Destinations in a given project and location.</summary>
+                    /// <summary>Lists the `Destination` resources in a specified project and location.</summary>
                     public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListDestinationsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -3683,21 +3685,19 @@ namespace Google.Apis.Networkconnectivity.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The parent resource's name</summary>
+                        /// <summary>Required. The name of the parent resource.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>
-                        /// Optional. A filter expression that filters the results listed in the response.
-                        /// </summary>
+                        /// <summary>Optional. An expression that filters the results listed in the response.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Optional. Sort the results by a certain order.</summary>
+                        /// <summary>Optional. The sort order of the results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
-                        /// <summary>Optional. The maximum number of results per page that should be returned.</summary>
+                        /// <summary>Optional. The maximum number of results listed per page.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3706,7 +3706,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         public virtual string PageToken { get; set; }
 
                         /// <summary>
-                        /// Optional. If true, allow partial responses for multi-regional Aggregated List requests.
+                        /// Optional. If `true`, allow partial responses for multi-regional aggregated list requests.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
@@ -3775,10 +3775,10 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
                     }
 
-                    /// <summary>Updates a Destination in a given project and location.</summary>
+                    /// <summary>Updates a `Destination` resource in a specified project and location.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Identifier. The name of the Destination resource. Format:
+                    /// Identifier. The name of the `Destination` resource. Format:
                     /// `projects/{project}/locations/{location}/multicloudDataTransferConfigs/{multicloud_data_transfer_config}/destinations/{destination}`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Networkconnectivity.v1.Data.Destination body, string name)
@@ -3786,7 +3786,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         return new PatchRequest(this.service, body, name);
                     }
 
-                    /// <summary>Updates a Destination in a given project and location.</summary>
+                    /// <summary>Updates a `Destination` resource in a specified project and location.</summary>
                     public class PatchRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -3798,30 +3798,30 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
 
                         /// <summary>
-                        /// Identifier. The name of the Destination resource. Format:
+                        /// Identifier. The name of the `Destination` resource. Format:
                         /// `projects/{project}/locations/{location}/multicloudDataTransferConfigs/{multicloud_data_transfer_config}/destinations/{destination}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
-                        /// if you must retry your request, the server will know to ignore the request if it has already
-                        /// been completed. The server will guarantee that for at least 60 minutes since the first
-                        /// request. For example, consider a situation where you make an initial request and the request
-                        /// times out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. The request ID must be a valid UUID with the exception that zero UUID is not
-                        /// supported (00000000-0000-0000-0000-000000000000).
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server can ignore the request if it has already been completed. The
+                        /// server waits for at least 60 minutes since the first request. For example, consider a
+                        /// situation where you make an initial request and the request times out. If you make the
+                        /// request again with the same request ID, the server can check if original operation with the
+                        /// same request ID was received, and if so, can ignore the second request. The request ID must
+                        /// be a valid UUID with the exception that zero UUID (00000000-0000-0000-0000-000000000000)
+                        /// isn't supported.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
 
                         /// <summary>
-                        /// Optional. Field mask is used to specify the fields to be overwritten in the Destination
-                        /// resource by the update. The fields specified in the update_mask are relative to the
-                        /// resource, not the full request. A field will be overwritten if it is in the mask. If the
-                        /// user does not provide a mask then all fields will be overwritten.
+                        /// Optional. `FieldMask is used to specify the fields to be overwritten in the `Destination`
+                        /// resource by the update. The fields specified in `update_mask` are relative to the resource,
+                        /// not the full request. A field is overwritten if it is in the mask. If you don't specify a
+                        /// mask, all fields are overwritten.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -3873,15 +3873,19 @@ namespace Google.Apis.Networkconnectivity.v1
                     }
                 }
 
-                /// <summary>Creates a MulticloudDataTransferConfig in a given project and location.</summary>
+                /// <summary>
+                /// Creates a `MulticloudDataTransferConfig` resource in a specified project and location.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource's name</param>
+                /// <param name="parent">Required. The name of the parent resource.</param>
                 public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.MulticloudDataTransferConfig body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a MulticloudDataTransferConfig in a given project and location.</summary>
+                /// <summary>
+                /// Creates a `MulticloudDataTransferConfig` resource in a specified project and location.
+                /// </summary>
                 public class CreateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -3892,27 +3896,26 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent resource's name</summary>
+                    /// <summary>Required. The name of the parent resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The ID to use for the MulticloudDataTransferConfig, which will become the final
-                    /// component of the MulticloudDataTransferConfig's resource name.
+                    /// Required. The ID to use for the `MulticloudDataTransferConfig` resource, which becomes the final
+                    /// component of the `MulticloudDataTransferConfig` resource name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("multicloudDataTransferConfigId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string MulticloudDataTransferConfigId { get; set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate MulticloudDataTransferConfigs. The request ID must
-                    /// be a valid UUID with the exception that zero UUID is not supported
-                    /// (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server can ignore the request if it has already been completed. The
+                    /// server waits for at least 60 minutes since the first request. For example, consider a situation
+                    /// where you make an initial request and the request times out. If you make the request again with
+                    /// the same request ID, the server can check if original operation with the same request ID was
+                    /// received, and if so, can ignore the second request. This prevents clients from accidentally
+                    /// creating duplicate `MulticloudDataTransferConfig` resources. The request ID must be a valid UUID
+                    /// with the exception that zero UUID (00000000-0000-0000-0000-000000000000) isn't supported.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -3963,16 +3966,16 @@ namespace Google.Apis.Networkconnectivity.v1
                     }
                 }
 
-                /// <summary>Deletes a single MulticloudDataTransferConfig.</summary>
+                /// <summary>Deletes a `MulticloudDataTransferConfig` resource.</summary>
                 /// <param name="name">
-                /// Required. The name of the MulticloudDataTransferConfig resource to delete.
+                /// Required. The name of the `MulticloudDataTransferConfig` resource to delete.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single MulticloudDataTransferConfig.</summary>
+                /// <summary>Deletes a `MulticloudDataTransferConfig` resource.</summary>
                 public class DeleteRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -3982,27 +3985,26 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The name of the MulticloudDataTransferConfig resource to delete.</summary>
+                    /// <summary>Required. The name of the `MulticloudDataTransferConfig` resource to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. The etag is computed by the server, and may be sent on update and delete requests to
-                    /// ensure the client has an up-to-date value before proceeding.
+                    /// Optional. The etag is computed by the server, and might be sent with update and delete requests
+                    /// so that the client has an up-to-date value before proceeding.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate MulticloudDataTransferConfigs. The request ID must
-                    /// be a valid UUID with the exception that zero UUID is not supported
-                    /// (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server can ignore the request if it has already been completed. The
+                    /// server waits for at least 60 minutes since the first request. For example, consider a situation
+                    /// where you make an initial request and the request times out. If you make the request again with
+                    /// the same request ID, the server can check if original operation with the same request ID was
+                    /// received, and if so, can ignore the second request. This prevents clients from accidentally
+                    /// creating duplicate `MulticloudDataTransferConfig` resources. The request ID must be a valid UUID
+                    /// with the exception that zero UUID (00000000-0000-0000-0000-000000000000) isn't supported.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -4047,14 +4049,14 @@ namespace Google.Apis.Networkconnectivity.v1
                     }
                 }
 
-                /// <summary>Gets details of a single MulticloudDataTransferConfig.</summary>
-                /// <param name="name">Required. Name of the MulticloudDataTransferConfig to get.</param>
+                /// <summary>Gets the details of a `MulticloudDataTransferConfig` resource.</summary>
+                /// <param name="name">Required. The name of the `MulticloudDataTransferConfig` resource to get.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single MulticloudDataTransferConfig.</summary>
+                /// <summary>Gets the details of a `MulticloudDataTransferConfig` resource.</summary>
                 public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.MulticloudDataTransferConfig>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -4064,7 +4066,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the MulticloudDataTransferConfig to get.</summary>
+                    /// <summary>Required. The name of the `MulticloudDataTransferConfig` resource to get.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4092,14 +4094,18 @@ namespace Google.Apis.Networkconnectivity.v1
                     }
                 }
 
-                /// <summary>Lists MulticloudDataTransferConfigs in a given project and location.</summary>
-                /// <param name="parent">Required. The parent resource's name</param>
+                /// <summary>
+                /// Lists the `MulticloudDataTransferConfig` resources in a specified project and location.
+                /// </summary>
+                /// <param name="parent">Required. The name of the parent resource.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists MulticloudDataTransferConfigs in a given project and location.</summary>
+                /// <summary>
+                /// Lists the `MulticloudDataTransferConfig` resources in a specified project and location.
+                /// </summary>
                 public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListMulticloudDataTransferConfigsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -4109,21 +4115,19 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent resource's name</summary>
+                    /// <summary>Required. The name of the parent resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>
-                    /// Optional. A filter expression that filters the results listed in the response.
-                    /// </summary>
+                    /// <summary>Optional. An expression that filters the results listed in the response.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Sort the results by a certain order.</summary>
+                    /// <summary>Optional. The sort order of the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Optional. The maximum number of results per page that should be returned.</summary>
+                    /// <summary>Optional. The maximum number of results listed per page.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -4132,7 +4136,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     public virtual string PageToken { get; set; }
 
                     /// <summary>
-                    /// Optional. If true, allow partial responses for multi-regional Aggregated List requests.
+                    /// Optional. If `true`, allows partial responses for multi-regional aggregated list requests.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
@@ -4201,10 +4205,12 @@ namespace Google.Apis.Networkconnectivity.v1
                     }
                 }
 
-                /// <summary>Updates a MulticloudDataTransferConfig in a given project and location.</summary>
+                /// <summary>
+                /// Updates a `MulticloudDataTransferConfig` resource in a specified project and location.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Identifier. The name of the MulticloudDataTransferConfig resource. Format:
+                /// Identifier. The name of the `MulticloudDataTransferConfig` resource. Format:
                 /// `projects/{project}/locations/{location}/multicloudDataTransferConfigs/{multicloud_data_transfer_config}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Networkconnectivity.v1.Data.MulticloudDataTransferConfig body, string name)
@@ -4212,7 +4218,9 @@ namespace Google.Apis.Networkconnectivity.v1
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a MulticloudDataTransferConfig in a given project and location.</summary>
+                /// <summary>
+                /// Updates a `MulticloudDataTransferConfig` resource in a specified project and location.
+                /// </summary>
                 public class PatchRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -4224,31 +4232,30 @@ namespace Google.Apis.Networkconnectivity.v1
                     }
 
                     /// <summary>
-                    /// Identifier. The name of the MulticloudDataTransferConfig resource. Format:
+                    /// Identifier. The name of the `MulticloudDataTransferConfig` resource. Format:
                     /// `projects/{project}/locations/{location}/multicloudDataTransferConfigs/{multicloud_data_transfer_config}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate MulticloudDataTransferConfigs. The request ID must
-                    /// be a valid UUID with the exception that zero UUID is not supported
-                    /// (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server can ignore the request if it has already been completed. The
+                    /// server waits for at least 60 minutes since the first request. For example, consider a situation
+                    /// where you make an initial request and the request times out. If you make the request again with
+                    /// the same request ID, the server can check if original operation with the same request ID was
+                    /// received, and if so, can ignore the second request. This prevents clients from accidentally
+                    /// creating duplicate `MulticloudDataTransferConfig` resources. The request ID must be a valid UUID
+                    /// with the exception that zero UUID (00000000-0000-0000-0000-000000000000) isn't supported.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Optional. Field mask is used to specify the fields to be overwritten in the
-                    /// MulticloudDataTransferConfig resource by the update. The fields specified in the update_mask are
-                    /// relative to the resource, not the full request. A field will be overwritten if it is in the
-                    /// mask. If the user does not provide a mask then all fields will be overwritten.
+                    /// Optional. `FieldMask` is used to specify the fields in the `MulticloudDataTransferConfig`
+                    /// resource to be overwritten by the update. The fields specified in `update_mask` are relative to
+                    /// the resource, not the full request. A field is overwritten if it is in the mask. If you don't
+                    /// specify a mask, all fields are overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -4317,14 +4324,14 @@ namespace Google.Apis.Networkconnectivity.v1
                     this.service = service;
                 }
 
-                /// <summary>Gets details of a single MulticloudDataTransferSupportedServices.</summary>
+                /// <summary>Gets the details of a service that is supported for Data Transfer Essentials.</summary>
                 /// <param name="name">Required. The name of the service.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single MulticloudDataTransferSupportedServices.</summary>
+                /// <summary>Gets the details of a service that is supported for Data Transfer Essentials.</summary>
                 public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.MulticloudDataTransferSupportedService>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -4363,16 +4370,16 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
 
                 /// <summary>
-                /// Lists the supported services for Multicloud Data Transfer. This is a passthrough method.
+                /// Lists the services in the project for a region that are supported for Data Transfer Essentials.
                 /// </summary>
-                /// <param name="parent">Required. The parent resource's name</param>
+                /// <param name="parent">Required. The name of the parent resource.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
-                /// Lists the supported services for Multicloud Data Transfer. This is a passthrough method.
+                /// Lists the services in the project for a region that are supported for Data Transfer Essentials.
                 /// </summary>
                 public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListMulticloudDataTransferSupportedServicesResponse>
                 {
@@ -4383,11 +4390,11 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent resource's name</summary>
+                    /// <summary>Required. The name of the parent resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The maximum number of results per page that should be returned.</summary>
+                    /// <summary>Optional. The maximum number of results listed per page.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -4985,6 +4992,165 @@ namespace Google.Apis.Networkconnectivity.v1
 
                     /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/regionalEndpoints";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the RemoteTransportProfiles resource.</summary>
+            public virtual RemoteTransportProfilesResource RemoteTransportProfiles { get; }
+
+            /// <summary>The "remoteTransportProfiles" collection of methods.</summary>
+            public class RemoteTransportProfilesResource
+            {
+                private const string Resource = "remoteTransportProfiles";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RemoteTransportProfilesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets details of a single RemoteTransportProfile.</summary>
+                /// <param name="name">Required. Name of the resource</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single RemoteTransportProfile.</summary>
+                public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.RemoteTransportProfile>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/remoteTransportProfiles/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists RemoteTransportProfiles in a given project and location.</summary>
+                /// <param name="parent">Required. Parent value for ListRemoteTransportProfilesRequest</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists RemoteTransportProfiles in a given project and location.</summary>
+                public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListRemoteTransportProfilesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for ListRemoteTransportProfilesRequest</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/remoteTransportProfiles";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -6289,6 +6455,50 @@ namespace Google.Apis.Networkconnectivity.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. The space where we search for a free range to create a subnetwork. It can be narrow
+                    /// down or pick a different space. This is in standard CIDR format. If not specified, “10.0.0.0/8”
+                    /// is used. Only eligible for IPV4_ONLY and IPV4_IPV6 subnetwork.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("autoSubnetworkConfig.allocRangeSpace", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AutoSubnetworkConfigAllocRangeSpace { get; set; }
+
+                    /// <summary>
+                    /// Optional. The requested IP stack for the subnetwork. If not specified, IPv4 is used.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("autoSubnetworkConfig.ipStack", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<AutoSubnetworkConfigIpStackEnum> AutoSubnetworkConfigIpStack { get; set; }
+
+                    /// <summary>
+                    /// Optional. The requested IP stack for the subnetwork. If not specified, IPv4 is used.
+                    /// </summary>
+                    public enum AutoSubnetworkConfigIpStackEnum
+                    {
+                        /// <summary>Default value. Will create an IPV4_ONLY subnetwork by default.</summary>
+                        [Google.Apis.Util.StringValueAttribute("SUBNET_IP_STACK_UNSPECIFIED")]
+                        SUBNETIPSTACKUNSPECIFIED = 0,
+
+                        /// <summary>Will create an IPV4_ONLY subnetwork.</summary>
+                        [Google.Apis.Util.StringValueAttribute("IPV4_ONLY")]
+                        IPV4ONLY = 1,
+
+                        /// <summary>Will create an IPV6_ONLY subnetwork.</summary>
+                        [Google.Apis.Util.StringValueAttribute("IPV6_ONLY")]
+                        IPV6ONLY = 2,
+
+                        /// <summary>Will use IPv4 and IPv6 (dual stack).</summary>
+                        [Google.Apis.Util.StringValueAttribute("IPV4_IPV6")]
+                        IPV4IPV6 = 3,
+                    }
+
+                    /// <summary>
+                    /// Optional. The desired prefix length for the subnet's IP address range. E.g., 24 for a /24. The
+                    /// actual range is allocated from available space. If not specified, 24 is used. Only eligible for
+                    /// IPV4_ONLY and IPV4_IPV6 subnetwork.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("autoSubnetworkConfig.prefixLength", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> AutoSubnetworkConfigPrefixLength { get; set; }
+
+                    /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
@@ -6308,6 +6518,35 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("serviceConnectionPolicyId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ServiceConnectionPolicyId { get; set; }
+
+                    /// <summary>
+                    /// Optional. If this field is not set, USER_PROVIDED is the inferred value to use.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("subnetworkMode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<SubnetworkModeEnum> SubnetworkMode { get; set; }
+
+                    /// <summary>
+                    /// Optional. If this field is not set, USER_PROVIDED is the inferred value to use.
+                    /// </summary>
+                    public enum SubnetworkModeEnum
+                    {
+                        /// <summary>
+                        /// The default value if the enum is unset. Note user is not allowed to set the subnetwork mode
+                        /// to this value.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("SUBNETWORK_MODE_UNSPECIFIED")]
+                        SUBNETWORKMODEUNSPECIFIED = 0,
+
+                        /// <summary>Subnetworks are provided from the user input.</summary>
+                        [Google.Apis.Util.StringValueAttribute("USER_PROVIDED")]
+                        USERPROVIDED = 1,
+
+                        /// <summary>
+                        /// Subnetwork list is empty from the user input. A subnetwork will be created automatically.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("AUTO_CREATED")]
+                        AUTOCREATED = 2,
+                    }
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Networkconnectivity.v1.Data.ServiceConnectionPolicy Body { get; set; }
@@ -6336,6 +6575,30 @@ namespace Google.Apis.Networkconnectivity.v1
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
+                        RequestParameters.Add("autoSubnetworkConfig.allocRangeSpace", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "autoSubnetworkConfig.allocRangeSpace",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("autoSubnetworkConfig.ipStack", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "autoSubnetworkConfig.ipStack",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("autoSubnetworkConfig.prefixLength", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "autoSubnetworkConfig.prefixLength",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestId",
@@ -6347,6 +6610,14 @@ namespace Google.Apis.Networkconnectivity.v1
                         RequestParameters.Add("serviceConnectionPolicyId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "serviceConnectionPolicyId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("subnetworkMode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "subnetworkMode",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7855,6 +8126,408 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
             }
 
+            /// <summary>Gets the Transports resource.</summary>
+            public virtual TransportsResource Transports { get; }
+
+            /// <summary>The "transports" collection of methods.</summary>
+            public class TransportsResource
+            {
+                private const string Resource = "transports";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TransportsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new Transport in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Value for parent.</param>
+                public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.Transport body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new Transport in a given project and location.</summary>
+                public class CreateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.Transport body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Value for parent.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Required. Id of the requesting object</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("transportId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string TransportId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Networkconnectivity.v1.Data.Transport Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/transports";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("transportId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "transportId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single Transport.</summary>
+                /// <param name="name">Required. Name of the resource</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single Transport.</summary>
+                public class DeleteRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/transports/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single Transport.</summary>
+                /// <param name="name">Required. Name of the resource</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single Transport.</summary>
+                public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Transport>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/transports/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Transports in a given project and location.</summary>
+                /// <param name="parent">Required. Parent value for ListTransportsRequest</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists Transports in a given project and location.</summary>
+                public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListTransportsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for ListTransportsRequest</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/transports";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single Transport.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Identifier. name of resource</param>
+                public virtual PatchRequest Patch(Google.Apis.Networkconnectivity.v1.Data.Transport body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single Transport.</summary>
+                public class PatchRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.Transport body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Identifier. name of resource</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the Transport resource
+                    /// by the update. The fields specified in the update_mask are relative to the resource, not the
+                    /// full request. A field will be overwritten if it is in the mask. If the user does not provide a
+                    /// mask then all fields present in the request will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Networkconnectivity.v1.Data.Transport Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/transports/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -8164,6 +8837,41 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information for the automatically created subnetwork and its associated IR.</summary>
+    public class AutoCreatedSubnetworkInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. URI of the automatically created Internal Range. Only set if the subnetwork mode is
+        /// AUTO_CREATED during creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalRange")]
+        public virtual string InternalRange { get; set; }
+
+        /// <summary>
+        /// Output only. URI of the automatically created Internal Range reference. Only set if the subnetwork mode is
+        /// AUTO_CREATED during creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalRangeRef")]
+        public virtual string InternalRangeRef { get; set; }
+
+        /// <summary>
+        /// Output only. URI of the automatically created subnetwork. Only set if the subnetwork mode is AUTO_CREATED
+        /// during creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; }
+
+        /// <summary>
+        /// Output only. URI of the automatically created subnetwork reference. Only set if the subnetwork mode is
+        /// AUTO_CREATED during creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworkRef")]
+        public virtual string SubnetworkRef { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8387,14 +9095,17 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The Destination resource.</summary>
+    /// <summary>
+    /// The `Destination` resource. It specifies the IP prefix and the associated autonomous system numbers (ASN) that
+    /// you want to include in a `MulticloudDataTransferConfig` resource.
+    /// </summary>
     public class Destination : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
         private object _createTime;
 
-        /// <summary>Output only. Time when the Destination was created.</summary>
+        /// <summary>Output only. Time when the `Destination` resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -8427,24 +9138,24 @@ namespace Google.Apis.Networkconnectivity.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. An optional field to provide a description of this resource.</summary>
+        /// <summary>Optional. A description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Required. Unordered list. The list of Endpoints configured for the IP Prefix.</summary>
+        /// <summary>
+        /// Required. Unordered list. The list of `DestinationEndpoint` resources configured for the IP prefix.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
         public virtual System.Collections.Generic.IList<DestinationEndpoint> Endpoints { get; set; }
 
         /// <summary>
-        /// The etag is computed by the server, and may be sent on update and delete requests to ensure the client has
+        /// The etag is computed by the server, and might be sent with update and delete requests so that the client has
         /// an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>
-        /// Required. Immutable. Remote IP Prefix in the remote CSP, where the customer's workload is located
-        /// </summary>
+        /// <summary>Required. Immutable. The IP prefix that represents your workload on another CSP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipPrefix")]
         public virtual string IpPrefix { get; set; }
 
@@ -8453,26 +9164,26 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Identifier. The name of the Destination resource. Format:
+        /// Identifier. The name of the `Destination` resource. Format:
         /// `projects/{project}/locations/{location}/multicloudDataTransferConfigs/{multicloud_data_transfer_config}/destinations/{destination}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. The timeline of the expected Destination states or the current rest state. If a state change is
-        /// expected, the value will be the list of ADDING, DELETING or SUSPENDING statesdepending on the actions taken.
-        /// Example: "state_timeline": { "states": [ { "state": "ADDING", // The time when the Destination will be
-        /// activated. "effective_time": "2024-12-01T08:00:00Z" }, { "state": "SUSPENDING", // The time when the
-        /// Destination will be suspended. "effective_time": "2024-12-01T20:00:00Z" } ] }
+        /// Output only. The timeline of the expected `Destination` states or the current rest state. If a state change
+        /// is expected, the value is `ADDING`, `DELETING` or `SUSPENDING`, depending on the action specified. Example:
+        /// "state_timeline": { "states": [ { // The time when the `Destination` resource will be activated.
+        /// "effectiveTime": "2024-12-01T08:00:00Z", "state": "ADDING" }, { // The time when the `Destination` resource
+        /// will be suspended. "effectiveTime": "2024-12-01T20:00:00Z", "state": "SUSPENDING" } ] }
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateTimeline")]
         public virtual StateTimeline StateTimeline { get; set; }
 
         /// <summary>
-        /// Output only. The Google-generated UUID for the destination. This value is unique across all destination
-        /// resources. If a destination is deleted and another with the same name is created, the new destination is
-        /// assigned a different uid.
+        /// Output only. The Google-generated unique ID for the `Destination` resource. This value is unique across all
+        /// `Destination` resources. If a resource is deleted and another with the same name is created, the new
+        /// resource is assigned a different and unique ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
@@ -8481,7 +9192,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. Time when the Destination was updated.</summary>
+        /// <summary>Output only. Time when the `Destination` resource was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -8515,18 +9226,18 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         }
     }
 
-    /// <summary>The metadata for a DestinationEndpoint.</summary>
+    /// <summary>The metadata for a `DestinationEndpoint` resource.</summary>
     public class DestinationEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The ASN of the remote IP Prefix.</summary>
+        /// <summary>Required. The ASN of the remote IP prefix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asn")]
         public virtual System.Nullable<long> Asn { get; set; }
 
-        /// <summary>Required. The name of the CSP of the remote IP Prefix.</summary>
+        /// <summary>Required. The CSP of the remote IP prefix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csp")]
         public virtual string Csp { get; set; }
 
-        /// <summary>Output only. The state of the Endpoint.</summary>
+        /// <summary>Output only. The state of the `DestinationEndpoint` resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -8534,7 +9245,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. Time when the DestinationEndpoint was updated.</summary>
+        /// <summary>Output only. Time when the `DestinationEndpoint` resource was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -9490,10 +10201,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for ListDestinations.</summary>
+    /// <summary>Response message to list `Destination` resources.</summary>
     public class ListDestinationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Destinations to be returned.</summary>
+        /// <summary>The list of `Destination` resources to be listed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
         public virtual System.Collections.Generic.IList<Destination> Destinations { get; set; }
 
@@ -9615,10 +10326,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for ListMulticloudDataTransferConfigs.</summary>
+    /// <summary>Response message to list `MulticloudDataTransferConfig` resources.</summary>
     public class ListMulticloudDataTransferConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>MulticloudDataTransferConfigs to be returned.</summary>
+        /// <summary>The list of `MulticloudDataTransferConfig` resources to be listed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multicloudDataTransferConfigs")]
         public virtual System.Collections.Generic.IList<MulticloudDataTransferConfig> MulticloudDataTransferConfigs { get; set; }
 
@@ -9634,7 +10345,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for ListMulticloudDataTransferSupportedServices.</summary>
+    /// <summary>
+    /// Response message to list the services in your project in regions that are eligible for Data Transfer Essentials
+    /// configuration.
+    /// </summary>
     public class ListMulticloudDataTransferSupportedServicesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of supported services.</summary>
@@ -9686,6 +10400,25 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IList<RegionalEndpoint> RegionalEndpoints { get; set; }
 
         /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing RemoteTransportProfiles</summary>
+    public class ListRemoteTransportProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of RemoteTransportProfiles</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteTransportProfiles")]
+        public virtual System.Collections.Generic.IList<RemoteTransportProfile> RemoteTransportProfiles { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -9847,6 +10580,25 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for response to listing Transports</summary>
+    public class ListTransportsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of Transport</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transports")]
+        public virtual System.Collections.Generic.IList<Transport> Transports { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9913,8 +10665,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     }
 
     /// <summary>
-    /// The MulticloudDataTransferConfig resource. This lists the services for which customer is opting in for
-    /// Multicloud Data Transfer.
+    /// The `MulticloudDataTransferConfig` resource. It lists the services that you configure for Data Transfer
+    /// Essentials billing and metering.
     /// </summary>
     public class MulticloudDataTransferConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9922,7 +10674,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. Time when the MulticloudDataTransferConfig was created.</summary>
+        /// <summary>Output only. Time when the `MulticloudDataTransferConfig` resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -9955,24 +10707,25 @@ namespace Google.Apis.Networkconnectivity.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. An optional field to provide a description of this resource.</summary>
+        /// <summary>Optional. A description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Output only. The number of Destinations in use under the MulticloudDataTransferConfig resource.
+        /// Output only. The number of `Destination` resources in use with the `MulticloudDataTransferConfig` resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationsActiveCount")]
         public virtual System.Nullable<int> DestinationsActiveCount { get; set; }
 
         /// <summary>
-        /// Output only. The number of Destinations configured under the MulticloudDataTransferConfig resource.
+        /// Output only. The number of `Destination` resources configured for the `MulticloudDataTransferConfig`
+        /// resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationsCount")]
         public virtual System.Nullable<int> DestinationsCount { get; set; }
 
         /// <summary>
-        /// The etag is computed by the server, and may be sent on update and delete requests to ensure the client has
+        /// The etag is computed by the server, and might be sent with update and delete requests so that the client has
         /// an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -9983,26 +10736,26 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Identifier. The name of the MulticloudDataTransferConfig resource. Format:
+        /// Identifier. The name of the `MulticloudDataTransferConfig` resource. Format:
         /// `projects/{project}/locations/{location}/multicloudDataTransferConfigs/{multicloud_data_transfer_config}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. This map services to either their current or planned states. Service names are keys, and the
-        /// associated values describe the service's state. If a state change is expected, the value will be the list of
-        /// ADDING or DELETING states depending on the actions taken. Example: "services": { "big-query": { "states": [
-        /// { "state": "ADDING", "effective_time": "2024-12-12T08:00:00Z" }, ] }, "cloud-storage": { "states": [ {
-        /// "state": "ACTIVE", } ] } }
+        /// Optional. Maps services to their current or planned states. Service names are keys, and the associated
+        /// values describe the state of the service. If a state change is expected, the value is either `ADDING` or
+        /// `DELETING`, depending on the actions taken. Sample output: "services": { "big-query": { "states": [ {
+        /// "effectiveTime": "2024-12-12T08:00:00Z" "state": "ADDING", }, ] }, "cloud-storage": { "states": [ { "state":
+        /// "ACTIVE", } ] } }
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IDictionary<string, StateTimeline> Services { get; set; }
 
         /// <summary>
-        /// Output only. The Google-generated UUID for the MulticloudDataTransferConfig. This value is unique across all
-        /// MulticloudDataTransferConfig resources. If a MulticloudDataTransferConfig is deleted and another with the
-        /// same name is created, the new MulticloudDataTransferConfig is assigned a different uid.
+        /// Output only. The Google-generated unique ID for the `MulticloudDataTransferConfig` resource. This value is
+        /// unique across all `MulticloudDataTransferConfig` resources. If a resource is deleted and another with the
+        /// same name is created, the new resource is assigned a different and unique ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
@@ -10011,7 +10764,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. Time when the MulticloudDataTransferConfig was updated.</summary>
+        /// <summary>Output only. Time when the `MulticloudDataTransferConfig` resource was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -10045,14 +10798,16 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         }
     }
 
-    /// <summary>The supported service for Multicloud Data Transfer.</summary>
+    /// <summary>
+    /// A service in your project in a region that is eligible for Data Transfer Essentials configuration.
+    /// </summary>
     public class MulticloudDataTransferSupportedService : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Identifier. The name of the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The network service tiers supported for the service.</summary>
+        /// <summary>Output only. The network service tier or regional endpoint supported for the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigs")]
         public virtual System.Collections.Generic.IList<ServiceConfig> ServiceConfigs { get; set; }
 
@@ -10899,6 +11654,95 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message describing RemoteTransportProfile object</summary>
+    public class RemoteTransportProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. [Output only] Create time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Labels as key value pairs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Identifier. name of resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. [Output only] Update time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A route defines a path from VM instances within a spoke to a specific destination resource. Only VPC spokes have
     /// routes.
@@ -11323,17 +12167,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         }
     }
 
-    /// <summary>
-    /// Specifies the Multicloud Data Transfer supported services configuration. This includes either the network tier
-    /// or the request endpoint. If end of support for multicloud data transfer is planned for a service's network tier
-    /// or request endpoint, the end time will be provided.
-    /// </summary>
+    /// <summary>Specifies eligibility information for the service.</summary>
     public class ServiceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. The eligibility criteria for the service. The user has to meet the eligibility criteria
-        /// specified here for the service to qualify for multicloud data transfer.
-        /// </summary>
+        /// <summary>Output only. The eligibility criteria for the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibilityCriteria")]
         public virtual string EligibilityCriteria { get; set; }
 
@@ -11342,8 +12179,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         private object _supportEndTime;
 
         /// <summary>
-        /// Output only. The eligibility criteria support end time. If the end time is not specified, no planned end
-        /// time is available.
+        /// Output only. The end time for eligibility criteria support. If not specified, no planned end time is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportEndTime")]
         public virtual string SupportEndTimeRaw
@@ -11464,7 +12300,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         /// <summary>
         /// The service class identifier this ServiceConnectionMap is for. The user of ServiceConnectionMap create API
-        /// needs to have networkconnecitivty.serviceclasses.use iam permission for the service class.
+        /// needs to have networkconnectivity.serviceClasses.use IAM permission for the service class.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceClass")]
         public virtual string ServiceClass { get; set; }
@@ -11521,6 +12357,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// <summary>The ServiceConnectionPolicy resource.</summary>
     public class ServiceConnectionPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Information for the automatically created subnetwork and its associated IR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoCreatedSubnetInfo")]
+        public virtual AutoCreatedSubnetworkInfo AutoCreatedSubnetInfo { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -12070,10 +12910,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         private object _effectiveTime;
 
         /// <summary>
-        /// Output only. This field will be accompanied only with transient states (PENDING_ADD, PENDING_DELETE,
-        /// PENDING_SUSPENSION) and denotes the time when the transient state of the resource will be effective. For
-        /// instance, if the state is "ADDING," this field will show the time the resource transitions to "ACTIVE."
-        /// Similarly, if the state is "PENDING_DELETE," it will show the deletion time.
+        /// Output only. Accompanies only the transient states, which include `ADDING`, `DELETING`, and `SUSPENDING`, to
+        /// denote the time until which the transient state of the resource will be effective. For instance, if the
+        /// state is `ADDING`, this field shows the time when the resource state transitions to `ACTIVE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveTime")]
         public virtual string EffectiveTimeRaw
@@ -12134,7 +12973,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The timeline of pending states for a resource.</summary>
+    /// <summary>The timeline of the pending states for a resource.</summary>
     public class StateTimeline : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The state and activation time details of the resource state.</summary>
@@ -12166,6 +13005,95 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing Transport object</summary>
+    public class Transport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. [Output only] Create time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Labels as key value pairs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Identifier. name of resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. [Output only] Update time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
