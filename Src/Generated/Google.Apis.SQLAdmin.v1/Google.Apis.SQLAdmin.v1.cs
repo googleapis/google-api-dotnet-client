@@ -7217,6 +7217,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
 
+        /// <summary>
+        /// Optional. Controls how the API should respond when the SQL execution result exceeds 10 MB. The default mode
+        /// is to throw an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialResultMode")]
+        public virtual string PartialResultMode { get; set; }
+
         /// <summary>Optional. The maximum number of rows returned per SQL statement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowLimit")]
         public virtual System.Nullable<long> RowLimit { get; set; }
@@ -7227,6 +7234,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlStatement")]
         public virtual string SqlStatement { get; set; }
+
+        /// <summary>
+        /// Optional. The name of an existing database user to connect to the database. When `auto_iam_authn` is set to
+        /// true, this field is ignored and the API caller's IAM user is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9999,6 +10013,45 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// <summary>Instance get latest recovery time response.</summary>
     public class SqlInstancesGetLatestRecoveryTimeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _earliestRecoveryTimeRaw;
+
+        private object _earliestRecoveryTime;
+
+        /// <summary>Timestamp, identifies the earliest recovery time of the source instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("earliestRecoveryTime")]
+        public virtual string EarliestRecoveryTimeRaw
+        {
+            get => _earliestRecoveryTimeRaw;
+            set
+            {
+                _earliestRecoveryTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _earliestRecoveryTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EarliestRecoveryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EarliestRecoveryTimeDateTimeOffset instead.")]
+        public virtual object EarliestRecoveryTime
+        {
+            get => _earliestRecoveryTime;
+            set
+            {
+                _earliestRecoveryTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _earliestRecoveryTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EarliestRecoveryTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EarliestRecoveryTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EarliestRecoveryTimeRaw);
+            set => EarliestRecoveryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>This is always `sql#getLatestRecoveryTime`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
