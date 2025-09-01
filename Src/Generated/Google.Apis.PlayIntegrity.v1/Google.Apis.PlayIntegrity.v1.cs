@@ -728,6 +728,20 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains additional information generated for testing responses.</summary>
+    public class PcTestingDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Indicates that the information contained in this payload is a testing response that is statically overridden
+        /// for a tester.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isTestingResponse")]
+        public virtual System.Nullable<bool> IsTestingResponse { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains PC device attestation details.</summary>
     public class PcTokenPayloadExternal : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -742,6 +756,13 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         /// <summary>Required. Details about the integrity request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestDetails")]
         public virtual PcRequestDetails RequestDetails { get; set; }
+
+        /// <summary>
+        /// Indicates that this payload is generated for testing purposes and contains any additional data that is
+        /// linked with testing status.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testingDetails")]
+        public virtual PcTestingDetails TestingDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
