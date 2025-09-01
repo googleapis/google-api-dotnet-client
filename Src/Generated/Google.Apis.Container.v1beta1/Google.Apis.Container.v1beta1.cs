@@ -7086,6 +7086,16 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Autoscaled rollout policy utilizes the cluster autoscaler during blue-green upgrade to scale both the blue and
+    /// green pools.
+    /// </summary>
+    public class AutoscaledRolloutPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Deprecated.</summary>
     public class AvailableVersion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7194,6 +7204,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Settings for blue-green upgrade.</summary>
     public class BlueGreenSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Autoscaled policy for cluster autoscaler enabled blue-green upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscaledRolloutPolicy")]
+        public virtual AutoscaledRolloutPolicy AutoscaledRolloutPolicy { get; set; }
+
         /// <summary>
         /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
         /// </summary>
