@@ -1476,8 +1476,8 @@ namespace Google.Apis.Looker.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2509,6 +2509,13 @@ namespace Google.Apis.Looker.v1.Data
         /// <summary>Output only. Connection status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionStatus")]
         public virtual string ConnectionStatus { get; set; }
+
+        /// <summary>
+        /// Output only. Reason the service attachment creation failed. This value will only be populated if the service
+        /// attachment encounters an issue during provisioning.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
+        public virtual string FailureReason { get; set; }
 
         /// <summary>
         /// Optional. Fully qualified domain name that will be used in the private DNS record created for the service
