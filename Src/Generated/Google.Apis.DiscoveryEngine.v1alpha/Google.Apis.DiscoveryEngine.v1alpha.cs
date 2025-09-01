@@ -19403,7 +19403,136 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 public NotebooksResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    AudioOverviews = new AudioOverviewsResource(service);
                     Sources = new SourcesResource(service);
+                }
+
+                /// <summary>Gets the AudioOverviews resource.</summary>
+                public virtual AudioOverviewsResource AudioOverviews { get; }
+
+                /// <summary>The "audioOverviews" collection of methods.</summary>
+                public class AudioOverviewsResource
+                {
+                    private const string Resource = "audioOverviews";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AudioOverviewsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Generates a new audio overview. Needs a side channel with the user's EUC.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource where this notebook will be created. Format:
+                    /// projects/{project}/locations/{location}/notebooks/{notebook}
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaCreateAudioOverviewRequest body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Generates a new audio overview. Needs a side channel with the user's EUC.</summary>
+                    public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaCreateAudioOverviewRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource where this notebook will be created. Format:
+                        /// projects/{project}/locations/{location}/notebooks/{notebook}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaCreateAudioOverviewRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/audioOverviews";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/notebooks/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes an audio overview. Needs a side channel with the user's EUC.</summary>
+                    /// <param name="name">
+                    /// Required. The full resource name of the AudioOverview, such as
+                    /// `projects/{project}/locations/{location}/notebooks/{notebook}/audioOverviews/{audio_overview_id}`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes an audio overview. Needs a side channel with the user's EUC.</summary>
+                    public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The full resource name of the AudioOverview, such as
+                        /// `projects/{project}/locations/{location}/notebooks/{notebook}/audioOverviews/{audio_overview_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/notebooks/[^/]+/audioOverviews/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Sources resource.</summary>
@@ -19478,6 +19607,116 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/notebooks/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes multiple sources</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource where the sources will be deleted. Format:
+                    /// projects/{project}/locations/{location}/notebooks/{notebook}
+                    /// </param>
+                    public virtual BatchDeleteRequest BatchDelete(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest body, string parent)
+                    {
+                        return new BatchDeleteRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Deletes multiple sources</summary>
+                    public class BatchDeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new BatchDelete request.</summary>
+                        public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource where the sources will be deleted. Format:
+                        /// projects/{project}/locations/{location}/notebooks/{notebook}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchDelete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/sources:batchDelete";
+
+                        /// <summary>Initializes BatchDelete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/notebooks/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a Source.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name for source Format:
+                    /// projects/{project}/locations/{location}/notebooks/{notebook}/sources/{source}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets a Source.</summary>
+                    public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaSource>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name for source Format:
+                        /// projects/{project}/locations/{location}/notebooks/{notebook}/sources/{source}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/notebooks/[^/]+/sources/[^/]+$",
                             });
                         }
                     }
@@ -19562,6 +19801,171 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
                 }
 
+                /// <summary>Batch deletes Notebooks. Needs a side channel with the user's EUC.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent branch resource name, such as `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual BatchDeleteRequest BatchDelete(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest body, string parent)
+                {
+                    return new BatchDeleteRequest(this.service, body, parent);
+                }
+
+                /// <summary>Batch deletes Notebooks. Needs a side channel with the user's EUC.</summary>
+                public class BatchDeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new BatchDelete request.</summary>
+                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent branch resource name, such as `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchDelete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/notebooks:batchDelete";
+
+                    /// <summary>Initializes BatchDelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Creates a notebook. Needs a side channel with the user's EUC.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource name, such as `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaNotebook body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a notebook. Needs a side channel with the user's EUC.</summary>
+                public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaNotebook>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaNotebook body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource name, such as `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaNotebook Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/notebooks";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a notebook. Needs a side channel with the user's EUC.</summary>
+                /// <param name="name">
+                /// Required. Full resource name of Notebook, such as
+                /// `projects/{project}/locations/{location}/notebooks/{notebook_id}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a notebook. Needs a side channel with the user's EUC.</summary>
+                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaNotebook>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Full resource name of Notebook, such as
+                    /// `projects/{project}/locations/{location}/notebooks/{notebook_id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/notebooks/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists the recently viewed notebooks. Needs a side channel with the user's EUC.</summary>
                 /// <param name="parent">
                 /// Required. The parent branch resource name, such as `projects/{project}/locations/{location}`.
@@ -19634,6 +20038,65 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Shares a notebook to other accounts. Needs a side channel with the user's EUC.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Full resource name of Notebook, such as
+                /// `projects/{project}/locations/{location}/notebooks/{notebook_id}`.
+                /// </param>
+                public virtual ShareRequest Share(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaShareNotebookRequest body, string name)
+                {
+                    return new ShareRequest(this.service, body, name);
+                }
+
+                /// <summary>Shares a notebook to other accounts. Needs a side channel with the user's EUC.</summary>
+                public class ShareRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaShareNotebookResponse>
+                {
+                    /// <summary>Constructs a new Share request.</summary>
+                    public ShareRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaShareNotebookRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Full resource name of Notebook, such as
+                    /// `projects/{project}/locations/{location}/notebooks/{notebook_id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaShareNotebookRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "share";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}:share";
+
+                    /// <summary>Initializes Share parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/notebooks/[^/]+$",
                         });
                     }
                 }
@@ -23708,6 +24171,25 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Access Control Configuration.</summary>
+    public class GoogleCloudDiscoveryengineV1AclConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identity provider config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
+        public virtual GoogleCloudDiscoveryengineV1IdpConfig IdpConfig { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the acl configuration. Format:
+        /// `projects/{project}/locations/{location}/aclConfig`. This field must be a UTF-8 encoded string with a length
+        /// limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration data for advance site search.</summary>
     public class GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26172,6 +26654,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1Engine : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Immutable. This the application type which this engine resource represents. NOTE: this is a new
+        /// concept independ of existing industry vertical or solution type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appType")]
+        public virtual string AppType { get; set; }
+
+        /// <summary>
         /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chatEngineConfig")]
@@ -26599,6 +27088,32 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>The total number of IdentityMappingEntries that were processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
         public virtual System.Nullable<long> TotalCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identity Provider Config.</summary>
+    public class GoogleCloudDiscoveryengineV1IdpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>External Identity provider config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIdpConfig")]
+        public virtual GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig ExternalIdpConfig { get; set; }
+
+        /// <summary>Identity provider type configured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpType")]
+        public virtual string IdpType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Third party IDP Config.</summary>
+    public class GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Workforce pool name. Example: "locations/global/workforcePools/pool_id"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workforcePoolName")]
+        public virtual string WorkforcePoolName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -36165,6 +36680,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Metadata that describes the training and serving parameters of an Engine.</summary>
     public class GoogleCloudDiscoveryengineV1alphaEngine : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Immutable. This the application type which this engine resource represents. NOTE: this is a new
+        /// concept independ of existing industry vertical or solution type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appType")]
+        public virtual string AppType { get; set; }
+
         /// <summary>
         /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
         /// </summary>
@@ -46428,6 +46950,25 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Access Control Configuration.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAclConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identity provider config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaIdpConfig IdpConfig { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the acl configuration. Format:
+        /// `projects/{project}/locations/{location}/aclConfig`. This field must be a UTF-8 encoded string with a length
+        /// limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration data for advance site search.</summary>
     public class GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -48681,6 +49222,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1betaEngine : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Immutable. This the application type which this engine resource represents. NOTE: this is a new
+        /// concept independ of existing industry vertical or solution type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appType")]
+        public virtual string AppType { get; set; }
+
+        /// <summary>
         /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chatEngineConfig")]
@@ -49261,6 +49809,32 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>The total number of IdentityMappingEntries that were processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
         public virtual System.Nullable<long> TotalCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identity Provider Config.</summary>
+    public class GoogleCloudDiscoveryengineV1betaIdpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>External Identity provider config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIdpConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig ExternalIdpConfig { get; set; }
+
+        /// <summary>Identity provider type configured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpType")]
+        public virtual string IdpType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Third party IDP Config.</summary>
+    public class GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Workforce pool name. Example: "locations/global/workforcePools/pool_id"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workforcePoolName")]
+        public virtual string WorkforcePoolName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52524,6 +53098,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Account and role information.</summary>
+    public class GoogleCloudNotebooklmV1alphaAccountAndRole : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The email address associated with the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Required. The role in the notebook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata about an agentspace source.</summary>
     public class GoogleCloudNotebooklmV1alphaAgentspaceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -52534,6 +53123,69 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Output only. The title of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentTitle")]
         public virtual string DocumentTitle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An audio overview of a notebook. This is a summary of the notebook in audio format.</summary>
+    public class GoogleCloudNotebooklmV1alphaAudioOverview : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The audio overview in wav format. This is only present if the status is AUDIO_OVERVIEW_STATUS_COMPLETE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audio")]
+        public virtual string Audio { get; set; }
+
+        /// <summary>Output only. Unique ID of the audio overview.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioOverviewId")]
+        public virtual string AudioOverviewId { get; set; }
+
+        /// <summary>
+        /// The language code of the generated audio overview. Use the BCP 47 language code (e.g. "en", "es", "hi",
+        /// etc.). Examples: google3/i18n/identifiers/tools/language_code_constants.txt
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>The mime type of the audio overview.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>
+        /// Identifier. The full resource name of the notebook. Format:
+        /// `projects/{project}/locations/{location}/notebooks/{notebook}/audioOverviews/{audio_overview_id}`. This
+        /// field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The url used to play the audio overview.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbackUrl")]
+        public virtual string PlaybackUrl { get; set; }
+
+        /// <summary>The status of the audio overview.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options used during audio overview generation.</summary>
+    public class GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>What the hosts of the show should focus on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("episodeFocus")]
+        public virtual string EpisodeFocus { get; set; }
+
+        /// <summary>The language that the audio overview was requested in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Optional. The sources in which the audio overview is grounded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceIds")]
+        public virtual System.Collections.Generic.IList<GoogleCloudNotebooklmV1alphaSourceId> SourceIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52561,6 +53213,34 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for NotebookService.BatchDeleteNotebooks method.</summary>
+    public class GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Full resource names of Notebook, such as
+        /// `projects/{project}/locations/{location}/notebooks/{notebook_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for SourceService.BatchDeleteSourcesRequest method.</summary>
+    public class GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Names of sources to be deleted. Format:
+        /// projects/{project}/locations/{location}/notebooks/{notebook}/sources/{source}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Customer-managed encryption configuration for Notebooks.</summary>
     public class GoogleCloudNotebooklmV1alphaCmekConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -52570,6 +53250,28 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for AudioOverviewService.CreateAudioOverview method.</summary>
+    public class GoogleCloudNotebooklmV1alphaCreateAudioOverviewRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Options for the audio overview generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationOptions")]
+        public virtual GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions GenerationOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for AudioOverviewService.CreateAudioOverview method.</summary>
+    public class GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generated audio overview.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioOverview")]
+        public virtual GoogleCloudNotebooklmV1alphaAudioOverview AudioOverview { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52721,6 +53423,28 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for NotebookService.ShareNotebook method.</summary>
+    public class GoogleCloudNotebooklmV1alphaShareNotebookRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The list of accounts and roles to share the notebook with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountAndRoles")]
+        public virtual System.Collections.Generic.IList<GoogleCloudNotebooklmV1alphaAccountAndRole> AccountAndRoles { get; set; }
+
+        /// <summary>Required. Whether to notify the shared users via email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifyViaEmail")]
+        public virtual System.Nullable<bool> NotifyViaEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for NotebookService.ShareNotebook method.</summary>
+    public class GoogleCloudNotebooklmV1alphaShareNotebookResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Source represents a single source of content.</summary>
     public class GoogleCloudNotebooklmV1alphaSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -52864,6 +53588,22 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentspaceContent")]
         public virtual GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent AgentspaceContent { get; set; }
 
+        /// <summary>The content from Google Drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleDriveContent")]
+        public virtual GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent GoogleDriveContent { get; set; }
+
+        /// <summary>The text content uploaded as source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textContent")]
+        public virtual GoogleCloudNotebooklmV1alphaUserContentTextContent TextContent { get; set; }
+
+        /// <summary>The video content uploaded as source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoContent")]
+        public virtual GoogleCloudNotebooklmV1alphaUserContentVideoContent VideoContent { get; set; }
+
+        /// <summary>The web content uploaded as source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webContent")]
+        public virtual GoogleCloudNotebooklmV1alphaUserContentWebContent WebContent { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -52882,6 +53622,69 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Optional. The full idea name for IdeaForge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ideaforgeIdeaName")]
         public virtual string IdeaforgeIdeaName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The content from Google Drive.</summary>
+    public class GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The document id of the selected document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual string DocumentId { get; set; }
+
+        /// <summary>
+        /// The mime type of the selected document. This can be used to differentiate type of content selected in the
+        /// drive picker.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>Should track this from Drive Picker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
+        public virtual string SourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The text content uploaded as source.</summary>
+    public class GoogleCloudNotebooklmV1alphaUserContentTextContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The content of the text source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The name of the text source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
+        public virtual string SourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Video content uploaded as source.</summary>
+    public class GoogleCloudNotebooklmV1alphaUserContentVideoContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The youtube url of the video content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeUrl")]
+        public virtual string YoutubeUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The web content uploaded as source.</summary>
+    public class GoogleCloudNotebooklmV1alphaUserContentWebContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the web source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
+        public virtual string SourceName { get; set; }
+
+        /// <summary>If URL is supplied, will fetch the webpage in the backend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
