@@ -18838,6 +18838,59 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                 }
             }
 
+            /// <summary>Gets the AclConfig.</summary>
+            /// <param name="name">
+            /// Required. Resource name of AclConfig, such as `projects/*/locations/*/aclConfig`. If the caller does not
+            /// have permission to access the AclConfig, regardless of whether or not it exists, a PERMISSION_DENIED
+            /// error is returned.
+            /// </param>
+            public virtual GetAclConfigRequest GetAclConfig(string name)
+            {
+                return new GetAclConfigRequest(this.service, name);
+            }
+
+            /// <summary>Gets the AclConfig.</summary>
+            public class GetAclConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAclConfig>
+            {
+                /// <summary>Constructs a new GetAclConfig request.</summary>
+                public GetAclConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of AclConfig, such as `projects/*/locations/*/aclConfig`. If the caller does
+                /// not have permission to access the AclConfig, regardless of whether or not it exists, a
+                /// PERMISSION_DENIED error is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getAclConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}";
+
+                /// <summary>Initializes GetAclConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/aclConfig$",
+                    });
+                }
+            }
+
             /// <summary>Gets the CmekConfig.</summary>
             /// <param name="name">
             /// Required. Resource name of CmekConfig, such as `projects/*/locations/*/cmekConfig` or
@@ -19092,6 +19145,73 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Default ACL configuration for use in a location of a customer's project. Updates will only reflect to
+            /// new data stores. Existing data stores will still use the old value.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Immutable. The full resource name of the acl configuration. Format:
+            /// `projects/{project}/locations/{location}/aclConfig`. This field must be a UTF-8 encoded string with a
+            /// length limit of 1024 characters.
+            /// </param>
+            public virtual UpdateAclConfigRequest UpdateAclConfig(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAclConfig body, string name)
+            {
+                return new UpdateAclConfigRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Default ACL configuration for use in a location of a customer's project. Updates will only reflect to
+            /// new data stores. Existing data stores will still use the old value.
+            /// </summary>
+            public class UpdateAclConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAclConfig>
+            {
+                /// <summary>Constructs a new UpdateAclConfig request.</summary>
+                public UpdateAclConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAclConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Immutable. The full resource name of the acl configuration. Format:
+                /// `projects/{project}/locations/{location}/aclConfig`. This field must be a UTF-8 encoded string with
+                /// a length limit of 1024 characters.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaAclConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateAclConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}";
+
+                /// <summary>Initializes UpdateAclConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/aclConfig$",
                     });
                 }
             }
@@ -20473,6 +20593,25 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionName")]
         public virtual string FunctionName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Access Control Configuration.</summary>
+    public class GoogleCloudDiscoveryengineV1AclConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identity provider config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
+        public virtual GoogleCloudDiscoveryengineV1IdpConfig IdpConfig { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the acl configuration. Format:
+        /// `projects/{project}/locations/{location}/aclConfig`. This field must be a UTF-8 encoded string with a length
+        /// limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22942,6 +23081,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1Engine : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Immutable. This the application type which this engine resource represents. NOTE: this is a new
+        /// concept independ of existing industry vertical or solution type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appType")]
+        public virtual string AppType { get; set; }
+
+        /// <summary>
         /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chatEngineConfig")]
@@ -23369,6 +23515,32 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>The total number of IdentityMappingEntries that were processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
         public virtual System.Nullable<long> TotalCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identity Provider Config.</summary>
+    public class GoogleCloudDiscoveryengineV1IdpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>External Identity provider config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIdpConfig")]
+        public virtual GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig ExternalIdpConfig { get; set; }
+
+        /// <summary>Identity provider type configured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpType")]
+        public virtual string IdpType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Third party IDP Config.</summary>
+    public class GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Workforce pool name. Example: "locations/global/workforcePools/pool_id"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workforcePoolName")]
+        public virtual string WorkforcePoolName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29785,6 +29957,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1alphaEngine : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Immutable. This the application type which this engine resource represents. NOTE: this is a new
+        /// concept independ of existing industry vertical or solution type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appType")]
+        public virtual string AppType { get; set; }
+
+        /// <summary>
         /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chatEngineConfig")]
@@ -35077,6 +35256,25 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>The Google Workspace data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Access Control Configuration.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAclConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identity provider config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaIdpConfig IdpConfig { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the acl configuration. Format:
+        /// `projects/{project}/locations/{location}/aclConfig`. This field must be a UTF-8 encoded string with a length
+        /// limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -40845,6 +41043,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1betaEngine : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Immutable. This the application type which this engine resource represents. NOTE: this is a new
+        /// concept independ of existing industry vertical or solution type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appType")]
+        public virtual string AppType { get; set; }
+
+        /// <summary>
         /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chatEngineConfig")]
@@ -41688,6 +41893,32 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identity Provider Config.</summary>
+    public class GoogleCloudDiscoveryengineV1betaIdpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>External Identity provider config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIdpConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig ExternalIdpConfig { get; set; }
+
+        /// <summary>Identity provider type configured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpType")]
+        public virtual string IdpType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Third party IDP Config.</summary>
+    public class GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Workforce pool name. Example: "locations/global/workforcePools/pool_id"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workforcePoolName")]
+        public virtual string WorkforcePoolName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
