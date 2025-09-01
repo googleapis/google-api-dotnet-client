@@ -12,5 +12,16 @@
     "SPOKE_VIEW_UNSPECIFIED",
     "BASIC",
     "DETAILED"
+  ],
+  "Google.Apis.Networkconnectivity.v1.ProjectsResource+LocationsResource+ServiceConnectionPoliciesResource+CreateRequest.AutoSubnetworkConfigIpStackEnum": [
+    "SUBNET_IP_STACK_UNSPECIFIED",
+    "IPV4_ONLY",
+    "IPV6_ONLY",
+    "IPV4_IPV6"
+  ],
+  "Google.Apis.Networkconnectivity.v1.ProjectsResource+LocationsResource+ServiceConnectionPoliciesResource+CreateRequest.SubnetworkModeEnum": [
+    "SUBNETWORK_MODE_UNSPECIFIED",
+    "USER_PROVIDED",
+    "AUTO_CREATED"
   ]
 }
