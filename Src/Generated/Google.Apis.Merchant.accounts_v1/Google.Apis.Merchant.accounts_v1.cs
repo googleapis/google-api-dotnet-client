@@ -3180,7 +3180,9 @@ namespace Google.Apis.Merchant.accounts_v1
             /// access.
             /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The account to create a region for. Format: `accounts/{account}`</param>
+            /// <param name="parent">
+            /// Required. The account to delete one or more regions from. Format: `accounts/{account}`
+            /// </param>
             public virtual BatchDeleteRequest BatchDelete(Google.Apis.Merchant.accounts_v1.Data.BatchDeleteRegionsRequest body, string parent)
             {
                 return new BatchDeleteRequest(this.service, body, parent);
@@ -3200,7 +3202,9 @@ namespace Google.Apis.Merchant.accounts_v1
                     InitParameters();
                 }
 
-                /// <summary>Required. The account to create a region for. Format: `accounts/{account}`</summary>
+                /// <summary>
+                /// Required. The account to delete one or more regions from. Format: `accounts/{account}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -6017,7 +6021,7 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     public class BatchDeleteRegionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The names of the regions to delete. A maximum of 1000 regions can be deleted in a batch.
+        /// Required. The names of the regions to delete. A maximum of 100 regions can be deleted in a batch.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<DeleteRegionRequest> Requests { get; set; }
@@ -7863,7 +7867,7 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     /// functionality to a Merchant Center accounts. A typical example of this is the [Free product
     /// listings](https://support.google.com/merchants/answer/13889434) program, which enables products from a
     /// business's store to be shown across Google for free. The following list is the available set of program resource
-    /// IDs accessible through the API: * `free-listings` * `shopping-ads` * `youtube-shopping-checkout`
+    /// IDs accessible through the API: * `checkout` * `free-listings` * `shopping-ads` * `youtube-shopping-checkout`
     /// </summary>
     public class Program : Google.Apis.Requests.IDirectResponseSchema
     {
