@@ -6539,7 +6539,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        /// <summary>Optional. Location Tyep denotes where this value should be sent in BYOC connections.</summary>
+        /// <summary>Optional. Location Type denotes where this value should be sent in BYOC connections.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
         public virtual string LocationType { get; set; }
 
