@@ -1390,56 +1390,71 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Usage metadata about response(s).</summary>
+    /// <summary>
+    /// Usage metadata about the content generation request and response. This message provides a detailed breakdown of
+    /// token usage and other relevant metrics.
+    /// </summary>
     public class GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. List of modalities of the cached content in the request input.</summary>
+        /// <summary>
+        /// Output only. A detailed breakdown of the token count for each modality in the cached content.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheTokensDetails")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1ModalityTokenCount> CacheTokensDetails { get; set; }
 
-        /// <summary>Output only. Number of tokens in the cached part in the input (the cached content).</summary>
+        /// <summary>Output only. The number of tokens in the cached content that was used for this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cachedContentTokenCount")]
         public virtual System.Nullable<int> CachedContentTokenCount { get; set; }
 
-        /// <summary>Number of tokens in the response(s).</summary>
+        /// <summary>The total number of tokens in the generated candidates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
         public virtual System.Nullable<int> CandidatesTokenCount { get; set; }
 
-        /// <summary>Output only. List of modalities that were returned in the response.</summary>
+        /// <summary>
+        /// Output only. A detailed breakdown of the token count for each modality in the generated candidates.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokensDetails")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1ModalityTokenCount> CandidatesTokensDetails { get; set; }
 
         /// <summary>
-        /// Number of tokens in the request. When `cached_content` is set, this is still the total effective prompt size
-        /// meaning this includes the number of tokens in the cached content.
+        /// The total number of tokens in the prompt. This includes any text, images, or other media provided in the
+        /// request. When `cached_content` is set, this also includes the number of tokens in the cached content.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
         public virtual System.Nullable<int> PromptTokenCount { get; set; }
 
-        /// <summary>Output only. List of modalities that were processed in the request input.</summary>
+        /// <summary>Output only. A detailed breakdown of the token count for each modality in the prompt.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptTokensDetails")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1ModalityTokenCount> PromptTokensDetails { get; set; }
 
-        /// <summary>Output only. Number of tokens present in thoughts output.</summary>
+        /// <summary>
+        /// Output only. The number of tokens that were part of the model's generated "thoughts" output, if applicable.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thoughtsTokenCount")]
         public virtual System.Nullable<int> ThoughtsTokenCount { get; set; }
 
-        /// <summary>Output only. Number of tokens present in tool-use prompt(s).</summary>
+        /// <summary>
+        /// Output only. The number of tokens in the results from tool executions, which are provided back to the model
+        /// as input, if applicable.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolUsePromptTokenCount")]
         public virtual System.Nullable<int> ToolUsePromptTokenCount { get; set; }
 
-        /// <summary>Output only. List of modalities that were processed for tool-use request inputs.</summary>
+        /// <summary>
+        /// Output only. A detailed breakdown by modality of the token counts from the results of tool executions, which
+        /// are provided back to the model as input.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolUsePromptTokensDetails")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1ModalityTokenCount> ToolUsePromptTokensDetails { get; set; }
 
-        /// <summary>Total token count for prompt, response candidates, and tool-use prompts (if present).</summary>
+        /// <summary>
+        /// The total number of tokens for the entire request. This is the sum of `prompt_token_count`,
+        /// `candidates_token_count`, `tool_use_prompt_token_count`, and `thoughts_token_count`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
         public virtual System.Nullable<int> TotalTokenCount { get; set; }
 
-        /// <summary>
-        /// Output only. Traffic type. This shows whether a request consumes Pay-As-You-Go or Provisioned Throughput
-        /// quota.
-        /// </summary>
+        /// <summary>Output only. The traffic type for this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trafficType")]
         public virtual string TrafficType { get; set; }
 
@@ -1640,6 +1655,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Tool to retrieve public maps data for grounding, powered by Google.</summary>
     public class GoogleCloudAiplatformV1beta1GoogleMaps : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If true, include the widget context token in the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableWidget")]
+        public virtual System.Nullable<bool> EnableWidget { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2510,9 +2529,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleSearch")]
         public virtual GoogleCloudAiplatformV1beta1ToolGoogleSearch GoogleSearch { get; set; }
 
-        /// <summary>
-        /// Optional. GoogleSearchRetrieval tool type. Specialized retrieval tool that is powered by Google search.
-        /// </summary>
+        /// <summary>Optional. Specialized retrieval tool that is powered by Google Search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleSearchRetrieval")]
         public virtual GoogleCloudAiplatformV1beta1GoogleSearchRetrieval GoogleSearchRetrieval { get; set; }
 
