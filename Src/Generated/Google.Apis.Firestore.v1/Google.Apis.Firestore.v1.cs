@@ -3688,7 +3688,8 @@ namespace Google.Apis.Firestore.v1
                 /// Required. The ID to use for the database, which will become the final component of the database's
                 /// resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first
                 /// character a letter and the last a letter or a number. Must not be UUID-like
-                /// /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database ID is also valid.
+                /// /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database ID is also valid if the database
+                /// is Standard edition.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("databaseId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DatabaseId { get; set; }
@@ -4457,8 +4458,8 @@ namespace Google.Apis.Firestore.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -6118,7 +6119,8 @@ namespace Google.Apis.Firestore.v1.Data
         /// Required. The ID to use for the database, which will become the final component of the database's resource
         /// name. This database ID must not be associated with an existing database. This value should be 4-63
         /// characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number.
-        /// Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database ID is also valid.
+        /// Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database ID is also valid if
+        /// the database is Standard edition.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
@@ -7612,7 +7614,8 @@ namespace Google.Apis.Firestore.v1.Data
         /// Required. The ID to use for the database, which will become the final component of the database's resource
         /// name. This database ID must not be associated with an existing database. This value should be 4-63
         /// characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number.
-        /// Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database ID is also valid.
+        /// Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database ID is also valid if
+        /// the database is Standard edition.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
