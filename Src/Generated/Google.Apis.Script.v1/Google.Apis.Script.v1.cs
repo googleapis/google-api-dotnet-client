@@ -2351,10 +2351,7 @@ namespace Google.Apis.Script.v1.Data
 
         private object _createTime;
 
-        /// <summary>
-        /// Creation date timestamp. This read-only field is only visible to users who have WRITER permission for the
-        /// script project.
-        /// </summary>
+        /// <summary>Creation date timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -2392,8 +2389,8 @@ namespace Google.Apis.Script.v1.Data
         public virtual GoogleAppsScriptTypeFunctionSet FunctionSet { get; set; }
 
         /// <summary>
-        /// The user who modified the file most recently. This read-only field is only visible to users who have WRITER
-        /// permission for the script project.
+        /// The user who modified the file most recently. The details visible in this object are controlled by the
+        /// profile visibility settings of the last modifying user.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifyUser")]
         public virtual GoogleAppsScriptTypeUser LastModifyUser { get; set; }
@@ -2417,10 +2414,7 @@ namespace Google.Apis.Script.v1.Data
 
         private object _updateTime;
 
-        /// <summary>
-        /// Last modified date timestamp. This read-only field is only visible to users who have WRITER permission for
-        /// the script project.
-        /// </summary>
+        /// <summary>Last modified date timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
