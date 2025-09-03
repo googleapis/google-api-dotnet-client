@@ -7142,6 +7142,12 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("capacityGib")]
         public virtual System.Nullable<long> CapacityGib { get; set; }
 
+        /// <summary>
+        /// Output only. Total cold tier data rounded down to the nearest GiB used by the storage pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coldTierSizeUsedGib")]
+        public virtual System.Nullable<long> ColdTierSizeUsedGib { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -7212,6 +7218,12 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hotTierSizeGib")]
         public virtual System.Nullable<long> HotTierSizeGib { get; set; }
+
+        /// <summary>
+        /// Output only. Total hot tier data rounded down to the nearest GiB used by the storage pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hotTierSizeUsedGib")]
+        public virtual System.Nullable<long> HotTierSizeUsedGib { get; set; }
 
         /// <summary>Optional. Specifies the KMS config to be used for volume encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsConfig")]
@@ -7570,6 +7582,13 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// <summary>Output only. Indicates whether the volume is part of a replication relationship.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasReplication")]
         public virtual System.Nullable<bool> HasReplication { get; set; }
+
+        /// <summary>
+        /// Output only. Total hot tier data rounded down to the nearest GiB used by the Volume. This field is only used
+        /// for flex Service Level
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hotTierSizeUsedGib")]
+        public virtual System.Nullable<long> HotTierSizeUsedGib { get; set; }
 
         /// <summary>Optional. The Hybrid Replication parameters for the volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hybridReplicationParameters")]
