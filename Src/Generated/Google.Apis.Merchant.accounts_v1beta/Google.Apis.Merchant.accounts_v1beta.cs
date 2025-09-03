@@ -7689,7 +7689,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     /// functionality to a Merchant Center accounts. A typical example of this is the [Free product
     /// listings](https://support.google.com/merchants/answer/13889434) program, which enables products from a
     /// business's store to be shown across Google for free. The following list is the available set of program resource
-    /// IDs accessible through the API: * `free-listings` * `shopping-ads` * `youtube-shopping-checkout`
+    /// IDs accessible through the API: * `checkout` * `free-listings` * `shopping-ads` * `youtube-shopping-checkout`
     /// </summary>
     public class Program : Google.Apis.Requests.IDirectResponseSchema
     {
