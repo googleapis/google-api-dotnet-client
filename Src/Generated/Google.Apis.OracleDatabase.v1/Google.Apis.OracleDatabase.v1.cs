@@ -5132,6 +5132,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
         public virtual string GcpOracleZone { get; set; }
 
+        /// <summary>
+        /// Output only. The identity connector details which will allow OCI to securely access the resources in the
+        /// customer project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityConnector")]
+        public virtual IdentityConnector IdentityConnector { get; set; }
+
         /// <summary>Optional. Labels or tags associated with the VM Cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -5722,6 +5729,26 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Optional. version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The identity connector details which will allow OCI to securely access the resources in the customer project.
+    /// </summary>
+    public class IdentityConnector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The connection state of the identity connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionState")]
+        public virtual string ConnectionState { get; set; }
+
+        /// <summary>
+        /// Output only. A google managed service account on which customers can grant roles to access resources in the
+        /// customer project. Example: `p176944527254-55-75119d87fd8f@gcp-sa-oci.iam.gserviceaccount.com`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAgentEmail")]
+        public virtual string ServiceAgentEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
