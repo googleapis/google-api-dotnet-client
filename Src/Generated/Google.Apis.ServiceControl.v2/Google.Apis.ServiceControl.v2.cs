@@ -372,9 +372,9 @@ namespace Google.Apis.ServiceControl.v2
         /// Infrastructure](https://cloud.google.com/service-infrastructure). It reports a list of operations that have
         /// occurred on a service. It must be called after the operations have been executed. For more information, see
         /// [Telemetry Reporting](https://cloud.google.com/service-infrastructure/docs/telemetry-reporting). NOTE: The
-        /// telemetry reporting has a hard limit of 1000 operations and 1MB per Report call. It is recommended to have
-        /// no more than 100 operations per call. This method requires the `servicemanagement.services.report`
-        /// permission on the specified service. For more information, see [Service Control API Access
+        /// telemetry reporting has a hard limit of 100 operations and 1MB per Report call. This method requires the
+        /// `servicemanagement.services.report` permission on the specified service. For more information, see [Service
+        /// Control API Access
         /// Control](https://cloud.google.com/service-infrastructure/docs/service-control/access-control).
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -393,9 +393,9 @@ namespace Google.Apis.ServiceControl.v2
         /// Infrastructure](https://cloud.google.com/service-infrastructure). It reports a list of operations that have
         /// occurred on a service. It must be called after the operations have been executed. For more information, see
         /// [Telemetry Reporting](https://cloud.google.com/service-infrastructure/docs/telemetry-reporting). NOTE: The
-        /// telemetry reporting has a hard limit of 1000 operations and 1MB per Report call. It is recommended to have
-        /// no more than 100 operations per call. This method requires the `servicemanagement.services.report`
-        /// permission on the specified service. For more information, see [Service Control API Access
+        /// telemetry reporting has a hard limit of 100 operations and 1MB per Report call. This method requires the
+        /// `servicemanagement.services.report` permission on the specified service. For more information, see [Service
+        /// Control API Access
         /// Control](https://cloud.google.com/service-infrastructure/docs/service-control/access-control).
         /// </summary>
         public class ReportRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v2.Data.ReportResponse>
@@ -684,6 +684,10 @@ namespace Google.Apis.ServiceControl.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("claims")]
         public virtual System.Collections.Generic.IDictionary<string, object> Claims { get; set; }
 
+        /// <summary>Attributes of the OAuth token associated with the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth")]
+        public virtual Oauth Oauth { get; set; }
+
         /// <summary>
         /// The authorized presenter of the credential. Reflects the optional Authorized Presenter (`azp`) claim within
         /// a JWT or the OAuth client id. For example, a Google Cloud Platform client id looks as follows:
@@ -713,6 +717,19 @@ namespace Google.Apis.ServiceControl.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authoritySelector")]
         public virtual string AuthoritySelector { get; set; }
+
+        /// <summary>
+        /// Converted from "identity_cloudgaia.AuditLoggableShortLivedCredential" proto. This message will be used by
+        /// security, detection and response team. For context please refer to go/cg:short-lived-credential-logging.
+        /// When the JSON object represented here has a proto equivalent, the proto name will be indicated in the
+        /// `@type` property.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggableShortLivedCredential")]
+        public virtual System.Collections.Generic.IDictionary<string, object> LoggableShortLivedCredential { get; set; }
+
+        /// <summary>OAuth authentication information such as the OAuth client ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthInfo")]
+        public virtual OAuthInfo OauthInfo { get; set; }
 
         /// <summary>
         /// The email address of the authenticated user (or service account on behalf of third party principal) making
@@ -859,6 +876,32 @@ namespace Google.Apis.ServiceControl.v2.Data
         /// <summary>Metadata about the service that uses the service account. .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> ServiceMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>OAuth related information about the request.</summary>
+    public class OAuthInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The OAuth client ID of the 1P or 3P application acting on behalf of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthClientId")]
+        public virtual string OauthClientId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This message defines attributes associated with OAuth credentials.</summary>
+    public class Oauth : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The optional OAuth client ID. This is the unique public identifier issued by an authorization server to a
+        /// registered client application. Empty string is equivalent to no oauth client id. WARNING: This is for MCP
+        /// tools/call and tools/list authorization and not for general use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
