@@ -1808,8 +1808,8 @@ namespace Google.Apis.TPU.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -1974,9 +1974,36 @@ namespace Google.Apis.TPU.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Sets the boot disk configuration for the TPU node.</summary>
+    public class BootDiskConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Customer encryption key for boot disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerEncryptionKey")]
+        public virtual CustomerEncryptionKey CustomerEncryptionKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Further data for the creating state.</summary>
     public class CreatingData : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the customer encryption key for disk encryption.</summary>
+    public class CustomerEncryptionKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName":
+        /// "projects/KMS_PROJECT_ID/locations/REGION/keyRings/KEY_REGION/cryptoKeys/KEY The fully-qualifed key name may
+        /// be returned for resource GET requests. For example: "kmsKeyName":
+        /// "projects/KMS_PROJECT_ID/locations/REGION/keyRings/KEY_REGION/cryptoKeys/KEY/cryptoKeyVersions/1
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2442,6 +2469,10 @@ namespace Google.Apis.TPU.v2.Data
         /// <summary>Output only. The API version that created this Node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
+
+        /// <summary>Optional. Boot disk configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskConfig")]
+        public virtual BootDiskConfig BootDiskConfig { get; set; }
 
         /// <summary>
         /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block;
