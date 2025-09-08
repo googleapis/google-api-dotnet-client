@@ -3145,7 +3145,8 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Identifier. The unique name of the materialized view. Format:
-                /// `projects/{project}/instances/{instance}/materializedViews/{materialized_view}`
+                /// `projects/{project}/instances/{instance}/materializedViews/{materialized_view}` Views:
+                /// `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BigtableAdmin.v2.Data.MaterializedView body, string name)
                 {
@@ -3165,7 +3166,8 @@ namespace Google.Apis.BigtableAdmin.v2
 
                     /// <summary>
                     /// Identifier. The unique name of the materialized view. Format:
-                    /// `projects/{project}/instances/{instance}/materializedViews/{materialized_view}`
+                    /// `projects/{project}/instances/{instance}/materializedViews/{materialized_view}` Views:
+                    /// `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -9235,25 +9237,30 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>A materialized view object that can be referenced in SQL queries.</summary>
     public class MaterializedView : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Set to true to make the MaterializedView protected against deletion.</summary>
+        /// <summary>
+        /// Set to true to make the MaterializedView protected against deletion. Views: `SCHEMA_VIEW`,
+        /// `REPLICATION_VIEW`, `FULL`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionProtection")]
         public virtual System.Nullable<bool> DeletionProtection { get; set; }
 
         /// <summary>
         /// Optional. The etag for this materialized view. This may be sent on update requests to ensure that the client
-        /// has an up-to-date value before proceeding. The server returns an ABORTED error on a mismatched etag.
+        /// has an up-to-date value before proceeding. The server returns an ABORTED error on a mismatched etag. Views:
+        /// `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
         /// <summary>
         /// Identifier. The unique name of the materialized view. Format:
-        /// `projects/{project}/instances/{instance}/materializedViews/{materialized_view}`
+        /// `projects/{project}/instances/{instance}/materializedViews/{materialized_view}` Views: `SCHEMA_VIEW`,
+        /// `REPLICATION_VIEW`, `FULL`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. Immutable. The materialized view's select query.</summary>
+        /// <summary>Required. Immutable. The materialized view's select query. Views: `SCHEMA_VIEW`, `FULL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
     }
