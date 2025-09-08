@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -801,21 +801,22 @@ namespace Google.Apis.CloudCommercePartnerProcurementService.v1
                 /// `state=pending_cancellation`, and `plan!=foo-plan`. Supported query attributes are * `account` *
                 /// `customer_billing_account` with value in the format of: `billingAccounts/{id}` *
                 /// `product_external_name` * `quote_external_name` * `offer` * `new_pending_offer` * `plan` *
-                /// `newPendingPlan` or `new_pending_plan` * `state` * `consumers.project` * `change_history.new_offer`
-                /// Note that the consumers and change_history.new_offer match works on repeated structures, so equality
-                /// (`consumers.project=projects/123456789`) is not supported. Set membership can be expressed with the
-                /// `:` operator. For example, `consumers.project:projects/123456789` finds entitlements with at least
-                /// one consumer with project field equal to `projects/123456789`. `change_history.new_offer` retrieves
-                /// all entitlements that were once associated or are currently active with the offer. Also note that
-                /// the state name match is case-insensitive and query can omit the prefix "ENTITLEMENT_". For example,
-                /// `state=active` is equivalent to `state=ENTITLEMENT_ACTIVE`. If the query contains some special
-                /// characters other than letters, underscore, or digits, the phrase must be quoted with double quotes.
-                /// For example, `product="providerId:productId"`, where the product name needs to be quoted because it
-                /// contains special character colon. Queries can be combined with `AND`, `OR`, and `NOT` to form more
-                /// complex queries. They can also be grouped to force a desired evaluation order. For example,
-                /// `state=active AND (account=E-1234 OR account=5678) AND NOT (product=foo-product)`. Connective `AND`
-                /// can be omitted between two predicates. For example `account=E-1234 state=active` is equivalent to
-                /// `account=E-1234 AND state=active`.
+                /// `newPendingPlan` or `new_pending_plan` * `state` * `services` * `consumers.project` *
+                /// `change_history.new_offer` Note that the consumers and change_history.new_offer match works on
+                /// repeated structures, so equality (`consumers.project=projects/123456789`) is not supported. Set
+                /// membership can be expressed with the `:` operator. For example,
+                /// `consumers.project:projects/123456789` finds entitlements with at least one consumer with project
+                /// field equal to `projects/123456789`. `change_history.new_offer` retrieves all entitlements that were
+                /// once associated or are currently active with the offer. Also note that the state name match is
+                /// case-insensitive and query can omit the prefix "ENTITLEMENT_". For example, `state=active` is
+                /// equivalent to `state=ENTITLEMENT_ACTIVE`. If the query contains some special characters other than
+                /// letters, underscore, or digits, the phrase must be quoted with double quotes. For example,
+                /// `product="providerId:productId"`, where the product name needs to be quoted because it contains
+                /// special character colon. Queries can be combined with `AND`, `OR`, and `NOT` to form more complex
+                /// queries. They can also be grouped to force a desired evaluation order. For example, `state=active
+                /// AND (account=E-1234 OR account=5678) AND NOT (product=foo-product)`. Connective `AND` can be omitted
+                /// between two predicates. For example `account=E-1234 state=active` is equivalent to `account=E-1234
+                /// AND state=active`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1323,7 +1324,7 @@ namespace Google.Apis.CloudCommercePartnerProcurementService.v1.Data
     /// <summary>Request message for [PartnerProcurementService.ApproveEntitlementPlanChange[].</summary>
     public class ApproveEntitlementPlanChangeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Name of the pending plan that is being approved.</summary>
+        /// <summary>Required. Name of the pending plan that's being approved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingPlanName")]
         public virtual string PendingPlanName { get; set; }
 
@@ -1380,11 +1381,11 @@ namespace Google.Apis.CloudCommercePartnerProcurementService.v1.Data
         public virtual string Account { get; set; }
 
         /// <summary>
-        /// Output only. The reason the entitlement was cancelled. If this entitlement was not cancelled, this field
-        /// will be empty. Possible values include "unknown", "expired", "user-cancelled", "account-closed",
-        /// "billing-disabled" (if the customer has manually disabled billing to their resources), "user-aborted", and
-        /// "migrated" (if the entitlement has migrated across products). Values of this field are subject to change and
-        /// should not be relied upon for technical integration.
+        /// Output only. The reason the entitlement was cancelled. If this entitlement wasn't cancelled, this field is
+        /// empty. Possible values include "unknown", "expired", "user-cancelled", "account-closed", "billing-disabled"
+        /// (if the customer has manually disabled billing to their resources), "user-aborted", and "migrated" (if the
+        /// entitlement has migrated across products). Values of this field are subject to change, and we recommend that
+        /// you don't build your technical integration to rely on these fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancellationReason")]
         public virtual string CancellationReason { get; set; }
@@ -1463,8 +1464,8 @@ namespace Google.Apis.CloudCommercePartnerProcurementService.v1.Data
 
         /// <summary>
         /// Output only. The end time of the new offer. If the offer was created with a term instead of a specified end
-        /// date, this field is empty. This field will be populated even if the entitlement is not active yet. If there
-        /// is no upcoming offer, the field will be empty.
+        /// date, this field is empty. This field is populated even if the entitlement isn't active yet. If there's no
+        /// upcoming offer, the field is be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newOfferEndTime")]
         public virtual string NewOfferEndTimeRaw
@@ -1505,8 +1506,8 @@ namespace Google.Apis.CloudCommercePartnerProcurementService.v1.Data
         private object _newOfferStartTime;
 
         /// <summary>
-        /// Output only. The timestamp when the new offer will become effective. This field will be populated even if
-        /// the entitlement is not active yet. If there is no upcoming offer, the field will be empty.
+        /// Output only. The timestamp when the new offer becomes effective. This field is populated even if the
+        /// entitlement isn't active yet. If there's no upcoming offer, the field is empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newOfferStartTime")]
         public virtual string NewOfferStartTimeRaw
@@ -1544,7 +1545,7 @@ namespace Google.Apis.CloudCommercePartnerProcurementService.v1.Data
 
         /// <summary>
         /// Output only. The name of the offer the entitlement is switching to upon a pending plan change. Only exists
-        /// if the pending plan change is moving to an offer. This field is not populated for entitlements which are not
+        /// if the pending plan change is moving to an offer. This field isn't populated for entitlements which aren't
         /// active yet. Format: 'projects/{project}/services/{service}/privateOffers/{offer-id}' OR
         /// 'projects/{project}/services/{service}/standardOffers/{offer-id}', depending on whether the offer is private
         /// or public. The {service} in the name is the listing service of the offer. It could be either the product
@@ -1555,8 +1556,8 @@ namespace Google.Apis.CloudCommercePartnerProcurementService.v1.Data
         public virtual string NewPendingOffer { get; set; }
 
         /// <summary>
-        /// Output only. The offer duration of the new offer in ISO 8601 duration format. This field is not populated
-        /// for entitlements which are not active yet, only for pending offer changes. If the offer was created with a
+        /// Output only. The duration of the new offer, in ISO 8601 duration format. This field isn't populated for
+        /// entitlements which aren't active yet, only for pending offer changes. If the offer was created with a
         /// specified end date instead of a duration, this field is empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newPendingOfferDuration")]
