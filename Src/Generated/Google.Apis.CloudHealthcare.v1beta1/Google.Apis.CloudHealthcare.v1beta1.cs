@@ -4322,6 +4322,93 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                         });
                                     }
                                 }
+
+                                /// <summary>
+                                /// UpdateInstanceMetadata modifies the metadata of a single instance. The request body
+                                /// must contain a JSON Patch document specifying the updates to be applied to the
+                                /// metadata of the instance.
+                                /// </summary>
+                                /// <param name="body">The body of the request.</param>
+                                /// <param name="parent">
+                                /// Required. The name of the DICOM store that is being accessed (for example,
+                                /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`).
+                                /// </param>
+                                /// <param name="dicomWebPath">
+                                /// Required. The path of the UpdateInstanceMetadata request (for example,
+                                /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`).
+                                /// </param>
+                                public virtual UpdateMetadataRequest UpdateMetadata(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string dicomWebPath)
+                                {
+                                    return new UpdateMetadataRequest(this.service, body, parent, dicomWebPath);
+                                }
+
+                                /// <summary>
+                                /// UpdateInstanceMetadata modifies the metadata of a single instance. The request body
+                                /// must contain a JSON Patch document specifying the updates to be applied to the
+                                /// metadata of the instance.
+                                /// </summary>
+                                public class UpdateMetadataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
+                                {
+                                    /// <summary>Constructs a new UpdateMetadata request.</summary>
+                                    public UpdateMetadataRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string dicomWebPath) : base(service)
+                                    {
+                                        Parent = parent;
+                                        DicomWebPath = dicomWebPath;
+                                        Body = body;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The name of the DICOM store that is being accessed (for example,
+                                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`).
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Parent { get; private set; }
+
+                                    /// <summary>
+                                    /// Required. The path of the UpdateInstanceMetadata request (for example,
+                                    /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`).
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string DicomWebPath { get; private set; }
+
+                                    /// <summary>Gets or sets the body of this request.</summary>
+                                    Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody Body { get; set; }
+
+                                    /// <summary>Returns the body of the request.</summary>
+                                    protected override object GetBody() => Body;
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "updateMetadata";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "PATCH";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v1beta1/{+parent}/dicomWeb/{+dicomWebPath}/metadata";
+
+                                    /// <summary>Initializes UpdateMetadata parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                        });
+                                        RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "dicomWebPath",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+$",
+                                        });
+                                    }
+                                }
                             }
 
                             /// <summary>
@@ -4668,6 +4755,93 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                         ParameterType = "path",
                                         DefaultValue = null,
                                         Pattern = @"^studies/[^/]+/series/[^/]+/instances$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>
+                            /// UpdateSeriesMetadata modifies the metadata of all instances in the given series. The
+                            /// request body must contain a JSON Patch document specifying the updates to be applied to
+                            /// the metadata of all instances within the series.
+                            /// </summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="parent">
+                            /// Required. The name of the DICOM store that is being accessed (for example,
+                            /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`).
+                            /// </param>
+                            /// <param name="dicomWebPath">
+                            /// Required. The path of the UpdateSeriesMetadata request (for example,
+                            /// `studies/{study_uid}/series/{series_uid}`).
+                            /// </param>
+                            public virtual UpdateMetadataRequest UpdateMetadata(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string dicomWebPath)
+                            {
+                                return new UpdateMetadataRequest(this.service, body, parent, dicomWebPath);
+                            }
+
+                            /// <summary>
+                            /// UpdateSeriesMetadata modifies the metadata of all instances in the given series. The
+                            /// request body must contain a JSON Patch document specifying the updates to be applied to
+                            /// the metadata of all instances within the series.
+                            /// </summary>
+                            public class UpdateMetadataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
+                            {
+                                /// <summary>Constructs a new UpdateMetadata request.</summary>
+                                public UpdateMetadataRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string dicomWebPath) : base(service)
+                                {
+                                    Parent = parent;
+                                    DicomWebPath = dicomWebPath;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The name of the DICOM store that is being accessed (for example,
+                                /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`).
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>
+                                /// Required. The path of the UpdateSeriesMetadata request (for example,
+                                /// `studies/{study_uid}/series/{series_uid}`).
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string DicomWebPath { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "updateMetadata";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "PATCH";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1beta1/{+parent}/dicomWeb/{+dicomWebPath}/metadata";
+
+                                /// <summary>Initializes UpdateMetadata parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                    });
+                                    RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "dicomWebPath",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^studies/[^/]+/series/[^/]+$",
                                     });
                                 }
                             }
@@ -5172,6 +5346,177 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             public override string RestPath => "v1beta1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                             /// <summary>Initializes StoreInstances parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                });
+                                RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "dicomWebPath",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^studies/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// UpdateInstances updates DICOM instances associated with study instance unique identifiers
+                        /// (SUID).
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The name of the DICOM store that is being accessed. For example,
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+                        /// </param>
+                        /// <param name="dicomWebPath">
+                        /// Required. The path of the UpdateInstances DICOMweb request. For example,
+                        /// `studies/[{study_uid}]`. Note that the `study_uid` is optional.
+                        /// </param>
+                        public virtual UpdateInstancesRequest UpdateInstances(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string dicomWebPath)
+                        {
+                            return new UpdateInstancesRequest(this.service, body, parent, dicomWebPath);
+                        }
+
+                        /// <summary>
+                        /// UpdateInstances updates DICOM instances associated with study instance unique identifiers
+                        /// (SUID).
+                        /// </summary>
+                        public class UpdateInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new UpdateInstances request.</summary>
+                            public UpdateInstancesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string dicomWebPath) : base(service)
+                            {
+                                Parent = parent;
+                                DicomWebPath = dicomWebPath;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the DICOM store that is being accessed. For example,
+                            /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Required. The path of the UpdateInstances DICOMweb request. For example,
+                            /// `studies/[{study_uid}]`. Note that the `study_uid` is optional.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string DicomWebPath { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "updateInstances";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PUT";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+parent}/dicomWeb/{+dicomWebPath}";
+
+                            /// <summary>Initializes UpdateInstances parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                });
+                                RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "dicomWebPath",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^studies/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// UpdateStudyMetadata modifies the metadata of all instances in the given study. The request
+                        /// body must contain a JSON Patch document specifying the updates to be applied to the metadata
+                        /// of all instances within the study.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The name of the DICOM store that is being accessed (for example,
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`).
+                        /// </param>
+                        /// <param name="dicomWebPath">
+                        /// Required. The path of the UpdateStudyMetadata request (for example, `studies/{study_uid}`).
+                        /// </param>
+                        public virtual UpdateMetadataRequest UpdateMetadata(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string dicomWebPath)
+                        {
+                            return new UpdateMetadataRequest(this.service, body, parent, dicomWebPath);
+                        }
+
+                        /// <summary>
+                        /// UpdateStudyMetadata modifies the metadata of all instances in the given study. The request
+                        /// body must contain a JSON Patch document specifying the updates to be applied to the metadata
+                        /// of all instances within the study.
+                        /// </summary>
+                        public class UpdateMetadataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new UpdateMetadata request.</summary>
+                            public UpdateMetadataRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string dicomWebPath) : base(service)
+                            {
+                                Parent = parent;
+                                DicomWebPath = dicomWebPath;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the DICOM store that is being accessed (for example,
+                            /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Required. The path of the UpdateStudyMetadata request (for example,
+                            /// `studies/{study_uid}`).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string DicomWebPath { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "updateMetadata";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+parent}/dicomWeb/{+dicomWebPath}/metadata";
+
+                            /// <summary>Initializes UpdateMetadata parameter list.</summary>
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
@@ -6434,6 +6779,91 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// UpdateInstances updates DICOM instances associated with study instance unique identifiers
+                    /// (SUID).
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the DICOM store that is being accessed. For example,
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+                    /// </param>
+                    /// <param name="dicomWebPath">
+                    /// Required. The path of the UpdateInstances DICOMweb request. For example,
+                    /// `studies/[{study_uid}]`. Note that the `study_uid` is optional.
+                    /// </param>
+                    public virtual UpdateInstancesRequest UpdateInstances(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string dicomWebPath)
+                    {
+                        return new UpdateInstancesRequest(this.service, body, parent, dicomWebPath);
+                    }
+
+                    /// <summary>
+                    /// UpdateInstances updates DICOM instances associated with study instance unique identifiers
+                    /// (SUID).
+                    /// </summary>
+                    public class UpdateInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
+                    {
+                        /// <summary>Constructs a new UpdateInstances request.</summary>
+                        public UpdateInstancesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent, string dicomWebPath) : base(service)
+                        {
+                            Parent = parent;
+                            DicomWebPath = dicomWebPath;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the DICOM store that is being accessed. For example,
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The path of the UpdateInstances DICOMweb request. For example,
+                        /// `studies/[{study_uid}]`. Note that the `study_uid` is optional.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string DicomWebPath { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "updateInstances";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PUT";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/dicomWeb/{+dicomWebPath}";
+
+                        /// <summary>Initializes UpdateInstances parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
+                            RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dicomWebPath",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^studies$",
                             });
                         }
                     }
@@ -9257,11 +9687,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// criteria matches a large number (i.e. more than 2,000) of resources. For a search query that
                         /// will match a large number of resources, you can avoiding using the special synchronous index
                         /// by including an additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if you
-                        /// want to keep the default sorting order. Note: The special synchronous identifier index are
-                        /// currently disabled for DocumentReference and DocumentManifest searches. For samples and
-                        /// detailed information, see [Searching for FHIR
-                        /// resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
-                        /// search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
+                        /// want to keep the default sorting order. For samples and detailed information, see [Searching
+                        /// for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and
+                        /// [Advanced FHIR search
+                        /// features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">Required. Name of the FHIR store to retrieve resources from.</param>
@@ -9321,11 +9750,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// criteria matches a large number (i.e. more than 2,000) of resources. For a search query that
                         /// will match a large number of resources, you can avoiding using the special synchronous index
                         /// by including an additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if you
-                        /// want to keep the default sorting order. Note: The special synchronous identifier index are
-                        /// currently disabled for DocumentReference and DocumentManifest searches. For samples and
-                        /// detailed information, see [Searching for FHIR
-                        /// resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
-                        /// search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
+                        /// want to keep the default sorting order. For samples and detailed information, see [Searching
+                        /// for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and
+                        /// [Advanced FHIR search
+                        /// features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
                         /// </summary>
                         public class SearchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
@@ -9422,11 +9850,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// criteria matches a large number (i.e. more than 2,000) of resources. For a search query that
                         /// will match a large number of resources, you can avoiding using the special synchronous index
                         /// by including an additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if you
-                        /// want to keep the default sorting order. Note: The special synchronous identifier index are
-                        /// currently disabled for DocumentReference and DocumentManifest searches. For samples and
-                        /// detailed information, see [Searching for FHIR
-                        /// resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
-                        /// search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
+                        /// want to keep the default sorting order. For samples and detailed information, see [Searching
+                        /// for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and
+                        /// [Advanced FHIR search
+                        /// features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">Required. Name of the FHIR store to retrieve resources from.</param>
@@ -9493,11 +9920,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// criteria matches a large number (i.e. more than 2,000) of resources. For a search query that
                         /// will match a large number of resources, you can avoiding using the special synchronous index
                         /// by including an additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if you
-                        /// want to keep the default sorting order. Note: The special synchronous identifier index are
-                        /// currently disabled for DocumentReference and DocumentManifest searches. For samples and
-                        /// detailed information, see [Searching for FHIR
-                        /// resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
-                        /// search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
+                        /// want to keep the default sorting order. For samples and detailed information, see [Searching
+                        /// for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and
+                        /// [Advanced FHIR search
+                        /// features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
                         /// </summary>
                         public class SearchTypeRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
                         {
@@ -14113,8 +14539,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -16722,9 +17148,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual System.Nullable<bool> DisableResourceVersioning { get; set; }
 
         /// <summary>
-        /// Optional. Whether to allow ExecuteBundle to accept history bundles, and directly insert and overwrite
-        /// historical resource versions into the FHIR store. If set to false, using history bundles fails with an
-        /// error. Defaults to false.
+        /// Optional. Whether to allow the [ImportResourcesHistory] and [ExecuteBundle] APIs to accept history bundles,
+        /// and directly insert and overwrite historical resource versions into the FHIR store. Changing resource
+        /// histories creates resource interactions that have occurred in the past which clients might not allow. If set
+        /// to false, [ImportResourcesHistory] and [ExecuteBundle] requests will return errors.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableHistoryModifications")]
         public virtual System.Nullable<bool> EnableHistoryModifications { get; set; }
@@ -19658,6 +20085,20 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primitive")]
         public virtual string Primitive { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>UpdateSeriesMetadataResponse is the LRO response for UpdateSeriesMetadata.</summary>
+    public class UpdateSeriesMetadataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>UpdateStudyMetadataResponse is the LRO response for UpdateStudyMetadata.</summary>
+    public class UpdateStudyMetadataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
