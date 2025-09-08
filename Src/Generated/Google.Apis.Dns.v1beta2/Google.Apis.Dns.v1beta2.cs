@@ -1795,7 +1795,7 @@ namespace Google.Apis.Dns.v1beta2
             this.service = service;
         }
 
-        /// <summary>Creates a new Policy.</summary>
+        /// <summary>Creates a new policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual CreateRequest Create(Google.Apis.Dns.v1beta2.Data.Policy body, string project)
@@ -1803,7 +1803,7 @@ namespace Google.Apis.Dns.v1beta2
             return new CreateRequest(this.service, body, project);
         }
 
-        /// <summary>Creates a new Policy.</summary>
+        /// <summary>Creates a new policy.</summary>
         public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.Policy>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1864,7 +1864,7 @@ namespace Google.Apis.Dns.v1beta2
         }
 
         /// <summary>
-        /// Deletes a previously created Policy. Fails if the policy is still being referenced by a network.
+        /// Deletes a previously created policy. Fails if the policy is still being referenced by a network.
         /// </summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
@@ -1874,7 +1874,7 @@ namespace Google.Apis.Dns.v1beta2
         }
 
         /// <summary>
-        /// Deletes a previously created Policy. Fails if the policy is still being referenced by a network.
+        /// Deletes a previously created policy. Fails if the policy is still being referenced by a network.
         /// </summary>
         public class DeleteRequest : DnsBaseServiceRequest<string>
         {
@@ -1941,7 +1941,7 @@ namespace Google.Apis.Dns.v1beta2
             }
         }
 
-        /// <summary>Fetches the representation of an existing Policy.</summary>
+        /// <summary>Fetches the representation of an existing policy.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
         public virtual GetRequest Get(string project, string policy)
@@ -1949,7 +1949,7 @@ namespace Google.Apis.Dns.v1beta2
             return new GetRequest(this.service, project, policy);
         }
 
-        /// <summary>Fetches the representation of an existing Policy.</summary>
+        /// <summary>Fetches the representation of an existing policy.</summary>
         public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.Policy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2015,14 +2015,14 @@ namespace Google.Apis.Dns.v1beta2
             }
         }
 
-        /// <summary>Enumerates all Policies associated with a project.</summary>
+        /// <summary>Enumerates all policies associated with a project.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(this.service, project);
         }
 
-        /// <summary>Enumerates all Policies associated with a project.</summary>
+        /// <summary>Enumerates all policies associated with a project.</summary>
         public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.PoliciesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2090,7 +2090,7 @@ namespace Google.Apis.Dns.v1beta2
             }
         }
 
-        /// <summary>Applies a partial update to an existing Policy.</summary>
+        /// <summary>Applies a partial update to an existing policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
@@ -2099,7 +2099,7 @@ namespace Google.Apis.Dns.v1beta2
             return new PatchRequest(this.service, body, project, policy);
         }
 
-        /// <summary>Applies a partial update to an existing Policy.</summary>
+        /// <summary>Applies a partial update to an existing policy.</summary>
         public class PatchRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.PoliciesPatchResponse>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2172,7 +2172,7 @@ namespace Google.Apis.Dns.v1beta2
             }
         }
 
-        /// <summary>Updates an existing Policy.</summary>
+        /// <summary>Updates an existing policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
@@ -2181,7 +2181,7 @@ namespace Google.Apis.Dns.v1beta2
             return new UpdateRequest(this.service, body, project, policy);
         }
 
-        /// <summary>Updates an existing Policy.</summary>
+        /// <summary>Updates an existing policy.</summary>
         public class UpdateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.PoliciesUpdateResponse>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -2680,7 +2680,10 @@ namespace Google.Apis.Dns.v1beta2
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>Restricts the list to return only records with this fully qualified domain name.</summary>
+            /// <summary>
+            /// Restricts the list to return only records with this fully qualified domain name. Mutually exclusive with
+            /// the {@code filter} field.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
 
@@ -2693,7 +2696,7 @@ namespace Google.Apis.Dns.v1beta2
 
             /// <summary>
             /// Restricts the list to return only records of this type. If present, the "name" parameter must also be
-            /// present.
+            /// present. Mutually exclusive with the {@code filter} field.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Type { get; set; }
@@ -4993,7 +4996,7 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Configurations related to DNS64 for this Policy.</summary>
+        /// <summary>Configurations related to DNS64 for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dns64Config")]
         public virtual PolicyDns64Config Dns64Config { get; set; }
 
@@ -5092,7 +5095,7 @@ namespace Google.Apis.Dns.v1beta2.Data
 
     public class PolicyDns64ConfigScope : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Controls whether DNS64 is enabled globally at the network level.</summary>
+        /// <summary>Controls whether DNS64 is enabled globally for all networks bound to the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allQueries")]
         public virtual System.Nullable<bool> AllQueries { get; set; }
 
