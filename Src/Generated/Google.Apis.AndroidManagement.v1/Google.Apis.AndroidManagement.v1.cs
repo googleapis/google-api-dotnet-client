@@ -5586,7 +5586,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
 
-        /// <summary>The device serial number.</summary>
+        /// <summary>
+        /// The device serial number. However, for personally-owned devices running Android 12 and above, this is the
+        /// same as the enterpriseSpecificId.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
         public virtual string SerialNumber { get; set; }
 
