@@ -7312,6 +7312,12 @@ namespace Google.Apis.ManagedKafka.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tlsConfig")]
         public virtual TlsConfig TlsConfig { get; set; }
 
+        /// <summary>
+        /// Optional. UpdateOptions represents options that control how updates to the cluster are applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateOptions")]
+        public virtual UpdateOptions UpdateOptions { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -8516,6 +8522,25 @@ namespace Google.Apis.ManagedKafka.v1.Data
         /// <summary>Optional. Configuration for the Google Certificate Authority Service. Maximum 10.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("casConfigs")]
         public virtual System.Collections.Generic.IList<CertificateAuthorityServiceConfig> CasConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// UpdateOptions specifies options that influence how a cluster update is applied. These options control the
+    /// behavior of the update process, rather than defining the desired end-state of a cluster.
+    /// </summary>
+    public class UpdateOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If true, allows an update operation that increases the total vCPU and/or memory allocation of the
+        /// cluster to significantly decrease the per-broker vCPU and/or memory allocation. This can result in reduced
+        /// performance and availability. By default, the update operation will fail if an upscale request results in a
+        /// vCPU or memory allocation for the brokers that is smaller than 90% of the current broker size.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowBrokerDownscaleOnClusterUpscale")]
+        public virtual System.Nullable<bool> AllowBrokerDownscaleOnClusterUpscale { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
