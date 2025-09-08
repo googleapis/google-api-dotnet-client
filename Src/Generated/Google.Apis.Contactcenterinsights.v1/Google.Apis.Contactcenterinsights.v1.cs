@@ -2959,7 +2959,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                         /// Optional. A unique ID for the new AuthorizedView. This ID will become the final component of
                         /// the AuthorizedView's resource name. If no ID is specified, a server-generated ID will be
                         /// used. This value should be 4-64 characters and must match the regular expression
-                        /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See aip.dev/122#resource-id-segments
+                        /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See https://google.aip.dev/122#resource-id-segments
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("authorizedViewId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string AuthorizedViewId { get; set; }
@@ -3760,7 +3760,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                     /// Optional. A unique ID for the new AuthorizedViewSet. This ID will become the final component of
                     /// the AuthorizedViewSet's resource name. If no ID is specified, a server-generated ID will be
                     /// used. This value should be 4-64 characters and must match the regular expression
-                    /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See aip.dev/122#resource-id-segments
+                    /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See https://google.aip.dev/122#resource-id-segments
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("authorizedViewSetId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AuthorizedViewSetId { get; set; }
@@ -19041,8 +19041,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// an analysis is created. * "create-conversation": Notify each time a conversation is created. *
         /// "export-insights-data": Notify each time an export is complete. * "ingest-conversations": Notify each time
         /// an IngestConversations LRO is complete. * "update-conversation": Notify each time a conversation is updated
-        /// via UpdateConversation. * "upload-conversation": Notify when an UploadConversation LRO is complete. Values
-        /// are Pub/Sub topics. The format of each Pub/Sub topic is: projects/{project}/topics/{topic}
+        /// via UpdateConversation. * "upload-conversation": Notify when an UploadConversation LRO is complete. *
+        /// "update-or-analyze-conversation": Notify when an analysis for a conversation is completed or when the
+        /// conversation is updated. The message will contain the conversation with transcript, analysis and other
+        /// metadata. Values are Pub/Sub topics. The format of each Pub/Sub topic is: projects/{project}/topics/{topic}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubNotificationSettings")]
         public virtual System.Collections.Generic.IDictionary<string, string> PubsubNotificationSettings { get; set; }
