@@ -3863,6 +3863,50 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>MongoDB change stream position</summary>
+    public class MongodbChangeStreamPosition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Required. The timestamp (in epoch seconds) to start change stream from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>MongoDB Cluster structure.</summary>
     public class MongodbCluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5512,6 +5556,10 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>CDC strategy to start replicating from a specific position in the source.</summary>
     public class SpecificStartPosition : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>MongoDB change stream position to start replicating from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mongodbChangeStreamPosition")]
+        public virtual MongodbChangeStreamPosition MongodbChangeStreamPosition { get; set; }
+
         /// <summary>MySQL GTID set to start replicating from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlGtidPosition")]
         public virtual MysqlGtidPosition MysqlGtidPosition { get; set; }
