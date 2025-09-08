@@ -3894,11 +3894,11 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        ///  Lists the user's files. This method accepts the `q` parameter, which is a search query combining one or
-        /// more search terms. For more information, see the [Search for files &amp;amp;
-        /// folders](/workspace/drive/api/guides/search-files) guide. *Note:* This method returns *all* files by
-        /// default, including trashed files. If you don't want trashed files to appear in the list, use the
-        /// `trashed=false` query parameter to remove trashed files from the results.
+        ///  Lists the user's files. For more information, see [Search for files and
+        /// folders](/workspace/drive/api/guides/search-files). This method accepts the `q` parameter, which is a search
+        /// query combining one or more search terms. This method returns *all* files by default, including trashed
+        /// files. If you don't want trashed files to appear in the list, use the `trashed=false` query parameter to
+        /// remove trashed files from the results.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -3906,11 +3906,11 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        ///  Lists the user's files. This method accepts the `q` parameter, which is a search query combining one or
-        /// more search terms. For more information, see the [Search for files &amp;amp;
-        /// folders](/workspace/drive/api/guides/search-files) guide. *Note:* This method returns *all* files by
-        /// default, including trashed files. If you don't want trashed files to appear in the list, use the
-        /// `trashed=false` query parameter to remove trashed files from the results.
+        ///  Lists the user's files. For more information, see [Search for files and
+        /// folders](/workspace/drive/api/guides/search-files). This method accepts the `q` parameter, which is a search
+        /// query combining one or more search terms. This method returns *all* files by default, including trashed
+        /// files. If you don't want trashed files to appear in the list, use the `trashed=false` query parameter to
+        /// remove trashed files from the results.
         /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.FileList>
         {
@@ -4953,13 +4953,14 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        ///  Updates a file's metadata and/or content. When calling this method, only populate fields in the request
+        ///  Updates a file's metadata, content, or both. When calling this method, only populate fields in the request
         /// that you want to modify. When updating fields, some fields might be changed automatically, such as
         /// `modifiedDate`. This method supports patch semantics. This method supports an */upload* URI and accepts
         /// uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
-        /// types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
-        /// used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see
-        /// [Upload file data](/workspace/drive/api/guides/manage-uploads).
+        /// types:* `*/*` (Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
+        /// used to indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and
+        /// Google Drive supported MIME types](/workspace/drive/api/guides/mime-types).) For more information on
+        /// uploading files, see [Upload file data](/workspace/drive/api/guides/manage-uploads).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file to update.</param>
@@ -4969,13 +4970,14 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        ///  Updates a file's metadata and/or content. When calling this method, only populate fields in the request
+        ///  Updates a file's metadata, content, or both. When calling this method, only populate fields in the request
         /// that you want to modify. When updating fields, some fields might be changed automatically, such as
         /// `modifiedDate`. This method supports patch semantics. This method supports an */upload* URI and accepts
         /// uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
-        /// types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
-        /// used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see
-        /// [Upload file data](/workspace/drive/api/guides/manage-uploads).
+        /// types:* `*/*` (Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
+        /// used to indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and
+        /// Google Drive supported MIME types](/workspace/drive/api/guides/mime-types).) For more information on
+        /// uploading files, see [Upload file data](/workspace/drive/api/guides/manage-uploads).
         /// </summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
@@ -5296,13 +5298,14 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        ///  Updates a file's metadata and/or content. When calling this method, only populate fields in the request
+        ///  Updates a file's metadata, content, or both. When calling this method, only populate fields in the request
         /// that you want to modify. When updating fields, some fields might be changed automatically, such as
         /// `modifiedDate`. This method supports patch semantics. This method supports an */upload* URI and accepts
         /// uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
-        /// types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
-        /// used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see
-        /// [Upload file data](/workspace/drive/api/guides/manage-uploads).
+        /// types:* `*/*` (Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
+        /// used to indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and
+        /// Google Drive supported MIME types](/workspace/drive/api/guides/mime-types).) For more information on
+        /// uploading files, see [Upload file data](/workspace/drive/api/guides/manage-uploads).
         /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
