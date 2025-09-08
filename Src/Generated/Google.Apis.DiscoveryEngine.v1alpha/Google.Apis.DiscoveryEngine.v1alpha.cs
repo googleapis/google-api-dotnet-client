@@ -19424,7 +19424,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         this.service = service;
                     }
 
-                    /// <summary>Generates a new audio overview. Needs a side channel with the user's EUC.</summary>
+                    /// <summary>Generates a new audio overview.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent resource where this notebook will be created. Format:
@@ -19435,7 +19435,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         return new CreateRequest(this.service, body, parent);
                     }
 
-                    /// <summary>Generates a new audio overview. Needs a side channel with the user's EUC.</summary>
+                    /// <summary>Generates a new audio overview.</summary>
                     public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -19483,7 +19483,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
                     }
 
-                    /// <summary>Deletes an audio overview. Needs a side channel with the user's EUC.</summary>
+                    /// <summary>Deletes an audio overview.</summary>
                     /// <param name="name">
                     /// Required. The full resource name of the AudioOverview, such as
                     /// `projects/{project}/locations/{location}/notebooks/{notebook}/audioOverviews/{audio_overview_id}`.
@@ -19493,7 +19493,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         return new DeleteRequest(this.service, name);
                     }
 
-                    /// <summary>Deletes an audio overview. Needs a side channel with the user's EUC.</summary>
+                    /// <summary>Deletes an audio overview.</summary>
                     public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -19801,7 +19801,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
                 }
 
-                /// <summary>Batch deletes Notebooks. Needs a side channel with the user's EUC.</summary>
+                /// <summary>Batch deletes Notebooks.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent branch resource name, such as `projects/{project}/locations/{location}`.
@@ -19811,7 +19811,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     return new BatchDeleteRequest(this.service, body, parent);
                 }
 
-                /// <summary>Batch deletes Notebooks. Needs a side channel with the user's EUC.</summary>
+                /// <summary>Batch deletes Notebooks.</summary>
                 public class BatchDeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new BatchDelete request.</summary>
@@ -19858,7 +19858,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
                 }
 
-                /// <summary>Creates a notebook. Needs a side channel with the user's EUC.</summary>
+                /// <summary>Creates a notebook.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource name, such as `projects/{project}/locations/{location}`.
@@ -19868,7 +19868,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a notebook. Needs a side channel with the user's EUC.</summary>
+                /// <summary>Creates a notebook.</summary>
                 public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaNotebook>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -19915,7 +19915,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
                 }
 
-                /// <summary>Gets a notebook. Needs a side channel with the user's EUC.</summary>
+                /// <summary>Gets a notebook.</summary>
                 /// <param name="name">
                 /// Required. Full resource name of Notebook, such as
                 /// `projects/{project}/locations/{location}/notebooks/{notebook_id}`.
@@ -19925,7 +19925,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets a notebook. Needs a side channel with the user's EUC.</summary>
+                /// <summary>Gets a notebook.</summary>
                 public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaNotebook>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -19966,7 +19966,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
                 }
 
-                /// <summary>Lists the recently viewed notebooks. Needs a side channel with the user's EUC.</summary>
+                /// <summary>Lists the notebooks ordered by last view time.</summary>
                 /// <param name="parent">
                 /// Required. The parent branch resource name, such as `projects/{project}/locations/{location}`.
                 /// </param>
@@ -19975,7 +19975,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     return new ListRecentlyViewedRequest(this.service, parent);
                 }
 
-                /// <summary>Lists the recently viewed notebooks. Needs a side channel with the user's EUC.</summary>
+                /// <summary>Lists the notebooks ordered by last view time.</summary>
                 public class ListRecentlyViewedRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse>
                 {
                     /// <summary>Constructs a new ListRecentlyViewed request.</summary>
@@ -20042,7 +20042,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
                 }
 
-                /// <summary>Shares a notebook to other accounts. Needs a side channel with the user's EUC.</summary>
+                /// <summary>Shares a notebook to other accounts.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. Full resource name of Notebook, such as
@@ -20053,7 +20053,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     return new ShareRequest(this.service, body, name);
                 }
 
-                /// <summary>Shares a notebook to other accounts. Needs a side channel with the user's EUC.</summary>
+                /// <summary>Shares a notebook to other accounts.</summary>
                 public class ShareRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaShareNotebookResponse>
                 {
                     /// <summary>Constructs a new Share request.</summary>
@@ -34593,6 +34593,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Errors { get; set; }
 
         /// <summary>
+        /// Optional. Any params and credentials used specifically for hybrid connectors supporting FEDERATED mode. This
+        /// field should only be set if the connector is a hybrid connector and we want to enable FEDERATED mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("federatedConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig FederatedConfig { get; set; }
+
+        /// <summary>
         /// Optional. If the connector is a hybrid connector, determines whether ingestion is enabled and appropriate
         /// resources are provisioned during connector creation. If the connector is not a hybrid connector, this field
         /// is ignored.
@@ -34785,6 +34792,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("refreshInterval")]
         public virtual object RefreshInterval { get; set; }
 
+        /// <summary>
+        /// Optional. Specifies keys to be removed from the 'params' field. This is only active when 'params' is
+        /// included in the 'update_mask' in an UpdateDataConnectorRequest. Deletion takes precedence if a key is both
+        /// in 'remove_param_keys' and present in the 'params' field of the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeParamKeys")]
+        public virtual System.Collections.Generic.IList<string> RemoveParamKeys { get; set; }
+
         /// <summary>Output only. State of the connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -34856,6 +34871,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Optional. The tenant project the connector is connected to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
         public virtual GoogleCloudDiscoveryengineV1alphaTenant Tenant { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Any params and credentials used specifically for hybrid connectors supporting FEDERATED mode.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Any additional parameters needed for FEDERATED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalParams")]
+        public virtual System.Collections.Generic.IDictionary<string, object> AdditionalParams { get; set; }
+
+        /// <summary>Optional. Any authentication parameters specific to FEDERATED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authParams")]
+        public virtual System.Collections.Generic.IDictionary<string, object> AuthParams { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46540,6 +46570,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultWebGroundingToggleOff")]
         public virtual System.Nullable<bool> DefaultWebGroundingToggleOff { get; set; }
 
+        /// <summary>Optional. Output only. Whether to disable user location context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableLocationContext")]
+        public virtual System.Nullable<bool> DisableLocationContext { get; set; }
+
         /// <summary>
         /// Whether or not the Google search grounding toggle is shown. Deprecated. Use web_grounding_type instead.
         /// </summary>
@@ -53143,7 +53177,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// The language code of the generated audio overview. Use the BCP 47 language code (e.g. "en", "es", "hi",
-        /// etc.). Examples: google3/i18n/identifiers/tools/language_code_constants.txt
+        /// etc.).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -53277,6 +53311,218 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Failure reason containing details about why a source failed to ingest.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An audio file transcription specific error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioTranscriptionError")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionError AudioTranscriptionError { get; set; }
+
+        /// <summary>Error if the user tries to add a source from a blocked domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainBlocked")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked DomainBlocked { get; set; }
+
+        /// <summary>A google drive specific error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleDriveError")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveError GoogleDriveError { get; set; }
+
+        /// <summary>Indicates an error occurred while ingesting the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestionError")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonIngestionError IngestionError { get; set; }
+
+        /// <summary>Indicates that the source is paywalled and cannot be ingested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paywallError")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonPaywallError PaywallError { get; set; }
+
+        /// <summary>Indicates that the source is empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceEmpty")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty SourceEmpty { get; set; }
+
+        /// <summary>Error if the user tries to update beyond their limits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceLimitExceeded")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded SourceLimitExceeded { get; set; }
+
+        /// <summary>Indicates source word count exceeded the user's limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTooLong")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong SourceTooLong { get; set; }
+
+        /// <summary>Indicates that the source is unreachable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceUnreachable")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable SourceUnreachable { get; set; }
+
+        /// <summary>Indicates an unknown error occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unknown")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonUnknown Unknown { get; set; }
+
+        /// <summary>Indicates an error occurred while uploading the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadError")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonUploadError UploadError { get; set; }
+
+        /// <summary>A youtube specific error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeError")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError YoutubeError { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An audio file transcription specific error.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Could not detect language of the file (it may not be speech).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageDetectionFailed")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed LanguageDetectionFailed { get; set; }
+
+        /// <summary>No audio was detected in the input file (it may have been a video).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noAudioDetected")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected NoAudioDetected { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Could not detect language of the file (it may not be speech).</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>No audio was detected in the input file.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error to indicate that the source was removed because the domain was blocked.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A google drive specific error.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user was prevented from downloading the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadPrevented")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented DownloadPrevented { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The user was prevented from downloading the file.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates an error occurred while ingesting the source.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonIngestionError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates that the source is paywalled and cannot be ingested.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonPaywallError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates that the source is empty.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates that the user does not have space for this source.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates source word count exceeded the user's limit.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of words in the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wordCount")]
+        public virtual System.Nullable<int> WordCount { get; set; }
+
+        /// <summary>The word count limit for the current user at the time of the upload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wordLimit")]
+        public virtual System.Nullable<int> WordLimit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Indicates that the source is unreachable. This is primarily used for sources that are added via URL.
+    /// </summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Describes why the source is unreachable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorDetails")]
+        public virtual string ErrorDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates an unknown error occurred.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonUnknown : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates an error occurred while uploading the source.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonUploadError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A youtube specific error.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error to indicate that the source was removed because the video was deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoDeleted")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted VideoDeleted { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error to indicate that the source was removed because the video was deleted.</summary>
+    public class GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about a google doc source.</summary>
+    public class GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The document id of the google doc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual string DocumentId { get; set; }
+
+        /// <summary>Output only. Revision id for the doc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for NotebookService.ListRecentlyViewedNotebooks method.</summary>
     public class GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -53305,7 +53551,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("emoji")]
         public virtual string Emoji { get; set; }
 
-        /// <summary>The metadata of the notebook.</summary>
+        /// <summary>Output only. The metadata of the notebook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual GoogleCloudNotebooklmV1alphaNotebookMetadata Metadata { get; set; }
 
@@ -53317,10 +53563,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Optional. Notebook id, which is the last segment of the notebook's resource name. This is to make it similar
-        /// with notebooklm API.
-        /// </summary>
+        /// <summary>Output only. Notebook id, which is the last segment of the notebook's resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notebookId")]
         public virtual string NotebookId { get; set; }
 
@@ -53448,7 +53691,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Source represents a single source of content.</summary>
     public class GoogleCloudNotebooklmV1alphaSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Metadata about the source.</summary>
+        /// <summary>Output only. Metadata about the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual GoogleCloudNotebooklmV1alphaSourceMetadata Metadata { get; set; }
 
@@ -53460,9 +53703,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Status of the source, and any failure reasons.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
+        public virtual GoogleCloudNotebooklmV1alphaSourceSettings Settings { get; set; }
+
         /// <summary>
-        /// Optional. Source id, which is the last segment of the source's resource name. This is to make it similar
-        /// with notebooklm API.
+        /// Optional. Output only. Source id, which is the last segment of the source's resource name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceId")]
         public virtual GoogleCloudNotebooklmV1alphaSourceId SourceId { get; set; }
@@ -53492,6 +53738,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Metadata for an agentspace source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentspaceMetadata")]
         public virtual GoogleCloudNotebooklmV1alphaAgentspaceMetadata AgentspaceMetadata { get; set; }
+
+        /// <summary>Metadata for a google doc source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleDocsMetadata")]
+        public virtual GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata GoogleDocsMetadata { get; set; }
 
         private string _sourceAddedTimestampRaw;
 
@@ -53539,6 +53789,25 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>The word count of the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wordCount")]
         public virtual System.Nullable<int> WordCount { get; set; }
+
+        /// <summary>Metadata for a youtube video source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeMetadata")]
+        public virtual GoogleCloudNotebooklmV1alphaYoutubeMetadata YoutubeMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Allows extension of Source Settings in the BatchCreateSources (Formerly AddSource request).</summary>
+    public class GoogleCloudNotebooklmV1alphaSourceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Failure reason containing details about why a source failed to ingest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
+        public virtual GoogleCloudNotebooklmV1alphaFailureReason FailureReason { get; set; }
+
+        /// <summary>Status of the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -53636,12 +53905,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// The mime type of the selected document. This can be used to differentiate type of content selected in the
-        /// drive picker.
+        /// drive picker. Use application/vnd.google-apps.document for Google Docs or
+        /// application/vnd.google-apps.presentation for Google Slides.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
-        /// <summary>Should track this from Drive Picker.</summary>
+        /// <summary>Name to be displayed for the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
         public virtual string SourceName { get; set; }
 
@@ -53652,11 +53922,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>The text content uploaded as source.</summary>
     public class GoogleCloudNotebooklmV1alphaUserContentTextContent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The content of the text source.</summary>
+        /// <summary>Name to be displayed for the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
-        /// <summary>The name of the text source.</summary>
+        /// <summary>The display name of the text source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
         public virtual string SourceName { get; set; }
 
@@ -53678,13 +53948,28 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>The web content uploaded as source.</summary>
     public class GoogleCloudNotebooklmV1alphaUserContentWebContent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the web source.</summary>
+        /// <summary>Name to be displayed for the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
         public virtual string SourceName { get; set; }
 
         /// <summary>If URL is supplied, will fetch the webpage in the backend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about a youtube video source.</summary>
+    public class GoogleCloudNotebooklmV1alphaYoutubeMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The channel name of the youtube video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelName")]
+        public virtual string ChannelName { get; set; }
+
+        /// <summary>Output only. The id of the youtube video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
+        public virtual string VideoId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
