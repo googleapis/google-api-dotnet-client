@@ -10586,6 +10586,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateRegistryConfig")]
         public virtual VmwareAdminPrivateRegistryConfig PrivateRegistryConfig { get; set; }
 
+        /// <summary>Configuration for proxy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxy")]
+        public virtual VmwareAdminProxy Proxy { get; set; }
+
         /// <summary>Output only. If set, there are currently changes in flight to the VMware admin cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
@@ -10846,6 +10850,25 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caCert")]
         public virtual string CaCert { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VmwareAdminProxy represents configuration for admin cluster proxy.</summary>
+    public class VmwareAdminProxy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A comma-separated list of IP addresses, IP address ranges, host names, and domain names that should not go
+        /// through the proxy server. When Google Distributed Cloud sends a request to one of these addresses, hosts, or
+        /// domains, the request is sent directly.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noProxy")]
+        public virtual string NoProxy { get; set; }
+
+        /// <summary>The HTTP address of proxy server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
