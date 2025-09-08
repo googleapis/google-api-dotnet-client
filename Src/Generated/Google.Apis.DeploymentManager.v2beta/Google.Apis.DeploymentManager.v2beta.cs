@@ -4249,6 +4249,7 @@ namespace Google.Apis.DeploymentManager.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
 
+        /// <summary>Update mask for the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
     }
