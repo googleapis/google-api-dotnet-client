@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5522,6 +5522,43 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
     public class GoogleFirebaseAppcheckV1betaPlayIntegrityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Specifies account requirements for Android devices running your app. These settings correspond to
+        /// requirements on the [**account details**
+        /// field](https://developer.android.com/google/play/integrity/verdicts#account-details-field) obtained from the
+        /// Play Integrity API. See the [default responses
+        /// table](https://developer.android.com/google/play/integrity/setup#default) for a quick summary. The default
+        /// values for these settings work for most apps, and are recommended.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountDetails")]
+        public virtual GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails AccountDetails { get; set; }
+
+        /// <summary>
+        /// Specifies application integrity requirements for Android devices running your app. These settings correspond
+        /// to requirements on the [**application integrity**
+        /// field](https://developer.android.com/google/play/integrity/verdicts#application-integrity-field) obtained
+        /// from the Play Integrity API. See the [default responses
+        /// table](https://developer.android.com/google/play/integrity/setup#default) for a quick summary. The default
+        /// values for these settings work for most apps, and are recommended.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appIntegrity")]
+        public virtual GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAppIntegrity AppIntegrity { get; set; }
+
+        /// <summary>
+        /// Specifies device integrity requirements for Android devices running your app. These settings correspond to
+        /// requirements on the [**device integrity**
+        /// field](https://developer.android.com/google/play/integrity/verdicts#device-integrity-field) obtained from
+        /// the Play Integrity API. See the [default responses
+        /// table](https://developer.android.com/google/play/integrity/setup#default) for a quick summary. Warning:
+        /// There are also [conditional](https://developer.android.com/google/play/integrity/setup#conditional) as well
+        /// as [optional](https://developer.android.com/google/play/integrity/setup#optional_device_information)
+        /// responses that you can receive, but requires additional explicit opt-in from you. The App Check API is
+        /// **not** responsible for any such opt-ins. The default values for these settings work for most apps, and are
+        /// recommended.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceIntegrity")]
+        public virtual GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity DeviceIntegrity { get; set; }
+
+        /// <summary>
         /// Required. The relative resource name of the Play Integrity configuration object, in the format:
         /// ```
         /// projects/{project_number}/apps/{app_id}/playIntegrityConfig
@@ -5536,6 +5573,83 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenTtl")]
         public virtual object TokenTtl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A settings object specifying account requirements for Android devices running your app. These settings
+    /// correspond to requirements on the [**account details**
+    /// field](https://developer.android.com/google/play/integrity/verdicts#account-details-field) obtained from the
+    /// Play Integrity API. See the [default responses
+    /// table](https://developer.android.com/google/play/integrity/setup#default) for a quick summary. The default
+    /// values for these settings work for most apps, and are recommended.
+    /// </summary>
+    public class GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies whether the caller must have received the [`LICENSED`
+        /// verdict](https://developer.android.com/google/play/integrity/verdicts#account-details-field). For additional
+        /// details about scenarios where your users will receive this `LICENSED` label, see [the default responses
+        /// table](https://developer.android.com/google/play/integrity/setup#default). If set to `true`, apps without
+        /// the `LICENSED` app licensing verdict will be rejected. If set to `false`, any app licensing verdict is
+        /// allowed. The default value is `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requireLicensed")]
+        public virtual System.Nullable<bool> RequireLicensed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A settings object specifying application integrity requirements for Android devices running your app. These
+    /// settings correspond to requirements on the [**application integrity**
+    /// field](https://developer.android.com/google/play/integrity/verdicts#application-integrity-field) obtained from
+    /// the Play Integrity API. See the [default responses
+    /// table](https://developer.android.com/google/play/integrity/setup#default) for a quick summary. The default
+    /// values for these settings work for most apps, and are recommended.
+    /// </summary>
+    public class GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAppIntegrity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies whether your running app is allowed to have the `UNRECOGNIZED_VERSION` [app recognition
+        /// verdict](https://developer.android.com/google/play/integrity/verdicts#application-integrity-field). Note
+        /// that the app recognition verdict `PLAY_RECOGNIZED` is a strong, comprehensive integrity signal that takes
+        /// into account various other signals, including conditional and optional device integrity responses that you
+        /// have opted into. If your app is published off-Play, this field should be set to `true` to allow instances of
+        /// your app installed from off-Play sources to function. If set to `false`, only `PLAY_RECOGNIZED` verdicts are
+        /// allowed, and both `UNRECOGNIZED_VERSION` and `UNEVALUATED` will be rejected. If set to `true`, any app
+        /// recognition verdict is allowed. The default value is `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowUnrecognizedVersion")]
+        public virtual System.Nullable<bool> AllowUnrecognizedVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A settings object specifying device integrity requirements for Android devices running your app. These settings
+    /// correspond to requirements on the [**device integrity**
+    /// field](https://developer.android.com/google/play/integrity/verdicts#device-integrity-field) obtained from the
+    /// Play Integrity API. See the [default responses
+    /// table](https://developer.android.com/google/play/integrity/setup#default) for a quick summary. Warning: There
+    /// are also [conditional](https://developer.android.com/google/play/integrity/setup#conditional) as well as
+    /// [optional](https://developer.android.com/google/play/integrity/setup#optional_device_information) responses that
+    /// you can receive, but requires additional explicit opt-in from you. The App Check API is **not** responsible for
+    /// any such opt-ins. The default values for these settings work for most apps, and are recommended.
+    /// </summary>
+    public class GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the minimum device integrity level in order for the device to be considered valid. Any device with
+        /// a device recognition verdict lower than this level will be rejected. If this is unspecified, the default
+        /// level is `NO_INTEGRITY`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minDeviceRecognitionLevel")]
+        public virtual string MinDeviceRecognitionLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5600,6 +5714,14 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
     public class GoogleFirebaseAppcheckV1betaRecaptchaConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Specifies a minimum score required for a reCAPTCHA token to be considered valid. If its score is greater
+        /// than or equal to this value, it will be accepted; otherwise, it will be rejected. The value must be between
+        /// 0.0 and 1.0. The default value is 0.5.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minValidScore")]
+        public virtual System.Nullable<float> MinValidScore { get; set; }
+
+        /// <summary>
         /// Required. The relative resource name of the reCAPTCHA v3 configuration object, in the format:
         /// ```
         /// projects/{project_number}/apps/{app_id}/recaptchaConfig
@@ -5650,6 +5772,16 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Specifies risk tolerance and requirements for your application. These settings correspond to requirements on
+        /// the
+        /// [**`riskAnalysis`**](https://cloud.google.com/recaptcha/docs/interpret-assessment-website#interpret_assessment)
+        /// tuple in the assessment obtained from reCAPTCHA Enterprise. The default values for these settings work for
+        /// most apps, and are recommended.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("riskAnalysis")]
+        public virtual GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigRiskAnalysis RiskAnalysis { get; set; }
+
+        /// <summary>
         /// The score-based site key [created in reCAPTCHA
         /// Enterprise](https://cloud.google.com/recaptcha-enterprise/docs/create-key#creating_a_site_key) used to
         /// [invoke reCAPTCHA and generate the reCAPTCHA
@@ -5672,12 +5804,41 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
     }
 
     /// <summary>
+    /// A settings object specifying risk tolerance and requirements for your application. These settings correspond to
+    /// requirements on the
+    /// [**`riskAnalysis`**](https://cloud.google.com/recaptcha/docs/interpret-assessment-website#interpret_assessment)
+    /// tuple in the assessment obtained from reCAPTCHA Enterprise. The default values for these settings work for most
+    /// apps, and are recommended.
+    /// </summary>
+    public class GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigRiskAnalysis : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies a minimum score required for a reCAPTCHA token to be considered valid. If its score is greater
+        /// than or equal to this value, it will be accepted; otherwise, it will be rejected. The value must be between
+        /// 0.0 and 1.0. The default value is 0.5.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minValidScore")]
+        public virtual System.Nullable<float> MinValidScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// An app's reCAPTCHA v3 configuration object. This configuration is used by ExchangeRecaptchaV3Token to validate
     /// reCAPTCHA tokens issued to apps by reCAPTCHA v3. It also controls certain properties of the returned
     /// `AppCheckToken`, such as its ttl.
     /// </summary>
     public class GoogleFirebaseAppcheckV1betaRecaptchaV3Config : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Specifies a minimum score required for a reCAPTCHA token to be considered valid. If its score is greater
+        /// than or equal to this value, it will be accepted; otherwise, it will be rejected. The value must be between
+        /// 0.0 and 1.0. The default value is 0.5.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minValidScore")]
+        public virtual System.Nullable<float> MinValidScore { get; set; }
+
         /// <summary>
         /// Required. The relative resource name of the reCAPTCHA v3 configuration object, in the format:
         /// ```
