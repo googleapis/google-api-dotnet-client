@@ -2912,6 +2912,17 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         public virtual string Dataset { get; set; }
 
         /// <summary>
+        /// Output only. Server-owned effective state of replicas. Contains both primary and secondary replicas. Each
+        /// replica includes a system-computed (output-only) state and primary designation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveReplicas")]
+        public virtual System.Collections.Generic.IList<Replica> EffectiveReplicas { get; set; }
+
+        /// <summary>Optional. A list of regions where the publisher has created shared dataset replicas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaLocations")]
+        public virtual System.Collections.Generic.IList<string> ReplicaLocations { get; set; }
+
+        /// <summary>
         /// Optional. If set, restricted export policy will be propagated and enforced on the linked dataset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedExportPolicy")]
@@ -3259,6 +3270,13 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
+
+        /// <summary>
+        /// Optional. The geographic locations where the dataset should be replicated. See [BigQuery
+        /// locations](https://cloud.google.com/bigquery/docs/locations) for supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaLocations")]
+        public virtual System.Collections.Generic.IList<string> ReplicaLocations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4380,6 +4398,31 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// <summary>The refreshed subscription resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual Subscription Subscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the state of a replica of a shared dataset. It includes the geographic location of the replica and
+    /// system-computed, output-only fields indicating its replication state and whether it is the primary replica.
+    /// </summary>
+    public class Replica : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The geographic location where the replica resides. See [BigQuery
+        /// locations](https://cloud.google.com/bigquery/docs/locations) for supported locations. Eg. "us-central1".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Output only. Indicates that this replica is the primary replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryState")]
+        public virtual string PrimaryState { get; set; }
+
+        /// <summary>Output only. Assigned by Analytics Hub based on real BigQuery replication state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaState")]
+        public virtual string ReplicaState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
