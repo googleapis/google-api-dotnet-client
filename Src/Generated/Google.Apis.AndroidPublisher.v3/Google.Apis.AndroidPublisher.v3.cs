@@ -12339,6 +12339,83 @@ namespace Google.Apis.AndroidPublisher.v3
                 this.service = service;
             }
 
+            /// <summary>Cancel a subscription purchase for the user.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">
+            /// Required. The package of the application for which this subscription was purchased (for example,
+            /// 'com.some.thing').
+            /// </param>
+            /// <param name="token">
+            /// Required. The token provided to the user's device when the subscription was purchased.
+            /// </param>
+            public virtual CancelRequest Cancel(Google.Apis.AndroidPublisher.v3.Data.CancelSubscriptionPurchaseRequest body, string packageName, string token)
+            {
+                return new CancelRequest(this.service, body, packageName, token);
+            }
+
+            /// <summary>Cancel a subscription purchase for the user.</summary>
+            public class CancelRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.CancelSubscriptionPurchaseResponse>
+            {
+                /// <summary>Constructs a new Cancel request.</summary>
+                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.CancelSubscriptionPurchaseRequest body, string packageName, string token) : base(service)
+                {
+                    PackageName = packageName;
+                    Token = token;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The package of the application for which this subscription was purchased (for example,
+                /// 'com.some.thing').
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>
+                /// Required. The token provided to the user's device when the subscription was purchased.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Token { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.CancelSubscriptionPurchaseRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "cancel";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:cancel";
+
+                /// <summary>Initializes Cancel parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Get metadata about a subscription</summary>
             /// <param name="packageName">
             /// The package of the application for which this subscription was purchased (for example,
@@ -14309,6 +14386,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priceChangeDetails")]
         public virtual SubscriptionItemPriceChangeDetails PriceChangeDetails { get; set; }
 
+        /// <summary>The information of the latest price step-up consent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceStepUpConsentDetails")]
+        public virtual PriceStepUpConsentDetails PriceStepUpConsentDetails { get; set; }
+
         /// <summary>
         /// The current recurring price of the auto renewing plan. Note that the price does not take into account
         /// discounts and does not include taxes for tax-exclusive pricing, please call orders.get API instead if
@@ -14830,6 +14911,24 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for the purchases.subscriptionsv2.cancel API.</summary>
+    public class CancelSubscriptionPurchaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Additional details around the subscription revocation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancellationContext")]
+        public virtual CancellationContext CancellationContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the purchases.subscriptionsv2.cancel API.</summary>
+    public class CancelSubscriptionPurchaseResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Result of the cancel survey when the subscription was canceled by the user.</summary>
     public class CancelSurveyResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14867,6 +14966,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Subscription was canceled by user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInitiatedCancellation")]
         public virtual UserInitiatedCancellation UserInitiatedCancellation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cancellation context of the purchases.subscriptionsv2.cancel API.</summary>
+    public class CancellationContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The type of cancellation for the purchased subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancellationType")]
+        public virtual string CancellationType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18258,6 +18368,63 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Price in 1/million of the currency base unit, represented as a string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceMicros")]
         public virtual string PriceMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information related to a price step-up that requires user consent.</summary>
+    public class PriceStepUpConsentDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _consentDeadlineTimeRaw;
+
+        private object _consentDeadlineTime;
+
+        /// <summary>
+        /// The deadline by which the user must provide consent. If consent is not provided by this time, the
+        /// subscription will be canceled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentDeadlineTime")]
+        public virtual string ConsentDeadlineTimeRaw
+        {
+            get => _consentDeadlineTimeRaw;
+            set
+            {
+                _consentDeadlineTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _consentDeadlineTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ConsentDeadlineTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ConsentDeadlineTimeDateTimeOffset instead.")]
+        public virtual object ConsentDeadlineTime
+        {
+            get => _consentDeadlineTime;
+            set
+            {
+                _consentDeadlineTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _consentDeadlineTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ConsentDeadlineTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ConsentDeadlineTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ConsentDeadlineTimeRaw);
+            set => ConsentDeadlineTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The new price which requires user consent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newPrice")]
+        public virtual Money NewPrice { get; set; }
+
+        /// <summary>Output only. The state of the price step-up consent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
