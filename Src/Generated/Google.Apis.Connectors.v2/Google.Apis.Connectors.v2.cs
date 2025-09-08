@@ -3236,6 +3236,10 @@ namespace Google.Apis.Connectors.v2.Data
     /// <summary>Message representing a single tool.</summary>
     public class Tool : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>List of tool names that this tool depends on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependsOn")]
+        public virtual System.Collections.Generic.IList<string> DependsOn { get; set; }
+
         /// <summary>Description of the tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
