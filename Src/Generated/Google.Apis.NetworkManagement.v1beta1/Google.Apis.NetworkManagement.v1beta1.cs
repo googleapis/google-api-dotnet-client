@@ -3870,6 +3870,25 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>For display only. Metadata associated with a hybrid subnet.</summary>
+    public class HybridSubnetInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of a hybrid subnet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Name of a Google Cloud region where the hybrid subnet is configured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>URI of a hybrid subnet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>For display only. Metadata associated with a Compute Engine instance.</summary>
     public class InstanceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3938,9 +3957,17 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectUri")]
         public virtual string InterconnectUri { get; set; }
 
+        /// <summary>Appliance IP address that was matched for L2_DEDICATED attachments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("l2AttachmentMatchedIpAddress")]
+        public virtual string L2AttachmentMatchedIpAddress { get; set; }
+
         /// <summary>Name of a Google Cloud region where the Interconnect attachment is configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
+
+        /// <summary>The type of interconnect attachment this is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>URI of an Interconnect attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
@@ -5114,6 +5141,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>Display information of a Google service</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleService")]
         public virtual GoogleServiceInfo GoogleService { get; set; }
+
+        /// <summary>Display information of a hybrid subnet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridSubnet")]
+        public virtual HybridSubnetInfo HybridSubnet { get; set; }
 
         /// <summary>Display information of a Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
