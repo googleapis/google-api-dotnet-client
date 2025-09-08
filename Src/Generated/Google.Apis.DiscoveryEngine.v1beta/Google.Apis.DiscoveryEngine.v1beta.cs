@@ -28197,6 +28197,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Errors { get; set; }
 
         /// <summary>
+        /// Optional. Any params and credentials used specifically for hybrid connectors supporting FEDERATED mode. This
+        /// field should only be set if the connector is a hybrid connector and we want to enable FEDERATED mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("federatedConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig FederatedConfig { get; set; }
+
+        /// <summary>
         /// Optional. If the connector is a hybrid connector, determines whether ingestion is enabled and appropriate
         /// resources are provisioned during connector creation. If the connector is not a hybrid connector, this field
         /// is ignored.
@@ -28389,6 +28396,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("refreshInterval")]
         public virtual object RefreshInterval { get; set; }
 
+        /// <summary>
+        /// Optional. Specifies keys to be removed from the 'params' field. This is only active when 'params' is
+        /// included in the 'update_mask' in an UpdateDataConnectorRequest. Deletion takes precedence if a key is both
+        /// in 'remove_param_keys' and present in the 'params' field of the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeParamKeys")]
+        public virtual System.Collections.Generic.IList<string> RemoveParamKeys { get; set; }
+
         /// <summary>Output only. State of the connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -28460,6 +28475,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Optional. The tenant project the connector is connected to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
         public virtual GoogleCloudDiscoveryengineV1alphaTenant Tenant { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Any params and credentials used specifically for hybrid connectors supporting FEDERATED mode.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Any additional parameters needed for FEDERATED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalParams")]
+        public virtual System.Collections.Generic.IDictionary<string, object> AdditionalParams { get; set; }
+
+        /// <summary>Optional. Any authentication parameters specific to FEDERATED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authParams")]
+        public virtual System.Collections.Generic.IDictionary<string, object> AuthParams { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
