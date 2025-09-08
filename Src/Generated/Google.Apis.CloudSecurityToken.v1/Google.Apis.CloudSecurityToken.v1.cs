@@ -554,7 +554,14 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// Google-issued OAuth 2.0 access token with this field to obtain an access token with new security attributes
         /// applied, such as a Credential Access Boundary. In this case, set `subject_token_type` to
         /// `urn:ietf:params:oauth:token-type:access_token`. If an access token already contains security attributes,
-        /// you cannot apply additional security attributes.
+        /// you cannot apply additional security attributes. If the request is for X.509 certificate-based
+        /// authentication, the `subject_token` must be a JSON-formatted list of X.509 certificates in DER format, as
+        /// defined in [RFC 7515](https://www.rfc-editor.org/rfc/rfc7515#section-4.1.6). `subject_token_type` must be
+        /// `urn:ietf:params:oauth:token-type:mtls`. The following example shows a JSON-formatted list of X.509
+        /// certificate in DER format:
+        /// ```
+        /// [\"MIIEYDCCA0i...\", \"MCIFFGAGTT0...\"]
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectToken")]
         public virtual string SubjectToken { get; set; }
@@ -562,8 +569,8 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// <summary>
         /// Required. An identifier that indicates the type of the security token in the `subject_token` parameter.
         /// Supported values are `urn:ietf:params:oauth:token-type:jwt`, `urn:ietf:params:oauth:token-type:id_token`,
-        /// `urn:ietf:params:aws:token-type:aws4_request`, `urn:ietf:params:oauth:token-type:access_token`, and
-        /// `urn:ietf:params:oauth:token-type:saml2`.
+        /// `urn:ietf:params:aws:token-type:aws4_request`, `urn:ietf:params:oauth:token-type:access_token`,
+        /// `urn:ietf:params:oauth:token-type:mtls`, and `urn:ietf:params:oauth:token-type:saml2`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectTokenType")]
         public virtual string SubjectTokenType { get; set; }
