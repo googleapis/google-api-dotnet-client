@@ -2345,7 +2345,10 @@ namespace Google.Apis.Drive.v3
             this.service = service;
         }
 
-        /// <summary>Creates a copy of a file and applies any requested updates with patch semantics.</summary>
+        /// <summary>
+        /// Creates a copy of a file and applies any requested updates with patch semantics. For more information, see
+        /// [Create and manage files](https://developers.google.com/workspace/drive/api/guides/create-file).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         public virtual CopyRequest Copy(Google.Apis.Drive.v3.Data.File body, string fileId)
@@ -2353,7 +2356,10 @@ namespace Google.Apis.Drive.v3
             return new CopyRequest(this.service, body, fileId);
         }
 
-        /// <summary>Creates a copy of a file and applies any requested updates with patch semantics.</summary>
+        /// <summary>
+        /// Creates a copy of a file and applies any requested updates with patch semantics. For more information, see
+        /// [Create and manage files](https://developers.google.com/workspace/drive/api/guides/create-file).
+        /// </summary>
         public class CopyRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.File>
         {
             /// <summary>Constructs a new Copy request.</summary>
@@ -2369,7 +2375,7 @@ namespace Google.Apis.Drive.v3
             public virtual string FileId { get; private set; }
 
             /// <summary>
-            /// Deprecated. Copying files into multiple folders is no longer supported. Use shortcuts instead.
+            /// Deprecated: Copying files into multiple folders is no longer supported. Use shortcuts instead.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
@@ -2389,13 +2395,13 @@ namespace Google.Apis.Drive.v3
             public virtual string IncludeLabels { get; set; }
 
             /// <summary>
-            /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
+            /// Specifies which additional view's permissions to include in the response. Only `published` is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string IncludePermissionsForView { get; set; }
 
             /// <summary>
-            /// Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with
+            /// Whether to set the `keepForever` field in the new head revision. This is only applicable to files with
             /// binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is
             /// reached, try deleting pinned revisions.
             /// </summary>
@@ -2509,18 +2515,20 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        ///  Creates a new file. This method supports an */upload* URI and accepts uploaded media with the following
-        /// characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid
-        /// MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid
-        /// MIME type can be uploaded. For more information on uploading files, see [Upload file
-        /// data](/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.create` must specify
-        /// the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `name`
-        /// property when inserting files with the API. For example, an operation to insert a JPEG file should specify
-        /// something like `"name": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only
-        /// `fileExtension` property populated with the extension originally specified in the `title` property. When a
-        /// Google Drive user requests to download a file, or when the file is downloaded through the sync client, Drive
-        /// builds a full filename (with extension) based on the title. In cases where the extension is missing, Drive
-        /// attempts to determine the extension based on the file's MIME type.
+        ///  Creates a file. For more information, see [Create and manage
+        /// files](/workspace/drive/api/guides/create-file). This method supports an */upload* URI and accepts uploaded
+        /// media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*
+        /// `*/*` (Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to
+        /// indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and Google
+        /// Drive supported MIME types](/workspace/drive/api/guides/mime-types).) For more information on uploading
+        /// files, see [Upload file data](/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with the
+        /// `create` method must specify the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a
+        /// file extension in the `name` property when inserting files with the API. For example, an operation to insert
+        /// a JPEG file should specify something like `"name": "cat.jpg"` in the metadata. Subsequent `GET` requests
+        /// include the read-only `fileExtension` property populated with the extension originally specified in the
+        /// `name` property. When a Google Drive user requests to download a file, or when the file is downloaded
+        /// through the sync client, Drive builds a full filename (with extension) based on the name. In cases where the
+        /// extension is missing, Drive attempts to determine the extension based on the file's MIME type.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Drive.v3.Data.File body)
@@ -2529,18 +2537,20 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        ///  Creates a new file. This method supports an */upload* URI and accepts uploaded media with the following
-        /// characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid
-        /// MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid
-        /// MIME type can be uploaded. For more information on uploading files, see [Upload file
-        /// data](/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.create` must specify
-        /// the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `name`
-        /// property when inserting files with the API. For example, an operation to insert a JPEG file should specify
-        /// something like `"name": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only
-        /// `fileExtension` property populated with the extension originally specified in the `title` property. When a
-        /// Google Drive user requests to download a file, or when the file is downloaded through the sync client, Drive
-        /// builds a full filename (with extension) based on the title. In cases where the extension is missing, Drive
-        /// attempts to determine the extension based on the file's MIME type.
+        ///  Creates a file. For more information, see [Create and manage
+        /// files](/workspace/drive/api/guides/create-file). This method supports an */upload* URI and accepts uploaded
+        /// media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*
+        /// `*/*` (Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to
+        /// indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and Google
+        /// Drive supported MIME types](/workspace/drive/api/guides/mime-types).) For more information on uploading
+        /// files, see [Upload file data](/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with the
+        /// `create` method must specify the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a
+        /// file extension in the `name` property when inserting files with the API. For example, an operation to insert
+        /// a JPEG file should specify something like `"name": "cat.jpg"` in the metadata. Subsequent `GET` requests
+        /// include the read-only `fileExtension` property populated with the extension originally specified in the
+        /// `name` property. When a Google Drive user requests to download a file, or when the file is downloaded
+        /// through the sync client, Drive builds a full filename (with extension) based on the name. In cases where the
+        /// extension is missing, Drive attempts to determine the extension based on the file's MIME type.
         /// </summary>
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.File>
         {
@@ -2551,7 +2561,7 @@ namespace Google.Apis.Drive.v3
                 InitParameters();
             }
 
-            /// <summary>Deprecated. Creating files in multiple folders is no longer supported.</summary>
+            /// <summary>Deprecated: Creating files in multiple folders is no longer supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -2570,13 +2580,13 @@ namespace Google.Apis.Drive.v3
             public virtual string IncludeLabels { get; set; }
 
             /// <summary>
-            /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
+            /// Specifies which additional view's permissions to include in the response. Only `published` is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string IncludePermissionsForView { get; set; }
 
             /// <summary>
-            /// Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with
+            /// Whether to set the `keepForever` field in the new head revision. This is only applicable to files with
             /// binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is
             /// reached, try deleting pinned revisions.
             /// </summary>
@@ -2694,18 +2704,20 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        ///  Creates a new file. This method supports an */upload* URI and accepts uploaded media with the following
-        /// characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid
-        /// MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid
-        /// MIME type can be uploaded. For more information on uploading files, see [Upload file
-        /// data](/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.create` must specify
-        /// the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `name`
-        /// property when inserting files with the API. For example, an operation to insert a JPEG file should specify
-        /// something like `"name": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only
-        /// `fileExtension` property populated with the extension originally specified in the `title` property. When a
-        /// Google Drive user requests to download a file, or when the file is downloaded through the sync client, Drive
-        /// builds a full filename (with extension) based on the title. In cases where the extension is missing, Drive
-        /// attempts to determine the extension based on the file's MIME type.
+        ///  Creates a file. For more information, see [Create and manage
+        /// files](/workspace/drive/api/guides/create-file). This method supports an */upload* URI and accepts uploaded
+        /// media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*
+        /// `*/*` (Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to
+        /// indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and Google
+        /// Drive supported MIME types](/workspace/drive/api/guides/mime-types).) For more information on uploading
+        /// files, see [Upload file data](/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with the
+        /// `create` method must specify the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a
+        /// file extension in the `name` property when inserting files with the API. For example, an operation to insert
+        /// a JPEG file should specify something like `"name": "cat.jpg"` in the metadata. Subsequent `GET` requests
+        /// include the read-only `fileExtension` property populated with the extension originally specified in the
+        /// `name` property. When a Google Drive user requests to download a file, or when the file is downloaded
+        /// through the sync client, Drive builds a full filename (with extension) based on the name. In cases where the
+        /// extension is missing, Drive attempts to determine the extension based on the file's MIME type.
         /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
@@ -2813,7 +2825,7 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UploadProtocol { get; set; }
 
-            /// <summary>Deprecated. Creating files in multiple folders is no longer supported.</summary>
+            /// <summary>Deprecated: Creating files in multiple folders is no longer supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -2832,13 +2844,13 @@ namespace Google.Apis.Drive.v3
             public virtual string IncludeLabels { get; set; }
 
             /// <summary>
-            /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
+            /// Specifies which additional view's permissions to include in the response. Only `published` is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string IncludePermissionsForView { get; set; }
 
             /// <summary>
-            /// Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with
+            /// Whether to set the `keepForever` field in the new head revision. This is only applicable to files with
             /// binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is
             /// reached, try deleting pinned revisions.
             /// </summary>
@@ -2888,9 +2900,10 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to a shared
-        /// drive, the user must be an `organizer` on the parent folder. If the target is a folder, all descendants
-        /// owned by the user are also deleted.
+        /// Permanently deletes a file owned by the user without moving it to the trash. For more information, see
+        /// [Trash or delete files and folders](https://developers.google.com/workspace/drive/api/guides/delete). If the
+        /// file belongs to a shared drive, the user must be an `organizer` on the parent folder. If the target is a
+        /// folder, all descendants owned by the user are also deleted.
         /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         public virtual DeleteRequest Delete(string fileId)
@@ -2899,9 +2912,10 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to a shared
-        /// drive, the user must be an `organizer` on the parent folder. If the target is a folder, all descendants
-        /// owned by the user are also deleted.
+        /// Permanently deletes a file owned by the user without moving it to the trash. For more information, see
+        /// [Trash or delete files and folders](https://developers.google.com/workspace/drive/api/guides/delete). If the
+        /// file belongs to a shared drive, the user must be an `organizer` on the parent folder. If the target is a
+        /// folder, all descendants owned by the user are also deleted.
         /// </summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
@@ -2917,8 +2931,8 @@ namespace Google.Apis.Drive.v3
             public virtual string FileId { get; private set; }
 
             /// <summary>
-            /// Deprecated: If an item is not in a shared drive and its last parent is deleted but the item itself is
-            /// not, the item will be placed under its owner's root.
+            /// Deprecated: If an item isn't in a shared drive and its last parent is deleted but the item itself isn't,
+            /// the item will be placed under its owner's root.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
@@ -2979,14 +2993,22 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Downloads content of a file. Operations are valid for 24 hours from the time of creation.</summary>
+        /// <summary>
+        /// Downloads the content of a file. For more information, see [Download and export
+        /// files](https://developers.google.com/workspace/drive/api/guides/manage-downloads). Operations are valid for
+        /// 24 hours from the time of creation.
+        /// </summary>
         /// <param name="fileId">Required. The ID of the file to download.</param>
         public virtual DownloadRequest Download(string fileId)
         {
             return new DownloadRequest(this.service, fileId);
         }
 
-        /// <summary>Downloads content of a file. Operations are valid for 24 hours from the time of creation.</summary>
+        /// <summary>
+        /// Downloads the content of a file. For more information, see [Download and export
+        /// files](https://developers.google.com/workspace/drive/api/guides/manage-downloads). Operations are valid for
+        /// 24 hours from the time of creation.
+        /// </summary>
         public class DownloadRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Operation>
         {
             /// <summary>Constructs a new Download request.</summary>
@@ -3002,10 +3024,9 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>
             /// Optional. The MIME type the file should be downloaded as. This field can only be set when downloading
-            /// Google Workspace documents. See [Export MIME types for Google Workspace
-            /// documents](/drive/api/guides/ref-export-formats) for the list of supported MIME types. If not set, a
-            /// Google Workspace document is downloaded with a default MIME type. The default MIME type might change in
-            /// the future.
+            /// Google Workspace documents. For a list of supported MIME types, see [Export MIME types for Google
+            /// Workspace documents](/workspace/drive/api/guides/ref-export-formats). If not set, a Google Workspace
+            /// document is downloaded with a default MIME type. The default MIME type might change in the future.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("mimeType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string MimeType { get; set; }
@@ -3058,13 +3079,19 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Permanently deletes all of the user's trashed files.</summary>
+        /// <summary>
+        /// Permanently deletes all of the user's trashed files. For more information, see [Trash or delete files and
+        /// folders](https://developers.google.com/workspace/drive/api/guides/delete).
+        /// </summary>
         public virtual EmptyTrashRequest EmptyTrash()
         {
             return new EmptyTrashRequest(this.service);
         }
 
-        /// <summary>Permanently deletes all of the user's trashed files.</summary>
+        /// <summary>
+        /// Permanently deletes all of the user's trashed files. For more information, see [Trash or delete files and
+        /// folders](https://developers.google.com/workspace/drive/api/guides/delete).
+        /// </summary>
         public class EmptyTrashRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new EmptyTrash request.</summary>
@@ -3078,8 +3105,8 @@ namespace Google.Apis.Drive.v3
             public virtual string DriveId { get; set; }
 
             /// <summary>
-            /// Deprecated: If an item is not in a shared drive and its last parent is deleted but the item itself is
-            /// not, the item will be placed under its owner's root.
+            /// Deprecated: If an item isn't in a shared drive and its last parent is deleted but the item itself isn't,
+            /// the item will be placed under its owner's root.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
@@ -3117,19 +3144,26 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Exports a Google Workspace document to the requested MIME type and returns exported byte content. Note that
-        /// the exported content is limited to 10MB.
+        /// Exports a Google Workspace document to the requested MIME type and returns exported byte content. For more
+        /// information, see [Download and export
+        /// files](https://developers.google.com/workspace/drive/api/guides/manage-downloads). Note that the exported
+        /// content is limited to 10 MB.
         /// </summary>
         /// <param name="fileId">The ID of the file.</param>
-        /// <param name="mimeType">Required. The MIME type of the format requested for this export.</param>
+        /// <param name="mimeType">
+        /// Required. The MIME type of the format requested for this export. For a list of supported MIME types, see
+        /// [Export MIME types for Google Workspace documents](/workspace/drive/api/guides/ref-export-formats).
+        /// </param>
         public virtual ExportRequest Export(string fileId, string mimeType)
         {
             return new ExportRequest(this.service, fileId, mimeType);
         }
 
         /// <summary>
-        /// Exports a Google Workspace document to the requested MIME type and returns exported byte content. Note that
-        /// the exported content is limited to 10MB.
+        /// Exports a Google Workspace document to the requested MIME type and returns exported byte content. For more
+        /// information, see [Download and export
+        /// files](https://developers.google.com/workspace/drive/api/guides/manage-downloads). Note that the exported
+        /// content is limited to 10 MB.
         /// </summary>
         public class ExportRequest : DriveBaseServiceRequest<string>
         {
@@ -3146,7 +3180,10 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>Required. The MIME type of the format requested for this export.</summary>
+            /// <summary>
+            /// Required. The MIME type of the format requested for this export. For a list of supported MIME types, see
+            /// [Export MIME types for Google Workspace documents](/workspace/drive/api/guides/ref-export-formats).
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("mimeType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string MimeType { get; private set; }
 
@@ -3267,13 +3304,19 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Generates a set of file IDs which can be provided in create or copy requests.</summary>
+        /// <summary>
+        /// Generates a set of file IDs which can be provided in create or copy requests. For more information, see
+        /// [Create and manage files](https://developers.google.com/workspace/drive/api/guides/create-file).
+        /// </summary>
         public virtual GenerateIdsRequest GenerateIds()
         {
             return new GenerateIdsRequest(this.service);
         }
 
-        /// <summary>Generates a set of file IDs which can be provided in create or copy requests.</summary>
+        /// <summary>
+        /// Generates a set of file IDs which can be provided in create or copy requests. For more information, see
+        /// [Create and manage files](https://developers.google.com/workspace/drive/api/guides/create-file).
+        /// </summary>
         public class GenerateIdsRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.GeneratedIds>
         {
             /// <summary>Constructs a new GenerateIds request.</summary>
@@ -3287,15 +3330,18 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<int> Count { get; set; }
 
             /// <summary>
-            /// The space in which the IDs can be used to create new files. Supported values are 'drive' and
-            /// 'appDataFolder'. (Default: 'drive')
+            /// The space in which the IDs can be used to create files. Supported values are `drive` and
+            /// `appDataFolder`. (Default: `drive`.) For more information, see [File
+            /// organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("space", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Space { get; set; }
 
             /// <summary>
-            /// The type of items which the IDs can be used for. Supported values are 'files' and 'shortcuts'. Note that
-            /// 'shortcuts' are only supported in the `drive` 'space'. (Default: 'files')
+            /// The type of items which the IDs can be used for. Supported values are `files` and `shortcuts`. Note that
+            /// `shortcuts` are only supported in the `drive` `space`. (Default: `files`.) For more information, see
+            /// [File
+            /// organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Type { get; set; }
@@ -3341,11 +3387,12 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        ///  Gets a file's metadata or content by ID. If you provide the URL parameter `alt=media`, then the response
-        /// includes the file contents in the response body. Downloading content with `alt=media` only works if the file
-        /// is stored in Drive. To download Google Docs, Sheets, and Slides use
+        ///  Gets a file's metadata or content by ID. For more information, see [Search for files and
+        /// folders](/workspace/drive/api/guides/search-files). If you provide the URL parameter `alt=media`, then the
+        /// response includes the file contents in the response body. Downloading content with `alt=media` only works if
+        /// the file is stored in Drive. To download Google Docs, Sheets, and Slides use
         /// [`files.export`](/workspace/drive/api/reference/rest/v3/files/export) instead. For more information, see
-        /// [Download &amp;amp; export files](/workspace/drive/api/guides/manage-downloads).
+        /// [Download and export files](/workspace/drive/api/guides/manage-downloads).
         /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         public virtual GetRequest Get(string fileId)
@@ -3354,11 +3401,12 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        ///  Gets a file's metadata or content by ID. If you provide the URL parameter `alt=media`, then the response
-        /// includes the file contents in the response body. Downloading content with `alt=media` only works if the file
-        /// is stored in Drive. To download Google Docs, Sheets, and Slides use
+        ///  Gets a file's metadata or content by ID. For more information, see [Search for files and
+        /// folders](/workspace/drive/api/guides/search-files). If you provide the URL parameter `alt=media`, then the
+        /// response includes the file contents in the response body. Downloading content with `alt=media` only works if
+        /// the file is stored in Drive. To download Google Docs, Sheets, and Slides use
         /// [`files.export`](/workspace/drive/api/reference/rest/v3/files/export) instead. For more information, see
-        /// [Download &amp;amp; export files](/workspace/drive/api/guides/manage-downloads).
+        /// [Download and export files](/workspace/drive/api/guides/manage-downloads).
         /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.File>
         {
@@ -3389,7 +3437,7 @@ namespace Google.Apis.Drive.v3
             public virtual string IncludeLabels { get; set; }
 
             /// <summary>
-            /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
+            /// Specifies which additional view's permissions to include in the response. Only `published` is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string IncludePermissionsForView { get; set; }
@@ -3552,11 +3600,11 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        ///  Lists the user's files. This method accepts the `q` parameter, which is a search query combining one or
-        /// more search terms. For more information, see the [Search for files &amp;amp;
-        /// folders](/workspace/drive/api/guides/search-files) guide. *Note:* This method returns *all* files by
-        /// default, including trashed files. If you don't want trashed files to appear in the list, use the
-        /// `trashed=false` query parameter to remove trashed files from the results.
+        ///  Lists the user's files. For more information, see [Search for files and
+        /// folders](/workspace/drive/api/guides/search-files). This method accepts the `q` parameter, which is a search
+        /// query combining one or more search terms. This method returns *all* files by default, including trashed
+        /// files. If you don't want trashed files to appear in the list, use the `trashed=false` query parameter to
+        /// remove trashed files from the results.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -3564,11 +3612,11 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        ///  Lists the user's files. This method accepts the `q` parameter, which is a search query combining one or
-        /// more search terms. For more information, see the [Search for files &amp;amp;
-        /// folders](/workspace/drive/api/guides/search-files) guide. *Note:* This method returns *all* files by
-        /// default, including trashed files. If you don't want trashed files to appear in the list, use the
-        /// `trashed=false` query parameter to remove trashed files from the results.
+        ///  Lists the user's files. For more information, see [Search for files and
+        /// folders](/workspace/drive/api/guides/search-files). This method accepts the `q` parameter, which is a search
+        /// query combining one or more search terms. This method returns *all* files by default, including trashed
+        /// files. If you don't want trashed files to appear in the list, use the `trashed=false` query parameter to
+        /// remove trashed files from the results.
         /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.FileList>
         {
@@ -3579,18 +3627,20 @@ namespace Google.Apis.Drive.v3
             }
 
             /// <summary>
-            /// Bodies of items (files/documents) to which the query applies. Supported bodies are 'user', 'domain',
-            /// 'drive', and 'allDrives'. Prefer 'user' or 'drive' to 'allDrives' for efficiency. By default, corpora is
-            /// set to 'user'. However, this can change depending on the filter set through the 'q' parameter.
+            /// Bodies of items (files or documents) to which the query applies. Supported bodies are: * `user` *
+            /// `domain` * `drive` * `allDrives` Prefer `user` or `drive` to `allDrives` for efficiency. By default,
+            /// corpora is set to `user`. However, this can change depending on the filter set through the `q`
+            /// parameter. For more information, see [File
+            /// organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("corpora", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Corpora { get; set; }
 
-            /// <summary>Deprecated: The source of files to list. Use 'corpora' instead.</summary>
+            /// <summary>Deprecated: The source of files to list. Use `corpora` instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("corpus", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<CorpusEnum> Corpus { get; set; }
 
-            /// <summary>Deprecated: The source of files to list. Use 'corpora' instead.</summary>
+            /// <summary>Deprecated: The source of files to list. Use `corpora` instead.</summary>
             public enum CorpusEnum
             {
                 /// <summary>Files shared to the user's domain.</summary>
@@ -3617,7 +3667,7 @@ namespace Google.Apis.Drive.v3
             public virtual string IncludeLabels { get; set; }
 
             /// <summary>
-            /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
+            /// Specifies which additional view's permissions to include in the response. Only `published` is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string IncludePermissionsForView { get; set; }
@@ -3636,7 +3686,7 @@ namespace Google.Apis.Drive.v3
             /// recent timestamp from the file's date-time fields. * `sharedWithMeTime`: When the file was shared with
             /// the user, if applicable. * `starred`: Whether the user has starred the file. * `viewedByMeTime`: The
             /// last time the file was viewed by the user. Each key sorts ascending by default, but can be reversed with
-            /// the 'desc' modifier. Example usage: `?orderBy=folder,modifiedTime desc,name`.
+            /// the `desc` modifier. Example usage: `?orderBy=folder,modifiedTime desc,name`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
@@ -3650,21 +3700,22 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>
             /// The token for continuing a previous list request on the next page. This should be set to the value of
-            /// 'nextPageToken' from the previous response.
+            /// `nextPageToken` from the previous response.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// A query for filtering the file results. See the "Search for files &amp;amp; folders" guide for supported
-            /// syntax.
+            /// A query for filtering the file results. For supported syntax, see [Search for files and
+            /// folders](/workspace/drive/api/guides/search-files).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Q { get; set; }
 
             /// <summary>
-            /// A comma-separated list of spaces to query within the corpora. Supported values are 'drive' and
-            /// 'appDataFolder'.
+            /// A comma-separated list of spaces to query within the corpora. Supported values are `drive` and
+            /// `appDataFolder`. For more information, see [File
+            /// organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
@@ -3817,14 +3868,20 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Lists the labels on a file.</summary>
+        /// <summary>
+        /// Lists the labels on a file. For more information, see [List labels on a
+        /// file](https://developers.google.com/workspace/drive/api/guides/list-labels).
+        /// </summary>
         /// <param name="fileId">The ID for the file.</param>
         public virtual ListLabelsRequest ListLabels(string fileId)
         {
             return new ListLabelsRequest(this.service, fileId);
         }
 
-        /// <summary>Lists the labels on a file.</summary>
+        /// <summary>
+        /// Lists the labels on a file. For more information, see [List labels on a
+        /// file](https://developers.google.com/workspace/drive/api/guides/list-labels).
+        /// </summary>
         public class ListLabelsRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.LabelList>
         {
             /// <summary>Constructs a new ListLabels request.</summary>
@@ -3844,7 +3901,7 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>
             /// The token for continuing a previous list request on the next page. This should be set to the value of
-            /// 'nextPageToken' from the previous response.
+            /// `nextPageToken` from the previous response.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -3890,7 +3947,9 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Modifies the set of labels applied to a file. Returns a list of the labels that were added or modified.
+        /// Modifies the set of labels applied to a file. For more information, see [Set a label field on a
+        /// file](https://developers.google.com/workspace/drive/api/guides/set-label). Returns a list of the labels that
+        /// were added or modified.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file to which the labels belong.</param>
@@ -3900,7 +3959,9 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Modifies the set of labels applied to a file. Returns a list of the labels that were added or modified.
+        /// Modifies the set of labels applied to a file. For more information, see [Set a label field on a
+        /// file](https://developers.google.com/workspace/drive/api/guides/set-label). Returns a list of the labels that
+        /// were added or modified.
         /// </summary>
         public class ModifyLabelsRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ModifyLabelsResponse>
         {
@@ -3947,13 +4008,14 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        ///  Updates a file's metadata and/or content. When calling this method, only populate fields in the request
+        ///  Updates a file's metadata, content, or both. When calling this method, only populate fields in the request
         /// that you want to modify. When updating fields, some fields might be changed automatically, such as
         /// `modifiedDate`. This method supports patch semantics. This method supports an */upload* URI and accepts
         /// uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
-        /// types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
-        /// used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see
-        /// [Upload file data](/workspace/drive/api/guides/manage-uploads).
+        /// types:* `*/*` (Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
+        /// used to indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and
+        /// Google Drive supported MIME types](/workspace/drive/api/guides/mime-types).) For more information on
+        /// uploading files, see [Upload file data](/workspace/drive/api/guides/manage-uploads).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
@@ -3963,13 +4025,14 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        ///  Updates a file's metadata and/or content. When calling this method, only populate fields in the request
+        ///  Updates a file's metadata, content, or both. When calling this method, only populate fields in the request
         /// that you want to modify. When updating fields, some fields might be changed automatically, such as
         /// `modifiedDate`. This method supports patch semantics. This method supports an */upload* URI and accepts
         /// uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
-        /// types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
-        /// used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see
-        /// [Upload file data](/workspace/drive/api/guides/manage-uploads).
+        /// types:* `*/*` (Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
+        /// used to indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and
+        /// Google Drive supported MIME types](/workspace/drive/api/guides/mime-types).) For more information on
+        /// uploading files, see [Upload file data](/workspace/drive/api/guides/manage-uploads).
         /// </summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.File>
         {
@@ -4002,13 +4065,13 @@ namespace Google.Apis.Drive.v3
             public virtual string IncludeLabels { get; set; }
 
             /// <summary>
-            /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
+            /// Specifies which additional view's permissions to include in the response. Only `published` is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string IncludePermissionsForView { get; set; }
 
             /// <summary>
-            /// Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with
+            /// Whether to set the `keepForever` field in the new head revision. This is only applicable to files with
             /// binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is
             /// reached, try deleting pinned revisions.
             /// </summary>
@@ -4146,13 +4209,14 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        ///  Updates a file's metadata and/or content. When calling this method, only populate fields in the request
+        ///  Updates a file's metadata, content, or both. When calling this method, only populate fields in the request
         /// that you want to modify. When updating fields, some fields might be changed automatically, such as
         /// `modifiedDate`. This method supports patch semantics. This method supports an */upload* URI and accepts
         /// uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
-        /// types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
-        /// used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see
-        /// [Upload file data](/workspace/drive/api/guides/manage-uploads).
+        /// types:* `*/*` (Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
+        /// used to indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and
+        /// Google Drive supported MIME types](/workspace/drive/api/guides/mime-types).) For more information on
+        /// uploading files, see [Upload file data](/workspace/drive/api/guides/manage-uploads).
         /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
@@ -4282,13 +4346,13 @@ namespace Google.Apis.Drive.v3
             public virtual string IncludeLabels { get; set; }
 
             /// <summary>
-            /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
+            /// Specifies which additional view's permissions to include in the response. Only `published` is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string IncludePermissionsForView { get; set; }
 
             /// <summary>
-            /// Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with
+            /// Whether to set the `keepForever` field in the new head revision. This is only applicable to files with
             /// binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is
             /// reached, try deleting pinned revisions.
             /// </summary>
@@ -4342,7 +4406,10 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Subscribes to changes to a file.</summary>
+        /// <summary>
+        /// Subscribes to changes to a file. For more information, see [Notifications for resource
+        /// changes](https://developers.google.com/workspace/drive/api/guides/push).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         public virtual WatchRequest Watch(Google.Apis.Drive.v3.Data.Channel body, string fileId)
@@ -4350,7 +4417,10 @@ namespace Google.Apis.Drive.v3
             return new WatchRequest(this.service, body, fileId);
         }
 
-        /// <summary>Subscribes to changes to a file.</summary>
+        /// <summary>
+        /// Subscribes to changes to a file. For more information, see [Notifications for resource
+        /// changes](https://developers.google.com/workspace/drive/api/guides/push).
+        /// </summary>
         public class WatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>
@@ -4380,7 +4450,7 @@ namespace Google.Apis.Drive.v3
             public virtual string IncludeLabels { get; set; }
 
             /// <summary>
-            /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
+            /// Specifies which additional view's permissions to include in the response. Only `published` is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string IncludePermissionsForView { get; set; }
@@ -4594,7 +4664,7 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> MoveToNewOwnersRoot { get; set; }
 
             /// <summary>
-            /// Whether to send a notification email when sharing to users or groups. This defaults to true for users
+            /// Whether to send a notification email when sharing to users or groups. This defaults to `true` for users
             /// and groups, and is not allowed for other requests. It must not be disabled for ownership transfers.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("sendNotificationEmail", Google.Apis.Util.RequestParameterType.Query)]
@@ -7109,9 +7179,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
 
-        /// <summary>
-        /// Output only. The user who set the content restriction. Only populated if `readOnly` is true.
-        /// </summary>
+        /// <summary>Output only. The user who set the content restriction. Only populated if `readOnly=true`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictingUser")]
         public virtual User RestrictingUser { get; set; }
 
@@ -7167,7 +7235,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Nullable<bool> RestrictedForReaders { get; set; }
 
         /// <summary>
-        /// Whether download and copy is restricted for writers. If true, download is also restricted for readers.
+        /// Whether download and copy is restricted for writers. If `true`, download is also restricted for readers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedForWriters")]
         public virtual System.Nullable<bool> RestrictedForWriters { get; set; }
@@ -7187,7 +7255,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual DownloadRestriction EffectiveDownloadRestrictionWithContext { get; set; }
 
         /// <summary>
-        /// The download restriction of the file applied directly by the owner or organizer. This does not take into
+        /// The download restriction of the file applied directly by the owner or organizer. This doesn't take into
         /// account shared drive settings or DLP rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemDownloadRestriction")]
@@ -7545,7 +7613,8 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// Output only. Capabilities the current user has on this file. Each capability corresponds to a fine-grained
-        /// action that a user may take.
+        /// action that a user may take. For more information, see [Understand file
+        /// capabilities](https://developers.google.com/workspace/drive/api/guides/manage-sharing#capabilities).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
         public virtual CapabilitiesData Capabilities { get; set; }
@@ -7563,7 +7632,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Collections.Generic.IList<ContentRestriction> ContentRestrictions { get; set; }
 
         /// <summary>
-        /// Whether the options to copy, print, or download this file, should be disabled for readers and commenters.
+        /// Whether the options to copy, print, or download this file should be disabled for readers and commenters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("copyRequiresWriterPermission")]
         public virtual System.Nullable<bool> CopyRequiresWriterPermission { get; set; }
@@ -7623,8 +7692,8 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// The color for a folder or a shortcut to a folder as an RGB hex string. The supported colors are published in
-        /// the `folderColorPalette` field of the About resource. If an unsupported color is specified, the closest
-        /// color in the palette is used instead.
+        /// the `folderColorPalette` field of the [`about`](/workspace/drive/api/reference/rest/v3/about) resource. If
+        /// an unsupported color is specified, the closest color in the palette is used instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folderColorRgb")]
         public virtual string FolderColorRgb { get; set; }
@@ -7632,7 +7701,7 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>
         /// Output only. The full file extension extracted from the `name` field. May contain multiple concatenated
         /// extensions, such as "tar.gz". This is only available for files with binary content in Google Drive. This is
-        /// automatically updated when the `name` field changes, however it is not cleared if the new name does not
+        /// automatically updated when the `name` field changes, however it's not cleared if the new name doesn't
         /// contain a valid extension.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullFileExtension")]
@@ -7646,7 +7715,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Nullable<bool> HasAugmentedPermissions { get; set; }
 
         /// <summary>
-        /// Output only. Whether this file has a thumbnail. This does not indicate whether the requesting app has access
+        /// Output only. Whether this file has a thumbnail. This doesn't indicate whether the requesting app has access
         /// to the thumbnail. To check access, look for the presence of the thumbnailLink field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasThumbnail")]
@@ -7713,7 +7782,7 @@ namespace Google.Apis.Drive.v3.Data
         /// The MIME type of the file. Google Drive attempts to automatically detect an appropriate value from uploaded
         /// content, if no value is provided. The value cannot be changed unless a new revision is uploaded. If a file
         /// is created with a Google Doc MIME type, the uploaded content is imported, if possible. The supported import
-        /// formats are published in the About resource.
+        /// formats are published in the [`about`](/workspace/drive/api/reference/rest/v3/about) resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
@@ -7770,9 +7839,9 @@ namespace Google.Apis.Drive.v3.Data
         }
 
         /// <summary>
-        /// The name of the file. This is not necessarily unique within a folder. Note that for immutable items such as
-        /// the top level folders of shared drives, My Drive root folder, and Application Data folder the name is
-        /// constant.
+        /// The name of the file. This isn't necessarily unique within a folder. Note that for immutable items such as
+        /// the top-level folders of shared drives, the My Drive root folder, and the Application Data folder, the name
+        /// is constant.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7836,14 +7905,14 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// Output only. The SHA1 checksum associated with this file, if available. This field is only populated for
-        /// files with content stored in Google Drive; it is not populated for Docs Editors or shortcut files.
+        /// files with content stored in Google Drive; it's not populated for Docs Editors or shortcut files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha1Checksum")]
         public virtual string Sha1Checksum { get; set; }
 
         /// <summary>
         /// Output only. The SHA256 checksum associated with this file, if available. This field is only populated for
-        /// files with content stored in Google Drive; it is not populated for Docs Editors or shortcut files.
+        /// files with content stored in Google Drive; it's not populated for Docs Editors or shortcut files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256Checksum")]
         public virtual string Sha256Checksum { get; set; }
@@ -7887,15 +7956,15 @@ namespace Google.Apis.Drive.v3.Data
         public virtual ShortcutDetailsData ShortcutDetails { get; set; }
 
         /// <summary>
-        /// Output only. Size in bytes of blobs and first party editor files. Won't be populated for files that have no
-        /// size, like shortcuts and folders.
+        /// Output only. Size in bytes of blobs and Google Workspace editor files. Won't be populated for files that
+        /// have no size, like shortcuts and folders.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; }
 
         /// <summary>
-        /// Output only. The list of spaces which contain the file. The currently supported values are 'drive',
-        /// 'appDataFolder' and 'photos'.
+        /// Output only. The list of spaces which contain the file. The currently supported values are `drive`,
+        /// `appDataFolder`, and `photos`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaces")]
         public virtual System.Collections.Generic.IList<string> Spaces { get; set; }
@@ -7911,9 +7980,9 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>
         /// Output only. A short-lived link to the file's thumbnail, if available. Typically lasts on the order of
         /// hours. Not intended for direct usage on web applications due to [Cross-Origin Resource Sharing
-        /// (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies, consider using a proxy server.
+        /// (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies. Consider using a proxy server.
         /// Only populated when the requesting app can access the file's content. If the file isn't shared publicly, the
-        /// URL returned in `Files.thumbnailLink` must be fetched using a credentialed request.
+        /// URL returned in `files.thumbnailLink` must be fetched using a credentialed request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailLink")]
         public virtual string ThumbnailLink { get; set; }
@@ -8028,7 +8097,8 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// Output only. Capabilities the current user has on this file. Each capability corresponds to a fine-grained
-        /// action that a user may take.
+        /// action that a user may take. For more information, see [Understand file
+        /// capabilities](https://developers.google.com/workspace/drive/api/guides/manage-sharing#capabilities).
         /// </summary>
         public class CapabilitiesData
         {
@@ -8040,15 +8110,15 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanAcceptOwnership { get; set; }
 
             /// <summary>
-            /// Output only. Whether the current user can add children to this folder. This is always false when the
-            /// item is not a folder.
+            /// Output only. Whether the current user can add children to this folder. This is always `false` when the
+            /// item isn't a folder.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canAddChildren")]
             public virtual System.Nullable<bool> CanAddChildren { get; set; }
 
             /// <summary>
             /// Output only. Whether the current user can add a folder from another drive (different shared drive or My
-            /// Drive) to this folder. This is false when the item is not a folder. Only populated for items in shared
+            /// Drive) to this folder. This is `false` when the item isn't a folder. Only populated for items in shared
             /// drives.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canAddFolderFromAnotherDrive")]
@@ -8076,7 +8146,8 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanChangeItemDownloadRestriction { get; set; }
 
             /// <summary>
-            /// Output only. Whether the current user can change the securityUpdateEnabled field on link share metadata.
+            /// Output only. Whether the current user can change the `securityUpdateEnabled` field on link share
+            /// metadata.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeSecurityUpdateEnabled")]
             public virtual System.Nullable<bool> CanChangeSecurityUpdateEnabled { get; set; }
@@ -8091,7 +8162,7 @@ namespace Google.Apis.Drive.v3.Data
 
             /// <summary>
             /// Output only. Whether the current user can copy this file. For an item in a shared drive, whether the
-            /// current user can copy non-folder descendants of this item, or this item itself if it is not a folder.
+            /// current user can copy non-folder descendants of this item, or this item if it's not a folder.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canCopy")]
             public virtual System.Nullable<bool> CanCopy { get; set; }
@@ -8101,8 +8172,8 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanDelete { get; set; }
 
             /// <summary>
-            /// Output only. Whether the current user can delete children of this folder. This is false when the item is
-            /// not a folder. Only populated for items in shared drives.
+            /// Output only. Whether the current user can delete children of this folder. This is `false` when the item
+            /// isn't a folder. Only populated for items in shared drives.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDeleteChildren")]
             public virtual System.Nullable<bool> CanDeleteChildren { get; set; }
@@ -8127,8 +8198,8 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanEnableInheritedPermissions { get; set; }
 
             /// <summary>
-            /// Output only. Whether the current user can list the children of this folder. This is always false when
-            /// the item is not a folder.
+            /// Output only. Whether the current user can list the children of this folder. This is always `false` when
+            /// the item isn't a folder.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canListChildren")]
             public virtual System.Nullable<bool> CanListChildren { get; set; }
@@ -8139,7 +8210,7 @@ namespace Google.Apis.Drive.v3.Data
 
             /// <summary>
             /// Deprecated: Output only. Use one of `canModifyEditorContentRestriction`,
-            /// `canModifyOwnerContentRestriction` or `canRemoveContentRestriction`.
+            /// `canModifyOwnerContentRestriction`, or `canRemoveContentRestriction`.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canModifyContentRestriction")]
             public virtual System.Nullable<bool> CanModifyContentRestriction { get; set; }
@@ -8163,7 +8234,7 @@ namespace Google.Apis.Drive.v3.Data
 
             /// <summary>
             /// Output only. Whether the current user can move children of this folder outside of the shared drive. This
-            /// is false when the item is not a folder. Only populated for items in shared drives.
+            /// is `false` when the item isn't a folder. Only populated for items in shared drives.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenOutOfDrive")]
             public virtual System.Nullable<bool> CanMoveChildrenOutOfDrive { get; set; }
@@ -8173,9 +8244,9 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanMoveChildrenOutOfTeamDrive { get; set; }
 
             /// <summary>
-            /// Output only. Whether the current user can move children of this folder within this drive. This is false
-            /// when the item is not a folder. Note that a request to move the child may still fail depending on the
-            /// current user's access to the child and to the destination folder.
+            /// Output only. Whether the current user can move children of this folder within this drive. This is
+            /// `false` when the item isn't a folder. Note that a request to move the child may still fail depending on
+            /// the current user's access to the child and to the destination folder.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenWithinDrive")]
             public virtual System.Nullable<bool> CanMoveChildrenWithinDrive { get; set; }
@@ -8190,7 +8261,7 @@ namespace Google.Apis.Drive.v3.Data
 
             /// <summary>
             /// Output only. Whether the current user can move this item outside of this drive by changing its parent.
-            /// Note that a request to change the parent of the item may still fail depending on the new parent that is
+            /// Note that a request to change the parent of the item may still fail depending on the new parent that's
             /// being added.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemOutOfDrive")]
@@ -8202,7 +8273,7 @@ namespace Google.Apis.Drive.v3.Data
 
             /// <summary>
             /// Output only. Whether the current user can move this item within this drive. Note that a request to
-            /// change the parent of the item may still fail depending on the new parent that is being added and the
+            /// change the parent of the item may still fail depending on the new parent that's being added and the
             /// parent that is being removed.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemWithinDrive")]
@@ -8231,8 +8302,8 @@ namespace Google.Apis.Drive.v3.Data
 
             /// <summary>
             /// Output only. Whether the current user can read the revisions resource of this file. For a shared drive
-            /// item, whether revisions of non-folder descendants of this item, or this item itself if it is not a
-            /// folder, can be read.
+            /// item, whether revisions of non-folder descendants of this item, or this item if it's not a folder, can
+            /// be read.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadRevisions")]
             public virtual System.Nullable<bool> CanReadRevisions { get; set; }
@@ -8242,15 +8313,15 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanReadTeamDrive { get; set; }
 
             /// <summary>
-            /// Output only. Whether the current user can remove children from this folder. This is always false when
-            /// the item is not a folder. For a folder in a shared drive, use `canDeleteChildren` or `canTrashChildren`
+            /// Output only. Whether the current user can remove children from this folder. This is always `false` when
+            /// the item isn't a folder. For a folder in a shared drive, use `canDeleteChildren` or `canTrashChildren`
             /// instead.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRemoveChildren")]
             public virtual System.Nullable<bool> CanRemoveChildren { get; set; }
 
             /// <summary>
-            /// Output only. Whether there is a content restriction on the file that can be removed by the current user.
+            /// Output only. Whether there's a content restriction on the file that can be removed by the current user.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRemoveContentRestriction")]
             public virtual System.Nullable<bool> CanRemoveContentRestriction { get; set; }
@@ -8275,8 +8346,8 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanTrash { get; set; }
 
             /// <summary>
-            /// Output only. Whether the current user can trash children of this folder. This is false when the item is
-            /// not a folder. Only populated for items in shared drives.
+            /// Output only. Whether the current user can trash children of this folder. This is `false` when the item
+            /// isn't a folder. Only populated for items in shared drives.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canTrashChildren")]
             public virtual System.Nullable<bool> CanTrashChildren { get; set; }
@@ -8292,7 +8363,7 @@ namespace Google.Apis.Drive.v3.Data
         public class ContentHintsData
         {
             /// <summary>
-            /// Text to be indexed for the file to improve fullText queries. This is limited to 128KB in length and may
+            /// Text to be indexed for the file to improve fullText queries. This is limited to 128 KB in length and may
             /// contain HTML elements.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("indexableText")]
@@ -8309,7 +8380,10 @@ namespace Google.Apis.Drive.v3.Data
             /// </summary>
             public class ThumbnailData
             {
-                /// <summary>The thumbnail data encoded with URL-safe Base64 (RFC 4648 section 5).</summary>
+                /// <summary>
+                /// The thumbnail data encoded with URL-safe Base64 ([RFC 4648 section
+                /// 5](https://datatracker.ietf.org/doc/html/rfc4648#section-5)).
+                /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("image")]
                 public virtual string Image { get; set; }
 
@@ -8470,7 +8544,7 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("targetMimeType")]
             public virtual string TargetMimeType { get; set; }
 
-            /// <summary>Output only. The ResourceKey for the target file.</summary>
+            /// <summary>Output only. The `resourceKey` for the target file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("targetResourceKey")]
             public virtual string TargetResourceKey { get; set; }
         }
@@ -8498,17 +8572,17 @@ namespace Google.Apis.Drive.v3.Data
     public class FileList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The list of files. If nextPageToken is populated, then this list may be incomplete and an additional page of
-        /// results should be fetched.
+        /// The list of files. If `nextPageToken` is populated, then this list may be incomplete and an additional page
+        /// of results should be fetched.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<File> Files { get; set; }
 
         /// <summary>
         /// Whether the search process was incomplete. If true, then some search results might be missing, since all
-        /// documents were not searched. This can occur when searching multiple drives with the 'allDrives' corpora, but
+        /// documents were not searched. This can occur when searching multiple drives with the `allDrives` corpora, but
         /// all corpora couldn't be searched. When this happens, it's suggested that clients narrow their query by
-        /// choosing a different corpus such as 'user' or 'drive'.
+        /// choosing a different corpus such as `user` or `drive`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("incompleteSearch")]
         public virtual System.Nullable<bool> IncompleteSearch { get; set; }
@@ -8621,7 +8695,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
         public virtual string FieldId { get; set; }
 
-        /// <summary>This is always drive#labelFieldModification.</summary>
+        /// <summary>This is always `"drive#labelFieldModification"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -8644,7 +8718,9 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("setTextValues")]
         public virtual System.Collections.Generic.IList<string> SetTextValues { get; set; }
 
-        /// <summary>Replaces a `user` field with these new values. The values must be valid email addresses.</summary>
+        /// <summary>
+        /// Replaces a `user` field with these new values. The values must be a valid email addresses.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setUserValues")]
         public virtual System.Collections.Generic.IList<string> SetUserValues { get; set; }
 
@@ -8659,7 +8735,7 @@ namespace Google.Apis.Drive.v3.Data
     /// <summary>A list of labels applied to a file.</summary>
     public class LabelList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This is always drive#labelList</summary>
+        /// <summary>This is always `"drive#labelList"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -8681,7 +8757,7 @@ namespace Google.Apis.Drive.v3.Data
     }
 
     /// <summary>
-    /// A modification to a label on a file. A LabelModification can be used to apply a label to a file, update an
+    /// A modification to a label on a file. A `LabelModification` can be used to apply a label to a file, update an
     /// existing label on a file, or remove a label from a file.
     /// </summary>
     public class LabelModification : Google.Apis.Requests.IDirectResponseSchema
@@ -8690,7 +8766,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fieldModifications")]
         public virtual System.Collections.Generic.IList<LabelFieldModification> FieldModifications { get; set; }
 
-        /// <summary>This is always drive#labelModification.</summary>
+        /// <summary>This is always `"drive#labelModification"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -8731,7 +8807,7 @@ namespace Google.Apis.Drive.v3.Data
     /// </summary>
     public class ModifyLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This is always drive#modifyLabelsRequest.</summary>
+        /// <summary>This is always `"drive#modifyLabelsRequest"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -8744,11 +8820,12 @@ namespace Google.Apis.Drive.v3.Data
     }
 
     /// <summary>
-    /// Response to a ModifyLabels request. This contains only those labels which were added or updated by the request.
+    /// Response to a `ModifyLabels` request. This contains only those labels which were added or updated by the
+    /// request.
     /// </summary>
     public class ModifyLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This is always drive#modifyLabelsResponse</summary>
+        /// <summary>This is always `"drive#modifyLabelsResponse"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
