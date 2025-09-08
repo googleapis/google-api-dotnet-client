@@ -1350,8 +1350,8 @@ namespace Google.Apis.CertificateAuthorityService.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -1803,21 +1803,6 @@ namespace Google.Apis.CertificateAuthorityService.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
-    }
-
-    /// <summary>Operation metadata returned by the CLH during resource state reconciliation.</summary>
-    public class ReconciliationOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>DEPRECATED. Use exclusive_action instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deleteResource")]
-        public virtual System.Nullable<bool> DeleteResource { get; set; }
-
-        /// <summary>Excluisive action returned by the CLH.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exclusiveAction")]
-        public virtual string ExclusiveAction { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request message for `SetIamPolicy` method.</summary>
