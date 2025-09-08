@@ -8662,7 +8662,10 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Npm package to upload to Artifact Registry upon successful completion of all build steps.</summary>
     public class NpmPackage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Path to the package.json. e.g. workspace/path/to/package</summary>
+        /// <summary>
+        /// Optional. Path to the package.json. e.g. workspace/path/to/package Only one of `archive` or `package_path`
+        /// can be specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packagePath")]
         public virtual string PackagePath { get; set; }
 
