@@ -3751,8 +3751,8 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -4088,6 +4088,13 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     /// </summary>
     public class CaPool : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. When EncryptionSpec is provided, the Subject, SubjectAltNames, and the PEM-encoded certificate
+        /// fields will be encrypted at rest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
+        public virtual EncryptionSpec EncryptionSpec { get; set; }
+
         /// <summary>Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuancePolicy")]
         public virtual IssuancePolicy IssuancePolicy { get; set; }
@@ -5043,6 +5050,19 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The configuration used for encrypting data at rest.</summary>
+    public class EncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name for a Cloud KMS key in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudKmsKey")]
+        public virtual string CloudKmsKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
@@ -5898,21 +5918,6 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishCrl")]
         public virtual System.Nullable<bool> PublishCrl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Operation metadata returned by the CLH during resource state reconciliation.</summary>
-    public class ReconciliationOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>DEPRECATED. Use exclusive_action instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deleteResource")]
-        public virtual System.Nullable<bool> DeleteResource { get; set; }
-
-        /// <summary>Excluisive action returned by the CLH.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exclusiveAction")]
-        public virtual string ExclusiveAction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
