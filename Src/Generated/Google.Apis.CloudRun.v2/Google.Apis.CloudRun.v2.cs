@@ -6379,9 +6379,10 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Nullable<int> DefaultMode { get; set; }
 
         /// <summary>
-        /// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path.
-        /// If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be
-        /// the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+        /// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path +
+        /// VolumeMount.sub_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager
+        /// and the path will be the name of the file exposed in the volume. When items are defined, they must specify a
+        /// path and a version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2VersionToPath> Items { get; set; }
@@ -9146,7 +9147,10 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>Npm package to upload to Artifact Registry upon successful completion of all build steps.</summary>
     public class GoogleDevtoolsCloudbuildV1NpmPackage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Path to the package.json. e.g. workspace/path/to/package</summary>
+        /// <summary>
+        /// Optional. Path to the package.json. e.g. workspace/path/to/package Only one of `archive` or `package_path`
+        /// can be specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packagePath")]
         public virtual string PackagePath { get; set; }
 
