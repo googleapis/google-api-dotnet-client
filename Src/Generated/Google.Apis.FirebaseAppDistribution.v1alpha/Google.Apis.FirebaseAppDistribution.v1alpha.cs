@@ -2371,6 +2371,45 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        private string _videoStartTimeRaw;
+
+        private object _videoStartTime;
+
+        /// <summary>Output only. The time at which the video started recording.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoStartTime")]
+        public virtual string VideoStartTimeRaw
+        {
+            get => _videoStartTimeRaw;
+            set
+            {
+                _videoStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _videoStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="VideoStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VideoStartTimeDateTimeOffset instead.")]
+        public virtual object VideoStartTime
+        {
+            get => _videoStartTime;
+            set
+            {
+                _videoStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _videoStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="VideoStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VideoStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VideoStartTimeRaw);
+            set => VideoStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Output only. A URI to a video of the test run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoUri")]
         public virtual string VideoUri { get; set; }
@@ -2593,7 +2632,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     /// <summary>An action taken by the AI agent while attempting to accomplish a goal.</summary>
     public class GoogleFirebaseAppdistroV1alphaGoalAction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Debug information explaining why the agent to the specific action</summary>
+        /// <summary>Output only. Debug information explaining why the agent to the specific action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugInfo")]
         public virtual GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo DebugInfo { get; set; }
 
@@ -2605,6 +2644,43 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
         public virtual string Explanation { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. The time at which the action started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Output only. An action taken by the AI to end the goal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terminalAction")]
         public virtual GoogleFirebaseAppdistroV1alphaTerminalAction TerminalAction { get; set; }
@@ -2613,14 +2689,14 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information to help the customer understand why the agent took this action</summary>
+    /// <summary>Information to help the customer understand why the agent took this action.</summary>
     public class GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. URI of the screenshot with elements labeled which was used by the agent</summary>
+        /// <summary>Output only. URI of the screenshot with elements labeled which was used by the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotatedScreenshotUri")]
         public virtual string AnnotatedScreenshotUri { get; set; }
 
-        /// <summary>Output only. Structured data explaining the agent's choice</summary>
+        /// <summary>Output only. Structured data explaining the agent's choice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsonUri")]
         public virtual string JsonUri { get; set; }
 
