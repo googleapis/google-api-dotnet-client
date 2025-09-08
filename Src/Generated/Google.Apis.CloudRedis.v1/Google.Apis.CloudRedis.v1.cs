@@ -3280,6 +3280,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
 
+        /// <summary>Optional. Labels to represent user-provided metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>Optional. ClusterMaintenancePolicy determines when to allow or deny updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
         public virtual ClusterMaintenancePolicy MaintenancePolicy { get; set; }
