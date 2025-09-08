@@ -9568,9 +9568,20 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlId")]
         public virtual string CloudSqlId { get; set; }
 
+        /// <summary>
+        /// Optional. The project id of the Cloud SQL instance. If not provided, the project id of the connection
+        /// profile will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlProjectId")]
+        public virtual string CloudSqlProjectId { get; set; }
+
         /// <summary>Required. The name of the specific database within the host.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
+
+        /// <summary>Optional. The Database Mirroring (DBM) port of the source SQL Server instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbmPort")]
+        public virtual System.Nullable<int> DbmPort { get; set; }
 
         /// <summary>Forward SSH tunnel connectivity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardSshConnectivity")]
@@ -9618,6 +9629,26 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for distributed availability group (DAG) for the SQL Server homogeneous migration.
+    /// </summary>
+    public class SqlServerDagConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the linked server that points to the source SQL Server instance. Only used by DAG
+        /// migrations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedServer")]
+        public virtual string LinkedServer { get; set; }
+
+        /// <summary>Required. The name of the source availability group. Only used by DAG migrations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceAg")]
+        public virtual string SourceAg { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9684,6 +9715,12 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupFilePattern")]
         public virtual string BackupFilePattern { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for distributed availability group (DAG) for the SQL Server homogeneous migration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dagConfig")]
+        public virtual SqlServerDagConfig DagConfig { get; set; }
 
         /// <summary>Required. Backup details per database in Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseBackups")]
