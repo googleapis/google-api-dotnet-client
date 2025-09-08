@@ -2083,8 +2083,8 @@ namespace Google.Apis.TPU.v2alpha1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2298,6 +2298,13 @@ namespace Google.Apis.TPU.v2alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
         public virtual string SourceImage { get; set; }
+
+        /// <summary>
+        /// Optional. The storage pool in which the boot disk is created. You can provide this as a partial or full URL
+        /// to the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePool")]
+        public virtual string StoragePool { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
