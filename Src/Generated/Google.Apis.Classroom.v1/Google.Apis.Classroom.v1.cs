@@ -1828,7 +1828,7 @@ namespace Google.Apis.Classroom.v1
             /// announcement may call this method. This method returns the following error codes: * `PERMISSION_DENIED`
             /// if the requesting user is not permitted to access the requested course or course work or for access
             /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or
-            /// course work does not exist.
+            /// course work does not exist. * `FAILED_PRECONDITION` for the following request error: * EmptyAssignees
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="courseId">
@@ -1845,7 +1845,7 @@ namespace Google.Apis.Classroom.v1
             /// announcement may call this method. This method returns the following error codes: * `PERMISSION_DENIED`
             /// if the requesting user is not permitted to access the requested course or course work or for access
             /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or
-            /// course work does not exist.
+            /// course work does not exist. * `FAILED_PRECONDITION` for the following request error: * EmptyAssignees
             /// </summary>
             public class ModifyAssigneesRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Announcement>
             {
@@ -4838,7 +4838,7 @@ namespace Google.Apis.Classroom.v1
             /// coursework may call this method. This method returns the following error codes: * `PERMISSION_DENIED` if
             /// the requesting user is not permitted to access the requested course or course work or for access errors.
             /// * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work
-            /// does not exist.
+            /// does not exist. * `FAILED_PRECONDITION` for the following request error: * EmptyAssignees
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="courseId">
@@ -4855,7 +4855,7 @@ namespace Google.Apis.Classroom.v1
             /// coursework may call this method. This method returns the following error codes: * `PERMISSION_DENIED` if
             /// the requesting user is not permitted to access the requested course or course work or for access errors.
             /// * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work
-            /// does not exist.
+            /// does not exist. * `FAILED_PRECONDITION` for the following request error: * EmptyAssignees
             /// </summary>
             public class ModifyAssigneesRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseWork>
             {
