@@ -17457,6 +17457,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The URL filtering configuration for the SecurityProfile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlFilteringProfile")]
+        public virtual UrlFilteringProfile UrlFilteringProfile { get; set; }
     }
 
     /// <summary>SecurityProfileGroup is a resource that defines the behavior for various ProfileTypes.</summary>
@@ -17573,6 +17577,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. Reference to a SecurityProfile with the UrlFiltering configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlFilteringProfile")]
+        public virtual string UrlFilteringProfile { get; set; }
     }
 
     /// <summary>
@@ -17964,6 +17972,41 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A URL filter defines an action to take for some URL match.</summary>
+    public class UrlFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The action taken when this filter is applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filteringAction")]
+        public virtual string FilteringAction { get; set; }
+
+        /// <summary>
+        /// Required. The priority of this filter within the URL Filtering Profile. Lower integers indicate higher
+        /// priorities. The priority of a filter must be unique within a URL Filtering Profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<int> Priority { get; set; }
+
+        /// <summary>Required. The list of strings that a URL must match with for this filter to be applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urls")]
+        public virtual System.Collections.Generic.IList<string> Urls { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>UrlFilteringProfile defines filters based on URL.</summary>
+    public class UrlFilteringProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The list of filtering configs in which each config defines an action to take for some URL match.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlFilters")]
+        public virtual System.Collections.Generic.IList<UrlFilter> UrlFilters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
