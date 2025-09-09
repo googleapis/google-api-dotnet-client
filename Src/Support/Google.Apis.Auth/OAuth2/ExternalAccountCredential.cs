@@ -46,6 +46,15 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>
         /// Initializer for <see cref="ExternalAccountCredential"/>.
         /// </summary>
+        /// <remarks>
+        /// <para>
+        /// **IMPORTANT**: This class does not validate the credential configuration. A security risk exists if you use a
+        /// credential configuration that contains malicious URLs. When the credential configuration is sourced from an
+        /// untrusted source, you should validate it before use. See
+        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">
+        /// this document</see> for more details.
+        /// </para>
+        /// </remarks>
         new public class Initializer : ServiceCredential.Initializer
         {
             /// <summary>
