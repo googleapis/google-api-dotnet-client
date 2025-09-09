@@ -115,12 +115,36 @@ namespace Google.Apis.Auth.OAuth2
         /// </para>
         /// </summary>
         /// <remarks>
-        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
-        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
-        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
-        /// systems and data. For more information, refer to
-        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// <para>
+        /// This method is being deprecated because of a potential security risk.
+        /// This method does not validate the credential configuration. The security
+        /// risk occurs when a credential configuration is accepted from a source that
+        /// is not under your control and used without validation on your side.
+        /// </para>
+        /// <para>
+        /// If you know that you will be loading credential configurations of a
+        /// specific type, it is recommended to use a credential-type-specific
+        /// <c>From...</c> method.
+        /// This will ensure that an unexpected credential type with potential for
+        /// malicious intent is not loaded unintentionally. You might still have to do
+        /// validation for certain credential types. Please follow the recommendation
+        /// for that method. For example, if you want to load only service accounts,
+        /// you can use <see cref="ServiceAccountCredential.FromServiceAccountData(Stream)"/>.
+        /// </para>
+        /// <para>
+        /// If you are loading your credential configuration from an untrusted source and have
+        /// not mitigated the risks (e.g. by validating the configuration yourself), make
+        /// these changes as soon as possible to prevent security risks to your environment.
+        /// </para>
+        /// <para>
+        /// Regardless of the method used, it is always your responsibility to validate
+        /// configurations received from external sources.
+        /// </para>
+        /// <para>
+        /// See https://cloud.google.com/docs/authentication/external/externally-sourced-credentials for more details.
+        /// </para>
         /// </remarks>
+        [Obsolete("This method is deprecated because of a potential security risk. Use a credential-specific loading method instead. See the remarks section for more details.")]
         public static GoogleCredential FromStream(Stream stream) => defaultCredentialProvider.CreateDefaultCredentialFromStream(stream);
 
         /// <summary>
@@ -131,12 +155,36 @@ namespace Google.Apis.Auth.OAuth2
         /// </para>
         /// </summary>
         /// <remarks>
-        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
-        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
-        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
-        /// systems and data. For more information, refer to
-        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// <para>
+        /// This method is being deprecated because of a potential security risk.
+        /// This method does not validate the credential configuration. The security
+        /// risk occurs when a credential configuration is accepted from a source that
+        /// is not under your control and used without validation on your side.
+        /// </para>
+        /// <para>
+        /// If you know that you will be loading credential configurations of a
+        /// specific type, it is recommended to use a credential-type-specific
+        /// <c>From...</c> method.
+        /// This will ensure that an unexpected credential type with potential for
+        /// malicious intent is not loaded unintentionally. You might still have to do
+        /// validation for certain credential types. Please follow the recommendation
+        /// for that method. For example, if you want to load only service accounts,
+        /// you can use <see cref="ServiceAccountCredential.FromServiceAccountData(Stream)"/>.
+        /// </para>
+        /// <para>
+        /// If you are loading your credential configuration from an untrusted source and have
+        /// not mitigated the risks (e.g. by validating the configuration yourself), make
+        /// these changes as soon as possible to prevent security risks to your environment.
+        /// </para>
+        /// <para>
+        /// Regardless of the method used, it is always your responsibility to validate
+        /// configurations received from external sources.
+        /// </para>
+        /// <para>
+        /// See https://cloud.google.com/docs/authentication/external/externally-sourced-credentials for more details.
+        /// </para>
         /// </remarks>
+        [Obsolete("This method is deprecated because of a potential security risk. Use a credential-specific loading method instead. See the remarks section for more details.")]
         public static Task<GoogleCredential> FromStreamAsync(Stream stream, CancellationToken cancellationToken) =>
             defaultCredentialProvider.CreateDefaultCredentialFromStreamAsync(stream, cancellationToken);
 
@@ -150,12 +198,37 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="path">The path to the credential file.</param>
         /// <returns>The loaded credentials.</returns>
         /// <remarks>
-        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
-        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
-        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
-        /// systems and data. For more information, refer to
-        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// <para>
+        /// This method is being deprecated because of a potential security risk.
+        /// This method does not validate the credential configuration. The security
+        /// risk occurs when a credential configuration is accepted from a source that
+        /// is not under your control and used without validation on your side.
+        /// </para>
+        /// <para>
+        /// If you know that you will be loading credential configurations of a
+        /// specific type, it is recommended to use a credential-type-specific
+        /// <c>From...</c> method.
+        /// This will ensure that an unexpected credential type with potential for
+        /// malicious intent is not loaded unintentionally. You might still have to do
+        /// validation for certain credential types. Please follow the recommendation
+        /// for that method. For example, if you want to load only service accounts,
+        /// you can use <see cref="ServiceAccountCredential.FromServiceAccountData(Stream)"/>
+        /// after opening a <see cref="System.IO.FileStream"/> to the file.
+        /// </para>
+        /// <para>
+        /// If you are loading your credential configuration from an untrusted source and have
+        /// not mitigated the risks (e.g. by validating the configuration yourself), make
+        /// these changes as soon as possible to prevent security risks to your environment.
+        /// </para>
+        /// <para>
+        /// Regardless of the method used, it is always your responsibility to validate
+        /// configurations received from external sources.
+        /// </para>
+        /// <para>
+        /// See https://cloud.google.com/docs/authentication/external/externally-sourced-credentials for more details.
+        /// </para>
         /// </remarks>
+        [Obsolete("This method is deprecated because of a potential security risk. Use a credential-specific loading method instead. See the remarks section for more details.")]
         public static GoogleCredential FromFile(string path)
         {
             using (var f = File.OpenRead(path))
@@ -175,12 +248,37 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="cancellationToken">Cancellation token for the operation.</param>
         /// <returns>The loaded credentials.</returns>
         /// <remarks>
-        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
-        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
-        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
-        /// systems and data. For more information, refer to
-        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// <para>
+        /// This method is being deprecated because of a potential security risk.
+        /// This method does not validate the credential configuration. The security
+        /// risk occurs when a credential configuration is accepted from a source that
+        /// is not under your control and used without validation on your side.
+        /// </para>
+        /// <para>
+        /// If you know that you will be loading credential configurations of a
+        /// specific type, it is recommended to use a credential-type-specific
+        /// <c>From...</c> method.
+        /// This will ensure that an unexpected credential type with potential for
+        /// malicious intent is not loaded unintentionally. You might still have to do
+        /// validation for certain credential types. Please follow the recommendation
+        /// for that method. For example, if you want to load only service accounts,
+        /// you can use <see cref="ServiceAccountCredential.FromServiceAccountData(Stream)"/>
+        /// after opening a <see cref="System.IO.FileStream"/> to the file.
+        /// </para>
+        /// <para>
+        /// If you are loading your credential configuration from an untrusted source and have
+        /// not mitigated the risks (e.g. by validating the configuration yourself), make
+        /// these changes as soon as possible to prevent security risks to your environment.
+        /// </para>
+        /// <para>
+        /// Regardless of the method used, it is always your responsibility to validate
+        /// configurations received from external sources.
+        /// </para>
+        /// <para>
+        /// See https://cloud.google.com/docs/authentication/external/externally-sourced-credentials for more details.
+        /// </para>
         /// </remarks>
+        [Obsolete("This method is deprecated because of a potential security risk. Use a credential-specific loading method instead. See the remarks section for more details.")]
         public static async Task<GoogleCredential> FromFileAsync(string path, CancellationToken cancellationToken)
         {
             using (var f = File.OpenRead(path))
@@ -197,12 +295,37 @@ namespace Google.Apis.Auth.OAuth2
         /// </para>
         /// </summary>
         /// <remarks>
-        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
-        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
-        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
-        /// systems and data. For more information, refer to
-        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// <para>
+        /// This method is being deprecated because of a potential security risk.
+        /// This method does not validate the credential configuration. The security
+        /// risk occurs when a credential configuration is accepted from a source that
+        /// is not under your control and used without validation on your side.
+        /// </para>
+        /// <para>
+        /// If you know that you will be loading credential configurations of a
+        /// specific type, it is recommended to use a credential-type-specific
+        /// <c>From...</c> method.
+        /// This will ensure that an unexpected credential type with potential for
+        /// malicious intent is not loaded unintentionally. You might still have to do
+        /// validation for certain credential types. Please follow the recommendation
+        /// for that method. For example, if you want to load only service accounts,
+        /// you can use <see cref="ServiceAccountCredential.FromServiceAccountData(Stream)"/>
+        /// after creating a <see cref="System.IO.MemoryStream"/> from the JSON string.
+        /// </para>
+        /// <para>
+        /// If you are loading your credential configuration from an untrusted source and have
+        /// not mitigated the risks (e.g. by validating the configuration yourself), make
+        /// these changes as soon as possible to prevent security risks to your environment.
+        /// </para>
+        /// <para>
+        /// Regardless of the method used, it is always your responsibility to validate
+        /// configurations received from external sources.
+        /// </para>
+        /// <para>
+        /// See https://cloud.google.com/docs/authentication/external/externally-sourced-credentials for more details.
+        /// </para>
         /// </remarks>
+        [Obsolete("This method is deprecated because of a potential security risk. Use a credential-specific loading method instead. See the remarks section for more details.")]
         public static GoogleCredential FromJson(string json) => defaultCredentialProvider.CreateDefaultCredentialFromJson(json);
 
         /// <summary>
@@ -211,12 +334,38 @@ namespace Google.Apis.Auth.OAuth2
         /// about supported types and corresponding fields.
         /// </summary>
         /// <remarks>
-        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
-        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
-        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
-        /// systems and data. For more information, refer to
-        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// <para>
+        /// This method is being deprecated because of a potential security risk.
+        /// This method does not validate the credential configuration. The security
+        /// risk occurs when a credential configuration is accepted from a source that
+        /// is not under your control and used without validation on your side.
+        /// </para>
+        /// <para>
+        /// If you know that you will be loading credential configurations of a
+        /// specific type, it is recommended to use a credential-type-specific
+        /// <c>From...</c> method.
+        /// This will ensure that an unexpected credential type with potential for
+        /// malicious intent is not loaded unintentionally. You might still have to do
+        /// validation for certain credential types. Please follow the recommendation
+        /// for that method. For example, if you want to load only service accounts,
+        /// you can use <see cref="ServiceAccountCredential.FromServiceAccountData(Stream)"/>
+        /// after serializing the <see cref="JsonCredentialParameters"/> to a JSON string and
+        /// creating a <see cref="System.IO.MemoryStream"/> from it.
+        /// </para>
+        /// <para>
+        /// If you are loading your credential configuration from an untrusted source and have
+        /// not mitigated the risks (e.g. by validating the configuration yourself), make
+        /// these changes as soon as possible to prevent security risks to your environment.
+        /// </para>
+        /// <para>
+        /// Regardless of the method used, it is always your responsibility to validate
+        /// configurations received from external sources.
+        /// </para>
+        /// <para>
+        /// See https://cloud.google.com/docs/authentication/external/externally-sourced-credentials for more details.
+        /// </para>
         /// </remarks>
+        [Obsolete("This method is deprecated because of a potential security risk. Use a credential-specific loading method instead. See the remarks section for more details.")]
         public static GoogleCredential FromJsonParameters(JsonCredentialParameters credentialParameters) =>
             defaultCredentialProvider.CreateDefaultCredentialFromParameters(credentialParameters);
 
