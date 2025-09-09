@@ -18,12 +18,6 @@ This package includes auth components like user-credential, authorization code f
     </Description>
   </PropertyGroup>
 
-  <!-- warning configuration -->
-  <PropertyGroup>
-    <!-- Allow usage of [Obsolete] members (CS0618) without failing the build. -->
-    <WarningsNotAsErrors>CS0618</WarningsNotAsErrors>
-  </PropertyGroup>
-
   <!-- package references; common then per-target -->
   <ItemGroup>
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />

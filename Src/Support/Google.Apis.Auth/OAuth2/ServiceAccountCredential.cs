@@ -209,7 +209,11 @@ namespace Google.Apis.Auth.OAuth2
         /// <returns>The credentials parsed from the service account key data.</returns>
         public static ServiceAccountCredential FromServiceAccountData(Stream credentialData)
         {
+            // TODO: Remove this pragma once GoogleCredential.FromStream is made private.
+            // The method is marked obsolete to discourage public use but is safe for our internal purposes.
+#pragma warning disable CS0618 // Type or member is obsolete
             var credential = GoogleCredential.FromStream(credentialData);
+#pragma warning restore CS0618 // Type or member is obsolete
             var result = credential.UnderlyingCredential as ServiceAccountCredential;
             if (result == null)
             {
