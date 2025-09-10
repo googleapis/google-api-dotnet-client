@@ -37,6 +37,15 @@ namespace Google.Apis.Auth.OAuth2
     public sealed class ImpersonatedCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential, IBlobSigner
     {
         /// <summary>An initializer class for the impersonated credential. </summary>
+        /// <remarks>
+        /// <para>
+        /// **IMPORTANT**: This class does not validate the credential configuration. A security risk exists if you use a
+        /// credential configuration that contains malicious URLs. When the credential configuration is sourced from an
+        /// untrusted source, you should validate it before use. See
+        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">
+        /// this document</see> for more details.
+        /// </para>
+        /// </remarks>
         new public sealed class Initializer : ServiceCredential.Initializer
         {
             private static readonly TimeSpan DefaultLifetime = TimeSpan.FromHours(1);
