@@ -11189,11 +11189,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>
         /// Output only. The canonical name of the finding. The following list shows some examples: +
-        /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}` +
         /// `organizations/{organization_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` +
-        /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}` +
         /// `folders/{folder_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` +
-        /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}` +
         /// `projects/{project_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` The prefix is the
         /// closest CRM ancestor of the resource associated with the finding.
         /// </summary>
@@ -12110,6 +12107,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     public class GoogleCloudSecuritycenterV2IssueResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The AppHub application associated with the resource, if any. Only populated for the primary resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("application")]
+        public virtual GoogleCloudSecuritycenterV2IssueResourceApplication Application { get; set; }
+
+        /// <summary>
         /// The AWS metadata of the resource associated with the issue. Only populated for AWS resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsMetadata")]
@@ -12143,6 +12146,20 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The type of the resource associated with the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The AppHub application associated with the resource, if any.</summary>
+    public class GoogleCloudSecuritycenterV2IssueResourceApplication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of an Application. Format:
+        /// `projects/{host-project-id}/locations/{location}/applications/{application-id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
