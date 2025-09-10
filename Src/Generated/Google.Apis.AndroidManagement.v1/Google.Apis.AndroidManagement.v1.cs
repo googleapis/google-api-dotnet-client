@@ -4454,9 +4454,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Collections.Generic.IList<ApplicationReport> ApplicationReports { get; set; }
 
         /// <summary>
-        /// The password requirements currently applied to the device. The applied requirements may be slightly
-        /// different from those specified in passwordPolicies in some cases. fieldPath is set based on
-        /// passwordPolicies.
+        /// The password requirements currently applied to the device. This field exists because the applied
+        /// requirements may be slightly different from those specified in passwordPolicies in some cases. Note that
+        /// this field does not provide information about password compliance. For non-compliance information, see
+        /// nonComplianceDetails. NonComplianceDetail.fieldPath, is set based on passwordPolicies, not based on this
+        /// field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliedPasswordPolicies")]
         public virtual System.Collections.Generic.IList<PasswordRequirements> AppliedPasswordPolicies { get; set; }
