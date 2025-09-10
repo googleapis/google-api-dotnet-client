@@ -19992,7 +19992,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Maximum number of Notebooks to return. If unspecified, defaults to "200". The maximum
+                    /// Optional. Maximum number of Notebooks to return. If unspecified, defaults to "500". The maximum
                     /// allowed value is "500". If this field is negative, will use the default value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -24300,6 +24300,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bannedPhrases")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase> BannedPhrases { get; set; }
 
+        /// <summary>
+        /// Optional. Model Armor configuration to be used for sanitizing user prompts and assistant responses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelArmorConfig")]
+        public virtual GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig ModelArmorConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -24324,6 +24330,36 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Required. The raw string content to be banned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phrase")]
         public virtual string Phrase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for customer defined Model Armor templates to be used for sanitizing user prompts and assistant
+    /// responses.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Defines the failure mode for Model Armor sanitization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureMode")]
+        public virtual string FailureMode { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of the Model Armor template for sanitizing assistant responses. Format:
+        /// `projects/{project}/locations/{location}/templates/{template_id}` If not specified, no sanitization will be
+        /// applied to the assistant response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseTemplate")]
+        public virtual string ResponseTemplate { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of the Model Armor template for sanitizing user prompts. Format:
+        /// `projects/{project}/locations/{location}/templates/{template_id}` If not specified, no sanitization will be
+        /// applied to the user prompt.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPromptTemplate")]
+        public virtual string UserPromptTemplate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -31215,6 +31251,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Collections.Generic.IList<string> AssistSkippedReasons { get; set; }
 
         /// <summary>
+        /// Optional. The field contains information about the various policy checks' results like the banned phrases or
+        /// the Model Armor checks. This field is populated only if the assist call was skipped due to a policy
+        /// violation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerPolicyEnforcementResult")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResult CustomerPolicyEnforcementResult { get; set; }
+
+        /// <summary>
         /// Immutable. Identifier. Resource name of the `AssistAnswer`. Format:
         /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/assistAnswers/{assist_answer}`
         /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
@@ -31229,6 +31273,71 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>State of the answer generation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Customer policy enforcement results. Contains the results of the various policy checks, like the banned phrases
+    /// or the Model Armor checks.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Customer policy enforcement results. Populated only if the assist call was skipped due to a policy
+        /// violation. It contains results from those filters that blocked the processing of the query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult> PolicyResults { get; set; }
+
+        /// <summary>
+        /// Final verdict of the customer policy enforcement. If only one policy blocked the processing, the verdict is
+        /// BLOCK.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
+        public virtual string Verdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Customer policy enforcement result for the banned phrase policy.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The banned phrases that were found in the query or the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bannedPhrases")]
+        public virtual System.Collections.Generic.IList<string> BannedPhrases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Customer policy enforcement result for the Model Armor policy.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The error returned by Model Armor if the policy enforcement failed for some reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>The Model Armor violation that was found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelArmorViolation")]
+        public virtual string ModelArmorViolation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Customer policy enforcement result for a single policy type.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The policy enforcement result for the banned phrase policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bannedPhraseEnforcementResult")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult BannedPhraseEnforcementResult { get; set; }
+
+        /// <summary>The policy enforcement result for the Model Armor policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelArmorEnforcementResult")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult ModelArmorEnforcementResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -31401,6 +31510,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bannedPhrases")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyBannedPhrase> BannedPhrases { get; set; }
 
+        /// <summary>
+        /// Optional. Model Armor configuration to be used for sanitizing user prompts and assistant responses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelArmorConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyModelArmorConfig ModelArmorConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -31425,6 +31540,36 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Required. The raw string content to be banned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phrase")]
         public virtual string Phrase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for customer defined Model Armor templates to be used for sanitizing user prompts and assistant
+    /// responses.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyModelArmorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Defines the failure mode for Model Armor sanitization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureMode")]
+        public virtual string FailureMode { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of the Model Armor template for sanitizing assistant responses. Format:
+        /// `projects/{project}/locations/{location}/templates/{template_id}` If not specified, no sanitization will be
+        /// applied to the assistant response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseTemplate")]
+        public virtual string ResponseTemplate { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of the Model Armor template for sanitizing user prompts. Format:
+        /// `projects/{project}/locations/{location}/templates/{template_id}` If not specified, no sanitization will be
+        /// applied to the user prompt.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPromptTemplate")]
+        public virtual string UserPromptTemplate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46653,6 +46798,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentConfig")]
         public virtual string ContentConfig { get; set; }
 
+        /// <summary>Output only. The type of the data store config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreConfigType")]
+        public virtual string DataStoreConfigType { get; set; }
+
         /// <summary>The display name of the data store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -53567,6 +53716,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notebookId")]
         public virtual string NotebookId { get; set; }
 
+        /// <summary>Output only. List of sources in the notebook. This is an output only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudNotebooklmV1alphaSource> Sources { get; set; }
+
         /// <summary>Optional. The title of the notebook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
@@ -53911,7 +54064,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
-        /// <summary>Name to be displayed for the source.</summary>
+        /// <summary>The name to be displayed for the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
         public virtual string SourceName { get; set; }
 
@@ -53922,7 +54075,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>The text content uploaded as source.</summary>
     public class GoogleCloudNotebooklmV1alphaUserContentTextContent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name to be displayed for the source.</summary>
+        /// <summary>The name to be displayed for the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
@@ -53948,7 +54101,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>The web content uploaded as source.</summary>
     public class GoogleCloudNotebooklmV1alphaUserContentWebContent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name to be displayed for the source.</summary>
+        /// <summary>The name to be displayed for the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
         public virtual string SourceName { get; set; }
 
