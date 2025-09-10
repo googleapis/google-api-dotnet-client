@@ -2610,8 +2610,8 @@ namespace Google.Apis.FirebaseAppHosting.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2696,6 +2696,36 @@ namespace Google.Apis.FirebaseAppHosting.v1
 }
 namespace Google.Apis.FirebaseAppHosting.v1.Data
 {
+    /// <summary>The URI of an storage archive or a signed URL to use as the build source.</summary>
+    public class ArchiveSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The author contained in the metadata of a version control change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("author")]
+        public virtual SourceUserMetadata Author { get; set; }
+
+        /// <summary>Optional. An optional message that describes the uploaded version of the source code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Signed URL to an archive in a storage bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalSignedUri")]
+        public virtual string ExternalSignedUri { get; set; }
+
+        /// <summary>Optional. Relative path in the archive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootDirectory")]
+        public virtual string RootDirectory { get; set; }
+
+        /// <summary>
+        /// URI to an archive in Cloud Storage. The object must be a zipped (.zip) or gzipped archive file (.tar.gz)
+        /// containing source to deploy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userStorageUri")]
+        public virtual string UserStorageUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A backend is the primary resource of App Hosting.</summary>
     public class Backend : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2838,6 +2868,13 @@ namespace Google.Apis.FirebaseAppHosting.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>
+        /// Optional. A field that, if true, indicates that incoming request logs are disabled for this backend.
+        /// Incoming request logs are enabled by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestLogsDisabled")]
+        public virtual System.Nullable<bool> RequestLogsDisabled { get; set; }
 
         /// <summary>
         /// Required. The name of the service account used for Cloud Build and Cloud Run. Should have the role
@@ -3096,6 +3133,10 @@ namespace Google.Apis.FirebaseAppHosting.v1.Data
     /// <summary>The source for the build.</summary>
     public class BuildSource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>An archive source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archive")]
+        public virtual ArchiveSource Archive { get; set; }
+
         /// <summary>A codebase source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codebase")]
         public virtual CodebaseSource Codebase { get; set; }
@@ -4193,8 +4234,8 @@ namespace Google.Apis.FirebaseAppHosting.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
         /// <summary>
-        /// Immutable. The name of a build that already exists. It doesn't have to be built; a rollout will wait for a
-        /// build to be ready before updating traffic.
+        /// Required. Immutable. The name of a build that already exists. It doesn't have to be built; a rollout will
+        /// wait for a build to be ready before updating traffic.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("build")]
         public virtual string Build { get; set; }
@@ -4488,6 +4529,28 @@ namespace Google.Apis.FirebaseAppHosting.v1.Data
         /// <summary>Optional. Redirect behavior for a domain, if provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirect")]
         public virtual Redirect Redirect { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the user who started the build.</summary>
+    public class SourceUserMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The user-chosen displayname. May be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. The account email linked to the EUC that created the build. May be a service account or other
+        /// robot account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Output only. The URI of a profile photo associated with the user who created the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
