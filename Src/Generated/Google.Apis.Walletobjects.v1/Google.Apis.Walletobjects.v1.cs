@@ -11031,6 +11031,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationType")]
         public virtual string NotificationType { get; set; }
 
+        /// <summary>
+        /// The physical headers provided by RequestReceivedParameters in Scotty request. type is
+        /// uploader_service.KeyValuePairs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("physicalHeaders")]
+        public virtual string PhysicalHeaders { get; set; }
+
         /// <summary>The Scotty request ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
