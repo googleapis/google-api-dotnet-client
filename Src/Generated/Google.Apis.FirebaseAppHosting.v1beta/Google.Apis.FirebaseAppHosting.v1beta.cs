@@ -2602,8 +2602,8 @@ namespace Google.Apis.FirebaseAppHosting.v1beta
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -4272,8 +4272,8 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
         /// <summary>
-        /// Immutable. The name of a build that already exists. It doesn't have to be built; a rollout will wait for a
-        /// build to be ready before updating traffic.
+        /// Required. Immutable. The name of a build that already exists. It doesn't have to be built; a rollout will
+        /// wait for a build to be ready before updating traffic.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("build")]
         public virtual string Build { get; set; }
