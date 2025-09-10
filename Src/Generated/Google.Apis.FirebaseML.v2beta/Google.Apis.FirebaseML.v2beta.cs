@@ -1371,18 +1371,21 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Content filter results for a prompt sent in the request.</summary>
+    /// <summary>
+    /// Content filter results for a prompt sent in the request. Note: This is sent only in the first stream chunk and
+    /// only if no candidates were generated due to content violations.
+    /// </summary>
     public class GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Blocked reason.</summary>
+        /// <summary>Output only. The reason why the prompt was blocked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockReason")]
         public virtual string BlockReason { get; set; }
 
-        /// <summary>Output only. A readable block reason message.</summary>
+        /// <summary>Output only. A readable message that explains the reason why the prompt was blocked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockReasonMessage")]
         public virtual string BlockReasonMessage { get; set; }
 
-        /// <summary>Output only. Safety ratings.</summary>
+        /// <summary>Output only. A list of safety ratings for the prompt. There is one rating per category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1SafetyRating> SafetyRatings { get; set; }
 
