@@ -53,7 +53,7 @@ namespace Google.Apis.Http
         public IWebProxy Proxy { get; }
 
         /// <inheritdoc/>
-        public ConfigurableHttpClient CreateHttpClient(CreateHttpClientArgs args)
+        public virtual ConfigurableHttpClient CreateHttpClient(CreateHttpClientArgs args)
         {
             // Create the handler.
             var handler = CreateHandler(args);
