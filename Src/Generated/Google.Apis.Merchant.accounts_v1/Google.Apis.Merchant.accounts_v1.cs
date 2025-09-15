@@ -4962,6 +4962,37 @@ namespace Google.Apis.Merchant.accounts_v1
             }
         }
 
+        /// <summary>Retrieves the merchant account that the calling GCP is registered with.</summary>
+        public virtual GetAccountForGcpRegistrationRequest GetAccountForGcpRegistration()
+        {
+            return new GetAccountForGcpRegistrationRequest(this.service);
+        }
+
+        /// <summary>Retrieves the merchant account that the calling GCP is registered with.</summary>
+        public class GetAccountForGcpRegistrationRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.GetAccountForGcpRegistrationResponse>
+        {
+            /// <summary>Constructs a new GetAccountForGcpRegistration request.</summary>
+            public GetAccountForGcpRegistrationRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getAccountForGcpRegistration";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1/accounts:getAccountForGcpRegistration";
+
+            /// <summary>Initializes GetAccountForGcpRegistration parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
         /// <summary>
         /// Note: For the `accounts.list` method, quota and limits usage are charged for each user, and not for the
         /// Merchant Center ID or the advanced account ID. To list several sub-accounts, you should use the
@@ -6665,6 +6696,17 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geotargetCriteriaIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> GeotargetCriteriaIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the GetAccountForGcpRegistration method.</summary>
+    public class GetAccountForGcpRegistrationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the merchant account id that the GCP is registered with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
