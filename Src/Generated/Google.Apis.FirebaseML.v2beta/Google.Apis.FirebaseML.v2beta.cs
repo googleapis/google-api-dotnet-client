@@ -1110,7 +1110,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Required. The name of the function to call. Matches [FunctionDeclaration.name].</summary>
+        /// <summary>Optional. The name of the function to call. Matches [FunctionDeclaration.name].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
