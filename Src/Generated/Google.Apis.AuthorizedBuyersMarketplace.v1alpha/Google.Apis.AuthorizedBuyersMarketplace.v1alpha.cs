@@ -4118,8 +4118,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha.Data
     public class DataSegment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. This will be charged when other accounts use this data segment. For example, when other accounts
-        /// add this data segment to a deal or auction package. Once set, the currency code cannot be changed.
+        /// Optional. A fixed fee charged per thousand impressions. Once set, the currency code cannot be changed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpmFee")]
         public virtual Money CpmFee { get; set; }
