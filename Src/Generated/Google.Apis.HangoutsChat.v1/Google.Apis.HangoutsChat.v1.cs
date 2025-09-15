@@ -5429,7 +5429,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hostApp")]
         public virtual string HostApp { get; set; }
 
-        /// <summary>Name of the invoked function associated with the widget. Only set for Chat apps.</summary>
+        /// <summary>
+        /// Name of the function to invoke. This field doesn't populate for Google Workspace Add-ons that extend Google
+        /// Chat. Instead, to receive function data like identifiers, add-ons that extend Chat should use the
+        /// `parameters` field. See [Build interactive interfaces for Chat
+        /// apps](https://developers.google.com/workspace/add-ons/chat/build).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invokedFunction")]
         public virtual string InvokedFunction { get; set; }
 
