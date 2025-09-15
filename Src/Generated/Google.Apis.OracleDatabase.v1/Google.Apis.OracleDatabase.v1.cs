@@ -1688,6 +1688,14 @@ namespace Google.Apis.OracleDatabase.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. An expression for filtering the results of the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. An expression for ordering the results of the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
                     /// <summary>
                     /// Optional. The maximum number of items to return. If unspecified, at most 50 Exadata
                     /// infrastructures will be returned. The maximum value is 1000; values above 1000 will be coerced
@@ -1720,6 +1728,22 @@ namespace Google.Apis.OracleDatabase.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -2217,6 +2241,13 @@ namespace Google.Apis.OracleDatabase.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. An expression for filtering the results of the request. Only the gcp_oracle_zone_id
+                    /// field is supported in this format: `gcp_oracle_zone_id="{gcp_oracle_zone_id}"`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// Optional. The maximum number of items to return. If unspecified, at most 50 database system
                     /// shapes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
                     /// </summary>
@@ -2247,6 +2278,14 @@ namespace Google.Apis.OracleDatabase.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -2413,8 +2452,8 @@ namespace Google.Apis.OracleDatabase.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. An expression for filtering the results of the request. Only the shape and gi_version
-                    /// fields are supported in this format: `shape="{shape}"`.
+                    /// Optional. An expression for filtering the results of the request. Only the shape,
+                    /// gcp_oracle_zone and gi_version fields are supported in this format: `shape="{shape}"`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -3490,8 +3529,8 @@ namespace Google.Apis.OracleDatabase.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -6144,6 +6183,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Output only. The ID of the subscription entitlement associated with the OdbNetwork.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitlementId")]
         public virtual string EntitlementId { get; set; }
+
+        /// <summary>
+        /// Optional. The GCP Oracle zone where OdbNetwork is hosted. Example: us-east4-b-r2. If not specified, the
+        /// system will pick a zone based on availability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
+        public virtual string GcpOracleZone { get; set; }
 
         /// <summary>Optional. Labels or tags associated with the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
