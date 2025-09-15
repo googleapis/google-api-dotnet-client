@@ -3168,7 +3168,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. Other test cases that depend on this test cse as a prerequisite.</summary>
+        /// <summary>Output only. Other test cases that depend on this test case as a prerequisite.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dependentTestCases")]
         public virtual System.Collections.Generic.IList<string> DependentTestCases { get; set; }
 
