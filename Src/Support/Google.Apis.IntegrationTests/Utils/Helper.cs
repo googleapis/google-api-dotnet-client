@@ -44,10 +44,8 @@ namespace IntegrationTests.Utils
             {
                 throw new InvalidOperationException($"Please set the {ServiceAccountFilenameVariable} environment variable before running tests.");
             }
-            using (var serviceAccountStream = File.OpenRead(serviceAccountFilename))
-            {
-                return GoogleCredential.FromStream(serviceAccountStream);
-            }
+
+            return CredentialFactory.FromFile<ServiceAccountCredential>(serviceAccountFilename).ToGoogleCredential();
         });
 
         private static readonly Lazy<byte[]> s_clientSecret = new Lazy<byte[]>(() =>

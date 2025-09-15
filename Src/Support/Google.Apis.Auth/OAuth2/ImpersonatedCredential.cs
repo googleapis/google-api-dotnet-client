@@ -34,6 +34,15 @@ namespace Google.Apis.Auth.OAuth2
     /// and https://cloud.google.com/iam/docs/impersonating-service-accounts
     /// for more information.
     /// </summary>
+    /// <remarks>
+    /// This credential type does not validate the credential configuration. A security 
+    /// risk occurs when a credential configuration configured with malicious urls 
+    /// is used.
+    /// You should validate credential configurations provided by untrusted sources.
+    /// See <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">
+    /// Security requirements when using credential configurations from an external source
+    /// </see> for more details.
+    /// </remarks>
     public sealed class ImpersonatedCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential, IBlobSigner
     {
         /// <summary>An initializer class for the impersonated credential. </summary>

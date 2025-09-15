@@ -160,7 +160,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         {
             IConfiguration config = BuildConfigurationForCredential(FakeUserCredentialConfigContents);
             JsonCredentialParameters credentialParameters = config.GetSection("GoogleCredential").Get<JsonCredentialParameters>();
-            GoogleCredential credential = GoogleCredential.FromJsonParameters(credentialParameters);
+            GoogleCredential credential = CredentialFactory.FromJsonParameters<UserCredential>(credentialParameters).ToGoogleCredential();
 
             var userCred = Assert.IsType<UserCredential>(credential.UnderlyingCredential);
             Assert.False(credential.IsCreateScopedRequired);
@@ -177,7 +177,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         {
             IConfiguration config = BuildConfigurationForCredential(FakeServiceAccountCredentialConfigContents);
             JsonCredentialParameters credentialParameters = config.GetSection("GoogleCredential").Get<JsonCredentialParameters>();
-            GoogleCredential credential = GoogleCredential.FromJsonParameters(credentialParameters);
+            var credential = CredentialFactory.FromJsonParameters<ServiceAccountCredential>(credentialParameters).ToGoogleCredential();
 
             var serviceCred = Assert.IsType<ServiceAccountCredential>(credential.UnderlyingCredential);
             Assert.True(credential.IsCreateScopedRequired);
@@ -190,7 +190,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         {
             IConfiguration config = BuildConfigurationForCredential(UntypedCredentialConfigContents);
             JsonCredentialParameters credentialParameters = config.GetSection("GoogleCredential").Get<JsonCredentialParameters>();
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => GoogleCredential.FromJsonParameters(credentialParameters));
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => CredentialFactory.FromJsonParameters<UserCredential>(credentialParameters));
             Assert.Contains("Unrecognized credential type", ex.Message);
         }
 
@@ -199,7 +199,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         {
             IConfiguration config = BuildConfigurationForCredential(IncompleteUserCredentialConfigContents);
             JsonCredentialParameters credentialParameters = config.GetSection("GoogleCredential").Get<JsonCredentialParameters>();
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => GoogleCredential.FromJsonParameters(credentialParameters));
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => CredentialFactory.FromJsonParameters<UserCredential>(credentialParameters));
             Assert.Contains("does not represent a valid user credential", ex.Message);
         }
 
@@ -215,7 +215,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.Equal("True", credentialParameters.RefreshToken);
             Assert.Equal("False", credentialParameters.ProjectId);
 
-            GoogleCredential credential = GoogleCredential.FromJsonParameters(credentialParameters);
+            var credential = CredentialFactory.FromJsonParameters<UserCredential>(credentialParameters).ToGoogleCredential();
 
             var userCred = Assert.IsType<UserCredential>(credential.UnderlyingCredential);
             Assert.False(credential.IsCreateScopedRequired);
@@ -233,7 +233,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             IConfiguration config = BuildConfigurationForCredential(UnusedPropertiesUserCredentialConfigContents);
             // Properties not in JsonCredentialParameters are ignored.
             JsonCredentialParameters credentialParameters = config.GetSection("GoogleCredential").Get<JsonCredentialParameters>();
-            GoogleCredential credential = GoogleCredential.FromJsonParameters(credentialParameters);
+            var credential = CredentialFactory.FromJsonParameters<UserCredential>(credentialParameters).ToGoogleCredential();
 
             var userCred = Assert.IsType<UserCredential>(credential.UnderlyingCredential);
             Assert.False(credential.IsCreateScopedRequired);
@@ -254,7 +254,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             }).Build();
 
             JsonCredentialParameters credentialParameters = config.GetSection("GoogleCredential").Get<JsonCredentialParameters>();
-            ArgumentNullException ex = Assert.Throws<ArgumentNullException>(() => GoogleCredential.FromJsonParameters(credentialParameters));
+            ArgumentNullException ex = Assert.Throws<ArgumentNullException>(() => CredentialFactory.FromJsonParameters<UserCredential>(credentialParameters));
             Assert.Equal("credentialParameters", ex.ParamName);
         }
 
@@ -262,7 +262,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         public void FromStream_UserCredential()
         {
             var stream = new MemoryStream(Encoding.UTF8.GetBytes(FakeUserCredentialFileContents));
-            var credential = GoogleCredential.FromStream(stream);
+            var credential = CredentialFactory.FromStream<UserCredential>(stream).ToGoogleCredential();
             Assert.IsType<UserCredential>(credential.UnderlyingCredential);
             Assert.False(credential.IsCreateScopedRequired);
             var userCred = (UserCredential)credential.UnderlyingCredential;
@@ -279,7 +279,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         public void CreateWithUniverseDomain_UserCredential_Fails()
         {
             var stream = new MemoryStream(Encoding.UTF8.GetBytes(FakeUserCredentialFileContents));
-            var credential = GoogleCredential.FromStream(stream);
+            var credential = CredentialFactory.FromStream<UserCredential>(stream).ToGoogleCredential();
 
             Assert.Throws<InvalidOperationException>(() => credential.CreateWithUniverseDomain("fake.universe.domain.com"));
         }
@@ -288,7 +288,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         public void FromStream_ServiceAccountCredential()
         {
             var stream = new MemoryStream(Encoding.UTF8.GetBytes(FakeServiceAccountCredentialFileContents));
-            var credential = GoogleCredential.FromStream(stream);
+            var credential = CredentialFactory.FromStream<ServiceAccountCredential>(stream).ToGoogleCredential();
             Assert.IsType<ServiceAccountCredential>(credential.UnderlyingCredential);
             Assert.True(credential.IsCreateScopedRequired);
             var serviceCred = (ServiceAccountCredential)credential.UnderlyingCredential;
@@ -318,7 +318,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         public async Task FromStreamAsync_ServiceAccountCredential()
         {
             var stream = new MemoryStream(Encoding.UTF8.GetBytes(FakeServiceAccountCredentialFileContents));
-            var credential = await GoogleCredential.FromStreamAsync(stream, CancellationToken.None);
+            var credential = (await CredentialFactory.FromStreamAsync<ServiceAccountCredential>(stream, CancellationToken.None)).ToGoogleCredential();
             Assert.IsType<ServiceAccountCredential>(credential.UnderlyingCredential);
             Assert.True(credential.IsCreateScopedRequired);
             var serviceCred = (ServiceAccountCredential) credential.UnderlyingCredential;
@@ -333,7 +333,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             try
             {
                 File.WriteAllText(tempFile, FakeServiceAccountCredentialFileContents);
-                var credential = GoogleCredential.FromFile(tempFile);
+                var credential = CredentialFactory.FromFile<ServiceAccountCredential>(tempFile).ToGoogleCredential();
                 Assert.IsType<ServiceAccountCredential>(credential.UnderlyingCredential);
                 Assert.True(credential.IsCreateScopedRequired);
                 var serviceCred = (ServiceAccountCredential)credential.UnderlyingCredential;
@@ -357,7 +357,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             try
             {
                 File.WriteAllText(tempFile, FakeServiceAccountCredentialFileContents);
-                var credential = await GoogleCredential.FromFileAsync(tempFile, CancellationToken.None);
+                var credential = (await CredentialFactory.FromFileAsync<ServiceAccountCredential>(tempFile, CancellationToken.None)).ToGoogleCredential();
                 Assert.IsType<ServiceAccountCredential>(credential.UnderlyingCredential);
                 Assert.True(credential.IsCreateScopedRequired);
                 var serviceCred = (ServiceAccountCredential)credential.UnderlyingCredential;
@@ -377,14 +377,14 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         [Fact]
         public void FromJson_UserCredential()
         {
-            var credential = GoogleCredential.FromJson(FakeUserCredentialFileContents);
+            var credential = CredentialFactory.FromJson<UserCredential>(FakeUserCredentialFileContents).ToGoogleCredential();
             Assert.False(credential.IsCreateScopedRequired);
         }
 
         [Fact]
         public void FromJson_ServiceAccountCredential()
         {
-            var credential = GoogleCredential.FromJson(FakeServiceAccountCredentialFileContents);
+            var credential = CredentialFactory.FromJson<ServiceAccountCredential>(FakeServiceAccountCredentialFileContents).ToGoogleCredential();
             Assert.IsType<ServiceAccountCredential>(credential.UnderlyingCredential);
             Assert.True(credential.IsCreateScopedRequired);
         }
@@ -396,7 +396,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             // requires 255 bytes to encode, but we still need to left pad it to 256 so
             // RSACryptoServiceProvider.ImportParameters does not throw CryptographicException with
             // a "Bad Data" message.
-            var credential = GoogleCredential.FromJson(@"{
+            var credential = CredentialFactory.FromJson<ServiceAccountCredential>(@"{
 ""private_key_id"": ""PRIVATE_KEY_ID"",
 ""private_key"": ""-----BEGIN PRIVATE KEY-----
 MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC5KC4i9y2QMw5S
@@ -428,7 +428,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
 -----END PRIVATE KEY-----"",
 ""client_email"": ""CLIENT_EMAIL"",
 ""client_id"": ""CLIENT_ID"",
-""type"": ""service_account""}");
+""type"": ""service_account""}").ToGoogleCredential();
             Assert.IsType<ServiceAccountCredential>(credential.UnderlyingCredential);
             Assert.True(credential.IsCreateScopedRequired);
         }
@@ -442,7 +442,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         public async Task FromStream_ServiceAccountCredential_GetJwtAccessToken()
         {
             var stream = new MemoryStream(Encoding.UTF8.GetBytes(FakeServiceAccountCredentialFileContents));
-            var credential = GoogleCredential.FromStream(stream);
+            var credential = CredentialFactory.FromStream<ServiceAccountCredential>(stream).ToGoogleCredential();
 
             // Without adding scopes, the credential should be generating JWT scopes.
             string accessToken = await (credential as ITokenAccess).GetAccessTokenForRequestAsync(FakeAuthUri);
@@ -465,7 +465,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         public async Task FromUserCredential_OidcTokenFails()
         {
             var stream = new MemoryStream(Encoding.UTF8.GetBytes(FakeUserCredentialFileContents));
-            var credential = GoogleCredential.FromStream(stream);
+            var credential = CredentialFactory.FromStream<UserCredential>(stream).ToGoogleCredential();
             await Assert.ThrowsAsync<InvalidOperationException>(
                 () => credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience")));
         }
@@ -667,7 +667,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         [Fact]
         public void Impersonate()
         {
-            var sourceCredential = GoogleCredential.FromJson(FakeServiceAccountCredentialFileContents);
+            var sourceCredential = CredentialFactory.FromJson<ServiceAccountCredential>(FakeServiceAccountCredentialFileContents).ToGoogleCredential();
 
             var credential = sourceCredential.Impersonate(new ImpersonatedCredential.Initializer("principal")
             {
@@ -686,7 +686,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         [Fact]
         public void CreateScoped_Impersonated()
         {
-            var sourceCredential = GoogleCredential.FromJson(FakeServiceAccountCredentialFileContents);
+            var sourceCredential = CredentialFactory.FromJson<ServiceAccountCredential>(FakeServiceAccountCredentialFileContents).ToGoogleCredential();
             var unscopedCredential = sourceCredential.Impersonate(new ImpersonatedCredential.Initializer("principal"));
 
             var scopedCredential = unscopedCredential.CreateScoped("new_scope");
@@ -700,7 +700,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         [Fact]
         public void CreateWithQuotaProject_Impersonated()
         {
-            var sourceCredential = GoogleCredential.FromJson(FakeServiceAccountCredentialFileContents);
+            var sourceCredential = CredentialFactory.FromJson<ServiceAccountCredential>(FakeServiceAccountCredentialFileContents).ToGoogleCredential();
 
             var credential = sourceCredential.Impersonate(new ImpersonatedCredential.Initializer("principal"));
             var credentialWithQuotaProject = credential.CreateWithQuotaProject("new_project");
@@ -713,7 +713,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         [Fact]
         public async Task SignBlobAsync()
         {
-            var credential = GoogleCredential.FromJson(FakeServiceAccountCredentialFileContents);
+            var credential = CredentialFactory.FromJson<ServiceAccountCredential>(FakeServiceAccountCredentialFileContents).ToGoogleCredential();
             var signature = await credential.SignBlobAsync(Encoding.ASCII.GetBytes("toSign"));
             Assert.Equal("VvQqmCec5sESTXmt3ojPodmqZhV30MffzuyCvz6DatyW4uO9IMLWbUmynPYNNnn6w0EIVV0CyrARd56VLxgL+DVdsX726W3dfY13nNJo7i8PyV8R2i8yRLimqqraa1fDb29V2n+FsS0OzBPibDscViQHVlu0PBRApsVsjGG+eB4=", signature);
         }

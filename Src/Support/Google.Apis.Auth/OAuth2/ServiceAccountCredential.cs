@@ -207,16 +207,7 @@ namespace Google.Apis.Auth.OAuth2
         /// The <paramref name="credentialData"/> does not contain valid JSON service account key data.
         /// </exception>
         /// <returns>The credentials parsed from the service account key data.</returns>
-        public static ServiceAccountCredential FromServiceAccountData(Stream credentialData)
-        {
-            var credential = GoogleCredential.FromStream(credentialData);
-            var result = credential.UnderlyingCredential as ServiceAccountCredential;
-            if (result == null)
-            {
-                throw new InvalidOperationException("JSON data does not represent a valid service account credential.");
-            }
-            return result;
-        }
+        public static ServiceAccountCredential FromServiceAccountData(Stream credentialData) => CredentialFactory.FromStream<ServiceAccountCredential>(credentialData);
 
         private protected override void AddHttpClientRetryConfiguration(CreateHttpClientArgs args)
         {
