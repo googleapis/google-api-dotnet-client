@@ -5255,8 +5255,8 @@ namespace Google.Apis.GKEHub.v1alpha
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -10358,8 +10358,15 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ConnectVersion { get; set; }
 
         /// <summary>
-        /// Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for
-        /// the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+        /// Optional. Git version of the Kubernetes cluster. This is only used to gate the Connect Agent migration to
+        /// svc.id.goog on GDC-SO 1.33.100 patch and above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("k8sGitVersion")]
+        public virtual string K8sGitVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Major and minor version of the Kubernetes cluster. This is only used to determine which version to
+        /// use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("k8sVersion")]
         public virtual string K8sVersion { get; set; }
