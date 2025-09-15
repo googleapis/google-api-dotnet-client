@@ -6907,6 +6907,20 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Indicates the location at which a package was found.</summary>
+    public class FileLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// For jars that are contained inside .war files, this filepath can indicate the path to war file combined with
+        /// the path to jar file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual string FilePath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// FileNote represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
     /// </summary>
@@ -7906,6 +7920,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sbomReference")]
         public virtual SBOMReferenceNote SbomReference { get; set; }
 
+        /// <summary>A note describing a secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
+        public virtual SecretNote Secret { get; set; }
+
         /// <summary>A one sentence description of this note.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortDescription")]
         public virtual string ShortDescription { get; set; }
@@ -8080,6 +8098,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>Describes a specific SBOM reference occurrences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sbomReference")]
         public virtual SBOMReferenceOccurrence SbomReference { get; set; }
+
+        /// <summary>Describes a secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
+        public virtual SecretOccurrence Secret { get; set; }
 
         /// <summary>Describes a specific SPDX File.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spdxFile")]
@@ -8884,6 +8906,95 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>The person or system referring this predicate to the consumer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referrerId")]
         public virtual string ReferrerId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The location of the secret.</summary>
+    public class SecretLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The secret is found from a file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileLocation")]
+        public virtual FileLocation FileLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The note representing a secret.</summary>
+    public class SecretNote : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The occurrence provides details of a secret.</summary>
+    public class SecretOccurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Type of secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Optional. Locations where the secret is detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<SecretLocation> Locations { get; set; }
+
+        /// <summary>Optional. Status of the secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statuses")]
+        public virtual System.Collections.Generic.IList<SecretStatus> Statuses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of the secret with a timestamp.</summary>
+    public class SecretStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Optional message about the status code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Optional. The status of the secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Optional. The time the secret status was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
