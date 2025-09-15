@@ -3200,7 +3200,10 @@ namespace Google.Apis.BigQueryReservation.v1.Data
     /// <summary>The request for ReservationService.FailoverReservation.</summary>
     public class FailoverReservationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. failover mode for the failover operation.</summary>
+        /// <summary>
+        /// Optional. A parameter that determines how writes that are pending replication are handled after a failover
+        /// is initiated. If not specified, HARD failover mode is used by default.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failoverMode")]
         public virtual string FailoverMode { get; set; }
 
