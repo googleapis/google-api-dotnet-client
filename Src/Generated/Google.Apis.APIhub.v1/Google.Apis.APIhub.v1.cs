@@ -398,7 +398,10 @@ namespace Google.Apis.APIhub.v1
                     }
                 }
 
-                /// <summary>Deletes the API hub instance.</summary>
+                /// <summary>
+                /// Deletes the API hub instance. Deleting the API hub instance will also result in the removal of all
+                /// associated runtime project attachments and the host project registration.
+                /// </summary>
                 /// <param name="name">
                 /// Required. The name of the Api Hub instance to delete. Format:
                 /// `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`.
@@ -408,7 +411,10 @@ namespace Google.Apis.APIhub.v1
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes the API hub instance.</summary>
+                /// <summary>
+                /// Deletes the API hub instance. Deleting the API hub instance will also result in the removal of all
+                /// associated runtime project attachments and the host project registration.
+                /// </summary>
                 public class DeleteRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -5971,6 +5977,65 @@ namespace Google.Apis.APIhub.v1
                         }
                     }
 
+                    /// <summary>Manages data for a given plugin instance.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the plugin instance for which data needs to be managed. Format:
+                    /// `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`
+                    /// </param>
+                    public virtual ManageSourceDataRequest ManageSourceData(Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest body, string name)
+                    {
+                        return new ManageSourceDataRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Manages data for a given plugin instance.</summary>
+                    public class ManageSourceDataRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse>
+                    {
+                        /// <summary>Constructs a new ManageSourceData request.</summary>
+                        public ManageSourceDataRequest(Google.Apis.Services.IClientService service, Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the plugin instance for which data needs to be managed. Format:
+                        /// `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "manageSourceData";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:manageSourceData";
+
+                        /// <summary>Initializes ManageSourceData parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/plugins/[^/]+/instances/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Updates a plugin instance in the API hub. The following fields in the plugin_instance can be
                     /// updated currently: * display_name * schedule_cron_expression The update_mask should be used to
@@ -7106,8 +7171,8 @@ namespace Google.Apis.APIhub.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -10441,6 +10506,36 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The ManagePluginInstanceSourceData method's request.</summary>
+    public class GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Action to be performed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Required. Data to be managed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>Required. Type of data to be managed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual string DataType { get; set; }
+
+        /// <summary>Required. Relative path of data being managed for a given plugin instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativePath")]
+        public virtual string RelativePath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The ManagePluginInstanceSourceData method's response.</summary>
+    public class GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// MatchResult represents the result of matching a discovered API operation with a catalog API operation.
     /// </summary>
@@ -10720,7 +10815,10 @@ namespace Google.Apis.APIhub.v1.Data
     /// <summary>A plugin resource in the API Hub.</summary>
     public class GoogleCloudApihubV1Plugin : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The configuration of actions supported by the plugin.</summary>
+        /// <summary>
+        /// Optional. The configuration of actions supported by the plugin. **REQUIRED**: This field must be provided
+        /// when creating or updating a Plugin. The server will reject requests if this field is missing.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionsConfig")]
         public virtual System.Collections.Generic.IList<GoogleCloudApihubV1PluginActionConfig> ActionsConfig { get; set; }
 
