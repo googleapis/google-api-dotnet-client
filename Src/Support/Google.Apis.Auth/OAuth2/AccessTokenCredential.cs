@@ -53,6 +53,9 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <inheritdoc/>
+        public GoogleCredential ToGoogleCredential() => new GoogleCredential(this);
+
+        /// <inheritdoc/>
         Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => Task.FromResult(_universeDomain);
 
         /// <inheritdoc/>
