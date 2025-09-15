@@ -25,6 +25,15 @@ namespace Google.Apis.Auth.OAuth2;
 /// <summary>
 /// External account credentials that rely on user-provided code to obtain the third-party token.
 /// </summary>
+/// <remarks>
+/// This credential type does not validate the credential configuration. A security 
+/// risk occurs when a credential configuration configured with malicious urls 
+/// is used.
+/// You should validate credential configurations provided by untrusted sources.
+/// See <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">
+/// Security requirements when using credential configurations from an external source
+/// </see> for more details.
+/// </remarks>
 public sealed class ProgrammaticExternalAccountCredential : ExternalAccountCredential, IGoogleCredential
 {
     /// <summary>

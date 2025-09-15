@@ -121,7 +121,9 @@ namespace Google.Apis.Auth.OAuth2
         /// systems and data. For more information, refer to
         /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
         /// </remarks>
-        public static GoogleCredential FromStream(Stream stream) => CredentialFactory.FromStream<IGoogleCredential>(stream);
+        [Obsolete("This method is being deprecated because of a potential security risk. Use the methods in the CredentialFactory class " +
+            "instead. A GoogleCredential object can then be created by calling the .ToGoogleCredential() method on the returned specific credential. ")] 
+        public static GoogleCredential FromStream(Stream stream) => CredentialFactory.FromStream<IGoogleCredential>(stream).ToGoogleCredential();
 
         /// <summary>
         /// Loads credential from stream containing JSON credential data.
@@ -137,8 +139,10 @@ namespace Google.Apis.Auth.OAuth2
         /// systems and data. For more information, refer to
         /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
         /// </remarks>
-        public static Task<GoogleCredential> FromStreamAsync(Stream stream, CancellationToken cancellationToken) =>
-            CredentialFactory.FromStreamAsync<IGoogleCredential>(stream, cancellationToken);
+       [Obsolete("This method is being deprecated because of a potential security risk. Use the methods in the CredentialFactory class " +
+            "instead. A GoogleCredential object can then be created by calling the .ToGoogleCredential() method on the returned specific credential. ")] 
+        public async static Task<GoogleCredential> FromStreamAsync(Stream stream, CancellationToken cancellationToken) =>
+            (await CredentialFactory.FromStreamAsync<IGoogleCredential>(stream, cancellationToken).ConfigureAwait(false)).ToGoogleCredential();
 
         /// <summary>
         /// Loads credential from the specified file containing JSON credential data.
@@ -156,13 +160,9 @@ namespace Google.Apis.Auth.OAuth2
         /// systems and data. For more information, refer to
         /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
         /// </remarks>
-        public static GoogleCredential FromFile(string path)
-        {
-            using (var f = File.OpenRead(path))
-            {
-                return FromStream(f);
-            }
-        }
+       [Obsolete("This method is being deprecated because of a potential security risk. Use the methods in the CredentialFactory class " +
+            "instead. A GoogleCredential object can then be created by calling the .ToGoogleCredential() method on the returned specific credential. ")] 
+        public static GoogleCredential FromFile(string path) => CredentialFactory.FromFile<IGoogleCredential>(path).ToGoogleCredential();
 
         /// <summary>
         /// Loads credential from the specified file containing JSON credential data.
@@ -181,13 +181,10 @@ namespace Google.Apis.Auth.OAuth2
         /// systems and data. For more information, refer to
         /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
         /// </remarks>
-        public static async Task<GoogleCredential> FromFileAsync(string path, CancellationToken cancellationToken)
-        {
-            using (var f = File.OpenRead(path))
-            {
-                return await FromStreamAsync(f, cancellationToken).ConfigureAwait(false);
-            }
-        }
+       [Obsolete("This method is being deprecated because of a potential security risk. Use the methods in the CredentialFactory class " +
+            "instead. A GoogleCredential object can then be created by calling the .ToGoogleCredential() method on the returned specific credential. ")] 
+        public static async Task<GoogleCredential> FromFileAsync(string path, CancellationToken cancellationToken) => 
+            (await CredentialFactory.FromFileAsync<IGoogleCredential>(path, cancellationToken).ConfigureAwait(false)).ToGoogleCredential();
 
         /// <summary>
         /// Loads credential from a string containing JSON credential data.
@@ -203,7 +200,9 @@ namespace Google.Apis.Auth.OAuth2
         /// systems and data. For more information, refer to
         /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
         /// </remarks>
-        public static GoogleCredential FromJson(string json) => CredentialFactory.FromJson<IGoogleCredential>(json);
+       [Obsolete("This method is being deprecated because of a potential security risk. Use the methods in the CredentialFactory class " +
+            "instead. A GoogleCredential object can then be created by calling the .ToGoogleCredential() method on the returned specific credential. ")] 
+        public static GoogleCredential FromJson(string json) => CredentialFactory.FromJson<IGoogleCredential>(json).ToGoogleCredential();
 
         /// <summary>
         /// Loads a credential from JSON credential parameters. Fields are a union of credential fields
@@ -217,8 +216,10 @@ namespace Google.Apis.Auth.OAuth2
         /// systems and data. For more information, refer to
         /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
         /// </remarks>
+       [Obsolete("This method is being deprecated because of a potential security risk. Use the methods in the CredentialFactory class " +
+            "instead. A GoogleCredential object can then be created by calling the .ToGoogleCredential() method on the returned specific credential. ")] 
         public static GoogleCredential FromJsonParameters(JsonCredentialParameters credentialParameters) =>
-            CredentialFactory.FromJsonParameters<IGoogleCredential>(credentialParameters);
+            CredentialFactory.FromJsonParameters<IGoogleCredential>(credentialParameters).ToGoogleCredential();
 
         /// <summary>
         /// Create a <see cref="GoogleCredential"/> directly from the provided access token.

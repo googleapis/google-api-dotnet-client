@@ -30,6 +30,15 @@ namespace Google.Apis.Auth.OAuth2
     /// URL-sourced credentials as described in
     /// https://google.aip.dev/auth/4117#determining-the-subject-token-in-microsoft-azure-and-url-sourced-credentials.
     /// </summary>
+    /// <remarks>
+    /// This credential type does not validate the credential configuration. A security 
+    /// risk occurs when a credential configuration configured with malicious urls 
+    /// is used.
+    /// You should validate credential configurations provided by untrusted sources.
+    /// See <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">
+    /// Security requirements when using credential configurations from an external source
+    /// </see> for more details.
+    /// </remarks>
     public sealed class UrlSourcedExternalAccountCredential : ExternalAccountCredential, IGoogleCredential
     {
         new internal class Initializer : ExternalAccountCredential.Initializer
