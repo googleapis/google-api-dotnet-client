@@ -2475,8 +2475,8 @@ namespace Google.Apis.CloudRedis.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -3820,7 +3820,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
 
     /// <summary>
     /// DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into
-    /// Condor platform. Next ID: 11
+    /// Condor platform. Next ID: 13
     /// </summary>
     public class DatabaseResourceFeed : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3834,6 +3834,12 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configBasedSignalData")]
         public virtual ConfigBasedSignalData ConfigBasedSignalData { get; set; }
+
+        /// <summary>
+        /// Database resource signal data is used to ingest signals from database resource signal feeds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseResourceSignalData")]
+        public virtual DatabaseResourceSignalData DatabaseResourceSignalData { get; set; }
 
         private string _feedTimestampRaw;
 
@@ -4061,7 +4067,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 26</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 27</summary>
     public class DatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -4249,6 +4255,13 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userLabelSet")]
         public virtual UserLabels UserLabelSet { get; set; }
 
+        /// <summary>
+        /// The resource zone. This is only applicable for zonal resources and will be empty for regional and
+        /// multi-regional resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4335,6 +4348,75 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>
         /// Required. Type of signal, for example, `SIGNAL_TYPE_IDLE`, `SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES`, etc.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalType")]
+        public virtual string SignalType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Database resource signal data. This is used to send signals to Condor which are based on the DB/Instance/Fleet
+    /// level configurations. These will be used to send signals for all inventory types. Next ID: 7
+    /// </summary>
+    public class DatabaseResourceSignalData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Full Resource name of the source resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
+        public virtual string FullResourceName { get; set; }
+
+        private string _lastRefreshTimeRaw;
+
+        private object _lastRefreshTime;
+
+        /// <summary>Required. Last time signal was refreshed</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
+        public virtual string LastRefreshTimeRaw
+        {
+            get => _lastRefreshTimeRaw;
+            set
+            {
+                _lastRefreshTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastRefreshTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastRefreshTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastRefreshTimeDateTimeOffset instead.")]
+        public virtual object LastRefreshTime
+        {
+            get => _lastRefreshTime;
+            set
+            {
+                _lastRefreshTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastRefreshTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastRefreshTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastRefreshTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRefreshTimeRaw);
+            set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Database resource id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual DatabaseResourceId ResourceId { get; set; }
+
+        /// <summary>Signal data for boolean signals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalBoolValue")]
+        public virtual System.Nullable<bool> SignalBoolValue { get; set; }
+
+        /// <summary>Required. Output only. Signal state of the signal</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalState")]
+        public virtual string SignalState { get; set; }
+
+        /// <summary>Required. Signal type of the signal</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalType")]
         public virtual string SignalType { get; set; }
 
