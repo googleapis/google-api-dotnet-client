@@ -5554,8 +5554,8 @@ namespace Google.Apis.Eventarc.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -6688,9 +6688,9 @@ namespace Google.Apis.Eventarc.v1.Data
     {
         /// <summary>
         /// Optional. An authentication config used to authenticate message requests, such that destinations can verify
-        /// the source. For example, this can be used with private GCP destinations that require GCP credentials to
-        /// access like Cloud Run. This field is optional and should be set only by users interested in authenticated
-        /// push
+        /// the source. For example, this can be used with private Google Cloud destinations that require Google Cloud
+        /// credentials for access like Cloud Run. This field is optional and should be set only by users interested in
+        /// authenticated push.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authenticationConfig")]
         public virtual GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig AuthenticationConfig { get; set; }
@@ -6749,8 +6749,8 @@ namespace Google.Apis.Eventarc.v1.Data
     public class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. This authenticate method will apply Google OIDC tokens signed by a GCP service account to the
-        /// requests.
+        /// Optional. This authenticate method will apply Google OIDC tokens signed by a Google Cloud service account to
+        /// the requests.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleOidc")]
         public virtual GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken GoogleOidc { get; set; }
@@ -6797,7 +6797,7 @@ namespace Google.Apis.Eventarc.v1.Data
     }
 
     /// <summary>
-    /// Represents a config used to authenticate with a Google OIDC token using a GCP service account. Use this
+    /// Represents a config used to authenticate with a Google OIDC token using a Google Cloud service account. Use this
     /// authentication method to invoke your Cloud Run and Cloud Functions destinations or HTTP endpoints that support
     /// Google OIDC.
     /// </summary>
