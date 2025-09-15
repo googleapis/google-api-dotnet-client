@@ -1916,8 +1916,8 @@ namespace Google.Apis.WorkloadManager.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2733,7 +2733,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentStatus")]
         public virtual AgentStatus AgentStatus { get; set; }
 
-        /// <summary>Required. The instance id where the insight is generated from</summary>
+        /// <summary>Optional. The instance id where the insight is generated from</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
         public virtual string InstanceId { get; set; }
 
@@ -4095,7 +4095,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string AgentVersion { get; set; }
 
         /// <summary>
-        /// Required. instance_name lists the human readable name of the instance that the data comes from.
+        /// Optional. instance_name lists the human readable name of the instance that the data comes from.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
         public virtual string InstanceName { get; set; }
