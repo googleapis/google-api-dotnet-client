@@ -3050,8 +3050,8 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -6717,8 +6717,10 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Creates a log scope.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent project in which to create the log scope
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
+                /// Required. The parent resource in which to create the log scope:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogScope body, string parent)
                 {
@@ -6737,9 +6739,10 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Required. The parent project in which to create the log scope
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For
-                    /// example:"projects/my-project/locations/global"
+                    /// Required. The parent resource in which to create the log scope:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -6793,7 +6796,9 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Deletes a log scope.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the log scope to delete:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
                 /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -6813,7 +6818,9 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. The resource name of the log scope to delete:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
                     /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -6845,8 +6852,9 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>Gets a log scope.</summary>
                 /// <param name="name">
-                /// Required. The resource name of the log scope:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                /// Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
                 /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -6865,8 +6873,9 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the log scope:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                    /// Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
                     /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -7898,8 +7907,8 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -10834,8 +10843,8 @@ namespace Google.Apis.Logging.v2
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-            /// otherwise. This is primarily for internal usage.
+            /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily
+            /// intended for internal usage.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -13283,8 +13292,10 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Creates a log scope.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent project in which to create the log scope
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
+                /// Required. The parent resource in which to create the log scope:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogScope body, string parent)
                 {
@@ -13303,9 +13314,10 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Required. The parent project in which to create the log scope
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For
-                    /// example:"projects/my-project/locations/global"
+                    /// Required. The parent resource in which to create the log scope:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -13359,7 +13371,9 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Deletes a log scope.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the log scope to delete:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
                 /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -13379,7 +13393,9 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. The resource name of the log scope to delete:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
                     /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -13411,8 +13427,9 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>Gets a log scope.</summary>
                 /// <param name="name">
-                /// Required. The resource name of the log scope:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                /// Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
                 /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -13431,8 +13448,9 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the log scope:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                    /// Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
                     /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -14464,8 +14482,8 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -17763,8 +17781,10 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Creates a log scope.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent project in which to create the log scope
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
+                /// Required. The parent resource in which to create the log scope:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogScope body, string parent)
                 {
@@ -17783,9 +17803,10 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Required. The parent project in which to create the log scope
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For
-                    /// example:"projects/my-project/locations/global"
+                    /// Required. The parent resource in which to create the log scope:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -17839,7 +17860,9 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Deletes a log scope.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the log scope to delete:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
                 /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -17859,7 +17882,9 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. The resource name of the log scope to delete:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
                     /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -17891,8 +17916,9 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>Gets a log scope.</summary>
                 /// <param name="name">
-                /// Required. The resource name of the log scope:
-                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                /// Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
                 /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -17911,8 +17937,9 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the log scope:
-                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                    /// Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
                     /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -18944,8 +18971,8 @@ namespace Google.Apis.Logging.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -23487,9 +23514,10 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. Names of one or more parent resources: projects/[PROJECT_ID]May alternatively be one or more
-        /// views: projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]A log scope can
-        /// include a maximum of 5 projects and a maximum of 100 resources in total.
+        /// Required. Names of one or more parent resources (organizations and folders are not supported.):
+        /// projects/[PROJECT_ID]May alternatively be one or more views:
+        /// projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]A log scope can include a
+        /// maximum of 5 projects and a maximum of 100 resources in total.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
         public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; }
