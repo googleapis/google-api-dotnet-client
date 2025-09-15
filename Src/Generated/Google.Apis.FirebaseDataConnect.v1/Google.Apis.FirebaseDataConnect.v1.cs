@@ -1038,6 +1038,152 @@ namespace Google.Apis.FirebaseDataConnect.v1
                         }
                     }
 
+                    /// <summary>
+                    /// Impersonate a mutation defined on a Firebase Data Connect connector. It grants the admin SDK
+                    /// access to mutations defined in the given connector. The caller can choose to impersonate a
+                    /// particular Firebase Auth user, or skip @auth completely.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the connector to find the predefined query/mutation, in the
+                    /// format:
+                    /// ```
+                    /// projects/{project}/locations/{location}/services/{service}/connectors/{connector}
+                    /// ```
+                    /// </param>
+                    public virtual ImpersonateMutationRequest ImpersonateMutation(Google.Apis.FirebaseDataConnect.v1.Data.ImpersonateRequest body, string name)
+                    {
+                        return new ImpersonateMutationRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Impersonate a mutation defined on a Firebase Data Connect connector. It grants the admin SDK
+                    /// access to mutations defined in the given connector. The caller can choose to impersonate a
+                    /// particular Firebase Auth user, or skip @auth completely.
+                    /// </summary>
+                    public class ImpersonateMutationRequest : FirebaseDataConnectBaseServiceRequest<Google.Apis.FirebaseDataConnect.v1.Data.GraphqlResponse>
+                    {
+                        /// <summary>Constructs a new ImpersonateMutation request.</summary>
+                        public ImpersonateMutationRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDataConnect.v1.Data.ImpersonateRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the connector to find the predefined query/mutation, in the
+                        /// format:
+                        /// ```
+                        /// projects/{project}/locations/{location}/services/{service}/connectors/{connector}
+                        /// ```
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.FirebaseDataConnect.v1.Data.ImpersonateRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "impersonateMutation";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:impersonateMutation";
+
+                        /// <summary>Initializes ImpersonateMutation parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+/connectors/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Impersonate a query defined on a Firebase Data Connect connector. It grants the admin SDK access
+                    /// to queries defined in the given connector. The caller can choose to impersonate a particular
+                    /// Firebase Auth user, or skip @auth completely.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the connector to find the predefined query/mutation, in the
+                    /// format:
+                    /// ```
+                    /// projects/{project}/locations/{location}/services/{service}/connectors/{connector}
+                    /// ```
+                    /// </param>
+                    public virtual ImpersonateQueryRequest ImpersonateQuery(Google.Apis.FirebaseDataConnect.v1.Data.ImpersonateRequest body, string name)
+                    {
+                        return new ImpersonateQueryRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Impersonate a query defined on a Firebase Data Connect connector. It grants the admin SDK access
+                    /// to queries defined in the given connector. The caller can choose to impersonate a particular
+                    /// Firebase Auth user, or skip @auth completely.
+                    /// </summary>
+                    public class ImpersonateQueryRequest : FirebaseDataConnectBaseServiceRequest<Google.Apis.FirebaseDataConnect.v1.Data.GraphqlResponse>
+                    {
+                        /// <summary>Constructs a new ImpersonateQuery request.</summary>
+                        public ImpersonateQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDataConnect.v1.Data.ImpersonateRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the connector to find the predefined query/mutation, in the
+                        /// format:
+                        /// ```
+                        /// projects/{project}/locations/{location}/services/{service}/connectors/{connector}
+                        /// ```
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.FirebaseDataConnect.v1.Data.ImpersonateRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "impersonateQuery";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:impersonateQuery";
+
+                        /// <summary>Initializes ImpersonateQuery parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+/connectors/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Lists Connectors in a given project and location.</summary>
                     /// <param name="parent">Required. Value of parent.</param>
                     public virtual ListRequest List(string parent)
@@ -2290,6 +2436,81 @@ namespace Google.Apis.FirebaseDataConnect.v1
                     }
                 }
 
+                /// <summary>
+                /// Execute introspection query against the Firebase Data Connect's generated GraphQL schema. GraphQL
+                /// introspection query provides metadata such as what tables the schema have, what queries and
+                /// mutations can be performed on the schema, and so on. Read more at
+                /// https://graphql.org/learn/introspection. IntrospectGraphql can read schema metadata but cannot read
+                /// rows from Cloud SQL instance, which can be done via ExecuteGraphqlRead.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The relative resource name of Firebase Data Connect service, in the format:
+                /// ```
+                /// projects/{project}/locations/{location}/services/{service}
+                /// ```
+                /// </param>
+                public virtual IntrospectGraphqlRequest IntrospectGraphql(Google.Apis.FirebaseDataConnect.v1.Data.GraphqlRequest body, string name)
+                {
+                    return new IntrospectGraphqlRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Execute introspection query against the Firebase Data Connect's generated GraphQL schema. GraphQL
+                /// introspection query provides metadata such as what tables the schema have, what queries and
+                /// mutations can be performed on the schema, and so on. Read more at
+                /// https://graphql.org/learn/introspection. IntrospectGraphql can read schema metadata but cannot read
+                /// rows from Cloud SQL instance, which can be done via ExecuteGraphqlRead.
+                /// </summary>
+                public class IntrospectGraphqlRequest : FirebaseDataConnectBaseServiceRequest<Google.Apis.FirebaseDataConnect.v1.Data.GraphqlResponse>
+                {
+                    /// <summary>Constructs a new IntrospectGraphql request.</summary>
+                    public IntrospectGraphqlRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDataConnect.v1.Data.GraphqlRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of Firebase Data Connect service, in the format:
+                    /// ```
+                    /// projects/{project}/locations/{location}/services/{service}
+                    /// ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.FirebaseDataConnect.v1.Data.GraphqlRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "introspectGraphql";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:introspectGraphql";
+
+                    /// <summary>Initializes IntrospectGraphql parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists Services in a given project and location.</summary>
                 /// <param name="parent">Required. Value of parent.</param>
                 public virtual ListRequest List(string parent)
@@ -2594,8 +2815,8 @@ namespace Google.Apis.FirebaseDataConnect.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -3074,6 +3295,28 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<GraphqlError> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Impersonate request to Firebase Data Connect.</summary>
+    public class ImpersonateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Additional GraphQL request information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual GraphqlRequestExtensions Extensions { get; set; }
+
+        /// <summary>
+        /// Required. The name of the GraphQL operation name. Required because all Connector operations must be named.
+        /// See https://graphql.org/learn/queries/#operation-name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationName")]
+        public virtual string OperationName { get; set; }
+
+        /// <summary>Optional. Values for GraphQL variables provided in this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variables")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Variables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
