@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1449,8 +1449,8 @@ namespace Google.Apis.TrafficDirectorService.v2.Data
     }
 
     /// <summary>
-    /// Specifies the way to match a ProtobufWkt::Value. Primitive values and ListValue are supported. StructValue is
-    /// not supported and is always not matched. [#next-free-field: 7]
+    /// Specifies the way to match a Protobuf::Value. Primitive values and ListValue are supported. StructValue is not
+    /// supported and is always not matched. [#next-free-field: 7]
     /// </summary>
     public class ValueMatcher : Google.Apis.Requests.IDirectResponseSchema
     {
