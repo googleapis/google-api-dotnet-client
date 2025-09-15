@@ -4961,7 +4961,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
 
         /// <summary>
         /// Optional. The strategy used for executing this Rollout. This strategy will override whatever strategy is
-        /// specified in the RolloutType. If not specified on creation, the strategy from RolloutType will be used.
+        /// specified in the RolloutKind. If not specified on creation, the strategy from RolloutKind will be used.
         /// There are two supported values strategies which are used to control - "Google.Cloud.Simple.AllAtOnce" -
         /// "Google.Cloud.Simple.OneLocationAtATime" A rollout with one of these simple strategies will rollout across
         /// all locations defined in the targeted UnitKind's Saas Locations.
@@ -5080,7 +5080,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// <summary>
         /// Optional. CEL(https://github.com/google/cel-spec) formatted filter string against Unit. The filter will be
         /// applied to determine the eligible unit population. This filter can only reduce, but not expand the scope of
-        /// the rollout. If not provided, the unit_filter from the RolloutType will be used.
+        /// the rollout. If not provided, the unit_filter from the RolloutKind will be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitFilter")]
         public virtual string UnitFilter { get; set; }
