@@ -26161,6 +26161,10 @@ namespace Google.Apis.Dfareporting.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
         public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
 
+        /// <summary>Optional. Whether the placement is enabled for YouTube integration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowOnYoutube")]
+        public virtual System.Nullable<bool> AllowOnYoutube { get; set; }
+
         /// <summary>Campaign ID of this placement. This field is a required field on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
         public virtual System.Nullable<long> CampaignId { get; set; }
@@ -26379,6 +26383,12 @@ namespace Google.Apis.Dfareporting.v5.Data
         /// <summary>Whether this placement opts out of tag wrapping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wrappingOptOut")]
         public virtual System.Nullable<bool> WrappingOptOut { get; set; }
+
+        /// <summary>
+        /// Optional. YouTube settings for the placement. The placement must be enabled for YouTube to use this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeSettings")]
+        public virtual YoutubeSettings YoutubeSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29119,6 +29129,41 @@ namespace Google.Apis.Dfareporting.v5.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcodeSettings")]
         public virtual TranscodeSetting TranscodeSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the YouTube settings.</summary>
+    public class YoutubeSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The IDs of the creatives to use for the business logo. Currently only one creative is supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessLogoCreativeIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> BusinessLogoCreativeIds { get; set; }
+
+        /// <summary>Optional. The business name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessName")]
+        public virtual string BusinessName { get; set; }
+
+        /// <summary>Optional. The call to actions. Currently only one call to action is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callToActions")]
+        public virtual System.Collections.Generic.IList<string> CallToActions { get; set; }
+
+        /// <summary>Optional. The descriptions. Currently only one description is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("descriptions")]
+        public virtual System.Collections.Generic.IList<string> Descriptions { get; set; }
+
+        /// <summary>
+        /// Optional. The headlines associated with the call to actions. Currently only one headline is supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headlines")]
+        public virtual System.Collections.Generic.IList<string> Headlines { get; set; }
+
+        /// <summary>Optional. The long headlines. Currently only one long headline is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longHeadlines")]
+        public virtual System.Collections.Generic.IList<string> LongHeadlines { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
