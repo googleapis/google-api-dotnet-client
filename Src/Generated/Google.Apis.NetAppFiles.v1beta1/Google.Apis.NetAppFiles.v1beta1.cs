@@ -4986,8 +4986,8 @@ namespace Google.Apis.NetAppFiles.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -6911,6 +6911,13 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedClients")]
         public virtual string AllowedClients { get; set; }
 
+        /// <summary>
+        /// Optional. An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when squash_mode
+        /// is ROOT_SQUASH or ALL_SQUASH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anonUid")]
+        public virtual System.Nullable<long> AnonUid { get; set; }
+
         /// <summary>Whether Unix root access will be granted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasRootAccess")]
         public virtual string HasRootAccess { get; set; }
@@ -6967,6 +6974,13 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         /// <summary>NFS V4 protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nfsv4")]
         public virtual System.Nullable<bool> Nfsv4 { get; set; }
+
+        /// <summary>
+        /// Optional. Defines how user identity squashing is applied for this export rule. This field is the preferred
+        /// way to configure squashing behavior and takes precedence over `has_root_access` if both are provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("squashMode")]
+        public virtual string SquashMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
