@@ -297,6 +297,7 @@ namespace Google.Apis.NetworkManagement.v1
             {
                 this.service = service;
                 Operations = new OperationsResource(service);
+                VpcFlowLogsConfigs = new VpcFlowLogsConfigsResource(service);
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -575,6 +576,426 @@ namespace Google.Apis.NetworkManagement.v1
                 }
             }
 
+            /// <summary>Gets the VpcFlowLogsConfigs resource.</summary>
+            public virtual VpcFlowLogsConfigsResource VpcFlowLogsConfigs { get; }
+
+            /// <summary>The "vpcFlowLogsConfigs" collection of methods.</summary>
+            public class VpcFlowLogsConfigsResource
+            {
+                private const string Resource = "vpcFlowLogsConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public VpcFlowLogsConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists
+                /// (even if the ID is different), the creation fails. Notes: 1. Creating a configuration with
+                /// `state=DISABLED` will fail 2. The following fields are not considered as settings for the purpose of
+                /// the check mentioned above, therefore - creating another configuration with the same fields but
+                /// different values for the following fields will fail as well: * name * create_time * update_time *
+                /// labels * description
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the VpcFlowLogsConfig to create, in one of the following formats: -
+                /// For project-level resources: `projects/{project_id}/locations/global` - For organization-level
+                /// resources: `organizations/{organization_id}/locations/global`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists
+                /// (even if the ID is different), the creation fails. Notes: 1. Creating a configuration with
+                /// `state=DISABLED` will fail 2. The following fields are not considered as settings for the purpose of
+                /// the check mentioned above, therefore - creating another configuration with the same fields but
+                /// different values for the following fields will fail as well: * name * create_time * update_time *
+                /// labels * description
+                /// </summary>
+                public class CreateRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the VpcFlowLogsConfig to create, in one of the following
+                    /// formats: - For project-level resources: `projects/{project_id}/locations/global` - For
+                    /// organization-level resources: `organizations/{organization_id}/locations/global`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. ID of the `VpcFlowLogsConfig`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("vpcFlowLogsConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string VpcFlowLogsConfigId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/vpcFlowLogsConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("vpcFlowLogsConfigId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "vpcFlowLogsConfigId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a specific `VpcFlowLogsConfig`.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For a
+                /// project-level resource:
+                /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For an
+                /// organization-level resource:
+                /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a specific `VpcFlowLogsConfig`.</summary>
+                public class DeleteRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For a
+                    /// project-level resource:
+                    /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For an
+                    /// organization-level resource:
+                    /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/vpcFlowLogsConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets the details of a specific `VpcFlowLogsConfig`.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For
+                /// project-level resources:
+                /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For
+                /// organization-level resources:
+                /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets the details of a specific `VpcFlowLogsConfig`.</summary>
+                public class GetRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For
+                    /// project-level resources:
+                    /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For
+                    /// organization-level resources:
+                    /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/vpcFlowLogsConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all `VpcFlowLogsConfigs` in a given organization.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource of the VpcFlowLogsConfig, in one of the following formats: - For
+                /// project-level resourcs: `projects/{project_id}/locations/global` - For organization-level resources:
+                /// `organizations/{organization_id}/locations/global`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all `VpcFlowLogsConfigs` in a given organization.</summary>
+                public class ListRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.ListVpcFlowLogsConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the VpcFlowLogsConfig, in one of the following formats: - For
+                    /// project-level resourcs: `projects/{project_id}/locations/global` - For organization-level
+                    /// resources: `organizations/{organization_id}/locations/global`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Lists the `VpcFlowLogsConfigs` that match the filter expression. A filter expression
+                    /// must use the supported [CEL logic operators]
+                    /// (https://cloud.google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Field to use to sort the list.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Optional. Number of `VpcFlowLogsConfigs` to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Page token from an earlier query, as returned in `next_page_token`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/vpcFlowLogsConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact same settings already
+                /// exists (even if the ID is different), the creation fails. Notes: 1. Updating a configuration with
+                /// `state=DISABLED` will fail 2. The following fields are not considered as settings for the purpose of
+                /// the check mentioned above, therefore - updating another configuration with the same fields but
+                /// different values for the following fields will fail as well: * name * create_time * update_time *
+                /// labels * description
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Unique name of the configuration. The name can have one of the following forms: - For
+                /// project-level configurations:
+                /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For
+                /// organization-level configurations:
+                /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact same settings already
+                /// exists (even if the ID is different), the creation fails. Notes: 1. Updating a configuration with
+                /// `state=DISABLED` will fail 2. The following fields are not considered as settings for the purpose of
+                /// the check mentioned above, therefore - updating another configuration with the same fields but
+                /// different values for the following fields will fail as well: * name * create_time * update_time *
+                /// labels * description
+                /// </summary>
+                public class PatchRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Unique name of the configuration. The name can have one of the following forms: -
+                    /// For project-level configurations:
+                    /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For
+                    /// organization-level configurations:
+                    /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. Mask of fields to update. At least one path must be supplied in this field. For
+                    /// example, to change the state of the configuration to ENABLED, specify `update_mask` = `"state"`,
+                    /// and the `vpc_flow_logs_config` would be: `vpc_flow_logs_config = { name =
+                    /// "projects/my-project/locations/global/vpcFlowLogsConfigs/my-config" state = "ENABLED" }`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/vpcFlowLogsConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -642,8 +1063,8 @@ namespace Google.Apis.NetworkManagement.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2921,6 +3342,216 @@ namespace Google.Apis.NetworkManagement.v1
                         });
                     }
                 }
+
+                /// <summary>
+                /// QueryOrgVpcFlowLogsConfigs returns a list of all organization-level VPC Flow Logs configurations
+                /// applicable to the specified project.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent resource of the VpcFlowLogsConfig, specified in the following format:
+                /// `projects/{project_id}/locations/global`
+                /// </param>
+                public virtual QueryOrgVpcFlowLogsConfigsRequest QueryOrgVpcFlowLogsConfigs(string parent)
+                {
+                    return new QueryOrgVpcFlowLogsConfigsRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// QueryOrgVpcFlowLogsConfigs returns a list of all organization-level VPC Flow Logs configurations
+                /// applicable to the specified project.
+                /// </summary>
+                public class QueryOrgVpcFlowLogsConfigsRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.QueryOrgVpcFlowLogsConfigsResponse>
+                {
+                    /// <summary>Constructs a new QueryOrgVpcFlowLogsConfigs request.</summary>
+                    public QueryOrgVpcFlowLogsConfigsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the VpcFlowLogsConfig, specified in the following format:
+                    /// `projects/{project_id}/locations/global`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Lists the `VpcFlowLogsConfigs` that match the filter expression. A filter expression
+                    /// must use the supported [CEL logic operators]
+                    /// (https://cloud.google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Number of `VpcFlowLogsConfigs` to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Page token from an earlier query, as returned in `next_page_token`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "queryOrgVpcFlowLogsConfigs";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/vpcFlowLogsConfigs:queryOrgVpcFlowLogsConfigs";
+
+                    /// <summary>Initializes QueryOrgVpcFlowLogsConfigs parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// ShowEffectiveFlowLogsConfigs returns a list of all VPC Flow Logs configurations applicable to a
+                /// specified resource.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent resource of the VpcFlowLogsConfig, specified in the following format:
+                /// `projects/{project_id}/locations/global`
+                /// </param>
+                public virtual ShowEffectiveFlowLogsConfigsRequest ShowEffectiveFlowLogsConfigs(string parent)
+                {
+                    return new ShowEffectiveFlowLogsConfigsRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// ShowEffectiveFlowLogsConfigs returns a list of all VPC Flow Logs configurations applicable to a
+                /// specified resource.
+                /// </summary>
+                public class ShowEffectiveFlowLogsConfigsRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.ShowEffectiveFlowLogsConfigsResponse>
+                {
+                    /// <summary>Constructs a new ShowEffectiveFlowLogsConfigs request.</summary>
+                    public ShowEffectiveFlowLogsConfigsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the VpcFlowLogsConfig, specified in the following format:
+                    /// `projects/{project_id}/locations/global`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Lists the `EffectiveVpcFlowLogsConfigs` that match the filter expression. A filter
+                    /// expression must use the supported [CEL logic operators]
+                    /// (https://cloud.google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Number of `EffectiveVpcFlowLogsConfigs` to return. Default is 30.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Page token from an earlier query, as returned in `next_page_token`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// Required. The resource to get the effective VPC Flow Logs configuration for. The resource must
+                    /// belong to the same project as the parent. The resource must be a network, subnetwork,
+                    /// interconnect attachment, VPN tunnel, or a project.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Resource { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "showEffectiveFlowLogsConfigs";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/vpcFlowLogsConfigs:showEffectiveFlowLogsConfigs";
+
+                    /// <summary>Initializes ShowEffectiveFlowLogsConfigs parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -2990,8 +3621,8 @@ namespace Google.Apis.NetworkManagement.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -3644,6 +4275,99 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Name of the metropolitan area.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metropolitanArea")]
         public virtual string MetropolitanArea { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A configuration to generate a response for GetEffectiveVpcFlowLogsConfig request.</summary>
+    public class EffectiveVpcFlowLogsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The aggregation interval for the logs. Default value is INTERVAL_5_SEC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationInterval")]
+        public virtual string AggregationInterval { get; set; }
+
+        /// <summary>
+        /// Determines whether to include cross project annotations in the logs. This field is available only for
+        /// organization configurations. If not specified in org configs will be set to CROSS_PROJECT_METADATA_ENABLED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossProjectMetadata")]
+        public virtual string CrossProjectMetadata { get; set; }
+
+        /// <summary>Export filter used to define which VPC Flow Logs should be logged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterExpr")]
+        public virtual string FilterExpr { get; set; }
+
+        /// <summary>
+        /// The value of the field must be in (0, 1]. The sampling rate of VPC Flow Logs where 1.0 means all collected
+        /// logs are reported. Setting the sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs,
+        /// use the state field instead. Default value is 1.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowSampling")]
+        public virtual System.Nullable<float> FlowSampling { get; set; }
+
+        /// <summary>
+        /// Traffic will be logged from the Interconnect Attachment. Format:
+        /// projects/{project_id}/regions/{region}/interconnectAttachments/{name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interconnectAttachment")]
+        public virtual string InterconnectAttachment { get; set; }
+
+        /// <summary>
+        /// Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs.
+        /// Default value is INCLUDE_ALL_METADATA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual string Metadata { get; set; }
+
+        /// <summary>
+        /// Custom metadata fields to include in the reported VPC flow logs. Can only be specified if "metadata" was set
+        /// to CUSTOM_METADATA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataFields")]
+        public virtual System.Collections.Generic.IList<string> MetadataFields { get; set; }
+
+        /// <summary>
+        /// Unique name of the configuration. The name can have one of the following forms: - For project-level
+        /// configurations: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For
+        /// organization-level configurations:
+        /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For a
+        /// Compute config, the name will be the path of the subnet:
+        /// `projects/{project_id}/regions/{region}/subnetworks/{subnet_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format:
+        /// projects/{project_id}/global/networks/{name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Specifies the scope of the config (e.g., SUBNET, NETWORK, ORGANIZATION..).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>
+        /// The state of the VPC Flow Log configuration. Default value is ENABLED. When creating a new configuration, it
+        /// must be enabled. Setting state=DISABLED will pause the log generation for this config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Traffic will be logged from VMs within the subnetwork. Format:
+        /// projects/{project_id}/regions/{region}/subnetworks/{name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnet")]
+        public virtual string Subnet { get; set; }
+
+        /// <summary>
+        /// Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpnTunnel")]
+        public virtual string VpnTunnel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5429,6 +6153,25 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for the `QueryVpcFlowLogsConfigs` method.</summary>
+    public class QueryOrgVpcFlowLogsConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page token to fetch the next set of configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached (when querying all locations with `-`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>List of VPC Flow Log configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcFlowLogsConfigs")]
+        public virtual System.Collections.Generic.IList<VpcFlowLogsConfig> VpcFlowLogsConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Results of the configuration analysis from the last run of the test.</summary>
     public class ReachabilityDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5735,6 +6478,25 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the `ShowEffectiveFlowLogsConfigs` method.</summary>
+    public class ShowEffectiveFlowLogsConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of Effective Vpc Flow Logs configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveFlowLogsConfigs")]
+        public virtual System.Collections.Generic.IList<EffectiveVpcFlowLogsConfig> EffectiveFlowLogsConfigs { get; set; }
+
+        /// <summary>Page token to fetch the next set of configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached (when querying all locations with `-`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6104,6 +6866,14 @@ namespace Google.Apis.NetworkManagement.v1.Data
         }
 
         /// <summary>
+        /// Optional. Determines whether to include cross project annotations in the logs. This field is available only
+        /// for organization configurations. If not specified in org configs will be set to
+        /// CROSS_PROJECT_METADATA_ENABLED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossProjectMetadata")]
+        public virtual string CrossProjectMetadata { get; set; }
+
+        /// <summary>
         /// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum of 512 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -6157,11 +6927,25 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format:
+        /// projects/{project_id}/global/networks/{name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
         /// Optional. The state of the VPC Flow Log configuration. Default value is ENABLED. When creating a new
         /// configuration, it must be enabled. Setting state=DISABLED will pause the log generation for this config.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Traffic will be logged from VMs within the subnetwork. Format:
+        /// projects/{project_id}/regions/{region}/subnetworks/{name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnet")]
+        public virtual string Subnet { get; set; }
 
         /// <summary>
         /// Output only. Describes the state of the configured target resource for diagnostic purposes.
