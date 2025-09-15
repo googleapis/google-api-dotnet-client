@@ -115,12 +115,14 @@ namespace Google.Apis.Auth.OAuth2
         /// </para>
         /// </summary>
         /// <remarks>
-        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
-        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
-        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
-        /// systems and data. For more information, refer to
-        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// If you are loading your credential configuration from an untrusted source and have not mitigated the 
+        /// risks (e.g. by validating the configuration yourself), make these changes as soon as possible to prevent security
+        /// risks to your environment. Regardless of the method used, it is always your responsibility to validate
+        /// configurations received from external sources. For more details, see
+        /// https://cloud.google.com/docs/authentication/external/externally-sourced-credentials.
         /// </remarks>
+       [Obsolete("This method is being deprecated because of a potential security risk. Use the methods in the CredentialFactory class " +
+            "instead. A GoogleCredential object can then be created by calling the .ToGoogleCredential() method on the returned specific credential. ")] 
         public static GoogleCredential FromStream(Stream stream) => CredentialFactory.FromStream<IGoogleCredential>(stream);
 
         /// <summary>
@@ -131,12 +133,14 @@ namespace Google.Apis.Auth.OAuth2
         /// </para>
         /// </summary>
         /// <remarks>
-        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
-        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
-        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
-        /// systems and data. For more information, refer to
-        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// If you are loading your credential configuration from an untrusted source and have not mitigated the 
+        /// risks (e.g. by validating the configuration yourself), make these changes as soon as possible to prevent security
+        /// risks to your environment. Regardless of the method used, it is always your responsibility to validate
+        /// configurations received from external sources. For more details, see
+        /// https://cloud.google.com/docs/authentication/external/externally-sourced-credentials.
         /// </remarks>
+       [Obsolete("This method is being deprecated because of a potential security risk. Use the methods in the CredentialFactory class " +
+            "instead. A GoogleCredential object can then be created by calling the .ToGoogleCredential() method on the returned specific credential. ")] 
         public static Task<GoogleCredential> FromStreamAsync(Stream stream, CancellationToken cancellationToken) =>
             CredentialFactory.FromStreamAsync<IGoogleCredential>(stream, cancellationToken);
 
@@ -150,12 +154,14 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="path">The path to the credential file.</param>
         /// <returns>The loaded credentials.</returns>
         /// <remarks>
-        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
-        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
-        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
-        /// systems and data. For more information, refer to
-        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// If you are loading your credential configuration from an untrusted source and have not mitigated the 
+        /// risks (e.g. by validating the configuration yourself), make these changes as soon as possible to prevent security
+        /// risks to your environment. Regardless of the method used, it is always your responsibility to validate
+        /// configurations received from external sources. For more details, see
+        /// https://cloud.google.com/docs/authentication/external/externally-sourced-credentials.
         /// </remarks>
+       [Obsolete("This method is being deprecated because of a potential security risk. Use the methods in the CredentialFactory class " +
+            "instead. A GoogleCredential object can then be created by calling the .ToGoogleCredential() method on the returned specific credential. ")] 
         public static GoogleCredential FromFile(string path)
         {
             using (var f = File.OpenRead(path))
@@ -175,12 +181,14 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="cancellationToken">Cancellation token for the operation.</param>
         /// <returns>The loaded credentials.</returns>
         /// <remarks>
-        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
-        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
-        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
-        /// systems and data. For more information, refer to
-        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// If you are loading your credential configuration from an untrusted source and have not mitigated the 
+        /// risks (e.g. by validating the configuration yourself), make these changes as soon as possible to prevent security
+        /// risks to your environment. Regardless of the method used, it is always your responsibility to validate
+        /// configurations received from external sources. For more details, see
+        /// https://cloud.google.com/docs/authentication/external/externally-sourced-credentials.
         /// </remarks>
+       [Obsolete("This method is being deprecated because of a potential security risk. Use the methods in the CredentialFactory class " +
+            "instead. A GoogleCredential object can then be created by calling the .ToGoogleCredential() method on the returned specific credential. ")] 
         public static async Task<GoogleCredential> FromFileAsync(string path, CancellationToken cancellationToken)
         {
             using (var f = File.OpenRead(path))
@@ -197,12 +205,14 @@ namespace Google.Apis.Auth.OAuth2
         /// </para>
         /// </summary>
         /// <remarks>
-        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
-        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
-        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
-        /// systems and data. For more information, refer to
-        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// If you are loading your credential configuration from an untrusted source and have not mitigated the 
+        /// risks (e.g. by validating the configuration yourself), make these changes as soon as possible to prevent security
+        /// risks to your environment. Regardless of the method used, it is always your responsibility to validate
+        /// configurations received from external sources. For more details, see
+        /// https://cloud.google.com/docs/authentication/external/externally-sourced-credentials.
         /// </remarks>
+       [Obsolete("This method is being deprecated because of a potential security risk. Use the methods in the CredentialFactory class " +
+            "instead. A GoogleCredential object can then be created by calling the .ToGoogleCredential() method on the returned specific credential. ")] 
         public static GoogleCredential FromJson(string json) => CredentialFactory.FromJson<IGoogleCredential>(json);
 
         /// <summary>
@@ -211,12 +221,14 @@ namespace Google.Apis.Auth.OAuth2
         /// about supported types and corresponding fields.
         /// </summary>
         /// <remarks>
-        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
-        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
-        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
-        /// systems and data. For more information, refer to
-        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// If you are loading your credential configuration from an untrusted source and have not mitigated the 
+        /// risks (e.g. by validating the configuration yourself), make these changes as soon as possible to prevent security
+        /// risks to your environment. Regardless of the method used, it is always your responsibility to validate
+        /// configurations received from external sources. For more details, see
+        /// https://cloud.google.com/docs/authentication/external/externally-sourced-credentials.
         /// </remarks>
+       [Obsolete("This method is being deprecated because of a potential security risk. Use the methods in the CredentialFactory class " +
+            "instead. A GoogleCredential object can then be created by calling the .ToGoogleCredential() method on the returned specific credential. ")] 
         public static GoogleCredential FromJsonParameters(JsonCredentialParameters credentialParameters) =>
             CredentialFactory.FromJsonParameters<IGoogleCredential>(credentialParameters);
 
