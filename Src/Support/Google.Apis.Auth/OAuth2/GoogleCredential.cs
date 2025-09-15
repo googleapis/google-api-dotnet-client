@@ -121,7 +121,7 @@ namespace Google.Apis.Auth.OAuth2
         /// systems and data. For more information, refer to
         /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
         /// </remarks>
-        public static GoogleCredential FromStream(Stream stream) => defaultCredentialProvider.CreateDefaultCredentialFromStream(stream);
+        public static GoogleCredential FromStream(Stream stream) => CredentialFactory.FromStream<IGoogleCredential>(stream);
 
         /// <summary>
         /// Loads credential from stream containing JSON credential data.
@@ -138,7 +138,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
         /// </remarks>
         public static Task<GoogleCredential> FromStreamAsync(Stream stream, CancellationToken cancellationToken) =>
-            defaultCredentialProvider.CreateDefaultCredentialFromStreamAsync(stream, cancellationToken);
+            CredentialFactory.FromStreamAsync<IGoogleCredential>(stream, cancellationToken);
 
         /// <summary>
         /// Loads credential from the specified file containing JSON credential data.
@@ -203,7 +203,7 @@ namespace Google.Apis.Auth.OAuth2
         /// systems and data. For more information, refer to
         /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
         /// </remarks>
-        public static GoogleCredential FromJson(string json) => defaultCredentialProvider.CreateDefaultCredentialFromJson(json);
+        public static GoogleCredential FromJson(string json) => CredentialFactory.FromJson<IGoogleCredential>(json);
 
         /// <summary>
         /// Loads a credential from JSON credential parameters. Fields are a union of credential fields
@@ -218,7 +218,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
         /// </remarks>
         public static GoogleCredential FromJsonParameters(JsonCredentialParameters credentialParameters) =>
-            defaultCredentialProvider.CreateDefaultCredentialFromParameters(credentialParameters);
+            CredentialFactory.FromJsonParameters<IGoogleCredential>(credentialParameters);
 
         /// <summary>
         /// Create a <see cref="GoogleCredential"/> directly from the provided access token.
