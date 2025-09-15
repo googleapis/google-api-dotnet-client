@@ -12804,7 +12804,8 @@ namespace Google.Apis.Iam.v1.Data
         private object _expireTime;
 
         /// <summary>
-        /// Output only. Time after which the workload pool provider will be permanently purged and cannot be recovered.
+        /// Output only. Time after which the workforce identity pool provider will be permanently purged and cannot be
+        /// recovered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw
