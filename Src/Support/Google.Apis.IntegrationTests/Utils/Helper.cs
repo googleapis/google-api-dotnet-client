@@ -46,7 +46,7 @@ namespace IntegrationTests.Utils
             }
             using (var serviceAccountStream = File.OpenRead(serviceAccountFilename))
             {
-                return GoogleCredential.FromStream(serviceAccountStream);
+                return ServiceAccountCredential.FromServiceAccountData(serviceAccountStream).ToGoogleCredential();
             }
         });
 
