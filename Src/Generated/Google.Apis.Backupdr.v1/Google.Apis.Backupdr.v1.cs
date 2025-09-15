@@ -6493,7 +6493,8 @@ namespace Google.Apis.Backupdr.v1.Data
         /// Required. Configures the duration for which backup data will be kept. It is defined in “days”. The value
         /// should be greater than or equal to minimum enforced retention of the backup vault. Minimum value is 1 and
         /// maximum value is 36159 for custom retention on-demand backup. Minimum and maximum values are workload
-        /// specific for all other rules.
+        /// specific for all other rules. Note: Longer retention can lead to higher storage costs post introductory
+        /// trial. We recommend starting with a short duration of 3 days or less.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRetentionDays")]
         public virtual System.Nullable<int> BackupRetentionDays { get; set; }
@@ -6538,7 +6539,8 @@ namespace Google.Apis.Backupdr.v1.Data
 
         /// <summary>
         /// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced
-        /// retention for each backup can be extended.
+        /// retention for each backup can be extended. Note: Longer minimum enforced retention period impacts potential
+        /// storage costs post introductory trial. We recommend starting with a short duration of 3 days or less.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupMinimumEnforcedRetentionDuration")]
         public virtual object BackupMinimumEnforcedRetentionDuration { get; set; }
@@ -9904,6 +9906,10 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>Represents a Trial for a project.</summary>
     public class Trial : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The reason for ending the trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endReason")]
+        public virtual string EndReason { get; set; }
+
         private string _endTimeRaw;
 
         private object _endTime;
