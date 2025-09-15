@@ -148,6 +148,9 @@ public sealed class ExternalAccountAuthorizedUserCredential : ServiceCredential,
 
     bool IGoogleCredential.SupportsExplicitScopes => false;
 
+    /// <inheritdoc/>
+    public GoogleCredential ToGoogleCredential() => new GoogleCredential(this);
+
     Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken cancellationToken) => Task.FromResult(UniverseDomain);
 
     string IGoogleCredential.GetUniverseDomain() => UniverseDomain;

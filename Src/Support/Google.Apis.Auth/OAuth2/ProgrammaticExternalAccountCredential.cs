@@ -131,6 +131,9 @@ public sealed class ProgrammaticExternalAccountCredential : ExternalAccountCrede
         }));
 
     /// <inheritdoc/>
+    public GoogleCredential ToGoogleCredential() => new GoogleCredential(this);
+
+    /// <inheritdoc/>
     IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
         new ProgrammaticExternalAccountCredential(new Initializer(this) { QuotaProject = quotaProject });
 

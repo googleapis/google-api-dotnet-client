@@ -122,6 +122,9 @@ namespace Google.Apis.Auth.OAuth2
         bool IGoogleCredential.SupportsExplicitScopes => SupportsExplicitScopes;
 
         /// <inheritdoc/>
+        public GoogleCredential ToGoogleCredential() => new GoogleCredential(this);
+
+        /// <inheritdoc/>
         Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => Task.FromResult(UniverseDomain);
 
         /// <inheritdoc/>

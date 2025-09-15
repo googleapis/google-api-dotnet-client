@@ -578,7 +578,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
                     RefreshToken = "REFRESH_TOKEN",
                 };
                 var flow = new FakeFlow(clock);
-                yield return new object[] { new GoogleCredential(new UserCredential(flow, "my.user.id", tokenResponse)) };
+                yield return new object[] { new UserCredential(flow, "my.user.id", tokenResponse).ToGoogleCredential() };
 
                 yield return new object[] { GoogleCredential.FromAccessToken("my.access.token") };
             }
