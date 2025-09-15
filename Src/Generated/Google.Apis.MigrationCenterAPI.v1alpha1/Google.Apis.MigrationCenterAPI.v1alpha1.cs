@@ -5848,6 +5848,42 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
 
+        /// <summary>Output only. Asset information specific for AWS CloudFront distributions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsCloudFrontDistributionDetails")]
+        public virtual AwsCloudFrontDistributionDetails AwsCloudFrontDistributionDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AWS ECS clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsEcsClusterDetails")]
+        public virtual AwsEcsClusterDetails AwsEcsClusterDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AWS EFS file systems.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsEfsFileSystemDetails")]
+        public virtual AwsEfsFileSystemDetails AwsEfsFileSystemDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AWS EKS clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsEksClusterDetails")]
+        public virtual AwsEksClusterDetails AwsEksClusterDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AWS Load Balancers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsElbLoadBalancerDetails")]
+        public virtual AwsElbLoadBalancerDetails AwsElbLoadBalancerDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AWS Lambda functions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsLambdaFunctionDetails")]
+        public virtual AwsLambdaFunctionDetails AwsLambdaFunctionDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AWS Redshift</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsRedshiftDetails")]
+        public virtual AwsRedshiftDetails AwsRedshiftDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AWS S3 buckets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsS3BucketDetails")]
+        public virtual AwsS3BucketDetails AwsS3BucketDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AWS VPCs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsVpcDetails")]
+        public virtual AwsVpcDetails AwsVpcDetails { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -5938,6 +5974,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
             set => HideTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Details about the hosting provider of the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostingProviderDetails")]
+        public virtual HostingProviderDetails HostingProviderDetails { get; set; }
+
         /// <summary>Output only. The list of insights associated with the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insightList")]
         public virtual InsightList InsightList { get; set; }
@@ -5961,6 +6001,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Output only. The list of sources contributing to the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<string> Sources { get; set; }
+
+        /// <summary>Optional. Generic structured asset attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredAttributes")]
+        public virtual System.Collections.Generic.IDictionary<string, object> StructuredAttributes { get; set; }
 
         /// <summary>Output only. Server generated human readable name of the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
@@ -6018,6 +6062,42 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
 
+        /// <summary>Asset information specific for AWS CloudFront distributions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsCloudFrontDistributionDetails")]
+        public virtual AwsCloudFrontDistributionDetails AwsCloudFrontDistributionDetails { get; set; }
+
+        /// <summary>Asset information specific for AWS ECS clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsEcsClusterDetails")]
+        public virtual AwsEcsClusterDetails AwsEcsClusterDetails { get; set; }
+
+        /// <summary>Asset information specific for AWS EFS file systems.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsEfsFileSystemDetails")]
+        public virtual AwsEfsFileSystemDetails AwsEfsFileSystemDetails { get; set; }
+
+        /// <summary>Asset information specific for AWS EKS clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsEksClusterDetails")]
+        public virtual AwsEksClusterDetails AwsEksClusterDetails { get; set; }
+
+        /// <summary>Asset information specific for AWS Load Balancers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsElbLoadBalancerDetails")]
+        public virtual AwsElbLoadBalancerDetails AwsElbLoadBalancerDetails { get; set; }
+
+        /// <summary>Asset information specific for AWS Lambda functions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsLambdaFunctionDetails")]
+        public virtual AwsLambdaFunctionDetails AwsLambdaFunctionDetails { get; set; }
+
+        /// <summary>Asset information specific for AWS Redshift clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsRedshiftDetails")]
+        public virtual AwsRedshiftDetails AwsRedshiftDetails { get; set; }
+
+        /// <summary>Asset information specific for AWS S3 buckets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsS3BucketDetails")]
+        public virtual AwsS3BucketDetails AwsS3BucketDetails { get; set; }
+
+        /// <summary>Asset information specific for AWS VPCs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsVpcDetails")]
+        public virtual AwsVpcDetails AwsVpcDetails { get; set; }
+
         /// <summary>
         /// Optional. Frame collection type, if not specified the collection type will be based on the source type of
         /// the source the frame was reported on.
@@ -6032,6 +6112,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Asset information specific for logical databases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseDetails")]
         public virtual DatabaseDetails DatabaseDetails { get; set; }
+
+        /// <summary>Optional. Details about the hosting provider of the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostingProviderDetails")]
+        public virtual HostingProviderDetails HostingProviderDetails { get; set; }
 
         /// <summary>Labels as key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -6083,6 +6167,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
             set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. Generic structured asset attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredAttributes")]
+        public virtual System.Collections.Generic.IDictionary<string, object> StructuredAttributes { get; set; }
 
         /// <summary>Optional. Trace token is optionally provided to assist with debugging and traceability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traceToken")]
@@ -6445,6 +6533,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of an AWS CloudFront distribution.</summary>
+    public class AwsCloudFrontDistributionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AWS EC2 specific details.</summary>
     public class AwsEc2PlatformDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6464,8 +6559,124 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of an AWS ECS cluster.</summary>
+    public class AwsEcsClusterDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of an AWS EFS file system.</summary>
+    public class AwsEfsFileSystemDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Asset information specific for AWS EKS clusters.</summary>
+    public class AwsEksClusterDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Asset information specific for AWS Load Balancers.</summary>
+    public class AwsElbLoadBalancerDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Asset information specific for AWS Lambda functions.</summary>
+    public class AwsLambdaFunctionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specific details for an AWS RDS database deployment.</summary>
     public class AwsRds : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of an AWS Redshift cluster.</summary>
+    public class AwsRedshiftDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Asset information specific for AWS S3 buckets.</summary>
+    public class AwsS3BucketDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The metadata of the objects in the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectsMetadata")]
+        public virtual AwsS3BucketDetailsObjectsMetadata ObjectsMetadata { get; set; }
+
+        /// <summary>Optional. The storage classes in the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageClasses")]
+        public virtual System.Collections.Generic.IList<AwsS3BucketDetailsStorageClass> StorageClasses { get; set; }
+
+        /// <summary>Optional. Versioning configuration of the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versioning")]
+        public virtual AwsS3BucketDetailsVersioning Versioning { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata of the objects in the bucket.</summary>
+    public class AwsS3BucketDetailsObjectsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The total number of objects in the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalObjects")]
+        public virtual AwsS3BucketDetailsObjectsMetadataTotalObjects TotalObjects { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the total number of objects in the bucket.</summary>
+    public class AwsS3BucketDetailsObjectsMetadataTotalObjects : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The total number of objects in the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<int> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about storage class.</summary>
+    public class AwsS3BucketDetailsStorageClass : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The total size of the storage class in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBytes")]
+        public virtual System.Nullable<long> TotalBytes { get; set; }
+
+        /// <summary>Required. Type of the storage class.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Versioning configuration of the bucket.</summary>
+    public class AwsS3BucketDetailsVersioning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether versioning is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Asset information specific for AWS VPCs.</summary>
+    public class AwsVpcDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8297,6 +8508,77 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Running background services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual RunningServiceList Services { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about the hosting platform of the asset.</summary>
+    public class HostingProviderDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The AWS platform details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aws")]
+        public virtual HostingProviderDetailsAws Aws { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Optional. The timestamp when resource was created in the hosting provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Display name of the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. Location of the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual ResourceLocation Location { get; set; }
+
+        /// <summary>Optional. Unique identifier for the asset in the hosting provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalId")]
+        public virtual string OriginalId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for AWS platform.</summary>
+    public class HostingProviderDetailsAws : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The AWS account ID owning the resource represented by this asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("owningAccountId")]
+        public virtual string OwningAccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11000,6 +11282,17 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>VMWare node type, e.g. "ve1-standard-72"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmwareNode")]
         public virtual ReportSummaryVMWareNode VmwareNode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Location of a resource.</summary>
+    public class ResourceLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The name of the region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
