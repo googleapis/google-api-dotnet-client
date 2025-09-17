@@ -847,7 +847,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                         this.service = service;
                     }
 
-                    /// <summary>Initiates the cancellation of a running clone job.</summary>
+                    /// <summary>Initiates the cancellation of a running ImageImportJob.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The image import job id.</param>
                     public virtual CancelRequest Cancel(Google.Apis.VMMigrationService.v1alpha1.Data.CancelImageImportJobRequest body, string name)
@@ -855,7 +855,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                         return new CancelRequest(this.service, body, name);
                     }
 
-                    /// <summary>Initiates the cancellation of a running clone job.</summary>
+                    /// <summary>Initiates the cancellation of a running ImageImportJob.</summary>
                     public class CancelRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1alpha1.Data.Operation>
                     {
                         /// <summary>Constructs a new Cancel request.</summary>
@@ -5695,6 +5695,23 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>AdaptationModifier a modifier to be used for configuration of the OS adaptation process.</summary>
+    public class AdaptationModifier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The modifier name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modifier")]
+        public virtual string Modifier { get; set; }
+
+        /// <summary>
+        /// Optional. The value of the modifier. The actual value depends on the modifier and can also be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AdaptingOSStep contains specific step details.</summary>
     public class AdaptingOSStep : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6593,6 +6610,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// </summary>
     public class ComputeEngineTargetDefaults : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. AdaptationModifiers are the set of modifiers used during OS adaptation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adaptationModifiers")]
+        public virtual System.Collections.Generic.IList<AdaptationModifier> AdaptationModifiers { get; set; }
+
         /// <summary>Additional licenses to assign to the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalLicenses")]
         public virtual System.Collections.Generic.IList<string> AdditionalLicenses { get; set; }
@@ -6717,6 +6738,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// </summary>
     public class ComputeEngineTargetDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Modifiers to be used as configuration of the OS adaptation process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adaptationModifiers")]
+        public virtual System.Collections.Generic.IList<AdaptationModifier> AdaptationModifiers { get; set; }
+
         /// <summary>Additional licenses to assign to the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalLicenses")]
         public virtual System.Collections.Generic.IList<string> AdditionalLicenses { get; set; }
@@ -8380,6 +8405,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>Parameters affecting the OS adaptation process.</summary>
     public class ImageImportOsAdaptationParameters : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Modifiers to be used as configuration of the OS adaptation process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adaptationModifiers")]
+        public virtual System.Collections.Generic.IList<AdaptationModifier> AdaptationModifiers { get; set; }
+
         /// <summary>
         /// Optional. By default the image will keep its existing boot option. Setting this property will trigger an
         /// internal process which will convert the image from using the existing boot option to another. The size of
