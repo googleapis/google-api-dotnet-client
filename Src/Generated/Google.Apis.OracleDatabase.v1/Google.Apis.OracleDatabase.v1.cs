@@ -298,11 +298,17 @@ namespace Google.Apis.OracleDatabase.v1
                 AutonomousDbVersions = new AutonomousDbVersionsResource(service);
                 CloudExadataInfrastructures = new CloudExadataInfrastructuresResource(service);
                 CloudVmClusters = new CloudVmClustersResource(service);
+                DatabaseCharacterSets = new DatabaseCharacterSetsResource(service);
+                Databases = new DatabasesResource(service);
+                DbSystemInitialStorageSizes = new DbSystemInitialStorageSizesResource(service);
                 DbSystemShapes = new DbSystemShapesResource(service);
+                DbSystems = new DbSystemsResource(service);
+                DbVersions = new DbVersionsResource(service);
                 Entitlements = new EntitlementsResource(service);
                 GiVersions = new GiVersionsResource(service);
                 OdbNetworks = new OdbNetworksResource(service);
                 Operations = new OperationsResource(service);
+                PluggableDatabases = new PluggableDatabasesResource(service);
             }
 
             /// <summary>Gets the AutonomousDatabaseBackups resource.</summary>
@@ -2196,6 +2202,387 @@ namespace Google.Apis.OracleDatabase.v1
                 }
             }
 
+            /// <summary>Gets the DatabaseCharacterSets resource.</summary>
+            public virtual DatabaseCharacterSetsResource DatabaseCharacterSets { get; }
+
+            /// <summary>The "databaseCharacterSets" collection of methods.</summary>
+            public class DatabaseCharacterSetsResource
+            {
+                private const string Resource = "databaseCharacterSets";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DatabaseCharacterSetsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>List DatabaseCharacterSets for the given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent value for DatabaseCharacterSets in the following format:
+                /// projects/{project}/locations/{location}.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>List DatabaseCharacterSets for the given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListDatabaseCharacterSetsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent value for DatabaseCharacterSets in the following format:
+                    /// projects/{project}/locations/{location}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression for filtering the results of the request. Only the
+                    /// **character_set_type** field is supported in the following format:
+                    /// `character_set_type="{characterSetType}"`. Accepted values include `DATABASE` and `NATIONAL`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of DatabaseCharacterSets to return. The service may return fewer
+                    /// than this value. If unspecified, at most 50 DatabaseCharacterSets will be returned. The maximum
+                    /// value is 1000; values above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListDatabaseCharacterSets` call. Provide this
+                    /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListDatabaseCharacterSets` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/databaseCharacterSets";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Databases resource.</summary>
+            public virtual DatabasesResource Databases { get; }
+
+            /// <summary>The "databases" collection of methods.</summary>
+            public class DatabasesResource
+            {
+                private const string Resource = "databases";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DatabasesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets details of a single Database.</summary>
+                /// <param name="name">
+                /// Required. The name of the Database resource in the following format:
+                /// projects/{project}/locations/{region}/databases/{database}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single Database.</summary>
+                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Database>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Database resource in the following format:
+                    /// projects/{project}/locations/{region}/databases/{database}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/databases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all the Databases for the given project, location and DbSystem.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource name in the following format: projects/{project}/locations/{region}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all the Databases for the given project, location and DbSystem.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListDatabasesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource name in the following format:
+                    /// projects/{project}/locations/{region}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression for filtering the results of the request. list for container databases
+                    /// is supported only with a valid dbSystem (full resource name) filter in this format:
+                    /// `dbSystem="projects/{project}/locations/{location}/dbSystems/{dbSystemId}"`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of items to return. If unspecified, a maximum of 50 System Versions
+                    /// will be returned. The maximum value is 1000; values above 1000 will be reset to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A token identifying the requested page of results to return. All fields except the
+                    /// filter should remain the same as in the request that provided this page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/databases";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the DbSystemInitialStorageSizes resource.</summary>
+            public virtual DbSystemInitialStorageSizesResource DbSystemInitialStorageSizes { get; }
+
+            /// <summary>The "dbSystemInitialStorageSizes" collection of methods.</summary>
+            public class DbSystemInitialStorageSizesResource
+            {
+                private const string Resource = "dbSystemInitialStorageSizes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DbSystemInitialStorageSizesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists all the DbSystemInitialStorageSizes for the given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent value for the DbSystemInitialStorageSize resource with the format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all the DbSystemInitialStorageSizes for the given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListDbSystemInitialStorageSizesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent value for the DbSystemInitialStorageSize resource with the format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of items to return. If unspecified, a maximum of 50 System Versions
+                    /// will be returned. The maximum value is 1000; values above 1000 will be reset to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A token identifying the requested page of results to return. All fields except the
+                    /// filter should remain the same as in the request that provided this page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/dbSystemInitialStorageSizes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the DbSystemShapes resource.</summary>
             public virtual DbSystemShapesResource DbSystemShapes { get; }
 
@@ -2266,6 +2653,457 @@ namespace Google.Apis.OracleDatabase.v1
 
                     /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/dbSystemShapes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the DbSystems resource.</summary>
+            public virtual DbSystemsResource DbSystems { get; }
+
+            /// <summary>The "dbSystems" collection of methods.</summary>
+            public class DbSystemsResource
+            {
+                private const string Resource = "dbSystems";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DbSystemsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new DbSystem in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The value for parent of the DbSystem in the following format:
+                /// projects/{project}/locations/{location}.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.OracleDatabase.v1.Data.DbSystem body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new DbSystem in a given project and location.</summary>
+                public class CreateRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.DbSystem body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The value for parent of the DbSystem in the following format:
+                    /// projects/{project}/locations/{location}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID of the DbSystem to create. This value is restricted to
+                    /// (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value
+                    /// must start with a letter and end with a letter or a number.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dbSystemId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DbSystemId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.DbSystem Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/dbSystems";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("dbSystemId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dbSystemId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single DbSystem.</summary>
+                /// <param name="name">
+                /// Required. The name of the DbSystem in the following format:
+                /// projects/{project}/locations/{location}/dbSystems/{db_system}.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single DbSystem.</summary>
+                public class DeleteRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the DbSystem in the following format:
+                    /// projects/{project}/locations/{location}/dbSystems/{db_system}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dbSystems/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single DbSystem.</summary>
+                /// <param name="name">
+                /// Required. The name of the DbSystem in the following format:
+                /// projects/{project}/locations/{location}/dbSystems/{db_system}.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single DbSystem.</summary>
+                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.DbSystem>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the DbSystem in the following format:
+                    /// projects/{project}/locations/{location}/dbSystems/{db_system}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dbSystems/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all the DbSystems for the given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent value for DbSystems in the following format:
+                /// projects/{project}/locations/{location}.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all the DbSystems for the given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListDbSystemsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent value for DbSystems in the following format:
+                    /// projects/{project}/locations/{location}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. An expression for filtering the results of the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. An expression for ordering the results of the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of items to return. If unspecified, at most 50 DbSystems will be
+                    /// returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/dbSystems";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the DbVersions resource.</summary>
+            public virtual DbVersionsResource DbVersions { get; }
+
+            /// <summary>The "dbVersions" collection of methods.</summary>
+            public class DbVersionsResource
+            {
+                private const string Resource = "dbVersions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DbVersionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>List DbVersions for the given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent value for the DbVersion resource with the format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>List DbVersions for the given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListDbVersionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent value for the DbVersion resource with the format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Filter expression that matches a subset of the DbVersions to show. The supported
+                    /// filter for dbSystem creation is `db_system_shape = {db_system_shape} AND storage_management =
+                    /// {storage_management}`. If no filter is provided, all DbVersions will be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of items to return. If unspecified, a maximum of 50 System Versions
+                    /// will be returned. The maximum value is 1000; values above 1000 will be reset to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A token identifying the requested page of results to return. All fields except the
+                    /// filter should remain the same as in the request that provided this page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/dbVersions";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -3429,6 +4267,177 @@ namespace Google.Apis.OracleDatabase.v1
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the PluggableDatabases resource.</summary>
+            public virtual PluggableDatabasesResource PluggableDatabases { get; }
+
+            /// <summary>The "pluggableDatabases" collection of methods.</summary>
+            public class PluggableDatabasesResource
+            {
+                private const string Resource = "pluggableDatabases";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PluggableDatabasesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets details of a single PluggableDatabase.</summary>
+                /// <param name="name">
+                /// Required. The name of the PluggableDatabase resource in the following format:
+                /// projects/{project}/locations/{region}/pluggableDatabases/{pluggable_database}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single PluggableDatabase.</summary>
+                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.PluggableDatabase>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the PluggableDatabase resource in the following format:
+                    /// projects/{project}/locations/{region}/pluggableDatabases/{pluggable_database}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/pluggableDatabases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists all the PluggableDatabases for the given project, location and Container Database.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of PluggableDatabases. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Lists all the PluggableDatabases for the given project, location and Container Database.
+                /// </summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListPluggableDatabasesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of PluggableDatabases. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression for filtering the results of the request. List for pluggable databases
+                    /// is supported only with a valid container database (full resource name) filter in this format:
+                    /// `database="projects/{project}/locations/{location}/databases/{database}"`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of PluggableDatabases to return. The service may return fewer than
+                    /// this value.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListPluggableDatabases` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListPluggableDatabases` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/pluggableDatabases";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -4761,6 +5770,17 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The details of the database backup destination.</summary>
+    public class BackupDestinationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The type of the database backup destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5400,6 +6420,149 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Data collection options for DbSystem.</summary>
+    public class DataCollectionOptionsDbSystem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Indicates whether to enable data collection for diagnostics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDiagnosticsEventsEnabled")]
+        public virtual System.Nullable<bool> IsDiagnosticsEventsEnabled { get; set; }
+
+        /// <summary>Optional. Indicates whether to enable incident logs and trace collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isIncidentLogsEnabled")]
+        public virtual System.Nullable<bool> IsIncidentLogsEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details of the Database resource. https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/Database/
+    /// </summary>
+    public class Database : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The password for the default ADMIN user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminPassword")]
+        public virtual string AdminPassword { get; set; }
+
+        /// <summary>Optional. The character set for the database. The default is AL32UTF8.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("characterSet")]
+        public virtual string CharacterSet { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The date and time that the Database was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The database ID of the Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
+        /// <summary>Optional. The name of the DbHome resource associated with the Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbHomeName")]
+        public virtual string DbHomeName { get; set; }
+
+        /// <summary>
+        /// Optional. The database name. The name must begin with an alphabetic character and can contain a maximum of
+        /// eight alphanumeric characters. Special characters are not permitted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbName")]
+        public virtual string DbName { get; set; }
+
+        /// <summary>Optional. The DB_UNIQUE_NAME of the Oracle Database being backed up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbUniqueName")]
+        public virtual string DbUniqueName { get; set; }
+
+        /// <summary>Output only. The GCP Oracle zone where the Database is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
+        public virtual string GcpOracleZone { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the Database resource in the following format:
+        /// projects/{project}/locations/{region}/databases/{database}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The national character set for the database. The default is AL16UTF16.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ncharacterSet")]
+        public virtual string NcharacterSet { get; set; }
+
+        /// <summary>Output only. HTTPS link to OCI resources exposed to Customer via UI Interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ociUrl")]
+        public virtual string OciUrl { get; set; }
+
+        /// <summary>Output only. The Status of Operations Insights for this Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("opsInsightsStatus")]
+        public virtual string OpsInsightsStatus { get; set; }
+
+        /// <summary>Optional. The properties of the Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual DatabaseProperties Properties { get; set; }
+
+        /// <summary>Optional. The TDE wallet password for the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tdeWalletPassword")]
+        public virtual string TdeWalletPassword { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the Database character set resource.</summary>
+    public class DatabaseCharacterSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The character set name for the Database which is the ID in the resource name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("characterSet")]
+        public virtual string CharacterSet { get; set; }
+
+        /// <summary>Output only. The character set type for the Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("characterSetType")]
+        public virtual string CharacterSetType { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the Database Character Set resource in the following format:
+        /// projects/{project}/locations/{region}/databaseCharacterSets/{database_character_set}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The connection string profile to allow clients to group.
     /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/DatabaseConnectionStringProfile
@@ -5444,6 +6607,119 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Output only. The value of the connection string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration of the Database Management service.</summary>
+    public class DatabaseManagementConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The status of the Database Management service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementState")]
+        public virtual string ManagementState { get; set; }
+
+        /// <summary>Output only. The Database Management type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
+        public virtual string ManagementType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of a Database.</summary>
+    public class DatabaseProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The Database Management config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseManagementConfig")]
+        public virtual DatabaseManagementConfig DatabaseManagementConfig { get; set; }
+
+        /// <summary>Optional. Backup options for the Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbBackupConfig")]
+        public virtual DbBackupConfig DbBackupConfig { get; set; }
+
+        /// <summary>Required. The Oracle Database version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbVersion")]
+        public virtual string DbVersion { get; set; }
+
+        /// <summary>Output only. State of the Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Backup Options for the Database.</summary>
+    public class DbBackupConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If set to true, enables automatic backups on the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoBackupEnabled")]
+        public virtual System.Nullable<bool> AutoBackupEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. The day of the week on which the full backup should be performed on the database. If no value is
+        /// provided, it will default to Sunday.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoFullBackupDay")]
+        public virtual string AutoFullBackupDay { get; set; }
+
+        /// <summary>
+        /// Optional. The window in which the full backup should be performed on the database. If no value is provided,
+        /// the default is anytime.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoFullBackupWindow")]
+        public virtual string AutoFullBackupWindow { get; set; }
+
+        /// <summary>
+        /// Optional. The window in which the incremental backup should be performed on the database. If no value is
+        /// provided, the default is anytime except the auto full backup day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoIncrementalBackupWindow")]
+        public virtual string AutoIncrementalBackupWindow { get; set; }
+
+        /// <summary>Optional. This defines when the backups will be deleted after Database termination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupDeletionPolicy")]
+        public virtual string BackupDeletionPolicy { get; set; }
+
+        /// <summary>Optional. Details of the database backup destinations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupDestinationDetails")]
+        public virtual System.Collections.Generic.IList<BackupDestinationDetails> BackupDestinationDetails { get; set; }
+
+        /// <summary>
+        /// Optional. The number of days an automatic backup is retained before being automatically deleted. This value
+        /// determines the earliest point in time to which a database can be restored. Min: 1, Max: 60.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionPeriodDays")]
+        public virtual System.Nullable<int> RetentionPeriodDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the Database Home resource.</summary>
+    public class DbHome : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Database resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual Database Database { get; set; }
+
+        /// <summary>
+        /// Required. A valid Oracle Database version. For a list of supported versions, use the ListDbVersions
+        /// operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbVersion")]
+        public virtual string DbVersion { get; set; }
+
+        /// <summary>
+        /// Optional. The display name for the Database Home. The name does not have to be unique within your project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. Whether unified auditing is enabled for the Database Home.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isUnifiedAuditingEnabled")]
+        public virtual System.Nullable<bool> IsUnifiedAuditingEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5617,6 +6893,244 @@ namespace Google.Apis.OracleDatabase.v1.Data
     }
 
     /// <summary>
+    /// Details of the DbSystem (BaseDB) resource.
+    /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/DbSystem/
+    /// </summary>
+    public class DbSystem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The date and time that the DbSystem was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. The display name for the System db. The name does not have to be unique within your project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The ID of the subscription entitlement associated with the DbSystem</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlementId")]
+        public virtual string EntitlementId { get; set; }
+
+        /// <summary>
+        /// Optional. The GCP Oracle zone where Oracle DbSystem is hosted. Example: us-east4-b-r2. If not specified, the
+        /// system will pick a zone based on availability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
+        public virtual string GcpOracleZone { get; set; }
+
+        /// <summary>Optional. The labels or tags associated with the DbSystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the DbSystem resource in the following format:
+        /// projects/{project}/locations/{region}/dbSystems/{db_system}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. HTTPS link to OCI resources exposed to Customer via UI Interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ociUrl")]
+        public virtual string OciUrl { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the OdbNetwork associated with the DbSystem. Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network} It is optional but if specified, this
+        /// should match the parent ODBNetwork of the OdbSubnet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("odbNetwork")]
+        public virtual string OdbNetwork { get; set; }
+
+        /// <summary>
+        /// Required. The name of the OdbSubnet associated with the DbSystem for IP allocation. Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("odbSubnet")]
+        public virtual string OdbSubnet { get; set; }
+
+        /// <summary>Optional. The properties of the DbSystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual DbSystemProperties Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of the DbSystem initial storage size.</summary>
+    public class DbSystemInitialStorageSize : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The properties of the DbSystem initial storage size summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual DbSystemInitialStorageSizeProperties Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of a DbSystem initial storage size summary.</summary>
+    public class DbSystemInitialStorageSizeProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of storage disk details available for launches from backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchFromBackupStorageSizeDetails")]
+        public virtual System.Collections.Generic.IList<StorageSizeDetails> LaunchFromBackupStorageSizeDetails { get; set; }
+
+        /// <summary>Output only. VM shape platform type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shapeType")]
+        public virtual string ShapeType { get; set; }
+
+        /// <summary>Output only. The storage option used in DB system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageManagement")]
+        public virtual string StorageManagement { get; set; }
+
+        /// <summary>Output only. List of storage disk details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageSizeDetails")]
+        public virtual System.Collections.Generic.IList<StorageSizeDetails> StorageSizeDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the DbSystem Options.</summary>
+    public class DbSystemOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The storage option used in DB system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageManagement")]
+        public virtual string StorageManagement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of a DbSystem.</summary>
+    public class DbSystemProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The number of CPU cores to enable for the DbSystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeCount")]
+        public virtual System.Nullable<int> ComputeCount { get; set; }
+
+        /// <summary>Optional. The compute model of the DbSystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeModel")]
+        public virtual string ComputeModel { get; set; }
+
+        /// <summary>Optional. Data collection options for diagnostics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataCollectionOptions")]
+        public virtual DataCollectionOptionsDbSystem DataCollectionOptions { get; set; }
+
+        /// <summary>Optional. The data storage size in GB that is currently available to DbSystems.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStorageSizeGb")]
+        public virtual System.Nullable<int> DataStorageSizeGb { get; set; }
+
+        /// <summary>Required. The database edition of the DbSystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseEdition")]
+        public virtual string DatabaseEdition { get; set; }
+
+        /// <summary>Optional. Details for creating a Database Home.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbHome")]
+        public virtual DbHome DbHome { get; set; }
+
+        /// <summary>Optional. The options for the DbSystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbSystemOptions")]
+        public virtual DbSystemOptions DbSystemOptions { get; set; }
+
+        /// <summary>Optional. The host domain name of the DbSystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>Output only. The hostname of the DbSystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>Optional. Prefix for DB System host names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostnamePrefix")]
+        public virtual string HostnamePrefix { get; set; }
+
+        /// <summary>Required. The initial data storage size in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialDataStorageSizeGb")]
+        public virtual System.Nullable<int> InitialDataStorageSizeGb { get; set; }
+
+        /// <summary>Required. The license model of the DbSystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseModel")]
+        public virtual string LicenseModel { get; set; }
+
+        /// <summary>Output only. State of the DbSystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
+        public virtual string LifecycleState { get; set; }
+
+        /// <summary>Optional. The memory size in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memorySizeGb")]
+        public virtual System.Nullable<int> MemorySizeGb { get; set; }
+
+        /// <summary>Optional. The number of nodes in the DbSystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
+        public virtual System.Nullable<int> NodeCount { get; set; }
+
+        /// <summary>Output only. OCID of the DbSystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ocid")]
+        public virtual string Ocid { get; set; }
+
+        /// <summary>Optional. The private IP address of the DbSystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIp")]
+        public virtual string PrivateIp { get; set; }
+
+        /// <summary>Optional. The reco/redo storage size in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoStorageSizeGb")]
+        public virtual System.Nullable<int> RecoStorageSizeGb { get; set; }
+
+        /// <summary>Required. Shape of DB System.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shape")]
+        public virtual string Shape { get; set; }
+
+        /// <summary>Required. SSH public keys to be stored with the DbSystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshPublicKeys")]
+        public virtual System.Collections.Generic.IList<string> SshPublicKeys { get; set; }
+
+        /// <summary>Optional. Time zone of the DbSystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual TimeZone TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Details of the Database System Shapes resource.
     /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/DbSystemShapeSummary/
     /// </summary>
@@ -5672,6 +7186,68 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Optional. shape</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shape")]
         public virtual string Shape { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A valid Oracle Database version.</summary>
+    public class DbVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The name of the DbVersion resource in the following format:
+        /// projects/{project}/locations/{region}/dbVersions/{db_version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The properties of the DbVersion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual DbVersionProperties Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of a DbVersion.</summary>
+    public class DbVersionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. True if this version of the Oracle Database software is the latest version for a release.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isLatestForMajorVersion")]
+        public virtual System.Nullable<bool> IsLatestForMajorVersion { get; set; }
+
+        /// <summary>Output only. True if this version of the Oracle Database software is the preview version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPreviewDbVersion")]
+        public virtual System.Nullable<bool> IsPreviewDbVersion { get; set; }
+
+        /// <summary>
+        /// Output only. True if this version of the Oracle Database software is supported for Upgrade.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isUpgradeSupported")]
+        public virtual System.Nullable<bool> IsUpgradeSupported { get; set; }
+
+        /// <summary>
+        /// Output only. True if this version of the Oracle Database software supports pluggable databases.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsPdb")]
+        public virtual System.Nullable<bool> SupportsPdb { get; set; }
+
+        /// <summary>Output only. A valid Oracle Database version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper message for the value of a defined tag.</summary>
+    public class DefinedTagValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The tags within the namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5883,6 +7459,36 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response for `DatabaseCharacterSet.List`.</summary>
+    public class ListDatabaseCharacterSetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of DatabaseCharacterSets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseCharacterSets")]
+        public virtual System.Collections.Generic.IList<DatabaseCharacterSet> DatabaseCharacterSets { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for `Database.List`.</summary>
+    public class ListDatabasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Databases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databases")]
+        public virtual System.Collections.Generic.IList<Database> Databases { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response for `DbNode.List`.</summary>
     public class ListDbNodesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5913,12 +7519,57 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response for `DbSystemInitialStorageSizes.List`.</summary>
+    public class ListDbSystemInitialStorageSizesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of DbSystemInitialStorageSizes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbSystemInitialStorageSizes")]
+        public virtual System.Collections.Generic.IList<DbSystemInitialStorageSize> DbSystemInitialStorageSizes { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response for `DbSystemShape.List`.</summary>
     public class ListDbSystemShapesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of Database System shapes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dbSystemShapes")]
         public virtual System.Collections.Generic.IList<DbSystemShape> DbSystemShapes { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for `DbSystem.List`.</summary>
+    public class ListDbSystemsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of DbSystems.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbSystems")]
+        public virtual System.Collections.Generic.IList<DbSystem> DbSystems { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for `DbVersions.List`.</summary>
+    public class ListDbVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of DbVersions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbVersions")]
+        public virtual System.Collections.Generic.IList<DbVersion> DbVersions { get; set; }
 
         /// <summary>A token identifying a page of results the server should return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -6025,6 +7676,21 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for `PluggableDatabase.List`.</summary>
+    public class ListPluggableDatabasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of PluggableDatabases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pluggableDatabases")]
+        public virtual System.Collections.Generic.IList<PluggableDatabase> PluggableDatabases { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6438,6 +8104,174 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The PluggableDatabase resource. https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/PluggableDatabase/
+    /// </summary>
+    public class PluggableDatabase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The date and time that the PluggableDatabase was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The name of the PluggableDatabase resource in the following format:
+        /// projects/{project}/locations/{region}/pluggableDatabases/{pluggable_database}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. HTTPS link to OCI resources exposed to Customer via UI Interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ociUrl")]
+        public virtual string OciUrl { get; set; }
+
+        /// <summary>Optional. The properties of the PluggableDatabase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual PluggableDatabaseProperties Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The connection strings used to connect to the Oracle Database.</summary>
+    public class PluggableDatabaseConnectionStrings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. All connection strings to use to connect to the pluggable database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allConnectionStrings")]
+        public virtual System.Collections.Generic.IDictionary<string, string> AllConnectionStrings { get; set; }
+
+        /// <summary>Optional. The default connection string to use to connect to the pluggable database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pdbDefault")]
+        public virtual string PdbDefault { get; set; }
+
+        /// <summary>
+        /// Optional. The default connection string to use to connect to the pluggable database using IP.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pdbIpDefault")]
+        public virtual string PdbIpDefault { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Pluggable Database Node Level Details.</summary>
+    public class PluggableDatabaseNodeLevelDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Node name of the Database home.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeName")]
+        public virtual string NodeName { get; set; }
+
+        /// <summary>Required. The mode that the pluggable database is in to open it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openMode")]
+        public virtual string OpenMode { get; set; }
+
+        /// <summary>Required. The OCID of the Pluggable Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pluggableDatabaseId")]
+        public virtual string PluggableDatabaseId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of a PluggableDatabase.</summary>
+    public class PluggableDatabaseProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The OCID of the compartment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compartmentId")]
+        public virtual string CompartmentId { get; set; }
+
+        /// <summary>Optional. The Connection strings used to connect to the Oracle Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionStrings")]
+        public virtual PluggableDatabaseConnectionStrings ConnectionStrings { get; set; }
+
+        /// <summary>Required. The OCID of the CDB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerDatabaseOcid")]
+        public virtual string ContainerDatabaseOcid { get; set; }
+
+        /// <summary>Output only. The configuration of the Database Management service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseManagementConfig")]
+        public virtual DatabaseManagementConfig DatabaseManagementConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Defined tags for this resource. Each key is predefined and scoped to a namespace.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("definedTags")]
+        public virtual System.Collections.Generic.IDictionary<string, DefinedTagValue> DefinedTags { get; set; }
+
+        /// <summary>
+        /// Optional. Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name,
+        /// type, or namespace.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeformTags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> FreeformTags { get; set; }
+
+        /// <summary>
+        /// Optional. The restricted mode of the pluggable database. If a pluggable database is opened in restricted
+        /// mode, the user needs both create a session and have restricted session privileges to connect to it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isRestricted")]
+        public virtual System.Nullable<bool> IsRestricted { get; set; }
+
+        /// <summary>Output only. Additional information about the current lifecycle state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleDetails")]
+        public virtual string LifecycleDetails { get; set; }
+
+        /// <summary>Output only. The current state of the pluggable database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
+        public virtual string LifecycleState { get; set; }
+
+        /// <summary>Output only. The OCID of the pluggable database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ocid")]
+        public virtual string Ocid { get; set; }
+
+        /// <summary>Output only. The status of Operations Insights for this Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationsInsightsState")]
+        public virtual string OperationsInsightsState { get; set; }
+
+        /// <summary>Required. The database name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pdbName")]
+        public virtual string PdbName { get; set; }
+
+        /// <summary>Optional. Pluggable Database Node Level Details</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pdbNodeLevelDetails")]
+        public virtual System.Collections.Generic.IList<PluggableDatabaseNodeLevelDetails> PdbNodeLevelDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for `AutonomousDatabase.Restart`.</summary>
     public class RestartAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6571,6 +8405,25 @@ namespace Google.Apis.OracleDatabase.v1.Data
     /// <summary>The request for `AutonomousDatabase.Stop`.</summary>
     public class StopAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The initial storage size, in gigabytes, that is applicable for virtual machine DBSystem.</summary>
+    public class StorageSizeDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The data storage size, in gigabytes, that is applicable for virtual machine DBSystem.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStorageSizeInGbs")]
+        public virtual System.Nullable<int> DataStorageSizeInGbs { get; set; }
+
+        /// <summary>
+        /// Output only. The RECO/REDO storage size, in gigabytes, that is applicable for virtual machine DBSystem.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoStorageSizeInGbs")]
+        public virtual System.Nullable<int> RecoStorageSizeInGbs { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
