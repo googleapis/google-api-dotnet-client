@@ -6294,16 +6294,16 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// [Developer Preview](https://developers.google.com/workspace/preview): A carousel, also known as a slider,
-    /// rotates and displays a list of widgets in a slideshow format, with buttons navigating to the previous or next
-    /// widget. For example, this is a JSON representation of a carousel that contains three text paragraph widgets.
+    /// A carousel, also known as a slider, rotates and displays a list of widgets in a slideshow format, with buttons
+    /// navigating to the previous or next widget. For example, this is a JSON representation of a carousel that
+    /// contains three text paragraph widgets.
     /// ```
-    /// { "carouselCards": [ { "widgets": [ { "textParagraph": { "text": "First text paragraph in carousel", } } ] }, {
-    /// "widgets": [ { "textParagraph": { "text": "Second text paragraph in carousel", } } ] }, { "widgets": [ {
-    /// "textParagraph": { "text": "Third text paragraph in carousel", } } ] } ] }
+    /// { "carouselCards": [ { "widgets": [ { "textParagraph": { "text":
+    /// "First text paragraph in carousel", } } ] }, { "widgets": [ { "textParagraph": { "text": "Second text paragraph
+    /// in carousel", } } ] }, { "widgets": [ { "textParagraph": { "text": "Third text paragraph in carousel", } } ] } ]
+    /// }
     /// ```
-    /// [Google Chat
-    /// apps](https://developers.google.com/workspace/chat):
+    /// [Google Chat apps](https://developers.google.com/workspace/chat):
     /// </summary>
     public class GoogleAppsCardV1Carousel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6316,8 +6316,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// [Developer Preview](https://developers.google.com/workspace/preview): A card that can be displayed as a carousel
-    /// item. [Google Chat apps](https://developers.google.com/workspace/chat):
+    /// A card that can be displayed as a carousel item. [Google Chat
+    /// apps](https://developers.google.com/workspace/chat):
     /// </summary>
     public class GoogleAppsCardV1CarouselCard : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7020,8 +7020,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// [Developer Preview](https://developers.google.com/workspace/preview): A list of widgets that can be displayed in
-    /// a containing layout, such as a `CarouselCard`. [Google Chat apps](https://developers.google.com/workspace/chat):
+    /// A list of widgets that can be displayed in a containing layout, such as a `CarouselCard`. [Google Chat
+    /// apps](https://developers.google.com/workspace/chat):
     /// </summary>
     public class GoogleAppsCardV1NestedWidget : Google.Apis.Requests.IDirectResponseSchema
     {
