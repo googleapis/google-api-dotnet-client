@@ -362,10 +362,10 @@ namespace Google.Apis.AccessApproval.v1
             }
 
             /// <summary>
-            /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to the
-            /// resource if another request has been made and approved. It is equivalent in effect to ignoring the
-            /// request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the
-            /// request exists but is not in a pending state.
+            /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request is dismissed, it is
+            /// considered ignored. Dismissing a request does not prevent access granted by other Access Approval
+            /// requests. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request
+            /// exists but is not in a pending state.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the ApprovalRequest to dismiss.</param>
@@ -375,10 +375,10 @@ namespace Google.Apis.AccessApproval.v1
             }
 
             /// <summary>
-            /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to the
-            /// resource if another request has been made and approved. It is equivalent in effect to ignoring the
-            /// request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the
-            /// request exists but is not in a pending state.
+            /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request is dismissed, it is
+            /// considered ignored. Dismissing a request does not prevent access granted by other Access Approval
+            /// requests. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request
+            /// exists but is not in a pending state.
             /// </summary>
             public class DismissRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.ApprovalRequest>
             {
@@ -476,9 +476,9 @@ namespace Google.Apis.AccessApproval.v1
             }
 
             /// <summary>
-            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This does not deny
-            /// access to the resource if another request has been made and approved. It only invalidates a single
-            /// approval. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
+            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This action revokes
+            /// Google access based on this approval request. If the resource has other active approvals, access will
+            /// remain granted. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the ApprovalRequest to invalidate.</param>
@@ -488,9 +488,9 @@ namespace Google.Apis.AccessApproval.v1
             }
 
             /// <summary>
-            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This does not deny
-            /// access to the resource if another request has been made and approved. It only invalidates a single
-            /// approval. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
+            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This action revokes
+            /// Google access based on this approval request. If the resource has other active approvals, access will
+            /// remain granted. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
             /// </summary>
             public class InvalidateRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.ApprovalRequest>
             {
@@ -639,9 +639,9 @@ namespace Google.Apis.AccessApproval.v1
 
         /// <summary>
         /// Deletes the settings associated with a project, folder, or organization. This will have the effect of
-        /// disabling Access Approval for the project, folder, or organization, but only if all ancestors also have
-        /// Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access
-        /// Approval will still be enabled at this level as the settings are inherited.
+        /// disabling Access Approval for the resource. Access Approval may remain active based on parent resource
+        /// settings. To confirm the effective settings, call GetAccessApprovalSettings and verify effective setting is
+        /// disabled.
         /// </summary>
         /// <param name="name">Name of the AccessApprovalSettings to delete.</param>
         public virtual DeleteAccessApprovalSettingsRequest DeleteAccessApprovalSettings(string name)
@@ -651,9 +651,9 @@ namespace Google.Apis.AccessApproval.v1
 
         /// <summary>
         /// Deletes the settings associated with a project, folder, or organization. This will have the effect of
-        /// disabling Access Approval for the project, folder, or organization, but only if all ancestors also have
-        /// Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access
-        /// Approval will still be enabled at this level as the settings are inherited.
+        /// disabling Access Approval for the resource. Access Approval may remain active based on parent resource
+        /// settings. To confirm the effective settings, call GetAccessApprovalSettings and verify effective setting is
+        /// disabled.
         /// </summary>
         public class DeleteAccessApprovalSettingsRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.Empty>
         {
@@ -692,7 +692,7 @@ namespace Google.Apis.AccessApproval.v1
             }
         }
 
-        /// <summary>Gets the settings associated with a project, folder, or organization.</summary>
+        /// <summary>Gets the Access Approval settings associated with a project, folder, or organization.</summary>
         /// <param name="name">
         /// The name of the AccessApprovalSettings to retrieve. Format:
         /// "{projects|folders|organizations}/{id}/accessApprovalSettings"
@@ -702,7 +702,7 @@ namespace Google.Apis.AccessApproval.v1
             return new GetAccessApprovalSettingsRequest(this.service, name);
         }
 
-        /// <summary>Gets the settings associated with a project, folder, or organization.</summary>
+        /// <summary>Gets the Access Approval settings associated with a project, folder, or organization.</summary>
         public class GetAccessApprovalSettingsRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.AccessApprovalSettings>
         {
             /// <summary>Constructs a new GetAccessApprovalSettings request.</summary>
@@ -971,10 +971,10 @@ namespace Google.Apis.AccessApproval.v1
             }
 
             /// <summary>
-            /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to the
-            /// resource if another request has been made and approved. It is equivalent in effect to ignoring the
-            /// request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the
-            /// request exists but is not in a pending state.
+            /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request is dismissed, it is
+            /// considered ignored. Dismissing a request does not prevent access granted by other Access Approval
+            /// requests. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request
+            /// exists but is not in a pending state.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the ApprovalRequest to dismiss.</param>
@@ -984,10 +984,10 @@ namespace Google.Apis.AccessApproval.v1
             }
 
             /// <summary>
-            /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to the
-            /// resource if another request has been made and approved. It is equivalent in effect to ignoring the
-            /// request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the
-            /// request exists but is not in a pending state.
+            /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request is dismissed, it is
+            /// considered ignored. Dismissing a request does not prevent access granted by other Access Approval
+            /// requests. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request
+            /// exists but is not in a pending state.
             /// </summary>
             public class DismissRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.ApprovalRequest>
             {
@@ -1085,9 +1085,9 @@ namespace Google.Apis.AccessApproval.v1
             }
 
             /// <summary>
-            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This does not deny
-            /// access to the resource if another request has been made and approved. It only invalidates a single
-            /// approval. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
+            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This action revokes
+            /// Google access based on this approval request. If the resource has other active approvals, access will
+            /// remain granted. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the ApprovalRequest to invalidate.</param>
@@ -1097,9 +1097,9 @@ namespace Google.Apis.AccessApproval.v1
             }
 
             /// <summary>
-            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This does not deny
-            /// access to the resource if another request has been made and approved. It only invalidates a single
-            /// approval. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
+            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This action revokes
+            /// Google access based on this approval request. If the resource has other active approvals, access will
+            /// remain granted. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
             /// </summary>
             public class InvalidateRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.ApprovalRequest>
             {
@@ -1248,9 +1248,9 @@ namespace Google.Apis.AccessApproval.v1
 
         /// <summary>
         /// Deletes the settings associated with a project, folder, or organization. This will have the effect of
-        /// disabling Access Approval for the project, folder, or organization, but only if all ancestors also have
-        /// Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access
-        /// Approval will still be enabled at this level as the settings are inherited.
+        /// disabling Access Approval for the resource. Access Approval may remain active based on parent resource
+        /// settings. To confirm the effective settings, call GetAccessApprovalSettings and verify effective setting is
+        /// disabled.
         /// </summary>
         /// <param name="name">Name of the AccessApprovalSettings to delete.</param>
         public virtual DeleteAccessApprovalSettingsRequest DeleteAccessApprovalSettings(string name)
@@ -1260,9 +1260,9 @@ namespace Google.Apis.AccessApproval.v1
 
         /// <summary>
         /// Deletes the settings associated with a project, folder, or organization. This will have the effect of
-        /// disabling Access Approval for the project, folder, or organization, but only if all ancestors also have
-        /// Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access
-        /// Approval will still be enabled at this level as the settings are inherited.
+        /// disabling Access Approval for the resource. Access Approval may remain active based on parent resource
+        /// settings. To confirm the effective settings, call GetAccessApprovalSettings and verify effective setting is
+        /// disabled.
         /// </summary>
         public class DeleteAccessApprovalSettingsRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.Empty>
         {
@@ -1301,7 +1301,7 @@ namespace Google.Apis.AccessApproval.v1
             }
         }
 
-        /// <summary>Gets the settings associated with a project, folder, or organization.</summary>
+        /// <summary>Gets the Access Approval settings associated with a project, folder, or organization.</summary>
         /// <param name="name">
         /// The name of the AccessApprovalSettings to retrieve. Format:
         /// "{projects|folders|organizations}/{id}/accessApprovalSettings"
@@ -1311,7 +1311,7 @@ namespace Google.Apis.AccessApproval.v1
             return new GetAccessApprovalSettingsRequest(this.service, name);
         }
 
-        /// <summary>Gets the settings associated with a project, folder, or organization.</summary>
+        /// <summary>Gets the Access Approval settings associated with a project, folder, or organization.</summary>
         public class GetAccessApprovalSettingsRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.AccessApprovalSettings>
         {
             /// <summary>Constructs a new GetAccessApprovalSettings request.</summary>
@@ -1580,10 +1580,10 @@ namespace Google.Apis.AccessApproval.v1
             }
 
             /// <summary>
-            /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to the
-            /// resource if another request has been made and approved. It is equivalent in effect to ignoring the
-            /// request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the
-            /// request exists but is not in a pending state.
+            /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request is dismissed, it is
+            /// considered ignored. Dismissing a request does not prevent access granted by other Access Approval
+            /// requests. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request
+            /// exists but is not in a pending state.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the ApprovalRequest to dismiss.</param>
@@ -1593,10 +1593,10 @@ namespace Google.Apis.AccessApproval.v1
             }
 
             /// <summary>
-            /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to the
-            /// resource if another request has been made and approved. It is equivalent in effect to ignoring the
-            /// request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the
-            /// request exists but is not in a pending state.
+            /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request is dismissed, it is
+            /// considered ignored. Dismissing a request does not prevent access granted by other Access Approval
+            /// requests. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request
+            /// exists but is not in a pending state.
             /// </summary>
             public class DismissRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.ApprovalRequest>
             {
@@ -1694,9 +1694,9 @@ namespace Google.Apis.AccessApproval.v1
             }
 
             /// <summary>
-            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This does not deny
-            /// access to the resource if another request has been made and approved. It only invalidates a single
-            /// approval. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
+            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This action revokes
+            /// Google access based on this approval request. If the resource has other active approvals, access will
+            /// remain granted. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the ApprovalRequest to invalidate.</param>
@@ -1706,9 +1706,9 @@ namespace Google.Apis.AccessApproval.v1
             }
 
             /// <summary>
-            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This does not deny
-            /// access to the resource if another request has been made and approved. It only invalidates a single
-            /// approval. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
+            /// Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This action revokes
+            /// Google access based on this approval request. If the resource has other active approvals, access will
+            /// remain granted. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
             /// </summary>
             public class InvalidateRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.ApprovalRequest>
             {
@@ -1857,9 +1857,9 @@ namespace Google.Apis.AccessApproval.v1
 
         /// <summary>
         /// Deletes the settings associated with a project, folder, or organization. This will have the effect of
-        /// disabling Access Approval for the project, folder, or organization, but only if all ancestors also have
-        /// Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access
-        /// Approval will still be enabled at this level as the settings are inherited.
+        /// disabling Access Approval for the resource. Access Approval may remain active based on parent resource
+        /// settings. To confirm the effective settings, call GetAccessApprovalSettings and verify effective setting is
+        /// disabled.
         /// </summary>
         /// <param name="name">Name of the AccessApprovalSettings to delete.</param>
         public virtual DeleteAccessApprovalSettingsRequest DeleteAccessApprovalSettings(string name)
@@ -1869,9 +1869,9 @@ namespace Google.Apis.AccessApproval.v1
 
         /// <summary>
         /// Deletes the settings associated with a project, folder, or organization. This will have the effect of
-        /// disabling Access Approval for the project, folder, or organization, but only if all ancestors also have
-        /// Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access
-        /// Approval will still be enabled at this level as the settings are inherited.
+        /// disabling Access Approval for the resource. Access Approval may remain active based on parent resource
+        /// settings. To confirm the effective settings, call GetAccessApprovalSettings and verify effective setting is
+        /// disabled.
         /// </summary>
         public class DeleteAccessApprovalSettingsRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.Empty>
         {
@@ -1910,7 +1910,7 @@ namespace Google.Apis.AccessApproval.v1
             }
         }
 
-        /// <summary>Gets the settings associated with a project, folder, or organization.</summary>
+        /// <summary>Gets the Access Approval settings associated with a project, folder, or organization.</summary>
         /// <param name="name">
         /// The name of the AccessApprovalSettings to retrieve. Format:
         /// "{projects|folders|organizations}/{id}/accessApprovalSettings"
@@ -1920,7 +1920,7 @@ namespace Google.Apis.AccessApproval.v1
             return new GetAccessApprovalSettingsRequest(this.service, name);
         }
 
-        /// <summary>Gets the settings associated with a project, folder, or organization.</summary>
+        /// <summary>Gets the Access Approval settings associated with a project, folder, or organization.</summary>
         public class GetAccessApprovalSettingsRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1.Data.AccessApprovalSettings>
         {
             /// <summary>Constructs a new GetAccessApprovalSettings request.</summary>
@@ -2137,14 +2137,14 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ancestorHasActiveKeyVersion")]
         public virtual System.Nullable<bool> AncestorHasActiveKeyVersion { get; set; }
 
-        /// <summary>Optional. Policy for approval. This contains all policies.</summary>
+        /// <summary>
+        /// Optional. Policy configuration for Access Approval that sets the operating mode. The available policies are
+        /// Transparency, Streamlined Support, and Approval Required.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approvalPolicy")]
         public virtual CustomerApprovalApprovalPolicy ApprovalPolicy { get; set; }
 
-        /// <summary>
-        /// Output only. Policy for approval included inherited settings to understand the exact policy applied to this
-        /// resource. This is a read-only field.
-        /// </summary>
+        /// <summary>Output only. Effective policy applied for Access Approval, inclusive of inheritance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveApprovalPolicy")]
         public virtual CustomerApprovalApprovalPolicy EffectiveApprovalPolicy { get; set; }
 
@@ -2163,8 +2163,7 @@ namespace Google.Apis.AccessApproval.v1.Data
         /// explicit approval. If name refers to an organization, enrollment can be done for individual services. If
         /// name refers to a folder or project, enrollment can only be done on an all or nothing basis. If a
         /// cloud_product is repeated in this list, the first entry will be honored and all following entries will be
-        /// discarded. A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported
-        /// services is expanded.
+        /// discarded.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrolledServices")]
         public virtual System.Collections.Generic.IList<EnrolledService> EnrolledServices { get; set; }
@@ -2195,30 +2194,41 @@ namespace Google.Apis.AccessApproval.v1.Data
         public virtual System.Collections.Generic.IList<string> NotificationEmails { get; set; }
 
         /// <summary>
-        /// Optional. A pubsub topic to which notifications relating to approval requests should be sent.
+        /// Optional. A pubsub topic that notifications relating to access approval are published to. Notifications
+        /// include pre-approved accesses.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
 
         /// <summary>
-        /// This preference is communicated to Google personnel when sending an approval request but can be overridden
-        /// if necessary.
+        /// This field is used to set a preference for granularity of an access approval request. If true, Google
+        /// personnel will be asked to send resource-level requests when possible. If false, Google personnel will be
+        /// asked to send requests at the project level.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferNoBroadApprovalRequests")]
         public virtual System.Nullable<bool> PreferNoBroadApprovalRequests { get; set; }
 
         /// <summary>
-        /// This preference is shared with Google personnel, but can be overridden if said personnel deems necessary.
-        /// The approver ultimately can set the expiration at approval time.
+        /// Set the default access approval request expiration time. This value is able to be set directly by the
+        /// customer at the time of approval, overriding this suggested value. We recommend setting this value to 30
+        /// days.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferredRequestExpirationDays")]
         public virtual System.Nullable<int> PreferredRequestExpirationDays { get; set; }
 
-        /// <summary>Optional. A setting to indicate the maximum width of an Access Approval request.</summary>
+        /// <summary>
+        /// Optional. A setting that indicates the maximum scope of an Access Approval request: either organization,
+        /// folder, or project. Google administrators will be asked to send requests no broader than the configured
+        /// scope.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestScopeMaxWidthPreference")]
         public virtual string RequestScopeMaxWidthPreference { get; set; }
 
-        /// <summary>Optional. A setting to require approval request justifications to be customer visible.</summary>
+        /// <summary>
+        /// Optional. When enabled, Google will only be able to send approval requests for access reasons with a
+        /// customer accessible case ID in the reason detail. Also known as "Require customer initiated support case
+        /// justification"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireCustomerVisibleJustification")]
         public virtual System.Nullable<bool> RequireCustomerVisibleJustification { get; set; }
 
@@ -2226,23 +2236,25 @@ namespace Google.Apis.AccessApproval.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Home office and physical location of the principal.</summary>
+    /// <summary>
+    /// Physical assigned office and physical location of the Google administrator performing the access.
+    /// </summary>
     public class AccessLocations : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The "home office" location of the principal. A two-letter country code (ISO 3166-1 alpha-2), such as "US",
-        /// "DE" or "GB" or a region code. In some limited situations Google systems may refer refer to a region code
-        /// instead of a country code. Possible Region Codes: * ASI: Asia * EUR: Europe * OCE: Oceania * AFR: Africa *
-        /// NAM: North America * SAM: South America * ANT: Antarctica * ANY: Any location
+        /// The "home office" location of the Google administrator. A two-letter country code (ISO 3166-1 alpha-2), such
+        /// as "US", "DE" or "GB" or a region code. In some limited situations Google systems may refer refer to a
+        /// region code instead of a country code. Possible Region Codes: * ASI: Asia * EUR: Europe * OCE: Oceania *
+        /// AFR: Africa * NAM: North America * SAM: South America * ANT: Antarctica * ANY: Any location
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalOfficeCountry")]
         public virtual string PrincipalOfficeCountry { get; set; }
 
         /// <summary>
-        /// Physical location of the principal at the time of the access. A two-letter country code (ISO 3166-1
-        /// alpha-2), such as "US", "DE" or "GB" or a region code. In some limited situations Google systems may refer
-        /// refer to a region code instead of a country code. Possible Region Codes: * ASI: Asia * EUR: Europe * OCE:
-        /// Oceania * AFR: Africa * NAM: North America * SAM: South America * ANT: Antarctica * ANY: Any location
+        /// Physical location of the Google administrator at the time of the access. A two-letter country code (ISO
+        /// 3166-1 alpha-2), such as "US", "DE" or "GB" or a region code. In some limited situations Google systems may
+        /// refer refer to a region code instead of a country code. Possible Region Codes: * ASI: Asia * EUR: Europe *
+        /// OCE: Oceania * AFR: Africa * NAM: North America * SAM: South America * ANT: Antarctica * ANY: Any location
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalPhysicalLocationCountry")]
         public virtual string PrincipalPhysicalLocationCountry { get; set; }
@@ -2257,7 +2269,7 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
         public virtual string Detail { get; set; }
 
-        /// <summary>Type of access justification.</summary>
+        /// <summary>Type of access reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -2374,7 +2386,7 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestedLocations")]
         public virtual AccessLocations RequestedLocations { get; set; }
 
-        /// <summary>The justification for which approval is being requested.</summary>
+        /// <summary>The access reason for which approval is being requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedReason")]
         public virtual AccessReason RequestedReason { get; set; }
 
@@ -2571,7 +2583,10 @@ namespace Google.Apis.AccessApproval.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>This field contains the augmented information of the request.</summary>
+    /// <summary>
+    /// This field contains the augmented information of the request. Requires augmented administrative access to be
+    /// enabled.
+    /// </summary>
     public class AugmentedInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2670,13 +2685,29 @@ namespace Google.Apis.AccessApproval.v1.Data
     {
         /// <summary>
         /// The product for which Access Approval will be enrolled. Allowed values are listed below (case-sensitive): *
-        /// all * GA * App Engine * Artifact Registry * BigQuery * Certificate Authority Service * Cloud Bigtable *
-        /// Cloud Key Management Service * Compute Engine * Cloud Composer * Cloud Dataflow * Cloud Dataproc * Cloud DLP
-        /// * Cloud EKM * Cloud Firestore * Cloud HSM * Cloud Identity and Access Management * Cloud Logging * Cloud NAT
-        /// * Cloud Pub/Sub * Cloud Spanner * Cloud SQL * Cloud Storage * Eventarc * Google Kubernetes Engine *
-        /// Organization Policy Serivice * Persistent Disk * Resource Manager * Secret Manager * Speaker ID Note: These
-        /// values are supported as input for legacy purposes, but will not be returned from the API. * all * ga-only *
-        /// appengine.googleapis.com * artifactregistry.googleapis.com * bigquery.googleapis.com *
+        /// all * GA * Access Context Manager * Anthos Identity Service * AlloyDB for PostgreSQL * Apigee * Application
+        /// Integration * App Hub * Artifact Registry * Anthos Service Mesh * Access Transparency * BigQuery *
+        /// Certificate Authority Service * Cloud Bigtable * CCAI Assist and Knowledge * Cloud Dataflow * Cloud Dataproc
+        /// * CEP Security Gateway * Compliance Evaluation Service * Cloud Firestore * Cloud Healthcare API * Chronicle
+        /// * Cloud AI Companion Gateway - Titan * Google Cloud Armor * Cloud Asset Inventory * Cloud Asset Search *
+        /// Cloud Deploy * Cloud DNS * Cloud Latency * Cloud Memorystore for Redis * CloudNet Control * Cloud Riptide *
+        /// Cloud Tasks * Cloud Trace * Cloud Data Transfer * Cloud Composer * Integration Connectors * Contact Center
+        /// AI Insights * Cloud Pub/Sub * Cloud Run * Resource Manager * Cloud Spanner * Database Center * Cloud
+        /// Dataform * Cloud Data Fusion * Dataplex * Dialogflow Customer Experience Edition * Cloud DLP * Document AI *
+        /// Edge Container * Edge Network * Cloud EKM * Eventarc * Firebase Data Connect * Firebase Rules * App Engine *
+        /// Cloud Build * Compute Engine * Cloud Functions (2nd Gen) * Cloud Filestore * Cloud Interconnect * Cloud
+        /// NetApp Volumes * Cloud Storage * Generative AI App Builder * Google Kubernetes Engine * Backup for GKE API *
+        /// GKE Connect * GKE Hub * Hoverboard * Cloud HSM * Cloud Identity and Access Management * Cloud Identity-Aware
+        /// Proxy * Infrastructure Manager * Identity Storage Service * Key Access Justifications * Cloud Key Management
+        /// Service * Cloud Logging * Looker (Google Cloud core) * Looker Studio * Management Hub * Model Armor * Cloud
+        /// Monitoring * Cloud NAT * Connectivity Hub * External passthrough Network Load Balancer * OIDC One *
+        /// Organization Policy Service * Org Lifecycle * Persistent Disk * Parameter Manager * Private Services Access
+        /// * Regional Internal Application Load Balancer * Storage Batch Operations * Cloud Security Command Center *
+        /// Secure Source Manager * Seeker * Service Provisioning * Speaker ID * Secret Manager * Cloud SQL * Cloud
+        /// Speech-to-Text * Traffic Director * Cloud Text-to-Speech * USPS Andromeda * Vertex AI * Virtual Private
+        /// Cloud (VPC) * VPC Access * VPC Service Controls Troubleshooter * VPC virtnet * Cloud Workstations * Web Risk
+        /// Note: These values are supported as input for legacy purposes, but will not be returned from the API. * all
+        /// * ga-only * appengine.googleapis.com * artifactregistry.googleapis.com * bigquery.googleapis.com *
         /// bigtable.googleapis.com * container.googleapis.com * cloudkms.googleapis.com *
         /// cloudresourcemanager.googleapis.com * cloudsql.googleapis.com * compute.googleapis.com *
         /// dataflow.googleapis.com * dataproc.googleapis.com * dlp.googleapis.com * iam.googleapis.com *
