@@ -18,7 +18,7 @@ The Google APIs Core Library contains the Google APIs HTTP layer, JSON support, 
   
   <!-- package references; common then per-target -->
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 
     <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="5.0.0.1" PrivateAssets="All" />
   </ItemGroup>
