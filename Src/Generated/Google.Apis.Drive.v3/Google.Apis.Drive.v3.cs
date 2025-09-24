@@ -432,15 +432,21 @@ namespace Google.Apis.Drive.v3
             this.service = service;
         }
 
-        /// <summary>Retrieves an AccessProposal by ID.</summary>
-        /// <param name="fileId">Required. The id of the item the request is on.</param>
-        /// <param name="proposalId">Required. The id of the access proposal to resolve.</param>
+        /// <summary>
+        /// Retrieves an access proposal by ID. For more information, see [Manage pending access
+        /// proposals](https://developers.google.com/workspace/drive/api/guides/pending-access).
+        /// </summary>
+        /// <param name="fileId">Required. The ID of the item the request is on.</param>
+        /// <param name="proposalId">Required. The ID of the access proposal to resolve.</param>
         public virtual GetRequest Get(string fileId, string proposalId)
         {
             return new GetRequest(this.service, fileId, proposalId);
         }
 
-        /// <summary>Retrieves an AccessProposal by ID.</summary>
+        /// <summary>
+        /// Retrieves an access proposal by ID. For more information, see [Manage pending access
+        /// proposals](https://developers.google.com/workspace/drive/api/guides/pending-access).
+        /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.AccessProposal>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -451,11 +457,11 @@ namespace Google.Apis.Drive.v3
                 InitParameters();
             }
 
-            /// <summary>Required. The id of the item the request is on.</summary>
+            /// <summary>Required. The ID of the item the request is on.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>Required. The id of the access proposal to resolve.</summary>
+            /// <summary>Required. The ID of the access proposal to resolve.</summary>
             [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProposalId { get; private set; }
 
@@ -492,18 +498,20 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// List the AccessProposals on a file. Note: Only approvers are able to list AccessProposals on a file. If the
-        /// user is not an approver, returns a 403.
+        /// List the access proposals on a file. For more information, see [Manage pending access
+        /// proposals](https://developers.google.com/workspace/drive/api/guides/pending-access). Note: Only approvers
+        /// are able to list access proposals on a file. If the user isn't an approver, a 403 error is returned.
         /// </summary>
-        /// <param name="fileId">Required. The id of the item the request is on.</param>
+        /// <param name="fileId">Required. The ID of the item the request is on.</param>
         public virtual ListRequest List(string fileId)
         {
             return new ListRequest(this.service, fileId);
         }
 
         /// <summary>
-        /// List the AccessProposals on a file. Note: Only approvers are able to list AccessProposals on a file. If the
-        /// user is not an approver, returns a 403.
+        /// List the access proposals on a file. For more information, see [Manage pending access
+        /// proposals](https://developers.google.com/workspace/drive/api/guides/pending-access). Note: Only approvers
+        /// are able to list access proposals on a file. If the user isn't an approver, a 403 error is returned.
         /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ListAccessProposalsResponse>
         {
@@ -514,11 +522,11 @@ namespace Google.Apis.Drive.v3
                 InitParameters();
             }
 
-            /// <summary>Required. The id of the item the request is on.</summary>
+            /// <summary>Required. The ID of the item the request is on.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>Optional. The number of results per page</summary>
+            /// <summary>Optional. The number of results per page.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -566,16 +574,22 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Used to approve or deny an Access Proposal.</summary>
+        /// <summary>
+        /// Approves or denies an access proposal. For more information, see [Manage pending access
+        /// proposals](https://developers.google.com/workspace/drive/api/guides/pending-access).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="fileId">Required. The id of the item the request is on.</param>
-        /// <param name="proposalId">Required. The id of the access proposal to resolve.</param>
+        /// <param name="fileId">Required. The ID of the item the request is on.</param>
+        /// <param name="proposalId">Required. The ID of the access proposal to resolve.</param>
         public virtual ResolveRequest Resolve(Google.Apis.Drive.v3.Data.ResolveAccessProposalRequest body, string fileId, string proposalId)
         {
             return new ResolveRequest(this.service, body, fileId, proposalId);
         }
 
-        /// <summary>Used to approve or deny an Access Proposal.</summary>
+        /// <summary>
+        /// Approves or denies an access proposal. For more information, see [Manage pending access
+        /// proposals](https://developers.google.com/workspace/drive/api/guides/pending-access).
+        /// </summary>
         public class ResolveRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Resolve request.</summary>
@@ -587,11 +601,11 @@ namespace Google.Apis.Drive.v3
                 InitParameters();
             }
 
-            /// <summary>Required. The id of the item the request is on.</summary>
+            /// <summary>Required. The ID of the item the request is on.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>Required. The id of the access proposal to resolve.</summary>
+            /// <summary>Required. The ID of the access proposal to resolve.</summary>
             [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProposalId { get; private set; }
 
@@ -6580,14 +6594,14 @@ namespace Google.Apis.Drive.v3.Data
         }
     }
 
-    /// <summary>The Access Proposal resource for outstanding access proposals on a file</summary>
+    /// <summary>Manage outstanding access proposals on a file.</summary>
     public class AccessProposal : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
         private object _createTime;
 
-        /// <summary>The creation time</summary>
+        /// <summary>The creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -6620,27 +6634,30 @@ namespace Google.Apis.Drive.v3.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The file id that the proposal for access is on</summary>
+        /// <summary>The file ID that the proposal for access is on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
         public virtual string FileId { get; set; }
 
-        /// <summary>The id of the access proposal</summary>
+        /// <summary>The ID of the access proposal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposalId")]
         public virtual string ProposalId { get; set; }
 
-        /// <summary>The email address of the user that will receive permissions if accepted</summary>
+        /// <summary>The email address of the user that will receive permissions, if accepted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recipientEmailAddress")]
         public virtual string RecipientEmailAddress { get; set; }
 
-        /// <summary>The message that the requester added to the proposal</summary>
+        /// <summary>The message that the requester added to the proposal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestMessage")]
         public virtual string RequestMessage { get; set; }
 
-        /// <summary>The email address of the requesting user</summary>
+        /// <summary>The email address of the requesting user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requesterEmailAddress")]
         public virtual string RequesterEmailAddress { get; set; }
 
-        /// <summary>A wrapper for the role and view of an access proposal.</summary>
+        /// <summary>
+        /// A wrapper for the role and view of an access proposal. For more information, see [Roles and
+        /// permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolesAndViews")]
         public virtual System.Collections.Generic.IList<AccessProposalRoleAndView> RolesAndViews { get; set; }
 
@@ -6648,19 +6665,21 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A wrapper for the role and view of an access proposal.</summary>
+    /// <summary>
+    /// A wrapper for the role and view of an access proposal. For more information, see [Roles and
+    /// permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles).
+    /// </summary>
     public class AccessProposalRoleAndView : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The role that was proposed by the requester New values may be added in the future, but the following are
-        /// currently possible: * `writer` * `commenter` * `reader`
+        /// The role that was proposed by the requester. The supported values are: * `writer` * `commenter` * `reader`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
         /// <summary>
-        /// Indicates the view for this access proposal. Only populated for proposals that belong to a view. `published`
-        /// is the only supported value.
+        /// Indicates the view for this access proposal. Only populated for proposals that belong to a view. Only
+        /// `published` is supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
         public virtual string View { get; set; }
@@ -8782,10 +8801,10 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response to an Access Proposal list request.</summary>
+    /// <summary>The response to an access proposal list request.</summary>
     public class ListAccessProposalsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of Access Proposals. This field is only populated in v3 and v3beta.</summary>
+        /// <summary>The list of access proposals. This field is only populated in Drive API v3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessProposals")]
         public virtual System.Collections.Generic.IList<AccessProposal> AccessProposals { get; set; }
 
@@ -9219,25 +9238,27 @@ namespace Google.Apis.Drive.v3.Data
     /// <summary>Request message for resolving an AccessProposal on a file.</summary>
     public class ResolveAccessProposalRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The action to take on the AccessProposal.</summary>
+        /// <summary>Required. The action to take on the access proposal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
         /// <summary>
-        /// Optional. The roles the approver has allowed, if any. Note: This field is required for the `ACCEPT` action.
+        /// Optional. The roles that the approver has allowed, if any. For more information, see [Roles and
+        /// permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles). Note: This field is
+        /// required for the `ACCEPT` action.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual System.Collections.Generic.IList<string> Role { get; set; }
 
         /// <summary>
-        /// Optional. Whether to send an email to the requester when the AccessProposal is denied or accepted.
+        /// Optional. Whether to send an email to the requester when the access proposal is denied or accepted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendNotification")]
         public virtual System.Nullable<bool> SendNotification { get; set; }
 
         /// <summary>
         /// Optional. Indicates the view for this access proposal. This should only be set when the proposal belongs to
-        /// a view. `published` is the only supported value.
+        /// a view. Only `published` is supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
         public virtual string View { get; set; }
