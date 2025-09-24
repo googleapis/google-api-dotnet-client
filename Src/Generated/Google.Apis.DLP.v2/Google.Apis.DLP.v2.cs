@@ -16660,6 +16660,17 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeRegexes")]
         public virtual GooglePrivacyDlpV2FileStoreRegexes IncludeRegexes { get; set; }
 
+        /// <summary>
+        /// Optional. To be included in the collection, a resource must meet all of the following requirements: - If tag
+        /// filters are provided, match all provided tag filters. - If one or more patterns are specified, match at
+        /// least one pattern. For a resource to match the tag filters, the resource must have all of the provided tags
+        /// attached. Tags refer to Resource Manager tags bound to the resource or its ancestors. See
+        /// https://cloud.google.com/sensitive-data-protection/docs/profile-project-cloud-storage#manage-schedules to
+        /// learn more.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeTags")]
+        public virtual GooglePrivacyDlpV2TagFilters IncludeTags { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -19043,6 +19054,16 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string OutputSchema { get; set; }
 
         /// <summary>
+        /// Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part
+        /// number as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file
+        /// name will use the naming convention -, for example: my-job-id-2. Supported for Inspect jobs. The bucket must
+        /// not be the same as the bucket being inspected. If storing findings to Cloud Storage, the output schema field
+        /// should not be set. If set, it will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePath")]
+        public virtual GooglePrivacyDlpV2CloudStoragePath StoragePath { get; set; }
+
+        /// <summary>
         /// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one
         /// will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific time
         /// zone will be used for generating the date details. For Inspect, each column in an existing output table must
@@ -20891,6 +20912,41 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The tag value to attach to resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual GooglePrivacyDlpV2TagValue Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single tag to filter against.</summary>
+    public class GooglePrivacyDlpV2TagFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The namespaced name for the tag key. Must be in the format `{parent_id}/{tag_key_short_name}`, for example,
+        /// "123456/sensitive" for an organization parent, or "my-project/sensitive" for a project parent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespacedTagKey")]
+        public virtual string NamespacedTagKey { get; set; }
+
+        /// <summary>
+        /// The namespaced name for the tag value. Must be in the format
+        /// `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod" for an organization
+        /// parent, or "my-project/environment/prod" for a project parent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespacedTagValue")]
+        public virtual string NamespacedTagValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tags to match against for filtering.</summary>
+    public class GooglePrivacyDlpV2TagFilters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A resource must match ALL of the specified tag filters to be included in the collection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagFilters")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2TagFilter> TagFilters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
