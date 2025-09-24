@@ -5282,7 +5282,12 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>Gets an Entry.</summary>
+                    /// <summary>
+                    /// Gets an Entry. Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub, Dataform, and Dataproc
+                    /// Metastore metadata that is stored in Dataplex Universal Catalog is changing. For more
+                    /// information, see Changes to metadata stored in Dataplex Universal Catalog
+                    /// (https://cloud.google.com/dataplex/docs/metadata-changes).
+                    /// </summary>
                     /// <param name="name">
                     /// Required. The resource name of the Entry:
                     /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}.
@@ -5292,7 +5297,12 @@ namespace Google.Apis.CloudDataplex.v1
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>Gets an Entry.</summary>
+                    /// <summary>
+                    /// Gets an Entry. Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub, Dataform, and Dataproc
+                    /// Metastore metadata that is stored in Dataplex Universal Catalog is changing. For more
+                    /// information, see Changes to metadata stored in Dataplex Universal Catalog
+                    /// (https://cloud.google.com/dataplex/docs/metadata-changes).
+                    /// </summary>
                     public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Entry>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -5411,7 +5421,12 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>Lists Entries within an EntryGroup.</summary>
+                    /// <summary>
+                    /// Lists Entries within an EntryGroup. Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub,
+                    /// Dataform, and Dataproc Metastore metadata that is stored in Dataplex Universal Catalog is
+                    /// changing. For more information, see Changes to metadata stored in Dataplex Universal Catalog
+                    /// (https://cloud.google.com/dataplex/docs/metadata-changes).
+                    /// </summary>
                     /// <param name="parent">
                     /// Required. The resource name of the parent Entry Group:
                     /// projects/{project}/locations/{location}/entryGroups/{entry_group}.
@@ -5421,7 +5436,12 @@ namespace Google.Apis.CloudDataplex.v1
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>Lists Entries within an EntryGroup.</summary>
+                    /// <summary>
+                    /// Lists Entries within an EntryGroup. Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub,
+                    /// Dataform, and Dataproc Metastore metadata that is stored in Dataplex Universal Catalog is
+                    /// changing. For more information, see Changes to metadata stored in Dataplex Universal Catalog
+                    /// (https://cloud.google.com/dataplex/docs/metadata-changes).
+                    /// </summary>
                     public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ListEntriesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -15998,7 +16018,12 @@ namespace Google.Apis.CloudDataplex.v1
                 }
             }
 
-            /// <summary>Looks up an entry by name using the permission on the source system.</summary>
+            /// <summary>
+            /// Looks up an entry by name using the permission on the source system. Caution: The Vertex AI, Bigtable,
+            /// Spanner, Pub/Sub, Dataform, and Dataproc Metastore metadata that is stored in Dataplex Universal Catalog
+            /// is changing. For more information, see Changes to metadata stored in Dataplex Universal Catalog
+            /// (https://cloud.google.com/dataplex/docs/metadata-changes).
+            /// </summary>
             /// <param name="name">
             /// Required. The project to which the request should be attributed in the following form:
             /// projects/{project}/locations/{location}.
@@ -16008,7 +16033,12 @@ namespace Google.Apis.CloudDataplex.v1
                 return new LookupEntryRequest(this.service, name);
             }
 
-            /// <summary>Looks up an entry by name using the permission on the source system.</summary>
+            /// <summary>
+            /// Looks up an entry by name using the permission on the source system. Caution: The Vertex AI, Bigtable,
+            /// Spanner, Pub/Sub, Dataform, and Dataproc Metastore metadata that is stored in Dataplex Universal Catalog
+            /// is changing. For more information, see Changes to metadata stored in Dataplex Universal Catalog
+            /// (https://cloud.google.com/dataplex/docs/metadata-changes).
+            /// </summary>
             public class LookupEntryRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Entry>
             {
                 /// <summary>Constructs a new LookupEntry request.</summary>
@@ -23384,10 +23414,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Collections.Generic.IList<string> AspectTypes { get; set; }
 
         /// <summary>
-        /// Required. The entry group that is in scope for the import job, specified as a relative resource name in the
+        /// Required. The entry groups that are in scope for the import job, specified as relative resource names in the
         /// format projects/{project_number_or_id}/locations/{location_id}/entryGroups/{entry_group_id}. Only entries
-        /// and aspects that belong to the specified entry group are affected by the job.Must contain exactly one
-        /// element. The entry group and the job must be in the same location.
+        /// and aspects that belong to the specified entry groups are affected by the job.The entry groups and the job
+        /// must be in the same location.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryGroups")]
         public virtual System.Collections.Generic.IList<string> EntryGroups { get; set; }
