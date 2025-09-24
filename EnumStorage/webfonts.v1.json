@@ -11,7 +11,8 @@
   "Google.Apis.Webfonts.v1.WebfontsResource+ListRequest.CapabilityEnum": [
     "CAPABILITY_UNSPECIFIED",
     "WOFF2",
-    "VF"
+    "VF",
+    "FAMILY_TAGS"
   ],
   "Google.Apis.Webfonts.v1.WebfontsResource+ListRequest.SortEnum": [
     "SORT_UNDEFINED",
