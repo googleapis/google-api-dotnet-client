@@ -6612,9 +6612,23 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bottomLabel")]
         public virtual string BottomLabel { get; set; }
 
+        /// <summary>
+        /// `TextParagraph` equivalent of `bottom_label`. Always wraps. Allows for more complex formatting than
+        /// `bottom_label`. [Google Chat apps](https://developers.google.com/workspace/chat):
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bottomLabelText")]
+        public virtual GoogleAppsCardV1TextParagraph BottomLabelText { get; set; }
+
         /// <summary>A button that a user can click to trigger an action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("button")]
         public virtual GoogleAppsCardV1Button Button { get; set; }
+
+        /// <summary>
+        /// `TextParagraph` equivalent of `text`. Allows for more complex formatting than `text`. [Google Chat
+        /// apps](https://developers.google.com/workspace/chat):
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentText")]
+        public virtual GoogleAppsCardV1TextParagraph ContentText { get; set; }
 
         /// <summary>
         /// An icon displayed after the text. Supports
@@ -6636,6 +6650,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startIcon")]
         public virtual GoogleAppsCardV1Icon StartIcon { get; set; }
 
+        /// <summary>
+        /// Optional. Vertical alignment of the start icon. If not set, the icon will be vertically centered. [Google
+        /// Chat apps](https://developers.google.com/workspace/chat):
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIconVerticalAlignment")]
+        public virtual string StartIconVerticalAlignment { get; set; }
+
         /// <summary>A switch widget that a user can click to change its state and trigger an action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("switchControl")]
         public virtual GoogleAppsCardV1SwitchControl SwitchControl { get; set; }
@@ -6653,6 +6674,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The text that appears above `text`. Always truncates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
         public virtual string TopLabel { get; set; }
+
+        /// <summary>
+        /// `TextParagraph` equivalent of `top_label`. Always truncates. Allows for more complex formatting than
+        /// `top_label`. [Google Chat apps](https://developers.google.com/workspace/chat):
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topLabelText")]
+        public virtual GoogleAppsCardV1TextParagraph TopLabelText { get; set; }
 
         /// <summary>
         /// The wrap text setting. If `true`, the text wraps and displays on multiple lines. Otherwise, the text is
@@ -7573,6 +7601,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The text that's shown in the widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>
+        /// The syntax of the text. If not set, the text is rendered as HTML. [Google Chat
+        /// apps](https://developers.google.com/workspace/chat):
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textSyntax")]
+        public virtual string TextSyntax { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
