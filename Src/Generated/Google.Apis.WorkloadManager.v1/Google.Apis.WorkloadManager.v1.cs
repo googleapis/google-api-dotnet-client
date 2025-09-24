@@ -2737,6 +2737,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
         public virtual string InstanceId { get; set; }
 
+        /// <summary>The insights data for the OpenShift workload validation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openShiftValidation")]
+        public virtual OpenShiftValidation OpenShiftValidation { get; set; }
+
         /// <summary>
         /// The insights data for SAP system discovery. This is a copy of SAP System proto and should get updated
         /// whenever that one changes.
@@ -3005,6 +3009,15 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A presentation of OpenShift workload insight. The schema of OpenShift workloads validation related data.
+    /// </summary>
+    public class OpenShiftValidation : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
