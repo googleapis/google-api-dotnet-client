@@ -2979,6 +2979,77 @@ namespace Google.Apis.CloudRetail.v2
                         this.service = service;
                     }
 
+                    /// <summary>
+                    /// Performs a conversational search. This feature is only available for users who have
+                    /// Conversational Search enabled.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="placement">
+                    /// Required. The resource name of the search engine placement, such as
+                    /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search` or
+                    /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
+                    /// This field is used to identify the serving config name and the set of models that will be used
+                    /// to make the search.
+                    /// </param>
+                    public virtual ConversationalSearchRequest ConversationalSearch(Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2ConversationalSearchRequest body, string placement)
+                    {
+                        return new ConversationalSearchRequest(this.service, body, placement);
+                    }
+
+                    /// <summary>
+                    /// Performs a conversational search. This feature is only available for users who have
+                    /// Conversational Search enabled.
+                    /// </summary>
+                    public class ConversationalSearchRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2ConversationalSearchResponse>
+                    {
+                        /// <summary>Constructs a new ConversationalSearch request.</summary>
+                        public ConversationalSearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2ConversationalSearchRequest body, string placement) : base(service)
+                        {
+                            Placement = placement;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the search engine placement, such as
+                        /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search` or
+                        /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
+                        /// This field is used to identify the serving config name and the set of models that will be
+                        /// used to make the search.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Placement { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2ConversationalSearchRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "conversationalSearch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+placement}:conversationalSearch";
+
+                        /// <summary>Initializes ConversationalSearch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("placement", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "placement",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/placements/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Makes a recommendation prediction.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
@@ -3206,6 +3277,77 @@ namespace Google.Apis.CloudRetail.v2
                             RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "servingConfig",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Performs a conversational search. This feature is only available for users who have
+                    /// Conversational Search enabled.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="placement">
+                    /// Required. The resource name of the search engine placement, such as
+                    /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search` or
+                    /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
+                    /// This field is used to identify the serving config name and the set of models that will be used
+                    /// to make the search.
+                    /// </param>
+                    public virtual ConversationalSearchRequest ConversationalSearch(Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2ConversationalSearchRequest body, string placement)
+                    {
+                        return new ConversationalSearchRequest(this.service, body, placement);
+                    }
+
+                    /// <summary>
+                    /// Performs a conversational search. This feature is only available for users who have
+                    /// Conversational Search enabled.
+                    /// </summary>
+                    public class ConversationalSearchRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2ConversationalSearchResponse>
+                    {
+                        /// <summary>Constructs a new ConversationalSearch request.</summary>
+                        public ConversationalSearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2ConversationalSearchRequest body, string placement) : base(service)
+                        {
+                            Placement = placement;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the search engine placement, such as
+                        /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search` or
+                        /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
+                        /// This field is used to identify the serving config name and the set of models that will be
+                        /// used to make the search.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Placement { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2ConversationalSearchRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "conversationalSearch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+placement}:conversationalSearch";
+
+                        /// <summary>Initializes ConversationalSearch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("placement", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "placement",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -6942,6 +7084,316 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ConversationalSearchService.ConversationalSearch method.</summary>
+    public class GoogleCloudRetailV2ConversationalSearchRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The branch resource name, such as
+        /// `projects/*/locations/global/catalogs/default_catalog/branches/0`. Use "default_branch" as the branch ID or
+        /// leave this field empty, to search products under the default branch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branch")]
+        public virtual string Branch { get; set; }
+
+        /// <summary>
+        /// Optional. This field specifies the conversation id, which maintains the state of the conversation between
+        /// client side and server side. Use the value from the previous ConversationalSearchResponse.conversation_id.
+        /// For the initial request, this should be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
+        public virtual string ConversationId { get; set; }
+
+        /// <summary>Optional. This field specifies all conversational filtering related parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalFilteringSpec")]
+        public virtual GoogleCloudRetailV2ConversationalSearchRequestConversationalFilteringSpec ConversationalFilteringSpec { get; set; }
+
+        /// <summary>
+        /// Optional. The categories associated with a category page. Must be set for category navigation queries to
+        /// achieve good search quality. The format should be the same as UserEvent.page_categories; To represent full
+        /// path of category, use '&amp;gt;' sign to separate different hierarchies. If '&amp;gt;' is part of the
+        /// category name, replace it with other character(s). Category pages include special pages such as sales or
+        /// promotions. For instance, a special sale page may have the category hierarchy: "pageCategories" : ["Sales
+        /// &amp;gt; 2017 Black Friday Deals"].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
+        public virtual System.Collections.Generic.IList<string> PageCategories { get; set; }
+
+        /// <summary>
+        /// Optional. Raw search query to be searched for. If this field is empty, the request is considered a category
+        /// browsing request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>Optional. The safety settings to be applied to the generated content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetySettings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2SafetySetting> SafetySettings { get; set; }
+
+        /// <summary>Optional. Search parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchParams")]
+        public virtual GoogleCloudRetailV2ConversationalSearchRequestSearchParams SearchParams { get; set; }
+
+        /// <summary>Optional. User information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
+        public virtual GoogleCloudRetailV2UserInfo UserInfo { get; set; }
+
+        /// <summary>
+        /// Optional. The user labels applied to a resource must meet the following requirements: * Each resource can
+        /// have multiple labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum
+        /// length of 1 character and a maximum length of 63 characters and cannot be empty. Values can be empty and
+        /// have a maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric
+        /// characters, underscores, and dashes. All characters must use UTF-8 encoding, and international characters
+        /// are allowed. * The key portion of a label must be unique. However, you can use the same key with multiple
+        /// resources. * Keys must start with a lowercase letter or international character. See [Google Cloud
+        /// Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
+
+        /// <summary>
+        /// Required. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
+        /// cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier
+        /// should not change if the visitor logs in or out of the website. This should be the same identifier as
+        /// UserEvent.visitor_id. The field must be a UTF-8 encoded string with a length limit of 128 characters.
+        /// Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
+        public virtual string VisitorId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This field specifies all conversational filtering related parameters addition to conversational retail search.
+    /// </summary>
+    public class GoogleCloudRetailV2ConversationalSearchRequestConversationalFilteringSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Mode to control Conversational Filtering. Defaults to Mode.DISABLED if it's unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalFilteringMode")]
+        public virtual string ConversationalFilteringMode { get; set; }
+
+        /// <summary>
+        /// Optional. This field is deprecated. Please use ConversationalFilteringSpec.conversational_filtering_mode
+        /// instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConversationalFiltering")]
+        public virtual System.Nullable<bool> EnableConversationalFiltering { get; set; }
+
+        /// <summary>
+        /// Optional. This field specifies the current user answer during the conversational filtering search. It can be
+        /// either user selected from suggested answers or user input plain text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAnswer")]
+        public virtual GoogleCloudRetailV2ConversationalSearchRequestUserAnswer UserAnswer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Search parameters.</summary>
+    public class GoogleCloudRetailV2ConversationalSearchRequestSearchParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The boost spec to specify the boosting of search results. The syntax of the boost spec is the same
+        /// as SearchRequest.boost_spec.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostSpec")]
+        public virtual GoogleCloudRetailV2SearchRequestBoostSpec BoostSpec { get; set; }
+
+        /// <summary>
+        /// Optional. The canonical filter string to restrict search results. The syntax of the canonical filter string
+        /// is the same as SearchRequest.canonical_filter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalFilter")]
+        public virtual string CanonicalFilter { get; set; }
+
+        /// <summary>
+        /// Optional. The filter string to restrict search results. The syntax of the filter string is the same as
+        /// SearchRequest.filter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. The sort string to specify the sorting of search results. The syntax of the sort string is the
+        /// same as SearchRequest.sort.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sortBy")]
+        public virtual string SortBy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This field specifies the current user answer during the conversational filtering search. This can be either user
+    /// selected from suggested answers or user input plain text.
+    /// </summary>
+    public class GoogleCloudRetailV2ConversationalSearchRequestUserAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. This field specifies the selected answer during the conversational search. This should be a subset
+        /// of ConversationalSearchResponse.followup_question.suggested_answers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedAnswer")]
+        public virtual GoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer SelectedAnswer { get; set; }
+
+        /// <summary>
+        /// This field specifies the incremental input text from the user during the conversational search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textAnswer")]
+        public virtual string TextAnswer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This field specifies the selected answers during the conversational search.</summary>
+    public class GoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. This field specifies the selected answer which is a attribute key-value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productAttributeValue")]
+        public virtual GoogleCloudRetailV2ProductAttributeValue ProductAttributeValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ConversationalSearchService.ConversationalSearch method.</summary>
+    public class GoogleCloudRetailV2ConversationalSearchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Conversation UUID. This field will be stored in client side storage to maintain the conversation session
+        /// with server and will be used for next search request's ConversationalSearchRequest.conversation_id to
+        /// restore conversation state in server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
+        public virtual string ConversationId { get; set; }
+
+        /// <summary>
+        /// This field specifies all related information that is needed on client side for UI rendering of
+        /// conversational filtering search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalFilteringResult")]
+        public virtual GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResult ConversationalFilteringResult { get; set; }
+
+        /// <summary>The conversational answer-based text response generated by the Server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalTextResponse")]
+        public virtual string ConversationalTextResponse { get; set; }
+
+        /// <summary>The conversational followup question generated for Intent refinement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("followupQuestion")]
+        public virtual GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion FollowupQuestion { get; set; }
+
+        /// <summary>
+        /// The proposed refined search queries. They can be used to fetch the relevant search results. When using
+        /// CONVERSATIONAL_FILTER_ONLY mode, the refined_query from search response will be populated here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refinedSearch")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2ConversationalSearchResponseRefinedSearch> RefinedSearch { get; set; }
+
+        /// <summary>Output only. The state of the response generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// The types Retail classifies the search query as. Supported values are: - "ORDER_SUPPORT" -
+        /// "SIMPLE_PRODUCT_SEARCH" - "INTENT_REFINEMENT" - "PRODUCT_DETAILS" - "PRODUCT_COMPARISON" -
+        /// "DEALS_AND_COUPONS" - "STORE_RELEVANT" - "BLOCKLISTED" - "BEST_PRODUCT" - "RETAIL_SUPPORT" - "DISABLED"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userQueryTypes")]
+        public virtual System.Collections.Generic.IList<string> UserQueryTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This field specifies all related information that is needed on client side for UI rendering of conversational
+    /// filtering search.
+    /// </summary>
+    public class GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This is the incremental additional filters implied from the current user answer. User should add the
+        /// suggested addition filters to the previous ConversationalSearchRequest.search_params.filter and
+        /// SearchRequest.filter, and use the merged filter in the follow up requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalFilter")]
+        public virtual GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResultAdditionalFilter AdditionalFilter { get; set; }
+
+        /// <summary>The conversational filtering question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("followupQuestion")]
+        public virtual GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion FollowupQuestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional filter that client side need to apply.</summary>
+    public class GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResultAdditionalFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Product attribute value, including an attribute key and an attribute value. Other types can be added here in
+        /// the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productAttributeValue")]
+        public virtual GoogleCloudRetailV2ProductAttributeValue ProductAttributeValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The conversational followup question generated for Intent refinement.</summary>
+    public class GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversational followup question generated for Intent refinement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("followupQuestion")]
+        public virtual string FollowupQuestion { get; set; }
+
+        /// <summary>The answer options provided to client for the follow-up question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedAnswers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer> SuggestedAnswers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Suggested answers to the follow-up question. If it's numerical attribute, only ProductAttributeInterval will be
+    /// set. If it's textual attribute, only productAttributeValue will be set.
+    /// </summary>
+    public class GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Product attribute value, including an attribute key and an attribute value. Other types can be added here in
+        /// the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productAttributeValue")]
+        public virtual GoogleCloudRetailV2ProductAttributeValue ProductAttributeValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The proposed refined search for intent-refinement/bundled shopping conversation. When using
+    /// CONVERSATIONAL_FILTER_ONLY mode, the refined_query from search response will be populated here.
+    /// </summary>
+    public class GoogleCloudRetailV2ConversationalSearchResponseRefinedSearch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The query to be used for search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata associated with a create operation.</summary>
     public class GoogleCloudRetailV2CreateModelMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10054,6 +10506,28 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synonyms")]
         public virtual System.Collections.Generic.IList<string> Synonyms { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Safety settings.</summary>
+    public class GoogleCloudRetailV2SafetySetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Harm category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>
+        /// Optional. Specify if the threshold is used for probability or severity score. If not specified, the
+        /// threshold is used for probability score.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; }
+
+        /// <summary>The harm block threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual string Threshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
