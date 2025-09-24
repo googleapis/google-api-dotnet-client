@@ -1510,8 +1510,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Get information about a job.</summary>
             /// <param name="name">
-            /// Required. The name of the job to retrieve. Replace {namespace} with the project ID or number. It takes
-            /// the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+            /// Required. The name of the job to retrieve. It takes the form namespaces/{namespace}/jobs/{job_name} and
+            /// the `endpoint` must be regional. Replace {namespace} with the project ID or number.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1529,8 +1529,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the job to retrieve. Replace {namespace} with the project ID or number. It
-                /// takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+                /// Required. The name of the job to retrieve. It takes the form namespaces/{namespace}/jobs/{job_name}
+                /// and the `endpoint` must be regional. Replace {namespace} with the project ID or number.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
