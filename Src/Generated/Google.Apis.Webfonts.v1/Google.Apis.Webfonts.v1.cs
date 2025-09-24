@@ -303,6 +303,10 @@ namespace Google.Apis.Webfonts.v1
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("VF")]
                 VF = 2,
+
+                /// <summary>Include tags that apply to the entire family in the response.</summary>
+                [Google.Apis.Util.StringValueAttribute("FAMILY_TAGS")]
+                FAMILYTAGS = 3,
             }
 
             /// <summary>
@@ -432,6 +436,21 @@ namespace Google.Apis.Webfonts.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for a tag.</summary>
+    public class Tag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The weight of the tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<float> Weight { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata describing a family of fonts.</summary>
     public class Webfont : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -472,6 +491,10 @@ namespace Google.Apis.Webfonts.v1.Data
         /// <summary>The scripts supported by the font.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subsets")]
         public virtual System.Collections.Generic.IList<string> Subsets { get; set; }
+
+        /// <summary>The tags that apply to this family.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<Tag> Tags { get; set; }
 
         /// <summary>The available variants for the font.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variants")]
