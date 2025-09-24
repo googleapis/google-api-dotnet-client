@@ -6774,9 +6774,58 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("biosVersion")]
         public virtual string BiosVersion { get; set; }
 
+        /// <summary>BIOS ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>BIOS manufacturer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
+        public virtual string Manufacturer { get; set; }
+
+        private string _releaseTimeRaw;
+
+        private object _releaseTime;
+
+        /// <summary>BIOS release date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseTime")]
+        public virtual string ReleaseTimeRaw
+        {
+            get => _releaseTimeRaw;
+            set
+            {
+                _releaseTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _releaseTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReleaseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReleaseTimeDateTimeOffset instead.")]
+        public virtual object ReleaseTime
+        {
+            get => _releaseTime;
+            set
+            {
+                _releaseTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _releaseTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReleaseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReleaseTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReleaseTimeRaw);
+            set => ReleaseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>SMBIOS UUID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smbiosUuid")]
         public virtual string SmbiosUuid { get; set; }
+
+        /// <summary>BIOS version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7887,6 +7936,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Single disk entry.</summary>
     public class DiskEntry : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Disk capacity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityBytes")]
+        public virtual System.Nullable<long> CapacityBytes { get; set; }
+
         /// <summary>Disk label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskLabel")]
         public virtual string DiskLabel { get; set; }
@@ -7894,6 +7947,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Disk label type (e.g. BIOS/GPT)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskLabelType")]
         public virtual string DiskLabelType { get; set; }
+
+        /// <summary>Disk free space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeSpaceBytes")]
+        public virtual System.Nullable<long> FreeSpaceBytes { get; set; }
 
         /// <summary>Disk hardware address (e.g. 0:1 for SCSI).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hwAddress")]
@@ -8413,6 +8470,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selinux")]
         public virtual Selinux Selinux { get; set; }
 
+        /// <summary>Security-Enhanced Linux (SELinux) mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selinuxMode")]
+        public virtual string SelinuxMode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8420,6 +8481,47 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Guest installed application information.</summary>
     public class GuestInstalledApplication : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Installed application name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationName")]
+        public virtual string ApplicationName { get; set; }
+
+        private string _installTimeRaw;
+
+        private object _installTime;
+
+        /// <summary>The time when the application was installed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installTime")]
+        public virtual string InstallTimeRaw
+        {
+            get => _installTimeRaw;
+            set
+            {
+                _installTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _installTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InstallTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InstallTimeDateTimeOffset instead.")]
+        public virtual object InstallTime
+        {
+            get => _installTime;
+            set
+            {
+                _installTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _installTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="InstallTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InstallTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InstallTimeRaw);
+            set => InstallTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>License strings associated with the installed application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; }
@@ -8466,9 +8568,21 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual GuestConfigDetails Config { get; set; }
 
+        /// <summary>What family the OS belong to, if known.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("family")]
+        public virtual string Family { get; set; }
+
+        /// <summary>The name of the operating system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osName")]
+        public virtual string OsName { get; set; }
+
         /// <summary>Runtime information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
         public virtual GuestRuntimeDetails Runtime { get; set; }
+
+        /// <summary>The version of the operating system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8484,6 +8598,43 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Installed applications information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installedApps")]
         public virtual GuestInstalledApplicationList InstalledApps { get; set; }
+
+        private string _lastBootTimeRaw;
+
+        private object _lastBootTime;
+
+        /// <summary>Last time the OS was booted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastBootTime")]
+        public virtual string LastBootTimeRaw
+        {
+            get => _lastBootTimeRaw;
+            set
+            {
+                _lastBootTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastBootTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastBootTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastBootTimeDateTimeOffset instead.")]
+        public virtual object LastBootTime
+        {
+            get => _lastBootTime;
+            set
+            {
+                _lastBootTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastBootTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastBootTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastBootTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastBootTimeRaw);
+            set => LastBootTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Date since last booted (last uptime date).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUptime")]
@@ -9762,6 +9913,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>List of network adapters.</summary>
     public class NetworkAdapterList : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Network adapter entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<NetworkAdapterDetails> Entries { get; set; }
+
         /// <summary>Network adapter descriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkAdapters")]
         public virtual System.Collections.Generic.IList<NetworkAdapterDetails> NetworkAdapters { get; set; }
@@ -9803,6 +9958,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Network address entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
         public virtual System.Collections.Generic.IList<NetworkAddress> Addresses { get; set; }
+
+        /// <summary>Network address entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<NetworkAddress> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11148,7 +11307,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allocatedAssetCount")]
         public virtual System.Nullable<long> AllocatedAssetCount { get; set; }
 
-        /// <summary>Set of disk types allocated to assets.</summary>
+        /// <summary>@deprecated. Use storage_allocations instead. Set of disk types allocated to assets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allocatedDiskTypes")]
         public virtual System.Collections.Generic.IList<string> AllocatedDiskTypes { get; set; }
 
@@ -11378,6 +11537,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     public class RunningProcessList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Running process entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<RunningProcess> Entries { get; set; }
+
+        /// <summary>Running process entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processes")]
         public virtual System.Collections.Generic.IList<RunningProcess> Processes { get; set; }
 
@@ -11404,6 +11567,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pid")]
         public virtual System.Nullable<long> Pid { get; set; }
 
+        /// <summary>Service name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
+
         /// <summary>Service start mode (raw, OS-agnostic).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startMode")]
         public virtual string StartMode { get; set; }
@@ -11423,6 +11590,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>List of running guest OS services.</summary>
     public class RunningServiceList : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Running service entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<RunningService> Entries { get; set; }
+
         /// <summary>Running service entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<RunningService> Services { get; set; }
@@ -11445,6 +11616,51 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Netstat time collected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("netstatTime")]
         public virtual DateTime NetstatTime { get; set; }
+
+        /// <summary>
+        /// Raw network scan result. This field is intended for human inspection. The format of this field may be
+        /// netstat output or any another raw output. The exact format may change without notice and should not be
+        /// relied upon.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawScanResult")]
+        public virtual string RawScanResult { get; set; }
+
+        private string _scanTimeRaw;
+
+        private object _scanTime;
+
+        /// <summary>Time of the last network scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanTime")]
+        public virtual string ScanTimeRaw
+        {
+            get => _scanTimeRaw;
+            set
+            {
+                _scanTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _scanTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ScanTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScanTimeDateTimeOffset instead.")]
+        public virtual object ScanTime
+        {
+            get => _scanTime;
+            set
+            {
+                _scanTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _scanTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ScanTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScanTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScanTimeRaw);
+            set => ScanTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12386,9 +12602,21 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("osid")]
         public virtual string Osid { get; set; }
 
+        /// <summary>Folder name in vCenter where asset resides.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcenterFolder")]
+        public virtual string VcenterFolder { get; set; }
+
+        /// <summary>vCenter URI used in collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcenterUri")]
+        public virtual string VcenterUri { get; set; }
+
         /// <summary>vCenter version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcenterVersion")]
         public virtual string VcenterVersion { get; set; }
+
+        /// <summary>vCenter VM ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcenterVmId")]
+        public virtual string VcenterVmId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
