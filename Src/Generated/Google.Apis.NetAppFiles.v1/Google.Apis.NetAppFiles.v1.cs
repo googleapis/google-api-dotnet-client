@@ -4729,6 +4729,65 @@ namespace Google.Apis.NetAppFiles.v1
                     }
                 }
 
+                /// <summary>Restore files from a backup to a volume.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The volume resource name, in the format
+                /// `projects/{project_id}/locations/{location}/volumes/{volume_id}`
+                /// </param>
+                public virtual RestoreRequest Restore(Google.Apis.NetAppFiles.v1.Data.RestoreBackupFilesRequest body, string name)
+                {
+                    return new RestoreRequest(this.service, body, name);
+                }
+
+                /// <summary>Restore files from a backup to a volume.</summary>
+                public class RestoreRequest : NetAppFilesBaseServiceRequest<Google.Apis.NetAppFiles.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Restore request.</summary>
+                    public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.NetAppFiles.v1.Data.RestoreBackupFilesRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The volume resource name, in the format
+                    /// `projects/{project_id}/locations/{location}/volumes/{volume_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetAppFiles.v1.Data.RestoreBackupFilesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "restore";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:restore";
+
+                    /// <summary>Initializes Restore parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/volumes/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Revert an existing volume to a specified snapshot. Warning! This operation will permanently revert
                 /// all changes made after the snapshot was created.
@@ -5503,6 +5562,107 @@ namespace Google.Apis.NetAppFiles.v1.Data
         /// <summary>Output only. The backup vault state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration of the cache volume.</summary>
+    public class CacheConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Flag indicating whether a CIFS change notification is enabled for the FlexCache volume.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cifsChangeNotifyEnabled")]
+        public virtual System.Nullable<bool> CifsChangeNotifyEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cache Parameters for the volume.</summary>
+    public class CacheParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration of the cache volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheConfig")]
+        public virtual CacheConfig CacheConfig { get; set; }
+
+        /// <summary>Output only. State of the cache volume indicating the peering status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheState")]
+        public virtual string CacheState { get; set; }
+
+        /// <summary>
+        /// Output only. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual string Command { get; set; }
+
+        /// <summary>Optional. Field indicating whether cache volume as global file lock enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableGlobalFileLock")]
+        public virtual System.Nullable<bool> EnableGlobalFileLock { get; set; }
+
+        /// <summary>Output only. Temporary passphrase generated to accept cluster peering command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passphrase")]
+        public virtual string Passphrase { get; set; }
+
+        /// <summary>Required. Name of the origin volume's ONTAP cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerClusterName")]
+        public virtual string PeerClusterName { get; set; }
+
+        /// <summary>Required. List of IC LIF addresses of the origin volume's ONTAP cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerIpAddresses")]
+        public virtual System.Collections.Generic.IList<string> PeerIpAddresses { get; set; }
+
+        /// <summary>Required. Name of the origin volume's SVM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerSvmName")]
+        public virtual string PeerSvmName { get; set; }
+
+        /// <summary>Required. Name of the origin volume for the cache volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerVolumeName")]
+        public virtual string PeerVolumeName { get; set; }
+
+        private string _peeringCommandExpiryTimeRaw;
+
+        private object _peeringCommandExpiryTime;
+
+        /// <summary>Optional. Expiration time for the peering command to be executed on user's ONTAP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peeringCommandExpiryTime")]
+        public virtual string PeeringCommandExpiryTimeRaw
+        {
+            get => _peeringCommandExpiryTimeRaw;
+            set
+            {
+                _peeringCommandExpiryTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _peeringCommandExpiryTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PeeringCommandExpiryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PeeringCommandExpiryTimeDateTimeOffset instead.")]
+        public virtual object PeeringCommandExpiryTime
+        {
+            get => _peeringCommandExpiryTime;
+            set
+            {
+                _peeringCommandExpiryTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _peeringCommandExpiryTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="PeeringCommandExpiryTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PeeringCommandExpiryTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PeeringCommandExpiryTimeRaw);
+            set => PeeringCommandExpiryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Detailed description of the current cache state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateDetails")]
+        public virtual string StateDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6567,6 +6727,30 @@ namespace Google.Apis.NetAppFiles.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>RestoreBackupFilesRequest restores files from a backup to a volume.</summary>
+    public class RestoreBackupFilesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The backup resource name, in the format
+        /// `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; }
+
+        /// <summary>
+        /// Required. List of files to be restored in the form of their absolute path as in source volume.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileList")]
+        public virtual System.Collections.Generic.IList<string> FileList { get; set; }
+
+        /// <summary>Optional. Absolute directory path in the destination volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreDestinationPath")]
+        public virtual string RestoreDestinationPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The RestoreParameters if volume is created from a snapshot or backup.</summary>
     public class RestoreParameters : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7251,6 +7435,10 @@ namespace Google.Apis.NetAppFiles.v1.Data
         /// <summary>BackupConfig of the volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupConfig")]
         public virtual BackupConfig BackupConfig { get; set; }
+
+        /// <summary>Optional. Cache parameters for the volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheParameters")]
+        public virtual CacheParameters CacheParameters { get; set; }
 
         /// <summary>Required. Capacity in GIB of the volume</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityGib")]
