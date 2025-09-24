@@ -5059,7 +5059,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
 
                 /// <summary>Gets details of a single RemoteTransportProfile.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. Name of the resource.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
@@ -5075,7 +5075,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. Name of the resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -5104,7 +5104,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
 
                 /// <summary>Lists RemoteTransportProfiles in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListRemoteTransportProfilesRequest</param>
+                /// <param name="parent">Required. Parent value for ListRemoteTransportProfilesRequest.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -5120,15 +5120,15 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListRemoteTransportProfilesRequest</summary>
+                    /// <summary>Required. Parent value for ListRemoteTransportProfilesRequest.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. Filtering results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>Optional. Hint for how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -8230,7 +8230,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
 
                 /// <summary>Deletes a single Transport.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. Name of the resource.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
@@ -8246,7 +8246,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. Name of the resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -8296,7 +8296,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
 
                 /// <summary>Gets details of a single Transport.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. Name of the resource.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
@@ -8312,7 +8312,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. Name of the resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -8341,7 +8341,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
 
                 /// <summary>Lists Transports in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListTransportsRequest</param>
+                /// <param name="parent">Required. Parent value for ListTransportsRequest.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -8357,15 +8357,15 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListTransportsRequest</summary>
+                    /// <summary>Required. Parent value for ListTransportsRequest.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. Filtering results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>Optional. Hint for how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -8438,7 +8438,9 @@ namespace Google.Apis.Networkconnectivity.v1
 
                 /// <summary>Updates the parameters of a single Transport.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Identifier. name of resource</param>
+                /// <param name="name">
+                /// Identifier. Name of the resource, see google.aip.dev/122 for resource naming.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Networkconnectivity.v1.Data.Transport body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -8455,7 +8457,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Identifier. name of resource</summary>
+                    /// <summary>Identifier. Name of the resource, see google.aip.dev/122 for resource naming.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -8595,8 +8597,8 @@ namespace Google.Apis.Networkconnectivity.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -10414,7 +10416,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The list of RemoteTransportProfiles</summary>
+        /// <summary>The list of RemoteTransportProfiles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteTransportProfiles")]
         public virtual System.Collections.Generic.IList<RemoteTransportProfile> RemoteTransportProfiles { get; set; }
 
@@ -10580,14 +10582,14 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing Transports</summary>
+    /// <summary>Message for response to listing Transports.</summary>
     public class ListTransportsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A token identifying a page of results the server should return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The list of Transport</summary>
+        /// <summary>The list of Transport.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transports")]
         public virtual System.Collections.Generic.IList<Transport> Transports { get; set; }
 
@@ -11654,14 +11656,14 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing RemoteTransportProfile object</summary>
+    /// <summary>Message describing RemoteTransportProfile object.</summary>
     public class RemoteTransportProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>Output only. [Output only] Create time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -11694,19 +11696,61 @@ namespace Google.Apis.Networkconnectivity.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Output only. Description of the profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. [Output only] Type of provisioning flows supported by this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flow")]
+        public virtual string Flow { get; set; }
+
+        /// <summary>Output only. Labels as key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Identifier. name of resource</summary>
+        /// <summary>Identifier. Name of the resource in the format of $provider-$site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. [Output only] Order state for this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderState")]
+        public virtual string OrderState { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the provider on the other end of this profile. E.g. “Amazon Web Services” or “Microsoft
+        /// Azure”.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; }
+
+        /// <summary>
+        /// Output only. If the profile is a Cloud Service Provider with compute resources, this is populated with the
+        /// region where connectivity is being established. If the profile provides facility-level selection, this is an
+        /// identity of the facility any connections on this profile are going through.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerSite")]
+        public virtual string ProviderSite { get; set; }
+
+        /// <summary>Output only. GCP Region where this profile is available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>
+        /// Output only. [Output only] Availability class that will be configured for this particular
+        /// RemoteTransportProfile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sla")]
+        public virtual string Sla { get; set; }
+
+        /// <summary>Output only. List of bandwidth enum values that are supported by this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedBandwidths")]
+        public virtual System.Collections.Generic.IList<string> SupportedBandwidths { get; set; }
 
         private string _updateTimeRaw;
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>Output only. [Output only] Update time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -13010,14 +13054,36 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing Transport object</summary>
+    /// <summary>Message describing Transport object.</summary>
     public class Transport : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Administrative state of the underlying connectivity. If set to true (default), connectivity should
+        /// be available between your environments. If set to false, the connectivity over these links is disabled.
+        /// Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated
+        /// with the connectivity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminEnabled")]
+        public virtual System.Nullable<bool> AdminEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. [Preview only] List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and
+        /// IPv6 addresses are supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisedRoutes")]
+        public virtual string AdvertisedRoutes { get; set; }
+
+        /// <summary>
+        /// Required. Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bandwidth")]
+        public virtual string Bandwidth { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>Output only. [Output only] Create time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -13050,19 +13116,71 @@ namespace Google.Apis.Networkconnectivity.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. Description of the Transport.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. [Output only] Google-generated activation key. This is only output if the selected profile
+        /// supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a
+        /// PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedActivationKey")]
+        public virtual string GeneratedActivationKey { get; set; }
+
+        /// <summary>Optional. Labels as key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Identifier. name of resource</summary>
+        /// <summary>
+        /// Output only. [Output only] The maximum transmission unit (MTU) of a packet that can be sent over this
+        /// transport.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mtuLimit")]
+        public virtual System.Nullable<int> MtuLimit { get; set; }
+
+        /// <summary>Identifier. Name of the resource, see google.aip.dev/122 for resource naming.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. [Preview only] Resource URL of the Network that will be peered with this Transport. This field
+        /// must be provided during resource creation and cannot be changed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Optional. Key used for establishing a connection with the remote transport. This key can only be provided if
+        /// the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providedActivationKey")]
+        public virtual string ProvidedActivationKey { get; set; }
+
+        /// <summary>Required. GCP Region where this Transport is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>
+        /// Required. Resource URL of the remoteTransportProfile that this Transport is connecting to. Format:
+        /// projects/{project}/locations/{location}/remoteTransportProfiles/{remote_transport_profile}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteProfile")]
+        public virtual string RemoteProfile { get; set; }
+
+        /// <summary>Optional. IP version stack for the established connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackType")]
+        public virtual string StackType { get; set; }
+
+        /// <summary>Output only. [Output only] State of the underlying connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         private string _updateTimeRaw;
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>Output only. [Output only] Update time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
