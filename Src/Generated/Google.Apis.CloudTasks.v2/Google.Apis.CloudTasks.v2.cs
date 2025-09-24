@@ -545,7 +545,10 @@ namespace Google.Apis.CloudTasks.v2
                         }
                     }
 
-                    /// <summary>Gets a task.</summary>
+                    /// <summary>
+                    /// Gets a task. After a task is successfully executed or has exhausted its retry attempts, the task
+                    /// is deleted. A `GetTask` request for a deleted task returns a `NOT_FOUND` error.
+                    /// </summary>
                     /// <param name="name">
                     /// Required. The task name. For example:
                     /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
@@ -555,7 +558,10 @@ namespace Google.Apis.CloudTasks.v2
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>Gets a task.</summary>
+                    /// <summary>
+                    /// Gets a task. After a task is successfully executed or has exhausted its retry attempts, the task
+                    /// is deleted. A `GetTask` request for a deleted task returns a `NOT_FOUND` error.
+                    /// </summary>
                     public class GetRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2.Data.Task>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -1805,8 +1811,8 @@ namespace Google.Apis.CloudTasks.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2392,11 +2398,11 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// will set it to the current time. Task De-duplication: Explicitly specifying a task ID enables task
         /// de-duplication. If a task's ID is identical to that of an existing task or a task that was deleted or
         /// executed recently then the call will fail with ALREADY_EXISTS. The IDs of deleted tasks are not immediately
-        /// available for reuse. It can take up to 4 hours (or 9 days if the task's queue was created using a queue.yaml
-        /// or queue.xml) for the task ID to be released and made available again. Because there is an extra lookup cost
-        /// to identify duplicate task names, these CreateTask calls have significantly increased latency. Using hashed
-        /// strings for the task id or for the prefix of the task id is recommended. Choosing task ids that are
-        /// sequential or have sequential prefixes, for example using a timestamp, causes an increase in latency and
+        /// available for reuse. It can take up to 24 hours (or 9 days if the task's queue was created using a
+        /// queue.yaml or queue.xml) for the task ID to be released and made available again. Because there is an extra
+        /// lookup cost to identify duplicate task names, these CreateTask calls have significantly increased latency.
+        /// Using hashed strings for the task id or for the prefix of the task id is recommended. Choosing task ids that
+        /// are sequential or have sequential prefixes, for example using a timestamp, causes an increase in latency and
         /// error rates in all task commands. The infrastructure relies on an approximately uniform distribution of task
         /// ids to store and serve tasks efficiently.
         /// </summary>
@@ -3465,8 +3471,9 @@ namespace Google.Apis.CloudTasks.v2.Data
 
         /// <summary>
         /// Port override. When specified, replaces the port part of the task URI. For instance, for a URI
-        /// http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that
-        /// the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
+        /// "https://www.example.com/example" and port=123, the overridden URI becomes
+        /// "https://www.example.com:123/example". Note that the port value must be a positive integer. Setting the port
+        /// to 0 (Zero) clears the URI port.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<long> Port { get; set; }
