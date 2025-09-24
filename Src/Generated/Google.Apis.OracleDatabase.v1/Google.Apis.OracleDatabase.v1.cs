@@ -305,6 +305,8 @@ namespace Google.Apis.OracleDatabase.v1
                 DbSystems = new DbSystemsResource(service);
                 DbVersions = new DbVersionsResource(service);
                 Entitlements = new EntitlementsResource(service);
+                ExadbVmClusters = new ExadbVmClustersResource(service);
+                ExascaleDbStorageVaults = new ExascaleDbStorageVaultsResource(service);
                 GiVersions = new GiVersionsResource(service);
                 OdbNetworks = new OdbNetworksResource(service);
                 Operations = new OperationsResource(service);
@@ -713,6 +715,69 @@ namespace Google.Apis.OracleDatabase.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Initiates a failover to target autonomous database from the associated primary database.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Autonomous Database in the following format:
+                /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}.
+                /// </param>
+                public virtual FailoverRequest Failover(Google.Apis.OracleDatabase.v1.Data.FailoverAutonomousDatabaseRequest body, string name)
+                {
+                    return new FailoverRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Initiates a failover to target autonomous database from the associated primary database.
+                /// </summary>
+                public class FailoverRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Failover request.</summary>
+                    public FailoverRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.FailoverAutonomousDatabaseRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Autonomous Database in the following format:
+                    /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.FailoverAutonomousDatabaseRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "failover";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:failover";
+
+                    /// <summary>Initializes Failover parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autonomousDatabases/[^/]+$",
                         });
                     }
                 }
@@ -3241,6 +3306,843 @@ namespace Google.Apis.OracleDatabase.v1
                 }
             }
 
+            /// <summary>Gets the ExadbVmClusters resource.</summary>
+            public virtual ExadbVmClustersResource ExadbVmClusters { get; }
+
+            /// <summary>The "exadbVmClusters" collection of methods.</summary>
+            public class ExadbVmClustersResource
+            {
+                private const string Resource = "exadbVmClusters";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ExadbVmClustersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new Exadb (Exascale) VM Cluster resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The value for parent of the ExadbVmCluster in the following format:
+                /// projects/{project}/locations/{location}.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.OracleDatabase.v1.Data.ExadbVmCluster body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new Exadb (Exascale) VM Cluster resource.</summary>
+                public class CreateRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.ExadbVmCluster body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The value for parent of the ExadbVmCluster in the following format:
+                    /// projects/{project}/locations/{location}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID of the ExadbVmCluster to create. This value is restricted to
+                    /// (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value
+                    /// must start with a letter and end with a letter or a number.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("exadbVmClusterId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ExadbVmClusterId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.ExadbVmCluster Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/exadbVmClusters";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("exadbVmClusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "exadbVmClusterId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single Exadb (Exascale) VM Cluster.</summary>
+                /// <param name="name">
+                /// Required. The name of the ExadbVmCluster in the following format:
+                /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single Exadb (Exascale) VM Cluster.</summary>
+                public class DeleteRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the ExadbVmCluster in the following format:
+                    /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/exadbVmClusters/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single Exadb (Exascale) VM Cluster.</summary>
+                /// <param name="name">
+                /// Required. The name of the ExadbVmCluster in the following format:
+                /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single Exadb (Exascale) VM Cluster.</summary>
+                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ExadbVmCluster>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the ExadbVmCluster in the following format:
+                    /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/exadbVmClusters/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all the Exadb (Exascale) VM Clusters for the given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent value for ExadbVmClusters in the following format:
+                /// projects/{project}/locations/{location}.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all the Exadb (Exascale) VM Clusters for the given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListExadbVmClustersResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent value for ExadbVmClusters in the following format:
+                    /// projects/{project}/locations/{location}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. An expression for filtering the results of the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. An expression for ordering the results of the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of items to return. If unspecified, at most 50 ExadbVmClusters will
+                    /// be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/exadbVmClusters";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates a single Exadb (Exascale) VM Cluster. To add virtual machines to existing exadb vm cluster,
+                /// only pass the node count.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The name of the ExadbVmCluster resource in the following format:
+                /// projects/{project}/locations/{region}/exadbVmClusters/{exadb_vm_cluster}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.OracleDatabase.v1.Data.ExadbVmCluster body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Updates a single Exadb (Exascale) VM Cluster. To add virtual machines to existing exadb vm cluster,
+                /// only pass the node count.
+                /// </summary>
+                public class PatchRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.ExadbVmCluster body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The name of the ExadbVmCluster resource in the following format:
+                    /// projects/{project}/locations/{region}/exadbVmClusters/{exadb_vm_cluster}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A mask specifying which fields in th VM Cluster should be updated. A field specified
+                    /// in the mask is overwritten. If a mask isn't provided then all the fields in the VM Cluster are
+                    /// overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.ExadbVmCluster Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/exadbVmClusters/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Removes virtual machines from an existing exadb vm cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the ExadbVmCluster in the following format:
+                /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}.
+                /// </param>
+                public virtual RemoveVirtualMachineRequest RemoveVirtualMachine(Google.Apis.OracleDatabase.v1.Data.RemoveVirtualMachineExadbVmClusterRequest body, string name)
+                {
+                    return new RemoveVirtualMachineRequest(this.service, body, name);
+                }
+
+                /// <summary>Removes virtual machines from an existing exadb vm cluster.</summary>
+                public class RemoveVirtualMachineRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new RemoveVirtualMachine request.</summary>
+                    public RemoveVirtualMachineRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.RemoveVirtualMachineExadbVmClusterRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the ExadbVmCluster in the following format:
+                    /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.RemoveVirtualMachineExadbVmClusterRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "removeVirtualMachine";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:removeVirtualMachine";
+
+                    /// <summary>Initializes RemoveVirtualMachine parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/exadbVmClusters/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the ExascaleDbStorageVaults resource.</summary>
+            public virtual ExascaleDbStorageVaultsResource ExascaleDbStorageVaults { get; }
+
+            /// <summary>The "exascaleDbStorageVaults" collection of methods.</summary>
+            public class ExascaleDbStorageVaultsResource
+            {
+                private const string Resource = "exascaleDbStorageVaults";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ExascaleDbStorageVaultsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new ExascaleDB Storage Vault resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The value for parent of the ExascaleDbStorageVault in the following format:
+                /// projects/{project}/locations/{location}.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.OracleDatabase.v1.Data.ExascaleDbStorageVault body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new ExascaleDB Storage Vault resource.</summary>
+                public class CreateRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.ExascaleDbStorageVault body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The value for parent of the ExascaleDbStorageVault in the following format:
+                    /// projects/{project}/locations/{location}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID of the ExascaleDbStorageVault to create. This value is restricted to
+                    /// (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value
+                    /// must start with a letter and end with a letter or a number.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("exascaleDbStorageVaultId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ExascaleDbStorageVaultId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.ExascaleDbStorageVault Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/exascaleDbStorageVaults";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("exascaleDbStorageVaultId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "exascaleDbStorageVaultId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single ExascaleDB Storage Vault.</summary>
+                /// <param name="name">
+                /// Required. The name of the ExascaleDbStorageVault in the following format:
+                /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single ExascaleDB Storage Vault.</summary>
+                public class DeleteRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the ExascaleDbStorageVault in the following format:
+                    /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/exascaleDbStorageVaults/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single ExascaleDB Storage Vault.</summary>
+                /// <param name="name">
+                /// Required. The name of the ExascaleDbStorageVault in the following format:
+                /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single ExascaleDB Storage Vault.</summary>
+                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ExascaleDbStorageVault>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the ExascaleDbStorageVault in the following format:
+                    /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/exascaleDbStorageVaults/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all the ExascaleDB Storage Vaults for the given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent value for ExascaleDbStorageVault in the following format:
+                /// projects/{project}/locations/{location}.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all the ExascaleDB Storage Vaults for the given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListExascaleDbStorageVaultsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent value for ExascaleDbStorageVault in the following format:
+                    /// projects/{project}/locations/{location}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression for filtering the results of the request. Filter the list as specified
+                    /// in https://google.aip.dev/160.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. An expression for ordering the results of the request. Order results as specified in
+                    /// https://google.aip.dev/132.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of items to return. If unspecified, at most 50
+                    /// ExascaleDbStorageVaults will be returned. The maximum value is 1000; values above 1000 will be
+                    /// coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/exascaleDbStorageVaults";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the GiVersions resource.</summary>
             public virtual GiVersionsResource GiVersions { get; }
 
@@ -3256,6 +4158,127 @@ namespace Google.Apis.OracleDatabase.v1
                 public GiVersionsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    MinorVersions = new MinorVersionsResource(service);
+                }
+
+                /// <summary>Gets the MinorVersions resource.</summary>
+                public virtual MinorVersionsResource MinorVersions { get; }
+
+                /// <summary>The "minorVersions" collection of methods.</summary>
+                public class MinorVersionsResource
+                {
+                    private const string Resource = "minorVersions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public MinorVersionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Lists all the valid minor versions for the given project, location, gi version and shape family.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. The parent value for the MinorVersion resource with the format:
+                    /// projects/{project}/locations/{location}/giVersions/{gi_version}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists all the valid minor versions for the given project, location, gi version and shape family.
+                    /// </summary>
+                    public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListMinorVersionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent value for the MinorVersion resource with the format:
+                        /// projects/{project}/locations/{location}/giVersions/{gi_version}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. An expression for filtering the results of the request. Only shapeFamily and
+                        /// gcp_oracle_zone_id are supported in this format: `shape_family="{shapeFamily}" AND
+                        /// gcp_oracle_zone_id="{gcp_oracle_zone_id}"`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of items to return. If unspecified, a maximum of 50 System
+                        /// Versions will be returned. The maximum value is 1000; values above 1000 will be reset to
+                        /// 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A token identifying the requested page of results to return. All fields except the
+                        /// filter should remain the same as in the request that provided this page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/minorVersions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/giVersions/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>
@@ -6420,6 +7443,28 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Data collection options for diagnostics.
+    /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/DataCollectionOptions
+    /// </summary>
+    public class DataCollectionOptionsCommon : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Indicates whether to enable data collection for diagnostics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDiagnosticsEventsEnabled")]
+        public virtual System.Nullable<bool> IsDiagnosticsEventsEnabled { get; set; }
+
+        /// <summary>Optional. Indicates whether to enable health monitoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isHealthMonitoringEnabled")]
+        public virtual System.Nullable<bool> IsHealthMonitoringEnabled { get; set; }
+
+        /// <summary>Optional. Indicates whether to enable incident logs and trace collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isIncidentLogsEnabled")]
+        public virtual System.Nullable<bool> IsIncidentLogsEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Data collection options for DbSystem.</summary>
     public class DataCollectionOptionsDbSystem : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7290,6 +8335,394 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// ExadbVmCluster represents a cluster of VMs that are used to run Exadata workloads.
+    /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/ExadbVmCluster/
+    /// </summary>
+    public class ExadbVmCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. The name of the backup OdbSubnet associated with the ExadbVmCluster. Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupOdbSubnet")]
+        public virtual string BackupOdbSubnet { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The date and time that the ExadbVmCluster was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. Immutable. The display name for the ExadbVmCluster. The name does not have to be unique within
+        /// your project. The name must be 1-255 characters long and can only contain alphanumeric characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The ID of the subscription entitlement associated with the ExadbVmCluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlementId")]
+        public virtual string EntitlementId { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. The GCP Oracle zone where Oracle ExadbVmCluster is hosted. Example: us-east4-b-r2.
+        /// During creation, the system will pick the zone assigned to the ExascaleDbStorageVault.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
+        public virtual string GcpOracleZone { get; set; }
+
+        /// <summary>Optional. The labels or tags associated with the ExadbVmCluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the ExadbVmCluster resource in the following format:
+        /// projects/{project}/locations/{region}/exadbVmClusters/{exadb_vm_cluster}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. The name of the OdbNetwork associated with the ExadbVmCluster. Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network} It is optional but if specified, this
+        /// should match the parent ODBNetwork of the OdbSubnet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("odbNetwork")]
+        public virtual string OdbNetwork { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The name of the OdbSubnet associated with the ExadbVmCluster for IP allocation. Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("odbSubnet")]
+        public virtual string OdbSubnet { get; set; }
+
+        /// <summary>Required. The properties of the ExadbVmCluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual ExadbVmClusterProperties Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of an ExadbVmCluster.</summary>
+    public class ExadbVmClusterProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Immutable. The number of additional ECPUs per node for an Exadata VM cluster on exascale
+        /// infrastructure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalEcpuCountPerNode")]
+        public virtual System.Nullable<int> AdditionalEcpuCountPerNode { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. The cluster name for Exascale vm cluster. The cluster name must begin with an
+        /// alphabetic character and may contain hyphens(-) but can not contain underscores(_). It should be not more
+        /// than 11 characters and is not case sensitive. OCI Cluster name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
+        public virtual string ClusterName { get; set; }
+
+        /// <summary>Optional. Immutable. Indicates user preference for data collection options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataCollectionOptions")]
+        public virtual DataCollectionOptionsCommon DataCollectionOptions { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The number of ECPUs enabled per node for an exadata vm cluster on exascale
+        /// infrastructure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledEcpuCountPerNode")]
+        public virtual System.Nullable<int> EnabledEcpuCountPerNode { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The name of ExascaleDbStorageVault associated with the ExadbVmCluster. It can refer to
+        /// an existing ExascaleDbStorageVault. Or a new one can be created during the ExadbVmCluster creation (requires
+        /// storage_vault_properties to be set). Format:
+        /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exascaleDbStorageVault")]
+        public virtual string ExascaleDbStorageVault { get; set; }
+
+        /// <summary>Output only. The Oracle Grid Infrastructure (GI) software version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("giVersion")]
+        public virtual string GiVersion { get; set; }
+
+        /// <summary>Required. Immutable. Grid Infrastructure Version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gridImageId")]
+        public virtual string GridImageId { get; set; }
+
+        /// <summary>Output only. The hostname of the ExadbVmCluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>Required. Immutable. Prefix for VM cluster host names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostnamePrefix")]
+        public virtual string HostnamePrefix { get; set; }
+
+        /// <summary>Optional. Immutable. The license type of the ExadbVmCluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseModel")]
+        public virtual string LicenseModel { get; set; }
+
+        /// <summary>Output only. State of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
+        public virtual string LifecycleState { get; set; }
+
+        /// <summary>
+        /// Output only. Memory per VM (GB) (Read-only): Shows the amount of memory allocated to each VM. Memory is
+        /// calculated based on 2.75 GB per Total ECPUs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memorySizeGb")]
+        public virtual System.Nullable<int> MemorySizeGb { get; set; }
+
+        /// <summary>Required. The number of nodes/VMs in the ExadbVmCluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
+        public virtual System.Nullable<int> NodeCount { get; set; }
+
+        /// <summary>Output only. Deep link to the OCI console to view this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ociUri")]
+        public virtual string OciUri { get; set; }
+
+        /// <summary>Optional. Immutable. SCAN listener port - TCP</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanListenerPortTcp")]
+        public virtual System.Nullable<int> ScanListenerPortTcp { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The shape attribute of the VM cluster. The type of Exascale storage used for Exadata VM
+        /// cluster. The default is SMART_STORAGE which supports Oracle Database 23ai and later
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shapeAttribute")]
+        public virtual string ShapeAttribute { get; set; }
+
+        /// <summary>Required. Immutable. The SSH public keys for the ExadbVmCluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshPublicKeys")]
+        public virtual System.Collections.Generic.IList<string> SshPublicKeys { get; set; }
+
+        /// <summary>Optional. Immutable. The time zone of the ExadbVmCluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual TimeZone TimeZone { get; set; }
+
+        /// <summary>Required. Immutable. Total storage details for the ExadbVmCluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmFileSystemStorage")]
+        public virtual ExadbVmClusterStorageDetails VmFileSystemStorage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The storage allocation for the exadbvmcluster, in gigabytes (GB).</summary>
+    public class ExadbVmClusterStorageDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The storage allocation for the exadbvmcluster per node, in gigabytes (GB). This field is used to
+        /// calculate the total storage allocation for the exadbvmcluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeInGbsPerNode")]
+        public virtual System.Nullable<int> SizeInGbsPerNode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The storage details of the ExascaleDbStorageVault.</summary>
+    public class ExascaleDbStorageDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The available storage capacity for the ExascaleDbStorageVault, in gigabytes (GB).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableSizeGbs")]
+        public virtual System.Nullable<int> AvailableSizeGbs { get; set; }
+
+        /// <summary>Required. The total storage allocation for the ExascaleDbStorageVault, in gigabytes (GB).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSizeGbs")]
+        public virtual System.Nullable<int> TotalSizeGbs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ExascaleDbStorageVault represents a storage vault exadb vm cluster resource.
+    /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/ExascaleDbStorageVault/
+    /// </summary>
+    public class ExascaleDbStorageVault : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The date and time when the ExascaleDbStorageVault was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. The display name for the ExascaleDbStorageVault. The name does not have to be unique within your
+        /// project. The name must be 1-255 characters long and can only contain alphanumeric characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the subscription entitlement associated with the ExascaleDbStorageVault.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlementId")]
+        public virtual string EntitlementId { get; set; }
+
+        /// <summary>
+        /// Optional. The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted. Example: us-east4-b-r2. If not
+        /// specified, the system will pick a zone based on availability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
+        public virtual string GcpOracleZone { get; set; }
+
+        /// <summary>Optional. The labels or tags associated with the ExascaleDbStorageVault.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the ExascaleDbStorageVault. Format:
+        /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The properties of the ExascaleDbStorageVault.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual ExascaleDbStorageVaultProperties Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of the ExascaleDbStorageVault. next ID: 12</summary>
+    public class ExascaleDbStorageVaultProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The size of additional flash cache in percentage of high capacity database storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalFlashCachePercent")]
+        public virtual System.Nullable<int> AdditionalFlashCachePercent { get; set; }
+
+        /// <summary>
+        /// Output only. The shape attributes of the VM clusters attached to the ExascaleDbStorageVault.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachedShapeAttributes")]
+        public virtual System.Collections.Generic.IList<string> AttachedShapeAttributes { get; set; }
+
+        /// <summary>
+        /// Output only. The shape attributes available for the VM clusters to be attached to the
+        /// ExascaleDbStorageVault.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableShapeAttributes")]
+        public virtual System.Collections.Generic.IList<string> AvailableShapeAttributes { get; set; }
+
+        /// <summary>Optional. The description of the ExascaleDbStorageVault.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The storage details of the ExascaleDbStorageVault.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exascaleDbStorageDetails")]
+        public virtual ExascaleDbStorageDetails ExascaleDbStorageDetails { get; set; }
+
+        /// <summary>Output only. Deep link to the OCI console to view this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ociUri")]
+        public virtual string OciUri { get; set; }
+
+        /// <summary>Output only. The OCID for the ExascaleDbStorageVault.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ocid")]
+        public virtual string Ocid { get; set; }
+
+        /// <summary>Output only. The state of the ExascaleDbStorageVault.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The time zone of the ExascaleDbStorageVault.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual TimeZone TimeZone { get; set; }
+
+        /// <summary>Output only. The number of VM clusters associated with the ExascaleDbStorageVault.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmClusterCount")]
+        public virtual System.Nullable<int> VmClusterCount { get; set; }
+
+        /// <summary>Output only. The list of VM cluster OCIDs associated with the ExascaleDbStorageVault.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmClusterIds")]
+        public virtual System.Collections.Generic.IList<string> VmClusterIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for `OracleDatabase.FailoverAutonomousDatabase`.</summary>
+    public class FailoverAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The peer database name to fail over to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerAutonomousDatabase")]
+        public virtual string PeerAutonomousDatabase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for `AutonomousDatabase.GenerateWallet`.</summary>
     public class GenerateAutonomousDatabaseWalletRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7594,6 +9027,40 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response for `ExadbVmCluster.List`.</summary>
+    public class ListExadbVmClustersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of ExadbVmClusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exadbVmClusters")]
+        public virtual System.Collections.Generic.IList<ExadbVmCluster> ExadbVmClusters { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for `ExascaleDbStorageVault.List`.</summary>
+    public class ListExascaleDbStorageVaultsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ExascaleDbStorageVaults.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exascaleDbStorageVaults")]
+        public virtual System.Collections.Generic.IList<ExascaleDbStorageVault> ExascaleDbStorageVaults { get; set; }
+
+        /// <summary>
+        /// A token identifying a page of results the server should return. If present, the next page token can be
+        /// provided to a subsequent ListExascaleDbStorageVaults call to list the next page. If empty, there are no more
+        /// pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response for `GiVersion.List`.</summary>
     public class ListGiVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7617,6 +9084,21 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for `MinorVersion.List`.</summary>
+    public class ListMinorVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of MinorVersions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minorVersions")]
+        public virtual System.Collections.Generic.IList<MinorVersion> MinorVersions { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -7801,6 +9283,31 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weeksOfMonth")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> WeeksOfMonth { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// MinorVersion represents a minor version of a GI.
+    /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/GiMinorVersionSummary/
+    /// </summary>
+    public class MinorVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The ID of the Grid Image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gridImageId")]
+        public virtual string GridImageId { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the MinorVersion resource with the format:
+        /// projects/{project}/locations/{region}/giVersions/{gi_version}/minorVersions/{minor_version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The valid Oracle grid infrastructure software version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8267,6 +9774,27 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Optional. Pluggable Database Node Level Details</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pdbNodeLevelDetails")]
         public virtual System.Collections.Generic.IList<PluggableDatabaseNodeLevelDetails> PdbNodeLevelDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for `ExadbVmCluster.RemoveVirtualMachine`.</summary>
+    public class RemoveVirtualMachineExadbVmClusterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The list of host names of db nodes to be removed from the ExadbVmCluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostnames")]
+        public virtual System.Collections.Generic.IList<string> Hostnames { get; set; }
+
+        /// <summary>
+        /// Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you
+        /// make a request with the same request ID and the original request is still in progress or completed, the
+        /// server ignores the second request. This prevents clients from accidentally creating duplicate commitments.
+        /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+        /// (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
