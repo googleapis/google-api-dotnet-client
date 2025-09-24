@@ -1550,6 +1550,13 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("businessStatus")]
         public virtual string BusinessStatus { get; set; }
 
+        /// <summary>
+        /// The consumer alert message for the place when we detect suspicious review activity on a business or a
+        /// business violates our policies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerAlert")]
+        public virtual GoogleMapsPlacesV1PlaceConsumerAlert ConsumerAlert { get; set; }
+
         /// <summary>List of places in which the current place is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containingPlaces")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceContainingPlace> ContainingPlaces { get; set; }
@@ -1955,6 +1962,62 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>URI to the Place's data provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("providerUri")]
         public virtual string ProviderUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The consumer alert message for the place when we detect suspicious review activity on a business or a business
+    /// violates our policies.
+    /// </summary>
+    public class GoogleMapsPlacesV1PlaceConsumerAlert : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The details of the consumer alert message.ƒ</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual GoogleMapsPlacesV1PlaceConsumerAlertDetails Details { get; set; }
+
+        /// <summary>The language code of the consumer alert message. This is a BCP 47 language code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>The overview of the consumer alert message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overview")]
+        public virtual string Overview { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The details of the consumer alert message.</summary>
+    public class GoogleMapsPlacesV1PlaceConsumerAlertDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The link to show together with the description to provide more information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aboutLink")]
+        public virtual GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink AboutLink { get; set; }
+
+        /// <summary>The description of the consumer alert message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The title to show together with the description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The link to show together with the description to provide more information.</summary>
+    public class GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The title to show for the link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The uri of the link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2530,6 +2593,12 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>The localized text of the review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual GoogleTypeLocalizedText Text { get; set; }
+
+        /// <summary>
+        /// The date when the author visited the place. This is trucated to the year and month of the visit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visitDate")]
+        public virtual GoogleTypeDate VisitDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
