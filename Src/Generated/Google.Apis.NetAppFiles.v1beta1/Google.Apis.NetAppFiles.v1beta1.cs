@@ -6839,7 +6839,7 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fileList")]
         public virtual System.Collections.Generic.IList<string> FileList { get; set; }
 
-        /// <summary>Required. Absolute directory path in the destination volume.</summary>
+        /// <summary>Optional. Absolute directory path in the destination volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreDestinationPath")]
         public virtual string RestoreDestinationPath { get; set; }
 
