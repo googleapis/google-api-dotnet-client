@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.FirebaseAppDistribution.v1alpha Client Library</Title>
-    <Version>1.71.0.3907</Version>
+    <Version>1.71.0.3911</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
