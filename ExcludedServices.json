@@ -42,4 +42,7 @@
   // b/415809720 for investigating the failure
   "compute.alpha",
   "compute.beta",
+  
+  // b/447065891 for investigating the failure
+  "aiplatform.v1beta1",
 ]
