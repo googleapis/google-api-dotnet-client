@@ -3257,13 +3257,12 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Properties specific to a linked Person.</summary>
     public class PersonProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The email address linked to this Person. This field is always present.</summary>
+        /// <summary>The email address linked to this Person. This field is always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
         /// <summary>
-        /// Output only. The name of the person if it's displayed in the link text instead of the person's email
-        /// address.
+        /// The name of the person if it's displayed in the link text instead of the person's email address.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
