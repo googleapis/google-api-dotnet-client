@@ -7,5 +7,10 @@
   "Google.Apis.CloudCommercePartnerProcurementService.v1.CloudCommercePartnerProcurementServiceBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.CloudCommercePartnerProcurementService.v1.ProvidersResource+AccountsResource+GetRequest.ViewEnum": [
+    "ACCOUNT_VIEW_UNSPECIFIED",
+    "ACCOUNT_VIEW_BASIC",
+    "ACCOUNT_VIEW_FULL"
   ]
 }
