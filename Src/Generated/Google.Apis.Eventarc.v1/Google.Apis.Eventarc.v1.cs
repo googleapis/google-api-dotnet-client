@@ -6572,6 +6572,19 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Optional. Config to enable subscribing to events from all projects in the GoogleApiSource's org.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationSubscription")]
+        public virtual OrganizationSubscription OrganizationSubscription { get; set; }
+
+        /// <summary>
+        /// Optional. Config to enable subscribing to all events from a list of projects. All the projects must be in
+        /// the same org as the GoogleApiSource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectSubscriptions")]
+        public virtual ProjectSubscriptions ProjectSubscriptions { get; set; }
+
+        /// <summary>
         /// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed
         /// to remain unchanged until the resource is deleted.
         /// </summary>
@@ -7680,6 +7693,17 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Config to enabled subscribing to events from other projects in the org.</summary>
+    public class OrganizationSubscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Enable org level subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A representation of the Pipeline resource.</summary>
     public class Pipeline : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7921,6 +7945,21 @@ namespace Google.Apis.Eventarc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>Config to enable subscribing to all events from a list of projects.</summary>
+    public class ProjectSubscriptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of projects to receive events from. All the projects must be in the same org. The listed
+        /// projects should have the format project/{identifier} where identifier can be either the project id for
+        /// project number. A single list may contain both formats. At most 100 projects can be listed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("list")]
+        public virtual System.Collections.Generic.IList<string> List { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>A representation of the Provider resource.</summary>
