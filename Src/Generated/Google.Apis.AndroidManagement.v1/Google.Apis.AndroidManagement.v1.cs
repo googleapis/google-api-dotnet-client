@@ -3553,12 +3553,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>
         /// Configuration to enable this app as an extension app, with the capability of interacting with Android Device
-        /// Policy offline.This field can be set for at most one app.The signing key certificate fingerprint of the app
-        /// on the device must match one of the entries in ApplicationPolicy.signingKeyCerts or
-        /// ExtensionConfig.signingKeyFingerprintsSha256 (deprecated) or the signing key certificate fingerprints
-        /// obtained from Play Store for the app to be able to communicate with Android Device Policy. If the app is not
-        /// on Play Store and if ApplicationPolicy.signingKeyCerts and ExtensionConfig.signingKeyFingerprintsSha256
-        /// (deprecated) are not set, a NonComplianceDetail with INVALID_VALUE is reported.
+        /// Policy offline.This field can be set for at most one app. If there is any app with COMPANION_APP role, this
+        /// field cannot be set.The signing key certificate fingerprint of the app on the device must match one of the
+        /// entries in ApplicationPolicy.signingKeyCerts or ExtensionConfig.signingKeyFingerprintsSha256 (deprecated) or
+        /// the signing key certificate fingerprints obtained from Play Store for the app to be able to communicate with
+        /// Android Device Policy. If the app is not on Play Store and if ApplicationPolicy.signingKeyCerts and
+        /// ExtensionConfig.signingKeyFingerprintsSha256 (deprecated) are not set, a NonComplianceDetail with
+        /// INVALID_VALUE is reported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensionConfig")]
         public virtual ExtensionConfig ExtensionConfig { get; set; }
@@ -3639,14 +3640,34 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string PreferentialNetworkId { get; set; }
 
         /// <summary>
+        /// Optional. Roles the app has.Apps having certain roles can be exempted from power and background execution
+        /// restrictions, suspension and hibernation on Android 14 and above. The user control can also be disallowed
+        /// for apps with certain roles on Android 11 and above. Refer to the documentation of each RoleType for more
+        /// details.The app is notified about the roles that are set for it if the app has a notification receiver
+        /// service with . The app is notified whenever its roles are updated or after the app is installed when it has
+        /// nonempty list of roles. The app can use this notification to bootstrap itself after the installation. See
+        /// Integrate with the AMAPI SDK (https://developers.google.com/android/management/sdk-integration) and Manage
+        /// app roles (https://developers.google.com/android/management/app-roles) guides for more details on the
+        /// requirements for the service.For the exemptions to be applied and the app to be notified about the roles,
+        /// the signing key certificate fingerprint of the app on the device must match one of the signing key
+        /// certificate fingerprints obtained from Play Store or one of the entries in
+        /// ApplicationPolicy.signingKeyCerts. Otherwise, a NonComplianceDetail with APP_SIGNING_CERT_MISMATCH is
+        /// reported.There must not be duplicate roles with the same roleType. Multiple apps cannot hold a role with the
+        /// same roleType. A role with type ROLE_TYPE_UNSPECIFIED is not allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roles")]
+        public virtual System.Collections.Generic.IList<Role> Roles { get; set; }
+
+        /// <summary>
         /// Optional. Signing key certificates of the app.This field is required in the following cases: The app has
-        /// installType set to CUSTOM (i.e. a custom app). The app has extensionConfig set (i.e. an extension app) but
+        /// installType set to CUSTOM (i.e. a custom app). The app has roles set to a nonempty list and the app does not
+        /// exist on the Play Store. The app has extensionConfig set (i.e. an extension app) but
         /// ExtensionConfig.signingKeyFingerprintsSha256 (deprecated) is not set and the app does not exist on the Play
         /// Store.If this field is not set for a custom app, the policy is rejected. If it is not set when required for
         /// a non-custom app, a NonComplianceDetail with INVALID_VALUE is reported.For other cases, this field is
         /// optional and the signing key certificates obtained from Play Store are used.See following policy settings to
         /// see how this field is used: choosePrivateKeyRules ApplicationPolicy.InstallType.CUSTOM
-        /// ApplicationPolicy.extensionConfig
+        /// ApplicationPolicy.extensionConfig ApplicationPolicy.roles
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signingKeyCerts")]
         public virtual System.Collections.Generic.IList<ApplicationSigningKeyCert> SigningKeyCerts { get; set; }
@@ -7902,6 +7923,17 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Output only. Status of a REQUEST_DEVICE_INFO command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Role an app can have.</summary>
+    public class Role : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The type of the role an app can have.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roleType")]
+        public virtual string RoleType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
