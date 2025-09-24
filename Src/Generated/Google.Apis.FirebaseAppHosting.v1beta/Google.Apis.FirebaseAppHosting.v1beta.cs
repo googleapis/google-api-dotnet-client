@@ -2854,6 +2854,10 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Override environment variables for this Backend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrideEnv")]
+        public virtual System.Collections.Generic.IList<EnvironmentVariable> OverrideEnv { get; set; }
+
         /// <summary>
         /// Output only. A field that, if true, indicates that the system is working to make adjustments to the backend
         /// during a LRO.
