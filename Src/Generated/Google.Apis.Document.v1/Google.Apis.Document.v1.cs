@@ -6021,6 +6021,13 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1Processor : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. SchemaVersion used by the Processor. It is the same as Processor's DatasetSchema.schema_version
+        /// Format is `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeSchemaVersion")]
+        public virtual string ActiveSchemaVersion { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -6584,7 +6591,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Options to control the training of the Custom Document Extraction (CDE) Processor.</summary>
     public class GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Training method to use for CDE training.</summary>
+        /// <summary>Optional. Training method to use for CDE training.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingMethod")]
         public virtual string TrainingMethod { get; set; }
 
