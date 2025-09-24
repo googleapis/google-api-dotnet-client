@@ -17884,6 +17884,265 @@ namespace Google.Apis.Dialogflow.v2
                 public GeneratorsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Evaluations = new EvaluationsResource(service);
+                }
+
+                /// <summary>Gets the Evaluations resource.</summary>
+                public virtual EvaluationsResource Evaluations { get; }
+
+                /// <summary>The "evaluations" collection of methods.</summary>
+                public class EvaluationsResource
+                {
+                    private const string Resource = "evaluations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public EvaluationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates evaluation of a generator.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The generator resource name. Format: `projects//locations//generators/`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2GeneratorEvaluation body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates evaluation of a generator.</summary>
+                    public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2GeneratorEvaluation body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The generator resource name. Format: `projects//locations//generators/`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2GeneratorEvaluation Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/evaluations";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/generators/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes an evaluation of generator.</summary>
+                    /// <param name="name">
+                    /// Required. The generator evaluation resource name. Format: `projects//locations//generators//
+                    /// evaluations/`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes an evaluation of generator.</summary>
+                    public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The generator evaluation resource name. Format: `projects//locations//generators//
+                        /// evaluations/`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/generators/[^/]+/evaluations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets an evaluation of generator.</summary>
+                    /// <param name="name">
+                    /// Required. The generator evaluation resource name. Format:
+                    /// `projects//locations//generators//evaluations/`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets an evaluation of generator.</summary>
+                    public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2GeneratorEvaluation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The generator evaluation resource name. Format:
+                        /// `projects//locations//generators//evaluations/`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/generators/[^/]+/evaluations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists evaluations of generator.</summary>
+                    /// <param name="parent">
+                    /// Required. The generator resource name. Format: `projects//locations//generators/` Wildcard value
+                    /// `-` is supported on generator_id to list evaluations across all generators under same project.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists evaluations of generator.</summary>
+                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The generator resource name. Format: `projects//locations//generators/` Wildcard
+                        /// value `-` is supported on generator_id to list evaluations across all generators under same
+                        /// project.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of evaluations to return in a single page. By default 100 and at
+                        /// most 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The next_page_token value returned from a previous list request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/evaluations";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/generators/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a generator.</summary>
@@ -20143,8 +20402,8 @@ namespace Google.Apis.Dialogflow.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -29340,6 +29599,26 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A common evalaution pipeline status.</summary>
+    public class GoogleCloudDialogflowV2EvaluationStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If the value is `false`, it means the evaluation is still in progress. If `true`, the operation
+        /// is completed, and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>
+        /// Output only. The error result of the evaluation in case of failure in evaluation pipeline.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineStatus")]
+        public virtual GoogleRpcStatus PipelineStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Events allow for matching intents by event name instead of the natural language input. For instance, input ``
     /// can trigger a personalized welcome response. The parameter `name` may be used by the agent in the response:
@@ -29985,6 +30264,382 @@ namespace Google.Apis.Dialogflow.v2.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents evaluation result of a generator.</summary>
+    public class GoogleCloudDialogflowV2GeneratorEvaluation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _completeTimeRaw;
+
+        private object _completeTime;
+
+        /// <summary>Output only. Completion time of this generator evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual string CompleteTimeRaw
+        {
+            get => _completeTimeRaw;
+            set
+            {
+                _completeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _completeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompleteTimeDateTimeOffset instead.")]
+        public virtual object CompleteTime
+        {
+            get => _completeTime;
+            set
+            {
+                _completeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _completeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Creation time of this generator evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The display name of the generator evaluation. At most 64 bytes long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. The result status of the evaluation pipeline. Provides the status information including if the
+        /// evaluation is still in progress, completed or failed with certain error and user actionable message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationStatus")]
+        public virtual GoogleCloudDialogflowV2EvaluationStatus EvaluationStatus { get; set; }
+
+        /// <summary>Required. The configuration of the evaluation task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorEvaluationConfig")]
+        public virtual GoogleCloudDialogflowV2GeneratorEvaluationConfig GeneratorEvaluationConfig { get; set; }
+
+        /// <summary>
+        /// Required. The initial generator that was used when creating this evaluation. This is a copy of the generator
+        /// read from storage when creating the evaluation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialGenerator")]
+        public virtual GoogleCloudDialogflowV2Generator InitialGenerator { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. The resource name of the evaluation. Format: `projects//locations//generators//
+        /// evaluations/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Only available when the summarization generator is provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationMetrics")]
+        public virtual GoogleCloudDialogflowV2SummarizationEvaluationMetrics SummarizationMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Generator evaluation input config.</summary>
+    public class GoogleCloudDialogflowV2GeneratorEvaluationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The config/source of input data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputDataConfig")]
+        public virtual GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig InputDataConfig { get; set; }
+
+        /// <summary>
+        /// Required. The output Cloud Storage bucket path to store eval files, e.g. per_summary_accuracy_score report.
+        /// This path is provided by customer and files stored in it are visible to customer, no internal data should be
+        /// stored in this path.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputGcsBucketPath")]
+        public virtual string OutputGcsBucketPath { get; set; }
+
+        /// <summary>Evaluation configs for summarization generator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationConfig")]
+        public virtual GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig SummarizationConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The distinctive configs for Agent Assist conversations as the conversation source.</summary>
+    public class GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Required. The end of the time range for conversations to be evaluated. Only conversations ended at or before
+        /// this timestamp will be sampled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Required. The start of the time range for conversations to be evaluated. Only conversations created at or
+        /// after this timestamp will be sampled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The distinctive configs for dataset as the conversation source.</summary>
+    public class GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The identifier of the dataset to be evaluated. Format: `projects//locations//datasets/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Input data config details</summary>
+    public class GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The distinctive configs for Agent Assist conversations as the conversation source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentAssistInputDataConfig")]
+        public virtual GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig AgentAssistInputDataConfig { get; set; }
+
+        /// <summary>The distinctive configs for dataset as the conversation source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetInputDataConfig")]
+        public virtual GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig DatasetInputDataConfig { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Optional. The end timestamp to fetch conversation data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The source type of input data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputDataSourceType")]
+        public virtual string InputDataSourceType { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the summary generation is allowed when the pre-existing qualified summaries are
+        /// insufficient to cover the sample size.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isSummaryGenerationAllowed")]
+        public virtual System.Nullable<bool> IsSummaryGenerationAllowed { get; set; }
+
+        /// <summary>Optional. Desired number of conversation-summary pairs to be evaluated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleSize")]
+        public virtual System.Nullable<int> SampleSize { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Optional. The start timestamp to fetch conversation data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Option to control whether summaries are generated during evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryGenerationOption")]
+        public virtual string SummaryGenerationOption { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluation configs for summarization generator.</summary>
+    public class GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Version for summarization accuracy. This will determine the prompt and model used at backend.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accuracyEvaluationVersion")]
+        public virtual string AccuracyEvaluationVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Version for summarization completeness. This will determine the prompt and model used at backend.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completenessEvaluationVersion")]
+        public virtual string CompletenessEvaluationVersion { get; set; }
+
+        /// <summary>Optional. Enable accuracy evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAccuracyEvaluation")]
+        public virtual System.Nullable<bool> EnableAccuracyEvaluation { get; set; }
+
+        /// <summary>Optional. Enable completeness evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableCompletenessEvaluation")]
+        public virtual System.Nullable<bool> EnableCompletenessEvaluation { get; set; }
+
+        /// <summary>Output only. Version for summarization evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluatorVersion")]
+        public virtual string EvaluatorVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -32107,6 +32762,23 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response of ListGeneratorEvaluations.</summary>
+    public class GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of evaluations to return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorEvaluations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2GeneratorEvaluation> GeneratorEvaluations { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response of ListGenerators.</summary>
     public class GoogleCloudDialogflowV2ListGeneratorsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -34085,6 +34757,289 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluation metrics for summarization generator.</summary>
+    public class GoogleCloudDialogflowV2SummarizationEvaluationMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of conversation details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail> ConversationDetails { get; set; }
+
+        /// <summary>Output only. A list of aggregated(average) scores per metric section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overallMetrics")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric> OverallMetrics { get; set; }
+
+        /// <summary>
+        /// Output only. Overall token per section. This is an aggregated(sum) result of input token of summary acorss
+        /// all conversations that are selected for summarization evaluation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overallSectionTokens")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken> OverallSectionTokens { get; set; }
+
+        /// <summary>Output only. User bucket uri for merged evaluation score and aggregation score csv.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationEvaluationMergedResultsUri")]
+        public virtual string SummarizationEvaluationMergedResultsUri { get; set; }
+
+        /// <summary>
+        /// Output only. A list of evaluation results per conversation(&amp;amp;summary), metric and section.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationEvaluationResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluationResult> SummarizationEvaluationResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Decomposition details for accuracy.</summary>
+    public class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The accuracy reasoning of the breakdown point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accuracyReasoning")]
+        public virtual string AccuracyReasoning { get; set; }
+
+        /// <summary>Output only. Whether the breakdown point is accurate or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAccurate")]
+        public virtual System.Nullable<bool> IsAccurate { get; set; }
+
+        /// <summary>Output only. The breakdown point of the summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("point")]
+        public virtual string Point { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Decomposition details for adherence.</summary>
+    public class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The adherence reasoning of the breakdown point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adherenceReasoning")]
+        public virtual string AdherenceReasoning { get; set; }
+
+        /// <summary>Output only. Whether the breakdown point is adherent or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAdherent")]
+        public virtual System.Nullable<bool> IsAdherent { get; set; }
+
+        /// <summary>Output only. The breakdown point of the given instructions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("point")]
+        public virtual string Point { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Rubric result of the adherence evaluation. A rubric is ued to determine if the summary adheres to all aspects of
+    /// the given instructions.
+    /// </summary>
+    public class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A boolean that indicates whether the rubric question is addressed or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAddressed")]
+        public virtual System.Nullable<bool> IsAddressed { get; set; }
+
+        /// <summary>Output only. The question generated from instruction that used to evaluate summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("question")]
+        public virtual string Question { get; set; }
+
+        /// <summary>Output only. The reasoning of the rubric question is addressed or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reasoning")]
+        public virtual string Reasoning { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rubric details of the completeness evaluation result.</summary>
+    public class GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A boolean that indicates whether the rubric question is addressed or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAddressed")]
+        public virtual System.Nullable<bool> IsAddressed { get; set; }
+
+        /// <summary>Output only. The question generated from instruction that used to evaluate summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("question")]
+        public virtual string Question { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Aggregated evaluation result on conversation level. This conatins evaluation results of all the metrics and
+    /// sections.
+    /// </summary>
+    public class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Conversation transcript that used for summarization evaluation as a reference.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageEntries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2MessageEntry> MessageEntries { get; set; }
+
+        /// <summary>Output only. List of metric details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail> MetricDetails { get; set; }
+
+        /// <summary>
+        /// Output only. Conversation level token count per section. This is an aggregated(sum) result of input token of
+        /// summary acorss all metrics for a single conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionTokens")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken> SectionTokens { get; set; }
+
+        /// <summary>Output only. Summary sections that used for summarization evaluation as a reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarySections")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarySuggestionSummarySection> SummarySections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Aggregated result on metric level. This conatins the evaluation results of all the sections.</summary>
+    public class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Metrics name. e.g. accuracy, adherence, completeness.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; }
+
+        /// <summary>Output only. Aggregated(average) score on this metric across all sections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>Output only. List of section details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail> SectionDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Section level result.</summary>
+    public class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. List of evaluation result. The list only contains one kind of the evaluation result.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult> EvaluationResults { get; set; }
+
+        /// <summary>
+        /// Output only. Aggregated(average) score on this section across all evaluation results. Either decompositions
+        /// or rubrics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>Output only. The name of the summary instruction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("section")]
+        public virtual string Section { get; set; }
+
+        /// <summary>Output only. Summary for this section</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionSummary")]
+        public virtual string SectionSummary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Decomposition details</summary>
+    public class GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>only available for accuracy metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accuracyDecomposition")]
+        public virtual GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition AccuracyDecomposition { get; set; }
+
+        /// <summary>only available for adherence metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adherenceDecomposition")]
+        public virtual GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition AdherenceDecomposition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluation result that contains one of accuracy, adherence or completeness evaluation result.</summary>
+    public class GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Only available for accuracy metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accuracyDecomposition")]
+        public virtual GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition AccuracyDecomposition { get; set; }
+
+        /// <summary>Only available for adherence metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adherenceRubric")]
+        public virtual GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric AdherenceRubric { get; set; }
+
+        /// <summary>Only available for completeness metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completenessRubric")]
+        public virtual GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric CompletenessRubric { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Overall performance per metric. This is the aggregated score for each metric across all conversations that are
+    /// selected for summarization evaluation.
+    /// </summary>
+    public class GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Metric name. e.g. accuracy, adherence, completeness.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A pair of section name and input token count of the input summary section.</summary>
+    public class GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the summary instruction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("section")]
+        public virtual string Section { get; set; }
+
+        /// <summary>Output only. Token count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenCount")]
+        public virtual System.Nullable<long> TokenCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluation result per conversation(&amp;summary), metric and section.</summary>
+    public class GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of decompostion details</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decompositions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition> Decompositions { get; set; }
+
+        /// <summary>Output only. List of evaluation results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult> EvaluationResults { get; set; }
+
+        /// <summary>Output only. metric name, e.g. accuracy, completeness, adherence, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; }
+
+        /// <summary>Output only. score calculated from decompositions</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>Output only. section/task name, e.g. action, situation, etc</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("section")]
+        public virtual string Section { get; set; }
+
+        /// <summary>Output only. Summary of this section</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionSummary")]
+        public virtual string SectionSummary { get; set; }
+
+        /// <summary>Output only. conversation session id</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
+        public virtual string SessionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
