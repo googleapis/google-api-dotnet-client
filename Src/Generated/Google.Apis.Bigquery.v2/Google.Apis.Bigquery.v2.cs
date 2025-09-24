@@ -7392,8 +7392,8 @@ namespace Google.Apis.Bigquery.v2.Data
     public class ExternalServiceCost : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The billing method used for the external job. This field is only used when billed on the services sku, set
-        /// to "SERVICES_SKU". Otherwise, it is unspecified for backward compatibility.
+        /// The billing method used for the external job. This field, set to `SERVICES_SKU`, is only used when billing
+        /// under the services SKU. Otherwise, it is unspecified for backward compatibility.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingMethod")]
         public virtual string BillingMethod { get; set; }
@@ -7867,6 +7867,123 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Statistics related to Incremental Query Results. Populated as part of JobStatistics2. This feature is not yet
+    /// available.
+    /// </summary>
+    public class IncrementalResultStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reason why incremental query results are/were not written by the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabledReason")]
+        public virtual string DisabledReason { get; set; }
+
+        private string _resultSetLastModifyTimeRaw;
+
+        private object _resultSetLastModifyTime;
+
+        /// <summary>
+        /// The time at which the result table's contents were modified. May be absent if no results have been written
+        /// or the query has completed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultSetLastModifyTime")]
+        public virtual string ResultSetLastModifyTimeRaw
+        {
+            get => _resultSetLastModifyTimeRaw;
+            set
+            {
+                _resultSetLastModifyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _resultSetLastModifyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ResultSetLastModifyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ResultSetLastModifyTimeDateTimeOffset instead.")]
+        public virtual object ResultSetLastModifyTime
+        {
+            get => _resultSetLastModifyTime;
+            set
+            {
+                _resultSetLastModifyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _resultSetLastModifyTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ResultSetLastModifyTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ResultSetLastModifyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ResultSetLastModifyTimeRaw);
+            set => ResultSetLastModifyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _resultSetLastReplaceTimeRaw;
+
+        private object _resultSetLastReplaceTime;
+
+        /// <summary>
+        /// The time at which the result table's contents were completely replaced. May be absent if no results have
+        /// been written or the query has completed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultSetLastReplaceTime")]
+        public virtual string ResultSetLastReplaceTimeRaw
+        {
+            get => _resultSetLastReplaceTimeRaw;
+            set
+            {
+                _resultSetLastReplaceTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _resultSetLastReplaceTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ResultSetLastReplaceTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ResultSetLastReplaceTimeDateTimeOffset instead.")]
+        public virtual object ResultSetLastReplaceTime
+        {
+            get => _resultSetLastReplaceTime;
+            set
+            {
+                _resultSetLastReplaceTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _resultSetLastReplaceTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ResultSetLastReplaceTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ResultSetLastReplaceTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ResultSetLastReplaceTimeRaw);
+            set => ResultSetLastReplaceTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for index pruning.</summary>
+    public class IndexPruningStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The base table reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseTable")]
+        public virtual TableReference BaseTable { get; set; }
+
+        /// <summary>The number of parallel inputs after index pruning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postIndexPruningParallelInputCount")]
+        public virtual System.Nullable<long> PostIndexPruningParallelInputCount { get; set; }
+
+        /// <summary>The number of parallel inputs before index pruning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preIndexPruningParallelInputCount")]
+        public virtual System.Nullable<long> PreIndexPruningParallelInputCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Reason about why no search index was used in the search query (or sub-query).</summary>
     public class IndexUnusedReason : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8092,10 +8209,10 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual JobConfigurationExtract Extract { get; set; }
 
         /// <summary>
-        /// Optional. Job timeout in milliseconds. If this time limit is exceeded, BigQuery will attempt to stop a
-        /// longer job, but may not always succeed in canceling it before the job completes. For example, a job that
-        /// takes more than 60 seconds to complete has a better chance of being stopped than a job that takes 10 seconds
-        /// to complete.
+        /// Optional. Job timeout in milliseconds relative to the job creation time. If this time limit is exceeded,
+        /// BigQuery attempts to stop the job, but might not always succeed in canceling it before the job completes.
+        /// For example, a job that takes more than 60 seconds to complete has a better chance of being stopped than a
+        /// job that takes 10 seconds to complete.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobTimeoutMs")]
         public virtual System.Nullable<long> JobTimeoutMs { get; set; }
@@ -8484,12 +8601,12 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is
-        /// autodetected or supplied in the job configuration. Schema update options are supported in two cases: when
-        /// writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a
-        /// partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always
-        /// overwrite the schema. One or more of the following values are specified: * ALLOW_FIELD_ADDITION: allow
-        /// adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the
-        /// original schema to nullable.
+        /// autodetected or supplied in the job configuration. Schema update options are supported in three cases: when
+        /// writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE_DATA; when writeDisposition is
+        /// WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For
+        /// normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are
+        /// specified: * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION:
+        /// allow relaxing a required field in the original schema to nullable.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaUpdateOptions")]
         public virtual System.Collections.Generic.IList<string> SchemaUpdateOptions { get; set; }
@@ -8710,11 +8827,12 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Allows the schema of the destination table to be updated as a side effect of the query job. Schema update
-        /// options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is
-        /// WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For
-        /// normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are
-        /// specified: * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION:
-        /// allow relaxing a required field in the original schema to nullable.
+        /// options are supported in three cases: when writeDisposition is WRITE_APPEND; when writeDisposition is
+        /// WRITE_TRUNCATE_DATA; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a
+        /// table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the
+        /// schema. One or more of the following values are specified: * ALLOW_FIELD_ADDITION: allow adding a nullable
+        /// field to the schema. * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to
+        /// nullable.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaUpdateOptions")]
         public virtual System.Collections.Generic.IList<string> SchemaUpdateOptions { get; set; }
@@ -9238,6 +9356,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalServiceCosts")]
         public virtual System.Collections.Generic.IList<ExternalServiceCost> ExternalServiceCosts { get; set; }
 
+        /// <summary>
+        /// Output only. Statistics related to incremental query results, if enabled for the query. This feature is not
+        /// yet available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("incrementalResultStats")]
+        public virtual IncrementalResultStats IncrementalResultStats { get; set; }
+
         /// <summary>Output only. Statistics for a LOAD query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadQueryStatistics")]
         public virtual LoadQueryStatistics LoadQueryStatistics { get; set; }
@@ -9433,9 +9558,9 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> TotalPartitionsProcessed { get; set; }
 
         /// <summary>
-        /// Output only. Total slot-milliseconds for the job that run on external services and billed on the service
+        /// Output only. Total slot milliseconds for the job that ran on external services and billed on the services
         /// SKU. This field is only populated for jobs that have external service costs, and is the total of the usage
-        /// for costs whose billing method is "SERVICES_SKU".
+        /// for costs whose billing method is `"SERVICES_SKU"`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalServicesSkuSlotMs")]
         public virtual System.Nullable<long> TotalServicesSkuSlotMs { get; set; }
@@ -10459,6 +10584,25 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The column metadata index pruning statistics.</summary>
+    public class PruningStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of parallel inputs matched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postCmetaPruningParallelInputCount")]
+        public virtual System.Nullable<long> PostCmetaPruningParallelInputCount { get; set; }
+
+        /// <summary>The number of partitions matched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postCmetaPruningPartitionCount")]
+        public virtual System.Nullable<long> PostCmetaPruningPartitionCount { get; set; }
+
+        /// <summary>The number of parallel inputs scanned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preCmetaPruningParallelInputCount")]
+        public virtual System.Nullable<long> PreCmetaPruningParallelInputCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11595,6 +11739,14 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>Statistics for a search query. Populated as part of JobStatistics2.</summary>
     public class SearchStatistics : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Search index pruning statistics, one for each base table that has a search index. If a base table does not
+        /// have a search index or the index does not help with pruning on the base table, then there is no pruning
+        /// statistics for that table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexPruningStats")]
+        public virtual System.Collections.Generic.IList<IndexPruningStats> IndexPruningStats { get; set; }
+
         /// <summary>
         /// When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains why indexes were not used in all
         /// or part of the search query. If `indexUsageMode` is `FULLY_USED`, this field is not populated.
@@ -12852,6 +13004,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
         public virtual string Explanation { get; set; }
 
+        /// <summary>The column metadata index pruning statistics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pruningStats")]
+        public virtual PruningStats PruningStats { get; set; }
+
         /// <summary>
         /// Duration since last refresh as of this job for managed tables (indicates metadata cache staleness as seen by
         /// this job).
@@ -13172,6 +13328,12 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableGlobalExplain")]
         public virtual System.Nullable<bool> EnableGlobalExplain { get; set; }
 
+        /// <summary>
+        /// The idle TTL of the endpoint before the resources get destroyed. The default value is 6.5 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointIdleTtl")]
+        public virtual object EndpointIdleTtl { get; set; }
+
         /// <summary>Feedback type that specifies which algorithm to run for matrix factorization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedbackType")]
         public virtual string FeedbackType { get; set; }
@@ -13213,6 +13375,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The target evaluation metrics to optimize the hyperparameters for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hparamTuningObjectives")]
         public virtual System.Collections.Generic.IList<string> HparamTuningObjectives { get; set; }
+
+        /// <summary>The id of a Hugging Face model. For example, `google/gemma-2-2b-it`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("huggingFaceModelId")]
+        public virtual string HuggingFaceModelId { get; set; }
 
         /// <summary>Include drift when fitting an ARIMA model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeDrift")]
@@ -13289,6 +13455,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lossType")]
         public virtual string LossType { get; set; }
 
+        /// <summary>The type of the machine used to deploy and serve the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
         /// <summary>
         /// The maximum number of iterations in training. Used only for iterative training algorithms.
         /// </summary>
@@ -13298,6 +13468,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Maximum number of trials to run in parallel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxParallelTrials")]
         public virtual System.Nullable<long> MaxParallelTrials { get; set; }
+
+        /// <summary>
+        /// The maximum number of machine replicas that will be deployed on an endpoint. The default value is equal to
+        /// min_replica_count.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxReplicaCount")]
+        public virtual System.Nullable<long> MaxReplicaCount { get; set; }
 
         /// <summary>
         /// The maximum number of time points in a time series that can be used in modeling the trend component of the
@@ -13321,6 +13498,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minRelativeProgress")]
         public virtual System.Nullable<double> MinRelativeProgress { get; set; }
 
+        /// <summary>
+        /// The minimum number of machine replicas that will be always deployed on an endpoint. This value must be
+        /// greater than or equal to 1. The default value is 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minReplicaCount")]
+        public virtual System.Nullable<long> MinReplicaCount { get; set; }
+
         /// <summary>Minimum split loss for boosted tree models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minSplitLoss")]
         public virtual System.Nullable<double> MinSplitLoss { get; set; }
@@ -13339,6 +13523,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Minimum sum of instance weight needed in a child for boosted tree models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTreeChildWeight")]
         public virtual System.Nullable<long> MinTreeChildWeight { get; set; }
+
+        /// <summary>
+        /// The name of a Vertex model garden publisher model. Format is
+        /// `publishers/{publisher}/models/{model}@{optional_version_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelGardenModelName")]
+        public virtual string ModelGardenModelName { get; set; }
 
         /// <summary>The model registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelRegistry")]
@@ -13396,6 +13587,28 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The solver for PCA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pcaSolver")]
         public virtual string PcaSolver { get; set; }
+
+        /// <summary>
+        /// Corresponds to the label key of a reservation resource used by Vertex AI. To target a SPECIFIC_RESERVATION
+        /// by name, use `compute.googleapis.com/reservation-name` as the key and specify the name of your reservation
+        /// as its value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinityKey")]
+        public virtual string ReservationAffinityKey { get; set; }
+
+        /// <summary>
+        /// Specifies the reservation affinity type used to configure a Vertex AI resource. The default value is
+        /// `NO_RESERVATION`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinityType")]
+        public virtual string ReservationAffinityType { get; set; }
+
+        /// <summary>
+        /// Corresponds to the label values of a reservation resource used by Vertex AI. This must be the full resource
+        /// name of the reservation or reservation block.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinityValues")]
+        public virtual System.Collections.Generic.IList<string> ReservationAffinityValues { get; set; }
 
         /// <summary>Number of paths for the sampled Shapley explain method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampledShapleyNumPaths")]
