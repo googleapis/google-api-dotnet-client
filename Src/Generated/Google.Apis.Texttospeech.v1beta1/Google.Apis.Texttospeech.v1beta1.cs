@@ -976,8 +976,9 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         public virtual MultiSpeakerMarkup MultiSpeakerMarkup { get; set; }
 
         /// <summary>
-        /// This is system instruction supported only for controllable voice models. If used, we will pass text to Flash
-        /// TTS as is. Can only used with Flash TTS. What AI Studio calls Style Instructions.
+        /// This system instruction is supported only for controllable/promptable voice models. If this system
+        /// instruction is used, we pass the unedited text to Gemini-TTS. Otherwise, a default system instruction is
+        /// used. AI Studio calls this system instruction, Style Instructions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prompt")]
         public virtual string Prompt { get; set; }
