@@ -5469,6 +5469,10 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Represents a text type block.</summary>
     public class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Annotation of the text block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentAnnotations Annotations { get; set; }
+
         /// <summary>
         /// A text block could further have child blocks. Repeated blocks support further hierarchies and nested blocks.
         /// </summary>
@@ -7358,8 +7362,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// The source processor version to import from. The source processor version and destination processor need to
-        /// be in the same environment and region. Note that ProcessorVersions with `model_type` `MODEL_TYPE_LLM` are
-        /// not supported.
+        /// be in the same environment and region.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processorVersionSource")]
         public virtual string ProcessorVersionSource { get; set; }
@@ -7838,6 +7841,13 @@ namespace Google.Apis.Document.v1beta3.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3Processor : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. SchemaVersion used by the Processor. It is the same as Processor's DatasetSchema.schema_version
+        /// Format is `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeSchemaVersion")]
+        public virtual string ActiveSchemaVersion { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -8543,7 +8553,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Options to control the training of the Custom Document Extraction (CDE) Processor.</summary>
     public class GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestCustomDocumentExtractionOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Training method to use for CDE training.</summary>
+        /// <summary>Optional. Training method to use for CDE training.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingMethod")]
         public virtual string TrainingMethod { get; set; }
 
