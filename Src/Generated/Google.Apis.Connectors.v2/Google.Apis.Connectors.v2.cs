@@ -3236,6 +3236,10 @@ namespace Google.Apis.Connectors.v2.Data
     /// <summary>Message representing a single tool.</summary>
     public class Tool : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Annotations for the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual ToolAnnotations Annotations { get; set; }
+
         /// <summary>List of tool names that this tool depends on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dependsOn")]
         public virtual System.Collections.Generic.IList<string> DependsOn { get; set; }
@@ -3255,6 +3259,43 @@ namespace Google.Apis.Connectors.v2.Data
         /// <summary>JSON schema for the output of the tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputSchema")]
         public virtual JsonSchema OutputSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ToolAnnotations holds annotations for a tool.</summary>
+    public class ToolAnnotations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If true, the tool may perform destructive updates to its environment. If false, the tool performs only
+        /// additive updates. (This property is meaningful only when `read_only_hint == false`)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destructiveHint")]
+        public virtual System.Nullable<bool> DestructiveHint { get; set; }
+
+        /// <summary>
+        /// If true, calling the tool repeatedly with the same arguments will have no additional effect on the
+        /// environment. (This property is meaningful only when `read_only_hint == false`)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idempotentHint")]
+        public virtual System.Nullable<bool> IdempotentHint { get; set; }
+
+        /// <summary>
+        /// If true, this tool may interact with an "open world" of external entities. If false, the tool's domain of
+        /// interaction is closed. For example, the world of a web search tool is open, whereas that of a memory tool is
+        /// not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openWorldHint")]
+        public virtual System.Nullable<bool> OpenWorldHint { get; set; }
+
+        /// <summary>If true, the tool does not modify its environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOnlyHint")]
+        public virtual System.Nullable<bool> ReadOnlyHint { get; set; }
+
+        /// <summary>A human-readable title for the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
