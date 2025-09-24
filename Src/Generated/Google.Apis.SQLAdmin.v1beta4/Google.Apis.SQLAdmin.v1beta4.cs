@@ -3147,6 +3147,73 @@ namespace Google.Apis.SQLAdmin.v1beta4
             }
         }
 
+        /// <summary>Execute MVU Pre-checks</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Required. Project ID of the project that contains the instance.</param>
+        /// <param name="instance">Required. Cloud SQL instance ID. This does not include the project ID.</param>
+        public virtual PreCheckMajorVersionUpgradeRequest PreCheckMajorVersionUpgrade(Google.Apis.SQLAdmin.v1beta4.Data.InstancesPreCheckMajorVersionUpgradeRequest body, string project, string instance)
+        {
+            return new PreCheckMajorVersionUpgradeRequest(this.service, body, project, instance);
+        }
+
+        /// <summary>Execute MVU Pre-checks</summary>
+        public class PreCheckMajorVersionUpgradeRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new PreCheckMajorVersionUpgrade request.</summary>
+            public PreCheckMajorVersionUpgradeRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesPreCheckMajorVersionUpgradeRequest body, string project, string instance) : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Required. Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1beta4.Data.InstancesPreCheckMajorVersionUpgradeRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "preCheckMajorVersionUpgrade";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/preCheckMajorVersionUpgrade";
+
+            /// <summary>Initializes PreCheckMajorVersionUpgrade parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>
         /// Promotes the read replica instance to be an independent Cloud SQL primary instance. Using this operation
         /// might cause your instance to restart.
@@ -3396,6 +3463,29 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Reset SSL mode to use.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("mode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ModeEnum> Mode { get; set; }
+
+            /// <summary>Optional. Reset SSL mode to use.</summary>
+            public enum ModeEnum
+            {
+                /// <summary>Reset SSL mode is not specified.</summary>
+                [Google.Apis.Util.StringValueAttribute("RESET_SSL_MODE_UNSPECIFIED")]
+                RESETSSLMODEUNSPECIFIED = 0,
+
+                /// <summary>Refresh all TLS configs. This is the default behaviour.</summary>
+                [Google.Apis.Util.StringValueAttribute("ALL")]
+                ALL = 1,
+
+                /// <summary>
+                /// Refreshes the replication-related TLS configuration settings provided by the primary instance. Not
+                /// applicable to on-premises replication instances.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("SYNC_FROM_PRIMARY")]
+                SYNCFROMPRIMARY = 2,
+            }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetSslConfig";
 
@@ -3422,6 +3512,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("mode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "mode",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3978,7 +4076,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             this.service = service;
         }
 
-        /// <summary>Cancels an instance operation that has been performed on an instance.</summary>
+        /// <summary>
+        /// Cancels an instance operation that has been performed on an instance. Ordinarily, this method name should be
+        /// `CancelSqlOperation`.
+        /// </summary>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param name="operation">Instance operation ID.</param>
         public virtual CancelRequest Cancel(string project, string operation)
@@ -3986,7 +4087,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             return new CancelRequest(this.service, project, operation);
         }
 
-        /// <summary>Cancels an instance operation that has been performed on an instance.</summary>
+        /// <summary>
+        /// Cancels an instance operation that has been performed on an instance. Ordinarily, this method name should be
+        /// `CancelSqlOperation`.
+        /// </summary>
         public class CancelRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Empty>
         {
             /// <summary>Constructs a new Cancel request.</summary>
@@ -5701,7 +5805,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A backup resource. Next ID: 30</summary>
+    /// <summary>A backup resource.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -8249,6 +8353,17 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for Pre-checks for MVU</summary>
+    public class InstancesPreCheckMajorVersionUpgradeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Contains details about the pre-check major version upgrade operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preCheckMajorVersionUpgradeContext")]
+        public virtual PreCheckMajorVersionUpgradeContext PreCheckMajorVersionUpgradeContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Database Instance reencrypt request.</summary>
     public class InstancesReencryptRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8659,6 +8774,24 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a notice or warning message from the database.</summary>
+    public class Message : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The full message string. For PostgreSQL, this is a formatted string that may include severity, code, and the
+        /// notice/warning message. For MySQL, this contains the warning message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string MessageValue { get; set; }
+
+        /// <summary>The severity of the message (e.g., "NOTICE" for PostgreSQL, "WARNING" for MySQL).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The additional metadata information regarding the execution of the SQL statements.</summary>
     public class Metadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8927,6 +9060,15 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; }
+
+        /// <summary>
+        /// The context for pre-check major version upgrade operation, if applicable. This field is only populated when
+        /// the operation_type is PRE_CHECK_MAJOR_VERSION_UPGRADE. The PreCheckMajorVersionUpgradeContext message itself
+        /// contains the details for that pre-check, such as the target database version for the upgrade and the results
+        /// of the check (including any warnings or errors found).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preCheckMajorVersionUpgradeContext")]
+        public virtual PreCheckMajorVersionUpgradeContext PreCheckMajorVersionUpgradeContext { get; set; }
 
         /// <summary>The URI of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -9379,6 +9521,44 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Pre-check major version upgrade context.</summary>
+    public class PreCheckMajorVersionUpgradeContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. This is always `sql#preCheckMajorVersionUpgradeContext`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Output only. The responses from the precheck operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preCheckResponse")]
+        public virtual System.Collections.Generic.IList<PreCheckResponse> PreCheckResponse { get; set; }
+
+        /// <summary>Required. The target database version to upgrade to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetDatabaseVersion")]
+        public virtual string TargetDatabaseVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Structured PreCheckResponse containing message, type, and required actions.</summary>
+    public class PreCheckResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The actions that the user needs to take. Use repeated for multiple actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionsRequired")]
+        public virtual System.Collections.Generic.IList<string> ActionsRequired { get; set; }
+
+        /// <summary>The message to be displayed to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The type of message whether it is an info, warning, or error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
+        public virtual string MessageType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Settings for an automatically-setup Private Service Connect consumer endpoint that is used to connect to a Cloud
     /// SQL instance.
@@ -9468,6 +9648,41 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Rows returned by the SQL statement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<Row> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The read pool auto-scale configuration.</summary>
+    public class ReadPoolAutoScaleConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates whether read pool auto scaling supports scale in operations (removing nodes).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableScaleIn")]
+        public virtual System.Nullable<bool> DisableScaleIn { get; set; }
+
+        /// <summary>Indicates whether read pool auto scaling is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Maximum number of read pool nodes to be maintained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxNodeCount")]
+        public virtual System.Nullable<int> MaxNodeCount { get; set; }
+
+        /// <summary>Minimum number of read pool nodes to be maintained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
+        public virtual System.Nullable<int> MinNodeCount { get; set; }
+
+        /// <summary>The cooldown period for scale in operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleInCooldownSeconds")]
+        public virtual System.Nullable<int> ScaleInCooldownSeconds { get; set; }
+
+        /// <summary>The cooldown period for scale out operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleOutCooldownSeconds")]
+        public virtual System.Nullable<int> ScaleOutCooldownSeconds { get; set; }
+
+        /// <summary>Optional. Target metrics for read pool auto scaling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetMetrics")]
+        public virtual System.Collections.Generic.IList<TargetMetric> TargetMetrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9855,6 +10070,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pricingPlan")]
         public virtual string PricingPlan { get; set; }
 
+        /// <summary>Optional. The read pool auto-scale configuration for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readPoolAutoScaleConfig")]
+        public virtual ReadPoolAutoScaleConfig ReadPoolAutoScaleConfig { get; set; }
+
         /// <summary>Optional. Configuration value for recreation of replica after certain replication lag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationLagMaxSeconds")]
         public virtual System.Nullable<int> ReplicationLagMaxSeconds { get; set; }
@@ -9988,6 +10207,14 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Execute SQL statements response.</summary>
     public class SqlInstancesExecuteSqlResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// A list of notices and warnings generated during query execution. For PostgreSQL, this includes all notices
+        /// and warnings. For MySQL, this includes warnings generated by the last executed statement. To retrieve all
+        /// warnings for a multi-statement query, `SHOW WARNINGS` must be executed after each statement.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<Message> Messages { get; set; }
+
         /// <summary>The additional metadata information regarding the execution of the SQL statements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual Metadata Metadata { get; set; }
@@ -10630,6 +10857,21 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Target metric for read pool auto scaling.</summary>
+    public class TargetMetric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The metric name to be used for auto scaling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; }
+
+        /// <summary>The target value for the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetValue")]
+        public virtual System.Nullable<float> TargetValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Google Cloud SQL service tier resource.</summary>
     public class Tier : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10711,6 +10953,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
+
+        /// <summary>Indicates if a group is active or inactive for IAM database authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamStatus")]
+        public virtual string IamStatus { get; set; }
 
         /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project ID. Can be omitted for *update*
