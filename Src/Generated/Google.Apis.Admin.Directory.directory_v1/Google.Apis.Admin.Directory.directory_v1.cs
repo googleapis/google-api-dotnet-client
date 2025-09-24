@@ -4007,8 +4007,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Query string search. Should be of the form "". Complete documentation is at https:
-            /// //developers.google.com/admin-sdk/directory/v1/guides/search-groups
+            /// Query string search. Should be of the form "". Complete documentation is at
+            /// https://developers.google.com/workspace/admin/directory/v1/guides/search-groups
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -10245,8 +10245,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
             /// <summary>
-            /// Query string search. Should be of the form "". Complete documentation is at https:
-            /// //developers.google.com/admin-sdk/directory/v1/guides/search-users
+            /// Query string search. Should be of the form "". Complete documentation is at
+            /// https://developers.google.com/workspace/admin/directory/v1/guides/search-users
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -11462,7 +11462,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
         public virtual string OsVersion { get; set; }
 
-        /// <summary>Output only. Compliance status of the OS version.</summary>
+        /// <summary>Output only. Device policy compliance status of the OS version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osVersionCompliance")]
         public virtual string OsVersionCompliance { get; set; }
 
