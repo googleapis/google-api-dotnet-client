@@ -12682,8 +12682,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -13234,10 +13234,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// unless frontend mutual TLS is enabled for the forwarding rule or Gateway and the client certificate has been
         /// successfully validated by mTLS. Each identity is a string whose value is matched against a list of URI SANs,
         /// DNS Name SANs, or the common name in the client's certificate. A match happens when any principal matches
-        /// with the rule. Limited to 50 principals per Authorization Policy for Regional Internal Application Load
-        /// Balancer, Regional External Application Load Balancer, Cross-region Internal Application Load Balancer, and
-        /// Cloud Service Mesh. Limited to 25 principals per Authorization Policy for Global External Application Load
-        /// Balancer.
+        /// with the rule. Limited to 50 principals per Authorization Policy for regional internal Application Load
+        /// Balancers, regional external Application Load Balancers, cross-region internal Application Load Balancers,
+        /// and Cloud Service Mesh. This field is not supported for global external Application Load Balancers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principals")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRulePrincipal> Principals { get; set; }
@@ -16555,6 +16554,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>Output only. The current state of the endpoint group. See https://google.aip.dev/216.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>Immutable. The type of the endpoint group. If left unspecified, defaults to DIRECT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         private string _updateTimeRaw;
 
