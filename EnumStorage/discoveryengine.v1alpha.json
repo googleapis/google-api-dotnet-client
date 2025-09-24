@@ -29,6 +29,16 @@
     "IMAGE_CONVERTED_DOCUMENT",
     "IMAGE_BYTES"
   ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+DataStoresResource+BranchesResource+GetRequest.ViewEnum": [
+    "BRANCH_VIEW_UNSPECIFIED",
+    "BRANCH_VIEW_BASIC",
+    "BRANCH_VIEW_FULL"
+  ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+DataStoresResource+BranchesResource+ListRequest.ViewEnum": [
+    "BRANCH_VIEW_UNSPECIFIED",
+    "BRANCH_VIEW_BASIC",
+    "BRANCH_VIEW_FULL"
+  ],
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+DataStoresResource+BranchesResource+DocumentsResource+GetProcessedDocumentRequest.ProcessedDocumentFormatEnum": [
     "PROCESSED_DOCUMENT_FORMAT_UNSPECIFIED",
     "JSON"
@@ -40,5 +50,15 @@
     "PNG_CONVERTED_DOCUMENT",
     "IMAGE_CONVERTED_DOCUMENT",
     "IMAGE_BYTES"
+  ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+DataStoresResource+BranchesResource+GetRequest.ViewEnum": [
+    "BRANCH_VIEW_UNSPECIFIED",
+    "BRANCH_VIEW_BASIC",
+    "BRANCH_VIEW_FULL"
+  ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+DataStoresResource+BranchesResource+ListRequest.ViewEnum": [
+    "BRANCH_VIEW_UNSPECIFIED",
+    "BRANCH_VIEW_BASIC",
+    "BRANCH_VIEW_FULL"
   ]
 }
