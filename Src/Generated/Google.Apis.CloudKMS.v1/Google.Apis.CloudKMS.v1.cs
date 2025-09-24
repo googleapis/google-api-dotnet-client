@@ -292,16 +292,17 @@ namespace Google.Apis.CloudKMS.v1
             this.service = service;
         }
 
-        /// <summary>Returns the AutokeyConfig for a folder.</summary>
+        /// <summary>Returns the AutokeyConfig for a folder or project.</summary>
         /// <param name="name">
-        /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`.
+        /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
+        /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
         /// </param>
         public virtual GetAutokeyConfigRequest GetAutokeyConfig(string name)
         {
             return new GetAutokeyConfigRequest(this.service, name);
         }
 
-        /// <summary>Returns the AutokeyConfig for a folder.</summary>
+        /// <summary>Returns the AutokeyConfig for a folder or project.</summary>
         public class GetAutokeyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.AutokeyConfig>
         {
             /// <summary>Constructs a new GetAutokeyConfig request.</summary>
@@ -312,7 +313,8 @@ namespace Google.Apis.CloudKMS.v1
             }
 
             /// <summary>
-            /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`.
+            /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
+            /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -4842,8 +4844,8 @@ namespace Google.Apis.CloudKMS.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -4991,6 +4993,57 @@ namespace Google.Apis.CloudKMS.v1
                         Pattern = null,
                     });
                 }
+            }
+        }
+
+        /// <summary>Returns the AutokeyConfig for a folder or project.</summary>
+        /// <param name="name">
+        /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
+        /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+        /// </param>
+        public virtual GetAutokeyConfigRequest GetAutokeyConfig(string name)
+        {
+            return new GetAutokeyConfigRequest(this.service, name);
+        }
+
+        /// <summary>Returns the AutokeyConfig for a folder or project.</summary>
+        public class GetAutokeyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.AutokeyConfig>
+        {
+            /// <summary>Constructs a new GetAutokeyConfig request.</summary>
+            public GetAutokeyConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or
+            /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getAutokeyConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes GetAutokeyConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/autokeyConfig$",
+                });
             }
         }
 
@@ -5197,6 +5250,87 @@ namespace Google.Apis.CloudKMS.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates the AutokeyConfig for a folder. The caller must have both `cloudkms.autokeyConfigs.update`
+        /// permission on the parent folder and `cloudkms.cryptoKeys.setIamPolicy` permission on the provided key
+        /// project. A KeyHandle creation in the folder's descendant projects will use this configuration to determine
+        /// where to create the resulting CryptoKey.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`
+        /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+        /// </param>
+        public virtual UpdateAutokeyConfigRequest UpdateAutokeyConfig(Google.Apis.CloudKMS.v1.Data.AutokeyConfig body, string name)
+        {
+            return new UpdateAutokeyConfigRequest(this.service, body, name);
+        }
+
+        /// <summary>
+        /// Updates the AutokeyConfig for a folder. The caller must have both `cloudkms.autokeyConfigs.update`
+        /// permission on the parent folder and `cloudkms.cryptoKeys.setIamPolicy` permission on the provided key
+        /// project. A KeyHandle creation in the folder's descendant projects will use this configuration to determine
+        /// where to create the resulting CryptoKey.
+        /// </summary>
+        public class UpdateAutokeyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.AutokeyConfig>
+        {
+            /// <summary>Constructs a new UpdateAutokeyConfig request.</summary>
+            public UpdateAutokeyConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.AutokeyConfig body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`
+            /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. Masks which fields of the AutokeyConfig to update, e.g. `keyProject`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudKMS.v1.Data.AutokeyConfig Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateAutokeyConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes UpdateAutokeyConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/autokeyConfig$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
