@@ -28,6 +28,14 @@ namespace Google.Apis.Auth.OAuth2
     /// AWS credentials as described in
     /// https://google.aip.dev/auth/4117#determining-the-subject-token-in-aws.
     /// </summary>
+    /// <remarks>
+    /// This credential type does not validate the credential configuration. A security 
+    /// risk occurs when a credential configuration configured with malicious urls 
+    /// is used.
+    /// When the credential configuration is accepted from an
+    /// untrusted source, you should validate it before using with this method.
+    /// See https://cloud.google.com/docs/authentication/external/externally-sourced-credentials for more details.
+    /// </remarks>
     public sealed partial class AwsExternalAccountCredential : ExternalAccountCredential, IGoogleCredential
     {
         internal const string SupportedVersion = "aws1";
@@ -151,6 +159,9 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <inheritdoc/>
         bool IGoogleCredential.SupportsExplicitScopes => SupportsExplicitScopes;
+
+        /// <inheritdoc/>
+        public GoogleCredential ToGoogleCredential() => new GoogleCredential(this);
 
         /// <inheritdoc/>
         Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => Task.FromResult(UniverseDomain);

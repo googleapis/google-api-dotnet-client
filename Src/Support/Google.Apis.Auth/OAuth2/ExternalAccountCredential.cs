@@ -38,6 +38,14 @@ namespace Google.Apis.Auth.OAuth2
     /// <summary>
     /// Base class for external account credentials.
     /// </summary>
+    /// <remarks>
+    /// This credential type does not validate the credential configuration. A security 
+    /// risk occurs when a credential configuration configured with malicious urls 
+    /// is used.
+    /// When the credential configuration is accepted from an
+    /// untrusted source, you should validate it before using with this method.
+    /// See https://cloud.google.com/docs/authentication/external/externally-sourced-credentials for more details.
+    /// </remarks>
     public abstract class ExternalAccountCredential : ServiceCredential
     {
         private const string GrantType = "urn:ietf:params:oauth:grant-type:token-exchange";

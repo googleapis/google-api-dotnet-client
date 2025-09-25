@@ -125,5 +125,10 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="universeDomain">The universe domain to use for the credential.
         /// May be null, in which case the default universe domain will be used.</param>
         IGoogleCredential WithUniverseDomain(string universeDomain);
+
+        /// <summary>
+        /// Creates a <see cref="GoogleCredential"/> from this credential. 
+        /// </summary>
+        GoogleCredential ToGoogleCredential();
     }
 }

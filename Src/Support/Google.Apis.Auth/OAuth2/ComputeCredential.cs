@@ -173,6 +173,9 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <inheritdoc/>
+        public GoogleCredential ToGoogleCredential() => new GoogleCredential(this);
+
+        /// <inheritdoc/>
         async Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken cancellationToken) =>
             ExplicitUniverseDomain ?? await computeEngineUniverseDomainCache.Value.WithCancellationToken(cancellationToken).ConfigureAwait(false);
 

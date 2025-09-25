@@ -27,6 +27,14 @@ namespace Google.Apis.Auth.OAuth2
     /// File-sourced credentials as described in
     /// https://google.aip.dev/auth/4117#determining-the-subject-token-in-file-sourced-credentials.
     /// </summary>
+    /// <remarks>
+    /// This credential type does not validate the credential configuration. A security 
+    /// risk occurs when a credential configuration configured with malicious urls 
+    /// is used.
+    /// When the credential configuration is accepted from an
+    /// untrusted source, you should validate it before using with this method.
+    /// See https://cloud.google.com/docs/authentication/external/externally-sourced-credentials for more details.
+    /// </remarks>
     public sealed class FileSourcedExternalAccountCredential : ExternalAccountCredential, IGoogleCredential
     {
         new internal class Initializer : ExternalAccountCredential.Initializer
@@ -120,6 +128,9 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <inheritdoc/>
         bool IGoogleCredential.SupportsExplicitScopes => SupportsExplicitScopes;
+
+        /// <inheritdoc/>
+        public GoogleCredential ToGoogleCredential() => new GoogleCredential(this);
 
         /// <inheritdoc/>
         Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => Task.FromResult(UniverseDomain);
