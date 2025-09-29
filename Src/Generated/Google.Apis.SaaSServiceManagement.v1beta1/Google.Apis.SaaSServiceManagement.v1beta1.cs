@@ -293,6 +293,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
             {
                 this.service = service;
                 Releases = new ReleasesResource(service);
+                ReplicationsInternal = new ReplicationsInternalResource(service);
                 RolloutKinds = new RolloutKindsResource(service);
                 Rollouts = new RolloutsResource(service);
                 Saas = new SaasResource(service);
@@ -744,6 +745,495 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/releases/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the ReplicationsInternal resource.</summary>
+            public virtual ReplicationsInternalResource ReplicationsInternal { get; }
+
+            /// <summary>The "replicationsInternal" collection of methods.</summary>
+            public class ReplicationsInternalResource
+            {
+                private const string Resource = "replicationsInternal";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ReplicationsInternalResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Create a new replication internal.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent of the replication internal.</param>
+                public virtual CreateRequest Create(Google.Apis.SaaSServiceManagement.v1beta1.Data.ReplicationInternal body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a new replication internal.</summary>
+                public class CreateRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.ReplicationInternal>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.ReplicationInternal body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent of the replication internal.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. The ID value for the new replication internal.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("replicationInternalId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ReplicationInternalId { get; set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// If "validate_only" is set to true, the service will try to validate that this request would
+                    /// succeed, but will not actually make changes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SaaSServiceManagement.v1beta1.Data.ReplicationInternal Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/replicationsInternal";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("replicationInternalId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "replicationInternalId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Delete a single replication internal.</summary>
+                /// <param name="name">Required. The resource name of the resource within a service.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Delete a single replication internal.</summary>
+                public class DeleteRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the resource within a service.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// The etag known to the client for the expected state of the replication internal. This is used
+                    /// with state-changing methods to prevent accidental overwrites when multiple user agents might be
+                    /// acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based
+                    /// on the expected existence of the replication internal. The Any wildcard (`*`) requires that the
+                    /// resource must already exists, and the Not Any wildcard (`!*`) requires that it must not.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// If "validate_only" is set to true, the service will try to validate that this request would
+                    /// succeed, but will not actually make changes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/replicationsInternal/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve a single replication internal.</summary>
+                /// <param name="name">Required. The resource name of the resource within a service.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Retrieve a single replication internal.</summary>
+                public class GetRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.ReplicationInternal>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the resource within a service.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/replicationsInternal/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve a collection of replication internals.</summary>
+                /// <param name="parent">Required. The parent of the replication internal.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Retrieve a collection of replication internals.</summary>
+                public class ListRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.ListReplicationsInternalResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent of the replication internal.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Filter the list as specified in https://google.aip.dev/160.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Order results as specified in https://google.aip.dev/132.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>The maximum number of replication internals to send per page.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The page token: If the next_page_token from a previous response is provided, this request will
+                    /// send the subsequent page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/replicationsInternal";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a single replication internal.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
+                /// "projects/{project}/locations/{location}/replicationInternal/{replication_internal_id}"
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.SaaSServiceManagement.v1beta1.Data.ReplicationInternal body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a single replication internal.</summary>
+                public class PatchRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.ReplicationInternal>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.ReplicationInternal body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
+                    /// "projects/{project}/locations/{location}/replicationInternal/{replication_internal_id}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// The etag known to the client for the expected state of the replication internal. This is used
+                    /// with state-changing methods to prevent accidental overwrites when multiple user agents might be
+                    /// acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based
+                    /// on the expected existence of the replication internal. The Any wildcard (`*`) requires that the
+                    /// resource must already exists, and the Not Any wildcard (`!*`) requires that it must not.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// An optional request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Field mask is used to specify the fields to be overwritten in the ReplicationInternal resource
+                    /// by the update. The fields specified in the update_mask are relative to the resource, not the
+                    /// full request. A field will be overwritten if it is in the mask. If the user does not provide a
+                    /// mask then all fields in the ReplicationInternal will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// If "validate_only" is set to true, the service will try to validate that this request would
+                    /// succeed, but will not actually make changes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SaaSServiceManagement.v1beta1.Data.ReplicationInternal Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/replicationsInternal/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
@@ -4410,6 +4900,28 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response structure for the ListReplicationsInternal method.</summary>
+    public class ListReplicationsInternalResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If present, the next page token can be provided to a subsequent ListReplicationsInternal call to list the
+        /// next page. If empty, there are no more pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The resulting replication internals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicationsInternal")]
+        public virtual System.Collections.Generic.IList<ReplicationInternal> ReplicationsInternal { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response structure for the ListRolloutKinds method.</summary>
     public class ListRolloutKindsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4814,6 +5326,184 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeableFromReleases")]
         public virtual System.Collections.Generic.IList<string> UpgradeableFromReleases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ReplicationInternal is a resource that represents the replication of a resource to multiple locations. This is
+    /// an internal resource to achieve replication before GA and will not expose to the public API.
+    /// </summary>
+    public class ReplicationInternal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Annotations is an unstructured key-value map stored with a resource that may be set by external
+        /// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
+        /// modifying objects. More info: https://kubernetes.io/docs/user-guide/annotations
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. An opaque value that uniquely identifies a version or generation of a resource. It can be used
+        /// to confirm that the client and server agree on the ordering of a resource being written.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource
+        /// labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum number of retries for the replication. If the replication fails from a retryable
+        /// error, it will be retried for this number of times.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRetryCount")]
+        public virtual System.Nullable<int> MaxRetryCount { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
+        /// "projects/{project}/locations/{location}/replicationInternal/{replication_internal_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The payload of the request for replication. It could be any request type that is supported by the
+        /// replication service. e.g. CreateUnitKindRequest, UpdateUnitKindRequest, DeleteReleaseRequest, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
+
+        /// <summary>Output only. The state of the replication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The stats of the replication. One key for each location in target_locations</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual System.Collections.Generic.IDictionary<string, ReplicationStats> Stats { get; set; }
+
+        /// <summary>Optional. The target locations to replicate the resource to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLocations")]
+        public virtual System.Collections.Generic.IList<string> TargetLocations { get; set; }
+
+        /// <summary>
+        /// Output only. The unique identifier of the resource. UID is unique in the time and space for this resource
+        /// within the scope of the service. It is typically generated by the server on successful creation of a
+        /// resource and must not be changed. UID is used to uniquely identify resources with resource name reuses. This
+        /// should be a UUID4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the resource was last updated. Any change to the resource made by users must
+        /// refresh this value. Changes to a resource made by the service should refresh this value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>
+    /// ReplicationStats contains the stats of the replication. It contains the resources that are pending, finished,
+    /// failed, and the errors if any.
+    /// </summary>
+    public class ReplicationStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The errors that occurred during replication, one error for each failed resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<Status> Errors { get; set; }
+
+        /// <summary>The resources that are failed replication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedResources")]
+        public virtual System.Collections.Generic.IList<string> FailedResources { get; set; }
+
+        /// <summary>The resources that are finished replication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishedResources")]
+        public virtual System.Collections.Generic.IList<string> FinishedResources { get; set; }
+
+        /// <summary>The resources that are pending replication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingResources")]
+        public virtual System.Collections.Generic.IList<string> PendingResources { get; set; }
+
+        /// <summary>The number of retries for the failed resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryCount")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> RetryCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5510,6 +6200,35 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
