@@ -12851,6 +12851,14 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> Scale { get; set; }
 
         /// <summary>
+        /// Optional. Precision (maximum number of total digits in base 10) for seconds of TIMESTAMP type. Possible
+        /// values include: * 6 (Default, for TIMESTAMP type with microsecond precision) * 12 (For TIMESTAMP type with
+        /// picosecond precision)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampPrecision")]
+        public virtual System.Nullable<long> TimestampPrecision { get; set; }
+
+        /// <summary>
         /// Required. The field data type. Possible values include: * STRING * BYTES * INTEGER (or INT64) * FLOAT (or
         /// FLOAT64) * BOOLEAN (or BOOL) * TIMESTAMP * DATE * TIME * DATETIME * GEOGRAPHY * NUMERIC * BIGNUMERIC * JSON
         /// * RECORD (or STRUCT) * RANGE Use of RECORD/STRUCT indicates that the field contains a nested schema.
