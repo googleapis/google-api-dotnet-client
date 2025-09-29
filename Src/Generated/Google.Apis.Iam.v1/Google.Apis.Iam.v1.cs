@@ -12633,7 +12633,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessRestrictions")]
         public virtual AccessRestrictions AccessRestrictions { get; set; }
 
-        /// <summary>Optional. A user-specified description of the pool. Cannot exceed 256 characters.</summary>
+        /// <summary>Optional. A description of the pool. Cannot exceed 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -12644,9 +12644,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
-        /// <summary>
-        /// Optional. A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
-        /// </summary>
+        /// <summary>Optional. A display name for the pool. Cannot exceed 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -12777,7 +12775,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributeMapping")]
         public virtual System.Collections.Generic.IDictionary<string, string> AttributeMapping { get; set; }
 
-        /// <summary>Optional. A user-specified description of the provider. Cannot exceed 256 characters.</summary>
+        /// <summary>Optional. A description of the provider. Cannot exceed 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -12795,7 +12793,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
-        /// <summary>Optional. A user-specified display name for the provider. Cannot exceed 32 characters.</summary>
+        /// <summary>Optional. A display name for the provider. Cannot exceed 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -12970,15 +12968,11 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("claimMapping")]
         public virtual System.Collections.Generic.IDictionary<string, string> ClaimMapping { get; set; }
 
-        /// <summary>
-        /// Optional. The user-specified description of the scim tenant. Cannot exceed 256 characters.
-        /// </summary>
+        /// <summary>Optional. The description of the scim tenant. Cannot exceed 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>
-        /// Optional. The user-specified display name of the scim tenant. Cannot exceed 32 characters.
-        /// </summary>
+        /// <summary>Optional. The display name of the scim tenant. Cannot exceed 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -13040,7 +13034,7 @@ namespace Google.Apis.Iam.v1.Data
     /// </summary>
     public class WorkforcePoolProviderScimToken : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The user-specified display name of the scim token. Cannot exceed 32 characters.</summary>
+        /// <summary>Optional. The display name of the scim token. Cannot exceed 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
