@@ -4774,7 +4774,10 @@ namespace Google.Apis.Backupdr.v1
 
                 /// <summary>Subscribes to a trial for a project</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource where this trial will be created.</param>
+                /// <param name="parent">
+                /// Required. The project where this trial will be created. Format:
+                /// projects/{project}/locations/{location} Supported Locations are - us, eu and asia.
+                /// </param>
                 public virtual SubscribeRequest Subscribe(Google.Apis.Backupdr.v1.Data.SubscribeTrialRequest body, string parent)
                 {
                     return new SubscribeRequest(this.service, body, parent);
@@ -4791,7 +4794,10 @@ namespace Google.Apis.Backupdr.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent resource where this trial will be created.</summary>
+                    /// <summary>
+                    /// Required. The project where this trial will be created. Format:
+                    /// projects/{project}/locations/{location} Supported Locations are - us, eu and asia.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -4872,7 +4878,10 @@ namespace Google.Apis.Backupdr.v1
             }
 
             /// <summary>Gets the Trial state for a given project</summary>
-            /// <param name="name">Required. The name of the trial to retrieve.</param>
+            /// <param name="name">
+            /// Required. The project for which trial details need to be retrieved. Format:
+            /// projects/{project}/locations/{location} Supported Locations are - us, eu and asia.
+            /// </param>
             public virtual GetTrialRequest GetTrial(string name)
             {
                 return new GetTrialRequest(this.service, name);
@@ -4888,7 +4897,10 @@ namespace Google.Apis.Backupdr.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. The name of the trial to retrieve.</summary>
+                /// <summary>
+                /// Required. The project for which trial details need to be retrieved. Format:
+                /// projects/{project}/locations/{location} Supported Locations are - us, eu and asia.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -5175,6 +5187,48 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// AlloyDBClusterDataSourceProperties represents the properties of a AlloyDB cluster resource that are stored in
+    /// the DataSource. .
+    /// </summary>
+    public class AlloyDBClusterDataSourceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the AlloyDB cluster backed up by the datasource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AlloyDbClusterBackupProperties represents AlloyDB cluster backup properties. .</summary>
+    public class AlloyDbClusterBackupProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The chain id of this backup. Backups belonging to the same chain are sharing the same chain id.
+        /// This property is calculated and maintained by BackupDR.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chainId")]
+        public virtual string ChainId { get; set; }
+
+        /// <summary>
+        /// Output only. The PostgreSQL major version of the AlloyDB cluster when the backup was taken.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
+        public virtual string DatabaseVersion { get; set; }
+
+        /// <summary>An optional text description for the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Storage usage of this particular backup</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storedBytes")]
+        public virtual System.Nullable<long> StoredBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An instance-attached disk resource.</summary>
     public class AttachedDisk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5319,6 +5373,10 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>Message describing a Backup object.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. AlloyDB specific backup properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloyDbBackupProperties")]
+        public virtual AlloyDbClusterBackupProperties AlloyDbBackupProperties { get; set; }
+
         /// <summary>Output only. Backup Appliance specific backup properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupApplianceBackupProperties")]
         public virtual BackupApplianceBackupProperties BackupApplianceBackupProperties { get; set; }
@@ -7582,6 +7640,14 @@ namespace Google.Apis.Backupdr.v1.Data
     /// </summary>
     public class DataSourceGcpResource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. AlloyDBClusterDataSourceProperties has a subset of AlloyDB cluster properties that are useful
+        /// at the Datasource level. Currently none of its child properties are auditable. If new auditable properties
+        /// are added, the AUDIT annotation should be added.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloyDbClusterDatasourceProperties")]
+        public virtual AlloyDBClusterDataSourceProperties AlloyDbClusterDatasourceProperties { get; set; }
+
         /// <summary>
         /// Output only. CloudSqlInstanceDataSourceProperties has a subset of Cloud SQL Instance properties that are
         /// useful at the Datasource level.
