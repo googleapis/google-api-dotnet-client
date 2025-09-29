@@ -6676,8 +6676,8 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual CloudRunConfig CloudRunConfig { get; set; }
 
         /// <summary>
-        /// Configuration for the ConfigConnector add-on, a Kubernetes extension to manage hosted GCP services through
-        /// the Kubernetes API
+        /// Configuration for the ConfigConnector add-on, a Kubernetes extension to manage hosted Google Cloud services
+        /// through the Kubernetes API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configConnectorConfig")]
         public virtual ConfigConnectorConfig ConfigConnectorConfig { get; set; }
@@ -6690,7 +6690,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcePersistentDiskCsiDriverConfig")]
         public virtual GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfig { get; set; }
 
-        /// <summary>Configuration for the GCP Filestore CSI driver.</summary>
+        /// <summary>Configuration for the Filestore CSI driver.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpFilestoreCsiDriverConfig")]
         public virtual GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfig { get; set; }
 
@@ -7295,7 +7295,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fqdns")]
         public virtual System.Collections.Generic.IList<string> Fqdns { get; set; }
 
-        /// <summary>Google Secret Manager (GCP) certificate configuration.</summary>
+        /// <summary>Secret Manager certificate configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpSecretManagerCertificateConfig")]
         public virtual GCPSecretManagerCertificateConfig GcpSecretManagerCertificateConfig { get; set; }
 
@@ -7498,7 +7498,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
         public virtual string Endpoint { get; set; }
 
-        /// <summary>GKE Enterprise Configuration.</summary>
+        /// <summary>
+        /// GKE Enterprise Configuration. Deprecated: GKE Enterprise features are now available without an Enterprise
+        /// tier.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseConfig")]
         public virtual EnterpriseConfig EnterpriseConfig { get; set; }
 
@@ -7871,7 +7874,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("workloadCertificates")]
         public virtual WorkloadCertificates WorkloadCertificates { get; set; }
 
-        /// <summary>Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.</summary>
+        /// <summary>Configuration for the use of Kubernetes Service Accounts in IAM policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityConfig")]
         public virtual WorkloadIdentityConfig WorkloadIdentityConfig { get; set; }
 
@@ -8059,7 +8062,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnablePrivateEndpoint")]
         public virtual System.Nullable<bool> DesiredEnablePrivateEndpoint { get; set; }
 
-        /// <summary>The desired enterprise configuration for the cluster.</summary>
+        /// <summary>
+        /// The desired enterprise configuration for the cluster. Deprecated: GKE Enterprise features are now available
+        /// without an Enterprise tier.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnterpriseConfig")]
         public virtual DesiredEnterpriseConfig DesiredEnterpriseConfig { get; set; }
 
@@ -8674,11 +8680,19 @@ namespace Google.Apis.Container.v1beta1.Data
     public class DNSEndpointConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use
+        /// Controls whether user traffic is allowed over this endpoint. Note that Google-managed services may still use
         /// the endpoint even if this is false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowExternalTraffic")]
         public virtual System.Nullable<bool> AllowExternalTraffic { get; set; }
+
+        /// <summary>Controls whether the k8s certs auth is allowed via DNS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableK8sCertsViaDns")]
+        public virtual System.Nullable<bool> EnableK8sCertsViaDns { get; set; }
+
+        /// <summary>Controls whether the k8s token auth is allowed via DNS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableK8sTokensViaDns")]
+        public virtual System.Nullable<bool> EnableK8sTokensViaDns { get; set; }
 
         /// <summary>
         /// Output only. The cluster's DNS endpoint configuration. A DNS format address. This is accessible from the
@@ -8816,7 +8830,10 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.</summary>
+    /// <summary>
+    /// DesiredEnterpriseConfig is a wrapper used for updating enterprise_config. Deprecated: GKE Enterprise features
+    /// are now available without an Enterprise tier.
+    /// </summary>
     public class DesiredEnterpriseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>desired_tier specifies the desired tier of the cluster.</summary>
@@ -8849,7 +8866,10 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>EnterpriseConfig is the cluster enterprise configuration.</summary>
+    /// <summary>
+    /// EnterpriseConfig is the cluster enterprise configuration. Deprecated: GKE Enterprise features are now available
+    /// without an Enterprise tier.
+    /// </summary>
     public class EnterpriseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. cluster_tier indicates the effective tier of the cluster.</summary>
@@ -9221,10 +9241,10 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for the GCP Filestore CSI driver.</summary>
+    /// <summary>Configuration for the Filestore CSI driver.</summary>
     public class GcpFilestoreCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the GCP Filestore CSI driver is enabled for this cluster.</summary>
+        /// <summary>Whether the Filestore CSI driver is enabled for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
@@ -12102,7 +12122,7 @@ namespace Google.Apis.Container.v1beta1.Data
     }
 
     /// <summary>
-    /// Collection of [GCP
+    /// Collection of [Resource Manager
     /// labels](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-labels).
     /// </summary>
     public class ResourceLabels : Google.Apis.Requests.IDirectResponseSchema
@@ -14287,7 +14307,7 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.</summary>
+    /// <summary>Configuration for the use of Kubernetes Service Accounts in IAM policies.</summary>
     public class WorkloadIdentityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>IAM Identity Namespace to attach all Kubernetes Service Accounts to.</summary>
