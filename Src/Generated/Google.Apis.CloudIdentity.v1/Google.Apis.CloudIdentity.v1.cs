@@ -1593,9 +1593,9 @@ namespace Google.Apis.CloudIdentity.v1
             /// https://www.googleapis.com/auth/cloud-identity.devices.lookup If multiple properties are provided, only
             /// DeviceUsers having all of these properties are considered as matches - i.e. the query behaves like an
             /// AND. Different platforms require different amounts of information from the caller to ensure that the
-            /// DeviceUser is uniquely identified. - iOS: No properties need to be passed, the caller's credentials are
-            /// sufficient to identify the corresponding DeviceUser. - Android: Specifying the 'android_id' field is
-            /// required. - Desktop: Specifying the 'raw_resource_id' field is required.
+            /// DeviceUser is uniquely identified. - iOS: Specifying the 'partner' and 'ios_device_id' fields is
+            /// required. - Android: Specifying the 'android_id' field is required. - Desktop: Specifying the
+            /// 'raw_resource_id' field is required.
             /// </summary>
             /// <param name="parent">
             /// Must be set to "devices/-/deviceUsers" to search across all DeviceUser belonging to the user.
@@ -1611,9 +1611,9 @@ namespace Google.Apis.CloudIdentity.v1
             /// https://www.googleapis.com/auth/cloud-identity.devices.lookup If multiple properties are provided, only
             /// DeviceUsers having all of these properties are considered as matches - i.e. the query behaves like an
             /// AND. Different platforms require different amounts of information from the caller to ensure that the
-            /// DeviceUser is uniquely identified. - iOS: No properties need to be passed, the caller's credentials are
-            /// sufficient to identify the corresponding DeviceUser. - Android: Specifying the 'android_id' field is
-            /// required. - Desktop: Specifying the 'raw_resource_id' field is required.
+            /// DeviceUser is uniquely identified. - iOS: Specifying the 'partner' and 'ios_device_id' fields is
+            /// required. - Android: Specifying the 'android_id' field is required. - Desktop: Specifying the
+            /// 'raw_resource_id' field is required.
             /// </summary>
             public class LookupRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse>
             {
@@ -1638,6 +1638,14 @@ namespace Google.Apis.CloudIdentity.v1
                 public virtual string AndroidId { get; set; }
 
                 /// <summary>
+                /// Optional. The partner-specified device identifier assigned to the iOS device that initiated the
+                /// Lookup API call. This string must match the value of the iosDeviceId key in the app config
+                /// dictionary provided to Google Workspace apps.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("iosDeviceId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string IosDeviceId { get; set; }
+
+                /// <summary>
                 /// The maximum number of DeviceUsers to return. If unspecified, at most 20 DeviceUsers will be
                 /// returned. The maximum value is 20; values above 20 will be coerced to 20.
                 /// </summary>
@@ -1653,10 +1661,17 @@ namespace Google.Apis.CloudIdentity.v1
                 public virtual string PageToken { get; set; }
 
                 /// <summary>
+                /// Optional. The partner ID of the calling iOS app. This string must match the value of the partner key
+                /// within the app configuration dictionary provided to Google Workspace apps.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("partner", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Partner { get; set; }
+
+                /// <summary>
                 /// Raw Resource Id used by Google Endpoint Verification. If the user is enrolled into Google Endpoint
                 /// Verification, this id will be saved as the 'device_resource_id' field in the following platform
-                /// dependent files. * macOS: ~/.secureConnect/context_aware_config.json * Windows:
-                /// %USERPROFILE%\AppData\Local\Google\Endpoint Verification\accounts.json * Linux:
+                /// dependent files. Mac: ~/.secureConnect/context_aware_config.json Windows:
+                /// C:\Users\%USERPROFILE%\.secureConnect\context_aware_config.json Linux:
                 /// ~/.secureConnect/context_aware_config.json
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("rawResourceId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1698,6 +1713,14 @@ namespace Google.Apis.CloudIdentity.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                    RequestParameters.Add("iosDeviceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "iosDeviceId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -1709,6 +1732,14 @@ namespace Google.Apis.CloudIdentity.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("partner", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partner",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
