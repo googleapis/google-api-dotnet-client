@@ -1976,10 +1976,17 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// services" in some contexts, such as by the "service" keyword in a .proto file, but they are different from API
     /// Services, which represent a concrete implementation of an interface as opposed to simply a description of
     /// methods and bindings. They are also sometimes simply referred to as "APIs" in other contexts, such as the name
-    /// of this message itself. See https://cloud.google.com/apis/design/glossary for detailed terminology.
+    /// of this message itself. See https://cloud.google.com/apis/design/glossary for detailed terminology. New usages
+    /// of this message as an alternative to ServiceDescriptorProto are strongly discouraged. This message does not
+    /// reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of
+    /// FileDescriptorSet which preserves the necessary information.
     /// </summary>
     public class Api : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The source edition string, only valid when syntax is SYNTAX_EDITIONS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
         /// <summary>The methods of this interface, in unspecified order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("methods")]
         public virtual System.Collections.Generic.IList<Method> Methods { get; set; }
@@ -2319,6 +2326,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("overridesByRequestProtocol")]
         public virtual System.Collections.Generic.IDictionary<string, BackendRule> OverridesByRequestProtocol { get; set; }
 
+        /// <summary>no-lint</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathTranslation")]
         public virtual string PathTranslation { get; set; }
 
@@ -3150,7 +3158,11 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Enum type definition.</summary>
+    /// <summary>
+    /// Enum type definition. New usages of this message as an alternative to EnumDescriptorProto are strongly
+    /// discouraged. This message does not reliability preserve all information necessary to model the schema and
+    /// preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information.
+    /// </summary>
     public class Enum : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The source edition string, only valid when syntax is SYNTAX_EDITIONS.</summary>
@@ -3181,7 +3193,11 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Enum value definition.</summary>
+    /// <summary>
+    /// Enum value definition. New usages of this message as an alternative to EnumValueDescriptorProto are strongly
+    /// discouraged. This message does not reliability preserve all information necessary to model the schema and
+    /// preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information.
+    /// </summary>
     public class EnumValue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Enum value name.</summary>
@@ -3278,7 +3294,11 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A single field of a message type.</summary>
+    /// <summary>
+    /// A single field of a message type. New usages of this message as an alternative to FieldDescriptorProto are
+    /// strongly discouraged. This message does not reliability preserve all information necessary to model the schema
+    /// and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information.
+    /// </summary>
     public class Field : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The field cardinality.</summary>
@@ -3470,7 +3490,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
 
         /// <summary>
         /// Map of service names to renamed services. Keys are the package relative service names and values are the
-        /// name to be used for the service client and call options. publishing: go_settings: renamed_services:
+        /// name to be used for the service client and call options. Example: publishing: go_settings: renamed_services:
         /// Publisher: TopicAdmin
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renamedServices")]
@@ -3939,9 +3959,21 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Method represents a method of an API interface.</summary>
+    /// <summary>
+    /// Method represents a method of an API interface. New usages of this message as an alternative to
+    /// MethodDescriptorProto are strongly discouraged. This message does not reliability preserve all information
+    /// necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the
+    /// necessary information.
+    /// </summary>
     public class Method : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The source edition string, only valid when syntax is SYNTAX_EDITIONS. This field should be ignored, instead
+        /// the edition should be inherited from Api. This is similar to Field and EnumValue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
         /// <summary>The simple name of this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3966,7 +3998,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responseTypeUrl")]
         public virtual string ResponseTypeUrl { get; set; }
 
-        /// <summary>The source syntax of this method.</summary>
+        /// <summary>
+        /// The source syntax of this method. This field should be ignored, instead the syntax should be inherited from
+        /// Api. This is similar to Field and EnumValue.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syntax")]
         public virtual string Syntax { get; set; }
 
@@ -4520,7 +4555,11 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A protocol buffer option, which can be attached to a message, field, enumeration, etc.</summary>
+    /// <summary>
+    /// A protocol buffer option, which can be attached to a message, field, enumeration, etc. New usages of this
+    /// message as an alternative to FileOptions, MessageOptions, FieldOptions, EnumOptions, EnumValueOptions,
+    /// ServiceOptions, or MethodOptions are strongly discouraged.
+    /// </summary>
     public class Option : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4585,6 +4624,15 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// <summary>Some settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
         public virtual CommonLanguageSettings Common { get; set; }
+
+        /// <summary>
+        /// The package name to use in Php. Clobbers the php_namespace option set in the protobuf. This should be used
+        /// **only** by APIs who have already set the language_settings.php.package_name" field in gapic.yaml. API teams
+        /// should use the protobuf php_namespace option where possible. Example of a YAML configuration:: publishing:
+        /// library_settings: php_settings: library_package: Google\Cloud\PubSub\V1
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("libraryPackage")]
+        public virtual string LibraryPackage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4980,10 +5028,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// <summary>Google Service Control selects service configurations based on traffic percentage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trafficPercentStrategy")]
         public virtual TrafficPercentStrategy TrafficPercentStrategy { get; set; }
-
-        /// <summary>The TPC universe which the rollout will be rolled out to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("universe")]
-        public virtual string Universe { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5438,7 +5482,11 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A protocol buffer message type.</summary>
+    /// <summary>
+    /// A protocol buffer message type. New usages of this message as an alternative to DescriptorProto are strongly
+    /// discouraged. This message does not reliability preserve all information necessary to model the schema and
+    /// preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information.
+    /// </summary>
     public class Type : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The source edition string, only valid when syntax is SYNTAX_EDITIONS.</summary>
