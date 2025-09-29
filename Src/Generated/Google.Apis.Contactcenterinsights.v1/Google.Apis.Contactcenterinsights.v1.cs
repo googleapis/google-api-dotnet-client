@@ -2883,6 +2883,17 @@ namespace Google.Apis.Contactcenterinsights.v1
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
+                            /// <summary>
+                            /// When set to `true`, operations that are reachable are returned as normal, and those that
+                            /// are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can
+                            /// only be `true` when reading across collections e.g. when `parent` is set to
+                            /// `"projects/example/locations/-"`. This field is not by default supported and will result
+                            /// in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or
+                            /// product specific documentation.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
@@ -2923,6 +2934,14 @@ namespace Google.Apis.Contactcenterinsights.v1
                                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "returnPartialSuccess",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -9198,6 +9217,17 @@ namespace Google.Apis.Contactcenterinsights.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
+                    /// `true` when reading across collections e.g. when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                    /// specific documentation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -9238,6 +9268,14 @@ namespace Google.Apis.Contactcenterinsights.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -14126,6 +14164,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentType")]
         public virtual string AgentType { get; set; }
 
+        /// <summary>The agent's deployment display name. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentDisplayName")]
+        public virtual string DeploymentDisplayName { get; set; }
+
+        /// <summary>The agent's deployment ID. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentId")]
+        public virtual string DeploymentId { get; set; }
+
         /// <summary>The agent's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -14147,6 +14193,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>User-specified strings representing the agent's teams.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teams")]
         public virtual System.Collections.Generic.IList<string> Teams { get; set; }
+
+        /// <summary>The agent's version display name. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionDisplayName")]
+        public virtual string VersionDisplayName { get; set; }
+
+        /// <summary>The agent's version ID. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
+        public virtual string VersionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15120,17 +15174,51 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Metadata about the agent dimension.</summary>
     public class GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The agent's name</summary>
+        /// <summary>
+        /// Optional. The agent's deployment display name. Only applicable to automated agents. This will be populated
+        /// for AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDeploymentDisplayName")]
+        public virtual string AgentDeploymentDisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. The agent's deployment ID. Only applicable to automated agents. This will be populated for AGENT
+        /// and AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDeploymentId")]
+        public virtual string AgentDeploymentId { get; set; }
+
+        /// <summary>
+        /// Optional. The agent's name This will be populated for AGENT, AGENT_TEAM, AGENT_VERSION_ID, and
+        /// AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentDisplayName")]
         public virtual string AgentDisplayName { get; set; }
 
-        /// <summary>Optional. A user-specified string representing the agent.</summary>
+        /// <summary>
+        /// Optional. A user-specified string representing the agent. This will be populated for AGENT, AGENT_TEAM,
+        /// AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
         public virtual string AgentId { get; set; }
 
         /// <summary>Optional. A user-specified string representing the agent's team.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentTeam")]
         public virtual string AgentTeam { get; set; }
+
+        /// <summary>
+        /// Optional. The agent's version display name. Only applicable to automated agents. This will be populated for
+        /// AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentVersionDisplayName")]
+        public virtual string AgentVersionDisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. The agent's version ID. Only applicable to automated agents. This will be populated for
+        /// AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentVersionId")]
+        public virtual string AgentVersionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18434,7 +18522,12 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("averageDuration")]
         public virtual object AverageDuration { get; set; }
 
-        /// <summary>Average QA normalized score. Will exclude 0's in average calculation.</summary>
+        /// <summary>
+        /// The average normalized QA score for a scorecard. When computing the average across a set of conversations,
+        /// if a conversation has been evaluated with multiple revisions of a scorecard, only the latest revision
+        /// results will be used. Will exclude 0's in average calculation. Will be only populated if the request
+        /// specifies a dimension of QA_SCORECARD_ID.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageQaNormalizedScore")]
         public virtual System.Nullable<double> AverageQaNormalizedScore { get; set; }
 
@@ -20869,6 +20962,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentType")]
         public virtual string AgentType { get; set; }
 
+        /// <summary>The agent's deployment display name. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentDisplayName")]
+        public virtual string DeploymentDisplayName { get; set; }
+
+        /// <summary>The agent's deployment ID. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentId")]
+        public virtual string DeploymentId { get; set; }
+
         /// <summary>The agent's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -20890,6 +20991,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>User-specified strings representing the agent's teams.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teams")]
         public virtual System.Collections.Generic.IList<string> Teams { get; set; }
+
+        /// <summary>The agent's version display name. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionDisplayName")]
+        public virtual string VersionDisplayName { get; set; }
+
+        /// <summary>The agent's version ID. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
+        public virtual string VersionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21856,17 +21965,51 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Metadata about the agent dimension.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The agent's name</summary>
+        /// <summary>
+        /// Optional. The agent's deployment display name. Only applicable to automated agents. This will be populated
+        /// for AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDeploymentDisplayName")]
+        public virtual string AgentDeploymentDisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. The agent's deployment ID. Only applicable to automated agents. This will be populated for AGENT
+        /// and AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDeploymentId")]
+        public virtual string AgentDeploymentId { get; set; }
+
+        /// <summary>
+        /// Optional. The agent's name This will be populated for AGENT, AGENT_TEAM, AGENT_VERSION_ID, and
+        /// AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentDisplayName")]
         public virtual string AgentDisplayName { get; set; }
 
-        /// <summary>Optional. A user-specified string representing the agent.</summary>
+        /// <summary>
+        /// Optional. A user-specified string representing the agent. This will be populated for AGENT, AGENT_TEAM,
+        /// AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
         public virtual string AgentId { get; set; }
 
         /// <summary>Optional. A user-specified string representing the agent's team.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentTeam")]
         public virtual string AgentTeam { get; set; }
+
+        /// <summary>
+        /// Optional. The agent's version display name. Only applicable to automated agents. This will be populated for
+        /// AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentVersionDisplayName")]
+        public virtual string AgentVersionDisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. The agent's version ID. Only applicable to automated agents. This will be populated for
+        /// AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentVersionId")]
+        public virtual string AgentVersionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23962,7 +24105,12 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("averageDuration")]
         public virtual object AverageDuration { get; set; }
 
-        /// <summary>Average QA normalized score. Will exclude 0's in average calculation.</summary>
+        /// <summary>
+        /// The average normalized QA score for a scorecard. When computing the average across a set of conversations,
+        /// if a conversation has been evaluated with multiple revisions of a scorecard, only the latest revision
+        /// results will be used. Will exclude 0's in average calculation. Will be only populated if the request
+        /// specifies a dimension of QA_SCORECARD_ID.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageQaNormalizedScore")]
         public virtual System.Nullable<double> AverageQaNormalizedScore { get; set; }
 
@@ -25043,6 +25191,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
