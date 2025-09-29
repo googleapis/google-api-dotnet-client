@@ -2646,6 +2646,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     /// <summary>An action taken by the AI agent while attempting to accomplish a goal.</summary>
     public class GoogleFirebaseAppdistroV1alphaGoalAction : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The type of caching used to determine the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cachingType")]
+        public virtual string CachingType { get; set; }
+
         /// <summary>Output only. Debug information explaining why the agent to the specific action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugInfo")]
         public virtual GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo DebugInfo { get; set; }
