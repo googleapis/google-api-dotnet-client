@@ -1007,6 +1007,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
+                            /// <summary>
+                            /// When set to `true`, operations that are reachable are returned as normal, and those that
+                            /// are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can
+                            /// only be `true` when reading across collections e.g. when `parent` is set to
+                            /// `"projects/example/locations/-"`. This field is not by default supported and will result
+                            /// in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or
+                            /// product specific documentation.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
@@ -1047,6 +1058,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "returnPartialSuccess",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2304,6 +2323,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual string PageToken { get; set; }
 
+                                /// <summary>
+                                /// When set to `true`, operations that are reachable are returned as normal, and those
+                                /// that are unreachable are returned in the [ListOperationsResponse.unreachable] field.
+                                /// This can only be `true` when reading across collections e.g. when `parent` is set to
+                                /// `"projects/example/locations/-"`. This field is not by default supported and will
+                                /// result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in
+                                /// service or product specific documentation.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                                 /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "list";
 
@@ -2344,6 +2374,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "returnPartialSuccess",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -3867,6 +3905,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual string PageToken { get; set; }
 
+                                /// <summary>
+                                /// When set to `true`, operations that are reachable are returned as normal, and those
+                                /// that are unreachable are returned in the [ListOperationsResponse.unreachable] field.
+                                /// This can only be `true` when reading across collections e.g. when `parent` is set to
+                                /// `"projects/example/locations/-"`. This field is not by default supported and will
+                                /// result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in
+                                /// service or product specific documentation.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                                 /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "list";
 
@@ -3907,6 +3956,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "returnPartialSuccess",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -4024,6 +4081,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
+                            /// <summary>
+                            /// When set to `true`, operations that are reachable are returned as normal, and those that
+                            /// are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can
+                            /// only be `true` when reading across collections e.g. when `parent` is set to
+                            /// `"projects/example/locations/-"`. This field is not by default supported and will result
+                            /// in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or
+                            /// product specific documentation.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
@@ -4064,6 +4132,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "returnPartialSuccess",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -4198,6 +4274,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual string PageToken { get; set; }
 
+                                /// <summary>
+                                /// When set to `true`, operations that are reachable are returned as normal, and those
+                                /// that are unreachable are returned in the [ListOperationsResponse.unreachable] field.
+                                /// This can only be `true` when reading across collections e.g. when `parent` is set to
+                                /// `"projects/example/locations/-"`. This field is not by default supported and will
+                                /// result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in
+                                /// service or product specific documentation.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                                 /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "list";
 
@@ -4238,6 +4325,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "returnPartialSuccess",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -5775,6 +5870,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual string PageToken { get; set; }
 
+                                /// <summary>
+                                /// When set to `true`, operations that are reachable are returned as normal, and those
+                                /// that are unreachable are returned in the [ListOperationsResponse.unreachable] field.
+                                /// This can only be `true` when reading across collections e.g. when `parent` is set to
+                                /// `"projects/example/locations/-"`. This field is not by default supported and will
+                                /// result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in
+                                /// service or product specific documentation.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                                 /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "list";
 
@@ -5815,6 +5921,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "returnPartialSuccess",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -6146,6 +6260,18 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                                     public virtual string PageToken { get; set; }
 
+                                    /// <summary>
+                                    /// When set to `true`, operations that are reachable are returned as normal, and
+                                    /// those that are unreachable are returned in the
+                                    /// [ListOperationsResponse.unreachable] field. This can only be `true` when reading
+                                    /// across collections e.g. when `parent` is set to
+                                    /// `"projects/example/locations/-"`. This field is not by default supported and
+                                    /// will result in an `UNIMPLEMENTED` error if set unless explicitly documented
+                                    /// otherwise in service or product specific documentation.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                                     /// <summary>Gets the method name.</summary>
                                     public override string MethodName => "list";
 
@@ -6186,6 +6312,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                         {
                                             Name = "pageToken",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "returnPartialSuccess",
                                             IsRequired = false,
                                             ParameterType = "query",
                                             DefaultValue = null,
@@ -9843,6 +9977,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
+                            /// <summary>
+                            /// When set to `true`, operations that are reachable are returned as normal, and those that
+                            /// are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can
+                            /// only be `true` when reading across collections e.g. when `parent` is set to
+                            /// `"projects/example/locations/-"`. This field is not by default supported and will result
+                            /// in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or
+                            /// product specific documentation.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
@@ -9883,6 +10028,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "returnPartialSuccess",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -11862,6 +12015,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                        /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
+                        /// `true` when reading across collections e.g. when `parent` is set to
+                        /// `"projects/example/locations/-"`. This field is not by default supported and will result in
+                        /// an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                        /// specific documentation.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -11902,6 +12066,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "returnPartialSuccess",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -13382,6 +13554,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
+                            /// <summary>
+                            /// When set to `true`, operations that are reachable are returned as normal, and those that
+                            /// are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can
+                            /// only be `true` when reading across collections e.g. when `parent` is set to
+                            /// `"projects/example/locations/-"`. This field is not by default supported and will result
+                            /// in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or
+                            /// product specific documentation.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
@@ -13422,6 +13605,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "returnPartialSuccess",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -14870,6 +15061,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
+                            /// <summary>
+                            /// When set to `true`, operations that are reachable are returned as normal, and those that
+                            /// are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can
+                            /// only be `true` when reading across collections e.g. when `parent` is set to
+                            /// `"projects/example/locations/-"`. This field is not by default supported and will result
+                            /// in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or
+                            /// product specific documentation.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
@@ -14910,6 +15112,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "returnPartialSuccess",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -15027,6 +15237,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                        /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
+                        /// `true` when reading across collections e.g. when `parent` is set to
+                        /// `"projects/example/locations/-"`. This field is not by default supported and will result in
+                        /// an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                        /// specific documentation.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -15067,6 +15288,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "returnPartialSuccess",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -19200,6 +19429,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                        /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
+                        /// `true` when reading across collections e.g. when `parent` is set to
+                        /// `"projects/example/locations/-"`. This field is not by default supported and will result in
+                        /// an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                        /// specific documentation.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -19240,6 +19480,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "returnPartialSuccess",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -20557,6 +20805,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
+                    /// `true` when reading across collections e.g. when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                    /// specific documentation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -20597,6 +20856,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -22137,6 +22404,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                        /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
+                        /// `true` when reading across collections e.g. when `parent` is set to
+                        /// `"projects/example/locations/-"`. This field is not by default supported and will result in
+                        /// an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                        /// specific documentation.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -22177,6 +22455,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "returnPartialSuccess",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -23154,6 +23440,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>
+                /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true`
+                /// when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This
+                /// field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless
+                /// explicitly documented otherwise in service or product specific documentation.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -23194,6 +23490,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "returnPartialSuccess",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -47754,11 +48058,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// Required. User event type. Allowed values are: Generic values: * `search`: Search for Documents. *
         /// `view-item`: Detailed page view of a Document. * `view-item-list`: View of a panel or ordered list of
         /// Documents. * `view-home-page`: View of the home page. * `view-category-page`: View of a category page, e.g.
-        /// Home &amp;gt; Men &amp;gt; Jeans * `add-feedback`: Add a user feedback. Retail-related values: *
-        /// `add-to-cart`: Add an item(s) to cart, e.g. in Retail online shopping * `purchase`: Purchase an item(s)
-        /// Media-related values: * `media-play`: Start/resume watching a video, playing a song, etc. *
-        /// `media-complete`: Finished or stopped midway through a video, song, etc. Custom conversion value: *
-        /// `conversion`: Customer defined conversion event.
+        /// Home &amp;gt; Men &amp;gt; Jeans Retail-related values: * `add-to-cart`: Add an item(s) to cart, e.g. in
+        /// Retail online shopping * `purchase`: Purchase an item(s) Media-related values: * `media-play`: Start/resume
+        /// watching a video, playing a song, etc. * `media-complete`: Finished or stopped midway through a video, song,
+        /// etc. Custom conversion value: * `conversion`: Customer defined conversion event.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
@@ -55795,15 +56098,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Agentspace content uploaded as source.</summary>
     public class GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The full document name in Agentspace.</summary>
+        /// <summary>
+        /// Optional. The full resource name of the Agentspace document. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentName")]
         public virtual string DocumentName { get; set; }
 
-        /// <summary>Optional. Engine to verify the permission of the document.</summary>
+        /// <summary>
+        /// Optional. Engine to verify the permission of the document. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("engineName")]
         public virtual string EngineName { get; set; }
 
-        /// <summary>Optional. The full idea name for IdeaForge.</summary>
+        /// <summary>
+        /// Optional. Resource name of the idea forge instance. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/ideaForgeInstances/{instance}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ideaforgeIdeaName")]
         public virtual string IdeaforgeIdeaName { get; set; }
 
@@ -55907,6 +56219,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
