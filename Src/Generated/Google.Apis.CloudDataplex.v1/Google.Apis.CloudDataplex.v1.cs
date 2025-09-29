@@ -18290,6 +18290,95 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The output of a DataDocumentation scan.</summary>
+    public class GoogleCloudDataplexV1DataDocumentationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Table result for insights.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableResult")]
+        public virtual GoogleCloudDataplexV1DataDocumentationResultTableResult TableResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Column of a table with generated metadata and nested fields.</summary>
+    public class GoogleCloudDataplexV1DataDocumentationResultField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Generated description for columns and fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Nested fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataDocumentationResultField> Fields { get; set; }
+
+        /// <summary>Output only. The name of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A sample SQL query in data documentation.</summary>
+    public class GoogleCloudDataplexV1DataDocumentationResultQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The description for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. The SQL query string which can be executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sql")]
+        public virtual string Sql { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Schema of the table with generated metadata of columns.</summary>
+    public class GoogleCloudDataplexV1DataDocumentationResultSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The list of columns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataDocumentationResultField> Fields { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Generated metadata about the table.</summary>
+    public class GoogleCloudDataplexV1DataDocumentationResultTableResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The service-qualified full resource name of the cloud resource. Ex:
+        /// bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Generated description of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overview")]
+        public virtual string Overview { get; set; }
+
+        /// <summary>Output only. Sample SQL queries for the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataDocumentationResultQuery> Queries { get; set; }
+
+        /// <summary>Output only. Schema of the table with generated metadata of the columns in the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual GoogleCloudDataplexV1DataDocumentationResultSchema Schema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DataDocumentation scan related spec.</summary>
+    public class GoogleCloudDataplexV1DataDocumentationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// DataProfileResult defines the output of DataProfileScan. Each field of the table will have field type specific
     /// profile result.
@@ -19280,7 +19369,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// (such as null percent, cardinality, min/max/mean, etc). For more information, see About data profiling
     /// (https://cloud.google.com/dataplex/docs/data-profiling-overview). Data discovery: scans data in Cloud Storage
     /// buckets to extract and then catalog metadata. For more information, see Discover and catalog Cloud Storage data
-    /// (https://cloud.google.com/bigquery/docs/automatic-discovery).
+    /// (https://cloud.google.com/bigquery/docs/automatic-discovery). Data documentation: analyzes the table details and
+    /// generates insights including descriptions and sample SQL queries for the table. For more information, see
+    /// Generate data insights in BigQuery (https://cloud.google.com/bigquery/docs/data-insights).
     /// </summary>
     public class GoogleCloudDataplexV1DataScan : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19332,6 +19423,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Settings for a data discovery scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataDiscoverySpec")]
         public virtual GoogleCloudDataplexV1DataDiscoverySpec DataDiscoverySpec { get; set; }
+
+        /// <summary>Output only. The result of a data documentation scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDocumentationResult")]
+        public virtual GoogleCloudDataplexV1DataDocumentationResult DataDocumentationResult { get; set; }
+
+        /// <summary>Settings for a data documentation scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDocumentationSpec")]
+        public virtual GoogleCloudDataplexV1DataDocumentationSpec DataDocumentationSpec { get; set; }
 
         /// <summary>Output only. The result of a data profile scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfileResult")]
@@ -19936,6 +20035,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataDiscoverySpec")]
         public virtual GoogleCloudDataplexV1DataDiscoverySpec DataDiscoverySpec { get; set; }
 
+        /// <summary>Output only. The result of a data documentation scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDocumentationResult")]
+        public virtual GoogleCloudDataplexV1DataDocumentationResult DataDocumentationResult { get; set; }
+
+        /// <summary>Output only. Settings for a data documentation scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDocumentationSpec")]
+        public virtual GoogleCloudDataplexV1DataDocumentationSpec DataDocumentationSpec { get; set; }
+
         /// <summary>Output only. The result of a data profile scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfileResult")]
         public virtual GoogleCloudDataplexV1DataProfileResult DataProfileResult { get; set; }
@@ -20069,7 +20176,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan
         /// against. The field could either be: Cloud Storage bucket for DataDiscoveryScan Format:
         /// //storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID or BigQuery table of type "TABLE" for
-        /// DataProfileScan/DataQualityScan Format:
+        /// DataProfileScan/DataQualityScan/DataDocumentationScan Format:
         /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
