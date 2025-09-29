@@ -12598,6 +12598,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publishFindingsToCloudDataCatalog")]
         public virtual GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog PublishFindingsToCloudDataCatalog { get; set; }
 
+        /// <summary>Publish findings as an aspect to Dataplex Universal Catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishFindingsToDataplexCatalog")]
+        public virtual GooglePrivacyDlpV2PublishFindingsToDataplexCatalog PublishFindingsToDataplexCatalog { get; set; }
+
         /// <summary>Publish summary to Cloud Security Command Center (Alpha).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishSummaryToCscc")]
         public virtual GooglePrivacyDlpV2PublishSummaryToCscc PublishSummaryToCscc { get; set; }
@@ -19455,6 +19459,21 @@ namespace Google.Apis.DLP.v2.Data
     /// This action is allowed only if all resources being scanned are BigQuery tables. Compatible with: Inspect
     /// </summary>
     public class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Publish findings of a DlpJob to Dataplex Universal Catalog as a `sensitive-data-protection-job-result` aspect.
+    /// To learn more about aspects, see [Send inspection results to Dataplex Universal Catalog as
+    /// aspects](https://cloud.google.com/sensitive-data-protection/docs/add-aspects-inspection-job). Aspects are
+    /// persisted in Dataplex Universal Catalog storage and are governed by service-specific policies for Dataplex
+    /// Universal Catalog. For more information, see [Service Specific
+    /// Terms](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified.
+    /// This action is allowed only if all resources being scanned are BigQuery tables. Compatible with: Inspect
+    /// </summary>
+    public class GooglePrivacyDlpV2PublishFindingsToDataplexCatalog : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
