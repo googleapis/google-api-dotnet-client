@@ -6645,9 +6645,8 @@ namespace Google.Apis.BeyondCorp.v1.Data
         /// Required. Endpoint matchers associated with an application. A combination of hostname and ports as endpoint
         /// matchers is used to match the application. Match conditions for OR logic. An array of match conditions to
         /// allow for multiple matching criteria. The rule is considered a match if one of the conditions is met. The
-        /// conditions can be one of the following combinations (Hostname), (Hostname &amp;amp; Ports) EXAMPLES:
-        /// Hostname - ("*.example.com"), ("xyz.example.com") Hostname and Ports - ("example.com" and "22"),
-        /// ("example.com" and "22,33") etc
+        /// conditions should be the following combination: (Hostname &amp;amp; Ports) EXAMPLES: Hostname and Ports -
+        /// ("*.example.com", "443"), ("example.com" and "22"), ("example.com" and "22,33") etc
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointMatchers")]
         public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher> EndpointMatchers { get; set; }
@@ -6655,6 +6654,10 @@ namespace Google.Apis.BeyondCorp.v1.Data
         /// <summary>Identifier. Name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. Type of the external application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
 
         private string _updateTimeRaw;
 
@@ -6708,9 +6711,28 @@ namespace Google.Apis.BeyondCorp.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("egressPolicy")]
         public virtual GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy EgressPolicy { get; set; }
 
+        /// <summary>List of the external endpoints to forward traffic to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("external")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal External { get; set; }
+
         /// <summary>Network to forward traffic to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork Network { get; set; }
+
+        /// <summary>Optional. Enables proxy protocol configuration for the upstream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyProtocol")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig ProxyProtocol { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Endpoints to forward traffic to.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. List of the endpoints to forward traffic to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint> Endpoints { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6727,12 +6749,83 @@ namespace Google.Apis.BeyondCorp.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contextual headers configuration.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Device info configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceInfo")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo DeviceInfo { get; set; }
+
+        /// <summary>Optional. Group info configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupInfo")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo GroupInfo { get; set; }
+
+        /// <summary>Optional. Default output type for all enabled headers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputType")]
+        public virtual string OutputType { get; set; }
+
+        /// <summary>Optional. User info configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo UserInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Delegated device info configuration.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The output type of the delegated device info.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputType")]
+        public virtual string OutputType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Delegated group info configuration.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The output type of the delegated group info.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputType")]
+        public virtual string OutputType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Delegated user info configuration.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The output type of the delegated user info.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputType")]
+        public virtual string OutputType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Routing policy information.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. List of the regions where the application sends traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
         public virtual System.Collections.Generic.IList<string> Regions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Internet Gateway endpoint to forward traffic to.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Hostname of the endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>Required. Port of the endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6745,7 +6838,7 @@ namespace Google.Apis.BeyondCorp.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
         public virtual string Hostname { get; set; }
 
-        /// <summary>Optional. Ports of the application.</summary>
+        /// <summary>Required. Ports of the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Ports { get; set; }
 
@@ -6817,6 +6910,37 @@ namespace Google.Apis.BeyondCorp.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The configuration for the proxy.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of the allowed client header names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedClientHeaders")]
+        public virtual System.Collections.Generic.IList<string> AllowedClientHeaders { get; set; }
+
+        /// <summary>Optional. Client IP configuration. The client IP address is included if true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientIp")]
+        public virtual System.Nullable<bool> ClientIp { get; set; }
+
+        /// <summary>Optional. Configuration for the contextual headers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextualHeaders")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders ContextualHeaders { get; set; }
+
+        /// <summary>Optional. Gateway identity configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayIdentity")]
+        public virtual string GatewayIdentity { get; set; }
+
+        /// <summary>
+        /// Optional. Custom resource specific headers along with the values. The names should conform to RFC 9110:
+        /// &amp;gt; Field names SHOULD constrain themselves to alphanumeric characters, "-", and ".", and SHOULD begin
+        /// with a letter. Field values SHOULD contain only ASCII printable characters and tab.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataHeaders")]
+        public virtual System.Collections.Generic.IDictionary<string, string> MetadataHeaders { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The information about a security gateway resource.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6882,6 +7006,14 @@ namespace Google.Apis.BeyondCorp.v1.Data
         /// <summary>Identifier. Name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. Shared proxy configuration for all apps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyProtocolConfig")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig ProxyProtocolConfig { get; set; }
+
+        /// <summary>Optional. Settings related to the Service Discovery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDiscovery")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery ServiceDiscovery { get; set; }
 
         /// <summary>Output only. The operational state of the SecurityGateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -7028,6 +7160,41 @@ namespace Google.Apis.BeyondCorp.v1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings related to the Service Discovery.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. External API configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiGateway")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway ApiGateway { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>If Service Discovery is done through API, defines its settings.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Enables fetching resource model updates to alter service behavior per Chrome profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceOverride")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor ResourceOverride { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>API operation descriptor.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Contains uri path fragment where HTTP request is sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
