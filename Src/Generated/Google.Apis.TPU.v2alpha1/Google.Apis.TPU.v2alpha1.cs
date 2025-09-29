@@ -1538,6 +1538,51 @@ namespace Google.Apis.TPU.v2alpha1
                     }
                 }
 
+                /// <summary>Gets the maintenance info for a queued resource.</summary>
+                /// <param name="name">Required. The QueuedResource name.</param>
+                public virtual GetMaintenanceInfoRequest GetMaintenanceInfo(string name)
+                {
+                    return new GetMaintenanceInfoRequest(this.service, name);
+                }
+
+                /// <summary>Gets the maintenance info for a queued resource.</summary>
+                public class GetMaintenanceInfoRequest : TPUBaseServiceRequest<Google.Apis.TPU.v2alpha1.Data.GetMaintenanceInfoResponse>
+                {
+                    /// <summary>Constructs a new GetMaintenanceInfo request.</summary>
+                    public GetMaintenanceInfoRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The QueuedResource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getMaintenanceInfo";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2alpha1/{+name}:getMaintenanceInfo";
+
+                    /// <summary>Initializes GetMaintenanceInfo parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/queuedResources/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists queued resources.</summary>
                 /// <param name="parent">Required. The parent resource name.</param>
                 public virtual ListRequest List(string parent)
@@ -2406,6 +2451,17 @@ namespace Google.Apis.TPU.v2alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for GetMaintenanceInfo.</summary>
+    public class GetMaintenanceInfoResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of upcoming maintenance entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeUpcomingMaintenances")]
+        public virtual System.Collections.Generic.IList<NodeUpcomingMaintenanceInfo> NodeUpcomingMaintenances { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Guaranteed tier definition.</summary>
     public class Guaranteed : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3003,6 +3059,25 @@ namespace Google.Apis.TPU.v2alpha1.Data
         /// <summary>Required. The parent resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A tuple containing node name / ID and maintenance info.</summary>
+    public class NodeUpcomingMaintenanceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unqualified node name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeName")]
+        public virtual string NodeName { get; set; }
+
+        /// <summary>UID of this node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeUid")]
+        public virtual System.Nullable<long> NodeUid { get; set; }
+
+        /// <summary>Upcoming maintenance info for this node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upcomingMaintenance")]
+        public virtual UpcomingMaintenance UpcomingMaintenance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
