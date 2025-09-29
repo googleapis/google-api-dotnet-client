@@ -4660,6 +4660,25 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for Managed Connection Pool (MCP).</summary>
+    public class ConnectionPoolConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether to enable Managed Connection Pool (MCP).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Optional. Connection Pool flags, as a list of "key": "value" pairs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Flags { get; set; }
+
+        /// <summary>Output only. The number of running poolers per instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("poolerCount")]
+        public virtual System.Nullable<int> PoolerCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ContinuousBackupConfig describes the continuous backups recovery configurations of a cluster.</summary>
     public class ContinuousBackupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5287,6 +5306,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Optional. Client connection specific configurations</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientConnectionConfig")]
         public virtual ClientConnectionConfig ClientConnectionConfig { get; set; }
+
+        /// <summary>Optional. The configuration for Managed Connection Pool (MCP).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionPoolConfig")]
+        public virtual ConnectionPoolConfig ConnectionPoolConfig { get; set; }
 
         private string _createTimeRaw;
 
@@ -7103,7 +7126,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
 
     /// <summary>
     /// DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into
-    /// Condor platform. Next ID: 12
+    /// Condor platform. Next ID: 13
     /// </summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed : Google.Apis.Requests.IDirectResponseSchema
     {
