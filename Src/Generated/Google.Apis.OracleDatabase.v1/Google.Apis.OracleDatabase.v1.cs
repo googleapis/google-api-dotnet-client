@@ -994,6 +994,100 @@ namespace Google.Apis.OracleDatabase.v1
                     }
                 }
 
+                /// <summary>Updates the parameters of a single Autonomous Database.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The name of the Autonomous Database resource in the following format:
+                /// projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.OracleDatabase.v1.Data.AutonomousDatabase body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single Autonomous Database.</summary>
+                public class PatchRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.AutonomousDatabase body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The name of the Autonomous Database resource in the following format:
+                    /// projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the Exadata resource by
+                    /// the update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.AutonomousDatabase Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autonomousDatabases/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Restarts an Autonomous Database.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -5274,6 +5368,17 @@ namespace Google.Apis.OracleDatabase.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
+                    /// `true` when reading across collections e.g. when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                    /// specific documentation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -5314,6 +5419,14 @@ namespace Google.Apis.OracleDatabase.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6368,6 +6481,17 @@ namespace Google.Apis.OracleDatabase.v1.Data
         }
 
         /// <summary>
+        /// Optional. The encryption key used to encrypt the Autonomous Database. Updating this field will add a new
+        /// entry in the `encryption_key_history_entries` field with the former version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
+        public virtual EncryptionKey EncryptionKey { get; set; }
+
+        /// <summary>Output only. The history of the encryption keys used to encrypt the Autonomous Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKeyHistoryEntries")]
+        public virtual System.Collections.Generic.IList<EncryptionKeyHistoryEntry> EncryptionKeyHistoryEntries { get; set; }
+
+        /// <summary>
         /// Output only. This field indicates the number of seconds of data loss during a Data Guard failover.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedDataRecoveryDuration")]
@@ -6617,6 +6741,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Optional. The ID of the Oracle Cloud Infrastructure vault secret.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretId")]
         public virtual string SecretId { get; set; }
+
+        /// <summary>
+        /// Output only. An Oracle-managed Google Cloud service account on which customers can grant roles to access
+        /// resources in the customer project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAgentEmail")]
+        public virtual string ServiceAgentEmail { get; set; }
 
         /// <summary>Output only. The SQL Web Developer URL for the Autonomous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlWebDeveloperUrl")]
@@ -8309,6 +8440,77 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The encryption key used to encrypt the Autonomous Database.</summary>
+    public class EncryptionKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The KMS key used to encrypt the Autonomous Database. This field is required if the provider is
+        /// GOOGLE_MANAGED. The name of the KMS key resource in the following format:
+        /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>Optional. The provider of the encryption key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The history of the encryption keys used to encrypt the Autonomous Database.</summary>
+    public class EncryptionKeyHistoryEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _activationTimeRaw;
+
+        private object _activationTime;
+
+        /// <summary>
+        /// Output only. The date and time when the encryption key was activated on the Autonomous Database..
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activationTime")]
+        public virtual string ActivationTimeRaw
+        {
+            get => _activationTimeRaw;
+            set
+            {
+                _activationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _activationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ActivationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ActivationTimeDateTimeOffset instead.")]
+        public virtual object ActivationTime
+        {
+            get => _activationTime;
+            set
+            {
+                _activationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _activationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ActivationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ActivationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ActivationTimeRaw);
+            set => ActivationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The encryption key used to encrypt the Autonomous Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
+        public virtual EncryptionKey EncryptionKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of the Entitlement resource.</summary>
     public class Entitlement : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9158,6 +9360,14 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
