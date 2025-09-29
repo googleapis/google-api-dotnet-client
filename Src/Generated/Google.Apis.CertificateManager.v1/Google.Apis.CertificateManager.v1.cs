@@ -3009,6 +3009,43 @@ namespace Google.Apis.CertificateManager.v1.Data
     /// <summary>State of the latest attempt to authorize a domain for certificate issuance.</summary>
     public class AuthorizationAttemptInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _attemptTimeRaw;
+
+        private object _attemptTime;
+
+        /// <summary>Output only. The timestamp, when the authorization attempt was made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attemptTime")]
+        public virtual string AttemptTimeRaw
+        {
+            get => _attemptTimeRaw;
+            set
+            {
+                _attemptTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _attemptTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="AttemptTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AttemptTimeDateTimeOffset instead.")]
+        public virtual object AttemptTime
+        {
+            get => _attemptTime;
+            set
+            {
+                _attemptTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _attemptTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="AttemptTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? AttemptTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AttemptTimeRaw);
+            set => AttemptTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Output only. Human readable explanation for reaching the state. Provided to help address the configuration
         /// issues. Not guaranteed to be stable. For programmatic access use FailureReason enum.
@@ -3027,6 +3064,42 @@ namespace Google.Apis.CertificateManager.v1.Data
         /// <summary>Output only. State of the domain for managed certificate issuance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. Troubleshooting information for the authorization attempt. This field is only populated if the
+        /// authorization attempt failed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("troubleshooting")]
+        public virtual Troubleshooting Troubleshooting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CNAME troubleshooting information.</summary>
+    public class CNAME : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The expected value of the CNAME record for the domain, equals to `dns_resource_record.data` in
+        /// the corresponding `DnsAuthorization`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedData")]
+        public virtual string ExpectedData { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the CNAME record for the domain, equals to `dns_resource_record.name` in the
+        /// corresponding `DnsAuthorization`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The resolved CNAME chain. Empty list if the CNAME record for `CNAME.name` is not found.
+        /// Otherwise the first item is the value of the CNAME record for `CNAME.name`. If the CNAME chain is longer,
+        /// the second item is the value of the CNAME record for the first item, and so on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedData")]
+        public virtual System.Collections.Generic.IList<string> ResolvedData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3746,6 +3819,32 @@ namespace Google.Apis.CertificateManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>IPs troubleshooting information.</summary>
+    public class IPs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The list of IP addresses resolved from the domain's A/AAAA records. Can contain both ipv4 and
+        /// ipv6 addresses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolved")]
+        public virtual System.Collections.Generic.IList<string> Resolved { get; set; }
+
+        /// <summary>
+        /// Output only. The list of IP addresses, where the certificate is attached and port 443 is open.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serving")]
+        public virtual System.Collections.Generic.IList<string> Serving { get; set; }
+
+        /// <summary>
+        /// Output only. The list of IP addresses, where the certificate is attached, but port 443 is not open.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingOnAltPorts")]
+        public virtual System.Collections.Generic.IList<string> ServingOnAltPorts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines an intermediate CA.</summary>
     public class IntermediateCA : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4227,6 +4326,25 @@ namespace Google.Apis.CertificateManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Troubleshooting information for the authorization attempt.</summary>
+    public class Troubleshooting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. CNAME troubleshooting information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cname")]
+        public virtual CNAME Cname { get; set; }
+
+        /// <summary>Output only. IPs troubleshooting information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ips")]
+        public virtual IPs Ips { get; set; }
+
+        /// <summary>Output only. The list of issues discovered during the authorization attempt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<string> Issues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
