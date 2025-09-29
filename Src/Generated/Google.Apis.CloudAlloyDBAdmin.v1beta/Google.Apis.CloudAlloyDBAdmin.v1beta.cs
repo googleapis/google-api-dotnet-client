@@ -7241,7 +7241,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
     /// <summary>
     /// DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into
-    /// Condor platform. Next ID: 12
+    /// Condor platform. Next ID: 13
     /// </summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed : Google.Apis.Requests.IDirectResponseSchema
     {
