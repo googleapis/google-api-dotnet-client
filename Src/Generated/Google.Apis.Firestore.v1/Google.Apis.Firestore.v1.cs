@@ -6366,6 +6366,14 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
+        /// Optional. The Firestore API data access mode to use for this database. If not set on write: - the default
+        /// value is DATA_ACCESS_MODE_DISABLED for Enterprise Edition. - the default value is DATA_ACCESS_MODE_ENABLED
+        /// for Standard Edition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firestoreDataAccessMode")]
+        public virtual string FirestoreDataAccessMode { get; set; }
+
+        /// <summary>
         /// Output only. Background: Free tier is the ability of a Firestore database to use a small amount of resources
         /// every day without being charged. Once usage exceeds the free tier limit further usage is charged. Whether
         /// this database can make use of the free tier. Only one database per project can be eligible for the free
@@ -6392,6 +6400,14 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; }
 
+        /// <summary>
+        /// Optional. The MongoDB compatible API data access mode to use for this database. If not set on write, the
+        /// default value is DATA_ACCESS_MODE_ENABLED for Enterprise Edition. The value is always
+        /// DATA_ACCESS_MODE_DISABLED for Standard Edition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mongodbCompatibleDataAccessMode")]
+        public virtual string MongodbCompatibleDataAccessMode { get; set; }
+
         /// <summary>The resource name of the Database. Format: `projects/{project}/databases/{database}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6405,6 +6421,10 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousId")]
         public virtual string PreviousId { get; set; }
+
+        /// <summary>Immutable. The default Realtime Updates mode to use for this database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("realtimeUpdatesMode")]
+        public virtual string RealtimeUpdatesMode { get; set; }
 
         /// <summary>Output only. Information about the provenance of this database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceInfo")]
