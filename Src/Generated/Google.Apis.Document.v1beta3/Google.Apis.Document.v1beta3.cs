@@ -7841,13 +7841,6 @@ namespace Google.Apis.Document.v1beta3.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3Processor : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. SchemaVersion used by the Processor. It is the same as Processor's DatasetSchema.schema_version
-        /// Format is `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("activeSchemaVersion")]
-        public virtual string ActiveSchemaVersion { get; set; }
-
         private string _createTimeRaw;
 
         private object _createTime;
