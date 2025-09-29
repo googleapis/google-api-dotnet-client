@@ -879,6 +879,46 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration for a multi-speaker text-to-speech setup. Enables the use of up to two distinct voices in a single
+    /// synthesis request.
+    /// </summary>
+    public class MultiSpeakerVoiceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of configurations for the voices of the speakers. Exactly two speaker voice configurations
+        /// must be provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerVoiceConfigs")]
+        public virtual System.Collections.Generic.IList<MultispeakerPrebuiltVoice> SpeakerVoiceConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for a single speaker in a Gemini TTS multi-speaker setup. Enables dialogue between two speakers.
+    /// </summary>
+    public class MultispeakerPrebuiltVoice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The speaker alias of the voice. This is the user-chosen speaker name that is used in the
+        /// multispeaker text input, such as "Speaker1".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerAlias")]
+        public virtual string SpeakerAlias { get; set; }
+
+        /// <summary>
+        /// Required. The speaker ID of the voice. See
+        /// https://cloud.google.com/text-to-speech/docs/gemini-tts#voice_options for available values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerId")]
+        public virtual string SpeakerId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1265,6 +1305,13 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
         public virtual string ModelName { get; set; }
+
+        /// <summary>
+        /// Optional. The configuration for a Gemini multi-speaker text-to-speech setup. Enables the use of two distinct
+        /// voices in a single synthesis request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiSpeakerVoiceConfig")]
+        public virtual MultiSpeakerVoiceConfig MultiSpeakerVoiceConfig { get; set; }
 
         /// <summary>
         /// The name of the voice. If both the name and the gender are not set, the service will choose a voice based on
