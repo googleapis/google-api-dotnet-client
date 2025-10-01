@@ -1793,6 +1793,12 @@ namespace Google.Apis.Storage.v1
             }
 
             /// <summary>
+            /// If true, return a list of bucket resource names for buckets that are in unreachable locations.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
+            /// <summary>
             /// If true, only soft-deleted bucket versions will be returned. The default is false. For more information,
             /// see [Soft Delete](https://cloud.google.com/storage/docs/soft-delete).
             /// </summary>
@@ -1851,6 +1857,14 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnPartialSuccess",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -10987,6 +11001,10 @@ namespace Google.Apis.Storage.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of bucket resource names that could not be reached during the listing operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
