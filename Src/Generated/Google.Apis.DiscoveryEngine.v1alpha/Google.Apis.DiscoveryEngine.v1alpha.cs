@@ -485,6 +485,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 Evaluations = new EvaluationsResource(service);
                 GroundingConfigs = new GroundingConfigsResource(service);
                 IdentityMappingStores = new IdentityMappingStoresResource(service);
+                LicenseConfigs = new LicenseConfigsResource(service);
                 Notebooks = new NotebooksResource(service);
                 Operations = new OperationsResource(service);
                 Podcasts = new PodcastsResource(service);
@@ -19984,6 +19985,227 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 }
             }
 
+            /// <summary>Gets the LicenseConfigs resource.</summary>
+            public virtual LicenseConfigsResource LicenseConfigs { get; }
+
+            /// <summary>The "licenseConfigs" collection of methods.</summary>
+            public class LicenseConfigsResource
+            {
+                private const string Resource = "licenseConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LicenseConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a LicenseConfig</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource name, such as `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaLicenseConfig body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a LicenseConfig</summary>
+                public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaLicenseConfig>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaLicenseConfig body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource name, such as `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The ID to use for the LicenseConfig, which will become the final component of the
+                    /// LicenseConfig's resource name. We are using the tier (product edition) name as the license
+                    /// config id such as `search` or `search_and_assistant`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("licenseConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LicenseConfigId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaLicenseConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/licenseConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("licenseConfigId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "licenseConfigId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets a LicenseConfig.</summary>
+                /// <param name="name">
+                /// Required. Full resource name of LicenseConfig, such as
+                /// `projects/{project}/locations/{location}/licenseConfigs/*`. If the caller does not have permission
+                /// to access the LicenseConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is
+                /// returned. If the requested LicenseConfig does not exist, a NOT_FOUND error is returned.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a LicenseConfig.</summary>
+                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaLicenseConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Full resource name of LicenseConfig, such as
+                    /// `projects/{project}/locations/{location}/licenseConfigs/*`. If the caller does not have
+                    /// permission to access the LicenseConfig, regardless of whether or not it exists, a
+                    /// PERMISSION_DENIED error is returned. If the requested LicenseConfig does not exist, a NOT_FOUND
+                    /// error is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/licenseConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Updates the LicenseConfig</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. Identifier. The fully qualified resource name of the license config. Format:
+                /// `projects/{project}/locations/{location}/licenseConfigs/{license_config}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaLicenseConfig body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the LicenseConfig</summary>
+                public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaLicenseConfig>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaLicenseConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. Identifier. The fully qualified resource name of the license config. Format:
+                    /// `projects/{project}/locations/{location}/licenseConfigs/{license_config}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Indicates which fields in the provided LicenseConfig to update. If an unsupported or
+                    /// unknown field is provided, an INVALID_ARGUMENT error is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaLicenseConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/licenseConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Notebooks resource.</summary>
             public virtual NotebooksResource Notebooks { get; }
 
@@ -25101,6 +25323,54 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The resource level alert config. Used in: * UserLicense * EngineUserData The AlertPolicyConfig in data connector
+    /// is of same usage. No easy way to migrate.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1AlertPolicyResourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The enrollment state of each alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertEnrollments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1AlertPolicyResourceConfigAlertEnrollment> AlertEnrollments { get; set; }
+
+        /// <summary>Immutable. The fully qualified resource name of the AlertPolicy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicy")]
+        public virtual string AlertPolicy { get; set; }
+
+        /// <summary>Optional. The contact details for each alert policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1ContactDetails> ContactDetails { get; set; }
+
+        /// <summary>Optional. The language code used for notifications</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The alert enrollment status.</summary>
+    public class GoogleCloudDiscoveryengineV1AlertPolicyResourceConfigAlertEnrollment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The id of an alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
+        public virtual string AlertId { get; set; }
+
+        /// <summary>Required. The enrollment status of a customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollState")]
+        public virtual string EnrollState { get; set; }
+
+        /// <summary>
+        /// Optional. Parameters used to instantiate a notification. Used for notifications that are triggered when
+        /// registered. Not stored. * Gemini Business welcome emails. * Gemini Business user invitation emails.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationParams")]
+        public virtual System.Collections.Generic.IDictionary<string, string> NotificationParams { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The specification for answer generation.</summary>
     public class GoogleCloudDiscoveryengineV1AnswerGenerationSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25767,6 +26037,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The contact info stored in resource level. If both project level and resource level is populated, the resource
+    /// level contact info will override the project level contact info.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1ContactDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The email address of the contact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
+        public virtual string EmailAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26960,10 +27244,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
         public virtual GoogleCloudDiscoveryengineV1CmekConfig CmekConfig { get; set; }
 
-        /// <summary>
-        /// Optional. Configuration for configurable billing approach. See go/vais-repricing-billing-dd for more
-        /// details, only apply to non-Spark UCS Search.
-        /// </summary>
+        /// <summary>Optional. Configuration for configurable billing approach. See</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
@@ -28315,10 +28596,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonConfig")]
         public virtual GoogleCloudDiscoveryengineV1EngineCommonConfig CommonConfig { get; set; }
 
-        /// <summary>
-        /// Optional. Configuration for configurable billing approach. See go/vais-repricing-billing-dd for more
-        /// details.
-        /// </summary>
+        /// <summary>Optional. Configuration for configurable billing approach.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
@@ -28385,8 +28663,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
         /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
-        /// `personalization-memory` * `disable-image-generation` * `disable-video-generation` *
-        /// `disable-onedrive-upload`
+        /// `personalization-memory` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation`
+        /// * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -29256,6 +29534,56 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unjoinedEventsCount")]
         public virtual System.Nullable<long> UnjoinedEventsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about users' licenses.</summary>
+    public class GoogleCloudDiscoveryengineV1LicenseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The alert policy config for this license config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicyResourceConfig")]
+        public virtual GoogleCloudDiscoveryengineV1AlertPolicyResourceConfig AlertPolicyResourceConfig { get; set; }
+
+        /// <summary>Optional. Whether the license config should be auto renewed when it reaches the end date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRenew")]
+        public virtual System.Nullable<bool> AutoRenew { get; set; }
+
+        /// <summary>Optional. The planed end date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual GoogleTypeDate EndDate { get; set; }
+
+        /// <summary>Optional. Whether the license config is for free trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeTrial")]
+        public virtual System.Nullable<bool> FreeTrial { get; set; }
+
+        /// <summary>Required. Number of licenses purchased.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
+        public virtual System.Nullable<long> LicenseCount { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. The fully qualified resource name of the license config. Format:
+        /// `projects/{project}/locations/{location}/licenseConfigs/{license_config}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The start date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual GoogleTypeDate StartDate { get; set; }
+
+        /// <summary>Output only. The state of the license config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Required. Subscription term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTerm")]
+        public virtual string SubscriptionTerm { get; set; }
+
+        /// <summary>Required. Subscription tier information for the license config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTier")]
+        public virtual string SubscriptionTier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -31678,6 +32006,54 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Required. The enrollment status of a customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrollState")]
         public virtual string EnrollState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The resource level alert config. Used in: * UserLicense * EngineUserData The AlertPolicyConfig in data connector
+    /// is of same usage. No easy way to migrate.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The enrollment state of each alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertEnrollments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfigAlertEnrollment> AlertEnrollments { get; set; }
+
+        /// <summary>Immutable. The fully qualified resource name of the AlertPolicy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicy")]
+        public virtual string AlertPolicy { get; set; }
+
+        /// <summary>Optional. The contact details for each alert policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaContactDetails> ContactDetails { get; set; }
+
+        /// <summary>Optional. The language code used for notifications</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The alert enrollment status.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfigAlertEnrollment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The id of an alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
+        public virtual string AlertId { get; set; }
+
+        /// <summary>Required. The enrollment status of a customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollState")]
+        public virtual string EnrollState { get; set; }
+
+        /// <summary>
+        /// Optional. Parameters used to instantiate a notification. Used for notifications that are triggered when
+        /// registered. Not stored. * Gemini Business welcome emails. * Gemini Business user invitation emails.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationParams")]
+        public virtual System.Collections.Generic.IDictionary<string, string> NotificationParams { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35335,6 +35711,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     }
 
     /// <summary>
+    /// The contact info stored in resource level. If both project level and resource level is populated, the resource
+    /// level contact info will override the project level contact info.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaContactDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The email address of the contact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
+        public virtual string EmailAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Defines a conditioned behavior to employ during serving. Must be attached to a ServingConfig to be considered at
     /// serving time. Permitted actions dependent on `SolutionType`.
     /// </summary>
@@ -36965,10 +37355,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaCmekConfig CmekConfig { get; set; }
 
-        /// <summary>
-        /// Optional. Configuration for configurable billing approach. See go/vais-repricing-billing-dd for more
-        /// details, only apply to non-Spark UCS Search.
-        /// </summary>
+        /// <summary>Optional. Configuration for configurable billing approach. See</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
@@ -38708,10 +39095,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaEngineCommonConfig CommonConfig { get; set; }
 
-        /// <summary>
-        /// Optional. Configuration for configurable billing approach. See go/vais-repricing-billing-dd for more
-        /// details.
-        /// </summary>
+        /// <summary>Optional. Configuration for configurable billing approach.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
@@ -38778,8 +39162,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
         /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
-        /// `personalization-memory` * `disable-image-generation` * `disable-video-generation` *
-        /// `disable-onedrive-upload`
+        /// `personalization-memory` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation`
+        /// * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -41332,6 +41716,56 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about users' licenses.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaLicenseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The alert policy config for this license config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicyResourceConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig AlertPolicyResourceConfig { get; set; }
+
+        /// <summary>Optional. Whether the license config should be auto renewed when it reaches the end date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRenew")]
+        public virtual System.Nullable<bool> AutoRenew { get; set; }
+
+        /// <summary>Optional. The planed end date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual GoogleTypeDate EndDate { get; set; }
+
+        /// <summary>Optional. Whether the license config is for free trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeTrial")]
+        public virtual System.Nullable<bool> FreeTrial { get; set; }
+
+        /// <summary>Required. Number of licenses purchased.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
+        public virtual System.Nullable<long> LicenseCount { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. The fully qualified resource name of the license config. Format:
+        /// `projects/{project}/locations/{location}/licenseConfigs/{license_config}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The start date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual GoogleTypeDate StartDate { get; set; }
+
+        /// <summary>Output only. The state of the license config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Required. Subscription term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTerm")]
+        public virtual string SubscriptionTerm { get; set; }
+
+        /// <summary>Required. Subscription tier information for the license config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTier")]
+        public virtual string SubscriptionTier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46381,6 +46815,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1alphaAnswer DetailedAnswer { get; set; }
 
         /// <summary>
+        /// Output only. In ConversationalSearchService.GetSession API, if GetSessionRequest.include_answer_details is
+        /// set to true, this field will be populated when getting assistant session.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailedAssistAnswer")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAssistAnswer DetailedAssistAnswer { get; set; }
+
+        /// <summary>
         /// Optional. The user query. May not be set if this turn is merely regenerating an answer to a different turn
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
@@ -48978,8 +49419,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// Output only. Feature config for the engine to opt in or opt out of features. Supported keys: *
         /// `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` *
         /// `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
-        /// `personalization-memory` * `disable-image-generation` * `disable-video-generation` *
-        /// `disable-onedrive-upload`
+        /// `personalization-memory` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation`
+        /// * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -49118,6 +49559,54 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>If set true, initial indexing is disabled for the DataStore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableInitialIndex")]
         public virtual System.Nullable<bool> DisableInitialIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The resource level alert config. Used in: * UserLicense * EngineUserData The AlertPolicyConfig in data connector
+    /// is of same usage. No easy way to migrate.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The enrollment state of each alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertEnrollments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfigAlertEnrollment> AlertEnrollments { get; set; }
+
+        /// <summary>Immutable. The fully qualified resource name of the AlertPolicy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicy")]
+        public virtual string AlertPolicy { get; set; }
+
+        /// <summary>Optional. The contact details for each alert policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaContactDetails> ContactDetails { get; set; }
+
+        /// <summary>Optional. The language code used for notifications</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The alert enrollment status.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfigAlertEnrollment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The id of an alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
+        public virtual string AlertId { get; set; }
+
+        /// <summary>Required. The enrollment status of a customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollState")]
+        public virtual string EnrollState { get; set; }
+
+        /// <summary>
+        /// Optional. Parameters used to instantiate a notification. Used for notifications that are triggered when
+        /// registered. Not stored. * Gemini Business welcome emails. * Gemini Business user invitation emails.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationParams")]
+        public virtual System.Collections.Generic.IDictionary<string, string> NotificationParams { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -49492,6 +49981,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The contact info stored in resource level. If both project level and resource level is populated, the resource
+    /// level contact info will override the project level contact info.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaContactDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The email address of the contact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
+        public virtual string EmailAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -50200,10 +50703,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaCmekConfig CmekConfig { get; set; }
 
-        /// <summary>
-        /// Optional. Configuration for configurable billing approach. See go/vais-repricing-billing-dd for more
-        /// details, only apply to non-Spark UCS Search.
-        /// </summary>
+        /// <summary>Optional. Configuration for configurable billing approach. See</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
@@ -51391,10 +51891,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaEngineCommonConfig CommonConfig { get; set; }
 
-        /// <summary>
-        /// Optional. Configuration for configurable billing approach. See go/vais-repricing-billing-dd for more
-        /// details.
-        /// </summary>
+        /// <summary>Optional. Configuration for configurable billing approach.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
@@ -51461,8 +51958,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
         /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
-        /// `personalization-memory` * `disable-image-generation` * `disable-video-generation` *
-        /// `disable-onedrive-upload`
+        /// `personalization-memory` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation`
+        /// * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -52633,6 +53130,56 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about users' licenses.</summary>
+    public class GoogleCloudDiscoveryengineV1betaLicenseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The alert policy config for this license config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicyResourceConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfig AlertPolicyResourceConfig { get; set; }
+
+        /// <summary>Optional. Whether the license config should be auto renewed when it reaches the end date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRenew")]
+        public virtual System.Nullable<bool> AutoRenew { get; set; }
+
+        /// <summary>Optional. The planed end date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual GoogleTypeDate EndDate { get; set; }
+
+        /// <summary>Optional. Whether the license config is for free trial.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeTrial")]
+        public virtual System.Nullable<bool> FreeTrial { get; set; }
+
+        /// <summary>Required. Number of licenses purchased.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
+        public virtual System.Nullable<long> LicenseCount { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. The fully qualified resource name of the license config. Format:
+        /// `projects/{project}/locations/{location}/licenseConfigs/{license_config}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The start date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual GoogleTypeDate StartDate { get; set; }
+
+        /// <summary>Output only. The state of the license config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Required. Subscription term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTerm")]
+        public virtual string SubscriptionTerm { get; set; }
+
+        /// <summary>Required. Subscription tier information for the license config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTier")]
+        public virtual string SubscriptionTier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
