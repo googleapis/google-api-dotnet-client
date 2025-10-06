@@ -102,6 +102,12 @@ namespace Google.Apis.HangoutsChat.v1
             public static string ChatAppMemberships = "https://www.googleapis.com/auth/chat.app.memberships";
 
             /// <summary>
+            /// On their own behalf, apps in Google Chat can see all messages and their associated reactions and message
+            /// content
+            /// </summary>
+            public static string ChatAppMessagesReadonly = "https://www.googleapis.com/auth/chat.app.messages.readonly";
+
+            /// <summary>
             /// On their own behalf, apps in Google Chat can create conversations and spaces and see or update their
             /// metadata (including history settings and access settings)
             /// </summary>
@@ -219,6 +225,12 @@ namespace Google.Apis.HangoutsChat.v1
             /// spaces
             /// </summary>
             public const string ChatAppMemberships = "https://www.googleapis.com/auth/chat.app.memberships";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see all messages and their associated reactions and message
+            /// content
+            /// </summary>
+            public const string ChatAppMessagesReadonly = "https://www.googleapis.com/auth/chat.app.messages.readonly";
 
             /// <summary>
             /// On their own behalf, apps in Google Chat can create conversations and spaces and see or update their
@@ -8912,11 +8924,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>Represents a space permission setting.</summary>
     public class PermissionSetting : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Whether spaces managers have this permission.</summary>
+        /// <summary>Optional. Whether space owners (`ROLE_MANAGER`) have this permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managersAllowed")]
         public virtual System.Nullable<bool> ManagersAllowed { get; set; }
 
-        /// <summary>Optional. Whether non-manager members have this permission.</summary>
+        /// <summary>Optional. Whether basic space members (`ROLE_MEMBER`) have this permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membersAllowed")]
         public virtual System.Nullable<bool> MembersAllowed { get; set; }
 
