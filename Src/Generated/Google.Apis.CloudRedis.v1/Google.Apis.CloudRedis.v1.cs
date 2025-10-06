@@ -3292,6 +3292,13 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
         public virtual ClusterMaintenanceSchedule MaintenanceSchedule { get; set; }
 
+        /// <summary>
+        /// Optional. This field can be used to trigger self service update to indicate the desired maintenance version.
+        /// The input to this field can be determined by the available_maintenance_versions field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersion")]
+        public virtual string MaintenanceVersion { get; set; }
+
         /// <summary>Optional. Backups generated and managed by memorystore service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedBackupSource")]
         public virtual ManagedBackupSource ManagedBackupSource { get; set; }
@@ -4067,7 +4074,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 27</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 29</summary>
     public class DatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -4170,6 +4177,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Machine configuration for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineConfiguration")]
         public virtual MachineConfiguration MachineConfiguration { get; set; }
+
+        /// <summary>Optional. Maintenance info for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceInfo")]
+        public virtual ResourceMaintenanceInfo MaintenanceInfo { get; set; }
 
         /// <summary>
         /// Identifier for this resource's immediate parent/primary resource if the current resource is a replica or
@@ -4419,6 +4430,35 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Required. Signal type of the signal</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalType")]
         public virtual string SignalType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
+    /// </summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6289,6 +6329,76 @@ namespace Google.Apis.CloudRedis.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleTimeRaw);
             set => ScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Deny maintenance period for the database resource. It specifies the time range during which the maintenance
+    /// cannot start. This is configured by the customer.
+    /// </summary>
+    public class ResourceMaintenanceDenySchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Deny period end date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual Date EndDate { get; set; }
+
+        /// <summary>Optional. The start date of the deny maintenance period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual Date StartDate { get; set; }
+
+        /// <summary>Optional. Time in UTC when the deny period starts on start_date and ends on end_date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("time")]
+        public virtual TimeOfDay Time { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MaintenanceInfo to capture the maintenance details of database resource.</summary>
+    public class ResourceMaintenanceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of Deny maintenance period for the database resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenanceSchedules")]
+        public virtual System.Collections.Generic.IList<ResourceMaintenanceDenySchedule> DenyMaintenanceSchedules { get; set; }
+
+        /// <summary>Optional. Maintenance window for the database resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
+        public virtual ResourceMaintenanceSchedule MaintenanceSchedule { get; set; }
+
+        /// <summary>
+        /// Optional. Current Maintenance version of the database resource. Example: "MYSQL_8_0_41.R20250531.01_15"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersion")]
+        public virtual string MaintenanceVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Maintenance window for the database resource. It specifies preferred time and day of the week and phase in some
+    /// cases, when the maintenance can start. This is configured by the customer.
+    /// </summary>
+    public class ResourceMaintenanceSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual string Day { get; set; }
+
+        /// <summary>
+        /// Optional. Phase of the maintenance window. This is to capture order of maintenance. For example, for Cloud
+        /// SQL resources, this can be used to capture if the maintenance window is in Week1, Week2, Week5, etc. Non
+        /// production resources are usually part of early phase. For more details, refer to Cloud SQL resources -
+        /// https://cloud.google.com/sql/docs/mysql/maintenance
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phase")]
+        public virtual string Phase { get; set; }
+
+        /// <summary>Optional. Preferred time to start the maintenance operation on the specified day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("time")]
+        public virtual TimeOfDay Time { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
