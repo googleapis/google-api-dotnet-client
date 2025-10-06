@@ -4670,6 +4670,17 @@ namespace Google.Apis.Networkconnectivity.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
+                    /// `true` when reading across collections e.g. when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                    /// specific documentation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -4710,6 +4721,14 @@ namespace Google.Apis.Networkconnectivity.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -8530,6 +8549,77 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
             }
 
+            /// <summary>
+            /// CheckConsumerConfig validates the consumer network and project for potential PSC connection creation.
+            /// This method performs several checks, including: - Validating the existence and permissions of the
+            /// service class. - Ensuring the consumer network exists and is accessible. - Verifying XPN relationships
+            /// if applicable. - Checking for compatible IP versions between the consumer network and the requested
+            /// version. This method performs a dynamic IAM check for the `networkconnectivity.serviceClasses.use`
+            /// permission on the service class resource in the Prepare phase.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="location">
+            /// Required. The location resource path. Example: - projects/{project}/locations/{location}
+            /// </param>
+            public virtual CheckConsumerConfigRequest CheckConsumerConfig(Google.Apis.Networkconnectivity.v1.Data.CheckConsumerConfigRequest body, string location)
+            {
+                return new CheckConsumerConfigRequest(this.service, body, location);
+            }
+
+            /// <summary>
+            /// CheckConsumerConfig validates the consumer network and project for potential PSC connection creation.
+            /// This method performs several checks, including: - Validating the existence and permissions of the
+            /// service class. - Ensuring the consumer network exists and is accessible. - Verifying XPN relationships
+            /// if applicable. - Checking for compatible IP versions between the consumer network and the requested
+            /// version. This method performs a dynamic IAM check for the `networkconnectivity.serviceClasses.use`
+            /// permission on the service class resource in the Prepare phase.
+            /// </summary>
+            public class CheckConsumerConfigRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.CheckConsumerConfigResponse>
+            {
+                /// <summary>Constructs a new CheckConsumerConfig request.</summary>
+                public CheckConsumerConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.CheckConsumerConfigRequest body, string location) : base(service)
+                {
+                    Location = location;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The location resource path. Example: - projects/{project}/locations/{location}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Location { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Networkconnectivity.v1.Data.CheckConsumerConfigRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "checkConsumerConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+location}:checkConsumerConfig";
+
+                /// <summary>Initializes CheckConsumerConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -8942,6 +9032,43 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for CheckConsumerConfig.</summary>
+    public class CheckConsumerConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Full resource name of the consumer network. Example: -
+        /// projects/{project}/global/networks/{network}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
+        public virtual string ConsumerNetwork { get; set; }
+
+        /// <summary>The project number or ID where the PSC endpoint is to be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointProject")]
+        public virtual string EndpointProject { get; set; }
+
+        /// <summary>The requested IP Version</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedIpVersion")]
+        public virtual string RequestedIpVersion { get; set; }
+
+        /// <summary>Required. The service class identifier of the producer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceClass")]
+        public virtual string ServiceClass { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for CheckConsumerConfig.</summary>
+    public class CheckConsumerConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of validation errors. If the list is empty, the consumer config is valid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<string> Errors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9390,6 +9517,14 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11517,7 +11652,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The name of the VPC network for this private regional endpoint. Format:
+        /// Optional. The name of the VPC network for this private regional endpoint. Format:
         /// `projects/{project}/global/networks/{network}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
@@ -11531,7 +11666,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string PscForwardingRule { get; set; }
 
         /// <summary>
-        /// The name of the subnetwork from which the IP address will be allocated. Format:
+        /// Optional. The name of the subnetwork from which the IP address will be allocated. Format:
         /// `projects/{project}/regions/{region}/subnetworks/{subnetwork}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
@@ -13071,7 +13206,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// IPv6 addresses are supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedRoutes")]
-        public virtual string AdvertisedRoutes { get; set; }
+        public virtual System.Collections.Generic.IList<string> AdvertisedRoutes { get; set; }
 
         /// <summary>
         /// Required. Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
