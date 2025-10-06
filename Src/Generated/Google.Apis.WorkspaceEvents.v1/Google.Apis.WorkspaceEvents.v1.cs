@@ -68,6 +68,12 @@ namespace Google.Apis.WorkspaceEvents.v1
             public static string ChatAppMemberships = "https://www.googleapis.com/auth/chat.app.memberships";
 
             /// <summary>
+            /// On their own behalf, apps in Google Chat can see all messages and their associated reactions and message
+            /// content
+            /// </summary>
+            public static string ChatAppMessagesReadonly = "https://www.googleapis.com/auth/chat.app.messages.readonly";
+
+            /// <summary>
             /// On their own behalf, apps in Google Chat can create conversations and spaces and see or update their
             /// metadata (including history settings and access settings)
             /// </summary>
@@ -142,6 +148,12 @@ namespace Google.Apis.WorkspaceEvents.v1
             /// spaces
             /// </summary>
             public const string ChatAppMemberships = "https://www.googleapis.com/auth/chat.app.memberships";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see all messages and their associated reactions and message
+            /// content
+            /// </summary>
+            public const string ChatAppMessagesReadonly = "https://www.googleapis.com/auth/chat.app.messages.readonly";
 
             /// <summary>
             /// On their own behalf, apps in Google Chat can create conversations and spaces and see or update their
