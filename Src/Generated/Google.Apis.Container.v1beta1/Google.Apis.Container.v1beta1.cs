@@ -7092,6 +7092,13 @@ namespace Google.Apis.Container.v1beta1.Data
     /// </summary>
     public class AutoscaledRolloutPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Time to wait after cordoning the blue pool before draining the nodes. Defaults to 3 days. The
+        /// value can be set between 0 and 7 days, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waitForDrainDuration")]
+        public virtual object WaitForDrainDuration { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
