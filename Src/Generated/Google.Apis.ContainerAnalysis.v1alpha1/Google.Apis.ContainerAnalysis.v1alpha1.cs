@@ -7013,6 +7013,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("baseImages")]
         public virtual System.Collections.Generic.IList<BaseImage> BaseImages { get; set; }
 
+        /// <summary>The chain ID of the layer in the container image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chainId")]
+        public virtual string ChainId { get; set; }
+
         /// <summary>
         /// The layer build command that was used to build the layer. This may not be found in all layers depending on
         /// how the container image is built.
