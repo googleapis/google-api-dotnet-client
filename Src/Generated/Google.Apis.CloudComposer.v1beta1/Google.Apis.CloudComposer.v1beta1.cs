@@ -2308,6 +2308,17 @@ namespace Google.Apis.CloudComposer.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
+                    /// `true` when reading across collections e.g. when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                    /// specific documentation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -2348,6 +2359,14 @@ namespace Google.Apis.CloudComposer.v1beta1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2427,6 +2446,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>Output only. Url for a docker build log of an upgraded image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildLogUri")]
         public virtual string BuildLogUri { get; set; }
+
+        /// <summary>
+        /// Output only. Contains information about environment configuration that is incompatible with the new image
+        /// version, except for pypi modules conflicts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configConflicts")]
+        public virtual System.Collections.Generic.IList<ConfigConflict> ConfigConflicts { get; set; }
 
         /// <summary>Output only. Whether build has succeeded or failed on modules conflicts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containsPypiModulesConflict")]
@@ -2511,6 +2537,21 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>Output only. Text to provide more descriptive status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Environment configuration conflict.</summary>
+    public class ConfigConflict : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Conflict message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Conflict type. It can be blocking or non-blocking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3152,6 +3193,14 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
