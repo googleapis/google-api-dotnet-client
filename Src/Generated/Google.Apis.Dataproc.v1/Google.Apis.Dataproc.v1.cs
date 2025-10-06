@@ -16915,14 +16915,6 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ClusterUuid { get; set; }
 
         /// <summary>
-        /// Optional. Whether the request is submitted by Dataproc super user. If true, IAM will check
-        /// 'dataproc.clusters.repair' permission instead of 'dataproc.clusters.update' permission. This is to give
-        /// Dataproc superuser the ability to repair clusters without granting the overly broad update permission.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataprocSuperUser")]
-        public virtual System.Nullable<bool> DataprocSuperUser { get; set; }
-
-        /// <summary>
         /// Optional. Timeout for graceful YARN decommissioning. Graceful decommissioning facilitates the removal of
         /// cluster nodes without interrupting jobs in progress. The timeout specifies the amount of time to wait for
         /// jobs finish before forcefully removing nodes. The default timeout is 0 for forceful decommissioning, and the
@@ -20175,6 +20167,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("milliDcuSeconds")]
         public virtual System.Nullable<long> MilliDcuSeconds { get; set; }
 
+        /// <summary>Optional. Slot usage in (milliSlot x seconds).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("milliSlotSeconds")]
+        public virtual System.Nullable<long> MilliSlotSeconds { get; set; }
+
         /// <summary>
         /// Optional. Shuffle storage usage in (GB x seconds) (see Dataproc Serverless pricing
         /// (https://cloud.google.com/dataproc-serverless/pricing)).
@@ -20250,6 +20246,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("milliDcuPremium")]
         public virtual System.Nullable<long> MilliDcuPremium { get; set; }
+
+        /// <summary>Optional. Milli (one-thousandth) Slot usage of the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("milliSlot")]
+        public virtual System.Nullable<long> MilliSlot { get; set; }
 
         /// <summary>
         /// Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing
