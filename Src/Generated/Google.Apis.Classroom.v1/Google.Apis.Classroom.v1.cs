@@ -11005,7 +11005,7 @@ namespace Google.Apis.Classroom.v1.Data
 
         /// <summary>
         /// The gradebook settings that specify how a student's overall grade for the course will be calculated and who
-        /// it will be displayed to. Read-only
+        /// it will be displayed to. Read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gradebookSettings")]
         public virtual GradebookSettings GradebookSettings { get; set; }
