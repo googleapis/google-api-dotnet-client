@@ -5642,7 +5642,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
 
         /// <summary>
         /// Required. List of assets to be added. The maximum number of assets that can be added in a single request is
-        /// 1000.
+        /// 2000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assets")]
         public virtual AssetList Assets { get; set; }
