@@ -2775,6 +2775,20 @@ namespace Google.Apis.Adsense.v2
                     TARGETINGTYPECODE = 31,
 
                     /// <summary>
+                    /// Localized traffic source name (e.g. "Google", "Bing", "Facebook", "Other"). For more
+                    /// information, see [Traffic source breakdown](https://support.google.com/adsense/answer/16474600).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TRAFFIC_SOURCE_NAME")]
+                    TRAFFICSOURCENAME = 49,
+
+                    /// <summary>
+                    /// Traffic source code (e.g. "GOOGLE", "BING", "FACEBOOK", "OTHER"). For more information, see
+                    /// [Traffic source breakdown](https://support.google.com/adsense/answer/16474600).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TRAFFIC_SOURCE_CODE")]
+                    TRAFFICSOURCECODE = 50,
+
+                    /// <summary>
                     /// Localized content platform name an ad request was made from (e.g. "AMP", "Web").
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("CONTENT_PLATFORM_NAME")]
@@ -3622,6 +3636,20 @@ namespace Google.Apis.Adsense.v2
                     /// <summary>Targeting type code (e.g. "Keyword", "UserInterest", "RunOfNetwork").</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CODE")]
                     TARGETINGTYPECODE = 31,
+
+                    /// <summary>
+                    /// Localized traffic source name (e.g. "Google", "Bing", "Facebook", "Other"). For more
+                    /// information, see [Traffic source breakdown](https://support.google.com/adsense/answer/16474600).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TRAFFIC_SOURCE_NAME")]
+                    TRAFFICSOURCENAME = 49,
+
+                    /// <summary>
+                    /// Traffic source code (e.g. "GOOGLE", "BING", "FACEBOOK", "OTHER"). For more information, see
+                    /// [Traffic source breakdown](https://support.google.com/adsense/answer/16474600).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("TRAFFIC_SOURCE_CODE")]
+                    TRAFFICSOURCECODE = 50,
 
                     /// <summary>
                     /// Localized content platform name an ad request was made from (e.g. "AMP", "Web").
