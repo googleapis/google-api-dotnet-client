@@ -7313,6 +7313,18 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timestampFormat")]
         public virtual string TimestampFormat { get; set; }
 
+        /// <summary>
+        /// Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to
+        /// the destination table for autodetection mode. Available for the formats: CSV. For the CSV Format, Possible
+        /// values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]:
+        /// timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds.
+        /// timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]:
+        /// timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored.
+        /// Inputs that have higher precision than the highest target precision in this array will be truncated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampTargetPrecision")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> TimestampTargetPrecision { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8235,9 +8247,10 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual JobConfigurationLoad Load { get; set; }
 
         /// <summary>
-        /// Optional. INTERNAL: DO NOT USE. The maximum rate of slot consumption to allow for this job. If set, the
-        /// number of slots used to execute the job will be throttled to try and keep its slot consumption below the
-        /// requested rate.
+        /// Optional. A target limit on the rate of slot consumption by this job. If set to a value &amp;gt; 0, BigQuery
+        /// will attempt to limit the rate of slot consumption by this job to keep it below the configured limit, even
+        /// if the job is eligible for more slots based on fair scheduling. The unused slots will be available for other
+        /// jobs and queries to use. Note: This feature is not yet generally available.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxSlots")]
         public virtual System.Nullable<int> MaxSlots { get; set; }
@@ -8670,6 +8683,18 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Optional. Date format used for parsing TIMESTAMP values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampFormat")]
         public virtual string TimestampFormat { get; set; }
+
+        /// <summary>
+        /// Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to
+        /// the destination table for autodetection mode. Available for the formats: CSV. For the CSV Format, Possible
+        /// values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]:
+        /// timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds.
+        /// timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]:
+        /// timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored.
+        /// Inputs that have higher precision than the highest target precision in this array will be truncated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampTargetPrecision")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> TimestampTargetPrecision { get; set; }
 
         /// <summary>
         /// Optional. If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the
@@ -9189,6 +9214,15 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Output only. Quotas which delayed this job's start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaDeferments")]
         public virtual System.Collections.Generic.IList<string> QuotaDeferments { get; set; }
+
+        /// <summary>
+        /// Output only. The reservation group path of the reservation assigned to this job. This field has a limit of
+        /// 10 nested reservation groups. This is to maintain consistency between reservatins info schema and jobs info
+        /// schema. The first reservation group is the root reservation group and the last is the leaf or lowest level
+        /// reservation group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationGroupPath")]
+        public virtual System.Collections.Generic.IList<string> ReservationGroupPath { get; set; }
 
         /// <summary>
         /// Output only. Job resource usage breakdown by reservation. This field reported misleading information and
@@ -10822,9 +10856,10 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> MaxResults { get; set; }
 
         /// <summary>
-        /// Optional. INTERNAL: DO NOT USE. The maximum rate of slot consumption to allow for this job. If set, the
-        /// number of slots used to execute the job will be throttled to try and keep its slot consumption below the
-        /// requested rate. This limit is best effort.
+        /// Optional. A target limit on the rate of slot consumption by this query. If set to a value &amp;gt; 0,
+        /// BigQuery will attempt to limit the rate of slot consumption by this query to keep it below the configured
+        /// limit, even if the query is eligible for more slots based on fair scheduling. The unused slots will be
+        /// available for other jobs and queries to use. Note: This feature is not yet generally available.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxSlots")]
         public virtual System.Nullable<int> MaxSlots { get; set; }
