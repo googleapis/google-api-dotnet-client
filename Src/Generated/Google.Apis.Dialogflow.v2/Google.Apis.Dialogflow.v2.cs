@@ -19601,6 +19601,17 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
+                    /// `true` when reading across collections e.g. when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                    /// specific documentation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -19641,6 +19652,14 @@ namespace Google.Apis.Dialogflow.v2
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -20722,6 +20741,16 @@ namespace Google.Apis.Dialogflow.v2
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>
+                /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true`
+                /// when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This
+                /// field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless
+                /// explicitly documented otherwise in service or product specific documentation.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -20762,6 +20791,14 @@ namespace Google.Apis.Dialogflow.v2
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "returnPartialSuccess",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -27064,6 +27101,216 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Agent Coaching context that customer can configure.</summary>
+    public class GoogleCloudDialogflowV2AgentCoachingContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Customized instructions for agent coaching.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instructions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2AgentCoachingInstruction> Instructions { get; set; }
+
+        /// <summary>Optional. Output language code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputLanguageCode")]
+        public virtual string OutputLanguageCode { get; set; }
+
+        /// <summary>
+        /// Optional. The overarching guidance for the agent coaching. This should be set only for v1.5 and later
+        /// versions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overarchingGuidance")]
+        public virtual string OverarchingGuidance { get; set; }
+
+        /// <summary>
+        /// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.2"].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Agent Coaching instructions that customer can configure.</summary>
+    public class GoogleCloudDialogflowV2AgentCoachingInstruction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The action that human agent should take. For example, "apologize for the slow shipping". If the
+        /// users only want to use agent coaching for intent detection, agent_action can be empty
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentAction")]
+        public virtual string AgentAction { get; set; }
+
+        /// <summary>
+        /// Optional. The condition of the instruction. For example, "the customer wants to cancel an order". If the
+        /// users want the instruction to be triggered unconditionally, the condition can be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>Optional. The detailed description of this instruction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayDetails")]
+        public virtual string DisplayDetails { get; set; }
+
+        /// <summary>Optional. Display name for the instruction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. Duplication check for the AgentCoachingInstruction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duplicateCheckResult")]
+        public virtual GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult DuplicateCheckResult { get; set; }
+
+        /// <summary>
+        /// Optional. The action that system should take. For example, "call GetOrderTime with order_number={order
+        /// number provided by the customer}". If the users don't have plugins or don't want to trigger plugins, the
+        /// system_action can be empty
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemAction")]
+        public virtual string SystemAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Duplication check for the suggestion.</summary>
+    public class GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The duplicate suggestions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duplicateSuggestions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion> DuplicateSuggestions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The duplicate suggestion details.</summary>
+    public class GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The answer record id of the past duplicate suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>Output only. The similarity score of between the past and current suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("similarityScore")]
+        public virtual System.Nullable<float> SimilarityScore { get; set; }
+
+        /// <summary>Output only. The index of the duplicate suggestion in the past suggestion list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionIndex")]
+        public virtual System.Nullable<int> SuggestionIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggestion for coaching agents.</summary>
+    public class GoogleCloudDialogflowV2AgentCoachingSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Suggested actions for the agent to take.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentActionSuggestions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion> AgentActionSuggestions { get; set; }
+
+        /// <summary>Optional. Instructions applicable based on the current context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicableInstructions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2AgentCoachingInstruction> ApplicableInstructions { get; set; }
+
+        /// <summary>Optional. Sample response for the Agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleResponses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse> SampleResponses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Actions suggested for the agent. This is based on applicable instructions.</summary>
+    public class GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The suggested action for the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentAction")]
+        public virtual string AgentAction { get; set; }
+
+        /// <summary>Output only. Duplicate check result for the agent action suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duplicateCheckResult")]
+        public virtual GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult DuplicateCheckResult { get; set; }
+
+        /// <summary>Output only. Sources for the agent action suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual GoogleCloudDialogflowV2AgentCoachingSuggestionSources Sources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Duplication check for the suggestion.</summary>
+    public class GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The duplicate suggestions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duplicateSuggestions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion> DuplicateSuggestions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The duplicate suggestion details. Keeping answer_record and sources together as they are identifiers for
+    /// duplicate suggestions.
+    /// </summary>
+    public class GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The answer record id of the past duplicate suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>Output only. The similarity score of between the past and current suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("similarityScore")]
+        public virtual System.Nullable<float> SimilarityScore { get; set; }
+
+        /// <summary>Output only. Sources for the suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual GoogleCloudDialogflowV2AgentCoachingSuggestionSources Sources { get; set; }
+
+        /// <summary>Output only. The index of the duplicate suggestion in the past suggestion list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionIndex")]
+        public virtual System.Nullable<int> SuggestionIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Sample response that the agent can use. This could be based on applicable instructions and ingested data from
+    /// other systems.
+    /// </summary>
+    public class GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Duplicate check result for the sample response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duplicateCheckResult")]
+        public virtual GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult DuplicateCheckResult { get; set; }
+
+        /// <summary>Optional. Sample response for Agent in text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseText")]
+        public virtual string ResponseText { get; set; }
+
+        /// <summary>Output only. Sources for the Sample Response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual GoogleCloudDialogflowV2AgentCoachingSuggestionSources Sources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Sources for the suggestion.</summary>
+    public class GoogleCloudDialogflowV2AgentCoachingSuggestionSources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Source instruction indexes for the suggestion. This is the index of the applicable_instructions
+        /// field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instructionIndexes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> InstructionIndexes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Participants.AnalyzeContent.</summary>
     public class GoogleCloudDialogflowV2AnalyzeContentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -28062,6 +28309,13 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Contents ingested.</summary>
     public class GoogleCloudDialogflowV2ConversationContextReferenceContextContent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// If the context content was generated from a tool call, specify the answer record associated with the tool
+        /// call. Format: `projects//locations//answerRecords/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
         /// <summary>Required. The information ingested in a single request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -30148,6 +30402,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>LLM generator.</summary>
     public class GoogleCloudDialogflowV2Generator : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Input of prebuilt Agent Coaching feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentCoachingContext")]
+        public virtual GoogleCloudDialogflowV2AgentCoachingContext AgentCoachingContext { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -30210,6 +30468,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedModel")]
         public virtual string PublishedModel { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for suggestion deduping. This is only applicable to AI Coach feature.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionDedupingConfig")]
+        public virtual GoogleCloudDialogflowV2SuggestionDedupingConfig SuggestionDedupingConfig { get; set; }
 
         /// <summary>Input of prebuilt Summarization feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarizationContext")]
@@ -30374,6 +30638,22 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. A read only boolean field reflecting Zone Isolation status of the model. The field is an
+        /// aggregated value of ZI status of its underlying dependencies. See more details in
+        /// go/zicy-resource-placement#resource-status
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>
+        /// Output only. A read only boolean field reflecting Zone Separation status of the model. The field is an
+        /// aggregated value of ZS status of its underlying dependencies. See more details in
+        /// go/zicy-resource-placement#resource-status
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Output only. Only available when the summarization generator is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarizationMetrics")]
@@ -30648,6 +30928,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Suggestion generated using a Generator.</summary>
     public class GoogleCloudDialogflowV2GeneratorSuggestion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Suggestion to coach the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentCoachingSuggestion")]
+        public virtual GoogleCloudDialogflowV2AgentCoachingSuggestion AgentCoachingSuggestion { get; set; }
+
         /// <summary>Optional. Free form suggestion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeFormSuggestion")]
         public virtual GoogleCloudDialogflowV2FreeFormSuggestion FreeFormSuggestion { get; set; }
@@ -30782,6 +31066,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disableHighLatencyFeaturesSyncDelivery")]
         public virtual System.Nullable<bool> DisableHighLatencyFeaturesSyncDelivery { get; set; }
 
+        /// <summary>Optional. If true, enable asynchronous execution of tools.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAsyncToolCall")]
+        public virtual System.Nullable<bool> EnableAsyncToolCall { get; set; }
+
         /// <summary>Configuration of different suggestion features. One feature can have only one config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig> FeatureConfigs { get; set; }
@@ -30800,6 +31088,21 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupSuggestionResponses")]
         public virtual System.Nullable<bool> GroupSuggestionResponses { get; set; }
+
+        /// <summary>
+        /// Optional. Enable skipping event based suggestion if the suggestion is empty. For example, with this field
+        /// disabled, Knowledge Assist feature sends a Pub/Sub message when there are no suggestions. Enabling this
+        /// field will change the behavior to skip the Pub/Sub message in this situation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipEmptyEventBasedSuggestion")]
+        public virtual System.Nullable<bool> SkipEmptyEventBasedSuggestion { get; set; }
+
+        /// <summary>
+        /// Optional. If true, use unredacted transcript data (Supported features: AI_COACH) and use unredacted ingested
+        /// context (Supported features: All Agent Assist features)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useUnredactedConversationData")]
+        public virtual System.Nullable<bool> UseUnredactedConversationData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30848,9 +31151,22 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableQuerySuggestionWhenNoAnswer")]
         public virtual System.Nullable<bool> EnableQuerySuggestionWhenNoAnswer { get; set; }
 
+        /// <summary>
+        /// Optional. Enable returning detailed reasons for suggestion results. For example, with this field disabled,
+        /// Knowledge Search feature returns NotFound error when no answer is found for the input query. Enabling this
+        /// field will change the behavior to return an OK response with detailed information indicating the lack of
+        /// results. Supported features: KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableResponseDebugInfo")]
+        public virtual System.Nullable<bool> EnableResponseDebugInfo { get; set; }
+
         /// <summary>Configs of query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryConfig")]
         public virtual GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig QueryConfig { get; set; }
+
+        /// <summary>Optional. Settings for Responsible AI checks. Supported features: KNOWLEDGE_ASSIST</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raiSettings")]
+        public virtual GoogleCloudDialogflowV2RaiSettings RaiSettings { get; set; }
 
         /// <summary>The suggestion feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestionFeature")]
@@ -33512,6 +33828,32 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings for Responsible AI checks.</summary>
+    public class GoogleCloudDialogflowV2RaiSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for a set of RAI categories.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raiCategoryConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2RaiSettingsRaiCategoryConfig> RaiCategoryConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a specific RAI category.</summary>
+    public class GoogleCloudDialogflowV2RaiSettingsRaiCategoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The RAI category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Optional. The sensitivity level for this category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitivityLevel")]
+        public virtual string SensitivityLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for Documents.ReloadDocument.</summary>
     public class GoogleCloudDialogflowV2ReloadDocumentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -34669,6 +35011,24 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Config for suggestion deduping. NEXT_ID: 3</summary>
+    public class GoogleCloudDialogflowV2SuggestionDedupingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether to enable suggestion deduping.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableDeduping")]
+        public virtual System.Nullable<bool> EnableDeduping { get; set; }
+
+        /// <summary>
+        /// Optional. The threshold for similarity between two suggestions. Acceptable value is [0.0, 1.0], default to
+        /// 0.8
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("similarityThreshold")]
+        public virtual System.Nullable<float> SimilarityThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for
     /// that type. Multiple `Feature` objects can be specified in the `features` list.
@@ -34683,16 +35043,65 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the selection of a suggestion.</summary>
+    /// <summary>Represents the action to take for a tool call that requires confirmation.</summary>
     public class GoogleCloudDialogflowV2SuggestionInput : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The type of action to take with the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
         /// <summary>
-        /// Required. The ID of a suggestion selected by the human agent. The suggestion(s) were generated in a previous
-        /// call to request Dialogflow assist. The format is: `projects//locations//answerRecords/` where is an
-        /// alphanumeric string.
+        /// Required. Format: `projects//locations//answerRecords/` The answer record associated with the tool call.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
         public virtual string AnswerRecord { get; set; }
+
+        /// <summary>
+        /// Optional. Parameters to be used for the tool call. If not provided, the tool will be called without any
+        /// parameters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
+
+        private string _sendTimeRaw;
+
+        private object _sendTime;
+
+        /// <summary>
+        /// Optional. Time when the current suggest input is sent. For tool calls, this timestamp (along with the answer
+        /// record) will be included in the corresponding tool call result so that it can be identified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sendTime")]
+        public virtual string SendTimeRaw
+        {
+            get => _sendTimeRaw;
+            set
+            {
+                _sendTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _sendTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SendTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SendTimeDateTimeOffset instead.")]
+        public virtual object SendTime
+        {
+            get => _sendTime;
+            set
+            {
+                _sendTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _sendTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SendTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SendTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SendTimeRaw);
+            set => SendTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35214,6 +35623,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
+        /// <summary>Optional. The answer record associated with this tool call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -35255,9 +35668,21 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputParameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> InputParameters { get; set; }
 
+        /// <summary>Output only. State of the tool call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>Optional. The tool associated with this call. Format: `projects//locations//tools/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tool")]
         public virtual string Tool { get; set; }
+
+        /// <summary>Optional. A human readable description of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolDisplayDetails")]
+        public virtual string ToolDisplayDetails { get; set; }
+
+        /// <summary>Optional. A human readable short name of the tool, to be shown on the UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolDisplayName")]
+        public virtual string ToolDisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35269,6 +35694,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Optional. The name of the tool's action associated with this call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
+
+        /// <summary>Optional. The answer record associated with this tool call result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
 
         /// <summary>Only populated if the response content is utf-8 encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
@@ -35680,6 +36109,188 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Agent Coaching instructions that customer can configure.</summary>
+    public class GoogleCloudDialogflowV2beta1AgentCoachingInstruction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The action that human agent should take. For example, "apologize for the slow shipping". If the
+        /// users only want to use agent coaching for intent detection, agent_action can be empty
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentAction")]
+        public virtual string AgentAction { get; set; }
+
+        /// <summary>
+        /// Optional. The condition of the instruction. For example, "the customer wants to cancel an order". If the
+        /// users want the instruction to be triggered unconditionally, the condition can be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>Optional. The detailed description of this instruction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayDetails")]
+        public virtual string DisplayDetails { get; set; }
+
+        /// <summary>Optional. Display name for the instruction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. Duplication check for the AgentCoachingInstruction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duplicateCheckResult")]
+        public virtual GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult DuplicateCheckResult { get; set; }
+
+        /// <summary>
+        /// Optional. The action that system should take. For example, "call GetOrderTime with order_number={order
+        /// number provided by the customer}". If the users don't have plugins or don't want to trigger plugins, the
+        /// system_action can be empty
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemAction")]
+        public virtual string SystemAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Duplication check for the suggestion.</summary>
+    public class GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The duplicate suggestions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duplicateSuggestions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion> DuplicateSuggestions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The duplicate suggestion details.</summary>
+    public class GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The answer record id of the past duplicate suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>Output only. The similarity score of between the past and current suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("similarityScore")]
+        public virtual System.Nullable<float> SimilarityScore { get; set; }
+
+        /// <summary>Output only. The index of the duplicate suggestion in the past suggestion list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionIndex")]
+        public virtual System.Nullable<int> SuggestionIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggestion for coaching agents.</summary>
+    public class GoogleCloudDialogflowV2beta1AgentCoachingSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Suggested actions for the agent to take.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentActionSuggestions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion> AgentActionSuggestions { get; set; }
+
+        /// <summary>Optional. Instructions applicable based on the current context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicableInstructions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1AgentCoachingInstruction> ApplicableInstructions { get; set; }
+
+        /// <summary>Optional. Sample response for the Agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleResponses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse> SampleResponses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Actions suggested for the agent. This is based on applicable instructions.</summary>
+    public class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The suggested action for the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentAction")]
+        public virtual string AgentAction { get; set; }
+
+        /// <summary>Output only. Duplicate check result for the agent action suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duplicateCheckResult")]
+        public virtual GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult DuplicateCheckResult { get; set; }
+
+        /// <summary>Output only. Sources for the agent action suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources Sources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Duplication check for the suggestion.</summary>
+    public class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The duplicate suggestions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duplicateSuggestions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion> DuplicateSuggestions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The duplicate suggestion details. Keeping answer_record and sources together as they are identifiers for
+    /// duplicate suggestions.
+    /// </summary>
+    public class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The answer record id of the past duplicate suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>Output only. The similarity score of between the past and current suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("similarityScore")]
+        public virtual System.Nullable<float> SimilarityScore { get; set; }
+
+        /// <summary>Output only. Sources for the suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources Sources { get; set; }
+
+        /// <summary>Output only. The index of the duplicate suggestion in the past suggestion list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionIndex")]
+        public virtual System.Nullable<int> SuggestionIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Sample response that the agent can use. This could be based on applicable instructions and ingested data from
+    /// other systems.
+    /// </summary>
+    public class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Duplicate check result for the sample response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duplicateCheckResult")]
+        public virtual GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult DuplicateCheckResult { get; set; }
+
+        /// <summary>Optional. Sample response for Agent in text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseText")]
+        public virtual string ResponseText { get; set; }
+
+        /// <summary>Output only. Sources for the Sample Response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources Sources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Sources for the suggestion.</summary>
+    public class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Source instruction indexes for the suggestion. This is the index of the applicable_instructions
+        /// field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instructionIndexes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> InstructionIndexes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -36191,6 +36802,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Suggestion generated using a Generator.</summary>
     public class GoogleCloudDialogflowV2beta1GeneratorSuggestion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Suggestion to coach the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentCoachingSuggestion")]
+        public virtual GoogleCloudDialogflowV2beta1AgentCoachingSuggestion AgentCoachingSuggestion { get; set; }
+
         /// <summary>Optional. Free form suggestion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeFormSuggestion")]
         public virtual GoogleCloudDialogflowV2beta1FreeFormSuggestion FreeFormSuggestion { get; set; }
@@ -38633,6 +39248,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
+        /// <summary>Optional. The answer record associated with this tool call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -38674,9 +39293,21 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputParameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> InputParameters { get; set; }
 
+        /// <summary>Output only. State of the tool call</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>Optional. The tool associated with this call. Format: `projects//locations//tools/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tool")]
         public virtual string Tool { get; set; }
+
+        /// <summary>Optional. A human readable description of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolDisplayDetails")]
+        public virtual string ToolDisplayDetails { get; set; }
+
+        /// <summary>Optional. A human readable short name of the tool, to be shown on the UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolDisplayName")]
+        public virtual string ToolDisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -38688,6 +39319,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Optional. The name of the tool's action associated with this call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
+
+        /// <summary>Optional. The answer record associated with this tool call result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
 
         /// <summary>Only populated if the response content is utf-8 encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
@@ -39013,6 +39648,14 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
