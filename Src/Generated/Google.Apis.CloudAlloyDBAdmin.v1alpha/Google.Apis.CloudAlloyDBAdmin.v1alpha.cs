@@ -3512,6 +3512,17 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
+                    /// `true` when reading across collections e.g. when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                    /// specific documentation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -3552,6 +3563,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3854,6 +3873,21 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// <summary>CIDR range for one authorzied network of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidrRange")]
         public virtual string CidrRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for autoscaling.</summary>
+    public class AutoScalingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Policy for the MIG autoscaler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; }
+
+        /// <summary>Optional list of schedules for the MIG autoscaler. If not set, no schedules are created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedules")]
+        public virtual System.Collections.Generic.IList<Schedule> Schedules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4225,6 +4259,256 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         }
     }
 
+    /// <summary>Message describing a BackupDrBackupSource.</summary>
+    public class BackupDrBackupSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the backup resource with the format: *
+        /// projects/{project}/locations/{location}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about a single window when BackupDR was enabled for this cluster.</summary>
+    public class BackupDrEnabledWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether automated backup was previously enabled prior to enabling BackupDR protection for this cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automatedBackupPreviouslyEnabled")]
+        public virtual System.Nullable<bool> AutomatedBackupPreviouslyEnabled { get; set; }
+
+        /// <summary>
+        /// The BackupPlanAssociation resource that was used to enable BackupDR protection for this cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanAssociation")]
+        public virtual string BackupPlanAssociation { get; set; }
+
+        /// <summary>
+        /// The retention set for the continuous backup that was previously enabled prior to enabling BackupDR
+        /// protection for this cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continuousBackupPreviousRecoveryWindowDays")]
+        public virtual System.Nullable<int> ContinuousBackupPreviousRecoveryWindowDays { get; set; }
+
+        /// <summary>
+        /// Whether continuous backup was previously enabled prior to enabling BackupDR protection for this cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continuousBackupPreviouslyEnabled")]
+        public virtual System.Nullable<bool> ContinuousBackupPreviouslyEnabled { get; set; }
+
+        private string _continuousBackupPreviouslyEnabledTimeRaw;
+
+        private object _continuousBackupPreviouslyEnabledTime;
+
+        /// <summary>
+        /// The time when continuous backup was previously enabled prior to enabling BackupDR protection for this
+        /// cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continuousBackupPreviouslyEnabledTime")]
+        public virtual string ContinuousBackupPreviouslyEnabledTimeRaw
+        {
+            get => _continuousBackupPreviouslyEnabledTimeRaw;
+            set
+            {
+                _continuousBackupPreviouslyEnabledTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _continuousBackupPreviouslyEnabledTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="ContinuousBackupPreviouslyEnabledTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ContinuousBackupPreviouslyEnabledTimeDateTimeOffset instead.")]
+        public virtual object ContinuousBackupPreviouslyEnabledTime
+        {
+            get => _continuousBackupPreviouslyEnabledTime;
+            set
+            {
+                _continuousBackupPreviouslyEnabledTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _continuousBackupPreviouslyEnabledTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="ContinuousBackupPreviouslyEnabledTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ContinuousBackupPreviouslyEnabledTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ContinuousBackupPreviouslyEnabledTimeRaw);
+            set => ContinuousBackupPreviouslyEnabledTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The DataSource resource that represents the cluster in BackupDR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual string DataSource { get; set; }
+
+        private string _disabledTimeRaw;
+
+        private object _disabledTime;
+
+        /// <summary>
+        /// Time when the BackupDR protection for this cluster was disabled. This field will be empty if this BackupDR
+        /// window is the `current_window`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabledTime")]
+        public virtual string DisabledTimeRaw
+        {
+            get => _disabledTimeRaw;
+            set
+            {
+                _disabledTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _disabledTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DisabledTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DisabledTimeDateTimeOffset instead.")]
+        public virtual object DisabledTime
+        {
+            get => _disabledTime;
+            set
+            {
+                _disabledTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _disabledTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DisabledTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DisabledTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DisabledTimeRaw);
+            set => DisabledTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _enabledTimeRaw;
+
+        private object _enabledTime;
+
+        /// <summary>Time when the BackupDR protection for this cluster was enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledTime")]
+        public virtual string EnabledTimeRaw
+        {
+            get => _enabledTimeRaw;
+            set
+            {
+                _enabledTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _enabledTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EnabledTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EnabledTimeDateTimeOffset instead.")]
+        public virtual object EnabledTime
+        {
+            get => _enabledTime;
+            set
+            {
+                _enabledTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _enabledTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EnabledTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EnabledTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EnabledTimeRaw);
+            set => EnabledTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The retention period for logs generated by BackupDR for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logRetentionPeriod")]
+        public virtual object LogRetentionPeriod { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about BackupDR protection for this cluster.</summary>
+    public class BackupDrInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The current BackupDR configuration for this cluster. If BackupDR protection is not enabled for this cluster,
+        /// this field will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentWindow")]
+        public virtual BackupDrEnabledWindow CurrentWindow { get; set; }
+
+        /// <summary>
+        /// Windows during which BackupDR was enabled for this cluster, along with associated configuration for that
+        /// window. These are used to determine points-in-time for which restores can be performed. The windows are
+        /// ordered with the most recent window last. Windows are mutally exclusive. Windows which closed more than 1
+        /// year ago will be removed from this list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousWindows")]
+        public virtual System.Collections.Generic.IList<BackupDrEnabledWindow> PreviousWindows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing a BackupDrPitrSource.</summary>
+    public class BackupDrPitrSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the backup resource with the format: *
+        /// projects/{project}/locations/{location}/backupVaults/{backupvault_id}/dataSources/{datasource_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual string DataSource { get; set; }
+
+        private string _pointInTimeRaw;
+
+        private object _pointInTime;
+
+        /// <summary>Required. The point in time to restore to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointInTime")]
+        public virtual string PointInTimeRaw
+        {
+            get => _pointInTimeRaw;
+            set
+            {
+                _pointInTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _pointInTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PointInTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PointInTimeDateTimeOffset instead.")]
+        public virtual object PointInTime
+        {
+            get => _pointInTime;
+            set
+            {
+                _pointInTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _pointInTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PointInTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PointInTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PointInTimeRaw);
+            set => PointInTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message describing a BackupSource.</summary>
     public class BackupSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4331,6 +4615,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// <summary>Output only. Cluster created from backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupSource")]
         public virtual BackupSource BackupSource { get; set; }
+
+        /// <summary>Output only. Cluster created from a BackupDR backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupdrBackupSource")]
+        public virtual BackupDrBackupSource BackupdrBackupSource { get; set; }
+
+        /// <summary>Output only. Output only information about BackupDR protection for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupdrInfo")]
+        public virtual BackupDrInfo BackupdrInfo { get; set; }
 
         /// <summary>Output only. Cluster created from CloudSQL snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudsqlBackupRunSource")]
@@ -4957,6 +5249,17 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PointInTimeRaw);
             set => PointInTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CPU utilization policy for the autoscaler.</summary>
+    public class CpuUtilization : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Target CPU utilization as a float between 0 and 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utilizationTarget")]
+        public virtual System.Nullable<float> UtilizationTarget { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5825,6 +6128,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6252,6 +6563,32 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Policy for the autoscaler.</summary>
+    public class Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The period of time in seconds after a new node is created before the autoscaler will incorporate its
+        /// resource usage (e.g. CPU utilization) into the autoscaling recommendation algorithm.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coolDownPeriodSec")]
+        public virtual System.Nullable<long> CoolDownPeriodSec { get; set; }
+
+        /// <summary>CPU utilization policy for the autoscaler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilization")]
+        public virtual CpuUtilization CpuUtilization { get; set; }
+
+        /// <summary>If true, autoscaling is enabled for the instance. If not set, the default value is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Maximum number of nodes for the autoscaler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxNodeCount")]
+        public virtual System.Nullable<long> MaxNodeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Configuration for the primary cluster. It has the list of clusters that are replicating from this cluster. This
     /// should be set if and only if the cluster is of type PRIMARY.
@@ -6494,6 +6831,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     /// <summary>Configuration for a read pool instance.</summary>
     public class ReadPoolConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Autoscaling configuration for the read pool instance. If not set, the read pool instance will not be
+        /// autoscaled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoScalingConfig")]
+        public virtual AutoScalingConfig AutoScalingConfig { get; set; }
+
         /// <summary>Read capacity, i.e. number of nodes in a read pool instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
@@ -6554,6 +6898,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupSource")]
         public virtual BackupSource BackupSource { get; set; }
 
+        /// <summary>BackupDR backup source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupdrBackupSource")]
+        public virtual BackupDrBackupSource BackupdrBackupSource { get; set; }
+
+        /// <summary>BackupDR source used for point in time recovery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupdrPitrSource")]
+        public virtual BackupDrPitrSource BackupdrPitrSource { get; set; }
+
         /// <summary>Required. The resource being created</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual Cluster Cluster { get; set; }
@@ -6606,6 +6958,47 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// <summary>Required. ID of the requesting object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A schedule for the autoscaler.</summary>
+    public class Schedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Cron expression for the triggering the schedule. See
+        /// https://cloud.google.com/compute/docs/autoscaler/scaling-schedules#cron_expressions for the syntax.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cronExpression")]
+        public virtual string CronExpression { get; set; }
+
+        /// <summary>Description of the schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>If true, the schedule is disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>Duration of the schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationSec")]
+        public virtual System.Nullable<long> DurationSec { get; set; }
+
+        /// <summary>Minimum number of nodes in while the schedule is active.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
+        public virtual System.Nullable<long> MinNodeCount { get; set; }
+
+        /// <summary>Name of the schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The location-based IANA time zone for interpreting the schedule's start time. If no time zone is provided,
+        /// UTC is used by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6704,177 +7097,12 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Timing information for the stage execution.</summary>
-    public class StageSchedule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _actualEndTimeRaw;
-
-        private object _actualEndTime;
-
-        /// <summary>Actual end time of the stage. Set only if the stage has completed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actualEndTime")]
-        public virtual string ActualEndTimeRaw
-        {
-            get => _actualEndTimeRaw;
-            set
-            {
-                _actualEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _actualEndTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ActualEndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ActualEndTimeDateTimeOffset instead.")]
-        public virtual object ActualEndTime
-        {
-            get => _actualEndTime;
-            set
-            {
-                _actualEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _actualEndTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ActualEndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ActualEndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ActualEndTimeRaw);
-            set => ActualEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        private string _actualStartTimeRaw;
-
-        private object _actualStartTime;
-
-        /// <summary>Actual start time of the stage. Set only if the stage has started.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actualStartTime")]
-        public virtual string ActualStartTimeRaw
-        {
-            get => _actualStartTimeRaw;
-            set
-            {
-                _actualStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _actualStartTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ActualStartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ActualStartTimeDateTimeOffset instead.")]
-        public virtual object ActualStartTime
-        {
-            get => _actualStartTime;
-            set
-            {
-                _actualStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _actualStartTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ActualStartTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ActualStartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ActualStartTimeRaw);
-            set => ActualStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        private string _estimatedEndTimeRaw;
-
-        private object _estimatedEndTime;
-
-        /// <summary>When the stage is expected to end. Set only if the stage has not completed yet.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("estimatedEndTime")]
-        public virtual string EstimatedEndTimeRaw
-        {
-            get => _estimatedEndTimeRaw;
-            set
-            {
-                _estimatedEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _estimatedEndTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EstimatedEndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EstimatedEndTimeDateTimeOffset instead.")]
-        public virtual object EstimatedEndTime
-        {
-            get => _estimatedEndTime;
-            set
-            {
-                _estimatedEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _estimatedEndTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EstimatedEndTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EstimatedEndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EstimatedEndTimeRaw);
-            set => EstimatedEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        private string _estimatedStartTimeRaw;
-
-        private object _estimatedStartTime;
-
-        /// <summary>When the stage is expected to start. Set only if the stage has not started yet.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("estimatedStartTime")]
-        public virtual string EstimatedStartTimeRaw
-        {
-            get => _estimatedStartTimeRaw;
-            set
-            {
-                _estimatedStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _estimatedStartTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EstimatedStartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EstimatedStartTimeDateTimeOffset instead.")]
-        public virtual object EstimatedStartTime
-        {
-            get => _estimatedStartTime;
-            set
-            {
-                _estimatedStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _estimatedStartTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EstimatedStartTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EstimatedStartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EstimatedStartTimeRaw);
-            set => EstimatedStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Status of an upgrade stage.</summary>
     public class StageStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Read pool instances upgrade metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readPoolInstancesUpgrade")]
         public virtual ReadPoolInstancesUpgradeStageStatus ReadPoolInstancesUpgrade { get; set; }
-
-        /// <summary>Output only. Timing information for the stage execution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
-        public virtual StageSchedule Schedule { get; set; }
 
         /// <summary>Upgrade stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stage")]
@@ -7515,7 +7743,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 27</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 29</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -7618,6 +7846,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// <summary>Machine configuration for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineConfiguration")]
         public virtual StorageDatabasecenterPartnerapiV1mainMachineConfiguration MachineConfiguration { get; set; }
+
+        /// <summary>Optional. Maintenance info for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceInfo")]
+        public virtual StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo MaintenanceInfo { get; set; }
 
         /// <summary>
         /// Identifier for this resource's immediate parent/primary resource if the current resource is a replica or
@@ -8038,6 +8270,76 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// <summary>Additional information about the error encountered. REQUIRED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Deny maintenance period for the database resource. It specifies the time range during which the maintenance
+    /// cannot start. This is configured by the customer.
+    /// </summary>
+    public class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Deny period end date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual GoogleTypeDate EndDate { get; set; }
+
+        /// <summary>Optional. The start date of the deny maintenance period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual GoogleTypeDate StartDate { get; set; }
+
+        /// <summary>Optional. Time in UTC when the deny period starts on start_date and ends on end_date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("time")]
+        public virtual GoogleTypeTimeOfDay Time { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MaintenanceInfo to capture the maintenance details of database resource.</summary>
+    public class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of Deny maintenance period for the database resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenanceSchedules")]
+        public virtual System.Collections.Generic.IList<StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule> DenyMaintenanceSchedules { get; set; }
+
+        /// <summary>Optional. Maintenance window for the database resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
+        public virtual StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule MaintenanceSchedule { get; set; }
+
+        /// <summary>
+        /// Optional. Current Maintenance version of the database resource. Example: "MYSQL_8_0_41.R20250531.01_15"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersion")]
+        public virtual string MaintenanceVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Maintenance window for the database resource. It specifies preferred time and day of the week and phase in some
+    /// cases, when the maintenance can start. This is configured by the customer.
+    /// </summary>
+    public class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual string Day { get; set; }
+
+        /// <summary>
+        /// Optional. Phase of the maintenance window. This is to capture order of maintenance. For example, for Cloud
+        /// SQL resources, this can be used to capture if the maintenance window is in Week1, Week2, Week5, etc. Non
+        /// production resources are usually part of early phase. For more details, refer to Cloud SQL resources -
+        /// https://cloud.google.com/sql/docs/mysql/maintenance
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phase")]
+        public virtual string Phase { get; set; }
+
+        /// <summary>Optional. Preferred time to start the maintenance operation on the specified day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("time")]
+        public virtual GoogleTypeTimeOfDay Time { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
