@@ -4007,8 +4007,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Query string search. Should be of the form "". Complete documentation is at
-            /// https://developers.google.com/workspace/admin/directory/v1/guides/search-groups
+            /// Query string search. Contains one or more search clauses, each with a field, operator, and value. For
+            /// complete documentation, go to [Search for
+            /// groups](https://developers.google.com/workspace/admin/directory/v1/guides/search-groups).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -6622,13 +6623,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 public virtual string PageToken { get; set; }
 
                 /// <summary>
-                /// String query used to filter results. Should be of the form "field operator value" where field can be
-                /// any of supported fields and operators can be any of supported operations. Operators include '=' for
-                /// exact match, '!=' for mismatch and ':' for prefix match or HAS match where applicable. For prefix
-                /// match, the value should always be followed by a *. Logical operators NOT and AND are supported (in
-                /// this order of precedence). Supported fields include `generatedResourceName`, `name`, `buildingId`,
-                /// `floor_name`, `capacity`, `featureInstances.feature.name`, `resourceEmail`, `resourceCategory`. For
-                /// example `buildingId=US-NYC-9TH AND featureInstances.feature.name:Phone`.
+                /// String query used to filter results. Contains one or more search clauses, each with a field,
+                /// operator, and value. A field can be any of supported fields and operators can be any of supported
+                /// operations. Operators include '=' for exact match, '!=' for mismatch and ':' for prefix match or HAS
+                /// match where applicable. For prefix match, the value should always be followed by a *. Logical
+                /// operators NOT and AND are supported (in this order of precedence). Supported fields include
+                /// `generatedResourceName`, `name`, `buildingId`, `floor_name`, `capacity`,
+                /// `featureInstances.feature.name`, `resourceEmail`, `resourceCategory`. For example
+                /// `buildingId=US-NYC-9TH AND featureInstances.feature.name:Phone`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
@@ -10245,8 +10247,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
             /// <summary>
-            /// Query string search. Should be of the form "". Complete documentation is at
-            /// https://developers.google.com/workspace/admin/directory/v1/guides/search-users
+            /// Query string search. Contains one or more search clauses, each with a field, operator, and value. For
+            /// complete documentation, go to [Search for
+            /// users](https://developers.google.com/workspace/admin/directory/v1/guides/search-users).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
