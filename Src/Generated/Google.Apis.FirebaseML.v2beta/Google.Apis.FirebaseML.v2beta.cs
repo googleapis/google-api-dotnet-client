@@ -972,6 +972,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GoogleCloudAiplatformV1beta1EnterpriseWebSearch : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Sites with confidence level chosen &amp;amp; above this value will be blocked from the search
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockingConfidence")]
+        public virtual string BlockingConfidence { get; set; }
+
+        /// <summary>
         /// Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeDomains")]
@@ -1484,6 +1491,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyPenalty")]
         public virtual System.Nullable<float> FrequencyPenalty { get; set; }
 
+        /// <summary>Optional. Config for image generation features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageConfig")]
+        public virtual GoogleCloudAiplatformV1beta1ImageConfig ImageConfig { get; set; }
+
         /// <summary>Optional. Logit probabilities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logprobs")]
         public virtual System.Nullable<int> Logprobs { get; set; }
@@ -1890,6 +1901,20 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Segment of the content this support belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segment")]
         public virtual GoogleCloudAiplatformV1beta1Segment Segment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for image generation features.</summary>
+    public class GoogleCloudAiplatformV1beta1ImageConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported:
+        /// "1:1" "2:3", "3:2" "3:4", "4:3" "4:5", "5:4" "9:16", "16:9" "21:9"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
+        public virtual string AspectRatio { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2567,6 +2592,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>GoogleSearch tool type. Tool to support Google Search in Model. Powered by Google.</summary>
     public class GoogleCloudAiplatformV1beta1ToolGoogleSearch : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Sites with confidence level chosen &amp;amp; above this value will be blocked from the search
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockingConfidence")]
+        public virtual string BlockingConfidence { get; set; }
+
         /// <summary>
         /// Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
         /// Example: ["amazon.com", "facebook.com"].
