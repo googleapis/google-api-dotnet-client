@@ -3104,7 +3104,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Risk analysis result for an event.</summary>
     public class GoogleCloudRecaptchaenterpriseV1RiskAnalysis : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Challenge information for POLICY_BASED_CHALLENGE and INVISIBLE keys</summary>
+        /// <summary>Output only. Challenge information for POLICY_BASED_CHALLENGE and INVISIBLE keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
         public virtual string Challenge { get; set; }
 
