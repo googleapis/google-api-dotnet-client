@@ -1028,12 +1028,13 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Creates a new WorkforcePoolProviderScimToken in a WorkforcePoolProviderScimTenant. You
-                        /// cannot reuse the name of a deleted SCIM token until 30 days after deletion.
+                        /// Agentspace only. Creates a new WorkforcePoolProviderScimToken in a
+                        /// WorkforcePoolProviderScimTenant. You cannot reuse the name of a deleted SCIM token until 30
+                        /// days after deletion.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
-                        /// Required. The parent tenant to create scim token. Format:
+                        /// Required. Agentspace only. The parent tenant to create SCIM token. Format:
                         /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}'
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken body, string parent)
@@ -1042,8 +1043,9 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Creates a new WorkforcePoolProviderScimToken in a WorkforcePoolProviderScimTenant. You
-                        /// cannot reuse the name of a deleted SCIM token until 30 days after deletion.
+                        /// Agentspace only. Creates a new WorkforcePoolProviderScimToken in a
+                        /// WorkforcePoolProviderScimTenant. You cannot reuse the name of a deleted SCIM token until 30
+                        /// days after deletion.
                         /// </summary>
                         public class CreateRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken>
                         {
@@ -1056,16 +1058,16 @@ namespace Google.Apis.Iam.v1
                             }
 
                             /// <summary>
-                            /// Required. The parent tenant to create scim token. Format:
+                            /// Required. Agentspace only. The parent tenant to create SCIM token. Format:
                             /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}'
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Required. The ID to use for the scim token, which becomes the final component of the
-                            /// resource name. This value should be 4-32 characters and follow this pattern:
-                            /// "([a-z]([a-z0-9\\-]{2,30}[a-z0-9]))"
+                            /// Required. Agentspace only. The ID to use for the SCIM token, which becomes the final
+                            /// component of the resource name. This value should be 4-32 characters and follow the
+                            /// pattern: "([a-z]([a-z0-9\\-]{2,30}[a-z0-9]))"
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("workforcePoolProviderScimTokenId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string WorkforcePoolProviderScimTokenId { get; set; }
@@ -1109,12 +1111,12 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Deletes a WorkforcePoolProviderScimToken. You can undelete a scim token for 30 days. After
-                        /// 30 days, deletion is permanent. You cannot update deleted scim tokens. However, you can view
-                        /// and list them.
+                        /// Agentspace only. Deletes a WorkforcePoolProviderScimToken. You can undelete a SCIM token for
+                        /// 30 days. After 30 days, the SCIM token is permanently deleted. You cannot update deleted
+                        /// SCIM tokens, however, you can view and list them.
                         /// </summary>
                         /// <param name="name">
-                        /// Required. The name of the scim token to delete. Format:
+                        /// Required. Agentspace only. The name of the SCIM token to delete. Format:
                         /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
@@ -1123,9 +1125,9 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Deletes a WorkforcePoolProviderScimToken. You can undelete a scim token for 30 days. After
-                        /// 30 days, deletion is permanent. You cannot update deleted scim tokens. However, you can view
-                        /// and list them.
+                        /// Agentspace only. Deletes a WorkforcePoolProviderScimToken. You can undelete a SCIM token for
+                        /// 30 days. After 30 days, the SCIM token is permanently deleted. You cannot update deleted
+                        /// SCIM tokens, however, you can view and list them.
                         /// </summary>
                         public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken>
                         {
@@ -1137,7 +1139,7 @@ namespace Google.Apis.Iam.v1
                             }
 
                             /// <summary>
-                            /// Required. The name of the scim token to delete. Format:
+                            /// Required. Agentspace only. The name of the SCIM token to delete. Format:
                             /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1167,9 +1169,9 @@ namespace Google.Apis.Iam.v1
                             }
                         }
 
-                        /// <summary>Gets an individual WorkforcePoolProviderScimToken.</summary>
+                        /// <summary>Agentspace only. Gets an individual WorkforcePoolProviderScimToken.</summary>
                         /// <param name="name">
-                        /// Required. The name of the scim token to retrieve. Format:
+                        /// Required. Agentspace only. The name of the SCIM token to retrieve. Format:
                         /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
                         /// </param>
                         public virtual GetRequest Get(string name)
@@ -1177,7 +1179,7 @@ namespace Google.Apis.Iam.v1
                             return new GetRequest(this.service, name);
                         }
 
-                        /// <summary>Gets an individual WorkforcePoolProviderScimToken.</summary>
+                        /// <summary>Agentspace only. Gets an individual WorkforcePoolProviderScimToken.</summary>
                         public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken>
                         {
                             /// <summary>Constructs a new Get request.</summary>
@@ -1188,7 +1190,7 @@ namespace Google.Apis.Iam.v1
                             }
 
                             /// <summary>
-                            /// Required. The name of the scim token to retrieve. Format:
+                            /// Required. Agentspace only. The name of the SCIM token to retrieve. Format:
                             /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1219,11 +1221,12 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Lists all non-deleted WorkforcePoolProviderScimTokenss in a WorkforcePoolProviderScimTenant.
-                        /// If `show_deleted` is set to `true`, then deleted SCIM tokens are also listed.
+                        /// Agentspace only. Lists all non-deleted WorkforcePoolProviderScimTokenss in a
+                        /// WorkforcePoolProviderScimTenant. If `show_deleted` is set to `true`, then deleted SCIM
+                        /// tokens are also listed.
                         /// </summary>
                         /// <param name="parent">
-                        /// Required. The parent to list scim tokens. Format:
+                        /// Required. Agentspace only. The parent to list SCIM tokens. Format:
                         /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}'
                         /// </param>
                         public virtual ListRequest List(string parent)
@@ -1232,8 +1235,9 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Lists all non-deleted WorkforcePoolProviderScimTokenss in a WorkforcePoolProviderScimTenant.
-                        /// If `show_deleted` is set to `true`, then deleted SCIM tokens are also listed.
+                        /// Agentspace only. Lists all non-deleted WorkforcePoolProviderScimTokenss in a
+                        /// WorkforcePoolProviderScimTenant. If `show_deleted` is set to `true`, then deleted SCIM
+                        /// tokens are also listed.
                         /// </summary>
                         public class ListRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ListWorkforcePoolProviderScimTokensResponse>
                         {
@@ -1245,27 +1249,30 @@ namespace Google.Apis.Iam.v1
                             }
 
                             /// <summary>
-                            /// Required. The parent to list scim tokens. Format:
+                            /// Required. Agentspace only. The parent to list SCIM tokens. Format:
                             /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}'
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Optional. The maximum number of scim tokens to return. If unspecified, at most 2 scim
-                            /// tokens will be returned.
+                            /// Optional. Agentspace only. The maximum number of scim tokens to return. If unspecified,
+                            /// at most 2 SCIM tokens will be returned.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
                             /// <summary>
-                            /// Optional. A page token, received from a previous `ListWorkforcePoolProviderScimTokens`
-                            /// call. Provide this to retrieve the subsequent page.
+                            /// Optional. Agentspace only. A page token, received from a previous
+                            /// `ListWorkforcePoolProviderScimTokens` call. Provide this to retrieve the subsequent
+                            /// page.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
-                            /// <summary>Optional. Whether to return soft-deleted scim tokens.</summary>
+                            /// <summary>
+                            /// Optional. Agentspace only. Whether to return soft-deleted scim tokens.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
@@ -1317,10 +1324,10 @@ namespace Google.Apis.Iam.v1
                             }
                         }
 
-                        /// <summary>Updates an existing WorkforcePoolProviderScimToken.</summary>
+                        /// <summary>Agentspace only. Updates an existing WorkforcePoolProviderScimToken.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// Identifier. The resource name of the SCIM Token. Format:
+                        /// Identifier. Agentspace only. The resource name of the SCIM Token. Format:
                         /// `locations/{location}/workforcePools/{workforce_pool}/providers/
                         /// {workforce_pool_provider}/scimTenants/{scim_tenant}/tokens/{token}`
                         /// </param>
@@ -1329,7 +1336,7 @@ namespace Google.Apis.Iam.v1
                             return new PatchRequest(this.service, body, name);
                         }
 
-                        /// <summary>Updates an existing WorkforcePoolProviderScimToken.</summary>
+                        /// <summary>Agentspace only. Updates an existing WorkforcePoolProviderScimToken.</summary>
                         public class PatchRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken>
                         {
                             /// <summary>Constructs a new Patch request.</summary>
@@ -1341,14 +1348,14 @@ namespace Google.Apis.Iam.v1
                             }
 
                             /// <summary>
-                            /// Identifier. The resource name of the SCIM Token. Format:
+                            /// Identifier. Agentspace only. The resource name of the SCIM Token. Format:
                             /// `locations/{location}/workforcePools/{workforce_pool}/providers/
                             /// {workforce_pool_provider}/scimTenants/{scim_tenant}/tokens/{token}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
-                            /// <summary>Optional. The list of fields to update.</summary>
+                            /// <summary>Optional. Agentspace only. The list of fields to update.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
 
@@ -1391,12 +1398,12 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Undeletes a WorkforcePoolProviderScimToken, as long as it was deleted fewer than 30 days
-                        /// ago.
+                        /// Agentspace only. Undeletes a WorkforcePoolProviderScimToken,that was deleted fewer than 30
+                        /// days ago.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// Required. The name of the scim token to undelete. Format:
+                        /// Required. Agentspace only. The name of the SCIM token to undelete. Format:
                         /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
                         /// </param>
                         public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderScimTokenRequest body, string name)
@@ -1405,8 +1412,8 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Undeletes a WorkforcePoolProviderScimToken, as long as it was deleted fewer than 30 days
-                        /// ago.
+                        /// Agentspace only. Undeletes a WorkforcePoolProviderScimToken,that was deleted fewer than 30
+                        /// days ago.
                         /// </summary>
                         public class UndeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken>
                         {
@@ -1419,7 +1426,7 @@ namespace Google.Apis.Iam.v1
                             }
 
                             /// <summary>
-                            /// Required. The name of the scim token to undelete. Format:
+                            /// Required. Agentspace only. The name of the SCIM token to undelete. Format:
                             /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1457,12 +1464,12 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Creates a new WorkforcePoolProviderScimTenant in a WorkforcePoolProvider. You cannot reuse the
-                    /// name of a deleted scim tenant until 30 days after deletion.
+                    /// Agentspace only. Creates a new WorkforcePoolProviderScimTenant in a WorkforcePoolProvider. You
+                    /// cannot reuse the name of a deleted SCIM tenant until 30 days after deletion.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. The parent to create scim tenant. Format:
+                    /// Required. Agentspace only. The parent to create SCIM tenant. Format:
                     /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}'
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant body, string parent)
@@ -1471,8 +1478,8 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Creates a new WorkforcePoolProviderScimTenant in a WorkforcePoolProvider. You cannot reuse the
-                    /// name of a deleted scim tenant until 30 days after deletion.
+                    /// Agentspace only. Creates a new WorkforcePoolProviderScimTenant in a WorkforcePoolProvider. You
+                    /// cannot reuse the name of a deleted SCIM tenant until 30 days after deletion.
                     /// </summary>
                     public class CreateRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant>
                     {
@@ -1485,16 +1492,16 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Required. The parent to create scim tenant. Format:
+                        /// Required. Agentspace only. The parent to create SCIM tenant. Format:
                         /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}'
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Required. The ID to use for the scim tenant, which becomes the final component of the
-                        /// resource name. This value should be 4-32 characters, and may contain the characters
-                        /// [a-z0-9-].
+                        /// Required. Agentspace only. The ID to use for the SCIM tenant, which becomes the final
+                        /// component of the resource name. This value should be 4-32 characters, containing the
+                        /// characters [a-z0-9-].
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("workforcePoolProviderScimTenantId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string WorkforcePoolProviderScimTenantId { get; set; }
@@ -1538,12 +1545,12 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Deletes a WorkforcePoolProviderScimTenant. You can undelete a scim tenant for 30 days. After 30
-                    /// days, deletion is permanent. You cannot update deleted scim tenants. However, you can view and
-                    /// list them.
+                    /// Agentspace only. Deletes a WorkforcePoolProviderScimTenant. You can undelete a SCIM tenant for
+                    /// 30 days. After 30 days, deletion is permanent. You cannot update deleted SCIM tenants. However,
+                    /// you can view and list them.
                     /// </summary>
                     /// <param name="name">
-                    /// Required. The name of the scim tenant to delete. Format:
+                    /// Required. Agentspace only. The name of the scim tenant to delete. Format:
                     /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
@@ -1552,9 +1559,9 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Deletes a WorkforcePoolProviderScimTenant. You can undelete a scim tenant for 30 days. After 30
-                    /// days, deletion is permanent. You cannot update deleted scim tenants. However, you can view and
-                    /// list them.
+                    /// Agentspace only. Deletes a WorkforcePoolProviderScimTenant. You can undelete a SCIM tenant for
+                    /// 30 days. After 30 days, deletion is permanent. You cannot update deleted SCIM tenants. However,
+                    /// you can view and list them.
                     /// </summary>
                     public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant>
                     {
@@ -1566,7 +1573,7 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Required. The name of the scim tenant to delete. Format:
+                        /// Required. Agentspace only. The name of the scim tenant to delete. Format:
                         /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1596,9 +1603,9 @@ namespace Google.Apis.Iam.v1
                         }
                     }
 
-                    /// <summary>Gets an individual WorkforcePoolProviderScimTenant.</summary>
+                    /// <summary>Agentspace only. Gets an individual WorkforcePoolProviderScimTenant.</summary>
                     /// <param name="name">
-                    /// Required. The name of the scim tenant to retrieve. Format:
+                    /// Required. Agentspace only. The name of the SCIM tenant to retrieve. Format:
                     /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
                     /// </param>
                     public virtual GetRequest Get(string name)
@@ -1606,7 +1613,7 @@ namespace Google.Apis.Iam.v1
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>Gets an individual WorkforcePoolProviderScimTenant.</summary>
+                    /// <summary>Agentspace only. Gets an individual WorkforcePoolProviderScimTenant.</summary>
                     public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -1617,7 +1624,7 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Required. The name of the scim tenant to retrieve. Format:
+                        /// Required. Agentspace only. The name of the SCIM tenant to retrieve. Format:
                         /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1648,11 +1655,12 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Lists all non-deleted WorkforcePoolProviderScimTenants in a WorkforcePoolProvider. If
-                    /// `show_deleted` is set to `true`, then deleted scim tenants are also listed.
+                    /// Agentspace only. Lists all non-deleted WorkforcePoolProviderScimTenants in a
+                    /// WorkforcePoolProvider. If `show_deleted` is set to `true`, then deleted SCIM tenants are also
+                    /// listed.
                     /// </summary>
                     /// <param name="parent">
-                    /// Required. The parent to list scim tenants. Format:
+                    /// Required. Agentspace only. The parent to list SCIM tenants. Format:
                     /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}'
                     /// </param>
                     public virtual ListRequest List(string parent)
@@ -1661,8 +1669,9 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Lists all non-deleted WorkforcePoolProviderScimTenants in a WorkforcePoolProvider. If
-                    /// `show_deleted` is set to `true`, then deleted scim tenants are also listed.
+                    /// Agentspace only. Lists all non-deleted WorkforcePoolProviderScimTenants in a
+                    /// WorkforcePoolProvider. If `show_deleted` is set to `true`, then deleted SCIM tenants are also
+                    /// listed.
                     /// </summary>
                     public class ListRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ListWorkforcePoolProviderScimTenantsResponse>
                     {
@@ -1674,27 +1683,27 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Required. The parent to list scim tenants. Format:
+                        /// Required. Agentspace only. The parent to list SCIM tenants. Format:
                         /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}'
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. The maximum number of scim tenants to return. If unspecified, at most 1 scim
-                        /// tenant will be returned.
+                        /// Optional. Agentspace only. The maximum number of SCIM tenants to return. If unspecified, at
+                        /// most 1 scim tenant will be returned.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// Optional. A page token, received from a previous `ListScimTenants` call. Provide this to
-                        /// retrieve the subsequent page.
+                        /// Optional. Agentspace only. A page token, received from a previous `ListScimTenants` call.
+                        /// Provide this to retrieve the subsequent page.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
-                        /// <summary>Optional. Whether to return soft-deleted scim tenants.</summary>
+                        /// <summary>Optional. Agentspace only. Whether to return soft-deleted SCIM tenants.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
@@ -1746,10 +1755,10 @@ namespace Google.Apis.Iam.v1
                         }
                     }
 
-                    /// <summary>Updates an existing WorkforcePoolProviderScimTenant.</summary>
+                    /// <summary>Agentspace only. Updates an existing WorkforcePoolProviderScimTenant.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Identifier. The resource name of the SCIM Tenant. Format:
+                    /// Identifier. Agentspace only. The resource name of the SCIM Tenant. Format:
                     /// `locations/{location}/workforcePools/{workforce_pool}/providers/
                     /// {workforce_pool_provider}/scimTenants/{scim_tenant}`
                     /// </param>
@@ -1758,7 +1767,7 @@ namespace Google.Apis.Iam.v1
                         return new PatchRequest(this.service, body, name);
                     }
 
-                    /// <summary>Updates an existing WorkforcePoolProviderScimTenant.</summary>
+                    /// <summary>Agentspace only. Updates an existing WorkforcePoolProviderScimTenant.</summary>
                     public class PatchRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -1770,14 +1779,14 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Identifier. The resource name of the SCIM Tenant. Format:
+                        /// Identifier. Agentspace only. The resource name of the SCIM Tenant. Format:
                         /// `locations/{location}/workforcePools/{workforce_pool}/providers/
                         /// {workforce_pool_provider}/scimTenants/{scim_tenant}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Optional. The list of fields to update.</summary>
+                        /// <summary>Optional. Agentspace only. The list of fields to update.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
@@ -1820,11 +1829,12 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Undeletes a WorkforcePoolProviderScimTenant, as long as it was deleted fewer than 30 days ago.
+                    /// Agentspace only. Undeletes a WorkforcePoolProviderScimTenant, that was deleted fewer than 30
+                    /// days ago.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Required. The name of the scim tenant to undelete. Format:
+                    /// Required. Agentspace only. The name of the SCIM tenant to undelete. Format:
                     /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
                     /// </param>
                     public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderScimTenantRequest body, string name)
@@ -1833,7 +1843,8 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Undeletes a WorkforcePoolProviderScimTenant, as long as it was deleted fewer than 30 days ago.
+                    /// Agentspace only. Undeletes a WorkforcePoolProviderScimTenant, that was deleted fewer than 30
+                    /// days ago.
                     /// </summary>
                     public class UndeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant>
                     {
@@ -1846,7 +1857,7 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Required. The name of the scim tenant to undelete. Format:
+                        /// Required. Agentspace only. The name of the SCIM tenant to undelete. Format:
                         /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5306,7 +5317,7 @@ namespace Google.Apis.Iam.v1
                         /// Updates an existing WorkloadIdentityPoolManagedIdentity in a WorkloadIdentityPoolNamespace.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="name">Identifier. The resource name of the managed identity.</param>
+                        /// <param name="name">Output only. The resource name of the managed identity.</param>
                         public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkloadIdentityPoolManagedIdentity body, string name)
                         {
                             return new PatchRequest(this.service, body, name);
@@ -5325,7 +5336,7 @@ namespace Google.Apis.Iam.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Identifier. The resource name of the managed identity.</summary>
+                            /// <summary>Output only. The resource name of the managed identity.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -6849,7 +6860,7 @@ namespace Google.Apis.Iam.v1
 
                     /// <summary>Updates an existing WorkloadIdentityPoolProvider.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Identifier. The resource name of the provider.</param>
+                    /// <param name="name">Output only. The resource name of the provider.</param>
                     public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkloadIdentityPoolProvider body, string name)
                     {
                         return new PatchRequest(this.service, body, name);
@@ -6866,7 +6877,7 @@ namespace Google.Apis.Iam.v1
                             InitParameters();
                         }
 
-                        /// <summary>Identifier. The resource name of the provider.</summary>
+                        /// <summary>Output only. The resource name of the provider.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -11173,17 +11184,17 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for ListWorkforcePoolProviderScimTenants.</summary>
+    /// <summary>Agentspace only. Response message for ListWorkforcePoolProviderScimTenants.</summary>
     public class ListWorkforcePoolProviderScimTenantsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
-        /// there are no subsequent pages.
+        /// Optional. Agentspace only. A token, which can be sent as `page_token` to retrieve the next page. If this
+        /// field is omitted, there are no subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Output only. A list of scim tenants.</summary>
+        /// <summary>Output only. Agentspace only. A list of SCIM tenants.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workforcePoolProviderScimTenants")]
         public virtual System.Collections.Generic.IList<WorkforcePoolProviderScimTenant> WorkforcePoolProviderScimTenants { get; set; }
 
@@ -11191,17 +11202,17 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for ListWorkforcePoolProviderScimTokens.</summary>
+    /// <summary>Agentspace only. Response message for ListWorkforcePoolProviderScimTokens.</summary>
     public class ListWorkforcePoolProviderScimTokensResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
-        /// there are no subsequent pages.
+        /// Optional. Agentspace only. A token, which can be sent as `page_token` to retrieve the next page. If this
+        /// field is omitted, there are no subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Output only. A list of scim tokens.</summary>
+        /// <summary>Output only. Agentspace only. A list of SCIM tokens.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workforcePoolProviderScimTokens")]
         public virtual System.Collections.Generic.IList<WorkforcePoolProviderScimToken> WorkforcePoolProviderScimTokens { get; set; }
 
@@ -12541,14 +12552,14 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for UndeleteWorkforcePoolProviderScimTenant.</summary>
+    /// <summary>Agentspace only. Request message for UndeleteWorkforcePoolProviderScimTenant.</summary>
     public class UndeleteWorkforcePoolProviderScimTenantRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for UndeleteWorkforcePoolProviderScimToken.</summary>
+    /// <summary>Agentspace only. Request message for UndeleteWorkforcePoolProviderScimToken.</summary>
     public class UndeleteWorkforcePoolProviderScimTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -12764,7 +12775,7 @@ namespace Google.Apis.Iam.v1.Data
         /// maps an identity provider credential to the normalized attribute specified by the corresponding map key. You
         /// can use the `assertion` keyword in the expression to access a JSON representation of the authentication
         /// credential issued by the provider. The maximum length of an attribute mapping expression is 2048 characters.
-        /// When evaluated, the total size of all mapped attributes must not exceed 4KB. For OIDC providers, you must
+        /// When evaluated, the total size of all mapped attributes must not exceed 16 KB. For OIDC providers, you must
         /// supply a custom mapping that includes the `google.subject` attribute. For example, the following maps the
         /// `sub` claim of the incoming credential to the `subject` attribute on a Google token:
         /// ```
@@ -12951,33 +12962,37 @@ namespace Google.Apis.Iam.v1.Data
     }
 
     /// <summary>
-    /// Represents a scim tenant. Used for provisioning and managing identity data (such as Users and Groups) in
-    /// cross-domain environments.
+    /// Agentspace only. Represents a SCIM tenant. Used for provisioning and managing identity data (such as Users and
+    /// Groups) in cross-domain environments.
     /// </summary>
     public class WorkforcePoolProviderScimTenant : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Represents the base URI as defined in [RFC 7644, Section
+        /// Output only. Agentspace only. Represents the base URI as defined in [RFC 7644, Section
         /// 1.3](https://datatracker.ietf.org/doc/html/rfc7644#section-1.3). Clients must use this as the root address
         /// for managing resources under the tenant. Format: https://iamscim.googleapis.com/{version}/{tenant_id}/
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseUri")]
         public virtual string BaseUri { get; set; }
 
-        /// <summary>Optional. Maps BYOID claims to SCIM claims.</summary>
+        /// <summary>Optional. Agentspace only. Maps BYOID claims to SCIM claims.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimMapping")]
         public virtual System.Collections.Generic.IDictionary<string, string> ClaimMapping { get; set; }
 
-        /// <summary>Optional. The description of the scim tenant. Cannot exceed 256 characters.</summary>
+        /// <summary>
+        /// Optional. Agentspace only. The description of the SCIM tenant. Cannot exceed 256 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. The display name of the scim tenant. Cannot exceed 32 characters.</summary>
+        /// <summary>
+        /// Optional. Agentspace only. The display name of the SCIM tenant. Cannot exceed 32 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Identifier. The resource name of the SCIM Tenant. Format:
+        /// Identifier. Agentspace only. The resource name of the SCIM Tenant. Format:
         /// `locations/{location}/workforcePools/{workforce_pool}/providers/
         /// {workforce_pool_provider}/scimTenants/{scim_tenant}`
         /// </summary>
@@ -12988,7 +13003,9 @@ namespace Google.Apis.Iam.v1.Data
 
         private object _purgeTime;
 
-        /// <summary>Output only. The timestamp when the scim tenant is going to be purged.</summary>
+        /// <summary>
+        /// Output only. Agentspace only. The timestamp that represents the time when the SCIM tenant is purged.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purgeTime")]
         public virtual string PurgeTimeRaw
         {
@@ -13021,7 +13038,14 @@ namespace Google.Apis.Iam.v1.Data
             set => PurgeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The state of the tenant.</summary>
+        /// <summary>
+        /// Output only. Service Agent created by SCIM Tenant API. SCIM tokens created under this tenant will be
+        /// attached to this service agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAgent")]
+        public virtual string ServiceAgent { get; set; }
+
+        /// <summary>Output only. Agentspace only. The state of the tenant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -13030,16 +13054,19 @@ namespace Google.Apis.Iam.v1.Data
     }
 
     /// <summary>
-    /// Represents a token for the WorkforcePoolProviderScimTenant. Used for authenticating SCIM Provisioning requests.
+    /// Agentspace only. Represents a token for the WorkforcePoolProviderScimTenant. Used for authenticating SCIM
+    /// provisioning requests.
     /// </summary>
     public class WorkforcePoolProviderScimToken : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The display name of the scim token. Cannot exceed 32 characters.</summary>
+        /// <summary>
+        /// Optional. Agentspace only. The display name of the SCIM token. Cannot exceed 32 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Identifier. The resource name of the SCIM Token. Format:
+        /// Identifier. Agentspace only. The resource name of the SCIM Token. Format:
         /// `locations/{location}/workforcePools/{workforce_pool}/providers/
         /// {workforce_pool_provider}/scimTenants/{scim_tenant}/tokens/{token}`
         /// </summary>
@@ -13047,12 +13074,13 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. The token string. Provide this to the IdP for authentication. Will be set only during creation.
+        /// Output only. Agentspace only. The token string. Provide this to the IdP for authentication. Will be set only
+        /// during creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityToken")]
         public virtual string SecurityToken { get; set; }
 
-        /// <summary>Output only. The state of the token.</summary>
+        /// <summary>Output only. Agentspace only. The state of the token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -13200,7 +13228,7 @@ namespace Google.Apis.Iam.v1.Data
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Identifier. The resource name of the managed identity.</summary>
+        /// <summary>Output only. The resource name of the managed identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -13409,7 +13437,7 @@ namespace Google.Apis.Iam.v1.Data
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Identifier. The resource name of the provider.</summary>
+        /// <summary>Output only. The resource name of the provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
