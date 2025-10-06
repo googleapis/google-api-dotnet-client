@@ -1260,6 +1260,102 @@ namespace Google.Apis.WorkloadManager.v1
                         });
                     }
                 }
+
+                /// <summary>Updates the parameters of a single Evaluation.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// name of resource names have the form
+                /// 'projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}'
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.WorkloadManager.v1.Data.Evaluation body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single Evaluation.</summary>
+                public class PatchRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.WorkloadManager.v1.Data.Evaluation body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// name of resource names have the form
+                    /// 'projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}'
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten in the Evaluation resource
+                    /// by the update. The fields specified in the update_mask are relative to the resource, not the
+                    /// full request. A field will be overwritten if it is in the mask.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.WorkloadManager.v1.Data.Evaluation Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/evaluations/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Insights resource.</summary>
@@ -2832,6 +2928,40 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message represent an rule that failed to be validated.</summary>
+    public class InvalidRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>display name of the invalid rule</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>cloud storage destination of the invalid rule</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>name of the invalid rule</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The error message of valdating rule formats.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valiadtionError")]
+        public virtual string ValiadtionError { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message wrappes a list of invalid rules.</summary>
+    public class InvalidRulesWrapper : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The invalid rules that failed to be validated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invalidRules")]
+        public virtual System.Collections.Generic.IList<InvalidRule> InvalidRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>List discovered profile Response returns discovered profiles from agents</summary>
     public class ListDiscoveredProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2940,9 +3070,9 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>Mesesage of response of list rules</summary>
     public class ListRulesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token identifying a page of results the server should return.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
+        /// <summary>A wrapper of the invalid rules that failed to be validated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invalidRulesWrapper")]
+        public virtual InvalidRulesWrapper InvalidRulesWrapper { get; set; }
 
         /// <summary>all rules in response</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
