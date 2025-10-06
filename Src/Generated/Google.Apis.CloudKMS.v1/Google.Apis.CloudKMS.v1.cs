@@ -343,14 +343,18 @@ namespace Google.Apis.CloudKMS.v1
             }
         }
 
-        /// <summary>Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <summary>
+        /// Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
+        /// </summary>
         /// <param name="name">Required. The name of the KeyAccessJustificationsPolicyConfig to get.</param>
         public virtual GetKajPolicyConfigRequest GetKajPolicyConfig(string name)
         {
             return new GetKajPolicyConfigRequest(this.service, name);
         }
 
-        /// <summary>Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <summary>
+        /// Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
+        /// </summary>
         public class GetKajPolicyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig>
         {
             /// <summary>Constructs a new GetKajPolicyConfig request.</summary>
@@ -469,7 +473,9 @@ namespace Google.Apis.CloudKMS.v1
             }
         }
 
-        /// <summary>Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <summary>
+        /// Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
@@ -480,7 +486,9 @@ namespace Google.Apis.CloudKMS.v1
             return new UpdateKajPolicyConfigRequest(this.service, body, name);
         }
 
-        /// <summary>Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <summary>
+        /// Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
+        /// </summary>
         public class UpdateKajPolicyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig>
         {
             /// <summary>Constructs a new UpdateKajPolicyConfig request.</summary>
@@ -555,14 +563,18 @@ namespace Google.Apis.CloudKMS.v1
             this.service = service;
         }
 
-        /// <summary>Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <summary>
+        /// Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
+        /// </summary>
         /// <param name="name">Required. The name of the KeyAccessJustificationsPolicyConfig to get.</param>
         public virtual GetKajPolicyConfigRequest GetKajPolicyConfig(string name)
         {
             return new GetKajPolicyConfigRequest(this.service, name);
         }
 
-        /// <summary>Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <summary>
+        /// Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
+        /// </summary>
         public class GetKajPolicyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig>
         {
             /// <summary>Constructs a new GetKajPolicyConfig request.</summary>
@@ -600,7 +612,9 @@ namespace Google.Apis.CloudKMS.v1
             }
         }
 
-        /// <summary>Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <summary>
+        /// Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
@@ -611,7 +625,9 @@ namespace Google.Apis.CloudKMS.v1
             return new UpdateKajPolicyConfigRequest(this.service, body, name);
         }
 
-        /// <summary>Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <summary>
+        /// Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
+        /// </summary>
         public class UpdateKajPolicyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig>
         {
             /// <summary>Constructs a new UpdateKajPolicyConfig request.</summary>
@@ -5047,14 +5063,18 @@ namespace Google.Apis.CloudKMS.v1
             }
         }
 
-        /// <summary>Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <summary>
+        /// Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
+        /// </summary>
         /// <param name="name">Required. The name of the KeyAccessJustificationsPolicyConfig to get.</param>
         public virtual GetKajPolicyConfigRequest GetKajPolicyConfig(string name)
         {
             return new GetKajPolicyConfigRequest(this.service, name);
         }
 
-        /// <summary>Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <summary>
+        /// Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
+        /// </summary>
         public class GetKajPolicyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig>
         {
             /// <summary>Constructs a new GetKajPolicyConfig request.</summary>
@@ -5335,7 +5355,9 @@ namespace Google.Apis.CloudKMS.v1
             }
         }
 
-        /// <summary>Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <summary>
+        /// Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of
@@ -5346,7 +5368,9 @@ namespace Google.Apis.CloudKMS.v1
             return new UpdateKajPolicyConfigRequest(this.service, body, name);
         }
 
-        /// <summary>Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.</summary>
+        /// <summary>
+        /// Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
+        /// </summary>
         public class UpdateKajPolicyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.KeyAccessJustificationsPolicyConfig>
         {
             /// <summary>Constructs a new UpdateKajPolicyConfig request.</summary>
