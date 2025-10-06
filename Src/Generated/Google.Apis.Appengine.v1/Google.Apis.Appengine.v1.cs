@@ -1818,8 +1818,8 @@ namespace Google.Apis.Appengine.v1
                 public virtual string AppsId { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
+                /// primarily intended for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2022,6 +2022,16 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>
+                /// When set to true, operations that are reachable are returned as normal, and those that are
+                /// unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when
+                /// reading across collections e.g. when parent is set to "projects/example/locations/-".This field is
+                /// not by default supported and will result in an UNIMPLEMENTED error if set unless explicitly
+                /// documented otherwise in service or product specific documentation.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -2062,6 +2072,14 @@ namespace Google.Apis.Appengine.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "returnPartialSuccess",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4675,6 +4693,105 @@ namespace Google.Apis.Appengine.v1
                         }
                     }
 
+                    /// <summary>
+                    /// Deletes the specified domain mapping. A user must be authorized to administer the associated
+                    /// domain in order to delete a DomainMapping resource.
+                    /// </summary>
+                    /// <param name="projectsId">
+                    /// Part of `name`. Required. Name of the resource to delete. Example:
+                    /// apps/myapp/domainMappings/example.com.
+                    /// </param>
+                    /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="domainMappingsId">Part of `name`. See documentation of `projectsId`.</param>
+                    public virtual DeleteRequest Delete(string projectsId, string locationsId, string applicationsId, string domainMappingsId)
+                    {
+                        return new DeleteRequest(this.service, projectsId, locationsId, applicationsId, domainMappingsId);
+                    }
+
+                    /// <summary>
+                    /// Deletes the specified domain mapping. A user must be authorized to administer the associated
+                    /// domain in order to delete a DomainMapping resource.
+                    /// </summary>
+                    public class DeleteRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string applicationsId, string domainMappingsId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            ApplicationsId = applicationsId;
+                            DomainMappingsId = domainMappingsId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Part of `name`. Required. Name of the resource to delete. Example:
+                        /// apps/myapp/domainMappings/example.com.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ApplicationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("domainMappingsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string DomainMappingsId { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("domainMappingsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "domainMappingsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Gets the specified domain mapping.</summary>
                     /// <param name="projectsId">
                     /// Part of `name`. Required. Name of the resource requested. Example:
@@ -4762,6 +4879,127 @@ namespace Google.Apis.Appengine.v1
                                 Name = "domainMappingsId",
                                 IsRequired = true,
                                 ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update
+                    /// certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to
+                    /// administer the associated domain in order to update a DomainMapping resource.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="projectsId">
+                    /// Part of `name`. Required. Name of the resource to update. Example:
+                    /// apps/myapp/domainMappings/example.com.
+                    /// </param>
+                    /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="domainMappingsId">Part of `name`. See documentation of `projectsId`.</param>
+                    public virtual PatchRequest Patch(Google.Apis.Appengine.v1.Data.DomainMapping body, string projectsId, string locationsId, string applicationsId, string domainMappingsId)
+                    {
+                        return new PatchRequest(this.service, body, projectsId, locationsId, applicationsId, domainMappingsId);
+                    }
+
+                    /// <summary>
+                    /// Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update
+                    /// certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to
+                    /// administer the associated domain in order to update a DomainMapping resource.
+                    /// </summary>
+                    public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1.Data.DomainMapping body, string projectsId, string locationsId, string applicationsId, string domainMappingsId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            ApplicationsId = applicationsId;
+                            DomainMappingsId = domainMappingsId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Part of `name`. Required. Name of the resource to update. Example:
+                        /// apps/myapp/domainMappings/example.com.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ApplicationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("domainMappingsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string DomainMappingsId { get; private set; }
+
+                        /// <summary>Required. Standard field mask for the set of fields to be updated.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Appengine.v1.Data.DomainMapping Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("domainMappingsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "domainMappingsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -6667,6 +6905,14 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// ListOperationsRequest.return_partial_success and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
