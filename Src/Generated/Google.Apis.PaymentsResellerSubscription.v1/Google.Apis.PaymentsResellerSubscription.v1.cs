@@ -2663,6 +2663,13 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemPromotionSpecs")]
         public virtual System.Collections.Generic.IList<SubscriptionPromotionSpec> LineItemPromotionSpecs { get; set; }
 
+        /// <summary>
+        /// Identifier. Resource name of the line item. Format:
+        /// partners/{partner}/subscriptions/{subscription}/lineItems/{lineItem}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>Output only. Details only set for a ONE_TIME recurrence line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oneTimeRecurrenceDetails")]
         public virtual SubscriptionLineItemOneTimeRecurrenceDetails OneTimeRecurrenceDetails { get; set; }
