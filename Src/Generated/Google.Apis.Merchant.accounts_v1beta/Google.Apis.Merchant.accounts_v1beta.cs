@@ -4728,9 +4728,11 @@ namespace Google.Apis.Merchant.accounts_v1beta
 
         /// <summary>
         /// Deletes the specified account regardless of its type: standalone, advanced account or sub-account. Deleting
-        /// an advanced account leads to the deletion of all of its sub-accounts. Executing this method requires admin
-        /// access. The deletion succeeds only if the account does not provide services to any other account and has no
-        /// processed offers. You can use the `force` parameter to override this.
+        /// an advanced account leads to the deletion of all of its sub-accounts. This also deletes the account's
+        /// [developer registration entity](/merchant/api/reference/rest/accounts_v1beta/accounts.developerRegistration)
+        /// and any associated GCP project to the account. Executing this method requires admin access. The deletion
+        /// succeeds only if the account does not provide services to any other account and has no processed offers. You
+        /// can use the `force` parameter to override this.
         /// </summary>
         /// <param name="name">Required. The name of the account to delete. Format: `accounts/{account}`</param>
         public virtual DeleteRequest Delete(string name)
@@ -4740,9 +4742,11 @@ namespace Google.Apis.Merchant.accounts_v1beta
 
         /// <summary>
         /// Deletes the specified account regardless of its type: standalone, advanced account or sub-account. Deleting
-        /// an advanced account leads to the deletion of all of its sub-accounts. Executing this method requires admin
-        /// access. The deletion succeeds only if the account does not provide services to any other account and has no
-        /// processed offers. You can use the `force` parameter to override this.
+        /// an advanced account leads to the deletion of all of its sub-accounts. This also deletes the account's
+        /// [developer registration entity](/merchant/api/reference/rest/accounts_v1beta/accounts.developerRegistration)
+        /// and any associated GCP project to the account. Executing this method requires admin access. The deletion
+        /// succeeds only if the account does not provide services to any other account and has no processed offers. You
+        /// can use the `force` parameter to override this.
         /// </summary>
         public class DeleteRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Empty>
         {
