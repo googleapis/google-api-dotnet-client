@@ -8584,6 +8584,24 @@ namespace Google.Apis.Appengine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Subnetwork key message.</summary>
+    public class SubnetworkKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Project id (name not number) of the project that hosts the network</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostProjectId")]
+        public virtual string HostProjectId { get; set; }
+
+        /// <summary>
+        /// Short name of the subnetwork. e.g. SUBNET instead of
+        /// projects/{PROJECT_NAME}/regions/{REGION}/subnetworks/{SUBNET}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnet")]
+        public virtual string Subnet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed
     /// to the service is assigned to versions.
@@ -8978,6 +8996,10 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccessConnector")]
         public virtual VpcAccessConnector VpcAccessConnector { get; set; }
 
+        /// <summary>Enables VPC egress connectivity for standard apps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcEgress")]
+        public virtual VpcEgress VpcEgress { get; set; }
+
         /// <summary>
         /// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment.
         /// Deprecated.
@@ -9022,6 +9044,36 @@ namespace Google.Apis.Appengine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Vpc Egress configuration.</summary>
+    public class VpcEgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The egress setting for the subnetwork, controlling what traffic is diverted through it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressSetting")]
+        public virtual string EgressSetting { get; set; }
+
+        /// <summary>The network tags to apply to the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
+        public virtual System.Collections.Generic.IList<VpcNetworkTag> NetworkTags { get; set; }
+
+        /// <summary>The subnetwork key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworkKey")]
+        public virtual SubnetworkKey SubnetworkKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Network tag message.</summary>
+    public class VpcNetworkTag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>value for the tag name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
