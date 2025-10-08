@@ -1230,12 +1230,87 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1FunctionResponsePart> Parts { get; set; }
+
+        /// <summary>
         /// Required. The function response in JSON object format. Use "output" key to specify function output and
         /// "error" key to specify error details (if any). If "output" and "error" keys are not specified, then whole
         /// "response" is treated as function output.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Raw media bytes for function response. Text should not be sent as raw bytes, use the 'text' field.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1FunctionResponseBlob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Raw bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>
+        /// Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs. This field is
+        /// only returned in PromptMessage for prompt management. It is currently used in the Gemini GenerateContent
+        /// calls only when server side tools (code_execution, google_search, and url_context) are enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Required. The IANA standard MIME type of the source data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>URI based data for function response.</summary>
+    public class GoogleCloudAiplatformV1beta1FunctionResponseFileData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Display name of the file data. Used to provide a label or filename to distinguish file datas. This
+        /// field is only returned in PromptMessage for prompt management. It is currently used in the Gemini
+        /// GenerateContent calls only when server side tools (code_execution, google_search, and url_context) are
+        /// enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Required. URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileUri")]
+        public virtual string FileUri { get; set; }
+
+        /// <summary>Required. The IANA standard MIME type of the source data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A datatype containing media that is part of a `FunctionResponse` message. A `FunctionResponsePart` consists of
+    /// data which has an associated datatype. A `FunctionResponsePart` can only contain one of the accepted types in
+    /// `FunctionResponsePart.data`. A `FunctionResponsePart` must have a fixed IANA MIME type identifying the type and
+    /// subtype of the media if the `inline_data` field is filled with raw bytes.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1FunctionResponsePart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URI based data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileData")]
+        public virtual GoogleCloudAiplatformV1beta1FunctionResponseFileData FileData { get; set; }
+
+        /// <summary>Inline media bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineData")]
+        public virtual GoogleCloudAiplatformV1beta1FunctionResponseBlob InlineData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1998,6 +2073,23 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>
+    /// Configuration for a multi-speaker text-to-speech setup. Enables the use of up to two distinct voices in a single
+    /// synthesis request.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1MultiSpeakerVoiceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of configurations for the voices of the speakers. Exactly two speaker voice configurations
+        /// must be provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerVoiceConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1SpeakerVoiceConfig> SpeakerVoiceConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A datatype containing media that is part of a multi-part `Content` message. A `Part` consists of data which has
     /// an associated datatype. A `Part` can only contain one of the accepted types in `Part.data`. A `Part` must have a
     /// fixed IANA MIME type identifying the type and subtype of the media if `inline_data` or `file_data` field is
@@ -2490,12 +2582,36 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for a single speaker in a multi speaker setup.</summary>
+    public class GoogleCloudAiplatformV1beta1SpeakerVoiceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the speaker. This should be the same as the speaker name used in the prompt.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speaker")]
+        public virtual string Speaker { get; set; }
+
+        /// <summary>Required. The configuration for the voice of this speaker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voiceConfig")]
+        public virtual GoogleCloudAiplatformV1beta1VoiceConfig VoiceConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The speech generation config.</summary>
     public class GoogleCloudAiplatformV1beta1SpeechConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Language code (ISO 639. e.g. en-US) for the speech synthesization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// The configuration for a multi-speaker text-to-speech request. This field is mutually exclusive with
+        /// `voice_config`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiSpeakerVoiceConfig")]
+        public virtual GoogleCloudAiplatformV1beta1MultiSpeakerVoiceConfig MultiSpeakerVoiceConfig { get; set; }
 
         /// <summary>The configuration for the speaker to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voiceConfig")]
@@ -2518,6 +2634,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeExecution")]
         public virtual GoogleCloudAiplatformV1beta1ToolCodeExecution CodeExecution { get; set; }
+
+        /// <summary>
+        /// Optional. Tool to support the model interacting directly with the computer. If enabled, it automatically
+        /// populates computer-use specific Function Declarations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computerUse")]
+        public virtual GoogleCloudAiplatformV1beta1ToolComputerUse ComputerUse { get; set; }
 
         /// <summary>
         /// Optional. Tool to support searching public web data, powered by Vertex AI Search and Sec4 compliance.
@@ -2570,6 +2693,25 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// </summary>
     public class GoogleCloudAiplatformV1beta1ToolCodeExecution : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tool to support computer use.</summary>
+    public class GoogleCloudAiplatformV1beta1ToolComputerUse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The environment being operated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>
+        /// Optional. By default, predefined functions are included in the final model call. Some of them can be
+        /// explicitly excluded from being automatically included. This can serve two purposes: 1. Using a more
+        /// restricted / different action space. 2. Improving the definitions / instructions of predefined functions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedPredefinedFunctions")]
+        public virtual System.Collections.Generic.IList<string> ExcludedPredefinedFunctions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
