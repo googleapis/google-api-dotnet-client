@@ -773,6 +773,117 @@ namespace Google.Apis.Merchant.products_v1.Data
     }
 
     /// <summary>
+    /// Carrier-based shipping configuration. Allows for setting shipping speed or shipping cost based on a carrier's
+    /// provided info.
+    /// </summary>
+    public class CarrierShipping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Selected carrier to calculate the shipping price from. Select a carrier from the [available carriers
+        /// list](https://support.google.com/merchants/answer/15449142#Supported), for example `AUSTRALIA_POST_REGULAR`.
+        /// Price will be calculated by this selected carrier, the location expressed in originPostalCode, along with
+        /// the user location to determine the accurate shipping price. Carrier is represented by a carrier service name
+        /// or a carrier service ID. Cannot be set together with flatPrice.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierPrice")]
+        public virtual string CarrierPrice { get; set; }
+
+        /// <summary>
+        /// A flat adjustment on the carrier price. Can be either positive or negative. Cannot be zero. Requires
+        /// `carrier_price` to be present. Cannot be set together with flatPrice and carrierPricePercentageAdjustment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierPriceFlatAdjustment")]
+        public virtual Price CarrierPriceFlatAdjustment { get; set; }
+
+        /// <summary>
+        /// A percentual adjustment on the carrier price. Can be either positive or negative. Cannot be zero. Requires
+        /// `carrier_price` to be present. Cannot be set together with flatPrice and carrierPriceFlatAdjustment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierPricePercentageAdjustment")]
+        public virtual System.Nullable<double> CarrierPricePercentageAdjustment { get; set; }
+
+        /// <summary>
+        /// Selected carrier to calculate the shipping speed from. Select a carrier from the [available carriers
+        /// list](https://support.google.com/merchants/answer/15449142#Supported), for example `AUSTRALIA_POST_REGULAR`.
+        /// Speed will be calculated by this selected carrier, the location expressed in originPostalCode, along with
+        /// the user location to determine the accurate delivery speed. Carrier is represented by a carrier service name
+        /// or a carrier service ID. Cannot be set together with fixedMaxTransitTime or fixedMinTransitTime.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierTransitTime")]
+        public virtual string CarrierTransitTime { get; set; }
+
+        /// <summary>
+        /// The [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the country
+        /// to which an item will ship.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; }
+
+        /// <summary>
+        /// Maximum transit time (inclusive) between when the order has shipped and when it is delivered in business
+        /// days. 0 means that the order is delivered on the same day as it ships. Needs to be provided together with
+        /// maxHandlingTime. Cannot be set if carrierTransitTime is present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedMaxTransitTime")]
+        public virtual System.Nullable<long> FixedMaxTransitTime { get; set; }
+
+        /// <summary>
+        /// Minimum transit time (inclusive) between when the order has shipped and when it is delivered in business
+        /// days. 0 means that the order is delivered on the same day as it ships. fixedMinTransitTime can only be set
+        /// if fixedMaxTransitTime is set. Cannot be set if carrierTransitTime is present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedMinTransitTime")]
+        public virtual System.Nullable<long> FixedMinTransitTime { get; set; }
+
+        /// <summary>
+        /// Fixed shipping price, represented as a number with currency. Cannot be set together with carrierPrice or its
+        /// adjustments (carrierPriceFlatAdjustment, carrierPricePercentageAdjustment).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flatPrice")]
+        public virtual Price FlatPrice { get; set; }
+
+        /// <summary>
+        /// Maximum handling time (inclusive) between when the order is received and shipped in business days. 0 means
+        /// that the order is shipped on the same day as it is received if it happens before the cut-off time. Both
+        /// maxHandlingTime and fixedMaxTransitTime or carrierTransitTime are required if providing shipping speeds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxHandlingTime")]
+        public virtual System.Nullable<long> MaxHandlingTime { get; set; }
+
+        /// <summary>
+        /// Minimum handling time (inclusive) between when the order is received and shipped in business days. 0 means
+        /// that the order is shipped on the same day as it is received if it happens before the cut-off time.
+        /// minHandlingTime can only be set if maxHandlingTime is also set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minHandlingTime")]
+        public virtual System.Nullable<long> MinHandlingTime { get; set; }
+
+        /// <summary>
+        /// The source location postal code from which this offer ships. Represented only by a full-length postal code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originPostalCode")]
+        public virtual string OriginPostalCode { get; set; }
+
+        /// <summary>
+        /// The postal code range that the shipping rate applies to, represented by a postal code (eg. `94043`), a
+        /// postal code prefix followed by a * wildcard (eg. `94*`), a range between two postal codes (eg.
+        /// `94043-98033`) or two postal code prefixes of equal length (eg. `94*-98*`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
+        public virtual string PostalCode { get; set; }
+
+        /// <summary>
+        /// The geographic region to which a shipping rate applies. See
+        /// [region](https://support.google.com/merchants/answer/6324484) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Product property for the Cloud Retail API. For example, properties for a TV product could be "Screen-Resolution"
     /// or "Screen-Size".
     /// </summary>
@@ -1349,6 +1460,10 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>URL for the canonical version of your item's landing page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalLink")]
         public virtual string CanonicalLink { get; set; }
+
+        /// <summary>Rules for carrier-based shipping.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierShipping")]
+        public virtual System.Collections.Generic.IList<CarrierShipping> CarrierShipping { get; set; }
 
         /// <summary>
         /// Product Certifications, for example for energy efficiency labeling of products recorded in the [EU
