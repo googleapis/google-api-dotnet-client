@@ -599,8 +599,9 @@ namespace Google.Apis.CloudBuild.v1
             }
 
             /// <summary>
-            /// Approves or rejects a pending build. If approved, the returned LRO will be analogous to the LRO returned
-            /// from a CreateBuild call. If rejected, the returned LRO will be immediately done.
+            /// Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be
+            /// analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately
+            /// done.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -612,8 +613,9 @@ namespace Google.Apis.CloudBuild.v1
             }
 
             /// <summary>
-            /// Approves or rejects a pending build. If approved, the returned LRO will be analogous to the LRO returned
-            /// from a CreateBuild call. If rejected, the returned LRO will be immediately done.
+            /// Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be
+            /// analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately
+            /// done.
             /// </summary>
             public class ApproveRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
             {
@@ -2080,8 +2082,9 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// Approves or rejects a pending build. If approved, the returned LRO will be analogous to the LRO
-                /// returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.
+                /// Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be
+                /// analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be
+                /// immediately done.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2093,8 +2096,9 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// Approves or rejects a pending build. If approved, the returned LRO will be analogous to the LRO
-                /// returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.
+                /// Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be
+                /// analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be
+                /// immediately done.
                 /// </summary>
                 public class ApproveRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                 {
