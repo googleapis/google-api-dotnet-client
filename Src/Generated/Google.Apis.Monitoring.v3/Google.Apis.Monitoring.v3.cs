@@ -2371,6 +2371,7 @@ namespace Google.Apis.Monitoring.v3
         {
             this.service = service;
             AlertPolicies = new AlertPoliciesResource(service);
+            Alerts = new AlertsResource(service);
             CollectdTimeSeries = new CollectdTimeSeriesResource(service);
             Groups = new GroupsResource(service);
             MetricDescriptors = new MetricDescriptorsResource(service);
@@ -2794,6 +2795,184 @@ namespace Google.Apis.Monitoring.v3
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
                         Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Alerts resource.</summary>
+        public virtual AlertsResource Alerts { get; }
+
+        /// <summary>The "alerts" collection of methods.</summary>
+        public class AlertsResource
+        {
+            private const string Resource = "alerts";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AlertsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Gets a single alert.</summary>
+            /// <param name="name">
+            /// Required. The name of the alert.The format is: projects/[PROJECT_ID_OR_NUMBER]/alerts/[ALERT_ID] The
+            /// [ALERT_ID] is a system-assigned unique identifier for the alert.
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Gets a single alert.</summary>
+            public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Alert>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the alert.The format is: projects/[PROJECT_ID_OR_NUMBER]/alerts/[ALERT_ID] The
+                /// [ALERT_ID] is a system-assigned unique identifier for the alert.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/alerts/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists the existing alerts for the metrics scope of the project.</summary>
+            /// <param name="parent">Required. The name of the project to list alerts for.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists the existing alerts for the metrics scope of the project.</summary>
+            public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListAlertsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The name of the project to list alerts for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. An alert is returned if there is a match on any fields belonging to the alert or its
+                /// subfields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. A comma-separated list of fields in Alert to use for sorting. The default sort direction
+                /// is ascending. To specify descending order for a field, add a desc modifier. The following fields are
+                /// supported: open_time close_timeFor example, close_time desc, open_time will return the alerts closed
+                /// most recently, with ties broken in the order of older alerts listed first.If the field is not set,
+                /// the results are sorted by open_time desc.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of results to return in a single response. If not set to a positive
+                /// number, at most 50 alerts will be returned. The maximum value is 1000; values above 1000 will be
+                /// coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. If non-empty, page_token must contain a value returned as the next_page_token in a
+                /// previous response to request the next set of results.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}/alerts";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -7681,6 +7860,126 @@ namespace Google.Apis.Monitoring.v3.Data
     }
 
     /// <summary>
+    /// An alert is the representation of a violation of an alert policy. It is a read-only resource that cannot be
+    /// modified by the accompanied API.
+    /// </summary>
+    public class Alert : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _closeTimeRaw;
+
+        private object _closeTime;
+
+        /// <summary>The time when the alert was closed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("closeTime")]
+        public virtual string CloseTimeRaw
+        {
+            get => _closeTimeRaw;
+            set
+            {
+                _closeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _closeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CloseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CloseTimeDateTimeOffset instead.")]
+        public virtual object CloseTime
+        {
+            get => _closeTime;
+            set
+            {
+                _closeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _closeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CloseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CloseTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CloseTimeRaw);
+            set => CloseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The log information associated with the alert. This field is only populated for log-based alerts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("log")]
+        public virtual LogMetadata Log { get; set; }
+
+        /// <summary>The metadata of the monitored resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual MonitoredResourceMetadata Metadata { get; set; }
+
+        /// <summary>The metric type and any metric labels preserved from the incident's generating condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual Metric Metric { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the alert.The format is: projects/[PROJECT_ID_OR_NUMBER]/alerts/[ALERT_ID] The
+        /// [ALERT_ID] is a system-assigned unique identifier for the alert.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _openTimeRaw;
+
+        private object _openTime;
+
+        /// <summary>The time when the alert was opened.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openTime")]
+        public virtual string OpenTimeRaw
+        {
+            get => _openTimeRaw;
+            set
+            {
+                _openTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _openTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="OpenTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use OpenTimeDateTimeOffset instead.")]
+        public virtual object OpenTime
+        {
+            get => _openTime;
+            set
+            {
+                _openTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _openTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="OpenTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? OpenTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(OpenTimeRaw);
+            set => OpenTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The snapshot of the alert policy that generated this alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual PolicySnapshot Policy { get; set; }
+
+        /// <summary>
+        /// The monitored resource type and any monitored resource labels preserved from the incident's generating
+        /// condition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual MonitoredResource Resource { get; set; }
+
+        /// <summary>Output only. The current state of the alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A description of the conditions under which some aspect of your system is considered to be "unhealthy" and the
     /// ways to notify people or services about this state. For an overview of alerting policies, see Introduction to
     /// Alerting (https://cloud.google.com/monitoring/alerts/).
@@ -9488,6 +9787,30 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The ListAlerts response.</summary>
+    public class ListAlertsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of alerts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alerts")]
+        public virtual System.Collections.Generic.IList<Alert> Alerts { get; set; }
+
+        /// <summary>
+        /// If not empty, indicates that there may be more results that match the request. Use the value in the
+        /// page_token field in a subsequent request to fetch the next set of results. The token is encrypted and only
+        /// guaranteed to return correct results for 72 hours after it is created. If empty, all results have been
+        /// returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The estimated total number of matching results for this query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The ListGroupMembers response.</summary>
     public class ListGroupMembersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9777,6 +10100,17 @@ namespace Google.Apis.Monitoring.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelExtractors")]
         public virtual System.Collections.Generic.IDictionary<string, string> LabelExtractors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the log for log-based alerts.</summary>
+    public class LogMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The labels extracted from the log.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extractedLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ExtractedLabels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10725,6 +11059,32 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The values that make up the point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<TypedValue> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The state of the policy at the time the alert was generated.</summary>
+    public class PolicySnapshot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the alert policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The name of the alert policy resource. In the form of
+        /// "projects/PROJECT_ID_OR_NUMBER/alertPolicies/ALERT_POLICY_ID".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The severity of the alert policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The user labels for the alert policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
