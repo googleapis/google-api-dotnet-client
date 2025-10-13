@@ -2474,6 +2474,23 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
 
+        /// <summary>
+        /// The handling cutoff time until which an order has to be placed to be processed in the same day. This is a
+        /// string in format of HHMM (e.g. `1530`) for 3:30 PM. If not configured, the cutoff time will be defaulted to
+        /// 8AM PST and `handling_cutoff_timezone` will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handlingCutoffTime")]
+        public virtual string HandlingCutoffTime { get; set; }
+
+        /// <summary>
+        /// [Timezone identifier](https://developers.google.com/adwords/api/docs/appendix/codes-formats#timezone-ids)
+        /// For example `Europe/Zurich`. This field only applies if `handling_cutoff_time` is set. If
+        /// `handling_cutoff_time` is set but this field is not set, the shipping destination timezone will be used. If
+        /// both fields are not set, the handling cutoff time will default to 8AM PST.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handlingCutoffTimezone")]
+        public virtual string HandlingCutoffTimezone { get; set; }
+
         /// <summary>The location where the shipping is applicable, represented by a location group name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationGroupName")]
         public virtual string LocationGroupName { get; set; }
