@@ -2674,8 +2674,8 @@ namespace Google.Apis.SQLAdmin.v1
         }
 
         /// <summary>Retrieves a resource containing information about a Cloud SQL instance.</summary>
-        /// <param name="project">Project ID of the project that contains the instance.</param>
-        /// <param name="instance">Database instance ID. This does not include the project ID.</param>
+        /// <param name="project">Required. Project ID of the project that contains the instance.</param>
+        /// <param name="instance">Required. Database instance ID. This does not include the project ID.</param>
         public virtual GetRequest Get(string project, string instance)
         {
             return new GetRequest(this.service, project, instance);
@@ -2692,11 +2692,11 @@ namespace Google.Apis.SQLAdmin.v1
                 InitParameters();
             }
 
-            /// <summary>Project ID of the project that contains the instance.</summary>
+            /// <summary>Required. Project ID of the project that contains the instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Database instance ID. This does not include the project ID.</summary>
+            /// <summary>Required. Database instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
@@ -4136,8 +4136,8 @@ namespace Google.Apis.SQLAdmin.v1
         }
 
         /// <summary>Retrieves an instance operation that has been performed on an instance.</summary>
-        /// <param name="project">Project ID of the project that contains the instance.</param>
-        /// <param name="operation">Instance operation ID.</param>
+        /// <param name="project">Required. Project ID of the project that contains the instance.</param>
+        /// <param name="operation">Required. Instance operation ID.</param>
         public virtual GetRequest Get(string project, string operation)
         {
             return new GetRequest(this.service, project, operation);
@@ -4154,11 +4154,11 @@ namespace Google.Apis.SQLAdmin.v1
                 InitParameters();
             }
 
-            /// <summary>Project ID of the project that contains the instance.</summary>
+            /// <summary>Required. Project ID of the project that contains the instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Instance operation ID.</summary>
+            /// <summary>Required. Instance operation ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Operation { get; private set; }
 
@@ -7316,8 +7316,8 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string Database { get; set; }
 
         /// <summary>
-        /// Optional. Controls how the API should respond when the SQL execution result exceeds 10 MB. The default mode
-        /// is to throw an error.
+        /// Optional. Controls how the API should respond when the SQL execution result is incomplete due to the size
+        /// limit or another error. The default mode is to throw an error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partialResultMode")]
         public virtual string PartialResultMode { get; set; }
@@ -9626,13 +9626,19 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
-        /// <summary>Set to true if the SQL execution's result is truncated due to size limits.</summary>
+        /// <summary>
+        /// Set to true if the SQL execution's result is truncated due to size limits or an error retrieving results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partialResult")]
         public virtual System.Nullable<bool> PartialResult { get; set; }
 
         /// <summary>Rows returned by the SQL statement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<Row> Rows { get; set; }
+
+        /// <summary>If results were truncated due to an error, details of that error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual Status Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9905,6 +9911,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedGaeApplications")]
         public virtual System.Collections.Generic.IList<string> AuthorizedGaeApplications { get; set; }
+
+        /// <summary>
+        /// Optional. Cloud SQL for MySQL auto-upgrade configuration. When this parameter is set to true, auto-upgrade
+        /// is enabled for MySQL 8.0 minor versions. The MySQL version must be 8.0.35 or higher.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoUpgradeEnabled")]
+        public virtual System.Nullable<bool> AutoUpgradeEnabled { get; set; }
 
         /// <summary>
         /// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that
@@ -10207,6 +10220,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>The list of results after executing all the SQL statements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<QueryResult> Results { get; set; }
+
+        /// <summary>Contains the error from the database if the SQL execution failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual Status Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10828,6 +10845,35 @@ namespace Google.Apis.SQLAdmin.v1.Data
     }
 
     /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Initial sync flags for certain Cloud SQL APIs. Currently used for the MySQL external server initial dump.
     /// </summary>
     public class SyncFlags : Google.Apis.Requests.IDirectResponseSchema
@@ -10940,6 +10986,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
+
+        /// <summary>
+        /// Optional. The full email for an IAM user. For normal database users, this will not be filled. Only
+        /// applicable to MySQL database users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamEmail")]
+        public virtual string IamEmail { get; set; }
 
         /// <summary>Indicates if a group is active or inactive for IAM database authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamStatus")]
