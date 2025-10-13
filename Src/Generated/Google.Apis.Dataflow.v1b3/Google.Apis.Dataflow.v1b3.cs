@@ -6442,7 +6442,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("useStreamingEngineResourceBasedBilling")]
         public virtual System.Nullable<bool> UseStreamingEngineResourceBasedBilling { get; set; }
 
-        /// <summary>A description of the process that generated the request.</summary>
+        /// <summary>Optional. A description of the process that generated the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
         public virtual System.Collections.Generic.IDictionary<string, object> UserAgent { get; set; }
 
