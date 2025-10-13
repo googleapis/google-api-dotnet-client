@@ -14373,6 +14373,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     /// <summary>Settings for the endpoint.</summary>
     public class FirewallEndpointEndpointSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Immutable. Indicates whether Jumbo Frames are enabled. Default value is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jumboFramesEnabled")]
+        public virtual System.Nullable<bool> JumboFramesEnabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
