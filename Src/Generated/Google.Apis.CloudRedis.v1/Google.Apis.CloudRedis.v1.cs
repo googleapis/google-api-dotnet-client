@@ -3203,6 +3203,12 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual AutomatedBackupConfig AutomatedBackupConfig { get; set; }
 
         /// <summary>
+        /// Output only. This field is used to determine the available maintenance versions for the self service update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableMaintenanceVersions")]
+        public virtual System.Collections.Generic.IList<string> AvailableMaintenanceVersions { get; set; }
+
+        /// <summary>
         /// Optional. Output only. The backup collection full resource name. Example:
         /// projects/{project}/locations/{location}/backupCollections/{collection}
         /// </summary>
@@ -3264,6 +3270,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryEndpoints")]
         public virtual System.Collections.Generic.IList<DiscoveryEndpoint> DiscoveryEndpoints { get; set; }
+
+        /// <summary>Output only. This field represents the actual maintenance version of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveMaintenanceVersion")]
+        public virtual string EffectiveMaintenanceVersion { get; set; }
 
         /// <summary>Output only. Encryption information of the data at rest of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
