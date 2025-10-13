@@ -3865,9 +3865,31 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentEntity> Entities { get; set; }
 
+        /// <summary>
+        /// The entity revision id that `document.entities` field is based on. If this field is set and
+        /// `entities_revisions` is not empty, the entities in `document.entities` field are the entities in the entity
+        /// revision with this id and `document.entity_validation_output` field is the `entity_validation_output` field
+        /// in this entity revision.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitiesRevisionId")]
+        public virtual string EntitiesRevisionId { get; set; }
+
+        /// <summary>
+        /// A list of entity revisions. The entity revisions are appended to the document in the processing order. This
+        /// field can be used for comparing the entity extraction results at different stages of the processing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitiesRevisions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentEntitiesRevision> EntitiesRevisions { get; set; }
+
         /// <summary>Placeholder. Relationship among Document.entities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityRelations")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentEntityRelation> EntityRelations { get; set; }
+
+        /// <summary>
+        /// The entity validation output for the document. This is the validation output for `document.entities` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityValidationOutput")]
+        public virtual GoogleCloudDocumentaiV1DocumentEntityValidationOutput EntityValidationOutput { get; set; }
 
         /// <summary>Any error that occurred while processing this document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
@@ -4170,6 +4192,25 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Entity revision.</summary>
+    public class GoogleCloudDocumentaiV1DocumentEntitiesRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The entities in this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentEntity> Entities { get; set; }
+
+        /// <summary>The entity validation output for this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityValidationOutput")]
+        public virtual GoogleCloudDocumentaiV1DocumentEntityValidationOutput EntityValidationOutput { get; set; }
+
+        /// <summary>The revision id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An entity that could be a phrase in the text or a property that belongs to the document. It is a known entity
     /// type, such as a person, an organization, or location.
@@ -4311,6 +4352,47 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Subject entity id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectId")]
         public virtual string SubjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The output of the validation given the document and the validation rules.</summary>
+    public class GoogleCloudDocumentaiV1DocumentEntityValidationOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The overall result of the validation, true if all applicable rules are valid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passAllRules")]
+        public virtual System.Nullable<bool> PassAllRules { get; set; }
+
+        /// <summary>The result of each validation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult> ValidationResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Validation result for a single validation rule.</summary>
+    public class GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The description of the validation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleDescription")]
+        public virtual string RuleDescription { get; set; }
+
+        /// <summary>The name of the validation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleName")]
+        public virtual string RuleName { get; set; }
+
+        /// <summary>
+        /// The detailed information of the running the validation process using the entity from the document based on
+        /// the validation rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationDetails")]
+        public virtual string ValidationDetails { get; set; }
+
+        /// <summary>The result of the validation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationResultType")]
+        public virtual string ValidationResultType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
