@@ -2108,7 +2108,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("directionsUri")]
         public virtual string DirectionsUri { get; set; }
 
-        /// <summary>A link to show reviews of this place on Google Maps.</summary>
+        /// <summary>A link to show photos of this place on Google Maps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photosUri")]
         public virtual string PhotosUri { get; set; }
 
