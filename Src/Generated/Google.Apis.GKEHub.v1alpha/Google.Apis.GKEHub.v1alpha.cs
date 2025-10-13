@@ -6697,6 +6697,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hierarchyControllerState")]
         public virtual ConfigManagementHierarchyControllerState HierarchyControllerState { get; set; }
 
+        /// <summary>Output only. The Kubernetes API server version of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesApiServerVersion")]
+        public virtual string KubernetesApiServerVersion { get; set; }
+
         /// <summary>
         /// Output only. Membership configuration in the cluster. This represents the actual state in the cluster, while
         /// the MembershipSpec in the FeatureSpec represents the intended state
