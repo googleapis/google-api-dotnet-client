@@ -312,6 +312,7 @@ namespace Google.Apis.Connectors.v2
                     this.service = service;
                     Actions = new ActionsResource(service);
                     EntityTypes = new EntityTypesResource(service);
+                    Resources = new ResourcesResource(service);
                     Tools = new ToolsResource(service);
                 }
 
@@ -1358,6 +1359,150 @@ namespace Google.Apis.Connectors.v2
                     }
                 }
 
+                /// <summary>Gets the Resources resource.</summary>
+                public virtual ResourcesResource Resources { get; }
+
+                /// <summary>The "resources" collection of methods.</summary>
+                public class ResourcesResource
+                {
+                    private const string Resource = "resources";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ResourcesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets a specific resource.</summary>
+                    /// <param name="name">
+                    /// Required. Resource name of the Resource. Format:
+                    /// projects/{project}/locations/{location}/connections/{connection}/resources/{resource}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets a specific resource.</summary>
+                    public class GetRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v2.Data.GetResourceResponse>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the Resource. Format:
+                        /// projects/{project}/locations/{location}/connections/{connection}/resources/{resource}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/resources/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all available resources.</summary>
+                    /// <param name="parent">
+                    /// Required. Resource name of the connection. Format:
+                    /// projects/{project}/locations/{location}/connections/{connection}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all available resources.</summary>
+                    public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v2.Data.ListResourcesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the connection. Format:
+                        /// projects/{project}/locations/{location}/connections/{connection}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. Page size for the request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. Page token for the request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/resources";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
                 /// <summary>Gets the Tools resource.</summary>
                 public virtual ToolsResource Tools { get; }
 
@@ -2171,6 +2316,10 @@ namespace Google.Apis.Connectors.v2.Data
     /// <summary>Response message for ConnectorAgentService.ExecuteTool</summary>
     public class ExecuteToolResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata like service latency, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
+
         /// <summary>Output from the tool execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual System.Collections.Generic.IDictionary<string, object> Result { get; set; }
@@ -2229,6 +2378,24 @@ namespace Google.Apis.Connectors.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reference")]
         public virtual Reference Reference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GetResourceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The content of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>Metadata like service latency, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
+
+        /// <summary>The MIME type of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2621,9 +2788,31 @@ namespace Google.Apis.Connectors.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ListResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata like service latency, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
+
+        /// <summary>Next page token if more resources available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of available resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<Resource> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ConnectorAgentService.ListTools</summary>
     public class ListToolsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata like service latency, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
+
         /// <summary>Next page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -3091,6 +3280,32 @@ namespace Google.Apis.Connectors.v2.Data
         /// <summary>Metadata like service latency, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Resource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A description of what this resource represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The MIME type of this resource, if known.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>A human-readable name for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The size of the raw resource content, in bytes, if known.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual System.Nullable<long> Size { get; set; }
+
+        /// <summary>The URI of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
