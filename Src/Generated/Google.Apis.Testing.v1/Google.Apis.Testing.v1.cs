@@ -3243,7 +3243,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>
         /// APKs to install in addition to those being directly tested. These will be installed after the app under
-        /// test. Currently capped at 100.
+        /// test. Limited to a combined total of 100 initial setup and additional files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalApks")]
         public virtual System.Collections.Generic.IList<Apk> AdditionalApks { get; set; }
@@ -3271,7 +3271,8 @@ namespace Google.Apis.Testing.v1.Data
         public virtual System.Collections.Generic.IList<DeviceFile> FilesToPush { get; set; }
 
         /// <summary>
-        /// Optional. Initial setup APKs to install before the app under test is installed. Currently capped at 100.
+        /// Optional. Initial setup APKs to install before the app under test is installed. Limited to a combined total
+        /// of 100 initial setup and additional files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialSetupApks")]
         public virtual System.Collections.Generic.IList<Apk> InitialSetupApks { get; set; }
