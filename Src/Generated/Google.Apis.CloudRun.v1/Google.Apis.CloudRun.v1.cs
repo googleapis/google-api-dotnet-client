@@ -10404,9 +10404,10 @@ namespace Google.Apis.CloudRun.v1.Data
     public class ResourceRequirements : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Limits describes the maximum amount of compute resources allowed. Only 'cpu' and 'memory' keys are
-        /// supported. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For
-        /// supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
+        /// Limits describes the maximum amount of compute resources allowed. Only 'cpu', 'memory' and 'nvidia.com/gpu'
+        /// keys are supported. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. *
+        /// For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits.
+        /// * The only supported 'nvidia.com/gpu' value is '1'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limits")]
         public virtual System.Collections.Generic.IDictionary<string, string> Limits { get; set; }
