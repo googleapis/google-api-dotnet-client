@@ -314,6 +314,99 @@ namespace Google.Apis.TravelImpactModel.v1
         }
 
         /// <summary>
+        /// Stateless method to retrieve GHG emissions estimates for a set of flight segments for Scope 3 reporting. The
+        /// response will contain all entries that match the input Scope3FlightSegment flight segments, in the same
+        /// order provided. The estimates will be computed using the following cascading logic (using the first one that
+        /// is available): 1. TIM-based emissions given origin, destination, carrier, flightNumber, departureDate, and
+        /// cabinClass. 2. Typical flight emissions given origin, destination, year in departureDate, and cabinClass. 3.
+        /// Distance-based emissions calculated using distanceKm, year in departureDate, and cabinClass. If there is a
+        /// future flight requested in this calendar year, we do not support Tier 1 emissions and will fallback to Tier
+        /// 2 or 3 emissions. If the requested future flight is in not in this calendar year, we will return an empty
+        /// response. We recommend that for future flights, computeFlightEmissions API is used instead. If there are no
+        /// estimates available for a certain flight with any of the three methods, the response will return a
+        /// Scope3FlightEmissions object with empty emission fields. The request will still be considered successful.
+        /// Generally, missing emissions estimates occur when the flight is unknown to the server (e.g. no specific
+        /// flight exists, or typical flight emissions are not available for the requested pair). The request will fail
+        /// with an `INVALID_ARGUMENT` error if: * The request contains more than 1,000 flight legs. * The input flight
+        /// leg is missing one or more identifiers. For example, missing origin/destination without a valid distance for
+        /// TIM_EMISSIONS or TYPICAL_FLIGHT_EMISSIONS type matching, or missing distance for a DISTANCE_BASED_EMISSIONS
+        /// type matching (if you want to fallback to distance-based emissions or want a distance-based emissions
+        /// estimate, you need to specify a distance). * The flight date is before 2019 (Scope 3 data is only available
+        /// for 2019 and after). * The flight distance is 0 or lower. * Missing cabin class. Because the request is
+        /// processed with fallback logic, it is possible that misconfigured requests return valid emissions estimates
+        /// using fallback methods. For example, if a request has the wrong flight number but specifies the origin and
+        /// destination, the request will still succeed, but the returned emissions will be based solely on the typical
+        /// flight emissions. Similarly, if a request is missing the origin for a typical flight emissions request, but
+        /// specifies a valid distance, the request could succeed based solely on the distance-based emissions.
+        /// Consequently, one should check the source of the returned emissions (source) to confirm the results are as
+        /// expected.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual ComputeScope3FlightEmissionsRequest ComputeScope3FlightEmissions(Google.Apis.TravelImpactModel.v1.Data.ComputeScope3FlightEmissionsRequest body)
+        {
+            return new ComputeScope3FlightEmissionsRequest(this.service, body);
+        }
+
+        /// <summary>
+        /// Stateless method to retrieve GHG emissions estimates for a set of flight segments for Scope 3 reporting. The
+        /// response will contain all entries that match the input Scope3FlightSegment flight segments, in the same
+        /// order provided. The estimates will be computed using the following cascading logic (using the first one that
+        /// is available): 1. TIM-based emissions given origin, destination, carrier, flightNumber, departureDate, and
+        /// cabinClass. 2. Typical flight emissions given origin, destination, year in departureDate, and cabinClass. 3.
+        /// Distance-based emissions calculated using distanceKm, year in departureDate, and cabinClass. If there is a
+        /// future flight requested in this calendar year, we do not support Tier 1 emissions and will fallback to Tier
+        /// 2 or 3 emissions. If the requested future flight is in not in this calendar year, we will return an empty
+        /// response. We recommend that for future flights, computeFlightEmissions API is used instead. If there are no
+        /// estimates available for a certain flight with any of the three methods, the response will return a
+        /// Scope3FlightEmissions object with empty emission fields. The request will still be considered successful.
+        /// Generally, missing emissions estimates occur when the flight is unknown to the server (e.g. no specific
+        /// flight exists, or typical flight emissions are not available for the requested pair). The request will fail
+        /// with an `INVALID_ARGUMENT` error if: * The request contains more than 1,000 flight legs. * The input flight
+        /// leg is missing one or more identifiers. For example, missing origin/destination without a valid distance for
+        /// TIM_EMISSIONS or TYPICAL_FLIGHT_EMISSIONS type matching, or missing distance for a DISTANCE_BASED_EMISSIONS
+        /// type matching (if you want to fallback to distance-based emissions or want a distance-based emissions
+        /// estimate, you need to specify a distance). * The flight date is before 2019 (Scope 3 data is only available
+        /// for 2019 and after). * The flight distance is 0 or lower. * Missing cabin class. Because the request is
+        /// processed with fallback logic, it is possible that misconfigured requests return valid emissions estimates
+        /// using fallback methods. For example, if a request has the wrong flight number but specifies the origin and
+        /// destination, the request will still succeed, but the returned emissions will be based solely on the typical
+        /// flight emissions. Similarly, if a request is missing the origin for a typical flight emissions request, but
+        /// specifies a valid distance, the request could succeed based solely on the distance-based emissions.
+        /// Consequently, one should check the source of the returned emissions (source) to confirm the results are as
+        /// expected.
+        /// </summary>
+        public class ComputeScope3FlightEmissionsRequest : TravelImpactModelBaseServiceRequest<Google.Apis.TravelImpactModel.v1.Data.ComputeScope3FlightEmissionsResponse>
+        {
+            /// <summary>Constructs a new ComputeScope3FlightEmissions request.</summary>
+            public ComputeScope3FlightEmissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.TravelImpactModel.v1.Data.ComputeScope3FlightEmissionsRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.TravelImpactModel.v1.Data.ComputeScope3FlightEmissionsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "computeScope3FlightEmissions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/flights:computeScope3FlightEmissions";
+
+            /// <summary>Initializes ComputeScope3FlightEmissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
         /// Retrieves typical flight emissions estimates between two airports, also known as a market. If there are no
         /// estimates available for a certain market, the response will return the market object with empty emission
         /// fields. The request will still be considered successful. Details on how the typical emissions estimates are
@@ -388,6 +481,40 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         /// <summary>List of flight legs with emission estimates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flightEmissions")]
         public virtual System.Collections.Generic.IList<FlightWithEmissions> FlightEmissions { get; set; }
+
+        /// <summary>
+        /// The model version under which emission estimates for all flights in this response were computed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual ModelVersion ModelVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of flight segments to request the Scope 3 emissions for.</summary>
+    public class ComputeScope3FlightEmissionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Flights to return emission estimates for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flights")]
+        public virtual System.Collections.Generic.IList<Scope3FlightSegment> Flights { get; set; }
+
+        /// <summary>
+        /// Optional. The model version under which emission estimates for all flights in this request were computed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual ModelVersion ModelVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of flights with Scope 3 emission estimates.</summary>
+    public class ComputeScope3FlightEmissionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of flight segments with emission estimates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flightEmissions")]
+        public virtual System.Collections.Generic.IList<Scope3FlightEmissions> FlightEmissions { get; set; }
 
         /// <summary>
         /// The model version under which emission estimates for all flights in this response were computed.
@@ -638,6 +765,101 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patch")]
         public virtual System.Nullable<int> Patch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Scope 3 flight with emission estimates.</summary>
+    public class Scope3FlightEmissions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Matches the flight identifiers in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flight")]
+        public virtual Scope3FlightSegment Flight { get; set; }
+
+        /// <summary>Optional. The source of the emissions data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Optional. Tank-to-wake flight emissions per passenger based on the requested info.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttwEmissionsGramsPerPax")]
+        public virtual System.Nullable<long> TtwEmissionsGramsPerPax { get; set; }
+
+        /// <summary>Optional. Well-to-tank flight emissions per passenger based on the requested info.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wttEmissionsGramsPerPax")]
+        public virtual System.Nullable<long> WttEmissionsGramsPerPax { get; set; }
+
+        /// <summary>
+        /// Optional. Total flight emissions (sum of well-to-tank and tank-to-wake) per passenger based on the requested
+        /// info. This is the total emissions and unless you have specific reasons for using TTW or WTT emissions, you
+        /// should use this number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wtwEmissionsGramsPerPax")]
+        public virtual System.Nullable<long> WtwEmissionsGramsPerPax { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Flight parameters with which the Scope 3 emissions are fetched.</summary>
+    public class Scope3FlightSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The cabin class of the flight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cabinClass")]
+        public virtual string CabinClass { get; set; }
+
+        /// <summary>
+        /// Optional. IATA carrier code, e.g. `KE`. This is required if specific flight matching is desired. Otherwise,
+        /// this is unused for typical flight and distance-based emissions models. This could be both operating and
+        /// marketing carrier code (i.e. codeshare is covered).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierCode")]
+        public virtual string CarrierCode { get; set; }
+
+        /// <summary>
+        /// Required. Date of the flight in the time zone of the origin airport. Only year is required for typical
+        /// flight and distance-based emissions models (month and day values are ignored and therefore, can be either
+        /// omitted, set to 0, or set to a valid date for those cases). Correspondingly, if a specific date is not
+        /// provided for TIM emissions, we will fallback to typical flight (or distance-based) emissions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("departureDate")]
+        public virtual Date DepartureDate { get; set; }
+
+        /// <summary>
+        /// Optional. IATA airport code for flight destination, e.g. `ICN`. This is used to match specific flight if
+        /// provided alongside origin, carrier, and flight number. If there is no match, we will first try to match the
+        /// flight to a typical flight between the provided origin and destination airports. Otherwise, we will use the
+        /// distance-based emissions model if the flight distance is provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; }
+
+        /// <summary>
+        /// Optional. Distance in kilometers, e.g. `2423`. This is used to match a flight to distance-based emissions
+        /// when origin and destination are not provided or there are no matching typical flights. This field supports
+        /// values between 0 and 2.5e16 km.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceKm")]
+        public virtual System.Nullable<long> DistanceKm { get; set; }
+
+        /// <summary>
+        /// Optional. Flight number, e.g. `71`. This is first used to match a specific flight if a flight number is
+        /// specified alongside origin, destination, and carrier. If a flight number is not specified, we will first try
+        /// to match the flight to a typical flight between the provided origin and destination airports. If that fails
+        /// and/or origin &amp;amp; destination are not provided, we will use the distance-based emissions model based
+        /// on the flight distance provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flightNumber")]
+        public virtual System.Nullable<int> FlightNumber { get; set; }
+
+        /// <summary>
+        /// Optional. IATA airport code for flight origin, e.g. `YVR`. This is used to match specific flight if provided
+        /// alongside destination, carrier, and flight number. If there is no match, we will first try to match the
+        /// flight to a typical flight between the provided origin and destination airports. Otherwise, we will use the
+        /// distance-based emissions model if the flight distance is provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("origin")]
+        public virtual string Origin { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
