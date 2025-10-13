@@ -1017,6 +1017,43 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for offer or offer-country level shipping handling cutoff time.</summary>
+    public class HandlingCutoffTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the country
+        /// to which the handling cutoff time applies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; }
+
+        /// <summary>
+        /// The handling cutoff time until which an order has to be placed to be processed in the same day. This is a
+        /// string in format of HHMM (e.g. `1530`) for 3:30 PM. If not configured, the cutoff time will be defaulted to
+        /// 8AM PST.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cutoffTime")]
+        public virtual string CutoffTime { get; set; }
+
+        /// <summary>
+        /// [Timezone identifier](https://developers.google.com/adwords/api/docs/appendix/codes-formats#timezone-ids)
+        /// For example 'Europe/Zurich'. If not set, the shipping destination timezone will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cutoffTimezone")]
+        public virtual string CutoffTimezone { get; set; }
+
+        /// <summary>
+        /// This field only applies to same-day delivery. If true, prevents next-day delivery from being shown for this
+        /// offer after the cutoff time. This field only applies to same-day delivery offers, for merchants who want to
+        /// explicitly disable it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableDeliveryAfterCutoff")]
+        public virtual System.Nullable<bool> DisableDeliveryAfterCutoff { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start
     /// must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time).
@@ -1689,6 +1726,10 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtins")]
         public virtual System.Collections.Generic.IList<string> Gtins { get; set; }
+
+        /// <summary>The handling cutoff times for shipping.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handlingCutoffTimes")]
+        public virtual System.Collections.Generic.IList<HandlingCutoffTime> HandlingCutoffTimes { get; set; }
 
         /// <summary>
         /// Set this value to false when the item does not have unique product identifiers appropriate to its category,
@@ -2536,6 +2577,23 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
+
+        /// <summary>
+        /// The handling cutoff time until which an order has to be placed to be processed in the same day. This is a
+        /// string in format of HHMM (e.g. `1530`) for 3:30 PM. If not configured, the cutoff time will be defaulted to
+        /// 8AM PST and `handling_cutoff_timezone` will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handlingCutoffTime")]
+        public virtual string HandlingCutoffTime { get; set; }
+
+        /// <summary>
+        /// [Timezone identifier](https://developers.google.com/adwords/api/docs/appendix/codes-formats#timezone-ids)
+        /// For example `Europe/Zurich`. This field only applies if `handling_cutoff_time` is set. If
+        /// `handling_cutoff_time` is set but this field is not set, the shipping destination timezone will be used. If
+        /// both fields are not set, the handling cutoff time will default to 8AM PST.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handlingCutoffTimezone")]
+        public virtual string HandlingCutoffTimezone { get; set; }
 
         /// <summary>The location where the shipping is applicable, represented by a location group name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationGroupName")]
