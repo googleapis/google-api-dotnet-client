@@ -35,6 +35,7 @@ namespace Google.Apis.ChromeManagement.v1
         public ChromeManagementService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Customers = new CustomersResource(this);
+            Operations = new OperationsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://chromemanagement.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://chromemanagement.googleapis.com/batch");
         }
@@ -115,6 +116,9 @@ namespace Google.Apis.ChromeManagement.v1
 
         /// <summary>Gets the Customers resource.</summary>
         public virtual CustomersResource Customers { get; }
+
+        /// <summary>Gets the Operations resource.</summary>
+        public virtual OperationsResource Operations { get; }
     }
 
     /// <summary>A base abstract class for ChromeManagement requests.</summary>
@@ -311,6 +315,7 @@ namespace Google.Apis.ChromeManagement.v1
         {
             this.service = service;
             Apps = new AppsResource(service);
+            CertificateProvisioningProcesses = new CertificateProvisioningProcessesResource(service);
             Profiles = new ProfilesResource(service);
             Reports = new ReportsResource(service);
             Telemetry = new TelemetryResource(service);
@@ -863,6 +868,413 @@ namespace Google.Apis.ChromeManagement.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the CertificateProvisioningProcesses resource.</summary>
+        public virtual CertificateProvisioningProcessesResource CertificateProvisioningProcesses { get; }
+
+        /// <summary>The "certificateProvisioningProcesses" collection of methods.</summary>
+        public class CertificateProvisioningProcessesResource
+        {
+            private const string Resource = "certificateProvisioningProcesses";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CertificateProvisioningProcessesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Operations = new OperationsResource(service);
+            }
+
+            /// <summary>Gets the Operations resource.</summary>
+            public virtual OperationsResource Operations { get; }
+
+            /// <summary>The "operations" collection of methods.</summary>
+            public class OperationsResource
+            {
+                private const string Resource = "operations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                public class GetRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/certificateProvisioningProcesses/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Claims a certificate provisioning process. For each certificate provisioning process, this operation can
+            /// succeed only for one `caller_instance_id`.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. Resource name of the `CertificateProvisioningProcess` to claim. The name pattern is given as
+            /// `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with
+            /// `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the
+            /// certificate provisioning process id.
+            /// </param>
+            public virtual ClaimRequest Claim(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest body, string name)
+            {
+                return new ClaimRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Claims a certificate provisioning process. For each certificate provisioning process, this operation can
+            /// succeed only for one `caller_instance_id`.
+            /// </summary>
+            public class ClaimRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse>
+            {
+                /// <summary>Constructs a new Claim request.</summary>
+                public ClaimRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the `CertificateProvisioningProcess` to claim. The name pattern is given
+                /// as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with
+                /// `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the
+                /// certificate provisioning process id.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "claim";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:claim";
+
+                /// <summary>Initializes Claim parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/certificateProvisioningProcesses/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieves a certificate provisioning process.</summary>
+            /// <param name="name">
+            /// Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as
+            /// `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with
+            /// `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the
+            /// certificate provisioning process id.
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves a certificate provisioning process.</summary>
+            public class GetRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1CertificateProvisioningProcess>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given
+                /// as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with
+                /// `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the
+                /// certificate provisioning process id.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/certificateProvisioningProcesses/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Marks a certificate provisioning process as failed.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as
+            /// `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with
+            /// `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the
+            /// certificate provisioning process id.
+            /// </param>
+            public virtual SetFailureRequest SetFailure(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1SetFailureRequest body, string name)
+            {
+                return new SetFailureRequest(this.service, body, name);
+            }
+
+            /// <summary>Marks a certificate provisioning process as failed.</summary>
+            public class SetFailureRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1SetFailureResponse>
+            {
+                /// <summary>Constructs a new SetFailure request.</summary>
+                public SetFailureRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1SetFailureRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given
+                /// as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with
+                /// `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the
+                /// certificate provisioning process id.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1SetFailureRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "setFailure";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:setFailure";
+
+                /// <summary>Initializes SetFailure parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/certificateProvisioningProcesses/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Requests the client that initiated a certificate provisioning process to sign data. This should only be
+            /// called after `ClaimCertificateProvisioningProcess` has been successfully executed.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as
+            /// `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with
+            /// `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the
+            /// certificate provisioning process id.
+            /// </param>
+            public virtual SignDataRequest SignData(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1SignDataRequest body, string name)
+            {
+                return new SignDataRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Requests the client that initiated a certificate provisioning process to sign data. This should only be
+            /// called after `ClaimCertificateProvisioningProcess` has been successfully executed.
+            /// </summary>
+            public class SignDataRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new SignData request.</summary>
+                public SignDataRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1SignDataRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given
+                /// as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with
+                /// `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the
+                /// certificate provisioning process id.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1SignDataRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "signData";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:signData";
+
+                /// <summary>Initializes SignData parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/certificateProvisioningProcesses/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Uploads a successfully issued certificate for a certificate provisioning process.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as
+            /// `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with
+            /// `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the
+            /// certificate provisioning process id.
+            /// </param>
+            public virtual UploadCertificateRequest UploadCertificate(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1UploadCertificateRequest body, string name)
+            {
+                return new UploadCertificateRequest(this.service, body, name);
+            }
+
+            /// <summary>Uploads a successfully issued certificate for a certificate provisioning process.</summary>
+            public class UploadCertificateRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1UploadCertificateResponse>
+            {
+                /// <summary>Constructs a new UploadCertificate request.</summary>
+                public UploadCertificateRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1UploadCertificateRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given
+                /// as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with
+                /// `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the
+                /// certificate provisioning process id.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1UploadCertificateRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "uploadCertificate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:uploadCertificate";
+
+                /// <summary>Initializes UploadCertificate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/certificateProvisioningProcesses/[^/]+$",
                     });
                 }
             }
@@ -3326,6 +3738,246 @@ namespace Google.Apis.ChromeManagement.v1
                         Pattern = @"^customers/[^/]+/thirdPartyProfileUsers/[^/]+$",
                     });
                 }
+            }
+        }
+    }
+
+    /// <summary>The "operations" collection of methods.</summary>
+    public class OperationsResource
+    {
+        private const string Resource = "operations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OperationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
+        /// operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
+        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">The name of the operation resource to be cancelled.</param>
+        public virtual CancelRequest Cancel(Google.Apis.ChromeManagement.v1.Data.GoogleLongrunningCancelOperationRequest body, string name)
+        {
+            return new CancelRequest(this.service, body, name);
+        }
+
+        /// <summary>
+        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
+        /// operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
+        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+        /// </summary>
+        public class CancelRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleProtobufEmpty>
+        {
+            /// <summary>Constructs a new Cancel request.</summary>
+            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleLongrunningCancelOperationRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>The name of the operation resource to be cancelled.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ChromeManagement.v1.Data.GoogleLongrunningCancelOperationRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "cancel";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}:cancel";
+
+            /// <summary>Initializes Cancel parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^operations/.*$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Deletes a long-running operation. This method indicates that the client is no longer interested in the
+        /// operation result. It does not cancel the operation. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`.
+        /// </summary>
+        /// <param name="name">The name of the operation resource to be deleted.</param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(this.service, name);
+        }
+
+        /// <summary>
+        /// Deletes a long-running operation. This method indicates that the client is no longer interested in the
+        /// operation result. It does not cancel the operation. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`.
+        /// </summary>
+        public class DeleteRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleProtobufEmpty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>The name of the operation resource to be deleted.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^operations/.*$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Lists operations that match the specified filter in the request. If the server doesn't support this method,
+        /// it returns `UNIMPLEMENTED`.
+        /// </summary>
+        /// <param name="name">The name of the operation's parent resource.</param>
+        public virtual ListRequest List(string name)
+        {
+            return new ListRequest(this.service, name);
+        }
+
+        /// <summary>
+        /// Lists operations that match the specified filter in the request. If the server doesn't support this method,
+        /// it returns `UNIMPLEMENTED`.
+        /// </summary>
+        public class ListRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleLongrunningListOperationsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>The name of the operation's parent resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// When set to `true`, operations that are reachable are returned as normal, and those that are unreachable
+            /// are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading
+            /// across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by
+            /// default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented
+            /// otherwise in service or product specific documentation.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^operations$",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnPartialSuccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
     }
@@ -7139,8 +7791,9 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string Signature { get; set; }
 
         /// <summary>
-        /// Output only. The signature algorithm that the adapter expects the client and backend components to use when
-        /// processing `sign_data`. This field is only present after the `SignData` operation has been initiated.
+        /// Output only. The signature algorithm that the client and backend components use when processing `sign_data`.
+        /// If the `profile_type` is a `GenericProfile`, this field will only be present after the `SignData` operation
+        /// was initiated. If the `profile_type` is a `ScepProfile`, the field will always be present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureAlgorithm")]
         public virtual string SignatureAlgorithm { get; set; }
@@ -7482,6 +8135,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reportingData")]
         public virtual GoogleChromeManagementVersionsV1ReportingData ReportingData { get; set; }
 
+        /// <summary>Output only. Whether the profile supports FCM notifications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsFcmNotifications")]
+        public virtual System.Nullable<bool> SupportsFcmNotifications { get; set; }
+
         /// <summary>Output only. Email address of the user to which the profile belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
         public virtual string UserEmail { get; set; }
@@ -7664,6 +8321,24 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for claiming a certificate provisioning process.</summary>
+    public class GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The instance id of the caller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callerInstanceId")]
+        public virtual string CallerInstanceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for claiming a certificate provisioning process.</summary>
+    public class GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information of a device that runs a Chrome browser profile.</summary>
     public class GoogleChromeManagementVersionsV1DeviceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7700,7 +8375,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
     {
         /// <summary>
         /// Output only. A string that references the administrator-provided configuration for the certification
-        /// authority service. This field can be missing if no configuration was given.
+        /// authority service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caConnectionAdapterConfigReference")]
         public virtual string CaConnectionAdapterConfigReference { get; set; }
@@ -7714,7 +8389,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
     {
         /// <summary>
         /// Output only. A string that references the administrator-provided configuration for the certificate
-        /// provisioning profile. This field can be missing if no configuration was given.
+        /// provisioning profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileAdapterConfigReference")]
         public virtual string ProfileAdapterConfigReference { get; set; }
@@ -7937,7 +8612,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
     {
         /// <summary>
         /// Output only. A string that references the administrator-provided configuration for the certification
-        /// authority service. This field can be missing if no configuration was given.
+        /// authority service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caConnectionAdapterConfigReference")]
         public virtual string CaConnectionAdapterConfigReference { get; set; }
@@ -7950,8 +8625,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
     public class GoogleChromeManagementVersionsV1ScepProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The certificate template name as defined by the admin on their on-prem infrastructure. This is
-        /// identifiable by the customer's CA.
+        /// Output only. The certificate template name as defined by the admin on their on-prem infrastructure. The
+        /// Certificate Authority uses this name to identify the certificate template.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateTemplateName")]
         public virtual string CertificateTemplateName { get; set; }
@@ -7988,6 +8663,26 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subjectCommonName")]
         public virtual string SubjectCommonName { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for marking a certificate provisioning process as failed.</summary>
+    public class GoogleChromeManagementVersionsV1SetFailureRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A message describing the failure details. It is displayed on the ChromeOS client device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for publishing a failure for a certificate provisioning process.</summary>
+    public class GoogleChromeManagementVersionsV1SetFailureResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8037,6 +8732,26 @@ namespace Google.Apis.ChromeManagement.v1.Data
     }
 
     /// <summary>
+    /// Request message for requesting a signature from the client that initated a certificate provisioning process.
+    /// </summary>
+    public class GoogleChromeManagementVersionsV1SignDataRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The data that the client was asked to sign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signData")]
+        public virtual string SignData { get; set; }
+
+        /// <summary>
+        /// Required. The signature algorithm that the adapter expects the client and backend components to use when
+        /// processing `sign_data`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatureAlgorithm")]
+        public virtual string SignatureAlgorithm { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Response message for requesting a signature from the client that initated a certificate provisioning process.
     /// </summary>
     public class GoogleChromeManagementVersionsV1SignDataResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -8059,7 +8774,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>Output only. The value of the subject alternative name with respoect to the `type`.</summary>
+        /// <summary>Output only. The value of the subject alternative name with respect to the `type`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -8081,6 +8796,97 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. The ID of the organizational unit assigned to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
         public virtual string OrgUnitId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for uploading an issued certificate for a certificate provisioning process.</summary>
+    public class GoogleChromeManagementVersionsV1UploadCertificateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The issued certificate in PEM format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificatePem")]
+        public virtual string CertificatePem { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for publishing an issued certificate for a certificate provisioning process.</summary>
+    public class GoogleChromeManagementVersionsV1UploadCertificateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Operations.CancelOperation.</summary>
+    public class GoogleLongrunningCancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Operations.ListOperations.</summary>
+    public class GoogleLongrunningListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of operations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class GoogleLongrunningOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
