@@ -407,6 +407,17 @@ namespace Google.Apis.BigtableAdmin.v2
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
+                    /// `true` when reading across collections e.g. when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                    /// specific documentation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -447,6 +458,14 @@ namespace Google.Apis.BigtableAdmin.v2
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2968,6 +2987,38 @@ namespace Google.Apis.BigtableAdmin.v2
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. Describes which of the materialized view's fields should be populated in the response.
+                    /// Defaults to SCHEMA_VIEW.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// Optional. Describes which of the materialized view's fields should be populated in the response.
+                    /// Defaults to SCHEMA_VIEW.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>Uses the default view for each method as documented in its request.</summary>
+                        [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
+                        VIEWUNSPECIFIED = 0,
+
+                        /// <summary>Only populates fields related to the materialized view's schema.</summary>
+                        [Google.Apis.Util.StringValueAttribute("SCHEMA_VIEW")]
+                        SCHEMAVIEW = 1,
+
+                        /// <summary>
+                        /// Only populates fields related to the materialized view's replication state.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("REPLICATION_VIEW")]
+                        REPLICATIONVIEW = 2,
+
+                        /// <summary>Populates all fields.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL")]
+                        FULL = 3,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
@@ -2988,6 +3039,14 @@ namespace Google.Apis.BigtableAdmin.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/instances/[^/]+/materializedViews/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -3101,6 +3160,38 @@ namespace Google.Apis.BigtableAdmin.v2
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. Describes which of the materialized view's fields should be populated in the response.
+                    /// For now, only the default value SCHEMA_VIEW is supported.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// Optional. Describes which of the materialized view's fields should be populated in the response.
+                    /// For now, only the default value SCHEMA_VIEW is supported.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>Uses the default view for each method as documented in its request.</summary>
+                        [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
+                        VIEWUNSPECIFIED = 0,
+
+                        /// <summary>Only populates fields related to the materialized view's schema.</summary>
+                        [Google.Apis.Util.StringValueAttribute("SCHEMA_VIEW")]
+                        SCHEMAVIEW = 1,
+
+                        /// <summary>
+                        /// Only populates fields related to the materialized view's replication state.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("REPLICATION_VIEW")]
+                        REPLICATIONVIEW = 2,
+
+                        /// <summary>Populates all fields.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL")]
+                        FULL = 3,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -3133,6 +3224,14 @@ namespace Google.Apis.BigtableAdmin.v2
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4227,73 +4326,6 @@ namespace Google.Apis.BigtableAdmin.v2
                         }
                     }
 
-                    /// <summary>
-                    /// Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource
-                    /// exists but does not have a policy set.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="resource">
-                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </param>
-                    public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.BigtableAdmin.v2.Data.GetIamPolicyRequest body, string resource)
-                    {
-                        return new GetIamPolicyRequest(this.service, body, resource);
-                    }
-
-                    /// <summary>
-                    /// Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource
-                    /// exists but does not have a policy set.
-                    /// </summary>
-                    public class GetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
-                    {
-                        /// <summary>Constructs a new GetIamPolicy request.</summary>
-                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.GetIamPolicyRequest body, string resource) : base(service)
-                        {
-                            Resource = resource;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
-                        /// this field.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.BigtableAdmin.v2.Data.GetIamPolicyRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "getIamPolicy";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v2/{+resource}:getIamPolicy";
-
-                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/instances/[^/]+/tables/[^/]+/schemaBundles/[^/]+$",
-                            });
-                        }
-                    }
-
                     /// <summary>Lists all schema bundles associated with the specified table.</summary>
                     /// <param name="parent">
                     /// Required. The parent, which owns this collection of schema bundles. Values are of the form
@@ -4500,132 +4532,6 @@ namespace Google.Apis.BigtableAdmin.v2
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Sets the access control policy on a Bigtable resource. Replaces any existing policy.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="resource">
-                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </param>
-                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BigtableAdmin.v2.Data.SetIamPolicyRequest body, string resource)
-                    {
-                        return new SetIamPolicyRequest(this.service, body, resource);
-                    }
-
-                    /// <summary>
-                    /// Sets the access control policy on a Bigtable resource. Replaces any existing policy.
-                    /// </summary>
-                    public class SetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
-                    {
-                        /// <summary>Constructs a new SetIamPolicy request.</summary>
-                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.SetIamPolicyRequest body, string resource) : base(service)
-                        {
-                            Resource = resource;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
-                        /// this field.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.BigtableAdmin.v2.Data.SetIamPolicyRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "setIamPolicy";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v2/{+resource}:setIamPolicy";
-
-                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/instances/[^/]+/tables/[^/]+/schemaBundles/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>Returns permissions that the caller has on the specified Bigtable resource.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="resource">
-                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </param>
-                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsRequest body, string resource)
-                    {
-                        return new TestIamPermissionsRequest(this.service, body, resource);
-                    }
-
-                    /// <summary>Returns permissions that the caller has on the specified Bigtable resource.</summary>
-                    public class TestIamPermissionsRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsResponse>
-                    {
-                        /// <summary>Constructs a new TestIamPermissions request.</summary>
-                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsRequest body, string resource) : base(service)
-                        {
-                            Resource = resource;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
-                        /// this field.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "testIamPermissions";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v2/{+resource}:testIamPermissions";
-
-                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/instances/[^/]+/tables/[^/]+/schemaBundles/[^/]+$",
                             });
                         }
                     }
@@ -8500,6 +8406,17 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The state of a materialized view's data in a particular cluster.</summary>
+    public class GoogleBigtableAdminV2MaterializedViewClusterState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The state of the materialized view in this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicationState")]
+        public virtual string ReplicationState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A value that combines incremental updates into a summarized value. Data is never directly written or read using
     /// type `Aggregate`. Writes provide either the `input_type` or `state_type`, and reads always return the
@@ -9378,6 +9295,14 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9479,6 +9404,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>A materialized view object that can be referenced in SQL queries.</summary>
     public class MaterializedView : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Map from cluster ID to per-cluster materialized view state. If it could not be determined
+        /// whether or not the materialized view has data in a particular cluster (for example, if its zone is
+        /// unavailable), then there will be an entry for the cluster with `STATE_NOT_KNOWN` state. Views:
+        /// `REPLICATION_VIEW`, `FULL`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterStates")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleBigtableAdminV2MaterializedViewClusterState> ClusterStates { get; set; }
+
         /// <summary>
         /// Set to true to make the MaterializedView protected against deletion. Views: `SCHEMA_VIEW`,
         /// `REPLICATION_VIEW`, `FULL`.
