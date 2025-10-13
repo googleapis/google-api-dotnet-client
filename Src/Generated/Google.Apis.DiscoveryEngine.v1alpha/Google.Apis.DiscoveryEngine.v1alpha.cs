@@ -1145,6 +1145,65 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
                     }
 
+                    /// <summary>
+                    /// Deprecated: Checks the existence of a refresh token for the EUC user for a given connection and
+                    /// returns its details. Use AcquireAccessToken instead and then check the validity of the returned
+                    /// token by asking the 3rd party system. There's no way to know for sure if a refresh token is
+                    /// valid without asking the 3rd party system.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the connector for which a token is queried.
+                    /// </param>
+                    public virtual CheckRefreshTokenRequest CheckRefreshToken(string name)
+                    {
+                        return new CheckRefreshTokenRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Deprecated: Checks the existence of a refresh token for the EUC user for a given connection and
+                    /// returns its details. Use AcquireAccessToken instead and then check the validity of the returned
+                    /// token by asking the 3rd party system. There's no way to know for sure if a refresh token is
+                    /// valid without asking the 3rd party system.
+                    /// </summary>
+                    public class CheckRefreshTokenRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCheckRefreshTokenResponse>
+                    {
+                        /// <summary>Constructs a new CheckRefreshToken request.</summary>
+                        public CheckRefreshTokenRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the connector for which a token is queried.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "checkRefreshToken";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}:checkRefreshToken";
+
+                        /// <summary>Initializes CheckRefreshToken parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataConnector$",
+                            });
+                        }
+                    }
+
                     /// <summary>Get the secret for the associated connector.</summary>
                     /// <param name="name">Required. The full resource name of the associated data connector.</param>
                     public virtual GetConnectorSecretRequest GetConnectorSecret(string name)
@@ -11532,6 +11591,57 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         public override string RestPath => "v1alpha/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Get Workspace settings for the end user.</summary>
+                    /// <param name="name">
+                    /// Required. Full Engine resource name. Format:
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`
+                    /// </param>
+                    public virtual GetWorkspaceSettingsRequest GetWorkspaceSettings(string name)
+                    {
+                        return new GetWorkspaceSettingsRequest(this.service, name);
+                    }
+
+                    /// <summary>Get Workspace settings for the end user.</summary>
+                    public class GetWorkspaceSettingsRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWorkspaceSettings>
+                    {
+                        /// <summary>Constructs a new GetWorkspaceSettings request.</summary>
+                        public GetWorkspaceSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full Engine resource name. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getWorkspaceSettings";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}:getWorkspaceSettings";
+
+                        /// <summary>Initializes GetWorkspaceSettings parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -34642,6 +34752,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the DataConnectorService.CheckRefreshToken method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCheckRefreshTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Info about the stored refresh token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshTokenInfo")]
+        public virtual GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo RefreshTokenInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for CheckRequirement method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaCheckRequirementRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -49525,6 +49646,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>The Google Workspace data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Workspace settings for the end user.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaWorkspaceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether an end user has workspace access enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workspaceAccessEnabled")]
+        public virtual System.Nullable<bool> WorkspaceAccessEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
