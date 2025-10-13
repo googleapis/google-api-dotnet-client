@@ -4687,7 +4687,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// </param>
                             /// <param name="dicomWebPath">
                             /// Required. The path of the SearchForInstancesRequest DICOMweb request. For example,
-                            /// `instances`, `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
+                            /// `instances`, `studies/{study_uid}/series/{series_uid}/instances`, or
+                            /// `studies/{study_uid}/instances`.
                             /// </param>
                             public virtual SearchForInstancesRequest SearchForInstances(string parent, string dicomWebPath)
                             {
@@ -4722,7 +4723,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                                 /// <summary>
                                 /// Required. The path of the SearchForInstancesRequest DICOMweb request. For example,
-                                /// `instances`, `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
+                                /// `instances`, `studies/{study_uid}/series/{series_uid}/instances`, or
+                                /// `studies/{study_uid}/instances`.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string DicomWebPath { get; private set; }
@@ -5114,7 +5116,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </param>
                         /// <param name="dicomWebPath">
                         /// Required. The path of the SearchForInstancesRequest DICOMweb request. For example,
-                        /// `instances`, `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
+                        /// `instances`, `studies/{study_uid}/series/{series_uid}/instances`, or
+                        /// `studies/{study_uid}/instances`.
                         /// </param>
                         public virtual SearchForInstancesRequest SearchForInstances(string parent, string dicomWebPath)
                         {
@@ -5149,7 +5152,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                             /// <summary>
                             /// Required. The path of the SearchForInstancesRequest DICOMweb request. For example,
-                            /// `instances`, `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
+                            /// `instances`, `studies/{study_uid}/series/{series_uid}/instances`, or
+                            /// `studies/{study_uid}/instances`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string DicomWebPath { get; private set; }
@@ -6236,7 +6240,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </param>
                     /// <param name="dicomWebPath">
                     /// Required. The path of the SearchForInstancesRequest DICOMweb request. For example, `instances`,
-                    /// `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
+                    /// `studies/{study_uid}/series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
                     /// </param>
                     public virtual SearchForInstancesRequest SearchForInstances(string parent, string dicomWebPath)
                     {
@@ -6270,7 +6274,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>
                         /// Required. The path of the SearchForInstancesRequest DICOMweb request. For example,
-                        /// `instances`, `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
+                        /// `instances`, `studies/{study_uid}/series/{series_uid}/instances`, or
+                        /// `studies/{study_uid}/instances`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string DicomWebPath { get; private set; }
@@ -10981,11 +10986,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     /// <summary>
                     /// Export resources from the FHIR store to the specified destination. This method returns an
-                    /// Operation that can be used to track the status of the export by calling GetOperation. Immediate
-                    /// fatal errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing
-                    /// error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
-                    /// Otherwise, when the operation finishes, a detailed response of type ExportResourcesResponse is
-                    /// returned in the response field. The metadata field type for this operation is OperationMetadata.
+                    /// Operation that can be used to track the status of the export by calling GetOperation. To improve
+                    /// performance, it is recommended to make the `type` filter as specific as possible, including only
+                    /// the resource types that are absolutely needed. This minimizes the size of the initial dataset to
+                    /// be processed and is the most effective way to improve performance. While post-filters like
+                    /// `_since` are useful for refining results, they do not speed up the initial data retrieval phase,
+                    /// which is primarily governed by the `type` filter. Immediate fatal errors appear in the error
+                    /// field, errors are also logged to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a detailed response of type ExportResourcesResponse is returned in the
+                    /// response field. The metadata field type for this operation is OperationMetadata.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -10999,11 +11009,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     /// <summary>
                     /// Export resources from the FHIR store to the specified destination. This method returns an
-                    /// Operation that can be used to track the status of the export by calling GetOperation. Immediate
-                    /// fatal errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing
-                    /// error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
-                    /// Otherwise, when the operation finishes, a detailed response of type ExportResourcesResponse is
-                    /// returned in the response field. The metadata field type for this operation is OperationMetadata.
+                    /// Operation that can be used to track the status of the export by calling GetOperation. To improve
+                    /// performance, it is recommended to make the `type` filter as specific as possible, including only
+                    /// the resource types that are absolutely needed. This minimizes the size of the initial dataset to
+                    /// be processed and is the most effective way to improve performance. While post-filters like
+                    /// `_since` are useful for refining results, they do not speed up the initial data retrieval phase,
+                    /// which is primarily governed by the `type` filter. Immediate fatal errors appear in the error
+                    /// field, errors are also logged to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a detailed response of type ExportResourcesResponse is returned in the
+                    /// response field. The metadata field type for this operation is OperationMetadata.
                     /// </summary>
                     public class ExportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
@@ -11450,7 +11465,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <summary>
                     /// Import resource historical versions from Cloud Storage source to destination fhir store. The
                     /// exported resource, along with previous versions, will be exported in one or more FHIR history
-                    /// bundles. This method returns an Operation that can be used to track the status of the export by
+                    /// bundles. This method returns an Operation that can be used to track the status of the import by
                     /// calling GetOperation. Immediate fatal errors appear in the error field, errors are also logged
                     /// to Cloud Logging (see [Viewing error logs in Cloud
                     /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
@@ -11470,7 +11485,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <summary>
                     /// Import resource historical versions from Cloud Storage source to destination fhir store. The
                     /// exported resource, along with previous versions, will be exported in one or more FHIR history
-                    /// bundles. This method returns an Operation that can be used to track the status of the export by
+                    /// bundles. This method returns an Operation that can be used to track the status of the import by
                     /// calling GetOperation. Immediate fatal errors appear in the error field, errors are also logged
                     /// to Cloud Logging (see [Viewing error logs in Cloud
                     /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
@@ -13683,6 +13698,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                        /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
+                        /// `true` when reading across collections e.g. when `parent` is set to
+                        /// `"projects/example/locations/-"`. This field is not by default supported and will result in
+                        /// an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                        /// specific documentation.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -13723,6 +13749,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "returnPartialSuccess",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -18474,6 +18508,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
