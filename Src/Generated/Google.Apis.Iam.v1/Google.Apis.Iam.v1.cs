@@ -1579,6 +1579,12 @@ namespace Google.Apis.Iam.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>
+                        /// Optional. Deletes the SCIM tenant immediately. This operation cannot be undone.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("hardDelete", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> HardDelete { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
@@ -1599,6 +1605,14 @@ namespace Google.Apis.Iam.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^locations/[^/]+/workforcePools/[^/]+/providers/[^/]+/scimTenants/[^/]+$",
+                            });
+                            RequestParameters.Add("hardDelete", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "hardDelete",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
