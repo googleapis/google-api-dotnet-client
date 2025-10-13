@@ -2515,6 +2515,16 @@ namespace Google.Apis.AccessContextManager.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
+            /// <summary>
+            /// When set to `true`, operations that are reachable are returned as normal, and those that are unreachable
+            /// are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading
+            /// across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by
+            /// default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented
+            /// otherwise in service or product specific documentation.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -2555,6 +2565,14 @@ namespace Google.Apis.AccessContextManager.v1
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnPartialSuccess",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -4087,6 +4105,14 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
