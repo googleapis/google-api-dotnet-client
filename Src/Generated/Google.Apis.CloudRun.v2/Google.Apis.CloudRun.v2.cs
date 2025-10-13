@@ -5844,10 +5844,11 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Nullable<bool> CpuIdle { get; set; }
 
         /// <summary>
-        /// Only `memory` and `cpu` keys in the map are supported. Notes: * The only supported values for CPU are '1',
-        /// '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to
-        /// https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to
-        /// https://cloud.google.com/run/docs/configuring/memory-limits
+        /// Only `memory`, `cpu` and `nvidia.com/gpu` keys in the map are supported. Notes: * The only supported values
+        /// for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go
+        /// to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to
+        /// https://cloud.google.com/run/docs/configuring/memory-limits * The only supported 'nvidia.com/gpu' value is
+        /// '1'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limits")]
         public virtual System.Collections.Generic.IDictionary<string, string> Limits { get; set; }
