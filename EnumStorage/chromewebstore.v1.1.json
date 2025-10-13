@@ -1,0 +1,33 @@
+{
+  "Google.Apis.Chromewebstore.v1_1.ChromewebstoreBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Chromewebstore.v1_1.ChromewebstoreBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Chromewebstore.v1_1.ItemsResource+GetRequest.ProjectionEnum": [
+    "DRAFT",
+    "PUBLISHED"
+  ],
+  "Google.Apis.Chromewebstore.v1_1.ItemsResource+InsertMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Chromewebstore.v1_1.ItemsResource+InsertMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Chromewebstore.v1_1.ItemsResource+UpdateMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Chromewebstore.v1_1.ItemsResource+UpdateMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
