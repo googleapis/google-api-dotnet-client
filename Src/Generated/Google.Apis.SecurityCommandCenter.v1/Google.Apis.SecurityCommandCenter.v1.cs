@@ -7471,6 +7471,16 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>
+                /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true`
+                /// when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This
+                /// field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless
+                /// explicitly documented otherwise in service or product specific documentation.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -7511,6 +7521,14 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "returnPartialSuccess",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -16264,6 +16282,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfile")]
         public virtual string DataProfile { get; set; }
 
+        /// <summary>
+        /// Type of information detected by SDP. Info type includes name, version and sensitivity of the detected
+        /// information type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
+        public virtual System.Collections.Generic.IList<InfoType> InfoTypes { get; set; }
+
         /// <summary>The resource hierarchy level at which the data profile was generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentType")]
         public virtual string ParentType { get; set; }
@@ -20406,6 +20431,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfile")]
         public virtual string DataProfile { get; set; }
 
+        /// <summary>
+        /// Type of information detected by SDP. Info type includes name, version and sensitivity of the detected
+        /// information type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2InfoType> InfoTypes { get; set; }
+
         /// <summary>The resource hierarchy level at which the data profile was generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentType")]
         public virtual string ParentType { get; set; }
@@ -22195,6 +22227,30 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The list of URIs associated to the Findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uris")]
         public virtual System.Collections.Generic.IList<string> Uris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Type of information detected by the API.</summary>
+    public class GoogleCloudSecuritycenterV2InfoType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the
+        /// names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying
+        /// a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the
+        /// pattern `[A-Za-z0-9$_-]{1,64}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional custom sensitivity for this InfoType. This only applies to data profiling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
+        public virtual GoogleCloudSecuritycenterV2SensitivityScore SensitivityScore { get; set; }
+
+        /// <summary>Optional version name for this InfoType.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24003,6 +24059,19 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2SensitivityScore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The sensitivity score applied to the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual string Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Identity delegation history of an authenticated service account.</summary>
     public class GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -24712,6 +24781,30 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Type of information detected by the API.</summary>
+    public class InfoType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the
+        /// names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying
+        /// a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the
+        /// pattern `[A-Za-z0-9$_-]{1,64}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional custom sensitivity for this InfoType. This only applies to data profiling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
+        public virtual SensitivityScore SensitivityScore { get; set; }
+
+        /// <summary>Optional version name for this InfoType.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>IP rule information.</summary>
     public class IpRule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25232,6 +25325,14 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26393,6 +26494,19 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The version of the posture, for example, `c7cfa2a8`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.
+    /// </summary>
+    public class SensitivityScore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The sensitivity score applied to the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual string Score { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
