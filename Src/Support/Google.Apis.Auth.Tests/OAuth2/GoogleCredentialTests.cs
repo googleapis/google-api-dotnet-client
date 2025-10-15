@@ -45,6 +45,16 @@ namespace Google.Apis.Auth.Tests.OAuth2
     {
         private const string QuotaProjectHeaderKey = "x-goog-user-project";
         private const string FakeAuthUri = "https://www.googleapis.com/google.some_google_api";
+        private const string FakeImpersonatedCredentialFileContents = @"{
+""service_account_impersonation_url"": ""https://example.com"",
+""type"": ""impersonated_service_account"",
+""scopes"": [""SCOPE""],
+""source_credentials"": {
+""client_id"": ""CLIENT_ID"",
+""client_secret"": ""CLIENT_SECRET"",
+""refresh_token"": ""REFRESH_TOKEN"",
+""type"": ""authorized_user""
+}}";
         private const string FakeUserCredentialFileContents = @"{
 ""client_id"": ""CLIENT_ID"",
 ""client_secret"": ""CLIENT_SECRET"",
@@ -695,6 +705,31 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             Assert.NotSame(unscopedCredential.UnderlyingCredential, scopedCredential.UnderlyingCredential);
             var impersonatedCredential = Assert.IsType<ImpersonatedCredential>(scopedCredential.UnderlyingCredential);
             Assert.Collection(impersonatedCredential.Scopes, scope => Assert.Equal("new_scope", scope));
+        }
+
+        [Fact]
+        public void CreateScoped_Impersonated_FromJson()
+        {
+            var impersonatedCredential = CredentialFactory.FromJson<ImpersonatedCredential>(FakeImpersonatedCredentialFileContents);
+
+            // The scopes passed in through the credential json should be the scopes set on the impersonated credential
+            Assert.Equal(["SCOPE"], impersonatedCredential.Scopes);
+        }
+
+        [Fact]
+        public void CreateScoped_Impersonated_FromJsonScopesOverwritten()
+        {
+            var manuallySetScopes = new[] { "manuallySetScope" };
+
+            var credentialFromJson = CredentialFactory.FromJson<ImpersonatedCredential>(FakeImpersonatedCredentialFileContents).ToGoogleCredential();
+            var manuallyScopedCredential = credentialFromJson.CreateScoped(manuallySetScopes);
+            var originalImpersonatedCredential = Assert.IsType<ImpersonatedCredential>(credentialFromJson.UnderlyingCredential);
+            var newImpersonatedCredential = Assert.IsType<ImpersonatedCredential>(manuallyScopedCredential.UnderlyingCredential);
+
+            // If scopes are explicitly set in code, these should override the scopes passed through the credential json
+            Assert.Equal(manuallySetScopes, newImpersonatedCredential.Scopes);
+            // The original credential's scopes should remain unchanged
+            Assert.Equal(["SCOPE"], originalImpersonatedCredential.Scopes);
         }
 
         [Fact]

@@ -153,6 +153,12 @@ namespace Google.Apis.Auth.OAuth2
         public string[] Delegates { get; set; }
 
         /// <summary>
+        /// Scopes associated with the impersonated credential.
+        /// </summary>
+        [JsonProperty("scopes")]
+        public string[] Scopes { get; set; }
+
+        /// <summary>
         /// The source credential associated to the impersonated credential.
         /// </summary>
         [JsonProperty("source_credentials")]

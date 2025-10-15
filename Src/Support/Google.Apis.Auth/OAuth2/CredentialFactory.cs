@@ -334,8 +334,9 @@ public static class CredentialFactory
         var maybeTargetPrincipal = ImpersonatedCredential.ExtractTargetPrincipal(parameters.ServiceAccountImpersonationUrl);
         var initializer = new ImpersonatedCredential.Initializer(parameters.ServiceAccountImpersonationUrl, maybeTargetPrincipal)
         {
-            DelegateAccounts = parameters.Delegates?.Length > 0 ? parameters.Delegates.ToList() : null,
+            DelegateAccounts = parameters.Delegates?.Length > 0 ? parameters.Delegates : null,
             QuotaProject = parameters.QuotaProject,
+            Scopes = parameters.Scopes?.Length > 0 ? parameters.Scopes : null,
         };
 
         var impersonatedCredential = ImpersonatedCredential.Create(sourceCredential.ToGoogleCredential(), initializer);
