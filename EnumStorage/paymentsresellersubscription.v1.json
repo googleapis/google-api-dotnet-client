@@ -1,4 +1,10 @@
 {
+  "Google.Apis.PaymentsResellerSubscription.v1.PartnersResource+SubscriptionsResource+ProvisionRequest.CycleOptionsInitialCycleDurationUnitEnum": [
+    "UNIT_UNSPECIFIED",
+    "MONTH",
+    "DAY",
+    "HOUR"
+  ],
   "Google.Apis.PaymentsResellerSubscription.v1.PaymentsResellerSubscriptionBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
     "media",
