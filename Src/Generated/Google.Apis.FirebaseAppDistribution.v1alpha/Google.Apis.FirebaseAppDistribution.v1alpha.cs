@@ -1244,7 +1244,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                     this.service = service;
                 }
 
-                /// <summary>Delete test cases.</summary>
+                /// <summary>Deletes multiple test cases.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource where these test cases will be deleted. Format:
@@ -1255,7 +1255,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                     return new BatchDeleteRequest(this.service, body, parent);
                 }
 
-                /// <summary>Delete test cases.</summary>
+                /// <summary>Deletes multiple test cases.</summary>
                 public class BatchDeleteRequest : FirebaseAppDistributionBaseServiceRequest<Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new BatchDelete request.</summary>
@@ -2276,7 +2276,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The request message for `DeleteTestCase`.</summary>
+    /// <summary>The request message for `BatchDeleteTestCase`.</summary>
     public class GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
