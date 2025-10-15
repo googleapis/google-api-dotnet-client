@@ -2274,8 +2274,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string UserIpAddress { get; set; }
 
         /// <summary>
-        /// Optional. Flag for running WAF token assessment. If enabled, the token must be specified, and have been
-        /// created by a WAF-enabled key.
+        /// Optional. Flag for running Web Application Firewall (WAF) token assessment. If enabled, the token must be
+        /// specified, and have been created by a WAF-enabled key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wafTokenAssessment")]
         public virtual System.Nullable<bool> WafTokenAssessment { get; set; }
@@ -2722,7 +2722,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testingOptions")]
         public virtual GoogleCloudRecaptchaenterpriseV1TestingOptions TestingOptions { get; set; }
 
-        /// <summary>Optional. Settings for WAF</summary>
+        /// <summary>Optional. Settings for Web Application Firewall (WAF).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wafSettings")]
         public virtual GoogleCloudRecaptchaenterpriseV1WafSettings WafSettings { get; set; }
 
@@ -3686,11 +3686,11 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Settings specific to keys that can be used for WAF (Web Application Firewall).</summary>
     public class GoogleCloudRecaptchaenterpriseV1WafSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The WAF feature for which this key is enabled.</summary>
+        /// <summary>Required. The Web Application Firewall (WAF) feature for which this key is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wafFeature")]
         public virtual string WafFeature { get; set; }
 
-        /// <summary>Required. The WAF service that uses this key.</summary>
+        /// <summary>Required. The Web Application Firewall (WAF) service that uses this key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wafService")]
         public virtual string WafService { get; set; }
 
