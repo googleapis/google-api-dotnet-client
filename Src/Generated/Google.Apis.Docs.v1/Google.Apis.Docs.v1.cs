@@ -1305,6 +1305,17 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents document-level format settings.</summary>
+    public class DocumentFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the document has pages or is pageless.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentMode")]
+        public virtual string DocumentMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The style of the document.</summary>
     public class DocumentStyle : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1323,6 +1334,10 @@ namespace Google.Apis.Docs.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultHeaderId")]
         public virtual string DefaultHeaderId { get; set; }
+
+        /// <summary>Specifies document-level format settings, such as the document mode (pages vs pageless).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentFormat")]
+        public virtual DocumentFormat DocumentFormat { get; set; }
 
         /// <summary>
         /// The ID of the footer used only for even pages. The value of use_even_page_header_footer determines whether
