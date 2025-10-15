@@ -2581,8 +2581,8 @@ namespace Google.Apis.OracleDatabase.v1
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Optional. The maximum number of items to return. If unspecified, a maximum of 50 System Versions
-                    /// will be returned. The maximum value is 1000; values above 1000 will be reset to 1000.
+                    /// Optional. The maximum number of items to return. If unspecified, a maximum of 50 Databases will
+                    /// be returned. The maximum value is 1000; values above 1000 will be reset to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -2688,8 +2688,9 @@ namespace Google.Apis.OracleDatabase.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. The maximum number of items to return. If unspecified, a maximum of 50 System Versions
-                    /// will be returned. The maximum value is 1000; values above 1000 will be reset to 1000.
+                    /// Optional. The maximum number of items to return. If unspecified, a maximum of 50
+                    /// DbSystemInitialStorageSizes will be returned. The maximum value is 1000; values above 1000 will
+                    /// be reset to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -3242,8 +3243,8 @@ namespace Google.Apis.OracleDatabase.v1
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Optional. The maximum number of items to return. If unspecified, a maximum of 50 System Versions
-                    /// will be returned. The maximum value is 1000; values above 1000 will be reset to 1000.
+                    /// Optional. The maximum number of items to return. If unspecified, a maximum of 50 DbVersions will
+                    /// be returned. The maximum value is 1000; values above 1000 will be reset to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -3415,6 +3416,103 @@ namespace Google.Apis.OracleDatabase.v1
                 public ExadbVmClustersResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    DbNodes = new DbNodesResource(service);
+                }
+
+                /// <summary>Gets the DbNodes resource.</summary>
+                public virtual DbNodesResource DbNodes { get; }
+
+                /// <summary>The "dbNodes" collection of methods.</summary>
+                public class DbNodesResource
+                {
+                    private const string Resource = "dbNodes";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DbNodesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists the database nodes of a VM Cluster.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent value for database node in the following format:
+                    /// projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}. .
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists the database nodes of a VM Cluster.</summary>
+                    public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListDbNodesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent value for database node in the following format:
+                        /// projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}. .
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of items to return. If unspecified, at most 50 db nodes will be
+                        /// returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. A token identifying a page of results the node should return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/dbNodes";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/exadbVmClusters/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a new Exadb (Exascale) VM Cluster resource.</summary>
