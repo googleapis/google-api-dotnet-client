@@ -20506,9 +20506,39 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
 
+        /// <summary>Generative model parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual GoogleCloudDialogflowCxV3beta1LlmModelSettingsParameters Parameters { get; set; }
+
         /// <summary>The custom prompt to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptText")]
         public virtual string PromptText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Generative model parameters to control the model behavior.</summary>
+    public class GoogleCloudDialogflowCxV3beta1LlmModelSettingsParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The input token limit. This setting is currently only supported by playbooks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputTokenLimit")]
+        public virtual string InputTokenLimit { get; set; }
+
+        /// <summary>
+        /// The output token limit. This setting is currently only supported by playbooks. Only one of
+        /// output_token_limit and max_output_tokens is allowed to be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputTokenLimit")]
+        public virtual string OutputTokenLimit { get; set; }
+
+        /// <summary>
+        /// The temperature used for sampling during response generation. Value ranges from 0 to 1. Temperature controls
+        /// the degree of randomness in token selection. Lower temperature means less randomness, while higher
+        /// temperature means more randomness. Valid range: [0.0, 1.0]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temperature")]
+        public virtual System.Nullable<float> Temperature { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
