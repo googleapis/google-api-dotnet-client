@@ -599,6 +599,103 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             public SubscriptionsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                LineItems = new LineItemsResource(service);
+            }
+
+            /// <summary>Gets the LineItems resource.</summary>
+            public virtual LineItemsResource LineItems { get; }
+
+            /// <summary>The "lineItems" collection of methods.</summary>
+            public class LineItemsResource
+            {
+                private const string Resource = "lineItems";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LineItemsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Updates a line item of a subscription. It should be autenticated with a service account.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Resource name of the line item. Format:
+                /// partners/{partner}/subscriptions/{subscription}/lineItems/{lineItem}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.PaymentsResellerSubscription.v1.Data.SubscriptionLineItem body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Updates a line item of a subscription. It should be autenticated with a service account.
+                /// </summary>
+                public class PatchRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.SubscriptionLineItem>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.SubscriptionLineItem body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Resource name of the line item. Format:
+                    /// partners/{partner}/subscriptions/{subscription}/lineItems/{lineItem}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. The list of fields to update. Only a limited set of fields can be updated. The allowed
+                    /// fields are the following: - `product_payload.googleHomePayload.googleStructureId`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.PaymentsResellerSubscription.v1.Data.SubscriptionLineItem Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^partners/[^/]+/subscriptions/[^/]+/lineItems/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>
@@ -977,6 +1074,34 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>number of duration units to be included.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("cycleOptions.initialCycleDuration.count", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> CycleOptionsInitialCycleDurationCount { get; set; }
+
+                /// <summary>The unit used for the duration</summary>
+                [Google.Apis.Util.RequestParameterAttribute("cycleOptions.initialCycleDuration.unit", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<CycleOptionsInitialCycleDurationUnitEnum> CycleOptionsInitialCycleDurationUnit { get; set; }
+
+                /// <summary>The unit used for the duration</summary>
+                public enum CycleOptionsInitialCycleDurationUnitEnum
+                {
+                    /// <summary>Default value, reserved as an invalid or an unexpected value.</summary>
+                    [Google.Apis.Util.StringValueAttribute("UNIT_UNSPECIFIED")]
+                    UNITUNSPECIFIED = 0,
+
+                    /// <summary>Unit of a calendar month.</summary>
+                    [Google.Apis.Util.StringValueAttribute("MONTH")]
+                    MONTH = 1,
+
+                    /// <summary>Unit of a day.</summary>
+                    [Google.Apis.Util.StringValueAttribute("DAY")]
+                    DAY = 2,
+
+                    /// <summary>Unit of an hour. It is used for testing.</summary>
+                    [Google.Apis.Util.StringValueAttribute("HOUR")]
+                    HOUR = 3,
+                }
+
                 /// <summary>
                 /// Required. Identifies the subscription resource on the Partner side. The value is restricted to 63
                 /// ASCII characters at the maximum. If a subscription was previously created with the same
@@ -1011,6 +1136,22 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^partners/[^/]+$",
+                    });
+                    RequestParameters.Add("cycleOptions.initialCycleDuration.count", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "cycleOptions.initialCycleDuration.count",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("cycleOptions.initialCycleDuration.unit", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "cycleOptions.initialCycleDuration.unit",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
                     {
@@ -1376,6 +1517,22 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionId")]
         public virtual string SubscriptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The cycle options when starting and resuming a subscription.</summary>
+    public class CycleOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The duration of the initial cycle. Only `DAY` is supported. If set, Google will start the
+        /// subscription with this initial cycle duration starting at the request time (see available methods below). A
+        /// prorated charge will be applied. This option is available to the following methods: -
+        /// partners.subscriptions.provision - partners.subscriptions.resume - partners.userSessions.generate
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialCycleDuration")]
+        public virtual Duration InitialCycleDuration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2124,6 +2281,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>Request to resume a suspended subscription.</summary>
     public class ResumeSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The cycle options for the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cycleOptions")]
+        public virtual CycleOptions CycleOptions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
