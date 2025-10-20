@@ -4772,6 +4772,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceUpdatePolicy")]
         public virtual MaintenanceUpdatePolicy MaintenanceUpdatePolicy { get; set; }
 
+        /// <summary>
+        /// Input only. Policy to use to automatically select the maintenance version to which to update the cluster's
+        /// instances.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersionSelectionPolicy")]
+        public virtual string MaintenanceVersionSelectionPolicy { get; set; }
+
         /// <summary>Output only. Cluster created via DMS migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migrationSource")]
         public virtual MigrationSource MigrationSource { get; set; }
