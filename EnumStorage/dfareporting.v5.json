@@ -452,6 +452,15 @@
     "ASCENDING",
     "DESCENDING"
   ],
+  "Google.Apis.Dfareporting.v5.StudioCreativeAssetsResource+InsertMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Dfareporting.v5.StudioCreativeAssetsResource+InsertMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
   "Google.Apis.Dfareporting.v5.SubaccountsResource+ListRequest.SortFieldEnum": [
     "ID",
     "NAME"

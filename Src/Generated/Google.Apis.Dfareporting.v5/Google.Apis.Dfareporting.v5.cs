@@ -88,6 +88,8 @@ namespace Google.Apis.Dfareporting.v5
             Reports = new ReportsResource(this);
             Sites = new SitesResource(this);
             Sizes = new SizesResource(this);
+            StudioCreativeAssets = new StudioCreativeAssetsResource(this);
+            StudioCreatives = new StudioCreativesResource(this);
             Subaccounts = new SubaccountsResource(this);
             TargetableRemarketingLists = new TargetableRemarketingListsResource(this);
             TargetingTemplates = new TargetingTemplatesResource(this);
@@ -307,6 +309,12 @@ namespace Google.Apis.Dfareporting.v5
 
         /// <summary>Gets the Sizes resource.</summary>
         public virtual SizesResource Sizes { get; }
+
+        /// <summary>Gets the StudioCreativeAssets resource.</summary>
+        public virtual StudioCreativeAssetsResource StudioCreativeAssets { get; }
+
+        /// <summary>Gets the StudioCreatives resource.</summary>
+        public virtual StudioCreativesResource StudioCreatives { get; }
 
         /// <summary>Gets the Subaccounts resource.</summary>
         public virtual SubaccountsResource Subaccounts { get; }
@@ -9336,6 +9344,90 @@ namespace Google.Apis.Dfareporting.v5
                 base.InitParameters();
             }
         }
+
+        /// <summary>Retransforms a dynamic feed.</summary>
+        /// <param name="dynamicFeedId">Required. Dynamic feed ID.</param>
+        public virtual RetransformRequest Retransform(long dynamicFeedId)
+        {
+            return new RetransformRequest(this.service, dynamicFeedId);
+        }
+
+        /// <summary>Retransforms a dynamic feed.</summary>
+        public class RetransformRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v5.Data.DynamicFeed>
+        {
+            /// <summary>Constructs a new Retransform request.</summary>
+            public RetransformRequest(Google.Apis.Services.IClientService service, long dynamicFeedId) : base(service)
+            {
+                DynamicFeedId = dynamicFeedId;
+                InitParameters();
+            }
+
+            /// <summary>Required. Dynamic feed ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dynamicFeedId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long DynamicFeedId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "retransform";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "studio/dynamicFeeds/{+dynamicFeedId}/retransform";
+
+            /// <summary>Initializes Retransform parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("dynamicFeedId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dynamicFeedId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Updates a new dynamic feed.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual UpdateRequest Update(Google.Apis.Dfareporting.v5.Data.DynamicFeed body)
+        {
+            return new UpdateRequest(this.service, body);
+        }
+
+        /// <summary>Updates a new dynamic feed.</summary>
+        public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v5.Data.DynamicFeed>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v5.Data.DynamicFeed body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dfareporting.v5.Data.DynamicFeed Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "update";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PUT";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "studio/dynamicFeeds";
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
     }
 
     /// <summary>The "dynamicProfiles" collection of methods.</summary>
@@ -9350,6 +9442,51 @@ namespace Google.Apis.Dfareporting.v5
         public DynamicProfilesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+        }
+
+        /// <summary>Generates code for a dynamic profile.</summary>
+        /// <param name="dynamicProfileId">Required. Dynamic profile ID.</param>
+        public virtual GenerateCodeRequest GenerateCode(long dynamicProfileId)
+        {
+            return new GenerateCodeRequest(this.service, dynamicProfileId);
+        }
+
+        /// <summary>Generates code for a dynamic profile.</summary>
+        public class GenerateCodeRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v5.Data.DynamicProfileGenerateCodeResponse>
+        {
+            /// <summary>Constructs a new GenerateCode request.</summary>
+            public GenerateCodeRequest(Google.Apis.Services.IClientService service, long dynamicProfileId) : base(service)
+            {
+                DynamicProfileId = dynamicProfileId;
+                InitParameters();
+            }
+
+            /// <summary>Required. Dynamic profile ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dynamicProfileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long DynamicProfileId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "generateCode";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "studio/dynamicProfiles/{+dynamicProfileId}/generateCode";
+
+            /// <summary>Initializes GenerateCode parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("dynamicProfileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dynamicProfileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
         }
 
         /// <summary>Gets a dynamic profile by ID.</summary>
@@ -9433,6 +9570,51 @@ namespace Google.Apis.Dfareporting.v5
             protected override void InitParameters()
             {
                 base.InitParameters();
+            }
+        }
+
+        /// <summary>Publish for a dynamic profile.</summary>
+        /// <param name="dynamicProfileId">Required. Dynamic profile ID.</param>
+        public virtual PublishRequest Publish(long dynamicProfileId)
+        {
+            return new PublishRequest(this.service, dynamicProfileId);
+        }
+
+        /// <summary>Publish for a dynamic profile.</summary>
+        public class PublishRequest : DfareportingBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Publish request.</summary>
+            public PublishRequest(Google.Apis.Services.IClientService service, long dynamicProfileId) : base(service)
+            {
+                DynamicProfileId = dynamicProfileId;
+                InitParameters();
+            }
+
+            /// <summary>Required. Dynamic profile ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dynamicProfileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long DynamicProfileId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "publish";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "studio/dynamicProfiles/{+dynamicProfileId}/publish";
+
+            /// <summary>Initializes Publish parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("dynamicProfileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dynamicProfileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
         }
 
@@ -17254,6 +17436,337 @@ namespace Google.Apis.Dfareporting.v5
         }
     }
 
+    /// <summary>The "studioCreativeAssets" collection of methods.</summary>
+    public class StudioCreativeAssetsResource
+    {
+        private const string Resource = "studioCreativeAssets";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public StudioCreativeAssetsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Inserts a new studio creative asset.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v5.Data.DfareportingStudioCreativeAssetsInsertRequest body)
+        {
+            return new InsertRequest(this.service, body);
+        }
+
+        /// <summary>Inserts a new studio creative asset.</summary>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v5.Data.StudioCreativeAssetsResponse>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v5.Data.DfareportingStudioCreativeAssetsInsertRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dfareporting.v5.Data.DfareportingStudioCreativeAssetsInsertRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "studio/creativeAssets";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>Inserts a new studio creative asset.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item>
+        /// <description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before reading
+        /// commences. If <paramref name="stream"/> is not seekable, then it will be read from its current position
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+        /// </description>
+        /// </item>
+        /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+        /// </list>
+        /// </remarks>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
+        /// <param name="contentType">The content type of the stream to upload.</param>
+        public virtual InsertMediaUpload Insert(Google.Apis.Dfareporting.v5.Data.DfareportingStudioCreativeAssetsInsertRequest body, System.IO.Stream stream, string contentType)
+        {
+            return new InsertMediaUpload(service, body, stream, contentType);
+        }
+
+        /// <summary>Insert media upload which supports resumable upload.</summary>
+        public class InsertMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.Dfareporting.v5.Data.DfareportingStudioCreativeAssetsInsertRequest, Google.Apis.Dfareporting.v5.Data.StudioCreativeAssetsResponse>
+        {
+            /// <summary>V1 error format.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+            /// <summary>V1 error format.</summary>
+            public enum XgafvEnum
+            {
+                /// <summary>v1 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("1")]
+                Value1 = 0,
+
+                /// <summary>v2 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("2")]
+                Value2 = 1,
+            }
+
+            /// <summary>OAuth access token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AccessToken { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            public enum AltEnum
+            {
+                /// <summary>Responses with Content-Type of application/json</summary>
+                [Google.Apis.Util.StringValueAttribute("json")]
+                Json = 0,
+
+                /// <summary>Media download with context-dependent Content-Type</summary>
+                [Google.Apis.Util.StringValueAttribute("media")]
+                Media = 1,
+
+                /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                [Google.Apis.Util.StringValueAttribute("proto")]
+                Proto = 2,
+            }
+
+            /// <summary>JSONP</summary>
+            [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Callback { get; set; }
+
+            /// <summary>Selector specifying which fields to include in a partial response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Fields { get; set; }
+
+            /// <summary>
+            /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+            /// Required unless you provide an OAuth 2.0 token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Key { get; set; }
+
+            /// <summary>OAuth 2.0 token for the current user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OauthToken { get; set; }
+
+            /// <summary>Returns response with indentations and line breaks.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+            /// <summary>
+            /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned
+            /// to a user, but should not exceed 40 characters.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string QuotaUser { get; set; }
+
+            /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadType { get; set; }
+
+            /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadProtocol { get; set; }
+
+            /// <summary>Constructs a new Insert media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+            /// </list>
+            /// </remarks>
+            public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v5.Data.DfareportingStudioCreativeAssetsInsertRequest body, System.IO.Stream stream, string contentType)
+                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "studio/creativeAssets"), "POST", stream, contentType)
+            {
+                Body = body;
+            }
+        }
+    }
+
+    /// <summary>The "studioCreatives" collection of methods.</summary>
+    public class StudioCreativesResource
+    {
+        private const string Resource = "studioCreatives";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public StudioCreativesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Gets a studio creative by ID.</summary>
+        /// <param name="studioCreativeId">Required. Studio creative ID.</param>
+        public virtual GetRequest Get(long studioCreativeId)
+        {
+            return new GetRequest(this.service, studioCreativeId);
+        }
+
+        /// <summary>Gets a studio creative by ID.</summary>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v5.Data.StudioCreative>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long studioCreativeId) : base(service)
+            {
+                StudioCreativeId = studioCreativeId;
+                InitParameters();
+            }
+
+            /// <summary>Required. Studio creative ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("studioCreativeId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long StudioCreativeId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "studio/creatives/{+studioCreativeId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("studioCreativeId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "studioCreativeId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Inserts a new studio creative.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Dfareporting.v5.Data.StudioCreative body)
+        {
+            return new InsertRequest(this.service, body);
+        }
+
+        /// <summary>Inserts a new studio creative.</summary>
+        public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v5.Data.StudioCreative>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v5.Data.StudioCreative body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dfareporting.v5.Data.StudioCreative Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "studio/creatives";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>Publish for a studio creative.</summary>
+        /// <param name="studioCreativeId">Required. Studio creative ID.</param>
+        public virtual PublishRequest Publish(long studioCreativeId)
+        {
+            return new PublishRequest(this.service, studioCreativeId);
+        }
+
+        /// <summary>Publish for a studio creative.</summary>
+        public class PublishRequest : DfareportingBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Publish request.</summary>
+            public PublishRequest(Google.Apis.Services.IClientService service, long studioCreativeId) : base(service)
+            {
+                StudioCreativeId = studioCreativeId;
+                InitParameters();
+            }
+
+            /// <summary>Required. Studio creative ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("studioCreativeId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long StudioCreativeId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "publish";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "studio/creatives/{+studioCreativeId}/publish";
+
+            /// <summary>Initializes Publish parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("studioCreativeId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "studioCreativeId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
+        }
+    }
+
     /// <summary>The "subaccounts" collection of methods.</summary>
     public class SubaccountsResource
     {
@@ -23535,6 +24048,30 @@ namespace Google.Apis.Dfareporting.v5.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for DfareportingStudioCreativeAssets.Insert.</summary>
+    public class DfareportingStudioCreativeAssetsInsertRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Studio account ID of the studio creative asset. It is a optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studioAccountId")]
+        public virtual System.Nullable<long> StudioAccountId { get; set; }
+
+        /// <summary>
+        /// Required. Studio advertiser ID of the studio creative asset. It is a required field on insertion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studioAdvertiserId")]
+        public virtual System.Nullable<long> StudioAdvertiserId { get; set; }
+
+        /// <summary>
+        /// Optional. Studio creative ID of the studio creative asset. It is a optional field. If it is set, the asset
+        /// will be associated to the creative.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studioCreativeId")]
+        public virtual System.Nullable<long> StudioCreativeId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Google Ad Manager Settings</summary>
     public class DfpSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23850,7 +24387,6 @@ namespace Google.Apis.Dfareporting.v5.Data
     /// <summary>
     /// Dynamic profile ID is required for dynamic feed insert as the current GPA API only can create a dynamic feed
     /// under profile context,even though the dynnamic feed itself don't need the dynamic profile id. See
-    /// go/cm3-dco-display-api-interface
     /// </summary>
     public class DynamicFeedsInsertRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23946,6 +24482,17 @@ namespace Google.Apis.Dfareporting.v5.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<int> Quantity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for DfareportingDynamicProfiles.GenerateCode.</summary>
+    public class DynamicProfileGenerateCodeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Generated code for the dynamic profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28168,6 +28715,161 @@ namespace Google.Apis.Dfareporting.v5.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains studio creative information.</summary>
+    public class StudioCreative : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of assets associated with this studio creative. It is a required field on insertion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> AssetIds { get; set; }
+
+        /// <summary>Backup image asset ID of this studio creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupImageAssetId")]
+        public virtual System.Nullable<long> BackupImageAssetId { get; set; }
+
+        /// <summary>
+        /// The timestamp when the studio creative was created. This is a read-only, auto-generated field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdInfo")]
+        public virtual LastModifiedInfo CreatedInfo { get; set; }
+
+        /// <summary>
+        /// Dimension of this studio creative. This is a required field on insertion if format is BANNER or EXPANDING.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
+        public virtual StudioCreativeDimension Dimension { get; set; }
+
+        /// <summary>Dynamic profile ID of this studio creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicProfileId")]
+        public virtual System.Nullable<long> DynamicProfileId { get; set; }
+
+        /// <summary>Format of this studio creative. This is a required field on insertion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>
+        /// Output only. Unique ID of this studio creative. This is a read-only, auto-generated field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// The timestamp when the studio creative was last modified. This is a read-only, auto-generated field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedInfo")]
+        public virtual LastModifiedInfo LastModifiedInfo { get; set; }
+
+        /// <summary>Identifier. Name of this studio creative. This is a required field on insertion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Status of this studio creative. It is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>Studio account ID of this creative. This field, if left unset, will be auto-populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studioAccountId")]
+        public virtual System.Nullable<long> StudioAccountId { get; set; }
+
+        /// <summary>Studio advertiser ID of this studio creative. This is a required field on insertion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studioAdvertiserId")]
+        public virtual System.Nullable<long> StudioAdvertiserId { get; set; }
+
+        /// <summary>Studio campaign ID of this studio creative. This is a required field on insertion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studioCampaignId")]
+        public virtual System.Nullable<long> StudioCampaignId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains studio creative asset information.</summary>
+    public class StudioCreativeAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The creation timestamp of the studio creative asset. This is a read-only field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createInfo")]
+        public virtual LastModifiedInfo CreateInfo { get; set; }
+
+        /// <summary>
+        /// The filename of the studio creative asset. It is default to the original filename of the asset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
+        public virtual string Filename { get; set; }
+
+        /// <summary>The filesize of the studio creative asset. This is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filesize")]
+        public virtual System.Nullable<long> Filesize { get; set; }
+
+        /// <summary>
+        /// Output only. Unique ID of this studio creative asset. This is a read-only, auto-generated field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// Output only. The last modified timestamp of the studio creative asset. This is a read-only field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedInfo")]
+        public virtual LastModifiedInfo LastModifiedInfo { get; set; }
+
+        /// <summary>
+        /// Studio account ID of this studio creative asset. This field, if left unset, will be auto-populated..
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studioAccountId")]
+        public virtual System.Nullable<long> StudioAccountId { get; set; }
+
+        /// <summary>
+        /// Studio advertiser ID of this studio creative asset. This is a required field on insertion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studioAdvertiserId")]
+        public virtual System.Nullable<long> StudioAdvertiserId { get; set; }
+
+        /// <summary>
+        /// Studio creative ID of this studio creative asset. The asset will be associated to the creative if creative
+        /// id is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studioCreativeId")]
+        public virtual System.Nullable<long> StudioCreativeId { get; set; }
+
+        /// <summary>The type of the studio creative asset. It is a auto-generated, read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The processing data of the studio creative asset. This is a read-only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoProcessingData")]
+        public virtual VideoProcessingData VideoProcessingData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for DfareportingStudioCreativeAssets.Insert.</summary>
+    public class StudioCreativeAssetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of studio creative assets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assets")]
+        public virtual System.Collections.Generic.IList<StudioCreativeAsset> Assets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Dimension information for a studio creative.</summary>
+    public class StudioCreativeDimension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Height of the studio creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<int> Height { get; set; }
+
+        /// <summary>Width of the studio creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<int> Width { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains properties of a Campaign Manager subaccount.</summary>
     public class Subaccount : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -29065,6 +29767,21 @@ namespace Google.Apis.Dfareporting.v5.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offsetSeconds")]
         public virtual System.Nullable<int> OffsetSeconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains processing data for a video asset.</summary>
+    public class VideoProcessingData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>For a FAILED processing state, the error reason discovered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorReason")]
+        public virtual string ErrorReason { get; set; }
+
+        /// <summary>Output only. The processing state of the studio creative asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processingState")]
+        public virtual string ProcessingState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
