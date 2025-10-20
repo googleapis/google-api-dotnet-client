@@ -69,6 +69,19 @@ namespace Google.Apis.DiscoveryEngine.v1
 
             /// <summary>Search your organization's data in the Cloud Search index</summary>
             public static string CloudSearchQuery = "https://www.googleapis.com/auth/cloud_search.query";
+
+            /// <summary>
+            /// View your Agentspace chat history, including uploaded files and generated reports and visualizations,
+            /// and interact with the Agentspace assistant on your behalf.
+            /// </summary>
+            public static string DiscoveryengineAssistReadwrite = "https://www.googleapis.com/auth/discoveryengine.assist.readwrite";
+
+            /// <summary>
+            /// View, edit, create, and delete all your data associated with any Discovery Engine API product, such as
+            /// Agentspace, Vertex AI Search, or NotebookLM Enterprise, including both end user data and administration
+            /// or configuration data.
+            /// </summary>
+            public static string DiscoveryengineReadwrite = "https://www.googleapis.com/auth/discoveryengine.readwrite";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Discovery Engine API.</summary>
@@ -82,6 +95,19 @@ namespace Google.Apis.DiscoveryEngine.v1
 
             /// <summary>Search your organization's data in the Cloud Search index</summary>
             public const string CloudSearchQuery = "https://www.googleapis.com/auth/cloud_search.query";
+
+            /// <summary>
+            /// View your Agentspace chat history, including uploaded files and generated reports and visualizations,
+            /// and interact with the Agentspace assistant on your behalf.
+            /// </summary>
+            public const string DiscoveryengineAssistReadwrite = "https://www.googleapis.com/auth/discoveryengine.assist.readwrite";
+
+            /// <summary>
+            /// View, edit, create, and delete all your data associated with any Discovery Engine API product, such as
+            /// Agentspace, Vertex AI Search, or NotebookLM Enterprise, including both end user data and administration
+            /// or configuration data.
+            /// </summary>
+            public const string DiscoveryengineReadwrite = "https://www.googleapis.com/auth/discoveryengine.readwrite";
         }
 
         /// <summary>Gets the Media resource.</summary>
@@ -19867,54 +19893,6 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The resource level alert config. Used in: * UserLicense * EngineUserData The AlertPolicyConfig in data connector
-    /// is of same usage. No easy way to migrate.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1AlertPolicyResourceConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The enrollment state of each alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertEnrollments")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1AlertPolicyResourceConfigAlertEnrollment> AlertEnrollments { get; set; }
-
-        /// <summary>Immutable. The fully qualified resource name of the AlertPolicy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicy")]
-        public virtual string AlertPolicy { get; set; }
-
-        /// <summary>Optional. The contact details for each alert policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contactDetails")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1ContactDetails> ContactDetails { get; set; }
-
-        /// <summary>Optional. The language code used for notifications</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The alert enrollment status.</summary>
-    public class GoogleCloudDiscoveryengineV1AlertPolicyResourceConfigAlertEnrollment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Immutable. The id of an alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
-        public virtual string AlertId { get; set; }
-
-        /// <summary>Required. The enrollment status of a customer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enrollState")]
-        public virtual string EnrollState { get; set; }
-
-        /// <summary>
-        /// Optional. Parameters used to instantiate a notification. Used for notifications that are triggered when
-        /// registered. Not stored. * Gemini Business welcome emails. * Gemini Business user invitation emails.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notificationParams")]
-        public virtual System.Collections.Generic.IDictionary<string, string> NotificationParams { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>AlloyDB source import data from.</summary>
     public class GoogleCloudDiscoveryengineV1AlloyDbSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21494,6 +21472,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1AssistantGroundedContent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Source attribution of the generated content. See also
+        /// https://cloud.google.com/vertex-ai/generative-ai/docs/learn/overview#citation_check
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citationMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1CitationMetadata CitationMetadata { get; set; }
+
         /// <summary>The content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual GoogleCloudDiscoveryengineV1AssistantContent Content { get; set; }
@@ -22480,6 +22465,48 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Source attributions for content.</summary>
+    public class GoogleCloudDiscoveryengineV1Citation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. End index into the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>Output only. License of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("license")]
+        public virtual string License { get; set; }
+
+        /// <summary>Output only. Publication date of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicationDate")]
+        public virtual GoogleTypeDate PublicationDate { get; set; }
+
+        /// <summary>Output only. Start index into the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
+        /// <summary>Output only. Title of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Output only. Url reference of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A collection of source attributions for a piece of content.</summary>
+    public class GoogleCloudDiscoveryengineV1CitationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of citations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1Citation> Citations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Cloud SQL source import data from.</summary>
     public class GoogleCloudDiscoveryengineV1CloudSqlSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22853,20 +22880,6 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// The contact info stored in resource level. If both project level and resource level is populated, the resource
-    /// level contact info will override the project level contact info.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1ContactDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The email address of the contact.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27604,10 +27617,6 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Information about users' licenses.</summary>
     public class GoogleCloudDiscoveryengineV1LicenseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The alert policy config for this license config.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicyResourceConfig")]
-        public virtual GoogleCloudDiscoveryengineV1AlertPolicyResourceConfig AlertPolicyResourceConfig { get; set; }
-
         /// <summary>Optional. Whether the license config should be auto renewed when it reaches the end date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenew")]
         public virtual System.Nullable<bool> AutoRenew { get; set; }
@@ -27619,6 +27628,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Optional. Whether the license config is for free trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeTrial")]
         public virtual System.Nullable<bool> FreeTrial { get; set; }
+
+        /// <summary>Output only. Whether the license config is for Gemini bundle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
+        public virtual System.Nullable<bool> GeminiBundle { get; set; }
 
         /// <summary>Required. Number of licenses purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
@@ -30840,6 +30853,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isPinned")]
         public virtual System.Nullable<bool> IsPinned { get; set; }
 
+        /// <summary>Optional. The labels for the session. Can be set as filter in ListSessionsRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<string> Labels { get; set; }
+
         /// <summary>
         /// Immutable. Fully qualified name
         /// `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*`
@@ -31293,7 +31310,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assistToken")]
         public virtual string AssistToken { get; set; }
 
-        /// <summary>Session information.</summary>
+        /// <summary>
+        /// Session information. Only included in the final StreamAssistResponse of the response stream.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
         public virtual GoogleCloudDiscoveryengineV1StreamAssistResponseSessionInfo SessionInfo { get; set; }
 
@@ -33330,6 +33349,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaAssistantGroundedContent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Source attribution of the generated content. See also
+        /// https://cloud.google.com/vertex-ai/generative-ai/docs/learn/overview#citation_check
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citationMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCitationMetadata CitationMetadata { get; set; }
+
         /// <summary>The content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual GoogleCloudDiscoveryengineV1alphaAssistantContent Content { get; set; }
@@ -33650,6 +33676,48 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>UserLicenses successfully updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLicenses")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaUserLicense> UserLicenses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Source attributions for content.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCitation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. End index into the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>Output only. License of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("license")]
+        public virtual string License { get; set; }
+
+        /// <summary>Output only. Publication date of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicationDate")]
+        public virtual GoogleTypeDate PublicationDate { get; set; }
+
+        /// <summary>Output only. Start index into the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
+        /// <summary>Output only. Title of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Output only. Url reference of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A collection of source attributions for a piece of content.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCitationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of citations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCitation> Citations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -38620,6 +38688,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("freeTrial")]
         public virtual System.Nullable<bool> FreeTrial { get; set; }
 
+        /// <summary>Output only. Whether the license config is for Gemini bundle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
+        public virtual System.Nullable<bool> GeminiBundle { get; set; }
+
         /// <summary>Required. Number of licenses purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
         public virtual System.Nullable<long> LicenseCount { get; set; }
@@ -41080,6 +41152,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isPinned")]
         public virtual System.Nullable<bool> IsPinned { get; set; }
 
+        /// <summary>Optional. The labels for the session. Can be set as filter in ListSessionsRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<string> Labels { get; set; }
+
         /// <summary>
         /// Immutable. Fully qualified name
         /// `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*`
@@ -42373,54 +42449,6 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
-    /// The resource level alert config. Used in: * UserLicense * EngineUserData The AlertPolicyConfig in data connector
-    /// is of same usage. No easy way to migrate.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The enrollment state of each alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertEnrollments")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfigAlertEnrollment> AlertEnrollments { get; set; }
-
-        /// <summary>Immutable. The fully qualified resource name of the AlertPolicy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicy")]
-        public virtual string AlertPolicy { get; set; }
-
-        /// <summary>Optional. The contact details for each alert policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contactDetails")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaContactDetails> ContactDetails { get; set; }
-
-        /// <summary>Optional. The language code used for notifications</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The alert enrollment status.</summary>
-    public class GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfigAlertEnrollment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Immutable. The id of an alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
-        public virtual string AlertId { get; set; }
-
-        /// <summary>Required. The enrollment status of a customer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enrollState")]
-        public virtual string EnrollState { get; set; }
-
-        /// <summary>
-        /// Optional. Parameters used to instantiate a notification. Used for notifications that are triggered when
-        /// registered. Not stored. * Gemini Business welcome emails. * Gemini Business user invitation emails.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notificationParams")]
-        public virtual System.Collections.Generic.IDictionary<string, string> NotificationParams { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.BatchCreateTargetSites operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
     /// </summary>
@@ -42789,20 +42817,6 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// The contact info stored in resource level. If both project level and resource level is populated, the resource
-    /// level contact info will override the project level contact info.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1betaContactDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The email address of the contact.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -45946,10 +45960,6 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Information about users' licenses.</summary>
     public class GoogleCloudDiscoveryengineV1betaLicenseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The alert policy config for this license config.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicyResourceConfig")]
-        public virtual GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfig AlertPolicyResourceConfig { get; set; }
-
         /// <summary>Optional. Whether the license config should be auto renewed when it reaches the end date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenew")]
         public virtual System.Nullable<bool> AutoRenew { get; set; }
@@ -45961,6 +45971,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Optional. Whether the license config is for free trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeTrial")]
         public virtual System.Nullable<bool> FreeTrial { get; set; }
+
+        /// <summary>Output only. Whether the license config is for Gemini bundle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
+        public virtual System.Nullable<bool> GeminiBundle { get; set; }
 
         /// <summary>Required. Number of licenses purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
