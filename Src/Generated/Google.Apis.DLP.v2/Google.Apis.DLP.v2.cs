@@ -1491,10 +1491,11 @@ namespace Google.Apis.DLP.v2
                     /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto -
                     /// `profile_last_generated`: Date and time the profile was last generated * The operator must be
                     /// `=` for project_id, dataset_id, and table_id. Other filters also support `!=`. The
-                    /// `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`. Examples: * project_id
-                    /// = 12345 AND status_code = 1 * project_id = 12345 AND sensitivity_level = HIGH * project_id =
-                    /// 12345 AND info_type = STREET_ADDRESS * profile_last_generated &amp;lt;
-                    /// "2025-01-01T00:00:00.000Z" The length of this field should be no more than 500 characters.
+                    /// `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`. The syntax is based on
+                    /// https://google.aip.dev/160. Examples: * project_id = 12345 AND status_code = 1 * project_id =
+                    /// 12345 AND sensitivity_level = HIGH * project_id = 12345 AND info_type = STREET_ADDRESS *
+                    /// profile_last_generated &amp;lt; "2025-01-01T00:00:00.000Z" The length of this field should be no
+                    /// more than 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1792,7 +1793,10 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Supported field/value: `state` - MISSING|AVAILABLE|ERROR</summary>
+                    /// <summary>
+                    /// Optional. Supported field/value: `state` - MISSING|AVAILABLE|ERROR The syntax is based on
+                    /// https://google.aip.dev/160.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -1941,7 +1945,10 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR</summary>
+                    /// <summary>
+                    /// Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR The syntax is based on
+                    /// https://google.aip.dev/160.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -2840,11 +2847,11 @@ namespace Google.Apis.DLP.v2
                     /// job. - 'end_time` - Corresponds to the time the job finished. - 'start_time` - Corresponds to
                     /// the time the job finished. * Supported fields for risk analysis jobs: - `state` -
                     /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time the job finished. -
-                    /// 'start_time` - Corresponds to the time the job finished. * The operator must be `=` or `!=`.
-                    /// Examples: * inspected_storage = cloud_storage AND state = done * inspected_storage =
-                    /// cloud_storage OR inspected_storage = bigquery * inspected_storage = cloud_storage AND (state =
-                    /// done OR state = canceled) * end_time &amp;gt; \"2017-12-12T00:00:00+00:00\" The length of this
-                    /// field should be no more than 500 characters.
+                    /// 'start_time` - Corresponds to the time the job finished. * The operator must be `=` or `!=`. The
+                    /// syntax is based on https://google.aip.dev/160. Examples: * inspected_storage = cloud_storage AND
+                    /// state = done * inspected_storage = cloud_storage OR inspected_storage = bigquery *
+                    /// inspected_storage = cloud_storage AND (state = done OR state = canceled) * end_time &amp;gt;
+                    /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more than 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -3122,11 +3129,12 @@ namespace Google.Apis.DLP.v2
                     /// PUBLIC|RESTRICTED - `status_code`: an RPC status code as defined in
                     /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto -
                     /// `profile_last_generated`: Date and time the profile was last generated * The operator must be
-                    /// `=` or `!=`. The `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`.
-                    /// Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND sensitivity_level
-                    /// = HIGH` * `project_id = 12345 AND resource_visibility = PUBLIC` * `file_store_path =
-                    /// "gs://mybucket"` * `profile_last_generated &amp;lt; "2025-01-01T00:00:00.000Z"` The length of
-                    /// this field should be no more than 500 characters.
+                    /// `=` or `!=`. The `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`. The
+                    /// syntax is based on https://google.aip.dev/160. Examples: * `project_id = 12345 AND status_code =
+                    /// 1` * `project_id = 12345 AND sensitivity_level = HIGH` * `project_id = 12345 AND
+                    /// resource_visibility = PUBLIC` * `file_store_path = "gs://mybucket"` * `profile_last_generated
+                    /// &amp;lt; "2025-01-01T00:00:00.000Z"` The length of this field should be no more than 500
+                    /// characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -4006,10 +4014,11 @@ namespace Google.Apis.DLP.v2
                     /// - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
                     /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. - 'error_count' - Number of
                     /// errors that have occurred while running. * The operator must be `=` or `!=` for status and
-                    /// inspected_storage. Examples: * inspected_storage = cloud_storage AND status = HEALTHY *
-                    /// inspected_storage = cloud_storage OR inspected_storage = bigquery * inspected_storage =
-                    /// cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time &amp;gt;
-                    /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more than 500 characters.
+                    /// inspected_storage. The syntax is based on https://google.aip.dev/160. Examples: *
+                    /// inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR
+                    /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state =
+                    /// HEALTHY) * last_run_time &amp;gt; \"2017-12-12T00:00:00+00:00\" The length of this field should
+                    /// be no more than 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -4296,10 +4305,10 @@ namespace Google.Apis.DLP.v2
                     /// HIGH|MODERATE|LOW - `data_risk_level`: HIGH|MODERATE|LOW - `status_code`: an RPC status code as
                     /// defined in https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto -
                     /// `profile_last_generated`: Date and time the profile was last generated * The operator must be
-                    /// `=` or `!=`. The `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`.
-                    /// Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND sensitivity_level
-                    /// = HIGH` * `profile_last_generated &amp;lt; "2025-01-01T00:00:00.000Z"` The length of this field
-                    /// should be no more than 500 characters.
+                    /// `=` or `!=`. The `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`. The
+                    /// syntax is based on https://google.aip.dev/160. Examples: * `project_id = 12345 AND status_code =
+                    /// 1` * `project_id = 12345 AND sensitivity_level = HIGH` * `profile_last_generated &amp;lt;
+                    /// "2025-01-01T00:00:00.000Z"` The length of this field should be no more than 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -4952,11 +4961,11 @@ namespace Google.Apis.DLP.v2
                     /// PUBLIC|RESTRICTED - `status_code`: an RPC status code as defined in
                     /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto -
                     /// `profile_last_generated`: Date and time the profile was last generated * The operator must be
-                    /// `=` or `!=`. The `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`.
-                    /// Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND sensitivity_level
-                    /// = HIGH` * `project_id = 12345 AND resource_visibility = PUBLIC` * `profile_last_generated
-                    /// &amp;lt; "2025-01-01T00:00:00.000Z"` The length of this field should be no more than 500
-                    /// characters.
+                    /// `=` or `!=`. The `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`. The
+                    /// syntax is based on https://google.aip.dev/160. Examples: * `project_id = 12345 AND status_code =
+                    /// 1` * `project_id = 12345 AND sensitivity_level = HIGH` * `project_id = 12345 AND
+                    /// resource_visibility = PUBLIC` * `profile_last_generated &amp;lt; "2025-01-01T00:00:00.000Z"` The
+                    /// length of this field should be no more than 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -6466,11 +6475,11 @@ namespace Google.Apis.DLP.v2
                 /// that created the job. - 'end_time` - Corresponds to the time the job finished. - 'start_time` -
                 /// Corresponds to the time the job finished. * Supported fields for risk analysis jobs: - `state` -
                 /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time the job finished. -
-                /// 'start_time` - Corresponds to the time the job finished. * The operator must be `=` or `!=`.
-                /// Examples: * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage
-                /// OR inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
-                /// canceled) * end_time &amp;gt; \"2017-12-12T00:00:00+00:00\" The length of this field should be no
-                /// more than 500 characters.
+                /// 'start_time` - Corresponds to the time the job finished. * The operator must be `=` or `!=`. The
+                /// syntax is based on https://google.aip.dev/160. Examples: * inspected_storage = cloud_storage AND
+                /// state = done * inspected_storage = cloud_storage OR inspected_storage = bigquery * inspected_storage
+                /// = cloud_storage AND (state = done OR state = canceled) * end_time &amp;gt;
+                /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more than 500 characters.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -7422,11 +7431,11 @@ namespace Google.Apis.DLP.v2
                 /// fields/values for inspect triggers: - `status` - HEALTHY|PAUSED|CANCELLED - `inspected_storage` -
                 /// DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted timestamp, surrounded by
                 /// quotation marks. Nanoseconds are ignored. - 'error_count' - Number of errors that have occurred
-                /// while running. * The operator must be `=` or `!=` for status and inspected_storage. Examples: *
-                /// inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR
-                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state =
-                /// HEALTHY) * last_run_time &amp;gt; \"2017-12-12T00:00:00+00:00\" The length of this field should be
-                /// no more than 500 characters.
+                /// while running. * The operator must be `=` or `!=` for status and inspected_storage. The syntax is
+                /// based on https://google.aip.dev/160. Examples: * inspected_storage = cloud_storage AND status =
+                /// HEALTHY * inspected_storage = cloud_storage OR inspected_storage = bigquery * inspected_storage =
+                /// cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time &amp;gt;
+                /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more than 500 characters.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -7754,10 +7763,11 @@ namespace Google.Apis.DLP.v2
                     /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto -
                     /// `profile_last_generated`: Date and time the profile was last generated * The operator must be
                     /// `=` for project_id, dataset_id, and table_id. Other filters also support `!=`. The
-                    /// `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`. Examples: * project_id
-                    /// = 12345 AND status_code = 1 * project_id = 12345 AND sensitivity_level = HIGH * project_id =
-                    /// 12345 AND info_type = STREET_ADDRESS * profile_last_generated &amp;lt;
-                    /// "2025-01-01T00:00:00.000Z" The length of this field should be no more than 500 characters.
+                    /// `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`. The syntax is based on
+                    /// https://google.aip.dev/160. Examples: * project_id = 12345 AND status_code = 1 * project_id =
+                    /// 12345 AND sensitivity_level = HIGH * project_id = 12345 AND info_type = STREET_ADDRESS *
+                    /// profile_last_generated &amp;lt; "2025-01-01T00:00:00.000Z" The length of this field should be no
+                    /// more than 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -8055,7 +8065,10 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Supported field/value: `state` - MISSING|AVAILABLE|ERROR</summary>
+                    /// <summary>
+                    /// Optional. Supported field/value: `state` - MISSING|AVAILABLE|ERROR The syntax is based on
+                    /// https://google.aip.dev/160.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -8204,7 +8217,10 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR</summary>
+                    /// <summary>
+                    /// Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR The syntax is based on
+                    /// https://google.aip.dev/160.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -9744,11 +9760,11 @@ namespace Google.Apis.DLP.v2
                     /// job. - 'end_time` - Corresponds to the time the job finished. - 'start_time` - Corresponds to
                     /// the time the job finished. * Supported fields for risk analysis jobs: - `state` -
                     /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time the job finished. -
-                    /// 'start_time` - Corresponds to the time the job finished. * The operator must be `=` or `!=`.
-                    /// Examples: * inspected_storage = cloud_storage AND state = done * inspected_storage =
-                    /// cloud_storage OR inspected_storage = bigquery * inspected_storage = cloud_storage AND (state =
-                    /// done OR state = canceled) * end_time &amp;gt; \"2017-12-12T00:00:00+00:00\" The length of this
-                    /// field should be no more than 500 characters.
+                    /// 'start_time` - Corresponds to the time the job finished. * The operator must be `=` or `!=`. The
+                    /// syntax is based on https://google.aip.dev/160. Examples: * inspected_storage = cloud_storage AND
+                    /// state = done * inspected_storage = cloud_storage OR inspected_storage = bigquery *
+                    /// inspected_storage = cloud_storage AND (state = done OR state = canceled) * end_time &amp;gt;
+                    /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more than 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -10026,11 +10042,12 @@ namespace Google.Apis.DLP.v2
                     /// PUBLIC|RESTRICTED - `status_code`: an RPC status code as defined in
                     /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto -
                     /// `profile_last_generated`: Date and time the profile was last generated * The operator must be
-                    /// `=` or `!=`. The `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`.
-                    /// Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND sensitivity_level
-                    /// = HIGH` * `project_id = 12345 AND resource_visibility = PUBLIC` * `file_store_path =
-                    /// "gs://mybucket"` * `profile_last_generated &amp;lt; "2025-01-01T00:00:00.000Z"` The length of
-                    /// this field should be no more than 500 characters.
+                    /// `=` or `!=`. The `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`. The
+                    /// syntax is based on https://google.aip.dev/160. Examples: * `project_id = 12345 AND status_code =
+                    /// 1` * `project_id = 12345 AND sensitivity_level = HIGH` * `project_id = 12345 AND
+                    /// resource_visibility = PUBLIC` * `file_store_path = "gs://mybucket"` * `profile_last_generated
+                    /// &amp;lt; "2025-01-01T00:00:00.000Z"` The length of this field should be no more than 500
+                    /// characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -11143,10 +11160,11 @@ namespace Google.Apis.DLP.v2
                     /// - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
                     /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. - 'error_count' - Number of
                     /// errors that have occurred while running. * The operator must be `=` or `!=` for status and
-                    /// inspected_storage. Examples: * inspected_storage = cloud_storage AND status = HEALTHY *
-                    /// inspected_storage = cloud_storage OR inspected_storage = bigquery * inspected_storage =
-                    /// cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time &amp;gt;
-                    /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more than 500 characters.
+                    /// inspected_storage. The syntax is based on https://google.aip.dev/160. Examples: *
+                    /// inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR
+                    /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state =
+                    /// HEALTHY) * last_run_time &amp;gt; \"2017-12-12T00:00:00+00:00\" The length of this field should
+                    /// be no more than 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -11433,10 +11451,10 @@ namespace Google.Apis.DLP.v2
                     /// HIGH|MODERATE|LOW - `data_risk_level`: HIGH|MODERATE|LOW - `status_code`: an RPC status code as
                     /// defined in https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto -
                     /// `profile_last_generated`: Date and time the profile was last generated * The operator must be
-                    /// `=` or `!=`. The `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`.
-                    /// Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND sensitivity_level
-                    /// = HIGH` * `profile_last_generated &amp;lt; "2025-01-01T00:00:00.000Z"` The length of this field
-                    /// should be no more than 500 characters.
+                    /// `=` or `!=`. The `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`. The
+                    /// syntax is based on https://google.aip.dev/160. Examples: * `project_id = 12345 AND status_code =
+                    /// 1` * `project_id = 12345 AND sensitivity_level = HIGH` * `profile_last_generated &amp;lt;
+                    /// "2025-01-01T00:00:00.000Z"` The length of this field should be no more than 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -12089,11 +12107,11 @@ namespace Google.Apis.DLP.v2
                     /// PUBLIC|RESTRICTED - `status_code`: an RPC status code as defined in
                     /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto -
                     /// `profile_last_generated`: Date and time the profile was last generated * The operator must be
-                    /// `=` or `!=`. The `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`.
-                    /// Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND sensitivity_level
-                    /// = HIGH` * `project_id = 12345 AND resource_visibility = PUBLIC` * `profile_last_generated
-                    /// &amp;lt; "2025-01-01T00:00:00.000Z"` The length of this field should be no more than 500
-                    /// characters.
+                    /// `=` or `!=`. The `profile_last_generated` filter also supports `&amp;lt;` and `&amp;gt;`. The
+                    /// syntax is based on https://google.aip.dev/160. Examples: * `project_id = 12345 AND status_code =
+                    /// 1` * `project_id = 12345 AND sensitivity_level = HIGH` * `project_id = 12345 AND
+                    /// resource_visibility = PUBLIC` * `profile_last_generated &amp;lt; "2025-01-01T00:00:00.000Z"` The
+                    /// length of this field should be no more than 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
