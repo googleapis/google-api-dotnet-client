@@ -6629,7 +6629,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// The default value displayed in the widget, in milliseconds since [Unix epoch
+        /// Optional. The default value displayed in the widget, in milliseconds since [Unix epoch
         /// time](https://en.wikipedia.org/wiki/Unix_time). Specify the value based on the type of picker
         /// (`DateTimePickerType`): * `DATE_AND_TIME`: a calendar date and time in UTC. For example, to represent
         /// January 1, 2023 at 12:00 PM UTC, use `1672574400000`. * `DATE_ONLY`: a calendar date at 00:00:00 UTC. For
@@ -8680,7 +8680,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// ``. * Custom hyperlinks using the format `&amp;lt;{url}|{rendered_text}&amp;gt;` where the first string is
         /// the URL and the second is the rendered text—for example, ``. * Custom emoji using the format
         /// `:{emoji_name}:`—for example, `:smile:`. This doesn't apply to Unicode emoji, such as `U+1F600` for a
-        /// grinning face emoji. For more information, see [View text formatting sent in a
+        /// grinning face emoji. * Bullet list items using asterisks (`*`)—for example, `* item`. For more information,
+        /// see [View text formatting sent in a
         /// message](https://developers.google.com/workspace/chat/format-messages#view_text_formatting_sent_in_a_message)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedText")]
