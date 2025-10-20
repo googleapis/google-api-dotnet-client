@@ -5721,6 +5721,9 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("moneyValue")]
         public virtual GoogleTypeMoney MoneyValue { get; set; }
 
+        /// <summary>
+        /// A signature - a graphical representation of a person's name, often used to sign a document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureValue")]
         public virtual System.Nullable<bool> SignatureValue { get; set; }
 
