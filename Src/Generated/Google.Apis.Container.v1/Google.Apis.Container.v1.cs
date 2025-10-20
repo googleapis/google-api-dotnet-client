@@ -8331,6 +8331,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateRegistryAccessConfig")]
         public virtual PrivateRegistryAccessConfig PrivateRegistryAccessConfig { get; set; }
 
+        /// <summary>Optional. WritableCgroups defines writable cgroups configuration for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writableCgroups")]
+        public virtual WritableCgroups WritableCgroups { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10490,7 +10494,7 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>
         /// Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers,
         /// each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"),
-        /// "ms", "s", "m", "h". The value must be a positive duration.
+        /// "ms", "s", "m", "h". The value must be a positive duration between 1ms and 1 second, inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCfsQuotaPeriod")]
         public virtual string CpuCfsQuotaPeriod { get; set; }
@@ -13774,6 +13778,17 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>If true, enables the GCW Auditor that audits workloads on standard clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autopilotCompatibilityAuditingEnabled")]
         public virtual System.Nullable<bool> AutopilotCompatibilityAuditingEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines writable cgroups configuration.</summary>
+    public class WritableCgroups : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether writable cgroups is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
