@@ -1560,6 +1560,24 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes options for object retention update.</summary>
+    public class ObjectRetention : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The time when the object will be retained until. UNSET will clear the retention. Must be specified
+        /// in RFC 3339 format e.g. YYYY-MM-DD'T'HH:MM:SS.SS'Z' or YYYY-MM-DD'T'HH:MM:SS'Z'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retainUntilTime")]
+        public virtual string RetainUntilTime { get; set; }
+
+        /// <summary>Required. The retention mode of the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionMode")]
+        public virtual string RetentionMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1778,6 +1796,15 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customTime")]
         public virtual string CustomTime { get; set; }
+
+        /// <summary>
+        /// Optional. Updates objects retention lock configuration. Unset values will be ignored. Set empty values to
+        /// clear the retention for the object with existing `Unlocked` retention mode. Object with existing `Locked`
+        /// retention mode cannot be cleared or reduce retain_until_time. Refer to documentation in
+        /// https://cloud.google.com/storage/docs/object-lock
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectRetention")]
+        public virtual ObjectRetention ObjectRetention { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
