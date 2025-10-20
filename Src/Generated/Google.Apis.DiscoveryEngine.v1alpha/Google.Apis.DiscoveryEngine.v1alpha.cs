@@ -69,6 +69,19 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
             /// <summary>Search your organization's data in the Cloud Search index</summary>
             public static string CloudSearchQuery = "https://www.googleapis.com/auth/cloud_search.query";
+
+            /// <summary>
+            /// View your Agentspace chat history, including uploaded files and generated reports and visualizations,
+            /// and interact with the Agentspace assistant on your behalf.
+            /// </summary>
+            public static string DiscoveryengineAssistReadwrite = "https://www.googleapis.com/auth/discoveryengine.assist.readwrite";
+
+            /// <summary>
+            /// View, edit, create, and delete all your data associated with any Discovery Engine API product, such as
+            /// Agentspace, Vertex AI Search, or NotebookLM Enterprise, including both end user data and administration
+            /// or configuration data.
+            /// </summary>
+            public static string DiscoveryengineReadwrite = "https://www.googleapis.com/auth/discoveryengine.readwrite";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Discovery Engine API.</summary>
@@ -82,6 +95,19 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
             /// <summary>Search your organization's data in the Cloud Search index</summary>
             public const string CloudSearchQuery = "https://www.googleapis.com/auth/cloud_search.query";
+
+            /// <summary>
+            /// View your Agentspace chat history, including uploaded files and generated reports and visualizations,
+            /// and interact with the Agentspace assistant on your behalf.
+            /// </summary>
+            public const string DiscoveryengineAssistReadwrite = "https://www.googleapis.com/auth/discoveryengine.assist.readwrite";
+
+            /// <summary>
+            /// View, edit, create, and delete all your data associated with any Discovery Engine API product, such as
+            /// Agentspace, Vertex AI Search, or NotebookLM Enterprise, including both end user data and administration
+            /// or configuration data.
+            /// </summary>
+            public const string DiscoveryengineReadwrite = "https://www.googleapis.com/auth/discoveryengine.readwrite";
         }
 
         /// <summary>Gets the Media resource.</summary>
@@ -23151,6 +23177,191 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 }
             }
 
+            /// <summary>Gets configurable pricing usage stats.</summary>
+            /// <param name="name">
+            /// Required. The name of the ConfigurablePricingUsageStats to retrieve. Format:
+            /// projects/{project}/locations/{location}/configurablePricingUsageStats
+            /// </param>
+            public virtual GetConfigurablePricingUsageStatsRequest GetConfigurablePricingUsageStats(string name)
+            {
+                return new GetConfigurablePricingUsageStatsRequest(this.service, name);
+            }
+
+            /// <summary>Gets configurable pricing usage stats.</summary>
+            public class GetConfigurablePricingUsageStatsRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStats>
+            {
+                /// <summary>Constructs a new GetConfigurablePricingUsageStats request.</summary>
+                public GetConfigurablePricingUsageStatsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the ConfigurablePricingUsageStats to retrieve. Format:
+                /// projects/{project}/locations/{location}/configurablePricingUsageStats
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The metric types to return usage for.</summary>
+                /// <remarks>
+                /// Use this property to set a single value for the parameter, or <see cref="MetricTypesList"/> to set
+                /// multiple values. Do not set both properties.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("metricTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<MetricTypesEnum> MetricTypes { get; set; }
+
+                /// <summary>Optional. The metric types to return usage for.</summary>
+                /// <remarks>
+                /// Use this property to set one or more values for the parameter. Do not set both this property and
+                /// <see cref="MetricTypes"/>.
+                /// </remarks>
+                [Google.Apis.Util.RequestParameterAttribute("metricTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<MetricTypesEnum> MetricTypesList { get; set; }
+
+                /// <summary>Optional. The metric types to return usage for.</summary>
+                public enum MetricTypesEnum
+                {
+                    /// <summary>Default value.</summary>
+                    [Google.Apis.Util.StringValueAttribute("BILLING_METRIC_TYPE_UNSPECIFIED")]
+                    BILLINGMETRICTYPEUNSPECIFIED = 0,
+
+                    /// <summary>Daily median search request QPM.</summary>
+                    [Google.Apis.Util.StringValueAttribute("DAILY_MDN_QPM")]
+                    DAILYMDNQPM = 1,
+
+                    /// <summary>Daily min search request QPM.</summary>
+                    [Google.Apis.Util.StringValueAttribute("DAILY_MIN_QPM")]
+                    DAILYMINQPM = 2,
+
+                    /// <summary>Daily max search request QPM.</summary>
+                    [Google.Apis.Util.StringValueAttribute("DAILY_MAX_QPM")]
+                    DAILYMAXQPM = 3,
+
+                    /// <summary>Daily search request total.</summary>
+                    [Google.Apis.Util.StringValueAttribute("DAILY_SEARCH_REQUEST")]
+                    DAILYSEARCHREQUEST = 4,
+
+                    /// <summary>Total storage bytes for indexing core.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TOTAL_STORAGE")]
+                    TOTALSTORAGE = 5,
+                }
+
+                /// <summary>
+                /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
+                /// itself or a year and month where the day isn't significant.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("timeRange.endDate.day", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> TimeRangeEndDateDay { get; set; }
+
+                /// <summary>
+                /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("timeRange.endDate.month", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> TimeRangeEndDateMonth { get; set; }
+
+                /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("timeRange.endDate.year", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> TimeRangeEndDateYear { get; set; }
+
+                /// <summary>
+                /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
+                /// itself or a year and month where the day isn't significant.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("timeRange.startDate.day", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> TimeRangeStartDateDay { get; set; }
+
+                /// <summary>
+                /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("timeRange.startDate.month", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> TimeRangeStartDateMonth { get; set; }
+
+                /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("timeRange.startDate.year", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> TimeRangeStartDateYear { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getConfigurablePricingUsageStats";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes GetConfigurablePricingUsageStats parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/configurablePricingUsageStats$",
+                    });
+                    RequestParameters.Add("metricTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metricTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeRange.endDate.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeRange.endDate.day",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeRange.endDate.month", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeRange.endDate.month",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeRange.endDate.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeRange.endDate.year",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeRange.startDate.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeRange.startDate.day",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeRange.startDate.month", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeRange.startDate.month",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeRange.startDate.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeRange.startDate.year",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>
             /// Obtains the time series data of organic or dedicated crawl rate for monitoring. When dedicated crawl
             /// rate is not set, it will return vertex AI's organic crawl rate time series. Organic crawl means Google
@@ -25433,54 +25644,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The resource level alert config. Used in: * UserLicense * EngineUserData The AlertPolicyConfig in data connector
-    /// is of same usage. No easy way to migrate.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1AlertPolicyResourceConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The enrollment state of each alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertEnrollments")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1AlertPolicyResourceConfigAlertEnrollment> AlertEnrollments { get; set; }
-
-        /// <summary>Immutable. The fully qualified resource name of the AlertPolicy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicy")]
-        public virtual string AlertPolicy { get; set; }
-
-        /// <summary>Optional. The contact details for each alert policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contactDetails")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1ContactDetails> ContactDetails { get; set; }
-
-        /// <summary>Optional. The language code used for notifications</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The alert enrollment status.</summary>
-    public class GoogleCloudDiscoveryengineV1AlertPolicyResourceConfigAlertEnrollment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Immutable. The id of an alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
-        public virtual string AlertId { get; set; }
-
-        /// <summary>Required. The enrollment status of a customer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enrollState")]
-        public virtual string EnrollState { get; set; }
-
-        /// <summary>
-        /// Optional. Parameters used to instantiate a notification. Used for notifications that are triggered when
-        /// registered. Not stored. * Gemini Business welcome emails. * Gemini Business user invitation emails.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notificationParams")]
-        public virtual System.Collections.Generic.IDictionary<string, string> NotificationParams { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The specification for answer generation.</summary>
     public class GoogleCloudDiscoveryengineV1AnswerGenerationSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26147,20 +26310,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// The contact info stored in resource level. If both project level and resource level is populated, the resource
-    /// level contact info will override the project level contact info.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1ContactDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The email address of the contact.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29652,10 +29801,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Information about users' licenses.</summary>
     public class GoogleCloudDiscoveryengineV1LicenseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The alert policy config for this license config.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicyResourceConfig")]
-        public virtual GoogleCloudDiscoveryengineV1AlertPolicyResourceConfig AlertPolicyResourceConfig { get; set; }
-
         /// <summary>Optional. Whether the license config should be auto renewed when it reaches the end date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenew")]
         public virtual System.Nullable<bool> AutoRenew { get; set; }
@@ -29667,6 +29812,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Optional. Whether the license config is for free trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeTrial")]
         public virtual System.Nullable<bool> FreeTrial { get; set; }
+
+        /// <summary>Output only. Whether the license config is for Gemini bundle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
+        public virtual System.Nullable<bool> GeminiBundle { get; set; }
 
         /// <summary>Required. Number of licenses purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
@@ -33827,6 +33976,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaAssistantGroundedContent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Source attribution of the generated content. See also
+        /// https://cloud.google.com/vertex-ai/generative-ai/docs/learn/overview#citation_check
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citationMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCitationMetadata CitationMetadata { get; set; }
+
         /// <summary>The content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual GoogleCloudDiscoveryengineV1alphaAssistantContent Content { get; set; }
@@ -35087,6 +35243,48 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Source attributions for content.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCitation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. End index into the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>Output only. License of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("license")]
+        public virtual string License { get; set; }
+
+        /// <summary>Output only. Publication date of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicationDate")]
+        public virtual GoogleTypeDate PublicationDate { get; set; }
+
+        /// <summary>Output only. Start index into the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
+        /// <summary>Output only. Title of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Output only. Url reference of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A collection of source attributions for a piece of content.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCitationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of citations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCitation> Citations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Cloud SQL source import data from.</summary>
     public class GoogleCloudDiscoveryengineV1alphaCloudSqlSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -35471,6 +35669,63 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for [EstimateBillingService.GetConfigurablePricingUsageStats] method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of metric usages, one for each requested resource type that has data in the requested time range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricUsages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStatsMetricUsage> MetricUsages { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the ConfigurablePricingUsageStats. Format:
+        /// projects/{project}/locations/{location}/configurablePricingUsageStats
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of usages for a specific day.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStatsDatedUsage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The date of the usage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual GoogleTypeDate Date { get; set; }
+
+        /// <summary>The usage value on the date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usage")]
+        public virtual System.Nullable<double> Usage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The usage of a metric over a list of days.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStatsMetricUsage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of usages for this resource type, chronologically sorted by date. This is populated for metrics
+        /// with daily aggregation like DAILY_MDN_QPM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datedUsages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStatsDatedUsage> DatedUsages { get; set; }
+
+        /// <summary>The metric type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricType")]
+        public virtual string MetricType { get; set; }
+
+        /// <summary>The list of total usages for this resource type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalUsages")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> TotalUsages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -41861,6 +42116,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("freeTrial")]
         public virtual System.Nullable<bool> FreeTrial { get; set; }
 
+        /// <summary>Output only. Whether the license config is for Gemini bundle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
+        public virtual System.Nullable<bool> GeminiBundle { get; set; }
+
         /// <summary>Required. Number of licenses purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
         public virtual System.Nullable<long> LicenseCount { get; set; }
@@ -46858,6 +47117,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isPinned")]
         public virtual System.Nullable<bool> IsPinned { get; set; }
 
+        /// <summary>Optional. The labels for the session. Can be set as filter in ListSessionsRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<string> Labels { get; set; }
+
         /// <summary>
         /// Immutable. Fully qualified name
         /// `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*`
@@ -47645,7 +47908,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assistToken")]
         public virtual string AssistToken { get; set; }
 
-        /// <summary>Session information.</summary>
+        /// <summary>
+        /// Session information. Only included in the final StreamAssistResponse of the response stream.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
         public virtual GoogleCloudDiscoveryengineV1alphaStreamAssistResponseSessionInfo SessionInfo { get; set; }
 
@@ -49697,54 +49962,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     }
 
     /// <summary>
-    /// The resource level alert config. Used in: * UserLicense * EngineUserData The AlertPolicyConfig in data connector
-    /// is of same usage. No easy way to migrate.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The enrollment state of each alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertEnrollments")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfigAlertEnrollment> AlertEnrollments { get; set; }
-
-        /// <summary>Immutable. The fully qualified resource name of the AlertPolicy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicy")]
-        public virtual string AlertPolicy { get; set; }
-
-        /// <summary>Optional. The contact details for each alert policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contactDetails")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaContactDetails> ContactDetails { get; set; }
-
-        /// <summary>Optional. The language code used for notifications</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The alert enrollment status.</summary>
-    public class GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfigAlertEnrollment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Immutable. The id of an alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
-        public virtual string AlertId { get; set; }
-
-        /// <summary>Required. The enrollment status of a customer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enrollState")]
-        public virtual string EnrollState { get; set; }
-
-        /// <summary>
-        /// Optional. Parameters used to instantiate a notification. Used for notifications that are triggered when
-        /// registered. Not stored. * Gemini Business welcome emails. * Gemini Business user invitation emails.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notificationParams")]
-        public virtual System.Collections.Generic.IDictionary<string, string> NotificationParams { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.BatchCreateTargetSites operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
     /// </summary>
@@ -50113,20 +50330,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// The contact info stored in resource level. If both project level and resource level is populated, the resource
-    /// level contact info will override the project level contact info.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1betaContactDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The email address of the contact.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -53270,10 +53473,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Information about users' licenses.</summary>
     public class GoogleCloudDiscoveryengineV1betaLicenseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The alert policy config for this license config.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicyResourceConfig")]
-        public virtual GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfig AlertPolicyResourceConfig { get; set; }
-
         /// <summary>Optional. Whether the license config should be auto renewed when it reaches the end date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenew")]
         public virtual System.Nullable<bool> AutoRenew { get; set; }
@@ -53285,6 +53484,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Optional. Whether the license config is for free trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeTrial")]
         public virtual System.Nullable<bool> FreeTrial { get; set; }
+
+        /// <summary>Output only. Whether the license config is for Gemini bundle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
+        public virtual System.Nullable<bool> GeminiBundle { get; set; }
 
         /// <summary>Required. Number of licenses purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]

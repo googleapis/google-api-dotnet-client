@@ -60,5 +60,13 @@
     "BRANCH_VIEW_UNSPECIFIED",
     "BRANCH_VIEW_BASIC",
     "BRANCH_VIEW_FULL"
+  ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+GetConfigurablePricingUsageStatsRequest.MetricTypesEnum": [
+    "BILLING_METRIC_TYPE_UNSPECIFIED",
+    "DAILY_MDN_QPM",
+    "DAILY_MIN_QPM",
+    "DAILY_MAX_QPM",
+    "DAILY_SEARCH_REQUEST",
+    "TOTAL_STORAGE"
   ]
 }
