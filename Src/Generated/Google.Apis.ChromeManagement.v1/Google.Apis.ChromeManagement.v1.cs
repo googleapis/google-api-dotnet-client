@@ -6211,13 +6211,35 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayIpAddress")]
         public virtual string GatewayIpAddress { get; set; }
 
+        /// <summary>Output only. The gateway IPv6 for this interface, if detected</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayIpv6Address")]
+        public virtual string GatewayIpv6Address { get; set; }
+
         /// <summary>Output only. Network connection guid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guid")]
         public virtual string Guid { get; set; }
 
+        /// <summary>
+        /// Output only. IPv6 addresses assigned to this network, if any. Each address is a string in standard IPv6 text
+        /// representation (e.g., "2001:db8::1").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipv6Address")]
+        public virtual System.Collections.Generic.IList<string> Ipv6Address { get; set; }
+
         /// <summary>Output only. LAN IP address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lanIpAddress")]
         public virtual string LanIpAddress { get; set; }
+
+        /// <summary>
+        /// Output only. The maximum downstream bandwidth in Kilobits per second (Kbps), if reported by the network
+        /// interface or connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkDownSpeedKbps")]
+        public virtual System.Nullable<long> LinkDownSpeedKbps { get; set; }
+
+        /// <summary>Output only. Whether the network was detected as metered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metered")]
+        public virtual System.Nullable<bool> Metered { get; set; }
 
         /// <summary>Output only. Receiving bit rate measured in Megabits per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("receivingBitRateMbps")]
@@ -7156,6 +7178,13 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string EventType { get; set; }
 
         /// <summary>
+        /// Output only. Payload for external display connected/disconnected event. Present only when `event_type` is
+        /// `EXTERNAL_DISPLAY_CONNECTED` or `EXTERNAL_DISPLAY_DISCONNECTED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalDisplaysEvent")]
+        public virtual GoogleChromeManagementV1TelemetryExternalDisplayEvent ExternalDisplaysEvent { get; set; }
+
+        /// <summary>
         /// Output only. Payload for HTTPS latency change event. Present only when `event_type` is
         /// `NETWORK_HTTPS_LATENCY_CHANGE`.
         /// </summary>
@@ -7249,6 +7278,48 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Only sends the notifications for events of these types. Must not be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTypes")]
         public virtual System.Collections.Generic.IList<string> EventTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>External display data.</summary>
+    public class GoogleChromeManagementV1TelemetryExternalDisplayData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The EDID version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edidVersion")]
+        public virtual string EdidVersion { get; set; }
+
+        /// <summary>The refresh rate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshRate")]
+        public virtual System.Nullable<long> RefreshRate { get; set; }
+
+        /// <summary>The horizontal resolution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolutionHorizontal")]
+        public virtual System.Nullable<int> ResolutionHorizontal { get; set; }
+
+        /// <summary>The vertical resolution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolutionVertical")]
+        public virtual System.Nullable<int> ResolutionVertical { get; set; }
+
+        /// <summary>The serial number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual System.Nullable<int> SerialNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>External display connected/disconnected event payload.</summary>
+    public class GoogleChromeManagementV1TelemetryExternalDisplayEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of external displays that were connected/disconnected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalDisplayData")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1TelemetryExternalDisplayData> ExternalDisplayData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
