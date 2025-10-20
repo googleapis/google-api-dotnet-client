@@ -2936,7 +2936,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>
         /// Optional. Controls Memory Tagging Extension (MTE)
         /// (https://source.android.com/docs/security/test/memory-safety/arm-mte) on the device. The device needs to be
-        /// rebooted to apply changes to the MTE policy.
+        /// rebooted to apply changes to the MTE policy. On Android 15 and above, a NonComplianceDetail with PENDING is
+        /// reported if the policy change is pending a device reboot.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mtePolicy")]
         public virtual string MtePolicy { get; set; }
