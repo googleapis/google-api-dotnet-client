@@ -385,8 +385,8 @@ namespace Google.Apis.CloudCommercePartnerProcurementService.v1
                 public enum ViewEnum
                 {
                     /// <summary>
-                    /// The default / unset value. For `GetAccount`, it defaults to the FULL view. For `ListAccounts`,
-                    /// it only supports BASIC view.
+                    /// The default / unset value. For `GetAccount` and `ListAccounts`, they default to the BASIC view.
+                    /// For `ListAccounts`, it only supports the BASIC view.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ACCOUNT_VIEW_UNSPECIFIED")]
                     ACCOUNTVIEWUNSPECIFIED = 0,
