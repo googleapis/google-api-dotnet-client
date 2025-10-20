@@ -5614,10 +5614,7 @@ namespace Google.Apis.CloudDataplex.v1
                             [Google.Apis.Util.StringValueAttribute("CUSTOM")]
                             CUSTOM = 3,
 
-                            /// <summary>
-                            /// Returns all aspects. If the number of aspects exceeds 100, the first 100 will be
-                            /// returned.
-                            /// </summary>
+                            /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ALL")]
                             ALL = 4,
                         }
@@ -16368,9 +16365,7 @@ namespace Google.Apis.CloudDataplex.v1
                     [Google.Apis.Util.StringValueAttribute("CUSTOM")]
                     CUSTOM = 3,
 
-                    /// <summary>
-                    /// Returns all aspects. If the number of aspects exceeds 100, the first 100 will be returned.
-                    /// </summary>
+                    /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("ALL")]
                     ALL = 4,
                 }
@@ -17057,6 +17052,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. Immutable. Stores data classification of the aspect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataClassification")]
+        public virtual string DataClassification { get; set; }
 
         /// <summary>Optional. Description of the AspectType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
