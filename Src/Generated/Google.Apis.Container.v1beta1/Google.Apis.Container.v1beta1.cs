@@ -7808,6 +7808,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secretManagerConfig")]
         public virtual SecretManagerConfig SecretManagerConfig { get; set; }
 
+        /// <summary>Configuration for sync Secret Manager secrets as k8s secrets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretSyncConfig")]
+        public virtual SecretSyncConfig SecretSyncConfig { get; set; }
+
         /// <summary>Enable/Disable Security Posture API features for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityPostureConfig")]
         public virtual SecurityPostureConfig SecurityPostureConfig { get; set; }
@@ -8552,6 +8556,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateRegistryAccessConfig")]
         public virtual PrivateRegistryAccessConfig PrivateRegistryAccessConfig { get; set; }
+
+        /// <summary>Optional. WritableCgroups defines writable cgroups configuration for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writableCgroups")]
+        public virtual WritableCgroups WritableCgroups { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10888,7 +10896,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>
         /// Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers,
         /// each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"),
-        /// "ms", "s", "m", "h". The value must be a positive duration.
+        /// "ms", "s", "m", "h". The value must be a positive duration between 1ms and 1 second, inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCfsQuotaPeriod")]
         public virtual string CpuCfsQuotaPeriod { get; set; }
@@ -12328,6 +12336,21 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for sync Secret Manager secrets as k8s secrets.</summary>
+    public class SecretSyncConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable/Disable Secret Sync Config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Rotation config for secret manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotationConfig")]
+        public virtual SyncRotationConfig RotationConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// SecurityBulletinEvent is a notification sent to customers when a security bulletin has been posted that they are
     /// vulnerable to.
@@ -13181,6 +13204,21 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Human-friendly representation of the condition</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SyncRotationConfig is config for secret manager auto rotation.</summary>
+    public class SyncRotationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the rotation is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The interval between two consecutive rotations. Default rotation interval is 2 minutes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotationInterval")]
+        public virtual object RotationInterval { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14364,6 +14402,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>If true, enables the GCW Auditor that audits workloads on standard clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autopilotCompatibilityAuditingEnabled")]
         public virtual System.Nullable<bool> AutopilotCompatibilityAuditingEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines writable cgroups configuration.</summary>
+    public class WritableCgroups : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether writable cgroups is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
