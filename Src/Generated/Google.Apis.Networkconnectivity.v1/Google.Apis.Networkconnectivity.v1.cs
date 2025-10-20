@@ -298,13 +298,11 @@ namespace Google.Apis.Networkconnectivity.v1
                 MulticloudDataTransferSupportedServices = new MulticloudDataTransferSupportedServicesResource(service);
                 Operations = new OperationsResource(service);
                 RegionalEndpoints = new RegionalEndpointsResource(service);
-                RemoteTransportProfiles = new RemoteTransportProfilesResource(service);
                 ServiceClasses = new ServiceClassesResource(service);
                 ServiceConnectionMaps = new ServiceConnectionMapsResource(service);
                 ServiceConnectionPolicies = new ServiceConnectionPoliciesResource(service);
                 ServiceConnectionTokens = new ServiceConnectionTokensResource(service);
                 Spokes = new SpokesResource(service);
-                Transports = new TransportsResource(service);
             }
 
             /// <summary>Gets the Global resource.</summary>
@@ -5060,165 +5058,6 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
             }
 
-            /// <summary>Gets the RemoteTransportProfiles resource.</summary>
-            public virtual RemoteTransportProfilesResource RemoteTransportProfiles { get; }
-
-            /// <summary>The "remoteTransportProfiles" collection of methods.</summary>
-            public class RemoteTransportProfilesResource
-            {
-                private const string Resource = "remoteTransportProfiles";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public RemoteTransportProfilesResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>Gets details of a single RemoteTransportProfile.</summary>
-                /// <param name="name">Required. Name of the resource.</param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(this.service, name);
-                }
-
-                /// <summary>Gets details of a single RemoteTransportProfile.</summary>
-                public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.RemoteTransportProfile>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Name of the resource.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/remoteTransportProfiles/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>Lists RemoteTransportProfiles in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListRemoteTransportProfilesRequest.</param>
-                public virtual ListRequest List(string parent)
-                {
-                    return new ListRequest(this.service, parent);
-                }
-
-                /// <summary>Lists RemoteTransportProfiles in a given project and location.</summary>
-                public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListRemoteTransportProfilesResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Parent value for ListRemoteTransportProfilesRequest.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Optional. Filtering results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
-                    /// <summary>Optional. Hint for how to order the results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string OrderBy { get; set; }
-
-                    /// <summary>
-                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "list";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+parent}/remoteTransportProfiles";
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-            }
-
             /// <summary>Gets the ServiceClasses resource.</summary>
             public virtual ServiceClassesResource ServiceClasses { get; }
 
@@ -6479,7 +6318,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     /// is used. Only eligible for IPV4_ONLY and IPV4_IPV6 subnetwork.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("autoSubnetworkConfig.allocRangeSpace", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string AutoSubnetworkConfigAllocRangeSpace { get; set; }
+                    public virtual Google.Apis.Util.Repeatable<string> AutoSubnetworkConfigAllocRangeSpace { get; set; }
 
                     /// <summary>
                     /// Optional. The requested IP stack for the subnetwork. If not specified, IPv4 is used.
@@ -8145,410 +7984,6 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
             }
 
-            /// <summary>Gets the Transports resource.</summary>
-            public virtual TransportsResource Transports { get; }
-
-            /// <summary>The "transports" collection of methods.</summary>
-            public class TransportsResource
-            {
-                private const string Resource = "transports";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public TransportsResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>Creates a new Transport in a given project and location.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
-                public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.Transport body, string parent)
-                {
-                    return new CreateRequest(this.service, body, parent);
-                }
-
-                /// <summary>Creates a new Transport in a given project and location.</summary>
-                public class CreateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.Transport body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Value for parent.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>Required. Id of the requesting object</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("transportId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string TransportId { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Networkconnectivity.v1.Data.Transport Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+parent}/transports";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("transportId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "transportId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Deletes a single Transport.</summary>
-                /// <param name="name">Required. Name of the resource.</param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(this.service, name);
-                }
-
-                /// <summary>Deletes a single Transport.</summary>
-                public class DeleteRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Name of the resource.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "delete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}";
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/transports/[^/]+$",
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Gets details of a single Transport.</summary>
-                /// <param name="name">Required. Name of the resource.</param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(this.service, name);
-                }
-
-                /// <summary>Gets details of a single Transport.</summary>
-                public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Transport>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Name of the resource.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/transports/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>Lists Transports in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListTransportsRequest.</param>
-                public virtual ListRequest List(string parent)
-                {
-                    return new ListRequest(this.service, parent);
-                }
-
-                /// <summary>Lists Transports in a given project and location.</summary>
-                public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListTransportsResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Parent value for ListTransportsRequest.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Optional. Filtering results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
-                    /// <summary>Optional. Hint for how to order the results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string OrderBy { get; set; }
-
-                    /// <summary>
-                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "list";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+parent}/transports";
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Updates the parameters of a single Transport.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Identifier. Name of the resource, see google.aip.dev/122 for resource naming.
-                /// </param>
-                public virtual PatchRequest Patch(Google.Apis.Networkconnectivity.v1.Data.Transport body, string name)
-                {
-                    return new PatchRequest(this.service, body, name);
-                }
-
-                /// <summary>Updates the parameters of a single Transport.</summary>
-                public class PatchRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.Transport body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Identifier. Name of the resource, see google.aip.dev/122 for resource naming.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>
-                    /// Optional. Field mask is used to specify the fields to be overwritten in the Transport resource
-                    /// by the update. The fields specified in the update_mask are relative to the resource, not the
-                    /// full request. A field will be overwritten if it is in the mask. If the user does not provide a
-                    /// mask then all fields present in the request will be overwritten.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Networkconnectivity.v1.Data.Transport Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "patch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}";
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/transports/[^/]+$",
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-            }
-
             /// <summary>
             /// CheckConsumerConfig validates the consumer network and project for potential PSC connection creation.
             /// This method performs several checks, including: - Validating the existence and permissions of the
@@ -8964,6 +8399,36 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The specification for automatically creating a DNS record.</summary>
+    public class AutomatedDnsCreationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The DNS suffix to use for the DNS record. Must end with a dot. This should be a valid DNS domain
+        /// name as per RFC 1035. Each label (between dots) can contain letters, digits, and hyphens, and must not start
+        /// or end with a hyphen. Example: "my-service.example.com.", "internal."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsSuffix")]
+        public virtual string DnsSuffix { get; set; }
+
+        /// <summary>
+        /// Required. The hostname (the first label of the FQDN) to use for the DNS record. This should be a valid DNS
+        /// label as per RFC 1035. Generally, this means the hostname can contain letters, digits, and hyphens, and must
+        /// not start or end with a hyphen. Example: "my-instance", "db-1"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>
+        /// Optional. The Time To Live for the DNS record, in seconds. If not provided, a default of 30 seconds will be
+        /// used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9138,6 +8603,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// <summary>PSC connection details on consumer side.</summary>
     public class ConsumerPscConnection : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The status of DNS automation for this PSC connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsAutomationStatus")]
+        public virtual DnsAutomationStatus DnsAutomationStatus { get; set; }
+
         /// <summary>The most recent error during operating this connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
@@ -9406,6 +8875,25 @@ namespace Google.Apis.Networkconnectivity.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of DNS automation for a PSC connection.</summary>
+    public class DnsAutomationStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The error details if the state is CREATE_FAILED or DELETE_FAILED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>Output only. The fully qualified domain name of the DNS record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fqdn")]
+        public virtual string Fqdn { get; set; }
+
+        /// <summary>Output only. The current state of DNS automation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10544,25 +10032,6 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing RemoteTransportProfiles</summary>
-    public class ListRemoteTransportProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A token identifying a page of results the server should return.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The list of RemoteTransportProfiles.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("remoteTransportProfiles")]
-        public virtual System.Collections.Generic.IList<RemoteTransportProfile> RemoteTransportProfiles { get; set; }
-
-        /// <summary>Unordered list. Locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Response for HubService.ListRouteTables method.</summary>
     public class ListRouteTablesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10710,25 +10179,6 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IList<Spoke> Spokes { get; set; }
 
         /// <summary>Locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message for response to listing Transports.</summary>
-    public class ListTransportsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A token identifying a page of results the server should return.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The list of Transport.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("transports")]
-        public virtual System.Collections.Generic.IList<Transport> Transports { get; set; }
-
-        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -11397,6 +10847,12 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class ProducerPscConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The specification for automatically creating a DNS record for this PSC connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automatedDnsCreationSpec")]
+        public virtual AutomatedDnsCreationSpec AutomatedDnsCreationSpec { get; set; }
+
+        /// <summary>
         /// The resource path of a service attachment. Example:
         /// projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
         /// </summary>
@@ -11786,137 +11242,6 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>Required. The URI of the spoke to reject update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spokeUri")]
         public virtual string SpokeUri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message describing RemoteTransportProfile object.</summary>
-    public class RemoteTransportProfile : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Output only. [Output only] Create time stamp.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Output only. Description of the profile.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Output only. [Output only] Type of provisioning flows supported by this profile.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("flow")]
-        public virtual string Flow { get; set; }
-
-        /// <summary>Output only. Labels as key value pairs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>Identifier. Name of the resource in the format of $provider-$site.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Output only. [Output only] Order state for this profile.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("orderState")]
-        public virtual string OrderState { get; set; }
-
-        /// <summary>
-        /// Output only. Name of the provider on the other end of this profile. E.g. “Amazon Web Services” or “Microsoft
-        /// Azure”.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
-        public virtual string Provider { get; set; }
-
-        /// <summary>
-        /// Output only. If the profile is a Cloud Service Provider with compute resources, this is populated with the
-        /// region where connectivity is being established. If the profile provides facility-level selection, this is an
-        /// identity of the facility any connections on this profile are going through.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("providerSite")]
-        public virtual string ProviderSite { get; set; }
-
-        /// <summary>Output only. GCP Region where this profile is available.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; }
-
-        /// <summary>
-        /// Output only. [Output only] Availability class that will be configured for this particular
-        /// RemoteTransportProfile.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sla")]
-        public virtual string Sla { get; set; }
-
-        /// <summary>Output only. List of bandwidth enum values that are supported by this profile.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("supportedBandwidths")]
-        public virtual System.Collections.Generic.IList<string> SupportedBandwidths { get; set; }
-
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
-        /// <summary>Output only. [Output only] Update time stamp.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13184,169 +12509,6 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message describing Transport object.</summary>
-    public class Transport : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Administrative state of the underlying connectivity. If set to true (default), connectivity should
-        /// be available between your environments. If set to false, the connectivity over these links is disabled.
-        /// Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated
-        /// with the connectivity.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("adminEnabled")]
-        public virtual System.Nullable<bool> AdminEnabled { get; set; }
-
-        /// <summary>
-        /// Optional. [Preview only] List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and
-        /// IPv6 addresses are supported.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("advertisedRoutes")]
-        public virtual System.Collections.Generic.IList<string> AdvertisedRoutes { get; set; }
-
-        /// <summary>
-        /// Required. Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bandwidth")]
-        public virtual string Bandwidth { get; set; }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Output only. [Output only] Create time stamp.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Optional. Description of the Transport.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>
-        /// Output only. [Output only] Google-generated activation key. This is only output if the selected profile
-        /// supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a
-        /// PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("generatedActivationKey")]
-        public virtual string GeneratedActivationKey { get; set; }
-
-        /// <summary>Optional. Labels as key value pairs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>
-        /// Output only. [Output only] The maximum transmission unit (MTU) of a packet that can be sent over this
-        /// transport.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mtuLimit")]
-        public virtual System.Nullable<int> MtuLimit { get; set; }
-
-        /// <summary>Identifier. Name of the resource, see google.aip.dev/122 for resource naming.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Required. [Preview only] Resource URL of the Network that will be peered with this Transport. This field
-        /// must be provided during resource creation and cannot be changed.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual string Network { get; set; }
-
-        /// <summary>
-        /// Optional. Key used for establishing a connection with the remote transport. This key can only be provided if
-        /// the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("providedActivationKey")]
-        public virtual string ProvidedActivationKey { get; set; }
-
-        /// <summary>Required. GCP Region where this Transport is located.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; }
-
-        /// <summary>
-        /// Required. Resource URL of the remoteTransportProfile that this Transport is connecting to. Format:
-        /// projects/{project}/locations/{location}/remoteTransportProfiles/{remote_transport_profile}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("remoteProfile")]
-        public virtual string RemoteProfile { get; set; }
-
-        /// <summary>Optional. IP version stack for the established connectivity.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stackType")]
-        public virtual string StackType { get; set; }
-
-        /// <summary>Output only. [Output only] State of the underlying connectivity.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
-        /// <summary>Output only. [Output only] Update time stamp.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
