@@ -12897,6 +12897,15 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("saml")]
         public virtual GoogleIamAdminV1WorkforcePoolProviderSaml Saml { get; set; }
 
+        /// <summary>
+        /// Optional. Agentspace only. Specifies whether the workforce identity pool provider uses SCIM-managed groups
+        /// instead of the `google.groups` attribute mapping for authorization checks. The `scim_usage` and
+        /// `extended_attributes_oauth2_client` fields are mutually exclusive. A request that enables both fields on the
+        /// same workforce identity pool provider will produce an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scimUsage")]
+        public virtual string ScimUsage { get; set; }
+
         /// <summary>Output only. The state of the provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
