@@ -4629,8 +4629,9 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Creates a permission for a file or shared drive. **Warning:** Concurrent permissions operations on the same
-        /// file are not supported; only the last update is applied.
+        /// Creates a permission for a file or shared drive. For more information, see [Share files, folders, and
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent
+        /// permissions operations on the same file aren't supported; only the last update is applied.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file or shared drive.</param>
@@ -4640,8 +4641,9 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Creates a permission for a file or shared drive. **Warning:** Concurrent permissions operations on the same
-        /// file are not supported; only the last update is applied.
+        /// Creates a permission for a file or shared drive. For more information, see [Share files, folders, and
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent
+        /// permissions operations on the same file aren't supported; only the last update is applied.
         /// </summary>
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Permission>
         {
@@ -4670,9 +4672,9 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
             /// <summary>
-            /// This parameter will only take effect if the item is not in a shared drive and the request is attempting
-            /// to transfer the ownership of the item. If set to `true`, the item will be moved to the new owner's My
-            /// Drive root folder and all prior parents removed. If set to `false`, parents are not changed.
+            /// This parameter only takes effect if the item isn't in a shared drive and the request is attempting to
+            /// transfer the ownership of the item. If set to `true`, the item is moved to the new owner's My Drive root
+            /// folder and all prior parents removed. If set to `false`, parents aren't changed.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("moveToNewOwnersRoot", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> MoveToNewOwnersRoot { get; set; }
@@ -4694,15 +4696,18 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>
             /// Whether to transfer ownership to the specified user and downgrade the current owner to a writer. This
-            /// parameter is required as an acknowledgement of the side effect.
+            /// parameter is required as an acknowledgement of the side effect. For more information, see [Transfer file
+            /// ownership](https://developers.google.com/workspace/drive/api/guides/transfer-file).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("transferOwnership", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> TransferOwnership { get; set; }
 
             /// <summary>
-            /// Issue the request as a domain administrator; if set to true, then the requester will be granted access
-            /// if the file ID parameter refers to a shared drive and the requester is an administrator of the domain to
-            /// which the shared drive belongs.
+            /// Issue the request as a domain administrator. If set to `true`, and if the following additional
+            /// conditions are met, the requester is granted access: 1. The file ID parameter refers to a shared drive.
+            /// 2. The requester is an administrator of the domain to which the shared drive belongs. For more
+            /// information, see [Manage shared drives as domain
+            /// administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
@@ -4810,8 +4815,9 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Deletes a permission. **Warning:** Concurrent permissions operations on the same file are not supported;
-        /// only the last update is applied.
+        /// Deletes a permission. For more information, see [Share files, folders, and
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent
+        /// permissions operations on the same file aren't supported; only the last update is applied.
         /// </summary>
         /// <param name="fileId">The ID of the file or shared drive.</param>
         /// <param name="permissionId">The ID of the permission.</param>
@@ -4821,8 +4827,9 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Deletes a permission. **Warning:** Concurrent permissions operations on the same file are not supported;
-        /// only the last update is applied.
+        /// Deletes a permission. For more information, see [Share files, folders, and
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent
+        /// permissions operations on the same file aren't supported; only the last update is applied.
         /// </summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
@@ -4855,9 +4862,11 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>
-            /// Issue the request as a domain administrator; if set to true, then the requester will be granted access
-            /// if the file ID parameter refers to a shared drive and the requester is an administrator of the domain to
-            /// which the shared drive belongs.
+            /// Issue the request as a domain administrator. If set to `true`, and if the following additional
+            /// conditions are met, the requester is granted access: 1. The file ID parameter refers to a shared drive.
+            /// 2. The requester is an administrator of the domain to which the shared drive belongs. For more
+            /// information, see [Manage shared drives as domain
+            /// administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
@@ -4926,7 +4935,10 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Gets a permission by ID.</summary>
+        /// <summary>
+        /// Gets a permission by ID. For more information, see [Share files, folders, and
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing).
+        /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="permissionId">The ID of the permission.</param>
         public virtual GetRequest Get(string fileId, string permissionId)
@@ -4934,7 +4946,10 @@ namespace Google.Apis.Drive.v3
             return new GetRequest(this.service, fileId, permissionId);
         }
 
-        /// <summary>Gets a permission by ID.</summary>
+        /// <summary>
+        /// Gets a permission by ID. For more information, see [Share files, folders, and
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing).
+        /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Permission>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -4962,9 +4977,11 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>
-            /// Issue the request as a domain administrator; if set to true, then the requester will be granted access
-            /// if the file ID parameter refers to a shared drive and the requester is an administrator of the domain to
-            /// which the shared drive belongs.
+            /// Issue the request as a domain administrator. If set to `true`, and if the following additional
+            /// conditions are met, the requester is granted access: 1. The file ID parameter refers to a shared drive.
+            /// 2. The requester is an administrator of the domain to which the shared drive belongs. For more
+            /// information, see [Manage shared drives as domain
+            /// administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
@@ -5025,14 +5042,20 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Lists a file's or shared drive's permissions.</summary>
+        /// <summary>
+        /// Lists a file's or shared drive's permissions. For more information, see [Share files, folders, and
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing).
+        /// </summary>
         /// <param name="fileId">The ID of the file or shared drive.</param>
         public virtual ListRequest List(string fileId)
         {
             return new ListRequest(this.service, fileId);
         }
 
-        /// <summary>Lists a file's or shared drive's permissions.</summary>
+        /// <summary>
+        /// Lists a file's or shared drive's permissions. For more information, see [Share files, folders, and
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing).
+        /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.PermissionList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -5047,7 +5070,7 @@ namespace Google.Apis.Drive.v3
             public virtual string FileId { get; private set; }
 
             /// <summary>
-            /// Specifies which additional view's permissions to include in the response. Only 'published' is supported.
+            /// Specifies which additional view's permissions to include in the response. Only `published` is supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includePermissionsForView", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string IncludePermissionsForView { get; set; }
@@ -5062,7 +5085,7 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>
             /// The token for continuing a previous list request on the next page. This should be set to the value of
-            /// 'nextPageToken' from the previous response.
+            /// `nextPageToken` from the previous response.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -5076,9 +5099,11 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>
-            /// Issue the request as a domain administrator; if set to true, then the requester will be granted access
-            /// if the file ID parameter refers to a shared drive and the requester is an administrator of the domain to
-            /// which the shared drive belongs.
+            /// Issue the request as a domain administrator. If set to `true`, and if the following additional
+            /// conditions are met, the requester is granted access: 1. The file ID parameter refers to a shared drive.
+            /// 2. The requester is an administrator of the domain to which the shared drive belongs. For more
+            /// information, see [Manage shared drives as domain
+            /// administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
@@ -5156,8 +5181,9 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Updates a permission with patch semantics. **Warning:** Concurrent permissions operations on the same file
-        /// are not supported; only the last update is applied.
+        /// Updates a permission with patch semantics. For more information, see [Share files, folders, and
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent
+        /// permissions operations on the same file aren't supported; only the last update is applied.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file or shared drive.</param>
@@ -5168,8 +5194,9 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Updates a permission with patch semantics. **Warning:** Concurrent permissions operations on the same file
-        /// are not supported; only the last update is applied.
+        /// Updates a permission with patch semantics. For more information, see [Share files, folders, and
+        /// drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent
+        /// permissions operations on the same file aren't supported; only the last update is applied.
         /// </summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Permission>
         {
@@ -5208,15 +5235,18 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>
             /// Whether to transfer ownership to the specified user and downgrade the current owner to a writer. This
-            /// parameter is required as an acknowledgement of the side effect.
+            /// parameter is required as an acknowledgement of the side effect. For more information, see [Transfer file
+            /// ownership](https://developers.google.com//workspace/drive/api/guides/transfer-file).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("transferOwnership", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> TransferOwnership { get; set; }
 
             /// <summary>
-            /// Issue the request as a domain administrator; if set to true, then the requester will be granted access
-            /// if the file ID parameter refers to a shared drive and the requester is an administrator of the domain to
-            /// which the shared drive belongs.
+            /// Issue the request as a domain administrator. If set to `true`, and if the following additional
+            /// conditions are met, the requester is granted access: 1. The file ID parameter refers to a shared drive.
+            /// 2. The requester is an administrator of the domain to which the shared drive belongs. For more
+            /// information, see [Manage shared drives as domain
+            /// administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
@@ -8901,11 +8931,13 @@ namespace Google.Apis.Drive.v3.Data
 
     /// <summary>
     /// A permission for a file. A permission grants a user, group, domain, or the world access to a file or a folder
-    /// hierarchy. By default, permissions requests only return a subset of fields. Permission kind, ID, type, and role
-    /// are always returned. To retrieve specific fields, see
-    /// https://developers.google.com/workspace/drive/api/guides/fields-parameter. Some resource methods (such as
-    /// `permissions.update`) require a `permissionId`. Use the `permissions.list` method to retrieve the ID for a file,
-    /// folder, or shared drive.
+    /// hierarchy. For more information, see [Share files, folders, and
+    /// drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). By default, permission
+    /// requests only return a subset of fields. Permission `kind`, `ID`, `type`, and `role` are always returned. To
+    /// retrieve specific fields, see [Return specific
+    /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter). Some resource methods (such
+    /// as `permissions.update`) require a `permissionId`. Use the `permissions.list` method to retrieve the ID for a
+    /// file, folder, or shared drive.
     /// </summary>
     public class Permission : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8918,16 +8950,16 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// Output only. Whether the account associated with this permission has been deleted. This field only pertains
-        /// to user and group permissions.
+        /// to permissions of type `user` or `group`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; }
 
         /// <summary>
         /// Output only. The "pretty" name of the value of the permission. The following is a list of examples for each
-        /// type of permission: * `user` - User's full name, as defined for their Google account, such as "Joe Smith." *
+        /// type of permission: * `user` - User's full name, as defined for their Google Account, such as "Dana A." *
         /// `group` - Name of the Google Group, such as "The Company Administrators." * `domain` - String domain name,
-        /// such as "thecompany.com." * `anyone` - No `displayName` is present.
+        /// such as "cymbalgroup.com." * `anyone` - No `displayName` is present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -8968,14 +9000,15 @@ namespace Google.Apis.Drive.v3.Data
         }
 
         /// <summary>
-        /// Output only. The ID of this permission. This is a unique identifier for the grantee, and is published in
-        /// User resources as `permissionId`. IDs should be treated as opaque values.
+        /// Output only. The ID of this permission. This is a unique identifier for the grantee, and is published in the
+        /// [User resource](https://developers.google.com/workspace/drive/api/reference/rest/v3/User) as `permissionId`.
+        /// IDs should be treated as opaque values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// When true, only organizers, owners, and users with permissions added directly on the item can access it.
+        /// When `true`, only organizers, owners, and users with permissions added directly on the item can access it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inheritedPermissionsDisabled")]
         public virtual System.Nullable<bool> InheritedPermissionsDisabled { get; set; }
@@ -8987,14 +9020,14 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// Whether the account associated with this permission is a pending owner. Only populated for `user` type
-        /// permissions for files that are not in a shared drive.
+        /// Whether the account associated with this permission is a pending owner. Only populated for permissions of
+        /// type `user` for files that aren't in a shared drive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingOwner")]
         public virtual System.Nullable<bool> PendingOwner { get; set; }
 
         /// <summary>
-        /// Output only. Details of whether the permissions on this item are inherited or directly on this item.
+        /// Output only. Details of whether the permissions on this item are inherited or are directly on this item.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionDetails")]
         public virtual System.Collections.Generic.IList<PermissionDetailsData> PermissionDetails { get; set; }
@@ -9004,8 +9037,9 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string PhotoLink { get; set; }
 
         /// <summary>
-        /// The role granted by this permission. While new values may be supported in the future, the following are
-        /// currently allowed: * `owner` * `organizer` * `fileOrganizer` * `writer` * `commenter` * `reader`
+        /// The role granted by this permission. Supported values include: * `owner` * `organizer` * `fileOrganizer` *
+        /// `writer` * `commenter` * `reader` For more information, see [Roles and
+        /// permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -9015,19 +9049,19 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Collections.Generic.IList<TeamDrivePermissionDetailsData> TeamDrivePermissionDetails { get; set; }
 
         /// <summary>
-        /// The type of the grantee. Valid values are: * `user` * `group` * `domain` * `anyone` When creating a
-        /// permission, if `type` is `user` or `group`, you must provide an `emailAddress` for the user or group. When
-        /// `type` is `domain`, you must provide a `domain`. There isn't extra information required for an `anyone`
-        /// type.
+        /// The type of the grantee. Supported values include: * `user` * `group` * `domain` * `anyone` When creating a
+        /// permission, if `type` is `user` or `group`, you must provide an `emailAddress` for the user or group. If
+        /// `type` is `domain`, you must provide a `domain`. If `type` is `anyone`, no extra information is required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// Indicates the view for this permission. Only populated for permissions that belong to a view. published and
-        /// metadata are the only supported values. - published: The permission's role is published_reader. - metadata:
-        /// The item is only visible to the metadata view because the item has limited access and the scope has at least
-        /// read access to the parent. Note: The metadata view is currently only supported on folders.
+        /// Indicates the view for this permission. Only populated for permissions that belong to a view. The only
+        /// supported values are `published` and `metadata`: * `published`: The permission's role is `publishedReader`.
+        /// * `metadata`: The item is only visible to the `metadata` view because the item has limited access and the
+        /// scope has at least read access to the parent. The `metadata` view is only supported on folders. For more
+        /// information, see [Views](https://developers.google.com/workspace/drive/api/guides/ref-roles#views).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
         public virtual string View { get; set; }
@@ -9036,7 +9070,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Output only. Details of whether the permissions on this item are inherited or directly on this item.
+        /// Output only. Details of whether the permissions on this item are inherited or are directly on this item.
         /// </summary>
         public class PermissionDetailsData
         {
@@ -9055,15 +9089,15 @@ namespace Google.Apis.Drive.v3.Data
             public virtual string InheritedFrom { get; set; }
 
             /// <summary>
-            /// Output only. The permission type for this user. While new values may be added in future, the following
-            /// are currently possible: * `file` * `member`
+            /// Output only. The permission type for this user. Supported values include: * `file` * `member`
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("permissionType")]
             public virtual string PermissionType { get; set; }
 
             /// <summary>
-            /// Output only. The primary role for this user. While new values may be added in the future, the following
-            /// are currently possible: * `owner` * `organizer` * `fileOrganizer` * `writer` * `commenter` * `reader`
+            /// Output only. The primary role for this user. Supported values include: * `owner` * `organizer` *
+            /// `fileOrganizer` * `writer` * `commenter` * `reader` For more information, see [Roles and
+            /// permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles).
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
             public virtual string Role { get; set; }
@@ -9109,7 +9143,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string NextPageToken { get; set; }
 
         /// <summary>
-        /// The list of permissions. If nextPageToken is populated, then this list may be incomplete and an additional
+        /// The list of permissions. If `nextPageToken` is populated, then this list may be incomplete and an additional
         /// page of results should be fetched.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
