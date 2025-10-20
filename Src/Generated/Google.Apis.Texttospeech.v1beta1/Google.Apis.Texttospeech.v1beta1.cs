@@ -666,6 +666,13 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lowLatencyJourneySynthesis")]
         public virtual System.Nullable<bool> LowLatencyJourneySynthesis { get; set; }
 
+        /// <summary>
+        /// Optional. Input only. If true, relaxes safety filters for Gemini TTS. Only supported for accounts linked to
+        /// Invoiced (Offline) Cloud billing accounts. Otherwise, will return result google.rpc.Code.INVALID_ARGUMENT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relaxSafetyFilters")]
+        public virtual System.Nullable<bool> RelaxSafetyFilters { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
