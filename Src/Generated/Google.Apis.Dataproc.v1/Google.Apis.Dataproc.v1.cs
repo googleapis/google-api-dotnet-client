@@ -3601,6 +3601,16 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// When set to true, operations that are reachable are returned as normal, and those that are
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true
+                    /// when reading across collections e.g. when parent is set to "projects/example/locations/-".This
+                    /// field is not by default supported and will result in an UNIMPLEMENTED error if set unless
+                    /// explicitly documented otherwise in service or product specific documentation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -3641,6 +3651,14 @@ namespace Google.Apis.Dataproc.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -10632,6 +10650,16 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// When set to true, operations that are reachable are returned as normal, and those that are
+                    /// unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true
+                    /// when reading across collections e.g. when parent is set to "projects/example/locations/-".This
+                    /// field is not by default supported and will result in an UNIMPLEMENTED error if set unless
+                    /// explicitly documented otherwise in service or product specific documentation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -10672,6 +10700,14 @@ namespace Google.Apis.Dataproc.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -13951,7 +13987,7 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>
         /// Optional. Resource manager tags
         /// (https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing) to add to all instances
-        /// (see Use secure tags in Dataproc (https://cloud.google.com/dataproc/docs/guides/attach-secure-tags)).
+        /// (see Use secure tags in Dataproc (https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceManagerTags")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceManagerTags { get; set; }
@@ -15683,6 +15719,14 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// ListOperationsRequest.return_partial_success and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20157,12 +20201,12 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Usage metrics represent approximate total resources consumed by a workload.</summary>
     public class UsageMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Accelerator type being used, if any</summary>
+        /// <summary>Optional. DEPRECATED Accelerator type being used, if any</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; }
 
         /// <summary>
-        /// Optional. Accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless pricing
+        /// Optional. DEPRECATED Accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless pricing
         /// (https://cloud.google.com/dataproc-serverless/pricing)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("milliAcceleratorSeconds")]
@@ -20821,6 +20865,12 @@ namespace Google.Apis.Dataproc.v1.Data
     /// </summary>
     public class YarnApplication : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The cumulative memory usage of the application for a job, measured in mb-seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryMbSeconds")]
+        public virtual System.Nullable<long> MemoryMbSeconds { get; set; }
+
         /// <summary>Required. The application name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -20840,6 +20890,12 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
         public virtual string TrackingUrl { get; set; }
+
+        /// <summary>
+        /// Optional. The cumulative CPU time consumed by the application for a job, measured in vcore-seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcoreSeconds")]
+        public virtual System.Nullable<long> VcoreSeconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
