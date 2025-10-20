@@ -4448,6 +4448,14 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Properties of a tab.</summary>
     public class TabProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The emoji icon displayed with the tab. A valid emoji icon is represented by a non-empty Unicode
+        /// string. Any set of characters that don't represent a single emoji is invalid. If an emoji is invalid, a 400
+        /// bad request error is returned. If this value is unset or empty, the tab will display the default tab icon.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconEmoji")]
+        public virtual string IconEmoji { get; set; }
+
         /// <summary>The zero-based index of the tab within the parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
