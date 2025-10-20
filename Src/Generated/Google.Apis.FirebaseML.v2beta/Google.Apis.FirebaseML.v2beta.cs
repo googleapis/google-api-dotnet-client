@@ -1991,6 +1991,29 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
         public virtual string AspectRatio { get; set; }
 
+        /// <summary>Optional. The image output format for generated images.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageOutputOptions")]
+        public virtual GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions ImageOutputOptions { get; set; }
+
+        /// <summary>Optional. Controls whether the model can generate people.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personGeneration")]
+        public virtual string PersonGeneration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The image output format for generated images.</summary>
+    public class GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The compression quality of the output image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compressionQuality")]
+        public virtual System.Nullable<int> CompressionQuality { get; set; }
+
+        /// <summary>Optional. The image format that the output should be saved as.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
