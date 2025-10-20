@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Chromewebstore.v1_1 Client Library</Title>
-    <Version>1.72.0.3931</Version>
+    <Version>1.72.0.3940</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Chromewebstore v1.1.
 
       Product documentation is available at:
-      https://developer.chrome.com/webstore/api_index
+      https://developer.chrome.com/docs/webstore/api
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.Chromewebstore.v1_1/latest/api/Google.Apis.Chromewebstore.v1_1.html
