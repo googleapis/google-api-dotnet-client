@@ -2780,6 +2780,15 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. The scheduling policy to use for jobs and queries of this assignee when running under the
+        /// associated reservation. The scheduling policy controls how the reservation's resources are distributed. This
+        /// overrides the default scheduling policy specified on the reservation. This feature is not yet generally
+        /// available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedulingPolicy")]
+        public virtual SchedulingPolicy SchedulingPolicy { get; set; }
+
         /// <summary>Output only. State of the assignment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -3701,6 +3710,14 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual string ScalingMode { get; set; }
 
         /// <summary>
+        /// Optional. The scheduling policy to use for jobs and queries running under this reservation. The scheduling
+        /// policy controls how the reservation's resources are distributed. This feature is not yet generally
+        /// available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedulingPolicy")]
+        public virtual SchedulingPolicy SchedulingPolicy { get; set; }
+
+        /// <summary>
         /// Optional. The current location of the reservation's secondary replica. This field is only set for
         /// reservations using the managed disaster recovery feature. Users can set this in create reservation calls to
         /// create a failover reservation or in update reservation calls to convert a non-failover reservation to a
@@ -3774,6 +3791,28 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The scheduling policy controls how a reservation's resources are distributed.</summary>
+    public class SchedulingPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If present and &amp;gt; 0, the reservation will attempt to limit the concurrency of jobs running
+        /// for any particular project within it to the given value. This feature is not yet generally available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrency")]
+        public virtual System.Nullable<long> Concurrency { get; set; }
+
+        /// <summary>
+        /// Optional. If present and &amp;gt; 0, the reservation will attempt to limit the slot consumption of queries
+        /// running for any particular project within it to the given value. This feature is not yet generally
+        /// available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSlots")]
+        public virtual System.Nullable<long> MaxSlots { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
