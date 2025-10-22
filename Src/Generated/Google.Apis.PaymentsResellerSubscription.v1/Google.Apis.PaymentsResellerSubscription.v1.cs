@@ -1502,6 +1502,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>Intent message for creating a Subscription resource.</summary>
     public class CreateSubscriptionIntent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The cycle options for the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cycleOptions")]
+        public virtual CycleOptions CycleOptions { get; set; }
+
         /// <summary>Required. The parent resource name, which is the identifier of the partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
