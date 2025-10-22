@@ -6102,7 +6102,7 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
 
         /// <summary>
         /// Required. Customer managed crypto key resource full name. Format:
-        /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}.
+        /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
         public virtual string CryptoKeyName { get; set; }
