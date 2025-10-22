@@ -7984,6 +7984,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("baseTable")]
         public virtual TableReference BaseTable { get; set; }
 
+        /// <summary>The index id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexId")]
+        public virtual string IndexId { get; set; }
+
         /// <summary>The number of parallel inputs after index pruning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postIndexPruningParallelInputCount")]
         public virtual System.Nullable<long> PostIndexPruningParallelInputCount { get; set; }
