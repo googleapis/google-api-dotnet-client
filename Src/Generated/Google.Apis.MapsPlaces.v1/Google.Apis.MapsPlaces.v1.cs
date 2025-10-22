@@ -1681,6 +1681,22 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual System.Nullable<bool> MenuForChildren { get; set; }
 
         /// <summary>
+        /// If this Place is permanently closed and has moved to a new Place, this field contains the new Place's
+        /// resource name, in `places/{place_id}` format. If this Place moved multiple times, this field will represent
+        /// the first moved place. This field will not be populated if this Place has not moved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("movedPlace")]
+        public virtual string MovedPlace { get; set; }
+
+        /// <summary>
+        /// If this Place is permanently closed and has moved to a new Place, this field contains the new Place's place
+        /// ID. If this Place moved multiple times, this field will represent the first moved Place. This field will not
+        /// be populated if this Place has not moved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("movedPlaceId")]
+        public virtual string MovedPlaceId { get; set; }
+
+        /// <summary>
         /// This Place's resource name, in `places/{place_id}` format. Can be used to look up the Place.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
