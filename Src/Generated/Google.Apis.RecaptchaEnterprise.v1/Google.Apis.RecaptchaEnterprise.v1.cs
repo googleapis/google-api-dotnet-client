@@ -2053,8 +2053,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// Optional. Identifies the client module initiating the CreateAssessment request. This can be the link to the
         /// client module's project. Examples include: -
         /// "github.com/GoogleCloudPlatform/recaptcha-enterprise-google-tag-manager" -
-        /// "cloud.google.com/recaptcha/docs/implement-waf-akamai" -
-        /// "cloud.google.com/recaptcha/docs/implement-waf-cloudflare" - "wordpress.org/plugins/recaptcha-something"
+        /// "wordpress.org/plugins/recaptcha-something"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("client")]
         public virtual string Client { get; set; }
