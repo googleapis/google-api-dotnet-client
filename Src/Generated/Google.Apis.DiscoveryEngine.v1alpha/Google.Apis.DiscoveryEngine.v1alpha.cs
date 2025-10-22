@@ -23012,6 +23012,254 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         });
                     }
                 }
+
+                /// <summary>Creates a new User Store.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent collection resource name, such as `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUserStore body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new User Store.</summary>
+                public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUserStore>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUserStore body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent collection resource name, such as
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID of the User Store to create. The ID must contain only letters (a-z, A-Z),
+                    /// numbers (0-9), underscores (_), and hyphens (-). The maximum length is 63 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("userStoreId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string UserStoreId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUserStore Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/userStores";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("userStoreId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userStoreId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes the User Store.</summary>
+                /// <param name="name">
+                /// Required. The name of the User Store to delete. Format:
+                /// `projects/{project}/locations/{location}/userStores/{user_store_id}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes the User Store.</summary>
+                public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the User Store to delete. Format:
+                    /// `projects/{project}/locations/{location}/userStores/{user_store_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/userStores/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets the User Store.</summary>
+                /// <param name="name">
+                /// Required. The name of the User Store to get. Format:
+                /// `projects/{project}/locations/{location}/userStores/{user_store_id}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets the User Store.</summary>
+                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUserStore>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the User Store to get. Format:
+                    /// `projects/{project}/locations/{location}/userStores/{user_store_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/userStores/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Updates the User Store.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. The full resource name of the User Store, in the format of
+                /// `projects/{project}/locations/{location}/userStores/{user_store}`. This field must be a UTF-8
+                /// encoded string with a length limit of 1024 characters.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUserStore body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the User Store.</summary>
+                public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUserStore>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUserStore body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. The full resource name of the User Store, in the format of
+                    /// `projects/{project}/locations/{location}/userStores/{user_store}`. This field must be a UTF-8
+                    /// encoded string with a length limit of 1024 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUserStore Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/userStores/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Estimates the data size to be used by a customer.</summary>
@@ -29968,6 +30216,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelArmorConfig")]
         public virtual GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig ModelArmorConfig { get; set; }
 
+        /// <summary>
+        /// Optional. Whether to disable the notebook sharing feature for the project. Default to false if not
+        /// specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optOutNotebookSharing")]
+        public virtual System.Nullable<bool> OptOutNotebookSharing { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -31792,6 +32047,51 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userProfile")]
         public virtual string UserProfile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configures metadata that is used for End User entities.</summary>
+    public class GoogleCloudDiscoveryengineV1UserStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The default subscription LicenseConfig for the UserStore, if
+        /// UserStore.enable_license_auto_register is true, new users will automatically register under the default
+        /// subscription. If default LicenseConfig doesn't have remaining license seats left, new users will not be
+        /// assigned with license and will be blocked for Vertex AI Search features. This is used if
+        /// `license_assignment_tier_rules` is not configured.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLicenseConfig")]
+        public virtual string DefaultLicenseConfig { get; set; }
+
+        /// <summary>The display name of the User Store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to enable license auto update for users in this User Store. If true, users with expired
+        /// licenses will automatically be updated to use the default license config as long as the default license
+        /// config has seats left.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableExpiredLicenseAutoUpdate")]
+        public virtual System.Nullable<bool> EnableExpiredLicenseAutoUpdate { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to enable license auto register for users in this User Store. If true, new users will
+        /// automatically register under the default license config as long as the default license config has seats
+        /// left.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLicenseAutoRegister")]
+        public virtual System.Nullable<bool> EnableLicenseAutoRegister { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the User Store, in the format of
+        /// `projects/{project}/locations/{location}/userStores/{user_store}`. This field must be a UTF-8 encoded string
+        /// with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -38740,6 +39040,25 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the UserStoreService.DeleteUserStore operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field. Delete UserStore will delete all the end users under the user
+    /// store, return the number of end users successfully deleted or failed to delete in the metadata.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDeleteUserStoreMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of end users under the user store that failed to be deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>The number of end users under the user store that were successfully deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines target endpoints used to connect to third-party sources.</summary>
     public class GoogleCloudDiscoveryengineV1alphaDestinationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -42957,6 +43276,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Model Armor configuration to be used for sanitizing user prompts and LLM responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelArmorConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig ModelArmorConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to disable the notebook sharing feature for the project. Default to false if not
+        /// specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optOutNotebookSharing")]
+        public virtual System.Nullable<bool> OptOutNotebookSharing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -49153,6 +49479,51 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configures metadata that is used for End User entities.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaUserStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The default subscription LicenseConfig for the UserStore, if
+        /// UserStore.enable_license_auto_register is true, new users will automatically register under the default
+        /// subscription. If default LicenseConfig doesn't have remaining license seats left, new users will not be
+        /// assigned with license and will be blocked for Vertex AI Search features. This is used if
+        /// `license_assignment_tier_rules` is not configured.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLicenseConfig")]
+        public virtual string DefaultLicenseConfig { get; set; }
+
+        /// <summary>The display name of the User Store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to enable license auto update for users in this User Store. If true, users with expired
+        /// licenses will automatically be updated to use the default license config as long as the default license
+        /// config has seats left.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableExpiredLicenseAutoUpdate")]
+        public virtual System.Nullable<bool> EnableExpiredLicenseAutoUpdate { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to enable license auto register for users in this User Store. If true, new users will
+        /// automatically register under the default license config as long as the default license config has seats
+        /// left.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLicenseAutoRegister")]
+        public virtual System.Nullable<bool> EnableLicenseAutoRegister { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the User Store, in the format of
+        /// `projects/{project}/locations/{location}/userStores/{user_store}`. This field must be a UTF-8 encoded string
+        /// with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Standard characteristics of a video media view.</summary>
     public class GoogleCloudDiscoveryengineV1alphaVideoCharacteristics : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -53708,6 +54079,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelArmorConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig ModelArmorConfig { get; set; }
 
+        /// <summary>
+        /// Optional. Whether to disable the notebook sharing feature for the project. Default to false if not
+        /// specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optOutNotebookSharing")]
+        public virtual System.Nullable<bool> OptOutNotebookSharing { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -56200,6 +56578,51 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userProfile")]
         public virtual string UserProfile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configures metadata that is used for End User entities.</summary>
+    public class GoogleCloudDiscoveryengineV1betaUserStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The default subscription LicenseConfig for the UserStore, if
+        /// UserStore.enable_license_auto_register is true, new users will automatically register under the default
+        /// subscription. If default LicenseConfig doesn't have remaining license seats left, new users will not be
+        /// assigned with license and will be blocked for Vertex AI Search features. This is used if
+        /// `license_assignment_tier_rules` is not configured.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLicenseConfig")]
+        public virtual string DefaultLicenseConfig { get; set; }
+
+        /// <summary>The display name of the User Store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to enable license auto update for users in this User Store. If true, users with expired
+        /// licenses will automatically be updated to use the default license config as long as the default license
+        /// config has seats left.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableExpiredLicenseAutoUpdate")]
+        public virtual System.Nullable<bool> EnableExpiredLicenseAutoUpdate { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to enable license auto register for users in this User Store. If true, new users will
+        /// automatically register under the default license config as long as the default license config has seats
+        /// left.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLicenseAutoRegister")]
+        public virtual System.Nullable<bool> EnableLicenseAutoRegister { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the User Store, in the format of
+        /// `projects/{project}/locations/{location}/userStores/{user_store}`. This field must be a UTF-8 encoded string
+        /// with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
