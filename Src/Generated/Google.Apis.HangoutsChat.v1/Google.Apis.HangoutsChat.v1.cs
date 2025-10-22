@@ -8925,6 +8925,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>Represents a space permission setting.</summary>
     public class PermissionSetting : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Whether space managers `ROLE_ASSISTANT_MANAGER`) have this permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assistantManagersAllowed")]
+        public virtual System.Nullable<bool> AssistantManagersAllowed { get; set; }
+
         /// <summary>Optional. Whether space owners (`ROLE_MANAGER`) have this permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managersAllowed")]
         public virtual System.Nullable<bool> ManagersAllowed { get; set; }
@@ -9365,7 +9369,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// is the `id` from the [Admin SDK customer
         /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers). Private apps can
         /// also use the `customers/my_customer` alias to create the space in the same Google Workspace organization as
-        /// the app. For DMs, this field isn't populated.
+        /// the app. This field isn't populated for direct messages (DMs) or when the space is created by non-Google
+        /// Workspace users.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
