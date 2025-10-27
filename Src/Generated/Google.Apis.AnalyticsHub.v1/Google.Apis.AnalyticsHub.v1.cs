@@ -3609,6 +3609,13 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retryPolicy")]
         public virtual RetryPolicy RetryPolicy { get; set; }
 
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// "123/environment": "production", "123/costCenter": "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3866,6 +3873,12 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// <summary>Output only. Current state of the listing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Optional. If set, stored procedure configuration will be propagated and enforced on the linked dataset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storedProcedureConfig")]
+        public virtual StoredProcedureConfig StoredProcedureConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4622,6 +4635,21 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stored procedure configuration, used to configure stored procedure sharing on linked dataset.</summary>
+    public class StoredProcedureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Types of stored procedure supported to share.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedStoredProcedureTypes")]
+        public virtual System.Collections.Generic.IList<string> AllowedStoredProcedureTypes { get; set; }
+
+        /// <summary>Optional. If true, enable sharing of stored procedure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
