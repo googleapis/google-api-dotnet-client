@@ -10852,6 +10852,21 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about a device's Bluetooth adapter.</summary>
+    public class BluetoothAdapterInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The MAC address of the adapter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual string Address { get; set; }
+
+        /// <summary>Output only. The number of devices connected to this adapter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numConnectedDevices")]
+        public virtual System.Nullable<int> NumConnectedDevices { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Public API: Resources.buildings</summary>
     public class Building : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11234,6 +11249,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Output only. Contains backlight information for the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backlightInfo")]
         public virtual System.Collections.Generic.IList<BacklightInfo> BacklightInfo { get; set; }
+
+        /// <summary>Output only. Information about bluetooth adapters of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bluetoothAdapterInfo")]
+        public virtual System.Collections.Generic.IList<BluetoothAdapterInfo> BluetoothAdapterInfo { get; set; }
 
         /// <summary>
         /// The boot mode for the device. The possible values are: * `Verified`: The device is running a valid version
