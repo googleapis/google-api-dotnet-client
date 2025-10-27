@@ -879,6 +879,37 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 this.service = service;
             }
 
+            /// <summary>Retrieves the merchant account that the calling GCP is registered with.</summary>
+            public virtual GetAccountForGcpRegistrationRequest GetAccountForGcpRegistration()
+            {
+                return new GetAccountForGcpRegistrationRequest(this.service);
+            }
+
+            /// <summary>Retrieves the merchant account that the calling GCP is registered with.</summary>
+            public class GetAccountForGcpRegistrationRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.GetAccountForGcpRegistrationResponse>
+            {
+                /// <summary>Constructs a new GetAccountForGcpRegistration request.</summary>
+                public GetAccountForGcpRegistrationRequest(Google.Apis.Services.IClientService service) : base(service)
+                {
+                    InitParameters();
+                }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getAccountForGcpRegistration";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/accounts:getAccountForGcpRegistration";
+
+                /// <summary>Initializes GetAccountForGcpRegistration parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                }
+            }
+
             /// <summary>Retrieves a developer registration for a merchant.</summary>
             /// <param name="name">Required. The `name` (ID) of the developer registration.</param>
             public virtual GetDeveloperRegistrationRequest GetDeveloperRegistration(string name)
@@ -4851,37 +4882,6 @@ namespace Google.Apis.Merchant.accounts_v1beta
             }
         }
 
-        /// <summary>Retrieves the merchant account that the calling GCP is registered with.</summary>
-        public virtual GetAccountForGcpRegistrationRequest GetAccountForGcpRegistration()
-        {
-            return new GetAccountForGcpRegistrationRequest(this.service);
-        }
-
-        /// <summary>Retrieves the merchant account that the calling GCP is registered with.</summary>
-        public class GetAccountForGcpRegistrationRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.GetAccountForGcpRegistrationResponse>
-        {
-            /// <summary>Constructs a new GetAccountForGcpRegistration request.</summary>
-            public GetAccountForGcpRegistrationRequest(Google.Apis.Services.IClientService service) : base(service)
-            {
-                InitParameters();
-            }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "getAccountForGcpRegistration";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "accounts/v1beta/accounts:getAccountForGcpRegistration";
-
-            /// <summary>Initializes GetAccountForGcpRegistration parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
-
         /// <summary>
         /// Note: For the `accounts.list` method, quota and limits usage are charged for each user, and not for the
         /// Merchant Center ID or the advanced account ID. To list several sub-accounts, you should use the
@@ -8460,7 +8460,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     }
 
     /// <summary>
-    /// The `User` message represents a user associated with a Merchant Center account. It is used to manage user
+    /// The `User` resource represents a user associated with a Merchant Center account. It is used to manage user
     /// permissions and access rights within the account. For more information, see [Frequently asked questions about
     /// people and access levels](//support.google.com/merchants/answer/12160472).
     /// </summary>
