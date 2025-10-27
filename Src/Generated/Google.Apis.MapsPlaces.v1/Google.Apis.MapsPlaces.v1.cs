@@ -1989,7 +1989,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// </summary>
     public class GoogleMapsPlacesV1PlaceConsumerAlert : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The details of the consumer alert message.ƒ</summary>
+        /// <summary>The details of the consumer alert message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual GoogleMapsPlacesV1PlaceConsumerAlertDetails Details { get; set; }
 
@@ -2611,7 +2611,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual GoogleTypeLocalizedText Text { get; set; }
 
         /// <summary>
-        /// The date when the author visited the place. This is trucated to the year and month of the visit.
+        /// The date when the author visited the place. This is truncated to the year and month of the visit.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitDate")]
         public virtual GoogleTypeDate VisitDate { get; set; }
