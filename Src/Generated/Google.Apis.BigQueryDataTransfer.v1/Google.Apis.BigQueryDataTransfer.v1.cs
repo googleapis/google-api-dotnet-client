@@ -4276,6 +4276,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
+        /// <summary>The classification of the destination table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedTableType")]
+        public virtual string ManagedTableType { get; set; }
+
         /// <summary>
         /// Identifier. The resource name of the transfer config. Transfer config names have the form either
         /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
