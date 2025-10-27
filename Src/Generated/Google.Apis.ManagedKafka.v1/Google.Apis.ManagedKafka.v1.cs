@@ -7475,7 +7475,7 @@ namespace Google.Apis.ManagedKafka.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
-        /// <summary>Output only. The current state of the cluster.</summary>
+        /// <summary>Output only. The current state of the Kafka Connect cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
