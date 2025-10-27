@@ -1012,267 +1012,8 @@ namespace Google.Apis.Contactcenterinsights.v1
                         public ConversationsResource(Google.Apis.Services.IClientService service)
                         {
                             this.service = service;
-                            Analyses = new AnalysesResource(service);
                             Assessments = new AssessmentsResource(service);
                             FeedbackLabels = new FeedbackLabelsResource(service);
-                        }
-
-                        /// <summary>Gets the Analyses resource.</summary>
-                        public virtual AnalysesResource Analyses { get; }
-
-                        /// <summary>The "analyses" collection of methods.</summary>
-                        public class AnalysesResource
-                        {
-                            private const string Resource = "analyses";
-
-                            /// <summary>The service which this resource belongs to.</summary>
-                            private readonly Google.Apis.Services.IClientService service;
-
-                            /// <summary>Constructs a new resource.</summary>
-                            public AnalysesResource(Google.Apis.Services.IClientService service)
-                            {
-                                this.service = service;
-                            }
-
-                            /// <summary>
-                            /// Creates an analysis. The long running operation is done when the analysis has completed.
-                            /// </summary>
-                            /// <param name="body">The body of the request.</param>
-                            /// <param name="parent">Required. The parent resource of the analysis.</param>
-                            public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Analysis body, string parent)
-                            {
-                                return new CreateRequest(this.service, body, parent);
-                            }
-
-                            /// <summary>
-                            /// Creates an analysis. The long running operation is done when the analysis has completed.
-                            /// </summary>
-                            public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
-                            {
-                                /// <summary>Constructs a new Create request.</summary>
-                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Analysis body, string parent) : base(service)
-                                {
-                                    Parent = parent;
-                                    Body = body;
-                                    InitParameters();
-                                }
-
-                                /// <summary>Required. The parent resource of the analysis.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string Parent { get; private set; }
-
-                                /// <summary>Gets or sets the body of this request.</summary>
-                                Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Analysis Body { get; set; }
-
-                                /// <summary>Returns the body of the request.</summary>
-                                protected override object GetBody() => Body;
-
-                                /// <summary>Gets the method name.</summary>
-                                public override string MethodName => "create";
-
-                                /// <summary>Gets the HTTP method.</summary>
-                                public override string HttpMethod => "POST";
-
-                                /// <summary>Gets the REST path.</summary>
-                                public override string RestPath => "v1/{+parent}/analyses";
-
-                                /// <summary>Initializes Create parameter list.</summary>
-                                protected override void InitParameters()
-                                {
-                                    base.InitParameters();
-                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+/conversations/[^/]+$",
-                                    });
-                                }
-                            }
-
-                            /// <summary>Deletes an analysis.</summary>
-                            /// <param name="name">Required. The name of the analysis to delete.</param>
-                            public virtual DeleteRequest Delete(string name)
-                            {
-                                return new DeleteRequest(this.service, name);
-                            }
-
-                            /// <summary>Deletes an analysis.</summary>
-                            public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
-                            {
-                                /// <summary>Constructs a new Delete request.</summary>
-                                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                                {
-                                    Name = name;
-                                    InitParameters();
-                                }
-
-                                /// <summary>Required. The name of the analysis to delete.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string Name { get; private set; }
-
-                                /// <summary>Gets the method name.</summary>
-                                public override string MethodName => "delete";
-
-                                /// <summary>Gets the HTTP method.</summary>
-                                public override string HttpMethod => "DELETE";
-
-                                /// <summary>Gets the REST path.</summary>
-                                public override string RestPath => "v1/{+name}";
-
-                                /// <summary>Initializes Delete parameter list.</summary>
-                                protected override void InitParameters()
-                                {
-                                    base.InitParameters();
-                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+/conversations/[^/]+/analyses/[^/]+$",
-                                    });
-                                }
-                            }
-
-                            /// <summary>Gets an analysis.</summary>
-                            /// <param name="name">Required. The name of the analysis to get.</param>
-                            public virtual GetRequest Get(string name)
-                            {
-                                return new GetRequest(this.service, name);
-                            }
-
-                            /// <summary>Gets an analysis.</summary>
-                            public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Analysis>
-                            {
-                                /// <summary>Constructs a new Get request.</summary>
-                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                                {
-                                    Name = name;
-                                    InitParameters();
-                                }
-
-                                /// <summary>Required. The name of the analysis to get.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string Name { get; private set; }
-
-                                /// <summary>Gets the method name.</summary>
-                                public override string MethodName => "get";
-
-                                /// <summary>Gets the HTTP method.</summary>
-                                public override string HttpMethod => "GET";
-
-                                /// <summary>Gets the REST path.</summary>
-                                public override string RestPath => "v1/{+name}";
-
-                                /// <summary>Initializes Get parameter list.</summary>
-                                protected override void InitParameters()
-                                {
-                                    base.InitParameters();
-                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+/conversations/[^/]+/analyses/[^/]+$",
-                                    });
-                                }
-                            }
-
-                            /// <summary>Lists analyses.</summary>
-                            /// <param name="parent">Required. The parent resource of the analyses.</param>
-                            public virtual ListRequest List(string parent)
-                            {
-                                return new ListRequest(this.service, parent);
-                            }
-
-                            /// <summary>Lists analyses.</summary>
-                            public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListAnalysesResponse>
-                            {
-                                /// <summary>Constructs a new List request.</summary>
-                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                                {
-                                    Parent = parent;
-                                    InitParameters();
-                                }
-
-                                /// <summary>Required. The parent resource of the analyses.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string Parent { get; private set; }
-
-                                /// <summary>
-                                /// A filter to reduce results to a specific subset. Useful for querying conversations
-                                /// with specific properties.
-                                /// </summary>
-                                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                                public virtual string Filter { get; set; }
-
-                                /// <summary>
-                                /// The maximum number of analyses to return in the response. If this value is zero, the
-                                /// service will select a default size. A call might return fewer objects than
-                                /// requested. A non-empty `next_page_token` in the response indicates that more data is
-                                /// available.
-                                /// </summary>
-                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                                public virtual System.Nullable<int> PageSize { get; set; }
-
-                                /// <summary>
-                                /// The value returned by the last `ListAnalysesResponse`; indicates that this is a
-                                /// continuation of a prior `ListAnalyses` call and the system should return the next
-                                /// page of data.
-                                /// </summary>
-                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                                public virtual string PageToken { get; set; }
-
-                                /// <summary>Gets the method name.</summary>
-                                public override string MethodName => "list";
-
-                                /// <summary>Gets the HTTP method.</summary>
-                                public override string HttpMethod => "GET";
-
-                                /// <summary>Gets the REST path.</summary>
-                                public override string RestPath => "v1/{+parent}/analyses";
-
-                                /// <summary>Initializes List parameter list.</summary>
-                                protected override void InitParameters()
-                                {
-                                    base.InitParameters();
-                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+/conversations/[^/]+$",
-                                    });
-                                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "filter",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                }
-                            }
                         }
 
                         /// <summary>Gets the Assessments resource.</summary>
@@ -2319,59 +2060,6 @@ namespace Google.Apis.Contactcenterinsights.v1
                                         Pattern = null,
                                     });
                                 }
-                            }
-                        }
-
-                        /// <summary>Analyzes multiple conversations in a single request.</summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">Required. The parent resource to create analyses in.</param>
-                        public virtual BulkAnalyzeRequest BulkAnalyze(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest body, string parent)
-                        {
-                            return new BulkAnalyzeRequest(this.service, body, parent);
-                        }
-
-                        /// <summary>Analyzes multiple conversations in a single request.</summary>
-                        public class BulkAnalyzeRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
-                        {
-                            /// <summary>Constructs a new BulkAnalyze request.</summary>
-                            public BulkAnalyzeRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest body, string parent) : base(service)
-                            {
-                                Parent = parent;
-                                Body = body;
-                                InitParameters();
-                            }
-
-                            /// <summary>Required. The parent resource to create analyses in.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Parent { get; private set; }
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest Body { get; set; }
-
-                            /// <summary>Returns the body of the request.</summary>
-                            protected override object GetBody() => Body;
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "bulkAnalyze";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "POST";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1/{+parent}/conversations:bulkAnalyze";
-
-                            /// <summary>Initializes BulkAnalyze parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+$",
-                                });
                             }
                         }
 
@@ -4125,6 +3813,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                     Analyses = new AnalysesResource(service);
                     Assessments = new AssessmentsResource(service);
                     FeedbackLabels = new FeedbackLabelsResource(service);
+                    Segments = new SegmentsResource(service);
                 }
 
                 /// <summary>Gets the Analyses resource.</summary>
@@ -5428,6 +5117,77 @@ namespace Google.Apis.Contactcenterinsights.v1
                     }
                 }
 
+                /// <summary>Gets the Segments resource.</summary>
+                public virtual SegmentsResource Segments { get; }
+
+                /// <summary>The "segments" collection of methods.</summary>
+                public class SegmentsResource
+                {
+                    private const string Resource = "segments";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SegmentsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Analyzes multiple conversations in a single request.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The parent resource to create analyses in.</param>
+                    public virtual BulkAnalyzeRequest BulkAnalyze(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest body, string parent)
+                    {
+                        return new BulkAnalyzeRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Analyzes multiple conversations in a single request.</summary>
+                    public class BulkAnalyzeRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new BulkAnalyze request.</summary>
+                        public BulkAnalyzeRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent resource to create analyses in.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "bulkAnalyze";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/segments:bulkAnalyze";
+
+                        /// <summary>Initializes BulkAnalyze parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
                 /// <summary>Analyzes multiple conversations in a single request.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent resource to create analyses in.</param>
@@ -6252,265 +6012,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                     public ConversationsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-                        Analyses = new AnalysesResource(service);
                         FeedbackLabels = new FeedbackLabelsResource(service);
-                    }
-
-                    /// <summary>Gets the Analyses resource.</summary>
-                    public virtual AnalysesResource Analyses { get; }
-
-                    /// <summary>The "analyses" collection of methods.</summary>
-                    public class AnalysesResource
-                    {
-                        private const string Resource = "analyses";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public AnalysesResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-                        }
-
-                        /// <summary>
-                        /// Creates an analysis. The long running operation is done when the analysis has completed.
-                        /// </summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">Required. The parent resource of the analysis.</param>
-                        public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Analysis body, string parent)
-                        {
-                            return new CreateRequest(this.service, body, parent);
-                        }
-
-                        /// <summary>
-                        /// Creates an analysis. The long running operation is done when the analysis has completed.
-                        /// </summary>
-                        public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
-                        {
-                            /// <summary>Constructs a new Create request.</summary>
-                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Analysis body, string parent) : base(service)
-                            {
-                                Parent = parent;
-                                Body = body;
-                                InitParameters();
-                            }
-
-                            /// <summary>Required. The parent resource of the analysis.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Parent { get; private set; }
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Analysis Body { get; set; }
-
-                            /// <summary>Returns the body of the request.</summary>
-                            protected override object GetBody() => Body;
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "create";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "POST";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1/{+parent}/analyses";
-
-                            /// <summary>Initializes Create parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/conversations/[^/]+$",
-                                });
-                            }
-                        }
-
-                        /// <summary>Deletes an analysis.</summary>
-                        /// <param name="name">Required. The name of the analysis to delete.</param>
-                        public virtual DeleteRequest Delete(string name)
-                        {
-                            return new DeleteRequest(this.service, name);
-                        }
-
-                        /// <summary>Deletes an analysis.</summary>
-                        public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
-                        {
-                            /// <summary>Constructs a new Delete request.</summary>
-                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                            {
-                                Name = name;
-                                InitParameters();
-                            }
-
-                            /// <summary>Required. The name of the analysis to delete.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "delete";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "DELETE";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1/{+name}";
-
-                            /// <summary>Initializes Delete parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/conversations/[^/]+/analyses/[^/]+$",
-                                });
-                            }
-                        }
-
-                        /// <summary>Gets an analysis.</summary>
-                        /// <param name="name">Required. The name of the analysis to get.</param>
-                        public virtual GetRequest Get(string name)
-                        {
-                            return new GetRequest(this.service, name);
-                        }
-
-                        /// <summary>Gets an analysis.</summary>
-                        public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Analysis>
-                        {
-                            /// <summary>Constructs a new Get request.</summary>
-                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                            {
-                                Name = name;
-                                InitParameters();
-                            }
-
-                            /// <summary>Required. The name of the analysis to get.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "get";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "GET";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1/{+name}";
-
-                            /// <summary>Initializes Get parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/conversations/[^/]+/analyses/[^/]+$",
-                                });
-                            }
-                        }
-
-                        /// <summary>Lists analyses.</summary>
-                        /// <param name="parent">Required. The parent resource of the analyses.</param>
-                        public virtual ListRequest List(string parent)
-                        {
-                            return new ListRequest(this.service, parent);
-                        }
-
-                        /// <summary>Lists analyses.</summary>
-                        public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListAnalysesResponse>
-                        {
-                            /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                            {
-                                Parent = parent;
-                                InitParameters();
-                            }
-
-                            /// <summary>Required. The parent resource of the analyses.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Parent { get; private set; }
-
-                            /// <summary>
-                            /// A filter to reduce results to a specific subset. Useful for querying conversations with
-                            /// specific properties.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string Filter { get; set; }
-
-                            /// <summary>
-                            /// The maximum number of analyses to return in the response. If this value is zero, the
-                            /// service will select a default size. A call might return fewer objects than requested. A
-                            /// non-empty `next_page_token` in the response indicates that more data is available.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
-                            /// <summary>
-                            /// The value returned by the last `ListAnalysesResponse`; indicates that this is a
-                            /// continuation of a prior `ListAnalyses` call and the system should return the next page
-                            /// of data.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "list";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "GET";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1/{+parent}/analyses";
-
-                            /// <summary>Initializes List parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/conversations/[^/]+$",
-                                });
-                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            }
-                        }
                     }
 
                     /// <summary>Gets the FeedbackLabels resource.</summary>
@@ -6854,59 +6356,6 @@ namespace Google.Apis.Contactcenterinsights.v1
                                     Pattern = null,
                                 });
                             }
-                        }
-                    }
-
-                    /// <summary>Analyzes multiple conversations in a single request.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. The parent resource to create analyses in.</param>
-                    public virtual BulkAnalyzeRequest BulkAnalyze(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest body, string parent)
-                    {
-                        return new BulkAnalyzeRequest(this.service, body, parent);
-                    }
-
-                    /// <summary>Analyzes multiple conversations in a single request.</summary>
-                    public class BulkAnalyzeRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
-                    {
-                        /// <summary>Constructs a new BulkAnalyze request.</summary>
-                        public BulkAnalyzeRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. The parent resource to create analyses in.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "bulkAnalyze";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+parent}/conversations:bulkAnalyze";
-
-                        /// <summary>Initializes BulkAnalyze parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                            });
                         }
                     }
 
@@ -15148,6 +14597,22 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentDimensionMetadata")]
         public virtual GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata AgentDimensionMetadata { get; set; }
 
+        /// <summary>Output only. Metadata about the client sentiment category dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSentimentCategoryDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata ClientSentimentCategoryDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the conversation profile dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfileDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata ConversationProfileDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the Conversational Agents playbook dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsPlaybookDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata ConversationalAgentsPlaybookDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the Conversational Agents tool dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsToolDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata ConversationalAgentsToolDimensionMetadata { get; set; }
+
         /// <summary>The key of the dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionKey")]
         public virtual string DimensionKey { get; set; }
@@ -15155,6 +14620,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Output only. Metadata about the issue dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issueDimensionMetadata")]
         public virtual GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata IssueDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the conversation medium dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediumDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata MediumDimensionMetadata { get; set; }
 
         /// <summary>Output only. Metadata about the QA question-answer dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionAnswerDimensionMetadata")]
@@ -15225,6 +14694,58 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata about the client sentiment category dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The client sentiment category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentCategory")]
+        public virtual string SentimentCategory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the conversation profile dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The conversation profile ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfileId")]
+        public virtual string ConversationProfileId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the Conversational Agents playbook dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The dialogflow playbook display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbookDisplayName")]
+        public virtual string PlaybookDisplayName { get; set; }
+
+        /// <summary>Optional. The dialogflow playbook ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbookId")]
+        public virtual string PlaybookId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the Conversational Agents tool dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The dialogflow tool display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolDisplayName")]
+        public virtual string ToolDisplayName { get; set; }
+
+        /// <summary>Optional. The dialogflow tool ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolId")]
+        public virtual string ToolId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata about the issue dimension.</summary>
     public class GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15239,6 +14760,17 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The parent issue model ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issueModelId")]
         public virtual string IssueModelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the conversation medium dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The conversation medium. Currently supports : PHONE_CALL, CHAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medium")]
+        public virtual string Medium { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21930,6 +21462,22 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentDimensionMetadata")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata AgentDimensionMetadata { get; set; }
 
+        /// <summary>Output only. Metadata about the client sentiment category dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSentimentCategoryDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata ClientSentimentCategoryDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the conversation profile dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfileDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata ConversationProfileDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the Conversational Agents playbook dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsPlaybookDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata ConversationalAgentsPlaybookDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the Conversational Agents tool dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalAgentsToolDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata ConversationalAgentsToolDimensionMetadata { get; set; }
+
         /// <summary>The key of the dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionKey")]
         public virtual string DimensionKey { get; set; }
@@ -21937,6 +21485,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Output only. Metadata about the issue dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issueDimensionMetadata")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata IssueDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the conversation medium dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediumDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata MediumDimensionMetadata { get; set; }
 
         /// <summary>Output only. Metadata about the QA question-answer dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionAnswerDimensionMetadata")]
@@ -22007,6 +21559,58 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata about the client sentiment category dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The client sentiment category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentCategory")]
+        public virtual string SentimentCategory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the conversation profile dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The conversation profile ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfileId")]
+        public virtual string ConversationProfileId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the Conversational Agents playbook dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The dialogflow playbook display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbookDisplayName")]
+        public virtual string PlaybookDisplayName { get; set; }
+
+        /// <summary>Optional. The dialogflow playbook ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbookId")]
+        public virtual string PlaybookId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the Conversational Agents tool dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The dialogflow tool display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolDisplayName")]
+        public virtual string ToolDisplayName { get; set; }
+
+        /// <summary>Optional. The dialogflow tool ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolId")]
+        public virtual string ToolId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata about the issue dimension.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22021,6 +21625,17 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The parent issue model ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issueModelId")]
         public virtual string IssueModelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the conversation medium dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The conversation medium. Currently supports : PHONE_CALL, CHAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medium")]
+        public virtual string Medium { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
