@@ -3675,6 +3675,28 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         }
     }
 
+    /// <summary>AppHubService represents the App Hub Service.</summary>
+    public class AppHubService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Output only. Immutable. The name of the App Hub Service. Format:
+        /// `projects/{project}/locations/{location}/applications/{application}/services/{service}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apphubService")]
+        public virtual string ApphubService { get; set; }
+
+        /// <summary>Output only. The criticality of the App Hub Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("criticality")]
+        public virtual string Criticality { get; set; }
+
+        /// <summary>Output only. The environment of the App Hub Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AppHubWorkload represents the App Hub Workload.</summary>
     public class AppHubWorkload : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4683,6 +4705,20 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>GoogleCloudRun represents the Cloud Run runtime.</summary>
+    public class GoogleCloudRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. The name of the Cloud Run service. Format:
+        /// `projects/{project}/locations/{location}/services/{service}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceUri")]
+        public virtual string ServiceUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be
     /// represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and
@@ -5321,6 +5357,10 @@ namespace Google.Apis.DeveloperConnect.v1.Data
     /// <summary>RuntimeConfig represents the runtimes where the application is deployed.</summary>
     public class RuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. App Hub Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appHubService")]
+        public virtual AppHubService AppHubService { get; set; }
+
         /// <summary>Output only. App Hub Workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appHubWorkload")]
         public virtual AppHubWorkload AppHubWorkload { get; set; }
@@ -5328,6 +5368,10 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// <summary>Output only. Google Kubernetes Engine runtime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeWorkload")]
         public virtual GKEWorkload GkeWorkload { get; set; }
+
+        /// <summary>Output only. Cloud Run runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleCloudRun")]
+        public virtual GoogleCloudRun GoogleCloudRun { get; set; }
 
         /// <summary>Output only. The state of the Runtime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
