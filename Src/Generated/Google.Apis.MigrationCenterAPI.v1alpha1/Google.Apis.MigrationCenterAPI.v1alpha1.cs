@@ -5452,8 +5452,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -5871,6 +5871,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsCloudFrontDistributionDetails")]
         public virtual AwsCloudFrontDistributionDetails AwsCloudFrontDistributionDetails { get; set; }
 
+        /// <summary>Output only. Asset information specific for AWS DynamoDB tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsDynamodbTableDetails")]
+        public virtual AwsDynamoDBTableDetails AwsDynamodbTableDetails { get; set; }
+
         /// <summary>Output only. Asset information specific for AWS ECS clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsEcsClusterDetails")]
         public virtual AwsEcsClusterDetails AwsEcsClusterDetails { get; set; }
@@ -5891,9 +5895,17 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsLambdaFunctionDetails")]
         public virtual AwsLambdaFunctionDetails AwsLambdaFunctionDetails { get; set; }
 
+        /// <summary>Output only. Asset information specific for AwsNatGatewayDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsNatGatewayDetails")]
+        public virtual AwsNatGatewayDetails AwsNatGatewayDetails { get; set; }
+
         /// <summary>Output only. Asset information specific for AWS Redshift</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsRedshiftDetails")]
         public virtual AwsRedshiftDetails AwsRedshiftDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for AwsRoute53HostedZoneDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsRoute53HostedZoneDetails")]
+        public virtual AwsRoute53HostedZoneDetails AwsRoute53HostedZoneDetails { get; set; }
 
         /// <summary>Output only. Asset information specific for AWS S3 buckets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsS3BucketDetails")]
@@ -6085,6 +6097,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsCloudFrontDistributionDetails")]
         public virtual AwsCloudFrontDistributionDetails AwsCloudFrontDistributionDetails { get; set; }
 
+        /// <summary>Asset information specific for AWS DynamoDB tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsDynamodbTableDetails")]
+        public virtual AwsDynamoDBTableDetails AwsDynamodbTableDetails { get; set; }
+
         /// <summary>Asset information specific for AWS ECS clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsEcsClusterDetails")]
         public virtual AwsEcsClusterDetails AwsEcsClusterDetails { get; set; }
@@ -6105,9 +6121,17 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsLambdaFunctionDetails")]
         public virtual AwsLambdaFunctionDetails AwsLambdaFunctionDetails { get; set; }
 
+        /// <summary>Asset information specific for AwsNatGatewayDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsNatGatewayDetails")]
+        public virtual AwsNatGatewayDetails AwsNatGatewayDetails { get; set; }
+
         /// <summary>Asset information specific for AWS Redshift clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsRedshiftDetails")]
         public virtual AwsRedshiftDetails AwsRedshiftDetails { get; set; }
+
+        /// <summary>Asset information specific for AwsRoute53HostedZoneDetails</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsRoute53HostedZoneDetails")]
+        public virtual AwsRoute53HostedZoneDetails AwsRoute53HostedZoneDetails { get; set; }
 
         /// <summary>Asset information specific for AWS S3 buckets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsS3BucketDetails")]
@@ -6524,14 +6548,6 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Configuration for network dependencies exports.</summary>
     public class AssetsExportJobNetworkDependencies : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. When this value is set to a positive integer, network connections data will be returned for the
-        /// most recent days for which data is available. When this value is unset (or set to zero), all available data
-        /// is returned.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxDays")]
-        public virtual System.Nullable<int> MaxDays { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6554,6 +6570,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
 
     /// <summary>Details of an AWS CloudFront distribution.</summary>
     public class AwsCloudFrontDistributionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of an AWS DynamoDB table.</summary>
+    public class AwsDynamoDBTableDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6613,6 +6636,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of an AWS NAT Gateway.</summary>
+    public class AwsNatGatewayDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specific details for an AWS RDS database deployment.</summary>
     public class AwsRds : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6622,6 +6652,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
 
     /// <summary>Details of an AWS Redshift cluster.</summary>
     public class AwsRedshiftDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of an AWS Route 53 Hosted Zone.</summary>
+    public class AwsRoute53HostedZoneDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
