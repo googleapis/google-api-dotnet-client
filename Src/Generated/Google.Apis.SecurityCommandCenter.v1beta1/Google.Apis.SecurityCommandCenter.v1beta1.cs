@@ -9563,12 +9563,76 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
     /// <summary>The AppHub application associated with the resource, if any.</summary>
     public class GoogleCloudSecuritycenterV2IssueResourceApplication : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Consumer provided attributes for the application</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes Attributes { get; set; }
+
         /// <summary>
         /// The resource name of an Application. Format:
         /// `projects/{host-project-id}/locations/{location}/applications/{application-id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Consumer provided attributes for the application</summary>
+    public class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Business team that ensures user needs are met and value is delivered</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessOwners")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo> BusinessOwners { get; set; }
+
+        /// <summary>User-defined criticality information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("criticality")]
+        public virtual GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality Criticality { get; set; }
+
+        /// <summary>Developer team that owns development and coding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerOwners")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo> DeveloperOwners { get; set; }
+
+        /// <summary>User-defined environment information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment Environment { get; set; }
+
+        /// <summary>Operator team that ensures runtime and operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatorOwners")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo> OperatorOwners { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contact information of stakeholders.</summary>
+    public class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email address of the contacts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Criticality of the Application, Service, or Workload</summary>
+    public class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Criticality Type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Environment of the Application, Service, or Workload</summary>
+    public class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Environment Type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
