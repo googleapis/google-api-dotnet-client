@@ -5206,14 +5206,14 @@ namespace Google.Apis.CloudIdentity.v1
             this.service = service;
         }
 
-        /// <summary>Get a Policy</summary>
+        /// <summary>Get a policy.</summary>
         /// <param name="name">Required. The name of the policy to retrieve. Format: "policies/{policy}".</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(this.service, name);
         }
 
-        /// <summary>Get a Policy</summary>
+        /// <summary>Get a policy.</summary>
         public class GetRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.Policy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -5251,13 +5251,13 @@ namespace Google.Apis.CloudIdentity.v1
             }
         }
 
-        /// <summary>List Policies</summary>
+        /// <summary>List policies.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(this.service);
         }
 
-        /// <summary>List Policies</summary>
+        /// <summary>List policies.</summary>
         public class ListRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.ListPoliciesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
