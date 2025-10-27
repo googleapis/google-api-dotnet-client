@@ -4375,6 +4375,13 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual GoogleCloudRunV2ResourceRequirements Resources { get; set; }
 
         /// <summary>
+        /// Optional. Location of the source .tar.gz file in Cloud Storage. examples: - gs://bucket/object.tar.gz. -
+        /// gs://bucket/object.tar.gz#1234567890 (with object generation)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>
         /// Startup probe of application within the container. All other probes are disabled if a startup probe is
         /// provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
         /// </summary>
