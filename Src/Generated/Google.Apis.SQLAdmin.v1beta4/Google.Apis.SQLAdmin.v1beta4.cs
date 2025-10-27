@@ -9972,6 +9972,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("crashSafeReplicationEnabled")]
         public virtual System.Nullable<bool> CrashSafeReplicationEnabled { get; set; }
 
+        /// <summary>
+        /// This parameter controls whether to allow using Data API to connect to the instance. Not allowed by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataApiAccess")]
+        public virtual string DataApiAccess { get; set; }
+
         /// <summary>Configuration for data cache.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataCacheConfig")]
         public virtual DataCacheConfig DataCacheConfig { get; set; }
