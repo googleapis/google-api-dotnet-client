@@ -1644,6 +1644,172 @@ namespace Google.Apis.Backupdr.v1
                             }
                         }
 
+                        /// <summary>Fetch Backups for a given resource type.</summary>
+                        /// <param name="parent">
+                        /// Required. Datasources are the parent resource for the backups. Format:
+                        /// projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{datasourceId}
+                        /// </param>
+                        public virtual FetchForResourceTypeRequest FetchForResourceType(string parent)
+                        {
+                            return new FetchForResourceTypeRequest(this.service, parent);
+                        }
+
+                        /// <summary>Fetch Backups for a given resource type.</summary>
+                        public class FetchForResourceTypeRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.FetchBackupsForResourceTypeResponse>
+                        {
+                            /// <summary>Constructs a new FetchForResourceType request.</summary>
+                            public FetchForResourceTypeRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Datasources are the parent resource for the backups. Format:
+                            /// projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{datasourceId}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. A filter expression that filters the results fetched in the response. The
+                            /// expression must specify the field name, a comparison operator, and the value that you
+                            /// want to use for filtering. Supported fields:
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>
+                            /// Optional. A comma-separated list of fields to order by, sorted in ascending order. Use
+                            /// "desc" after a field name for descending.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>
+                            /// Optional. The maximum number of Backups to return. The service may return fewer than
+                            /// this value. If unspecified, at most 50 Backups will be returned. The maximum value is
+                            /// 100; values above 100 will be coerced to 100.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. A page token, received from a previous call of `FetchBackupsForResourceType`.
+                            /// Provide this to retrieve the subsequent page. When paginating, all other parameters
+                            /// provided to `FetchBackupsForResourceType` must match the call that provided the page
+                            /// token.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>
+                            /// Required. The type of the GCP resource. Ex: sqladmin.googleapis.com/Instance
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("resourceType", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string ResourceType { get; set; }
+
+                            /// <summary>
+                            /// Optional. This parameter is used to specify the view of the backup. If not specified,
+                            /// the default view is BASIC.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                            /// <summary>
+                            /// Optional. This parameter is used to specify the view of the backup. If not specified,
+                            /// the default view is BASIC.
+                            /// </summary>
+                            public enum ViewEnum
+                            {
+                                /// <summary>If the value is not set, the default 'FULL' view is used.</summary>
+                                [Google.Apis.Util.StringValueAttribute("BACKUP_VIEW_UNSPECIFIED")]
+                                BACKUPVIEWUNSPECIFIED = 0,
+
+                                /// <summary>Includes basic data about the Backup, but not the full contents.</summary>
+                                [Google.Apis.Util.StringValueAttribute("BACKUP_VIEW_BASIC")]
+                                BACKUPVIEWBASIC = 1,
+
+                                /// <summary>
+                                /// Includes all data about the Backup. This is the default value (for both ListBackups
+                                /// and GetBackup).
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("BACKUP_VIEW_FULL")]
+                                BACKUPVIEWFULL = 2,
+                            }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "fetchForResourceType";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/backups:fetchForResourceType";
+
+                            /// <summary>Initializes FetchForResourceType parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+/dataSources/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("resourceType", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resourceType",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "view",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
                         /// <summary>Gets details of a Backup.</summary>
                         /// <param name="name">
                         /// Required. Name of the data source resource name, in the format
@@ -3660,6 +3826,121 @@ namespace Google.Apis.Backupdr.v1
                         });
                     }
                 }
+
+                /// <summary>Lists DataSourceReferences for a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource name. Format: projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists DataSourceReferences for a given project and location.</summary>
+                public class ListRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.ListDataSourceReferencesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource name. Format: projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A filter expression that filters the results listed in the response. The expression
+                    /// must specify the field name, a comparison operator, and the value that you want to use for
+                    /// filtering. The following field and operator combinations are supported: *
+                    /// data_source_gcp_resource_info.gcp_resourcename with `=`, `!=` *
+                    /// data_source_gcp_resource_info.type with `=`, `!=`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
+                    /// after a field name for descending. Supported fields: * data_source *
+                    /// data_source_gcp_resource_info.gcp_resourcename
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of DataSourceReferences to return. The service may return fewer
+                    /// than this value. If unspecified, at most 50 DataSourceReferences will be returned. The maximum
+                    /// value is 100; values above 100 will be coerced to 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListDataSourceReferences` call. Provide this
+                    /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListDataSourceReferences` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/dataSourceReferences";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the ManagementServers resource.</summary>
@@ -5584,6 +5865,10 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcpBackupPlanInfo")]
         public virtual GCPBackupPlanInfo GcpBackupPlanInfo { get; set; }
 
+        /// <summary>Output only. Unique identifier of the GCP resource that is being backed up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpResource")]
+        public virtual BackupGcpResource GcpResource { get; set; }
+
         /// <summary>
         /// Optional. Resource labels to represent user provided metadata. No labels currently defined.
         /// </summary>
@@ -6108,6 +6393,25 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyManagementUri")]
         public virtual string ThirdPartyManagementUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Minimum details to identify a Google Cloud resource for a backup.</summary>
+    public class BackupGcpResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the Google Cloud resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpResourcename")]
+        public virtual string GcpResourcename { get; set; }
+
+        /// <summary>Location of the resource: //"global"/"unspecified".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Type of the resource. Use the Unified Resource Type, eg. compute.googleapis.com/Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6944,6 +7248,84 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Output only. Whether the backup is a final backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalBackup")]
         public virtual System.Nullable<bool> FinalBackup { get; set; }
+
+        private string _instanceCreateTimeRaw;
+
+        private object _instanceCreateTime;
+
+        /// <summary>Output only. The instance creation timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceCreateTime")]
+        public virtual string InstanceCreateTimeRaw
+        {
+            get => _instanceCreateTimeRaw;
+            set
+            {
+                _instanceCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _instanceCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InstanceCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InstanceCreateTimeDateTimeOffset instead.")]
+        public virtual object InstanceCreateTime
+        {
+            get => _instanceCreateTime;
+            set
+            {
+                _instanceCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _instanceCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="InstanceCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InstanceCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InstanceCreateTimeRaw);
+            set => InstanceCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _instanceDeleteTimeRaw;
+
+        private object _instanceDeleteTime;
+
+        /// <summary>Output only. The instance delete timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceDeleteTime")]
+        public virtual string InstanceDeleteTimeRaw
+        {
+            get => _instanceDeleteTimeRaw;
+            set
+            {
+                _instanceDeleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _instanceDeleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InstanceDeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InstanceDeleteTimeDateTimeOffset instead.")]
+        public virtual object InstanceDeleteTime
+        {
+            get => _instanceDeleteTime;
+            set
+            {
+                _instanceDeleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _instanceDeleteTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="InstanceDeleteTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InstanceDeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InstanceDeleteTimeRaw);
+            set => InstanceDeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Output only. The tier (or machine type) for this instance. Example: `db-custom-1-3840`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTier")]
@@ -7800,6 +8182,12 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. Total size of the storage used by all backup resources for the referenced datasource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalStoredBytes")]
+        public virtual System.Nullable<long> TotalStoredBytes { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8189,6 +8577,24 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>
         /// Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
         /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the FetchBackupsForResourceType method.</summary>
+    public class FetchBackupsForResourceTypeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Backups from the specified parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backups")]
+        public virtual System.Collections.Generic.IList<Backup> Backups { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -8750,6 +9156,24 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the ListDataSourceReferences method.</summary>
+    public class ListDataSourceReferencesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The DataSourceReferences from the specified parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceReferences")]
+        public virtual System.Collections.Generic.IList<DataSourceReference> DataSourceReferences { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
