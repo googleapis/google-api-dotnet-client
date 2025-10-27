@@ -1883,6 +1883,17 @@ namespace Google.Apis.CloudFilestore.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
+                    /// `true` when reading across collections e.g. when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                    /// specific documentation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -1923,6 +1934,14 @@ namespace Google.Apis.CloudFilestore.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2293,6 +2312,17 @@ namespace Google.Apis.CloudFilestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
         public virtual TimeOfDay Time { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Directory Services configuration for Kerberos-based authentication.</summary>
+    public class DirectoryServicesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for LDAP servers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ldap")]
+        public virtual LdapConfig Ldap { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2946,6 +2976,13 @@ namespace Google.Apis.CloudFilestore.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol
+        /// is "NFS_V4_1".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directoryServices")]
+        public virtual DirectoryServicesConfig DirectoryServices { get; set; }
+
+        /// <summary>
         /// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -3040,6 +3077,42 @@ namespace Google.Apis.CloudFilestore.v1.Data
         public virtual string Tier { get; set; }
     }
 
+    /// <summary>LdapConfig contains all the parameters for connecting to LDAP servers.</summary>
+    public class LdapConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The LDAP domain name in the format of `my-domain.com`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>
+        /// Optional. The groups Organizational Unit (OU) is optional. This parameter is a hint to allow faster lookup
+        /// in the LDAP namespace. In case that this parameter is not provided, Filestore instance will query the whole
+        /// LDAP namespace.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupsOu")]
+        public virtual string GroupsOu { get; set; }
+
+        /// <summary>
+        /// Required. The servers names are used for specifying the LDAP servers names. The LDAP servers names can come
+        /// with two formats: 1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`. 2. IP address, for
+        /// example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`. All servers names must be in the same format: either all DNS
+        /// names or all IP addresses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servers")]
+        public virtual System.Collections.Generic.IList<string> Servers { get; set; }
+
+        /// <summary>
+        /// Optional. The users Organizational Unit (OU) is optional. This parameter is a hint to allow faster lookup in
+        /// the LDAP namespace. In case that this parameter is not provided, Filestore instance will query the whole
+        /// LDAP namespace.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usersOu")]
+        public virtual string UsersOu { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ListBackupsResponse is the result of ListBackupsRequest.</summary>
     public class ListBackupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3119,6 +3192,14 @@ namespace Google.Apis.CloudFilestore.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
