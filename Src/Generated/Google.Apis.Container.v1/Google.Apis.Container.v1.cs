@@ -9519,6 +9519,13 @@ namespace Google.Apis.Container.v1.Data
         public virtual HugepagesConfig Hugepages { get; set; }
 
         /// <summary>
+        /// Optional. Configuration for kernel module loading on nodes. When enabled, the node pool will be provisioned
+        /// with a Container-Optimized OS image that enforces kernel module signature verification.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeKernelModuleLoading")]
+        public virtual NodeKernelModuleLoading NodeKernelModuleLoading { get; set; }
+
+        /// <summary>
         /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following
         /// parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog
         /// net.core.rmem_max net.core.rmem_default net.core.wmem_default net.core.wmem_max net.core.optmem_max
@@ -9697,6 +9704,10 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>Represents the Maintenance exclusion option.</summary>
     public class MaintenanceExclusionOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>EndTimeBehavior specifies the behavior of the exclusion end time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTimeBehavior")]
+        public virtual string EndTimeBehavior { get; set; }
+
         /// <summary>Scope specifies the upgrade scope which upgrades are blocked by the exclusion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
@@ -10444,6 +10455,17 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeKubeletConfig")]
         public virtual NodeKubeletConfig NodeKubeletConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for kernel module loading on nodes.</summary>
+    public class NodeKernelModuleLoading : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set the node module loading policy for nodes in the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13038,6 +13060,11 @@ namespace Google.Apis.Container.v1.Data
         /// [zones](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the
         /// node pool's nodes should be located. Changing the locations for a node pool will result in nodes being
         /// either created or removed from the node pool, depending on whether locations are being added or removed.
+        /// Warning: It is recommended to update node pool locations in a standalone API call. Do not combine a location
+        /// update with changes to other fields (such as `tags`, `labels`, `taints`, etc.) in the same request.
+        /// Otherwise, the API performs a structural modification where changes to other fields will only apply to newly
+        /// created nodes and will not be applied to existing nodes in the node pool. To ensure all nodes are updated
+        /// consistently, use a separate API call for location changes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<string> Locations { get; set; }
