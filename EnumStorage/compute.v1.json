@@ -29,6 +29,11 @@
     "BLOCK_VIEW_UNSPECIFIED",
     "FULL"
   ],
+  "Google.Apis.Compute.v1.ReservationSubBlocksResource+GetRequest.ViewEnum": [
+    "SUB_BLOCK_VIEW_BASIC",
+    "SUB_BLOCK_VIEW_FULL",
+    "SUB_BLOCK_VIEW_UNSPECIFIED"
+  ],
   "Google.Apis.Compute.v1.RoutersResource+ListBgpRoutesRequest.AddressFamilyEnum": [
     "IPV4",
     "IPV6",
@@ -38,6 +43,10 @@
     "ADVERTISED",
     "LEARNED",
     "UNSPECIFIED_ROUTE_TYPE"
+  ],
+  "Google.Apis.Compute.v1.SubnetworksResource+AggregatedListRequest.ViewsEnum": [
+    "DEFAULT",
+    "WITH_UTILIZATION"
   ],
   "Google.Apis.Compute.v1.SubnetworksResource+GetRequest.ViewsEnum": [
     "DEFAULT",
