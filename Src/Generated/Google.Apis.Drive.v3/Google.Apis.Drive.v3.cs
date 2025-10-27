@@ -7071,6 +7071,12 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string Anchor { get; set; }
 
         /// <summary>
+        /// Output only. The email of the user who is assigned to this comment, if none is assigned this will be unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assigneeEmailAddress")]
+        public virtual string AssigneeEmailAddress { get; set; }
+
+        /// <summary>
         /// Output only. The author of the comment. The author's email address and permission ID will not be populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
@@ -7121,6 +7127,13 @@ namespace Google.Apis.Drive.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Output only. The emails of the users who were mentioned in this comment, if none were mentioned this will be
+        /// an empty list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mentionedEmailAddresses")]
+        public virtual System.Collections.Generic.IList<string> MentionedEmailAddresses { get; set; }
 
         /// <summary>The last time the comment or any of its replies was modified (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedTime")]
@@ -9166,6 +9179,12 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string Action { get; set; }
 
         /// <summary>
+        /// Output only. The email of the user who is assigned to this reply, if none is assigned this will be unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assigneeEmailAddress")]
+        public virtual string AssigneeEmailAddress { get; set; }
+
+        /// <summary>
         /// Output only. The author of the reply. The author's email address and permission ID will not be populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
@@ -9216,6 +9235,13 @@ namespace Google.Apis.Drive.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Output only. The emails of the users who were mentioned in this reply, if none were mentioned this will be
+        /// an empty list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mentionedEmailAddresses")]
+        public virtual System.Collections.Generic.IList<string> MentionedEmailAddresses { get; set; }
 
         /// <summary>The last time the reply was modified (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedTime")]
