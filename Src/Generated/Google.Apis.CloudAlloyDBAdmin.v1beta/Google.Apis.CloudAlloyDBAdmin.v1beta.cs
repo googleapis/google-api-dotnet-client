@@ -4670,6 +4670,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
         public virtual string DatabaseVersion { get; set; }
 
+        /// <summary>Optional. Configuration for Dataplex integration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataplexConfig")]
+        public virtual DataplexConfig DataplexConfig { get; set; }
+
         private string _deleteTimeRaw;
 
         private object _deleteTime;
@@ -5315,6 +5319,20 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>Required. The database table to import CSV file into.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual string Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Dataplex integration.</summary>
+    public class DataplexConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Dataplex is enabled by default for resources such as clusters and instances. This flag controls the
+        /// integration of AlloyDB PG resources (like databases, schemas, and tables) with Dataplex."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
