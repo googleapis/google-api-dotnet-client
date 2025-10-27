@@ -34,6 +34,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
         /// <param name="initializer">The service initializer.</param>
         public DiscoveryEngineService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            BillingAccounts = new BillingAccountsResource(this);
             Media = new MediaResource(this);
             Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://discoveryengine.googleapis.com/");
@@ -109,6 +110,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
             /// </summary>
             public const string DiscoveryengineReadwrite = "https://www.googleapis.com/auth/discoveryengine.readwrite";
         }
+
+        /// <summary>Gets the BillingAccounts resource.</summary>
+        public virtual BillingAccountsResource BillingAccounts { get; }
 
         /// <summary>Gets the Media resource.</summary>
         public virtual MediaResource Media { get; }
@@ -295,6 +299,164 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "billingAccounts" collection of methods.</summary>
+    public class BillingAccountsResource
+    {
+        private const string Resource = "billingAccounts";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public BillingAccountsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            BillingAccountLicenseConfigs = new BillingAccountLicenseConfigsResource(service);
+        }
+
+        /// <summary>Gets the BillingAccountLicenseConfigs resource.</summary>
+        public virtual BillingAccountLicenseConfigsResource BillingAccountLicenseConfigs { get; }
+
+        /// <summary>The "billingAccountLicenseConfigs" collection of methods.</summary>
+        public class BillingAccountLicenseConfigsResource
+        {
+            private const string Resource = "billingAccountLicenseConfigs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public BillingAccountLicenseConfigsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Distributes a LicenseConfig from billing account level to project level.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="billingAccountLicenseConfig">
+            /// Required. Full resource name of BillingAccountLicenseConfig. Format:
+            /// `billingAccounts/{billing_account}/billingAccountLicenseConfigs/{billing_account_license_config_id}`.
+            /// </param>
+            public virtual DistributeLicenseConfigRequest DistributeLicenseConfig(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigRequest body, string billingAccountLicenseConfig)
+            {
+                return new DistributeLicenseConfigRequest(this.service, body, billingAccountLicenseConfig);
+            }
+
+            /// <summary>Distributes a LicenseConfig from billing account level to project level.</summary>
+            public class DistributeLicenseConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigResponse>
+            {
+                /// <summary>Constructs a new DistributeLicenseConfig request.</summary>
+                public DistributeLicenseConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigRequest body, string billingAccountLicenseConfig) : base(service)
+                {
+                    BillingAccountLicenseConfig = billingAccountLicenseConfig;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Full resource name of BillingAccountLicenseConfig. Format:
+                /// `billingAccounts/{billing_account}/billingAccountLicenseConfigs/{billing_account_license_config_id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("billingAccountLicenseConfig", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string BillingAccountLicenseConfig { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "distributeLicenseConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+billingAccountLicenseConfig}:distributeLicenseConfig";
+
+                /// <summary>Initializes DistributeLicenseConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("billingAccountLicenseConfig", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "billingAccountLicenseConfig",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+/billingAccountLicenseConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// This method is called from the billing account side to retract the LicenseConfig from the given project
+            /// back to the billing account.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="billingAccountLicenseConfig">
+            /// Required. Full resource name of BillingAccountLicenseConfig. Format:
+            /// `billingAccounts/{billing_account}/billingAccountLicenseConfigs/{billing_account_license_config_id}`.
+            /// </param>
+            public virtual RetractLicenseConfigRequest RetractLicenseConfig(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigRequest body, string billingAccountLicenseConfig)
+            {
+                return new RetractLicenseConfigRequest(this.service, body, billingAccountLicenseConfig);
+            }
+
+            /// <summary>
+            /// This method is called from the billing account side to retract the LicenseConfig from the given project
+            /// back to the billing account.
+            /// </summary>
+            public class RetractLicenseConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse>
+            {
+                /// <summary>Constructs a new RetractLicenseConfig request.</summary>
+                public RetractLicenseConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigRequest body, string billingAccountLicenseConfig) : base(service)
+                {
+                    BillingAccountLicenseConfig = billingAccountLicenseConfig;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Full resource name of BillingAccountLicenseConfig. Format:
+                /// `billingAccounts/{billing_account}/billingAccountLicenseConfigs/{billing_account_license_config_id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("billingAccountLicenseConfig", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string BillingAccountLicenseConfig { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "retractLicenseConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+billingAccountLicenseConfig}:retractLicenseConfig";
+
+                /// <summary>Initializes RetractLicenseConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("billingAccountLicenseConfig", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "billingAccountLicenseConfig",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+/billingAccountLicenseConfigs/[^/]+$",
+                    });
+                }
+            }
         }
     }
 
@@ -8774,6 +8936,381 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         public AssistantsResource(Google.Apis.Services.IClientService service)
                         {
                             this.service = service;
+                            CannedQueries = new CannedQueriesResource(service);
+                        }
+
+                        /// <summary>Gets the CannedQueries resource.</summary>
+                        public virtual CannedQueriesResource CannedQueries { get; }
+
+                        /// <summary>The "cannedQueries" collection of methods.</summary>
+                        public class CannedQueriesResource
+                        {
+                            private const string Resource = "cannedQueries";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public CannedQueriesResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>Creates a CannedQuery.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="parent">
+                            /// Required. The parent resource name. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                            /// </param>
+                            public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCannedQuery body, string parent)
+                            {
+                                return new CreateRequest(this.service, body, parent);
+                            }
+
+                            /// <summary>Creates a CannedQuery.</summary>
+                            public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCannedQuery>
+                            {
+                                /// <summary>Constructs a new Create request.</summary>
+                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCannedQuery body, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The parent resource name. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>
+                                /// Required. The ID to use for the canned query, which will become the final component
+                                /// of the canned query's resource name. This field must conform to
+                                /// [RFC-1034](https://tools.ietf.org/html/rfc1034) with a length limit of 63
+                                /// characters.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("cannedQueryId", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string CannedQueryId { get; set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCannedQuery Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "create";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+parent}/cannedQueries";
+
+                                /// <summary>Initializes Create parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+$",
+                                    });
+                                    RequestParameters.Add("cannedQueryId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "cannedQueryId",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+
+                            /// <summary>Deletes a CannedQuery.</summary>
+                            /// <param name="name">
+                            /// Required. Resource name of CannedQuery. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/cannedQueries/{canned_query}`
+                            /// If the caller does not have permission to delete the canned query, regardless of whether
+                            /// or not it exists, a `PERMISSION_DENIED` error is returned. If the canned query to delete
+                            /// does not exist, a `NOT_FOUND` error is returned.
+                            /// </param>
+                            public virtual DeleteRequest Delete(string name)
+                            {
+                                return new DeleteRequest(this.service, name);
+                            }
+
+                            /// <summary>Deletes a CannedQuery.</summary>
+                            public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
+                            {
+                                /// <summary>Constructs a new Delete request.</summary>
+                                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. Resource name of CannedQuery. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/cannedQueries/{canned_query}`
+                                /// If the caller does not have permission to delete the canned query, regardless of
+                                /// whether or not it exists, a `PERMISSION_DENIED` error is returned. If the canned
+                                /// query to delete does not exist, a `NOT_FOUND` error is returned.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "delete";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "DELETE";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}";
+
+                                /// <summary>Initializes Delete parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/cannedQueries/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Gets a CannedQuery.</summary>
+                            /// <param name="name">
+                            /// Required. Resource name of CannedQuery. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/cannedQueries/{canned_query}`
+                            /// </param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(this.service, name);
+                            }
+
+                            /// <summary>Gets a CannedQuery.</summary>
+                            public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCannedQuery>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. Resource name of CannedQuery. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/cannedQueries/{canned_query}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "get";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}";
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/cannedQueries/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Lists all CannedQuerys under an Assistant.</summary>
+                            /// <param name="parent">
+                            /// Required. The parent resource name. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                            /// </param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(this.service, parent);
+                            }
+
+                            /// <summary>Lists all CannedQuerys under an Assistant.</summary>
+                            public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListCannedQueriesResponse>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The parent resource name. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>
+                                /// Optional. The filter expression. Supported fields: * `enabled` * `google_defined`
+                                /// Examples: * `enabled=true` * `google_defined=true` * `enabled=true AND
+                                /// google_defined=true`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string Filter { get; set; }
+
+                                /// <summary>
+                                /// Maximum number of canned queries to return. If unspecified, defaults to 100. The
+                                /// maximum allowed value is 1000; anything above that will be coerced down to 1000.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> PageSize { get; set; }
+
+                                /// <summary>
+                                /// A page token received from a previous CannedQueryService.ListCannedQueries call.
+                                /// Provide this to retrieve the subsequent page. When paginating, all other parameters
+                                /// provided to CannedQueryService.ListCannedQueries must match the call that provided
+                                /// the page token.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string PageToken { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "list";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+parent}/cannedQueries";
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+$",
+                                    });
+                                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "filter",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+
+                            /// <summary>Updates a CannedQuery.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="name">
+                            /// Immutable. Resource name of the canned query. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/cannedQueries/{canned_query}`
+                            /// It must be a UTF-8 encoded string with a length limit of 1024 characters.
+                            /// </param>
+                            public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCannedQuery body, string name)
+                            {
+                                return new PatchRequest(this.service, body, name);
+                            }
+
+                            /// <summary>Updates a CannedQuery.</summary>
+                            public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCannedQuery>
+                            {
+                                /// <summary>Constructs a new Patch request.</summary>
+                                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCannedQuery body, string name) : base(service)
+                                {
+                                    Name = name;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Immutable. Resource name of the canned query. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/cannedQueries/{canned_query}`
+                                /// It must be a UTF-8 encoded string with a length limit of 1024 characters.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>The list of fields to update.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual object UpdateMask { get; set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCannedQuery Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "patch";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "PATCH";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}";
+
+                                /// <summary>Initializes Patch parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/cannedQueries/[^/]+$",
+                                    });
+                                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "updateMask",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
                         }
 
                         /// <summary>Gets an Assistant.</summary>
@@ -35057,6 +35594,93 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Canned query resource of Assistant. It represents a short-cut to a predefined conversation start.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaCannedQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The default (non-localized) values for the text attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultTexts")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts DefaultTexts { get; set; }
+
+        /// <summary>
+        /// The display name of the canned query. It must be a UTF-8 encoded string with a length limit of 128
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Whether this canned query is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Output only. Whether this is a Google-defined, read-only canned query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleDefined")]
+        public virtual System.Nullable<bool> GoogleDefined { get; set; }
+
+        /// <summary>
+        /// Optional. The translations of the text attributes. The keys should be BCP-47 language codes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localizedTexts")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts> LocalizedTexts { get; set; }
+
+        /// <summary>
+        /// Immutable. Resource name of the canned query. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/cannedQueries/{canned_query}`
+        /// It must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The capabilities the Assistant needs to have to use this canned query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredCapabilities")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCannedQueryAssistantCapability> RequiredCapabilities { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Capability of an assistant needed to use this canned query.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCannedQueryAssistantCapability : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the action that the Assistant needs to have set up to use this canned query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionName")]
+        public virtual string ActionName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The text pieces for the canned query, which can be localized.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The prefix that `suggested_prompts` should start with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
+        public virtual string Prefix { get; set; }
+
+        /// <summary>Required. The prompts the canned query will offer to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedPrompts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCannedQuerySuggestedPrompt> SuggestedPrompts { get; set; }
+
+        /// <summary>Required. The title that is for the end user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A suggested prompt for the canned query.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCannedQuerySuggestedPrompt : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The text of the suggested prompt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptText")]
+        public virtual string PromptText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for GroundedGenerationService.CheckGrounding method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaCheckGroundingRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -39195,6 +39819,43 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for LicenseConfigService.DistributeLicenseConfig method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Distribute seats to this license config instead of creating a new one. If not specified, a new
+        /// license config will be created from the billing account license config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConfigId")]
+        public virtual string LicenseConfigId { get; set; }
+
+        /// <summary>Required. The number of licenses to distribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
+        public virtual System.Nullable<long> LicenseCount { get; set; }
+
+        /// <summary>Required. The target GCP project region to distribute the license config to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Required. The target GCP project number to distribute the license config to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
+        public virtual System.Nullable<long> ProjectNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for LicenseConfigService.DistributeLicenseConfig method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated or created LicenseConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaLicenseConfig LicenseConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Document captures all raw metadata information of items to be recommended or searched.</summary>
     public class GoogleCloudDiscoveryengineV1alphaDocument : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -42481,6 +43142,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the CannedQueryService.ListCannedQueries method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListCannedQueriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of CannedQuerys matching the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cannedQueries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCannedQuery> CannedQueries { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as ListCannedQueriesRequest.page_token to retrieve the next page. If this field is
+        /// omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ChunkService.ListChunks method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaListChunksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -44988,6 +45667,41 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Request for resuming training of an engine.</summary>
     public class GoogleCloudDiscoveryengineV1alphaResumeEngineRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for LicenseConfigService.RetractLicenseConfig method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set to true, retract the entire license config. Otherwise, retract the specified license count.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullRetract")]
+        public virtual System.Nullable<bool> FullRetract { get; set; }
+
+        /// <summary>
+        /// Required. Full resource name of LicenseConfig. Format:
+        /// `projects/{project}/locations/{location}/licenseConfigs/{license_config_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConfig")]
+        public virtual string LicenseConfig { get; set; }
+
+        /// <summary>Optional. The number of licenses to retract. Only used when full_retract is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
+        public virtual System.Nullable<long> LicenseCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for LicenseConfigService.RetractLicenseConfig method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated LicenseConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaLicenseConfig LicenseConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -49728,6 +50442,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fieldsUiComponentsMap")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaWidgetConfigUIComponentField> FieldsUiComponentsMap { get; set; }
 
+        /// <summary>Output only. Whether the subscription is gemini bundle or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
+        public virtual System.Nullable<bool> GeminiBundle { get; set; }
+
         /// <summary>Optional. Describes the homepage settings of the widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("homepageSetting")]
         public virtual GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSetting HomepageSetting { get; set; }
@@ -50043,8 +50761,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSetting : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The shortcuts to display on the homepage. LINT.IfChange(max_shortcuts_number)
-        /// LINT.ThenChange(//depot/google3/cloud/console/web/ai/unified_cloud_search/components/widget_preview/widget_homepage_shortcut_config_form.ts:max_shortcuts_number)
+        /// Optional. The shortcuts to display on the homepage. LINT.IfChange(max_shortcuts_number) LINT.ThenChange(
+        /// //depot/google3/cloud/console/web/ai/unified_cloud_search/components/widget_preview/widget_homepage_shortcut_config_form.ts:max_shortcuts_number
+        /// )
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortcuts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSettingShortcut> Shortcuts { get; set; }
