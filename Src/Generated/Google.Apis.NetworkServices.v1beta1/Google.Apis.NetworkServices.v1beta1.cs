@@ -6959,8 +6959,8 @@ namespace Google.Apis.NetworkServices.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. A list of extra location types that should be used as conditions for controlling the
-                /// visibility of the locations.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -7431,7 +7431,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// <summary>
         /// Optional. When set to `TRUE`, the response from an extension service is allowed to set the
         /// `com.google.envoy.dynamic_forwarding` namespace in the dynamic metadata. This field is not supported for
-        /// plugin extensions. Setting it results in a validation error.
+        /// plugin extensions or AuthzExtensions. Setting it results in a validation error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowDynamicForwarding")]
         public virtual System.Nullable<bool> AllowDynamicForwarding { get; set; }
@@ -7465,8 +7465,9 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Optional. The metadata provided here is included as part of the `metadata_context` (of type
-        /// `google.protobuf.Struct`) in the `ProcessingRequest` message sent to the extension server. The metadata is
-        /// available under the namespace `com.google....`. For example:
+        /// `google.protobuf.Struct`) in the `ProcessingRequest` message sent to the extension server. For
+        /// `AuthzExtension` resources, the metadata is available under the namespace `com.google.authz_extension.`. For
+        /// other types of extensions, the metadata is available under the namespace `com.google....`. For example:
         /// `com.google.lb_traffic_extension.lbtrafficextension1.chain1.ext1`. The following variables are supported in
         /// the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
         /// This field must not be set for plugin extensions. Setting it results in a validation error. You can set
@@ -7480,10 +7481,10 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>
-        /// Required. The name for this extension. The name is logged as part of the HTTP request logs. The name must
+        /// Optional. The name for this extension. The name is logged as part of the HTTP request logs. The name must
         /// conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum
         /// length of 63 characters. Additionally, the first character must be a letter and the last a letter or a
-        /// number.
+        /// number. This field is required except for AuthzExtension.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7502,8 +7503,10 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Optional. Configures the send mode for response processing. If unspecified, the default value `STREAMED` is
-        /// used. When this field is set to `FULL_DUPLEX_STREAMED`, `supported_events` must include both `RESPONSE_BODY`
-        /// and `RESPONSE_TRAILERS`. This field can be set only for `LbTrafficExtension` resources, and only when the
+        /// used. The field can only be set if `supported_events` includes `RESPONSE_BODY`. If `supported_events`
+        /// includes `RESPONSE_BODY`, but `response_body_send_mode` is unset, the default value `STREAMED` is used. When
+        /// this field is set to `FULL_DUPLEX_STREAMED`, `supported_events` must include both `RESPONSE_BODY` and
+        /// `RESPONSE_TRAILERS`. This field can be set only for `LbTrafficExtension` resources, and only when the
         /// `service` field of the extension points to a `BackendService`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseBodySendMode")]
@@ -7529,7 +7532,9 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// Optional. A set of events during request or response processing for which this extension is called. For the
         /// `LbTrafficExtension` resource, this field is required. For the `LbRouteExtension` resource, this field is
         /// optional. If unspecified, `REQUEST_HEADERS` event is assumed as supported. For the `LbEdgeExtension`
-        /// resource, this field is required and must only contain `REQUEST_HEADERS` event.
+        /// resource, this field is required and must only contain `REQUEST_HEADERS` event. For the `AuthzExtension`
+        /// resource, this field is optional. `REQUEST_HEADERS` is the only supported event. If unspecified,
+        /// `REQUEST_HEADERS` event is assumed as supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedEvents")]
         public virtual System.Collections.Generic.IList<string> SupportedEvents { get; set; }
