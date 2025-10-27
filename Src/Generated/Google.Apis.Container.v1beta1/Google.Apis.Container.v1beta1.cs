@@ -7252,6 +7252,21 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Swap on the node's boot disk.</summary>
+    public class BootDiskProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the size of the swap space in gibibytes (GiB).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swapSizeGib")]
+        public virtual System.Nullable<long> SwapSizeGib { get; set; }
+
+        /// <summary>Specifies the size of the swap space as a percentage of the boot disk size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swapSizePercent")]
+        public virtual System.Nullable<int> SwapSizePercent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>CancelOperationRequest cancels a single operation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8804,6 +8819,17 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Provisions a new, separate local NVMe SSD exclusively for swap.</summary>
+    public class DedicatedLocalSsdProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of physical local NVMe SSD disks to attach.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskCount")]
+        public virtual System.Nullable<long> DiskCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>DefaultComputeClassConfig defines default compute class configuration.</summary>
     public class DefaultComputeClassConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8881,6 +8907,17 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines encryption settings for the swap space.</summary>
+    public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If true, swap space will not be encrypted. Defaults to false (encrypted).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// EnterpriseConfig is the cluster enterprise configuration. Deprecated: GKE Enterprise features are now available
     /// without an Enterprise tier.
@@ -8894,6 +8931,21 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>desired_tier specifies the desired tier of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredTier")]
         public virtual string DesiredTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Swap on the local SSD shared with pod ephemeral storage.</summary>
+    public class EphemeralLocalSsdProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the size of the swap space in gibibytes (GiB).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swapSizeGib")]
+        public virtual System.Nullable<long> SwapSizeGib { get; set; }
+
+        /// <summary>Specifies the size of the swap space as a percentage of the ephemeral local SSD capacity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swapSizePercent")]
+        public virtual System.Nullable<int> SwapSizePercent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9848,6 +9900,17 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual HugepagesConfig Hugepages { get; set; }
 
         /// <summary>
+        /// Optional. Configuration for kernel module loading on nodes. When enabled, the node pool will be provisioned
+        /// with a Container-Optimized OS image that enforces kernel module signature verification.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeKernelModuleLoading")]
+        public virtual NodeKernelModuleLoading NodeKernelModuleLoading { get; set; }
+
+        /// <summary>Optional. Enables and configures swap space on nodes. If omitted, swap is disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swapConfig")]
+        public virtual SwapConfig SwapConfig { get; set; }
+
+        /// <summary>
         /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following
         /// parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog
         /// net.core.rmem_max net.core.rmem_default net.core.wmem_default net.core.wmem_max net.core.optmem_max
@@ -10068,6 +10131,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Represents the Maintenance exclusion option.</summary>
     public class MaintenanceExclusionOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>EndTimeBehavior specifies the behavior of the exclusion end time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTimeBehavior")]
+        public virtual string EndTimeBehavior { get; set; }
+
         /// <summary>Scope specifies the upgrade scope which upgrades are blocked by the exclusion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
@@ -10851,6 +10918,17 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for kernel module loading on nodes.</summary>
+    public class NodeKernelModuleLoading : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set the node module loading policy for nodes in the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Node kubelet configs.</summary>
     public class NodeKubeletConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11060,6 +11138,14 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Parameters for node pool-level network config.</summary>
     public class NodeNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Immutable. The accelerator network profile for the node pool. For now the only valid value is "auto". If
+        /// specified, the network configuration of the nodes in this node pool will be managed by this profile for the
+        /// supported machine types, zone, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorNetworkProfile")]
+        public virtual string AcceleratorNetworkProfile { get; set; }
+
         /// <summary>
         /// We specify the additional node networks for this node pool using this list. Each node network corresponds to
         /// an additional interface
@@ -13209,6 +13295,33 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for swap memory on a node pool.</summary>
+    public class SwapConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Swap on the node's boot disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskProfile")]
+        public virtual BootDiskProfile BootDiskProfile { get; set; }
+
+        /// <summary>Provisions a new, separate local NVMe SSD exclusively for swap.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dedicatedLocalSsdProfile")]
+        public virtual DedicatedLocalSsdProfile DedicatedLocalSsdProfile { get; set; }
+
+        /// <summary>Optional. Enables or disables swap for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Optional. If omitted, swap space is encrypted by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual EncryptionConfig EncryptionConfig { get; set; }
+
+        /// <summary>Swap on the local SSD shared with pod ephemeral storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ephemeralLocalSsdProfile")]
+        public virtual EphemeralLocalSsdProfile EphemeralLocalSsdProfile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>SyncRotationConfig is config for secret manager auto rotation.</summary>
     public class SyncRotationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13570,6 +13683,11 @@ namespace Google.Apis.Container.v1beta1.Data
         /// [zones](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the
         /// node pool's nodes should be located. Changing the locations for a node pool will result in nodes being
         /// either created or removed from the node pool, depending on whether locations are being added or removed.
+        /// Warning: It is recommended to update node pool locations in a standalone API call. Do not combine a location
+        /// update with changes to other fields (such as `tags`, `labels`, `taints`, etc.) in the same request.
+        /// Otherwise, the API performs a structural modification where changes to other fields will only apply to newly
+        /// created nodes and will not be applied to existing nodes in the node pool. To ensure all nodes are updated
+        /// consistently, use a separate API call for location changes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<string> Locations { get; set; }
@@ -13817,6 +13935,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// </summary>
     public class UpgradeEvent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The current emulated version before the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentEmulatedVersion")]
+        public virtual string CurrentEmulatedVersion { get; set; }
+
         /// <summary>The current version before the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentVersion")]
         public virtual string CurrentVersion { get; set; }
@@ -13875,6 +13997,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
+        /// <summary>The target emulated version for the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetEmulatedVersion")]
+        public virtual string TargetEmulatedVersion { get; set; }
+
         /// <summary>The target version for the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
         public virtual string TargetVersion { get; set; }
@@ -13888,6 +14014,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// </summary>
     public class UpgradeInfoEvent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The current emulated version before the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentEmulatedVersion")]
+        public virtual string CurrentEmulatedVersion { get; set; }
+
         /// <summary>The current version before the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentVersion")]
         public virtual string CurrentVersion { get; set; }
@@ -14070,6 +14200,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Output only. The state of the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The target emulated version for the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetEmulatedVersion")]
+        public virtual string TargetEmulatedVersion { get; set; }
 
         /// <summary>The target version for the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
