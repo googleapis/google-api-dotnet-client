@@ -1599,6 +1599,23 @@ namespace Google.Apis.Looker.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Controlled egress configuration.</summary>
+    public class ControlledEgressConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. List of fully qualified domain names to be added to the allowlist for outbound traffic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressFqdns")]
+        public virtual System.Collections.Generic.IList<string> EgressFqdns { get; set; }
+
+        /// <summary>Optional. Whether marketplace is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketplaceEnabled")]
+        public virtual System.Nullable<bool> MarketplaceEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Custom domain information.</summary>
     public class CustomDomain : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1819,6 +1836,14 @@ namespace Google.Apis.Looker.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
         public virtual string ConsumerNetwork { get; set; }
+
+        /// <summary>Optional. Controlled egress configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlledEgressConfig")]
+        public virtual ControlledEgressConfig ControlledEgressConfig { get; set; }
+
+        /// <summary>Optional. Whether controlled egress is enabled on the Looker instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlledEgressEnabled")]
+        public virtual System.Nullable<bool> ControlledEgressEnabled { get; set; }
 
         private string _createTimeRaw;
 
