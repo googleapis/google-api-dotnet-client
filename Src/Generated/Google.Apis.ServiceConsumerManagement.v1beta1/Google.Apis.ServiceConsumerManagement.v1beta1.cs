@@ -5057,6 +5057,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// The project-level IAM role defined in the service agent's grant configuration. This is the standard role
+        /// intended for this service agent. This field is populated regardless of the `skip_role_attach` option in the
+        /// request. If `skip_role_attach` is true, the caller can use this value to know which role they are
+        /// responsible for granting.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectRole")]
+        public virtual string ProjectRole { get; set; }
+
+        /// <summary>
         /// The P4 service identity configuration tag. This must be defined in activation_grants. If not specified when
         /// creating the account, the tag is set to "default".
         /// </summary>
