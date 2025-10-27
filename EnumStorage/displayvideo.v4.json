@@ -1,4 +1,13 @@
 {
+  "Google.Apis.DisplayVideo.v4.AdvertisersResource+AdAssetsResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DisplayVideo.v4.AdvertisersResource+AdAssetsResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
   "Google.Apis.DisplayVideo.v4.AdvertisersResource+AdGroupsResource+TargetingTypesResource+AssignedTargetingOptionsResource+GetRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",
     "TARGETING_TYPE_CHANNEL",
@@ -102,6 +111,24 @@
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
     "TARGETING_TYPE_SESSION_POSITION",
     "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
+  ],
+  "Google.Apis.DisplayVideo.v4.AdvertisersResource+AdGroupsResource+YoutubeAssetTypesResource+YoutubeAssetAssociationsResource+CreateRequest.YoutubeAssetTypeEnum": [
+    "YOUTUBE_ASSET_TYPE_UNSPECIFIED",
+    "YOUTUBE_ASSET_TYPE_LOCATION",
+    "YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION",
+    "YOUTUBE_ASSET_TYPE_SITELINK"
+  ],
+  "Google.Apis.DisplayVideo.v4.AdvertisersResource+AdGroupsResource+YoutubeAssetTypesResource+YoutubeAssetAssociationsResource+DeleteRequest.YoutubeAssetTypeEnum": [
+    "YOUTUBE_ASSET_TYPE_UNSPECIFIED",
+    "YOUTUBE_ASSET_TYPE_LOCATION",
+    "YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION",
+    "YOUTUBE_ASSET_TYPE_SITELINK"
+  ],
+  "Google.Apis.DisplayVideo.v4.AdvertisersResource+AdGroupsResource+YoutubeAssetTypesResource+YoutubeAssetAssociationsResource+ListRequest.YoutubeAssetTypeEnum": [
+    "YOUTUBE_ASSET_TYPE_UNSPECIFIED",
+    "YOUTUBE_ASSET_TYPE_LOCATION",
+    "YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION",
+    "YOUTUBE_ASSET_TYPE_SITELINK"
   ],
   "Google.Apis.DisplayVideo.v4.AdvertisersResource+AssetsResource+UploadMediaUpload.AltEnum": [
     "json",
@@ -636,6 +663,24 @@
     "TARGETING_TYPE_YOUTUBE_CHANNEL",
     "TARGETING_TYPE_SESSION_POSITION",
     "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
+  ],
+  "Google.Apis.DisplayVideo.v4.AdvertisersResource+LineItemsResource+YoutubeAssetTypesResource+YoutubeAssetAssociationsResource+CreateRequest.YoutubeAssetTypeEnum": [
+    "YOUTUBE_ASSET_TYPE_UNSPECIFIED",
+    "YOUTUBE_ASSET_TYPE_LOCATION",
+    "YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION",
+    "YOUTUBE_ASSET_TYPE_SITELINK"
+  ],
+  "Google.Apis.DisplayVideo.v4.AdvertisersResource+LineItemsResource+YoutubeAssetTypesResource+YoutubeAssetAssociationsResource+DeleteRequest.YoutubeAssetTypeEnum": [
+    "YOUTUBE_ASSET_TYPE_UNSPECIFIED",
+    "YOUTUBE_ASSET_TYPE_LOCATION",
+    "YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION",
+    "YOUTUBE_ASSET_TYPE_SITELINK"
+  ],
+  "Google.Apis.DisplayVideo.v4.AdvertisersResource+LineItemsResource+YoutubeAssetTypesResource+YoutubeAssetAssociationsResource+ListRequest.YoutubeAssetTypeEnum": [
+    "YOUTUBE_ASSET_TYPE_UNSPECIFIED",
+    "YOUTUBE_ASSET_TYPE_LOCATION",
+    "YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION",
+    "YOUTUBE_ASSET_TYPE_SITELINK"
   ],
   "Google.Apis.DisplayVideo.v4.AdvertisersResource+TargetingTypesResource+AssignedTargetingOptionsResource+CreateRequest.TargetingTypeEnum": [
     "TARGETING_TYPE_UNSPECIFIED",

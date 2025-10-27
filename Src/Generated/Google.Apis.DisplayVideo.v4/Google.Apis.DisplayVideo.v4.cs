@@ -354,6 +354,7 @@ namespace Google.Apis.DisplayVideo.v4
         public AdvertisersResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            AdAssets = new AdAssetsResource(service);
             AdGroupAds = new AdGroupAdsResource(service);
             AdGroups = new AdGroupsResource(service);
             Assets = new AssetsResource(service);
@@ -366,6 +367,493 @@ namespace Google.Apis.DisplayVideo.v4
             LocationLists = new LocationListsResource(service);
             NegativeKeywordLists = new NegativeKeywordListsResource(service);
             TargetingTypes = new TargetingTypesResource(service);
+        }
+
+        /// <summary>Gets the AdAssets resource.</summary>
+        public virtual AdAssetsResource AdAssets { get; }
+
+        /// <summary>The "adAssets" collection of methods.</summary>
+        public class AdAssetsResource
+        {
+            private const string Resource = "adAssets";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AdAssetsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>BulkCreate video assets for Ad. Only supports youtube video assets for now.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. The ID of the advertiser this ad asset belongs to.</param>
+            public virtual BulkCreateRequest BulkCreate(Google.Apis.DisplayVideo.v4.Data.BulkCreateAdAssetsRequest body, long advertiserId)
+            {
+                return new BulkCreateRequest(this.service, body, advertiserId);
+            }
+
+            /// <summary>BulkCreate video assets for Ad. Only supports youtube video assets for now.</summary>
+            public class BulkCreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.BulkCreateAdAssetsResponse>
+            {
+                /// <summary>Constructs a new BulkCreate request.</summary>
+                public BulkCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v4.Data.BulkCreateAdAssetsRequest body, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser this ad asset belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v4.Data.BulkCreateAdAssetsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "bulkCreate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/advertisers/{+advertiserId}/adAssets:bulkCreate";
+
+                /// <summary>Initializes BulkCreate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Create a video asset for Ad. Only supports youtube video assets for now.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. The ID of the advertiser this ad asset belongs to.</param>
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v4.Data.CreateAdAssetRequest body, long advertiserId)
+            {
+                return new CreateRequest(this.service, body, advertiserId);
+            }
+
+            /// <summary>Create a video asset for Ad. Only supports youtube video assets for now.</summary>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.AdAsset>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v4.Data.CreateAdAssetRequest body, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser this ad asset belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v4.Data.CreateAdAssetRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/advertisers/{+advertiserId}/adAssets";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Get an ad asset by ad asset ID. Only supports youtube video assets.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser this ad asset belongs to.</param>
+            /// <param name="adAssetId">Required. The ID of the ad asset to fetch.</param>
+            public virtual GetRequest Get(long advertiserId, long adAssetId)
+            {
+                return new GetRequest(this.service, advertiserId, adAssetId);
+            }
+
+            /// <summary>Get an ad asset by ad asset ID. Only supports youtube video assets.</summary>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.AdAsset>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long adAssetId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    AdAssetId = adAssetId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser this ad asset belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The ID of the ad asset to fetch.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("adAssetId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdAssetId { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/advertisers/{+advertiserId}/adAssets/{+adAssetId}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("adAssetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adAssetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>List ad assets by advertiser ID. Only supports youtube video ad assets.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser to list assets for.</param>
+            public virtual ListRequest List(long advertiserId)
+            {
+                return new ListRequest(this.service, advertiserId);
+            }
+
+            /// <summary>List ad assets by advertiser ID. Only supports youtube video ad assets.</summary>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.ListAdAssetsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser to list assets for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>
+                /// Optional. Filter expression to restrict the ad assets to return. The supported fields are: *
+                /// `youtubeVideoAsset.youtubeVideoId` * `entityStatus` Examples: * `entityStatus=ENTITY_STATUS_ACTIVE`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. Field by which to sort the list. Acceptable values are: * `entityStatus` *
+                /// `youtubeVideoAsset.youtubeVideoId` * `adAssetId` (default) The default sorting order is ascending.
+                /// To specify descending order for a field, a suffix "desc" should be added to the field name. Example:
+                /// `assetId desc`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Optional. Requested page size. Must be between `1` and `5000`. If unspecified will default to
+                /// `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A token identifying a page of results the server should return. Typically, this is the
+                /// value of next_page_token returned from the previous call to `ListAssets` method. If not specified,
+                /// the first page of results will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/advertisers/{+advertiserId}/adAssets";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Uploads an ad asset. Returns the ID of the newly uploaded ad asset if successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. The ID of the advertiser this ad asset belongs to.</param>
+            public virtual UploadRequest Upload(Google.Apis.DisplayVideo.v4.Data.UploadAdAssetRequest body, long advertiserId)
+            {
+                return new UploadRequest(this.service, body, advertiserId);
+            }
+
+            /// <summary>Uploads an ad asset. Returns the ID of the newly uploaded ad asset if successful.</summary>
+            public class UploadRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.UploadAdAssetResponse>
+            {
+                /// <summary>Constructs a new Upload request.</summary>
+                public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v4.Data.UploadAdAssetRequest body, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser this ad asset belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v4.Data.UploadAdAssetRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "upload";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/advertisers/{+advertiserId}/adAssets:uploadAdAsset";
+
+                /// <summary>Initializes Upload parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Uploads an ad asset. Returns the ID of the newly uploaded ad asset if successful.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+            /// </list>
+            /// </remarks>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. The ID of the advertiser this ad asset belongs to.</param>
+            /// <param name="stream">The stream to upload. See remarks for further information.</param>
+            /// <param name="contentType">The content type of the stream to upload.</param>
+            public virtual UploadMediaUpload Upload(Google.Apis.DisplayVideo.v4.Data.UploadAdAssetRequest body, long advertiserId, System.IO.Stream stream, string contentType)
+            {
+                return new UploadMediaUpload(service, body, advertiserId, stream, contentType);
+            }
+
+            /// <summary>Upload media upload which supports resumable upload.</summary>
+            public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.DisplayVideo.v4.Data.UploadAdAssetRequest, Google.Apis.DisplayVideo.v4.Data.UploadAdAssetResponse>
+            {
+                /// <summary>V1 error format.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+                /// <summary>V1 error format.</summary>
+                public enum XgafvEnum
+                {
+                    /// <summary>v1 error format</summary>
+                    [Google.Apis.Util.StringValueAttribute("1")]
+                    Value1 = 0,
+
+                    /// <summary>v2 error format</summary>
+                    [Google.Apis.Util.StringValueAttribute("2")]
+                    Value2 = 1,
+                }
+
+                /// <summary>OAuth access token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AccessToken { get; set; }
+
+                /// <summary>Data format for response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+                /// <summary>Data format for response.</summary>
+                public enum AltEnum
+                {
+                    /// <summary>Responses with Content-Type of application/json</summary>
+                    [Google.Apis.Util.StringValueAttribute("json")]
+                    Json = 0,
+
+                    /// <summary>Media download with context-dependent Content-Type</summary>
+                    [Google.Apis.Util.StringValueAttribute("media")]
+                    Media = 1,
+
+                    /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                    [Google.Apis.Util.StringValueAttribute("proto")]
+                    Proto = 2,
+                }
+
+                /// <summary>JSONP</summary>
+                [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Callback { get; set; }
+
+                /// <summary>Selector specifying which fields to include in a partial response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Fields { get; set; }
+
+                /// <summary>
+                /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+                /// Required unless you provide an OAuth 2.0 token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Key { get; set; }
+
+                /// <summary>OAuth 2.0 token for the current user.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OauthToken { get; set; }
+
+                /// <summary>Returns response with indentations and line breaks.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+                /// <summary>
+                /// Available to use for quota purposes for server-side applications. Can be any arbitrary string
+                /// assigned to a user, but should not exceed 40 characters.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string QuotaUser { get; set; }
+
+                /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UploadType { get; set; }
+
+                /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+                [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UploadProtocol { get; set; }
+
+                /// <summary>Required. The ID of the advertiser this ad asset belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Constructs a new Upload media upload instance.</summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item>
+                /// <description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+                /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its
+                /// current position
+                /// </description>
+                /// </item>
+                /// <item>
+                /// <description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is
+                /// completed
+                /// </description>
+                /// </item>
+                /// <item>
+                /// <description>Caller is responsible for closing the <paramref name="stream"/></description>
+                /// </item>
+                /// </list>
+                /// </remarks>
+                public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v4.Data.UploadAdAssetRequest body, long advertiserId, System.IO.Stream stream, string contentType)
+                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "v4/advertisers/{+advertiserId}/adAssets:uploadAdAsset"), "POST", stream, contentType)
+                {
+                    AdvertiserId = advertiserId;
+                    Body = body;
+                }
+            }
         }
 
         /// <summary>Gets the AdGroupAds resource.</summary>
@@ -576,6 +1064,7 @@ namespace Google.Apis.DisplayVideo.v4
             {
                 this.service = service;
                 TargetingTypes = new TargetingTypesResource(service);
+                YoutubeAssetTypes = new YoutubeAssetTypesResource(service);
             }
 
             /// <summary>Gets the TargetingTypes resource.</summary>
@@ -1395,6 +1884,450 @@ namespace Google.Apis.DisplayVideo.v4
                             RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+            }
+
+            /// <summary>Gets the YoutubeAssetTypes resource.</summary>
+            public virtual YoutubeAssetTypesResource YoutubeAssetTypes { get; }
+
+            /// <summary>The "youtubeAssetTypes" collection of methods.</summary>
+            public class YoutubeAssetTypesResource
+            {
+                private const string Resource = "youtubeAssetTypes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public YoutubeAssetTypesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    YoutubeAssetAssociations = new YoutubeAssetAssociationsResource(service);
+                }
+
+                /// <summary>Gets the YoutubeAssetAssociations resource.</summary>
+                public virtual YoutubeAssetAssociationsResource YoutubeAssetAssociations { get; }
+
+                /// <summary>The "youtubeAssetAssociations" collection of methods.</summary>
+                public class YoutubeAssetAssociationsResource
+                {
+                    private const string Resource = "youtubeAssetAssociations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public YoutubeAssetAssociationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Creates a new association between an entity (line item or ad group) and a YouTube asset. Returns
+                    /// the newly created association if successful.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="advertiserId">Required. The ID of the advertiser this request is for.</param>
+                    /// <param name="adGroupId">The unique ID of the ad group linked.</param>
+                    /// <param name="youtubeAssetType">
+                    /// Required. The type of the linked YouTube asset in the association.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.DisplayVideo.v4.Data.YoutubeAssetAssociation body, long advertiserId, long adGroupId, CreateRequest.YoutubeAssetTypeEnum youtubeAssetType)
+                    {
+                        return new CreateRequest(this.service, body, advertiserId, adGroupId, youtubeAssetType);
+                    }
+
+                    /// <summary>
+                    /// Creates a new association between an entity (line item or ad group) and a YouTube asset. Returns
+                    /// the newly created association if successful.
+                    /// </summary>
+                    public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.YoutubeAssetAssociation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v4.Data.YoutubeAssetAssociation body, long advertiserId, long adGroupId, YoutubeAssetTypeEnum youtubeAssetType) : base(service)
+                        {
+                            AdvertiserId = advertiserId;
+                            AdGroupId = adGroupId;
+                            YoutubeAssetType = youtubeAssetType;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The ID of the advertiser this request is for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdvertiserId { get; private set; }
+
+                        /// <summary>The unique ID of the ad group linked.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("adGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdGroupId { get; private set; }
+
+                        /// <summary>Required. The type of the linked YouTube asset in the association.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("youtubeAssetType", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual YoutubeAssetTypeEnum YoutubeAssetType { get; private set; }
+
+                        /// <summary>Required. The type of the linked YouTube asset in the association.</summary>
+                        public enum YoutubeAssetTypeEnum
+                        {
+                            /// <summary>YouTube asset type is not specified or is unknown in this version.</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_UNSPECIFIED")]
+                            YOUTUBEASSETTYPEUNSPECIFIED = 0,
+
+                            /// <summary>Location asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_LOCATION")]
+                            YOUTUBEASSETTYPELOCATION = 1,
+
+                            /// <summary>Affiliate location asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION")]
+                            YOUTUBEASSETTYPEAFFILIATELOCATION = 2,
+
+                            /// <summary>Sitelink asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_SITELINK")]
+                            YOUTUBEASSETTYPESITELINK = 3,
+                        }
+
+                        /// <summary>The unique ID of the line item linked.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("linkedEntity.lineItemId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> LinkedEntityLineItemId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DisplayVideo.v4.Data.YoutubeAssetAssociation Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("adGroupId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "adGroupId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("youtubeAssetType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "youtubeAssetType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("linkedEntity.lineItemId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "linkedEntity.lineItemId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes an existing association between an entity (line item or ad group) and a YouTube asset.
+                    /// </summary>
+                    /// <param name="advertiserId">Required. The ID of the advertiser this request is for.</param>
+                    /// <param name="adGroupId">The unique ID of the ad group linked.</param>
+                    /// <param name="youtubeAssetType">Required. The YouTube asset type this request is for.</param>
+                    /// <param name="youtubeAssetAssociationId">
+                    /// Required. The ID of the YouTube asset in the association. For location associations: This should
+                    /// be the ID of the asset set linked, or 0 if the association stands for location asset is
+                    /// disabled. For affiliate location associations: This should be the ID of the asset set linked, or
+                    /// 0 if the association stands for affiliate location asset is disabled. For sitelink associations:
+                    /// This should be the ID of the sitelink asset linked.
+                    /// </param>
+                    public virtual DeleteRequest Delete(long advertiserId, long adGroupId, DeleteRequest.YoutubeAssetTypeEnum youtubeAssetType, long youtubeAssetAssociationId)
+                    {
+                        return new DeleteRequest(this.service, advertiserId, adGroupId, youtubeAssetType, youtubeAssetAssociationId);
+                    }
+
+                    /// <summary>
+                    /// Deletes an existing association between an entity (line item or ad group) and a YouTube asset.
+                    /// </summary>
+                    public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long adGroupId, YoutubeAssetTypeEnum youtubeAssetType, long youtubeAssetAssociationId) : base(service)
+                        {
+                            AdvertiserId = advertiserId;
+                            AdGroupId = adGroupId;
+                            YoutubeAssetType = youtubeAssetType;
+                            YoutubeAssetAssociationId = youtubeAssetAssociationId;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The ID of the advertiser this request is for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdvertiserId { get; private set; }
+
+                        /// <summary>The unique ID of the ad group linked.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("adGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdGroupId { get; private set; }
+
+                        /// <summary>Required. The YouTube asset type this request is for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("youtubeAssetType", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual YoutubeAssetTypeEnum YoutubeAssetType { get; private set; }
+
+                        /// <summary>Required. The YouTube asset type this request is for.</summary>
+                        public enum YoutubeAssetTypeEnum
+                        {
+                            /// <summary>YouTube asset type is not specified or is unknown in this version.</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_UNSPECIFIED")]
+                            YOUTUBEASSETTYPEUNSPECIFIED = 0,
+
+                            /// <summary>Location asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_LOCATION")]
+                            YOUTUBEASSETTYPELOCATION = 1,
+
+                            /// <summary>Affiliate location asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION")]
+                            YOUTUBEASSETTYPEAFFILIATELOCATION = 2,
+
+                            /// <summary>Sitelink asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_SITELINK")]
+                            YOUTUBEASSETTYPESITELINK = 3,
+                        }
+
+                        /// <summary>
+                        /// Required. The ID of the YouTube asset in the association. For location associations: This
+                        /// should be the ID of the asset set linked, or 0 if the association stands for location asset
+                        /// is disabled. For affiliate location associations: This should be the ID of the asset set
+                        /// linked, or 0 if the association stands for affiliate location asset is disabled. For
+                        /// sitelink associations: This should be the ID of the sitelink asset linked.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("youtubeAssetAssociationId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long YoutubeAssetAssociationId { get; private set; }
+
+                        /// <summary>The unique ID of the line item linked.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("linkedEntity.lineItemId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> LinkedEntityLineItemId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations/{+youtubeAssetAssociationId}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("adGroupId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "adGroupId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("youtubeAssetType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "youtubeAssetType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("youtubeAssetAssociationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "youtubeAssetAssociationId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("linkedEntity.lineItemId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "linkedEntity.lineItemId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists the YouTube asset associations for given resource.</summary>
+                    /// <param name="advertiserId">Required. The ID of the advertiser this request is for.</param>
+                    /// <param name="adGroupId">The unique ID of the ad group linked.</param>
+                    /// <param name="youtubeAssetType">Required. The type of YouTube asset in the association.</param>
+                    public virtual ListRequest List(long advertiserId, long adGroupId, ListRequest.YoutubeAssetTypeEnum youtubeAssetType)
+                    {
+                        return new ListRequest(this.service, advertiserId, adGroupId, youtubeAssetType);
+                    }
+
+                    /// <summary>Lists the YouTube asset associations for given resource.</summary>
+                    public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.ListYoutubeAssetAssociationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long adGroupId, YoutubeAssetTypeEnum youtubeAssetType) : base(service)
+                        {
+                            AdvertiserId = advertiserId;
+                            AdGroupId = adGroupId;
+                            YoutubeAssetType = youtubeAssetType;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The ID of the advertiser this request is for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdvertiserId { get; private set; }
+
+                        /// <summary>The unique ID of the ad group linked.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("adGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdGroupId { get; private set; }
+
+                        /// <summary>Required. The type of YouTube asset in the association.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("youtubeAssetType", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual YoutubeAssetTypeEnum YoutubeAssetType { get; private set; }
+
+                        /// <summary>Required. The type of YouTube asset in the association.</summary>
+                        public enum YoutubeAssetTypeEnum
+                        {
+                            /// <summary>YouTube asset type is not specified or is unknown in this version.</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_UNSPECIFIED")]
+                            YOUTUBEASSETTYPEUNSPECIFIED = 0,
+
+                            /// <summary>Location asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_LOCATION")]
+                            YOUTUBEASSETTYPELOCATION = 1,
+
+                            /// <summary>Affiliate location asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION")]
+                            YOUTUBEASSETTYPEAFFILIATELOCATION = 2,
+
+                            /// <summary>Sitelink asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_SITELINK")]
+                            YOUTUBEASSETTYPESITELINK = 3,
+                        }
+
+                        /// <summary>The unique ID of the line item linked.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("linkedEntity.lineItemId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> LinkedEntityLineItemId { get; set; }
+
+                        /// <summary>
+                        /// Optional. Field by which to sort the list. The only acceptable values are:
+                        /// `linkedYoutubeAsset.locationAssetFilter.assetSetId`,
+                        /// `linkedYoutubeAsset.affiliateLocationAssetFilter.assetSetId`,
+                        /// `linkedYoutubeAsset.sitelinkAsset.assetId` The default sorting order is ascending. To
+                        /// specify descending order for a field, a suffix " desc" should be added to the field name.
+                        /// Example: `linkedYoutubeAsset.sitelinkAsset.assetId desc`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. Requested page size. Must be between `1` and `10000`. If unspecified will default
+                        /// to `100`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("adGroupId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "adGroupId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("youtubeAssetType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "youtubeAssetType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("linkedEntity.lineItemId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "linkedEntity.lineItemId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -7158,6 +8091,7 @@ namespace Google.Apis.DisplayVideo.v4
             {
                 this.service = service;
                 TargetingTypes = new TargetingTypesResource(service);
+                YoutubeAssetTypes = new YoutubeAssetTypesResource(service);
             }
 
             /// <summary>Gets the TargetingTypes resource.</summary>
@@ -8939,6 +9873,450 @@ namespace Google.Apis.DisplayVideo.v4
                             RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+            }
+
+            /// <summary>Gets the YoutubeAssetTypes resource.</summary>
+            public virtual YoutubeAssetTypesResource YoutubeAssetTypes { get; }
+
+            /// <summary>The "youtubeAssetTypes" collection of methods.</summary>
+            public class YoutubeAssetTypesResource
+            {
+                private const string Resource = "youtubeAssetTypes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public YoutubeAssetTypesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    YoutubeAssetAssociations = new YoutubeAssetAssociationsResource(service);
+                }
+
+                /// <summary>Gets the YoutubeAssetAssociations resource.</summary>
+                public virtual YoutubeAssetAssociationsResource YoutubeAssetAssociations { get; }
+
+                /// <summary>The "youtubeAssetAssociations" collection of methods.</summary>
+                public class YoutubeAssetAssociationsResource
+                {
+                    private const string Resource = "youtubeAssetAssociations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public YoutubeAssetAssociationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Creates a new association between an entity (line item or ad group) and a YouTube asset. Returns
+                    /// the newly created association if successful.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="advertiserId">Required. The ID of the advertiser this request is for.</param>
+                    /// <param name="lineItemId">The unique ID of the line item linked.</param>
+                    /// <param name="youtubeAssetType">
+                    /// Required. The type of the linked YouTube asset in the association.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.DisplayVideo.v4.Data.YoutubeAssetAssociation body, long advertiserId, long lineItemId, CreateRequest.YoutubeAssetTypeEnum youtubeAssetType)
+                    {
+                        return new CreateRequest(this.service, body, advertiserId, lineItemId, youtubeAssetType);
+                    }
+
+                    /// <summary>
+                    /// Creates a new association between an entity (line item or ad group) and a YouTube asset. Returns
+                    /// the newly created association if successful.
+                    /// </summary>
+                    public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.YoutubeAssetAssociation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v4.Data.YoutubeAssetAssociation body, long advertiserId, long lineItemId, YoutubeAssetTypeEnum youtubeAssetType) : base(service)
+                        {
+                            AdvertiserId = advertiserId;
+                            LineItemId = lineItemId;
+                            YoutubeAssetType = youtubeAssetType;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The ID of the advertiser this request is for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdvertiserId { get; private set; }
+
+                        /// <summary>The unique ID of the line item linked.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("lineItemId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long LineItemId { get; private set; }
+
+                        /// <summary>Required. The type of the linked YouTube asset in the association.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("youtubeAssetType", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual YoutubeAssetTypeEnum YoutubeAssetType { get; private set; }
+
+                        /// <summary>Required. The type of the linked YouTube asset in the association.</summary>
+                        public enum YoutubeAssetTypeEnum
+                        {
+                            /// <summary>YouTube asset type is not specified or is unknown in this version.</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_UNSPECIFIED")]
+                            YOUTUBEASSETTYPEUNSPECIFIED = 0,
+
+                            /// <summary>Location asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_LOCATION")]
+                            YOUTUBEASSETTYPELOCATION = 1,
+
+                            /// <summary>Affiliate location asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION")]
+                            YOUTUBEASSETTYPEAFFILIATELOCATION = 2,
+
+                            /// <summary>Sitelink asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_SITELINK")]
+                            YOUTUBEASSETTYPESITELINK = 3,
+                        }
+
+                        /// <summary>The unique ID of the ad group linked.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("linkedEntity.adGroupId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> LinkedEntityAdGroupId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DisplayVideo.v4.Data.YoutubeAssetAssociation Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "lineItemId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("youtubeAssetType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "youtubeAssetType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("linkedEntity.adGroupId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "linkedEntity.adGroupId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes an existing association between an entity (line item or ad group) and a YouTube asset.
+                    /// </summary>
+                    /// <param name="advertiserId">Required. The ID of the advertiser this request is for.</param>
+                    /// <param name="lineItemId">The unique ID of the line item linked.</param>
+                    /// <param name="youtubeAssetType">Required. The YouTube asset type this request is for.</param>
+                    /// <param name="youtubeAssetAssociationId">
+                    /// Required. The ID of the YouTube asset in the association. For location associations: This should
+                    /// be the ID of the asset set linked, or 0 if the association stands for location asset is
+                    /// disabled. For affiliate location associations: This should be the ID of the asset set linked, or
+                    /// 0 if the association stands for affiliate location asset is disabled. For sitelink associations:
+                    /// This should be the ID of the sitelink asset linked.
+                    /// </param>
+                    public virtual DeleteRequest Delete(long advertiserId, long lineItemId, DeleteRequest.YoutubeAssetTypeEnum youtubeAssetType, long youtubeAssetAssociationId)
+                    {
+                        return new DeleteRequest(this.service, advertiserId, lineItemId, youtubeAssetType, youtubeAssetAssociationId);
+                    }
+
+                    /// <summary>
+                    /// Deletes an existing association between an entity (line item or ad group) and a YouTube asset.
+                    /// </summary>
+                    public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, YoutubeAssetTypeEnum youtubeAssetType, long youtubeAssetAssociationId) : base(service)
+                        {
+                            AdvertiserId = advertiserId;
+                            LineItemId = lineItemId;
+                            YoutubeAssetType = youtubeAssetType;
+                            YoutubeAssetAssociationId = youtubeAssetAssociationId;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The ID of the advertiser this request is for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdvertiserId { get; private set; }
+
+                        /// <summary>The unique ID of the line item linked.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("lineItemId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long LineItemId { get; private set; }
+
+                        /// <summary>Required. The YouTube asset type this request is for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("youtubeAssetType", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual YoutubeAssetTypeEnum YoutubeAssetType { get; private set; }
+
+                        /// <summary>Required. The YouTube asset type this request is for.</summary>
+                        public enum YoutubeAssetTypeEnum
+                        {
+                            /// <summary>YouTube asset type is not specified or is unknown in this version.</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_UNSPECIFIED")]
+                            YOUTUBEASSETTYPEUNSPECIFIED = 0,
+
+                            /// <summary>Location asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_LOCATION")]
+                            YOUTUBEASSETTYPELOCATION = 1,
+
+                            /// <summary>Affiliate location asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION")]
+                            YOUTUBEASSETTYPEAFFILIATELOCATION = 2,
+
+                            /// <summary>Sitelink asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_SITELINK")]
+                            YOUTUBEASSETTYPESITELINK = 3,
+                        }
+
+                        /// <summary>
+                        /// Required. The ID of the YouTube asset in the association. For location associations: This
+                        /// should be the ID of the asset set linked, or 0 if the association stands for location asset
+                        /// is disabled. For affiliate location associations: This should be the ID of the asset set
+                        /// linked, or 0 if the association stands for affiliate location asset is disabled. For
+                        /// sitelink associations: This should be the ID of the sitelink asset linked.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("youtubeAssetAssociationId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long YoutubeAssetAssociationId { get; private set; }
+
+                        /// <summary>The unique ID of the ad group linked.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("linkedEntity.adGroupId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> LinkedEntityAdGroupId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations/{+youtubeAssetAssociationId}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "lineItemId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("youtubeAssetType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "youtubeAssetType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("youtubeAssetAssociationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "youtubeAssetAssociationId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("linkedEntity.adGroupId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "linkedEntity.adGroupId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists the YouTube asset associations for given resource.</summary>
+                    /// <param name="advertiserId">Required. The ID of the advertiser this request is for.</param>
+                    /// <param name="lineItemId">The unique ID of the line item linked.</param>
+                    /// <param name="youtubeAssetType">Required. The type of YouTube asset in the association.</param>
+                    public virtual ListRequest List(long advertiserId, long lineItemId, ListRequest.YoutubeAssetTypeEnum youtubeAssetType)
+                    {
+                        return new ListRequest(this.service, advertiserId, lineItemId, youtubeAssetType);
+                    }
+
+                    /// <summary>Lists the YouTube asset associations for given resource.</summary>
+                    public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.ListYoutubeAssetAssociationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, YoutubeAssetTypeEnum youtubeAssetType) : base(service)
+                        {
+                            AdvertiserId = advertiserId;
+                            LineItemId = lineItemId;
+                            YoutubeAssetType = youtubeAssetType;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The ID of the advertiser this request is for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AdvertiserId { get; private set; }
+
+                        /// <summary>The unique ID of the line item linked.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("lineItemId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long LineItemId { get; private set; }
+
+                        /// <summary>Required. The type of YouTube asset in the association.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("youtubeAssetType", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual YoutubeAssetTypeEnum YoutubeAssetType { get; private set; }
+
+                        /// <summary>Required. The type of YouTube asset in the association.</summary>
+                        public enum YoutubeAssetTypeEnum
+                        {
+                            /// <summary>YouTube asset type is not specified or is unknown in this version.</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_UNSPECIFIED")]
+                            YOUTUBEASSETTYPEUNSPECIFIED = 0,
+
+                            /// <summary>Location asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_LOCATION")]
+                            YOUTUBEASSETTYPELOCATION = 1,
+
+                            /// <summary>Affiliate location asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION")]
+                            YOUTUBEASSETTYPEAFFILIATELOCATION = 2,
+
+                            /// <summary>Sitelink asset</summary>
+                            [Google.Apis.Util.StringValueAttribute("YOUTUBE_ASSET_TYPE_SITELINK")]
+                            YOUTUBEASSETTYPESITELINK = 3,
+                        }
+
+                        /// <summary>The unique ID of the ad group linked.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("linkedEntity.adGroupId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> LinkedEntityAdGroupId { get; set; }
+
+                        /// <summary>
+                        /// Optional. Field by which to sort the list. The only acceptable values are:
+                        /// `linkedYoutubeAsset.locationAssetFilter.assetSetId`,
+                        /// `linkedYoutubeAsset.affiliateLocationAssetFilter.assetSetId`,
+                        /// `linkedYoutubeAsset.sitelinkAsset.assetId` The default sorting order is ascending. To
+                        /// specify descending order for a field, a suffix " desc" should be added to the field name.
+                        /// Example: `linkedYoutubeAsset.sitelinkAsset.assetId desc`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. Requested page size. Must be between `1` and `10000`. If unspecified will default
+                        /// to `100`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "advertiserId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("lineItemId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "lineItemId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("youtubeAssetType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "youtubeAssetType",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                            RequestParameters.Add("linkedEntity.adGroupId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "linkedEntity.adGroupId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -22347,6 +23725,33 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A single ad asset. Next ID: 6</summary>
+    public class AdAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Asset ID of the ad asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adAssetId")]
+        public virtual System.Nullable<long> AdAssetId { get; set; }
+
+        /// <summary>Required. The type of the ad asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adAssetType")]
+        public virtual string AdAssetType { get; set; }
+
+        /// <summary>Output only. The entity status of the ad asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
+        public virtual string EntityStatus { get; set; }
+
+        /// <summary>Identifier. The resource name of the ad asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The youtube video asset of the ad asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeVideoAsset")]
+        public virtual YoutubeVideoAsset YoutubeVideoAsset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single ad group associated with a line item.</summary>
     public class AdGroup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22413,6 +23818,10 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>The unique ID of the ad group that the ad belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
         public virtual System.Nullable<long> AdGroupId { get; set; }
+
+        /// <summary>The policy approval status of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adPolicy")]
+        public virtual AdPolicy AdPolicy { get; set; }
 
         /// <summary>List of URLs used by the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adUrls")]
@@ -22502,6 +23911,454 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>The assigned targeting option resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOption")]
         public virtual AssignedTargetingOption AssignedTargetingOption { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single ad policy associated with an ad group ad.</summary>
+    public class AdPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The policy approval status of an ad. Indicating the ad policy approval decision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adPolicyApprovalStatus")]
+        public virtual string AdPolicyApprovalStatus { get; set; }
+
+        /// <summary>
+        /// The policy review status of an ad. Indicating where the review process the ad is currently at.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adPolicyReviewStatus")]
+        public virtual string AdPolicyReviewStatus { get; set; }
+
+        /// <summary>
+        /// The policy topic entries for the ad, including the topic, restriction level, and guidance on how to fix
+        /// policy issues.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adPolicyTopicEntry")]
+        public virtual System.Collections.Generic.IList<AdPolicyTopicEntry> AdPolicyTopicEntry { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a criterion that is restricted. Today only used to represent a country restriction. Used by both
+    /// policy evidence and policy constraints.
+    /// </summary>
+    public class AdPolicyCriterionRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Only used today to represent a country criterion id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCriterionId")]
+        public virtual System.Nullable<long> CountryCriterionId { get; set; }
+
+        /// <summary>Localized name for the country. Could be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryLabel")]
+        public virtual string CountryLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Appeal related information for a policy topic.</summary>
+    public class AdPolicyTopicAppealInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Only available when appeal_type is APPEAL_FORM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appealFormLink")]
+        public virtual string AppealFormLink { get; set; }
+
+        /// <summary>Indicate whether the policy topic can be self-service appeal or appeal form.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appealType")]
+        public virtual string AppealType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional constraints information that explains restrictions applied to this policy.</summary>
+    public class AdPolicyTopicConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Countries where the resource's domain is not covered by the certificates associated with it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateDomainMismatchCountryList")]
+        public virtual AdPolicyTopicConstraintAdPolicyCountryConstraintList CertificateDomainMismatchCountryList { get; set; }
+
+        /// <summary>Countries where a certificate is required for serving.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateMissingCountryList")]
+        public virtual AdPolicyTopicConstraintAdPolicyCountryConstraintList CertificateMissingCountryList { get; set; }
+
+        /// <summary>Countries where the ad cannot serve.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryConstraint")]
+        public virtual AdPolicyTopicConstraintAdPolicyCountryConstraintList CountryConstraint { get; set; }
+
+        /// <summary>
+        /// Certificate is required to serve in any country and the existing certificate does not cover the ad's domain.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalCertificateDomainMismatch")]
+        public virtual AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint GlobalCertificateDomainMismatch { get; set; }
+
+        /// <summary>Certificate is required to serve in any country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalCertificateMissing")]
+        public virtual AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint GlobalCertificateMissing { get; set; }
+
+        /// <summary>Link to the form to request a certificate for the policy topic constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestCertificateFormLink")]
+        public virtual string RequestCertificateFormLink { get; set; }
+
+        /// <summary>Reseller constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resellerConstraint")]
+        public virtual AdPolicyTopicConstraintAdPolicyResellerConstraint ResellerConstraint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of countries where the ad cannot serve due to policy constraints.</summary>
+    public class AdPolicyTopicConstraintAdPolicyCountryConstraintList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Countries where the ad cannot serve.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countries")]
+        public virtual System.Collections.Generic.IList<AdPolicyCriterionRestriction> Countries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Certificate is required to serve in any country and the existing certificate does not cover the ad's domain.
+    /// </summary>
+    public class AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Certificate is required to serve in any country.</summary>
+    public class AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Policy topic was constrained due to disapproval of the website for reseller purposes.</summary>
+    public class AdPolicyTopicConstraintAdPolicyResellerConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Policy topic entry.</summary>
+    public class AdPolicyTopicEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Ad policy appeal related information for the policy topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appealInfo")]
+        public virtual AdPolicyTopicAppealInfo AppealInfo { get; set; }
+
+        /// <summary>Ad policy help center link for the policy topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("helpCenterLink")]
+        public virtual string HelpCenterLink { get; set; }
+
+        /// <summary>The source of the policy decision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyDecisionType")]
+        public virtual string PolicyDecisionType { get; set; }
+
+        /// <summary>The policy enforcement means used in the policy review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyEnforcementMeans")]
+        public virtual string PolicyEnforcementMeans { get; set; }
+
+        /// <summary>Localized label text for policy. (Trademarks in text, Contains Alcohol, etc.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyLabel")]
+        public virtual string PolicyLabel { get; set; }
+
+        /// <summary>The policy topic of an ad policy topic entry. (TRADEMARKS, ALCOHOL, etc.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTopic")]
+        public virtual string PolicyTopic { get; set; }
+
+        /// <summary>The policy topic constraints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTopicConstraints")]
+        public virtual System.Collections.Generic.IList<AdPolicyTopicConstraint> PolicyTopicConstraints { get; set; }
+
+        /// <summary>Short summary description of the policy topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTopicDescription")]
+        public virtual string PolicyTopicDescription { get; set; }
+
+        /// <summary>The policy topic evidences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTopicEvidences")]
+        public virtual System.Collections.Generic.IList<AdPolicyTopicEvidence> PolicyTopicEvidences { get; set; }
+
+        /// <summary>The policy topic entry type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTopicType")]
+        public virtual string PolicyTopicType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional evidence information that explains a policy decision.</summary>
+    public class AdPolicyTopicEvidence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Counterfeit enforcement that caused a policy violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("counterfeit")]
+        public virtual AdPolicyTopicEvidenceCounterfeit Counterfeit { get; set; }
+
+        /// <summary>Mismatch between the ad destinations URLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationMismatch")]
+        public virtual AdPolicyTopicEvidenceDestinationMismatch DestinationMismatch { get; set; }
+
+        /// <summary>Destination not working because of HTTP error or DNS error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationNotWorking")]
+        public virtual AdPolicyTopicEvidenceDestinationNotWorking DestinationNotWorking { get; set; }
+
+        /// <summary>The text in the destination of the ad that is causing a policy violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationTextList")]
+        public virtual AdPolicyTopicEvidenceDestinationTextList DestinationTextList { get; set; }
+
+        /// <summary>HTTP code returned when the final URL was crawled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpCode")]
+        public virtual System.Nullable<int> HttpCode { get; set; }
+
+        /// <summary>
+        /// The language the ad was detected to be written in. This is an IETF language tag such as "en-US".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Legal related regulation enforcement that caused a policy violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legalRemoval")]
+        public virtual AdPolicyTopicEvidenceLegalRemoval LegalRemoval { get; set; }
+
+        /// <summary>T&amp;S proactive enforcement that caused a policy violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalRequirements")]
+        public virtual AdPolicyTopicEvidenceRegionalRequirements RegionalRequirements { get; set; }
+
+        /// <summary>List of evidence found in the text of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textList")]
+        public virtual AdPolicyTopicEvidenceTextList TextList { get; set; }
+
+        /// <summary>Trademark terms that caused a policy violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trademark")]
+        public virtual AdPolicyTopicEvidenceTrademark Trademark { get; set; }
+
+        /// <summary>List of websites linked with the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websiteList")]
+        public virtual AdPolicyTopicEvidenceWebsiteList WebsiteList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Counterfeit enforcement that caused a policy violation.</summary>
+    public class AdPolicyTopicEvidenceCounterfeit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The content or product owners that make the complainants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("owners")]
+        public virtual System.Collections.Generic.IList<string> Owners { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of destination mismatch URL types.</summary>
+    public class AdPolicyTopicEvidenceDestinationMismatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The set of URLs that do not match each other. The list can include single or multiple uri types. Example 1:
+        /// [DISPLAY_URL, FINAL_URL] means ad display URL does not match with the ad final URL. Example 2: [FINAL_URL]
+        /// means ad final URL did not match the crawled url, which is also considered as destinationmismatch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriTypes")]
+        public virtual System.Collections.Generic.IList<string> UriTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evidence details for destination not working policy violations.</summary>
+    public class AdPolicyTopicEvidenceDestinationNotWorking : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The device platform of the not working url.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual string Device { get; set; }
+
+        /// <summary>The type of DNS error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsErrorType")]
+        public virtual string DnsErrorType { get; set; }
+
+        /// <summary>The full URL that didn't work.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expandedUri")]
+        public virtual string ExpandedUri { get; set; }
+
+        /// <summary>The HTTP error code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpErrorCode")]
+        public virtual System.Nullable<long> HttpErrorCode { get; set; }
+
+        private string _lastCheckedTimeRaw;
+
+        private object _lastCheckedTime;
+
+        /// <summary>The last checked time of the not working url.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastCheckedTime")]
+        public virtual string LastCheckedTimeRaw
+        {
+            get => _lastCheckedTimeRaw;
+            set
+            {
+                _lastCheckedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastCheckedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastCheckedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastCheckedTimeDateTimeOffset instead.")]
+        public virtual object LastCheckedTime
+        {
+            get => _lastCheckedTime;
+            set
+            {
+                _lastCheckedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastCheckedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastCheckedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastCheckedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastCheckedTimeRaw);
+            set => LastCheckedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of destination text that violated the policy.</summary>
+    public class AdPolicyTopicEvidenceDestinationTextList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Destination text that caused the policy finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationTexts")]
+        public virtual System.Collections.Generic.IList<string> DestinationTexts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Legal related regulation enforcement, either from DMCA or local legal.</summary>
+    public class AdPolicyTopicEvidenceLegalRemoval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The legal removal complaint type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complaintType")]
+        public virtual string ComplaintType { get; set; }
+
+        /// <summary>The restricted countries due to the legal removal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryRestrictions")]
+        public virtual System.Collections.Generic.IList<AdPolicyCriterionRestriction> CountryRestrictions { get; set; }
+
+        /// <summary>Whether the restriction is from DMCA regulation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dmca")]
+        public virtual AdPolicyTopicEvidenceLegalRemovalDmca Dmca { get; set; }
+
+        /// <summary>Whether the restriction is from local legal regulation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localLegal")]
+        public virtual AdPolicyTopicEvidenceLegalRemovalLocalLegal LocalLegal { get; set; }
+
+        /// <summary>The urls that are restricted due to the legal removal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedUris")]
+        public virtual System.Collections.Generic.IList<string> RestrictedUris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DMCA related regulation enforcement.</summary>
+    public class AdPolicyTopicEvidenceLegalRemovalDmca : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The entity who makes the legal complaint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complainant")]
+        public virtual string Complainant { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Local legal related regulation enforcement.</summary>
+    public class AdPolicyTopicEvidenceLegalRemovalLocalLegal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of law for the legal notice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lawType")]
+        public virtual string LawType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// T&amp;amp;S proactive enforcement for policies meant to address regional requirements. This is considered as
+    /// Google owned investigation instead of regulation notice since it's a T&amp;amp;S proactive enforcement.
+    /// </summary>
+    public class AdPolicyTopicEvidenceRegionalRequirements : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of regional requirements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalRequirementsEntries")]
+        public virtual System.Collections.Generic.IList<AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry> RegionalRequirementsEntries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Policy level regional legal violation details.</summary>
+    public class AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The restricted countries due to the legal policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryRestrictions")]
+        public virtual System.Collections.Generic.IList<AdPolicyCriterionRestriction> CountryRestrictions { get; set; }
+
+        /// <summary>The legal policy that is violated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legalPolicy")]
+        public virtual string LegalPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of fragments of text that violated the policy.</summary>
+    public class AdPolicyTopicEvidenceTextList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fragments of text from the resource that caused the policy finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("texts")]
+        public virtual System.Collections.Generic.IList<string> Texts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Trademark terms that caused a policy violation.</summary>
+    public class AdPolicyTopicEvidenceTrademark : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Criteria that are geo restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryRestrictions")]
+        public virtual System.Collections.Generic.IList<AdPolicyCriterionRestriction> CountryRestrictions { get; set; }
+
+        /// <summary>The trademark content owner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("owner")]
+        public virtual string Owner { get; set; }
+
+        /// <summary>The trademark term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("term")]
+        public virtual string Term { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of websites that violated the policy.</summary>
+    public class AdPolicyTopicEvidenceWebsiteList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Websites that caused the policy finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websites")]
+        public virtual System.Collections.Generic.IList<string> Websites { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24090,6 +25947,28 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A request message for BulkCreateAdAssets.</summary>
+    public class BulkCreateAdAssetsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Ad assets to create. Only supports youtube video assets for now.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adAssets")]
+        public virtual System.Collections.Generic.IList<AdAsset> AdAssets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response message for BulkCreateAdAssets.</summary>
+    public class BulkCreateAdAssetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The uploaded video ad assets, if successful.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adAssets")]
+        public virtual System.Collections.Generic.IList<AdAsset> AdAssets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for BulkEditAdvertiserAssignedTargetingOptions.</summary>
     public class BulkEditAdvertiserAssignedTargetingOptionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25487,6 +27366,17 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>Required. The name used to identify this counter event in reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportingName")]
         public virtual string ReportingName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request message for CreateAdAsset.</summary>
+    public class CreateAdAssetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Ad assets to create. Only supports youtube video assets for now.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adAsset")]
+        public virtual AdAsset AdAsset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28920,6 +30810,24 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A response message for ListAdAssets.</summary>
+    public class ListAdAssetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of ad assets. This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adAssets")]
+        public virtual System.Collections.Generic.IList<AdAsset> AdAssets { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call
+        /// to `ListAdAssets` method to retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ListAdGroupAdsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of ad group ads. This list will be absent if empty.</summary>
@@ -29536,6 +31444,21 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>The list of users. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("users")]
         public virtual System.Collections.Generic.IList<User> Users { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for YoutubeAssetAssociationService.ListYoutubeAssetAssociations.</summary>
+    public class ListYoutubeAssetAssociationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token to retrieve the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of associations. This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeAssetAssociations")]
+        public virtual System.Collections.Generic.IList<YoutubeAssetAssociation> YoutubeAssetAssociations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -31658,6 +33581,35 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A request message for UploadAdAsset. Next ID: 6</summary>
+    public class UploadAdAssetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The type of the ad asset. Only supports image assets for now.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adAssetType")]
+        public virtual string AdAssetType { get; set; }
+
+        /// <summary>
+        /// Required. The filename of the ad asset, including the file extension. The filename must be UTF-8 encoded
+        /// with a maximum size of 240 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
+        public virtual string Filename { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response message for UploadAdAsset.</summary>
+    public class UploadAdAssetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The uploaded ad asset, if successful.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adAsset")]
+        public virtual AdAsset AdAsset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Details for assigned URL targeting option. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_URL`.
@@ -32112,6 +34064,170 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A YouTube asset association between one linked entity and one YouTube asset.</summary>
+    public class YoutubeAssetAssociation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The linked YouTube asset in the association.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedYoutubeAsset")]
+        public virtual YoutubeAssetAssociationLinkedYouTubeAsset LinkedYoutubeAsset { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the association. For line item level associations: The name pattern is
+        /// `advertisers/{advertiser_id}/lineItems/{line_item_id}/youtubeAssetTypes/{youtube_asset_type}/youtubeAssetAssociations/{youtube_asset_association_id}`.
+        /// For ad group level associations: The name pattern is
+        /// `advertisers/{advertiser_id}/adGroups/{ad_group_id}/youtubeAssetTypes/{youtube_asset_type}/youtubeAssetAssociations/{youtube_asset_association_id}`.
+        /// For location and affiliate location associations: {youtube_asset_association_id} is the linked asset set ID
+        /// if the YouTube asset type (location or affiliate location) is enabled on the linked line item or ad group, 0
+        /// if disabled. For sitelink associations: {youtube_asset_association_id} is the linked asset ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The type of the linked YouTube asset in the association.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeAssetType")]
+        public virtual string YoutubeAssetType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An asset filter that matches eligible affiliate location assets for serving.</summary>
+    public class YoutubeAssetAssociationAffiliateLocationAssetFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The matching function that contains details about how the affiliate location asset filter matches
+        /// affiliate location assets. When creating associations with affiliate location asset filters: This field is
+        /// required only for affiliate location asset filters of AffiliateLocationMatchingType#SELECTED_CHAINS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affiliateLocationMatchingFunction")]
+        public virtual YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction AffiliateLocationMatchingFunction { get; set; }
+
+        /// <summary>Required. The matching type of this affiliate location asset filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affiliateLocationMatchingType")]
+        public virtual string AffiliateLocationMatchingType { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the asset set that matches the affiliate location assets eligible for serving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetSetId")]
+        public virtual System.Nullable<long> AssetSetId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A chain for affiliate locations.</summary>
+    public class YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. ID of the affiliate location chain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chainId")]
+        public virtual System.Nullable<long> ChainId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The matching function for an affiliate location asset filter.</summary>
+    public class YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The chains that match the affiliate location assets for serving. This is required to set when
+        /// linking with affiliate location asset filters of AffiliateLocationMatchingType#SELECTED_CHAINS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chains")]
+        public virtual System.Collections.Generic.IList<YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain> Chains { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The YouTube asset linked with the entity in a YouTube asset association.</summary>
+    public class YoutubeAssetAssociationLinkedYouTubeAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The linked affiliate location asset filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affiliateLocationAssetFilter")]
+        public virtual YoutubeAssetAssociationAffiliateLocationAssetFilter AffiliateLocationAssetFilter { get; set; }
+
+        /// <summary>The linked location asset filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationAssetFilter")]
+        public virtual YoutubeAssetAssociationLocationAssetFilter LocationAssetFilter { get; set; }
+
+        /// <summary>The linked sitelink asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sitelinkAsset")]
+        public virtual YoutubeAssetAssociationSitelinkAsset SitelinkAsset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An asset filter that matches eligible location assets for serving.</summary>
+    public class YoutubeAssetAssociationLocationAssetFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The ID of the asset set that matches the location assets eligible for serving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetSetId")]
+        public virtual System.Nullable<long> AssetSetId { get; set; }
+
+        /// <summary>
+        /// Optional. The matching function that contains details about how the location asset filter matches location
+        /// assets. This field should only be set for location asset filters of LocationMatchingType#FILTER or
+        /// LocationMatchingType#SELECTED_ASSETS. When creating associations with location asset filters: This field is
+        /// required only for location asset filters of LocationMatchingType#FILTER or
+        /// LocationMatchingType#SELECTED_ASSETS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationMatchingFunction")]
+        public virtual YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction LocationMatchingFunction { get; set; }
+
+        /// <summary>Required. The matching type of this location asset filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationMatchingType")]
+        public virtual string LocationMatchingType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The matching function for a location asset filter.</summary>
+    public class YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The business name filter. This can be set only when linking with location asset filters of
+        /// LocationMatchingType#FILTER. This is optional when linking with location asset filters of
+        /// LocationMatchingType#FILTER.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("business")]
+        public virtual string Business { get; set; }
+
+        /// <summary>
+        /// Optional. The label filters. Label filters are OR'ed together. This can be set only when linking with
+        /// location asset filters of LocationMatchingType#FILTER. This is optional when linking with location asset
+        /// filters of LocationMatchingType#FILTER.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. The selected location asset IDs. This is required to set when linking with location asset filters
+        /// of LocationMatchingType#SELECTED_ASSETS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationAssetIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> LocationAssetIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A sitelink asset.</summary>
+    public class YoutubeAssetAssociationSitelinkAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. ID of the sitelink asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetId")]
+        public virtual System.Nullable<long> AssetId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Details for YouTube channel assigned targeting option. This will be populated in the youtube_channel_details
     /// field when targeting_type is `TARGETING_TYPE_YOUTUBE_CHANNEL`.
@@ -32125,6 +34241,19 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>Indicates if this option is being negatively targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
         public virtual System.Nullable<bool> Negative { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The youtube video asset data of the ad asset.</summary>
+    public class YoutubeVideoAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The youtube video id of the asset. This is the 11 char string value used in the Youtube video URL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeVideoId")]
+        public virtual string YoutubeVideoId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
