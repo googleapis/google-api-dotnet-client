@@ -22321,6 +22321,10 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
         public virtual System.Nullable<long> AdGroupId { get; set; }
 
+        /// <summary>The policy approval status of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adPolicy")]
+        public virtual AdPolicy AdPolicy { get; set; }
+
         /// <summary>List of URLs used by the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adUrls")]
         public virtual System.Collections.Generic.IList<AdUrl> AdUrls { get; set; }
@@ -22409,6 +22413,454 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>The assigned targeting option resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOption")]
         public virtual AssignedTargetingOption AssignedTargetingOption { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single ad policy associated with an ad group ad.</summary>
+    public class AdPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The policy approval status of an ad. Indicating the ad policy approval decision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adPolicyApprovalStatus")]
+        public virtual string AdPolicyApprovalStatus { get; set; }
+
+        /// <summary>
+        /// The policy review status of an ad. Indicating where the review process the ad is currently at.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adPolicyReviewStatus")]
+        public virtual string AdPolicyReviewStatus { get; set; }
+
+        /// <summary>
+        /// The policy topic entries for the ad, including the topic, restriction level, and guidance on how to fix
+        /// policy issues.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adPolicyTopicEntry")]
+        public virtual System.Collections.Generic.IList<AdPolicyTopicEntry> AdPolicyTopicEntry { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a criterion that is restricted. Today only used to represent a country restriction. Used by both
+    /// policy evidence and policy constraints.
+    /// </summary>
+    public class AdPolicyCriterionRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Only used today to represent a country criterion id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCriterionId")]
+        public virtual System.Nullable<long> CountryCriterionId { get; set; }
+
+        /// <summary>Localized name for the country. Could be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryLabel")]
+        public virtual string CountryLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Appeal related information for a policy topic.</summary>
+    public class AdPolicyTopicAppealInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Only available when appeal_type is APPEAL_FORM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appealFormLink")]
+        public virtual string AppealFormLink { get; set; }
+
+        /// <summary>Indicate whether the policy topic can be self-service appeal or appeal form.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appealType")]
+        public virtual string AppealType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional constraints information that explains restrictions applied to this policy.</summary>
+    public class AdPolicyTopicConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Countries where the resource's domain is not covered by the certificates associated with it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateDomainMismatchCountryList")]
+        public virtual AdPolicyTopicConstraintAdPolicyCountryConstraintList CertificateDomainMismatchCountryList { get; set; }
+
+        /// <summary>Countries where a certificate is required for serving.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateMissingCountryList")]
+        public virtual AdPolicyTopicConstraintAdPolicyCountryConstraintList CertificateMissingCountryList { get; set; }
+
+        /// <summary>Countries where the ad cannot serve.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryConstraint")]
+        public virtual AdPolicyTopicConstraintAdPolicyCountryConstraintList CountryConstraint { get; set; }
+
+        /// <summary>
+        /// Certificate is required to serve in any country and the existing certificate does not cover the ad's domain.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalCertificateDomainMismatch")]
+        public virtual AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint GlobalCertificateDomainMismatch { get; set; }
+
+        /// <summary>Certificate is required to serve in any country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalCertificateMissing")]
+        public virtual AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint GlobalCertificateMissing { get; set; }
+
+        /// <summary>Link to the form to request a certificate for the policy topic constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestCertificateFormLink")]
+        public virtual string RequestCertificateFormLink { get; set; }
+
+        /// <summary>Reseller constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resellerConstraint")]
+        public virtual AdPolicyTopicConstraintAdPolicyResellerConstraint ResellerConstraint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of countries where the ad cannot serve due to policy constraints.</summary>
+    public class AdPolicyTopicConstraintAdPolicyCountryConstraintList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Countries where the ad cannot serve.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countries")]
+        public virtual System.Collections.Generic.IList<AdPolicyCriterionRestriction> Countries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Certificate is required to serve in any country and the existing certificate does not cover the ad's domain.
+    /// </summary>
+    public class AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Certificate is required to serve in any country.</summary>
+    public class AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Policy topic was constrained due to disapproval of the website for reseller purposes.</summary>
+    public class AdPolicyTopicConstraintAdPolicyResellerConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Policy topic entry.</summary>
+    public class AdPolicyTopicEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Ad policy appeal related information for the policy topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appealInfo")]
+        public virtual AdPolicyTopicAppealInfo AppealInfo { get; set; }
+
+        /// <summary>Ad policy help center link for the policy topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("helpCenterLink")]
+        public virtual string HelpCenterLink { get; set; }
+
+        /// <summary>The source of the policy decision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyDecisionType")]
+        public virtual string PolicyDecisionType { get; set; }
+
+        /// <summary>The policy enforcement means used in the policy review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyEnforcementMeans")]
+        public virtual string PolicyEnforcementMeans { get; set; }
+
+        /// <summary>Localized label text for policy. (Trademarks in text, Contains Alcohol, etc.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyLabel")]
+        public virtual string PolicyLabel { get; set; }
+
+        /// <summary>The policy topic of an ad policy topic entry. (TRADEMARKS, ALCOHOL, etc.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTopic")]
+        public virtual string PolicyTopic { get; set; }
+
+        /// <summary>The policy topic constraints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTopicConstraints")]
+        public virtual System.Collections.Generic.IList<AdPolicyTopicConstraint> PolicyTopicConstraints { get; set; }
+
+        /// <summary>Short summary description of the policy topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTopicDescription")]
+        public virtual string PolicyTopicDescription { get; set; }
+
+        /// <summary>The policy topic evidences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTopicEvidences")]
+        public virtual System.Collections.Generic.IList<AdPolicyTopicEvidence> PolicyTopicEvidences { get; set; }
+
+        /// <summary>The policy topic entry type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyTopicType")]
+        public virtual string PolicyTopicType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional evidence information that explains a policy decision.</summary>
+    public class AdPolicyTopicEvidence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Counterfeit enforcement that caused a policy violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("counterfeit")]
+        public virtual AdPolicyTopicEvidenceCounterfeit Counterfeit { get; set; }
+
+        /// <summary>Mismatch between the ad destinations URLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationMismatch")]
+        public virtual AdPolicyTopicEvidenceDestinationMismatch DestinationMismatch { get; set; }
+
+        /// <summary>Destination not working because of HTTP error or DNS error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationNotWorking")]
+        public virtual AdPolicyTopicEvidenceDestinationNotWorking DestinationNotWorking { get; set; }
+
+        /// <summary>The text in the destination of the ad that is causing a policy violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationTextList")]
+        public virtual AdPolicyTopicEvidenceDestinationTextList DestinationTextList { get; set; }
+
+        /// <summary>HTTP code returned when the final URL was crawled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpCode")]
+        public virtual System.Nullable<int> HttpCode { get; set; }
+
+        /// <summary>
+        /// The language the ad was detected to be written in. This is an IETF language tag such as "en-US".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Legal related regulation enforcement that caused a policy violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legalRemoval")]
+        public virtual AdPolicyTopicEvidenceLegalRemoval LegalRemoval { get; set; }
+
+        /// <summary>T&amp;S proactive enforcement that caused a policy violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalRequirements")]
+        public virtual AdPolicyTopicEvidenceRegionalRequirements RegionalRequirements { get; set; }
+
+        /// <summary>List of evidence found in the text of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textList")]
+        public virtual AdPolicyTopicEvidenceTextList TextList { get; set; }
+
+        /// <summary>Trademark terms that caused a policy violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trademark")]
+        public virtual AdPolicyTopicEvidenceTrademark Trademark { get; set; }
+
+        /// <summary>List of websites linked with the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websiteList")]
+        public virtual AdPolicyTopicEvidenceWebsiteList WebsiteList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Counterfeit enforcement that caused a policy violation.</summary>
+    public class AdPolicyTopicEvidenceCounterfeit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The content or product owners that make the complainants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("owners")]
+        public virtual System.Collections.Generic.IList<string> Owners { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of destination mismatch URL types.</summary>
+    public class AdPolicyTopicEvidenceDestinationMismatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The set of URLs that do not match each other. The list can include single or multiple uri types. Example 1:
+        /// [DISPLAY_URL, FINAL_URL] means ad display URL does not match with the ad final URL. Example 2: [FINAL_URL]
+        /// means ad final URL did not match the crawled url, which is also considered as destinationmismatch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriTypes")]
+        public virtual System.Collections.Generic.IList<string> UriTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evidence details for destination not working policy violations.</summary>
+    public class AdPolicyTopicEvidenceDestinationNotWorking : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The device platform of the not working url.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual string Device { get; set; }
+
+        /// <summary>The type of DNS error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsErrorType")]
+        public virtual string DnsErrorType { get; set; }
+
+        /// <summary>The full URL that didn't work.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expandedUri")]
+        public virtual string ExpandedUri { get; set; }
+
+        /// <summary>The HTTP error code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpErrorCode")]
+        public virtual System.Nullable<long> HttpErrorCode { get; set; }
+
+        private string _lastCheckedTimeRaw;
+
+        private object _lastCheckedTime;
+
+        /// <summary>The last checked time of the not working url.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastCheckedTime")]
+        public virtual string LastCheckedTimeRaw
+        {
+            get => _lastCheckedTimeRaw;
+            set
+            {
+                _lastCheckedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastCheckedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastCheckedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastCheckedTimeDateTimeOffset instead.")]
+        public virtual object LastCheckedTime
+        {
+            get => _lastCheckedTime;
+            set
+            {
+                _lastCheckedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastCheckedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastCheckedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastCheckedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastCheckedTimeRaw);
+            set => LastCheckedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of destination text that violated the policy.</summary>
+    public class AdPolicyTopicEvidenceDestinationTextList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Destination text that caused the policy finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationTexts")]
+        public virtual System.Collections.Generic.IList<string> DestinationTexts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Legal related regulation enforcement, either from DMCA or local legal.</summary>
+    public class AdPolicyTopicEvidenceLegalRemoval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The legal removal complaint type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complaintType")]
+        public virtual string ComplaintType { get; set; }
+
+        /// <summary>The restricted countries due to the legal removal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryRestrictions")]
+        public virtual System.Collections.Generic.IList<AdPolicyCriterionRestriction> CountryRestrictions { get; set; }
+
+        /// <summary>Whether the restriction is from DMCA regulation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dmca")]
+        public virtual AdPolicyTopicEvidenceLegalRemovalDmca Dmca { get; set; }
+
+        /// <summary>Whether the restriction is from local legal regulation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localLegal")]
+        public virtual AdPolicyTopicEvidenceLegalRemovalLocalLegal LocalLegal { get; set; }
+
+        /// <summary>The urls that are restricted due to the legal removal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedUris")]
+        public virtual System.Collections.Generic.IList<string> RestrictedUris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DMCA related regulation enforcement.</summary>
+    public class AdPolicyTopicEvidenceLegalRemovalDmca : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The entity who makes the legal complaint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complainant")]
+        public virtual string Complainant { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Local legal related regulation enforcement.</summary>
+    public class AdPolicyTopicEvidenceLegalRemovalLocalLegal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of law for the legal notice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lawType")]
+        public virtual string LawType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// T&amp;amp;S proactive enforcement for policies meant to address regional requirements. This is considered as
+    /// Google owned investigation instead of regulation notice since it's a T&amp;amp;S proactive enforcement.
+    /// </summary>
+    public class AdPolicyTopicEvidenceRegionalRequirements : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of regional requirements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalRequirementsEntries")]
+        public virtual System.Collections.Generic.IList<AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry> RegionalRequirementsEntries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Policy level regional legal violation details.</summary>
+    public class AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The restricted countries due to the legal policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryRestrictions")]
+        public virtual System.Collections.Generic.IList<AdPolicyCriterionRestriction> CountryRestrictions { get; set; }
+
+        /// <summary>The legal policy that is violated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legalPolicy")]
+        public virtual string LegalPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of fragments of text that violated the policy.</summary>
+    public class AdPolicyTopicEvidenceTextList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fragments of text from the resource that caused the policy finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("texts")]
+        public virtual System.Collections.Generic.IList<string> Texts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Trademark terms that caused a policy violation.</summary>
+    public class AdPolicyTopicEvidenceTrademark : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Criteria that are geo restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryRestrictions")]
+        public virtual System.Collections.Generic.IList<AdPolicyCriterionRestriction> CountryRestrictions { get; set; }
+
+        /// <summary>The trademark content owner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("owner")]
+        public virtual string Owner { get; set; }
+
+        /// <summary>The trademark term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("term")]
+        public virtual string Term { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of websites that violated the policy.</summary>
+    public class AdPolicyTopicEvidenceWebsiteList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Websites that caused the policy finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websites")]
+        public virtual System.Collections.Generic.IList<string> Websites { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
