@@ -1362,6 +1362,65 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                     }
                 }
 
+                /// <summary>Clears cached test runs for a specific test case and device(s).</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="testCase">
+                /// Required. The name of the test case resource for which to clear the cache. Format:
+                /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                /// </param>
+                public virtual ClearTestCaseCacheRequest ClearTestCaseCache(Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest body, string testCase)
+                {
+                    return new ClearTestCaseCacheRequest(this.service, body, testCase);
+                }
+
+                /// <summary>Clears cached test runs for a specific test case and device(s).</summary>
+                public class ClearTestCaseCacheRequest : FirebaseAppDistributionBaseServiceRequest<Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse>
+                {
+                    /// <summary>Constructs a new ClearTestCaseCache request.</summary>
+                    public ClearTestCaseCacheRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest body, string testCase) : base(service)
+                    {
+                        TestCase = testCase;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the test case resource for which to clear the cache. Format:
+                    /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("testCase", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string TestCase { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "clearTestCaseCache";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+testCase}:clearTestCaseCache";
+
+                    /// <summary>Initializes ClearTestCaseCache parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("testCase", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "testCase",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+/testCases/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Create a new test case.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -2375,6 +2434,26 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
 
     /// <summary>The (empty) response message for `CancelReleaseTest`.</summary>
     public class GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for `ClearTestCaseCache`.</summary>
+    public class GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The list of devices for which to clear the cache. If not present, clear all of them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testDevices")]
+        public virtual System.Collections.Generic.IList<GoogleFirebaseAppdistroV1alphaTestDevice> TestDevices { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response empty (google.protobuf.Empty) message for `ClearTestCaseCache`</summary>
+    public class GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
