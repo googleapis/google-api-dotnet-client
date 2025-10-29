@@ -1721,8 +1721,8 @@ namespace Google.Apis.CloudFunctions.v2alpha
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2080,6 +2080,33 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
     /// <summary>Request for the `DetachFunction` method.</summary>
     public class DetachFunctionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Direct VPC network interface. This is mutually exclusive with VPC Connector.</summary>
+    public class DirectVpcNetworkInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of the VPC network to which the function will be connected. Specify either a VPC network
+        /// or a subnet, or both. If you specify only a network, the subnet uses the same name as the network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either
+        /// a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork
+        /// must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with
+        /// the network will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; }
+
+        /// <summary>Optional. Network tags applied to this Cloud Function resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3180,6 +3207,19 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorizationPolicy")]
         public virtual string BinaryAuthorizationPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directVpcEgress")]
+        public virtual string DirectVpcEgress { get; set; }
+
+        /// <summary>
+        /// Optional. The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is
+        /// supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directVpcNetworkInterface")]
+        public virtual System.Collections.Generic.IList<DirectVpcNetworkInterface> DirectVpcNetworkInterface { get; set; }
 
         /// <summary>Environment variables that shall be available during function execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
