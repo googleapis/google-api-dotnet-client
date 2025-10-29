@@ -2108,9 +2108,9 @@ namespace Google.Apis.SQLAdmin.v1
         /// instance to restart.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="project">Project ID of the source as well as the clone Cloud SQL instance.</param>
+        /// <param name="project">Required. Project ID of the source as well as the clone Cloud SQL instance.</param>
         /// <param name="instance">
-        /// The ID of the Cloud SQL instance to be cloned (source). This does not include the project ID.
+        /// Required. The ID of the Cloud SQL instance to be cloned (source). This does not include the project ID.
         /// </param>
         public virtual CloneRequest Clone(Google.Apis.SQLAdmin.v1.Data.InstancesCloneRequest body, string project, string instance)
         {
@@ -2132,12 +2132,12 @@ namespace Google.Apis.SQLAdmin.v1
                 InitParameters();
             }
 
-            /// <summary>Project ID of the source as well as the clone Cloud SQL instance.</summary>
+            /// <summary>Required. Project ID of the source as well as the clone Cloud SQL instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
             /// <summary>
-            /// The ID of the Cloud SQL instance to be cloned (source). This does not include the project ID.
+            /// Required. The ID of the Cloud SQL instance to be cloned (source). This does not include the project ID.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
@@ -6413,7 +6413,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseNames")]
         public virtual System.Collections.Generic.IList<string> DatabaseNames { get; set; }
 
-        /// <summary>Name of the Cloud SQL instance to be created as a clone.</summary>
+        /// <summary>Required. Name of the Cloud SQL instance to be created as a clone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationInstanceName")]
         public virtual string DestinationInstanceName { get; set; }
 
@@ -8202,7 +8202,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// <summary>Database instance clone request.</summary>
     public class InstancesCloneRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Contains details about the clone operation.</summary>
+        /// <summary>Required. Contains details about the clone operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloneContext")]
         public virtual CloneContext CloneContext { get; set; }
 
@@ -9956,6 +9956,12 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crashSafeReplicationEnabled")]
         public virtual System.Nullable<bool> CrashSafeReplicationEnabled { get; set; }
+
+        /// <summary>
+        /// This parameter controls whether to allow using Data API to connect to the instance. Not allowed by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataApiAccess")]
+        public virtual string DataApiAccess { get; set; }
 
         /// <summary>Configuration for data cache.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataCacheConfig")]
