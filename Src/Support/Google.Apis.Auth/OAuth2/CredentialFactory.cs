@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -48,6 +49,19 @@ public static class CredentialFactory
     /// <summary>
     /// Creates a credential of the specified type from a file that contains JSON credential data.
     /// </summary>
+    /// <param name="credentialPath">The path to the credential file.</param>
+    /// <param name="credentialType">The type of credential to be loaded. Valid strings can be found in <see cref="JsonCredentialParameters"/>.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel the operation.</param>
+    /// <returns>A task that will be completed with the created credential.</returns>
+    public static async Task<GoogleCredential> FromFileAsync(string credentialPath, string credentialType, CancellationToken cancellationToken)
+    {
+        using FileStream fileStream = File.OpenRead(credentialPath);
+        return await FromStreamAsync(fileStream, credentialType, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Creates a credential of the specified type from a file that contains JSON credential data.
+    /// </summary>
     /// <typeparam name="T">The type of the credential to create.</typeparam>
     /// <param name="credentialPath">The path to the credential file.</param>
     /// <returns>The created credential.</returns>
@@ -58,22 +72,15 @@ public static class CredentialFactory
     }
 
     /// <summary>
-    /// Creates a credential of the specified type from a stream that contains JSON credential data.
+    /// Creates a credential of the specified type from a file that contains JSON credential data.
     /// </summary>
-    /// <typeparam name="T">The type of the credential to create.</typeparam>
-    /// <param name="stream">The stream that contains the JSON credential data.</param>
-    /// <param name="cancellationToken">The cancellation token to cancel the operation.</param>
-    /// <returns>A task that will be completed with the created credential.</returns>
-    public static async Task<T> FromStreamAsync<T>(Stream stream, CancellationToken cancellationToken)
+    /// <param name="credentialPath">The path to the credential file.</param>
+    /// <param name="credentialType">The type of credential to be loaded. Valid strings can be found in <see cref="JsonCredentialParameters"/>.</param>
+    /// <returns>The created credential.</returns>
+    public static GoogleCredential FromFile(string credentialPath, string credentialType)
     {
-        try
-        {
-            return FromJsonParameters<T>(await NewtonsoftJsonSerializer.Instance.DeserializeAsync<JsonCredentialParameters>(stream, cancellationToken).ConfigureAwait(false));
-        }
-        catch (Exception e)
-        {
-            throw new InvalidOperationException("Error deserializing JSON credential data.", e);
-        }
+        using FileStream fileStream = File.OpenRead(credentialPath);
+        return FromStream(fileStream, credentialType);
     }
 
     /// <summary>
@@ -81,18 +88,42 @@ public static class CredentialFactory
     /// </summary>
     /// <typeparam name="T">The type of the credential to create.</typeparam>
     /// <param name="stream">The stream that contains the JSON credential data.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel the operation.</param>
+    /// <returns>A task that will be completed with the created credential.</returns>
+    public static async Task<T> FromStreamAsync<T>(Stream stream, CancellationToken cancellationToken) =>
+        FromJsonParameters<T>(await HandleDeserializationErrorsAsync(() =>
+            NewtonsoftJsonSerializer.Instance.DeserializeAsync<JsonCredentialParameters>(stream, cancellationToken)).ConfigureAwait(false));
+
+    /// <summary>
+    /// Creates a credential of the specified type from a stream that contains JSON credential data.
+    /// </summary>
+    /// <param name="stream">The stream that contains the JSON credential data.</param>
+    /// <param name="credentialType">The type of credential to be loaded. Valid strings can be found in <see cref="JsonCredentialParameters"/>.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel the operation.</param>
+    /// <returns>A task that will be completed with the created credential.</returns>
+    public static async Task<GoogleCredential> FromStreamAsync(Stream stream, string credentialType, CancellationToken cancellationToken) =>
+        FromJsonParameters(await HandleDeserializationErrorsAsync(() =>
+            NewtonsoftJsonSerializer.Instance.DeserializeAsync<JsonCredentialParameters>(stream, cancellationToken)).ConfigureAwait(false), credentialType);
+
+    /// <summary>
+    /// Creates a credential of the specified type from a stream that contains JSON credential data.
+    /// </summary>
+    /// <typeparam name="T">The type of the credential to create.</typeparam>
+    /// <param name="stream">The stream that contains the JSON credential data.</param>
     /// <returns>The created credential.</returns>
-    public static T FromStream<T>(Stream stream)
-    {
-        try
-        {
-            return FromJsonParameters<T>(NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(stream));
-        }
-        catch (Exception e)
-        {
-            throw new InvalidOperationException("Error deserializing JSON credential data.", e);
-        }
-    }
+    public static T FromStream<T>(Stream stream) =>
+        FromJsonParameters<T>(HandleDeserializationErrors(() =>
+            NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(stream)));
+
+    /// <summary>
+    /// Creates a credential of the specified type from a stream that contains JSON credential data.
+    /// </summary>
+    /// <param name="stream">The stream that contains the JSON credential data.</param>
+    /// <param name="credentialType">The type of credential to be loaded. Valid strings can be found in <see cref="JsonCredentialParameters"/>.</param>
+    /// <returns>The created credential.</returns>
+    public static GoogleCredential FromStream(Stream stream, string credentialType) =>
+        FromJsonParameters(HandleDeserializationErrors(() =>
+            NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(stream)), credentialType);
 
     /// <summary>
     /// Creates a credential of the specified type from a string that contains JSON credential data.
@@ -100,17 +131,19 @@ public static class CredentialFactory
     /// <typeparam name="T">The type of the credential to create.</typeparam>
     /// <param name="json">The string that contains the JSON credential data.</param>
     /// <returns>The created credential.</returns>
-    public static T FromJson<T>(string json)
-    {
-        try
-        {
-            return FromJsonParameters<T>(NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(json));
-        }
-        catch (Exception e)
-        {
-            throw new InvalidOperationException("Error deserializing JSON credential data.", e);
-        }
-    }
+    public static T FromJson<T>(string json) =>
+        FromJsonParameters<T>(HandleDeserializationErrors(() =>
+            NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(json)));
+
+    /// <summary>
+    /// Creates a credential of the specified type from a string that contains JSON credential data.
+    /// </summary>
+    /// <param name="json">The string that contains the JSON credential data.</param>
+    /// <param name="credentialType">The type of credential to be loaded.</param>
+    /// <returns>The created credential.</returns>
+    public static GoogleCredential FromJson(string json, string credentialType) =>
+        FromJsonParameters(HandleDeserializationErrors(() =>
+            NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(json)), credentialType);
 
     /// <summary>
     /// Creates a credential of the specified type from JSON credential parameters.
@@ -125,7 +158,7 @@ public static class CredentialFactory
     /// </exception>
     internal static T FromJsonParameters<T>(JsonCredentialParameters credentialParameters)
     {
-        if (CreateCredential(credentialParameters, typeof(T)) is T credentialAsT)
+        if (CreateCredentialFromParameters(credentialParameters, typeof(T)) is T credentialAsT)
         {
             return credentialAsT;
         }
@@ -133,17 +166,65 @@ public static class CredentialFactory
         throw new InvalidOperationException(
             $"Found incompatible credential types, '{credentialParameters.Type}' and '{typeof(T).FullName}, even though a check" 
           + " should have already taken place. We should never reach here, there's a bug in the code.");
+    }
 
-        static IGoogleCredential CreateCredential(JsonCredentialParameters credentialParameters, Type targetCredentialType) =>
-            credentialParameters.ThrowIfNull(nameof(credentialParameters)).Type switch
-            {
-                JsonCredentialParameters.AuthorizedUserCredentialType => CreateUserCredentialFromParameters(credentialParameters, targetCredentialType),
-                JsonCredentialParameters.ServiceAccountCredentialType => CreateServiceAccountCredentialFromParameters(credentialParameters, targetCredentialType),
-                JsonCredentialParameters.ExternalAccountCredentialType => CreateExternalCredentialFromParameters(credentialParameters, targetCredentialType),
-                JsonCredentialParameters.ImpersonatedServiceAccountCredentialType => CreateImpersonatedServiceAccountCredentialFromParameters(credentialParameters, targetCredentialType),
-                JsonCredentialParameters.ExternalAccountAuthorizedUserCredentialType => CreateExternalAccountAuthorizedUserCredentialFromParameters(credentialParameters, targetCredentialType),
-                _ => throw new InvalidOperationException($"Error creating credential from JSON or JSON parameters. Unrecognized credential type {credentialParameters.Type}."),
-            };
+    /// <summary>
+    /// Creates a credential of the specified type from JSON credential parameters.
+    /// </summary>
+    /// <param name="credentialParameters">The JSON credential parameters.</param>
+    /// <param name="credentialType">The expected type of the credential.</param>
+    /// <returns>The created credential.</returns>
+    /// <exception cref="InvalidOperationException">
+    /// Thrown if the <paramref name="credentialType"/> is unrecognized,
+    /// or if the credential data is incompatible with the requested type.
+    /// </exception>
+    internal static GoogleCredential FromJsonParameters(JsonCredentialParameters credentialParameters, string credentialType)
+    {
+        if (credentialParameters.Type != credentialType)
+        {
+            throw new InvalidOperationException($"Json data has type = '{credentialParameters.Type}', but type = '{credentialType}' was expected.");
+        }
+
+        // Type checking has already occurred so target type may be set to the generic IGoogleCredential which all credentials implement.
+        Type targetType = typeof(IGoogleCredential);
+        var rawCredentialType = CreateCredentialFromParameters(credentialParameters, targetType);
+
+        return rawCredentialType.ToGoogleCredential();
+    }
+
+    private static IGoogleCredential CreateCredentialFromParameters(JsonCredentialParameters credentialParameters, Type targetCredentialType) =>
+        credentialParameters.ThrowIfNull(nameof(credentialParameters)).Type switch
+        {
+            JsonCredentialParameters.AuthorizedUserCredentialType => CreateUserCredentialFromParameters(credentialParameters, targetCredentialType),
+            JsonCredentialParameters.ServiceAccountCredentialType => CreateServiceAccountCredentialFromParameters(credentialParameters, targetCredentialType),
+            JsonCredentialParameters.ExternalAccountCredentialType => CreateExternalCredentialFromParameters(credentialParameters, targetCredentialType),
+            JsonCredentialParameters.ImpersonatedServiceAccountCredentialType => CreateImpersonatedServiceAccountCredentialFromParameters(credentialParameters, targetCredentialType),
+            JsonCredentialParameters.ExternalAccountAuthorizedUserCredentialType => CreateExternalAccountAuthorizedUserCredentialFromParameters(credentialParameters, targetCredentialType),
+            _ => throw new InvalidOperationException($"Error creating credential from JSON or JSON parameters. Unrecognized credential type {credentialParameters.Type}.")
+        };
+
+    private static T HandleDeserializationErrors<T>(Func<T> deserializationFunc)
+    {
+        try
+        {
+            return deserializationFunc();
+        }
+        catch (Exception e) when (e is Newtonsoft.Json.JsonException || e is IOException)
+        {
+            throw new InvalidOperationException("Error deserializing JSON credential data.", e);
+        }
+    }
+
+    private static async Task<T> HandleDeserializationErrorsAsync<T>(Func<Task<T>> deserializationFuncAsync)
+    {
+        try
+        {
+            return await deserializationFuncAsync().ConfigureAwait(false);
+        }
+        catch (Exception e) when (e is Newtonsoft.Json.JsonException || e is IOException)
+        {
+            throw new InvalidOperationException("Error deserializing JSON credential data.", e);
+        }
     }
 
     /// <summary>

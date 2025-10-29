@@ -846,6 +846,89 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             Assert.Null(request.Headers.Authorization?.Parameter);
         }
 
+        [Theory]
+        [MemberData(nameof(CredentialFactory_Success_Data))]
+        public async Task FromFileAsync_WithType(string json, string credentialType, Type expectedType)
+        {
+            var tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, json);
+                var credential = await CredentialFactory.FromFileAsync(tempFile, credentialType, CancellationToken.None);
+                Assert.IsType(expectedType, credential.UnderlyingCredential);
+            }
+            finally
+            {
+                File.Delete(tempFile);
+            }
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialFactory_Success_Data))]
+        public void FromFile_WithType(string json, string credentialType, Type expectedType)
+        {
+            var tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, json);
+                var credential = CredentialFactory.FromFile(tempFile, credentialType);
+                Assert.IsType(expectedType, credential.UnderlyingCredential);
+            }
+            finally
+            {
+                File.Delete(tempFile);
+            }
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialFactory_Success_Data))]
+        public async Task FromStreamAsync_WithType(string json, string credentialType, Type expectedType)
+        {
+            using var stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            var credential = await CredentialFactory.FromStreamAsync(stream, credentialType, CancellationToken.None);
+            Assert.IsType(expectedType, credential.UnderlyingCredential);
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialFactory_Success_Data))]
+        public void FromStream_WithType(string json, string credentialType, Type expectedType)
+        {
+            using var stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            var credential = CredentialFactory.FromStream(stream, credentialType);
+            Assert.IsType(expectedType, credential.UnderlyingCredential);
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialFactory_Success_Data))]
+        public void FromJson_WithType(string json, string credentialType, Type expectedType)
+        {
+            var credential = CredentialFactory.FromJson(json, credentialType);
+            Assert.IsType(expectedType, credential.UnderlyingCredential);
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialFactory_Failure_Data))]
+        public void FromJson_WithType_Failure(string json, string credentialType, string expectedMessage)
+        {
+            var ex = Assert.Throws<InvalidOperationException>(() => CredentialFactory.FromJson(json, credentialType));
+            Assert.Equal(expectedMessage, ex.Message);
+        }
+
+        public static TheoryData<string, string, Type> CredentialFactory_Success_Data() =>
+            new TheoryData<string, string, Type>
+            {
+                { FakeUserCredentialFileContents, JsonCredentialParameters.AuthorizedUserCredentialType, typeof(UserCredential) },
+                { FakeServiceAccountCredentialFileContents, JsonCredentialParameters.ServiceAccountCredentialType, typeof(ServiceAccountCredential) }
+            };
+
+        public static TheoryData<string, string, string> CredentialFactory_Failure_Data() =>
+            new TheoryData<string, string, string>
+            {
+                { FakeUserCredentialFileContents, JsonCredentialParameters.ServiceAccountCredentialType, "Json data has type = 'authorized_user', but type = 'service_account' was expected." },
+                { FakeUserCredentialFileContents, "invalid_type", "Json data has type = 'authorized_user', but type = 'invalid_type' was expected." },
+                { "invalid_json", "any_type", "Error deserializing JSON credential data." }
+            };
+
         /// <summary>
         /// Fake implementation of <see cref="IAuthorizationCodeFlow"/> which only supports fetching the
         /// clock and the access method.
