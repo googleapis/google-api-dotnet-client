@@ -293,6 +293,7 @@ namespace Google.Apis.CloudScheduler.v1beta1
             {
                 this.service = service;
                 Jobs = new JobsResource(service);
+                Operations = new OperationsResource(service);
             }
 
             /// <summary>Gets the Jobs resource.</summary>
@@ -609,12 +610,13 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 /// Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For
                 /// example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters
                 /// ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see
-                /// [Identifying
-                /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
-                /// * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be
-                /// obtained by calling ListLocations. For more information, see
-                /// https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers
-                /// ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
+                /// [Identifying projects](/resource-manager/docs/creating-managing-projects#identifying_projects) *
+                /// `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be
+                /// obtained by calling
+                /// [locations.list](/scheduler/docs/reference/rest/v1beta1/projects.locations/list). For more
+                /// information, see [Cloud Scheduler locations](/scheduler/docs/locations). * `JOB_ID` can contain only
+                /// letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500
+                /// characters.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudScheduler.v1beta1.Data.Job body, string name)
                 {
@@ -642,11 +644,13 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     /// example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain
                     /// letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more
                     /// information, see [Identifying
-                    /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
-                    /// * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can
-                    /// be obtained by calling ListLocations. For more information, see
-                    /// https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]),
-                    /// numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
+                    /// projects](/resource-manager/docs/creating-managing-projects#identifying_projects) *
+                    /// `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be
+                    /// obtained by calling
+                    /// [locations.list](/scheduler/docs/reference/rest/v1beta1/projects.locations/list). For more
+                    /// information, see [Cloud Scheduler locations](/scheduler/docs/locations). * `JOB_ID` can contain
+                    /// only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is
+                    /// 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -887,6 +891,301 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 }
             }
 
+            /// <summary>Gets the Operations resource.</summary>
+            public virtual OperationsResource Operations { get; }
+
+            /// <summary>The "operations" collection of methods.</summary>
+            public class OperationsResource
+            {
+                private const string Resource = "operations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+                /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
+                /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+                /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The name of the operation resource to be cancelled.</param>
+                public virtual CancelRequest Cancel(Google.Apis.CloudScheduler.v1beta1.Data.CancelOperationRequest body, string name)
+                {
+                    return new CancelRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+                /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
+                /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+                /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+                /// </summary>
+                public class CancelRequest : CloudSchedulerBaseServiceRequest<Google.Apis.CloudScheduler.v1beta1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudScheduler.v1beta1.Data.CancelOperationRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to be cancelled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudScheduler.v1beta1.Data.CancelOperationRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "cancel";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:cancel";
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                /// <param name="name">The name of the operation resource to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                public class DeleteRequest : CloudSchedulerBaseServiceRequest<Google.Apis.CloudScheduler.v1beta1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                public class GetRequest : CloudSchedulerBaseServiceRequest<Google.Apis.CloudScheduler.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`.
+                /// </summary>
+                /// <param name="name">The name of the operation's parent resource.</param>
+                public virtual ListRequest List(string name)
+                {
+                    return new ListRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`.
+                /// </summary>
+                public class ListRequest : CloudSchedulerBaseServiceRequest<Google.Apis.CloudScheduler.v1beta1.Data.ListOperationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation's parent resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// When set to `true`, operations that are reachable are returned as normal, and those that are
+                    /// unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be
+                    /// `true` when reading across collections e.g. when `parent` is set to
+                    /// `"projects/example/locations/-"`. This field is not by default supported and will result in an
+                    /// `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product
+                    /// specific documentation.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}/operations";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -954,8 +1253,8 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -1155,6 +1454,13 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for Operations.CancelOperation.</summary>
+    public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -1317,11 +1623,11 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         /// Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example:
         /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]),
         /// numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying
-        /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) *
-        /// `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by
-        /// calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can
-        /// contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500
-        /// characters.
+        /// projects](/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the
+        /// canonical ID for the job's location. The list of available locations can be obtained by calling
+        /// [locations.list](/scheduler/docs/reference/rest/v1beta1/projects.locations/list). For more information, see
+        /// [Cloud Scheduler locations](/scheduler/docs/locations). * `JOB_ID` can contain only letters ([A-Za-z]),
+        /// numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1343,14 +1649,14 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         /// <summary>
         /// Required, except when used with UpdateJob. Describes the schedule on which the job will be executed. The
         /// schedule can be either of the following types: * [Crontab](https://en.wikipedia.org/wiki/Cron#Overview) *
-        /// English-like [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) As a general
-        /// rule, execution `n + 1` of a job will not begin until execution `n` has finished. Cloud Scheduler will never
-        /// allow two simultaneously outstanding executions. For example, this implies that if the `n+1`th execution is
-        /// scheduled to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start
-        /// until `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its
-        /// scheduled time occurs. If retry_count &amp;gt; 0 and a job attempt fails, the job will be tried a total of
-        /// retry_count times, with exponential backoff, until the next scheduled start time. If retry_count is 0, a job
-        /// attempt will not be retried if it fails. Instead the Cloud Scheduler system will wait for the next scheduled
+        /// English-like [schedule](/scheduler/docs/configuring/cron-job-schedules) As a general rule, execution `n + 1`
+        /// of a job will not begin until execution `n` has finished. Cloud Scheduler will never allow two
+        /// simultaneously outstanding executions. For example, this implies that if the `n+1`th execution is scheduled
+        /// to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start until
+        /// `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its scheduled
+        /// time occurs. If retry_count &amp;gt; 0 and a job attempt fails, the job will be tried a total of retry_count
+        /// times, with exponential backoff, until the next scheduled start time. If retry_count is 0, a job attempt
+        /// will not be retried if it fails. Instead the Cloud Scheduler system will wait for the next scheduled
         /// execution time. Setting retry_count to 0 does not prevent failed jobs from running according to schedule
         /// after the failure.
         /// </summary>
@@ -1491,6 +1797,29 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for Operations.ListOperations.</summary>
+    public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of operations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request sets
+        /// `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all
+        /// resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1569,6 +1898,49 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1809,9 +2181,9 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
 
     /// <summary>
     /// Settings that determine the retry behavior. For more information, see [Retry
-    /// jobs](https://cloud.google.com/scheduler/docs/configuring/retry-jobs). By default, if a job does not complete
-    /// successfully (meaning that an acknowledgement is not received from the handler, then it will be retried with
-    /// exponential backoff according to the settings in RetryConfig.
+    /// jobs](/scheduler/docs/configuring/retry-jobs). By default, if a job does not complete successfully (meaning that
+    /// an acknowledgement is not received from the handler, then it will be retried with exponential backoff according
+    /// to the settings in RetryConfig.
     /// </summary>
     public class RetryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1826,8 +2198,7 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         /// The time between retries will double `max_doublings` times. A job's retry interval starts at
         /// min_backoff_duration, then doubles `max_doublings` times, then increases linearly, and finally retries at
         /// intervals of max_backoff_duration up to retry_count times. For examples, see [Retry
-        /// jobs](https://cloud.google.com/scheduler/docs/configuring/retry-jobs#max-doublings). The default value of
-        /// this field is 5.
+        /// jobs](/scheduler/docs/configuring/retry-jobs#max-doublings). The default value of this field is 5.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDoublings")]
         public virtual System.Nullable<int> MaxDoublings { get; set; }
