@@ -6629,7 +6629,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// Optional. The default value displayed in the widget, in milliseconds since [Unix epoch
+        /// The default value displayed in the widget, in milliseconds since [Unix epoch
         /// time](https://en.wikipedia.org/wiki/Unix_time). Specify the value based on the type of picker
         /// (`DateTimePickerType`): * `DATE_AND_TIME`: a calendar date and time in UTC. For example, to represent
         /// January 1, 2023 at 12:00 PM UTC, use `1672574400000`. * `DATE_ONLY`: a calendar date at 00:00:00 UTC. For
