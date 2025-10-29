@@ -23342,6 +23342,48 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
+        private string _configurableBillingApproachUpdateTimeRaw;
+
+        private object _configurableBillingApproachUpdateTime;
+
+        /// <summary>Output only. The timestamp when configurable_billing_approach was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproachUpdateTime")]
+        public virtual string ConfigurableBillingApproachUpdateTimeRaw
+        {
+            get => _configurableBillingApproachUpdateTimeRaw;
+            set
+            {
+                _configurableBillingApproachUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _configurableBillingApproachUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="ConfigurableBillingApproachUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ConfigurableBillingApproachUpdateTimeDateTimeOffset instead.")]
+        public virtual object ConfigurableBillingApproachUpdateTime
+        {
+            get => _configurableBillingApproachUpdateTime;
+            set
+            {
+                _configurableBillingApproachUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _configurableBillingApproachUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="ConfigurableBillingApproachUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ConfigurableBillingApproachUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ConfigurableBillingApproachUpdateTimeRaw);
+            set => ConfigurableBillingApproachUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
         /// ContentConfig.NO_CONTENT.
@@ -25686,6 +25728,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Metadata and configurations for a Google Cloud project in the service.</summary>
     public class GoogleCloudDiscoveryengineV1Project : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The current status of the project's configurable billing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingStatus")]
+        public virtual GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus ConfigurableBillingStatus { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -25780,6 +25826,70 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Output only. A map of terms of services. The key is the `id` of ServiceTerms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceTermsMap")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1ProjectServiceTerms> ServiceTermsMap { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the currently effective configurable billing parameters. These values are derived from the customer's
+    /// subscription history stored internally and reflect the thresholds actively being used for billing purposes at
+    /// the time of the GetProject call. This includes the start_time of the subscription and may differ from the values
+    /// in `customer_provided_config` due to billing rules (e.g., scale-downs taking effect only at the start of a new
+    /// month).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The currently effective Indexing Core threshold. This is the threshold against which Indexing Core
+        /// usage is compared for overage calculations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveIndexingCoreThreshold")]
+        public virtual System.Nullable<long> EffectiveIndexingCoreThreshold { get; set; }
+
+        /// <summary>
+        /// Optional. The currently effective Search QPM threshold in queries per minute. This is the threshold against
+        /// which QPM usage is compared for overage calculations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveSearchQpmThreshold")]
+        public virtual System.Nullable<long> EffectiveSearchQpmThreshold { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Optional. The start time of the currently active billing subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30847,6 +30957,48 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
+        private string _configurableBillingApproachUpdateTimeRaw;
+
+        private object _configurableBillingApproachUpdateTime;
+
+        /// <summary>Output only. The timestamp when configurable_billing_approach was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproachUpdateTime")]
+        public virtual string ConfigurableBillingApproachUpdateTimeRaw
+        {
+            get => _configurableBillingApproachUpdateTimeRaw;
+            set
+            {
+                _configurableBillingApproachUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _configurableBillingApproachUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="ConfigurableBillingApproachUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ConfigurableBillingApproachUpdateTimeDateTimeOffset instead.")]
+        public virtual object ConfigurableBillingApproachUpdateTime
+        {
+            get => _configurableBillingApproachUpdateTime;
+            set
+            {
+                _configurableBillingApproachUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _configurableBillingApproachUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="ConfigurableBillingApproachUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ConfigurableBillingApproachUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ConfigurableBillingApproachUpdateTimeRaw);
+            set => ConfigurableBillingApproachUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
         /// ContentConfig.NO_CONTENT.
@@ -34164,6 +34316,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Metadata and configurations for a Google Cloud project in the service.</summary>
     public class GoogleCloudDiscoveryengineV1alphaProject : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The current status of the project's configurable billing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingStatus")]
+        public virtual GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus ConfigurableBillingStatus { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -34258,6 +34414,70 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Output only. A map of terms of services. The key is the `id` of ServiceTerms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceTermsMap")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaProjectServiceTerms> ServiceTermsMap { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the currently effective configurable billing parameters. These values are derived from the customer's
+    /// subscription history stored internally and reflect the thresholds actively being used for billing purposes at
+    /// the time of the GetProject call. This includes the start_time of the subscription and may differ from the values
+    /// in `customer_provided_config` due to billing rules (e.g., scale-downs taking effect only at the start of a new
+    /// month).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The currently effective Indexing Core threshold. This is the threshold against which Indexing Core
+        /// usage is compared for overage calculations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveIndexingCoreThreshold")]
+        public virtual System.Nullable<long> EffectiveIndexingCoreThreshold { get; set; }
+
+        /// <summary>
+        /// Optional. The currently effective Search QPM threshold in queries per minute. This is the threshold against
+        /// which QPM usage is compared for overage calculations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveSearchQpmThreshold")]
+        public virtual System.Nullable<long> EffectiveSearchQpmThreshold { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Optional. The start time of the currently active billing subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -42193,6 +42413,48 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
+        private string _configurableBillingApproachUpdateTimeRaw;
+
+        private object _configurableBillingApproachUpdateTime;
+
+        /// <summary>Output only. The timestamp when configurable_billing_approach was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproachUpdateTime")]
+        public virtual string ConfigurableBillingApproachUpdateTimeRaw
+        {
+            get => _configurableBillingApproachUpdateTimeRaw;
+            set
+            {
+                _configurableBillingApproachUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _configurableBillingApproachUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="ConfigurableBillingApproachUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ConfigurableBillingApproachUpdateTimeDateTimeOffset instead.")]
+        public virtual object ConfigurableBillingApproachUpdateTime
+        {
+            get => _configurableBillingApproachUpdateTime;
+            set
+            {
+                _configurableBillingApproachUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _configurableBillingApproachUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="ConfigurableBillingApproachUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ConfigurableBillingApproachUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ConfigurableBillingApproachUpdateTimeRaw);
+            set => ConfigurableBillingApproachUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
         /// ContentConfig.NO_CONTENT.
@@ -46063,6 +46325,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Metadata and configurations for a Google Cloud project in the service.</summary>
     public class GoogleCloudDiscoveryengineV1betaProject : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The current status of the project's configurable billing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingStatus")]
+        public virtual GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus ConfigurableBillingStatus { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -46157,6 +46423,70 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Output only. A map of terms of services. The key is the `id` of ServiceTerms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceTermsMap")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1betaProjectServiceTerms> ServiceTermsMap { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the currently effective configurable billing parameters. These values are derived from the customer's
+    /// subscription history stored internally and reflect the thresholds actively being used for billing purposes at
+    /// the time of the GetProject call. This includes the start_time of the subscription and may differ from the values
+    /// in `customer_provided_config` due to billing rules (e.g., scale-downs taking effect only at the start of a new
+    /// month).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The currently effective Indexing Core threshold. This is the threshold against which Indexing Core
+        /// usage is compared for overage calculations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveIndexingCoreThreshold")]
+        public virtual System.Nullable<long> EffectiveIndexingCoreThreshold { get; set; }
+
+        /// <summary>
+        /// Optional. The currently effective Search QPM threshold in queries per minute. This is the threshold against
+        /// which QPM usage is compared for overage calculations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveSearchQpmThreshold")]
+        public virtual System.Nullable<long> EffectiveSearchQpmThreshold { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Optional. The start time of the currently active billing subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
