@@ -560,12 +560,12 @@ namespace Google.Apis.CloudScheduler.v1
                 /// Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For
                 /// example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters
                 /// ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see
-                /// [Identifying
-                /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
-                /// * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be
-                /// obtained by calling ListLocations. For more information, see
-                /// https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers
-                /// ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
+                /// [Identifying projects](/resource-manager/docs/creating-managing-projects#identifying_projects) *
+                /// `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be
+                /// obtained by calling [locations.list](/scheduler/docs/reference/rest/v1/projects.locations/list). For
+                /// more information, see [Cloud Scheduler locations](/scheduler/docs/locations). * `JOB_ID` can contain
+                /// only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500
+                /// characters.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudScheduler.v1.Data.Job body, string name)
                 {
@@ -593,11 +593,12 @@ namespace Google.Apis.CloudScheduler.v1
                     /// example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain
                     /// letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more
                     /// information, see [Identifying
-                    /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
-                    /// * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can
-                    /// be obtained by calling ListLocations. For more information, see
-                    /// https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]),
-                    /// numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
+                    /// projects](/resource-manager/docs/creating-managing-projects#identifying_projects) *
+                    /// `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be
+                    /// obtained by calling [locations.list](/scheduler/docs/reference/rest/v1/projects.locations/list).
+                    /// For more information, see [Cloud Scheduler locations](/scheduler/docs/locations). * `JOB_ID` can
+                    /// contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum
+                    /// length is 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1178,6 +1179,55 @@ namespace Google.Apis.CloudScheduler.v1
                 }
             }
 
+            /// <summary>Gets the Scheduler config in the project/region.</summary>
+            /// <param name="name">
+            /// Required. The config name. For example: projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig
+            /// </param>
+            public virtual GetCmekConfigRequest GetCmekConfig(string name)
+            {
+                return new GetCmekConfigRequest(this.service, name);
+            }
+
+            /// <summary>Gets the Scheduler config in the project/region.</summary>
+            public class GetCmekConfigRequest : CloudSchedulerBaseServiceRequest<Google.Apis.CloudScheduler.v1.Data.CmekConfig>
+            {
+                /// <summary>Constructs a new GetCmekConfig request.</summary>
+                public GetCmekConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The config name. For example: projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getCmekConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetCmekConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/cmekConfig$",
+                    });
+                }
+            }
+
             /// <summary>Lists information about the supported locations for this service.</summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -1200,8 +1250,8 @@ namespace Google.Apis.CloudScheduler.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -1274,6 +1324,77 @@ namespace Google.Apis.CloudScheduler.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Initializes or Updates the a scheduler config.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The config resource name which includes the project and location and must end in
+            /// 'cmekConfig', in the format projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
+            /// </param>
+            public virtual UpdateCmekConfigRequest UpdateCmekConfig(Google.Apis.CloudScheduler.v1.Data.CmekConfig body, string name)
+            {
+                return new UpdateCmekConfigRequest(this.service, body, name);
+            }
+
+            /// <summary>Initializes or Updates the a scheduler config.</summary>
+            public class UpdateCmekConfigRequest : CloudSchedulerBaseServiceRequest<Google.Apis.CloudScheduler.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new UpdateCmekConfig request.</summary>
+                public UpdateCmekConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudScheduler.v1.Data.CmekConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The config resource name which includes the project and location and must end in
+                /// 'cmekConfig', in the format projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. List of fields to be updated in this request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudScheduler.v1.Data.CmekConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateCmekConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes UpdateCmekConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/cmekConfig$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1404,6 +1525,28 @@ namespace Google.Apis.CloudScheduler.v1.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the project/location configuration of Cloud Scheduler Resources.</summary>
+    public class CmekConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Resource name of the Cloud KMS key, of the form
+        /// `projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/KEY_ID`, that will be used to
+        /// encrypt Jobs in the region. Setting this as blank will turn off CMEK encryption.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>
+        /// Identifier. The config resource name which includes the project and location and must end in 'cmekConfig',
+        /// in the format projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1562,11 +1705,11 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example:
         /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]),
         /// numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying
-        /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) *
-        /// `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by
-        /// calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can
-        /// contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500
-        /// characters.
+        /// projects](/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the
+        /// canonical ID for the job's location. The list of available locations can be obtained by calling
+        /// [locations.list](/scheduler/docs/reference/rest/v1/projects.locations/list). For more information, see
+        /// [Cloud Scheduler locations](/scheduler/docs/locations). * `JOB_ID` can contain only letters ([A-Za-z]),
+        /// numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1588,14 +1731,14 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// <summary>
         /// Required, except when used with UpdateJob. Describes the schedule on which the job will be executed. The
         /// schedule can be either of the following types: * [Crontab](https://en.wikipedia.org/wiki/Cron#Overview) *
-        /// English-like [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) As a general
-        /// rule, execution `n + 1` of a job will not begin until execution `n` has finished. Cloud Scheduler will never
-        /// allow two simultaneously outstanding executions. For example, this implies that if the `n+1`th execution is
-        /// scheduled to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start
-        /// until `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its
-        /// scheduled time occurs. If retry_count &amp;gt; 0 and a job attempt fails, the job will be tried a total of
-        /// retry_count times, with exponential backoff, until the next scheduled start time. If retry_count is 0, a job
-        /// attempt will not be retried if it fails. Instead the Cloud Scheduler system will wait for the next scheduled
+        /// English-like [schedule](/scheduler/docs/configuring/cron-job-schedules) As a general rule, execution `n + 1`
+        /// of a job will not begin until execution `n` has finished. Cloud Scheduler will never allow two
+        /// simultaneously outstanding executions. For example, this implies that if the `n+1`th execution is scheduled
+        /// to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start until
+        /// `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its scheduled
+        /// time occurs. If retry_count &amp;gt; 0 and a job attempt fails, the job will be tried a total of retry_count
+        /// times, with exponential backoff, until the next scheduled start time. If retry_count is 0, a job attempt
+        /// will not be retried if it fails. Instead the Cloud Scheduler system will wait for the next scheduled
         /// execution time. Setting retry_count to 0 does not prevent failed jobs from running according to schedule
         /// after the failure.
         /// </summary>
@@ -2120,9 +2263,9 @@ namespace Google.Apis.CloudScheduler.v1.Data
 
     /// <summary>
     /// Settings that determine the retry behavior. For more information, see [Retry
-    /// jobs](https://cloud.google.com/scheduler/docs/configuring/retry-jobs). By default, if a job does not complete
-    /// successfully (meaning that an acknowledgement is not received from the handler, then it will be retried with
-    /// exponential backoff according to the settings in RetryConfig.
+    /// jobs](/scheduler/docs/configuring/retry-jobs). By default, if a job does not complete successfully (meaning that
+    /// an acknowledgement is not received from the handler, then it will be retried with exponential backoff according
+    /// to the settings in RetryConfig.
     /// </summary>
     public class RetryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2137,8 +2280,7 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// The time between retries will double `max_doublings` times. A job's retry interval starts at
         /// min_backoff_duration, then doubles `max_doublings` times, then increases linearly, and finally retries at
         /// intervals of max_backoff_duration up to retry_count times. For examples, see [Retry
-        /// jobs](https://cloud.google.com/scheduler/docs/configuring/retry-jobs#max-doublings). The default value of
-        /// this field is 5.
+        /// jobs](/scheduler/docs/configuring/retry-jobs#max-doublings). The default value of this field is 5.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDoublings")]
         public virtual System.Nullable<int> MaxDoublings { get; set; }
