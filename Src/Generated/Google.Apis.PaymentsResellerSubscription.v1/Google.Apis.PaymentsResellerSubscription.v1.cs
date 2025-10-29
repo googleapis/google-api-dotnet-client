@@ -1953,6 +1953,24 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entitleIntent")]
         public virtual EntitleSubscriptionIntent EntitleIntent { get; set; }
 
+        /// <summary>Optional. The additional features for the intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentOptions")]
+        public virtual IntentPayloadIntentOptions IntentOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The options for the intent.</summary>
+    public class IntentPayloadIntentOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If true, Google may use a different product and promotion id from the ones in the `create_intent`
+        /// based on the user's eligibility. Only applicable for certain YouTube free trial offers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableOfferOverride")]
+        public virtual System.Nullable<bool> EnableOfferOverride { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
