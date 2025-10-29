@@ -368,6 +368,7 @@ namespace Google.Apis.Document.v1
                 Operations = new OperationsResource(service);
                 ProcessorTypes = new ProcessorTypesResource(service);
                 Processors = new ProcessorsResource(service);
+                Schemas = new SchemasResource(service);
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -2097,6 +2098,742 @@ namespace Google.Apis.Document.v1
                 }
             }
 
+            /// <summary>Gets the Schemas resource.</summary>
+            public virtual SchemasResource Schemas { get; }
+
+            /// <summary>The "schemas" collection of methods.</summary>
+            public class SchemasResource
+            {
+                private const string Resource = "schemas";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SchemasResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    SchemaVersions = new SchemaVersionsResource(service);
+                }
+
+                /// <summary>Gets the SchemaVersions resource.</summary>
+                public virtual SchemaVersionsResource SchemaVersions { get; }
+
+                /// <summary>The "schemaVersions" collection of methods.</summary>
+                public class SchemaVersionsResource
+                {
+                    private const string Resource = "schemaVersions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SchemaVersionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a schema version.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent (project and location) under which to create the SchemaVersion. Format:
+                    /// `projects/{project}/locations/{location}/schemas/{schema}`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1SchemaVersion body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a schema version.</summary>
+                    public class CreateRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1SchemaVersion>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1SchemaVersion body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent (project and location) under which to create the SchemaVersion. Format:
+                        /// `projects/{project}/locations/{location}/schemas/{schema}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1SchemaVersion Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/schemaVersions";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemas/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a schema version.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the SchemaVersion to delete. Format:
+                    /// `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a schema version.</summary>
+                    public class DeleteRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the SchemaVersion to delete. Format:
+                        /// `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemas/[^/]+/schemaVersions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Generates a schema version.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent (project, location and schema) under which to generate the SchemaVersion.
+                    /// Format: `projects/{project}/locations/{location}/schemas/{schema}`
+                    /// </param>
+                    public virtual GenerateRequest Generate(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1GenerateSchemaVersionRequest body, string parent)
+                    {
+                        return new GenerateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Generates a schema version.</summary>
+                    public class GenerateRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1GenerateSchemaVersionResponse>
+                    {
+                        /// <summary>Constructs a new Generate request.</summary>
+                        public GenerateRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1GenerateSchemaVersionRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent (project, location and schema) under which to generate the
+                        /// SchemaVersion. Format: `projects/{project}/locations/{location}/schemas/{schema}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1GenerateSchemaVersionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "generate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/schemaVersions:generate";
+
+                        /// <summary>Initializes Generate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemas/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a schema version.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the SchemaVersion to get. Format:
+                    /// `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets a schema version.</summary>
+                    public class GetRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1SchemaVersion>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the SchemaVersion to get. Format:
+                        /// `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemas/[^/]+/schemaVersions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists SchemaVersions.</summary>
+                    /// <param name="parent">
+                    /// Required. Format: `projects/{project}/locations/{location}/schemas/{schema}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists SchemaVersions.</summary>
+                    public class ListRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1ListSchemaVersionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Format: `projects/{project}/locations/{location}/schemas/{schema}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of SchemaVersion to return. If unspecified, at most `10`
+                        /// SchemaVersion will be returned. The maximum value is `20`. Values above `20` will be coerced
+                        /// to `20`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. We will return the SchemaVersion sorted by creation time. The page token will
+                        /// point to the next SchemaVersion.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/schemaVersions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemas/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates a schema version. Editable fields are: - `display_name` - `labels`</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Identifier. The resource name of the SchemaVersion. Format:
+                    /// `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1SchemaVersion body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates a schema version. Editable fields are: - `display_name` - `labels`</summary>
+                    public class PatchRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1SchemaVersion>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1SchemaVersion body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Identifier. The resource name of the SchemaVersion. Format:
+                        /// `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The update mask to apply to the resource. **Note:** Only the following fields can
+                        /// be updated: - display_name. - labels.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1SchemaVersion Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/schemas/[^/]+/schemaVersions/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a schema.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent (project and location) under which to create the Schema. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1NextSchema body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a schema.</summary>
+                public class CreateRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1NextSchema>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1NextSchema body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent (project and location) under which to create the Schema. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1NextSchema Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/schemas";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a schema.</summary>
+                /// <param name="name">
+                /// Required. The name of the Schema to be deleted. Format:
+                /// `projects/{project}/locations/{location}/schemas/{schema}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a schema.</summary>
+                public class DeleteRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Schema to be deleted. Format:
+                    /// `projects/{project}/locations/{location}/schemas/{schema}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, any child resources of this Schema will also be deleted. (Otherwise,
+                    /// the request will only work if the Schema has no child resources.)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/schemas/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets a schema.</summary>
+                /// <param name="name">
+                /// Required. The name of the Schema to get. Format:
+                /// `projects/{project}/locations/{location}/schemas/{schema}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a schema.</summary>
+                public class GetRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1NextSchema>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Schema to get. Format:
+                    /// `projects/{project}/locations/{location}/schemas/{schema}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/schemas/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Schemas.</summary>
+                /// <param name="parent">Required. Format: `projects/{project}/locations/{location}`</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists Schemas.</summary>
+                public class ListRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1ListSchemasResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Format: `projects/{project}/locations/{location}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of schema groups to return. If unspecified, at most `10` Schema
+                    /// will be returned. The maximum value is `20`. Values above `20` will be coerced to `20`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. We will return the schema groups sorted by creation time. The page token will point to
+                    /// the next Schema.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/schemas";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a schema. Editable fields are: - `display_name` - `labels`</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the Schema. Format:
+                /// `projects/{project}/locations/{location}/schemas/{schema}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1NextSchema body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a schema. Editable fields are: - `display_name` - `labels`</summary>
+                public class PatchRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1NextSchema>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1NextSchema body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the Schema. Format:
+                    /// `projects/{project}/locations/{location}/schemas/{schema}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The update mask to apply to the resource. **Note:** Only the following fields can be
+                    /// updated: - display_name. - labels.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Document.v1.Data.GoogleCloudDocumentaiV1NextSchema Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/schemas/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>
             /// Fetches processor types. Note that we don't use ListProcessorTypes here, because it isn't paginated.
             /// </summary>
@@ -2954,6 +3691,162 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The schema defines the output of the processed document by a processor.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3DocumentSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Display name to show to users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Entity types of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType> EntityTypes { get; set; }
+
+        /// <summary>Metadata of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// EntityType is the wrapper of a label of the corresponding model with detailed attributes and limitations for
+    /// entity-based processors. Multiple types can also compose a dependency tree to represent nested types.
+    /// </summary>
+    public class GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The entity type that this type is derived from. For now, one and only one should be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseTypes")]
+        public virtual System.Collections.Generic.IList<string> BaseTypes { get; set; }
+
+        /// <summary>
+        /// The description of the entity type. Could be used to provide more information about the entity type for
+        /// model calls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>User defined name for the type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Metadata for the entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypeMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata EntityTypeMetadata { get; set; }
+
+        /// <summary>
+        /// If specified, lists all the possible values for this entity. This should not be more than a handful of
+        /// values. If the number of values is &amp;gt;10 or could change frequently use the `EntityType.value_ontology`
+        /// field and specify a list of all possible values in a value ontology file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumValues")]
+        public virtual GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues EnumValues { get; set; }
+
+        /// <summary>
+        /// Name of the type. It must be unique within the schema file and cannot be a "Common Type". The following
+        /// naming conventions are used: - Use `snake_casing`. - Name matching is case-sensitive. - Maximum 64
+        /// characters. - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
+        /// compatibility internal infrastructure and tooling can handle any ascii character.) - The `/` is sometimes
+        /// used to denote a property of a type. For example `line_item/amount`. This convention is deprecated, but will
+        /// still be honored for backward compatibility.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Description the nested structure, or composition of an entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty> Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the a list of enum values.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The individual values that this enum values type can include.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines properties that can be part of the entity type.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The description of the property. Could be used to provide more information about the property for model
+        /// calls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>User defined name for the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Specifies how the entity's value is obtained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; }
+
+        /// <summary>The name of the property. Follows the same guidelines as the EntityType name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Occurrence type limits the number of instances an entity type appears in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("occurrenceType")]
+        public virtual string OccurrenceType { get; set; }
+
+        /// <summary>Any additional metadata about the property can be added here.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3PropertyMetadata PropertyMetadata { get; set; }
+
+        /// <summary>
+        /// A reference to the value type of the property. This type is subject to the same conventions as the
+        /// `Entity.base_types` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
+        public virtual string ValueType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for global schema behavior.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, on a given page, there can be multiple `document` annotations covering it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentAllowMultipleLabels")]
+        public virtual System.Nullable<bool> DocumentAllowMultipleLabels { get; set; }
+
+        /// <summary>
+        /// If true, a `document` entity type can be applied to subdocument (splitting). Otherwise, it can only be
+        /// applied to the entire document (classification).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentSplitter")]
+        public virtual System.Nullable<bool> DocumentSplitter { get; set; }
+
+        /// <summary>If set, all the nested entities must be prefixed with the parents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixedNamingOnProperties")]
+        public virtual System.Nullable<bool> PrefixedNamingOnProperties { get; set; }
+
+        /// <summary>
+        /// If set, we will skip the naming format validation in the schema. So the string values in
+        /// `DocumentSchema.EntityType.name` and `DocumentSchema.EntityType.Property.name` will not be checked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipNamingValidation")]
+        public virtual System.Nullable<bool> SkipNamingValidation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The long-running operation metadata for the EnableProcessor method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2970,6 +3863,37 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about an entity type.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Field tier metadata on the property</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldTierMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3FieldTierMetadata FieldTierMetadata { get; set; }
+
+        /// <summary>Human review labeling config on the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewLabelingMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata HumanReviewLabelingMetadata { get; set; }
+
+        /// <summary>Human review config on the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata HumanReviewMetadata { get; set; }
+
+        /// <summary>Whether the entity type should be considered inactive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
+        public virtual System.Nullable<bool> Inactive { get; set; }
+
+        /// <summary>Schema editability metadata on the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaEditabilityMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata SchemaEditabilityMetadata { get; set; }
+
+        /// <summary>Schema inference metadata on the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaInferenceMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata SchemaInferenceMetadata { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2991,6 +3915,80 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>The resource name of the created evaluation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
         public virtual string Evaluation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluation metrics, either in aggregate or about a specific entity.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3EvaluationMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The calculated f1 score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
+        public virtual System.Nullable<float> F1Score { get; set; }
+
+        /// <summary>The amount of false negatives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("falseNegativesCount")]
+        public virtual System.Nullable<int> FalseNegativesCount { get; set; }
+
+        /// <summary>The amount of false positives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("falsePositivesCount")]
+        public virtual System.Nullable<int> FalsePositivesCount { get; set; }
+
+        /// <summary>The amount of documents with a ground truth occurrence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundTruthDocumentCount")]
+        public virtual System.Nullable<int> GroundTruthDocumentCount { get; set; }
+
+        /// <summary>The amount of occurrences in ground truth documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundTruthOccurrencesCount")]
+        public virtual System.Nullable<int> GroundTruthOccurrencesCount { get; set; }
+
+        /// <summary>The calculated precision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precision")]
+        public virtual System.Nullable<float> Precision { get; set; }
+
+        /// <summary>The amount of documents with a predicted occurrence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictedDocumentCount")]
+        public virtual System.Nullable<int> PredictedDocumentCount { get; set; }
+
+        /// <summary>The amount of occurrences in predicted documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictedOccurrencesCount")]
+        public virtual System.Nullable<int> PredictedOccurrencesCount { get; set; }
+
+        /// <summary>The calculated recall.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recall")]
+        public virtual System.Nullable<float> Recall { get; set; }
+
+        /// <summary>The amount of documents that had an occurrence of this label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDocumentsCount")]
+        public virtual System.Nullable<int> TotalDocumentsCount { get; set; }
+
+        /// <summary>The amount of true positives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truePositivesCount")]
+        public virtual System.Nullable<int> TruePositivesCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Gives a short summary of an evaluation, and links to the evaluation itself.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3EvaluationReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An aggregate of the statistics for the evaluation with fuzzy matching on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateMetrics")]
+        public virtual GoogleCloudDocumentaiUiv1beta3EvaluationMetrics AggregateMetrics { get; set; }
+
+        /// <summary>An aggregate of the statistics for the evaluation with fuzzy matching off.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateMetricsExact")]
+        public virtual GoogleCloudDocumentaiUiv1beta3EvaluationMetrics AggregateMetricsExact { get; set; }
+
+        /// <summary>The resource name of the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
+        public virtual string Evaluation { get; set; }
+
+        /// <summary>The resource name of the Long Running Operation for the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3075,6 +4073,74 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>The Cloud Storage URI containing the output artifacts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for how this field value is extracted.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Entity query config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityQuery")]
+        public virtual GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery EntityQuery { get; set; }
+
+        /// <summary>Summary options config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryOptions")]
+        public virtual GoogleCloudDocumentaiUiv1beta3SummaryOptions SummaryOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for entity query.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The original entity query inputed by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEntityQuery")]
+        public virtual string UserEntityQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the field tier of a property.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3FieldTierMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Integer that indicates the tier of a property. e.g. Invoice has entities that are classified as tier 1 which
+        /// is the most important, while tier 2 and tier 3 less so. This attribute can be used to filter schema
+        /// attributes before running eval. e.g. compute F1 score for only tier 1 entities. If not present this
+        /// attribute should be inferred as 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tierLevel")]
+        public virtual System.Nullable<int> TierLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for human review labeling config.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to enable normalization editing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableNormalizationEditing")]
+        public virtual System.Nullable<bool> EnableNormalizationEditing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for Human Review config.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The confidence threshold if human review validation is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceThreshold")]
+        public virtual System.Nullable<float> ConfidenceThreshold { get; set; }
+
+        /// <summary>Whether to enable human review validation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableValidation")]
+        public virtual System.Nullable<bool> EnableValidation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3170,6 +4236,368 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>The destination processor version name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processorVersion")]
         public virtual string ProcessorVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The first-class citizen for Document AI. Each processor defines how to extract structural information from a
+    /// document.
+    /// </summary>
+    public class GoogleCloudDocumentaiUiv1beta3Processor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. SchemaVersion used by the Processor. It is the same as Processor's DatasetSchema.schema_version
+        /// Format is `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeSchemaVersion")]
+        public virtual string ActiveSchemaVersion { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the processor was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The default processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultProcessorVersion")]
+        public virtual string DefaultProcessorVersion { get; set; }
+
+        /// <summary>The display name of the processor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK
+        /// scenarios.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. The resource name of the processor. Format:
+        /// `projects/{project}/locations/{location}/processors/{processor}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Immutable. The http endpoint that can be called to invoke processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processEndpoint")]
+        public virtual string ProcessEndpoint { get; set; }
+
+        /// <summary>Output only. The processor version aliases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersionAliases")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias> ProcessorVersionAliases { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
+        /// <summary>Output only. The state of the processor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see
+        /// FetchProcessorTypes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A processor version is an implementation of a processor. Each processor can have multiple versions, pretrained
+    /// by Google internally or uptrained by the customer. A processor can only have one default version at a time. Its
+    /// document-processing behavior is defined by that version.
+    /// </summary>
+    public class GoogleCloudDocumentaiUiv1beta3ProcessorVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the processor version was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Denotes that this `ProcessorVersion` can be deployed and undeployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentAllowed")]
+        public virtual System.Nullable<bool> DeploymentAllowed { get; set; }
+
+        /// <summary>Output only. If set, information about the eventual deprecation of this version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecationInfo")]
+        public virtual GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo DeprecationInfo { get; set; }
+
+        /// <summary>The display name of the processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The schema of the processor version. Describes the output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentSchema")]
+        public virtual GoogleCloudDocumentaiUiv1beta3DocumentSchema DocumentSchema { get; set; }
+
+        /// <summary>Output only. Information about Generative AI model-based processor versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genAiModelInfo")]
+        public virtual GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo GenAiModelInfo { get; set; }
+
+        /// <summary>Output only. Denotes that this `ProcessorVersion` is managed by Google.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleManaged")]
+        public virtual System.Nullable<bool> GoogleManaged { get; set; }
+
+        /// <summary>Output only. The KMS key name used for encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>Output only. The KMS key version with which data is encrypted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
+        public virtual string KmsKeyVersionName { get; set; }
+
+        /// <summary>Output only. The most recently invoked evaluation for the processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestEvaluation")]
+        public virtual GoogleCloudDocumentaiUiv1beta3EvaluationReference LatestEvaluation { get; set; }
+
+        /// <summary>Output only. The model type of this processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelType")]
+        public virtual string ModelType { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the processor version. Format:
+        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
+        /// <summary>The schema of the processor version. Describes the output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual GoogleCloudDocumentaiUiv1beta3Schema Schema { get; set; }
+
+        /// <summary>Output only. The state of the processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the alias and the aliased resource name of processor version.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The alias in the form of `processor_version` resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alias")]
+        public virtual string Alias { get; set; }
+
+        /// <summary>The resource name of aliased processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersion")]
+        public virtual string ProcessorVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the upcoming deprecation of this processor version.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _deprecationTimeRaw;
+
+        private object _deprecationTime;
+
+        /// <summary>The time at which this processor version will be deprecated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecationTime")]
+        public virtual string DeprecationTimeRaw
+        {
+            get => _deprecationTimeRaw;
+            set
+            {
+                _deprecationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deprecationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeprecationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeprecationTimeDateTimeOffset instead.")]
+        public virtual object DeprecationTime
+        {
+            get => _deprecationTime;
+            set
+            {
+                _deprecationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deprecationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DeprecationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeprecationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeprecationTimeRaw);
+            set => DeprecationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>If set, the processor version that will be used as a replacement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replacementProcessorVersion")]
+        public virtual string ReplacementProcessorVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about Generative AI model-based processor versions.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information for a custom Generative AI model created by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customGenAiModelInfo")]
+        public virtual GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo CustomGenAiModelInfo { get; set; }
+
+        /// <summary>Information for a pretrained Google-managed foundation model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foundationGenAiModelInfo")]
+        public virtual GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo FoundationGenAiModelInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information for a custom Generative AI model created by the user. These are created with `Create New Version` in
+    /// either the `Call foundation model` or `Fine tuning` tabs.
+    /// </summary>
+    public class GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The base processor version ID for the custom model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseProcessorVersionId")]
+        public virtual string BaseProcessorVersionId { get; set; }
+
+        /// <summary>The type of custom model created by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customModelType")]
+        public virtual string CustomModelType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information for a pretrained Google-managed foundation model.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether finetuning is allowed for this base processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finetuningAllowed")]
+        public virtual System.Nullable<bool> FinetuningAllowed { get; set; }
+
+        /// <summary>The minimum number of labeled documents in the training dataset required for finetuning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTrainLabeledDocuments")]
+        public virtual System.Nullable<int> MinTrainLabeledDocuments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about a property.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3PropertyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Field extraction metadata on the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldExtractionMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata FieldExtractionMetadata { get; set; }
+
+        /// <summary>Field tier metadata on the property</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldTierMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3FieldTierMetadata FieldTierMetadata { get; set; }
+
+        /// <summary>Human review labeling config on the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewLabelingMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata HumanReviewLabelingMetadata { get; set; }
+
+        /// <summary>Human review validation config on the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata HumanReviewMetadata { get; set; }
+
+        /// <summary>Whether the property should be considered as "inactive".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
+        public virtual System.Nullable<bool> Inactive { get; set; }
+
+        /// <summary>Schema editability metadata on the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaEditabilityMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata SchemaEditabilityMetadata { get; set; }
+
+        /// <summary>Schema inference metadata on the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaInferenceMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata SchemaInferenceMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3309,6 +4737,122 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The schema defines the output of the processed document by a processor.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3Schema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Display name to show to users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Entity types of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3SchemaEntityType> EntityTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata that specifies whether a label is editable and reasons why. These fields are read-only. Changing these
+    /// fields has no impact on the backend.
+    /// </summary>
+    public class GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Explicit flag that controls whether the label is editable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("editable")]
+        public virtual System.Nullable<bool> Editable { get; set; }
+
+        /// <summary>
+        /// Full resource name of processor versions that contain this label. e.g.
+        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersions")]
+        public virtual System.Collections.Generic.IList<string> ProcessorVersions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// EntityType is the wrapper of a label of the corresponding model with detailed attributes and limitations for
+    /// entity-based processors. Multiple types can also compose a dependency tree to represent nested types.
+    /// </summary>
+    public class GoogleCloudDocumentaiUiv1beta3SchemaEntityType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("baseType")]
+        public virtual string BaseType { get; set; }
+
+        /// <summary>Description of the entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>If specified, lists all the possible values for this entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumValues")]
+        public virtual System.Collections.Generic.IList<string> EnumValues { get; set; }
+
+        /// <summary>
+        /// If the entity type is hidden in the schema. This provides the functionality to temporally "disable" an
+        /// entity without deleting it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hide")]
+        public virtual System.Nullable<bool> Hide { get; set; }
+
+        /// <summary>Specifies how the entity's value is obtained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; }
+
+        /// <summary>Occurrence type limits the number of times an entity type appears in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("occurrenceType")]
+        public virtual string OccurrenceType { get; set; }
+
+        /// <summary>
+        /// Describing the nested structure of an entity. An EntityType may consist of several other EntityTypes. For
+        /// example, in a document there can be an EntityType `ID`, which consists of EntityType `name` and `address`,
+        /// with corresponding attributes, such as TEXT for both types and ONCE for occurrence types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3SchemaEntityType> Properties { get; set; }
+
+        /// <summary>Source of this entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>
+        /// Name of the type. It must satisfy the following constraints: 1. Must be unique within the set of same level
+        /// types (with case-insensitive match). 2. Maximum 64 characters. 3. Must start with a letter. 4. Allowed
+        /// characters: ASCII letters [a-zA-Z], ASCII digits [0-9], or one of the following punctuation characters: *
+        /// underscore '_' (recommended) * hyphen '-' (allowed, not recommended) * colon ':' (allowed, not recommended)
+        /// NOTE: Whitespace characters are not allowed. 5. Cannot end with a punctuation character. 6. Cannot contain
+        /// the following restricted strings: "google", "DocumentAI" (case-insensitive match). 7. A slash character '/'
+        /// is reserved as a separator in flattened representations of nested entity types (e.g., "line_item/amount") in
+        /// which case each part (e.g., "line_item", "amount") must comply with the rules defined above. We recommend
+        /// using the snake case ("snake_case") in entity type names.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata for schema inference. Only used on dataset.schema for schema inference, can be safely ignored
+    /// elsewhere.
+    /// </summary>
+    public class GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>True if is inferred by schema inference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inferred")]
+        public virtual System.Nullable<bool> Inferred { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The long-running operation metadata for the SetDefaultProcessorVersion method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3323,6 +4867,21 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Response message for the SetDefaultProcessorVersion method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for document summarization.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3SummaryOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The format the summary should be in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>How long the summary should be.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual string Length { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3431,6 +4990,17 @@ namespace Google.Apis.Document.v1.Data
     public class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The basic metadata of the long-running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The long-running operation metadata for the UpdateProcessorVersion method.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3UpdateProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata for the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -4378,11 +5948,18 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Validation result for a single validation rule.</summary>
     public class GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The name of the rule resource that is used for validation. Format:
+        /// `projects/{project}/locations/{location}/rules/{rule}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rule")]
+        public virtual string Rule { get; set; }
+
         /// <summary>The description of the validation rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ruleDescription")]
         public virtual string RuleDescription { get; set; }
 
-        /// <summary>The name of the validation rule.</summary>
+        /// <summary>The display name of the validation rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ruleName")]
         public virtual string RuleName { get; set; }
 
@@ -5498,6 +7075,17 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A set of inline documents.</summary>
+    public class GoogleCloudDocumentaiV1Documents : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1Document> Documents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The long-running operation metadata for the EnableProcessor method.</summary>
     public class GoogleCloudDocumentaiV1EnableProcessorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5834,6 +7422,66 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for GenerateSchemaVersion.</summary>
+    public class GoogleCloudDocumentaiV1GenerateSchemaVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The base schema version name to use for the schema generation. Format:
+        /// `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseSchemaVersion")]
+        public virtual string BaseSchemaVersion { get; set; }
+
+        /// <summary>The set of documents placed on Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDocuments")]
+        public virtual GoogleCloudDocumentaiV1GcsDocuments GcsDocuments { get; set; }
+
+        /// <summary>The common prefix of documents placed on Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
+        public virtual GoogleCloudDocumentaiV1GcsPrefix GcsPrefix { get; set; }
+
+        /// <summary>Optional. User specified parameters for the schema generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generateSchemaVersionParams")]
+        public virtual GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams GenerateSchemaVersionParams { get; set; }
+
+        /// <summary>The set of documents specified inline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineDocuments")]
+        public virtual GoogleCloudDocumentaiV1Documents InlineDocuments { get; set; }
+
+        /// <summary>The set of raw documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawDocuments")]
+        public virtual GoogleCloudDocumentaiV1RawDocuments RawDocuments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The parameters for the schema generation.</summary>
+    public class GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Previous prompt-answers in a chronological order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("history")]
+        public virtual GoogleCloudDocumentaiV1SchemaGenerationHistory History { get; set; }
+
+        /// <summary>Optional. The prompt used for the schema generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prompt")]
+        public virtual string Prompt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for GenerateSchemaVersion.</summary>
+    public class GoogleCloudDocumentaiV1GenerateSchemaVersionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The schema version generated by the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaVersion")]
+        public virtual GoogleCloudDocumentaiV1SchemaVersion SchemaVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The status of human review on a processed document.</summary>
     public class GoogleCloudDocumentaiV1HumanReviewStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5915,6 +7563,132 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>The list of processors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processors")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1Processor> Processors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListSchemaVersions.</summary>
+    public class GoogleCloudDocumentaiV1ListSchemaVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Points to the next SchemaVersion, otherwise empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of SchemaVersions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaVersions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1SchemaVersion> SchemaVersions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListSchemas.</summary>
+    public class GoogleCloudDocumentaiV1ListSchemasResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Points to the next Schema, otherwise empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of Schemas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1NextSchema> Schemas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>NextSchema is a collection of SchemaVersions.</summary>
+    public class GoogleCloudDocumentaiV1NextSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the Schema was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The user-defined name of the Schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. The GCP labels for the Schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the Schema. Format:
+        /// `projects/{project}/locations/{location}/schemas/{schema}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when the Schema was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6088,6 +7862,14 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chunkingConfig")]
         public virtual GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig ChunkingConfig { get; set; }
 
+        /// <summary>Optional. Whether to include image annotations in layout parser response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableImageAnnotation")]
+        public virtual System.Nullable<bool> EnableImageAnnotation { get; set; }
+
+        /// <summary>Optional. Whether to include table annotations in layout parser response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableTableAnnotation")]
+        public virtual System.Nullable<bool> EnableTableAnnotation { get; set; }
+
         /// <summary>Optional. Whether to include bounding boxes in layout parser processor response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnBoundingBoxes")]
         public virtual System.Nullable<bool> ReturnBoundingBoxes { get; set; }
@@ -6183,6 +7965,13 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1Processor : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. SchemaVersion used by the Processor. It is the same as Processor's DatasetSchema.schema_version
+        /// Format is `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeSchemaVersion")]
+        public virtual string ActiveSchemaVersion { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -6569,6 +8358,17 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies a set of raw documents.</summary>
+    public class GoogleCloudDocumentaiV1RawDocuments : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies raw document content and mime type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1RawDocument> Documents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The long-running operation metadata for the ReviewDocument method.</summary>
     public class GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6621,6 +8421,99 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>The state of the review operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The history of schema generation iterations.</summary>
+    public class GoogleCloudDocumentaiV1SchemaGenerationHistory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Previous prompt-answers in a chronological order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iterations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1SchemaGenerationIteration> Iterations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single iteration of the schema generation.</summary>
+    public class GoogleCloudDocumentaiV1SchemaGenerationIteration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The previous schema version adjusted by the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adjustedSchema")]
+        public virtual GoogleCloudDocumentaiV1SchemaVersion AdjustedSchema { get; set; }
+
+        /// <summary>Required. The schema version generated by the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedSchema")]
+        public virtual GoogleCloudDocumentaiV1SchemaVersion GeneratedSchema { get; set; }
+
+        /// <summary>Optional. The prompt used for the iteration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prompt")]
+        public virtual string Prompt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SchemaVersion is a version of the Schema which is created in SchemaGroup.</summary>
+    public class GoogleCloudDocumentaiV1SchemaVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the SchemaVersion was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The user-defined name of the SchemaVersion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. The GCP labels for the SchemaVersion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the SchemaVersion. Format:
+        /// `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The schema of the SchemaVersion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual GoogleCloudDocumentaiV1DocumentSchema Schema { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7320,6 +9213,162 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The schema defines the output of the processed document by a processor.</summary>
+    public class GoogleCloudDocumentaiV1beta3DocumentSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Display name to show to users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Entity types of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType> EntityTypes { get; set; }
+
+        /// <summary>Metadata of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// EntityType is the wrapper of a label of the corresponding model with detailed attributes and limitations for
+    /// entity-based processors. Multiple types can also compose a dependency tree to represent nested types.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The entity type that this type is derived from. For now, one and only one should be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseTypes")]
+        public virtual System.Collections.Generic.IList<string> BaseTypes { get; set; }
+
+        /// <summary>
+        /// The description of the entity type. Could be used to provide more information about the entity type for
+        /// model calls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>User defined name for the type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Metadata for the entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypeMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3EntityTypeMetadata EntityTypeMetadata { get; set; }
+
+        /// <summary>
+        /// If specified, lists all the possible values for this entity. This should not be more than a handful of
+        /// values. If the number of values is &amp;gt;10 or could change frequently use the `EntityType.value_ontology`
+        /// field and specify a list of all possible values in a value ontology file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumValues")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues EnumValues { get; set; }
+
+        /// <summary>
+        /// Name of the type. It must be unique within the schema file and cannot be a "Common Type". The following
+        /// naming conventions are used: - Use `snake_casing`. - Name matching is case-sensitive. - Maximum 64
+        /// characters. - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
+        /// compatibility internal infrastructure and tooling can handle any ascii character.) - The `/` is sometimes
+        /// used to denote a property of a type. For example `line_item/amount`. This convention is deprecated, but will
+        /// still be honored for backward compatibility.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Description the nested structure, or composition of an entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty> Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the a list of enum values.</summary>
+    public class GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The individual values that this enum values type can include.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines properties that can be part of the entity type.</summary>
+    public class GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The description of the property. Could be used to provide more information about the property for model
+        /// calls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>User defined name for the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Specifies how the entity's value is obtained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; }
+
+        /// <summary>The name of the property. Follows the same guidelines as the EntityType name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Occurrence type limits the number of instances an entity type appears in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("occurrenceType")]
+        public virtual string OccurrenceType { get; set; }
+
+        /// <summary>Any additional metadata about the property can be added here.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3PropertyMetadata PropertyMetadata { get; set; }
+
+        /// <summary>
+        /// A reference to the value type of the property. This type is subject to the same conventions as the
+        /// `Entity.base_types` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
+        public virtual string ValueType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for global schema behavior.</summary>
+    public class GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, on a given page, there can be multiple `document` annotations covering it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentAllowMultipleLabels")]
+        public virtual System.Nullable<bool> DocumentAllowMultipleLabels { get; set; }
+
+        /// <summary>
+        /// If true, a `document` entity type can be applied to subdocument (splitting). Otherwise, it can only be
+        /// applied to the entire document (classification).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentSplitter")]
+        public virtual System.Nullable<bool> DocumentSplitter { get; set; }
+
+        /// <summary>If set, all the nested entities must be prefixed with the parents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixedNamingOnProperties")]
+        public virtual System.Nullable<bool> PrefixedNamingOnProperties { get; set; }
+
+        /// <summary>
+        /// If set, we will skip the naming format validation in the schema. So the string values in
+        /// `DocumentSchema.EntityType.name` and `DocumentSchema.EntityType.Property.name` will not be checked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipNamingValidation")]
+        public virtual System.Nullable<bool> SkipNamingValidation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The long-running operation metadata for the EnableProcessor method.</summary>
     public class GoogleCloudDocumentaiV1beta3EnableProcessorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7336,6 +9385,17 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3EnableProcessorResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about an entity type.</summary>
+    public class GoogleCloudDocumentaiV1beta3EntityTypeMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the entity type should be considered inactive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
+        public virtual System.Nullable<bool> Inactive { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7357,6 +9417,91 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>The resource name of the created evaluation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
         public virtual string Evaluation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluation metrics, either in aggregate or about a specific entity.</summary>
+    public class GoogleCloudDocumentaiV1beta3EvaluationMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The calculated f1 score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
+        public virtual System.Nullable<float> F1Score { get; set; }
+
+        /// <summary>The amount of false negatives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("falseNegativesCount")]
+        public virtual System.Nullable<int> FalseNegativesCount { get; set; }
+
+        /// <summary>The amount of false positives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("falsePositivesCount")]
+        public virtual System.Nullable<int> FalsePositivesCount { get; set; }
+
+        /// <summary>The amount of documents with a ground truth occurrence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundTruthDocumentCount")]
+        public virtual System.Nullable<int> GroundTruthDocumentCount { get; set; }
+
+        /// <summary>The amount of occurrences in ground truth documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundTruthOccurrencesCount")]
+        public virtual System.Nullable<int> GroundTruthOccurrencesCount { get; set; }
+
+        /// <summary>The calculated precision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precision")]
+        public virtual System.Nullable<float> Precision { get; set; }
+
+        /// <summary>The amount of documents with a predicted occurrence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictedDocumentCount")]
+        public virtual System.Nullable<int> PredictedDocumentCount { get; set; }
+
+        /// <summary>The amount of occurrences in predicted documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictedOccurrencesCount")]
+        public virtual System.Nullable<int> PredictedOccurrencesCount { get; set; }
+
+        /// <summary>The calculated recall.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recall")]
+        public virtual System.Nullable<float> Recall { get; set; }
+
+        /// <summary>The amount of documents that had an occurrence of this label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDocumentsCount")]
+        public virtual System.Nullable<int> TotalDocumentsCount { get; set; }
+
+        /// <summary>The amount of true positives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truePositivesCount")]
+        public virtual System.Nullable<int> TruePositivesCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Gives a short summary of an evaluation, and links to the evaluation itself.</summary>
+    public class GoogleCloudDocumentaiV1beta3EvaluationReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An aggregate of the statistics for the evaluation with fuzzy matching on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateMetrics")]
+        public virtual GoogleCloudDocumentaiV1beta3EvaluationMetrics AggregateMetrics { get; set; }
+
+        /// <summary>An aggregate of the statistics for the evaluation with fuzzy matching off.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateMetricsExact")]
+        public virtual GoogleCloudDocumentaiV1beta3EvaluationMetrics AggregateMetricsExact { get; set; }
+
+        /// <summary>The resource name of the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
+        public virtual string Evaluation { get; set; }
+
+        /// <summary>The resource name of the Long Running Operation for the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for how this field value is extracted.</summary>
+    public class GoogleCloudDocumentaiV1beta3FieldExtractionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary options config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryOptions")]
+        public virtual GoogleCloudDocumentaiV1beta3SummaryOptions SummaryOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7480,6 +9625,340 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>The destination processor version name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processorVersion")]
         public virtual string ProcessorVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The first-class citizen for Document AI. Each processor defines how to extract structural information from a
+    /// document.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1beta3Processor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. SchemaVersion used by the Processor. It is the same as Processor's DatasetSchema.schema_version
+        /// Format is `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeSchemaVersion")]
+        public virtual string ActiveSchemaVersion { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the processor was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The default processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultProcessorVersion")]
+        public virtual string DefaultProcessorVersion { get; set; }
+
+        /// <summary>The display name of the processor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK
+        /// scenarios.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. The resource name of the processor. Format:
+        /// `projects/{project}/locations/{location}/processors/{processor}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Immutable. The http endpoint that can be called to invoke processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processEndpoint")]
+        public virtual string ProcessEndpoint { get; set; }
+
+        /// <summary>Output only. The processor version aliases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersionAliases")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3ProcessorVersionAlias> ProcessorVersionAliases { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
+        /// <summary>Output only. The state of the processor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see
+        /// FetchProcessorTypes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A processor version is an implementation of a processor. Each processor can have multiple versions, pretrained
+    /// by Google internally or uptrained by the customer. A processor can only have one default version at a time. Its
+    /// document-processing behavior is defined by that version.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1beta3ProcessorVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the processor version was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. If set, information about the eventual deprecation of this version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecationInfo")]
+        public virtual GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo DeprecationInfo { get; set; }
+
+        /// <summary>The display name of the processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The schema of the processor version. Describes the output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentSchema")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentSchema DocumentSchema { get; set; }
+
+        /// <summary>Output only. Information about Generative AI model-based processor versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genAiModelInfo")]
+        public virtual GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo GenAiModelInfo { get; set; }
+
+        /// <summary>Output only. Denotes that this `ProcessorVersion` is managed by Google.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleManaged")]
+        public virtual System.Nullable<bool> GoogleManaged { get; set; }
+
+        /// <summary>Output only. The KMS key name used for encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>Output only. The KMS key version with which data is encrypted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
+        public virtual string KmsKeyVersionName { get; set; }
+
+        /// <summary>Output only. The most recently invoked evaluation for the processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestEvaluation")]
+        public virtual GoogleCloudDocumentaiV1beta3EvaluationReference LatestEvaluation { get; set; }
+
+        /// <summary>Output only. The model type of this processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelType")]
+        public virtual string ModelType { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the processor version. Format:
+        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
+        /// <summary>Output only. The state of the processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the alias and the aliased resource name of processor version.</summary>
+    public class GoogleCloudDocumentaiV1beta3ProcessorVersionAlias : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The alias in the form of `processor_version` resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alias")]
+        public virtual string Alias { get; set; }
+
+        /// <summary>The resource name of aliased processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersion")]
+        public virtual string ProcessorVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the upcoming deprecation of this processor version.</summary>
+    public class GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _deprecationTimeRaw;
+
+        private object _deprecationTime;
+
+        /// <summary>The time at which this processor version will be deprecated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecationTime")]
+        public virtual string DeprecationTimeRaw
+        {
+            get => _deprecationTimeRaw;
+            set
+            {
+                _deprecationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deprecationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeprecationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeprecationTimeDateTimeOffset instead.")]
+        public virtual object DeprecationTime
+        {
+            get => _deprecationTime;
+            set
+            {
+                _deprecationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deprecationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DeprecationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeprecationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeprecationTimeRaw);
+            set => DeprecationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>If set, the processor version that will be used as a replacement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replacementProcessorVersion")]
+        public virtual string ReplacementProcessorVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about Generative AI model-based processor versions.</summary>
+    public class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information for a custom Generative AI model created by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customGenAiModelInfo")]
+        public virtual GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo CustomGenAiModelInfo { get; set; }
+
+        /// <summary>Information for a pretrained Google-managed foundation model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foundationGenAiModelInfo")]
+        public virtual GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo FoundationGenAiModelInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information for a custom Generative AI model created by the user. These are created with `Create New Version` in
+    /// either the `Call foundation model` or `Fine tuning` tabs.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The base processor version ID for the custom model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseProcessorVersionId")]
+        public virtual string BaseProcessorVersionId { get; set; }
+
+        /// <summary>The type of custom model created by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customModelType")]
+        public virtual string CustomModelType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information for a pretrained Google-managed foundation model.</summary>
+    public class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether finetuning is allowed for this base processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finetuningAllowed")]
+        public virtual System.Nullable<bool> FinetuningAllowed { get; set; }
+
+        /// <summary>The minimum number of labeled documents in the training dataset required for finetuning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTrainLabeledDocuments")]
+        public virtual System.Nullable<int> MinTrainLabeledDocuments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about a property.</summary>
+    public class GoogleCloudDocumentaiV1beta3PropertyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Field extraction metadata on the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldExtractionMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3FieldExtractionMetadata FieldExtractionMetadata { get; set; }
+
+        /// <summary>Whether the property should be considered as "inactive".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
+        public virtual System.Nullable<bool> Inactive { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7645,6 +10124,21 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for document summarization.</summary>
+    public class GoogleCloudDocumentaiV1beta3SummaryOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The format the summary should be in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>How long the summary should be.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual string Length { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The metadata that represents a processor version being created.</summary>
     public class GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7727,6 +10221,17 @@ namespace Google.Apis.Document.v1.Data
     public class GoogleCloudDocumentaiV1beta3UpdateDatasetOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The basic metadata of the long-running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The long-running operation metadata for the UpdateProcessorVersion method.</summary>
+    public class GoogleCloudDocumentaiV1beta3UpdateProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata for the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
