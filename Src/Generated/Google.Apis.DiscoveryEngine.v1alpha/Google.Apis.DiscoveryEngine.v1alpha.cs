@@ -667,6 +667,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Authorizations = new AuthorizationsResource(service);
                 CmekConfigs = new CmekConfigsResource(service);
                 Collections = new CollectionsResource(service);
                 DataStores = new DataStoresResource(service);
@@ -682,6 +683,359 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 SampleQuerySets = new SampleQuerySetsResource(service);
                 UserEvents = new UserEventsResource(service);
                 UserStores = new UserStoresResource(service);
+            }
+
+            /// <summary>Gets the Authorizations resource.</summary>
+            public virtual AuthorizationsResource Authorizations { get; }
+
+            /// <summary>The "authorizations" collection of methods.</summary>
+            public class AuthorizationsResource
+            {
+                private const string Resource = "authorizations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AuthorizationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates an Authorization.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource name. Format: `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAuthorization body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates an Authorization.</summary>
+                public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAuthorization>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAuthorization body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource name. Format: `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for the authorization, which will become the final component of the
+                    /// resource name. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) with a
+                    /// length limit of 63 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("authorizationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AuthorizationId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAuthorization Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/authorizations";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("authorizationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "authorizationId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes an Authorization.</summary>
+                /// <param name="name">
+                /// Required. Resource name of Authorization. Format:
+                /// `projects/{project}/locations/{location}/authorizations/{authorization}` If the caller does not have
+                /// permission to delete the authorization, regardless of whether or not it exists, a
+                /// `PERMISSION_DENIED` error is returned. If the authorization to delete does not exist, a `NOT_FOUND`
+                /// error is returned.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes an Authorization.</summary>
+                public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of Authorization. Format:
+                    /// `projects/{project}/locations/{location}/authorizations/{authorization}` If the caller does not
+                    /// have permission to delete the authorization, regardless of whether or not it exists, a
+                    /// `PERMISSION_DENIED` error is returned. If the authorization to delete does not exist, a
+                    /// `NOT_FOUND` error is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/authorizations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets an Authorization.</summary>
+                /// <param name="name">
+                /// Required. Resource name of Authorization. Format:
+                /// `projects/{project}/locations/{location}/authorizations/{authorization}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets an Authorization.</summary>
+                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAuthorization>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of Authorization. Format:
+                    /// `projects/{project}/locations/{location}/authorizations/{authorization}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/authorizations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all Authorizations under an Engine.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource name. Format: `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all Authorizations under an Engine.</summary>
+                public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListAuthorizationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource name. Format: `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Maximum number of Authorizations to return. If unspecified, defaults to 100. The maximum allowed
+                    /// value is 1000; anything above that will be coerced down to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token ListAuthorizationsResponse.next_page_token, received from a previous
+                    /// AuthorizationService.ListAuthorizations call. Provide this to retrieve the subsequent page. When
+                    /// paginating, all other parameters provided to ListAuthorizations must match the call that
+                    /// provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/authorizations";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an Authorization</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Resource name of the authorization. Format:
+                /// `projects/{project}/locations/{location}/authorizations/{authorization}` It must be a UTF-8 encoded
+                /// string with a length limit of 1024 characters.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAuthorization body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates an Authorization</summary>
+                public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAuthorization>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAuthorization body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Resource name of the authorization. Format:
+                    /// `projects/{project}/locations/{location}/authorizations/{authorization}` It must be a UTF-8
+                    /// encoded string with a length limit of 1024 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAuthorization Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/authorizations/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the CmekConfigs resource.</summary>
@@ -28292,6 +28646,48 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
+        private string _configurableBillingApproachUpdateTimeRaw;
+
+        private object _configurableBillingApproachUpdateTime;
+
+        /// <summary>Output only. The timestamp when configurable_billing_approach was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproachUpdateTime")]
+        public virtual string ConfigurableBillingApproachUpdateTimeRaw
+        {
+            get => _configurableBillingApproachUpdateTimeRaw;
+            set
+            {
+                _configurableBillingApproachUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _configurableBillingApproachUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="ConfigurableBillingApproachUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ConfigurableBillingApproachUpdateTimeDateTimeOffset instead.")]
+        public virtual object ConfigurableBillingApproachUpdateTime
+        {
+            get => _configurableBillingApproachUpdateTime;
+            set
+            {
+                _configurableBillingApproachUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _configurableBillingApproachUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="ConfigurableBillingApproachUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ConfigurableBillingApproachUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ConfigurableBillingApproachUpdateTimeRaw);
+            set => ConfigurableBillingApproachUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
         /// ContentConfig.NO_CONTENT.
@@ -30636,6 +31032,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Metadata and configurations for a Google Cloud project in the service.</summary>
     public class GoogleCloudDiscoveryengineV1Project : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The current status of the project's configurable billing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingStatus")]
+        public virtual GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus ConfigurableBillingStatus { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -30730,6 +31130,70 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Output only. A map of terms of services. The key is the `id` of ServiceTerms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceTermsMap")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1ProjectServiceTerms> ServiceTermsMap { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the currently effective configurable billing parameters. These values are derived from the customer's
+    /// subscription history stored internally and reflect the thresholds actively being used for billing purposes at
+    /// the time of the GetProject call. This includes the start_time of the subscription and may differ from the values
+    /// in `customer_provided_config` due to billing rules (e.g., scale-downs taking effect only at the start of a new
+    /// month).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The currently effective Indexing Core threshold. This is the threshold against which Indexing Core
+        /// usage is compared for overage calculations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveIndexingCoreThreshold")]
+        public virtual System.Nullable<long> EffectiveIndexingCoreThreshold { get; set; }
+
+        /// <summary>
+        /// Optional. The currently effective Search QPM threshold in queries per minute. This is the threshold against
+        /// which QPM usage is compared for overage calculations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveSearchQpmThreshold")]
+        public virtual System.Nullable<long> EffectiveSearchQpmThreshold { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Optional. The start time of the currently active billing subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34957,6 +35421,66 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Discovery Engine Authorization resource.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAuthorization : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The display name of the authorization. It must be a UTF-8 encoded string with a length limit of
+        /// 128 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of the authorization. Format:
+        /// `projects/{project}/locations/{location}/authorizations/{authorization}` It must be a UTF-8 encoded string
+        /// with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Server-side OAuth2 configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverSideOauth2")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAuthorizationServerSideOAuth2 ServerSideOauth2 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>OAuth2 configuration.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAuthorizationServerSideOAuth2 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The URI the user is directed to when they need to authorize. Should include everything required
+        /// for a successful authorization: OAuth ID, extra flags, etc. Example:
+        /// `https://accounts.google.com/o/oauth2/v2/auth?client_id=OAUTH_ID&amp;amp;scope=https://www.googleapis.com/auth/calendar.events&amp;amp;response_type=code&amp;amp;access_type=offline&amp;amp;prompt=consent`
+        /// The `redirect_uri` parameter will be overwritten by the Vertex AI Search frontend.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationUri")]
+        public virtual string AuthorizationUri { get; set; }
+
+        /// <summary>Required. The OAuth2 client ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Required. The OAuth2 client secret. Encrypted at rest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Required. The scopes to request. Example: `https://www.googleapis.com/auth/calendar.events`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>Required. The HTTP endpoint that exchanges a client authorization for an access token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenUri")]
+        public virtual string TokenUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration for the BAP connector.</summary>
     public class GoogleCloudDiscoveryengineV1alphaBAPConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -38658,6 +39182,48 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Optional. Configuration for configurable billing approach. See</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
+
+        private string _configurableBillingApproachUpdateTimeRaw;
+
+        private object _configurableBillingApproachUpdateTime;
+
+        /// <summary>Output only. The timestamp when configurable_billing_approach was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproachUpdateTime")]
+        public virtual string ConfigurableBillingApproachUpdateTimeRaw
+        {
+            get => _configurableBillingApproachUpdateTimeRaw;
+            set
+            {
+                _configurableBillingApproachUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _configurableBillingApproachUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="ConfigurableBillingApproachUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ConfigurableBillingApproachUpdateTimeDateTimeOffset instead.")]
+        public virtual object ConfigurableBillingApproachUpdateTime
+        {
+            get => _configurableBillingApproachUpdateTime;
+            set
+            {
+                _configurableBillingApproachUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _configurableBillingApproachUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="ConfigurableBillingApproachUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ConfigurableBillingApproachUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ConfigurableBillingApproachUpdateTimeRaw);
+            set => ConfigurableBillingApproachUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
@@ -43131,6 +43697,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the AuthorizationService.ListAuthorizations method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListAuthorizationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All the customer's Authorizations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAuthorization> Authorizations { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as ListAuthorizationsRequest.page_token to retrieve the next page. If this field is
+        /// omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for BranchService.ListBranches method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaListBranchesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -43839,6 +44423,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Metadata and configurations for a Google Cloud project in the service.</summary>
     public class GoogleCloudDiscoveryengineV1alphaProject : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The current status of the project's configurable billing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingStatus")]
+        public virtual GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus ConfigurableBillingStatus { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -43933,6 +44521,70 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Output only. A map of terms of services. The key is the `id` of ServiceTerms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceTermsMap")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaProjectServiceTerms> ServiceTermsMap { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the currently effective configurable billing parameters. These values are derived from the customer's
+    /// subscription history stored internally and reflect the thresholds actively being used for billing purposes at
+    /// the time of the GetProject call. This includes the start_time of the subscription and may differ from the values
+    /// in `customer_provided_config` due to billing rules (e.g., scale-downs taking effect only at the start of a new
+    /// month).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The currently effective Indexing Core threshold. This is the threshold against which Indexing Core
+        /// usage is compared for overage calculations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveIndexingCoreThreshold")]
+        public virtual System.Nullable<long> EffectiveIndexingCoreThreshold { get; set; }
+
+        /// <summary>
+        /// Optional. The currently effective Search QPM threshold in queries per minute. This is the threshold against
+        /// which QPM usage is compared for overage calculations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveSearchQpmThreshold")]
+        public virtual System.Nullable<long> EffectiveSearchQpmThreshold { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Optional. The start time of the currently active billing subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52132,6 +52784,48 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproach")]
         public virtual string ConfigurableBillingApproach { get; set; }
 
+        private string _configurableBillingApproachUpdateTimeRaw;
+
+        private object _configurableBillingApproachUpdateTime;
+
+        /// <summary>Output only. The timestamp when configurable_billing_approach was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingApproachUpdateTime")]
+        public virtual string ConfigurableBillingApproachUpdateTimeRaw
+        {
+            get => _configurableBillingApproachUpdateTimeRaw;
+            set
+            {
+                _configurableBillingApproachUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _configurableBillingApproachUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="ConfigurableBillingApproachUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ConfigurableBillingApproachUpdateTimeDateTimeOffset instead.")]
+        public virtual object ConfigurableBillingApproachUpdateTime
+        {
+            get => _configurableBillingApproachUpdateTime;
+            set
+            {
+                _configurableBillingApproachUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _configurableBillingApproachUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="ConfigurableBillingApproachUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ConfigurableBillingApproachUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ConfigurableBillingApproachUpdateTimeRaw);
+            set => ConfigurableBillingApproachUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
         /// ContentConfig.NO_CONTENT.
@@ -54681,6 +55375,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Metadata and configurations for a Google Cloud project in the service.</summary>
     public class GoogleCloudDiscoveryengineV1betaProject : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The current status of the project's configurable billing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurableBillingStatus")]
+        public virtual GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus ConfigurableBillingStatus { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -54775,6 +55473,70 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Output only. A map of terms of services. The key is the `id` of ServiceTerms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceTermsMap")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1betaProjectServiceTerms> ServiceTermsMap { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the currently effective configurable billing parameters. These values are derived from the customer's
+    /// subscription history stored internally and reflect the thresholds actively being used for billing purposes at
+    /// the time of the GetProject call. This includes the start_time of the subscription and may differ from the values
+    /// in `customer_provided_config` due to billing rules (e.g., scale-downs taking effect only at the start of a new
+    /// month).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The currently effective Indexing Core threshold. This is the threshold against which Indexing Core
+        /// usage is compared for overage calculations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveIndexingCoreThreshold")]
+        public virtual System.Nullable<long> EffectiveIndexingCoreThreshold { get; set; }
+
+        /// <summary>
+        /// Optional. The currently effective Search QPM threshold in queries per minute. This is the threshold against
+        /// which QPM usage is compared for overage calculations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveSearchQpmThreshold")]
+        public virtual System.Nullable<long> EffectiveSearchQpmThreshold { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Optional. The start time of the currently active billing subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
