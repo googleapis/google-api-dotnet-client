@@ -1324,13 +1324,15 @@ namespace Google.Apis.Docs.v1.Data
         public virtual Background Background { get; set; }
 
         /// <summary>
-        /// The ID of the default footer. If not set, there's no default footer. This property is read-only.
+        /// The ID of the default footer. If not set, there's no default footer. If DocumentMode is PAGELESS, this
+        /// property will not be rendered. This property is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultFooterId")]
         public virtual string DefaultFooterId { get; set; }
 
         /// <summary>
-        /// The ID of the default header. If not set, there's no default header. This property is read-only.
+        /// The ID of the default header. If not set, there's no default header. If DocumentMode is PAGELESS, this
+        /// property will not be rendered. This property is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultHeaderId")]
         public virtual string DefaultHeaderId { get; set; }
@@ -1342,7 +1344,7 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>
         /// The ID of the footer used only for even pages. The value of use_even_page_header_footer determines whether
         /// to use the default_footer_id or this value for the footer on even pages. If not set, there's no even page
-        /// footer. This property is read-only.
+        /// footer. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evenPageFooterId")]
         public virtual string EvenPageFooterId { get; set; }
@@ -1350,7 +1352,7 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>
         /// The ID of the header used only for even pages. The value of use_even_page_header_footer determines whether
         /// to use the default_header_id or this value for the header on even pages. If not set, there's no even page
-        /// header. This property is read-only.
+        /// header. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evenPageHeaderId")]
         public virtual string EvenPageHeaderId { get; set; }
@@ -1358,8 +1360,8 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>
         /// The ID of the footer used only for the first page. If not set then a unique footer for the first page does
         /// not exist. The value of use_first_page_header_footer determines whether to use the default_footer_id or this
-        /// value for the footer on the first page. If not set, there's no first page footer. This property is
-        /// read-only.
+        /// value for the footer on the first page. If not set, there's no first page footer. If DocumentMode is
+        /// PAGELESS, this property will not be rendered. This property is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPageFooterId")]
         public virtual string FirstPageFooterId { get; set; }
@@ -1367,76 +1369,96 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>
         /// The ID of the header used only for the first page. If not set then a unique header for the first page does
         /// not exist. The value of use_first_page_header_footer determines whether to use the default_header_id or this
-        /// value for the header on the first page. If not set, there's no first page header. This property is
-        /// read-only.
+        /// value for the header on the first page. If not set, there's no first page header. If DocumentMode is
+        /// PAGELESS, this property will not be rendered. This property is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPageHeaderId")]
         public virtual string FirstPageHeaderId { get; set; }
 
         /// <summary>
         /// Optional. Indicates whether to flip the dimensions of the page_size, which allows changing the page
-        /// orientation between portrait and landscape.
+        /// orientation between portrait and landscape. If DocumentMode is PAGELESS, this property will not be rendered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flipPageOrientation")]
         public virtual System.Nullable<bool> FlipPageOrientation { get; set; }
 
         /// <summary>
         /// The bottom page margin. Updating the bottom page margin on the document style clears the bottom page margin
-        /// on all section styles.
+        /// on all section styles. If DocumentMode is PAGELESS, this property will not be rendered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginBottom")]
         public virtual Dimension MarginBottom { get; set; }
 
-        /// <summary>The amount of space between the bottom of the page and the contents of the footer.</summary>
+        /// <summary>
+        /// The amount of space between the bottom of the page and the contents of the footer. If DocumentMode is
+        /// PAGELESS, this property will not be rendered.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginFooter")]
         public virtual Dimension MarginFooter { get; set; }
 
-        /// <summary>The amount of space between the top of the page and the contents of the header.</summary>
+        /// <summary>
+        /// The amount of space between the top of the page and the contents of the header. If DocumentMode is PAGELESS,
+        /// this property will not be rendered.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginHeader")]
         public virtual Dimension MarginHeader { get; set; }
 
         /// <summary>
         /// The left page margin. Updating the left page margin on the document style clears the left page margin on all
-        /// section styles. It may also cause columns to resize in all sections.
+        /// section styles. It may also cause columns to resize in all sections. If DocumentMode is PAGELESS, this
+        /// property will not be rendered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginLeft")]
         public virtual Dimension MarginLeft { get; set; }
 
         /// <summary>
         /// The right page margin. Updating the right page margin on the document style clears the right page margin on
-        /// all section styles. It may also cause columns to resize in all sections.
+        /// all section styles. It may also cause columns to resize in all sections. If DocumentMode is PAGELESS, this
+        /// property will not be rendered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginRight")]
         public virtual Dimension MarginRight { get; set; }
 
         /// <summary>
         /// The top page margin. Updating the top page margin on the document style clears the top page margin on all
-        /// section styles.
+        /// section styles. If DocumentMode is PAGELESS, this property will not be rendered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginTop")]
         public virtual Dimension MarginTop { get; set; }
 
-        /// <summary>The page number from which to start counting the number of pages.</summary>
+        /// <summary>
+        /// The page number from which to start counting the number of pages. If DocumentMode is PAGELESS, this property
+        /// will not be rendered.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageNumberStart")]
         public virtual System.Nullable<int> PageNumberStart { get; set; }
 
-        /// <summary>The size of a page in the document.</summary>
+        /// <summary>
+        /// The size of a page in the document. If DocumentMode is PAGELESS, this property will not be rendered.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual Size PageSize { get; set; }
 
         /// <summary>
         /// Indicates whether DocumentStyle margin_header, SectionStyle margin_header and DocumentStyle margin_footer,
         /// SectionStyle margin_footer are respected. When false, the default values in the Docs editor for header and
-        /// footer margin is used. This property is read-only.
+        /// footer margin is used. If DocumentMode is PAGELESS, this property will not be rendered. This property is
+        /// read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useCustomHeaderFooterMargins")]
         public virtual System.Nullable<bool> UseCustomHeaderFooterMargins { get; set; }
 
-        /// <summary>Indicates whether to use the even page header / footer IDs for the even pages.</summary>
+        /// <summary>
+        /// Indicates whether to use the even page header / footer IDs for the even pages. If DocumentMode is PAGELESS,
+        /// this property will not be rendered.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useEvenPageHeaderFooter")]
         public virtual System.Nullable<bool> UseEvenPageHeaderFooter { get; set; }
 
-        /// <summary>Indicates whether to use the first page header / footer IDs for the first page.</summary>
+        /// <summary>
+        /// Indicates whether to use the first page header / footer IDs for the first page. If DocumentMode is PAGELESS,
+        /// this property will not be rendered.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useFirstPageHeaderFooter")]
         public virtual System.Nullable<bool> UseFirstPageHeaderFooter { get; set; }
 
@@ -2226,14 +2248,14 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Inserts a person mention.</summary>
     public class InsertPersonRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Inserts the person at the end of a header, footer, footnote or the document body.</summary>
+        /// <summary>Inserts the person mention at the end of a header, footer, footnote or the document body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOfSegmentLocation")]
         public virtual EndOfSegmentLocation EndOfSegmentLocation { get; set; }
 
         /// <summary>
-        /// Inserts the person at a specific index in the document. The person mention must be inserted inside the
-        /// bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between
-        /// the table and its preceding paragraph). People cannot be inserted inside an equation.
+        /// Inserts the person mention at a specific index in the document. The person mention must be inserted inside
+        /// the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e.
+        /// between the table and its preceding paragraph). People cannot be inserted inside an equation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual Location Location { get; set; }
@@ -3932,16 +3954,16 @@ namespace Google.Apis.Docs.v1.Data
 
         /// <summary>
         /// The ID of the default footer. If unset, the value inherits from the previous SectionBreak's SectionStyle. If
-        /// the value is unset in the first SectionBreak, it inherits from DocumentStyle's default_footer_id. This
-        /// property is read-only.
+        /// the value is unset in the first SectionBreak, it inherits from DocumentStyle's default_footer_id. If
+        /// DocumentMode is PAGELESS, this property will not be rendered. This property is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultFooterId")]
         public virtual string DefaultFooterId { get; set; }
 
         /// <summary>
         /// The ID of the default header. If unset, the value inherits from the previous SectionBreak's SectionStyle. If
-        /// the value is unset in the first SectionBreak, it inherits from DocumentStyle's default_header_id. This
-        /// property is read-only.
+        /// the value is unset in the first SectionBreak, it inherits from DocumentStyle's default_header_id. If
+        /// DocumentMode is PAGELESS, this property will not be rendered. This property is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultHeaderId")]
         public virtual string DefaultHeaderId { get; set; }
@@ -3951,7 +3973,8 @@ namespace Google.Apis.Docs.v1.Data
         /// is true, this value is used for the footers on even pages in the section. If it is false, the footers on
         /// even pages use the default_footer_id. If unset, the value inherits from the previous SectionBreak's
         /// SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's
-        /// even_page_footer_id. This property is read-only.
+        /// even_page_footer_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is
+        /// read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evenPageFooterId")]
         public virtual string EvenPageFooterId { get; set; }
@@ -3961,7 +3984,8 @@ namespace Google.Apis.Docs.v1.Data
         /// is true, this value is used for the headers on even pages in the section. If it is false, the headers on
         /// even pages use the default_header_id. If unset, the value inherits from the previous SectionBreak's
         /// SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's
-        /// even_page_header_id. This property is read-only.
+        /// even_page_header_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is
+        /// read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evenPageHeaderId")]
         public virtual string EvenPageHeaderId { get; set; }
@@ -3971,7 +3995,8 @@ namespace Google.Apis.Docs.v1.Data
         /// this value is used for the footer on the first page of the section. If it's false, the footer on the first
         /// page of the section uses the default_footer_id. If unset, the value inherits from the previous
         /// SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from
-        /// DocumentStyle's first_page_footer_id. This property is read-only.
+        /// DocumentStyle's first_page_footer_id. If DocumentMode is PAGELESS, this property will not be rendered. This
+        /// property is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPageFooterId")]
         public virtual string FirstPageFooterId { get; set; }
@@ -3981,7 +4006,8 @@ namespace Google.Apis.Docs.v1.Data
         /// this value is used for the header on the first page of the section. If it's false, the header on the first
         /// page of the section uses the default_header_id. If unset, the value inherits from the previous
         /// SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from
-        /// DocumentStyle's first_page_header_id. This property is read-only.
+        /// DocumentStyle's first_page_header_id. If DocumentMode is PAGELESS, this property will not be rendered. This
+        /// property is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPageHeaderId")]
         public virtual string FirstPageHeaderId { get; set; }
@@ -3989,16 +4015,17 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>
         /// Optional. Indicates whether to flip the dimensions of DocumentStyle's page_size for this section, which
         /// allows changing the page orientation between portrait and landscape. If unset, the value inherits from
-        /// DocumentStyle's flip_page_orientation. When updating this property, setting a concrete value is required.
-        /// Unsetting this property results in a 400 bad request error.
+        /// DocumentStyle's flip_page_orientation. If DocumentMode is PAGELESS, this property will not be rendered. When
+        /// updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad
+        /// request error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flipPageOrientation")]
         public virtual System.Nullable<bool> FlipPageOrientation { get; set; }
 
         /// <summary>
-        /// The bottom page margin of the section. If unset, the value defaults to margin_bottom from DocumentStyle.
-        /// When updating this property, setting a concrete value is required. Unsetting this property results in a 400
-        /// bad request error.
+        /// The bottom page margin of the section. If unset, the value defaults to margin_bottom from DocumentStyle. If
+        /// DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a
+        /// concrete value is required. Unsetting this property results in a 400 bad request error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginBottom")]
         public virtual Dimension MarginBottom { get; set; }
@@ -4007,8 +4034,8 @@ namespace Google.Apis.Docs.v1.Data
         /// The footer margin of the section. If unset, the value defaults to margin_footer from DocumentStyle. If
         /// updated, use_custom_header_footer_margins is set to true on DocumentStyle. The value of
         /// use_custom_header_footer_margins on DocumentStyle indicates if a footer margin is being respected for this
-        /// section When updating this property, setting a concrete value is required. Unsetting this property results
-        /// in a 400 bad request error.
+        /// section If DocumentMode is PAGELESS, this property will not be rendered. When updating this property,
+        /// setting a concrete value is required. Unsetting this property results in a 400 bad request error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginFooter")]
         public virtual Dimension MarginFooter { get; set; }
@@ -4017,8 +4044,8 @@ namespace Google.Apis.Docs.v1.Data
         /// The header margin of the section. If unset, the value defaults to margin_header from DocumentStyle. If
         /// updated, use_custom_header_footer_margins is set to true on DocumentStyle. The value of
         /// use_custom_header_footer_margins on DocumentStyle indicates if a header margin is being respected for this
-        /// section. When updating this property, setting a concrete value is required. Unsetting this property results
-        /// in a 400 bad request error.
+        /// section. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property,
+        /// setting a concrete value is required. Unsetting this property results in a 400 bad request error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginHeader")]
         public virtual Dimension MarginHeader { get; set; }
@@ -4026,8 +4053,9 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>
         /// The left page margin of the section. If unset, the value defaults to margin_left from DocumentStyle.
         /// Updating the left margin causes columns in this section to resize. Since the margin affects column width,
-        /// it's applied before column properties. When updating this property, setting a concrete value is required.
-        /// Unsetting this property results in a 400 bad request error.
+        /// it's applied before column properties. If DocumentMode is PAGELESS, this property will not be rendered. When
+        /// updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad
+        /// request error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginLeft")]
         public virtual Dimension MarginLeft { get; set; }
@@ -4035,16 +4063,17 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>
         /// The right page margin of the section. If unset, the value defaults to margin_right from DocumentStyle.
         /// Updating the right margin causes columns in this section to resize. Since the margin affects column width,
-        /// it's applied before column properties. When updating this property, setting a concrete value is required.
-        /// Unsetting this property results in a 400 bad request error.
+        /// it's applied before column properties. If DocumentMode is PAGELESS, this property will not be rendered. When
+        /// updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad
+        /// request error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginRight")]
         public virtual Dimension MarginRight { get; set; }
 
         /// <summary>
-        /// The top page margin of the section. If unset, the value defaults to margin_top from DocumentStyle. When
-        /// updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad
-        /// request error.
+        /// The top page margin of the section. If unset, the value defaults to margin_top from DocumentStyle. If
+        /// DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a
+        /// concrete value is required. Unsetting this property results in a 400 bad request error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginTop")]
         public virtual Dimension MarginTop { get; set; }
@@ -4052,8 +4081,9 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>
         /// The page number from which to start counting the number of pages for this section. If unset, page numbering
         /// continues from the previous section. If the value is unset in the first SectionBreak, refer to
-        /// DocumentStyle's page_number_start. When updating this property, setting a concrete value is required.
-        /// Unsetting this property results in a 400 bad request error.
+        /// DocumentStyle's page_number_start. If DocumentMode is PAGELESS, this property will not be rendered. When
+        /// updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad
+        /// request error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageNumberStart")]
         public virtual System.Nullable<int> PageNumberStart { get; set; }
@@ -4065,8 +4095,9 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>
         /// Indicates whether to use the first page header / footer IDs for the first page of the section. If unset, it
         /// inherits from DocumentStyle's use_first_page_header_footer for the first section. If the value is unset for
-        /// subsequent sectors, it should be interpreted as false. When updating this property, setting a concrete value
-        /// is required. Unsetting this property results in a 400 bad request error.
+        /// subsequent sectors, it should be interpreted as false. If DocumentMode is PAGELESS, this property will not
+        /// be rendered. When updating this property, setting a concrete value is required. Unsetting this property
+        /// results in a 400 bad request error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useFirstPageHeaderFooter")]
         public virtual System.Nullable<bool> UseFirstPageHeaderFooter { get; set; }
