@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -569,6 +569,67 @@ namespace Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha
             }
         }
 
+        /// <summary>
+        /// Returns a list of clients managed by the sales partner organization. User needs to be an
+        /// OrgAdmin/BillingAdmin on the sales partner organization in order to view the end clients.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="organization">
+        /// Required. The name of the sales partner organization. Format: organizations/{org_id}
+        /// </param>
+        public virtual FindSalesPartnerManagedClientsRequest FindSalesPartnerManagedClients(Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.FindSalesPartnerManagedClientsRequest body, string organization)
+        {
+            return new FindSalesPartnerManagedClientsRequest(this.service, body, organization);
+        }
+
+        /// <summary>
+        /// Returns a list of clients managed by the sales partner organization. User needs to be an
+        /// OrgAdmin/BillingAdmin on the sales partner organization in order to view the end clients.
+        /// </summary>
+        public class FindSalesPartnerManagedClientsRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.FindSalesPartnerManagedClientsResponse>
+        {
+            /// <summary>Constructs a new FindSalesPartnerManagedClients request.</summary>
+            public FindSalesPartnerManagedClientsRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.FindSalesPartnerManagedClientsRequest body, string organization) : base(service)
+            {
+                Organization = organization;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the sales partner organization. Format: organizations/{org_id}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.FindSalesPartnerManagedClientsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "findSalesPartnerManagedClients";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+organization}:findSalesPartnerManagedClients";
+
+            /// <summary>Initializes FindSalesPartnerManagedClients parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
+            }
+        }
+
         /// <summary>Lookup for a single organization.</summary>
         /// <param name="name">
         /// Required. The name of the Organization to retrieve. Format: organizations/{org_id}
@@ -608,6 +669,138 @@ namespace Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Returns a list of organizations that the user has access to.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(this.service);
+        }
+
+        /// <summary>Returns a list of organizations that the user has access to.</summary>
+        public class ListRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.ListOrganizationsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. The maximum number of organizations to return in one call. The service may return fewer than
+            /// this value. If unspecified, at most 50 organizations will be returned. The maximum value is 1000; values
+            /// above 1000 will be coerced to 1000.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A page token, received from a previous ListOrganizations call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided to `ListOrganizations` must match the
+            /// call that provided the page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/organizations";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Get the usage and billing data for properties within the organization for the specified month. Per direct
+        /// client org, user needs to be OrgAdmin/BillingAdmin on the organization in order to view the billing and
+        /// usage data. Per sales partner client org, user needs to be OrgAdmin/BillingAdmin on the sales partner org in
+        /// order to view the billing and usage data, or OrgAdmin/BillingAdmin on the sales partner client org in order
+        /// to view the usage data only.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="organization">
+        /// Required. Specifies the organization whose property usage will be listed. Format: organizations/{org_id}
+        /// </param>
+        public virtual ReportPropertyUsageRequest ReportPropertyUsage(Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.ReportPropertyUsageRequest body, string organization)
+        {
+            return new ReportPropertyUsageRequest(this.service, body, organization);
+        }
+
+        /// <summary>
+        /// Get the usage and billing data for properties within the organization for the specified month. Per direct
+        /// client org, user needs to be OrgAdmin/BillingAdmin on the organization in order to view the billing and
+        /// usage data. Per sales partner client org, user needs to be OrgAdmin/BillingAdmin on the sales partner org in
+        /// order to view the billing and usage data, or OrgAdmin/BillingAdmin on the sales partner client org in order
+        /// to view the usage data only.
+        /// </summary>
+        public class ReportPropertyUsageRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.ReportPropertyUsageResponse>
+        {
+            /// <summary>Constructs a new ReportPropertyUsage request.</summary>
+            public ReportPropertyUsageRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.ReportPropertyUsageRequest body, string organization) : base(service)
+            {
+                Organization = organization;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Specifies the organization whose property usage will be listed. Format: organizations/{org_id}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.ReportPropertyUsageRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "reportPropertyUsage";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+organization}:reportPropertyUsage";
+
+            /// <summary>Initializes ReportPropertyUsage parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
@@ -655,6 +848,77 @@ namespace Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains the bill amount.</summary>
+    public class BillInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount of the monthly base fee.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseFee")]
+        public virtual Money BaseFee { get; set; }
+
+        /// <summary>The amount of the event fee.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventFee")]
+        public virtual Money EventFee { get; set; }
+
+        /// <summary>The amount of the price protection credit, this is only available for eligible customers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceProtectionCredit")]
+        public virtual Money PriceProtectionCredit { get; set; }
+
+        /// <summary>The total amount of the bill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("total")]
+        public virtual Money Total { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the client data.</summary>
+    public class ClientData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The end date of the contract between the sales org and the end client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual Date EndDate { get; set; }
+
+        /// <summary>The end client that has/had contract with the requested sales org.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual Organization Organization { get; set; }
+
+        /// <summary>The start date of the contract between the sales org and the end client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual Date StartDate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
+    /// </summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -662,6 +926,28 @@ namespace Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for FindSalesPartnerManagedClients RPC.</summary>
+    public class FindSalesPartnerManagedClientsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If set, only active and just ended clients will be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isActive")]
+        public virtual System.Nullable<bool> IsActive { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FindSalesPartnerManagedClients RPC.</summary>
+    public class FindSalesPartnerManagedClientsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The clients managed by the sales org.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientData")]
+        public virtual System.Collections.Generic.IList<ClientData> ClientData { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -684,6 +970,52 @@ namespace Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListOrganizations RPC.</summary>
+    public class ListOrganizationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// The Organization resource that the user has access to, which includes the org id and display name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizations")]
+        public virtual System.Collections.Generic.IList<Organization> Organizations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an amount of money with its currency type.</summary>
+    public class Money : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The three-letter currency code defined in ISO 4217.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>
+        /// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
+        /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
+        /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
+        /// represented as `units`=-1 and `nanos`=-750,000,000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("units")]
+        public virtual System.Nullable<long> Units { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource message representing a Google Marketing Platform organization.</summary>
     public class Organization : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -694,6 +1026,77 @@ namespace Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data
         /// <summary>Identifier. The resource name of the GMP organization. Format: organizations/{org_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains the count of events received by the property, along with metadata that influences the volume of
+    /// `billable` events.
+    /// </summary>
+    public class PropertyUsage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the property's parent account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual System.Nullable<long> AccountId { get; set; }
+
+        /// <summary>The number of events for which the property is billed in the requested month.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billableEventCount")]
+        public virtual System.Nullable<long> BillableEventCount { get; set; }
+
+        /// <summary>The display name of the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The name of the Google Analytics Admin API property resource. Format:
+        /// analyticsadmin.googleapis.com/properties/{property_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual string Property { get; set; }
+
+        /// <summary>The subtype of the analytics property. This affects the billable event count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyType")]
+        public virtual string PropertyType { get; set; }
+
+        /// <summary>The service level of the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceLevel")]
+        public virtual string ServiceLevel { get; set; }
+
+        /// <summary>Total event count that the property received during the requested month.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalEventCount")]
+        public virtual System.Nullable<long> TotalEventCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ReportPropertyUsage RPC.</summary>
+    public class ReportPropertyUsageRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The target month to list property usages. Format: YYYY-MM. For example, "2025-05"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual string Month { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ReportPropertyUsage RPC.</summary>
+    public class ReportPropertyUsageResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Bill amount in the specified organization and month. Will be empty if user only has access to usage data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billInfo")]
+        public virtual BillInfo BillInfo { get; set; }
+
+        /// <summary>Usage data for all properties in the specified organization and month.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyUsages")]
+        public virtual System.Collections.Generic.IList<PropertyUsage> PropertyUsages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
