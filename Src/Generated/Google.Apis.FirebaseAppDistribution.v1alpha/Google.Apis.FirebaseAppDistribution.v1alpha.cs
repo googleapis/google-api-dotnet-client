@@ -2517,6 +2517,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
         public virtual GoogleFirebaseAppdistroV1alphaTestDevice Device { get; set; }
 
+        /// <summary>Output only. The type of execution for the test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionType")]
+        public virtual string ExecutionType { get; set; }
+
         /// <summary>Output only. The reason why the test failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedReason")]
         public virtual string FailedReason { get; set; }
