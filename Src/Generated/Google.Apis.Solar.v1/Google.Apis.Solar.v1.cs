@@ -305,6 +305,15 @@ namespace Google.Apis.Solar.v1
                 InitParameters();
             }
 
+            /// <summary>
+            /// Optional. Whether to require exact quality of the imagery. If set to false, the `required_quality` field
+            /// is interpreted as the minimum required quality, such that HIGH quality imagery may be returned when
+            /// `required_quality` is set to MEDIUM. If set to true, `required_quality` is interpreted as the exact
+            /// required quality and only `MEDIUM` quality imagery is returned if `required_quality` is set to `MEDIUM`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("exactQualityRequired", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ExactQualityRequired { get; set; }
+
             /// <summary>Optional. Specifies the pre-GA features to enable.</summary>
             /// <remarks>
             /// Use this property to set a single value for the parameter, or <see cref="ExperimentsList"/> to set
@@ -396,6 +405,14 @@ namespace Google.Apis.Solar.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("exactQualityRequired", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "exactQualityRequired",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("experiments", new Google.Apis.Discovery.Parameter
                 {
                     Name = "experiments",
