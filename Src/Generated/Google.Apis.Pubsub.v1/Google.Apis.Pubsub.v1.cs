@@ -4167,6 +4167,13 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual string Subscription { get; set; }
 
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// "123/environment": "production", "123/costCenter": "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5373,6 +5380,13 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string State { get; set; }
 
         /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// "123/environment": "production", "123/costCenter": "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
         /// Required. The name of the topic from which this subscription is receiving messages. Format is
         /// `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been
         /// deleted.
@@ -5512,6 +5526,13 @@ namespace Google.Apis.Pubsub.v1.Data
         /// <summary>Output only. An output-only field indicating the state of the topic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// "123/environment": "production", "123/costCenter": "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
