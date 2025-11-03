@@ -20382,6 +20382,10 @@ namespace Google.Apis.Dfareporting.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("compatibility")]
         public virtual string Compatibility { get; set; }
 
+        /// <summary>Optional. Contextual keyword targeting information for this ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextualKeywordTargeting")]
+        public virtual ContextualKeywordTargeting ContextualKeywordTargeting { get; set; }
+
         /// <summary>Information about the creation of this ad. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createInfo")]
         public virtual LastModifiedInfo CreateInfo { get; set; }
@@ -21930,6 +21934,28 @@ namespace Google.Apis.Dfareporting.v5.Data
         /// <summary>Output only. The separator of the content source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("separator")]
         public virtual string Separator { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains information about a Contextual Keyword that can be targeted by ads.</summary>
+    public class ContextualKeyword : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The keyword that can be targeted by ads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyword")]
+        public virtual string Keyword { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contextual Keyword Targeting.</summary>
+    public class ContextualKeywordTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contextual keywords that this ad targets</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keywords")]
+        public virtual System.Collections.Generic.IList<ContextualKeyword> Keywords { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26688,7 +26714,7 @@ namespace Google.Apis.Dfareporting.v5.Data
         /// Adform * `3`, Adobe * `4`, Amobee * `5`, Basis (Centro) * `6`, Beeswax * `7`, Amazon * `8`, DV360 (DBM) *
         /// `9`, Innovid * `10`, MediaMath * `11`, Roku OneView DSP * `12`, TabMo Hawk * `13`, The Trade Desk * `14`,
         /// Xandr Invest DSP * `15`, Yahoo DSP * `16`, Zeta Global * `17`, Scaleout * `18`, Bidtellect * `19`, Unicorn *
-        /// `20`, Teads * `21`, Quantcast * `22`, Cognitiv
+        /// `20`, Teads * `21`, Quantcast * `22`, Cognitiv * `23`, AdTheorent * `24`, DeepIntent * `25`, Pulsepoint
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adServingPlatformId")]
         public virtual System.Nullable<long> AdServingPlatformId { get; set; }
@@ -28303,7 +28329,7 @@ namespace Google.Apis.Dfareporting.v5.Data
         /// (Centro) * `6`, Beeswax * `7`, Amazon * `8`, DV360 (DBM) * `9`, Innovid * `10`, MediaMath * `11`, Roku
         /// OneView DSP * `12`, TabMo Hawk * `13`, The Trade Desk * `14`, Xandr Invest DSP * `15`, Yahoo DSP * `16`,
         /// Zeta Global * `17`, Scaleout * `18`, Bidtellect * `19`, Unicorn * `20`, Teads * `21`, Quantcast * `22`,
-        /// Cognitiv
+        /// Cognitiv * `23`, AdTheorent * `24`, DeepIntent * `25`, Pulsepoint
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adServingPlatformId")]
         public virtual System.Nullable<long> AdServingPlatformId { get; set; }
@@ -29142,6 +29168,10 @@ namespace Google.Apis.Dfareporting.v5.Data
         /// <summary>Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
         public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
+
+        /// <summary>Optional. Contextual keyword targeting criteria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextualKeywordTargeting")]
+        public virtual ContextualKeywordTargeting ContextualKeywordTargeting { get; set; }
 
         /// <summary>Time and day targeting criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayPartTargeting")]
