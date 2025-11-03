@@ -1771,20 +1771,14 @@ namespace Google.Apis.FirebaseDataConnect.v1beta
                         }
                     }
 
-                    /// <summary>
-                    /// Lists Schemas in a given project and location. Note that only `schemas/main` is supported, so
-                    /// this will always return at most one Schema.
-                    /// </summary>
+                    /// <summary>Lists Schemas in a given project and location.</summary>
                     /// <param name="parent">Required. Value of parent.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>
-                    /// Lists Schemas in a given project and location. Note that only `schemas/main` is supported, so
-                    /// this will always return at most one Schema.
-                    /// </summary>
+                    /// <summary>Lists Schemas in a given project and location.</summary>
                     public class ListRequest : FirebaseDataConnectBaseServiceRequest<Google.Apis.FirebaseDataConnect.v1beta.Data.ListSchemasResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
