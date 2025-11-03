@@ -11971,8 +11971,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -14826,6 +14826,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secretVersionsForRequestHeaders")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue> SecretVersionsForRequestHeaders { get; set; }
 
+        /// <summary>Optional. Configuration for service account authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountAuthConfig")]
+        public virtual GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig ServiceAccountAuthConfig { get; set; }
+
         /// <summary>
         /// Optional. Indicate the auth token type generated from the [Diglogflow service
         /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is
@@ -14892,6 +14896,23 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretVersion")]
         public virtual string SecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for authentication using a service account.</summary>
+    public class GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The email address of the service account used to authenticate the webhook call. Dialogflow uses
+        /// this service account to exchange an access token and the access token is then sent in the `Authorization`
+        /// header of the webhook request. The service account must have the `roles/iam.serviceAccountTokenCreator` role
+        /// granted to the [Dialogflow service
+        /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16243,6 +16264,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Email address of the authenticated user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
         public virtual string UserEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a code block.</summary>
+    public class GoogleCloudDialogflowCxV3beta1CodeBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Source code of the block in Python.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20977,6 +21009,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1Playbook : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The playbook's scoped code block, which may implement handlers and actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeBlock")]
+        public virtual GoogleCloudDialogflowCxV3beta1CodeBlock CodeBlock { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -21028,6 +21064,14 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. A list of registered handlers to execute based on the specified triggers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("handlers")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Handler> Handlers { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. Names of inline actions scoped to this playbook. These actions are in addition to
+        /// those belonging to referenced tools, child playbooks, and flows, e.g. actions that are defined in the
+        /// playbook's code block.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineActions")]
+        public virtual System.Collections.Generic.IList<string> InlineActions { get; set; }
 
         /// <summary>Optional. Defined structured input parameters for this playbook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputParameterDefinitions")]
@@ -23065,6 +23109,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oauthConfig")]
         public virtual GoogleCloudDialogflowCxV3beta1ToolAuthenticationOAuthConfig OauthConfig { get; set; }
 
+        /// <summary>Configuration for service account authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountAuthConfig")]
+        public virtual GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAccountAuthConfig ServiceAccountAuthConfig { get; set; }
+
         /// <summary>
         /// Config for [Diglogflow service
         /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
@@ -23162,6 +23210,23 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Required. The token endpoint in the OAuth provider to exchange for an access token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenEndpoint")]
         public virtual string TokenEndpoint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for authentication using a service account.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAccountAuthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The email address of the service account used to authenticate the tool call. Dialogflow uses this
+        /// service account to exchange an access token and the access token is then sent in the `Authorization` header
+        /// of the tool request. The service account must have the `roles/iam.serviceAccountTokenCreator` role granted
+        /// to the [Dialogflow service
+        /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24306,6 +24371,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secretVersionsForRequestHeaders")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue> SecretVersionsForRequestHeaders { get; set; }
 
+        /// <summary>Optional. Configuration for service account authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountAuthConfig")]
+        public virtual GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig ServiceAccountAuthConfig { get; set; }
+
         /// <summary>
         /// Optional. Indicate the auth token type generated from the [Diglogflow service
         /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is
@@ -24372,6 +24441,23 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretVersion")]
         public virtual string SecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for authentication using a service account.</summary>
+    public class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The email address of the service account used to authenticate the webhook call. Dialogflow uses
+        /// this service account to exchange an access token and the access token is then sent in the `Authorization`
+        /// header of the webhook request. The service account must have the `roles/iam.serviceAccountTokenCreator` role
+        /// granted to the [Dialogflow service
+        /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
