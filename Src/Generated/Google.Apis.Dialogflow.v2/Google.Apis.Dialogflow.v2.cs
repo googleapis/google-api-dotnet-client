@@ -20758,8 +20758,8 @@ namespace Google.Apis.Dialogflow.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -23992,6 +23992,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secretVersionsForRequestHeaders")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue> SecretVersionsForRequestHeaders { get; set; }
 
+        /// <summary>Optional. Configuration for service account authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountAuthConfig")]
+        public virtual GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig ServiceAccountAuthConfig { get; set; }
+
         /// <summary>
         /// Optional. Indicate the auth token type generated from the [Diglogflow service
         /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is
@@ -24058,6 +24062,23 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretVersion")]
         public virtual string SecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for authentication using a service account.</summary>
+    public class GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The email address of the service account used to authenticate the webhook call. Dialogflow uses
+        /// this service account to exchange an access token and the access token is then sent in the `Authorization`
+        /// header of the webhook request. The service account must have the `roles/iam.serviceAccountTokenCreator` role
+        /// granted to the [Dialogflow service
+        /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26839,6 +26860,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secretVersionsForRequestHeaders")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue> SecretVersionsForRequestHeaders { get; set; }
 
+        /// <summary>Optional. Configuration for service account authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountAuthConfig")]
+        public virtual GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig ServiceAccountAuthConfig { get; set; }
+
         /// <summary>
         /// Optional. Indicate the auth token type generated from the [Diglogflow service
         /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is
@@ -26905,6 +26930,23 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretVersion")]
         public virtual string SecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for authentication using a service account.</summary>
+    public class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The email address of the service account used to authenticate the webhook call. Dialogflow uses
+        /// this service account to exchange an access token and the access token is then sent in the `Authorization`
+        /// header of the webhook request. The service account must have the `roles/iam.serviceAccountTokenCreator` role
+        /// granted to the [Dialogflow service
+        /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -36556,9 +36598,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// Required. The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the
         /// default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store
         /// to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For
-        /// instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in
+        /// instance a certificate can be self-signed using the following command,
+        /// ```
+        /// openssl x509 -req -days 200 -in
         /// example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile &amp;lt;(printf
         /// "\nsubjectAltName='DNS:www.example.com'")
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cert")]
         public virtual string Cert { get; set; }
