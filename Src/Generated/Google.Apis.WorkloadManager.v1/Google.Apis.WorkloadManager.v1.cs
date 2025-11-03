@@ -2031,8 +2031,8 @@ namespace Google.Apis.WorkloadManager.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -4403,7 +4403,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("asset")]
         public virtual string Asset { get; set; }
 
-        /// <summary>Details of the violation.</summary>
+        /// <summary>Details of the violation. TODO(b/452163887)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observed")]
         public virtual System.Collections.Generic.IDictionary<string, string> Observed { get; set; }
 
