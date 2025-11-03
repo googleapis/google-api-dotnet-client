@@ -17740,6 +17740,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string OfferId { get; set; }
 
         /// <summary>
+        /// The details of a pre-order purchase. Only set if it is a pre-order purchase. Note that this field will be
+        /// set even after pre-order is fulfilled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preorderDetails")]
+        public virtual PreorderDetails PreorderDetails { get; set; }
+
+        /// <summary>
         /// ID of the purchase option. This field is set for both purchase options and variant offers. For purchase
         /// options, this ID identifies the purchase option itself. For variant offers, this ID refers to the associated
         /// purchase option, and in conjunction with offer_id it identifies the variant offer.
@@ -18283,6 +18290,59 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of a pre-order purchase.</summary>
+    public class PreorderDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Offer details information related to a preorder line item.</summary>
+    public class PreorderOfferDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _preorderReleaseTimeRaw;
+
+        private object _preorderReleaseTime;
+
+        /// <summary>The time when a preordered item is released for a preorder purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preorderReleaseTime")]
+        public virtual string PreorderReleaseTimeRaw
+        {
+            get => _preorderReleaseTimeRaw;
+            set
+            {
+                _preorderReleaseTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _preorderReleaseTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PreorderReleaseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PreorderReleaseTimeDateTimeOffset instead.")]
+        public virtual object PreorderReleaseTime
+        {
+            get => _preorderReleaseTime;
+            set
+            {
+                _preorderReleaseTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _preorderReleaseTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="PreorderReleaseTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PreorderReleaseTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PreorderReleaseTimeRaw);
+            set => PreorderReleaseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a base plan that does not automatically renew at the end of the base plan, and must be manually
     /// renewed by the user.
@@ -18509,6 +18569,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The per-transaction offer token used to make this purchase line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerToken")]
         public virtual string OfferToken { get; set; }
+
+        /// <summary>Offer details for a preorder offer. This will only be set for preorders.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preorderOfferDetails")]
+        public virtual PreorderOfferDetails PreorderOfferDetails { get; set; }
 
         /// <summary>The purchase option ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseOptionId")]
