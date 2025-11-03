@@ -6368,8 +6368,8 @@ namespace Google.Apis.BigtableAdmin.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -7209,8 +7209,9 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>
         /// The type of data stored in each of this family's cell values, including its full encoding. If omitted, the
         /// family only serves raw untyped bytes. For now, only the `Aggregate` type is supported. `Aggregate` can only
-        /// be set at family creation and is immutable afterwards. If `value_type` is `Aggregate`, written data must be
-        /// compatible with: * `value_type.input_type` for `AddInput` mutations
+        /// be set at family creation and is immutable afterwards. This field is mutually exclusive with `sql_type`. If
+        /// `value_type` is `Aggregate`, written data must be compatible with: * `value_type.input_type` for `AddInput`
+        /// mutations
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual Type ValueType { get; set; }
