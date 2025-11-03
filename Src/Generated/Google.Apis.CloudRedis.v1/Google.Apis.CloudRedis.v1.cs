@@ -2494,8 +2494,8 @@ namespace Google.Apis.CloudRedis.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -6428,7 +6428,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// Optional. Phase of the maintenance window. This is to capture order of maintenance. For example, for Cloud
         /// SQL resources, this can be used to capture if the maintenance window is in Week1, Week2, Week5, etc. Non
         /// production resources are usually part of early phase. For more details, refer to Cloud SQL resources -
-        /// https://cloud.google.com/sql/docs/mysql/maintenance Deprecated. Use phase instead.
+        /// https://cloud.google.com/sql/docs/mysql/maintenance
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phase")]
         public virtual string Phase { get; set; }
@@ -6436,15 +6436,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Optional. Preferred time to start the maintenance operation on the specified day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
         public virtual TimeOfDay Time { get; set; }
-
-        /// <summary>
-        /// Optional. Phase of the maintenance window. This is to capture order of maintenance. For example, for Cloud
-        /// SQL resources, this can be used to capture if the maintenance window is in Week1, Week2, Week5, etc. Non
-        /// production resources are usually part of early phase. For more details, refer to Cloud SQL resources -
-        /// https://cloud.google.com/sql/docs/mysql/maintenance
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("week")]
-        public virtual string Week { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
