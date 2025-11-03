@@ -393,6 +393,126 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 }
             }
 
+            /// <summary>Gets a BillingAccountLicenseConfig.</summary>
+            /// <param name="name">
+            /// Required. Full resource name of BillingAccountLicenseConfig. Format:
+            /// `billingAccounts/{billing_account}/billingAccountLicenseConfigs/{billing_account_license_config_id}`.
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Gets a BillingAccountLicenseConfig.</summary>
+            public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaBillingAccountLicenseConfig>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Full resource name of BillingAccountLicenseConfig. Format:
+                /// `billingAccounts/{billing_account}/billingAccountLicenseConfigs/{billing_account_license_config_id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+/billingAccountLicenseConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists all BillingAccountLicenseConfigs for a given billing account.</summary>
+            /// <param name="parent">Required. Format: `billingAccounts/{billing_account}`.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists all BillingAccountLicenseConfigs for a given billing account.</summary>
+            public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListBillingAccountLicenseConfigsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Format: `billingAccounts/{billing_account}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. Not supported.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. Not supported.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/billingAccountLicenseConfigs";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>
             /// This method is called from the billing account side to retract the LicenseConfig from the given project
             /// back to the billing account.
@@ -632,6 +752,210 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
                 mediaDownloader.Range = range;
                 return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+            }
+        }
+
+        /// <summary>Uploads a file for the assistant to use as a source of information within the session.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The resource name of the Session. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
+        /// </param>
+        public virtual UploadRequest Upload(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest body, string name)
+        {
+            return new UploadRequest(this.service, body, name);
+        }
+
+        /// <summary>Uploads a file for the assistant to use as a source of information within the session.</summary>
+        public class UploadRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileResponse>
+        {
+            /// <summary>Constructs a new Upload request.</summary>
+            public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the Session. Format:
+            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "upload";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+name}:uploadFile";
+
+            /// <summary>Initializes Upload parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Uploads a file for the assistant to use as a source of information within the session.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item>
+        /// <description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before reading
+        /// commences. If <paramref name="stream"/> is not seekable, then it will be read from its current position
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+        /// </description>
+        /// </item>
+        /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+        /// </list>
+        /// </remarks>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The resource name of the Session. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
+        /// </param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
+        /// <param name="contentType">The content type of the stream to upload.</param>
+        public virtual UploadMediaUpload Upload(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest body, string name, System.IO.Stream stream, string contentType)
+        {
+            return new UploadMediaUpload(service, body, name, stream, contentType);
+        }
+
+        /// <summary>Upload media upload which supports resumable upload.</summary>
+        public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileResponse>
+        {
+            /// <summary>V1 error format.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+            /// <summary>V1 error format.</summary>
+            public enum XgafvEnum
+            {
+                /// <summary>v1 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("1")]
+                Value1 = 0,
+
+                /// <summary>v2 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("2")]
+                Value2 = 1,
+            }
+
+            /// <summary>OAuth access token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AccessToken { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            public enum AltEnum
+            {
+                /// <summary>Responses with Content-Type of application/json</summary>
+                [Google.Apis.Util.StringValueAttribute("json")]
+                Json = 0,
+
+                /// <summary>Media download with context-dependent Content-Type</summary>
+                [Google.Apis.Util.StringValueAttribute("media")]
+                Media = 1,
+
+                /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                [Google.Apis.Util.StringValueAttribute("proto")]
+                Proto = 2,
+            }
+
+            /// <summary>JSONP</summary>
+            [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Callback { get; set; }
+
+            /// <summary>Selector specifying which fields to include in a partial response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Fields { get; set; }
+
+            /// <summary>
+            /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+            /// Required unless you provide an OAuth 2.0 token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Key { get; set; }
+
+            /// <summary>OAuth 2.0 token for the current user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OauthToken { get; set; }
+
+            /// <summary>Returns response with indentations and line breaks.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+            /// <summary>
+            /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned
+            /// to a user, but should not exceed 40 characters.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string QuotaUser { get; set; }
+
+            /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadType { get; set; }
+
+            /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadProtocol { get; set; }
+
+            /// <summary>
+            /// Required. The resource name of the Session. Format:
+            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Constructs a new Upload media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+            /// </list>
+            /// </remarks>
+            public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest body, string name, System.IO.Stream stream, string contentType)
+                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "v1alpha/{+name}:uploadFile"), "POST", stream, contentType)
+            {
+                Name = name;
+                Body = body;
             }
         }
     }
@@ -8359,6 +8683,83 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 });
                             }
                         }
+
+                        /// <summary>Update a WidgetConfig.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Immutable. The full resource name of the widget config. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`.
+                        /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConfig body, string name)
+                        {
+                            return new PatchRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Update a WidgetConfig.</summary>
+                        public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConfig>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConfig body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Immutable. The full resource name of the widget config. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`.
+                            /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Indicates which fields in the provided WidgetConfig to update. The following are the
+                            /// only supported fields: * WidgetConfig.enable_autocomplete If not set, all supported
+                            /// fields are updated.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConfig Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/widgetConfigs/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Completes the specified user input with keyword suggestions.</summary>
@@ -8417,13 +8818,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         public virtual string QueryModel { get; set; }
 
                         /// <summary>
-                        /// A unique identifier for tracking visitors. For example, this could be implemented with an
-                        /// HTTP cookie, which should be able to uniquely identify a visitor on a single device. This
-                        /// unique identifier should not change if the visitor logs in or out of the website. This field
-                        /// should NOT have a fixed value such as `unknown_visitor`. This should be the same identifier
-                        /// as UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a UTF-8
-                        /// encoded string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error
-                        /// is returned.
+                        /// Optional. A unique identifier for tracking visitors. For example, this could be implemented
+                        /// with an HTTP cookie, which should be able to uniquely identify a visitor on a single device.
+                        /// This unique identifier should not change if the visitor logs in or out of the website. This
+                        /// field should NOT have a fixed value such as `unknown_visitor`. This should be the same
+                        /// identifier as UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a
+                        /// UTF-8 encoded string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT`
+                        /// error is returned.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("userPseudoId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string UserPseudoId { get; set; }
@@ -9290,7 +9691,446 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         public AssistantsResource(Google.Apis.Services.IClientService service)
                         {
                             this.service = service;
+                            Agents = new AgentsResource(service);
                             CannedQueries = new CannedQueriesResource(service);
+                        }
+
+                        /// <summary>Gets the Agents resource.</summary>
+                        public virtual AgentsResource Agents { get; }
+
+                        /// <summary>The "agents" collection of methods.</summary>
+                        public class AgentsResource
+                        {
+                            private const string Resource = "agents";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public AgentsResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                                Files = new FilesResource(service);
+                            }
+
+                            /// <summary>Gets the Files resource.</summary>
+                            public virtual FilesResource Files { get; }
+
+                            /// <summary>The "files" collection of methods.</summary>
+                            public class FilesResource
+                            {
+                                private const string Resource = "files";
+
+                                /// <summary>The service which this resource belongs to.</summary>
+                                private readonly Google.Apis.Services.IClientService service;
+
+                                /// <summary>Constructs a new resource.</summary>
+                                public FilesResource(Google.Apis.Services.IClientService service)
+                                {
+                                    this.service = service;
+                                }
+
+                                /// <summary>
+                                /// Imports a file to an Agent. Currently only No-Code agents are supported.
+                                /// </summary>
+                                /// <param name="body">The body of the request.</param>
+                                /// <param name="parent">
+                                /// Required. The resource name of the Agent. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                                /// </param>
+                                public virtual ImportRequest Import(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaImportAgentFileRequest body, string parent)
+                                {
+                                    return new ImportRequest(this.service, body, parent);
+                                }
+
+                                /// <summary>
+                                /// Imports a file to an Agent. Currently only No-Code agents are supported.
+                                /// </summary>
+                                public class ImportRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaImportAgentFileResponse>
+                                {
+                                    /// <summary>Constructs a new Import request.</summary>
+                                    public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaImportAgentFileRequest body, string parent) : base(service)
+                                    {
+                                        Parent = parent;
+                                        Body = body;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The resource name of the Agent. Format:
+                                    /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Parent { get; private set; }
+
+                                    /// <summary>Gets or sets the body of this request.</summary>
+                                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaImportAgentFileRequest Body { get; set; }
+
+                                    /// <summary>Returns the body of the request.</summary>
+                                    protected override object GetBody() => Body;
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "import";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "POST";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v1alpha/{+parent}/files:import";
+
+                                    /// <summary>Initializes Import parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                        });
+                                    }
+                                }
+                            }
+
+                            /// <summary>Creates an Agent.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="parent">
+                            /// Required. The parent resource name. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                            /// </param>
+                            public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAgent body, string parent)
+                            {
+                                return new CreateRequest(this.service, body, parent);
+                            }
+
+                            /// <summary>Creates an Agent.</summary>
+                            public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAgent>
+                            {
+                                /// <summary>Constructs a new Create request.</summary>
+                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAgent body, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The parent resource name. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAgent Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "create";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+parent}/agents";
+
+                                /// <summary>Initializes Create parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Deletes an Agent.</summary>
+                            /// <param name="name">
+                            /// Required. Resource name of Agent. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                            /// If the caller does not have permission to delete the agent, regardless of whether or not
+                            /// it exists, a `PERMISSION_DENIED` error is returned. If the agent to delete does not
+                            /// exist, a `NOT_FOUND` error is returned.
+                            /// </param>
+                            public virtual DeleteRequest Delete(string name)
+                            {
+                                return new DeleteRequest(this.service, name);
+                            }
+
+                            /// <summary>Deletes an Agent.</summary>
+                            public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                            {
+                                /// <summary>Constructs a new Delete request.</summary>
+                                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. Resource name of Agent. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                                /// If the caller does not have permission to delete the agent, regardless of whether or
+                                /// not it exists, a `PERMISSION_DENIED` error is returned. If the agent to delete does
+                                /// not exist, a `NOT_FOUND` error is returned.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "delete";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "DELETE";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}";
+
+                                /// <summary>Initializes Delete parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Gets an Agent.</summary>
+                            /// <param name="name">
+                            /// Required. Resource name of Agent. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                            /// </param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(this.service, name);
+                            }
+
+                            /// <summary>Gets an Agent.</summary>
+                            public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAgent>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. Resource name of Agent. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "get";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}";
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Lists all Agents under an Assistant which were created by the caller.</summary>
+                            /// <param name="parent">
+                            /// Required. The parent resource name. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                            /// </param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(this.service, parent);
+                            }
+
+                            /// <summary>Lists all Agents under an Assistant which were created by the caller.</summary>
+                            public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListAgentsResponse>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The parent resource name. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>
+                                /// Optional. A comma-separated list of fields to order by, sorted in ascending order.
+                                /// Use "desc" after a field name for descending. Supported fields: * `update_time` *
+                                /// `is_pinned` Example: * "update_time desc" * "is_pinned desc,update_time desc": list
+                                /// agents by is_pinned first, then by update_time.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string OrderBy { get; set; }
+
+                                /// <summary>
+                                /// Optional. Maximum number of Agents to return. If unspecified, defaults to 100. The
+                                /// maximum allowed value is 1000; anything above that will be coerced down to 1000.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> PageSize { get; set; }
+
+                                /// <summary>
+                                /// Optional. A page token ListAgentsResponse.next_page_token, received from a previous
+                                /// AgentService.ListAgents call. Provide this to retrieve the subsequent page. When
+                                /// paginating, all other parameters provided to ListAgents must match the call that
+                                /// provided the page token.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string PageToken { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "list";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+parent}/agents";
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+$",
+                                    });
+                                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "orderBy",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+
+                            /// <summary>Updates an Agent</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="name">
+                            /// Identifier. Resource name of the agent. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                            /// </param>
+                            public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAgent body, string name)
+                            {
+                                return new PatchRequest(this.service, body, name);
+                            }
+
+                            /// <summary>Updates an Agent</summary>
+                            public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAgent>
+                            {
+                                /// <summary>Constructs a new Patch request.</summary>
+                                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAgent body, string name) : base(service)
+                                {
+                                    Name = name;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Identifier. Resource name of the agent. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Optional. The list of fields to update.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual object UpdateMask { get; set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAgent Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "patch";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "PATCH";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}";
+
+                                /// <summary>Initializes Patch parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                    });
+                                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "updateMask",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
                         }
 
                         /// <summary>Gets the CannedQueries resource.</summary>
@@ -12329,6 +13169,83 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 RequestParameters.Add("getWidgetConfigRequestOption.turnOffCollectionComponents", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "getWidgetConfigRequestOption.turnOffCollectionComponents",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Update a WidgetConfig.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Immutable. The full resource name of the widget config. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`.
+                        /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConfig body, string name)
+                        {
+                            return new PatchRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Update a WidgetConfig.</summary>
+                        public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConfig>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConfig body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Immutable. The full resource name of the widget config. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`.
+                            /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Indicates which fields in the provided WidgetConfig to update. The following are the
+                            /// only supported fields: * WidgetConfig.enable_autocomplete If not set, all supported
+                            /// fields are updated.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConfig Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/widgetConfigs/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -19126,6 +20043,83 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             });
                         }
                     }
+
+                    /// <summary>Update a WidgetConfig.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Immutable. The full resource name of the widget config. Format:
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`.
+                    /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConfig body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Update a WidgetConfig.</summary>
+                    public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConfig>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConfig body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Immutable. The full resource name of the widget config. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`.
+                        /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Indicates which fields in the provided WidgetConfig to update. The following are the only
+                        /// supported fields: * WidgetConfig.enable_autocomplete If not set, all supported fields are
+                        /// updated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConfig Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/widgetConfigs/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Completes the specified user input with keyword suggestions.</summary>
@@ -19183,10 +20177,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     public virtual string QueryModel { get; set; }
 
                     /// <summary>
-                    /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
-                    /// cookie, which should be able to uniquely identify a visitor on a single device. This unique
-                    /// identifier should not change if the visitor logs in or out of the website. This field should NOT
-                    /// have a fixed value such as `unknown_visitor`. This should be the same identifier as
+                    /// Optional. A unique identifier for tracking visitors. For example, this could be implemented with
+                    /// an HTTP cookie, which should be able to uniquely identify a visitor on a single device. This
+                    /// unique identifier should not change if the visitor logs in or out of the website. This field
+                    /// should NOT have a fixed value such as `unknown_visitor`. This should be the same identifier as
                     /// UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a UTF-8 encoded
                     /// string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is
                     /// returned.
@@ -33127,6 +34121,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Stored definition of an agent that uses A2A.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaA2AAgentDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The agent card is a JSON string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonAgentCard")]
+        public virtual string JsonAgentCard { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Access Control Configuration.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAclConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -33204,6 +34209,38 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Stores the definition of an agent that uses ADK and is deployed to Agent Engine (formerly known as Reasoning
+    /// Engine).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaAdkAgentDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The reasoning engine that the agent is connected to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedReasoningEngine")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAdkAgentDefinitionProvisionedReasoningEngine ProvisionedReasoningEngine { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Keeps track of the reasoning engine that the agent is connected to. This message is not intended to keep track
+    /// of agent's lifecycle. Instead it is only used to define parameters to connect to the agent that is already
+    /// deployed to a reasoning engine.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaAdkAgentDefinitionProvisionedReasoningEngine : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The reasoning engine that the agent is connected to. Format:
+        /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reasoningEngine")]
+        public virtual string ReasoningEngine { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for CompletionService.AdvancedCompleteQuery method. .</summary>
     public class GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -33265,10 +34302,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1alphaUserInfo UserInfo { get; set; }
 
         /// <summary>
-        /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
-        /// should be able to uniquely identify a visitor on a single device. This unique identifier should not change
-        /// if the visitor logs in or out of the website. This field should NOT have a fixed value such as
-        /// `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
+        /// Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
+        /// cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier
+        /// should not change if the visitor logs in or out of the website. This field should NOT have a fixed value
+        /// such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
         /// SearchRequest.user_pseudo_id. The field must be a UTF-8 encoded string with a length limit of 128
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userPseudoId")]
@@ -33536,6 +34573,215 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>If set true, initial indexing is disabled for the DataStore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableInitialIndex")]
         public virtual System.Nullable<bool> DisableInitialIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Performs a predefined, specific task.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAgent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The behavior of the agent is defined as an A2A agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("a2aAgentDefinition")]
+        public virtual GoogleCloudDiscoveryengineV1alphaA2AAgentDefinition A2aAgentDefinition { get; set; }
+
+        /// <summary>Optional. The behavior of the agent is defined as an ADK agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adkAgentDefinition")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAdkAgentDefinition AdkAgentDefinition { get; set; }
+
+        /// <summary>Optional. The authorizations that are required by the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAuthorizationConfig AuthorizationConfig { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when this Agent was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The custom placeholder text that appears in the text box before the user enters any text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customPlaceholderText")]
+        public virtual string CustomPlaceholderText { get; set; }
+
+        /// <summary>
+        /// Output only. The reason why the agent deployment failed. Only set if the state is DEPLOYMENT_FAILED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentFailureReason")]
+        public virtual string DeploymentFailureReason { get; set; }
+
+        /// <summary>
+        /// Required. Human-readable description of the agent. This might be used by an LLM to automatically select an
+        /// agent to respond to a user query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. The behavior of the agent is defined as a Dialogflow agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAgentDefinition")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDialogflowAgentDefinition DialogflowAgentDefinition { get; set; }
+
+        /// <summary>
+        /// Required. Display name of the agent. This might be used by an LLM to automatically select an agent to
+        /// respond to a user query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. The icon that represents the agent on the UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAgentImage Icon { get; set; }
+
+        /// <summary>
+        /// Optional. The code of the language of the text in the description, display_name and starter_prompts fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of the agent. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The reason why the agent was rejected. Only set if the state is PRIVATE, and got there via
+        /// rejection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rejectionReason")]
+        public virtual string RejectionReason { get; set; }
+
+        /// <summary>
+        /// Optional. The starter prompt suggestions to show the user on the landing page of the agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("starterPrompts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAgentStarterPrompt> StarterPrompts { get; set; }
+
+        /// <summary>Output only. The lifecycle state of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The reason why the agent was suspended. Only set if the state is SUSPENDED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspensionReason")]
+        public virtual string SuspensionReason { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when this Agent was most recently updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a file used internally by an agent as a context on each invocation.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAgentFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
+        public virtual string FileName { get; set; }
+
+        /// <summary>Immutable. The content type of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the file. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}/files/{file}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an image.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAgentImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Base64-encoded image file contents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Image URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The starter prompt suggestion to show the user on the landing page of the agent.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAgentStarterPrompt : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The text of the starter prompt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35447,6 +36693,27 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes the authorizations required.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAuthorizationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The authorization that is required to invoke the agent. Auth tokens will be passed to the agent as
+        /// part of the request auth header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentAuthorization")]
+        public virtual string AgentAuthorization { get; set; }
+
+        /// <summary>
+        /// Optional. List of required authorizations for agent to access other resources. Auth tokens will be passed to
+        /// the agent as part of the request body.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolAuthorizations")]
+        public virtual System.Collections.Generic.IList<string> ToolAuthorizations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>OAuth2 configuration.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAuthorizationServerSideOAuth2 : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -36026,6 +37293,73 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Required. The table ID of the Cloud Bigtable that needs to be imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about license configs at billing account level.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaBillingAccountLicenseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the BillingAccountLicenseConfig is auto renewed when it reaches the end date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRenew")]
+        public virtual System.Nullable<bool> AutoRenew { get; set; }
+
+        /// <summary>Optional. The planed subscription end date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual GoogleTypeDate EndDate { get; set; }
+
+        /// <summary>Whether the license config is for Gemini bundle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
+        public virtual System.Nullable<bool> GeminiBundle { get; set; }
+
+        /// <summary>
+        /// A map of LicenseConfig names to the number of licenses distributed to each. The key is the full resource
+        /// name of the LicenseConfig, such as
+        /// `projects/{project}/locations/{location}/licenseConfigs/{license_config}`. The value is the count of
+        /// licenses allocated to it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConfigDistributions")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> LicenseConfigDistributions { get; set; }
+
+        /// <summary>Required. The number of licenses purchased under this billing account license config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
+        public virtual System.Nullable<long> LicenseCount { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. The fully qualified resource name of the billing account license config. Format:
+        /// `billingAccounts/{billing_account}/billingAccountLicenseConfigs/{billing_account_license_config}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The procurement entitlement id of the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("procurementEntitlementId")]
+        public virtual string ProcurementEntitlementId { get; set; }
+
+        /// <summary>Required. The subscription start date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual GoogleTypeDate StartDate { get; set; }
+
+        /// <summary>Output only. The state of the BillingAccountLicenseConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The subscription display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionDisplayName")]
+        public virtual string SubscriptionDisplayName { get; set; }
+
+        /// <summary>Output only. The corresponding SubV3 subscription name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionName")]
+        public virtual string SubscriptionName { get; set; }
+
+        /// <summary>Required. The subscription term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTerm")]
+        public virtual string SubscriptionTerm { get; set; }
+
+        /// <summary>Required. The subscription tier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTier")]
+        public virtual string SubscriptionTier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -39548,6 +40882,90 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the AgentService.DeleteAgent operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDeleteAgentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the CmekConfigService.DeleteCmekConfig operation. This will be returned by
     /// the google.longrunning.Operation.metadata field.
     /// </summary>
@@ -40282,6 +41700,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Optional. Target port number accepted by the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stored definition of an agent that uses a Dialogflow agent.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDialogflowAgentDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Resource name of the underlying Dialogflow Agent. Format:
+        /// `projects/{project}/locations/{location}/agents/{agent}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAgent")]
+        public virtual string DialogflowAgent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -42732,6 +44164,35 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for the AgentService.ImportAgentFile method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaImportAgentFileRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
+        public virtual string FileName { get; set; }
+
+        /// <summary>
+        /// Optional. The content type of the file, see https://www.iana.org/assignments/media-types/media-types.xhtml.
+        /// This field is required when the data source does not provide the content type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the AgentService.ImportAgentFile method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaImportAgentFileResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The imported AgentFile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentFile")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAgentFile AgentFile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the ImportCompletionSuggestions operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
@@ -43697,6 +45158,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the AgentService.ListAgents method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListAgentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The agents visible to the caller under the parent Assistant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAgent> Agents { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as ListAgentsRequest.page_token to retrieve the next page. If this field is
+        /// omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the AuthorizationService.ListAuthorizations method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaListAuthorizationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -43707,6 +45186,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// A token that can be sent as ListAuthorizationsRequest.page_token to retrieve the next page. If this field is
         /// omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for LicenseConfigService.ListBillingAccountLicenseConfigs method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListBillingAccountLicenseConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All BillingAccountLicenseConfigs for the given billing account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingAccountLicenseConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaBillingAccountLicenseConfig> BillingAccountLicenseConfigs { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as ListBillingAccountLicenseConfigsRequest.page_token to retrieve the next page. If
+        /// this field is omitted, there are no subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -46973,10 +48470,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>
-        /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
-        /// should be able to uniquely identify a visitor on a single device. This unique identifier should not change
-        /// if the visitor logs in or out of the website. This field should NOT have a fixed value such as
-        /// `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
+        /// Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
+        /// cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier
+        /// should not change if the visitor logs in or out of the website. This field should NOT have a fixed value
+        /// such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
         /// CompleteQueryRequest.user_pseudo_id The field must be a UTF-8 encoded string with a length limit of 128
         /// characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         /// </summary>
@@ -50412,6 +51909,36 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the AgentService.UploadAgentFile method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaUploadAgentFileRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about the file being uploaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blob")]
+        public virtual GdataMedia Blob { get; set; }
+
+        /// <summary>Media upload request metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaRequestInfo")]
+        public virtual ApiservingMediaRequestInfo MediaRequestInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the AgentService.UploadAgentFile method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaUploadAgentFileResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The uploaded AgentFile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentFile")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAgentFile AgentFile { get; set; }
+
+        /// <summary>Media upload response metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaResponseInfo")]
+        public virtual ApiservingMediaResponseInfo MediaResponseInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for the AssistantService.UploadSessionFile method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaUploadSessionFileRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -51077,10 +52604,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableWebApp")]
         public virtual System.Nullable<bool> EnableWebApp { get; set; }
 
-        /// <summary>Allows to toggle unstable/experimental features in the widget (or web app)</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("experimentalFeatures")]
-        public virtual System.Collections.Generic.IDictionary<string, string> ExperimentalFeatures { get; set; }
-
         /// <summary>The configuration and appearance of facets in the end user view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("facetField")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigFacetField> FacetField { get; set; }
@@ -51412,11 +52935,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSetting : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. The shortcuts to display on the homepage. LINT.IfChange(max_shortcuts_number) LINT.ThenChange(
-        /// //depot/google3/cloud/console/web/ai/unified_cloud_search/components/widget_preview/widget_homepage_shortcut_config_form.ts:max_shortcuts_number
-        /// )
-        /// </summary>
+        /// <summary>Optional. The shortcuts to display on the homepage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortcuts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSettingShortcut> Shortcuts { get; set; }
 
@@ -51568,6 +53087,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resultDescriptionType")]
         public virtual string ResultDescriptionType { get; set; }
 
+        /// <summary>
+        /// Optional. SearchAddonSpec is used to disable add-ons for search. This field is only supported for search
+        /// requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchAddonSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsSearchAddonSpec SearchAddonSpec { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -51624,6 +53150,36 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>The number of top results to generate the answer from. Up to 10.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultCount")]
         public virtual System.Nullable<int> ResultCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// SearchAddonSpec is used to disable add-ons for search. By default, if this field is not specified, add-ons are
+    /// enabled wherever applicable.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsSearchAddonSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If true, generative answer add-on is disabled. Generative answer add-on includes natural language
+        /// to filters and simple answers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generativeAnswerAddOnDisabled")]
+        public virtual System.Nullable<bool> GenerativeAnswerAddOnDisabled { get; set; }
+
+        /// <summary>
+        /// Optional. If true, disables event re-ranking and personalization to optimize KPIs &amp;amp; personalize
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kpiPersonalizationAddOnDisabled")]
+        public virtual System.Nullable<bool> KpiPersonalizationAddOnDisabled { get; set; }
+
+        /// <summary>
+        /// Optional. If true, semantic add-on is disabled. Semantic add-on includes embeddings and jetstream.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("semanticAddOnDisabled")]
+        public virtual System.Nullable<bool> SemanticAddOnDisabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -56469,10 +58025,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>
-        /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
-        /// should be able to uniquely identify a visitor on a single device. This unique identifier should not change
-        /// if the visitor logs in or out of the website. This field should NOT have a fixed value such as
-        /// `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
+        /// Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
+        /// cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier
+        /// should not change if the visitor logs in or out of the website. This field should NOT have a fixed value
+        /// such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
         /// CompleteQueryRequest.user_pseudo_id The field must be a UTF-8 encoded string with a length limit of 128
         /// characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         /// </summary>
