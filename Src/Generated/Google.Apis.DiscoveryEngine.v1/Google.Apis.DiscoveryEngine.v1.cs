@@ -4019,6 +4019,142 @@ namespace Google.Apis.DiscoveryEngine.v1
                         }
 
                         /// <summary>
+                        /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The resource name of the ServingConfig to get. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                        /// </summary>
+                        public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1ServingConfig>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the ServingConfig to get. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
+                        /// <param name="parent">
+                        /// Required. Full resource name of the parent resource. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
+                        public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1ListServingConfigsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Full resource name of the parent resource. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. Maximum number of results to return. If unspecified, defaults to 100. If a
+                            /// value greater than 100 is provided, at most 100 results are returned.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. A page token, received from a previous `ListServingConfigs` call. Provide this
+                            /// to retrieve the subsequent page.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/servingConfigs";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
@@ -6713,13 +6849,13 @@ namespace Google.Apis.DiscoveryEngine.v1
                         public virtual string QueryModel { get; set; }
 
                         /// <summary>
-                        /// A unique identifier for tracking visitors. For example, this could be implemented with an
-                        /// HTTP cookie, which should be able to uniquely identify a visitor on a single device. This
-                        /// unique identifier should not change if the visitor logs in or out of the website. This field
-                        /// should NOT have a fixed value such as `unknown_visitor`. This should be the same identifier
-                        /// as UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a UTF-8
-                        /// encoded string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error
-                        /// is returned.
+                        /// Optional. A unique identifier for tracking visitors. For example, this could be implemented
+                        /// with an HTTP cookie, which should be able to uniquely identify a visitor on a single device.
+                        /// This unique identifier should not change if the visitor logs in or out of the website. This
+                        /// field should NOT have a fixed value such as `unknown_visitor`. This should be the same
+                        /// identifier as UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a
+                        /// UTF-8 encoded string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT`
+                        /// error is returned.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("userPseudoId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string UserPseudoId { get; set; }
@@ -8806,6 +8942,142 @@ namespace Google.Apis.DiscoveryEngine.v1
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The resource name of the ServingConfig to get. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                        /// </summary>
+                        public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1ServingConfig>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the ServingConfig to get. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
+                        /// <param name="parent">
+                        /// Required. Full resource name of the parent resource. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
+                        public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1ListServingConfigsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Full resource name of the parent resource. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. Maximum number of results to return. If unspecified, defaults to 100. If a
+                            /// value greater than 100 is provided, at most 100 results are returned.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. A page token, received from a previous `ListServingConfigs` call. Provide this
+                            /// to retrieve the subsequent page.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/servingConfigs";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -13145,6 +13417,142 @@ namespace Google.Apis.DiscoveryEngine.v1
                     }
 
                     /// <summary>
+                    /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the ServingConfig to get. Format:
+                    /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                    /// </summary>
+                    public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1ServingConfig>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the ServingConfig to get. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
+                    /// <param name="parent">
+                    /// Required. Full resource name of the parent resource. Format:
+                    /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
+                    public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1ListServingConfigsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of the parent resource. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of results to return. If unspecified, defaults to 100. If a value
+                        /// greater than 100 is provided, at most 100 results are returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListServingConfigs` call. Provide this to
+                        /// retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/servingConfigs";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
@@ -15318,10 +15726,10 @@ namespace Google.Apis.DiscoveryEngine.v1
                     public virtual string QueryModel { get; set; }
 
                     /// <summary>
-                    /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
-                    /// cookie, which should be able to uniquely identify a visitor on a single device. This unique
-                    /// identifier should not change if the visitor logs in or out of the website. This field should NOT
-                    /// have a fixed value such as `unknown_visitor`. This should be the same identifier as
+                    /// Optional. A unique identifier for tracking visitors. For example, this could be implemented with
+                    /// an HTTP cookie, which should be able to uniquely identify a visitor on a single device. This
+                    /// unique identifier should not change if the visitor logs in or out of the website. This field
+                    /// should NOT have a fixed value such as `unknown_visitor`. This should be the same identifier as
                     /// UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a UTF-8 encoded
                     /// string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is
                     /// returned.
@@ -19835,10 +20243,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1UserInfo UserInfo { get; set; }
 
         /// <summary>
-        /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
-        /// should be able to uniquely identify a visitor on a single device. This unique identifier should not change
-        /// if the visitor logs in or out of the website. This field should NOT have a fixed value such as
-        /// `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
+        /// Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
+        /// cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier
+        /// should not change if the visitor logs in or out of the website. This field should NOT have a fixed value
+        /// such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
         /// SearchRequest.user_pseudo_id. The field must be a UTF-8 encoded string with a length limit of 128
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userPseudoId")]
@@ -28111,6 +28519,21 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for ListServingConfigs method.</summary>
+    public class GoogleCloudDiscoveryengineV1ListServingConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Pagination token, if not returned indicates the last page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>All the ServingConfigs for a given dataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1ServingConfig> ServingConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for ListSessions method.</summary>
     public class GoogleCloudDiscoveryengineV1ListSessionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -29797,10 +30220,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>
-        /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
-        /// should be able to uniquely identify a visitor on a single device. This unique identifier should not change
-        /// if the visitor logs in or out of the website. This field should NOT have a fixed value such as
-        /// `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
+        /// Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
+        /// cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier
+        /// should not change if the visitor logs in or out of the website. This field should NOT have a fixed value
+        /// such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
         /// CompleteQueryRequest.user_pseudo_id The field must be a UTF-8 encoded string with a length limit of 128
         /// characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         /// </summary>
@@ -36330,6 +36753,90 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the AgentService.DeleteAgent operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDeleteAgentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the CmekConfigService.DeleteCmekConfig operation. This will be returned by
     /// the google.longrunning.Operation.metadata field.
     /// </summary>
@@ -40866,10 +41373,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>
-        /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
-        /// should be able to uniquely identify a visitor on a single device. This unique identifier should not change
-        /// if the visitor logs in or out of the website. This field should NOT have a fixed value such as
-        /// `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
+        /// Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
+        /// cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier
+        /// should not change if the visitor logs in or out of the website. This field should NOT have a fixed value
+        /// such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
         /// CompleteQueryRequest.user_pseudo_id The field must be a UTF-8 encoded string with a length limit of 128
         /// characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         /// </summary>
@@ -47760,10 +48267,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>
-        /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
-        /// should be able to uniquely identify a visitor on a single device. This unique identifier should not change
-        /// if the visitor logs in or out of the website. This field should NOT have a fixed value such as
-        /// `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
+        /// Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
+        /// cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier
+        /// should not change if the visitor logs in or out of the website. This field should NOT have a fixed value
+        /// such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
         /// CompleteQueryRequest.user_pseudo_id The field must be a UTF-8 encoded string with a length limit of 128
         /// characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         /// </summary>
