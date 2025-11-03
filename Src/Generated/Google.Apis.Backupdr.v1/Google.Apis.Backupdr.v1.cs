@@ -5250,8 +5250,8 @@ namespace Google.Apis.Backupdr.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -6584,6 +6584,13 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logRetentionDays")]
         public virtual System.Nullable<long> LogRetentionDays { get; set; }
+
+        /// <summary>
+        /// Optional. Optional field to configure the maximum number of days for which a backup can be retained. This
+        /// field is only applicable for on-demand backups taken with custom retention value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxCustomOnDemandRetentionDays")]
+        public virtual System.Nullable<int> MaxCustomOnDemandRetentionDays { get; set; }
 
         /// <summary>
         /// Output only. Identifier. The resource name of the `BackupPlan`. Format:
@@ -10518,6 +10525,14 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>Request message for triggering a backup.</summary>
     public class TriggerBackupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The duration for which backup data will be kept, while taking an on-demand backup with custom
+        /// retention. It is defined in "days". It is mutually exclusive with rule_id. This field is required if rule_id
+        /// is not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRetentionDays")]
+        public virtual System.Nullable<int> CustomRetentionDays { get; set; }
+
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
         /// your request, the server will know to ignore the request if it has already been completed. The server will
