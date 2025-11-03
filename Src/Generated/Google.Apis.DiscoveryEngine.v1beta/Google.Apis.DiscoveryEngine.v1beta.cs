@@ -6851,13 +6851,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         public virtual string QueryModel { get; set; }
 
                         /// <summary>
-                        /// A unique identifier for tracking visitors. For example, this could be implemented with an
-                        /// HTTP cookie, which should be able to uniquely identify a visitor on a single device. This
-                        /// unique identifier should not change if the visitor logs in or out of the website. This field
-                        /// should NOT have a fixed value such as `unknown_visitor`. This should be the same identifier
-                        /// as UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a UTF-8
-                        /// encoded string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error
-                        /// is returned.
+                        /// Optional. A unique identifier for tracking visitors. For example, this could be implemented
+                        /// with an HTTP cookie, which should be able to uniquely identify a visitor on a single device.
+                        /// This unique identifier should not change if the visitor logs in or out of the website. This
+                        /// field should NOT have a fixed value such as `unknown_visitor`. This should be the same
+                        /// identifier as UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a
+                        /// UTF-8 encoded string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT`
+                        /// error is returned.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("userPseudoId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string UserPseudoId { get; set; }
@@ -15732,10 +15732,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     public virtual string QueryModel { get; set; }
 
                     /// <summary>
-                    /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
-                    /// cookie, which should be able to uniquely identify a visitor on a single device. This unique
-                    /// identifier should not change if the visitor logs in or out of the website. This field should NOT
-                    /// have a fixed value such as `unknown_visitor`. This should be the same identifier as
+                    /// Optional. A unique identifier for tracking visitors. For example, this could be implemented with
+                    /// an HTTP cookie, which should be able to uniquely identify a visitor on a single device. This
+                    /// unique identifier should not change if the visitor logs in or out of the website. This field
+                    /// should NOT have a fixed value such as `unknown_visitor`. This should be the same identifier as
                     /// UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a UTF-8 encoded
                     /// string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is
                     /// returned.
@@ -31322,6 +31322,90 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the AgentService.DeleteAgent operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDeleteAgentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the CmekConfigService.DeleteCmekConfig operation. This will be returned by
     /// the google.longrunning.Operation.metadata field.
     /// </summary>
@@ -35858,10 +35942,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>
-        /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
-        /// should be able to uniquely identify a visitor on a single device. This unique identifier should not change
-        /// if the visitor logs in or out of the website. This field should NOT have a fixed value such as
-        /// `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
+        /// Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
+        /// cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier
+        /// should not change if the visitor logs in or out of the website. This field should NOT have a fixed value
+        /// such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
         /// CompleteQueryRequest.user_pseudo_id The field must be a UTF-8 encoded string with a length limit of 128
         /// characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         /// </summary>
@@ -38032,10 +38116,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual GoogleCloudDiscoveryengineV1betaUserInfo UserInfo { get; set; }
 
         /// <summary>
-        /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
-        /// should be able to uniquely identify a visitor on a single device. This unique identifier should not change
-        /// if the visitor logs in or out of the website. This field should NOT have a fixed value such as
-        /// `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
+        /// Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
+        /// cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier
+        /// should not change if the visitor logs in or out of the website. This field should NOT have a fixed value
+        /// such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
         /// SearchRequest.user_pseudo_id. The field must be a UTF-8 encoded string with a length limit of 128
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userPseudoId")]
@@ -48242,10 +48326,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>
-        /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
-        /// should be able to uniquely identify a visitor on a single device. This unique identifier should not change
-        /// if the visitor logs in or out of the website. This field should NOT have a fixed value such as
-        /// `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
+        /// Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP
+        /// cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier
+        /// should not change if the visitor logs in or out of the website. This field should NOT have a fixed value
+        /// such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
         /// CompleteQueryRequest.user_pseudo_id The field must be a UTF-8 encoded string with a length limit of 128
         /// characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         /// </summary>
