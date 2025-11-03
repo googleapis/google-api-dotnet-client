@@ -5068,6 +5068,65 @@ namespace Google.Apis.ArtifactRegistry.v1
                     }
                 }
 
+                /// <summary>Exports an artifact.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="repository">
+                /// Required. The repository of the artifact to export. Format:
+                /// projects/{project}/locations/{location}/repositories/{repository}
+                /// </param>
+                public virtual ExportArtifactRequest ExportArtifact(Google.Apis.ArtifactRegistry.v1.Data.ExportArtifactRequest body, string repository)
+                {
+                    return new ExportArtifactRequest(this.service, body, repository);
+                }
+
+                /// <summary>Exports an artifact.</summary>
+                public class ExportArtifactRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new ExportArtifact request.</summary>
+                    public ExportArtifactRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.ExportArtifactRequest body, string repository) : base(service)
+                    {
+                        Repository = repository;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The repository of the artifact to export. Format:
+                    /// projects/{project}/locations/{location}/repositories/{repository}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("repository", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Repository { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ArtifactRegistry.v1.Data.ExportArtifactRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "exportArtifact";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+repository}:exportArtifact";
+
+                    /// <summary>Initializes ExportArtifact parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("repository", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "repository",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets a repository.</summary>
                 /// <param name="name">Required. The name of the repository to retrieve.</param>
                 public virtual GetRequest Get(string name)
@@ -6451,6 +6510,82 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The LRO metadata for exporting an artifact.</summary>
+    public class ExportArtifactMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The exported artifact files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportedFiles")]
+        public virtual System.Collections.Generic.IList<ExportedFile> ExportedFiles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for exporting an artifact to a destination.</summary>
+    public class ExportArtifactRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Cloud Storage path to export the artifact to. Should start with the bucket name, and optionally have a
+        /// directory path. Examples: `dst_bucket`, `dst_bucket/sub_dir`. Existing objects with the same path will be
+        /// overwritten.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsPath")]
+        public virtual string GcsPath { get; set; }
+
+        /// <summary>
+        /// The artifact tag to export.
+        /// Format:projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/tags/{tag}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTag")]
+        public virtual string SourceTag { get; set; }
+
+        /// <summary>
+        /// The artifact version to export. Format:
+        /// projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/versions/{version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceVersion")]
+        public virtual string SourceVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for exporting an artifact to a destination.</summary>
+    public class ExportArtifactResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The exported version. Should be the same as the request version with fingerprint resource name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportedVersion")]
+        public virtual Version ExportedVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The exported artifact file.</summary>
+    public class ExportedFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Cloud Storage Object path of the exported file. Examples: `dst_bucket/file1`, `dst_bucket/sub_dir/file1`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsObjectPath")]
+        public virtual string GcsObjectPath { get; set; }
+
+        /// <summary>The hashes of the file content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashes")]
+        public virtual System.Collections.Generic.IList<Hash> Hashes { get; set; }
+
+        /// <summary>
+        /// Name of the exported artifact file. Format: `projects/p1/locations/us/repositories/repo1/files/file1`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
