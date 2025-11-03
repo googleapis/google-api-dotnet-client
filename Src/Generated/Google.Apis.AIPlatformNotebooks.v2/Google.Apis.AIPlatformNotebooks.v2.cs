@@ -2737,6 +2737,10 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gpuDriverConfig")]
         public virtual GPUDriverConfig GpuDriverConfig { get; set; }
 
+        /// <summary>Output only. The unique ID of the Compute Engine instance resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; }
+
         /// <summary>
         /// Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
         /// </summary>
