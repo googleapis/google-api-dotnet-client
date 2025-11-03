@@ -16667,7 +16667,8 @@ namespace Google.Apis.Dataproc.v1.Data
     {
         /// <summary>
         /// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file
-        /// types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// types: .jar, .tar, .tar.gz, .tgz, and .zip.Note: Spark applications must be deployed in cluster mode
+        /// (https://spark.apache.org/docs/latest/cluster-overview.html) for correct environment propagation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
         public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; }
