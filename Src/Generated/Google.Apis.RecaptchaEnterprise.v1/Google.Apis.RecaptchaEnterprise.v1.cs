@@ -1899,10 +1899,6 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>
-        /// Optional. The annotation that is assigned to the Event. This field can be left empty to provide reasons that
-        /// apply to an event without concluding whether the event is legitimate or fraudulent.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotation")]
         public virtual string Annotation { get; set; }
 
@@ -1921,7 +1917,6 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phoneAuthenticationEvent")]
         public virtual GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent PhoneAuthenticationEvent { get; set; }
 
-        /// <summary>Optional. Reasons for the annotation that are assigned to the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
         public virtual System.Collections.Generic.IList<string> Reasons { get; set; }
 
