@@ -2850,8 +2850,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
     public class Control : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The service controller environment to use. If empty, no control plane feature (like quota and billing) will
-        /// be enabled. The recommended value for most services is servicecontrol.googleapis.com
+        /// The service controller environment to use. If empty, no control plane features (like quota and billing) will
+        /// be enabled. The recommended value for most services is servicecontrol.googleapis.com.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
