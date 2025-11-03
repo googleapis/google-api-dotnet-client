@@ -3299,8 +3299,8 @@ namespace Google.Apis.AppHub.v1alpha
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -3958,6 +3958,17 @@ namespace Google.Apis.AppHub.v1alpha.Data
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The functional type of a service or workload.</summary>
+    public class FunctionalType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The functional type of a service or workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4625,6 +4636,10 @@ namespace Google.Apis.AppHub.v1alpha.Data
     /// <summary>Properties of an underlying cloud resource that can comprise a Service.</summary>
     public class ServiceProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The type of the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionalType")]
+        public virtual FunctionalType FunctionalType { get; set; }
+
         /// <summary>
         /// Output only. The service project identifier that the underlying cloud resource resides in.
         /// </summary>
@@ -4877,6 +4892,10 @@ namespace Google.Apis.AppHub.v1alpha.Data
     /// <summary>Properties of an underlying compute resource represented by the Workload.</summary>
     public class WorkloadProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The type of the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionalType")]
+        public virtual FunctionalType FunctionalType { get; set; }
+
         /// <summary>
         /// Output only. The service project identifier that the underlying cloud resource resides in. Empty for
         /// non-cloud resources.
