@@ -559,6 +559,85 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                     });
                 }
             }
+
+            /// <summary>
+            /// Sets the given finalized deal as ready to serve. By default, deals are set as ready to serve as soon as
+            /// they're finalized. If you want to opt out of the default behavior, and manually indicate that deals are
+            /// ready to serve, ask your Technical Account Manager to add you to the allowlist. If you choose to use
+            /// this method, finalized deals belonging to the bidder and its child seats don't start serving until after
+            /// you call `setReadyToServe`, and after the deals become active. For example, you can use this method to
+            /// delay receiving bid requests until your creative is ready. In addition, bidders can use the URL path
+            /// "/v1/bidders/{accountId}/finalizedDeals/{dealId}" to set ready to serve for the finalized deals belong
+            /// to itself, its child seats and all their clients. This method only applies to programmatic guaranteed
+            /// deals.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="deal">
+            /// Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` or
+            /// `bidders/{accountId}/finalizedDeals/{dealId}`
+            /// </param>
+            public virtual SetReadyToServeRequest SetReadyToServe(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.SetReadyToServeRequest body, string deal)
+            {
+                return new SetReadyToServeRequest(this.service, body, deal);
+            }
+
+            /// <summary>
+            /// Sets the given finalized deal as ready to serve. By default, deals are set as ready to serve as soon as
+            /// they're finalized. If you want to opt out of the default behavior, and manually indicate that deals are
+            /// ready to serve, ask your Technical Account Manager to add you to the allowlist. If you choose to use
+            /// this method, finalized deals belonging to the bidder and its child seats don't start serving until after
+            /// you call `setReadyToServe`, and after the deals become active. For example, you can use this method to
+            /// delay receiving bid requests until your creative is ready. In addition, bidders can use the URL path
+            /// "/v1/bidders/{accountId}/finalizedDeals/{dealId}" to set ready to serve for the finalized deals belong
+            /// to itself, its child seats and all their clients. This method only applies to programmatic guaranteed
+            /// deals.
+            /// </summary>
+            public class SetReadyToServeRequest : AuthorizedBuyersMarketplaceBaseServiceRequest<Google.Apis.AuthorizedBuyersMarketplace.v1.Data.FinalizedDeal>
+            {
+                /// <summary>Constructs a new SetReadyToServe request.</summary>
+                public SetReadyToServeRequest(Google.Apis.Services.IClientService service, Google.Apis.AuthorizedBuyersMarketplace.v1.Data.SetReadyToServeRequest body, string deal) : base(service)
+                {
+                    Deal = deal;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` or
+                /// `bidders/{accountId}/finalizedDeals/{dealId}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("deal", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Deal { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AuthorizedBuyersMarketplace.v1.Data.SetReadyToServeRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "setReadyToServe";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+deal}:setReadyToServe";
+
+                /// <summary>Initializes SetReadyToServe parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("deal", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deal",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/finalizedDeals/[^/]+$",
+                    });
+                }
+            }
         }
     }
 
@@ -2220,11 +2299,16 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// ready to serve, ask your Technical Account Manager to add you to the allowlist. If you choose to use
             /// this method, finalized deals belonging to the bidder and its child seats don't start serving until after
             /// you call `setReadyToServe`, and after the deals become active. For example, you can use this method to
-            /// delay receiving bid requests until your creative is ready. This method only applies to programmatic
-            /// guaranteed deals.
+            /// delay receiving bid requests until your creative is ready. In addition, bidders can use the URL path
+            /// "/v1/bidders/{accountId}/finalizedDeals/{dealId}" to set ready to serve for the finalized deals belong
+            /// to itself, its child seats and all their clients. This method only applies to programmatic guaranteed
+            /// deals.
             /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="deal">Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}`</param>
+            /// <param name="deal">
+            /// Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` or
+            /// `bidders/{accountId}/finalizedDeals/{dealId}`
+            /// </param>
             public virtual SetReadyToServeRequest SetReadyToServe(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.SetReadyToServeRequest body, string deal)
             {
                 return new SetReadyToServeRequest(this.service, body, deal);
@@ -2236,8 +2320,10 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// ready to serve, ask your Technical Account Manager to add you to the allowlist. If you choose to use
             /// this method, finalized deals belonging to the bidder and its child seats don't start serving until after
             /// you call `setReadyToServe`, and after the deals become active. For example, you can use this method to
-            /// delay receiving bid requests until your creative is ready. This method only applies to programmatic
-            /// guaranteed deals.
+            /// delay receiving bid requests until your creative is ready. In addition, bidders can use the URL path
+            /// "/v1/bidders/{accountId}/finalizedDeals/{dealId}" to set ready to serve for the finalized deals belong
+            /// to itself, its child seats and all their clients. This method only applies to programmatic guaranteed
+            /// deals.
             /// </summary>
             public class SetReadyToServeRequest : AuthorizedBuyersMarketplaceBaseServiceRequest<Google.Apis.AuthorizedBuyersMarketplace.v1.Data.FinalizedDeal>
             {
@@ -2249,7 +2335,10 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}`</summary>
+                /// <summary>
+                /// Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` or
+                /// `bidders/{accountId}/finalizedDeals/{dealId}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("deal", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Deal { get; private set; }
 
