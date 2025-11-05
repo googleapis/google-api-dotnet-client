@@ -10261,7 +10261,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     /// <summary>Request message for ExportProducts method.</summary>
     public class GoogleCloudRetailV2betaExportProductsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This field is deprecated. Any filter provided will be ignored.</summary>
+        /// <summary>Deprecated: This field is deprecated. Any filter provided will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
@@ -10298,23 +10298,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     /// <summary>Request message for the `ExportUserEvents` method.</summary>
     public class GoogleCloudRetailV2betaExportUserEventsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// A filtering expression to specify restrictions on returned events. The expression is a sequence of terms.
-        /// Each term applies a restriction to the returned user events. Use this expression to restrict results to a
-        /// specific time range or to filter events by eventType. For example, `eventTime &amp;gt;
-        /// "2012-04-23T18:25:43.511Z" eventsMissingCatalogItems eventTime&amp;lt;"2012-04-23T18:25:43.511Z"
-        /// eventType=search` We expect only three types of fields: * `eventTime`: This can be specified twice, once
-        /// with a less than operator and once with a greater than operator. The `eventTime` restriction should result
-        /// in one, contiguous, valid, `eventTime` range. * `eventType`: Boolean operators `OR` and `NOT` are supported
-        /// if the expression is enclosed in parentheses and the operators are separated from the tag values by a space.
-        /// * `eventsMissingCatalogItems`: This restricts results to events for which catalog items were not found in
-        /// the catalog. The default behavior is to return only those events for which catalog items were found. Some
-        /// examples of valid filters expressions: * Example 1: `eventTime &amp;gt; "2012-04-23T18:25:43.511Z" eventTime
-        /// &amp;lt; "2012-04-23T18:30:43.511Z"` * Example 2: `eventTime &amp;gt; "2012-04-23T18:25:43.511Z" eventType =
-        /// detail-page-view` * Example 3: `eventsMissingCatalogItems eventType = (NOT search) eventTime &amp;lt;
-        /// "2018-04-23T18:30:43.511Z"` * Example 4: `eventTime &amp;gt; "2012-04-23T18:25:43.511Z"` * Example 5:
-        /// `eventType = (detail-page-view OR search)` * Example 6: `eventsMissingCatalogItems`
-        /// </summary>
+        /// <summary>Deprecated: This field is deprecated. Any filter provided will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
