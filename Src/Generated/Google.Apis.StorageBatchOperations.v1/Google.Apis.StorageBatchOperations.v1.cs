@@ -1193,6 +1193,13 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("succeededObjectCount")]
         public virtual System.Nullable<long> SucceededObjectCount { get; set; }
 
+        /// <summary>
+        /// Output only. Number of bytes found from source. This field is only populated for jobs with a prefix list
+        /// object configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBytesFound")]
+        public virtual System.Nullable<long> TotalBytesFound { get; set; }
+
         /// <summary>Output only. Number of objects listed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalObjectCount")]
         public virtual System.Nullable<long> TotalObjectCount { get; set; }
@@ -1360,6 +1367,13 @@ namespace Google.Apis.StorageBatchOperations.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. If true, the job will run in dry run mode, returning the total object count and, if the object
+        /// configuration is a prefix list, the bytes found from source. No transformations will be performed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
+        public virtual System.Nullable<bool> DryRun { get; set; }
 
         /// <summary>Output only. Summarizes errors encountered with sample error log entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorSummaries")]
