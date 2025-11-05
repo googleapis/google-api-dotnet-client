@@ -8122,8 +8122,8 @@ namespace Google.Apis.Networkconnectivity.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -10754,7 +10754,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Immutable. A unique name of the resource in the form of
+        /// Immutable. Identifier. A unique name of the resource in the form of
         /// `projects/{project_number}/locations/global/PolicyBasedRoutes/{policy_based_route_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
