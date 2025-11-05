@@ -769,7 +769,7 @@ namespace Google.Apis.Firebasestorage.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Resource name of the default bucket.</summary>
+        /// <summary>Identifier. Resource name of the default bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
