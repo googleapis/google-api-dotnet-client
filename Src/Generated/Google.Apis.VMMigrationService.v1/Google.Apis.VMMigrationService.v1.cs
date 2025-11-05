@@ -6721,6 +6721,15 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ServiceAccount { get; set; }
 
         /// <summary>
+        /// Optional. If specified this will be the storage pool in which the disk is created. This is the full path of
+        /// the storage pool resource, for example:
+        /// "projects/my-project/zones/us-central1-a/storagePools/my-storage-pool". The storage pool must be in the same
+        /// project and zone as the target disks. The storage pool's type must match the disk type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePool")]
+        public virtual string StoragePool { get; set; }
+
+        /// <summary>
         /// The full path of the resource of type TargetProject which represents the Compute Engine project in which to
         /// create this VM.
         /// </summary>
@@ -6845,6 +6854,15 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>The service account to associate the VM with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Optional. The storage pool used for the VM disks. If specified this will be the storage pool in which the
+        /// disk is created. This is the full path of the storage pool resource, for example:
+        /// "projects/my-project/zones/us-central1-a/storagePools/my-storage-pool". The storage pool must be in the same
+        /// project and zone as the target disks. The storage pool's type must match the disk type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePool")]
+        public virtual string StoragePool { get; set; }
 
         /// <summary>The name of the VM to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmName")]
@@ -7278,7 +7296,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Mentions that the image import is not using OS adaptation process.</summary>
+    /// <summary>Used when the image import is not using OS adaptation process.</summary>
     public class DataDiskImageImport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
