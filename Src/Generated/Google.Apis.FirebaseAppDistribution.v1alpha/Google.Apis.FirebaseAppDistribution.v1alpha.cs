@@ -2530,6 +2530,13 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string InconclusiveReason { get; set; }
 
         /// <summary>
+        /// Identifier. The name of the device execution resource. Format:
+        /// `projects/{project_number}/apps/{app_id}/releases/{release_id}/tests/{test_id}/deviceExecutions/{device_execution}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
         /// Output only. The path to a directory in Cloud Storage that will eventually contain the results for this
         /// execution. For example, gs://bucket/Nexus5-18-en-portrait.
         /// </summary>
