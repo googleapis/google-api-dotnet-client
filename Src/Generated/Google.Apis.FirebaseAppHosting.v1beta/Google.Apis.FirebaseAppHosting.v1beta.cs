@@ -3286,7 +3286,11 @@ namespace Google.Apis.FirebaseAppHosting.v1beta.Data
     /// <summary>Additional configuration of the backend for this build.</summary>
     public class Config : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Environment variables for this build.</summary>
+        /// <summary>
+        /// Optional. Supplied environment variables for a specific build. Provided at Build creation time and immutable
+        /// afterwards. This field is only applicable for Builds using a build image - (e.g., ContainerSource or
+        /// ArchiveSource with locally_build_source) Attempts to set this for other build types will result in an error
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<EnvironmentVariable> Env { get; set; }
 
