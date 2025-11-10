@@ -574,6 +574,35 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A data encryption key wrapped by an AWS KMS key.</summary>
+    public class AwsWrappedKeyInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The base64 encoded encrypted data encryption key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedDek")]
+        public virtual string EncryptedDek { get; set; }
+
+        /// <summary>
+        /// Required. The URI of the AWS KMS key used to decrypt the DEK. Should be in the format of
+        /// "arn:{partition}:kms:{region}:{account_id}:key/{key_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kekUri")]
+        public virtual string KekUri { get; set; }
+
+        /// <summary>Required. The type of algorithm used to encrypt the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyType")]
+        public virtual string KeyType { get; set; }
+
+        /// <summary>
+        /// Required. The Amazon Resource Name of the IAM Role to assume for KMS decryption access. Should be in the
+        /// format of "arn:{partition}:iam::{account_id}:role/{role_name}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roleArn")]
+        public virtual string RoleArn { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The cart data associated with the event.</summary>
     public class CartData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -712,6 +741,10 @@ namespace Google.Apis.DataManager.v1.Data
     /// <summary>Encryption information for the data being ingested.</summary>
     public class EncryptionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Amazon Web Services wrapped key information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsWrappedKeyInfo")]
+        public virtual AwsWrappedKeyInfo AwsWrappedKeyInfo { get; set; }
+
         /// <summary>Google Cloud Platform wrapped key information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpWrappedKeyInfo")]
         public virtual GcpWrappedKeyInfo GcpWrappedKeyInfo { get; set; }
@@ -756,9 +789,23 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adIdentifiers")]
         public virtual AdIdentifiers AdIdentifiers { get; set; }
 
+        /// <summary>
+        /// Optional. A bucket of any [event
+        /// parameters](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events) to
+        /// be included within the event that were not already specified using other structured fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalEventParameters")]
+        public virtual System.Collections.Generic.IList<EventParameter> AdditionalEventParameters { get; set; }
+
         /// <summary>Optional. Information about the transaction and items associated with the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cartData")]
         public virtual CartData CartData { get; set; }
+
+        /// <summary>
+        /// Optional. A unique identifier for the user instance of a web client for this GA4 web stream.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
 
         /// <summary>
         /// Optional. Information about whether the associated user has provided different types of consent.
@@ -793,6 +840,10 @@ namespace Google.Apis.DataManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventDeviceInfo")]
         public virtual DeviceInfo EventDeviceInfo { get; set; }
+
+        /// <summary>Optional. The name of the event. Required for GA4 events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventName")]
+        public virtual string EventName { get; set; }
 
         /// <summary>Optional. Signal for where the event happened (web, app, in-store, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventSource")]
@@ -895,11 +946,30 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userData")]
         public virtual UserData UserData { get; set; }
 
+        /// <summary>Optional. A unique identifier for a user, as defined by the advertiser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
         /// <summary>
         /// Optional. Advertiser-assessed information about the user at the time that the event happened.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userProperties")]
         public virtual UserProperties UserProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Event parameter for GA4 events.</summary>
+    public class EventParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the parameter to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterName")]
+        public virtual string ParameterName { get; set; }
+
+        /// <summary>Required. The string representation of the value of the parameter to set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1187,6 +1257,18 @@ namespace Google.Apis.DataManager.v1.Data
     /// <summary>Represents an item in the cart associated with the event.</summary>
     public class Item : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. A bucket of any [event parameters related to an
+        /// item](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events) to be
+        /// included within the event that were not already specified using other structured fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalItemParameters")]
+        public virtual System.Collections.Generic.IList<ItemParameter> AdditionalItemParameters { get; set; }
+
+        /// <summary>Optional. A unique identifier to reference the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
+        public virtual string ItemId { get; set; }
+
         /// <summary>Optional. The product ID within the Merchant Center account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantProductId")]
         public virtual string MerchantProductId { get; set; }
@@ -1198,6 +1280,25 @@ namespace Google.Apis.DataManager.v1.Data
         /// <summary>Optional. The unit price excluding tax, shipping, and any transaction level discounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitPrice")]
         public virtual System.Nullable<double> UnitPrice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A bucket of any [event parameters related to an
+    /// item](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events) to be included
+    /// within the event that were not already specified using other structured fields.
+    /// </summary>
+    public class ItemParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the parameter to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterName")]
+        public virtual string ParameterName { get; set; }
+
+        /// <summary>Required. The string representation of the value of the parameter to set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1493,6 +1594,14 @@ namespace Google.Apis.DataManager.v1.Data
     /// </summary>
     public class UserProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. A bucket of any additional [user
+        /// properties](https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties) for
+        /// the user associated with this event.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalUserProperties")]
+        public virtual System.Collections.Generic.IList<UserProperty> AdditionalUserProperties { get; set; }
+
         /// <summary>Optional. Type of the customer associated with the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerType")]
         public virtual string CustomerType { get; set; }
@@ -1500,6 +1609,25 @@ namespace Google.Apis.DataManager.v1.Data
         /// <summary>Optional. The advertiser-assessed value of the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerValueBucket")]
         public virtual string CustomerValueBucket { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A bucket of any additional [user
+    /// properties](https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties) for the
+    /// user associated with this event.
+    /// </summary>
+    public class UserProperty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the user property to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyName")]
+        public virtual string PropertyName { get; set; }
+
+        /// <summary>Required. The string representation of the value of the user property to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
