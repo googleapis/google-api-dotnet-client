@@ -1469,8 +1469,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Creates a new EndpointPolicy in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource of the EndpointPolicy. Must be in the format
-                /// `projects/*/locations/global`.
+                /// Required. The parent resource of the EndpointPolicy. Must be in the format `projects/*/locations/*`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.EndpointPolicy body, string parent)
                 {
@@ -1490,7 +1489,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. The parent resource of the EndpointPolicy. Must be in the format
-                    /// `projects/*/locations/global`.
+                    /// `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1542,7 +1541,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Deletes a single EndpointPolicy.</summary>
                 /// <param name="name">
                 /// Required. A name of the EndpointPolicy to delete. Must be in the format
-                /// `projects/*/locations/global/endpointPolicies/*`.
+                /// `projects/*/locations/*/endpointPolicies/*`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1561,7 +1560,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. A name of the EndpointPolicy to delete. Must be in the format
-                    /// `projects/*/locations/global/endpointPolicies/*`.
+                    /// `projects/*/locations/*/endpointPolicies/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1593,7 +1592,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Gets details of a single EndpointPolicy.</summary>
                 /// <param name="name">
                 /// Required. A name of the EndpointPolicy to get. Must be in the format
-                /// `projects/*/locations/global/endpointPolicies/*`.
+                /// `projects/*/locations/*/endpointPolicies/*`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1612,7 +1611,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. A name of the EndpointPolicy to get. Must be in the format
-                    /// `projects/*/locations/global/endpointPolicies/*`.
+                    /// `projects/*/locations/*/endpointPolicies/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1644,7 +1643,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Lists EndpointPolicies in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The project and location from which the EndpointPolicies should be listed, specified in
-                /// the format `projects/*/locations/global`.
+                /// the format `projects/*/locations/*`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1663,7 +1662,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. The project and location from which the EndpointPolicies should be listed, specified
-                    /// in the format `projects/*/locations/global`.
+                    /// in the format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1739,7 +1738,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Identifier. Name of the EndpointPolicy resource. It matches pattern
-                /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
+                /// `projects/{project}/locations/*/endpointPolicies/{endpoint_policy}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.EndpointPolicy body, string name)
                 {
@@ -1759,7 +1758,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Identifier. Name of the EndpointPolicy resource. It matches pattern
-                    /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
+                    /// `projects/{project}/locations/*/endpointPolicies/{endpoint_policy}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2321,7 +2320,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Creates a new GrpcRoute in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource of the GrpcRoute. Must be in the format `projects/*/locations/global`.
+                /// Required. The parent resource of the GrpcRoute. Must be in the format `projects/*/locations/*`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.GrpcRoute body, string parent)
                 {
@@ -2340,8 +2339,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource of the GrpcRoute. Must be in the format
-                    /// `projects/*/locations/global`.
+                    /// Required. The parent resource of the GrpcRoute. Must be in the format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2391,7 +2389,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Deletes a single GrpcRoute.</summary>
                 /// <param name="name">
                 /// Required. A name of the GrpcRoute to delete. Must be in the format
-                /// `projects/*/locations/global/grpcRoutes/*`.
+                /// `projects/*/locations/*/grpcRoutes/*`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -2410,7 +2408,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. A name of the GrpcRoute to delete. Must be in the format
-                    /// `projects/*/locations/global/grpcRoutes/*`.
+                    /// `projects/*/locations/*/grpcRoutes/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2442,7 +2440,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Gets details of a single GrpcRoute.</summary>
                 /// <param name="name">
                 /// Required. A name of the GrpcRoute to get. Must be in the format
-                /// `projects/*/locations/global/grpcRoutes/*`.
+                /// `projects/*/locations/*/grpcRoutes/*`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -2461,7 +2459,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. A name of the GrpcRoute to get. Must be in the format
-                    /// `projects/*/locations/global/grpcRoutes/*`.
+                    /// `projects/*/locations/*/grpcRoutes/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2493,7 +2491,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Lists GrpcRoutes in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The project and location from which the GrpcRoutes should be listed, specified in the
-                /// format `projects/*/locations/global`.
+                /// format `projects/*/locations/*`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2512,7 +2510,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. The project and location from which the GrpcRoutes should be listed, specified in the
-                    /// format `projects/*/locations/global`.
+                    /// format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2586,8 +2584,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Updates the parameters of a single GrpcRoute.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Identifier. Name of the GrpcRoute resource. It matches pattern
-                /// `projects/*/locations/global/grpcRoutes/`
+                /// Identifier. Name of the GrpcRoute resource. It matches pattern `projects/*/locations/*/grpcRoutes/`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.GrpcRoute body, string name)
                 {
@@ -2607,7 +2604,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Identifier. Name of the GrpcRoute resource. It matches pattern
-                    /// `projects/*/locations/global/grpcRoutes/`
+                    /// `projects/*/locations/*/grpcRoutes/`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2680,7 +2677,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Creates a new HttpRoute in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource of the HttpRoute. Must be in the format `projects/*/locations/global`.
+                /// Required. The parent resource of the HttpRoute. Must be in the format `projects/*/locations/*`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.HttpRoute body, string parent)
                 {
@@ -2699,8 +2696,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource of the HttpRoute. Must be in the format
-                    /// `projects/*/locations/global`.
+                    /// Required. The parent resource of the HttpRoute. Must be in the format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2750,7 +2746,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Deletes a single HttpRoute.</summary>
                 /// <param name="name">
                 /// Required. A name of the HttpRoute to delete. Must be in the format
-                /// `projects/*/locations/global/httpRoutes/*`.
+                /// `projects/*/locations/*/httpRoutes/*`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -2769,7 +2765,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. A name of the HttpRoute to delete. Must be in the format
-                    /// `projects/*/locations/global/httpRoutes/*`.
+                    /// `projects/*/locations/*/httpRoutes/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2801,7 +2797,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Gets details of a single HttpRoute.</summary>
                 /// <param name="name">
                 /// Required. A name of the HttpRoute to get. Must be in the format
-                /// `projects/*/locations/global/httpRoutes/*`.
+                /// `projects/*/locations/*/httpRoutes/*`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -2820,7 +2816,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. A name of the HttpRoute to get. Must be in the format
-                    /// `projects/*/locations/global/httpRoutes/*`.
+                    /// `projects/*/locations/*/httpRoutes/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2852,7 +2848,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Lists HttpRoute in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The project and location from which the HttpRoutes should be listed, specified in the
-                /// format `projects/*/locations/global`.
+                /// format `projects/*/locations/*`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2871,7 +2867,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. The project and location from which the HttpRoutes should be listed, specified in the
-                    /// format `projects/*/locations/global`.
+                    /// format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2946,7 +2942,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Identifier. Name of the HttpRoute resource. It matches pattern
-                /// `projects/*/locations/global/httpRoutes/http_route_name&amp;gt;`.
+                /// `projects/*/locations/*/httpRoutes/http_route_name&amp;gt;`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.HttpRoute body, string name)
                 {
@@ -2966,7 +2962,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Identifier. Name of the HttpRoute resource. It matches pattern
-                    /// `projects/*/locations/global/httpRoutes/http_route_name&amp;gt;`.
+                    /// `projects/*/locations/*/httpRoutes/http_route_name&amp;gt;`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4477,7 +4473,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Creates a new Mesh in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource of the Mesh. Must be in the format `projects/*/locations/global`.
+                /// Required. The parent resource of the Mesh. Must be in the format `projects/*/locations/*`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.Mesh body, string parent)
                 {
@@ -4496,7 +4492,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource of the Mesh. Must be in the format `projects/*/locations/global`.
+                    /// Required. The parent resource of the Mesh. Must be in the format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4545,8 +4541,7 @@ namespace Google.Apis.NetworkServices.v1
 
                 /// <summary>Deletes a single Mesh.</summary>
                 /// <param name="name">
-                /// Required. A name of the Mesh to delete. Must be in the format
-                /// `projects/*/locations/global/meshes/*`.
+                /// Required. A name of the Mesh to delete. Must be in the format `projects/*/locations/*/meshes/*`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -4564,8 +4559,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Required. A name of the Mesh to delete. Must be in the format
-                    /// `projects/*/locations/global/meshes/*`.
+                    /// Required. A name of the Mesh to delete. Must be in the format `projects/*/locations/*/meshes/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4596,7 +4590,7 @@ namespace Google.Apis.NetworkServices.v1
 
                 /// <summary>Gets details of a single Mesh.</summary>
                 /// <param name="name">
-                /// Required. A name of the Mesh to get. Must be in the format `projects/*/locations/global/meshes/*`.
+                /// Required. A name of the Mesh to get. Must be in the format `projects/*/locations/*/meshes/*`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -4614,8 +4608,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Required. A name of the Mesh to get. Must be in the format
-                    /// `projects/*/locations/global/meshes/*`.
+                    /// Required. A name of the Mesh to get. Must be in the format `projects/*/locations/*/meshes/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4647,7 +4640,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Lists Meshes in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The project and location from which the Meshes should be listed, specified in the format
-                /// `projects/*/locations/global`.
+                /// `projects/*/locations/*`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -4666,7 +4659,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. The project and location from which the Meshes should be listed, specified in the
-                    /// format `projects/*/locations/global`.
+                    /// format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4740,7 +4733,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Updates the parameters of a single Mesh.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Identifier. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
+                /// Identifier. Name of the Mesh resource. It matches pattern `projects/*/locations/*/meshes/`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.Mesh body, string name)
                 {
@@ -4759,7 +4752,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Identifier. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
+                    /// Identifier. Name of the Mesh resource. It matches pattern `projects/*/locations/*/meshes/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5822,7 +5815,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Creates a new TcpRoute in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource of the TcpRoute. Must be in the format `projects/*/locations/global`.
+                /// Required. The parent resource of the TcpRoute. Must be in the format `projects/*/locations/*`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.TcpRoute body, string parent)
                 {
@@ -5841,8 +5834,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource of the TcpRoute. Must be in the format
-                    /// `projects/*/locations/global`.
+                    /// Required. The parent resource of the TcpRoute. Must be in the format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -5892,7 +5884,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Deletes a single TcpRoute.</summary>
                 /// <param name="name">
                 /// Required. A name of the TcpRoute to delete. Must be in the format
-                /// `projects/*/locations/global/tcpRoutes/*`.
+                /// `projects/*/locations/*/tcpRoutes/*`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -5911,7 +5903,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. A name of the TcpRoute to delete. Must be in the format
-                    /// `projects/*/locations/global/tcpRoutes/*`.
+                    /// `projects/*/locations/*/tcpRoutes/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5942,8 +5934,7 @@ namespace Google.Apis.NetworkServices.v1
 
                 /// <summary>Gets details of a single TcpRoute.</summary>
                 /// <param name="name">
-                /// Required. A name of the TcpRoute to get. Must be in the format
-                /// `projects/*/locations/global/tcpRoutes/*`.
+                /// Required. A name of the TcpRoute to get. Must be in the format `projects/*/locations/*/tcpRoutes/*`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -5962,7 +5953,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. A name of the TcpRoute to get. Must be in the format
-                    /// `projects/*/locations/global/tcpRoutes/*`.
+                    /// `projects/*/locations/*/tcpRoutes/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5994,7 +5985,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Lists TcpRoute in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The project and location from which the TcpRoutes should be listed, specified in the
-                /// format `projects/*/locations/global`.
+                /// format `projects/*/locations/*`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -6013,7 +6004,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. The project and location from which the TcpRoutes should be listed, specified in the
-                    /// format `projects/*/locations/global`.
+                    /// format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -6088,7 +6079,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Identifier. Name of the TcpRoute resource. It matches pattern
-                /// `projects/*/locations/global/tcpRoutes/tcp_route_name&amp;gt;`.
+                /// `projects/*/locations/*/tcpRoutes/tcp_route_name&amp;gt;`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.TcpRoute body, string name)
                 {
@@ -6108,7 +6099,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Identifier. Name of the TcpRoute resource. It matches pattern
-                    /// `projects/*/locations/global/tcpRoutes/tcp_route_name&amp;gt;`.
+                    /// `projects/*/locations/*/tcpRoutes/tcp_route_name&amp;gt;`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -6181,7 +6172,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Creates a new TlsRoute in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource of the TlsRoute. Must be in the format `projects/*/locations/global`.
+                /// Required. The parent resource of the TlsRoute. Must be in the format `projects/*/locations/*`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.TlsRoute body, string parent)
                 {
@@ -6200,8 +6191,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource of the TlsRoute. Must be in the format
-                    /// `projects/*/locations/global`.
+                    /// Required. The parent resource of the TlsRoute. Must be in the format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -6251,7 +6241,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Deletes a single TlsRoute.</summary>
                 /// <param name="name">
                 /// Required. A name of the TlsRoute to delete. Must be in the format
-                /// `projects/*/locations/global/tlsRoutes/*`.
+                /// `projects/*/locations/*/tlsRoutes/*`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -6270,7 +6260,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. A name of the TlsRoute to delete. Must be in the format
-                    /// `projects/*/locations/global/tlsRoutes/*`.
+                    /// `projects/*/locations/*/tlsRoutes/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -6301,8 +6291,7 @@ namespace Google.Apis.NetworkServices.v1
 
                 /// <summary>Gets details of a single TlsRoute.</summary>
                 /// <param name="name">
-                /// Required. A name of the TlsRoute to get. Must be in the format
-                /// `projects/*/locations/global/tlsRoutes/*`.
+                /// Required. A name of the TlsRoute to get. Must be in the format `projects/*/locations/*/tlsRoutes/*`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -6321,7 +6310,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. A name of the TlsRoute to get. Must be in the format
-                    /// `projects/*/locations/global/tlsRoutes/*`.
+                    /// `projects/*/locations/*/tlsRoutes/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -6353,7 +6342,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Lists TlsRoute in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The project and location from which the TlsRoutes should be listed, specified in the
-                /// format `projects/*/locations/global`.
+                /// format `projects/*/locations/*`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -6372,7 +6361,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Required. The project and location from which the TlsRoutes should be listed, specified in the
-                    /// format `projects/*/locations/global`.
+                    /// format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -6447,7 +6436,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Identifier. Name of the TlsRoute resource. It matches pattern
-                /// `projects/*/locations/global/tlsRoutes/tls_route_name&amp;gt;`.
+                /// `projects/*/locations/*/tlsRoutes/tls_route_name&amp;gt;`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.TlsRoute body, string name)
                 {
@@ -6467,7 +6456,7 @@ namespace Google.Apis.NetworkServices.v1
 
                     /// <summary>
                     /// Identifier. Name of the TlsRoute resource. It matches pattern
-                    /// `projects/*/locations/global/tlsRoutes/tls_route_name&amp;gt;`.
+                    /// `projects/*/locations/*/tlsRoutes/tls_route_name&amp;gt;`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -7256,8 +7245,8 @@ namespace Google.Apis.NetworkServices.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -7788,7 +7777,7 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Identifier. Name of the EndpointPolicy resource. It matches pattern
-        /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
+        /// `projects/{project}/locations/*/endpointPolicies/{endpoint_policy}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7984,6 +7973,18 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. When set to `TRUE`, enables `observability_mode` on the `ext_proc` filter. This makes `ext_proc`
+        /// calls asynchronous. Envoy doesn't check for the response from `ext_proc` calls. For more information about
+        /// the filter, see:
+        /// https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto#extensions-filters-http-ext-proc-v3-externalprocessor
+        /// This field is helpful when you want to try out the extension in async log-only mode. Supported by regional
+        /// `LbTrafficExtension` and `LbRouteExtension` resources. Only `STREAMED` (default) body processing mode is
+        /// supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observabilityMode")]
+        public virtual System.Nullable<bool> ObservabilityMode { get; set; }
 
         /// <summary>
         /// Optional. Configures the send mode for request body processing. The field can only be set if
@@ -8335,7 +8336,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>
         /// Optional. Gateways defines a list of gateways this GrpcRoute is attached to, as one of the routing rules to
         /// route the requests served by the gateway. Each gateway reference should match the pattern:
-        /// `projects/*/locations/global/gateways/`
+        /// `projects/*/locations/*/gateways/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gateways")]
         public virtual System.Collections.Generic.IList<string> Gateways { get; set; }
@@ -8366,13 +8367,13 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>
         /// Optional. Meshes defines a list of meshes this GrpcRoute is attached to, as one of the routing rules to
         /// route the requests served by the mesh. Each mesh reference should match the pattern:
-        /// `projects/*/locations/global/meshes/`
+        /// `projects/*/locations/*/meshes/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meshes")]
         public virtual System.Collections.Generic.IList<string> Meshes { get; set; }
 
         /// <summary>
-        /// Identifier. Name of the GrpcRoute resource. It matches pattern `projects/*/locations/global/grpcRoutes/`
+        /// Identifier. Name of the GrpcRoute resource. It matches pattern `projects/*/locations/*/grpcRoutes/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -8749,7 +8750,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>
         /// Optional. Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to
         /// route the requests served by the gateway. Each gateway reference should match the pattern:
-        /// `projects/*/locations/global/gateways/`
+        /// `projects/*/locations/*/gateways/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gateways")]
         public virtual System.Collections.Generic.IList<string> Gateways { get; set; }
@@ -8778,14 +8779,14 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>
         /// Optional. Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to
         /// route the requests served by the mesh. Each mesh reference should match the pattern:
-        /// `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
+        /// `projects/*/locations/*/meshes/` The attached Mesh should be of a type SIDECAR
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meshes")]
         public virtual System.Collections.Generic.IList<string> Meshes { get; set; }
 
         /// <summary>
         /// Identifier. Name of the HttpRoute resource. It matches pattern
-        /// `projects/*/locations/global/httpRoutes/http_route_name&amp;gt;`.
+        /// `projects/*/locations/*/httpRoutes/http_route_name&amp;gt;`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -10395,7 +10396,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Identifier. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
+        /// Identifier. Name of the Mesh resource. It matches pattern `projects/*/locations/*/meshes/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -11098,7 +11099,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>
         /// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to
         /// route the requests served by the gateway. Each gateway reference should match the pattern:
-        /// `projects/*/locations/global/gateways/`
+        /// `projects/*/locations/*/gateways/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gateways")]
         public virtual System.Collections.Generic.IList<string> Gateways { get; set; }
@@ -11110,14 +11111,14 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>
         /// Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route
         /// the requests served by the mesh. Each mesh reference should match the pattern:
-        /// `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
+        /// `projects/*/locations/*/meshes/` The attached Mesh should be of a type SIDECAR
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meshes")]
         public virtual System.Collections.Generic.IList<string> Meshes { get; set; }
 
         /// <summary>
         /// Identifier. Name of the TcpRoute resource. It matches pattern
-        /// `projects/*/locations/global/tcpRoutes/tcp_route_name&amp;gt;`.
+        /// `projects/*/locations/*/tcpRoutes/tcp_route_name&amp;gt;`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -11342,7 +11343,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>
         /// Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to
         /// route the requests served by the gateway. Each gateway reference should match the pattern:
-        /// `projects/*/locations/global/gateways/`
+        /// `projects/*/locations/*/gateways/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gateways")]
         public virtual System.Collections.Generic.IList<string> Gateways { get; set; }
@@ -11354,14 +11355,14 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>
         /// Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route
         /// the requests served by the mesh. Each mesh reference should match the pattern:
-        /// `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
+        /// `projects/*/locations/*/meshes/` The attached Mesh should be of a type SIDECAR
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meshes")]
         public virtual System.Collections.Generic.IList<string> Meshes { get; set; }
 
         /// <summary>
         /// Identifier. Name of the TlsRoute resource. It matches pattern
-        /// `projects/*/locations/global/tlsRoutes/tls_route_name&amp;gt;`.
+        /// `projects/*/locations/*/tlsRoutes/tls_route_name&amp;gt;`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
