@@ -4627,8 +4627,8 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -5565,6 +5565,16 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Optional. Output only. Output only snapshot of the effective unit filter at Rollout start time. Contains a
+        /// CEL(https://github.com/google/cel-spec) expression consisting of a conjunction of Rollout.unit_filter and
+        /// RolloutKind.unit_filter. This field captures the filter applied by the Rollout to determine the Unit
+        /// population. If the associated RolloutKind's unit_filter is modified after the rollout is started, it will
+        /// not be updated here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveUnitFilter")]
+        public virtual string EffectiveUnitFilter { get; set; }
 
         private string _endTimeRaw;
 
