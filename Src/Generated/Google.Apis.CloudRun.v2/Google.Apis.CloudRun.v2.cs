@@ -4232,6 +4232,25 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Cloud Storage source.</summary>
+    public class GoogleCloudRunV2CloudStorageSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Cloud Storage bucket name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>Optional. The Cloud Storage object generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>Required. The Cloud Storage object name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("object")]
+        public virtual string Object__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines a status condition for a resource.</summary>
     public class GoogleCloudRunV2Condition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4373,6 +4392,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Compute Resource requirements by this container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual GoogleCloudRunV2ResourceRequirements Resources { get; set; }
+
+        /// <summary>Optional. Location of the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceCode")]
+        public virtual GoogleCloudRunV2SourceCode SourceCode { get; set; }
 
         /// <summary>
         /// Startup probe of application within the container. All other probes are disabled if a startup probe is
@@ -6846,6 +6869,17 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Source type for the container.</summary>
+    public class GoogleCloudRunV2SourceCode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source is a Cloud Storage bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageSource")]
+        public virtual GoogleCloudRunV2CloudStorageSource CloudStorageSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Location of the source in an archive file in Google Cloud Storage.</summary>
     public class GoogleCloudRunV2StorageSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8831,6 +8865,10 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>An image built by the pipeline.</summary>
     public class GoogleDevtoolsCloudbuildV1BuiltImage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Path to the artifact in Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactRegistryPackage")]
+        public virtual string ArtifactRegistryPackage { get; set; }
+
         /// <summary>Docker Registry 2.0 digest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]
         public virtual string Digest { get; set; }
@@ -9626,6 +9664,10 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>A Go module artifact uploaded to Artifact Registry using the GoModule directive.</summary>
     public class GoogleDevtoolsCloudbuildV1UploadedGoModule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Path to the artifact in Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactRegistryPackage")]
+        public virtual string ArtifactRegistryPackage { get; set; }
+
         /// <summary>Hash types and values of the Go Module Artifact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual GoogleDevtoolsCloudbuildV1FileHashes FileHashes { get; set; }
@@ -9645,6 +9687,10 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>A Maven artifact uploaded using the MavenArtifact directive.</summary>
     public class GoogleDevtoolsCloudbuildV1UploadedMavenArtifact : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Path to the artifact in Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactRegistryPackage")]
+        public virtual string ArtifactRegistryPackage { get; set; }
+
         /// <summary>Hash types and values of the Maven Artifact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual GoogleDevtoolsCloudbuildV1FileHashes FileHashes { get; set; }
@@ -9664,6 +9710,10 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>An npm package uploaded to Artifact Registry using the NpmPackage directive.</summary>
     public class GoogleDevtoolsCloudbuildV1UploadedNpmPackage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Path to the artifact in Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactRegistryPackage")]
+        public virtual string ArtifactRegistryPackage { get; set; }
+
         /// <summary>Hash types and values of the npm package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual GoogleDevtoolsCloudbuildV1FileHashes FileHashes { get; set; }
@@ -9683,6 +9733,10 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>Artifact uploaded using the PythonPackage directive.</summary>
     public class GoogleDevtoolsCloudbuildV1UploadedPythonPackage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Path to the artifact in Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactRegistryPackage")]
+        public virtual string ArtifactRegistryPackage { get; set; }
+
         /// <summary>Hash types and values of the Python Artifact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual GoogleDevtoolsCloudbuildV1FileHashes FileHashes { get; set; }
