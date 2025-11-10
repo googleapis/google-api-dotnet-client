@@ -12835,6 +12835,16 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataprocMetricConfig")]
         public virtual DataprocMetricConfig DataprocMetricConfig { get; set; }
 
+        /// <summary>
+        /// Optional. A Cloud Storage bucket used to collect checkpoint diagnostic data
+        /// (https://cloud.google.com/dataproc/docs/support/diagnose-clusters#checkpoint_diagnostic_data). If you do not
+        /// specify a diagnostic bucket, Cloud Dataproc will use the Dataproc temp bucket to collect the checkpoint
+        /// diagnostic data. This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage
+        /// bucket.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnosticBucket")]
+        public virtual string DiagnosticBucket { get; set; }
+
         /// <summary>Optional. Encryption settings for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual EncryptionConfig EncryptionConfig { get; set; }
