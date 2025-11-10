@@ -719,6 +719,105 @@ namespace Google.Apis.CloudShell.v1
                 }
             }
 
+            /// <summary>Generates an access token for the user's environment.</summary>
+            /// <param name="environment">Required. The environment to generate the access token for.</param>
+            public virtual GenerateAccessTokenRequest GenerateAccessToken(string environment)
+            {
+                return new GenerateAccessTokenRequest(this.service, environment);
+            }
+
+            /// <summary>Generates an access token for the user's environment.</summary>
+            public class GenerateAccessTokenRequest : CloudShellBaseServiceRequest<Google.Apis.CloudShell.v1.Data.GenerateAccessTokenResponse>
+            {
+                /// <summary>Constructs a new GenerateAccessToken request.</summary>
+                public GenerateAccessTokenRequest(Google.Apis.Services.IClientService service, string environment) : base(service)
+                {
+                    Environment = environment;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The environment to generate the access token for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Environment { get; private set; }
+
+                private object _expireTime;
+
+                /// <summary>
+                /// String representation of <see cref="ExpireTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("expireTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ExpireTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+                public virtual object ExpireTime
+                {
+                    get => _expireTime;
+                    set
+                    {
+                        ExpireTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _expireTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+                    set
+                    {
+                        ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _expireTime = value;
+                    }
+                }
+
+                /// <summary>
+                /// Desired lifetime duration of the access token. This value must be at most 24 hours. If a value is
+                /// not specified, the token's lifetime will be set to a default value of 1 hour.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("ttl", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object Ttl { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "generateAccessToken";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+environment}:generateAccessToken";
+
+                /// <summary>Initializes GenerateAccessToken parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "environment",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+/environments/[^/]+$",
+                    });
+                    RequestParameters.Add("expireTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "expireTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("ttl", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ttl",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Gets an environment. Returns NOT_FOUND if the environment does not exist.</summary>
             /// <param name="name">
             /// Required. Name of the requested resource, for example `users/me/environments/default` or
@@ -1106,6 +1205,17 @@ namespace Google.Apis.CloudShell.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webHost")]
         public virtual string WebHost { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for GenerateAccessToken.</summary>
+    public class GenerateAccessTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The access token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
+        public virtual string AccessToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
