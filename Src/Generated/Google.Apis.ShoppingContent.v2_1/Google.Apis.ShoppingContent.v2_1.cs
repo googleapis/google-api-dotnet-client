@@ -10836,15 +10836,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; }
 
-        /// <summary>Whether user is an order manager.</summary>
+        /// <summary>This role is deprecated and can no longer be assigned. Any value set will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderManager")]
         public virtual System.Nullable<bool> OrderManager { get; set; }
 
-        /// <summary>Whether user can access payment statements.</summary>
+        /// <summary>This role is deprecated and can no longer be assigned. Any value set will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentsAnalyst")]
         public virtual System.Nullable<bool> PaymentsAnalyst { get; set; }
 
-        /// <summary>Whether user can manage payment settings.</summary>
+        /// <summary>This role is deprecated and can no longer be assigned. Any value set will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentsManager")]
         public virtual System.Nullable<bool> PaymentsManager { get; set; }
 
