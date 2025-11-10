@@ -286,7 +286,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="app">
-        /// Required. The name of the app resource. Format: `projects/{project_number}/apps/{app_id}`
+        /// Required. The name of the app resource. Format: `projects/{project_number}/apps/{app}`
         /// </param>
         public virtual UploadRequest Upload(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1UploadReleaseRequest body, string app)
         {
@@ -308,7 +308,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             }
 
             /// <summary>
-            /// Required. The name of the app resource. Format: `projects/{project_number}/apps/{app_id}`
+            /// Required. The name of the app resource. Format: `projects/{project_number}/apps/{app}`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string App { get; private set; }
@@ -366,7 +366,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
         /// </remarks>
         /// <param name="body">The body of the request.</param>
         /// <param name="app">
-        /// Required. The name of the app resource. Format: `projects/{project_number}/apps/{app_id}`
+        /// Required. The name of the app resource. Format: `projects/{project_number}/apps/{app}`
         /// </param>
         /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
@@ -457,7 +457,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             public virtual string UploadProtocol { get; set; }
 
             /// <summary>
-            /// Required. The name of the app resource. Format: `projects/{project_number}/apps/{app_id}`
+            /// Required. The name of the app resource. Format: `projects/{project_number}/apps/{app}`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string App { get; private set; }
@@ -1121,7 +1121,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The name of the app resource, which is the parent of the release resources. Format:
-                /// `projects/{project_number}/apps/{app_id}`
+                /// `projects/{project_number}/apps/{app}`
                 /// </param>
                 public virtual BatchDeleteRequest BatchDelete(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest body, string parent)
                 {
@@ -1141,7 +1141,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
 
                     /// <summary>
                     /// Required. The name of the app resource, which is the parent of the release resources. Format:
-                    /// `projects/{project_number}/apps/{app_id}`
+                    /// `projects/{project_number}/apps/{app}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1185,7 +1185,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The name of the release resource to distribute. Format:
-                /// `projects/{project_number}/apps/{app_id}/releases/{release_id}`
+                /// `projects/{project_number}/apps/{app}/releases/{release}`
                 /// </param>
                 public virtual DistributeRequest Distribute(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1DistributeReleaseRequest body, string name)
                 {
@@ -1210,7 +1210,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
 
                     /// <summary>
                     /// Required. The name of the release resource to distribute. Format:
-                    /// `projects/{project_number}/apps/{app_id}/releases/{release_id}`
+                    /// `projects/{project_number}/apps/{app}/releases/{release}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1248,7 +1248,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                 /// <summary>Gets a release.</summary>
                 /// <param name="name">
                 /// Required. The name of the release resource to retrieve. Format:
-                /// projects/{project_number}/apps/{app_id}/releases/{release_id}
+                /// projects/{project_number}/apps/{app}/releases/{release}
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1267,7 +1267,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
 
                     /// <summary>
                     /// Required. The name of the release resource to retrieve. Format:
-                    /// projects/{project_number}/apps/{app_id}/releases/{release_id}
+                    /// projects/{project_number}/apps/{app}/releases/{release}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1299,7 +1299,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                 /// <summary>Lists releases. By default, sorts by `createTime` in descending order.</summary>
                 /// <param name="parent">
                 /// Required. The name of the app resource, which is the parent of the release resources. Format:
-                /// `projects/{project_number}/apps/{app_id}`
+                /// `projects/{project_number}/apps/{app}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1318,7 +1318,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
 
                     /// <summary>
                     /// Required. The name of the app resource, which is the parent of the release resources. Format:
-                    /// `projects/{project_number}/apps/{app_id}`
+                    /// `projects/{project_number}/apps/{app}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1418,8 +1418,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                 /// <summary>Updates a release.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The name of the release resource. Format:
-                /// `projects/{project_number}/apps/{app_id}/releases/{release_id}`
+                /// The name of the release resource. Format: `projects/{project_number}/apps/{app}/releases/{release}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.FirebaseAppDistribution.v1.Data.GoogleFirebaseAppdistroV1Release body, string name)
                 {
@@ -1439,7 +1438,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
 
                     /// <summary>
                     /// The name of the release resource. Format:
-                    /// `projects/{project_number}/apps/{app_id}/releases/{release_id}`
+                    /// `projects/{project_number}/apps/{app}/releases/{release}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1490,7 +1489,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
             /// <summary>Gets Android App Bundle (AAB) information for a Firebase app.</summary>
             /// <param name="name">
             /// Required. The name of the `AabInfo` resource to retrieve. Format:
-            /// `projects/{project_number}/apps/{app_id}/aabInfo`
+            /// `projects/{project_number}/apps/{app}/aabInfo`
             /// </param>
             public virtual GetAabInfoRequest GetAabInfo(string name)
             {
@@ -1509,7 +1508,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1
 
                 /// <summary>
                 /// Required. The name of the `AabInfo` resource to retrieve. Format:
-                /// `projects/{project_number}/apps/{app_id}/aabInfo`
+                /// `projects/{project_number}/apps/{app}/aabInfo`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2861,7 +2860,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
     {
         /// <summary>
         /// Required. The names of the release resources to delete. Format:
-        /// `projects/{project_number}/apps/{app_id}/releases/{release_id}` A maximum of 100 releases can be deleted per
+        /// `projects/{project_number}/apps/{app}/releases/{release}` A maximum of 100 releases can be deleted per
         /// request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("names")]
@@ -3227,7 +3226,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
         public virtual string FirebaseConsoleUri { get; set; }
 
         /// <summary>
-        /// The name of the release resource. Format: `projects/{project_number}/apps/{app_id}/releases/{release_id}`
+        /// The name of the release resource. Format: `projects/{project_number}/apps/{app}/releases/{release}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
