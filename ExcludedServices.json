@@ -45,4 +45,7 @@
   
   // b/447065891 for investigating the failure
   "aiplatform.v1beta1",
+
+  // b/459521801 for investigating the failure
+  "composer.v1beta1",
 ]
