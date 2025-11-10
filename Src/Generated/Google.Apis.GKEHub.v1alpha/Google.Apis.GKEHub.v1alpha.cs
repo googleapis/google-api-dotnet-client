@@ -440,6 +440,8 @@ namespace Google.Apis.GKEHub.v1alpha
                 Fleets = new FleetsResource(service);
                 Memberships = new MembershipsResource(service);
                 Operations = new OperationsResource(service);
+                RolloutSequences = new RolloutSequencesResource(service);
+                Rollouts = new RolloutsResource(service);
                 Scopes = new ScopesResource(service);
             }
 
@@ -3766,6 +3768,537 @@ namespace Google.Apis.GKEHub.v1alpha
                 }
             }
 
+            /// <summary>Gets the RolloutSequences resource.</summary>
+            public virtual RolloutSequencesResource RolloutSequences { get; }
+
+            /// <summary>The "rolloutSequences" collection of methods.</summary>
+            public class RolloutSequencesResource
+            {
+                private const string Resource = "rolloutSequences";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RolloutSequencesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Create a new rollout sequence resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this rollout sequence will be created.
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.GKEHub.v1alpha.Data.RolloutSequence body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a new rollout sequence resource.</summary>
+                public class CreateRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1alpha.Data.RolloutSequence body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource where this rollout sequence will be created.
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. User provided identifier that is used as part of the resource name; must conform to
+                    /// RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to:
+                    /// /^a-z+[a-z0-9]$/
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("rolloutSequenceId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RolloutSequenceId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GKEHub.v1alpha.Data.RolloutSequence Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/rolloutSequences";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("rolloutSequenceId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "rolloutSequenceId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Remove a RolloutSequence.</summary>
+                /// <param name="name">
+                /// Required. The name of the rollout sequence to delete.
+                /// projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Remove a RolloutSequence.</summary>
+                public class DeleteRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the rollout sequence to delete.
+                    /// projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/rolloutSequences/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve a single rollout sequence.</summary>
+                /// <param name="name">
+                /// Required. The name of the rollout sequence to retrieve.
+                /// projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Retrieve a single rollout sequence.</summary>
+                public class GetRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.RolloutSequence>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the rollout sequence to retrieve.
+                    /// projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/rolloutSequences/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve the list of all rollout sequences.</summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of rollout sequences. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Retrieve the list of all rollout sequences.</summary>
+                public class ListRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.ListRolloutSequencesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of rollout sequences. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Lists Rollout Sequences that match the filter expression, following the syntax
+                    /// outlined in https://google.aip.dev/160.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of rollout sequences to return. The service may return fewer than
+                    /// this value. If unspecified, at most 50 rollout sequences will be returned. The maximum value is
+                    /// 1000; values above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListRolloutSequences` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListRolloutSequences` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/rolloutSequences";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a rollout sequence.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Name of the rollout sequence in the format of:
+                /// projects/{PROJECT_ID}/locations/global/rolloutSequences/{NAME}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.GKEHub.v1alpha.Data.RolloutSequence body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a rollout sequence.</summary>
+                public class PatchRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1alpha.Data.RolloutSequence body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Name of the rollout sequence in the format of:
+                    /// projects/{PROJECT_ID}/locations/global/rolloutSequences/{NAME}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GKEHub.v1alpha.Data.RolloutSequence Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/rolloutSequences/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Rollouts resource.</summary>
+            public virtual RolloutsResource Rollouts { get; }
+
+            /// <summary>The "rollouts" collection of methods.</summary>
+            public class RolloutsResource
+            {
+                private const string Resource = "rollouts";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RolloutsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Retrieve a single rollout.</summary>
+                /// <param name="name">
+                /// Required. The name of the rollout to retrieve.
+                /// projects/{project}/locations/{location}/rollouts/{rollout}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Retrieve a single rollout.</summary>
+                public class GetRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Rollout>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the rollout to retrieve.
+                    /// projects/{project}/locations/{location}/rollouts/{rollout}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/rollouts/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve the list of all rollouts.</summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of rollout. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Retrieve the list of all rollouts.</summary>
+                public class ListRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.ListRolloutsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of rollout. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Lists Rollouts that match the filter expression, following the syntax outlined in
+                    /// https://google.aip.dev/160.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of rollout to return. The service may return fewer than this value. If
+                    /// unspecified, at most 50 rollouts will be returned. The maximum value is 1000; values above 1000
+                    /// will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListRollouts` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `ListRollouts` must match the
+                    /// call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/rollouts";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Scopes resource.</summary>
             public virtual ScopesResource Scopes { get; }
 
@@ -5628,6 +6161,19 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Selector for clusters.</summary>
+    public class ClusterSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The label selector must be a valid CEL (go/cel) expression which evaluates resource.labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelSelector")]
+        public virtual string LabelSelector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>**ClusterUpgrade**: The configuration for the fleet-level ClusterUpgrade feature.</summary>
     public class ClusterUpgradeFleetSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7131,6 +7677,23 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An excluded cluster from the rollout.</summary>
+    public class ExcludedCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The name of the fleet Membership resource associated to the excluded cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membership")]
+        public virtual string Membership { get; set; }
+
+        /// <summary>Output only. The reason for excluding the cluster from the rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
@@ -7451,6 +8014,21 @@ namespace Google.Apis.GKEHub.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LINT.IfChange Feature config to use for Rollout.</summary>
+    public class FeatureUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for Binary Authorization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorizationConfig")]
+        public virtual BinaryAuthorizationConfig BinaryAuthorizationConfig { get; set; }
+
+        /// <summary>Optional. Configuration for Security Posture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPostureConfig")]
+        public virtual SecurityPostureConfig SecurityPostureConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8631,6 +9209,42 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>The list of permitted Scopes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<Scope> Scopes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for listing rollout sequences.</summary>
+    public class ListRolloutSequencesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The rollout sequences from the specified parent resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutSequences")]
+        public virtual System.Collections.Generic.IList<RolloutSequence> RolloutSequences { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for listing rollouts.</summary>
+    public class ListRolloutsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The rollouts from the specified parent resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollouts")]
+        public virtual System.Collections.Generic.IList<Rollout> Rollouts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10428,6 +11042,575 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Rollout contains the Rollout metadata and configuration.</summary>
+    public class Rollout : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _completeTimeRaw;
+
+        private object _completeTime;
+
+        /// <summary>Output only. The timestamp at which the Rollout was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual string CompleteTimeRaw
+        {
+            get => _completeTimeRaw;
+            set
+            {
+                _completeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _completeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompleteTimeDateTimeOffset instead.")]
+        public virtual object CompleteTime
+        {
+            get => _completeTime;
+            set
+            {
+                _completeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _completeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp at which the Rollout was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>Output only. The timestamp at the Rollout was deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Human readable display name of the Rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. etag of the Rollout Ex. abc1234</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Optional. Output only. The excluded clusters from the rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedClusters")]
+        public virtual System.Collections.Generic.IList<ExcludedCluster> ExcludedClusters { get; set; }
+
+        /// <summary>Optional. Feature config to use for Rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feature")]
+        public virtual FeatureUpdate Feature { get; set; }
+
+        /// <summary>Optional. Labels for this Rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. States of upgrading control plane or node pool targets of a single cluster (GKE Hub membership)
+        /// that's part of this Rollout. The key is the membership name of the cluster. The value is the state of the
+        /// cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipStates")]
+        public virtual System.Collections.Generic.IDictionary<string, RolloutMembershipState> MembershipStates { get; set; }
+
+        /// <summary>
+        /// Identifier. The full, unique resource name of this Rollout in the format of
+        /// `projects/{project}/locations/global/rollouts/{rollout}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. The full, unique resource name of the rollout sequence that initiatied this Rollout. In
+        /// the format of `projects/{project}/locations/global/rolloutSequences/{rollout_sequence}`. Empty for user
+        /// initiated rollouts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutSequence")]
+        public virtual string RolloutSequence { get; set; }
+
+        /// <summary>Output only. The schedule of the Rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
+        public virtual Schedule Schedule { get; set; }
+
+        /// <summary>
+        /// Output only. The stages of the Rollout. Note: this is only populated for google-initiated rollouts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stages")]
+        public virtual System.Collections.Generic.IList<RolloutStage> Stages { get; set; }
+
+        /// <summary>Output only. State specifies various states of the Rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. A human-readable description explaining the reason for the current state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateReason")]
+        public virtual string StateReason { get; set; }
+
+        /// <summary>
+        /// Output only. Google-generated UUID for this resource. This is unique across all Rollout resources. If a
+        /// Rollout resource is deleted and another resource with the same name is created, it gets a different uid.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp at which the Rollout was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Config for version upgrade of clusters. Note: Currently for GDCE clusters only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionUpgrade")]
+        public virtual VersionUpgrade VersionUpgrade { get; set; }
+    }
+
+    /// <summary>Metadata about single cluster (GKE Hub membership) that's part of this Rollout.</summary>
+    public class RolloutMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _lastUpdateTimeRaw;
+
+        private object _lastUpdateTime;
+
+        /// <summary>
+        /// Optional. Output only. The time this status and any related Rollout-specific details for the membership were
+        /// updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
+        public virtual string LastUpdateTimeRaw
+        {
+            get => _lastUpdateTimeRaw;
+            set
+            {
+                _lastUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUpdateTime
+        {
+            get => _lastUpdateTime;
+            set
+            {
+                _lastUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The stage assignment of this cluster in this rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stageAssignment")]
+        public virtual System.Nullable<int> StageAssignment { get; set; }
+
+        /// <summary>
+        /// Output only. The targets of the rollout - clusters or node pools that are being upgraded. All targets
+        /// belongs to the same cluster, identified by the membership name (key of membership_states map).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targets")]
+        public virtual System.Collections.Generic.IList<RolloutTarget> Targets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RolloutSequence defines the desired order of upgrades.</summary>
+    public class RolloutSequence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp at which the Rollout Sequence was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>Output only. The timestamp at the Rollout Sequence was deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Human readable display name of the Rollout Sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. etag of the Rollout Sequence Ex. abc1234</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Optional. Labels for this Rollout Sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the rollout sequence in the format of:
+        /// projects/{PROJECT_ID}/locations/global/rolloutSequences/{NAME}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Ordered list of stages that constitutes this Rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stages")]
+        public virtual System.Collections.Generic.IList<Stage> Stages { get; set; }
+
+        /// <summary>
+        /// Output only. Google-generated UUID for this resource. This is unique across all Rollout Sequence resources.
+        /// If a Rollout Sequence resource is deleted and another resource with the same name is created, it gets a
+        /// different uid.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp at which the Rollout Sequence was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>Stage represents a single stage in the Rollout.</summary>
+    public class RolloutStage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Optional. Output only. The time at which the wave ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Duration to soak after this wave before starting the next wave.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("soakDuration")]
+        public virtual object SoakDuration { get; set; }
+
+        /// <summary>Output only. The wave number to which this status applies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stageNumber")]
+        public virtual System.Nullable<int> StageNumber { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Optional. Output only. The time at which the wave started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The state of the wave.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the status of targets (clusters or node pools) involved in the Rollout.</summary>
+    public class RolloutTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Output only. The resource link of the Cluster resource upgraded in this Rollout. It is formatted
+        /// as: ///projects//locations//clusters/. I.e. for GKE clusters, it is formatted as:
+        /// //container.googleapis.com/projects//locations//clusters/. For GDCE, it is formatted as:
+        /// //edgecontainer.googleapis.com/projects//locations//clusters/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual string Cluster { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. The resource link of the NodePool resource upgraded in this Rollout. It is formatted
+        /// as: ///projects//locations//clusters//nodePools/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodePool")]
+        public virtual string NodePool { get; set; }
+
+        /// <summary>Optional. Output only. The operation resource name performing the mutation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>Optional. Output only. A human-readable description of the current status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>Output only. The high-level, machine-readable status of this Rollout for the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Schedule represents the schedule of the Rollout.</summary>
+    public class Schedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The schedule of each wave in the Rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waves")]
+        public virtual System.Collections.Generic.IList<WaveSchedule> Waves { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Scope represents a Scope in a Fleet.</summary>
     public class Scope : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10899,6 +12082,30 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Rollout stage.</summary>
+    public class Stage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Filter members of fleets (above) to a subset of clusters. If not specified, all clusters in the
+        /// fleets are selected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterSelector")]
+        public virtual ClusterSelector ClusterSelector { get; set; }
+
+        /// <summary>
+        /// Required. List of Fleet projects to select the clusters from. Expected format: projects/{project}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fleetProjects")]
+        public virtual System.Collections.Generic.IList<string> FleetProjects { get; set; }
+
+        /// <summary>Optional. Soak time after upgrading all the clusters in the stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("soakDuration")]
+        public virtual object SoakDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Status specifies state for the subcomponent.</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11012,6 +12219,106 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Validator type to validate membership with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validator")]
         public virtual string Validator { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for version upgrade of clusters.</summary>
+    public class VersionUpgrade : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Desired version of the component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredVersion")]
+        public virtual string DesiredVersion { get; set; }
+
+        /// <summary>Optional. Type of version upgrade specifies which component should be upgraded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>WaveSchedule represents the schedule of a single rollout wave.</summary>
+    public class WaveSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _waveEndTimeRaw;
+
+        private object _waveEndTime;
+
+        /// <summary>Output only. The time at which the wave ends.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waveEndTime")]
+        public virtual string WaveEndTimeRaw
+        {
+            get => _waveEndTimeRaw;
+            set
+            {
+                _waveEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _waveEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="WaveEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use WaveEndTimeDateTimeOffset instead.")]
+        public virtual object WaveEndTime
+        {
+            get => _waveEndTime;
+            set
+            {
+                _waveEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _waveEndTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="WaveEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? WaveEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WaveEndTimeRaw);
+            set => WaveEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The wave number to which this schedule applies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waveNumber")]
+        public virtual System.Nullable<int> WaveNumber { get; set; }
+
+        private string _waveStartTimeRaw;
+
+        private object _waveStartTime;
+
+        /// <summary>Output only. The time at which the wave starts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waveStartTime")]
+        public virtual string WaveStartTimeRaw
+        {
+            get => _waveStartTimeRaw;
+            set
+            {
+                _waveStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _waveStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="WaveStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use WaveStartTimeDateTimeOffset instead.")]
+        public virtual object WaveStartTime
+        {
+            get => _waveStartTime;
+            set
+            {
+                _waveStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _waveStartTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="WaveStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? WaveStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WaveStartTimeRaw);
+            set => WaveStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
