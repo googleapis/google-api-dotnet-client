@@ -2743,6 +2743,18 @@ namespace Google.Apis.OSConfig.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rebootConfig")]
         public virtual string RebootConfig { get; set; }
 
+        /// <summary>
+        /// Optional. Enables enhanced reporting for the patch job: 1. Allows the patch job to skip unpatchable
+        /// instances, reporting them as SKIPPED. An instance can be unpatchable for two reasons: a. The instance runs
+        /// Container-Optimized OS (COS), which cannot be patched. b. The patch job's configuration prohibits patching
+        /// on Managed Instance Groups (MIGs) through the PatchConfig.migInstancesAllowed field, and the instance is
+        /// part of one. 2. The system reports the patch job as SUCCEEDED if it completes without errors, regardless of
+        /// whether any instances were SKIPPED. 3. The system reports the patch job as COMPLETED_WITH_INACTIVE_VMS if it
+        /// completes without errors, but some instances were INACTIVE and therefore not patched.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipUnpatchableVms")]
+        public virtual System.Nullable<bool> SkipUnpatchableVms { get; set; }
+
         /// <summary>Windows update settings. Use this override the default windows patch rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowsUpdate")]
         public virtual WindowsUpdateSettings WindowsUpdate { get; set; }
@@ -3220,6 +3232,10 @@ namespace Google.Apis.OSConfig.v1beta.Data
         /// <summary>Number of instances rebooting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rebootingInstanceCount")]
         public virtual System.Nullable<long> RebootingInstanceCount { get; set; }
+
+        /// <summary>Number of instances that were skipped during patching.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skippedInstanceCount")]
+        public virtual System.Nullable<long> SkippedInstanceCount { get; set; }
 
         /// <summary>Number of instances that have started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startedInstanceCount")]
