@@ -2980,6 +2980,48 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A Persistent Directory backed by a Compute Engine Hyperdisk Balanced High Availability Disk. This is a
+    /// high-availability block storage solution that offers a balance between performance and cost for most
+    /// general-purpose workloads.
+    /// </summary>
+    public class GceHyperdiskBalancedHighAvailability : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Number of seconds to wait after initially creating or subsequently shutting down the workstation
+        /// before converting its disk into a snapshot. This generally saves costs at the expense of greater startup
+        /// time on next workstation start, as the service will need to create a disk from the archival snapshot. A
+        /// value of `"0s"` indicates that the disk will never be archived.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveTimeout")]
+        public virtual object ArchiveTimeout { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are
+        /// `DELETE` and `RETAIN`. Defaults to `DELETE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reclaimPolicy")]
+        public virtual string ReclaimPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. The GB capacity of a persistent home directory for each workstation created with this
+        /// configuration. Must be empty if source_snapshot is set. Valid values are `10`, `50`, `100`, `200`, `500`, or
+        /// `1000`. Defaults to `200`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<int> SizeGb { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the snapshot to use as the source for the disk. If set, size_gb must be empty. Must be
+        /// formatted as ext4 file system with no partitions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
+        public virtual string SourceSnapshot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A runtime using a Compute Engine instance.</summary>
     public class GceInstance : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3098,6 +3140,16 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// <summary>Optional. A set of Compute Engine Shielded instance options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
         public virtual GceShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Link to the startup script stored in Cloud Storage. This script will be run on the host
+        /// workstation VM when the VM is created. The uri must be of the form gs://{bucket-name}/{object-name}. If
+        /// specifying a startup script, the service account must have [Permission to access the bucket and script file
+        /// in Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-permissions). Otherwise, the
+        /// script must be publicly accessible.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startupScriptUri")]
+        public virtual string StartupScriptUri { get; set; }
 
         /// <summary>
         /// Optional. Network tags to add to the Compute Engine VMs backing the workstations. This option applies
@@ -3687,6 +3739,10 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// </summary>
     public class PersistentDirectory : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A PersistentDirectory backed by a Compute Engine hyperdisk high availability disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gceHd")]
+        public virtual GceHyperdiskBalancedHighAvailability GceHd { get; set; }
+
         /// <summary>A PersistentDirectory backed by a Compute Engine persistent disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcePd")]
         public virtual GceRegionalPersistentDisk GcePd { get; set; }
