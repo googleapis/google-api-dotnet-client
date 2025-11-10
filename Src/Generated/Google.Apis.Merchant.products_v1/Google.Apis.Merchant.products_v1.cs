@@ -1949,6 +1949,13 @@ namespace Google.Apis.Merchant.products_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shipping")]
         public virtual System.Collections.Generic.IList<Shipping> Shipping { get; set; }
 
+        /// <summary>
+        /// The business days during which orders can be handled. If not provided, Monday to Friday business days will
+        /// be assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingHandlingBusinessDays")]
+        public virtual System.Collections.Generic.IList<ShippingBusinessDaysConfig> ShippingHandlingBusinessDays { get; set; }
+
         /// <summary>Height of the item for shipping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingHeight")]
         public virtual ShippingDimension ShippingHeight { get; set; }
@@ -1960,6 +1967,13 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>Length of the item for shipping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingLength")]
         public virtual ShippingDimension ShippingLength { get; set; }
+
+        /// <summary>
+        /// The business days during which orders are in transit. If not provided, Monday to Friday business days will
+        /// be assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingTransitBusinessDays")]
+        public virtual System.Collections.Generic.IList<ShippingBusinessDaysConfig> ShippingTransitBusinessDays { get; set; }
 
         /// <summary>Weight of the item for shipping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingWeight")]
@@ -2662,6 +2676,32 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>A free-form description of the service class or delivery speed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The business days during which orders are on their path to fulfillment. If not provided, Monday to Friday
+    /// business days will be assumed.
+    /// </summary>
+    public class ShippingBusinessDaysConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Effective days of the week considered for the delivery time calculation. May not be empty. The more business
+        /// days included the faster the delivery. Can be set through individual days (e.g. `MTWRF`), or day ranges
+        /// (e.g. `Mon-Fri`). For more information about accepted formats, see [Shipping handling business
+        /// days](https://support.google.com/merchants/answer/16072859).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessDays")]
+        public virtual string BusinessDays { get; set; }
+
+        /// <summary>
+        /// The [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the country
+        /// to which an item will ship.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
