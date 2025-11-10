@@ -2766,14 +2766,14 @@ namespace Google.Apis.DeveloperConnect.v1
                     }
                 }
 
-                /// <summary>Delete a single Insight.</summary>
+                /// <summary>Deletes a single Insight.</summary>
                 /// <param name="name">Required. Value for parent.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Delete a single Insight.</summary>
+                /// <summary>Deletes a single Insight.</summary>
                 public class DeleteRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -3477,8 +3477,8 @@ namespace Google.Apis.DeveloperConnect.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -4781,7 +4781,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create timestamp</summary>
+        /// <summary>Output only. Create timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -4854,7 +4854,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update timestamp</summary>
+        /// <summary>Output only. Update timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
