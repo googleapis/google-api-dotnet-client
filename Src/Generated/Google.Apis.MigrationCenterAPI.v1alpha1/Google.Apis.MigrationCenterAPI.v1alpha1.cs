@@ -4024,6 +4024,406 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     public ReportsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        ReportExportJobs = new ReportExportJobsResource(service);
+                    }
+
+                    /// <summary>Gets the ReportExportJobs resource.</summary>
+                    public virtual ReportExportJobsResource ReportExportJobs { get; }
+
+                    /// <summary>The "reportExportJobs" collection of methods.</summary>
+                    public class ReportExportJobsResource
+                    {
+                        private const string Resource = "reportExportJobs";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ReportExportJobsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Export a Report into a supported destination.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The parent resource where this export job will be created.
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.MigrationCenterAPI.v1alpha1.Data.ReportExportJob body, string parent)
+                        {
+                            return new CreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>Export a Report into a supported destination.</summary>
+                        public class CreateRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.ReportExportJob body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The parent resource where this export job will be created.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Required. The ID to use for the report export job.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("reportExportJobId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string ReportExportJobId { get; set; }
+
+                            /// <summary>
+                            /// Optional. An optional request ID to identify requests. Specify a unique request ID so
+                            /// that if you must retry your request, the server will know to ignore the request if it
+                            /// has already been completed. The server will guarantee that for at least 60 minutes after
+                            /// the first request. For example, consider a situation where you make an initial request
+                            /// and the request times out. If you make the request again with the same request ID, the
+                            /// server can check if original operation with the same request ID was received, and if so,
+                            /// will ignore the second request. This prevents clients from accidentally creating
+                            /// duplicate commitments. The request ID must be a valid UUID with the exception that zero
+                            /// UUID is not supported (00000000-0000-0000-0000-000000000000).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string RequestId { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.MigrationCenterAPI.v1alpha1.Data.ReportExportJob Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha1/{+parent}/reportExportJobs";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/reportConfigs/[^/]+/reports/[^/]+$",
+                                });
+                                RequestParameters.Add("reportExportJobId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "reportExportJobId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "requestId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Deletes an report export job.</summary>
+                        /// <param name="name">Required. Name of the resource.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>Deletes an report export job.</summary>
+                        public class DeleteRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. Name of the resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. An optional request ID to identify requests. Specify a unique request ID so
+                            /// that if you must retry your request, the server will know to ignore the request if it
+                            /// has already been completed. The server will guarantee that for at least 60 minutes after
+                            /// the first request. For example, consider a situation where you make an initial request
+                            /// and the request times out. If you make the request again with the same request ID, the
+                            /// server can check if original operation with the same request ID was received, and if so,
+                            /// will ignore the second request. This prevents clients from accidentally creating
+                            /// duplicate commitments. The request ID must be a valid UUID with the exception that zero
+                            /// UUID is not supported (00000000-0000-0000-0000-000000000000).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string RequestId { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/reportConfigs/[^/]+/reports/[^/]+/reportExportJobs/[^/]+$",
+                                });
+                                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "requestId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Gets the details of a report export job.</summary>
+                        /// <param name="name">Required. Name of the resource.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets the details of a report export job.</summary>
+                        public class GetRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.ReportExportJob>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. Name of the resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/reportConfigs/[^/]+/reports/[^/]+/reportExportJobs/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists all the report export jobs for a given report.</summary>
+                        /// <param name="parent">Required. Parent report owning the export jobs.</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>Lists all the report export jobs for a given report.</summary>
+                        public class ListRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.ListReportExportJobsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. Parent report owning the export jobs.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. Requested page size. The server may return fewer items than requested. If
+                            /// unspecified, the server will pick an appropriate default value.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. A token identifying a page of results that the server should return.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha1/{+parent}/reportExportJobs";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/reportConfigs/[^/]+/reports/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Runs a report export job.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Required. Name of the resource.</param>
+                        public virtual RunRequest Run(Google.Apis.MigrationCenterAPI.v1alpha1.Data.RunReportExportJobRequest body, string name)
+                        {
+                            return new RunRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Runs a report export job.</summary>
+                        public class RunRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Run request.</summary>
+                            public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.RunReportExportJobRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. Name of the resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.MigrationCenterAPI.v1alpha1.Data.RunReportExportJobRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "run";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha1/{+name}:run";
+
+                            /// <summary>Initializes Run parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/reportConfigs/[^/]+/reports/[^/]+/reportExportJobs/[^/]+$",
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the link to the generated artifact of a given type for a Report.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. Name of the resource.</param>
+                    public virtual ArtifactLinkRequest ArtifactLink(Google.Apis.MigrationCenterAPI.v1alpha1.Data.GenerateReportArtifactLinkRequest body, string name)
+                    {
+                        return new ArtifactLinkRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Gets the link to the generated artifact of a given type for a Report.</summary>
+                    public class ArtifactLinkRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.ReportArtifactLink>
+                    {
+                        /// <summary>Constructs a new ArtifactLink request.</summary>
+                        public ArtifactLinkRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.GenerateReportArtifactLinkRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Name of the resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.MigrationCenterAPI.v1alpha1.Data.GenerateReportArtifactLinkRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "artifactLink";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+name}:artifactLink";
+
+                        /// <summary>Initializes ArtifactLink parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reportConfigs/[^/]+/reports/[^/]+$",
+                            });
+                        }
                     }
 
                     /// <summary>Creates a report.</summary>
@@ -4181,6 +4581,59 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Export a Report into a supported format.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. Name of the resource.</param>
+                    public virtual ExportRequest Export(Google.Apis.MigrationCenterAPI.v1alpha1.Data.ExportReportRequest body, string name)
+                    {
+                        return new ExportRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Export a Report into a supported format.</summary>
+                    public class ExportRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Export request.</summary>
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1alpha1.Data.ExportReportRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Name of the resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.MigrationCenterAPI.v1alpha1.Data.ExportReportRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "export";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+name}:export";
+
+                        /// <summary>Initializes Export parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reportConfigs/[^/]+/reports/[^/]+$",
                             });
                         }
                     }
@@ -8230,6 +8683,24 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to export a detailed pricing report.</summary>
+    public class ExportReportRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for exporting report.</summary>
+    public class ExportReportResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>For large generated report, we may return multiple links</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportArtifactLinks")]
+        public virtual System.Collections.Generic.IList<ReportArtifactLink> ReportArtifactLinks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource that aggregates the validation errors found in an import job file.</summary>
     public class FileValidationReport : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8344,6 +8815,17 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>The payload path in Google Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to generate a link to an artifact for a Report.</summary>
+    public class GenerateReportArtifactLinkRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Type of the artifact requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactType")]
+        public virtual string ArtifactType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9481,6 +9963,21 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for listing report export jobs.</summary>
+    public class ListReportExportJobsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. The list of report export jobs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportExportJobs")]
+        public virtual System.Collections.Generic.IList<ReportExportJob> ReportExportJobs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10871,6 +11368,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("summary")]
         public virtual ReportSummary Summary { get; set; }
 
+        /// <summary>Output only. Detailed data related to TCO reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tcoDetails")]
+        public virtual ReportTotalCostOfOwnershipDetails TcoDetails { get; set; }
+
         /// <summary>Report type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -10910,6 +11411,60 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a link to a generated artifact of the report.</summary>
+    public class ReportArtifactLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Human friendly display name of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. URI of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        private string _uriExpirationTimeRaw;
+
+        private object _uriExpirationTime;
+
+        /// <summary>Output only. Expiration time of the URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriExpirationTime")]
+        public virtual string UriExpirationTimeRaw
+        {
+            get => _uriExpirationTimeRaw;
+            set
+            {
+                _uriExpirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _uriExpirationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UriExpirationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UriExpirationTimeDateTimeOffset instead.")]
+        public virtual object UriExpirationTime
+        {
+            get => _uriExpirationTime;
+            set
+            {
+                _uriExpirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _uriExpirationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="UriExpirationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UriExpirationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UriExpirationTimeRaw);
+            set => UriExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -11030,6 +11585,177 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Required. Name of the Preference Set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferenceSet")]
         public virtual string PreferenceSet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Execution status of report export operation.</summary>
+    public class ReportExportExecution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. Completion time of the export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Globally unique identifier of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
+        public virtual string ExecutionId { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>Output only. Expiration time for the export and artifacts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Represents the progress of the execution. It reaches 100 when the execution is successfully
+        /// completed. When the execution finishes with a failure, the progress is set to 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressPercentage")]
+        public virtual System.Nullable<int> ProgressPercentage { get; set; }
+
+        /// <summary>Output only. Result of the export execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual ReportExportExecutionResult Result { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. Execution start timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the result of the report export.</summary>
+    public class ReportExportExecutionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Error encountered during export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>Output only. List of output files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputFiles")]
+        public virtual OutputFileList OutputFiles { get; set; }
+
+        /// <summary>Output only. Signed URLs for downloading export artifacts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedUris")]
+        public virtual SignedUris SignedUris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Report export job message.</summary>
+    public class ReportExportJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Identifier. Resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Recent not expired executions of the export report job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recentExecutions")]
+        public virtual System.Collections.Generic.IList<ReportExportExecution> RecentExecutions { get; set; }
+
+        /// <summary>Export with a SignedUri.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedUriDestination")]
+        public virtual SignedUriDestination SignedUriDestination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11510,6 +12236,17 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Detailed data related to Total Cost of Ownership (TCO) pricing.</summary>
+    public class ReportTotalCostOfOwnershipDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Whether the report has detailed pricing data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasPricingData")]
+        public virtual System.Nullable<bool> HasPricingData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Location of a resource.</summary>
     public class ResourceLocation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11565,6 +12302,36 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to run a report export job.</summary>
+    public class RunReportExportJobRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
+        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
+        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
+        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for running a report export job.</summary>
+    public class RunReportExportJobResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Execution status of the export operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportExportExecution")]
+        public virtual ReportExportExecution ReportExportExecution { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
