@@ -935,7 +935,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                     /// <summary>Abort automated test run on release.</summary>
                     /// <param name="name">
                     /// Required. The name of the release test resource. Format:
-                    /// `projects/{project_number}/apps/{app_id}/releases/{release_id}/tests/{test_id}`
+                    /// `projects/{project_number}/apps/{app}/releases/{release}/tests/{test}`
                     /// </param>
                     public virtual CancelRequest Cancel(string name)
                     {
@@ -954,7 +954,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
                         /// <summary>
                         /// Required. The name of the release test resource. Format:
-                        /// `projects/{project_number}/apps/{app_id}/releases/{release_id}/tests/{test_id}`
+                        /// `projects/{project_number}/apps/{app}/releases/{release}/tests/{test}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -987,7 +987,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The name of the release resource, which is the parent of the test Format:
-                    /// `projects/{project_number}/apps/{app_id}/releases/{release_id}`
+                    /// `projects/{project_number}/apps/{app}/releases/{release}`
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaReleaseTest body, string parent)
                     {
@@ -1007,7 +1007,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
                         /// <summary>
                         /// Required. The name of the release resource, which is the parent of the test Format:
-                        /// `projects/{project_number}/apps/{app_id}/releases/{release_id}`
+                        /// `projects/{project_number}/apps/{app}/releases/{release}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1061,7 +1061,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                     /// <summary>Get results for automated test run on release.</summary>
                     /// <param name="name">
                     /// Required. The name of the release test resource. Format:
-                    /// `projects/{project_number}/apps/{app_id}/releases/{release_id}/tests/{test_id}`
+                    /// `projects/{project_number}/apps/{app}/releases/{release}/tests/{test}`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -1080,7 +1080,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
                         /// <summary>
                         /// Required. The name of the release test resource. Format:
-                        /// `projects/{project_number}/apps/{app_id}/releases/{release_id}/tests/{test_id}`
+                        /// `projects/{project_number}/apps/{app}/releases/{release}/tests/{test}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1112,7 +1112,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                     /// <summary>List results for automated tests run on release.</summary>
                     /// <param name="parent">
                     /// Required. The name of the release resource, which is the parent of the tests Format:
-                    /// `projects/{project_number}/apps/{app_id}/releases/{release_id}`
+                    /// `projects/{project_number}/apps/{app}/releases/{release}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1131,7 +1131,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
                         /// <summary>
                         /// Required. The name of the release resource, which is the parent of the tests Format:
-                        /// `projects/{project_number}/apps/{app_id}/releases/{release_id}`
+                        /// `projects/{project_number}/apps/{app}/releases/{release}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1248,7 +1248,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource of the test cases being deleted. Format:
-                /// `projects/{project_number}/apps/{app_id}`
+                /// `projects/{project_number}/apps/{app}`
                 /// </param>
                 public virtual BatchDeleteRequest BatchDelete(Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest body, string parent)
                 {
@@ -1268,7 +1268,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
                     /// <summary>
                     /// Required. The parent resource of the test cases being deleted. Format:
-                    /// `projects/{project_number}/apps/{app_id}`
+                    /// `projects/{project_number}/apps/{app}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1307,7 +1307,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource of the test cases being updated. Format:
-                /// `projects/{project_number}/apps/{app_id}`
+                /// `projects/{project_number}/apps/{app}`
                 /// </param>
                 public virtual BatchUpdateRequest BatchUpdate(Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest body, string parent)
                 {
@@ -1327,7 +1327,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
                     /// <summary>
                     /// Required. The parent resource of the test cases being updated. Format:
-                    /// `projects/{project_number}/apps/{app_id}`
+                    /// `projects/{project_number}/apps/{app}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1366,7 +1366,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 /// <param name="body">The body of the request.</param>
                 /// <param name="testCase">
                 /// Required. The name of the test case resource for which to clear the cache. Format:
-                /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                /// `projects/{project_number}/apps/{app}/testCases/{test_case}`
                 /// </param>
                 public virtual ClearTestCaseCacheRequest ClearTestCaseCache(Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest body, string testCase)
                 {
@@ -1386,7 +1386,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
                     /// <summary>
                     /// Required. The name of the test case resource for which to clear the cache. Format:
-                    /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                    /// `projects/{project_number}/apps/{app}/testCases/{test_case}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("testCase", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string TestCase { get; private set; }
@@ -1425,7 +1425,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource where this test case will be created. Format:
-                /// `projects/{project_number}/apps/{app_id}`
+                /// `projects/{project_number}/apps/{app}`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaTestCase body, string parent)
                 {
@@ -1445,7 +1445,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
                     /// <summary>
                     /// Required. The parent resource where this test case will be created. Format:
-                    /// `projects/{project_number}/apps/{app_id}`
+                    /// `projects/{project_number}/apps/{app}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1498,7 +1498,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 /// <summary>Delete a test case.</summary>
                 /// <param name="name">
                 /// Required. The name of the test case resource to delete. Format:
-                /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                /// `projects/{project_number}/apps/{app}/testCases/{test_case}`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1517,7 +1517,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
                     /// <summary>
                     /// Required. The name of the test case resource to delete. Format:
-                    /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                    /// `projects/{project_number}/apps/{app}/testCases/{test_case}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1549,7 +1549,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 /// <summary>Get a test case.</summary>
                 /// <param name="name">
                 /// Required. The name of the test case resource to retrieve. Format:
-                /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                /// `projects/{project_number}/apps/{app}/testCases/{test_case}`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1568,7 +1568,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
                     /// <summary>
                     /// Required. The name of the test case resource to retrieve. Format:
-                    /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                    /// `projects/{project_number}/apps/{app}/testCases/{test_case}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1600,7 +1600,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 /// <summary>List test cases.</summary>
                 /// <param name="parent">
                 /// Required. The parent resource from which to list test cases. Format:
-                /// `projects/{project_number}/apps/{app_id}`
+                /// `projects/{project_number}/apps/{app}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1619,7 +1619,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
                     /// <summary>
                     /// Required. The parent resource from which to list test cases. Format:
-                    /// `projects/{project_number}/apps/{app_id}`
+                    /// `projects/{project_number}/apps/{app}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1684,7 +1684,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Identifier. The name of the test case resource. Format:
-                /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                /// `projects/{project_number}/apps/{app}/testCases/{test_case}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaTestCase body, string name)
                 {
@@ -1704,7 +1704,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
                     /// <summary>
                     /// Identifier. The name of the test case resource. Format:
-                    /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                    /// `projects/{project_number}/apps/{app}/testCases/{test_case}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1757,7 +1757,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
             /// <summary>Gets configuration for automated tests.</summary>
             /// <param name="name">
             /// Required. The name of the `TestConfig` resource to retrieve. Format:
-            /// `projects/{project_number}/apps/{app_id}/testConfig`
+            /// `projects/{project_number}/apps/{app}/testConfig`
             /// </param>
             public virtual GetTestConfigRequest GetTestConfig(string name)
             {
@@ -1776,7 +1776,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
                 /// <summary>
                 /// Required. The name of the `TestConfig` resource to retrieve. Format:
-                /// `projects/{project_number}/apps/{app_id}/testConfig`
+                /// `projects/{project_number}/apps/{app}/testConfig`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1809,7 +1809,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Identifier. The name of the test configuration resource. Format:
-            /// `projects/{project_number}/apps/{app_id}/testConfig`
+            /// `projects/{project_number}/apps/{app}/testConfig`
             /// </param>
             public virtual UpdateTestConfigRequest UpdateTestConfig(Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaTestConfig body, string name)
             {
@@ -1829,7 +1829,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 
                 /// <summary>
                 /// Identifier. The name of the test configuration resource. Format:
-                /// `projects/{project_number}/apps/{app_id}/testConfig`
+                /// `projects/{project_number}/apps/{app}/testConfig`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2147,7 +2147,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string FirebaseConsoleUri { get; set; }
 
         /// <summary>
-        /// The name of the release resource. Format: `projects/{project_number}/apps/{app_id}/releases/{release_id}`
+        /// The name of the release resource. Format: `projects/{project_number}/apps/{app}/releases/{release}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2399,7 +2399,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     {
         /// <summary>
         /// Required. The name of the test cases to delete. A maximum number of 1000 test cases can be deleted in one
-        /// batch Format: `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+        /// batch Format: `projects/{project_number}/apps/{app}/testCases/{test_case}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("names")]
         public virtual System.Collections.Generic.IList<string> Names { get; set; }
@@ -2531,10 +2531,19 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
 
         /// <summary>
         /// Identifier. The name of the device execution resource. Format:
-        /// `projects/{project_number}/apps/{app_id}/releases/{release_id}/tests/{test_id}/deviceExecutions/{device_execution}`
+        /// `projects/{project_number}/apps/{app}/releases/{release}/tests/{test}/deviceExecutions/{device_execution}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The device execution from which cached steps were used during this execution. Note: This field
+        /// is only populated for ACTION_BASED_REPLAY executions. If the original device execution no longer exists,
+        /// this field will be empty. Format:
+        /// `projects/{project_number}/apps/{app}/releases/{release}/tests/{test}/deviceExecutions/{device_execution}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originDeviceExecution")]
+        public virtual string OriginDeviceExecution { get; set; }
 
         /// <summary>
         /// Output only. The path to a directory in Cloud Storage that will eventually contain the results for this
@@ -3222,7 +3231,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
 
         /// <summary>
         /// The name of the release test resource. Format:
-        /// `projects/{project_number}/apps/{app_id}/releases/{release_id}/tests/{test_id}`
+        /// `projects/{project_number}/apps/{app}/releases/{release}/tests/{test}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3369,7 +3378,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
 
         /// <summary>
         /// Identifier. The name of the test case resource. Format:
-        /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+        /// `projects/{project_number}/apps/{app}/testCases/{test_case}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3393,7 +3402,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
 
         /// <summary>
         /// Identifier. The name of the test configuration resource. Format:
-        /// `projects/{project_number}/apps/{app_id}/testConfig`
+        /// `projects/{project_number}/apps/{app}/testConfig`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3487,7 +3496,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
 
         /// <summary>
         /// Required. The test case to update. The test case's `name` field is used to identify the test case to update.
-        /// Format: `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+        /// Format: `projects/{project_number}/apps/{app}/testCases/{test_case}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCase")]
         public virtual GoogleFirebaseAppdistroV1alphaTestCase TestCase { get; set; }
