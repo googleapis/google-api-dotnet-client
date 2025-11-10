@@ -1818,8 +1818,8 @@ namespace Google.Apis.Appengine.v1
                 public virtual string AppsId { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -4885,6 +4885,107 @@ namespace Google.Apis.Appengine.v1
                         }
                     }
 
+                    /// <summary>Lists the domain mappings on an application.</summary>
+                    /// <param name="projectsId">
+                    /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+                    /// </param>
+                    /// <param name="locationsId">Part of `parent`. See documentation of `projectsId`.</param>
+                    /// <param name="applicationsId">Part of `parent`. See documentation of `projectsId`.</param>
+                    public virtual ListRequest List(string projectsId, string locationsId, string applicationsId)
+                    {
+                        return new ListRequest(this.service, projectsId, locationsId, applicationsId);
+                    }
+
+                    /// <summary>Lists the domain mappings on an application.</summary>
+                    public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.ListDomainMappingsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string applicationsId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            ApplicationsId = applicationsId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+                        /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+                        /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ApplicationsId { get; private set; }
+
+                        /// <summary>Maximum results to return per page.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Continuation token for fetching the next page of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update
                     /// certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to
@@ -5861,8 +5962,8 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual System.Nullable<int> DomainMappingsCount { get; set; }
 
         /// <summary>
-        /// Topmost applicable domains of this certificate. This certificate applies to these domains and their
-        /// subdomains. Example: example.com.@OutputOnly
+        /// Output only. Topmost applicable domains of this certificate. This certificate applies to these domains and
+        /// their subdomains. Example: example.com.@OutputOnly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainNames")]
         public virtual System.Collections.Generic.IList<string> DomainNames { get; set; }
@@ -5909,8 +6010,8 @@ namespace Google.Apis.Appengine.v1.Data
         }
 
         /// <summary>
-        /// Relative name of the certificate. This is a unique value autogenerated on AuthorizedCertificate resource
-        /// creation. Example: 12345.@OutputOnly
+        /// Output only. Relative name of the certificate. This is a unique value autogenerated on AuthorizedCertificate
+        /// resource creation. Example: 12345.@OutputOnly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -5924,18 +6025,18 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual ManagedCertificate ManagedCertificate { get; set; }
 
         /// <summary>
-        /// Full path to the AuthorizedCertificate resource in the API. Example:
+        /// Output only. Full path to the AuthorizedCertificate resource in the API. Example:
         /// apps/myapp/authorizedCertificates/12345.@OutputOnly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The full paths to user visible Domain Mapping resources that have this certificate mapped. Example:
-        /// apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the
-        /// user does not have VIEWER permissions on all of the applications that have this certificate mapped. See
-        /// domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested
-        /// by the view=FULL_CERTIFICATE option.@OutputOnly
+        /// Output only. The full paths to user visible Domain Mapping resources that have this certificate mapped.
+        /// Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain
+        /// mappings if the user does not have VIEWER permissions on all of the applications that have this certificate
+        /// mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when
+        /// specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleDomainMappings")]
         public virtual System.Collections.Generic.IList<string> VisibleDomainMappings { get; set; }
@@ -6345,15 +6446,15 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// Full path to the DomainMapping resource in the API. Example:
+        /// Output only. Full path to the DomainMapping resource in the API. Example:
         /// apps/myapp/domainMapping/example.com.@OutputOnly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The resource records required to configure this domain mapping. These records must be added to the domain's
-        /// DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+        /// Output only. The resource records required to configure this domain mapping. These records must be added to
+        /// the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceRecords")]
         public virtual System.Collections.Generic.IList<ResourceRecord> ResourceRecords { get; set; }
@@ -7958,11 +8059,11 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string CertificateId { get; set; }
 
         /// <summary>
-        /// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new
-        /// managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
-        /// provisioning process completes, the certificate_id field will reflect the new managed certificate and this
-        /// field will be left empty. To remove SSL support while there is still a pending managed certificate, clear
-        /// the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
+        /// Output only. ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable.
+        /// Until the new managed certificate has been successfully provisioned, the previous SSL state will be
+        /// preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed
+        /// certificate and this field will be left empty. To remove SSL support while there is still a pending managed
+        /// certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingManagedCertificateId")]
         public virtual string PendingManagedCertificateId { get; set; }
