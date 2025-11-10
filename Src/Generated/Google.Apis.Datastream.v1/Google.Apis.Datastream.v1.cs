@@ -4078,6 +4078,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
         public virtual MongodbCluster IncludeObjects { get; set; }
 
+        /// <summary>Optional. MongoDB JSON mode to use for the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonMode")]
+        public virtual string JsonMode { get; set; }
+
         /// <summary>
         /// Optional. Maximum number of concurrent backfill tasks. The number should be non-negative and less than or
         /// equal to 50. If not set (or set to 0), the system's default value is used
