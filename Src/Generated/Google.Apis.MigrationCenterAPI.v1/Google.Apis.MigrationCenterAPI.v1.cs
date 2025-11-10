@@ -3726,6 +3726,59 @@ namespace Google.Apis.MigrationCenterAPI.v1
                         this.service = service;
                     }
 
+                    /// <summary>Gets the link to the generated artifact of a given type for a Report.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. Name of the resource.</param>
+                    public virtual ArtifactLinkRequest ArtifactLink(Google.Apis.MigrationCenterAPI.v1.Data.GenerateReportArtifactLinkRequest body, string name)
+                    {
+                        return new ArtifactLinkRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Gets the link to the generated artifact of a given type for a Report.</summary>
+                    public class ArtifactLinkRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1.Data.ReportArtifactLink>
+                    {
+                        /// <summary>Constructs a new ArtifactLink request.</summary>
+                        public ArtifactLinkRequest(Google.Apis.Services.IClientService service, Google.Apis.MigrationCenterAPI.v1.Data.GenerateReportArtifactLinkRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Name of the resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.MigrationCenterAPI.v1.Data.GenerateReportArtifactLinkRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "artifactLink";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:artifactLink";
+
+                        /// <summary>Initializes ArtifactLink parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reportConfigs/[^/]+/reports/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Creates a report.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. Value for parent.</param>
@@ -6988,6 +7041,17 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A request to generate a link to an artifact for a Report.</summary>
+    public class GenerateReportArtifactLinkRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Type of the artifact requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactType")]
+        public virtual string ArtifactType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A generic insight about an asset.</summary>
     public class GenericInsight : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9233,6 +9297,56 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a link to a generated artifact of the report.</summary>
+    public class ReportArtifactLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. URI of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        private string _uriExpirationTimeRaw;
+
+        private object _uriExpirationTime;
+
+        /// <summary>Output only. Expiration time of the URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriExpirationTime")]
+        public virtual string UriExpirationTimeRaw
+        {
+            get => _uriExpirationTimeRaw;
+            set
+            {
+                _uriExpirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _uriExpirationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UriExpirationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UriExpirationTimeDateTimeOffset instead.")]
+        public virtual object UriExpirationTime
+        {
+            get => _uriExpirationTime;
+            set
+            {
+                _uriExpirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _uriExpirationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="UriExpirationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UriExpirationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UriExpirationTimeRaw);
+            set => UriExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
