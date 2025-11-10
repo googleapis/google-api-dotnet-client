@@ -5024,7 +5024,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Describes a single Media Planner account.</summary>
+    /// <summary>Represents a media planner account.</summary>
     public class MediaPlanner : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Account ID of the media planner.</summary>
