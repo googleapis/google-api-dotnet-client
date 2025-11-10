@@ -7185,6 +7185,40 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CertificateConfig configures certificate for the registry.</summary>
+    public class CertificateConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The URI configures a secret from [Secret Manager](https://cloud.google.com/secret-manager) in the format
+        /// "projects/$PROJECT_ID/secrets/$SECRET_NAME/versions/$VERSION" for global secret or
+        /// "projects/$PROJECT_ID/locations/$REGION/secrets/$SECRET_NAME/versions/$VERSION" for regional secret. Version
+        /// can be fixed (e.g. "2") or "latest"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpSecretManagerSecretUri")]
+        public virtual string GcpSecretManagerSecretUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CertificateConfigPair configures pairs of certificates, which is used for client certificate and key pairs under
+    /// a registry.
+    /// </summary>
+    public class CertificateConfigPair : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cert configures the client certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cert")]
+        public virtual CertificateConfig Cert { get; set; }
+
+        /// <summary>Key configures the client private key. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual CertificateConfig Key { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>CheckAutopilotCompatibilityResponse has a list of compatibility issues.</summary>
     public class CheckAutopilotCompatibilityResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8308,6 +8342,13 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateRegistryAccessConfig")]
         public virtual PrivateRegistryAccessConfig PrivateRegistryAccessConfig { get; set; }
 
+        /// <summary>
+        /// RegistryHostConfig configures containerd registry host configuration. Each registry_hosts represents a
+        /// hosts.toml file. At most 25 registry_hosts are allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registryHosts")]
+        public virtual System.Collections.Generic.IList<RegistryHostConfig> RegistryHosts { get; set; }
+
         /// <summary>Optional. WritableCgroups defines writable cgroups configuration for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writableCgroups")]
         public virtual WritableCgroups WritableCgroups { get; set; }
@@ -9089,6 +9130,56 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>HostConfig configures the registry host under a given Server.</summary>
+    public class HostConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CA configures the registry host certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ca")]
+        public virtual System.Collections.Generic.IList<CertificateConfig> Ca { get; set; }
+
+        /// <summary>
+        /// Capabilities represent the capabilities of the registry host, specifying what operations a host is capable
+        /// of performing. If not set, containerd enables all capabilities by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
+        public virtual System.Collections.Generic.IList<string> Capabilities { get; set; }
+
+        /// <summary>Client configures the registry host client certificate and key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client")]
+        public virtual System.Collections.Generic.IList<CertificateConfigPair> Client { get; set; }
+
+        /// <summary>
+        /// Specifies the maximum duration allowed for a connection attempt to complete. A shorter timeout helps reduce
+        /// delays when falling back to the original registry if the mirror is unreachable. Maximum allowed value is
+        /// 180s. If not set, containerd sets default 30s. The value should be a decimal number of seconds with an `s`
+        /// suffix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialTimeout")]
+        public virtual object DialTimeout { get; set; }
+
+        /// <summary>Header configures the registry host headers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual System.Collections.Generic.IList<RegistryHeader> Header { get; set; }
+
+        /// <summary>
+        /// Host configures the registry host/mirror. It supports fully qualified domain names (FQDN) and IP addresses:
+        /// Specifying port is supported. Wildcards are NOT supported. Examples: - my.customdomain.com - 10.0.1.2:5000
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>
+        /// OverridePath is used to indicate the host's API root endpoint is defined in the URL path rather than by the
+        /// API specification. This may be used with non-compliant OCI registries which are missing the /v2 prefix. If
+        /// not set, containerd sets default false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overridePath")]
+        public virtual System.Nullable<bool> OverridePath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>RFC-2616: cache control support</summary>
     public class HttpCacheControlResponseHeader : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9661,7 +9752,9 @@ namespace Google.Apis.Container.v1.Data
         /// If set to true, the Lustre CSI driver will install Lustre kernel modules using port 6988. This serves as a
         /// workaround for a port conflict with the gke-metadata-server. This field is required ONLY under the following
         /// conditions: 1. The GKE node version is older than 1.33.2-gke.4655000. 2. You're connecting to a Lustre
-        /// instance that has the 'gke-support-enabled' flag.
+        /// instance that has the 'gke-support-enabled' flag. Deprecated: This flag is no longer required as of GKE node
+        /// version 1.33.2-gke.4655000, unless you are connecting to a Lustre instance that has the
+        /// `gke-support-enabled` flag.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableLegacyLustrePort")]
         public virtual System.Nullable<bool> EnableLegacyLustrePort { get; set; }
@@ -11583,6 +11676,47 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The window of the first recurrence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("window")]
         public virtual TimeWindow Window { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RegistryHeader configures headers for the registry.</summary>
+    public class RegistryHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Key configures the header key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Value configures the header value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IList<string> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// RegistryHostConfig configures the top-level structure for a single containerd registry server's configuration,
+    /// which represents one hosts.toml file on the node. It will override the same fqdns in
+    /// PrivateRegistryAccessConfig.
+    /// </summary>
+    public class RegistryHostConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// HostConfig configures a list of host-specific configurations for the server. Each server can have at most 10
+        /// host configurations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hosts")]
+        public virtual System.Collections.Generic.IList<HostConfig> Hosts { get; set; }
+
+        /// <summary>
+        /// Defines the host name of the registry server, which will be used to create configuration file as
+        /// /etc/containerd/hosts.d//hosts.toml. It supports fully qualified domain names (FQDN) and IP addresses:
+        /// Specifying port is supported. Wildcards are NOT supported. Examples: - my.customdomain.com - 10.0.1.2:5000
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("server")]
+        public virtual string Server { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
