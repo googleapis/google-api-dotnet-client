@@ -4103,7 +4103,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 29</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 30</summary>
     public class DatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -4198,6 +4198,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>The type of the instance. Specified at creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
         public virtual string InstanceType { get; set; }
+
+        /// <summary>Optional. Whether deletion protection is enabled for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDeletionProtectionEnabled")]
+        public virtual System.Nullable<bool> IsDeletionProtectionEnabled { get; set; }
 
         /// <summary>The resource location. REQUIRED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
