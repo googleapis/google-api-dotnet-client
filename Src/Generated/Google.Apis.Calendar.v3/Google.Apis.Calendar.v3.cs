@@ -1746,14 +1746,28 @@ namespace Google.Apis.Calendar.v3
             }
         }
 
-        /// <summary>Creates a secondary calendar.</summary>
+        /// <summary>
+        /// Creates a secondary calendar. The authenticated user for the request is made the data owner of the new
+        /// calendar.  Note: We recommend to authenticate as the intended data owner of the calendar. You can use
+        /// domain-wide delegation of authority to allow applications to act on behalf of a specific user. Don't use a
+        /// service account for authentication. If you use a service account for authentication, the service account is
+        /// the data owner, which can lead to unexpected behavior. For example, if a service account is the data owner,
+        /// data ownership cannot be transferred.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Calendar.v3.Data.Calendar body)
         {
             return new InsertRequest(this.service, body);
         }
 
-        /// <summary>Creates a secondary calendar.</summary>
+        /// <summary>
+        /// Creates a secondary calendar. The authenticated user for the request is made the data owner of the new
+        /// calendar.  Note: We recommend to authenticate as the intended data owner of the calendar. You can use
+        /// domain-wide delegation of authority to allow applications to act on behalf of a specific user. Don't use a
+        /// service account for authentication. If you use a service account for authentication, the service account is
+        /// the data owner, which can lead to unexpected behavior. For example, if a service account is the data owner,
+        /// data ownership cannot be transferred.
+        /// </summary>
         public class InsertRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Calendar>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -4596,9 +4610,10 @@ namespace Google.Apis.Calendar.v3.Data
         /// Provides read access to free/busy information.  - "reader" - Provides read access to the calendar. Private
         /// events will appear to users with reader access, but event details will be hidden.  - "writer" - Provides
         /// read and write access to the calendar. Private events will appear to users with writer access, and event
-        /// details will be visible. Provides read access to the calendar's ACLs.  - "owner" - Provides ownership of the
-        /// calendar. This role has all of the permissions of the writer role with the additional ability to manipulate
-        /// ACLs.
+        /// details will be visible. Provides read access to the calendar's ACLs.  - "owner" - Provides manager access
+        /// to the calendar. This role has all of the permissions of the writer role with the additional ability to
+        /// modify access levels of other users. Important: the owner role is different from the calendar's data owner.
+        /// A calendar has a single data owner, but can have multiple users with owner role.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -4635,6 +4650,10 @@ namespace Google.Apis.Calendar.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceProperties")]
         public virtual ConferenceProperties ConferenceProperties { get; set; }
+
+        /// <summary>The email of the owner of the calendar. Set only for secondary calendars. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataOwner")]
+        public virtual string DataOwner { get; set; }
 
         /// <summary>Description of the calendar. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -4704,8 +4723,10 @@ namespace Google.Apis.Calendar.v3.Data
         /// - "freeBusyReader" - Provides read access to free/busy information.  - "reader" - Provides read access to
         /// the calendar. Private events will appear to users with reader access, but event details will be hidden.  -
         /// "writer" - Provides read and write access to the calendar. Private events will appear to users with writer
-        /// access, and event details will be visible.  - "owner" - Provides ownership of the calendar. This role has
-        /// all of the permissions of the writer role with the additional ability to see and manipulate ACLs.
+        /// access, and event details will be visible.  - "owner" - Provides manager access to the calendar. This role
+        /// has all of the permissions of the writer role with the additional ability to see and modify access levels of
+        /// other users. Important: the owner role is different from the calendar's data owner. A calendar has a single
+        /// data owner, but can have multiple users with owner role.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessRole")]
         public virtual string AccessRole { get; set; }
@@ -4731,6 +4752,10 @@ namespace Google.Apis.Calendar.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceProperties")]
         public virtual ConferenceProperties ConferenceProperties { get; set; }
+
+        /// <summary>The email of the owner of the calendar. Set only for secondary calendars. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataOwner")]
+        public virtual string DataOwner { get; set; }
 
         /// <summary>The default reminders that the authenticated user has for this calendar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultReminders")]
@@ -6016,9 +6041,10 @@ namespace Google.Apis.Calendar.v3.Data
         /// access.  - "freeBusyReader" - The user has read access to free/busy information.  - "reader" - The user has
         /// read access to the calendar. Private events will appear to users with reader access, but event details will
         /// be hidden.  - "writer" - The user has read and write access to the calendar. Private events will appear to
-        /// users with writer access, and event details will be visible.  - "owner" - The user has ownership of the
+        /// users with writer access, and event details will be visible.  - "owner" - The user has manager access to the
         /// calendar. This role has all of the permissions of the writer role with the additional ability to see and
-        /// manipulate ACLs.
+        /// modify access levels of other users. Important: the owner role is different from the calendar's data owner.
+        /// A calendar has a single data owner, but can have multiple users with owner role.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessRole")]
         public virtual string AccessRole { get; set; }
