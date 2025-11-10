@@ -1726,6 +1726,96 @@ namespace Google.Apis.ChromeManagement.v1
                 this.service = service;
             }
 
+            /// <summary>Get a count of active devices per set time frames.</summary>
+            /// <param name="customer">
+            /// Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
+            /// </param>
+            public virtual CountActiveDevicesRequest CountActiveDevices(string customer)
+            {
+                return new CountActiveDevicesRequest(this.service, customer);
+            }
+
+            /// <summary>Get a count of active devices per set time frames.</summary>
+            public class CountActiveDevicesRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1CountActiveDevicesResponse>
+            {
+                /// <summary>Constructs a new CountActiveDevices request.</summary>
+                public CountActiveDevicesRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>
+                /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
+                /// itself or a year and month where the day isn't significant.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("date.day", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> DateDay { get; set; }
+
+                /// <summary>
+                /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("date.month", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> DateMonth { get; set; }
+
+                /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("date.year", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> DateYear { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "countActiveDevices";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/reports:countActiveDevices";
+
+                /// <summary>Initializes CountActiveDevices parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("date.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "date.day",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("date.month", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "date.month",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("date.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "date.year",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>
             /// Count of Chrome Browsers that have been recently enrolled, have new policy to be synced, or have no
             /// recent activity.
@@ -2230,6 +2320,186 @@ namespace Google.Apis.ChromeManagement.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Get a count of devices per boot type.</summary>
+            /// <param name="customer">
+            /// Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
+            /// </param>
+            public virtual CountDevicesPerBootTypeRequest CountDevicesPerBootType(string customer)
+            {
+                return new CountDevicesPerBootTypeRequest(this.service, customer);
+            }
+
+            /// <summary>Get a count of devices per boot type.</summary>
+            public class CountDevicesPerBootTypeRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1CountDevicesPerBootTypeResponse>
+            {
+                /// <summary>Constructs a new CountDevicesPerBootType request.</summary>
+                public CountDevicesPerBootTypeRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>
+                /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
+                /// itself or a year and month where the day isn't significant.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("date.day", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> DateDay { get; set; }
+
+                /// <summary>
+                /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("date.month", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> DateMonth { get; set; }
+
+                /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("date.year", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> DateYear { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "countDevicesPerBootType";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/reports:countDevicesPerBootType";
+
+                /// <summary>Initializes CountDevicesPerBootType parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("date.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "date.day",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("date.month", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "date.month",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("date.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "date.year",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Get a count of devices per channel.</summary>
+            /// <param name="customer">
+            /// Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
+            /// </param>
+            public virtual CountDevicesPerReleaseChannelRequest CountDevicesPerReleaseChannel(string customer)
+            {
+                return new CountDevicesPerReleaseChannelRequest(this.service, customer);
+            }
+
+            /// <summary>Get a count of devices per channel.</summary>
+            public class CountDevicesPerReleaseChannelRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse>
+            {
+                /// <summary>Constructs a new CountDevicesPerReleaseChannel request.</summary>
+                public CountDevicesPerReleaseChannelRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>
+                /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
+                /// itself or a year and month where the day isn't significant.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("date.day", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> DateDay { get; set; }
+
+                /// <summary>
+                /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("date.month", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> DateMonth { get; set; }
+
+                /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("date.year", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> DateYear { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "countDevicesPerReleaseChannel";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/reports:countDevicesPerReleaseChannel";
+
+                /// <summary>Initializes CountDevicesPerReleaseChannel parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("date.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "date.day",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("date.month", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "date.month",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("date.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "date.year",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4853,6 +5123,21 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response containing the number of active devices.</summary>
+    public class GoogleChromeManagementV1CountActiveDevicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of active devices in the 7 days leading up to the date specified in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sevenDaysCount")]
+        public virtual System.Nullable<long> SevenDaysCount { get; set; }
+
+        /// <summary>Number of active devices in the 30 days leading up to the date specified in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirtyDaysCount")]
+        public virtual System.Nullable<long> ThirtyDaysCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response containing summary of requested app installations.</summary>
     public class GoogleChromeManagementV1CountChromeAppRequestsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5006,6 +5291,64 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Total number browser versions matching request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing the number of devices with the given boot type.</summary>
+    public class GoogleChromeManagementV1CountDevicesPerBootTypeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of devices with dev boot type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devBootTypeCount")]
+        public virtual System.Nullable<long> DevBootTypeCount { get; set; }
+
+        /// <summary>Number of devices with unreported boot type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreportedBootTypeCount")]
+        public virtual System.Nullable<long> UnreportedBootTypeCount { get; set; }
+
+        /// <summary>Number of devices with verified boot type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedBootTypeCount")]
+        public virtual System.Nullable<long> VerifiedBootTypeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing the number of devices with the given channel.</summary>
+    public class GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of devices with beta release channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("betaChannelCount")]
+        public virtual System.Nullable<long> BetaChannelCount { get; set; }
+
+        /// <summary>Number of devices with canary release channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canaryChannelCount")]
+        public virtual System.Nullable<long> CanaryChannelCount { get; set; }
+
+        /// <summary>Number of devices with dev release channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devChannelCount")]
+        public virtual System.Nullable<long> DevChannelCount { get; set; }
+
+        /// <summary>Number of devices with ltc release channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ltcChannelCount")]
+        public virtual System.Nullable<long> LtcChannelCount { get; set; }
+
+        /// <summary>Number of devices with lts release channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ltsChannelCount")]
+        public virtual System.Nullable<long> LtsChannelCount { get; set; }
+
+        /// <summary>Number of devices with stable release channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stableChannelCount")]
+        public virtual System.Nullable<long> StableChannelCount { get; set; }
+
+        /// <summary>Number of devices with an unreported release channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreportedChannelCount")]
+        public virtual System.Nullable<long> UnreportedChannelCount { get; set; }
+
+        /// <summary>Number of devices with unsupported release channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unsupportedChannelCount")]
+        public virtual System.Nullable<long> UnsupportedChannelCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
