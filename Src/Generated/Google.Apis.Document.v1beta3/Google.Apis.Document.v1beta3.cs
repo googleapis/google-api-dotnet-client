@@ -3538,8 +3538,8 @@ namespace Google.Apis.Document.v1beta3
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -3626,7 +3626,7 @@ namespace Google.Apis.Document.v1beta3.Data
 {
     /// <summary>
     /// Definition of the validation rules. Those are the input to the validator logic and they are used to validate a
-    /// document.
+    /// document. Next ID: 3
     /// </summary>
     public class CloudAiDocumentaiLabHifiaToolsValidationValidatorInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3637,6 +3637,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Next ID: 9</summary>
     public class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("childAlignmentRule")]
@@ -3661,6 +3662,10 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>Name of the validation rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Unique identifier of the rule. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
+        public virtual string RuleId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
