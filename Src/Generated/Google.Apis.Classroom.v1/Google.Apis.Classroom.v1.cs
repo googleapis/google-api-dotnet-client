@@ -11805,11 +11805,11 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Title of the Gem. Read-only.</summary>
+        /// <summary>Title of the Gem.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        /// <summary>URL that can be used to access the Gem. Read-only.</summary>
+        /// <summary>URL that can be used to access the Gem.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 
@@ -12571,11 +12571,11 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Title of the Notebook. Read-only.</summary>
+        /// <summary>Title of the Notebook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        /// <summary>URL that can be used to access the Notebook. Read-only.</summary>
+        /// <summary>URL that can be used to access the Notebook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 
