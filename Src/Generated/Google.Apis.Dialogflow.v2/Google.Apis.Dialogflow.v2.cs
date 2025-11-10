@@ -31296,7 +31296,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableCompletenessEvaluation")]
         public virtual System.Nullable<bool> EnableCompletenessEvaluation { get; set; }
 
-        /// <summary>Output only. Version for summarization evaluation.</summary>
+        /// <summary>Optional. Version for summarization evaluation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluatorVersion")]
         public virtual string EvaluatorVersion { get; set; }
 
