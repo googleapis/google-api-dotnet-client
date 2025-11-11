@@ -846,6 +846,49 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             Assert.Null(request.Headers.Authorization?.Parameter);
         }
 
+        [Fact]
+        public void FromStream_WrapsDeserializationException_WithBadJson()
+        {
+            string malformedUserCredentialFileContents = FakeUserCredentialFileContents.Replace("}","");
+            using Stream stream = new MemoryStream(Encoding.UTF8.GetBytes(malformedUserCredentialFileContents));
+            var ex = Assert.Throws<InvalidOperationException>(() => CredentialFactory.FromStream<UserCredential>(stream));
+            Assert.Equal("Error deserializing JSON credential data.", ex.Message);
+            Assert.IsType<Newtonsoft.Json.JsonSerializationException>(ex.InnerException);
+        }
+
+        [Fact]
+        public void FromStream_WrapsDeserializationException()
+        {
+            var stream = new MockStream(() => throw new Exception("Underlying exception"));
+            var ex = Assert.Throws<InvalidOperationException>(() => CredentialFactory.FromStream<UserCredential>(stream));
+            Assert.Equal("Error deserializing JSON credential data.", ex.Message);
+            Assert.IsType<Exception>(ex.InnerException);
+            Assert.Equal("Underlying exception", ex.InnerException.Message);
+        }
+
+        private class MockStream : Stream
+        {
+            private readonly Action _onRead;
+
+            public MockStream(Action onRead) => _onRead = onRead;
+
+            public override bool CanRead => true;
+            public override bool CanSeek => false;
+            public override bool CanWrite => false;
+            public override long Length => throw new NotSupportedException();
+            public override long Position { get => throw new NotSupportedException(); set => throw new NotSupportedException(); }
+
+            public override void Flush() => throw new NotSupportedException();
+            public override int Read(byte[] buffer, int offset, int count)
+            {
+                _onRead();
+                return 0;
+            }
+            public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException();
+            public override void SetLength(long value) => throw new NotSupportedException();
+            public override void Write(byte[] buffer, int offset, int count) => throw new NotSupportedException();
+        }
+
         /// <summary>
         /// Fake implementation of <see cref="IAuthorizationCodeFlow"/> which only supports fetching the
         /// clock and the access method.

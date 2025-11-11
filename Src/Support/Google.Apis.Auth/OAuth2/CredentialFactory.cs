@@ -33,6 +33,11 @@ namespace Google.Apis.Auth.OAuth2;
 public static class CredentialFactory
 {
     /// <summary>
+    /// The error message for JSON deserialization failures.
+    /// </summary>
+    private const string JsonDeserializationErrorMessage = "Error deserializing JSON credential data.";
+
+    /// <summary>
     /// Creates a credential of the specified type from a file that contains JSON credential data.
     /// </summary>
     /// <typeparam name="T">The type of the credential to create.</typeparam>
@@ -66,14 +71,16 @@ public static class CredentialFactory
     /// <returns>A task that will be completed with the created credential.</returns>
     public static async Task<T> FromStreamAsync<T>(Stream stream, CancellationToken cancellationToken)
     {
+        JsonCredentialParameters jsonCredentialParameters;
         try
         {
-            return FromJsonParameters<T>(await NewtonsoftJsonSerializer.Instance.DeserializeAsync<JsonCredentialParameters>(stream, cancellationToken).ConfigureAwait(false));
+            jsonCredentialParameters = await NewtonsoftJsonSerializer.Instance.DeserializeAsync<JsonCredentialParameters>(stream, cancellationToken).ConfigureAwait(false);
         }
         catch (Exception e)
         {
-            throw new InvalidOperationException("Error deserializing JSON credential data.", e);
+            throw new InvalidOperationException(JsonDeserializationErrorMessage, e);
         }
+        return FromJsonParameters<T>(jsonCredentialParameters);
     }
 
     /// <summary>
@@ -84,14 +91,16 @@ public static class CredentialFactory
     /// <returns>The created credential.</returns>
     public static T FromStream<T>(Stream stream)
     {
+        JsonCredentialParameters jsonCredentialParameters;
         try
         {
-            return FromJsonParameters<T>(NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(stream));
+            jsonCredentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(stream);
         }
         catch (Exception e)
         {
-            throw new InvalidOperationException("Error deserializing JSON credential data.", e);
+            throw new InvalidOperationException(JsonDeserializationErrorMessage, e);
         }
+        return FromJsonParameters<T>(jsonCredentialParameters);
     }
 
     /// <summary>
@@ -102,14 +111,16 @@ public static class CredentialFactory
     /// <returns>The created credential.</returns>
     public static T FromJson<T>(string json)
     {
+        JsonCredentialParameters jsonCredentialParameters;
         try
         {
-            return FromJsonParameters<T>(NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(json));
+            jsonCredentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(json);
         }
         catch (Exception e)
         {
-            throw new InvalidOperationException("Error deserializing JSON credential data.", e);
+            throw new InvalidOperationException(JsonDeserializationErrorMessage, e);
         }
+        return FromJsonParameters<T>(jsonCredentialParameters);
     }
 
     /// <summary>
