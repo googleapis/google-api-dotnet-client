@@ -846,6 +846,105 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             Assert.Null(request.Headers.Authorization?.Parameter);
         }
 
+        [Theory]
+        [MemberData(nameof(CredentialFactory_Success_Data))]
+        public void FromFile_WithType(string json, string credentialType, Type expectedType)
+        {
+            var tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, json);
+                var credential = CredentialFactory.FromFile(tempFile, credentialType);
+                Assert.IsType(expectedType, credential.UnderlyingCredential);
+            }
+            finally
+            {
+                File.Delete(tempFile);
+            }
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialFactory_Failure_Data))]
+        public void FromFile_WithType_Failure(string json, string credentialType, string expectedMessage)
+        {
+            var tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, json);
+                var ex = Assert.Throws<InvalidOperationException>(() => CredentialFactory.FromFile(tempFile, credentialType));
+                Assert.Equal(expectedMessage, ex.Message);
+            }
+            finally
+            {
+                File.Delete(tempFile);
+            }
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialFactory_Success_Data))]
+        public void FromJson_WithType(string json, string credentialType, Type expectedType)
+        {
+            var credential = CredentialFactory.FromJson(json, credentialType);
+            Assert.IsType(expectedType, credential.UnderlyingCredential);
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialFactory_Failure_Data))]
+        public void FromJson_WithType_Failure(string json, string credentialType, string expectedMessage)
+        {
+            var ex = Assert.Throws<InvalidOperationException>(() => CredentialFactory.FromJson(json, credentialType));
+            Assert.Equal(expectedMessage, ex.Message);
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialFactory_Success_Data))]
+        public async Task FromFileAsync_WithType(string json, string credentialType, Type expectedType)
+        {
+            var tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, json);
+                var credential = await CredentialFactory.FromFileAsync(tempFile, credentialType, CancellationToken.None);
+                Assert.IsType(expectedType, credential.UnderlyingCredential);
+            }
+            finally
+            {
+                File.Delete(tempFile);
+            }
+        }
+
+        [Theory]
+        [MemberData(nameof(CredentialFactory_Failure_Data))]
+        public async Task FromFileAsync_WithType_Failure(string json, string credentialType, string expectedMessage)
+        {
+            var tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, json);
+                var ex = await Assert.ThrowsAsync<InvalidOperationException>(() => CredentialFactory.FromFileAsync(tempFile, credentialType, CancellationToken.None));
+                Assert.Equal(expectedMessage, ex.Message);
+            }
+            finally
+            {
+                File.Delete(tempFile);
+            }
+        }
+
+        public static TheoryData<string, string, Type> CredentialFactory_Success_Data() =>
+            new TheoryData<string, string, Type>
+            {
+                { FakeUserCredentialFileContents, JsonCredentialParameters.AuthorizedUserCredentialType, typeof(UserCredential) },
+                { FakeServiceAccountCredentialFileContents, JsonCredentialParameters.ServiceAccountCredentialType, typeof(ServiceAccountCredential) }
+            };
+
+        public static TheoryData<string, string, string> CredentialFactory_Failure_Data() =>
+            new TheoryData<string, string, string>
+            {
+                { FakeUserCredentialFileContents, JsonCredentialParameters.ServiceAccountCredentialType, "The credential type authorized_user is not compatible with the requested type service_account" },
+                { FakeUserCredentialFileContents, "invalid_type", "The credential type authorized_user is not compatible with the requested type invalid_type" },
+                { "invalid_json", "any_type", "Error deserializing JSON credential data." }
+            };
+
         [Fact]
         public void FromStream_WrapsDeserializationException_WithBadJson()
         {
