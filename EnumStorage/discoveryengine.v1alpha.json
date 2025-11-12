@@ -39,6 +39,12 @@
     "BRANCH_VIEW_BASIC",
     "BRANCH_VIEW_FULL"
   ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+EnginesResource+AssistantsResource+ListAvailableAgentViewsRequest.AgentOriginEnum": [
+    "AGENT_ORIGIN_UNSPECIFIED",
+    "GOOGLE",
+    "ORGANIZATION",
+    "USER"
+  ],
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+DataStoresResource+BranchesResource+DocumentsResource+GetProcessedDocumentRequest.ProcessedDocumentFormatEnum": [
     "PROCESSED_DOCUMENT_FORMAT_UNSPECIFIED",
     "JSON"

@@ -9910,6 +9910,120 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 }
                             }
 
+                            /// <summary>
+                            /// Disables an Agent. The `state` of the Agent becomes `DISABLED`. Can be called on an
+                            /// Agent in the state `ENABLED` or`SUSPENDED`, otherwise it returns an error.
+                            /// </summary>
+                            /// <param name="name">
+                            /// Required. The name of the Agent to disable. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                            /// </param>
+                            public virtual DisableAgentRequest DisableAgent(string name)
+                            {
+                                return new DisableAgentRequest(this.service, name);
+                            }
+
+                            /// <summary>
+                            /// Disables an Agent. The `state` of the Agent becomes `DISABLED`. Can be called on an
+                            /// Agent in the state `ENABLED` or`SUSPENDED`, otherwise it returns an error.
+                            /// </summary>
+                            public class DisableAgentRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAgent>
+                            {
+                                /// <summary>Constructs a new DisableAgent request.</summary>
+                                public DisableAgentRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The name of the Agent to disable. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "disableAgent";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}:disableAgent";
+
+                                /// <summary>Initializes DisableAgent parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>
+                            /// Enables an Agent. The `state` of the Agent becomes `ENABLED`. Can be called on an Agent
+                            /// in the state `DISABLED` or 'SUSPENDED', otherwise it returns an error.
+                            /// </summary>
+                            /// <param name="name">
+                            /// Required. The name of the Agent to enable. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                            /// </param>
+                            public virtual EnableAgentRequest EnableAgent(string name)
+                            {
+                                return new EnableAgentRequest(this.service, name);
+                            }
+
+                            /// <summary>
+                            /// Enables an Agent. The `state` of the Agent becomes `ENABLED`. Can be called on an Agent
+                            /// in the state `DISABLED` or 'SUSPENDED', otherwise it returns an error.
+                            /// </summary>
+                            public class EnableAgentRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAgent>
+                            {
+                                /// <summary>Constructs a new EnableAgent request.</summary>
+                                public EnableAgentRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The name of the Agent to enable. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "enableAgent";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}:enableAgent";
+
+                                /// <summary>Initializes EnableAgent parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                    });
+                                }
+                            }
+
                             /// <summary>Gets an Agent.</summary>
                             /// <param name="name">
                             /// Required. Resource name of Agent. Format:
@@ -9957,6 +10071,177 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                         ParameterType = "path",
                                         DefaultValue = null,
                                         Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>
+                            /// Returns a AgentView for a given Agent, which contains additional information about the
+                            /// Agent.
+                            /// </summary>
+                            /// <param name="name">
+                            /// Required. The name of the Agent to get. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                            /// </param>
+                            public virtual GetAgentViewRequest GetAgentView(string name)
+                            {
+                                return new GetAgentViewRequest(this.service, name);
+                            }
+
+                            /// <summary>
+                            /// Returns a AgentView for a given Agent, which contains additional information about the
+                            /// Agent.
+                            /// </summary>
+                            public class GetAgentViewRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaGetAgentViewResponse>
+                            {
+                                /// <summary>Constructs a new GetAgentView request.</summary>
+                                public GetAgentViewRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The name of the Agent to get. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>
+                                /// Optional. The UI language currently shown to the user. Specifying this field request
+                                /// that the texts in the AgentView in the response should be translated to this
+                                /// language.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string LanguageCode { get; set; }
+
+                                /// <summary>
+                                /// Optional. The maximum number of suggested prompts to return per agent.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("maxSuggestedPrompts", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> MaxSuggestedPrompts { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "getAgentView";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}:getAgentView";
+
+                                /// <summary>Initializes GetAgentView parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                    });
+                                    RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "languageCode",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("maxSuggestedPrompts", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "maxSuggestedPrompts",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+
+                            /// <summary>
+                            /// Gets the access control policy for an agent resource. A `NOT_FOUND` error is returned if
+                            /// the resource does not exist. An empty policy is returned if the resource exists but does
+                            /// not have a policy set on it.
+                            /// </summary>
+                            /// <param name="resource">
+                            /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value
+                            /// for this field.
+                            /// </param>
+                            public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                            {
+                                return new GetIamPolicyRequest(this.service, resource);
+                            }
+
+                            /// <summary>
+                            /// Gets the access control policy for an agent resource. A `NOT_FOUND` error is returned if
+                            /// the resource does not exist. An empty policy is returned if the resource exists but does
+                            /// not have a policy set on it.
+                            /// </summary>
+                            public class GetIamPolicyRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1Policy>
+                            {
+                                /// <summary>Constructs a new GetIamPolicy request.</summary>
+                                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                                {
+                                    Resource = resource;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate
+                                /// value for this field.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Resource { get; private set; }
+
+                                /// <summary>
+                                /// Optional. The maximum policy version that will be used to format the policy. Valid
+                                /// values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+                                /// Requests for policies with any conditional role bindings must specify version 3.
+                                /// Policies with no conditional role bindings may specify any valid value or leave the
+                                /// field unset. The policy in the response might use the policy version that you
+                                /// specified, or it might use a lower policy version. For example, if you specify
+                                /// version 3, but the policy has no conditional role bindings, the response uses
+                                /// version 1. To learn which resources support conditions in their IAM policies, see
+                                /// the [IAM
+                                /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "getIamPolicy";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+resource}:getIamPolicy";
+
+                                /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "resource",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                    });
+                                    RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "options.requestedPolicyVersion",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
                                     });
                                 }
                             }
@@ -10124,6 +10409,149 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "updateMask",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+
+                            /// <summary>
+                            /// Sets the access control policy for an agent resource. A `NOT_FOUND` error is returned if
+                            /// the resource does not exist. Policy can only contain `roles/discoveryengine.agentUser`,
+                            /// `roles/discoveryengine.agentViewer` and `roles/discoveryengine.agentEditor` roles.
+                            /// </summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="resource">
+                            /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value
+                            /// for this field.
+                            /// </param>
+                            public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                            {
+                                return new SetIamPolicyRequest(this.service, body, resource);
+                            }
+
+                            /// <summary>
+                            /// Sets the access control policy for an agent resource. A `NOT_FOUND` error is returned if
+                            /// the resource does not exist. Policy can only contain `roles/discoveryengine.agentUser`,
+                            /// `roles/discoveryengine.agentViewer` and `roles/discoveryengine.agentEditor` roles.
+                            /// </summary>
+                            public class SetIamPolicyRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1Policy>
+                            {
+                                /// <summary>Constructs a new SetIamPolicy request.</summary>
+                                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                                {
+                                    Resource = resource;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate
+                                /// value for this field.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Resource { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "setIamPolicy";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+resource}:setIamPolicy";
+
+                                /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "resource",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>
+                            /// Suspends an Agent. It is still available for viewing but not for use. The `state` of the
+                            /// Agent becomes `SUSPENDED`. Can be called on an Agent in the state `ENABLED`, otherwise
+                            /// it returns an error.
+                            /// </summary>
+                            /// <param name="name">
+                            /// Required. The name of the Agent to suspend. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                            /// </param>
+                            public virtual SuspendAgentRequest SuspendAgent(string name)
+                            {
+                                return new SuspendAgentRequest(this.service, name);
+                            }
+
+                            /// <summary>
+                            /// Suspends an Agent. It is still available for viewing but not for use. The `state` of the
+                            /// Agent becomes `SUSPENDED`. Can be called on an Agent in the state `ENABLED`, otherwise
+                            /// it returns an error.
+                            /// </summary>
+                            public class SuspendAgentRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAgent>
+                            {
+                                /// <summary>Constructs a new SuspendAgent request.</summary>
+                                public SuspendAgentRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The name of the Agent to suspend. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>
+                                /// Required. The reason for suspending the Agent. This will be shown to the users of
+                                /// the Agent.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("suspensionReason", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string SuspensionReason { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "suspendAgent";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}:suspendAgent";
+
+                                /// <summary>Initializes SuspendAgent parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                    });
+                                    RequestParameters.Add("suspensionReason", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "suspensionReason",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -10554,6 +10982,190 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Lists the data for displaying the Agents under an Assistant which are available to the
+                        /// caller.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. The parent resource name. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                        /// </param>
+                        public virtual ListAvailableAgentViewsRequest ListAvailableAgentViews(string parent)
+                        {
+                            return new ListAvailableAgentViewsRequest(this.service, parent);
+                        }
+
+                        /// <summary>
+                        /// Lists the data for displaying the Agents under an Assistant which are available to the
+                        /// caller.
+                        /// </summary>
+                        public class ListAvailableAgentViewsRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListAvailableAgentViewsResponse>
+                        {
+                            /// <summary>Constructs a new ListAvailableAgentViews request.</summary>
+                            public ListAvailableAgentViewsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent resource name. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Optional. The origin of the Agent.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("agentOrigin", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<AgentOriginEnum> AgentOrigin { get; set; }
+
+                            /// <summary>Optional. The origin of the Agent.</summary>
+                            public enum AgentOriginEnum
+                            {
+                                /// <summary>The origin is unspecified.</summary>
+                                [Google.Apis.Util.StringValueAttribute("AGENT_ORIGIN_UNSPECIFIED")]
+                                AGENTORIGINUNSPECIFIED = 0,
+
+                                /// <summary>Agent defined by Google.</summary>
+                                [Google.Apis.Util.StringValueAttribute("GOOGLE")]
+                                GOOGLE = 1,
+
+                                /// <summary>Agent defined by the organization.</summary>
+                                [Google.Apis.Util.StringValueAttribute("ORGANIZATION")]
+                                ORGANIZATION = 2,
+
+                                /// <summary>Agent defined by the user.</summary>
+                                [Google.Apis.Util.StringValueAttribute("USER")]
+                                USER = 3,
+                            }
+
+                            /// <summary>
+                            /// Optional. The filter syntax consists of an expression language for constructing a
+                            /// predicate from one or more fields of the files being filtered. Filter expression is
+                            /// case-sensitive. Allowed fields are: * `display_name` * `state` Some examples of filters
+                            /// would be: * `display_name = 'agent_1'` * `display_name = 'agent_1' AND state = ENABLED`
+                            /// For a full description of the filter format, please see https://google.aip.dev/160.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>
+                            /// Optional. The UI language currently shown to the user. Specifying this field request
+                            /// that the texts in the AgentViews in the response should be translated to this language.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string LanguageCode { get; set; }
+
+                            /// <summary>
+                            /// Optional. The maximum number of suggested prompts to return per agent.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("maxSuggestedPrompts", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> MaxSuggestedPrompts { get; set; }
+
+                            /// <summary>
+                            /// Optional. Maximum number of AgentViewss to return. If unspecified, defaults to 100. The
+                            /// maximum allowed value is 1000; anything above that will be coerced down to 1000.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. A page token ListAvailableAgentViewsResponse.next_page_token, received from a
+                            /// previous AgentService.ListAvailableAgentViews call. Provide this to retrieve the
+                            /// subsequent page. When paginating, all other parameters provided to
+                            /// ListAvailableAgentViews must match the call that provided the page token.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>
+                            /// Optional. The field to sort by. Can have the following values: - display-name: The
+                            /// display name of the agent. - description: The description of the agent. - create-time:
+                            /// The creation time of the agent. - state: The state of the agent.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("sortBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string SortBy { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "listAvailableAgentViews";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}:listAvailableAgentViews";
+
+                            /// <summary>Initializes ListAvailableAgentViews parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+$",
+                                });
+                                RequestParameters.Add("agentOrigin", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "agentOrigin",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "languageCode",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("maxSuggestedPrompts", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "maxSuggestedPrompts",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("sortBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "sortBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -24536,8 +25148,78 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 public UserStoresResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    LicenseConfigsUsageStats = new LicenseConfigsUsageStatsResource(service);
                     Operations = new OperationsResource(service);
                     UserLicenses = new UserLicensesResource(service);
+                }
+
+                /// <summary>Gets the LicenseConfigsUsageStats resource.</summary>
+                public virtual LicenseConfigsUsageStatsResource LicenseConfigsUsageStats { get; }
+
+                /// <summary>The "licenseConfigsUsageStats" collection of methods.</summary>
+                public class LicenseConfigsUsageStatsResource
+                {
+                    private const string Resource = "licenseConfigsUsageStats";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public LicenseConfigsUsageStatsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists all the LicenseConfigUsageStatss associated with the project.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent branch resource name, such as
+                    /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all the LicenseConfigUsageStatss associated with the project.</summary>
+                    public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListLicenseConfigsUsageStatsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent branch resource name, such as
+                        /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/licenseConfigsUsageStats";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/userStores/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Operations resource.</summary>
@@ -24760,12 +25442,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Filter for the list request. Supported fields: * `license_assignment_state`
-                        /// Examples: * `license_assignment_state = ASSIGNED` to list assigned user licenses. *
-                        /// `license_assignment_state = NO_LICENSE` to list not licensed users. *
-                        /// `license_assignment_state = NO_LICENSE_ATTEMPTED_LOGIN` to list users who attempted login
-                        /// but no license assigned. * `license_assignment_state != NO_LICENSE_ATTEMPTED_LOGIN` to
-                        /// filter out users who attempted login but no license assigned.
+                        /// Optional. Filter for the list request. Supported fields: * `license`_`assignment`_`state` *
+                        /// `user_principal` * `user_profile` Examples: * `license`_`assignment`_`state = ASSIGNED` to
+                        /// list assigned user licenses. * `license`_`assignment`_`state = NO_LICENSE` to list not
+                        /// licensed users. * `license`_`assignment`_`state = NO_LICENSE_ATTEMPTED_LOGIN` to list users
+                        /// who attempted login but no license assigned. * `license`_`assignment`_`state !=
+                        /// NO_LICENSE_ATTEMPTED_LOGIN` to filter out users who attempted login but no license assigned.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -30867,6 +31549,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableImageAnnotation")]
         public virtual System.Nullable<bool> EnableImageAnnotation { get; set; }
 
+        /// <summary>Optional. If true, the pdf layout will be refined using an LLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLlmLayoutParsing")]
+        public virtual System.Nullable<bool> EnableLlmLayoutParsing { get; set; }
+
         /// <summary>Optional. If true, the LLM based annotation is added to the table during parsing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableTableAnnotation")]
         public virtual System.Nullable<bool> EnableTableAnnotation { get; set; }
@@ -31026,6 +31712,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chatEngineMetadata")]
         public virtual GoogleCloudDiscoveryengineV1EngineChatEngineMetadata ChatEngineMetadata { get; set; }
 
+        /// <summary>Output only. CMEK-related information for the Engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
+        public virtual GoogleCloudDiscoveryengineV1CmekConfig CmekConfig { get; set; }
+
         /// <summary>Common config spec that specifies the metadata of the engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonConfig")]
         public virtual GoogleCloudDiscoveryengineV1EngineCommonConfig CommonConfig { get; set; }
@@ -31116,6 +31806,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaRecommendationEngineConfig")]
         public virtual GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Maps a model name to its specific configuration for this engine. This allows admin users to turn
+        /// on/off individual models. This only stores models whose states are overridden by the admin. When the state
+        /// is unspecified, or model_configs is empty for this model, the system will decide if this model should be
+        /// available or not based on the default configuration. For example, a preview model should be disabled by
+        /// default if the admin has not chosen to enable it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ModelConfigs { get; set; }
 
         /// <summary>
         /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
@@ -34684,6 +35384,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rejectionReason")]
         public virtual string RejectionReason { get; set; }
 
+        /// <summary>Optional. The sharing config of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAgentSharingConfig SharingConfig { get; set; }
+
         /// <summary>
         /// Optional. The starter prompt suggestions to show the user on the landing page of the agent.
         /// </summary>
@@ -34776,12 +35480,152 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Sharing related configuration.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAgentSharingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The sharing scope of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The starter prompt suggestion to show the user on the landing page of the agent.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAgentStarterPrompt : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The text of the starter prompt.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The data for displaying an Agent.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAgentView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The origin of the Agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentOrigin")]
+        public virtual string AgentOrigin { get; set; }
+
+        /// <summary>Output only. The sharing state of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentSharingState")]
+        public virtual string AgentSharingState { get; set; }
+
+        /// <summary>Output only. The type of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentType")]
+        public virtual string AgentType { get; set; }
+
+        /// <summary>The custom placeholder text that appears in the text box before the user enters any text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customPlaceholderText")]
+        public virtual string CustomPlaceholderText { get; set; }
+
+        /// <summary>The reason why the agent deployment failed. Only set if the state is DEPLOYMENT_FAILED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentFailureReason")]
+        public virtual string DeploymentFailureReason { get; set; }
+
+        /// <summary>
+        /// Required. Human-readable description of the agent. This might be used by an LLM to automatically select an
+        /// agent to respond to a user query and to generate the first version of the steps for the agent that can be
+        /// modified by the user. The language of this is either Agent.language_code, or
+        /// ListAvailableAgentViewsRequest.language_code if translations are enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. Display name of the agent. The language of this is either Agent.language_code, or
+        /// ListAvailableAgentViewsRequest.language_code if translations are enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. The icon that represents the agent on the UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAgentImage Icon { get; set; }
+
+        /// <summary>
+        /// Resource name of the agent. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The reason why the agent was rejected. Only set if the state is PRIVATE, and got there via rejection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rejectionReason")]
+        public virtual string RejectionReason { get; set; }
+
+        /// <summary>Output only. The state of the Agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Optional. The suggested prompts for the agent, to be shown on the agent landing page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedPrompts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAgentViewSuggestedPrompt> SuggestedPrompts { get; set; }
+
+        /// <summary>The reason why the agent was suspended. Only set if the state is SUSPENDED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspensionReason")]
+        public virtual string SuspensionReason { get; set; }
+
+        /// <summary>Optional. Per-user annotations of the current caller for the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAnnotations")]
+        public virtual GoogleCloudDiscoveryengineV1alphaUserAnnotations UserAnnotations { get; set; }
+
+        /// <summary>The permissions of the user for this Agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPermissions")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAgentViewUserPermissions UserPermissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A suggested prompt for the agent, to be shown on the agent landing page.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAgentViewSuggestedPrompt : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The text of the suggested prompt. The language of this is either Agent.language_code, or
+        /// ListAvailableAgentViewsRequest.language_code if translations are enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The permissions of the user on an Agent.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAgentViewUserPermissions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the user can delete this Agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canDelete")]
+        public virtual System.Nullable<bool> CanDelete { get; set; }
+
+        /// <summary>If the user can edit this Agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canEdit")]
+        public virtual System.Nullable<bool> CanEdit { get; set; }
+
+        /// <summary>If the user can propose other users to share the Agent with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canProposeUsers")]
+        public virtual System.Nullable<bool> CanProposeUsers { get; set; }
+
+        /// <summary>If the user can request a review for this Agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canRequestReview")]
+        public virtual System.Nullable<bool> CanRequestReview { get; set; }
+
+        /// <summary>If the user can run this Agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canRun")]
+        public virtual System.Nullable<bool> CanRun { get; set; }
+
+        /// <summary>If the user can view the source of this Agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canView")]
+        public virtual System.Nullable<bool> CanView { get; set; }
+
+        /// <summary>If the user can withdraw this Agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canWithdraw")]
+        public virtual System.Nullable<bool> CanWithdraw { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -42257,6 +43101,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableImageAnnotation")]
         public virtual System.Nullable<bool> EnableImageAnnotation { get; set; }
 
+        /// <summary>Optional. If true, the pdf layout will be refined using an LLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLlmLayoutParsing")]
+        public virtual System.Nullable<bool> EnableLlmLayoutParsing { get; set; }
+
         /// <summary>Optional. If true, the LLM based annotation is added to the table during parsing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableTableAnnotation")]
         public virtual System.Nullable<bool> EnableTableAnnotation { get; set; }
@@ -42445,6 +43293,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chatEngineMetadata")]
         public virtual GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata ChatEngineMetadata { get; set; }
 
+        /// <summary>Output only. CMEK-related information for the Engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCmekConfig CmekConfig { get; set; }
+
         /// <summary>Common config spec that specifies the metadata of the engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaEngineCommonConfig CommonConfig { get; set; }
@@ -42535,6 +43387,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaRecommendationEngineConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Maps a model name to its specific configuration for this engine. This allows admin users to turn
+        /// on/off individual models. This only stores models whose states are overridden by the admin. When the state
+        /// is unspecified, or model_configs is empty for this model, the system will decide if this model should be
+        /// available or not based on the default configuration. For example, a preview model should be disabled by
+        /// default if the admin has not chosen to enable it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ModelConfigs { get; set; }
 
         /// <summary>
         /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
@@ -43880,6 +44742,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the AgentService.GetAgentView method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGetAgentViewResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data for displaying an Agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentView")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAgentView AgentView { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for DataConnectorService.GetConnectorSecret.</summary>
     public class GoogleCloudDiscoveryengineV1alphaGetConnectorSecretResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -45158,6 +46031,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Stats about users' licenses.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaLicenseConfigUsageStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The LicenseConfig name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConfig")]
+        public virtual string LicenseConfig { get; set; }
+
+        /// <summary>Required. The number of licenses used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usedLicenseCount")]
+        public virtual System.Nullable<long> UsedLicenseCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the AgentService.ListAgents method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaListAgentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -45186,6 +46074,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// A token that can be sent as ListAuthorizationsRequest.page_token to retrieve the next page. If this field is
         /// omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the AgentService.ListAvailableAgentViews method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListAvailableAgentViewsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The agent sources visible to the caller under the parent Assistant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentViews")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAgentView> AgentViews { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as ListAvailableAgentViewsRequest.page_token to retrieve the next page. If this
+        /// field is omitted, there are no subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -45498,6 +46404,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for UserLicenseService.ListLicenseConfigUsageStats method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListLicenseConfigsUsageStatsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All the customer's LicenseConfigUsageStats.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConfigUsageStats")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaLicenseConfigUsageStats> LicenseConfigUsageStats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -51969,6 +52886,23 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Per-user annotations for an Agent, based on UserAnnotation.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaUserAnnotations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether the agent is pinned, pinned agent will be displayed on the top of the agent list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pinned")]
+        public virtual System.Nullable<bool> Pinned { get; set; }
+
+        /// <summary>Optional. Whether the agent has been viewed by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewed")]
+        public virtual System.Nullable<bool> Viewed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// UserEvent captures all metadata information Discovery Engine API needs to know about how end users interact with
     /// your website.
@@ -53079,6 +54013,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Describes widget (or web app) interaction type</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interactionType")]
         public virtual string InteractionType { get; set; }
+
+        /// <summary>
+        /// Output only. Maps a model name to its specific configuration for this engine. This allows admin users to
+        /// turn on/off individual models. This only stores models whose states are overridden by the admin. When the
+        /// state is unspecified, or model_configs is empty for this model, the system will decide if this model should
+        /// be available or not based on the default configuration. For example, a preview model should be disabled by
+        /// default if the admin has not chosen to enable it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ModelConfigs { get; set; }
 
         /// <summary>
         /// Controls whether result extract is display and how (snippet or extractive answer). Default to no result if
@@ -55403,6 +56347,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableImageAnnotation")]
         public virtual System.Nullable<bool> EnableImageAnnotation { get; set; }
 
+        /// <summary>Optional. If true, the pdf layout will be refined using an LLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLlmLayoutParsing")]
+        public virtual System.Nullable<bool> EnableLlmLayoutParsing { get; set; }
+
         /// <summary>Optional. If true, the LLM based annotation is added to the table during parsing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableTableAnnotation")]
         public virtual System.Nullable<bool> EnableTableAnnotation { get; set; }
@@ -55562,6 +56510,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chatEngineMetadata")]
         public virtual GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata ChatEngineMetadata { get; set; }
 
+        /// <summary>Output only. CMEK-related information for the Engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaCmekConfig CmekConfig { get; set; }
+
         /// <summary>Common config spec that specifies the metadata of the engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaEngineCommonConfig CommonConfig { get; set; }
@@ -55652,6 +56604,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaRecommendationEngineConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Maps a model name to its specific configuration for this engine. This allows admin users to turn
+        /// on/off individual models. This only stores models whose states are overridden by the admin. When the state
+        /// is unspecified, or model_configs is empty for this model, the system will decide if this model should be
+        /// available or not based on the default configuration. For example, a preview model should be disabled by
+        /// default if the admin has not chosen to enable it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ModelConfigs { get; set; }
 
         /// <summary>
         /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
@@ -60539,6 +61501,167 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Output only. The id of the youtube video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
         public virtual string VideoId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Associates `members`, or principals, with a `role`.</summary>
+    public class GoogleIamV1Binding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
+        /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
+        /// the current request. However, a different role binding might grant the same role to one or more of the
+        /// principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual GoogleTypeExpr Condition { get; set; }
+
+        /// <summary>
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
+        /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
+        /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
+        /// with a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
+        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
+        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
+        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
+        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
+        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
+        /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workforce identity pool. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All
+        /// workforce identities in a group. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All workforce identities with a specific attribute value. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a
+        /// workforce identity pool. *
+        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workload identity pool. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+        /// A workload identity pool group. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All identities in a workload identity pool with a certain attribute. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`:
+        /// All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address
+        /// (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example,
+        /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
+        /// this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the
+        /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
+        /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
+        /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
+        /// in the binding. *
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// Deleted single identity in a workforce identity pool. For example,
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("members")]
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
+
+        /// <summary>
+        /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
+    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
+    /// `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A
+    /// `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
+    /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
+    /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// </summary>
+    public class GoogleIamV1Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that
+        /// determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one
+        /// principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        /// can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the
+        /// `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you
+        /// can add another 1,450 principals to the `bindings` in the `Policy`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<GoogleIamV1Binding> Bindings { get; set; }
+
+        /// <summary>
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy
+        /// from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+        /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
+        /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid
+        /// value are rejected. Any operation that affects conditional role bindings must specify version `3`. This
+        /// requirement applies to the following operations: * Getting a policy that includes a conditional role binding
+        /// * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing
+        /// any role binding, with or without a condition, from a policy that includes conditions **Important:** If you
+        /// use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this
+        /// field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on
+        /// that policy may specify any valid version or leave the field unset. To learn which resources support
+        /// conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>Request message for `SetIamPolicy` method.</summary>
+    public class GoogleIamV1SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
+        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
+        /// reject them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual GoogleIamV1Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
