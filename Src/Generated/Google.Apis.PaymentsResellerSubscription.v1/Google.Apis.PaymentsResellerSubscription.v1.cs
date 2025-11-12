@@ -2307,6 +2307,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cycleOptions")]
         public virtual CycleOptions CycleOptions { get; set; }
 
+        /// <summary>Optional. The mode to resume the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resumeMode")]
+        public virtual string ResumeMode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
