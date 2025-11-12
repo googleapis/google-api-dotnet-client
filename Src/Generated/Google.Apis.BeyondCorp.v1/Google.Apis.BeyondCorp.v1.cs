@@ -4557,8 +4557,8 @@ namespace Google.Apis.BeyondCorp.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Unless explicitly documented otherwise, don't use this unsupported field which is
-                /// primarily intended for internal usage.
+                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
+                /// otherwise. This is primarily for internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -6680,11 +6680,12 @@ namespace Google.Apis.BeyondCorp.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Required. Endpoint matchers associated with an application. A combination of hostname and ports as endpoint
-        /// matchers is used to match the application. Match conditions for OR logic. An array of match conditions to
-        /// allow for multiple matching criteria. The rule is considered a match if one of the conditions is met. The
-        /// conditions should be the following combination: (Hostname &amp;amp; Ports) EXAMPLES: Hostname and Ports -
-        /// ("*.example.com", "443"), ("example.com" and "22"), ("example.com" and "22,33") etc
+        /// Optional. An array of conditions to match the application's network endpoint. Each element in the array is
+        /// an EndpointMatcher object, which defines a specific combination of a hostname pattern and one or more ports.
+        /// The application is considered matched if at least one of the EndpointMatcher conditions in this array is met
+        /// (the conditions are combined using OR logic). Each EndpointMatcher must contain a hostname pattern, such as
+        /// "example.com", and one or more port numbers specified as a string, such as "443". Hostname and port number
+        /// examples: "*.example.com", "443" "example.com" and "22" "example.com" and "22,33"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointMatchers")]
         public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher> EndpointMatchers { get; set; }
@@ -6790,11 +6791,11 @@ namespace Google.Apis.BeyondCorp.v1.Data
     /// <summary>Contextual headers configuration.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Device info configuration.</summary>
+        /// <summary>Optional. The device information configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceInfo")]
         public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo DeviceInfo { get; set; }
 
-        /// <summary>Optional. Group info configuration.</summary>
+        /// <summary>Optional. Group details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupInfo")]
         public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo GroupInfo { get; set; }
 
@@ -6802,7 +6803,7 @@ namespace Google.Apis.BeyondCorp.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputType")]
         public virtual string OutputType { get; set; }
 
-        /// <summary>Optional. User info configuration.</summary>
+        /// <summary>Optional. User details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
         public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo UserInfo { get; set; }
 
@@ -6810,10 +6811,10 @@ namespace Google.Apis.BeyondCorp.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Delegated device info configuration.</summary>
+    /// <summary>The delegated device information configuration.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The output type of the delegated device info.</summary>
+        /// <summary>Optional. The output type details for the delegated device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputType")]
         public virtual string OutputType { get; set; }
 
@@ -6821,10 +6822,10 @@ namespace Google.Apis.BeyondCorp.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Delegated group info configuration.</summary>
+    /// <summary>The delegated group configuration details.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The output type of the delegated group info.</summary>
+        /// <summary>Optional. The output type of the delegated group information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputType")]
         public virtual string OutputType { get; set; }
 
@@ -6832,10 +6833,10 @@ namespace Google.Apis.BeyondCorp.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Delegated user info configuration.</summary>
+    /// <summary>The configuration information for the delegated user.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The output type of the delegated user info.</summary>
+        /// <summary>Optional. The delegated user's information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputType")]
         public virtual string OutputType { get; set; }
 
@@ -6876,7 +6877,7 @@ namespace Google.Apis.BeyondCorp.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
         public virtual string Hostname { get; set; }
 
-        /// <summary>Required. Ports of the application.</summary>
+        /// <summary>Required. The ports of the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Ports { get; set; }
 
@@ -6963,14 +6964,14 @@ namespace Google.Apis.BeyondCorp.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contextualHeaders")]
         public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders ContextualHeaders { get; set; }
 
-        /// <summary>Optional. Gateway identity configuration.</summary>
+        /// <summary>Optional. The security gateway identity configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayIdentity")]
         public virtual string GatewayIdentity { get; set; }
 
         /// <summary>
         /// Optional. Custom resource specific headers along with the values. The names should conform to RFC 9110:
-        /// &amp;gt; Field names SHOULD constrain themselves to alphanumeric characters, "-", and ".", and SHOULD begin
-        /// with a letter. Field values SHOULD contain only ASCII printable characters and tab.
+        /// &amp;gt;Field names can contain alphanumeric characters, hyphens, and periods, can contain only
+        /// ASCII-printable characters and tabs, and must start with a letter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataHeaders")]
         public virtual System.Collections.Generic.IDictionary<string, string> MetadataHeaders { get; set; }
@@ -7230,7 +7231,7 @@ namespace Google.Apis.BeyondCorp.v1.Data
     /// <summary>API operation descriptor.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Contains uri path fragment where HTTP request is sent.</summary>
+        /// <summary>Required. Contains the URI path fragment where HTTP request is sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
