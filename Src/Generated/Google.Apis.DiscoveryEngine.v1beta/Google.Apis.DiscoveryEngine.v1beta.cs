@@ -19166,7 +19166,77 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                 public UserStoresResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    LicenseConfigsUsageStats = new LicenseConfigsUsageStatsResource(service);
                     UserLicenses = new UserLicensesResource(service);
+                }
+
+                /// <summary>Gets the LicenseConfigsUsageStats resource.</summary>
+                public virtual LicenseConfigsUsageStatsResource LicenseConfigsUsageStats { get; }
+
+                /// <summary>The "licenseConfigsUsageStats" collection of methods.</summary>
+                public class LicenseConfigsUsageStatsResource
+                {
+                    private const string Resource = "licenseConfigsUsageStats";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public LicenseConfigsUsageStatsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists all the LicenseConfigUsageStatss associated with the project.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent branch resource name, such as
+                    /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all the LicenseConfigUsageStatss associated with the project.</summary>
+                    public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaListLicenseConfigsUsageStatsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent branch resource name, such as
+                        /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+parent}/licenseConfigsUsageStats";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/userStores/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the UserLicenses resource.</summary>
@@ -19214,12 +19284,12 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Filter for the list request. Supported fields: * `license_assignment_state`
-                        /// Examples: * `license_assignment_state = ASSIGNED` to list assigned user licenses. *
-                        /// `license_assignment_state = NO_LICENSE` to list not licensed users. *
-                        /// `license_assignment_state = NO_LICENSE_ATTEMPTED_LOGIN` to list users who attempted login
-                        /// but no license assigned. * `license_assignment_state != NO_LICENSE_ATTEMPTED_LOGIN` to
-                        /// filter out users who attempted login but no license assigned.
+                        /// Optional. Filter for the list request. Supported fields: * `license`_`assignment`_`state` *
+                        /// `user_principal` * `user_profile` Examples: * `license`_`assignment`_`state = ASSIGNED` to
+                        /// list assigned user licenses. * `license`_`assignment`_`state = NO_LICENSE` to list not
+                        /// licensed users. * `license`_`assignment`_`state = NO_LICENSE_ATTEMPTED_LOGIN` to list users
+                        /// who attempted login but no license assigned. * `license`_`assignment`_`state !=
+                        /// NO_LICENSE_ATTEMPTED_LOGIN` to filter out users who attempted login but no license assigned.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -24569,6 +24639,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableImageAnnotation")]
         public virtual System.Nullable<bool> EnableImageAnnotation { get; set; }
 
+        /// <summary>Optional. If true, the pdf layout will be refined using an LLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLlmLayoutParsing")]
+        public virtual System.Nullable<bool> EnableLlmLayoutParsing { get; set; }
+
         /// <summary>Optional. If true, the LLM based annotation is added to the table during parsing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableTableAnnotation")]
         public virtual System.Nullable<bool> EnableTableAnnotation { get; set; }
@@ -24728,6 +24802,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chatEngineMetadata")]
         public virtual GoogleCloudDiscoveryengineV1EngineChatEngineMetadata ChatEngineMetadata { get; set; }
 
+        /// <summary>Output only. CMEK-related information for the Engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
+        public virtual GoogleCloudDiscoveryengineV1CmekConfig CmekConfig { get; set; }
+
         /// <summary>Common config spec that specifies the metadata of the engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonConfig")]
         public virtual GoogleCloudDiscoveryengineV1EngineCommonConfig CommonConfig { get; set; }
@@ -24818,6 +24896,16 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaRecommendationEngineConfig")]
         public virtual GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Maps a model name to its specific configuration for this engine. This allows admin users to turn
+        /// on/off individual models. This only stores models whose states are overridden by the admin. When the state
+        /// is unspecified, or model_configs is empty for this model, the system will decide if this model should be
+        /// available or not based on the default configuration. For example, a preview model should be disabled by
+        /// default if the admin has not chosen to enable it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ModelConfigs { get; set; }
 
         /// <summary>
         /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
@@ -32347,6 +32435,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableImageAnnotation")]
         public virtual System.Nullable<bool> EnableImageAnnotation { get; set; }
 
+        /// <summary>Optional. If true, the pdf layout will be refined using an LLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLlmLayoutParsing")]
+        public virtual System.Nullable<bool> EnableLlmLayoutParsing { get; set; }
+
         /// <summary>Optional. If true, the LLM based annotation is added to the table during parsing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableTableAnnotation")]
         public virtual System.Nullable<bool> EnableTableAnnotation { get; set; }
@@ -32506,6 +32598,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chatEngineMetadata")]
         public virtual GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata ChatEngineMetadata { get; set; }
 
+        /// <summary>Output only. CMEK-related information for the Engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCmekConfig CmekConfig { get; set; }
+
         /// <summary>Common config spec that specifies the metadata of the engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaEngineCommonConfig CommonConfig { get; set; }
@@ -32596,6 +32692,16 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaRecommendationEngineConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Maps a model name to its specific configuration for this engine. This allows admin users to turn
+        /// on/off individual models. This only stores models whose states are overridden by the admin. When the state
+        /// is unspecified, or model_configs is empty for this model, the system will decide if this model should be
+        /// available or not based on the default configuration. For example, a preview model should be disabled by
+        /// default if the admin has not chosen to enable it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ModelConfigs { get; set; }
 
         /// <summary>
         /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
@@ -43859,6 +43965,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableImageAnnotation")]
         public virtual System.Nullable<bool> EnableImageAnnotation { get; set; }
 
+        /// <summary>Optional. If true, the pdf layout will be refined using an LLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLlmLayoutParsing")]
+        public virtual System.Nullable<bool> EnableLlmLayoutParsing { get; set; }
+
         /// <summary>Optional. If true, the LLM based annotation is added to the table during parsing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableTableAnnotation")]
         public virtual System.Nullable<bool> EnableTableAnnotation { get; set; }
@@ -44047,6 +44157,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chatEngineMetadata")]
         public virtual GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata ChatEngineMetadata { get; set; }
 
+        /// <summary>Output only. CMEK-related information for the Engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaCmekConfig CmekConfig { get; set; }
+
         /// <summary>Common config spec that specifies the metadata of the engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaEngineCommonConfig CommonConfig { get; set; }
@@ -44137,6 +44251,16 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaRecommendationEngineConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig MediaRecommendationEngineConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Maps a model name to its specific configuration for this engine. This allows admin users to turn
+        /// on/off individual models. This only stores models whose states are overridden by the admin. When the state
+        /// is unspecified, or model_configs is empty for this model, the system will decide if this model should be
+        /// available or not based on the default configuration. For example, a preview model should be disabled by
+        /// default if the admin has not chosen to enable it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ModelConfigs { get; set; }
 
         /// <summary>
         /// Immutable. Identifier. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
@@ -45875,6 +45999,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Stats about users' licenses.</summary>
+    public class GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The LicenseConfig name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConfig")]
+        public virtual string LicenseConfig { get; set; }
+
+        /// <summary>Required. The number of licenses used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usedLicenseCount")]
+        public virtual System.Nullable<long> UsedLicenseCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for CmekConfigService.ListCmekConfigs method.</summary>
     public class GoogleCloudDiscoveryengineV1betaListCmekConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -46060,6 +46199,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for UserLicenseService.ListLicenseConfigUsageStats method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaListLicenseConfigsUsageStatsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All the customer's LicenseConfigUsageStats.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConfigUsageStats")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStats> LicenseConfigUsageStats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
