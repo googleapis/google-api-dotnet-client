@@ -342,6 +342,18 @@ namespace Google.Apis.Merchant.inventories_v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. If true, the `{product}` in the `name` field of the request will be interpreted as
+                    /// unpadded base64url-encoded and decoded during request processing to match the decoded value.
+                    /// Default value is `false`. Use this if your `{product}` contains special characters, such as
+                    /// forward slash `/` or other characters that are unpadded base64url-encoded (as per RFC 7515:
+                    /// https://datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of the API
+                    /// will only accept unpadded base64url-encoded product ids, so we strongly recommend proactively
+                    /// setting this to `true` and encoding the product ids.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productIdBase64UrlEncoded", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ProductIdBase64UrlEncoded { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -362,6 +374,14 @@ namespace Google.Apis.Merchant.inventories_v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^accounts/[^/]+/products/[^/]+/localInventories/[^/]+$",
+                        });
+                        RequestParameters.Add("productIdBase64UrlEncoded", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productIdBase64UrlEncoded",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -403,6 +423,18 @@ namespace Google.Apis.Merchant.inventories_v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>
+                    /// Optional. If true, the `{product}` in the `parent` field of the request will be interpreted as
+                    /// unpadded base64url-encoded and decoded during request processing to match the decoded value.
+                    /// Default value is `false`. Use this if your `{product}` contains special characters, such as
+                    /// forward slash `/` or other characters that are unpadded base64url-encoded (as per RFC 7515:
+                    /// https://datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of the API
+                    /// will only accept unpadded base64url-encoded product ids, so we strongly recommend proactively
+                    /// setting this to `true` and encoding the product ids.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productIdBase64UrlEncoded", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ProductIdBase64UrlEncoded { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Merchant.inventories_v1.Data.LocalInventory Body { get; set; }
 
@@ -429,6 +461,14 @@ namespace Google.Apis.Merchant.inventories_v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^accounts/[^/]+/products/[^/]+$",
+                        });
+                        RequestParameters.Add("productIdBase64UrlEncoded", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productIdBase64UrlEncoded",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -488,6 +528,18 @@ namespace Google.Apis.Merchant.inventories_v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. If true, the `{product}` in the `parent` field of the request will be interpreted as
+                    /// unpadded base64url-encoded and decoded during request processing to match the decoded value.
+                    /// Default value is `false`. Use this if your `{product}` contains special characters, such as
+                    /// forward slash `/` or other characters that are unpadded base64url-encoded (as per RFC 7515:
+                    /// https://datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of the API
+                    /// will only accept unpadded base64url-encoded product ids, so we strongly recommend proactively
+                    /// setting this to `true` and encoding the product ids.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productIdBase64UrlEncoded", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ProductIdBase64UrlEncoded { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -520,6 +572,14 @@ namespace Google.Apis.Merchant.inventories_v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("productIdBase64UrlEncoded", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productIdBase64UrlEncoded",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -583,6 +643,18 @@ namespace Google.Apis.Merchant.inventories_v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. If true, the `{product}` in the `name` field of the request will be interpreted as
+                    /// unpadded base64url-encoded and decoded during request processing to match the decoded value.
+                    /// Default value is `false`. Use this if your `{product}` contains special characters, such as
+                    /// forward slash `/` or other characters that are unpadded base64url-encoded (as per RFC 7515:
+                    /// https://datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of the API
+                    /// will only accept unpadded base64url-encoded product ids, so we strongly recommend proactively
+                    /// setting this to `true` and encoding the product ids.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productIdBase64UrlEncoded", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ProductIdBase64UrlEncoded { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -603,6 +675,14 @@ namespace Google.Apis.Merchant.inventories_v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^accounts/[^/]+/products/[^/]+/regionalInventories/[^/]+$",
+                        });
+                        RequestParameters.Add("productIdBase64UrlEncoded", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productIdBase64UrlEncoded",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -646,6 +726,18 @@ namespace Google.Apis.Merchant.inventories_v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>
+                    /// Optional. If true, the `{product}` in the `parent` field of the request will be interpreted as
+                    /// unpadded base64url-encoded and decoded during request processing to match the decoded value.
+                    /// Default value is `false`. Use this if your `{product}` contains special characters, such as
+                    /// forward slash `/` or other characters that are unpadded base64url-encoded (as per RFC 7515:
+                    /// https://datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of the API
+                    /// will only accept unpadded base64url-encoded product ids, so we strongly recommend proactively
+                    /// setting this to `true` and encoding the product ids.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productIdBase64UrlEncoded", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ProductIdBase64UrlEncoded { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Merchant.inventories_v1.Data.RegionalInventory Body { get; set; }
 
@@ -672,6 +764,14 @@ namespace Google.Apis.Merchant.inventories_v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^accounts/[^/]+/products/[^/]+$",
+                        });
+                        RequestParameters.Add("productIdBase64UrlEncoded", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productIdBase64UrlEncoded",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -731,6 +831,18 @@ namespace Google.Apis.Merchant.inventories_v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. If true, the `{product}` in the `parent` field of the request will be interpreted as
+                    /// unpadded base64url-encoded and decoded during request processing to match the decoded value.
+                    /// Default value is `false`. Use this if your `{product}` contains special characters, such as
+                    /// forward slash `/` or other characters that are unpadded base64url-encoded (as per RFC 7515:
+                    /// https://datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of the API
+                    /// will only accept unpadded base64url-encoded product ids, so we strongly recommend proactively
+                    /// setting this to `true` and encoding the product ids.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productIdBase64UrlEncoded", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ProductIdBase64UrlEncoded { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -763,6 +875,14 @@ namespace Google.Apis.Merchant.inventories_v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("productIdBase64UrlEncoded", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productIdBase64UrlEncoded",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
