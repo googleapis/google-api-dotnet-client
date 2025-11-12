@@ -543,6 +543,18 @@ namespace Google.Apis.Merchant.issueresolution_v1beta
             public virtual string LanguageCode { get; set; }
 
             /// <summary>
+            /// Optional. If true, the `{product}` in the `name` field of the request will be interpreted as unpadded
+            /// base64url-encoded and decoded during request processing to match the decoded value. Default value is
+            /// `false`. Use this if your `{product}` contains special characters, such as forward slash `/` or other
+            /// characters that are unpadded base64url-encoded (as per RFC 7515:
+            /// https://datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of the API will only
+            /// accept unpadded base64url-encoded product ids, so we strongly recommend proactively setting this to
+            /// `true` and encoding the product ids.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("productIdBase64UrlEncoded", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ProductIdBase64UrlEncoded { get; set; }
+
+            /// <summary>
             /// Optional. The [IANA](https://www.iana.org/time-zones) timezone used to localize times in an issue
             /// resolution content. For example 'America/Los_Angeles'. If not set, results will use as a default UTC.
             /// </summary>
@@ -579,6 +591,14 @@ namespace Google.Apis.Merchant.issueresolution_v1beta
                 RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
                 {
                     Name = "languageCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productIdBase64UrlEncoded", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productIdBase64UrlEncoded",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
