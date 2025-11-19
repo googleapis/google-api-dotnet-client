@@ -14402,6 +14402,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of a base price pricing phase.</summary>
+    public class BaseDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single base plan for a subscription.</summary>
     public class BasePlan : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15736,6 +15743,39 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>User account identifier in your app.</summary>
+    public class ExternalAccountIds : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies an optional obfuscated string that is uniquely associated with the purchaser's user
+        /// account in your app. If you pass this value, Google Play can use it to detect irregular activity. Do not use
+        /// this field to store any Personally Identifiable Information (PII) such as emails in cleartext. Attempting to
+        /// store PII in this field will result in purchases being blocked. Google Play recommends that you use either
+        /// encryption or a one-way hash to generate an obfuscated identifier to send to Google Play. This identifier is
+        /// limited to 64 characters. This field can only be set for resubscription purchases. See
+        /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid
+        /// to set this field for purchases made using the standard in-app billing flow.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedAccountId")]
+        public virtual string ObfuscatedAccountId { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies an optional obfuscated string that is uniquely associated with the purchaser's user
+        /// profile in your app. If you pass this value, Google Play can use it to detect irregular activity. Do not use
+        /// this field to store any Personally Identifiable Information (PII) such as emails in cleartext. Attempting to
+        /// store PII in this field will result in purchases being blocked. Google Play recommends that you use either
+        /// encryption or a one-way hash to generate an obfuscated identifier to send to Google Play. This identifier is
+        /// limited to 64 characters. This field can only be set for resubscription purchases. See
+        /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid
+        /// to set this field for purchases made using the standard in-app billing flow.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedProfileId")]
+        public virtual string ObfuscatedProfileId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of an external subscription.</summary>
     public class ExternalSubscription : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16009,6 +16049,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
         public virtual string VersionName { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a free trial pricing phase.</summary>
+    public class FreeTrialDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -16662,6 +16709,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of an introductory price pricing phase.</summary>
+    public class IntroductoryPriceDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains the introductory price information for a subscription.</summary>
     public class IntroductoryPriceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16690,6 +16744,29 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPricePeriod")]
         public virtual string IntroductoryPricePeriod { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about a subscription line item that is being replaced.</summary>
+    public class ItemReplacement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The base plan ID of the subscription line item being replaced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basePlanId")]
+        public virtual string BasePlanId { get; set; }
+
+        /// <summary>The offer ID of the subscription line item being replaced, if applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>The product ID of the subscription line item being replaced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>The replacement mode applied during the purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replacementMode")]
+        public virtual string ReplacementMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17136,6 +17213,29 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerTags")]
         public virtual System.Collections.Generic.IList<string> OfferTags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a pricing phase for the entitlement period funded by this order.</summary>
+    public class OfferPhaseDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The order funds a base price period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseDetails")]
+        public virtual BaseDetails BaseDetails { get; set; }
+
+        /// <summary>The order funds a free trial period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeTrialDetails")]
+        public virtual FreeTrialDetails FreeTrialDetails { get; set; }
+
+        /// <summary>The order funds an introductory pricing period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("introductoryPriceDetails")]
+        public virtual IntroductoryPriceDetails IntroductoryPriceDetails { get; set; }
+
+        /// <summary>The order funds a proration period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prorationPeriodDetails")]
+        public virtual ProrationPeriodDetails ProrationPeriodDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18057,6 +18157,25 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information specific to an out of app purchase.</summary>
+    public class OutOfAppPurchaseContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User account identifier from the last expired subscription for this SKU.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiredExternalAccountIdentifiers")]
+        public virtual ExternalAccountIdentifiers ExpiredExternalAccountIdentifiers { get; set; }
+
+        /// <summary>
+        /// The purchase token of the last expired subscription. This purchase token must only be used to help identify
+        /// the user if the link between the purchaseToken and user is stored in your database. This cannot be used to
+        /// call the Google Developer API if it has been more than 60 days since expiry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiredPurchaseToken")]
+        public virtual string ExpiredPurchaseToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Information about the current page. List operations that supports paging return only one "page" of results. This
     /// protocol buffer message describes the page that has been returned.
@@ -18795,6 +18914,36 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Payload to attach to the purchase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerPayload")]
         public virtual string DeveloperPayload { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details of a proration period. A proration period can be a period calculated during a plan change to cover
+    /// existing entitlements (For more information, see [Allow users to upgrade, downgrade, or change their
+    /// subscription](https://developer.android.com/google/play/billing/subscriptions#allow-users-change), or a prorated
+    /// period to align add-on renewal dates with the base (For more information, see [Rules applicable for items in the
+    /// purchase](https://developer.android.com/google/play/billing/subscription-with-addons#rules-base-addons)).
+    /// </summary>
+    public class ProrationPeriodDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The last order id of the original subscription purchase prior to the plan change. This is only populated if
+        /// this proration period is from an ugrade/downgrade from a previous subscription and carries the remaining
+        /// offer phase from the linked order of the previous subscription.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedOrderId")]
+        public virtual string LinkedOrderId { get; set; }
+
+        /// <summary>
+        /// Represent the original offer phase from the purchased the line item if the proration period contains any of
+        /// them. For example, a proration period from CHARGE_FULL_PRICE plan change may merge the 1st offer phase of
+        /// the subscription offer of the new product user purchased. In this case, the original offer phase will be set
+        /// here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalOfferPhase")]
+        public virtual string OriginalOfferPhase { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19759,9 +19908,15 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
         public virtual string OfferId { get; set; }
 
-        /// <summary>The pricing phase for the billing period funded by this order.</summary>
+        /// <summary>
+        /// The pricing phase for the billing period funded by this order. Deprecated. Use offer_phase_details instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerPhase")]
         public virtual string OfferPhase { get; set; }
+
+        /// <summary>The pricing phase details for the entitlement period funded by this order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerPhaseDetails")]
+        public virtual OfferPhaseDetails OfferPhaseDetails { get; set; }
 
         private string _servicePeriodEndTimeRaw;
 
@@ -20347,6 +20502,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         }
 
         /// <summary>
+        /// Details of the item being replaced. This field is only populated if this item replaced another item in a
+        /// previous subscription and is only available for 60 days after the purchase time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemReplacement")]
+        public virtual ItemReplacement ItemReplacement { get; set; }
+
+        /// <summary>
         /// The order id of the latest successful order associated with this item. Not present if the item is not owned
         /// by the user yet (e.g. the item being deferred replaced to).
         /// </summary>
@@ -20419,6 +20581,14 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedPurchaseToken")]
         public virtual string LinkedPurchaseToken { get; set; }
+
+        /// <summary>
+        /// Additional context for out of app purchases. This information is only present for re-subscription purchases
+        /// (subscription purchases made after the previous subscription of the same product has expired) made through
+        /// the Google Play subscriptions center. This field will be removed after you acknowledge the subscription.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outOfAppPurchaseContext")]
+        public virtual OutOfAppPurchaseContext OutOfAppPurchaseContext { get; set; }
 
         /// <summary>
         /// Additional context around paused subscriptions. Only present if the subscription currently has
@@ -20495,6 +20665,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Payload to attach to the purchase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerPayload")]
         public virtual string DeveloperPayload { get; set; }
+
+        /// <summary>Optional. User account identifier in your app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAccountIds")]
+        public virtual ExternalAccountIds ExternalAccountIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
