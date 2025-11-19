@@ -8828,6 +8828,10 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineApis")]
         public virtual System.Nullable<bool> AppEngineApis { get; set; }
 
+        /// <summary>List of specific App Engine Bundled Services that are enabled for this Version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appEngineBundledServices")]
+        public virtual System.Collections.Generic.IList<string> AppEngineBundledServices { get; set; }
+
         /// <summary>
         /// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are
         /// dynamically created and destroyed as needed in order to handle traffic.
