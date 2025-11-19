@@ -61,14 +61,14 @@ namespace Google.Apis.AlertCenter.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Google Workspace Alert Center API.</summary>
         public class Scope
         {
-            /// <summary>See and delete your domain's G Suite alerts, and send alert feedback</summary>
+            /// <summary>See and delete your domain's Google Workspace alerts, and send alert feedback</summary>
             public static string AppsAlerts = "https://www.googleapis.com/auth/apps.alerts";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Workspace Alert Center API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See and delete your domain's G Suite alerts, and send alert feedback</summary>
+            /// <summary>See and delete your domain's Google Workspace alerts, and send alert feedback</summary>
             public const string AppsAlerts = "https://www.googleapis.com/auth/apps.alerts";
         }
 
@@ -2668,6 +2668,10 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>Drive file ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual string DocumentId { get; set; }
+
+        /// <summary>RFC2822 message ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
+        public virtual string MessageId { get; set; }
 
         /// <summary>Title of the resource, for example email subject, or document title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTitle")]
