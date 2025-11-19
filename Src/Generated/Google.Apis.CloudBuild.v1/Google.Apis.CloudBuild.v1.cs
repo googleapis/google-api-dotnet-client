@@ -6810,6 +6810,10 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>An image built by the pipeline.</summary>
     public class BuiltImage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Path to the artifact in Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactRegistryPackage")]
+        public virtual string ArtifactRegistryPackage { get; set; }
+
         /// <summary>Docker Registry 2.0 digest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]
         public virtual string Digest { get; set; }
@@ -9988,6 +9992,10 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>A Go module artifact uploaded to Artifact Registry using the GoModule directive.</summary>
     public class UploadedGoModule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Path to the artifact in Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactRegistryPackage")]
+        public virtual string ArtifactRegistryPackage { get; set; }
+
         /// <summary>Hash types and values of the Go Module Artifact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual FileHashes FileHashes { get; set; }
@@ -10007,6 +10015,10 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>A Maven artifact uploaded using the MavenArtifact directive.</summary>
     public class UploadedMavenArtifact : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Path to the artifact in Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactRegistryPackage")]
+        public virtual string ArtifactRegistryPackage { get; set; }
+
         /// <summary>Hash types and values of the Maven Artifact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual FileHashes FileHashes { get; set; }
@@ -10026,6 +10038,10 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>An npm package uploaded to Artifact Registry using the NpmPackage directive.</summary>
     public class UploadedNpmPackage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Path to the artifact in Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactRegistryPackage")]
+        public virtual string ArtifactRegistryPackage { get; set; }
+
         /// <summary>Hash types and values of the npm package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual FileHashes FileHashes { get; set; }
@@ -10045,6 +10061,10 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Artifact uploaded using the PythonPackage directive.</summary>
     public class UploadedPythonPackage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Path to the artifact in Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactRegistryPackage")]
+        public virtual string ArtifactRegistryPackage { get; set; }
+
         /// <summary>Hash types and values of the Python Artifact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual FileHashes FileHashes { get; set; }
