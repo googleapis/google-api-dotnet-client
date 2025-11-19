@@ -1616,6 +1616,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string Path { get; set; }
 
         /// <summary>
+        /// Service Directory Service to be used as the endpoint for transfers from a custom VPC. Format:
+        /// `projects/{project_id}/locations/{location}/namespaces/{namespace}/services/{service}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateNetworkService")]
+        public virtual string PrivateNetworkService { get; set; }
+
+        /// <summary>
         /// The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`.
         /// For more information about ARNs, see [IAM
         /// ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a
@@ -1674,6 +1681,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
+
+        /// <summary>
+        /// Service Directory Service to be used as the endpoint for transfers from a custom VPC. Format:
+        /// `projects/{project_id}/locations/{location}/namespaces/{namespace}/services/{service}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateNetworkService")]
+        public virtual string PrivateNetworkService { get; set; }
 
         /// <summary>Required. The name of the Azure Storage account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageAccount")]
@@ -2337,6 +2351,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastModifiedSinceRaw);
             set => LastModifiedSinceRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. If specified, only objects matching this glob are transferred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchGlob")]
+        public virtual string MatchGlob { get; set; }
 
         /// <summary>
         /// Ensures that objects are not transferred if a specific maximum time has elapsed since the "last modification
